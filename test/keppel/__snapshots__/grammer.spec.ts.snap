@@ -1,0 +1,408 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Keppel Keppel grammar parser error 1`] = `
+"Unexpected token at 7:26. Remainder: '
+      ]
+    ]
+  ]
+]
+// I am a comment in the end of input
+"
+`;
+
+exports[`Keppel Keppel grammar parser generation 1 1`] = `
+Array [
+  Object {
+    "body": Array [
+      Object {
+        "body": Array [
+          Object {
+            "body": Array [
+              Object {
+                "attributes": Array [
+                  Object {
+                    "name": "href",
+                    "value": "#",
+                  },
+                  Object {
+                    "name": "test",
+                    "value": "My test",
+                  },
+                ],
+                "body": Array [
+                  Object {
+                    "type": "free text",
+                    "value": "Awesome",
+                  },
+                ],
+                "classes": Array [
+                  "brand",
+                ],
+                "name": "a",
+                "type": "tag",
+              },
+              Object {
+                "body": Array [
+                  Object {
+                    "body": Array [
+                      Object {
+                        "attributes": Array [
+                          Object {
+                            "name": "href",
+                            "value": "#",
+                          },
+                        ],
+                        "body": Array [
+                          Object {
+                            "type": "free text",
+                            "value": "Item 1",
+                          },
+                        ],
+                        "name": "a",
+                        "type": "tag",
+                      },
+                    ],
+                    "name": "li",
+                    "type": "tag",
+                  },
+                  Object {
+                    "body": Array [
+                      Object {
+                        "attributes": Array [
+                          Object {
+                            "name": "href",
+                            "value": "#",
+                          },
+                        ],
+                        "body": Array [
+                          Object {
+                            "type": "free text",
+                            "value": "Item 2",
+                          },
+                        ],
+                        "name": "a",
+                        "type": "tag",
+                      },
+                    ],
+                    "name": "li",
+                    "type": "tag",
+                  },
+                ],
+                "classes": Array [
+                  "nav",
+                ],
+                "name": "ul",
+                "type": "tag",
+              },
+            ],
+            "classes": Array [
+              "navbar-inner",
+            ],
+            "name": "div",
+            "type": "tag",
+          },
+        ],
+        "classes": Array [
+          "navbar",
+          "navbar-inverse",
+          "navbar-fixed-top",
+        ],
+        "id": "navbar",
+        "name": "div",
+        "type": "tag",
+      },
+    ],
+    "name": "body",
+    "type": "tag",
+  },
+]
+`;
+
+exports[`Keppel Keppel grammar parser generation 2 1`] = `
+Array [
+  Object {
+    "type": "free text",
+    "value": "<!DOCTYPE html>",
+  },
+  Object {
+    "attributes": Array [
+      Object {
+        "name": "lang",
+        "value": "en",
+      },
+    ],
+    "body": Array [
+      Object {
+        "body": Array [
+          Object {
+            "attributes": Array [
+              Object {
+                "name": "charset",
+                "value": "utf-8",
+              },
+            ],
+            "name": "meta",
+            "type": "tag",
+          },
+          Object {
+            "body": Array [
+              Object {
+                "type": "free text",
+                "value": "Awesome nav bar example",
+              },
+            ],
+            "name": "title",
+            "type": "tag",
+          },
+          Object {
+            "attributes": Array [
+              Object {
+                "name": "rel",
+                "value": "stylesheet",
+              },
+              Object {
+                "name": "href",
+                "value": "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css",
+              },
+            ],
+            "name": "link",
+            "type": "tag",
+          },
+          Object {
+            "attributes": Array [
+              Object {
+                "name": "rel",
+                "value": "stylesheet",
+              },
+              Object {
+                "name": "href",
+                "value": "http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.min.css",
+              },
+            ],
+            "name": "link",
+            "type": "tag",
+          },
+        ],
+        "name": "head",
+        "type": "tag",
+      },
+      Object {
+        "body": Array [
+          Object {
+            "body": Array [
+              Object {
+                "body": Array [
+                  Object {
+                    "attributes": Array [
+                      Object {
+                        "name": "href",
+                        "value": "#",
+                      },
+                    ],
+                    "body": Array [
+                      Object {
+                        "type": "free text",
+                        "value": "Awesome",
+                      },
+                    ],
+                    "classes": Array [
+                      "brand",
+                    ],
+                    "name": "a",
+                    "type": "tag",
+                  },
+                  Object {
+                    "body": Array [
+                      Object {
+                        "body": Array [
+                          Object {
+                            "attributes": Array [
+                              Object {
+                                "name": "href",
+                                "value": "#",
+                              },
+                            ],
+                            "body": Array [
+                              Object {
+                                "type": "free text",
+                                "value": "Item 1",
+                              },
+                            ],
+                            "name": "a",
+                            "type": "tag",
+                          },
+                        ],
+                        "name": "li",
+                        "type": "tag",
+                      },
+                      Object {
+                        "body": Array [
+                          Object {
+                            "attributes": Array [
+                              Object {
+                                "name": "href",
+                                "value": "#",
+                              },
+                            ],
+                            "body": Array [
+                              Object {
+                                "type": "free text",
+                                "value": "Item 2",
+                              },
+                            ],
+                            "name": "a",
+                            "type": "tag",
+                          },
+                        ],
+                        "name": "li",
+                        "type": "tag",
+                      },
+                    ],
+                    "classes": Array [
+                      "nav",
+                    ],
+                    "name": "ul",
+                    "type": "tag",
+                  },
+                  Object {
+                    "body": Array [
+                      Object {
+                        "body": Array [
+                          Object {
+                            "attributes": Array [
+                              Object {
+                                "name": "href",
+                                "value": "#",
+                              },
+                            ],
+                            "body": Array [
+                              Object {
+                                "body": Array [
+                                  Object {
+                                    "type": "free text",
+                                    "value": " Logged in as: Mr. Right ",
+                                  },
+                                ],
+                                "classes": Array [
+                                  "icon-user",
+                                  "icon-white",
+                                ],
+                                "name": "i",
+                                "type": "tag",
+                              },
+                              Object {
+                                "classes": Array [
+                                  "caret",
+                                ],
+                                "name": "b",
+                                "type": "tag",
+                              },
+                            ],
+                            "classes": Array [
+                              "dropdown-toggle",
+                            ],
+                            "name": "a",
+                            "type": "tag",
+                          },
+                          Object {
+                            "body": Array [
+                              Object {
+                                "body": Array [
+                                  Object {
+                                    "attributes": Array [
+                                      Object {
+                                        "name": "href",
+                                        "value": "#",
+                                      },
+                                    ],
+                                    "body": Array [
+                                      Object {
+                                        "type": "free text",
+                                        "value": "Profile",
+                                      },
+                                    ],
+                                    "name": "a",
+                                    "type": "tag",
+                                  },
+                                ],
+                                "name": "li",
+                                "type": "tag",
+                              },
+                              Object {
+                                "classes": Array [
+                                  "divider",
+                                ],
+                                "name": "li",
+                                "type": "tag",
+                              },
+                              Object {
+                                "body": Array [
+                                  Object {
+                                    "attributes": Array [
+                                      Object {
+                                        "name": "href",
+                                        "value": "#",
+                                      },
+                                    ],
+                                    "body": Array [
+                                      Object {
+                                        "type": "free text",
+                                        "value": "Sign out",
+                                      },
+                                    ],
+                                    "name": "a",
+                                    "type": "tag",
+                                  },
+                                ],
+                                "name": "li",
+                                "type": "tag",
+                              },
+                            ],
+                            "classes": Array [
+                              "dropdown-menu",
+                            ],
+                            "name": "ul",
+                            "type": "tag",
+                          },
+                        ],
+                        "classes": Array [
+                          "dropdown",
+                        ],
+                        "name": "li",
+                        "type": "tag",
+                      },
+                    ],
+                    "classes": Array [
+                      "nav",
+                      "pull-right",
+                    ],
+                    "name": "ul",
+                    "type": "tag",
+                  },
+                ],
+                "classes": Array [
+                  "navbar-inner",
+                ],
+                "name": "div",
+                "type": "tag",
+              },
+            ],
+            "classes": Array [
+              "navbar",
+              "navbar-inverse",
+              "navbar-fixed-top",
+            ],
+            "id": "navbar",
+            "name": "div",
+            "type": "tag",
+          },
+        ],
+        "name": "body",
+        "type": "tag",
+      },
+    ],
+    "name": "html",
+    "type": "tag",
+  },
+]
+`;

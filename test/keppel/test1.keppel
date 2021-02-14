@@ -1,0 +1,12 @@
+body [    // I am a comment
+  div #navbar .navbar.navbar-inverse.navbar-fixed-top [
+    div.navbar-inner [
+      a(href="#", test="My test").brand ['Awesome']
+      ul.nav [
+        li[ a(href="#") ['Item 1'] ]
+        li[ a(href="#") ['Item 2'] ]
+      ]
+    ]
+  ]
+]
+// I am a comment in the end of input

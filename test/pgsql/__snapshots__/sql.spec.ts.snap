@@ -1,0 +1,1950 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sql Should parse simple sql as select (SELECT column as col1): as select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "column",
+                },
+              ],
+            },
+            Object {
+              "tag": "as",
+              "value": Object {
+                "tag": "name",
+                "value": "col1",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql column select (SELECT column): column select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "column",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql cross join (SELECT * FROM jobs CROSS JOIN test1): cross join 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "JOIN",
+      "values": Array [
+        Object {
+          "tag": "type",
+          "value": "CROSS",
+        },
+        Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "test1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql deep multiple columns select (SELECT column1, table1.column2, table1.column3, schema.table3.colum2): deep multiple columns select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "column1",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table1",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "column2",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table1",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "column3",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "schema",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "table3",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "colum2",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql deep qualified column select (SELECT schema.table.column): deep qualified column select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "schema",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "table",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "column",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql deep qualified star select (SELECT table1.table2.*): deep qualified star select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table1",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "table2",
+                },
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql deep quoted star select (SELECT "table 1"."table 2".*): deep quoted star select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table 1",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "table 2",
+                },
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql deeper quoted star select (SELECT "table 1".table2."table 3".*): deeper quoted star select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table 1",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "table2",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "table 3",
+                },
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql from (SELECT * FROM jobs): from 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql from select (SELECT * FROM (SELECT * FROM jobs2) as jobs1): from select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "SELECT",
+              "values": Array [
+                Object {
+                  "tag": "select_list",
+                  "values": Array [
+                    Object {
+                      "tag": "item",
+                      "values": Array [
+                        Object {
+                          "tag": "identifier",
+                          "value": Array [
+                            Object {
+                              "tag": "star",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "tag": "FROM",
+                  "values": Array [
+                    Object {
+                      "tag": "item",
+                      "values": Array [
+                        Object {
+                          "tag": "identifier",
+                          "value": Array [
+                            Object {
+                              "tag": "name",
+                              "value": "jobs2",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "tag": "as",
+              "value": Object {
+                "tag": "name",
+                "value": "jobs1",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql from select as (SELECT * FROM jobs1, (SELECT * FROM jobs2)): from select as 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs1",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "SELECT",
+              "values": Array [
+                Object {
+                  "tag": "select_list",
+                  "values": Array [
+                    Object {
+                      "tag": "item",
+                      "values": Array [
+                        Object {
+                          "tag": "identifier",
+                          "value": Array [
+                            Object {
+                              "tag": "star",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "tag": "FROM",
+                  "values": Array [
+                    Object {
+                      "tag": "item",
+                      "values": Array [
+                        Object {
+                          "tag": "identifier",
+                          "value": Array [
+                            Object {
+                              "tag": "name",
+                              "value": "jobs2",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql from with as (SELECT * FROM jobs AS test): from with as 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+            Object {
+              "tag": "as",
+              "value": Object {
+                "tag": "name",
+                "value": "test",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql from with as quoted (SELECT * FROM jobs AS "test 2"): from with as quoted 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+            Object {
+              "tag": "as",
+              "value": Object {
+                "tag": "name",
+                "value": "test 2",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql full join (SELECT * FROM jobs FULL JOIN test1): full join 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "JOIN",
+      "values": Array [
+        Object {
+          "tag": "type",
+          "value": "FULL",
+        },
+        Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "test1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql full outer join (SELECT * FROM jobs FULL OUTER JOIN test1): full outer join 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "JOIN",
+      "values": Array [
+        Object {
+          "tag": "type",
+          "value": "FULL",
+        },
+        Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "test1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql inner join (SELECT * FROM jobs INNER JOIN test1): inner join 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "JOIN",
+      "values": Array [
+        Object {
+          "tag": "type",
+          "value": undefined,
+        },
+        Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "test1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql join (SELECT * FROM jobs JOIN test1): join 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "JOIN",
+      "values": Array [
+        Object {
+          "tag": "type",
+          "value": undefined,
+        },
+        Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "test1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql left join (SELECT * FROM jobs LEFT JOIN test1): left join 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "JOIN",
+      "values": Array [
+        Object {
+          "tag": "type",
+          "value": "LEFT",
+        },
+        Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "test1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql left outer join (SELECT * FROM jobs LEFT OUTER JOIN test1): left outer join 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "JOIN",
+      "values": Array [
+        Object {
+          "tag": "type",
+          "value": "LEFT",
+        },
+        Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "test1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql limit (SELECT * LIMIT 10): limit 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "LIMIT",
+      "value": Object {
+        "tag": "count",
+        "value": "10",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql multiple as columns select (SELECT column1 as "test", table1.column2, "test".column2 as col1): multiple as columns select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "column1",
+                },
+              ],
+            },
+            Object {
+              "tag": "as",
+              "value": Object {
+                "tag": "name",
+                "value": "test",
+              },
+            },
+          ],
+        },
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table1",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "column2",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "test",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "column2",
+                },
+              ],
+            },
+            Object {
+              "tag": "as",
+              "value": Object {
+                "tag": "name",
+                "value": "col1",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql multiple columns select (SELECT column1, column2): multiple columns select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "column1",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "column2",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql multiple from (SELECT * FROM jobs1, jobs AS "test 2"): multiple from 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs1",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+            Object {
+              "tag": "as",
+              "value": Object {
+                "tag": "name",
+                "value": "test 2",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql multiple from as (SELECT * FROM jobs1 AS j1, jobs2, jobs3 as j3): multiple from as 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs1",
+                },
+              ],
+            },
+            Object {
+              "tag": "as",
+              "value": Object {
+                "tag": "name",
+                "value": "j1",
+              },
+            },
+          ],
+        },
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs2",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs3",
+                },
+              ],
+            },
+            Object {
+              "tag": "as",
+              "value": Object {
+                "tag": "name",
+                "value": "j3",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql multiple joins (SELECT * FROM jobs JOIN test1 JOIN test2): multiple joins 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "JOIN",
+      "values": Array [
+        Object {
+          "tag": "type",
+          "value": undefined,
+        },
+        Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "test1",
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "JOIN",
+      "values": Array [
+        Object {
+          "tag": "type",
+          "value": undefined,
+        },
+        Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "test2",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql qualified column select (SELECT table.column): qualified column select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "column",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql qualified star select (SELECT table.*): qualified star select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table",
+                },
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql quoted as select (SELECT table.column as "col 1"): quoted as select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "column",
+                },
+              ],
+            },
+            Object {
+              "tag": "as",
+              "value": Object {
+                "tag": "name",
+                "value": "col 1",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql quoted escaped as select (SELECT schema.table.column as "col ""2"""): quoted escaped as select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "schema",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "table",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "column",
+                },
+              ],
+            },
+            Object {
+              "tag": "as",
+              "value": Object {
+                "tag": "name",
+                "value": "col \\"\\"2\\"\\"",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql quoted identifier (SELECT "test"): quoted identifier 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "test",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql quoted identifier escaped (SELECT "test me ""o donald"" true"): quoted identifier escaped 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "test me \\"\\"o donald\\"\\" true",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql quoted star select (SELECT "table 2".*): quoted star select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table 2",
+                },
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql right join (SELECT * FROM jobs RIGHT JOIN test1): right join 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "JOIN",
+      "values": Array [
+        Object {
+          "tag": "type",
+          "value": "RIGHT",
+        },
+        Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "test1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql right outer join (SELECT * FROM jobs RIGHT OUTER JOIN test1): right outer join 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "JOIN",
+      "values": Array [
+        Object {
+          "tag": "type",
+          "value": "RIGHT",
+        },
+        Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "test1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql star select (SELECT *): star select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where (SELECT * WHERE id = 5): where 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "condition": Object {
+        "a": Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "id",
+            },
+          ],
+        },
+        "b": Object {
+          "tag": "number",
+          "value": "5",
+        },
+        "operator": "=",
+        "tag": "comparation",
+      },
+      "tag": "WHERE",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where select (SELECT * WHERE (SELECT id FROM test LIMIT 1) = 5): where select 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "condition": Object {
+        "a": Object {
+          "tag": "SELECT",
+          "values": Array [
+            Object {
+              "tag": "select_list",
+              "values": Array [
+                Object {
+                  "tag": "item",
+                  "values": Array [
+                    Object {
+                      "tag": "identifier",
+                      "value": Array [
+                        Object {
+                          "tag": "name",
+                          "value": "id",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "tag": "FROM",
+              "values": Array [
+                Object {
+                  "tag": "item",
+                  "values": Array [
+                    Object {
+                      "tag": "identifier",
+                      "value": Array [
+                        Object {
+                          "tag": "name",
+                          "value": "test",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "tag": "LIMIT",
+              "value": Object {
+                "tag": "count",
+                "value": "1",
+              },
+            },
+          ],
+        },
+        "b": Object {
+          "tag": "number",
+          "value": "5",
+        },
+        "operator": "=",
+        "tag": "comparation",
+      },
+      "tag": "WHERE",
+    },
+  ],
+}
+`;

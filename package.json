@@ -1,0 +1,38 @@
+{
+  "name": "sql-ast",
+  "version": "0.1.0",
+  "description": "Parse SQL files to an AST",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.0",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "@ikerin/rd-parse": "^3.2.3"
+  },
+  "scripts": {
+    "build": "tsc --declaration",
+    "test": "jest test --runInBand",
+    "lint": "prettier --list-different '{src,test}/**/*.ts'"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testURL": "http://localhost/",
+    "testEnvironment": "node"
+  }
+}

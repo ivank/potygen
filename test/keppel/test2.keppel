@@ -1,0 +1,33 @@
+'<!DOCTYPE html>'
+html(lang="en") [
+  head [
+    meta(charset="utf-8")
+    title ['Awesome nav bar example']
+    link(rel="stylesheet", href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css")
+    link(rel="stylesheet", href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.min.css")
+  ]
+  body [
+    div #navbar .navbar.navbar-inverse.navbar-fixed-top [
+      div.navbar-inner [
+        a(href="#").brand ['Awesome']
+        ul.nav [
+          li[ a(href="#") ['Item 1'] ]
+          li[ a(href="#") ['Item 2'] ]
+        ]
+        ul.nav.pull-right [
+          li.dropdown [
+            a(href="#").dropdown-toggle [
+              i.icon-user.icon-white [' Logged in as: Mr. Right ']
+              b.caret
+            ]
+            ul.dropdown-menu [
+              li [a(href="#") ['Profile'] ]
+              li.divider
+              li [a(href="#") ['Sign out'] ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
