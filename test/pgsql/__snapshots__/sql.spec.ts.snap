@@ -34,6 +34,101 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql cast (SELECT CAST(id AS int4)): cast 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "cast",
+              "type": Object {
+                "param": undefined,
+                "tag": "type",
+                "value": "int4",
+              },
+              "value": Object {
+                "tag": "identifier",
+                "value": Array [
+                  Object {
+                    "tag": "name",
+                    "value": "id",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql cast number (SELECT CAST(20 AS int4)): cast number 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "cast",
+              "type": Object {
+                "param": undefined,
+                "tag": "type",
+                "value": "int4",
+              },
+              "value": Object {
+                "tag": "number",
+                "value": "20",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql cast string (SELECT CAST('test' AS varchar(20))): cast string 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "cast",
+              "type": Object {
+                "param": "20",
+                "tag": "type",
+                "value": "varchar",
+              },
+              "value": Object {
+                "tag": "string",
+                "value": "test",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql column select (SELECT column): column select 1`] = `
 Object {
   "tag": "SELECT",

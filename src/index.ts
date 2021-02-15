@@ -47,6 +47,48 @@ const Constant = Any(String, Number, Boolean);
 
 const Count = Node(/^([0-9]+)/, ([value]) => ({ tag: 'count', value }));
 
+const Type = Node(
+  Any(
+    /^(bigint|int8)/i,
+    /^(bigserial|serial8)/i,
+    All(/^(bit varying|varbit)/i, Optional(Brackets(/^([0-9]+)/))),
+    All(/^(bit)/i, Optional(Brackets(/^([0-9]+)/))),
+    /^(boolean|bool)/i,
+    /^(box)/i,
+    /^(bytea)/i,
+    All(/^(character varying|varchar|character|char)/i, Optional(Brackets(/^([0-9]+)/))),
+    /^(cidr)/i,
+    /^(circle)/i,
+    /^(date)/i,
+    /^(double precision|float8)/i,
+    /^(inet)/i,
+    /^(integer|int4|int)/i,
+    All(/^(interval)/i, Optional(Brackets(/^([0-9]+)/))),
+    /^(json|jsonb)/i,
+    /^(line)/i,
+    /^(lseg)/i,
+    /^(macaddr)/i,
+    /^(money)/i,
+    All(/^(numeric|decimal)/i, Optional(Brackets(Any(/^([0-9]+)/, All(/^([0-9]+)/, ',', /^([0-9]+)/))))),
+    /^(path)/i,
+    /^(pg_lsn)/i,
+    /^(point)/i,
+    /^(polygon)/i,
+    /^(real|float4)/i,
+    /^(smallint|int2)/i,
+    /^(smallserial|serial2)/i,
+    /^(serial4|serial)/i,
+    /^(text)/i,
+    All(/^(time|timestamp|timetz|timestamptz)/i, Optional(Brackets(/^([0-9]+)/))),
+    /^(tsquery)/i,
+    /^(tsvector)/i,
+    /^(txid_snapshot)/i,
+    /^(uuid)/i,
+    /^(xml)/i,
+  ),
+  ([value, param]) => ({ tag: 'type', value, param }),
+);
+
 /**
  * SELECT
  */
@@ -63,19 +105,16 @@ const SelectIdentifier = Node(List(Identifier, { last: Any(Identifier, StarIdent
   value,
 }));
 
-const ComparationOperator = /^(<=|>=|<>|!=|=|<|>|LIKE)/;
-const LogicalOperator = /^(AND|OR)/;
+const ComparationOperator = /^(<=|>=|<>|!=|=|<|>|LIKE)/i;
+const LogicalOperator = /^(AND|OR)/i;
 
 const Select = Y((SelectExpression) => {
   /**
    * Select List
    */
-  const SelectListItem = Node(All(Any(Brackets(SelectExpression), SelectIdentifier), Optional(As)), (values) => ({
-    tag: 'item',
-    values,
-  }));
 
   const DataType = Any(Constant, SelectIdentifier, Brackets(SelectExpression));
+
   const Comparation = Node(
     All(OrBrackets(DataType), ComparationOperator, OrBrackets(DataType)),
     ([a, operator, b]) => ({
@@ -94,6 +133,20 @@ const Select = Y((SelectExpression) => {
   }));
   const ConditionOrLogical = Any(Logical, Condition);
 
+  const Cast = Node(Any(All(/^CAST/i, '(', DataType, /^AS/i, Type, ')')), ([value, type]) => ({
+    tag: 'cast',
+    value,
+    type,
+  }));
+
+  const SelectListItem = Node(
+    All(Any(Cast, Brackets(SelectExpression), SelectIdentifier, ConditionOrLogical), Optional(As)),
+    (values) => ({
+      tag: 'item',
+      values,
+    }),
+  );
+
   const SelectList = Node(List(SelectListItem), (values) => ({
     tag: 'select_list',
     values,
@@ -110,17 +163,17 @@ const Select = Y((SelectExpression) => {
 
   const JoinType = Node(
     Any(
-      All(Optional(/^INNER/), /^JOIN/),
-      All(/^(LEFT)/, Optional(/^OUTER/), /^JOIN/),
-      All(/^(RIGHT)/, Optional(/^OUTER/), /^JOIN/),
-      All(/^(FULL)/, Optional(/^OUTER/), /^JOIN/),
-      /^(CROSS) JOIN/,
+      All(Optional(/^INNER/i), /^JOIN/i),
+      All(/^(LEFT)/i, Optional(/^OUTER/), /^JOIN/i),
+      All(/^(RIGHT)/i, Optional(/^OUTER/i), /^JOIN/i),
+      All(/^(FULL)/i, Optional(/^OUTER/i), /^JOIN/i),
+      /^(CROSS) JOIN/i,
     ),
     ([value]) => ({ tag: 'type', value }),
   );
 
-  const JoinOn = Node(All(/^ON/, Comparation), ([value]) => ({ tag: 'ON', value }));
-  const JoinUsing = Node(All(/^USING/, List(QualifiedIdentifier)), (values) => ({ tag: 'USING', values }));
+  const JoinOn = Node(All(/^ON/i, Comparation), ([value]) => ({ tag: 'ON', value }));
+  const JoinUsing = Node(All(/^USING/i, List(QualifiedIdentifier)), (values) => ({ tag: 'USING', values }));
 
   const Join = Node(All(JoinType, QualifiedIdentifier, Optional(As), Optional(Any(JoinOn, JoinUsing))), (values) => ({
     tag: 'JOIN',
@@ -159,10 +212,6 @@ const Select = Y((SelectExpression) => {
     (values) => ({ tag: 'SELECT', values }),
   );
 });
-
-/**
- * Keywords
- */
 
 // Ignore line comments and all whitespace
 export const PgSql = Ignore(/^\s+|^--[^\r\n]*\n/, Any(Select));

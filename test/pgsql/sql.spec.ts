@@ -22,6 +22,9 @@ describe('Sql', () => {
     ${'quoted as select'}             | ${'SELECT table.column as "col 1"'}
     ${'quoted escaped as select'}     | ${'SELECT schema.table.column as "col ""2"""'}
     ${'multiple as columns select'}   | ${'SELECT column1 as "test", table1.column2, "test".column2 as col1'}
+    ${'cast'}                         | ${'SELECT CAST(id AS int4)'}
+    ${'cast number'}                  | ${'SELECT CAST(20 AS int4)'}
+    ${'cast string'}                  | ${"SELECT CAST('test' AS varchar(20))"}
     ${'limit'}                        | ${'SELECT * LIMIT 10'}
     ${'offset'}                       | ${'SELECT * OFFSET 10'}
     ${'limit offset'}                 | ${'SELECT * LIMIT 10 OFFSET 10'}
@@ -61,7 +64,7 @@ describe('Sql', () => {
       expect(pgsqlParser(sql)).toMatchSnapshot(name);
     } catch (e) {
       if (e instanceof ParserError) {
-        console.log(inspect(e, { depth: 10, colors: true }));
+        console.log(inspect(e, { depth: 15, colors: true }));
       }
       throw e;
     }
