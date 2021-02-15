@@ -23,6 +23,8 @@ describe('Sql', () => {
     ${'quoted escaped as select'}     | ${'SELECT schema.table.column as "col ""2"""'}
     ${'multiple as columns select'}   | ${'SELECT column1 as "test", table1.column2, "test".column2 as col1'}
     ${'limit'}                        | ${'SELECT * LIMIT 10'}
+    ${'offset'}                       | ${'SELECT * OFFSET 10'}
+    ${'limit offset'}                 | ${'SELECT * LIMIT 10 OFFSET 10'}
     ${'from'}                         | ${'SELECT * FROM jobs'}
     ${'from select'}                  | ${'SELECT * FROM (SELECT * FROM jobs2) as jobs1'}
     ${'from select as'}               | ${'SELECT * FROM jobs1, (SELECT * FROM jobs2)'}
@@ -31,6 +33,7 @@ describe('Sql', () => {
     ${'multiple from'}                | ${'SELECT * FROM jobs1, jobs AS "test 2"'}
     ${'multiple from as'}             | ${'SELECT * FROM jobs1 AS j1, jobs2, jobs3 as j3'}
     ${'join'}                         | ${'SELECT * FROM jobs JOIN test1'}
+    ${'join on'}                      | ${'SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id'}
     ${'inner join'}                   | ${'SELECT * FROM jobs INNER JOIN test1'}
     ${'left join'}                    | ${'SELECT * FROM jobs LEFT JOIN test1'}
     ${'left outer join'}              | ${'SELECT * FROM jobs LEFT OUTER JOIN test1'}
@@ -41,6 +44,15 @@ describe('Sql', () => {
     ${'cross join'}                   | ${'SELECT * FROM jobs CROSS JOIN test1'}
     ${'multiple joins'}               | ${'SELECT * FROM jobs JOIN test1 JOIN test2'}
     ${'where'}                        | ${'SELECT * WHERE id = 5'}
+    ${'where and'}                    | ${"SELECT * WHERE id = 5 AND name = 'test'"}
+    ${'where boolean'}                | ${'SELECT * WHERE id = 5 AND TRUE'}
+    ${'where greater than'}           | ${'SELECT * WHERE table.col > 2'}
+    ${'where less than'}              | ${'SELECT * WHERE table.col < 2'}
+    ${'where different from'}         | ${"SELECT * WHERE table.col <> '23'"}
+    ${'where not equal to'}           | ${"SELECT * WHERE table.col != '23'"}
+    ${'where greater than or equal'}  | ${'SELECT * WHERE table.col >= 23'}
+    ${'where less than or equal'}     | ${"SELECT * WHERE table.col <= '23'"}
+    ${'where like string'}            | ${"SELECT * WHERE table.col LIKE '%23%'"}
     ${'where select'}                 | ${'SELECT * WHERE (SELECT id FROM test LIMIT 1) = 5'}
     ${'quoted identifier'}            | ${'SELECT "test"'}
     ${'quoted identifier escaped'}    | ${'SELECT "test me ""o donald"" true"'}

@@ -928,6 +928,102 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql join on (SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id): join on 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "JOIN",
+      "values": Array [
+        Object {
+          "tag": "type",
+          "value": undefined,
+        },
+        Object {
+          "tag": "identifier",
+          "value": Array [
+            Object {
+              "tag": "name",
+              "value": "test1",
+            },
+          ],
+        },
+        Object {
+          "tag": "ON",
+          "value": Object {
+            "a": Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "jobs",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "id",
+                },
+              ],
+            },
+            "b": Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "test1",
+                },
+                Object {
+                  "tag": "name",
+                  "value": "id",
+                },
+              ],
+            },
+            "operator": "=",
+            "tag": "comparation",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql left join (SELECT * FROM jobs LEFT JOIN test1): left join 1`] = `
 Object {
   "tag": "SELECT",
@@ -1078,6 +1174,46 @@ Object {
     },
     Object {
       "tag": "LIMIT",
+      "value": Object {
+        "tag": "count",
+        "value": "10",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql limit offset (SELECT * LIMIT 10 OFFSET 10): limit offset 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "LIMIT",
+      "value": Object {
+        "tag": "count",
+        "value": "10",
+      },
+    },
+    Object {
+      "tag": "OFFSET",
       "value": Object {
         "tag": "count",
         "value": "10",
@@ -1434,6 +1570,39 @@ Object {
           ],
         },
       ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql offset (SELECT * OFFSET 10): offset 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "OFFSET",
+      "value": Object {
+        "tag": "count",
+        "value": "10",
+      },
     },
   ],
 }
@@ -1839,24 +2008,515 @@ Object {
       ],
     },
     Object {
-      "condition": Object {
-        "a": Object {
-          "tag": "identifier",
-          "value": Array [
+      "tag": "WHERE",
+      "values": Array [
+        Object {
+          "a": Object {
+            "tag": "identifier",
+            "value": Array [
+              Object {
+                "tag": "name",
+                "value": "id",
+              },
+            ],
+          },
+          "b": Object {
+            "tag": "number",
+            "value": "5",
+          },
+          "operator": "=",
+          "tag": "comparation",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where and (SELECT * WHERE id = 5 AND name = 'test'): where and 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
             Object {
-              "tag": "name",
-              "value": "id",
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
             },
           ],
         },
-        "b": Object {
-          "tag": "number",
-          "value": "5",
-        },
-        "operator": "=",
-        "tag": "comparation",
-      },
+      ],
+    },
+    Object {
       "tag": "WHERE",
+      "values": Array [
+        Object {
+          "a": Object {
+            "a": Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "id",
+                },
+              ],
+            },
+            "b": Object {
+              "tag": "number",
+              "value": "5",
+            },
+            "operator": "=",
+            "tag": "comparation",
+          },
+          "b": Object {
+            "a": Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "name",
+                },
+              ],
+            },
+            "b": Object {
+              "tag": "string",
+              "value": "test",
+            },
+            "operator": "=",
+            "tag": "comparation",
+          },
+          "operator": "AND",
+          "tag": "logical",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where boolean (SELECT * WHERE id = 5 AND TRUE): where boolean 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "WHERE",
+      "values": Array [
+        Object {
+          "a": Object {
+            "a": Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "id",
+                },
+              ],
+            },
+            "b": Object {
+              "tag": "number",
+              "value": "5",
+            },
+            "operator": "=",
+            "tag": "comparation",
+          },
+          "b": Object {
+            "tag": "boolean",
+            "value": "TRUE",
+          },
+          "operator": "AND",
+          "tag": "logical",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where different from (SELECT * WHERE table.col <> '23'): where different from 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "WHERE",
+      "values": Array [
+        Object {
+          "a": Object {
+            "tag": "identifier",
+            "value": Array [
+              Object {
+                "tag": "name",
+                "value": "table",
+              },
+              Object {
+                "tag": "name",
+                "value": "col",
+              },
+            ],
+          },
+          "b": Object {
+            "tag": "string",
+            "value": "23",
+          },
+          "operator": "<>",
+          "tag": "comparation",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where greater than (SELECT * WHERE table.col > 2): where greater than 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "WHERE",
+      "values": Array [
+        Object {
+          "a": Object {
+            "tag": "identifier",
+            "value": Array [
+              Object {
+                "tag": "name",
+                "value": "table",
+              },
+              Object {
+                "tag": "name",
+                "value": "col",
+              },
+            ],
+          },
+          "b": Object {
+            "tag": "number",
+            "value": "2",
+          },
+          "operator": ">",
+          "tag": "comparation",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where greater than or equal (SELECT * WHERE table.col >= 23): where greater than or equal 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "WHERE",
+      "values": Array [
+        Object {
+          "a": Object {
+            "tag": "identifier",
+            "value": Array [
+              Object {
+                "tag": "name",
+                "value": "table",
+              },
+              Object {
+                "tag": "name",
+                "value": "col",
+              },
+            ],
+          },
+          "b": Object {
+            "tag": "number",
+            "value": "23",
+          },
+          "operator": ">=",
+          "tag": "comparation",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where less than (SELECT * WHERE table.col < 2): where less than 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "WHERE",
+      "values": Array [
+        Object {
+          "a": Object {
+            "tag": "identifier",
+            "value": Array [
+              Object {
+                "tag": "name",
+                "value": "table",
+              },
+              Object {
+                "tag": "name",
+                "value": "col",
+              },
+            ],
+          },
+          "b": Object {
+            "tag": "number",
+            "value": "2",
+          },
+          "operator": "<",
+          "tag": "comparation",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where less than or equal (SELECT * WHERE table.col <= '23'): where less than or equal 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "WHERE",
+      "values": Array [
+        Object {
+          "a": Object {
+            "tag": "identifier",
+            "value": Array [
+              Object {
+                "tag": "name",
+                "value": "table",
+              },
+              Object {
+                "tag": "name",
+                "value": "col",
+              },
+            ],
+          },
+          "b": Object {
+            "tag": "string",
+            "value": "23",
+          },
+          "operator": "<=",
+          "tag": "comparation",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where like string (SELECT * WHERE table.col LIKE '%23%'): where like string 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "WHERE",
+      "values": Array [
+        Object {
+          "a": Object {
+            "tag": "identifier",
+            "value": Array [
+              Object {
+                "tag": "name",
+                "value": "table",
+              },
+              Object {
+                "tag": "name",
+                "value": "col",
+              },
+            ],
+          },
+          "b": Object {
+            "tag": "string",
+            "value": "%23%",
+          },
+          "operator": "LIKE",
+          "tag": "comparation",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where not equal to (SELECT * WHERE table.col != '23'): where not equal to 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "WHERE",
+      "values": Array [
+        Object {
+          "a": Object {
+            "tag": "identifier",
+            "value": Array [
+              Object {
+                "tag": "name",
+                "value": "table",
+              },
+              Object {
+                "tag": "name",
+                "value": "col",
+              },
+            ],
+          },
+          "b": Object {
+            "tag": "string",
+            "value": "23",
+          },
+          "operator": "!=",
+          "tag": "comparation",
+        },
+      ],
     },
   ],
 }
@@ -1885,65 +2545,67 @@ Object {
       ],
     },
     Object {
-      "condition": Object {
-        "a": Object {
-          "tag": "SELECT",
-          "values": Array [
-            Object {
-              "tag": "select_list",
-              "values": Array [
-                Object {
-                  "tag": "item",
-                  "values": Array [
-                    Object {
-                      "tag": "identifier",
-                      "value": Array [
-                        Object {
-                          "tag": "name",
-                          "value": "id",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
-            Object {
-              "tag": "FROM",
-              "values": Array [
-                Object {
-                  "tag": "item",
-                  "values": Array [
-                    Object {
-                      "tag": "identifier",
-                      "value": Array [
-                        Object {
-                          "tag": "name",
-                          "value": "test",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
-            Object {
-              "tag": "LIMIT",
-              "value": Object {
-                "tag": "count",
-                "value": "1",
-              },
-            },
-          ],
-        },
-        "b": Object {
-          "tag": "number",
-          "value": "5",
-        },
-        "operator": "=",
-        "tag": "comparation",
-      },
       "tag": "WHERE",
+      "values": Array [
+        Object {
+          "a": Object {
+            "tag": "SELECT",
+            "values": Array [
+              Object {
+                "tag": "select_list",
+                "values": Array [
+                  Object {
+                    "tag": "item",
+                    "values": Array [
+                      Object {
+                        "tag": "identifier",
+                        "value": Array [
+                          Object {
+                            "tag": "name",
+                            "value": "id",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "tag": "FROM",
+                "values": Array [
+                  Object {
+                    "tag": "item",
+                    "values": Array [
+                      Object {
+                        "tag": "identifier",
+                        "value": Array [
+                          Object {
+                            "tag": "name",
+                            "value": "test",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "tag": "LIMIT",
+                "value": Object {
+                  "tag": "count",
+                  "value": "1",
+                },
+              },
+            ],
+          },
+          "b": Object {
+            "tag": "number",
+            "value": "5",
+          },
+          "operator": "=",
+          "tag": "comparation",
+        },
+      ],
     },
   ],
 }

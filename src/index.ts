@@ -6,6 +6,9 @@ import { Ignore, All, Any, Optional, Node, Y, Star, Rule } from '@ikerin/rd-pars
 const List = (item: Rule, { last, separator = ',' }: { last?: Rule; separator?: Rule } = {}) =>
   All(Star(All(item, separator)), last ?? item);
 
+const Brackets = (rule: Rule) => All('(', rule, ')');
+const OrBrackets = (rule: Rule) => Any(All('(', rule, ')'), rule);
+
 /**
  * Identifier
  */
@@ -60,26 +63,36 @@ const SelectIdentifier = Node(List(Identifier, { last: Any(Identifier, StarIdent
   value,
 }));
 
-const ComparationOperator = /^(<=|>=|<>|!=|=|<|>)/;
+const ComparationOperator = /^(<=|>=|<>|!=|=|<|>|LIKE)/;
+const LogicalOperator = /^(AND|OR)/;
 
 const Select = Y((SelectExpression) => {
-  const WrappedSelect = All('(', SelectExpression, ')');
-
   /**
    * Select List
    */
-  const SelectListItem = Node(All(Any(WrappedSelect, SelectIdentifier), Optional(As)), (values) => ({
+  const SelectListItem = Node(All(Any(Brackets(SelectExpression), SelectIdentifier), Optional(As)), (values) => ({
     tag: 'item',
     values,
   }));
 
-  const DataType = Any(SelectIdentifier, WrappedSelect, Constant);
-  const ComparationEpxression = Node(All(DataType, ComparationOperator, DataType), ([a, operator, b]) => ({
-    tag: 'comparation',
+  const DataType = Any(Constant, SelectIdentifier, Brackets(SelectExpression));
+  const Comparation = Node(
+    All(OrBrackets(DataType), ComparationOperator, OrBrackets(DataType)),
+    ([a, operator, b]) => ({
+      tag: 'comparation',
+      a,
+      b,
+      operator,
+    }),
+  );
+  const Condition = Any(Comparation, DataType);
+  const Logical = Node(All(OrBrackets(Condition), LogicalOperator, OrBrackets(Condition)), ([a, operator, b]) => ({
+    tag: 'logical',
+    operator,
     a,
     b,
-    operator,
   }));
+  const ConditionOrLogical = Any(Logical, Condition);
 
   const SelectList = Node(List(SelectListItem), (values) => ({
     tag: 'select_list',
@@ -90,7 +103,7 @@ const Select = Y((SelectExpression) => {
    * From
    */
 
-  const FromListItemContent = Any(QualifiedIdentifier, WrappedSelect);
+  const FromListItemContent = Any(QualifiedIdentifier, Brackets(SelectExpression));
   const FromListItem = Node(All(FromListItemContent, Optional(As)), (values) => ({ tag: 'item', values }));
 
   const From = Node(All(/^FROM/i, List(FromListItem)), (values) => ({ tag: 'FROM', values }));
@@ -106,15 +119,28 @@ const Select = Y((SelectExpression) => {
     ([value]) => ({ tag: 'type', value }),
   );
 
-  const Join = Node(All(JoinType, QualifiedIdentifier, Optional(As)), (values) => ({ tag: 'JOIN', values }));
+  const JoinOn = Node(All(/^ON/, Comparation), ([value]) => ({ tag: 'ON', value }));
+  const JoinUsing = Node(All(/^USING/, List(QualifiedIdentifier)), (values) => ({ tag: 'USING', values }));
+
+  const Join = Node(All(JoinType, QualifiedIdentifier, Optional(As), Optional(Any(JoinOn, JoinUsing))), (values) => ({
+    tag: 'JOIN',
+    values,
+  }));
 
   /**
    * Where
    */
 
-  const Where = Node(All(/^WHERE/i, ComparationEpxression), ([condition]) => ({ tag: 'WHERE', condition }));
+  const Where = Node(All(/^WHERE/i, ConditionOrLogical), (values) => ({ tag: 'WHERE', values }));
+
+  const GroupBy = Node(All(/^GROUP BY/i, List(QualifiedIdentifier)), (values) => ({ tag: 'GROUP BY', values }));
+
   const Limit = Node(All(/^LIMIT/i, Any(Count, /^ALL/i)), ([value]) => ({
     tag: 'LIMIT',
+    value,
+  }));
+  const Offset = Node(All(/^OFFSET/i, Count), ([value]) => ({
+    tag: 'OFFSET',
     value,
   }));
 
@@ -126,7 +152,9 @@ const Select = Y((SelectExpression) => {
       Optional(From),
       Star(Join),
       Optional(Where),
+      Optional(GroupBy),
       Optional(Limit),
+      Optional(Offset),
     ),
     (values) => ({ tag: 'SELECT', values }),
   );
