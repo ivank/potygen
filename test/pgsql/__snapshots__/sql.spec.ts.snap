@@ -445,6 +445,93 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql except (SELECT * FROM table1 EXCEPT SELECT * FROM table2): except 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "EXCEPT",
+      "values": Array [
+        Object {
+          "tag": "select_list",
+          "values": Array [
+            Object {
+              "tag": "item",
+              "values": Array [
+                Object {
+                  "tag": "identifier",
+                  "value": Array [
+                    Object {
+                      "tag": "star",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "tag": "FROM",
+          "values": Array [
+            Object {
+              "tag": "item",
+              "values": Array [
+                Object {
+                  "tag": "identifier",
+                  "value": Array [
+                    Object {
+                      "tag": "name",
+                      "value": "table2",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql from (SELECT * FROM jobs): from 1`] = `
 Object {
   "tag": "SELECT",
@@ -951,6 +1038,93 @@ Object {
             Object {
               "tag": "name",
               "value": "test1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql intersect (SELECT * FROM table1 INTERSECT SELECT * FROM table2): intersect 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "INTERSECT",
+      "values": Array [
+        Object {
+          "tag": "select_list",
+          "values": Array [
+            Object {
+              "tag": "item",
+              "values": Array [
+                Object {
+                  "tag": "identifier",
+                  "value": Array [
+                    Object {
+                      "tag": "star",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "tag": "FROM",
+          "values": Array [
+            Object {
+              "tag": "item",
+              "values": Array [
+                Object {
+                  "tag": "identifier",
+                  "value": Array [
+                    Object {
+                      "tag": "name",
+                      "value": "table2",
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
@@ -1703,6 +1877,156 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql order by (SELECT * FROM table1 ORDER BY col ASC): order by 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "ORDER BY",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "col",
+                },
+              ],
+            },
+            Object {
+              "tag": "direction",
+              "value": "ASC",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql order by multiple (SELECT * FROM table1 ORDER BY col1 ASC, col2): order by multiple 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "ORDER BY",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "col1",
+                },
+              ],
+            },
+            Object {
+              "tag": "direction",
+              "value": "ASC",
+            },
+          ],
+        },
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "col2",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql qualified column select (SELECT table.column): qualified column select 1`] = `
 Object {
   "tag": "SELECT",
@@ -2069,6 +2393,93 @@ Object {
               "value": Array [
                 Object {
                   "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql union (SELECT * FROM table1 UNION SELECT * FROM table2): union 1`] = `
+Object {
+  "tag": "SELECT",
+  "values": Array [
+    Object {
+      "tag": "select_list",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "FROM",
+      "values": Array [
+        Object {
+          "tag": "item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "name",
+                  "value": "table1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "UNION",
+      "values": Array [
+        Object {
+          "tag": "select_list",
+          "values": Array [
+            Object {
+              "tag": "item",
+              "values": Array [
+                Object {
+                  "tag": "identifier",
+                  "value": Array [
+                    Object {
+                      "tag": "star",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "tag": "FROM",
+          "values": Array [
+            Object {
+              "tag": "item",
+              "values": Array [
+                Object {
+                  "tag": "identifier",
+                  "value": Array [
+                    Object {
+                      "tag": "name",
+                      "value": "table2",
+                    },
+                  ],
                 },
               ],
             },

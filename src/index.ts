@@ -188,28 +188,43 @@ const Select = Y((SelectExpression) => {
 
   const GroupBy = Node(All(/^GROUP BY/i, List(QualifiedIdentifier)), (values) => ({ tag: 'GROUP BY', values }));
 
+  const Having = Node(All(/^HAVING/i, ConditionOrLogical), (values) => ({ tag: 'WHERE', values }));
+
   const Limit = Node(All(/^LIMIT/i, Any(Count, /^ALL/i)), ([value]) => ({
     tag: 'LIMIT',
     value,
   }));
+
   const Offset = Node(All(/^OFFSET/i, Count), ([value]) => ({
     tag: 'OFFSET',
     value,
   }));
 
+  const SelectParts = All(
+    Optional(Any(/^ALL/i, Distinct)),
+    SelectList,
+    Optional(From),
+    Star(Join),
+    Optional(Where),
+    Optional(GroupBy),
+    Optional(Having),
+  );
+
+  const Union = Node(All(Any(/^(UNION|INTERSECT|EXCEPT)/i), /^SELECT/i, SelectParts), ([tag, ...values]) => ({
+    tag,
+    values,
+  }));
+
+  const OrderDirection = Node(/^(ASC|DESC|USNIG >|USING <)/i, ([value]) => ({ tag: 'direction', value }));
+  const OrderByItem = Node(All(ConditionOrLogical, Optional(OrderDirection)), (values) => ({ tag: 'item', values }));
+  const OrderBy = Node(All(/^ORDER BY/i, List(OrderByItem)), (values) => ({ tag: 'ORDER BY', values }));
+
   return Node(
-    All(
-      /^SELECT/i,
-      Optional(Any(/^ALL/i, Distinct)),
-      SelectList,
-      Optional(From),
-      Star(Join),
-      Optional(Where),
-      Optional(GroupBy),
-      Optional(Limit),
-      Optional(Offset),
-    ),
-    (values) => ({ tag: 'SELECT', values }),
+    All(/^SELECT/i, SelectParts, Star(Union), Optional(OrderBy), Optional(Limit), Optional(Offset)),
+    (values) => ({
+      tag: 'SELECT',
+      values,
+    }),
   );
 });
 

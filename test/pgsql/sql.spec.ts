@@ -59,6 +59,11 @@ describe('Sql', () => {
     ${'where select'}                 | ${'SELECT * WHERE (SELECT id FROM test LIMIT 1) = 5'}
     ${'quoted identifier'}            | ${'SELECT "test"'}
     ${'quoted identifier escaped'}    | ${'SELECT "test me ""o donald"" true"'}
+    ${'union'}                        | ${'SELECT * FROM table1 UNION SELECT * FROM table2'}
+    ${'intersect'}                    | ${'SELECT * FROM table1 INTERSECT SELECT * FROM table2'}
+    ${'except'}                       | ${'SELECT * FROM table1 EXCEPT SELECT * FROM table2'}
+    ${'order by'}                     | ${'SELECT * FROM table1 ORDER BY col ASC'}
+    ${'order by multiple'}            | ${'SELECT * FROM table1 ORDER BY col1 ASC, col2'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) => {
     try {
       expect(pgsqlParser(sql)).toMatchSnapshot(name);
