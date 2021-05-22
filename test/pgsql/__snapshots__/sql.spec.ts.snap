@@ -2,27 +2,27 @@
 
 exports[`Sql Should parse simple sql as select (SELECT column as col1): as select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column",
                 },
               ],
             },
             Object {
-              "tag": "as",
+              "tag": "As",
               "value": Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "col1",
               },
             },
@@ -36,18 +36,17 @@ Object {
 
 exports[`Sql Should parse simple sql cast (SELECT CAST(id AS int4)): cast 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
-              "tag": "cast",
+              "tag": "Cast",
               "type": Object {
-                "param": undefined,
                 "tag": "type",
                 "value": "int4",
               },
@@ -55,7 +54,7 @@ Object {
                 "tag": "identifier",
                 "value": Array [
                   Object {
-                    "tag": "name",
+                    "tag": "Identifier",
                     "value": "id",
                   },
                 ],
@@ -71,23 +70,22 @@ Object {
 
 exports[`Sql Should parse simple sql cast number (SELECT CAST(20 AS int4)): cast number 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
-              "tag": "cast",
+              "tag": "Cast",
               "type": Object {
-                "param": undefined,
                 "tag": "type",
                 "value": "int4",
               },
               "value": Object {
-                "tag": "number",
+                "tag": "Number",
                 "value": "20",
               },
             },
@@ -101,23 +99,23 @@ Object {
 
 exports[`Sql Should parse simple sql cast string (SELECT CAST('test' AS varchar(20))): cast string 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
-              "tag": "cast",
+              "tag": "Cast",
               "type": Object {
                 "param": "20",
                 "tag": "type",
                 "value": "varchar",
               },
               "value": Object {
-                "tag": "string",
+                "tag": "String",
                 "value": "test",
               },
             },
@@ -131,19 +129,19 @@ Object {
 
 exports[`Sql Should parse simple sql column select (SELECT column): column select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column",
                 },
               ],
@@ -156,15 +154,67 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql cross join (SELECT * FROM jobs CROSS JOIN test1): cross join 1`] = `
+exports[`Sql Should parse simple sql comments (-- test
+SELECT "test"
+-- other
+): comments 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "test",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql const select (SELECT '2018-01-01'): const select 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "tag": "Item",
+          "values": Array [
+            Object {
+              "tag": "String",
+              "value": "2018-01-01",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql cross join (SELECT * FROM jobs CROSS JOIN test1): cross join 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -179,16 +229,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
@@ -198,17 +248,17 @@ Object {
       ],
     },
     Object {
-      "tag": "JOIN",
+      "tag": "Join",
       "values": Array [
         Object {
-          "tag": "type",
+          "tag": "JoinType",
           "value": "CROSS",
         },
         Object {
-          "tag": "identifier",
+          "tag": "QualifiedIdentifier",
           "value": Array [
             Object {
-              "tag": "name",
+              "tag": "Identifier",
               "value": "test1",
             },
           ],
@@ -221,19 +271,19 @@ Object {
 
 exports[`Sql Should parse simple sql deep multiple columns select (SELECT column1, table1.column2, table1.column3, schema.table3.colum2): deep multiple columns select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column1",
                 },
               ],
@@ -241,17 +291,17 @@ Object {
           ],
         },
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table1",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column2",
                 },
               ],
@@ -259,17 +309,17 @@ Object {
           ],
         },
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table1",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column3",
                 },
               ],
@@ -277,21 +327,21 @@ Object {
           ],
         },
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "schema",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table3",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "colum2",
                 },
               ],
@@ -306,27 +356,27 @@ Object {
 
 exports[`Sql Should parse simple sql deep qualified column select (SELECT schema.table.column): deep qualified column select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "schema",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column",
                 },
               ],
@@ -341,23 +391,23 @@ Object {
 
 exports[`Sql Should parse simple sql deep qualified star select (SELECT table1.table2.*): deep qualified star select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table1",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table2",
                 },
                 Object {
@@ -375,23 +425,23 @@ Object {
 
 exports[`Sql Should parse simple sql deep quoted star select (SELECT "table 1"."table 2".*): deep quoted star select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table 1",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table 2",
                 },
                 Object {
@@ -409,27 +459,27 @@ Object {
 
 exports[`Sql Should parse simple sql deeper quoted star select (SELECT "table 1".table2."table 3".*): deeper quoted star select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table 1",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table2",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table 3",
                 },
                 Object {
@@ -447,13 +497,13 @@ Object {
 
 exports[`Sql Should parse simple sql except (SELECT * FROM table1 EXCEPT SELECT * FROM table2): except 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -468,16 +518,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table1",
                 },
               ],
@@ -490,10 +540,10 @@ Object {
       "tag": "EXCEPT",
       "values": Array [
         Object {
-          "tag": "select_list",
+          "tag": "SelectList",
           "values": Array [
             Object {
-              "tag": "item",
+              "tag": "Item",
               "values": Array [
                 Object {
                   "tag": "identifier",
@@ -508,16 +558,16 @@ Object {
           ],
         },
         Object {
-          "tag": "FROM",
+          "tag": "From",
           "values": Array [
             Object {
-              "tag": "item",
+              "tag": "FromListItem",
               "values": Array [
                 Object {
-                  "tag": "identifier",
+                  "tag": "QualifiedIdentifier",
                   "value": Array [
                     Object {
-                      "tag": "name",
+                      "tag": "Identifier",
                       "value": "table2",
                     },
                   ],
@@ -534,13 +584,13 @@ Object {
 
 exports[`Sql Should parse simple sql from (SELECT * FROM jobs): from 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -555,16 +605,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
@@ -579,13 +629,13 @@ Object {
 
 exports[`Sql Should parse simple sql from select (SELECT * FROM (SELECT * FROM jobs2) as jobs1): from select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -600,19 +650,19 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "SELECT",
+              "tag": "Select",
               "values": Array [
                 Object {
-                  "tag": "select_list",
+                  "tag": "SelectList",
                   "values": Array [
                     Object {
-                      "tag": "item",
+                      "tag": "Item",
                       "values": Array [
                         Object {
                           "tag": "identifier",
@@ -627,16 +677,16 @@ Object {
                   ],
                 },
                 Object {
-                  "tag": "FROM",
+                  "tag": "From",
                   "values": Array [
                     Object {
-                      "tag": "item",
+                      "tag": "FromListItem",
                       "values": Array [
                         Object {
-                          "tag": "identifier",
+                          "tag": "QualifiedIdentifier",
                           "value": Array [
                             Object {
-                              "tag": "name",
+                              "tag": "Identifier",
                               "value": "jobs2",
                             },
                           ],
@@ -648,9 +698,9 @@ Object {
               ],
             },
             Object {
-              "tag": "as",
+              "tag": "As",
               "value": Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "jobs1",
               },
             },
@@ -664,13 +714,13 @@ Object {
 
 exports[`Sql Should parse simple sql from select as (SELECT * FROM jobs1, (SELECT * FROM jobs2)): from select as 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -685,16 +735,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs1",
                 },
               ],
@@ -702,16 +752,16 @@ Object {
           ],
         },
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "SELECT",
+              "tag": "Select",
               "values": Array [
                 Object {
-                  "tag": "select_list",
+                  "tag": "SelectList",
                   "values": Array [
                     Object {
-                      "tag": "item",
+                      "tag": "Item",
                       "values": Array [
                         Object {
                           "tag": "identifier",
@@ -726,16 +776,16 @@ Object {
                   ],
                 },
                 Object {
-                  "tag": "FROM",
+                  "tag": "From",
                   "values": Array [
                     Object {
-                      "tag": "item",
+                      "tag": "FromListItem",
                       "values": Array [
                         Object {
-                          "tag": "identifier",
+                          "tag": "QualifiedIdentifier",
                           "value": Array [
                             Object {
-                              "tag": "name",
+                              "tag": "Identifier",
                               "value": "jobs2",
                             },
                           ],
@@ -756,13 +806,13 @@ Object {
 
 exports[`Sql Should parse simple sql from with as (SELECT * FROM jobs AS test): from with as 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -777,24 +827,24 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
             },
             Object {
-              "tag": "as",
+              "tag": "As",
               "value": Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "test",
               },
             },
@@ -808,13 +858,13 @@ Object {
 
 exports[`Sql Should parse simple sql from with as quoted (SELECT * FROM jobs AS "test 2"): from with as quoted 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -829,24 +879,24 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
             },
             Object {
-              "tag": "as",
+              "tag": "As",
               "value": Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "test 2",
               },
             },
@@ -860,13 +910,13 @@ Object {
 
 exports[`Sql Should parse simple sql full join (SELECT * FROM jobs FULL JOIN test1): full join 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -881,16 +931,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
@@ -900,17 +950,17 @@ Object {
       ],
     },
     Object {
-      "tag": "JOIN",
+      "tag": "Join",
       "values": Array [
         Object {
-          "tag": "type",
+          "tag": "JoinType",
           "value": "FULL",
         },
         Object {
-          "tag": "identifier",
+          "tag": "QualifiedIdentifier",
           "value": Array [
             Object {
-              "tag": "name",
+              "tag": "Identifier",
               "value": "test1",
             },
           ],
@@ -923,13 +973,13 @@ Object {
 
 exports[`Sql Should parse simple sql full outer join (SELECT * FROM jobs FULL OUTER JOIN test1): full outer join 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -944,16 +994,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
@@ -963,18 +1013,145 @@ Object {
       ],
     },
     Object {
-      "tag": "JOIN",
+      "tag": "Join",
       "values": Array [
         Object {
-          "tag": "type",
+          "tag": "JoinType",
           "value": "FULL",
         },
         Object {
-          "tag": "identifier",
+          "tag": "QualifiedIdentifier",
           "value": Array [
             Object {
-              "tag": "name",
+              "tag": "Identifier",
               "value": "test1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql group by (SELECT * FROM table1 GROUP BY col): group by 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "tag": "Item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "From",
+      "values": Array [
+        Object {
+          "tag": "FromListItem",
+          "values": Array [
+            Object {
+              "tag": "QualifiedIdentifier",
+              "value": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "GroupBy",
+      "values": Array [
+        Object {
+          "tag": "QualifiedIdentifier",
+          "value": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql group by multiple (SELECT * FROM table1 GROUP BY col1, col2): group by multiple 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "tag": "Item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "From",
+      "values": Array [
+        Object {
+          "tag": "FromListItem",
+          "values": Array [
+            Object {
+              "tag": "QualifiedIdentifier",
+              "value": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "GroupBy",
+      "values": Array [
+        Object {
+          "tag": "QualifiedIdentifier",
+          "value": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
+        },
+        Object {
+          "tag": "QualifiedIdentifier",
+          "value": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "col2",
             },
           ],
         },
@@ -986,13 +1163,13 @@ Object {
 
 exports[`Sql Should parse simple sql inner join (SELECT * FROM jobs INNER JOIN test1): inner join 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1007,16 +1184,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
@@ -1026,17 +1203,17 @@ Object {
       ],
     },
     Object {
-      "tag": "JOIN",
+      "tag": "Join",
       "values": Array [
         Object {
-          "tag": "type",
+          "tag": "JoinType",
           "value": undefined,
         },
         Object {
-          "tag": "identifier",
+          "tag": "QualifiedIdentifier",
           "value": Array [
             Object {
-              "tag": "name",
+              "tag": "Identifier",
               "value": "test1",
             },
           ],
@@ -1049,13 +1226,13 @@ Object {
 
 exports[`Sql Should parse simple sql intersect (SELECT * FROM table1 INTERSECT SELECT * FROM table2): intersect 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1070,16 +1247,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table1",
                 },
               ],
@@ -1092,10 +1269,10 @@ Object {
       "tag": "INTERSECT",
       "values": Array [
         Object {
-          "tag": "select_list",
+          "tag": "SelectList",
           "values": Array [
             Object {
-              "tag": "item",
+              "tag": "Item",
               "values": Array [
                 Object {
                   "tag": "identifier",
@@ -1110,16 +1287,16 @@ Object {
           ],
         },
         Object {
-          "tag": "FROM",
+          "tag": "From",
           "values": Array [
             Object {
-              "tag": "item",
+              "tag": "FromListItem",
               "values": Array [
                 Object {
-                  "tag": "identifier",
+                  "tag": "QualifiedIdentifier",
                   "value": Array [
                     Object {
-                      "tag": "name",
+                      "tag": "Identifier",
                       "value": "table2",
                     },
                   ],
@@ -1136,13 +1313,13 @@ Object {
 
 exports[`Sql Should parse simple sql join (SELECT * FROM jobs JOIN test1): join 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1157,16 +1334,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
@@ -1176,17 +1353,17 @@ Object {
       ],
     },
     Object {
-      "tag": "JOIN",
+      "tag": "Join",
       "values": Array [
         Object {
-          "tag": "type",
+          "tag": "JoinType",
           "value": undefined,
         },
         Object {
-          "tag": "identifier",
+          "tag": "QualifiedIdentifier",
           "value": Array [
             Object {
-              "tag": "name",
+              "tag": "Identifier",
               "value": "test1",
             },
           ],
@@ -1199,13 +1376,13 @@ Object {
 
 exports[`Sql Should parse simple sql join on (SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id): join on 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1220,16 +1397,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
@@ -1239,52 +1416,55 @@ Object {
       ],
     },
     Object {
-      "tag": "JOIN",
+      "tag": "Join",
       "values": Array [
         Object {
-          "tag": "type",
+          "tag": "JoinType",
           "value": undefined,
         },
         Object {
-          "tag": "identifier",
+          "tag": "QualifiedIdentifier",
           "value": Array [
             Object {
-              "tag": "name",
+              "tag": "Identifier",
               "value": "test1",
             },
           ],
         },
         Object {
-          "tag": "ON",
+          "tag": "JoinOn",
           "value": Object {
-            "a": Object {
+            "left": Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "id",
                 },
               ],
             },
-            "b": Object {
+            "operator": Object {
+              "type": "Operator",
+              "value": "=",
+            },
+            "right": Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "test1",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "id",
                 },
               ],
             },
-            "operator": "=",
-            "tag": "comparation",
+            "type": "BinaryExpression",
           },
         },
       ],
@@ -1295,13 +1475,13 @@ Object {
 
 exports[`Sql Should parse simple sql left join (SELECT * FROM jobs LEFT JOIN test1): left join 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1316,16 +1496,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
@@ -1335,17 +1515,17 @@ Object {
       ],
     },
     Object {
-      "tag": "JOIN",
+      "tag": "Join",
       "values": Array [
         Object {
-          "tag": "type",
+          "tag": "JoinType",
           "value": "LEFT",
         },
         Object {
-          "tag": "identifier",
+          "tag": "QualifiedIdentifier",
           "value": Array [
             Object {
-              "tag": "name",
+              "tag": "Identifier",
               "value": "test1",
             },
           ],
@@ -1358,13 +1538,13 @@ Object {
 
 exports[`Sql Should parse simple sql left outer join (SELECT * FROM jobs LEFT OUTER JOIN test1): left outer join 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1379,16 +1559,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
@@ -1398,17 +1578,17 @@ Object {
       ],
     },
     Object {
-      "tag": "JOIN",
+      "tag": "Join",
       "values": Array [
         Object {
-          "tag": "type",
+          "tag": "JoinType",
           "value": "LEFT",
         },
         Object {
-          "tag": "identifier",
+          "tag": "QualifiedIdentifier",
           "value": Array [
             Object {
-              "tag": "name",
+              "tag": "Identifier",
               "value": "test1",
             },
           ],
@@ -1421,13 +1601,13 @@ Object {
 
 exports[`Sql Should parse simple sql limit (SELECT * LIMIT 10): limit 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1442,9 +1622,9 @@ Object {
       ],
     },
     Object {
-      "tag": "LIMIT",
+      "tag": "Limit",
       "value": Object {
-        "tag": "count",
+        "tag": "Count",
         "value": "10",
       },
     },
@@ -1454,13 +1634,13 @@ Object {
 
 exports[`Sql Should parse simple sql limit offset (SELECT * LIMIT 10 OFFSET 10): limit offset 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1475,16 +1655,16 @@ Object {
       ],
     },
     Object {
-      "tag": "LIMIT",
+      "tag": "Limit",
       "value": Object {
-        "tag": "count",
+        "tag": "Count",
         "value": "10",
       },
     },
     Object {
-      "tag": "OFFSET",
+      "tag": "Offset",
       "value": Object {
-        "tag": "count",
+        "tag": "Count",
         "value": "10",
       },
     },
@@ -1494,44 +1674,44 @@ Object {
 
 exports[`Sql Should parse simple sql multiple as columns select (SELECT column1 as "test", table1.column2, "test".column2 as col1): multiple as columns select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column1",
                 },
               ],
             },
             Object {
-              "tag": "as",
+              "tag": "As",
               "value": Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "test",
               },
             },
           ],
         },
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table1",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column2",
                 },
               ],
@@ -1539,25 +1719,25 @@ Object {
           ],
         },
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "test",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column2",
                 },
               ],
             },
             Object {
-              "tag": "as",
+              "tag": "As",
               "value": Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "col1",
               },
             },
@@ -1571,19 +1751,19 @@ Object {
 
 exports[`Sql Should parse simple sql multiple columns select (SELECT column1, column2): multiple columns select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column1",
                 },
               ],
@@ -1591,13 +1771,13 @@ Object {
           ],
         },
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column2",
                 },
               ],
@@ -1612,13 +1792,13 @@ Object {
 
 exports[`Sql Should parse simple sql multiple from (SELECT * FROM jobs1, jobs AS "test 2"): multiple from 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1633,16 +1813,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs1",
                 },
               ],
@@ -1650,21 +1830,21 @@ Object {
           ],
         },
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
             },
             Object {
-              "tag": "as",
+              "tag": "As",
               "value": Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "test 2",
               },
             },
@@ -1678,13 +1858,13 @@ Object {
 
 exports[`Sql Should parse simple sql multiple from as (SELECT * FROM jobs1 AS j1, jobs2, jobs3 as j3): multiple from as 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1699,37 +1879,37 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs1",
                 },
               ],
             },
             Object {
-              "tag": "as",
+              "tag": "As",
               "value": Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "j1",
               },
             },
           ],
         },
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs2",
                 },
               ],
@@ -1737,21 +1917,21 @@ Object {
           ],
         },
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs3",
                 },
               ],
             },
             Object {
-              "tag": "as",
+              "tag": "As",
               "value": Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "j3",
               },
             },
@@ -1765,13 +1945,13 @@ Object {
 
 exports[`Sql Should parse simple sql multiple joins (SELECT * FROM jobs JOIN test1 JOIN test2): multiple joins 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1786,16 +1966,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
@@ -1805,17 +1985,17 @@ Object {
       ],
     },
     Object {
-      "tag": "JOIN",
+      "tag": "Join",
       "values": Array [
         Object {
-          "tag": "type",
+          "tag": "JoinType",
           "value": undefined,
         },
         Object {
-          "tag": "identifier",
+          "tag": "QualifiedIdentifier",
           "value": Array [
             Object {
-              "tag": "name",
+              "tag": "Identifier",
               "value": "test1",
             },
           ],
@@ -1823,18 +2003,119 @@ Object {
       ],
     },
     Object {
-      "tag": "JOIN",
+      "tag": "Join",
       "values": Array [
         Object {
-          "tag": "type",
+          "tag": "JoinType",
           "value": undefined,
         },
         Object {
-          "tag": "identifier",
+          "tag": "QualifiedIdentifier",
           "value": Array [
             Object {
-              "tag": "name",
+              "tag": "Identifier",
               "value": "test2",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql nested select (SELECT test, (SELECT id FROM table2 LIMIT 1) FROM table1): nested select 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "tag": "Item",
+          "values": Array [
+            Object {
+              "tag": "identifier",
+              "value": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "test",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "tag": "Item",
+          "values": Array [
+            Object {
+              "tag": "Select",
+              "values": Array [
+                Object {
+                  "tag": "SelectList",
+                  "values": Array [
+                    Object {
+                      "tag": "Item",
+                      "values": Array [
+                        Object {
+                          "tag": "identifier",
+                          "value": Array [
+                            Object {
+                              "tag": "Identifier",
+                              "value": "id",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "tag": "From",
+                  "values": Array [
+                    Object {
+                      "tag": "FromListItem",
+                      "values": Array [
+                        Object {
+                          "tag": "QualifiedIdentifier",
+                          "value": Array [
+                            Object {
+                              "tag": "Identifier",
+                              "value": "table2",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "tag": "Limit",
+                  "value": Object {
+                    "tag": "Count",
+                    "value": "1",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "From",
+      "values": Array [
+        Object {
+          "tag": "FromListItem",
+          "values": Array [
+            Object {
+              "tag": "QualifiedIdentifier",
+              "value": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
             },
           ],
         },
@@ -1846,13 +2127,13 @@ Object {
 
 exports[`Sql Should parse simple sql offset (SELECT * OFFSET 10): offset 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1867,9 +2148,9 @@ Object {
       ],
     },
     Object {
-      "tag": "OFFSET",
+      "tag": "Offset",
       "value": Object {
-        "tag": "count",
+        "tag": "Count",
         "value": "10",
       },
     },
@@ -1879,13 +2160,13 @@ Object {
 
 exports[`Sql Should parse simple sql order by (SELECT * FROM table1 ORDER BY col ASC): order by 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1900,16 +2181,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table1",
                 },
               ],
@@ -1919,22 +2200,22 @@ Object {
       ],
     },
     Object {
-      "tag": "ORDER BY",
+      "tag": "OrderBy",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "OrderByItem",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "col",
                 },
               ],
             },
             Object {
-              "tag": "direction",
+              "tag": "OrderDirection",
               "value": "ASC",
             },
           ],
@@ -1947,13 +2228,13 @@ Object {
 
 exports[`Sql Should parse simple sql order by multiple (SELECT * FROM table1 ORDER BY col1 ASC, col2): order by multiple 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -1968,16 +2249,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table1",
                 },
               ],
@@ -1987,35 +2268,251 @@ Object {
       ],
     },
     Object {
-      "tag": "ORDER BY",
+      "tag": "OrderBy",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "OrderByItem",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "col1",
                 },
               ],
             },
             Object {
-              "tag": "direction",
+              "tag": "OrderDirection",
               "value": "ASC",
             },
           ],
         },
         Object {
-          "tag": "item",
+          "tag": "OrderByItem",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "col2",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql pg cast column to int (SELECT test::int FROM table1): pg cast column to int 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "tag": "Item",
+          "values": Array [
+            Object {
+              "tag": "pg_cast",
+              "type": Object {
+                "tag": "type",
+                "value": "int",
+              },
+              "value": Object {
+                "tag": "identifier",
+                "value": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "test",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "From",
+      "values": Array [
+        Object {
+          "tag": "FromListItem",
+          "values": Array [
+            Object {
+              "tag": "QualifiedIdentifier",
+              "value": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql pg cast nested select (SELECT test::date, (SELECT id FROM table2 LIMIT 1)::int FROM table1): pg cast nested select 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "tag": "Item",
+          "values": Array [
+            Object {
+              "tag": "pg_cast",
+              "type": Object {
+                "tag": "type",
+                "value": "date",
+              },
+              "value": Object {
+                "tag": "identifier",
+                "value": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "test",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        Object {
+          "tag": "Item",
+          "values": Array [
+            Object {
+              "tag": "pg_cast",
+              "type": Object {
+                "tag": "type",
+                "value": "int",
+              },
+              "value": Object {
+                "tag": "Select",
+                "values": Array [
+                  Object {
+                    "tag": "SelectList",
+                    "values": Array [
+                      Object {
+                        "tag": "Item",
+                        "values": Array [
+                          Object {
+                            "tag": "identifier",
+                            "value": Array [
+                              Object {
+                                "tag": "Identifier",
+                                "value": "id",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "tag": "From",
+                    "values": Array [
+                      Object {
+                        "tag": "FromListItem",
+                        "values": Array [
+                          Object {
+                            "tag": "QualifiedIdentifier",
+                            "value": Array [
+                              Object {
+                                "tag": "Identifier",
+                                "value": "table2",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "tag": "Limit",
+                    "value": Object {
+                      "tag": "Count",
+                      "value": "1",
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "From",
+      "values": Array [
+        Object {
+          "tag": "FromListItem",
+          "values": Array [
+            Object {
+              "tag": "QualifiedIdentifier",
+              "value": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql pg cast string to date (SELECT '2016-01-01'::date FROM table1): pg cast string to date 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "tag": "Item",
+          "values": Array [
+            Object {
+              "tag": "pg_cast",
+              "type": Object {
+                "tag": "type",
+                "value": "date",
+              },
+              "value": Object {
+                "tag": "String",
+                "value": "2016-01-01",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "From",
+      "values": Array [
+        Object {
+          "tag": "FromListItem",
+          "values": Array [
+            Object {
+              "tag": "QualifiedIdentifier",
+              "value": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
                 },
               ],
             },
@@ -2029,23 +2526,23 @@ Object {
 
 exports[`Sql Should parse simple sql qualified column select (SELECT table.column): qualified column select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column",
                 },
               ],
@@ -2060,19 +2557,19 @@ Object {
 
 exports[`Sql Should parse simple sql qualified star select (SELECT table.*): qualified star select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table",
                 },
                 Object {
@@ -2090,31 +2587,31 @@ Object {
 
 exports[`Sql Should parse simple sql quoted as select (SELECT table.column as "col 1"): quoted as select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column",
                 },
               ],
             },
             Object {
-              "tag": "as",
+              "tag": "As",
               "value": Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "col 1",
               },
             },
@@ -2128,35 +2625,35 @@ Object {
 
 exports[`Sql Should parse simple sql quoted escaped as select (SELECT schema.table.column as "col ""2"""): quoted escaped as select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "schema",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table",
                 },
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "column",
                 },
               ],
             },
             Object {
-              "tag": "as",
+              "tag": "As",
               "value": Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "col \\"\\"2\\"\\"",
               },
             },
@@ -2170,19 +2667,19 @@ Object {
 
 exports[`Sql Should parse simple sql quoted identifier (SELECT "test"): quoted identifier 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "test",
                 },
               ],
@@ -2197,19 +2694,19 @@ Object {
 
 exports[`Sql Should parse simple sql quoted identifier escaped (SELECT "test me ""o donald"" true"): quoted identifier escaped 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "test me \\"\\"o donald\\"\\" true",
                 },
               ],
@@ -2224,19 +2721,19 @@ Object {
 
 exports[`Sql Should parse simple sql quoted star select (SELECT "table 2".*): quoted star select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table 2",
                 },
                 Object {
@@ -2254,13 +2751,13 @@ Object {
 
 exports[`Sql Should parse simple sql right join (SELECT * FROM jobs RIGHT JOIN test1): right join 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2275,16 +2772,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
@@ -2294,17 +2791,17 @@ Object {
       ],
     },
     Object {
-      "tag": "JOIN",
+      "tag": "Join",
       "values": Array [
         Object {
-          "tag": "type",
+          "tag": "JoinType",
           "value": "RIGHT",
         },
         Object {
-          "tag": "identifier",
+          "tag": "QualifiedIdentifier",
           "value": Array [
             Object {
-              "tag": "name",
+              "tag": "Identifier",
               "value": "test1",
             },
           ],
@@ -2317,13 +2814,13 @@ Object {
 
 exports[`Sql Should parse simple sql right outer join (SELECT * FROM jobs RIGHT OUTER JOIN test1): right outer join 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2338,16 +2835,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "jobs",
                 },
               ],
@@ -2357,17 +2854,17 @@ Object {
       ],
     },
     Object {
-      "tag": "JOIN",
+      "tag": "Join",
       "values": Array [
         Object {
-          "tag": "type",
+          "tag": "JoinType",
           "value": "RIGHT",
         },
         Object {
-          "tag": "identifier",
+          "tag": "QualifiedIdentifier",
           "value": Array [
             Object {
-              "tag": "name",
+              "tag": "Identifier",
               "value": "test1",
             },
           ],
@@ -2380,13 +2877,13 @@ Object {
 
 exports[`Sql Should parse simple sql star select (SELECT *): star select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2406,13 +2903,13 @@ Object {
 
 exports[`Sql Should parse simple sql union (SELECT * FROM table1 UNION SELECT * FROM table2): union 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2427,16 +2924,16 @@ Object {
       ],
     },
     Object {
-      "tag": "FROM",
+      "tag": "From",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "FromListItem",
           "values": Array [
             Object {
-              "tag": "identifier",
+              "tag": "QualifiedIdentifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "table1",
                 },
               ],
@@ -2449,10 +2946,10 @@ Object {
       "tag": "UNION",
       "values": Array [
         Object {
-          "tag": "select_list",
+          "tag": "SelectList",
           "values": Array [
             Object {
-              "tag": "item",
+              "tag": "Item",
               "values": Array [
                 Object {
                   "tag": "identifier",
@@ -2467,16 +2964,16 @@ Object {
           ],
         },
         Object {
-          "tag": "FROM",
+          "tag": "From",
           "values": Array [
             Object {
-              "tag": "item",
+              "tag": "FromListItem",
               "values": Array [
                 Object {
-                  "tag": "identifier",
+                  "tag": "QualifiedIdentifier",
                   "value": Array [
                     Object {
-                      "tag": "name",
+                      "tag": "Identifier",
                       "value": "table2",
                     },
                   ],
@@ -2493,13 +2990,13 @@ Object {
 
 exports[`Sql Should parse simple sql where (SELECT * WHERE id = 5): where 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2514,24 +3011,27 @@ Object {
       ],
     },
     Object {
-      "tag": "WHERE",
+      "tag": "Where",
       "values": Array [
         Object {
-          "a": Object {
+          "left": Object {
             "tag": "identifier",
             "value": Array [
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "id",
               },
             ],
           },
-          "b": Object {
-            "tag": "number",
+          "operator": Object {
+            "type": "Operator",
+            "value": "=",
+          },
+          "right": Object {
+            "tag": "Number",
             "value": "5",
           },
-          "operator": "=",
-          "tag": "comparation",
+          "type": "BinaryExpression",
         },
       ],
     },
@@ -2541,13 +3041,13 @@ Object {
 
 exports[`Sql Should parse simple sql where and (SELECT * WHERE id = 5 AND name = 'test'): where and 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2562,45 +3062,54 @@ Object {
       ],
     },
     Object {
-      "tag": "WHERE",
+      "tag": "Where",
       "values": Array [
         Object {
-          "a": Object {
-            "a": Object {
+          "left": Object {
+            "left": Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "id",
                 },
               ],
             },
-            "b": Object {
-              "tag": "number",
+            "operator": Object {
+              "type": "Operator",
+              "value": "=",
+            },
+            "right": Object {
+              "tag": "Number",
               "value": "5",
             },
-            "operator": "=",
-            "tag": "comparation",
+            "type": "BinaryExpression",
           },
-          "b": Object {
-            "a": Object {
+          "operator": Object {
+            "type": "Operator",
+            "value": "AND",
+          },
+          "right": Object {
+            "left": Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "name",
                 },
               ],
             },
-            "b": Object {
-              "tag": "string",
+            "operator": Object {
+              "type": "Operator",
+              "value": "=",
+            },
+            "right": Object {
+              "tag": "String",
               "value": "test",
             },
-            "operator": "=",
-            "tag": "comparation",
+            "type": "BinaryExpression",
           },
-          "operator": "AND",
-          "tag": "logical",
+          "type": "BinaryExpression",
         },
       ],
     },
@@ -2610,13 +3119,13 @@ Object {
 
 exports[`Sql Should parse simple sql where boolean (SELECT * WHERE id = 5 AND TRUE): where boolean 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2631,32 +3140,38 @@ Object {
       ],
     },
     Object {
-      "tag": "WHERE",
+      "tag": "Where",
       "values": Array [
         Object {
-          "a": Object {
-            "a": Object {
+          "left": Object {
+            "left": Object {
               "tag": "identifier",
               "value": Array [
                 Object {
-                  "tag": "name",
+                  "tag": "Identifier",
                   "value": "id",
                 },
               ],
             },
-            "b": Object {
-              "tag": "number",
+            "operator": Object {
+              "type": "Operator",
+              "value": "=",
+            },
+            "right": Object {
+              "tag": "Number",
               "value": "5",
             },
-            "operator": "=",
-            "tag": "comparation",
+            "type": "BinaryExpression",
           },
-          "b": Object {
-            "tag": "boolean",
+          "operator": Object {
+            "type": "Operator",
+            "value": "AND",
+          },
+          "right": Object {
+            "tag": "Boolean",
             "value": "TRUE",
           },
-          "operator": "AND",
-          "tag": "logical",
+          "type": "BinaryExpression",
         },
       ],
     },
@@ -2666,13 +3181,13 @@ Object {
 
 exports[`Sql Should parse simple sql where different from (SELECT * WHERE table.col <> '23'): where different from 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2687,28 +3202,31 @@ Object {
       ],
     },
     Object {
-      "tag": "WHERE",
+      "tag": "Where",
       "values": Array [
         Object {
-          "a": Object {
+          "left": Object {
             "tag": "identifier",
             "value": Array [
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "table",
               },
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "col",
               },
             ],
           },
-          "b": Object {
-            "tag": "string",
+          "operator": Object {
+            "type": "Operator",
+            "value": "<>",
+          },
+          "right": Object {
+            "tag": "String",
             "value": "23",
           },
-          "operator": "<>",
-          "tag": "comparation",
+          "type": "BinaryExpression",
         },
       ],
     },
@@ -2718,13 +3236,13 @@ Object {
 
 exports[`Sql Should parse simple sql where greater than (SELECT * WHERE table.col > 2): where greater than 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2739,28 +3257,31 @@ Object {
       ],
     },
     Object {
-      "tag": "WHERE",
+      "tag": "Where",
       "values": Array [
         Object {
-          "a": Object {
+          "left": Object {
             "tag": "identifier",
             "value": Array [
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "table",
               },
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "col",
               },
             ],
           },
-          "b": Object {
-            "tag": "number",
+          "operator": Object {
+            "type": "Operator",
+            "value": ">",
+          },
+          "right": Object {
+            "tag": "Number",
             "value": "2",
           },
-          "operator": ">",
-          "tag": "comparation",
+          "type": "BinaryExpression",
         },
       ],
     },
@@ -2770,13 +3291,13 @@ Object {
 
 exports[`Sql Should parse simple sql where greater than or equal (SELECT * WHERE table.col >= 23): where greater than or equal 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2791,28 +3312,31 @@ Object {
       ],
     },
     Object {
-      "tag": "WHERE",
+      "tag": "Where",
       "values": Array [
         Object {
-          "a": Object {
+          "left": Object {
             "tag": "identifier",
             "value": Array [
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "table",
               },
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "col",
               },
             ],
           },
-          "b": Object {
-            "tag": "number",
+          "operator": Object {
+            "type": "Operator",
+            "value": ">=",
+          },
+          "right": Object {
+            "tag": "Number",
             "value": "23",
           },
-          "operator": ">=",
-          "tag": "comparation",
+          "type": "BinaryExpression",
         },
       ],
     },
@@ -2822,13 +3346,13 @@ Object {
 
 exports[`Sql Should parse simple sql where less than (SELECT * WHERE table.col < 2): where less than 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2843,28 +3367,31 @@ Object {
       ],
     },
     Object {
-      "tag": "WHERE",
+      "tag": "Where",
       "values": Array [
         Object {
-          "a": Object {
+          "left": Object {
             "tag": "identifier",
             "value": Array [
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "table",
               },
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "col",
               },
             ],
           },
-          "b": Object {
-            "tag": "number",
+          "operator": Object {
+            "type": "Operator",
+            "value": "<",
+          },
+          "right": Object {
+            "tag": "Number",
             "value": "2",
           },
-          "operator": "<",
-          "tag": "comparation",
+          "type": "BinaryExpression",
         },
       ],
     },
@@ -2874,13 +3401,13 @@ Object {
 
 exports[`Sql Should parse simple sql where less than or equal (SELECT * WHERE table.col <= '23'): where less than or equal 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2895,28 +3422,31 @@ Object {
       ],
     },
     Object {
-      "tag": "WHERE",
+      "tag": "Where",
       "values": Array [
         Object {
-          "a": Object {
+          "left": Object {
             "tag": "identifier",
             "value": Array [
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "table",
               },
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "col",
               },
             ],
           },
-          "b": Object {
-            "tag": "string",
+          "operator": Object {
+            "type": "Operator",
+            "value": "<=",
+          },
+          "right": Object {
+            "tag": "String",
             "value": "23",
           },
-          "operator": "<=",
-          "tag": "comparation",
+          "type": "BinaryExpression",
         },
       ],
     },
@@ -2926,13 +3456,13 @@ Object {
 
 exports[`Sql Should parse simple sql where like string (SELECT * WHERE table.col LIKE '%23%'): where like string 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2947,28 +3477,31 @@ Object {
       ],
     },
     Object {
-      "tag": "WHERE",
+      "tag": "Where",
       "values": Array [
         Object {
-          "a": Object {
+          "left": Object {
             "tag": "identifier",
             "value": Array [
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "table",
               },
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "col",
               },
             ],
           },
-          "b": Object {
-            "tag": "string",
+          "operator": Object {
+            "type": "Operator",
+            "value": "LIKE",
+          },
+          "right": Object {
+            "tag": "String",
             "value": "%23%",
           },
-          "operator": "LIKE",
-          "tag": "comparation",
+          "type": "BinaryExpression",
         },
       ],
     },
@@ -2978,13 +3511,13 @@ Object {
 
 exports[`Sql Should parse simple sql where not equal to (SELECT * WHERE table.col != '23'): where not equal to 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -2999,28 +3532,31 @@ Object {
       ],
     },
     Object {
-      "tag": "WHERE",
+      "tag": "Where",
       "values": Array [
         Object {
-          "a": Object {
+          "left": Object {
             "tag": "identifier",
             "value": Array [
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "table",
               },
               Object {
-                "tag": "name",
+                "tag": "Identifier",
                 "value": "col",
               },
             ],
           },
-          "b": Object {
-            "tag": "string",
+          "operator": Object {
+            "type": "Operator",
+            "value": "!=",
+          },
+          "right": Object {
+            "tag": "String",
             "value": "23",
           },
-          "operator": "!=",
-          "tag": "comparation",
+          "type": "BinaryExpression",
         },
       ],
     },
@@ -3030,13 +3566,13 @@ Object {
 
 exports[`Sql Should parse simple sql where select (SELECT * WHERE (SELECT id FROM test LIMIT 1) = 5): where select 1`] = `
 Object {
-  "tag": "SELECT",
+  "tag": "Select",
   "values": Array [
     Object {
-      "tag": "select_list",
+      "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "item",
+          "tag": "Item",
           "values": Array [
             Object {
               "tag": "identifier",
@@ -3051,23 +3587,23 @@ Object {
       ],
     },
     Object {
-      "tag": "WHERE",
+      "tag": "Where",
       "values": Array [
         Object {
-          "a": Object {
-            "tag": "SELECT",
+          "left": Object {
+            "tag": "Select",
             "values": Array [
               Object {
-                "tag": "select_list",
+                "tag": "SelectList",
                 "values": Array [
                   Object {
-                    "tag": "item",
+                    "tag": "Item",
                     "values": Array [
                       Object {
                         "tag": "identifier",
                         "value": Array [
                           Object {
-                            "tag": "name",
+                            "tag": "Identifier",
                             "value": "id",
                           },
                         ],
@@ -3077,16 +3613,16 @@ Object {
                 ],
               },
               Object {
-                "tag": "FROM",
+                "tag": "From",
                 "values": Array [
                   Object {
-                    "tag": "item",
+                    "tag": "FromListItem",
                     "values": Array [
                       Object {
-                        "tag": "identifier",
+                        "tag": "QualifiedIdentifier",
                         "value": Array [
                           Object {
-                            "tag": "name",
+                            "tag": "Identifier",
                             "value": "test",
                           },
                         ],
@@ -3096,20 +3632,23 @@ Object {
                 ],
               },
               Object {
-                "tag": "LIMIT",
+                "tag": "Limit",
                 "value": Object {
-                  "tag": "count",
+                  "tag": "Count",
                   "value": "1",
                 },
               },
             ],
           },
-          "b": Object {
-            "tag": "number",
+          "operator": Object {
+            "type": "Operator",
+            "value": "=",
+          },
+          "right": Object {
+            "tag": "Number",
             "value": "5",
           },
-          "operator": "=",
-          "tag": "comparation",
+          "type": "BinaryExpression",
         },
       ],
     },

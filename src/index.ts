@@ -1,4 +1,4 @@
-import { Ignore, All, Any, Optional, Node, Y, Star, Rule } from '@ikerin/rd-parse';
+import { Ignore, All, Any, Optional, Node, Y, Star, Rule, LeftBinaryOperator } from '@ikerin/rd-parse';
 
 /**
  * Comma separated list
@@ -7,30 +7,30 @@ const List = (item: Rule, { last, separator = ',' }: { last?: Rule; separator?: 
   All(Star(All(item, separator)), last ?? item);
 
 const Brackets = (rule: Rule) => All('(', rule, ')');
-const OrBrackets = (rule: Rule) => Any(All('(', rule, ')'), rule);
+// const OrBrackets = (rule: Rule) => Any(All('(', rule, ')'), rule);
 
 /**
  * Identifier
  */
 const NameRule = /^([A-Z_][A-Z0-9_]*)/i;
 const QuotedNameRule = /^"((?:""|[^"])*)"/;
-const Identifier = Node(Any(NameRule, QuotedNameRule), ([value]) => ({ tag: 'name', value }));
+const Identifier = Node(Any(NameRule, QuotedNameRule), ([value]) => ({ tag: 'Identifier', value }));
 const QualifiedIdentifier = Node(List(Identifier, { separator: '.' }), (value) => ({
-  tag: 'identifier',
+  tag: 'QualifiedIdentifier',
   value,
 }));
 
 /**
  * AS Clause
  */
-const As = Node(All(/^AS/i, Identifier), ([value]) => ({ tag: 'as', value }));
+const As = Node(All(/^AS/i, Identifier), ([value]) => ({ tag: 'As', value }));
 
 /**
  * Constant
  */
 
 const StringRule = /^'((?:''|[^'])*)'/;
-const String = Node(StringRule, ([value]) => ({ tag: 'string', value }));
+const String = Node(StringRule, ([value]) => ({ tag: 'String', value }));
 
 const NumberRule = Any(
   /^([0-9]+)'/,
@@ -38,14 +38,14 @@ const NumberRule = Any(
   /^(([0-9]+)?\.[0-9]+(e([+-]?[0-9]+)?))/,
   /^([0-9]+e([+-]?[0-9]+))'/,
 );
-const Number = Node(NumberRule, ([value]) => ({ tag: 'number', value }));
+const Number = Node(NumberRule, ([value]) => ({ tag: 'Number', value }));
 
 const BooleanRule = /^(TRUE|FLASE)/i;
-const Boolean = Node(BooleanRule, ([value]) => ({ tag: 'boolean', value }));
+const Boolean = Node(BooleanRule, ([value]) => ({ tag: 'Boolean', value }));
 
 const Constant = Any(String, Number, Boolean);
 
-const Count = Node(/^([0-9]+)/, ([value]) => ({ tag: 'count', value }));
+const Count = Node(/^([0-9]+)/, ([value]) => ({ tag: 'Count', value }));
 
 const Type = Node(
   Any(
@@ -86,8 +86,11 @@ const Type = Node(
     /^(uuid)/i,
     /^(xml)/i,
   ),
-  ([value, param]) => ({ tag: 'type', value, param }),
+  ([value, param]) => (param ? { tag: 'type', value, param } : { tag: 'type', value }),
 );
+
+const Castable = (rule: Rule) =>
+  Node(All(rule, Optional(All('::', Type))), ([value, type]) => (type ? { tag: 'pg_cast', type, value } : value));
 
 /**
  * SELECT
@@ -105,50 +108,37 @@ const SelectIdentifier = Node(List(Identifier, { last: Any(Identifier, StarIdent
   value,
 }));
 
-const ComparationOperator = /^(<=|>=|<>|!=|=|<|>|LIKE)/i;
-const LogicalOperator = /^(AND|OR)/i;
+const BinaryOperatorPrecedence = [/^(<=|>=|<>|!=|=|<|>|LIKE)/i, /^(AND|OR)/i];
 
 const Select = Y((SelectExpression) => {
   /**
    * Select List
+   * SELECT * WHERE id = 5 AND name = 'test'
    */
 
-  const DataType = Any(Constant, SelectIdentifier, Brackets(SelectExpression));
+  const DataType = Castable(Any(Constant, SelectIdentifier, Brackets(SelectExpression)));
 
-  const Comparation = Node(
-    All(OrBrackets(DataType), ComparationOperator, OrBrackets(DataType)),
-    ([a, operator, b]) => ({
-      tag: 'comparation',
-      a,
-      b,
-      operator,
-    }),
-  );
-  const Condition = Any(Comparation, DataType);
-  const Logical = Node(All(OrBrackets(Condition), LogicalOperator, OrBrackets(Condition)), ([a, operator, b]) => ({
-    tag: 'logical',
-    operator,
-    a,
-    b,
-  }));
-  const ConditionOrLogical = Any(Logical, Condition);
+  const Expression = BinaryOperatorPrecedence.reduce((Current, Operator) => {
+    const OperatorNode = Node(Operator, ([value]) => ({ type: 'Operator', value }));
+    return Node(
+      All(Current, Star(All(OperatorNode, Current))),
+      LeftBinaryOperator(([left, operator, right]) => ({ type: 'BinaryExpression', left, operator, right })),
+    );
+  }, DataType);
 
   const Cast = Node(Any(All(/^CAST/i, '(', DataType, /^AS/i, Type, ')')), ([value, type]) => ({
-    tag: 'cast',
+    tag: 'Cast',
     value,
     type,
   }));
 
-  const SelectListItem = Node(
-    All(Any(Cast, Brackets(SelectExpression), SelectIdentifier, ConditionOrLogical), Optional(As)),
-    (values) => ({
-      tag: 'item',
-      values,
-    }),
-  );
+  const SelectListItem = Node(All(Any(Cast, Expression), Optional(As)), (values) => ({
+    tag: 'Item',
+    values,
+  }));
 
   const SelectList = Node(List(SelectListItem), (values) => ({
-    tag: 'select_list',
+    tag: 'SelectList',
     values,
   }));
 
@@ -157,9 +147,9 @@ const Select = Y((SelectExpression) => {
    */
 
   const FromListItemContent = Any(QualifiedIdentifier, Brackets(SelectExpression));
-  const FromListItem = Node(All(FromListItemContent, Optional(As)), (values) => ({ tag: 'item', values }));
+  const FromListItem = Node(All(FromListItemContent, Optional(As)), (values) => ({ tag: 'FromListItem', values }));
 
-  const From = Node(All(/^FROM/i, List(FromListItem)), (values) => ({ tag: 'FROM', values }));
+  const From = Node(All(/^FROM/i, List(FromListItem)), (values) => ({ tag: 'From', values }));
 
   const JoinType = Node(
     Any(
@@ -169,14 +159,14 @@ const Select = Y((SelectExpression) => {
       All(/^(FULL)/i, Optional(/^OUTER/i), /^JOIN/i),
       /^(CROSS) JOIN/i,
     ),
-    ([value]) => ({ tag: 'type', value }),
+    ([value]) => ({ tag: 'JoinType', value }),
   );
 
-  const JoinOn = Node(All(/^ON/i, Comparation), ([value]) => ({ tag: 'ON', value }));
-  const JoinUsing = Node(All(/^USING/i, List(QualifiedIdentifier)), (values) => ({ tag: 'USING', values }));
+  const JoinOn = Node(All(/^ON/i, Expression), ([value]) => ({ tag: 'JoinOn', value }));
+  const JoinUsing = Node(All(/^USING/i, List(QualifiedIdentifier)), (values) => ({ tag: 'JoinUsing', values }));
 
   const Join = Node(All(JoinType, QualifiedIdentifier, Optional(As), Optional(Any(JoinOn, JoinUsing))), (values) => ({
-    tag: 'JOIN',
+    tag: 'Join',
     values,
   }));
 
@@ -184,19 +174,19 @@ const Select = Y((SelectExpression) => {
    * Where
    */
 
-  const Where = Node(All(/^WHERE/i, ConditionOrLogical), (values) => ({ tag: 'WHERE', values }));
+  const Where = Node(All(/^WHERE/i, Expression), (values) => ({ tag: 'Where', values }));
 
-  const GroupBy = Node(All(/^GROUP BY/i, List(QualifiedIdentifier)), (values) => ({ tag: 'GROUP BY', values }));
+  const GroupBy = Node(All(/^GROUP BY/i, List(QualifiedIdentifier)), (values) => ({ tag: 'GroupBy', values }));
 
-  const Having = Node(All(/^HAVING/i, ConditionOrLogical), (values) => ({ tag: 'WHERE', values }));
+  const Having = Node(All(/^HAVING/i, Expression), (values) => ({ tag: 'Having', values }));
 
   const Limit = Node(All(/^LIMIT/i, Any(Count, /^ALL/i)), ([value]) => ({
-    tag: 'LIMIT',
+    tag: 'Limit',
     value,
   }));
 
   const Offset = Node(All(/^OFFSET/i, Count), ([value]) => ({
-    tag: 'OFFSET',
+    tag: 'Offset',
     value,
   }));
 
@@ -215,14 +205,14 @@ const Select = Y((SelectExpression) => {
     values,
   }));
 
-  const OrderDirection = Node(/^(ASC|DESC|USNIG >|USING <)/i, ([value]) => ({ tag: 'direction', value }));
-  const OrderByItem = Node(All(ConditionOrLogical, Optional(OrderDirection)), (values) => ({ tag: 'item', values }));
-  const OrderBy = Node(All(/^ORDER BY/i, List(OrderByItem)), (values) => ({ tag: 'ORDER BY', values }));
+  const OrderDirection = Node(/^(ASC|DESC|USNIG >|USING <)/i, ([value]) => ({ tag: 'OrderDirection', value }));
+  const OrderByItem = Node(All(Expression, Optional(OrderDirection)), (values) => ({ tag: 'OrderByItem', values }));
+  const OrderBy = Node(All(/^ORDER BY/i, List(OrderByItem)), (values) => ({ tag: 'OrderBy', values }));
 
   return Node(
     All(/^SELECT/i, SelectParts, Star(Union), Optional(OrderBy), Optional(Limit), Optional(Offset)),
     (values) => ({
-      tag: 'SELECT',
+      tag: 'Select',
       values,
     }),
   );

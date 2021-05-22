@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { Parser } from '@ikerin/rd-parse';
-import { Keppel } from '../../src/keppel';
+import { Keppel } from './keppel';
 
 const keppelParser = Parser(Keppel);
 

@@ -9,6 +9,7 @@ describe('Sql', () => {
     name                              | sql
     ${'star select'}                  | ${'SELECT *'}
     ${'qualified star select'}        | ${'SELECT table.*'}
+    ${'const select'}                 | ${"SELECT '2018-01-01'"}
     ${'deep qualified star select'}   | ${'SELECT table1.table2.*'}
     ${'quoted star select'}           | ${'SELECT "table 2".*'}
     ${'deep quoted star select'}      | ${'SELECT "table 1"."table 2".*'}
@@ -64,6 +65,13 @@ describe('Sql', () => {
     ${'except'}                       | ${'SELECT * FROM table1 EXCEPT SELECT * FROM table2'}
     ${'order by'}                     | ${'SELECT * FROM table1 ORDER BY col ASC'}
     ${'order by multiple'}            | ${'SELECT * FROM table1 ORDER BY col1 ASC, col2'}
+    ${'group by'}                     | ${'SELECT * FROM table1 GROUP BY col'}
+    ${'group by multiple'}            | ${'SELECT * FROM table1 GROUP BY col1, col2'}
+    ${'pg cast column to int'}        | ${'SELECT test::int FROM table1'}
+    ${'pg cast string to date'}       | ${"SELECT '2016-01-01'::date FROM table1"}
+    ${'nested select'}                | ${'SELECT test, (SELECT id FROM table2 LIMIT 1) FROM table1'}
+    ${'pg cast nested select'}        | ${'SELECT test::date, (SELECT id FROM table2 LIMIT 1)::int FROM table1'}
+    ${'comments'}                     | ${'-- test\nSELECT "test"\n-- other\n'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) => {
     try {
       expect(pgsqlParser(sql)).toMatchSnapshot(name);
