@@ -1,8 +1,8 @@
 import { Parser, ParserError } from '@ikerin/rd-parse';
-import { PgSql } from '../../src/index';
+import { SqlGrammar } from '../../src/sql.grammar';
 import { inspect } from 'util';
 
-const pgsqlParser = Parser(PgSql);
+const sqlParser = Parser(SqlGrammar);
 
 describe('Sql', () => {
   it.each`
@@ -57,6 +57,8 @@ describe('Sql', () => {
     ${'where greater than or equal'}  | ${'SELECT * WHERE table.col >= 23'}
     ${'where less than or equal'}     | ${"SELECT * WHERE table.col <= '23'"}
     ${'where like string'}            | ${"SELECT * WHERE table.col LIKE '%23%'"}
+    ${'where ilike string'}           | ${"SELECT * WHERE table.col ILIKE '23%'"}
+    ${'between'}                      | ${"SELECT * WHERE table.col BETWEEN '2006-01-01' AND '2007-01-01'"}
     ${'where select'}                 | ${'SELECT * WHERE (SELECT id FROM test LIMIT 1) = 5'}
     ${'quoted identifier'}            | ${'SELECT "test"'}
     ${'quoted identifier escaped'}    | ${'SELECT "test me ""o donald"" true"'}
@@ -72,9 +74,17 @@ describe('Sql', () => {
     ${'nested select'}                | ${'SELECT test, (SELECT id FROM table2 LIMIT 1) FROM table1'}
     ${'pg cast nested select'}        | ${'SELECT test::date, (SELECT id FROM table2 LIMIT 1)::int FROM table1'}
     ${'comments'}                     | ${'-- test\nSELECT "test"\n-- other\n'}
+    ${'case with else'}               | ${'SELECT CASE test1 WHEN 1 THEN TRUE WHEN 2 THEN FALSE ELSE 0 END'}
+    ${'case without expression'}      | ${'SELECT CASE WHEN test1 <> 1 THEN TRUE WHEN test1 <> 2 THEN FALSE ELSE 0 END'}
+    ${'case no else and expression'}  | ${'SELECT CASE WHEN test1 <> 1 THEN TRUE WHEN test1 <> 2 THEN FALSE END'}
+    ${'case no else'}                 | ${'SELECT CASE test1 WHEN 1 THEN TRUE WHEN 2 THEN FALSE END'}
+    ${'where case'}                   | ${"SELECT col1 WHERE table2.col2 = CASE table2.col3 WHEN 'test1' THEN 1 WHEN 'test2' THEN 2 END"}
+    ${'union select'}                 | ${'SELECT col1, col2 FROM table1 UNION SELECT col1, col2 FROM table2'}
+    ${'intersect select'}             | ${'SELECT col1, col2 FROM table1 INTERSECT SELECT col1, col2 FROM table2'}
+    ${'except select'}                | ${'SELECT col1, col2 FROM table1 EXCEPT SELECT col1, col2 FROM table2'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) => {
     try {
-      expect(pgsqlParser(sql)).toMatchSnapshot(name);
+      expect(sqlParser(sql)).toMatchSnapshot(name);
     } catch (e) {
       if (e instanceof ParserError) {
         console.log(inspect(e, { depth: 15, colors: true }));

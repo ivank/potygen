@@ -8,25 +8,349 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          },
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "column",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql between (SELECT * WHERE table.col BETWEEN '2006-01-01' AND '2007-01-01'): between 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "Where",
+      "values": Array [
+        Object {
+          "left": Object {
+            "tag": "String",
+            "value": "2006-01-01",
+          },
+          "right": Object {
+            "tag": "String",
+            "value": "2007-01-01",
+          },
+          "tag": "Between",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "col",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql case no else (SELECT CASE test1 WHEN 1 THEN TRUE WHEN 2 THEN FALSE END): case no else 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "expression": Object {
+              "tag": "SelectIdentifier",
+              "values": Array [
                 Object {
                   "tag": "Identifier",
-                  "value": "column",
+                  "value": "test1",
                 },
               ],
             },
-            Object {
-              "tag": "As",
-              "value": Object {
-                "tag": "Identifier",
-                "value": "col1",
+            "tag": "Case",
+            "values": Array [
+              Object {
+                "condition": Object {
+                  "tag": "Number",
+                  "value": "1",
+                },
+                "tag": "When",
+                "value": Object {
+                  "tag": "Boolean",
+                  "value": "TRUE",
+                },
               },
+              Object {
+                "condition": Object {
+                  "tag": "Number",
+                  "value": "2",
+                },
+                "tag": "When",
+                "value": Object {
+                  "tag": "Boolean",
+                  "value": "FALSE",
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql case no else and expression (SELECT CASE WHEN test1 <> 1 THEN TRUE WHEN test1 <> 2 THEN FALSE END): case no else and expression 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Case",
+            "values": Array [
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "tag": "SelectIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "test1",
+                      },
+                    ],
+                  },
+                  "operator": Object {
+                    "tag": "Operator",
+                    "value": "<>",
+                  },
+                  "right": Object {
+                    "tag": "Number",
+                    "value": "1",
+                  },
+                  "tag": "BinaryExpression",
+                },
+                "tag": "When",
+                "value": Object {
+                  "tag": "Boolean",
+                  "value": "TRUE",
+                },
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "tag": "SelectIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "test1",
+                      },
+                    ],
+                  },
+                  "operator": Object {
+                    "tag": "Operator",
+                    "value": "<>",
+                  },
+                  "right": Object {
+                    "tag": "Number",
+                    "value": "2",
+                  },
+                  "tag": "BinaryExpression",
+                },
+                "tag": "When",
+                "value": Object {
+                  "tag": "Boolean",
+                  "value": "FALSE",
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql case with else (SELECT CASE test1 WHEN 1 THEN TRUE WHEN 2 THEN FALSE ELSE 0 END): case with else 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "expression": Object {
+              "tag": "SelectIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "test1",
+                },
+              ],
             },
-          ],
+            "tag": "Case",
+            "values": Array [
+              Object {
+                "condition": Object {
+                  "tag": "Number",
+                  "value": "1",
+                },
+                "tag": "When",
+                "value": Object {
+                  "tag": "Boolean",
+                  "value": "TRUE",
+                },
+              },
+              Object {
+                "condition": Object {
+                  "tag": "Number",
+                  "value": "2",
+                },
+                "tag": "When",
+                "value": Object {
+                  "tag": "Boolean",
+                  "value": "FALSE",
+                },
+              },
+              Object {
+                "tag": "Else",
+                "value": Object {
+                  "tag": "Number",
+                  "value": "0",
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql case without expression (SELECT CASE WHEN test1 <> 1 THEN TRUE WHEN test1 <> 2 THEN FALSE ELSE 0 END): case without expression 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Case",
+            "values": Array [
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "tag": "SelectIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "test1",
+                      },
+                    ],
+                  },
+                  "operator": Object {
+                    "tag": "Operator",
+                    "value": "<>",
+                  },
+                  "right": Object {
+                    "tag": "Number",
+                    "value": "1",
+                  },
+                  "tag": "BinaryExpression",
+                },
+                "tag": "When",
+                "value": Object {
+                  "tag": "Boolean",
+                  "value": "TRUE",
+                },
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "tag": "SelectIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "test1",
+                      },
+                    ],
+                  },
+                  "operator": Object {
+                    "tag": "Operator",
+                    "value": "<>",
+                  },
+                  "right": Object {
+                    "tag": "Number",
+                    "value": "2",
+                  },
+                  "tag": "BinaryExpression",
+                },
+                "tag": "When",
+                "value": Object {
+                  "tag": "Boolean",
+                  "value": "FALSE",
+                },
+              },
+              Object {
+                "tag": "Else",
+                "value": Object {
+                  "tag": "Number",
+                  "value": "0",
+                },
+              },
+            ],
+          },
         },
       ],
     },
@@ -42,25 +366,25 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "Cast",
-              "type": Object {
-                "tag": "type",
-                "value": "int4",
-              },
-              "value": Object {
-                "tag": "identifier",
-                "value": Array [
-                  Object {
-                    "tag": "Identifier",
-                    "value": "id",
-                  },
-                ],
-              },
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Cast",
+            "type": Object {
+              "param": undefined,
+              "tag": "Type",
+              "value": "int4",
             },
-          ],
+            "value": Object {
+              "tag": "SelectIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "id",
+                },
+              ],
+            },
+          },
         },
       ],
     },
@@ -76,20 +400,20 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "Cast",
-              "type": Object {
-                "tag": "type",
-                "value": "int4",
-              },
-              "value": Object {
-                "tag": "Number",
-                "value": "20",
-              },
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Cast",
+            "type": Object {
+              "param": undefined,
+              "tag": "Type",
+              "value": "int4",
             },
-          ],
+            "value": Object {
+              "tag": "Number",
+              "value": "20",
+            },
+          },
         },
       ],
     },
@@ -105,21 +429,20 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "Cast",
-              "type": Object {
-                "param": "20",
-                "tag": "type",
-                "value": "varchar",
-              },
-              "value": Object {
-                "tag": "String",
-                "value": "test",
-              },
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Cast",
+            "type": Object {
+              "param": "20",
+              "tag": "Type",
+              "value": "varchar",
             },
-          ],
+            "value": Object {
+              "tag": "String",
+              "value": "test",
+            },
+          },
         },
       ],
     },
@@ -135,18 +458,17 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "column",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "column",
+              },
+            ],
+          },
         },
       ],
     },
@@ -165,18 +487,17 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "test",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "test",
+              },
+            ],
+          },
         },
       ],
     },
@@ -192,13 +513,12 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "String",
-              "value": "2018-01-01",
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "String",
+            "value": "2018-01-01",
+          },
         },
       ],
     },
@@ -214,17 +534,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -232,18 +551,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs",
+              },
+            ],
+          },
         },
       ],
     },
@@ -256,7 +574,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "test1",
@@ -277,76 +595,72 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "column1",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "column1",
+              },
+            ],
+          },
         },
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "column2",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "column2",
+              },
+            ],
+          },
         },
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "column3",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "column3",
+              },
+            ],
+          },
         },
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "schema",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "table3",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "colum2",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "schema",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "table3",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "colum2",
+              },
+            ],
+          },
         },
       ],
     },
@@ -362,26 +676,25 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "schema",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "table",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "column",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "schema",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "table",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "column",
+              },
+            ],
+          },
         },
       ],
     },
@@ -397,25 +710,24 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "table2",
-                },
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "table2",
+              },
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -431,25 +743,24 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table 1",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "table 2",
-                },
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table 1",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "table 2",
+              },
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -465,29 +776,28 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table 1",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "table2",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "table 3",
-                },
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table 1",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "table2",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "table 3",
+              },
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -503,17 +813,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -521,39 +830,37 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
         },
       ],
     },
     Object {
-      "tag": "EXCEPT",
+      "tag": "ExceptSelect",
       "values": Array [
         Object {
           "tag": "SelectList",
           "values": Array [
             Object {
-              "tag": "Item",
-              "values": Array [
-                Object {
-                  "tag": "identifier",
-                  "value": Array [
-                    Object {
-                      "tag": "star",
-                    },
-                  ],
-                },
-              ],
+              "as": undefined,
+              "tag": "SelectListItem",
+              "value": Object {
+                "tag": "SelectIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "StarIdentifier",
+                  },
+                ],
+              },
             },
           ],
         },
@@ -561,18 +868,128 @@ Object {
           "tag": "From",
           "values": Array [
             Object {
+              "as": undefined,
               "tag": "FromListItem",
-              "values": Array [
-                Object {
-                  "tag": "QualifiedIdentifier",
-                  "value": Array [
-                    Object {
-                      "tag": "Identifier",
-                      "value": "table2",
-                    },
-                  ],
-                },
-              ],
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "table2",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql except select (SELECT col1, col2 FROM table1 EXCEPT SELECT col1, col2 FROM table2): except select 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col2",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "From",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "FromListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "ExceptSelect",
+      "values": Array [
+        Object {
+          "tag": "SelectList",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "tag": "SelectListItem",
+              "value": Object {
+                "tag": "SelectIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "col1",
+                  },
+                ],
+              },
+            },
+            Object {
+              "as": undefined,
+              "tag": "SelectListItem",
+              "value": Object {
+                "tag": "SelectIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "col2",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        Object {
+          "tag": "From",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "tag": "FromListItem",
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "table2",
+                  },
+                ],
+              },
             },
           ],
         },
@@ -590,17 +1007,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -608,18 +1024,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs",
+              },
+            ],
+          },
         },
       ],
     },
@@ -635,17 +1050,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -653,58 +1067,54 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "jobs1",
+            },
+          },
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "Select",
-              "values": Array [
-                Object {
-                  "tag": "SelectList",
-                  "values": Array [
-                    Object {
-                      "tag": "Item",
+          "value": Object {
+            "tag": "Select",
+            "values": Array [
+              Object {
+                "tag": "SelectList",
+                "values": Array [
+                  Object {
+                    "as": undefined,
+                    "tag": "SelectListItem",
+                    "value": Object {
+                      "tag": "SelectIdentifier",
                       "values": Array [
                         Object {
-                          "tag": "identifier",
-                          "value": Array [
-                            Object {
-                              "tag": "star",
-                            },
-                          ],
+                          "tag": "StarIdentifier",
                         },
                       ],
                     },
-                  ],
-                },
-                Object {
-                  "tag": "From",
-                  "values": Array [
-                    Object {
-                      "tag": "FromListItem",
-                      "values": Array [
-                        Object {
-                          "tag": "QualifiedIdentifier",
-                          "value": Array [
-                            Object {
-                              "tag": "Identifier",
-                              "value": "jobs2",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
-            Object {
-              "tag": "As",
-              "value": Object {
-                "tag": "Identifier",
-                "value": "jobs1",
+                  },
+                ],
               },
-            },
-          ],
+              Object {
+                "tag": "From",
+                "values": Array [
+                  Object {
+                    "as": undefined,
+                    "tag": "FromListItem",
+                    "value": Object {
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "tag": "Identifier",
+                          "value": "jobs2",
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
         },
       ],
     },
@@ -720,17 +1130,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -738,65 +1147,61 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs1",
+              },
+            ],
+          },
         },
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "Select",
-              "values": Array [
-                Object {
-                  "tag": "SelectList",
-                  "values": Array [
-                    Object {
-                      "tag": "Item",
+          "value": Object {
+            "tag": "Select",
+            "values": Array [
+              Object {
+                "tag": "SelectList",
+                "values": Array [
+                  Object {
+                    "as": undefined,
+                    "tag": "SelectListItem",
+                    "value": Object {
+                      "tag": "SelectIdentifier",
                       "values": Array [
                         Object {
-                          "tag": "identifier",
-                          "value": Array [
-                            Object {
-                              "tag": "star",
-                            },
-                          ],
+                          "tag": "StarIdentifier",
                         },
                       ],
                     },
-                  ],
-                },
-                Object {
-                  "tag": "From",
-                  "values": Array [
-                    Object {
-                      "tag": "FromListItem",
+                  },
+                ],
+              },
+              Object {
+                "tag": "From",
+                "values": Array [
+                  Object {
+                    "as": undefined,
+                    "tag": "FromListItem",
+                    "value": Object {
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
-                          "tag": "QualifiedIdentifier",
-                          "value": Array [
-                            Object {
-                              "tag": "Identifier",
-                              "value": "jobs2",
-                            },
-                          ],
+                          "tag": "Identifier",
+                          "value": "jobs2",
                         },
                       ],
                     },
-                  ],
-                },
-              ],
-            },
-          ],
+                  },
+                ],
+              },
+            ],
+          },
         },
       ],
     },
@@ -812,17 +1217,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -830,25 +1234,23 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "test",
+            },
+          },
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-            Object {
-              "tag": "As",
-              "value": Object {
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
                 "tag": "Identifier",
-                "value": "test",
+                "value": "jobs",
               },
-            },
-          ],
+            ],
+          },
         },
       ],
     },
@@ -864,17 +1266,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -882,25 +1283,23 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "test 2",
+            },
+          },
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-            Object {
-              "tag": "As",
-              "value": Object {
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
                 "tag": "Identifier",
-                "value": "test 2",
+                "value": "jobs",
               },
-            },
-          ],
+            ],
+          },
         },
       ],
     },
@@ -916,17 +1315,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -934,18 +1332,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs",
+              },
+            ],
+          },
         },
       ],
     },
@@ -958,7 +1355,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "test1",
@@ -979,17 +1376,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -997,18 +1393,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1021,7 +1416,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "test1",
@@ -1042,17 +1437,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1060,18 +1454,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1080,7 +1473,7 @@ Object {
       "values": Array [
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "col",
@@ -1101,17 +1494,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1119,18 +1511,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1139,7 +1530,7 @@ Object {
       "values": Array [
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "col1",
@@ -1148,7 +1539,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "col2",
@@ -1169,17 +1560,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1187,18 +1577,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1211,7 +1600,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "test1",
@@ -1232,17 +1621,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1250,39 +1638,37 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
         },
       ],
     },
     Object {
-      "tag": "INTERSECT",
+      "tag": "IntersectSelect",
       "values": Array [
         Object {
           "tag": "SelectList",
           "values": Array [
             Object {
-              "tag": "Item",
-              "values": Array [
-                Object {
-                  "tag": "identifier",
-                  "value": Array [
-                    Object {
-                      "tag": "star",
-                    },
-                  ],
-                },
-              ],
+              "as": undefined,
+              "tag": "SelectListItem",
+              "value": Object {
+                "tag": "SelectIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "StarIdentifier",
+                  },
+                ],
+              },
             },
           ],
         },
@@ -1290,18 +1676,128 @@ Object {
           "tag": "From",
           "values": Array [
             Object {
+              "as": undefined,
               "tag": "FromListItem",
-              "values": Array [
-                Object {
-                  "tag": "QualifiedIdentifier",
-                  "value": Array [
-                    Object {
-                      "tag": "Identifier",
-                      "value": "table2",
-                    },
-                  ],
-                },
-              ],
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "table2",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql intersect select (SELECT col1, col2 FROM table1 INTERSECT SELECT col1, col2 FROM table2): intersect select 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col2",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "From",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "FromListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "IntersectSelect",
+      "values": Array [
+        Object {
+          "tag": "SelectList",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "tag": "SelectListItem",
+              "value": Object {
+                "tag": "SelectIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "col1",
+                  },
+                ],
+              },
+            },
+            Object {
+              "as": undefined,
+              "tag": "SelectListItem",
+              "value": Object {
+                "tag": "SelectIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "col2",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        Object {
+          "tag": "From",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "tag": "FromListItem",
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "table2",
+                  },
+                ],
+              },
             },
           ],
         },
@@ -1319,17 +1815,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1337,18 +1832,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1361,7 +1855,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "test1",
@@ -1382,17 +1876,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1400,18 +1893,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1424,7 +1916,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "test1",
@@ -1435,8 +1927,8 @@ Object {
           "tag": "JoinOn",
           "value": Object {
             "left": Object {
-              "tag": "identifier",
-              "value": Array [
+              "tag": "SelectIdentifier",
+              "values": Array [
                 Object {
                   "tag": "Identifier",
                   "value": "jobs",
@@ -1448,12 +1940,12 @@ Object {
               ],
             },
             "operator": Object {
-              "type": "Operator",
+              "tag": "Operator",
               "value": "=",
             },
             "right": Object {
-              "tag": "identifier",
-              "value": Array [
+              "tag": "SelectIdentifier",
+              "values": Array [
                 Object {
                   "tag": "Identifier",
                   "value": "test1",
@@ -1464,7 +1956,7 @@ Object {
                 },
               ],
             },
-            "type": "BinaryExpression",
+            "tag": "BinaryExpression",
           },
         },
       ],
@@ -1481,17 +1973,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1499,18 +1990,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1523,7 +2013,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "test1",
@@ -1544,17 +2034,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1562,18 +2051,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1586,7 +2074,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "test1",
@@ -1607,17 +2095,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1640,17 +2127,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1680,68 +2166,63 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "column1",
-                },
-              ],
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "test",
             },
-            Object {
-              "tag": "As",
-              "value": Object {
+          },
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "column1",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "column2",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          },
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
                 "tag": "Identifier",
                 "value": "test",
               },
-            },
-          ],
-        },
-        Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "column2",
-                },
-              ],
-            },
-          ],
-        },
-        Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "test",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "column2",
-                },
-              ],
-            },
-            Object {
-              "tag": "As",
-              "value": Object {
+              Object {
                 "tag": "Identifier",
-                "value": "col1",
+                "value": "column2",
               },
-            },
-          ],
+            ],
+          },
         },
       ],
     },
@@ -1757,32 +2238,30 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "column1",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "column1",
+              },
+            ],
+          },
         },
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "column2",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "column2",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1798,17 +2277,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1816,39 +2294,36 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs1",
+              },
+            ],
+          },
         },
         Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "test 2",
+            },
+          },
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-            Object {
-              "tag": "As",
-              "value": Object {
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
                 "tag": "Identifier",
-                "value": "test 2",
+                "value": "jobs",
               },
-            },
-          ],
+            ],
+          },
         },
       ],
     },
@@ -1864,17 +2339,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1882,60 +2356,55 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "j1",
+            },
+          },
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs1",
-                },
-              ],
-            },
-            Object {
-              "tag": "As",
-              "value": Object {
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
                 "tag": "Identifier",
-                "value": "j1",
+                "value": "jobs1",
               },
-            },
-          ],
+            ],
+          },
         },
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs2",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs2",
+              },
+            ],
+          },
         },
         Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "j3",
+            },
+          },
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs3",
-                },
-              ],
-            },
-            Object {
-              "tag": "As",
-              "value": Object {
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
                 "tag": "Identifier",
-                "value": "j3",
+                "value": "jobs3",
               },
-            },
-          ],
+            ],
+          },
         },
       ],
     },
@@ -1951,17 +2420,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1969,18 +2437,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs",
+              },
+            ],
+          },
         },
       ],
     },
@@ -1993,7 +2460,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "test1",
@@ -2011,7 +2478,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "test2",
@@ -2032,73 +2499,69 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "test",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "test",
+              },
+            ],
+          },
         },
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "Select",
-              "values": Array [
-                Object {
-                  "tag": "SelectList",
-                  "values": Array [
-                    Object {
-                      "tag": "Item",
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Select",
+            "values": Array [
+              Object {
+                "tag": "SelectList",
+                "values": Array [
+                  Object {
+                    "as": undefined,
+                    "tag": "SelectListItem",
+                    "value": Object {
+                      "tag": "SelectIdentifier",
                       "values": Array [
                         Object {
-                          "tag": "identifier",
-                          "value": Array [
-                            Object {
-                              "tag": "Identifier",
-                              "value": "id",
-                            },
-                          ],
+                          "tag": "Identifier",
+                          "value": "id",
                         },
                       ],
                     },
-                  ],
-                },
-                Object {
-                  "tag": "From",
-                  "values": Array [
-                    Object {
-                      "tag": "FromListItem",
-                      "values": Array [
-                        Object {
-                          "tag": "QualifiedIdentifier",
-                          "value": Array [
-                            Object {
-                              "tag": "Identifier",
-                              "value": "table2",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "tag": "Limit",
-                  "value": Object {
-                    "tag": "Count",
-                    "value": "1",
                   },
+                ],
+              },
+              Object {
+                "tag": "From",
+                "values": Array [
+                  Object {
+                    "as": undefined,
+                    "tag": "FromListItem",
+                    "value": Object {
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "tag": "Identifier",
+                          "value": "table2",
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              Object {
+                "tag": "Limit",
+                "value": Object {
+                  "tag": "Count",
+                  "value": "1",
                 },
-              ],
-            },
-          ],
+              },
+            ],
+          },
         },
       ],
     },
@@ -2106,18 +2569,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2133,17 +2595,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2166,17 +2627,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2184,18 +2644,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2206,8 +2665,8 @@ Object {
           "tag": "OrderByItem",
           "values": Array [
             Object {
-              "tag": "identifier",
-              "value": Array [
+              "tag": "SelectIdentifier",
+              "values": Array [
                 Object {
                   "tag": "Identifier",
                   "value": "col",
@@ -2234,17 +2693,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2252,18 +2710,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2274,8 +2731,8 @@ Object {
           "tag": "OrderByItem",
           "values": Array [
             Object {
-              "tag": "identifier",
-              "value": Array [
+              "tag": "SelectIdentifier",
+              "values": Array [
                 Object {
                   "tag": "Identifier",
                   "value": "col1",
@@ -2292,8 +2749,8 @@ Object {
           "tag": "OrderByItem",
           "values": Array [
             Object {
-              "tag": "identifier",
-              "value": Array [
+              "tag": "SelectIdentifier",
+              "values": Array [
                 Object {
                   "tag": "Identifier",
                   "value": "col2",
@@ -2316,25 +2773,25 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "pg_cast",
-              "type": Object {
-                "tag": "type",
-                "value": "int",
-              },
-              "value": Object {
-                "tag": "identifier",
-                "value": Array [
-                  Object {
-                    "tag": "Identifier",
-                    "value": "test",
-                  },
-                ],
-              },
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "PgCast",
+            "type": Object {
+              "param": undefined,
+              "tag": "Type",
+              "value": "int",
             },
-          ],
+            "value": Object {
+              "tag": "SelectIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "test",
+                },
+              ],
+            },
+          },
         },
       ],
     },
@@ -2342,18 +2799,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2369,87 +2825,85 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "pg_cast",
-              "type": Object {
-                "tag": "type",
-                "value": "date",
-              },
-              "value": Object {
-                "tag": "identifier",
-                "value": Array [
-                  Object {
-                    "tag": "Identifier",
-                    "value": "test",
-                  },
-                ],
-              },
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "PgCast",
+            "type": Object {
+              "param": undefined,
+              "tag": "Type",
+              "value": "date",
             },
-          ],
+            "value": Object {
+              "tag": "SelectIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "test",
+                },
+              ],
+            },
+          },
         },
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "pg_cast",
-              "type": Object {
-                "tag": "type",
-                "value": "int",
-              },
-              "value": Object {
-                "tag": "Select",
-                "values": Array [
-                  Object {
-                    "tag": "SelectList",
-                    "values": Array [
-                      Object {
-                        "tag": "Item",
-                        "values": Array [
-                          Object {
-                            "tag": "identifier",
-                            "value": Array [
-                              Object {
-                                "tag": "Identifier",
-                                "value": "id",
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                  Object {
-                    "tag": "From",
-                    "values": Array [
-                      Object {
-                        "tag": "FromListItem",
-                        "values": Array [
-                          Object {
-                            "tag": "QualifiedIdentifier",
-                            "value": Array [
-                              Object {
-                                "tag": "Identifier",
-                                "value": "table2",
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                  Object {
-                    "tag": "Limit",
-                    "value": Object {
-                      "tag": "Count",
-                      "value": "1",
-                    },
-                  },
-                ],
-              },
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "PgCast",
+            "type": Object {
+              "param": undefined,
+              "tag": "Type",
+              "value": "int",
             },
-          ],
+            "value": Object {
+              "tag": "Select",
+              "values": Array [
+                Object {
+                  "tag": "SelectList",
+                  "values": Array [
+                    Object {
+                      "as": undefined,
+                      "tag": "SelectListItem",
+                      "value": Object {
+                        "tag": "SelectIdentifier",
+                        "values": Array [
+                          Object {
+                            "tag": "Identifier",
+                            "value": "id",
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+                Object {
+                  "tag": "From",
+                  "values": Array [
+                    Object {
+                      "as": undefined,
+                      "tag": "FromListItem",
+                      "value": Object {
+                        "tag": "QualifiedIdentifier",
+                        "values": Array [
+                          Object {
+                            "tag": "Identifier",
+                            "value": "table2",
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+                Object {
+                  "tag": "Limit",
+                  "value": Object {
+                    "tag": "Count",
+                    "value": "1",
+                  },
+                },
+              ],
+            },
+          },
         },
       ],
     },
@@ -2457,18 +2911,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2484,20 +2937,20 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "pg_cast",
-              "type": Object {
-                "tag": "type",
-                "value": "date",
-              },
-              "value": Object {
-                "tag": "String",
-                "value": "2016-01-01",
-              },
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "PgCast",
+            "type": Object {
+              "param": undefined,
+              "tag": "Type",
+              "value": "date",
             },
-          ],
+            "value": Object {
+              "tag": "String",
+              "value": "2016-01-01",
+            },
+          },
         },
       ],
     },
@@ -2505,18 +2958,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2532,22 +2984,21 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "column",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "column",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2563,21 +3014,20 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table",
-                },
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table",
+              },
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2593,29 +3043,27 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "column",
-                },
-              ],
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "col 1",
             },
-            Object {
-              "tag": "As",
-              "value": Object {
+          },
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
                 "tag": "Identifier",
-                "value": "col 1",
+                "value": "table",
               },
-            },
-          ],
+              Object {
+                "tag": "Identifier",
+                "value": "column",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2631,33 +3079,31 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "schema",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "table",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "column",
-                },
-              ],
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "col \\"\\"2\\"\\"",
             },
-            Object {
-              "tag": "As",
-              "value": Object {
+          },
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
                 "tag": "Identifier",
-                "value": "col \\"\\"2\\"\\"",
+                "value": "schema",
               },
-            },
-          ],
+              Object {
+                "tag": "Identifier",
+                "value": "table",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "column",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2673,18 +3119,17 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "test",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "test",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2700,18 +3145,17 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "test me \\"\\"o donald\\"\\" true",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "test me \\"\\"o donald\\"\\" true",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2727,21 +3171,20 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table 2",
-                },
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table 2",
+              },
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2757,17 +3200,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2775,18 +3217,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2799,7 +3240,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "test1",
@@ -2820,17 +3261,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2838,18 +3278,17 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "jobs",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "jobs",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2862,7 +3301,7 @@ Object {
         },
         Object {
           "tag": "QualifiedIdentifier",
-          "value": Array [
+          "values": Array [
             Object {
               "tag": "Identifier",
               "value": "test1",
@@ -2883,17 +3322,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2909,17 +3347,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2927,39 +3364,37 @@ Object {
       "tag": "From",
       "values": Array [
         Object {
+          "as": undefined,
           "tag": "FromListItem",
-          "values": Array [
-            Object {
-              "tag": "QualifiedIdentifier",
-              "value": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table1",
-                },
-              ],
-            },
-          ],
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
         },
       ],
     },
     Object {
-      "tag": "UNION",
+      "tag": "UnionSelect",
       "values": Array [
         Object {
           "tag": "SelectList",
           "values": Array [
             Object {
-              "tag": "Item",
-              "values": Array [
-                Object {
-                  "tag": "identifier",
-                  "value": Array [
-                    Object {
-                      "tag": "star",
-                    },
-                  ],
-                },
-              ],
+              "as": undefined,
+              "tag": "SelectListItem",
+              "value": Object {
+                "tag": "SelectIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "StarIdentifier",
+                  },
+                ],
+              },
             },
           ],
         },
@@ -2967,18 +3402,128 @@ Object {
           "tag": "From",
           "values": Array [
             Object {
+              "as": undefined,
               "tag": "FromListItem",
-              "values": Array [
-                Object {
-                  "tag": "QualifiedIdentifier",
-                  "value": Array [
-                    Object {
-                      "tag": "Identifier",
-                      "value": "table2",
-                    },
-                  ],
-                },
-              ],
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "table2",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql union select (SELECT col1, col2 FROM table1 UNION SELECT col1, col2 FROM table2): union select 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col2",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "From",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "FromListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "UnionSelect",
+      "values": Array [
+        Object {
+          "tag": "SelectList",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "tag": "SelectListItem",
+              "value": Object {
+                "tag": "SelectIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "col1",
+                  },
+                ],
+              },
+            },
+            Object {
+              "as": undefined,
+              "tag": "SelectListItem",
+              "value": Object {
+                "tag": "SelectIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "col2",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        Object {
+          "tag": "From",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "tag": "FromListItem",
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "table2",
+                  },
+                ],
+              },
             },
           ],
         },
@@ -2996,17 +3541,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -3015,8 +3559,8 @@ Object {
       "values": Array [
         Object {
           "left": Object {
-            "tag": "identifier",
-            "value": Array [
+            "tag": "SelectIdentifier",
+            "values": Array [
               Object {
                 "tag": "Identifier",
                 "value": "id",
@@ -3024,14 +3568,14 @@ Object {
             ],
           },
           "operator": Object {
-            "type": "Operator",
+            "tag": "Operator",
             "value": "=",
           },
           "right": Object {
             "tag": "Number",
             "value": "5",
           },
-          "type": "BinaryExpression",
+          "tag": "BinaryExpression",
         },
       ],
     },
@@ -3047,17 +3591,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -3067,8 +3610,8 @@ Object {
         Object {
           "left": Object {
             "left": Object {
-              "tag": "identifier",
-              "value": Array [
+              "tag": "SelectIdentifier",
+              "values": Array [
                 Object {
                   "tag": "Identifier",
                   "value": "id",
@@ -3076,23 +3619,23 @@ Object {
               ],
             },
             "operator": Object {
-              "type": "Operator",
+              "tag": "Operator",
               "value": "=",
             },
             "right": Object {
               "tag": "Number",
               "value": "5",
             },
-            "type": "BinaryExpression",
+            "tag": "BinaryExpression",
           },
           "operator": Object {
-            "type": "Operator",
+            "tag": "Operator",
             "value": "AND",
           },
           "right": Object {
             "left": Object {
-              "tag": "identifier",
-              "value": Array [
+              "tag": "SelectIdentifier",
+              "values": Array [
                 Object {
                   "tag": "Identifier",
                   "value": "name",
@@ -3100,16 +3643,16 @@ Object {
               ],
             },
             "operator": Object {
-              "type": "Operator",
+              "tag": "Operator",
               "value": "=",
             },
             "right": Object {
               "tag": "String",
               "value": "test",
             },
-            "type": "BinaryExpression",
+            "tag": "BinaryExpression",
           },
-          "type": "BinaryExpression",
+          "tag": "BinaryExpression",
         },
       ],
     },
@@ -3125,17 +3668,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -3145,8 +3687,8 @@ Object {
         Object {
           "left": Object {
             "left": Object {
-              "tag": "identifier",
-              "value": Array [
+              "tag": "SelectIdentifier",
+              "values": Array [
                 Object {
                   "tag": "Identifier",
                   "value": "id",
@@ -3154,24 +3696,115 @@ Object {
               ],
             },
             "operator": Object {
-              "type": "Operator",
+              "tag": "Operator",
               "value": "=",
             },
             "right": Object {
               "tag": "Number",
               "value": "5",
             },
-            "type": "BinaryExpression",
+            "tag": "BinaryExpression",
           },
           "operator": Object {
-            "type": "Operator",
+            "tag": "Operator",
             "value": "AND",
           },
           "right": Object {
             "tag": "Boolean",
             "value": "TRUE",
           },
-          "type": "BinaryExpression",
+          "tag": "BinaryExpression",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where case (SELECT col1 WHERE table2.col2 = CASE table2.col3 WHEN 'test1' THEN 1 WHEN 'test2' THEN 2 END): where case 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "Where",
+      "values": Array [
+        Object {
+          "left": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table2",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "col2",
+              },
+            ],
+          },
+          "operator": Object {
+            "tag": "Operator",
+            "value": "=",
+          },
+          "right": Object {
+            "expression": Object {
+              "tag": "SelectIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table2",
+                },
+                Object {
+                  "tag": "Identifier",
+                  "value": "col3",
+                },
+              ],
+            },
+            "tag": "Case",
+            "values": Array [
+              Object {
+                "condition": Object {
+                  "tag": "String",
+                  "value": "test1",
+                },
+                "tag": "When",
+                "value": Object {
+                  "tag": "Number",
+                  "value": "1",
+                },
+              },
+              Object {
+                "condition": Object {
+                  "tag": "String",
+                  "value": "test2",
+                },
+                "tag": "When",
+                "value": Object {
+                  "tag": "Number",
+                  "value": "2",
+                },
+              },
+            ],
+          },
+          "tag": "BinaryExpression",
         },
       ],
     },
@@ -3187,17 +3820,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -3206,8 +3838,8 @@ Object {
       "values": Array [
         Object {
           "left": Object {
-            "tag": "identifier",
-            "value": Array [
+            "tag": "SelectIdentifier",
+            "values": Array [
               Object {
                 "tag": "Identifier",
                 "value": "table",
@@ -3219,14 +3851,14 @@ Object {
             ],
           },
           "operator": Object {
-            "type": "Operator",
+            "tag": "Operator",
             "value": "<>",
           },
           "right": Object {
             "tag": "String",
             "value": "23",
           },
-          "type": "BinaryExpression",
+          "tag": "BinaryExpression",
         },
       ],
     },
@@ -3242,17 +3874,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -3261,8 +3892,8 @@ Object {
       "values": Array [
         Object {
           "left": Object {
-            "tag": "identifier",
-            "value": Array [
+            "tag": "SelectIdentifier",
+            "values": Array [
               Object {
                 "tag": "Identifier",
                 "value": "table",
@@ -3274,14 +3905,14 @@ Object {
             ],
           },
           "operator": Object {
-            "type": "Operator",
+            "tag": "Operator",
             "value": ">",
           },
           "right": Object {
             "tag": "Number",
             "value": "2",
           },
-          "type": "BinaryExpression",
+          "tag": "BinaryExpression",
         },
       ],
     },
@@ -3297,17 +3928,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -3316,8 +3946,8 @@ Object {
       "values": Array [
         Object {
           "left": Object {
-            "tag": "identifier",
-            "value": Array [
+            "tag": "SelectIdentifier",
+            "values": Array [
               Object {
                 "tag": "Identifier",
                 "value": "table",
@@ -3329,14 +3959,68 @@ Object {
             ],
           },
           "operator": Object {
-            "type": "Operator",
+            "tag": "Operator",
             "value": ">=",
           },
           "right": Object {
             "tag": "Number",
             "value": "23",
           },
-          "type": "BinaryExpression",
+          "tag": "BinaryExpression",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql where ilike string (SELECT * WHERE table.col ILIKE '23%'): where ilike string 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "Where",
+      "values": Array [
+        Object {
+          "left": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "col",
+              },
+            ],
+          },
+          "operator": Object {
+            "tag": "Operator",
+            "value": "ILIKE",
+          },
+          "right": Object {
+            "tag": "String",
+            "value": "23%",
+          },
+          "tag": "BinaryExpression",
         },
       ],
     },
@@ -3352,17 +4036,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -3371,8 +4054,8 @@ Object {
       "values": Array [
         Object {
           "left": Object {
-            "tag": "identifier",
-            "value": Array [
+            "tag": "SelectIdentifier",
+            "values": Array [
               Object {
                 "tag": "Identifier",
                 "value": "table",
@@ -3384,14 +4067,14 @@ Object {
             ],
           },
           "operator": Object {
-            "type": "Operator",
+            "tag": "Operator",
             "value": "<",
           },
           "right": Object {
             "tag": "Number",
             "value": "2",
           },
-          "type": "BinaryExpression",
+          "tag": "BinaryExpression",
         },
       ],
     },
@@ -3407,17 +4090,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -3426,8 +4108,8 @@ Object {
       "values": Array [
         Object {
           "left": Object {
-            "tag": "identifier",
-            "value": Array [
+            "tag": "SelectIdentifier",
+            "values": Array [
               Object {
                 "tag": "Identifier",
                 "value": "table",
@@ -3439,14 +4121,14 @@ Object {
             ],
           },
           "operator": Object {
-            "type": "Operator",
+            "tag": "Operator",
             "value": "<=",
           },
           "right": Object {
             "tag": "String",
             "value": "23",
           },
-          "type": "BinaryExpression",
+          "tag": "BinaryExpression",
         },
       ],
     },
@@ -3462,17 +4144,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -3481,8 +4162,8 @@ Object {
       "values": Array [
         Object {
           "left": Object {
-            "tag": "identifier",
-            "value": Array [
+            "tag": "SelectIdentifier",
+            "values": Array [
               Object {
                 "tag": "Identifier",
                 "value": "table",
@@ -3494,14 +4175,14 @@ Object {
             ],
           },
           "operator": Object {
-            "type": "Operator",
+            "tag": "Operator",
             "value": "LIKE",
           },
           "right": Object {
             "tag": "String",
             "value": "%23%",
           },
-          "type": "BinaryExpression",
+          "tag": "BinaryExpression",
         },
       ],
     },
@@ -3517,17 +4198,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -3536,8 +4216,8 @@ Object {
       "values": Array [
         Object {
           "left": Object {
-            "tag": "identifier",
-            "value": Array [
+            "tag": "SelectIdentifier",
+            "values": Array [
               Object {
                 "tag": "Identifier",
                 "value": "table",
@@ -3549,14 +4229,14 @@ Object {
             ],
           },
           "operator": Object {
-            "type": "Operator",
+            "tag": "Operator",
             "value": "!=",
           },
           "right": Object {
             "tag": "String",
             "value": "23",
           },
-          "type": "BinaryExpression",
+          "tag": "BinaryExpression",
         },
       ],
     },
@@ -3572,17 +4252,16 @@ Object {
       "tag": "SelectList",
       "values": Array [
         Object {
-          "tag": "Item",
-          "values": Array [
-            Object {
-              "tag": "identifier",
-              "value": Array [
-                Object {
-                  "tag": "star",
-                },
-              ],
-            },
-          ],
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },
@@ -3597,18 +4276,17 @@ Object {
                 "tag": "SelectList",
                 "values": Array [
                   Object {
-                    "tag": "Item",
-                    "values": Array [
-                      Object {
-                        "tag": "identifier",
-                        "value": Array [
-                          Object {
-                            "tag": "Identifier",
-                            "value": "id",
-                          },
-                        ],
-                      },
-                    ],
+                    "as": undefined,
+                    "tag": "SelectListItem",
+                    "value": Object {
+                      "tag": "SelectIdentifier",
+                      "values": Array [
+                        Object {
+                          "tag": "Identifier",
+                          "value": "id",
+                        },
+                      ],
+                    },
                   },
                 ],
               },
@@ -3616,18 +4294,17 @@ Object {
                 "tag": "From",
                 "values": Array [
                   Object {
+                    "as": undefined,
                     "tag": "FromListItem",
-                    "values": Array [
-                      Object {
-                        "tag": "QualifiedIdentifier",
-                        "value": Array [
-                          Object {
-                            "tag": "Identifier",
-                            "value": "test",
-                          },
-                        ],
-                      },
-                    ],
+                    "value": Object {
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "tag": "Identifier",
+                          "value": "test",
+                        },
+                      ],
+                    },
                   },
                 ],
               },
@@ -3641,14 +4318,14 @@ Object {
             ],
           },
           "operator": Object {
-            "type": "Operator",
+            "tag": "Operator",
             "value": "=",
           },
           "right": Object {
             "tag": "Number",
             "value": "5",
           },
-          "type": "BinaryExpression",
+          "tag": "BinaryExpression",
         },
       ],
     },
