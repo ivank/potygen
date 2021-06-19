@@ -55,32 +55,30 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
-          "left": Object {
-            "tag": "String",
-            "value": "2006-01-01",
-          },
-          "right": Object {
-            "tag": "String",
-            "value": "2007-01-01",
-          },
-          "tag": "Between",
-          "value": Object {
-            "tag": "SelectIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table",
-              },
-              Object {
-                "tag": "Identifier",
-                "value": "col",
-              },
-            ],
-          },
+      "value": Object {
+        "left": Object {
+          "tag": "String",
+          "value": "2006-01-01",
         },
-      ],
+        "right": Object {
+          "tag": "String",
+          "value": "2007-01-01",
+        },
+        "tag": "Between",
+        "value": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+      },
     },
   ],
 }
@@ -548,40 +546,44 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
+      "join": Array [
         Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
+          "table": Object {
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "jobs",
+                "value": "test1",
               },
             ],
           },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": "CROSS",
+          },
+          "values": Array [],
         },
       ],
-    },
-    Object {
-      "tag": "Join",
-      "values": Array [
-        Object {
-          "tag": "JoinType",
-          "value": "CROSS",
-        },
-        Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "test1",
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
             },
-          ],
-        },
-      ],
+          },
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -827,25 +829,30 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
     Object {
-      "tag": "ExceptSelect",
+      "tag": "Combination",
+      "type": "EXCEPT",
       "values": Array [
         Object {
           "tag": "SelectList",
@@ -865,22 +872,26 @@ Object {
           ],
         },
         Object {
-          "tag": "From",
-          "values": Array [
-            Object {
-              "as": undefined,
-              "tag": "FromListItem",
-              "value": Object {
-                "tag": "QualifiedIdentifier",
-                "values": Array [
-                  Object {
-                    "tag": "Identifier",
-                    "value": "table2",
-                  },
-                ],
+          "join": Array [],
+          "list": Object {
+            "tag": "FromList",
+            "values": Array [
+              Object {
+                "as": undefined,
+                "tag": "FromListItem",
+                "value": Object {
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "table2",
+                    },
+                  ],
+                },
               },
-            },
-          ],
+            ],
+          },
+          "tag": "From",
         },
       ],
     },
@@ -924,25 +935,30 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
     Object {
-      "tag": "ExceptSelect",
+      "tag": "Combination",
+      "type": "EXCEPT",
       "values": Array [
         Object {
           "tag": "SelectList",
@@ -976,22 +992,26 @@ Object {
           ],
         },
         Object {
-          "tag": "From",
-          "values": Array [
-            Object {
-              "as": undefined,
-              "tag": "FromListItem",
-              "value": Object {
-                "tag": "QualifiedIdentifier",
-                "values": Array [
-                  Object {
-                    "tag": "Identifier",
-                    "value": "table2",
-                  },
-                ],
+          "join": Array [],
+          "list": Object {
+            "tag": "FromList",
+            "values": Array [
+              Object {
+                "as": undefined,
+                "tag": "FromListItem",
+                "value": Object {
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "table2",
+                    },
+                  ],
+                },
               },
-            },
-          ],
+            ],
+          },
+          "tag": "From",
         },
       ],
     },
@@ -1021,22 +1041,26 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "jobs",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -1064,59 +1088,67 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": Object {
-            "tag": "As",
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": Object {
+              "tag": "As",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "jobs1",
+              },
+            },
+            "tag": "FromListItem",
             "value": Object {
-              "tag": "Identifier",
-              "value": "jobs1",
+              "tag": "Select",
+              "values": Array [
+                Object {
+                  "tag": "SelectList",
+                  "values": Array [
+                    Object {
+                      "as": undefined,
+                      "tag": "SelectListItem",
+                      "value": Object {
+                        "tag": "SelectIdentifier",
+                        "values": Array [
+                          Object {
+                            "tag": "StarIdentifier",
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+                Object {
+                  "join": Array [],
+                  "list": Object {
+                    "tag": "FromList",
+                    "values": Array [
+                      Object {
+                        "as": undefined,
+                        "tag": "FromListItem",
+                        "value": Object {
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "tag": "Identifier",
+                              "value": "jobs2",
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                  "tag": "From",
+                },
+              ],
             },
           },
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "Select",
-            "values": Array [
-              Object {
-                "tag": "SelectList",
-                "values": Array [
-                  Object {
-                    "as": undefined,
-                    "tag": "SelectListItem",
-                    "value": Object {
-                      "tag": "SelectIdentifier",
-                      "values": Array [
-                        Object {
-                          "tag": "StarIdentifier",
-                        },
-                      ],
-                    },
-                  },
-                ],
-              },
-              Object {
-                "tag": "From",
-                "values": Array [
-                  Object {
-                    "as": undefined,
-                    "tag": "FromListItem",
-                    "value": Object {
-                      "tag": "QualifiedIdentifier",
-                      "values": Array [
-                        Object {
-                          "tag": "Identifier",
-                          "value": "jobs2",
-                        },
-                      ],
-                    },
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -1144,66 +1176,74 @@ Object {
       ],
     },
     Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs1",
+                },
+              ],
+            },
+          },
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "Select",
+              "values": Array [
+                Object {
+                  "tag": "SelectList",
+                  "values": Array [
+                    Object {
+                      "as": undefined,
+                      "tag": "SelectListItem",
+                      "value": Object {
+                        "tag": "SelectIdentifier",
+                        "values": Array [
+                          Object {
+                            "tag": "StarIdentifier",
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+                Object {
+                  "join": Array [],
+                  "list": Object {
+                    "tag": "FromList",
+                    "values": Array [
+                      Object {
+                        "as": undefined,
+                        "tag": "FromListItem",
+                        "value": Object {
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "tag": "Identifier",
+                              "value": "jobs2",
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                  "tag": "From",
+                },
+              ],
+            },
+          },
+        ],
+      },
       "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "jobs1",
-              },
-            ],
-          },
-        },
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "Select",
-            "values": Array [
-              Object {
-                "tag": "SelectList",
-                "values": Array [
-                  Object {
-                    "as": undefined,
-                    "tag": "SelectListItem",
-                    "value": Object {
-                      "tag": "SelectIdentifier",
-                      "values": Array [
-                        Object {
-                          "tag": "StarIdentifier",
-                        },
-                      ],
-                    },
-                  },
-                ],
-              },
-              Object {
-                "tag": "From",
-                "values": Array [
-                  Object {
-                    "as": undefined,
-                    "tag": "FromListItem",
-                    "value": Object {
-                      "tag": "QualifiedIdentifier",
-                      "values": Array [
-                        Object {
-                          "tag": "Identifier",
-                          "value": "jobs2",
-                        },
-                      ],
-                    },
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      ],
     },
   ],
 }
@@ -1231,28 +1271,32 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": Object {
-            "tag": "As",
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": Object {
+              "tag": "As",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "test",
+              },
+            },
+            "tag": "FromListItem",
             "value": Object {
-              "tag": "Identifier",
-              "value": "test",
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
             },
           },
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "jobs",
-              },
-            ],
-          },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -1280,28 +1324,32 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": Object {
-            "tag": "As",
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": Object {
+              "tag": "As",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "test 2",
+              },
+            },
+            "tag": "FromListItem",
             "value": Object {
-              "tag": "Identifier",
-              "value": "test 2",
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
             },
           },
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "jobs",
-              },
-            ],
-          },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -1329,40 +1377,44 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
+      "join": Array [
         Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
+          "table": Object {
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "jobs",
+                "value": "test1",
               },
             ],
           },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": "FULL",
+          },
+          "values": Array [],
         },
       ],
-    },
-    Object {
-      "tag": "Join",
-      "values": Array [
-        Object {
-          "tag": "JoinType",
-          "value": "FULL",
-        },
-        Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "test1",
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
             },
-          ],
-        },
-      ],
+          },
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -1390,40 +1442,44 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
+      "join": Array [
         Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
+          "table": Object {
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "jobs",
+                "value": "test1",
               },
             ],
           },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": "FULL",
+          },
+          "values": Array [],
         },
       ],
-    },
-    Object {
-      "tag": "Join",
-      "values": Array [
-        Object {
-          "tag": "JoinType",
-          "value": "FULL",
-        },
-        Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "test1",
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
             },
-          ],
-        },
-      ],
+          },
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -1451,22 +1507,26 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
     Object {
       "tag": "GroupBy",
@@ -1508,22 +1568,26 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
     Object {
       "tag": "GroupBy",
@@ -1574,40 +1638,44 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
+      "join": Array [
         Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
+          "table": Object {
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "jobs",
+                "value": "test1",
               },
             ],
           },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
+          "values": Array [],
         },
       ],
-    },
-    Object {
-      "tag": "Join",
-      "values": Array [
-        Object {
-          "tag": "JoinType",
-          "value": undefined,
-        },
-        Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "test1",
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
             },
-          ],
-        },
-      ],
+          },
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -1635,25 +1703,30 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
     Object {
-      "tag": "IntersectSelect",
+      "tag": "Combination",
+      "type": "INTERSECT",
       "values": Array [
         Object {
           "tag": "SelectList",
@@ -1673,22 +1746,26 @@ Object {
           ],
         },
         Object {
-          "tag": "From",
-          "values": Array [
-            Object {
-              "as": undefined,
-              "tag": "FromListItem",
-              "value": Object {
-                "tag": "QualifiedIdentifier",
-                "values": Array [
-                  Object {
-                    "tag": "Identifier",
-                    "value": "table2",
-                  },
-                ],
+          "join": Array [],
+          "list": Object {
+            "tag": "FromList",
+            "values": Array [
+              Object {
+                "as": undefined,
+                "tag": "FromListItem",
+                "value": Object {
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "table2",
+                    },
+                  ],
+                },
               },
-            },
-          ],
+            ],
+          },
+          "tag": "From",
         },
       ],
     },
@@ -1732,25 +1809,30 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
     Object {
-      "tag": "IntersectSelect",
+      "tag": "Combination",
+      "type": "INTERSECT",
       "values": Array [
         Object {
           "tag": "SelectList",
@@ -1784,22 +1866,26 @@ Object {
           ],
         },
         Object {
-          "tag": "From",
-          "values": Array [
-            Object {
-              "as": undefined,
-              "tag": "FromListItem",
-              "value": Object {
-                "tag": "QualifiedIdentifier",
-                "values": Array [
-                  Object {
-                    "tag": "Identifier",
-                    "value": "table2",
-                  },
-                ],
+          "join": Array [],
+          "list": Object {
+            "tag": "FromList",
+            "values": Array [
+              Object {
+                "as": undefined,
+                "tag": "FromListItem",
+                "value": Object {
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "table2",
+                    },
+                  ],
+                },
               },
-            },
-          ],
+            ],
+          },
+          "tag": "From",
         },
       ],
     },
@@ -1829,17 +1915,64 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
+      "join": Array [
         Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
+          "table": Object {
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "jobs",
+                "value": "test1",
+              },
+            ],
+          },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
+          "values": Array [],
+        },
+      ],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql join as (SELECT * FROM jobs JOIN test1 AS my_test): join as 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
               },
             ],
           },
@@ -1847,22 +1980,125 @@ Object {
       ],
     },
     Object {
-      "tag": "Join",
-      "values": Array [
+      "join": Array [
         Object {
-          "tag": "JoinType",
-          "value": undefined,
-        },
-        Object {
-          "tag": "QualifiedIdentifier",
+          "table": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "test1",
+              },
+            ],
+          },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
           "values": Array [
             Object {
-              "tag": "Identifier",
-              "value": "test1",
+              "tag": "As",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "my_test",
+              },
             },
           ],
         },
       ],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql join as quoted (SELECT * FROM jobs JOIN test1 AS "myTest"): join as quoted 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [
+        Object {
+          "table": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "test1",
+              },
+            ],
+          },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
+          "values": Array [
+            Object {
+              "tag": "As",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "myTest",
+              },
+            },
+          ],
+        },
+      ],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -1890,17 +2126,101 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
+      "join": Array [
         Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
+          "table": Object {
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "jobs",
+                "value": "test1",
+              },
+            ],
+          },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
+          "values": Array [
+            Object {
+              "tag": "JoinOn",
+              "value": Object {
+                "left": Object {
+                  "tag": "SelectIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "jobs",
+                    },
+                    Object {
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "operator": Object {
+                  "tag": "Operator",
+                  "value": "=",
+                },
+                "right": Object {
+                  "tag": "SelectIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "test1",
+                    },
+                    Object {
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "tag": "BinaryExpression",
+              },
+            },
+          ],
+        },
+      ],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql join on (SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id): join on 2`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
               },
             ],
           },
@@ -1908,58 +2228,299 @@ Object {
       ],
     },
     Object {
-      "tag": "Join",
-      "values": Array [
+      "join": Array [
         Object {
-          "tag": "JoinType",
-          "value": undefined,
-        },
-        Object {
-          "tag": "QualifiedIdentifier",
+          "table": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "test1",
+              },
+            ],
+          },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
           "values": Array [
             Object {
-              "tag": "Identifier",
-              "value": "test1",
+              "tag": "JoinOn",
+              "value": Object {
+                "left": Object {
+                  "tag": "SelectIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "jobs",
+                    },
+                    Object {
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "operator": Object {
+                  "tag": "Operator",
+                  "value": "=",
+                },
+                "right": Object {
+                  "tag": "SelectIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "test1",
+                    },
+                    Object {
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "tag": "BinaryExpression",
+              },
             },
           ],
         },
-        Object {
-          "tag": "JoinOn",
-          "value": Object {
-            "left": Object {
-              "tag": "SelectIdentifier",
+      ],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "tag": "Identifier",
                   "value": "jobs",
                 },
-                Object {
-                  "tag": "Identifier",
-                  "value": "id",
-                },
               ],
             },
-            "operator": Object {
-              "tag": "Operator",
-              "value": "=",
-            },
-            "right": Object {
-              "tag": "SelectIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "test1",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "id",
-                },
-              ],
-            },
-            "tag": "BinaryExpression",
+          },
+        ],
+      },
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql join on as (SELECT * FROM jobs JOIN test1 AS my_test ON jobs.id = test1.id): join on as 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
           },
         },
       ],
+    },
+    Object {
+      "join": Array [
+        Object {
+          "table": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "test1",
+              },
+            ],
+          },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
+          "values": Array [
+            Object {
+              "tag": "As",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "my_test",
+              },
+            },
+            Object {
+              "tag": "JoinOn",
+              "value": Object {
+                "left": Object {
+                  "tag": "SelectIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "jobs",
+                    },
+                    Object {
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "operator": Object {
+                  "tag": "Operator",
+                  "value": "=",
+                },
+                "right": Object {
+                  "tag": "SelectIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "test1",
+                    },
+                    Object {
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "tag": "BinaryExpression",
+              },
+            },
+          ],
+        },
+      ],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql join on as quoted (SELECT * FROM jobs JOIN test1 AS "myTest" ON jobs.id = test1.id): join on as quoted 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [
+        Object {
+          "table": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "test1",
+              },
+            ],
+          },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
+          "values": Array [
+            Object {
+              "tag": "As",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "myTest",
+              },
+            },
+            Object {
+              "tag": "JoinOn",
+              "value": Object {
+                "left": Object {
+                  "tag": "SelectIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "jobs",
+                    },
+                    Object {
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "operator": Object {
+                  "tag": "Operator",
+                  "value": "=",
+                },
+                "right": Object {
+                  "tag": "SelectIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "test1",
+                    },
+                    Object {
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "tag": "BinaryExpression",
+              },
+            },
+          ],
+        },
+      ],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -1987,40 +2548,44 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
+      "join": Array [
         Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
+          "table": Object {
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "jobs",
+                "value": "test1",
               },
             ],
           },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": "LEFT",
+          },
+          "values": Array [],
         },
       ],
-    },
-    Object {
-      "tag": "Join",
-      "values": Array [
-        Object {
-          "tag": "JoinType",
-          "value": "LEFT",
-        },
-        Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "test1",
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
             },
-          ],
-        },
-      ],
+          },
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -2048,40 +2613,44 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
+      "join": Array [
         Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
+          "table": Object {
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "jobs",
+                "value": "test1",
               },
             ],
           },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": "LEFT",
+          },
+          "values": Array [],
         },
       ],
-    },
-    Object {
-      "tag": "Join",
-      "values": Array [
-        Object {
-          "tag": "JoinType",
-          "value": "LEFT",
-        },
-        Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "test1",
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
             },
-          ],
-        },
-      ],
+          },
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -2291,41 +2860,45 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "jobs1",
-              },
-            ],
-          },
-        },
-        Object {
-          "as": Object {
-            "tag": "As",
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
             "value": Object {
-              "tag": "Identifier",
-              "value": "test 2",
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs1",
+                },
+              ],
             },
           },
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
+          Object {
+            "as": Object {
+              "tag": "As",
+              "value": Object {
                 "tag": "Identifier",
-                "value": "jobs",
+                "value": "test 2",
               },
-            ],
+            },
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -2353,60 +2926,64 @@ Object {
       ],
     },
     Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": Object {
+              "tag": "As",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "j1",
+              },
+            },
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs1",
+                },
+              ],
+            },
+          },
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs2",
+                },
+              ],
+            },
+          },
+          Object {
+            "as": Object {
+              "tag": "As",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "j3",
+              },
+            },
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs3",
+                },
+              ],
+            },
+          },
+        ],
+      },
       "tag": "From",
-      "values": Array [
-        Object {
-          "as": Object {
-            "tag": "As",
-            "value": Object {
-              "tag": "Identifier",
-              "value": "j1",
-            },
-          },
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "jobs1",
-              },
-            ],
-          },
-        },
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "jobs2",
-              },
-            ],
-          },
-        },
-        Object {
-          "as": Object {
-            "tag": "As",
-            "value": Object {
-              "tag": "Identifier",
-              "value": "j3",
-            },
-          },
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "jobs3",
-              },
-            ],
-          },
-        },
-      ],
     },
   ],
 }
@@ -2434,58 +3011,61 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
+      "join": Array [
         Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
+          "table": Object {
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "jobs",
+                "value": "test1",
               },
             ],
           },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
+          "values": Array [],
+        },
+        Object {
+          "table": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "test2",
+              },
+            ],
+          },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
+          "values": Array [],
         },
       ],
-    },
-    Object {
-      "tag": "Join",
-      "values": Array [
-        Object {
-          "tag": "JoinType",
-          "value": undefined,
-        },
-        Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "test1",
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
             },
-          ],
-        },
-      ],
-    },
-    Object {
-      "tag": "Join",
-      "values": Array [
-        Object {
-          "tag": "JoinType",
-          "value": undefined,
-        },
-        Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "test2",
-            },
-          ],
-        },
-      ],
+          },
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -2536,22 +3116,26 @@ Object {
                 ],
               },
               Object {
-                "tag": "From",
-                "values": Array [
-                  Object {
-                    "as": undefined,
-                    "tag": "FromListItem",
-                    "value": Object {
-                      "tag": "QualifiedIdentifier",
-                      "values": Array [
-                        Object {
-                          "tag": "Identifier",
-                          "value": "table2",
-                        },
-                      ],
+                "join": Array [],
+                "list": Object {
+                  "tag": "FromList",
+                  "values": Array [
+                    Object {
+                      "as": undefined,
+                      "tag": "FromListItem",
+                      "value": Object {
+                        "tag": "QualifiedIdentifier",
+                        "values": Array [
+                          Object {
+                            "tag": "Identifier",
+                            "value": "table2",
+                          },
+                        ],
+                      },
                     },
-                  },
-                ],
+                  ],
+                },
+                "tag": "From",
               },
               Object {
                 "tag": "Limit",
@@ -2566,22 +3150,26 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -2641,43 +3229,45 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
     Object {
       "tag": "OrderBy",
       "values": Array [
         Object {
+          "direction": Object {
+            "tag": "OrderDirection",
+            "value": "ASC",
+          },
           "tag": "OrderByItem",
-          "values": Array [
-            Object {
-              "tag": "SelectIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "col",
-                },
-              ],
-            },
-            Object {
-              "tag": "OrderDirection",
-              "value": "ASC",
-            },
-          ],
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2707,17 +3297,80 @@ Object {
       ],
     },
     Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
       "tag": "From",
+    },
+    Object {
+      "tag": "OrderBy",
       "values": Array [
         Object {
-          "as": undefined,
-          "tag": "FromListItem",
+          "direction": Object {
+            "tag": "OrderDirection",
+            "value": "ASC",
+          },
+          "tag": "OrderByItem",
           "value": Object {
-            "tag": "QualifiedIdentifier",
+            "tag": "SelectIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "table1",
+                "value": "col1",
+              },
+            ],
+          },
+        },
+        Object {
+          "direction": undefined,
+          "tag": "OrderByItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col2",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql parameter in having (SELECT * HAVING table1.col = :test1): parameter in having 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
               },
             ],
           },
@@ -2725,41 +3378,291 @@ Object {
       ],
     },
     Object {
-      "tag": "OrderBy",
-      "values": Array [
-        Object {
-          "tag": "OrderByItem",
+      "tag": "Having",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
           "values": Array [
             Object {
-              "tag": "SelectIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "col1",
-                },
-              ],
+              "tag": "Identifier",
+              "value": "table1",
             },
             Object {
-              "tag": "OrderDirection",
-              "value": "ASC",
+              "tag": "Identifier",
+              "value": "col",
             },
           ],
         },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "tag": "Parameter",
+          "type": "native",
+          "value": "test1",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql parameter in join with 2 (SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1 WHERE table2.col = :test2): parameter in join with 2 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
         Object {
-          "tag": "OrderByItem",
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [
+        Object {
+          "table": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table2",
+              },
+            ],
+          },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
           "values": Array [
             Object {
-              "tag": "SelectIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "col2",
+              "tag": "JoinOn",
+              "value": Object {
+                "left": Object {
+                  "left": Object {
+                    "tag": "SelectIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "table1",
+                      },
+                      Object {
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  "operator": Object {
+                    "tag": "Operator",
+                    "value": "=",
+                  },
+                  "right": Object {
+                    "tag": "SelectIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "table2",
+                      },
+                      Object {
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  "tag": "BinaryExpression",
                 },
-              ],
+                "operator": Object {
+                  "tag": "Operator",
+                  "value": "AND",
+                },
+                "right": Object {
+                  "left": Object {
+                    "tag": "SelectIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "table1",
+                      },
+                      Object {
+                        "tag": "Identifier",
+                        "value": "col",
+                      },
+                    ],
+                  },
+                  "operator": Object {
+                    "tag": "Operator",
+                    "value": "=",
+                  },
+                  "right": Object {
+                    "tag": "Parameter",
+                    "type": "native",
+                    "value": "test1",
+                  },
+                  "tag": "BinaryExpression",
+                },
+                "tag": "BinaryExpression",
+              },
             },
           ],
         },
       ],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table2",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "tag": "Parameter",
+          "type": "native",
+          "value": "test2",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql parameter in select (SELECT :test1): parameter in select 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Parameter",
+            "type": "native",
+            "value": "test1",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql parameter in where (SELECT * FROM table1 WHERE table1.col = :test1): parameter in where 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "tag": "Parameter",
+          "type": "native",
+          "value": "test1",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -2796,22 +3699,26 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -2877,22 +3784,26 @@ Object {
                   ],
                 },
                 Object {
-                  "tag": "From",
-                  "values": Array [
-                    Object {
-                      "as": undefined,
-                      "tag": "FromListItem",
-                      "value": Object {
-                        "tag": "QualifiedIdentifier",
-                        "values": Array [
-                          Object {
-                            "tag": "Identifier",
-                            "value": "table2",
-                          },
-                        ],
+                  "join": Array [],
+                  "list": Object {
+                    "tag": "FromList",
+                    "values": Array [
+                      Object {
+                        "as": undefined,
+                        "tag": "FromListItem",
+                        "value": Object {
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "tag": "Identifier",
+                              "value": "table2",
+                            },
+                          ],
+                        },
                       },
-                    },
-                  ],
+                    ],
+                  },
+                  "tag": "From",
                 },
                 Object {
                   "tag": "Limit",
@@ -2908,22 +3819,26 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -2955,22 +3870,26 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -3214,40 +4133,44 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
+      "join": Array [
         Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
+          "table": Object {
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "jobs",
+                "value": "test1",
               },
             ],
           },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": "RIGHT",
+          },
+          "values": Array [],
         },
       ],
-    },
-    Object {
-      "tag": "Join",
-      "values": Array [
-        Object {
-          "tag": "JoinType",
-          "value": "RIGHT",
-        },
-        Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "test1",
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
             },
-          ],
-        },
-      ],
+          },
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -3275,40 +4198,44 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
+      "join": Array [
         Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
+          "table": Object {
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "jobs",
+                "value": "test1",
               },
             ],
           },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": "RIGHT",
+          },
+          "values": Array [],
         },
       ],
-    },
-    Object {
-      "tag": "Join",
-      "values": Array [
-        Object {
-          "tag": "JoinType",
-          "value": "RIGHT",
-        },
-        Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "test1",
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
             },
-          ],
-        },
-      ],
+          },
+        ],
+      },
+      "tag": "From",
     },
   ],
 }
@@ -3361,25 +4288,30 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
     Object {
-      "tag": "UnionSelect",
+      "tag": "Combination",
+      "type": "UNION",
       "values": Array [
         Object {
           "tag": "SelectList",
@@ -3399,22 +4331,26 @@ Object {
           ],
         },
         Object {
-          "tag": "From",
-          "values": Array [
-            Object {
-              "as": undefined,
-              "tag": "FromListItem",
-              "value": Object {
-                "tag": "QualifiedIdentifier",
-                "values": Array [
-                  Object {
-                    "tag": "Identifier",
-                    "value": "table2",
-                  },
-                ],
+          "join": Array [],
+          "list": Object {
+            "tag": "FromList",
+            "values": Array [
+              Object {
+                "as": undefined,
+                "tag": "FromListItem",
+                "value": Object {
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "table2",
+                    },
+                  ],
+                },
               },
-            },
-          ],
+            ],
+          },
+          "tag": "From",
         },
       ],
     },
@@ -3458,25 +4394,30 @@ Object {
       ],
     },
     Object {
-      "tag": "From",
-      "values": Array [
-        Object {
-          "as": undefined,
-          "tag": "FromListItem",
-          "value": Object {
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table1",
-              },
-            ],
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
           },
-        },
-      ],
+        ],
+      },
+      "tag": "From",
     },
     Object {
-      "tag": "UnionSelect",
+      "tag": "Combination",
+      "type": "UNION",
       "values": Array [
         Object {
           "tag": "SelectList",
@@ -3510,22 +4451,26 @@ Object {
           ],
         },
         Object {
-          "tag": "From",
-          "values": Array [
-            Object {
-              "as": undefined,
-              "tag": "FromListItem",
-              "value": Object {
-                "tag": "QualifiedIdentifier",
-                "values": Array [
-                  Object {
-                    "tag": "Identifier",
-                    "value": "table2",
-                  },
-                ],
+          "join": Array [],
+          "list": Object {
+            "tag": "FromList",
+            "values": Array [
+              Object {
+                "as": undefined,
+                "tag": "FromListItem",
+                "value": Object {
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "table2",
+                    },
+                  ],
+                },
               },
-            },
-          ],
+            ],
+          },
+          "tag": "From",
         },
       ],
     },
@@ -3556,28 +4501,26 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
-          "left": Object {
-            "tag": "SelectIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "id",
-              },
-            ],
-          },
-          "operator": Object {
-            "tag": "Operator",
-            "value": "=",
-          },
-          "right": Object {
-            "tag": "Number",
-            "value": "5",
-          },
-          "tag": "BinaryExpression",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
-      ],
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "tag": "Number",
+          "value": "5",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -3606,55 +4549,53 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
+      "value": Object {
+        "left": Object {
           "left": Object {
-            "left": Object {
-              "tag": "SelectIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "id",
-                },
-              ],
-            },
-            "operator": Object {
-              "tag": "Operator",
-              "value": "=",
-            },
-            "right": Object {
-              "tag": "Number",
-              "value": "5",
-            },
-            "tag": "BinaryExpression",
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
           },
           "operator": Object {
             "tag": "Operator",
-            "value": "AND",
+            "value": "=",
           },
           "right": Object {
-            "left": Object {
-              "tag": "SelectIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "name",
-                },
-              ],
-            },
-            "operator": Object {
-              "tag": "Operator",
-              "value": "=",
-            },
-            "right": Object {
-              "tag": "String",
-              "value": "test",
-            },
-            "tag": "BinaryExpression",
+            "tag": "Number",
+            "value": "5",
           },
           "tag": "BinaryExpression",
         },
-      ],
+        "operator": Object {
+          "tag": "Operator",
+          "value": "AND",
+        },
+        "right": Object {
+          "left": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "name",
+              },
+            ],
+          },
+          "operator": Object {
+            "tag": "Operator",
+            "value": "=",
+          },
+          "right": Object {
+            "tag": "String",
+            "value": "test",
+          },
+          "tag": "BinaryExpression",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -3683,39 +4624,37 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
+      "value": Object {
+        "left": Object {
           "left": Object {
-            "left": Object {
-              "tag": "SelectIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "id",
-                },
-              ],
-            },
-            "operator": Object {
-              "tag": "Operator",
-              "value": "=",
-            },
-            "right": Object {
-              "tag": "Number",
-              "value": "5",
-            },
-            "tag": "BinaryExpression",
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
           },
           "operator": Object {
             "tag": "Operator",
-            "value": "AND",
+            "value": "=",
           },
           "right": Object {
-            "tag": "Boolean",
-            "value": "TRUE",
+            "tag": "Number",
+            "value": "5",
           },
           "tag": "BinaryExpression",
         },
-      ],
+        "operator": Object {
+          "tag": "Operator",
+          "value": "AND",
+        },
+        "right": Object {
+          "tag": "Boolean",
+          "value": "TRUE",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -3745,9 +4684,26 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
-          "left": Object {
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table2",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col2",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "expression": Object {
             "tag": "SelectIdentifier",
             "values": Array [
               Object {
@@ -3756,57 +4712,38 @@ Object {
               },
               Object {
                 "tag": "Identifier",
-                "value": "col2",
+                "value": "col3",
               },
             ],
           },
-          "operator": Object {
-            "tag": "Operator",
-            "value": "=",
-          },
-          "right": Object {
-            "expression": Object {
-              "tag": "SelectIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "table2",
-                },
-                Object {
-                  "tag": "Identifier",
-                  "value": "col3",
-                },
-              ],
+          "tag": "Case",
+          "values": Array [
+            Object {
+              "condition": Object {
+                "tag": "String",
+                "value": "test1",
+              },
+              "tag": "When",
+              "value": Object {
+                "tag": "Number",
+                "value": "1",
+              },
             },
-            "tag": "Case",
-            "values": Array [
-              Object {
-                "condition": Object {
-                  "tag": "String",
-                  "value": "test1",
-                },
-                "tag": "When",
-                "value": Object {
-                  "tag": "Number",
-                  "value": "1",
-                },
+            Object {
+              "condition": Object {
+                "tag": "String",
+                "value": "test2",
               },
-              Object {
-                "condition": Object {
-                  "tag": "String",
-                  "value": "test2",
-                },
-                "tag": "When",
-                "value": Object {
-                  "tag": "Number",
-                  "value": "2",
-                },
+              "tag": "When",
+              "value": Object {
+                "tag": "Number",
+                "value": "2",
               },
-            ],
-          },
-          "tag": "BinaryExpression",
+            },
+          ],
         },
-      ],
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -3835,32 +4772,30 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
-          "left": Object {
-            "tag": "SelectIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table",
-              },
-              Object {
-                "tag": "Identifier",
-                "value": "col",
-              },
-            ],
-          },
-          "operator": Object {
-            "tag": "Operator",
-            "value": "<>",
-          },
-          "right": Object {
-            "tag": "String",
-            "value": "23",
-          },
-          "tag": "BinaryExpression",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
         },
-      ],
+        "operator": Object {
+          "tag": "Operator",
+          "value": "<>",
+        },
+        "right": Object {
+          "tag": "String",
+          "value": "23",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -3889,32 +4824,30 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
-          "left": Object {
-            "tag": "SelectIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table",
-              },
-              Object {
-                "tag": "Identifier",
-                "value": "col",
-              },
-            ],
-          },
-          "operator": Object {
-            "tag": "Operator",
-            "value": ">",
-          },
-          "right": Object {
-            "tag": "Number",
-            "value": "2",
-          },
-          "tag": "BinaryExpression",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
         },
-      ],
+        "operator": Object {
+          "tag": "Operator",
+          "value": ">",
+        },
+        "right": Object {
+          "tag": "Number",
+          "value": "2",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -3943,32 +4876,30 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
-          "left": Object {
-            "tag": "SelectIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table",
-              },
-              Object {
-                "tag": "Identifier",
-                "value": "col",
-              },
-            ],
-          },
-          "operator": Object {
-            "tag": "Operator",
-            "value": ">=",
-          },
-          "right": Object {
-            "tag": "Number",
-            "value": "23",
-          },
-          "tag": "BinaryExpression",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
         },
-      ],
+        "operator": Object {
+          "tag": "Operator",
+          "value": ">=",
+        },
+        "right": Object {
+          "tag": "Number",
+          "value": "23",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -3997,32 +4928,30 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
-          "left": Object {
-            "tag": "SelectIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table",
-              },
-              Object {
-                "tag": "Identifier",
-                "value": "col",
-              },
-            ],
-          },
-          "operator": Object {
-            "tag": "Operator",
-            "value": "ILIKE",
-          },
-          "right": Object {
-            "tag": "String",
-            "value": "23%",
-          },
-          "tag": "BinaryExpression",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
         },
-      ],
+        "operator": Object {
+          "tag": "Operator",
+          "value": "ILIKE",
+        },
+        "right": Object {
+          "tag": "String",
+          "value": "23%",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -4051,32 +4980,30 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
-          "left": Object {
-            "tag": "SelectIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table",
-              },
-              Object {
-                "tag": "Identifier",
-                "value": "col",
-              },
-            ],
-          },
-          "operator": Object {
-            "tag": "Operator",
-            "value": "<",
-          },
-          "right": Object {
-            "tag": "Number",
-            "value": "2",
-          },
-          "tag": "BinaryExpression",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
         },
-      ],
+        "operator": Object {
+          "tag": "Operator",
+          "value": "<",
+        },
+        "right": Object {
+          "tag": "Number",
+          "value": "2",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -4105,32 +5032,30 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
-          "left": Object {
-            "tag": "SelectIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table",
-              },
-              Object {
-                "tag": "Identifier",
-                "value": "col",
-              },
-            ],
-          },
-          "operator": Object {
-            "tag": "Operator",
-            "value": "<=",
-          },
-          "right": Object {
-            "tag": "String",
-            "value": "23",
-          },
-          "tag": "BinaryExpression",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
         },
-      ],
+        "operator": Object {
+          "tag": "Operator",
+          "value": "<=",
+        },
+        "right": Object {
+          "tag": "String",
+          "value": "23",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -4159,32 +5084,30 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
-          "left": Object {
-            "tag": "SelectIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table",
-              },
-              Object {
-                "tag": "Identifier",
-                "value": "col",
-              },
-            ],
-          },
-          "operator": Object {
-            "tag": "Operator",
-            "value": "LIKE",
-          },
-          "right": Object {
-            "tag": "String",
-            "value": "%23%",
-          },
-          "tag": "BinaryExpression",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
         },
-      ],
+        "operator": Object {
+          "tag": "Operator",
+          "value": "LIKE",
+        },
+        "right": Object {
+          "tag": "String",
+          "value": "%23%",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -4213,32 +5136,30 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
-          "left": Object {
-            "tag": "SelectIdentifier",
-            "values": Array [
-              Object {
-                "tag": "Identifier",
-                "value": "table",
-              },
-              Object {
-                "tag": "Identifier",
-                "value": "col",
-              },
-            ],
-          },
-          "operator": Object {
-            "tag": "Operator",
-            "value": "!=",
-          },
-          "right": Object {
-            "tag": "String",
-            "value": "23",
-          },
-          "tag": "BinaryExpression",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
         },
-      ],
+        "operator": Object {
+          "tag": "Operator",
+          "value": "!=",
+        },
+        "right": Object {
+          "tag": "String",
+          "value": "23",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -4267,31 +5188,32 @@ Object {
     },
     Object {
       "tag": "Where",
-      "values": Array [
-        Object {
-          "left": Object {
-            "tag": "Select",
-            "values": Array [
-              Object {
-                "tag": "SelectList",
-                "values": Array [
-                  Object {
-                    "as": undefined,
-                    "tag": "SelectListItem",
-                    "value": Object {
-                      "tag": "SelectIdentifier",
-                      "values": Array [
-                        Object {
-                          "tag": "Identifier",
-                          "value": "id",
-                        },
-                      ],
-                    },
+      "value": Object {
+        "left": Object {
+          "tag": "Select",
+          "values": Array [
+            Object {
+              "tag": "SelectList",
+              "values": Array [
+                Object {
+                  "as": undefined,
+                  "tag": "SelectListItem",
+                  "value": Object {
+                    "tag": "SelectIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
                   },
-                ],
-              },
-              Object {
-                "tag": "From",
+                },
+              ],
+            },
+            Object {
+              "join": Array [],
+              "list": Object {
+                "tag": "FromList",
                 "values": Array [
                   Object {
                     "as": undefined,
@@ -4308,26 +5230,27 @@ Object {
                   },
                 ],
               },
-              Object {
-                "tag": "Limit",
-                "value": Object {
-                  "tag": "Count",
-                  "value": "1",
-                },
+              "tag": "From",
+            },
+            Object {
+              "tag": "Limit",
+              "value": Object {
+                "tag": "Count",
+                "value": "1",
               },
-            ],
-          },
-          "operator": Object {
-            "tag": "Operator",
-            "value": "=",
-          },
-          "right": Object {
-            "tag": "Number",
-            "value": "5",
-          },
-          "tag": "BinaryExpression",
+            },
+          ],
         },
-      ],
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "tag": "Number",
+          "value": "5",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }

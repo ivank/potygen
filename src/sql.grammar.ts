@@ -1,81 +1,45 @@
 import { Ignore, All, Any, Optional, Node, Y, Star, Rule, LeftBinaryOperator, Plus } from '@ikerin/rd-parse';
-
-export enum Tag {
-  Identifier = 'Identifier',
-  QualifiedIdentifier = 'QualifiedIdentifier',
-  As = 'As',
-  String = 'String',
-  Number = 'Number',
-  Boolean = 'Boolean',
-  Count = 'Count',
-  Type = 'Type',
-  PgCast = 'PgCast',
-  Distinct = 'Distinct',
-  StarIdentifier = 'StarIdentifier',
-  SelectIdentifier = 'SelectIdentifier',
-  When = 'When',
-  Else = 'Else',
-  Case = 'Case',
-  Operator = 'Operator',
-  BinaryExpression = 'BinaryExpression',
-  Between = 'Between',
-  Cast = 'Cast',
-  SelectListItem = 'SelectListItem',
-  SelectList = 'SelectList',
-  FromListItem = 'FromListItem',
-  From = 'From',
-  JoinType = 'JoinType',
-  JoinOn = 'JoinOn',
-  JoinUsing = 'JoinUsing',
-  Join = 'Join',
-  Where = 'Where',
-  GroupBy = 'GroupBy',
-  Having = 'Having',
-  Limit = 'Limit',
-  Offset = 'Offset',
-  OrderDirection = 'OrderDirection',
-  OrderByItem = 'OrderByItem',
-  OrderBy = 'OrderBy',
-  Select = 'Select',
-  UnionSelect = 'UnionSelect',
-  IntersectSelect = 'IntersectSelect',
-  ExceptSelect = 'ExceptSelect',
-}
-
-export type IdentifierTag = { tag: Tag.Identifier; value: string };
-export type QualifiedIdentifierTag = { tag: Tag.QualifiedIdentifier; values: IdentifierTag[] };
-export type AsTag = { tag: Tag.As; value: IdentifierTag };
-export type StringTag = { tag: Tag.String; value: string };
-export type NumberTag = { tag: Tag.Number; value: string };
-export type BooleanTag = { tag: Tag.Boolean; value: string };
-export type ConstantTag = StringTag | NumberTag | BooleanTag;
-export type CountTag = { tag: Tag.Count; value: string };
-export type TypeTag = { tag: Tag.Type; value: string; param?: string };
-export type DistinctTag = { tag: Tag.Distinct; values: IdentifierTag[] };
-export type StarIdentifierTag = { tag: Tag.StarIdentifier };
-export type SelectIdentifierTag = { tag: Tag.SelectIdentifier; values: (IdentifierTag | StarIdentifierTag)[] };
-export type CastableDataTypeTag =
-  | ConstantTag
-  | SelectIdentifierTag
-  | { tag: Tag.PgCast; value: ConstantTag | SelectIdentifierTag | ExpressionTag; type: TypeTag };
-export type WhenTag = { tag: Tag.When; condition: ExpressionTag; value: ExpressionTag };
-export type ElseTag = { tag: Tag.Else; value: ExpressionTag };
-export type CaseTag = { tag: Tag.Case; expression?: CastableDataTypeTag; values: (WhenTag | ElseTag)[] };
-export type DataTypeTag = CaseTag | CastableDataTypeTag;
-export type OperatorTag = { tag: Tag.Operator; value: string };
-export type BinaryExpressionTag = {
-  tag: Tag.BinaryExpression;
-  left: DataTypeTag | BinaryExpressionTag;
-  right: DataTypeTag | BinaryExpressionTag;
-  operator: OperatorTag;
-};
-export type BetweenExpressionTag = { tag: Tag.Between; left: DataTypeTag; right: DataTypeTag; value: DataTypeTag };
-export type CastTag = { tag: Tag.Cast; value: DataTypeTag; type: TypeTag };
-export type ExpressionTag = CastTag | BinaryExpressionTag | BetweenExpressionTag | DataTypeTag;
-export type SelectListItemTag = { tag: Tag.SelectListItem; value: ExpressionTag; as?: AsTag };
-export type SelectListTag = { tag: Tag.SelectList; values: SelectListItemTag[] };
-export type FromListItemTag = { tag: Tag.FromListItem; value: QualifiedIdentifierTag | ExpressionTag; as?: AsTag };
-export type FromTag = { tag: Tag.From; values: FromListItemTag[] };
+import {
+  IdentifierTag,
+  QualifiedIdentifierTag,
+  AsTag,
+  StringTag,
+  NumberTag,
+  BooleanTag,
+  CountTag,
+  TypeTag,
+  DistinctTag,
+  StarIdentifierTag,
+  SelectIdentifierTag,
+  ParameterTag,
+  CastableDataTypeTag,
+  WhenTag,
+  ElseTag,
+  CaseTag,
+  OperatorTag,
+  BinaryExpressionTag,
+  BetweenExpressionTag,
+  CastTag,
+  SelectListItemTag,
+  SelectListTag,
+  FromListItemTag,
+  FromTag,
+  JoinTypeTag,
+  JoinOnTag,
+  JoinUsingTag,
+  JoinTag,
+  WhereTag,
+  GroupByTag,
+  HavingTag,
+  CombinationTag,
+  OrderDirectionTag,
+  OrderByItemTag,
+  OrderByTag,
+  LimitTag,
+  OffsetTag,
+  SelectTag,
+  FromListTag,
+} from './sql.types';
 
 /**
  * Comma separated list
@@ -90,15 +54,24 @@ const Brackets = (rule: Rule) => All('(', rule, ')');
  */
 const NameRule = /^([A-Z_][A-Z0-9_]*)/i;
 const QuotedNameRule = /^"((?:""|[^"])*)"/;
-const Identifier = Node<IdentifierTag>(Any(NameRule, QuotedNameRule), ([value]) => ({ tag: Tag.Identifier, value }));
+const Identifier = Node<IdentifierTag>(Any(NameRule, QuotedNameRule), ([value]) => ({ tag: 'Identifier', value }));
 const QualifiedIdentifier = Node<QualifiedIdentifierTag>(List(Identifier, { separator: '.' }), (values) => {
-  return { tag: Tag.QualifiedIdentifier, values };
+  return { tag: 'QualifiedIdentifier', values };
 });
+
+/**
+ * Parameteer
+ */
+const Parameter = Node<ParameterTag>(All(/^(\$|\:|\$\$)/, NameRule), ([type, value]) => ({
+  tag: 'Parameter',
+  value,
+  type: type === '$$' ? 'values' : 'native',
+}));
 
 /**
  * AS Clause
  */
-const As = Node<AsTag>(All(/^AS/i, Identifier), ([value]) => ({ tag: Tag.As, value }));
+const As = Node<AsTag>(All(/^AS/i, Identifier), ([value]) => ({ tag: 'As', value }));
 
 /**
  * Constant
@@ -109,12 +82,12 @@ const NumberRule = Any(
   /^(([0-9]+)?\.[0-9]+(e([+-]?[0-9]+)?))/,
   /^([0-9]+e([+-]?[0-9]+))'/,
 );
-const String = Node<StringTag>(/^'((?:''|[^'])*)'/, ([value]) => ({ tag: Tag.String, value }));
-const Number = Node<NumberTag>(NumberRule, ([value]) => ({ tag: Tag.Number, value }));
-const Boolean = Node<BooleanTag>(/^(TRUE|FALSE)/i, ([value]) => ({ tag: Tag.Boolean, value }));
+const String = Node<StringTag>(/^'((?:''|[^'])*)'/, ([value]) => ({ tag: 'String', value }));
+const Number = Node<NumberTag>(NumberRule, ([value]) => ({ tag: 'Number', value }));
+const Boolean = Node<BooleanTag>(/^(TRUE|FALSE)/i, ([value]) => ({ tag: 'Boolean', value }));
 const Constant = Any(String, Number, Boolean);
 
-const Count = Node<CountTag>(/^([0-9]+)/, ([value]) => ({ tag: Tag.Count, value }));
+const Count = Node<CountTag>(/^([0-9]+)/, ([value]) => ({ tag: 'Count', value }));
 
 const Type = Node<TypeTag>(
   Any(
@@ -155,7 +128,7 @@ const Type = Node<TypeTag>(
     /^(uuid)/i,
     /^(xml)/i,
   ),
-  ([value, param]) => ({ tag: Tag.Type, value, param }),
+  ([value, param]) => ({ tag: 'Type', value, param }),
 );
 
 /**
@@ -165,13 +138,13 @@ const Type = Node<TypeTag>(
 
 const DistinctOnList = All(/^ON/i, '(', List(Identifier), ')');
 const Distinct = Node<DistinctTag>(All(/^DISTINCT/i, Optional(DistinctOnList)), (values) => {
-  return { tag: Tag.Distinct, values };
+  return { tag: 'Distinct', values };
 });
 
-const StarIdentifier = Node<StarIdentifierTag>('*', () => ({ tag: Tag.StarIdentifier }));
+const StarIdentifier = Node<StarIdentifierTag>('*', () => ({ tag: 'StarIdentifier' }));
 const SelectIdentifier = Node<SelectIdentifierTag>(
   List(Identifier, { last: Any(Identifier, StarIdentifier), separator: '.' }),
-  (values) => ({ tag: Tag.SelectIdentifier, values }),
+  (values) => ({ tag: 'SelectIdentifier', values }),
 );
 
 const BinaryOperatorPrecedence = [
@@ -190,25 +163,25 @@ const Select = Y((SelectExpression) => {
   const Expression = Y((ChildExpression) => {
     const CastableDataType = Node<CastableDataTypeTag>(
       All(
-        Any(Constant, SelectIdentifier, Brackets(SelectExpression), Brackets(ChildExpression)),
+        Any(Constant, SelectIdentifier, Parameter, Brackets(SelectExpression), Brackets(ChildExpression)),
         Optional(All('::', Type)),
       ),
-      ([value, type]) => (type ? { tag: Tag.PgCast, type, value } : value),
+      ([value, type]) => (type ? { tag: 'PgCast', type, value } : value),
     );
 
     /**
      * Case
      */
     const When = Node<WhenTag>(All(/^WHEN/i, ChildExpression, /^THEN/i, ChildExpression), ([condition, value]) => {
-      return { tag: Tag.When, value, condition };
+      return { tag: 'When', value, condition };
     });
-    const Else = Node<ElseTag>(All(/^ELSE/i, ChildExpression), ([value]) => ({ tag: Tag.Else, value }));
+    const Else = Node<ElseTag>(All(/^ELSE/i, ChildExpression), ([value]) => ({ tag: 'Else', value }));
     const CaseWithExpression = Node<CaseTag>(
       All(/^CASE/i, CastableDataType, Plus(When), Optional(Else), /^END/i),
-      ([expression, ...values]) => ({ tag: Tag.Case, expression, values }),
+      ([expression, ...values]) => ({ tag: 'Case', expression, values }),
     );
     const CaseWithoutExpression = Node<CaseTag>(All(/^CASE/i, Plus(When), Optional(Else), /^END/i), (values) => {
-      return { tag: Tag.Case, values };
+      return { tag: 'Case', values };
     });
     const DataType = Any(CaseWithoutExpression, CaseWithExpression, CastableDataType);
 
@@ -217,30 +190,30 @@ const Select = Y((SelectExpression) => {
      * ----------------------------------------------------------------------------------------
      */
     const BinoryOperatorExpression = BinaryOperatorPrecedence.reduce((Current, Operator) => {
-      const OperatorNode = Node<OperatorTag>(Operator, ([value]) => ({ tag: Tag.Operator, value }));
+      const OperatorNode = Node<OperatorTag>(Operator, ([value]) => ({ tag: 'Operator', value }));
       return Node<BinaryExpressionTag>(
         All(Current, Star(All(OperatorNode, Current))),
-        LeftBinaryOperator(([left, operator, right]) => ({ tag: Tag.BinaryExpression, left, operator, right })),
+        LeftBinaryOperator(([left, operator, right]) => ({ tag: 'BinaryExpression', left, operator, right })),
       );
     }, DataType);
     const BetweenExpression = Node<BetweenExpressionTag>(
       All(DataType, /^BETWEEN/i, DataType, /^AND/i, DataType),
       ([value, left, right]) => {
-        return { tag: Tag.Between, left, right, value };
+        return { tag: 'Between', left, right, value };
       },
     );
 
     const Cast = Node<CastTag>(All(/^CAST/i, '(', DataType, /^AS/i, Type, ')'), ([value, type]) => {
-      return { tag: Tag.Cast, value, type };
+      return { tag: 'Cast', value, type };
     });
 
     return Any(Cast, BetweenExpression, BinoryOperatorExpression);
   });
 
   const SelectListItem = Node<SelectListItemTag>(All(Any(Expression), Optional(As)), ([value, as]) => {
-    return { tag: Tag.SelectListItem, value, as };
+    return { tag: 'SelectListItem', value, as };
   });
-  const SelectList = Node<SelectListTag>(List(SelectListItem), (values) => ({ tag: Tag.SelectList, values }));
+  const SelectList = Node<SelectListTag>(List(SelectListItem), (values) => ({ tag: 'SelectList', values }));
 
   /**
    * From
@@ -249,12 +222,12 @@ const Select = Y((SelectExpression) => {
   const FromListItem = Node<FromListItemTag>(
     All(Any(QualifiedIdentifier, Brackets(SelectExpression)), Optional(As)),
     ([value, as]) => {
-      return { tag: Tag.FromListItem, value, as };
+      return { tag: 'FromListItem', value, as };
     },
   );
-  const From = Node<FromTag>(All(/^FROM/i, List(FromListItem)), (values) => ({ tag: Tag.From, values }));
+  const FromList = Node<FromListTag>(List(FromListItem), (values) => ({ tag: 'FromList', values }));
 
-  const JoinType = Node(
+  const JoinType = Node<JoinTypeTag>(
     Any(
       All(Optional(/^INNER/i), /^JOIN/i),
       All(/^(LEFT)/i, Optional(/^OUTER/), /^JOIN/i),
@@ -262,51 +235,62 @@ const Select = Y((SelectExpression) => {
       All(/^(FULL)/i, Optional(/^OUTER/i), /^JOIN/i),
       /^(CROSS) JOIN/i,
     ),
-    ([value]) => ({ tag: Tag.JoinType, value }),
+    ([value]) => ({ tag: 'JoinType', value: value?.toUpperCase() }),
   );
-  const JoinOn = Node(All(/^ON/i, Expression), ([value]) => ({ tag: Tag.JoinOn, value }));
-  const JoinUsing = Node(All(/^USING/i, List(QualifiedIdentifier)), (values) => ({ tag: Tag.JoinUsing, values }));
-  const Join = Node(All(JoinType, QualifiedIdentifier, Optional(As), Optional(Any(JoinOn, JoinUsing))), (values) => {
-    return { tag: Tag.Join, values };
-  });
+  const JoinOn = Node<JoinOnTag>(All(/^ON/i, Expression), ([value]) => ({ tag: 'JoinOn', value }));
+  const JoinUsing = Node<JoinUsingTag>(All(/^USING/i, List(QualifiedIdentifier)), (values) => ({
+    tag: 'JoinUsing',
+    values,
+  }));
+  const Join = Node<JoinTag>(
+    All(JoinType, QualifiedIdentifier, Optional(As), Optional(Any(JoinOn, JoinUsing))),
+    ([type, table, ...values]) => {
+      return { tag: 'Join', type, table, values };
+    },
+  );
+
+  const From = Node<FromTag>(All(/^FROM/, FromList, Star(Join)), ([list, ...join]) => ({ tag: 'From', list, join }));
 
   /**
    * Where
    */
 
-  const Where = Node(All(/^WHERE/i, Expression), (values) => ({ tag: Tag.Where, values }));
-  const GroupBy = Node(All(/^GROUP BY/i, List(QualifiedIdentifier)), (values) => ({ tag: Tag.GroupBy, values }));
-  const Having = Node(All(/^HAVING/i, Expression), (values) => ({ tag: Tag.Having, values }));
-  const Limit = Node(All(/^LIMIT/i, Any(Count, /^ALL/i)), ([value]) => ({ tag: Tag.Limit, value }));
-  const Offset = Node(All(/^OFFSET/i, Count), ([value]) => ({ tag: Tag.Offset, value }));
+  const Where = Node<WhereTag>(All(/^WHERE/i, Expression), ([value]) => ({ tag: 'Where', value }));
+  const GroupBy = Node<GroupByTag>(All(/^GROUP BY/i, List(QualifiedIdentifier)), (values) => ({
+    tag: 'GroupBy',
+    values,
+  }));
+  const Having = Node<HavingTag>(All(/^HAVING/i, Expression), ([value]) => ({ tag: 'Having', value }));
 
-  const SelectParts = All(
+  const SelectParts = [
     Optional(Any(/^ALL/i, Distinct)),
     SelectList,
     Optional(From),
-    Star(Join),
     Optional(Where),
     Optional(GroupBy),
     Optional(Having),
-  );
-
-  const UnionTypes: [RegExp, Tag][] = [
-    [/^UNION/i, Tag.UnionSelect],
-    [/^INTERSECT/i, Tag.IntersectSelect],
-    [/^EXCEPT/i, Tag.ExceptSelect],
   ];
 
-  const Union = Any(
-    ...UnionTypes.map(([type, tag]) => Node(All(type, /^SELECT/i, SelectParts), (values) => ({ tag, values }))),
+  const Combination = Node<CombinationTag>(
+    All(/^(UNION|INTERSECT|EXCEPT)/i, /^SELECT/i, ...SelectParts),
+    ([type, ...values]) => {
+      return { tag: 'Combination', type: type.toUpperCase(), values };
+    },
   );
 
-  const OrderDirection = Node(/^(ASC|DESC|USNIG >|USING <)/i, ([value]) => ({ tag: Tag.OrderDirection, value }));
-  const OrderByItem = Node(All(Expression, Optional(OrderDirection)), (values) => ({ tag: Tag.OrderByItem, values }));
-  const OrderBy = Node(All(/^ORDER BY/i, List(OrderByItem)), (values) => ({ tag: Tag.OrderBy, values }));
+  const OrderDirection = Node<OrderDirectionTag>(/^(ASC|DESC|USNIG >|USING <)/i, ([value]) => {
+    return { tag: 'OrderDirection', value };
+  });
+  const OrderByItem = Node<OrderByItemTag>(All(Expression, Optional(OrderDirection)), ([value, direction]) => {
+    return { tag: 'OrderByItem', value, direction };
+  });
+  const OrderBy = Node<OrderByTag>(All(/^ORDER BY/i, List(OrderByItem)), (values) => ({ tag: 'OrderBy', values }));
+  const Limit = Node<LimitTag>(All(/^LIMIT/i, Any(Count, /^ALL/i)), ([value]) => ({ tag: 'Limit', value }));
+  const Offset = Node<OffsetTag>(All(/^OFFSET/i, Count), ([value]) => ({ tag: 'Offset', value }));
 
-  return Node(
-    All(/^SELECT/i, SelectParts, Star(Union), Optional(OrderBy), Optional(Limit), Optional(Offset)),
-    (values) => ({ tag: Tag.Select, values }),
+  return Node<SelectTag>(
+    All(/^SELECT/i, ...SelectParts, Star(Combination), Optional(OrderBy), Optional(Limit), Optional(Offset)),
+    (values) => ({ tag: 'Select', values }),
   );
 });
 

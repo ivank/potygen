@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Convert Should convert join fields sql (
+        SELECT
+          t1.col1 as "col1",
+          t1.col2 as "myCol2",
+          table2.col2 as "other"
+        FROM table1 AS t1
+        JOIN table2 ON table2.id = table1.id
+      ) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "col1",
+      "type": Object {
+        "column": "col1",
+        "table": "table1",
+      },
+    },
+    Object {
+      "name": "myCol2",
+      "type": Object {
+        "column": "col2",
+        "table": "table1",
+      },
+    },
+    Object {
+      "name": "other",
+      "type": Object {
+        "column": "col2",
+        "table": "table2",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert join with aliases fields sql (
+        SELECT
+          t1.col1 as "col1",
+          t1.col2 as "myCol2",
+          myT2.col2 as "other",
+          myT4.col_9 as "test"
+        FROM fit.table1 AS t1
+        JOIN fit.table2 as "myT2" ON table2.id = table1.id
+        JOIN table3 as "myT4" ON myT2.id = table1.id
+      ) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "col1",
+      "type": Object {
+        "column": "col1",
+        "table": "fit.table1",
+      },
+    },
+    Object {
+      "name": "myCol2",
+      "type": Object {
+        "column": "col2",
+        "table": "fit.table1",
+      },
+    },
+    Object {
+      "name": "other",
+      "type": Object {
+        "column": "col2",
+        "table": "fit.table2",
+      },
+    },
+    Object {
+      "name": "test",
+      "type": Object {
+        "column": "col_9",
+        "table": "table3",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert static fields sql (SELECT col1 as "col1", col2 as "myCol2" FROM table1) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "col1",
+      "type": Object {
+        "column": "col1",
+        "table": "table1",
+      },
+    },
+    Object {
+      "name": "myCol2",
+      "type": Object {
+        "column": "col2",
+        "table": "table1",
+      },
+    },
+  ],
+}
+`;

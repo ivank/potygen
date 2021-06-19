@@ -1,5 +1,5 @@
 import { Parser, ParserError } from '@ikerin/rd-parse';
-import { SqlGrammar } from '../../src/sql.grammar';
+import { SqlGrammar } from '../src/sql.grammar';
 import { inspect } from 'util';
 
 const sqlParser = Parser(SqlGrammar);
@@ -7,6 +7,10 @@ const sqlParser = Parser(SqlGrammar);
 describe('Sql', () => {
   it.each`
     name                              | sql
+    ${'parameter in select'}          | ${'SELECT :test1'}
+    ${'parameter in where'}           | ${'SELECT * FROM table1 WHERE table1.col = :test1'}
+    ${'parameter in join with 2'}     | ${'SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1 WHERE table2.col = :test2'}
+    ${'parameter in having'}          | ${'SELECT * HAVING table1.col = :test1'}
     ${'star select'}                  | ${'SELECT *'}
     ${'qualified star select'}        | ${'SELECT table.*'}
     ${'const select'}                 | ${"SELECT '2018-01-01'"}
@@ -37,6 +41,11 @@ describe('Sql', () => {
     ${'multiple from'}                | ${'SELECT * FROM jobs1, jobs AS "test 2"'}
     ${'multiple from as'}             | ${'SELECT * FROM jobs1 AS j1, jobs2, jobs3 as j3'}
     ${'join'}                         | ${'SELECT * FROM jobs JOIN test1'}
+    ${'join as'}                      | ${'SELECT * FROM jobs JOIN test1 AS my_test'}
+    ${'join as quoted'}               | ${'SELECT * FROM jobs JOIN test1 AS "myTest"'}
+    ${'join on'}                      | ${'SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id'}
+    ${'join on as'}                   | ${'SELECT * FROM jobs JOIN test1 AS my_test ON jobs.id = test1.id'}
+    ${'join on as quoted'}            | ${'SELECT * FROM jobs JOIN test1 AS "myTest" ON jobs.id = test1.id'}
     ${'join on'}                      | ${'SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id'}
     ${'inner join'}                   | ${'SELECT * FROM jobs INNER JOIN test1'}
     ${'left join'}                    | ${'SELECT * FROM jobs LEFT JOIN test1'}
