@@ -10,9 +10,24 @@ describe('Convert', () => {
     ['boolean fields named', `SELECT FALSE as "col1", TRUE as "col2"`],
     ['boolean fields mixed', `SELECT FALSE, TRUE as "col2"`],
     ['boolean fields not named', `SELECT FALSE, TRUE`],
+    ['binary expression numbers', `SELECT 1+2`],
+    ['binary expression string', `SELECT 'test' || 'other'`],
+    ['binary expression column', `SELECT (col1 + col2) AS "res1" FROM table1`],
     ['string fields not named', `SELECT 'test', $$Dianne's horse$$, $SomeTag$Dianne's horse$SomeTag$`],
     ['static fields', `SELECT col1 as "col1", col2 as "myCol2" FROM table1`],
     ['case', `SELECT CASE WHEN TRUE THEN TRUE ELSE 'other' END`],
+    [
+      'case columns',
+      `
+        SELECT
+          CASE col1
+            WHEN 12 THEN table1.col1
+            WHEN 20 THEN col2
+            ELSE 'other'
+          END AS "res1"
+        FROM table1
+      `,
+    ],
     [
       'join fields',
       `
@@ -37,7 +52,19 @@ describe('Convert', () => {
         JOIN table3 as "myT4" ON myT2.id = table1.id
       `,
     ],
+    ['single param', `SELECT :test1 AS "res1"`],
+    ['multiple params', `SELECT :test1 AS "res1", :test2`],
+    [
+      'where params',
+      `
+        SELECT col1, col2
+        FROM table1
+        WHERE
+          table1.id = :id
+          AND col1 > :val1
+      `,
+    ],
   ])('Should convert %s sql (%s)', (_, sql) => {
-    expect(convertSelect({ params: [], result: [] }, parser(sql))).toMatchSnapshot();
+    expect(convertSelect(parser(sql))).toMatchSnapshot();
   });
 });

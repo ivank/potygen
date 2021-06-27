@@ -154,8 +154,10 @@ const SelectIdentifier = Node<SelectIdentifierTag>(
 
 const BinaryOperatorPrecedence = [
   /^(\^)/i,
-  /^(\*|%)/i,
-  /^(\*|%)/i,
+  /^(\*|\/|%)/i,
+  /^(\+|-)/i,
+  /^(\+|-)/i,
+  /^(\|\|)/i,
   /^(IN)/i,
   /^(LIKE|ILIKE)/i,
   /^(<=|>=|<|>)/,

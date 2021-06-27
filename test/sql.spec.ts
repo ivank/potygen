@@ -14,6 +14,13 @@ describe('Sql', () => {
     ${'parameter in where'}           | ${'SELECT * FROM table1 WHERE table1.col = :test1'}
     ${'parameter in join with 2'}     | ${'SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1 WHERE table2.col = :test2'}
     ${'parameter in having'}          | ${'SELECT * HAVING table1.col = :test1'}
+    ${'binary sum'}                   | ${'SELECT 1 + 2'}
+    ${'binary sub'}                   | ${'SELECT 1 - 2'}
+    ${'binary div'}                   | ${'SELECT 1 / 2'}
+    ${'binary mul'}                   | ${'SELECT 1 * 2'}
+    ${'binary sum, sub'}              | ${'SELECT 1 - 2 + 2'}
+    ${'binary sum, div, mul'}         | ${'SELECT (1 + 2) / (20 * 32)'}
+    ${'string concat'}                | ${"SELECT 'test' || 'other'"}
     ${'star select'}                  | ${'SELECT *'}
     ${'qualified star select'}        | ${'SELECT table.*'}
     ${'const select'}                 | ${"SELECT '2018-01-01'"}

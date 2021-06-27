@@ -84,6 +84,231 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql binary div (SELECT 1 / 2): binary div 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "left": Object {
+              "tag": "Number",
+              "value": "1",
+            },
+            "operator": Object {
+              "tag": "Operator",
+              "value": "/",
+            },
+            "right": Object {
+              "tag": "Number",
+              "value": "2",
+            },
+            "tag": "BinaryExpression",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql binary mul (SELECT 1 * 2): binary mul 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "left": Object {
+              "tag": "Number",
+              "value": "1",
+            },
+            "operator": Object {
+              "tag": "Operator",
+              "value": "*",
+            },
+            "right": Object {
+              "tag": "Number",
+              "value": "2",
+            },
+            "tag": "BinaryExpression",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql binary sub (SELECT 1 - 2): binary sub 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "left": Object {
+              "tag": "Number",
+              "value": "1",
+            },
+            "operator": Object {
+              "tag": "Operator",
+              "value": "-",
+            },
+            "right": Object {
+              "tag": "Number",
+              "value": "2",
+            },
+            "tag": "BinaryExpression",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql binary sum (SELECT 1 + 2): binary sum 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "left": Object {
+              "tag": "Number",
+              "value": "1",
+            },
+            "operator": Object {
+              "tag": "Operator",
+              "value": "+",
+            },
+            "right": Object {
+              "tag": "Number",
+              "value": "2",
+            },
+            "tag": "BinaryExpression",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql binary sum, div, mul (SELECT (1 + 2) / (20 * 32)): binary sum, div, mul 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "left": Object {
+              "left": Object {
+                "tag": "Number",
+                "value": "1",
+              },
+              "operator": Object {
+                "tag": "Operator",
+                "value": "+",
+              },
+              "right": Object {
+                "tag": "Number",
+                "value": "2",
+              },
+              "tag": "BinaryExpression",
+            },
+            "operator": Object {
+              "tag": "Operator",
+              "value": "/",
+            },
+            "right": Object {
+              "left": Object {
+                "tag": "Number",
+                "value": "20",
+              },
+              "operator": Object {
+                "tag": "Operator",
+                "value": "*",
+              },
+              "right": Object {
+                "tag": "Number",
+                "value": "32",
+              },
+              "tag": "BinaryExpression",
+            },
+            "tag": "BinaryExpression",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql binary sum, sub (SELECT 1 - 2 + 2): binary sum, sub 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "left": Object {
+              "left": Object {
+                "tag": "Number",
+                "value": "1",
+              },
+              "operator": Object {
+                "tag": "Operator",
+                "value": "-",
+              },
+              "right": Object {
+                "tag": "Number",
+                "value": "2",
+              },
+              "tag": "BinaryExpression",
+            },
+            "operator": Object {
+              "tag": "Operator",
+              "value": "+",
+            },
+            "right": Object {
+              "tag": "Number",
+              "value": "2",
+            },
+            "tag": "BinaryExpression",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql case no else (SELECT CASE test1 WHEN 1 THEN TRUE WHEN 2 THEN FALSE END): case no else 1`] = `
 Object {
   "tag": "Select",
@@ -4321,6 +4546,38 @@ Object {
           "value": Object {
             "tag": "String",
             "value": "test",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql string concat (SELECT 'test' || 'other'): string concat 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "left": Object {
+              "tag": "String",
+              "value": "test",
+            },
+            "operator": Object {
+              "tag": "Operator",
+              "value": "||",
+            },
+            "right": Object {
+              "tag": "String",
+              "value": "other",
+            },
+            "tag": "BinaryExpression",
           },
         },
       ],

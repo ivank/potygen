@@ -32,6 +32,48 @@ Object {
 }
 `;
 
+exports[`Convert Should convert binary expression column sql (SELECT (col1 + col2) AS "res1" FROM table1) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "res1",
+      "type": Object {
+        "column": "col1",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert binary expression numbers sql (SELECT 1+2) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "?column?",
+      "type": "number",
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert binary expression string sql (SELECT 'test' || 'other') 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "?column?",
+      "type": "string",
+    },
+  ],
+}
+`;
+
 exports[`Convert Should convert boolean fields mixed sql (SELECT FALSE, TRUE as "col2") 1`] = `
 Object {
   "params": Array [],
@@ -75,6 +117,42 @@ Object {
     Object {
       "name": "bool",
       "type": "boolean",
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert case columns sql (
+        SELECT
+          CASE col1
+            WHEN 12 THEN table1.col1
+            WHEN 20 THEN col2
+            ELSE 'other'
+          END AS "res1"
+        FROM table1
+      ) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "res1",
+      "type": Array [
+        Object {
+          "column": "col1",
+          "table": Array [
+            "table1",
+          ],
+          "type": "column",
+        },
+        Object {
+          "column": "col2",
+          "table": Array [
+            "table1",
+          ],
+          "type": "column",
+        },
+        "string",
+      ],
     },
   ],
 }
@@ -200,6 +278,48 @@ Object {
 }
 `;
 
+exports[`Convert Should convert multiple params sql (SELECT :test1 AS "res1", :test2) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "test1",
+      "type": "string",
+    },
+    Object {
+      "name": "test2",
+      "type": "string",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "res1",
+      "type": "string",
+    },
+    Object {
+      "name": "?column?",
+      "type": "string",
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert single param sql (SELECT :test1 AS "res1") 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "test1",
+      "type": "string",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "res1",
+      "type": "string",
+    },
+  ],
+}
+`;
+
 exports[`Convert Should convert static fields sql (SELECT col1 as "col1", col2 as "myCol2" FROM table1) 1`] = `
 Object {
   "params": Array [],
@@ -208,7 +328,9 @@ Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "table": Array [],
+        "table": Array [
+          "table1",
+        ],
         "type": "column",
       },
     },
@@ -216,7 +338,9 @@ Object {
       "name": "myCol2",
       "type": Object {
         "column": "col2",
-        "table": Array [],
+        "table": Array [
+          "table1",
+        ],
         "type": "column",
       },
     },
@@ -239,6 +363,49 @@ Object {
     Object {
       "name": "?column?",
       "type": "string",
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert where params sql (
+        SELECT col1, col2
+        FROM table1
+        WHERE
+          table1.id = :id
+          AND col1 > :val1
+      ) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": "string",
+    },
+    Object {
+      "name": "val1",
+      "type": "string",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "col1",
+      "type": Object {
+        "column": "col1",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "col2",
+      "type": Object {
+        "column": "col2",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
+      },
     },
   ],
 }
