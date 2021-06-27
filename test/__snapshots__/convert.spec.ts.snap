@@ -1,5 +1,100 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Convert Should convert between fields named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "col1",
+      "type": "boolean",
+    },
+    Object {
+      "name": "col2",
+      "type": "boolean",
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert between fields not named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "col1",
+      "type": "boolean",
+    },
+    Object {
+      "name": "col2",
+      "type": "boolean",
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert boolean fields mixed sql (SELECT FALSE, TRUE as "col2") 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "bool",
+      "type": "boolean",
+    },
+    Object {
+      "name": "col2",
+      "type": "boolean",
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert boolean fields named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "col1",
+      "type": "boolean",
+    },
+    Object {
+      "name": "col2",
+      "type": "boolean",
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert boolean fields not named sql (SELECT FALSE, TRUE) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "bool",
+      "type": "boolean",
+    },
+    Object {
+      "name": "bool",
+      "type": "boolean",
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert case sql (SELECT CASE WHEN TRUE THEN TRUE ELSE 'other' END) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "?column?",
+      "type": Array [
+        "boolean",
+        "string",
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Convert Should convert join fields sql (
         SELECT
           t1.col1 as "col1",
@@ -15,21 +110,30 @@ Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "table": "table1",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
       },
     },
     Object {
       "name": "myCol2",
       "type": Object {
         "column": "col2",
-        "table": "table1",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
       },
     },
     Object {
       "name": "other",
       "type": Object {
         "column": "col2",
-        "table": "table2",
+        "table": Array [
+          "table2",
+        ],
+        "type": "column",
       },
     },
   ],
@@ -53,28 +157,43 @@ Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "table": "fit.table1",
+        "table": Array [
+          "fit",
+          "table1",
+        ],
+        "type": "column",
       },
     },
     Object {
       "name": "myCol2",
       "type": Object {
         "column": "col2",
-        "table": "fit.table1",
+        "table": Array [
+          "fit",
+          "table1",
+        ],
+        "type": "column",
       },
     },
     Object {
       "name": "other",
       "type": Object {
         "column": "col2",
-        "table": "fit.table2",
+        "table": Array [
+          "fit",
+          "table2",
+        ],
+        "type": "column",
       },
     },
     Object {
       "name": "test",
       "type": Object {
         "column": "col_9",
-        "table": "table3",
+        "table": Array [
+          "table3",
+        ],
+        "type": "column",
       },
     },
   ],
@@ -89,15 +208,37 @@ Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "table": "table1",
+        "table": Array [],
+        "type": "column",
       },
     },
     Object {
       "name": "myCol2",
       "type": Object {
         "column": "col2",
-        "table": "table1",
+        "table": Array [],
+        "type": "column",
       },
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert string fields not named sql (SELECT 'test', $$Dianne's horse$$, $SomeTag$Dianne's horse$SomeTag$) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "?column?",
+      "type": "string",
+    },
+    Object {
+      "name": "?column?",
+      "type": "string",
+    },
+    Object {
+      "name": "?column?",
+      "type": "string",
     },
   ],
 }

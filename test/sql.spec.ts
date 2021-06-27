@@ -7,6 +7,9 @@ const sqlParser = Parser(SqlGrammar);
 describe('Sql', () => {
   it.each`
     name                              | sql
+    ${'string'}                       | ${"SELECT 'test'"}
+    ${'dollar quoted string'}         | ${"SELECT $$Dianne's horse$$"}
+    ${'customdollar quoted string'}   | ${"SELECT $SomeTag$Dianne's horse$SomeTag$"}
     ${'parameter in select'}          | ${'SELECT :test1'}
     ${'parameter in where'}           | ${'SELECT * FROM table1 WHERE table1.col = :test1'}
     ${'parameter in join with 2'}     | ${'SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1 WHERE table2.col = :test2'}

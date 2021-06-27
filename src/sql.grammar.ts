@@ -83,9 +83,14 @@ const NumberRule = Any(
   /^([0-9]+e([+-]?[0-9]+))'/,
 );
 const String = Node<StringTag>(/^'((?:''|[^'])*)'/, ([value]) => ({ tag: 'String', value }));
+const DollarQuatedString = Node<StringTag>(/^\$\$((?:\$\$|.)*)\$\$/, ([value]) => ({ tag: 'String', value }));
+const CustomDollarQuatedString = Node<StringTag>(
+  /^\$(?<tag>[A-Z_][A-Z0-9_]*)\$((?:\$\$|.)*)\$\k<tag>\$/i,
+  ([tag, value]) => ({ tag: 'String', value }),
+);
 const Number = Node<NumberTag>(NumberRule, ([value]) => ({ tag: 'Number', value }));
 const Boolean = Node<BooleanTag>(/^(TRUE|FALSE)/i, ([value]) => ({ tag: 'Boolean', value }));
-const Constant = Any(String, Number, Boolean);
+const Constant = Any(String, DollarQuatedString, CustomDollarQuatedString, Number, Boolean);
 
 const Count = Node<CountTag>(/^([0-9]+)/, ([value]) => ({ tag: 'Count', value }));
 

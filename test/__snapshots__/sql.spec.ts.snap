@@ -589,6 +589,27 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql customdollar quoted string (SELECT $SomeTag$Dianne's horse$SomeTag$): customdollar quoted string 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "String",
+            "value": "Dianne's horse",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql deep multiple columns select (SELECT column1, table1.column2, table1.column3, schema.table3.colum2): deep multiple columns select 1`] = `
 Object {
   "tag": "Select",
@@ -799,6 +820,27 @@ Object {
                 "tag": "StarIdentifier",
               },
             ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql dollar quoted string (SELECT $Dianne's horse$): dollar quoted string 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "String",
+            "value": "Dianne's horse",
           },
         },
       ],
@@ -4258,6 +4300,27 @@ Object {
                 "tag": "StarIdentifier",
               },
             ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql string (SELECT 'test'): string 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "String",
+            "value": "test",
           },
         },
       ],

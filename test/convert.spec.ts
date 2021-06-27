@@ -1,11 +1,18 @@
 import { Parser } from '@ikerin/rd-parse';
-import { convert } from '../src/convert';
+import { convertSelect } from '../src/convert';
 import { SqlGrammar } from '../src/sql.grammar';
 
 const parser = Parser(SqlGrammar);
 describe('Convert', () => {
   it.each<[string, string]>([
+    ['between fields named', `SELECT FALSE as "col1", TRUE as "col2"`],
+    ['between fields not named', `SELECT FALSE as "col1", TRUE as "col2"`],
+    ['boolean fields named', `SELECT FALSE as "col1", TRUE as "col2"`],
+    ['boolean fields mixed', `SELECT FALSE, TRUE as "col2"`],
+    ['boolean fields not named', `SELECT FALSE, TRUE`],
+    ['string fields not named', `SELECT 'test', $$Dianne's horse$$, $SomeTag$Dianne's horse$SomeTag$`],
     ['static fields', `SELECT col1 as "col1", col2 as "myCol2" FROM table1`],
+    ['case', `SELECT CASE WHEN TRUE THEN TRUE ELSE 'other' END`],
     [
       'join fields',
       `
@@ -31,6 +38,6 @@ describe('Convert', () => {
       `,
     ],
   ])('Should convert %s sql (%s)', (_, sql) => {
-    expect(convert({ params: [], result: [] }, parser(sql))).toMatchSnapshot();
+    expect(convertSelect({ params: [], result: [] }, parser(sql))).toMatchSnapshot();
   });
 });
