@@ -64,6 +64,31 @@ describe('Convert', () => {
           AND col1 > :val1
       `,
     ],
+    [
+      'nested select',
+      `
+        SELECT
+          col1 AS "res1",
+          (SELECT id FROM table2 JOIN table3 ON table3.id = table2.id AND table3.val > :joinVal LIMIT 1)
+        FROM table1
+        WHERE :id = table1.id
+      `,
+    ],
+    [
+      'combination select',
+      `
+        SELECT
+          col1 AS "res1",
+          (SELECT id FROM table2 JOIN table3 ON table3.id = table2.id AND table3.val > :joinVal LIMIT 1)
+        FROM table1
+        UNION
+        SELECT
+          col1 AS "res1",
+          table4.col2
+        FROM table4
+        WHERE :id = table1.id AND table4.id = :id
+      `,
+    ],
   ])('Should convert %s sql (%s)', (_, sql) => {
     expect(convertSelect(parser(sql))).toMatchSnapshot();
   });

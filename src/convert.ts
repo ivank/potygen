@@ -1,19 +1,28 @@
+import { first, last, initial, isEmpty } from './util';
 import {
   FromTag,
   isFrom,
   isSelectList,
   isQualifiedIdentifier,
-  SelectTag,
   isStarIdentifier,
   isIdentifier,
   isAs,
   ExpressionTag,
   isJoinOn,
+  CombinationTag,
+  DistinctTag,
+  GroupByTag,
+  HavingTag,
+  LimitTag,
+  OffsetTag,
+  OrderByTag,
+  SelectListTag,
+  WhereTag,
 } from './sql.types';
 
 export type ColumnType = { type: 'column'; table: string[]; column: string };
 export type StarType = { type: 'star'; table: string[] };
-export type ConstantType = 'string' | 'number' | 'boolean' | 'Date';
+export type ConstantType = 'string' | 'number' | 'boolean' | 'Date' | 'unknown';
 export type SimpleType = ConstantType | ColumnType | StarType;
 export type PropertyType = SimpleType[] | SimpleType;
 
@@ -24,7 +33,7 @@ export interface Property {
 
 export interface Param {
   name: string;
-  type: ConstantType;
+  type: PropertyType;
 }
 
 export interface QueryInterface {
@@ -33,19 +42,6 @@ export interface QueryInterface {
 }
 
 const isColumnType = (type: PropertyType): type is ColumnType => typeof type === 'object' && 'column' in type;
-
-// const isUnion = <T>(type?: T[] | T): type is T[] => typeof type === 'object' && Array.isArray(type);
-const isEmpty = <T>(items?: T[]): items is T[] => !items || items?.length === 0;
-const last = <T>(items?: T[]): T | undefined => items?.[items.length - 1];
-const first = <T>(items?: T[]): T | undefined => items?.[0];
-const initial = <T>(items: T[]): T[] => items?.slice(0, -1);
-// const tail = <T>(items: T[]): T[] => items.slice(1);
-
-// const withResult = (query: QueryInterface, result: Property) => ({
-//   ...query,
-//   result: [...query.result, result],
-// });
-// const withParam = (query: QueryInterface, param: Property) => ({ ...query, params: [...query.params, param] });
 
 const toName = (aliases: Record<string, string[]>, values: string[]): string[] =>
   values.flatMap((part) => aliases[part] ?? part);
@@ -100,7 +96,10 @@ const sqlTypes: { [type: string]: ConstantType } = {
   timestamptz: 'Date',
 };
 
-const convertExpression = (tag: ExpressionTag): { type: PropertyType; params: Param[] } => {
+const convertExpression = (
+  tag: ExpressionTag,
+  contextType?: Param['type'],
+): { type: PropertyType; params: Param[] } => {
   switch (tag.tag) {
     case 'SelectIdentifier':
       const lastIdentifier = last(tag.values);
@@ -121,10 +120,13 @@ const convertExpression = (tag: ExpressionTag): { type: PropertyType; params: Pa
     case 'BinaryExpression':
       const left = convertExpression(tag.left);
       const right = convertExpression(tag.right);
-      return { type: left.type, params: left.params.concat(right.params) };
+      const paramLeft = convertExpression(tag.left, right.type);
+      const paramRight = convertExpression(tag.right, left.type);
+      return { type: left.type, params: paramLeft.params.concat(paramRight.params) };
     case 'PgCast':
     case 'Cast':
-      return { type: sqlTypes[tag.type.value] ?? 'string', params: convertExpression(tag.value).params };
+      const castType = sqlTypes[tag.type.value] ?? 'string';
+      return { type: sqlTypes[tag.type.value] ?? 'string', params: convertExpression(tag.value, castType).params };
     case 'Case':
       return tag.values.reduce<{ type: SimpleType[]; params: Param[] }>(
         (acc, caseTag) => {
@@ -141,14 +143,35 @@ const convertExpression = (tag: ExpressionTag): { type: PropertyType; params: Pa
     case 'Between':
       return { type: 'string', params: [] };
     case 'Parameter':
-      return { type: 'string', params: [{ name: tag.value, type: 'string' }] };
+      return { type: 'string', params: [{ name: tag.value, type: contextType ?? 'unknown' }] };
   }
 };
 
-const resolveProperty = (fromTable: string[], aliases: Record<string, string[]>) => (prop: SimpleType): SimpleType =>
+const resolveTypeWith = (fromTable: string[], aliases: Record<string, string[]>) => (prop: SimpleType): SimpleType =>
   typeof prop === 'object' ? { ...prop, table: isEmpty(prop.table) ? fromTable : toName(aliases, prop.table) } : prop;
 
-export const convertSelect = (selectTag: SelectTag): QueryInterface => {
+const resolveType = (fromTable: string[], aliases: Record<string, string[]>) => {
+  const resolve = resolveTypeWith(fromTable, aliases);
+  return (property: SimpleType | SimpleType[]): SimpleType | SimpleType[] => {
+    return Array.isArray(property) ? property.map(resolve) : resolve(property);
+  };
+};
+
+export const convertSelect = (selectTag: {
+  tag: 'Combination' | 'Select';
+  values: (
+    | DistinctTag
+    | SelectListTag
+    | FromTag
+    | WhereTag
+    | GroupByTag
+    | HavingTag
+    | OrderByTag
+    | CombinationTag
+    | LimitTag
+    | OffsetTag
+  )[];
+}): QueryInterface => {
   const selectList = first(selectTag.values.filter(isSelectList));
   const from = first(selectTag.values.filter(isFrom));
   const tableAliases = from ? toTableAliases(from) : {};
@@ -159,39 +182,39 @@ export const convertSelect = (selectTag: SelectTag): QueryInterface => {
       ? fromTableExpression.values.map((table) => table.value)
       : [];
 
-  const resolvePropertyWithAliases = resolveProperty(fromTable, tableAliases);
+  const resolve = resolveType(fromTable, tableAliases);
 
   const result =
     selectList?.values.map(({ value, as }) => {
       const property = convertExpression(value);
-
-      const type = Array.isArray(property.type)
-        ? property.type.map(resolvePropertyWithAliases)
-        : resolvePropertyWithAliases(property.type);
-
+      const type = resolve(property.type);
       const name =
         as?.value.value ?? (isColumnType(type) ? type.column : value.tag === 'Boolean' ? 'bool' : '?column?');
 
       return { name, type };
     }) ?? [];
 
-  const params = selectTag.values.reduce<Param[]>((current, tag) => {
-    switch (tag.tag) {
-      case 'SelectList':
-        return current.concat(tag.values.flatMap((item) => convertExpression(item.value).params));
-      case 'From':
-        return current.concat(
-          tag.join.flatMap((item) =>
-            item.values.filter(isJoinOn).flatMap((join) => convertExpression(join.value).params),
-          ),
-        );
-      case 'Where':
-      case 'Having':
-        return current.concat(convertExpression(tag.value).params);
-      default:
-        return current;
-    }
-  }, []);
+  const params = selectTag.values
+    .reduce<Param[]>((current, tag) => {
+      switch (tag.tag) {
+        case 'SelectList':
+          return current.concat(tag.values.flatMap((item) => convertExpression(item.value).params));
+        case 'From':
+          return current.concat(
+            tag.join.flatMap((item) =>
+              item.values.filter(isJoinOn).flatMap((join) => convertExpression(join.value).params),
+            ),
+          );
+        case 'Where':
+        case 'Having':
+          return current.concat(convertExpression(tag.value).params);
+        case 'Combination':
+          return current.concat(convertSelect(tag).params);
+        default:
+          return current;
+      }
+    }, [])
+    .map((param) => ({ ...param, type: resolve(param.type) }));
 
   return { params, result };
 };

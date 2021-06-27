@@ -173,6 +173,76 @@ Object {
 }
 `;
 
+exports[`Convert Should convert combination select sql (
+        SELECT
+          col1 AS "res1",
+          (SELECT id FROM table2 JOIN table3 ON table3.id = table2.id AND table3.val > :joinVal LIMIT 1)
+        FROM table1
+        UNION
+        SELECT
+          col1 AS "res1",
+          table4.col2
+        FROM table4
+        WHERE :id = table1.id AND table4.id = :id
+      ) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "joinVal",
+      "type": Object {
+        "column": "val",
+        "table": Array [
+          "table3",
+        ],
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "table": Array [
+          "table4",
+        ],
+        "type": "column",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "res1",
+      "type": Object {
+        "column": "col1",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "table": Array [
+          "table2",
+        ],
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Convert Should convert join fields sql (
         SELECT
           t1.col1 as "col1",
@@ -283,11 +353,11 @@ Object {
   "params": Array [
     Object {
       "name": "test1",
-      "type": "string",
+      "type": "unknown",
     },
     Object {
       "name": "test2",
-      "type": "string",
+      "type": "unknown",
     },
   ],
   "result": Array [
@@ -303,12 +373,67 @@ Object {
 }
 `;
 
+exports[`Convert Should convert nested select sql (
+        SELECT
+          col1 AS "res1",
+          (SELECT id FROM table2 JOIN table3 ON table3.id = table2.id AND table3.val > :joinVal LIMIT 1)
+        FROM table1
+        WHERE :id = table1.id
+      ) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "joinVal",
+      "type": Object {
+        "column": "val",
+        "table": Array [
+          "table3",
+        ],
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "res1",
+      "type": Object {
+        "column": "col1",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "table": Array [
+          "table2",
+        ],
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Convert Should convert single param sql (SELECT :test1 AS "res1") 1`] = `
 Object {
   "params": Array [
     Object {
       "name": "test1",
-      "type": "string",
+      "type": "unknown",
     },
   ],
   "result": Array [
@@ -379,11 +504,23 @@ Object {
   "params": Array [
     Object {
       "name": "id",
-      "type": "string",
+      "type": Object {
+        "column": "id",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
+      },
     },
     Object {
       "name": "val1",
-      "type": "string",
+      "type": Object {
+        "column": "col1",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
+      },
     },
   ],
   "result": Array [
