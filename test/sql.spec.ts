@@ -7,6 +7,10 @@ const sqlParser = Parser(SqlGrammar);
 describe('Sql', () => {
   it.each`
     name                              | sql
+    ${'null'}                         | ${'SELECT NULL'}
+    ${'null where'}                   | ${'SELECT col1 FROM table1 WHERE name IS NULL'}
+    ${'unary'}                        | ${'SELECT NOT TRUE'}
+    ${'unary where'}                  | ${'SELECT col1 FROM table1 WHERE name IS NOT NULL'}
     ${'string'}                       | ${"SELECT 'test'"}
     ${'dollar quoted string'}         | ${"SELECT $$Dianne's horse$$"}
     ${'customdollar quoted string'}   | ${"SELECT $SomeTag$Dianne's horse$SomeTag$"}

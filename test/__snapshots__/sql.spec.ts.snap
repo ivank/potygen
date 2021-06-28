@@ -3442,6 +3442,96 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql null (SELECT NULL): null 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Null",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql null where (SELECT col1 FROM table1 WHERE name IS NULL): null where 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "name",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "IS",
+        },
+        "right": Object {
+          "tag": "Null",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql offset (SELECT * OFFSET 10): offset 1`] = `
 Object {
   "tag": "Select",
@@ -4581,6 +4671,111 @@ Object {
           },
         },
       ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql unary (SELECT NOT TRUE): unary 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "operator": Object {
+              "tag": "Operator",
+              "value": "NOT",
+            },
+            "tag": "UnaryExpression",
+            "value": Object {
+              "tag": "Boolean",
+              "value": "TRUE",
+            },
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql unary where (SELECT col1 FROM table1 WHERE name IS NOT NULL): unary where 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "name",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "IS",
+        },
+        "right": Object {
+          "operator": Object {
+            "tag": "Operator",
+            "value": "NOT",
+          },
+          "tag": "UnaryExpression",
+          "value": Object {
+            "tag": "Null",
+          },
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }

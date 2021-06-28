@@ -89,6 +89,22 @@ describe('Convert', () => {
         WHERE :id = table1.id AND table4.id = :id
       `,
     ],
+    [
+      'multiple params infer type from one 1',
+      `
+        SELECT col1
+        FROM table1
+        WHERE :id = table1.id AND :id
+      `,
+    ],
+    [
+      'multiple params infer type from one 2',
+      `
+        SELECT col1
+        FROM table1
+        WHERE :id IS NOT NULL OR :id = table1.id
+      `,
+    ],
   ])('Should convert %s sql (%s)', (_, sql) => {
     expect(convertSelect(parser(sql))).toMatchSnapshot();
   });

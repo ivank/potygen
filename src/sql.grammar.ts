@@ -39,6 +39,8 @@ import {
   OffsetTag,
   SelectTag,
   FromListTag,
+  UnaryExpressionTag,
+  NullTag,
 } from './sql.types';
 
 /**
@@ -76,6 +78,7 @@ const As = Node<AsTag>(All(/^AS/i, Identifier), ([value]) => ({ tag: 'As', value
 /**
  * Constant
  */
+const Null = Node<NullTag>(/^NULL/i, () => ({ tag: 'Null' }));
 const NumberRule = Any(
   /^([0-9]+)'/,
   /^([0-9]+(\.[0-9]+)?(e([+-]?[0-9]+))?)/,
@@ -90,7 +93,7 @@ const CustomDollarQuatedString = Node<StringTag>(
 );
 const Number = Node<NumberTag>(NumberRule, ([value]) => ({ tag: 'Number', value }));
 const Boolean = Node<BooleanTag>(/^(TRUE|FALSE)/i, ([value]) => ({ tag: 'Boolean', value }));
-const Constant = Any(String, DollarQuatedString, CustomDollarQuatedString, Number, Boolean);
+const Constant = Any(Null, String, DollarQuatedString, CustomDollarQuatedString, Number, Boolean);
 
 const Count = Node<CountTag>(/^([0-9]+)/, ([value]) => ({ tag: 'Count', value }));
 
@@ -152,12 +155,15 @@ const SelectIdentifier = Node<SelectIdentifierTag>(
   (values) => ({ tag: 'SelectIdentifier', values }),
 );
 
+const UnaryOperator = /^(\+|\-|NOT|ISNULL|NOTNULL)/i;
+
 const BinaryOperatorPrecedence = [
   /^(\^)/i,
   /^(\*|\/|%)/i,
   /^(\+|-)/i,
   /^(\+|-)/i,
   /^(\|\|)/i,
+  /^(IS)/i,
   /^(IN)/i,
   /^(LIKE|ILIKE)/i,
   /^(<=|>=|<|>)/,
@@ -193,6 +199,15 @@ const Select = Y((SelectExpression) => {
     const DataType = Any(CaseWithoutExpression, CaseWithExpression, CastableDataType);
 
     /**
+     * Unary Operation
+     * ----------------------------------------------------------------------------------------
+     */
+    const UnaryOperatorNode = Node<OperatorTag>(UnaryOperator, ([value]) => ({ tag: 'Operator', value }));
+    const UnaryExpression = Node<UnaryExpressionTag>(All(Star(UnaryOperatorNode), DataType), (parts) =>
+      parts.reduceRight((value, operator) => ({ tag: 'UnaryExpression', value, operator })),
+    );
+
+    /**
      * Binary Operation
      * ----------------------------------------------------------------------------------------
      */
@@ -202,7 +217,8 @@ const Select = Y((SelectExpression) => {
         All(Current, Star(All(OperatorNode, Current))),
         LeftBinaryOperator(([left, operator, right]) => ({ tag: 'BinaryExpression', left, operator, right })),
       );
-    }, DataType);
+    }, UnaryExpression);
+
     const BetweenExpression = Node<BetweenExpressionTag>(
       All(DataType, /^BETWEEN/i, DataType, /^AND/i, DataType),
       ([value, left, right]) => {

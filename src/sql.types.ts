@@ -1,3 +1,4 @@
+export type NullTag = { tag: 'Null' };
 export type IdentifierTag = { tag: 'Identifier'; value: string };
 export type ParameterTag = { tag: 'Parameter'; value: string; type: 'native' | 'values' };
 export type QualifiedIdentifierTag = { tag: 'QualifiedIdentifier'; values: IdentifierTag[] };
@@ -5,7 +6,7 @@ export type AsTag = { tag: 'As'; value: IdentifierTag };
 export type StringTag = { tag: 'String'; value: string };
 export type NumberTag = { tag: 'Number'; value: string };
 export type BooleanTag = { tag: 'Boolean'; value: string };
-export type ConstantTag = StringTag | NumberTag | BooleanTag;
+export type ConstantTag = NullTag | StringTag | NumberTag | BooleanTag;
 export type CountTag = { tag: 'Count'; value: string };
 export type TypeTag = { tag: 'Type'; value: string; param?: string };
 export type DistinctTag = { tag: 'Distinct'; values: IdentifierTag[] };
@@ -24,13 +25,19 @@ export type DataTypeTag = CaseTag | CastableDataTypeTag;
 export type OperatorTag = { tag: 'Operator'; value: string };
 export type BinaryExpressionTag = {
   tag: 'BinaryExpression';
-  left: DataTypeTag | BinaryExpressionTag;
-  right: DataTypeTag | BinaryExpressionTag;
+  left: DataTypeTag | OperatorExpressionTag;
+  right: DataTypeTag | OperatorExpressionTag;
   operator: OperatorTag;
 };
+export type UnaryExpressionTag = {
+  tag: 'UnaryExpression';
+  value: DataTypeTag | OperatorExpressionTag;
+  operator: OperatorTag;
+};
+export type OperatorExpressionTag = BinaryExpressionTag | UnaryExpressionTag;
 export type BetweenExpressionTag = { tag: 'Between'; left: DataTypeTag; right: DataTypeTag; value: DataTypeTag };
 export type CastTag = { tag: 'Cast'; value: DataTypeTag; type: TypeTag };
-export type ExpressionTag = CastTag | BinaryExpressionTag | BetweenExpressionTag | DataTypeTag;
+export type ExpressionTag = CastTag | OperatorExpressionTag | BetweenExpressionTag | DataTypeTag;
 export type SelectListItemTag = { tag: 'SelectListItem'; value: ExpressionTag; as?: AsTag };
 export type SelectListTag = { tag: 'SelectList'; values: SelectListItemTag[] };
 export type FromListItemTag = {
@@ -64,6 +71,7 @@ export type SelectTag = { tag: 'Select'; values: (SelectParts | OrderByTag | Com
 export type SqlTag = { tag: string };
 
 export type Tag =
+  | NullTag
   | IdentifierTag
   | ParameterTag
   | QualifiedIdentifierTag
@@ -107,6 +115,7 @@ export type Tag =
   | OffsetTag
   | SelectTag;
 
+export const isNull = (value: SqlTag): value is NullTag => value.tag === 'Null';
 export const isIdentifier = (value: SqlTag): value is IdentifierTag => value.tag === 'Identifier';
 export const isParameter = (value: SqlTag): value is ParameterTag => value.tag === 'Parameter';
 export const isQualifiedIdentifier = (value: SqlTag): value is QualifiedIdentifierTag =>

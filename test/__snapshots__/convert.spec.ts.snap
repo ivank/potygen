@@ -207,16 +207,6 @@ Object {
         "type": "column",
       },
     },
-    Object {
-      "name": "id",
-      "type": Object {
-        "column": "id",
-        "table": Array [
-          "table4",
-        ],
-        "type": "column",
-      },
-    },
   ],
   "result": Array [
     Object {
@@ -340,6 +330,72 @@ Object {
         "column": "col_9",
         "table": Array [
           "table3",
+        ],
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert multiple params infer type from one 1 sql (
+        SELECT col1
+        FROM table1
+        WHERE :id = table1.id AND :id
+      ) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "col1",
+      "type": Object {
+        "column": "col1",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Convert Should convert multiple params infer type from one 2 sql (
+        SELECT col1
+        FROM table1
+        WHERE :id IS NOT NULL OR :id = table1.id
+      ) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "table": Array [
+          "table1",
+        ],
+        "type": "column",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "col1",
+      "type": Object {
+        "column": "col1",
+        "table": Array [
+          "table1",
         ],
         "type": "column",
       },

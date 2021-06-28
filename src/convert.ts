@@ -1,4 +1,4 @@
-import { first, last, initial, isEmpty } from './util';
+import { first, last, initial, isEmpty, isUnique, orderBy } from './util';
 import {
   FromTag,
   isFrom,
@@ -22,7 +22,7 @@ import {
 
 export type ColumnType = { type: 'column'; table: string[]; column: string };
 export type StarType = { type: 'star'; table: string[] };
-export type ConstantType = 'string' | 'number' | 'boolean' | 'Date' | 'unknown';
+export type ConstantType = 'string' | 'number' | 'boolean' | 'Date' | 'null' | 'unknown';
 export type SimpleType = ConstantType | ColumnType | StarType;
 export type PropertyType = SimpleType[] | SimpleType;
 
@@ -96,6 +96,17 @@ const sqlTypes: { [type: string]: ConstantType } = {
   timestamptz: 'Date',
 };
 
+const operatorTypes: { [type: string]: ConstantType } = {
+  '+': 'number',
+  '-': 'number',
+  '/': 'number',
+  '*': 'number',
+  OR: 'boolean',
+  AND: 'boolean',
+  NOT: 'boolean',
+  '||': 'string',
+};
+
 const convertExpression = (
   tag: ExpressionTag,
   contextType?: Param['type'],
@@ -117,16 +128,30 @@ const convertExpression = (
     case 'Select':
       const select = convertSelect(tag);
       return { type: select.result[0].type, params: select.params };
+
+    case 'Null':
+      return { type: 'null', params: [] };
+
+    case 'UnaryExpression':
+      const unary = convertExpression(tag.value);
+      const unaryOperatorType = operatorTypes[tag.operator.value.toUpperCase()];
+      const param = convertExpression(tag.value, unaryOperatorType ?? unary.type);
+
+      return { type: unary.type, params: param.params };
+
     case 'BinaryExpression':
       const left = convertExpression(tag.left);
       const right = convertExpression(tag.right);
-      const paramLeft = convertExpression(tag.left, right.type);
-      const paramRight = convertExpression(tag.right, left.type);
+      const binaryOperatorType = operatorTypes[tag.operator.value.toUpperCase()];
+      const paramLeft = convertExpression(tag.left, binaryOperatorType ?? right.type);
+      const paramRight = convertExpression(tag.right, binaryOperatorType ?? left.type);
       return { type: left.type, params: paramLeft.params.concat(paramRight.params) };
+
     case 'PgCast':
     case 'Cast':
       const castType = sqlTypes[tag.type.value] ?? 'string';
       return { type: sqlTypes[tag.type.value] ?? 'string', params: convertExpression(tag.value, castType).params };
+
     case 'Case':
       return tag.values.reduce<{ type: SimpleType[]; params: Param[] }>(
         (acc, caseTag) => {
@@ -135,13 +160,17 @@ const convertExpression = (
         },
         { params: [], type: [] },
       );
+
     case 'Boolean':
       return { type: 'boolean', params: [] };
+
     case 'Number':
       return { type: 'number', params: [] };
+
     case 'String':
     case 'Between':
       return { type: 'string', params: [] };
+
     case 'Parameter':
       return { type: 'string', params: [{ name: tag.value, type: contextType ?? 'unknown' }] };
   }
@@ -214,6 +243,8 @@ export const convertSelect = (selectTag: {
           return current;
       }
     }, [])
+    .sort(orderBy((item) => (item.type === 'unknown' ? 3 : item.type === 'null' ? 2 : 1)))
+    .filter(isUnique((item) => item.name))
     .map((param) => ({ ...param, type: resolve(param.type) }));
 
   return { params, result };
