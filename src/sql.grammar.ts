@@ -60,10 +60,12 @@ import {
   SetListTag,
   SetMapTag,
   SetTag,
-  UpdateTableTag,
+  TableTag,
   UpdateFromTag,
   ReturningTag,
   UpdateTag,
+  DeleteTag,
+  UsingTag,
 } from './sql.types';
 
 /**
@@ -387,12 +389,22 @@ const Select = Y((SelectExpression) => {
 });
 
 /**
- * Update
+ * Expressions
  * ----------------------------------------------------------------------------------------
  */
 const Expression = ExpressionRule(Select);
 const FromList = FromListRule(Select);
 const Where = WhereRule(Expression);
+const Table = Node<TableTag>(All(Optional(/^ONLY/i), QualifiedIdentifier, Optional(As)), ([value, as]) => ({
+  tag: 'Table',
+  value,
+  as,
+}));
+
+/**
+ * Update
+ * ----------------------------------------------------------------------------------------
+ */
 const Default = Node<DefaultTag>(/^DEFAULT/i, () => ({ tag: 'Default' }));
 
 const SetItem = Node<SetItemTag>(All(QualifiedIdentifier, '=', Any(Default, Expression)), ([column, value]) => ({
@@ -415,23 +427,26 @@ const SetMap = Node<SetMapTag>(
 );
 
 const Set = Node<SetTag>(All(/^SET/i, Any(SetList, SetMap)), ([value]) => ({ tag: 'Set', value }));
-const UpdateTable = Node<UpdateTableTag>(
-  All(Optional(/^ONLY/i), All(QualifiedIdentifier, Optional(As))),
-  ([value, as]) => ({
-    tag: 'UpdateTable',
-    value,
-    as,
-  }),
-);
+
 const UpdateFrom = Node<UpdateFromTag>(All(/^FROM/i, List(FromList)), (values) => ({ tag: 'UpdateFrom', values }));
 const Returning = Node<ReturningTag>(All(/^RETURNING/i, List(Any(StarIdentifier, QualifiedIdentifier))), (values) => ({
   tag: 'Returning',
   values,
 }));
 const Update = Node<UpdateTag>(
-  All(/^UPDATE/i, UpdateTable, Set, Optional(UpdateFrom), Optional(Where), Optional(Returning)),
+  All(/^UPDATE/i, Table, Set, Optional(UpdateFrom), Optional(Where), Optional(Returning)),
   (values) => ({ tag: 'Update', values }),
 );
 
+/**
+ * Delete
+ * ----------------------------------------------------------------------------------------
+ */
+const Using = Node<UsingTag>(All(/^USING/i, List(FromList)), (values) => ({ tag: 'Using', values }));
+const Delete = Node<DeleteTag>(
+  All(/^DELETE FROM/i, Table, Optional(Using), Optional(Where), Optional(Returning)),
+  (values) => ({ tag: 'Delete', values }),
+);
+
 // Ignore line comments and all whitespace
-export const SqlGrammar = Ignore(/^\s+|^--[^\r\n]*\n/, Any(Select, Update));
+export const SqlGrammar = Ignore(/^\s+|^--[^\r\n]*\n/, Any(Select, Update, Delete));

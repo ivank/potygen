@@ -1053,6 +1053,214 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql delete (DELETE FROM table1): delete 1`] = `
+Object {
+  "tag": "Delete",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql delete param (DELETE FROM table1 WHERE id = :id): delete param 1`] = `
+Object {
+  "tag": "Delete",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "tag": "Parameter",
+          "type": "native",
+          "value": "id",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql delete returning (DELETE FROM table1 USING table2 AS "my2" WHERE table1.id = my2.id AND deleted_at IS NOT NULL RETURNING id, col1): delete returning 1`] = `
+Object {
+  "tag": "Delete",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Using",
+      "values": Array [
+        Object {
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "as": Object {
+                "tag": "As",
+                "value": Object {
+                  "tag": "Identifier",
+                  "value": "my2",
+                },
+              },
+              "tag": "FromListItem",
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "table2",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "left": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table1",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
+          "operator": Object {
+            "tag": "Operator",
+            "value": "=",
+          },
+          "right": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "my2",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
+          "tag": "BinaryExpression",
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "AND",
+        },
+        "right": Object {
+          "left": Object {
+            "tag": "SelectIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "deleted_at",
+              },
+            ],
+          },
+          "operator": Object {
+            "tag": "Operator",
+            "value": "IS",
+          },
+          "right": Object {
+            "operator": Object {
+              "tag": "Operator",
+              "value": "NOT",
+            },
+            "tag": "UnaryExpression",
+            "value": Object {
+              "tag": "Null",
+            },
+          },
+          "tag": "BinaryExpression",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+    Object {
+      "tag": "Returning",
+      "values": Array [
+        Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
+        },
+        Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql dollar quoted string (SELECT $Dianne's horse$): dollar quoted string 1`] = `
 Object {
   "tag": "Select",
@@ -5005,7 +5213,7 @@ Object {
           "value": "my1",
         },
       },
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [
@@ -5063,7 +5271,7 @@ Object {
   "values": Array [
     Object {
       "as": undefined,
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [
@@ -5107,7 +5315,7 @@ Object {
   "values": Array [
     Object {
       "as": undefined,
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [
@@ -5173,7 +5381,7 @@ Object {
   "values": Array [
     Object {
       "as": undefined,
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [
@@ -5235,7 +5443,7 @@ Object {
   "values": Array [
     Object {
       "as": undefined,
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [
@@ -5303,7 +5511,7 @@ Object {
   "values": Array [
     Object {
       "as": undefined,
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [
@@ -5447,7 +5655,7 @@ Object {
   "values": Array [
     Object {
       "as": undefined,
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [
@@ -5517,7 +5725,7 @@ Object {
       },
     },
     Object {
-      "tag": "UpdateFromList",
+      "tag": "UpdateFrom",
       "values": Array [
         Object {
           "tag": "FromList",
@@ -5574,7 +5782,7 @@ Object {
   "values": Array [
     Object {
       "as": undefined,
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [
@@ -5619,7 +5827,7 @@ Object {
       },
     },
     Object {
-      "tag": "UpdateFromList",
+      "tag": "UpdateFrom",
       "values": Array [
         Object {
           "tag": "FromList",
@@ -5651,7 +5859,7 @@ Object {
   "values": Array [
     Object {
       "as": undefined,
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [
@@ -5714,7 +5922,7 @@ Object {
   "values": Array [
     Object {
       "as": undefined,
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [
@@ -5782,7 +5990,7 @@ Object {
   "values": Array [
     Object {
       "as": undefined,
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [
@@ -5859,7 +6067,7 @@ Object {
   "values": Array [
     Object {
       "as": undefined,
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [
@@ -5904,7 +6112,7 @@ Object {
   "values": Array [
     Object {
       "as": undefined,
-      "tag": "UpdateTable",
+      "tag": "Table",
       "value": Object {
         "tag": "QualifiedIdentifier",
         "values": Array [

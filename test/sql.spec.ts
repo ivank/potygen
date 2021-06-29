@@ -118,6 +118,9 @@ describe('Sql', () => {
     ${'update where'}                 | ${'UPDATE table1 SET deleted_at = TRUE WHERE id = :id'}
     ${'update returning star'}        | ${'UPDATE table1 SET col1 = 10 WHERE id = :id RETURNING *'}
     ${'update returning'}             | ${'UPDATE table1 SET col1 = 10 RETURNING id, col1'}
+    ${'delete'}                       | ${'DELETE FROM table1'}
+    ${'delete param'}                 | ${'DELETE FROM table1 WHERE id = :id'}
+    ${'delete returning'}             | ${'DELETE FROM table1 USING table2 AS "my2" WHERE table1.id = my2.id AND deleted_at IS NOT NULL RETURNING id, col1'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) => {
     try {
       expect(sqlParser(sql)).toMatchSnapshot(name);

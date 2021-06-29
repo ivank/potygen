@@ -75,10 +75,13 @@ export type SetColumnsTag = { tag: 'SetColumns'; values: QualifiedIdentifierTag[
 export type SetValuesTag = { tag: 'SetValues'; values: (ExpressionTag | DefaultTag)[] };
 export type SetMapTag = { tag: 'SetMap'; columns: SetColumnsTag; values: SetValuesTag | SelectTag };
 export type SetTag = { tag: 'Set'; value: SetListTag | SetMapTag };
-export type UpdateTableTag = { tag: 'UpdateTable'; value: QualifiedIdentifierTag; as?: AsTag };
+export type TableTag = { tag: 'Table'; value: QualifiedIdentifierTag; as?: AsTag };
 export type UpdateFromTag = { tag: 'UpdateFrom'; values: FromListItemTag[] };
 export type ReturningTag = { tag: 'Returning'; values: (QualifiedIdentifierTag | StarIdentifierTag)[] };
-export type UpdateTag = { tag: 'Update'; values: (SetTag | UpdateTableTag | UpdateFromTag | ReturningTag)[] };
+export type UpdateTag = { tag: 'Update'; values: (SetTag | TableTag | UpdateFromTag | WhereTag | ReturningTag)[] };
+
+export type UsingTag = { tag: 'Using'; values: FromListItemTag[] };
+export type DeleteTag = { tag: 'Delete'; values: (TableTag | UsingTag | WhereTag | ReturningTag)[] };
 
 export type SqlTag = { tag: string };
 
@@ -133,10 +136,12 @@ export type Tag =
   | SetValuesTag
   | SetMapTag
   | SetTag
-  | UpdateTableTag
+  | TableTag
   | UpdateFromTag
   | ReturningTag
-  | UpdateTag;
+  | UpdateTag
+  | UsingTag
+  | DeleteTag;
 
 export const isNull = (value: SqlTag): value is NullTag => value.tag === 'Null';
 export const isIdentifier = (value: SqlTag): value is IdentifierTag => value.tag === 'Identifier';
@@ -189,7 +194,9 @@ export const isSetColumns = (value: SqlTag): value is SetColumnsTag => value.tag
 export const isSetValues = (value: SqlTag): value is SetValuesTag => value.tag === 'SetValues';
 export const isSetMap = (value: SqlTag): value is SetMapTag => value.tag === 'SetMap';
 export const isSet = (value: SqlTag): value is SetTag => value.tag === 'Set';
-export const isUpdateTable = (value: SqlTag): value is UpdateTableTag => value.tag === 'UpdateTable';
+export const isTable = (value: SqlTag): value is TableTag => value.tag === 'Table';
 export const isUpdateFrom = (value: SqlTag): value is UpdateFromTag => value.tag === 'UpdateFrom';
 export const isReturning = (value: SqlTag): value is ReturningTag => value.tag === 'Returning';
 export const isUpdate = (value: SqlTag): value is UpdateTag => value.tag === 'Update';
+export const isUsing = (value: SqlTag): value is UsingTag => value.tag === 'Using';
+export const isDelete = (value: SqlTag): value is DeleteTag => value.tag === 'Delete';
