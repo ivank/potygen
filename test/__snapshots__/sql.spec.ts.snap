@@ -4993,6 +4993,980 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql update as (UPDATE table1 AS "my1" SET my1.col1 = my2.col2): update as 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": Object {
+        "tag": "As",
+        "value": Object {
+          "tag": "Identifier",
+          "value": "my1",
+        },
+      },
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "my1",
+                },
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "SelectIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "my2",
+                },
+                Object {
+                  "tag": "Identifier",
+                  "value": "col2",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update default (UPDATE table1 SET col1 = DEFAULT): update default 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "Default",
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update list (UPDATE table1 SET col1 = 10, col2 = "other"): update list 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "Number",
+              "value": "10",
+            },
+          },
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col2",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "SelectIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "other",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update map (UPDATE table1 SET (col1, col2) = (DEFAULT, 10)): update map 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "columns": Object {
+          "tag": "SetColumns",
+          "values": Array [
+            Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col2",
+                },
+              ],
+            },
+          ],
+        },
+        "tag": "SetMap",
+        "values": Object {
+          "tag": "SetValues",
+          "values": Array [
+            Object {
+              "tag": "Default",
+            },
+            Object {
+              "tag": "Number",
+              "value": "10",
+            },
+          ],
+        },
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update map row (UPDATE table1 SET (col1, col2) = ROW ("12", FALSE)): update map row 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "columns": Object {
+          "tag": "SetColumns",
+          "values": Array [
+            Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col2",
+                },
+              ],
+            },
+          ],
+        },
+        "tag": "SetMap",
+        "values": Object {
+          "tag": "SetValues",
+          "values": Array [
+            Object {
+              "tag": "SelectIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "12",
+                },
+              ],
+            },
+            Object {
+              "tag": "Boolean",
+              "value": "FALSE",
+            },
+          ],
+        },
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update map select (UPDATE table1 SET (col1, col2) = (SELECT col3, col4 FROM table2 WHERE table2.id = table1.id)): update map select 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "columns": Object {
+          "tag": "SetColumns",
+          "values": Array [
+            Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col2",
+                },
+              ],
+            },
+          ],
+        },
+        "tag": "SetMap",
+        "values": Object {
+          "tag": "Select",
+          "values": Array [
+            Object {
+              "tag": "SelectList",
+              "values": Array [
+                Object {
+                  "as": undefined,
+                  "tag": "SelectListItem",
+                  "value": Object {
+                    "tag": "SelectIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "col3",
+                      },
+                    ],
+                  },
+                },
+                Object {
+                  "as": undefined,
+                  "tag": "SelectListItem",
+                  "value": Object {
+                    "tag": "SelectIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "col4",
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+            Object {
+              "join": Array [],
+              "list": Object {
+                "tag": "FromList",
+                "values": Array [
+                  Object {
+                    "as": undefined,
+                    "tag": "FromListItem",
+                    "value": Object {
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "tag": "Identifier",
+                          "value": "table2",
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              "tag": "From",
+            },
+            Object {
+              "tag": "Where",
+              "value": Object {
+                "left": Object {
+                  "tag": "SelectIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "table2",
+                    },
+                    Object {
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "operator": Object {
+                  "tag": "Operator",
+                  "value": "=",
+                },
+                "right": Object {
+                  "tag": "SelectIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "table1",
+                    },
+                    Object {
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "tag": "BinaryExpression",
+              },
+            },
+          ],
+        },
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update multiple as (UPDATE table1 SET col1 = my1.id, col2 = my2.id FROM table2 AS "my1", table3 AS my2): update multiple as 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "SelectIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "my1",
+                },
+                Object {
+                  "tag": "Identifier",
+                  "value": "id",
+                },
+              ],
+            },
+          },
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col2",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "SelectIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "my2",
+                },
+                Object {
+                  "tag": "Identifier",
+                  "value": "id",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "UpdateFromList",
+      "values": Array [
+        Object {
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "as": Object {
+                "tag": "As",
+                "value": Object {
+                  "tag": "Identifier",
+                  "value": "my1",
+                },
+              },
+              "tag": "FromListItem",
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "table2",
+                  },
+                ],
+              },
+            },
+            Object {
+              "as": Object {
+                "tag": "As",
+                "value": Object {
+                  "tag": "Identifier",
+                  "value": "my2",
+                },
+              },
+              "tag": "FromListItem",
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "table3",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update multiple tables (UPDATE table1 SET col1 = table2.id FROM table2): update multiple tables 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "SelectIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table2",
+                },
+                Object {
+                  "tag": "Identifier",
+                  "value": "id",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "UpdateFromList",
+      "values": Array [
+        Object {
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "tag": "FromListItem",
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "table2",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update params (UPDATE table1 SET col1 = :param1, col2 = :param2): update params 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "Parameter",
+              "type": "native",
+              "value": "param1",
+            },
+          },
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col2",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "Parameter",
+              "type": "native",
+              "value": "param2",
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update returning (UPDATE table1 SET col1 = 10 RETURNING id, col1): update returning 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "Number",
+              "value": "10",
+            },
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Returning",
+      "values": Array [
+        Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
+        },
+        Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update returning star (UPDATE table1 SET col1 = 10 WHERE id = :id RETURNING *): update returning star 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "Number",
+              "value": "10",
+            },
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "tag": "Parameter",
+          "type": "native",
+          "value": "id",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+    Object {
+      "tag": "Returning",
+      "values": Array [
+        Object {
+          "tag": "StarIdentifier",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update value (UPDATE table1 SET col1 = 10): update value 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "Number",
+              "value": "10",
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update where (UPDATE table1 SET deleted_at = TRUE WHERE id = :id): update where 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "UpdateTable",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "deleted_at",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "Boolean",
+              "value": "TRUE",
+            },
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "SelectIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "tag": "Parameter",
+          "type": "native",
+          "value": "id",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql where (SELECT * WHERE id = 5): where 1`] = `
 Object {
   "tag": "Select",

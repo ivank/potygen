@@ -105,6 +105,19 @@ describe('Sql', () => {
     ${'union select'}                 | ${'SELECT col1, col2 FROM table1 UNION SELECT col1, col2 FROM table2'}
     ${'intersect select'}             | ${'SELECT col1, col2 FROM table1 INTERSECT SELECT col1, col2 FROM table2'}
     ${'except select'}                | ${'SELECT col1, col2 FROM table1 EXCEPT SELECT col1, col2 FROM table2'}
+    ${'update default'}               | ${'UPDATE table1 SET col1 = DEFAULT'}
+    ${'update value'}                 | ${'UPDATE table1 SET col1 = 10'}
+    ${'update list'}                  | ${'UPDATE table1 SET col1 = 10, col2 = "other"'}
+    ${'update params'}                | ${'UPDATE table1 SET col1 = :param1, col2 = :param2'}
+    ${'update multiple tables'}       | ${'UPDATE table1 SET col1 = table2.id FROM table2'}
+    ${'update multiple as'}           | ${'UPDATE table1 SET col1 = my1.id, col2 = my2.id FROM table2 AS "my1", table3 AS my2'}
+    ${'update as'}                    | ${'UPDATE table1 AS "my1" SET my1.col1 = my2.col2'}
+    ${'update map'}                   | ${'UPDATE table1 SET (col1, col2) = (DEFAULT, 10)'}
+    ${'update map row'}               | ${'UPDATE table1 SET (col1, col2) = ROW ("12", FALSE)'}
+    ${'update map select'}            | ${'UPDATE table1 SET (col1, col2) = (SELECT col3, col4 FROM table2 WHERE table2.id = table1.id)'}
+    ${'update where'}                 | ${'UPDATE table1 SET deleted_at = TRUE WHERE id = :id'}
+    ${'update returning star'}        | ${'UPDATE table1 SET col1 = 10 WHERE id = :id RETURNING *'}
+    ${'update returning'}             | ${'UPDATE table1 SET col1 = 10 RETURNING id, col1'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) => {
     try {
       expect(sqlParser(sql)).toMatchSnapshot(name);

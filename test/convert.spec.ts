@@ -1,5 +1,5 @@
 import { Parser } from '@ikerin/rd-parse';
-import { convertSelect } from '../src/convert';
+import { convertSelect } from '../src/query-interface';
 import { SqlGrammar } from '../src/sql.grammar';
 
 const parser = Parser(SqlGrammar);

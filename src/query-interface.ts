@@ -1,4 +1,4 @@
-import { first, last, initial, isEmpty, isUnique, orderBy } from './util';
+import { first, last, initial, isUnique, orderBy } from './util';
 import {
   FromTag,
   isFrom,
@@ -18,10 +18,11 @@ import {
   OrderByTag,
   SelectListTag,
   WhereTag,
+  IdentifierTag,
 } from './sql.types';
 
-export type ColumnType = { type: 'column'; table: string[]; column: string };
-export type StarType = { type: 'star'; table: string[] };
+export type ColumnType = { type: 'column'; table?: string; schema?: string; column: string };
+export type StarType = { type: 'star'; table?: string; schema?: string };
 export type ConstantType = 'string' | 'number' | 'boolean' | 'Date' | 'null' | 'unknown';
 export type SimpleType = ConstantType | ColumnType | StarType;
 export type PropertyType = SimpleType[] | SimpleType;
@@ -41,21 +42,28 @@ export interface QueryInterface {
   result: Property[];
 }
 
-const isColumnType = (type: PropertyType): type is ColumnType => typeof type === 'object' && 'column' in type;
+export interface QualifiedTableName {
+  table?: string;
+  schema?: string;
+}
 
-const toName = (aliases: Record<string, string[]>, values: string[]): string[] =>
-  values.flatMap((part) => aliases[part] ?? part);
+export const isColumnType = (type: PropertyType): type is ColumnType => typeof type === 'object' && 'column' in type;
 
-const toTableAliases = (from: FromTag): Record<string, string[]> => {
+const toName = (aliases: Record<string, QualifiedTableName>, table: QualifiedTableName): QualifiedTableName =>
+  aliases[table?.table ?? ''] ?? table;
+
+const toQualifiedTableName = (parts: IdentifierTag[]): QualifiedTableName => ({
+  table: parts[1] ? parts[1].value : parts[0]?.value,
+  schema: parts[1] ? parts[0]?.value : undefined,
+});
+
+const toTableAliases = (from: FromTag): Record<string, QualifiedTableName> => {
   const fromAliases = from.list.values.reduce((current, item) => {
     const alias = item.as?.value.value;
     return alias && isQualifiedIdentifier(item.value)
       ? {
           ...current,
-          [alias]: toName(
-            current,
-            item.value.values.map((table) => table.value),
-          ),
+          [alias]: toName(current, toQualifiedTableName(item.value.values)),
         }
       : current;
   }, {});
@@ -65,10 +73,7 @@ const toTableAliases = (from: FromTag): Record<string, string[]> => {
     return alias
       ? {
           ...current,
-          [alias]: toName(
-            current,
-            item.table.values.map((table) => table.value),
-          ),
+          [alias]: toName(current, toQualifiedTableName(item.table.values)),
         }
       : current;
   }, fromAliases);
@@ -119,9 +124,9 @@ const convertExpression = (
       return {
         type: lastIdentifier
           ? isStarIdentifier(lastIdentifier)
-            ? { type: 'star', table: prefixIdentifiers.map((table) => table.value) }
-            : { type: 'column', column: lastIdentifier.value, table: prefixIdentifiers.map((table) => table.value) }
-          : 'string',
+            ? { type: 'star', ...toQualifiedTableName(prefixIdentifiers) }
+            : { type: 'column', column: lastIdentifier.value, ...toQualifiedTableName(prefixIdentifiers) }
+          : 'unknown',
         params: [],
       };
 
@@ -176,10 +181,12 @@ const convertExpression = (
   }
 };
 
-const resolveTypeWith = (fromTable: string[], aliases: Record<string, string[]>) => (prop: SimpleType): SimpleType =>
-  typeof prop === 'object' ? { ...prop, table: isEmpty(prop.table) ? fromTable : toName(aliases, prop.table) } : prop;
+const resolveTypeWith = (fromTable: QualifiedTableName, aliases: Record<string, QualifiedTableName>) => (
+  prop: SimpleType,
+): SimpleType =>
+  typeof prop === 'object' ? (prop.table ? { ...prop, ...toName(aliases, prop) } : { ...prop, ...fromTable }) : prop;
 
-const resolveType = (fromTable: string[], aliases: Record<string, string[]>) => {
+const resolveType = (fromTable: QualifiedTableName, aliases: Record<string, QualifiedTableName>) => {
   const resolve = resolveTypeWith(fromTable, aliases);
   return (property: SimpleType | SimpleType[]): SimpleType | SimpleType[] => {
     return Array.isArray(property) ? property.map(resolve) : resolve(property);
@@ -204,12 +211,13 @@ export const convertSelect = (selectTag: {
   const selectList = first(selectTag.values.filter(isSelectList));
   const from = first(selectTag.values.filter(isFrom));
   const tableAliases = from ? toTableAliases(from) : {};
+
   const fromTableExpression = first(from?.list.values)?.value;
 
-  const fromTable =
+  const fromTable: QualifiedTableName =
     fromTableExpression && isQualifiedIdentifier(fromTableExpression)
-      ? fromTableExpression.values.map((table) => table.value)
-      : [];
+      ? toName(tableAliases, toQualifiedTableName(fromTableExpression.values))
+      : {};
 
   const resolve = resolveType(fromTable, tableAliases);
 

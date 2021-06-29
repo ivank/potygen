@@ -1,4 +1,16 @@
-import { Ignore, All, Any, Optional, Node, Y, Star, Rule, LeftBinaryOperator, Plus } from '@ikerin/rd-parse';
+import {
+  Ignore,
+  All,
+  Any,
+  Optional,
+  Node,
+  Y,
+  Star,
+  Rule,
+  LeftBinaryOperator,
+  Plus,
+  FunctionRule,
+} from '@ikerin/rd-parse';
 import {
   IdentifierTag,
   QualifiedIdentifierTag,
@@ -41,6 +53,17 @@ import {
   FromListTag,
   UnaryExpressionTag,
   NullTag,
+  DefaultTag,
+  SetItemTag,
+  SetColumnsTag,
+  SetValuesTag,
+  SetListTag,
+  SetMapTag,
+  SetTag,
+  UpdateTableTag,
+  UpdateFromTag,
+  ReturningTag,
+  UpdateTag,
 } from './sql.types';
 
 /**
@@ -172,8 +195,12 @@ const BinaryOperatorPrecedence = [
   /^(OR)/,
 ];
 
-const Select = Y((SelectExpression) => {
-  const Expression = Y((ChildExpression) => {
+const ExpressionRule = (SelectExpression: FunctionRule): FunctionRule =>
+  Y((ChildExpression) => {
+    /**
+     * PgCast
+     * ----------------------------------------------------------------------------------------
+     */
     const CastableDataType = Node<CastableDataTypeTag>(
       All(
         Any(Constant, SelectIdentifier, Parameter, Brackets(SelectExpression), Brackets(ChildExpression)),
@@ -184,6 +211,7 @@ const Select = Y((SelectExpression) => {
 
     /**
      * Case
+     * ----------------------------------------------------------------------------------------
      */
     const When = Node<WhenTag>(All(/^WHEN/i, ChildExpression, /^THEN/i, ChildExpression), ([condition, value]) => {
       return { tag: 'When', value, condition };
@@ -199,7 +227,7 @@ const Select = Y((SelectExpression) => {
     const DataType = Any(CaseWithoutExpression, CaseWithExpression, CastableDataType);
 
     /**
-     * Unary Operation
+     * Unary Operator
      * ----------------------------------------------------------------------------------------
      */
     const UnaryOperatorNode = Node<OperatorTag>(UnaryOperator, ([value]) => ({ tag: 'Operator', value }));
@@ -208,7 +236,7 @@ const Select = Y((SelectExpression) => {
     );
 
     /**
-     * Binary Operation
+     * Binary Operator
      * ----------------------------------------------------------------------------------------
      */
     const BinoryOperatorExpression = BinaryOperatorPrecedence.reduce((Current, Operator) => {
@@ -219,19 +247,39 @@ const Select = Y((SelectExpression) => {
       );
     }, UnaryExpression);
 
+    /**
+     * Between Operator
+     * ----------------------------------------------------------------------------------------
+     */
     const BetweenExpression = Node<BetweenExpressionTag>(
       All(DataType, /^BETWEEN/i, DataType, /^AND/i, DataType),
-      ([value, left, right]) => {
-        return { tag: 'Between', left, right, value };
-      },
+      ([value, left, right]) => ({ tag: 'Between', left, right, value }),
     );
 
+    /**
+     * Cast
+     * ----------------------------------------------------------------------------------------
+     */
     const Cast = Node<CastTag>(All(/^CAST/i, '(', DataType, /^AS/i, Type, ')'), ([value, type]) => {
       return { tag: 'Cast', value, type };
     });
 
     return Any(Cast, BetweenExpression, BinoryOperatorExpression);
   });
+
+const FromListRule = (Select: FunctionRule): FunctionRule => {
+  const FromListItem = Node<FromListItemTag>(
+    All(Any(QualifiedIdentifier, Brackets(Select)), Optional(As)),
+    ([value, as]) => ({ tag: 'FromListItem', value, as }),
+  );
+  return Node<FromListTag>(List(FromListItem), (values) => ({ tag: 'FromList', values }));
+};
+
+const WhereRule = (Expression: FunctionRule): FunctionRule =>
+  Node<WhereTag>(All(/^WHERE/i, Expression), ([value]) => ({ tag: 'Where', value }));
+
+const Select = Y((SelectExpression) => {
+  const Expression = ExpressionRule(SelectExpression);
 
   const SelectListItem = Node<SelectListItemTag>(All(Any(Expression), Optional(As)), ([value, as]) => {
     return { tag: 'SelectListItem', value, as };
@@ -240,15 +288,9 @@ const Select = Y((SelectExpression) => {
 
   /**
    * From
+   * ----------------------------------------------------------------------------------------
    */
-
-  const FromListItem = Node<FromListItemTag>(
-    All(Any(QualifiedIdentifier, Brackets(SelectExpression)), Optional(As)),
-    ([value, as]) => {
-      return { tag: 'FromListItem', value, as };
-    },
-  );
-  const FromList = Node<FromListTag>(List(FromListItem), (values) => ({ tag: 'FromList', values }));
+  const FromList = FromListRule(SelectExpression);
 
   const JoinType = Node<JoinTypeTag>(
     Any(
@@ -276,15 +318,29 @@ const Select = Y((SelectExpression) => {
 
   /**
    * Where
+   * ----------------------------------------------------------------------------------------
    */
+  const Where = WhereRule(Expression);
 
-  const Where = Node<WhereTag>(All(/^WHERE/i, Expression), ([value]) => ({ tag: 'Where', value }));
+  /**
+   * Group By
+   * ----------------------------------------------------------------------------------------
+   */
   const GroupBy = Node<GroupByTag>(All(/^GROUP BY/i, List(QualifiedIdentifier)), (values) => ({
     tag: 'GroupBy',
     values,
   }));
+
+  /**
+   * Having
+   * ----------------------------------------------------------------------------------------
+   */
   const Having = Node<HavingTag>(All(/^HAVING/i, Expression), ([value]) => ({ tag: 'Having', value }));
 
+  /**
+   * Select Parts
+   * ----------------------------------------------------------------------------------------
+   */
   const SelectParts = [
     Optional(Any(/^ALL/i, Distinct)),
     SelectList,
@@ -294,6 +350,10 @@ const Select = Y((SelectExpression) => {
     Optional(Having),
   ];
 
+  /**
+   * Combination
+   * ----------------------------------------------------------------------------------------
+   */
   const Combination = Node<CombinationTag>(
     All(/^(UNION|INTERSECT|EXCEPT)/i, /^SELECT/i, ...SelectParts),
     ([type, ...values]) => {
@@ -301,6 +361,10 @@ const Select = Y((SelectExpression) => {
     },
   );
 
+  /**
+   * Order
+   * ----------------------------------------------------------------------------------------
+   */
   const OrderDirection = Node<OrderDirectionTag>(/^(ASC|DESC|USNIG >|USING <)/i, ([value]) => {
     return { tag: 'OrderDirection', value };
   });
@@ -308,6 +372,11 @@ const Select = Y((SelectExpression) => {
     return { tag: 'OrderByItem', value, direction };
   });
   const OrderBy = Node<OrderByTag>(All(/^ORDER BY/i, List(OrderByItem)), (values) => ({ tag: 'OrderBy', values }));
+
+  /**
+   * Limit
+   * ----------------------------------------------------------------------------------------
+   */
   const Limit = Node<LimitTag>(All(/^LIMIT/i, Any(Count, /^ALL/i)), ([value]) => ({ tag: 'Limit', value }));
   const Offset = Node<OffsetTag>(All(/^OFFSET/i, Count), ([value]) => ({ tag: 'Offset', value }));
 
@@ -317,5 +386,52 @@ const Select = Y((SelectExpression) => {
   );
 });
 
+/**
+ * Update
+ * ----------------------------------------------------------------------------------------
+ */
+const Expression = ExpressionRule(Select);
+const FromList = FromListRule(Select);
+const Where = WhereRule(Expression);
+const Default = Node<DefaultTag>(/^DEFAULT/i, () => ({ tag: 'Default' }));
+
+const SetItem = Node<SetItemTag>(All(QualifiedIdentifier, '=', Any(Default, Expression)), ([column, value]) => ({
+  tag: 'SetItem',
+  column,
+  value,
+}));
+const SetColumns = Node<SetColumnsTag>(Brackets(List(QualifiedIdentifier)), (values) => ({
+  tag: 'SetColumns',
+  values,
+}));
+const SetValues = Node<SetValuesTag>(Brackets(List(Any(Default, Expression))), (values) => ({
+  tag: 'SetValues',
+  values,
+}));
+const SetList = Node<SetListTag>(List(SetItem), (values) => ({ tag: 'SetList', values }));
+const SetMap = Node<SetMapTag>(
+  All(SetColumns, '=', Any(All(Optional(/^ROW/i), SetValues), Brackets(Select))),
+  ([columns, values]) => ({ tag: 'SetMap', columns, values }),
+);
+
+const Set = Node<SetTag>(All(/^SET/i, Any(SetList, SetMap)), ([value]) => ({ tag: 'Set', value }));
+const UpdateTable = Node<UpdateTableTag>(
+  All(Optional(/^ONLY/i), All(QualifiedIdentifier, Optional(As))),
+  ([value, as]) => ({
+    tag: 'UpdateTable',
+    value,
+    as,
+  }),
+);
+const UpdateFrom = Node<UpdateFromTag>(All(/^FROM/i, List(FromList)), (values) => ({ tag: 'UpdateFrom', values }));
+const Returning = Node<ReturningTag>(All(/^RETURNING/i, List(Any(StarIdentifier, QualifiedIdentifier))), (values) => ({
+  tag: 'Returning',
+  values,
+}));
+const Update = Node<UpdateTag>(
+  All(/^UPDATE/i, UpdateTable, Set, Optional(UpdateFrom), Optional(Where), Optional(Returning)),
+  (values) => ({ tag: 'Update', values }),
+);
+
 // Ignore line comments and all whitespace
-export const SqlGrammar = Ignore(/^\s+|^--[^\r\n]*\n/, Any(Select));
+export const SqlGrammar = Ignore(/^\s+|^--[^\r\n]*\n/, Any(Select, Update));

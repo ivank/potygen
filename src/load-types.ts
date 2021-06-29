@@ -1,4 +1,4 @@
-import { ConstantType } from './convert';
+import { ConstantType, QueryInterface } from './query-interface';
 
 export interface LoadedProperty {
   name: string;
@@ -10,9 +10,9 @@ export interface LoadedParam {
   type: ConstantType;
 }
 
-export interface QueryInterface {
+export interface LoadedQueryInterface {
   params: LoadedParam[];
   result: LoadedProperty[];
 }
 
-// export const loadTypes : ()
+export const loadTypes = (interface: QueryInterface): LoadedQueryInterface => {};

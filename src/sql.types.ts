@@ -68,6 +68,18 @@ export type LimitTag = { tag: 'Limit'; value: CountTag };
 export type OffsetTag = { tag: 'Offset'; value: CountTag };
 export type SelectTag = { tag: 'Select'; values: (SelectParts | OrderByTag | CombinationTag | LimitTag | OffsetTag)[] };
 
+export type DefaultTag = { tag: 'Default' };
+export type SetItemTag = { tag: 'SetItem'; column: QualifiedIdentifierTag; value: ExpressionTag | DefaultTag };
+export type SetListTag = { tag: 'SetList'; values: SetItemTag[] };
+export type SetColumnsTag = { tag: 'SetColumns'; values: QualifiedIdentifierTag[] };
+export type SetValuesTag = { tag: 'SetValues'; values: (ExpressionTag | DefaultTag)[] };
+export type SetMapTag = { tag: 'SetMap'; columns: SetColumnsTag; values: SetValuesTag | SelectTag };
+export type SetTag = { tag: 'Set'; value: SetListTag | SetMapTag };
+export type UpdateTableTag = { tag: 'UpdateTable'; value: QualifiedIdentifierTag; as?: AsTag };
+export type UpdateFromTag = { tag: 'UpdateFrom'; values: FromListItemTag[] };
+export type ReturningTag = { tag: 'Returning'; values: (QualifiedIdentifierTag | StarIdentifierTag)[] };
+export type UpdateTag = { tag: 'Update'; values: (SetTag | UpdateTableTag | UpdateFromTag | ReturningTag)[] };
+
 export type SqlTag = { tag: string };
 
 export type Tag =
@@ -113,7 +125,18 @@ export type Tag =
   | OrderByTag
   | LimitTag
   | OffsetTag
-  | SelectTag;
+  | SelectTag
+  | DefaultTag
+  | SetItemTag
+  | SetListTag
+  | SetColumnsTag
+  | SetValuesTag
+  | SetMapTag
+  | SetTag
+  | UpdateTableTag
+  | UpdateFromTag
+  | ReturningTag
+  | UpdateTag;
 
 export const isNull = (value: SqlTag): value is NullTag => value.tag === 'Null';
 export const isIdentifier = (value: SqlTag): value is IdentifierTag => value.tag === 'Identifier';
@@ -159,3 +182,14 @@ export const isOrderBy = (value: SqlTag): value is OrderByTag => value.tag === '
 export const isLimit = (value: SqlTag): value is LimitTag => value.tag === 'Limit';
 export const isOffset = (value: SqlTag): value is OffsetTag => value.tag === 'Offset';
 export const isSelect = (value: SqlTag): value is SelectTag => value.tag === 'Select';
+export const isDefault = (value: SqlTag): value is DefaultTag => value.tag === 'Default';
+export const isSetItem = (value: SqlTag): value is SetItemTag => value.tag === 'SetItem';
+export const isSetList = (value: SqlTag): value is SetListTag => value.tag === 'SetList';
+export const isSetColumns = (value: SqlTag): value is SetColumnsTag => value.tag === 'SetColumns';
+export const isSetValues = (value: SqlTag): value is SetValuesTag => value.tag === 'SetValues';
+export const isSetMap = (value: SqlTag): value is SetMapTag => value.tag === 'SetMap';
+export const isSet = (value: SqlTag): value is SetTag => value.tag === 'Set';
+export const isUpdateTable = (value: SqlTag): value is UpdateTableTag => value.tag === 'UpdateTable';
+export const isUpdateFrom = (value: SqlTag): value is UpdateFromTag => value.tag === 'UpdateFrom';
+export const isReturning = (value: SqlTag): value is ReturningTag => value.tag === 'Returning';
+export const isUpdate = (value: SqlTag): value is UpdateTag => value.tag === 'Update';
