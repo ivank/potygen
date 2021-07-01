@@ -26,20 +26,20 @@ describe('Sql', () => {
     ${'binary sum, div, mul'}         | ${'SELECT (1 + 2) / (20 * 32)'}
     ${'string concat'}                | ${"SELECT 'test' || 'other'"}
     ${'star select'}                  | ${'SELECT *'}
-    ${'qualified star select'}        | ${'SELECT table.*'}
+    ${'qualified star select'}        | ${'SELECT table1.*'}
     ${'const select'}                 | ${"SELECT '2018-01-01'"}
     ${'deep qualified star select'}   | ${'SELECT table1.table2.*'}
     ${'quoted star select'}           | ${'SELECT "table 2".*'}
     ${'deep quoted star select'}      | ${'SELECT "table 1"."table 2".*'}
     ${'deeper quoted star select'}    | ${'SELECT "table 1".table2."table 3".*'}
-    ${'column select'}                | ${'SELECT column'}
-    ${'qualified column select'}      | ${'SELECT table.column'}
-    ${'deep qualified column select'} | ${'SELECT schema.table.column'}
+    ${'column select'}                | ${'SELECT column1'}
+    ${'qualified column select'}      | ${'SELECT table1.column1'}
+    ${'deep qualified column select'} | ${'SELECT schema1.table1.column1'}
     ${'multiple columns select'}      | ${'SELECT column1, column2'}
-    ${'deep multiple columns select'} | ${'SELECT column1, table1.column2, table1.column3, schema.table3.colum2'}
-    ${'as select'}                    | ${'SELECT column as col1'}
-    ${'quoted as select'}             | ${'SELECT table.column as "col 1"'}
-    ${'quoted escaped as select'}     | ${'SELECT schema.table.column as "col ""2"""'}
+    ${'deep multiple columns select'} | ${'SELECT column1, table1.column2, table1.column3, schema1.table3.colum2'}
+    ${'as select'}                    | ${'SELECT column1 as col1'}
+    ${'quoted as select'}             | ${'SELECT table1.column1 as "col 1"'}
+    ${'quoted escaped as select'}     | ${'SELECT schema1.table1.column1 as "col ""2"""'}
     ${'multiple as columns select'}   | ${'SELECT column1 as "test", table1.column2, "test".column2 as col1'}
     ${'cast'}                         | ${'SELECT CAST(id AS int4)'}
     ${'cast number'}                  | ${'SELECT CAST(20 AS int4)'}
@@ -51,6 +51,7 @@ describe('Sql', () => {
     ${'from select'}                  | ${'SELECT * FROM (SELECT * FROM jobs2) as jobs1'}
     ${'from select as'}               | ${'SELECT * FROM jobs1, (SELECT * FROM jobs2)'}
     ${'from with as'}                 | ${'SELECT * FROM jobs AS test'}
+    ${'from with as short'}           | ${'SELECT * FROM jobs test'}
     ${'from with as quoted'}          | ${'SELECT * FROM jobs AS "test 2"'}
     ${'multiple from'}                | ${'SELECT * FROM jobs1, jobs AS "test 2"'}
     ${'multiple from as'}             | ${'SELECT * FROM jobs1 AS j1, jobs2, jobs3 as j3'}
@@ -73,15 +74,15 @@ describe('Sql', () => {
     ${'where'}                        | ${'SELECT * WHERE id = 5'}
     ${'where and'}                    | ${"SELECT * WHERE id = 5 AND name = 'test'"}
     ${'where boolean'}                | ${'SELECT * WHERE id = 5 AND TRUE'}
-    ${'where greater than'}           | ${'SELECT * WHERE table.col > 2'}
-    ${'where less than'}              | ${'SELECT * WHERE table.col < 2'}
-    ${'where different from'}         | ${"SELECT * WHERE table.col <> '23'"}
-    ${'where not equal to'}           | ${"SELECT * WHERE table.col != '23'"}
-    ${'where greater than or equal'}  | ${'SELECT * WHERE table.col >= 23'}
-    ${'where less than or equal'}     | ${"SELECT * WHERE table.col <= '23'"}
-    ${'where like string'}            | ${"SELECT * WHERE table.col LIKE '%23%'"}
-    ${'where ilike string'}           | ${"SELECT * WHERE table.col ILIKE '23%'"}
-    ${'between'}                      | ${"SELECT * WHERE table.col BETWEEN '2006-01-01' AND '2007-01-01'"}
+    ${'where greater than'}           | ${'SELECT * WHERE table1.col > 2'}
+    ${'where less than'}              | ${'SELECT * WHERE table1.col < 2'}
+    ${'where different from'}         | ${"SELECT * WHERE table1.col <> '23'"}
+    ${'where not equal to'}           | ${"SELECT * WHERE table1.col != '23'"}
+    ${'where greater than or equal'}  | ${'SELECT * WHERE table1.col >= 23'}
+    ${'where less than or equal'}     | ${"SELECT * WHERE table1.col <= '23'"}
+    ${'where like string'}            | ${"SELECT * WHERE table1.col LIKE '%23%'"}
+    ${'where ilike string'}           | ${"SELECT * WHERE table1.col ILIKE '23%'"}
+    ${'between'}                      | ${"SELECT * WHERE table1.col BETWEEN '2006-01-01' AND '2007-01-01'"}
     ${'where select'}                 | ${'SELECT * WHERE (SELECT id FROM test LIMIT 1) = 5'}
     ${'quoted identifier'}            | ${'SELECT "test"'}
     ${'quoted identifier escaped'}    | ${'SELECT "test me ""o donald"" true"'}
@@ -89,6 +90,7 @@ describe('Sql', () => {
     ${'intersect'}                    | ${'SELECT * FROM table1 INTERSECT SELECT * FROM table2'}
     ${'except'}                       | ${'SELECT * FROM table1 EXCEPT SELECT * FROM table2'}
     ${'order by'}                     | ${'SELECT * FROM table1 ORDER BY col ASC'}
+    ${'order by qualified'}           | ${'SELECT * FROM table1 mr ORDER BY mr."DateOfReading" ASC'}
     ${'order by multiple'}            | ${'SELECT * FROM table1 ORDER BY col1 ASC, col2'}
     ${'group by'}                     | ${'SELECT * FROM table1 GROUP BY col'}
     ${'group by multiple'}            | ${'SELECT * FROM table1 GROUP BY col1, col2'}
@@ -121,6 +123,29 @@ describe('Sql', () => {
     ${'delete'}                       | ${'DELETE FROM table1'}
     ${'delete param'}                 | ${'DELETE FROM table1 WHERE id = :id'}
     ${'delete returning'}             | ${'DELETE FROM table1 USING table2 AS "my2" WHERE table1.id = my2.id AND deleted_at IS NOT NULL RETURNING id, col1'}
+    ${'insert'}                       | ${'INSERT INTO table1 (id, col1) VALUES (10,20),(30,40)'}
+    ${'insert returning'}             | ${'INSERT INTO table1 (id, col1) VALUES (10,20),(30,40) RETURNING id, col1'}
+    ${'insert select'}                | ${'INSERT INTO table1 SELECT id, col FROM table2'}
+    ${'insert do nothing'}            | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO NOTHING'}
+    ${'insert do set'}                | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO UPDATE SET id = EXCLUDED.id WHERE id > 10'}
+    ${'insert conflict'}              | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL DO UPDATE SET id = EXCLUDED.id WHERE id > 10'}
+    ${'function'}                     | ${'SELECT COALESCE(id, TRUE) FROM table1'}
+    ${'function in set'}              | ${'UPDATE table1 SET col1 = COALESCE(id, TRUE) RETURNING id, col1'}
+    ${'function in where'}            | ${'SELECT id FROM table1 WHERE table1.col = ANY(table1.test) '}
+    ${'function with order'}          | ${'SELECT ARRAY_AGG(id ORDER BY col1 DESC) FROM table1 GROUP BY table1.col2'}
+    ${'nested function'}              | ${'SELECT id FROM table1 WHERE table1.col = ANY(ARRAY_AGG(table1.col2)) GROUP BY table1.col2'}
+    ${'array'}                        | ${'SELECT ARRAY[1, 2]'}
+    ${'array index'}                  | ${'SELECT arr[12]'}
+    ${'array index expression'}       | ${'SELECT arr[12+3]'}
+    ${'array index expression col'}   | ${'SELECT arr[table1.id+3] FROM table1'}
+    ${'array index slice'}            | ${'SELECT (ARRAY[1,2,3,4])[2:3]'}
+    ${'function with array'}          | ${"SELECT id FROM table1 WHERE table1.col = ANY(ARRAY['opening','Opening']) ORDER BY col ASC LIMIT 1"}
+    ${'function with type cast'}      | ${'SELECT TRIM(name)::text FROM table1'}
+    ${'array nested'}                 | ${"SELECT ARRAY[ARRAY[1,2], ARRAY['test','other']]"}
+    ${'type array'}                   | ${'SELECT $test::int[]'}
+    ${'type array nested'}            | ${'SELECT $test::int[][]'}
+    ${'limit offset params'}          | ${'SELECT * FROM table1 LIMIT :param1 OFFSET :param2'}
+    ${'limit offset param type'}      | ${'SELECT * FROM table1 LIMIT :param1::int OFFSET :param2::int'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) => {
     try {
       expect(sqlParser(sql)).toMatchSnapshot(name);

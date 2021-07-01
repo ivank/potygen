@@ -1,6 +1,288 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sql Should parse simple sql as select (SELECT column as col1): as select 1`] = `
+exports[`Sql Should parse simple sql array (SELECT ARRAY[1, 2]): array 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "ArrayConstructor",
+            "values": Array [
+              Object {
+                "tag": "Number",
+                "value": "1",
+              },
+              Object {
+                "tag": "Number",
+                "value": "2",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql array index (SELECT arr[12]): array index 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "index": Object {
+              "tag": "Number",
+              "value": "12",
+            },
+            "tag": "ArrayIndex",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "arr",
+                },
+              ],
+            },
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql array index expression (SELECT arr[12+3]): array index expression 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "index": Object {
+              "left": Object {
+                "tag": "Number",
+                "value": "12",
+              },
+              "operator": Object {
+                "tag": "Operator",
+                "value": "+",
+              },
+              "right": Object {
+                "tag": "Number",
+                "value": "3",
+              },
+              "tag": "BinaryExpression",
+            },
+            "tag": "ArrayIndex",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "arr",
+                },
+              ],
+            },
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql array index expression col (SELECT arr[table1.id+3] FROM table1): array index expression col 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "index": Object {
+              "left": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "table1",
+                  },
+                  Object {
+                    "tag": "Identifier",
+                    "value": "id",
+                  },
+                ],
+              },
+              "operator": Object {
+                "tag": "Operator",
+                "value": "+",
+              },
+              "right": Object {
+                "tag": "Number",
+                "value": "3",
+              },
+              "tag": "BinaryExpression",
+            },
+            "tag": "ArrayIndex",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "arr",
+                },
+              ],
+            },
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql array index slice (SELECT (ARRAY[1,2,3,4])[2:3]): array index slice 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "index": Object {
+              "left": Object {
+                "tag": "Number",
+                "value": "2",
+              },
+              "right": Object {
+                "tag": "Number",
+                "value": "3",
+              },
+              "tag": "ArrayIndexRange",
+            },
+            "tag": "ArrayIndex",
+            "value": Object {
+              "tag": "ArrayConstructor",
+              "values": Array [
+                Object {
+                  "tag": "Number",
+                  "value": "1",
+                },
+                Object {
+                  "tag": "Number",
+                  "value": "2",
+                },
+                Object {
+                  "tag": "Number",
+                  "value": "3",
+                },
+                Object {
+                  "tag": "Number",
+                  "value": "4",
+                },
+              ],
+            },
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql array nested (SELECT ARRAY[ARRAY[1,2], ARRAY['test','other']]): array nested 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "ArrayConstructor",
+            "values": Array [
+              Object {
+                "tag": "ArrayConstructor",
+                "values": Array [
+                  Object {
+                    "tag": "Number",
+                    "value": "1",
+                  },
+                  Object {
+                    "tag": "Number",
+                    "value": "2",
+                  },
+                ],
+              },
+              Object {
+                "tag": "ArrayConstructor",
+                "values": Array [
+                  Object {
+                    "tag": "String",
+                    "value": "test",
+                  },
+                  Object {
+                    "tag": "String",
+                    "value": "other",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql as select (SELECT column1 as col1): as select 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -17,11 +299,11 @@ Object {
           },
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "column",
+                "value": "column1",
               },
             ],
           },
@@ -32,7 +314,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql between (SELECT * WHERE table.col BETWEEN '2006-01-01' AND '2007-01-01'): between 1`] = `
+exports[`Sql Should parse simple sql between (SELECT * WHERE table1.col BETWEEN '2006-01-01' AND '2007-01-01'): between 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -43,7 +325,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -66,11 +348,11 @@ Object {
         },
         "tag": "Between",
         "value": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
-              "value": "table",
+              "value": "table1",
             },
             Object {
               "tag": "Identifier",
@@ -321,7 +603,7 @@ Object {
           "tag": "SelectListItem",
           "value": Object {
             "expression": Object {
-              "tag": "SelectIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "tag": "Identifier",
@@ -378,7 +660,7 @@ Object {
               Object {
                 "condition": Object {
                   "left": Object {
-                    "tag": "SelectIdentifier",
+                    "tag": "QualifiedIdentifier",
                     "values": Array [
                       Object {
                         "tag": "Identifier",
@@ -405,7 +687,7 @@ Object {
               Object {
                 "condition": Object {
                   "left": Object {
-                    "tag": "SelectIdentifier",
+                    "tag": "QualifiedIdentifier",
                     "values": Array [
                       Object {
                         "tag": "Identifier",
@@ -450,7 +732,7 @@ Object {
           "tag": "SelectListItem",
           "value": Object {
             "expression": Object {
-              "tag": "SelectIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "tag": "Identifier",
@@ -514,7 +796,7 @@ Object {
               Object {
                 "condition": Object {
                   "left": Object {
-                    "tag": "SelectIdentifier",
+                    "tag": "QualifiedIdentifier",
                     "values": Array [
                       Object {
                         "tag": "Identifier",
@@ -541,7 +823,7 @@ Object {
               Object {
                 "condition": Object {
                   "left": Object {
-                    "tag": "SelectIdentifier",
+                    "tag": "QualifiedIdentifier",
                     "values": Array [
                       Object {
                         "tag": "Identifier",
@@ -599,7 +881,7 @@ Object {
               "value": "int4",
             },
             "value": Object {
-              "tag": "SelectIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "tag": "Identifier",
@@ -673,7 +955,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql column select (SELECT column): column select 1`] = `
+exports[`Sql Should parse simple sql column select (SELECT column1): column select 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -684,11 +966,11 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "column",
+                "value": "column1",
               },
             ],
           },
@@ -713,7 +995,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -760,7 +1042,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -835,7 +1117,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql deep multiple columns select (SELECT column1, table1.column2, table1.column3, schema.table3.colum2): deep multiple columns select 1`] = `
+exports[`Sql Should parse simple sql deep multiple columns select (SELECT column1, table1.column2, table1.column3, schema1.table3.colum2): deep multiple columns select 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -846,7 +1128,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -859,7 +1141,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -876,7 +1158,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -893,11 +1175,11 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "schema",
+                "value": "schema1",
               },
               Object {
                 "tag": "Identifier",
@@ -916,7 +1198,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql deep qualified column select (SELECT schema.table.column): deep qualified column select 1`] = `
+exports[`Sql Should parse simple sql deep qualified column select (SELECT schema1.table1.column1): deep qualified column select 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -927,19 +1209,19 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "schema",
+                "value": "schema1",
               },
               Object {
                 "tag": "Identifier",
-                "value": "table",
+                "value": "table1",
               },
               Object {
                 "tag": "Identifier",
-                "value": "column",
+                "value": "column1",
               },
             ],
           },
@@ -961,7 +1243,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -994,7 +1276,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -1027,7 +1309,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -1095,7 +1377,7 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
@@ -1170,7 +1452,7 @@ Object {
       "value": Object {
         "left": Object {
           "left": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -1187,7 +1469,7 @@ Object {
             "value": "=",
           },
           "right": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -1207,7 +1489,7 @@ Object {
         },
         "right": Object {
           "left": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -1293,7 +1575,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -1336,7 +1618,7 @@ Object {
               "as": undefined,
               "tag": "SelectListItem",
               "value": Object {
-                "tag": "SelectIdentifier",
+                "tag": "StarQualifiedIdentifier",
                 "values": Array [
                   Object {
                     "tag": "StarIdentifier",
@@ -1385,7 +1667,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -1398,7 +1680,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -1442,7 +1724,7 @@ Object {
               "as": undefined,
               "tag": "SelectListItem",
               "value": Object {
-                "tag": "SelectIdentifier",
+                "tag": "QualifiedIdentifier",
                 "values": Array [
                   Object {
                     "tag": "Identifier",
@@ -1455,7 +1737,7 @@ Object {
               "as": undefined,
               "tag": "SelectListItem",
               "value": Object {
-                "tag": "SelectIdentifier",
+                "tag": "QualifiedIdentifier",
                 "values": Array [
                   Object {
                     "tag": "Identifier",
@@ -1505,7 +1787,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -1552,7 +1834,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -1586,7 +1868,7 @@ Object {
                       "as": undefined,
                       "tag": "SelectListItem",
                       "value": Object {
-                        "tag": "SelectIdentifier",
+                        "tag": "StarQualifiedIdentifier",
                         "values": Array [
                           Object {
                             "tag": "StarIdentifier",
@@ -1640,7 +1922,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -1681,7 +1963,7 @@ Object {
                       "as": undefined,
                       "tag": "SelectListItem",
                       "value": Object {
-                        "tag": "SelectIdentifier",
+                        "tag": "StarQualifiedIdentifier",
                         "values": Array [
                           Object {
                             "tag": "StarIdentifier",
@@ -1735,7 +2017,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -1788,7 +2070,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -1830,6 +2112,59 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql from with as short (SELECT * FROM jobs test): from with as short 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": Object {
+              "tag": "As",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "test",
+              },
+            },
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "jobs",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql full join (SELECT * FROM jobs FULL JOIN test1): full join 1`] = `
 Object {
   "tag": "Select",
@@ -1841,7 +2176,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -1906,7 +2241,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -1960,6 +2295,528 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql function (SELECT COALESCE(id, TRUE) FROM table1): function 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "args": Array [
+              Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "id",
+                  },
+                ],
+              },
+              Object {
+                "tag": "Boolean",
+                "value": "TRUE",
+              },
+            ],
+            "tag": "Function",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "COALESCE",
+            },
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql function in set (UPDATE table1 SET col1 = COALESCE(id, TRUE) RETURNING id, col1): function in set 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "args": Array [
+                Object {
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                Object {
+                  "tag": "Boolean",
+                  "value": "TRUE",
+                },
+              ],
+              "tag": "Function",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "COALESCE",
+              },
+            },
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Returning",
+      "values": Array [
+        Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
+        },
+        Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql function in where (SELECT id FROM table1 WHERE table1.col = ANY(table1.test) ): function in where 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "args": Array [
+            Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+                Object {
+                  "tag": "Identifier",
+                  "value": "test",
+                },
+              ],
+            },
+          ],
+          "tag": "Function",
+          "value": Object {
+            "tag": "Identifier",
+            "value": "ANY",
+          },
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql function with array (SELECT id FROM table1 WHERE table1.col = ANY(ARRAY['opening','Opening']) ORDER BY col ASC LIMIT 1): function with array 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "args": Array [
+            Object {
+              "tag": "ArrayConstructor",
+              "values": Array [
+                Object {
+                  "tag": "String",
+                  "value": "opening",
+                },
+                Object {
+                  "tag": "String",
+                  "value": "Opening",
+                },
+              ],
+            },
+          ],
+          "tag": "Function",
+          "value": Object {
+            "tag": "Identifier",
+            "value": "ANY",
+          },
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+    Object {
+      "tag": "OrderBy",
+      "values": Array [
+        Object {
+          "direction": Object {
+            "tag": "OrderDirection",
+            "value": "ASC",
+          },
+          "tag": "OrderByItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "Limit",
+      "value": Object {
+        "tag": "Count",
+        "value": "1",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql function with order (SELECT ARRAY_AGG(id ORDER BY col1 DESC) FROM table1 GROUP BY table1.col2): function with order 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "args": Array [
+              Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "id",
+                  },
+                ],
+              },
+              Object {
+                "tag": "OrderBy",
+                "values": Array [
+                  Object {
+                    "direction": Object {
+                      "tag": "OrderDirection",
+                      "value": "DESC",
+                    },
+                    "tag": "OrderByItem",
+                    "value": Object {
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "tag": "Identifier",
+                          "value": "col1",
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+            "tag": "Function",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "ARRAY_AGG",
+            },
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "GroupBy",
+      "values": Array [
+        Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col2",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql function with type cast (SELECT TRIM(name)::text FROM table1): function with type cast 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "PgCast",
+            "type": Object {
+              "param": undefined,
+              "tag": "Type",
+              "value": "text",
+            },
+            "value": Object {
+              "args": Array [
+                Object {
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "name",
+                    },
+                  ],
+                },
+              ],
+              "tag": "Function",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "TRIM",
+              },
+            },
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql group by (SELECT * FROM table1 GROUP BY col): group by 1`] = `
 Object {
   "tag": "Select",
@@ -1971,7 +2828,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -2032,7 +2889,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -2102,7 +2959,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -2156,6 +3013,538 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql insert (INSERT INTO table1 (id, col1) VALUES (10,20),(30,40)): insert 1`] = `
+Object {
+  "tag": "Insert",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Columns",
+      "values": Array [
+        Object {
+          "tag": "Identifier",
+          "value": "id",
+        },
+        Object {
+          "tag": "Identifier",
+          "value": "col1",
+        },
+      ],
+    },
+    Object {
+      "tag": "ValuesList",
+      "values": Array [
+        Object {
+          "tag": "Values",
+          "values": Array [
+            Object {
+              "tag": "Number",
+              "value": "10",
+            },
+            Object {
+              "tag": "Number",
+              "value": "20",
+            },
+          ],
+        },
+        Object {
+          "tag": "Values",
+          "values": Array [
+            Object {
+              "tag": "Number",
+              "value": "30",
+            },
+            Object {
+              "tag": "Number",
+              "value": "40",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql insert conflict (INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL DO UPDATE SET id = EXCLUDED.id WHERE id > 10): insert conflict 1`] = `
+Object {
+  "tag": "Insert",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "ValuesList",
+      "values": Array [
+        Object {
+          "tag": "Values",
+          "values": Array [
+            Object {
+              "tag": "Number",
+              "value": "10",
+            },
+            Object {
+              "tag": "Number",
+              "value": "20",
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "Conflict",
+      "values": Array [
+        Object {
+          "tag": "ConflictTarget",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "tag": "Table",
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "source_system_id",
+                  },
+                ],
+              },
+            },
+            Object {
+              "tag": "Where",
+              "value": Object {
+                "left": Object {
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "source_system_id",
+                    },
+                  ],
+                },
+                "operator": Object {
+                  "tag": "Operator",
+                  "value": "IS",
+                },
+                "right": Object {
+                  "operator": Object {
+                    "tag": "Operator",
+                    "value": "NOT",
+                  },
+                  "tag": "UnaryExpression",
+                  "value": Object {
+                    "tag": "Null",
+                  },
+                },
+                "tag": "BinaryExpression",
+              },
+            },
+          ],
+        },
+        Object {
+          "tag": "DoUpdate",
+          "value": Object {
+            "tag": "Set",
+            "value": Object {
+              "tag": "SetList",
+              "values": Array [
+                Object {
+                  "column": Object {
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  "tag": "SetItem",
+                  "value": Object {
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "EXCLUDED",
+                      },
+                      Object {
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          "where": Object {
+            "tag": "Where",
+            "value": Object {
+              "left": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "id",
+                  },
+                ],
+              },
+              "operator": Object {
+                "tag": "Operator",
+                "value": ">",
+              },
+              "right": Object {
+                "tag": "Number",
+                "value": "10",
+              },
+              "tag": "BinaryExpression",
+            },
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql insert do nothing (INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO NOTHING): insert do nothing 1`] = `
+Object {
+  "tag": "Insert",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "ValuesList",
+      "values": Array [
+        Object {
+          "tag": "Values",
+          "values": Array [
+            Object {
+              "tag": "Number",
+              "value": "10",
+            },
+            Object {
+              "tag": "Number",
+              "value": "20",
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "Conflict",
+      "values": Array [
+        Object {
+          "tag": "DoNothing",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql insert do set (INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO UPDATE SET id = EXCLUDED.id WHERE id > 10): insert do set 1`] = `
+Object {
+  "tag": "Insert",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "ValuesList",
+      "values": Array [
+        Object {
+          "tag": "Values",
+          "values": Array [
+            Object {
+              "tag": "Number",
+              "value": "10",
+            },
+            Object {
+              "tag": "Number",
+              "value": "20",
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "Conflict",
+      "values": Array [
+        Object {
+          "tag": "DoUpdate",
+          "value": Object {
+            "tag": "Set",
+            "value": Object {
+              "tag": "SetList",
+              "values": Array [
+                Object {
+                  "column": Object {
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  "tag": "SetItem",
+                  "value": Object {
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "EXCLUDED",
+                      },
+                      Object {
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          "where": Object {
+            "tag": "Where",
+            "value": Object {
+              "left": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "id",
+                  },
+                ],
+              },
+              "operator": Object {
+                "tag": "Operator",
+                "value": ">",
+              },
+              "right": Object {
+                "tag": "Number",
+                "value": "10",
+              },
+              "tag": "BinaryExpression",
+            },
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql insert returning (INSERT INTO table1 (id, col1) VALUES (10,20),(30,40) RETURNING id, col1): insert returning 1`] = `
+Object {
+  "tag": "Insert",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Columns",
+      "values": Array [
+        Object {
+          "tag": "Identifier",
+          "value": "id",
+        },
+        Object {
+          "tag": "Identifier",
+          "value": "col1",
+        },
+      ],
+    },
+    Object {
+      "tag": "ValuesList",
+      "values": Array [
+        Object {
+          "tag": "Values",
+          "values": Array [
+            Object {
+              "tag": "Number",
+              "value": "10",
+            },
+            Object {
+              "tag": "Number",
+              "value": "20",
+            },
+          ],
+        },
+        Object {
+          "tag": "Values",
+          "values": Array [
+            Object {
+              "tag": "Number",
+              "value": "30",
+            },
+            Object {
+              "tag": "Number",
+              "value": "40",
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "Returning",
+      "values": Array [
+        Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
+        },
+        Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql insert select (INSERT INTO table1 SELECT id, col FROM table2): insert select 1`] = `
+Object {
+  "tag": "Insert",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Select",
+      "values": Array [
+        Object {
+          "tag": "SelectList",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "tag": "SelectListItem",
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "id",
+                  },
+                ],
+              },
+            },
+            Object {
+              "as": undefined,
+              "tag": "SelectListItem",
+              "value": Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "col",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        Object {
+          "join": Array [],
+          "list": Object {
+            "tag": "FromList",
+            "values": Array [
+              Object {
+                "as": undefined,
+                "tag": "FromListItem",
+                "value": Object {
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "table2",
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+          "tag": "From",
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql intersect (SELECT * FROM table1 INTERSECT SELECT * FROM table2): intersect 1`] = `
 Object {
   "tag": "Select",
@@ -2167,7 +3556,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -2210,7 +3599,7 @@ Object {
               "as": undefined,
               "tag": "SelectListItem",
               "value": Object {
-                "tag": "SelectIdentifier",
+                "tag": "StarQualifiedIdentifier",
                 "values": Array [
                   Object {
                     "tag": "StarIdentifier",
@@ -2259,7 +3648,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -2272,7 +3661,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -2316,7 +3705,7 @@ Object {
               "as": undefined,
               "tag": "SelectListItem",
               "value": Object {
-                "tag": "SelectIdentifier",
+                "tag": "QualifiedIdentifier",
                 "values": Array [
                   Object {
                     "tag": "Identifier",
@@ -2329,7 +3718,7 @@ Object {
               "as": undefined,
               "tag": "SelectListItem",
               "value": Object {
-                "tag": "SelectIdentifier",
+                "tag": "QualifiedIdentifier",
                 "values": Array [
                   Object {
                     "tag": "Identifier",
@@ -2379,7 +3768,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -2444,7 +3833,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -2517,7 +3906,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -2590,7 +3979,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -2622,7 +4011,7 @@ Object {
               "tag": "JoinOn",
               "value": Object {
                 "left": Object {
-                  "tag": "SelectIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "tag": "Identifier",
@@ -2639,7 +4028,7 @@ Object {
                   "value": "=",
                 },
                 "right": Object {
-                  "tag": "SelectIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "tag": "Identifier",
@@ -2692,7 +4081,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -2724,7 +4113,7 @@ Object {
               "tag": "JoinOn",
               "value": Object {
                 "left": Object {
-                  "tag": "SelectIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "tag": "Identifier",
@@ -2741,7 +4130,7 @@ Object {
                   "value": "=",
                 },
                 "right": Object {
-                  "tag": "SelectIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "tag": "Identifier",
@@ -2794,7 +4183,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -2833,7 +4222,7 @@ Object {
               "tag": "JoinOn",
               "value": Object {
                 "left": Object {
-                  "tag": "SelectIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "tag": "Identifier",
@@ -2850,7 +4239,7 @@ Object {
                   "value": "=",
                 },
                 "right": Object {
-                  "tag": "SelectIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "tag": "Identifier",
@@ -2903,7 +4292,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -2942,7 +4331,7 @@ Object {
               "tag": "JoinOn",
               "value": Object {
                 "left": Object {
-                  "tag": "SelectIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "tag": "Identifier",
@@ -2959,7 +4348,7 @@ Object {
                   "value": "=",
                 },
                 "right": Object {
-                  "tag": "SelectIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "tag": "Identifier",
@@ -3012,7 +4401,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -3077,7 +4466,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -3142,7 +4531,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -3174,7 +4563,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -3202,6 +4591,160 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql limit offset param type (SELECT * FROM table1 LIMIT :param1::int OFFSET :param2::int): limit offset param type 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Limit",
+      "value": Object {
+        "tag": "Count",
+        "value": Object {
+          "tag": "PgCast",
+          "type": Object {
+            "param": undefined,
+            "tag": "Type",
+            "value": "int",
+          },
+          "value": Object {
+            "tag": "Parameter",
+            "type": "native",
+            "value": "param1",
+          },
+        },
+      },
+    },
+    Object {
+      "tag": "Offset",
+      "value": Object {
+        "tag": "Count",
+        "value": Object {
+          "tag": "PgCast",
+          "type": Object {
+            "param": undefined,
+            "tag": "Type",
+            "value": "int",
+          },
+          "value": Object {
+            "tag": "Parameter",
+            "type": "native",
+            "value": "param2",
+          },
+        },
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql limit offset params (SELECT * FROM table1 LIMIT :param1 OFFSET :param2): limit offset params 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Limit",
+      "value": Object {
+        "tag": "Count",
+        "value": Object {
+          "tag": "Parameter",
+          "type": "native",
+          "value": "param1",
+        },
+      },
+    },
+    Object {
+      "tag": "Offset",
+      "value": Object {
+        "tag": "Count",
+        "value": Object {
+          "tag": "Parameter",
+          "type": "native",
+          "value": "param2",
+        },
+      },
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql multiple as columns select (SELECT column1 as "test", table1.column2, "test".column2 as col1): multiple as columns select 1`] = `
 Object {
   "tag": "Select",
@@ -3219,7 +4762,7 @@ Object {
           },
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -3232,7 +4775,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -3255,7 +4798,7 @@ Object {
           },
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -3285,7 +4828,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -3298,7 +4841,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -3324,7 +4867,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -3390,7 +4933,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -3475,7 +5018,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -3546,6 +5089,126 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql nested function (SELECT id FROM table1 WHERE table1.col = ANY(ARRAY_AGG(table1.col2)) GROUP BY table1.col2): nested function 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "args": Array [
+            Object {
+              "args": Array [
+                Object {
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "tag": "Identifier",
+                      "value": "table1",
+                    },
+                    Object {
+                      "tag": "Identifier",
+                      "value": "col2",
+                    },
+                  ],
+                },
+              ],
+              "tag": "Function",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "ARRAY_AGG",
+              },
+            },
+          ],
+          "tag": "Function",
+          "value": Object {
+            "tag": "Identifier",
+            "value": "ANY",
+          },
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+    Object {
+      "tag": "GroupBy",
+      "values": Array [
+        Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col2",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql nested select (SELECT test, (SELECT id FROM table2 LIMIT 1) FROM table1): nested select 1`] = `
 Object {
   "tag": "Select",
@@ -3557,7 +5220,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -3579,7 +5242,7 @@ Object {
                     "as": undefined,
                     "tag": "SelectListItem",
                     "value": Object {
-                      "tag": "SelectIdentifier",
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
                           "tag": "Identifier",
@@ -3681,7 +5344,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -3718,7 +5381,7 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
@@ -3751,7 +5414,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -3783,7 +5446,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -3825,7 +5488,7 @@ Object {
           },
           "tag": "OrderByItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -3851,7 +5514,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -3893,7 +5556,7 @@ Object {
           },
           "tag": "OrderByItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -3906,11 +5569,89 @@ Object {
           "direction": undefined,
           "tag": "OrderByItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
                 "value": "col2",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql order by qualified (SELECT * FROM table1 mr ORDER BY mr."DateOfReading" ASC): order by qualified 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": Object {
+              "tag": "As",
+              "value": Object {
+                "tag": "Identifier",
+                "value": "mr",
+              },
+            },
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "OrderBy",
+      "values": Array [
+        Object {
+          "direction": Object {
+            "tag": "OrderDirection",
+            "value": "ASC",
+          },
+          "tag": "OrderByItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "mr",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "DateOfReading",
               },
             ],
           },
@@ -3932,7 +5673,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -3946,7 +5687,7 @@ Object {
       "tag": "Having",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
@@ -3985,7 +5726,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -4018,7 +5759,7 @@ Object {
               "value": Object {
                 "left": Object {
                   "left": Object {
-                    "tag": "SelectIdentifier",
+                    "tag": "QualifiedIdentifier",
                     "values": Array [
                       Object {
                         "tag": "Identifier",
@@ -4035,7 +5776,7 @@ Object {
                     "value": "=",
                   },
                   "right": Object {
-                    "tag": "SelectIdentifier",
+                    "tag": "QualifiedIdentifier",
                     "values": Array [
                       Object {
                         "tag": "Identifier",
@@ -4055,7 +5796,7 @@ Object {
                 },
                 "right": Object {
                   "left": Object {
-                    "tag": "SelectIdentifier",
+                    "tag": "QualifiedIdentifier",
                     "values": Array [
                       Object {
                         "tag": "Identifier",
@@ -4108,7 +5849,7 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
@@ -4169,7 +5910,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -4205,7 +5946,7 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
@@ -4251,7 +5992,7 @@ Object {
               "value": "int",
             },
             "value": Object {
-              "tag": "SelectIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "tag": "Identifier",
@@ -4307,7 +6048,7 @@ Object {
               "value": "date",
             },
             "value": Object {
-              "tag": "SelectIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "tag": "Identifier",
@@ -4337,7 +6078,7 @@ Object {
                       "as": undefined,
                       "tag": "SelectListItem",
                       "value": Object {
-                        "tag": "SelectIdentifier",
+                        "tag": "QualifiedIdentifier",
                         "values": Array [
                           Object {
                             "tag": "Identifier",
@@ -4460,7 +6201,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql qualified column select (SELECT table.column): qualified column select 1`] = `
+exports[`Sql Should parse simple sql qualified column select (SELECT table1.column1): qualified column select 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -4471,15 +6212,15 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "table",
+                "value": "table1",
               },
               Object {
                 "tag": "Identifier",
-                "value": "column",
+                "value": "column1",
               },
             ],
           },
@@ -4490,7 +6231,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql qualified star select (SELECT table.*): qualified star select 1`] = `
+exports[`Sql Should parse simple sql qualified star select (SELECT table1.*): qualified star select 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -4501,11 +6242,11 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "table",
+                "value": "table1",
               },
               Object {
                 "tag": "StarIdentifier",
@@ -4519,7 +6260,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql quoted as select (SELECT table.column as "col 1"): quoted as select 1`] = `
+exports[`Sql Should parse simple sql quoted as select (SELECT table1.column1 as "col 1"): quoted as select 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -4536,15 +6277,15 @@ Object {
           },
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "table",
+                "value": "table1",
               },
               Object {
                 "tag": "Identifier",
-                "value": "column",
+                "value": "column1",
               },
             ],
           },
@@ -4555,7 +6296,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql quoted escaped as select (SELECT schema.table.column as "col ""2"""): quoted escaped as select 1`] = `
+exports[`Sql Should parse simple sql quoted escaped as select (SELECT schema1.table1.column1 as "col ""2"""): quoted escaped as select 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -4572,19 +6313,19 @@ Object {
           },
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
-                "value": "schema",
+                "value": "schema1",
               },
               Object {
                 "tag": "Identifier",
-                "value": "table",
+                "value": "table1",
               },
               Object {
                 "tag": "Identifier",
-                "value": "column",
+                "value": "column1",
               },
             ],
           },
@@ -4606,7 +6347,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -4632,7 +6373,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -4658,7 +6399,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -4687,7 +6428,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -4752,7 +6493,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -4817,7 +6558,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -4884,6 +6625,74 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql type array (SELECT $test::int[]): type array 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "PgCast",
+            "type": Object {
+              "dimensions": 1,
+              "tag": "TypeArray",
+              "value": Object {
+                "param": undefined,
+                "tag": "Type",
+                "value": "int",
+              },
+            },
+            "value": Object {
+              "tag": "Parameter",
+              "type": "native",
+              "value": "test",
+            },
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql type array nested (SELECT $test::int[][]): type array nested 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "PgCast",
+            "type": Object {
+              "dimensions": 2,
+              "tag": "TypeArray",
+              "value": Object {
+                "param": undefined,
+                "tag": "Type",
+                "value": "int",
+              },
+            },
+            "value": Object {
+              "tag": "Parameter",
+              "type": "native",
+              "value": "test",
+            },
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql unary (SELECT NOT TRUE): unary 1`] = `
 Object {
   "tag": "Select",
@@ -4923,7 +6732,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -4960,7 +6769,7 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
@@ -5000,7 +6809,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -5043,7 +6852,7 @@ Object {
               "as": undefined,
               "tag": "SelectListItem",
               "value": Object {
-                "tag": "SelectIdentifier",
+                "tag": "StarQualifiedIdentifier",
                 "values": Array [
                   Object {
                     "tag": "StarIdentifier",
@@ -5092,7 +6901,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -5105,7 +6914,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -5149,7 +6958,7 @@ Object {
               "as": undefined,
               "tag": "SelectListItem",
               "value": Object {
-                "tag": "SelectIdentifier",
+                "tag": "QualifiedIdentifier",
                 "values": Array [
                   Object {
                     "tag": "Identifier",
@@ -5162,7 +6971,7 @@ Object {
               "as": undefined,
               "tag": "SelectListItem",
               "value": Object {
-                "tag": "SelectIdentifier",
+                "tag": "QualifiedIdentifier",
                 "values": Array [
                   Object {
                     "tag": "Identifier",
@@ -5245,7 +7054,7 @@ Object {
             },
             "tag": "SetItem",
             "value": Object {
-              "tag": "SelectIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "tag": "Identifier",
@@ -5359,7 +7168,7 @@ Object {
             },
             "tag": "SetItem",
             "value": Object {
-              "tag": "SelectIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "tag": "Identifier",
@@ -5396,31 +7205,21 @@ Object {
       "tag": "Set",
       "value": Object {
         "columns": Object {
-          "tag": "SetColumns",
+          "tag": "Columns",
           "values": Array [
             Object {
-              "tag": "QualifiedIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "col1",
-                },
-              ],
+              "tag": "Identifier",
+              "value": "col1",
             },
             Object {
-              "tag": "QualifiedIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "col2",
-                },
-              ],
+              "tag": "Identifier",
+              "value": "col2",
             },
           ],
         },
         "tag": "SetMap",
         "values": Object {
-          "tag": "SetValues",
+          "tag": "Values",
           "values": Array [
             Object {
               "tag": "Default",
@@ -5458,34 +7257,24 @@ Object {
       "tag": "Set",
       "value": Object {
         "columns": Object {
-          "tag": "SetColumns",
+          "tag": "Columns",
           "values": Array [
             Object {
-              "tag": "QualifiedIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "col1",
-                },
-              ],
+              "tag": "Identifier",
+              "value": "col1",
             },
             Object {
-              "tag": "QualifiedIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "col2",
-                },
-              ],
+              "tag": "Identifier",
+              "value": "col2",
             },
           ],
         },
         "tag": "SetMap",
         "values": Object {
-          "tag": "SetValues",
+          "tag": "Values",
           "values": Array [
             Object {
-              "tag": "SelectIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "tag": "Identifier",
@@ -5526,25 +7315,15 @@ Object {
       "tag": "Set",
       "value": Object {
         "columns": Object {
-          "tag": "SetColumns",
+          "tag": "Columns",
           "values": Array [
             Object {
-              "tag": "QualifiedIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "col1",
-                },
-              ],
+              "tag": "Identifier",
+              "value": "col1",
             },
             Object {
-              "tag": "QualifiedIdentifier",
-              "values": Array [
-                Object {
-                  "tag": "Identifier",
-                  "value": "col2",
-                },
-              ],
+              "tag": "Identifier",
+              "value": "col2",
             },
           ],
         },
@@ -5559,7 +7338,7 @@ Object {
                   "as": undefined,
                   "tag": "SelectListItem",
                   "value": Object {
-                    "tag": "SelectIdentifier",
+                    "tag": "QualifiedIdentifier",
                     "values": Array [
                       Object {
                         "tag": "Identifier",
@@ -5572,7 +7351,7 @@ Object {
                   "as": undefined,
                   "tag": "SelectListItem",
                   "value": Object {
-                    "tag": "SelectIdentifier",
+                    "tag": "QualifiedIdentifier",
                     "values": Array [
                       Object {
                         "tag": "Identifier",
@@ -5609,7 +7388,7 @@ Object {
               "tag": "Where",
               "value": Object {
                 "left": Object {
-                  "tag": "SelectIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "tag": "Identifier",
@@ -5626,7 +7405,7 @@ Object {
                   "value": "=",
                 },
                 "right": Object {
-                  "tag": "SelectIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "tag": "Identifier",
@@ -5683,7 +7462,7 @@ Object {
             },
             "tag": "SetItem",
             "value": Object {
-              "tag": "SelectIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "tag": "Identifier",
@@ -5708,7 +7487,7 @@ Object {
             },
             "tag": "SetItem",
             "value": Object {
-              "tag": "SelectIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "tag": "Identifier",
@@ -5810,7 +7589,7 @@ Object {
             },
             "tag": "SetItem",
             "value": Object {
-              "tag": "SelectIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "tag": "Identifier",
@@ -6029,7 +7808,7 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
@@ -6151,7 +7930,7 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
@@ -6186,7 +7965,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -6200,7 +7979,7 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
@@ -6234,7 +8013,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -6249,7 +8028,7 @@ Object {
       "value": Object {
         "left": Object {
           "left": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -6273,7 +8052,7 @@ Object {
         },
         "right": Object {
           "left": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -6309,7 +8088,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -6324,7 +8103,7 @@ Object {
       "value": Object {
         "left": Object {
           "left": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -6368,7 +8147,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -6383,7 +8162,7 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
@@ -6401,7 +8180,7 @@ Object {
         },
         "right": Object {
           "expression": Object {
-            "tag": "SelectIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "Identifier",
@@ -6446,7 +8225,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql where different from (SELECT * WHERE table.col <> '23'): where different from 1`] = `
+exports[`Sql Should parse simple sql where different from (SELECT * WHERE table1.col <> '23'): where different from 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -6457,7 +8236,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -6471,11 +8250,11 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
-              "value": "table",
+              "value": "table1",
             },
             Object {
               "tag": "Identifier",
@@ -6498,7 +8277,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql where greater than (SELECT * WHERE table.col > 2): where greater than 1`] = `
+exports[`Sql Should parse simple sql where greater than (SELECT * WHERE table1.col > 2): where greater than 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -6509,7 +8288,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -6523,11 +8302,11 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
-              "value": "table",
+              "value": "table1",
             },
             Object {
               "tag": "Identifier",
@@ -6550,7 +8329,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql where greater than or equal (SELECT * WHERE table.col >= 23): where greater than or equal 1`] = `
+exports[`Sql Should parse simple sql where greater than or equal (SELECT * WHERE table1.col >= 23): where greater than or equal 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -6561,7 +8340,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -6575,11 +8354,11 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
-              "value": "table",
+              "value": "table1",
             },
             Object {
               "tag": "Identifier",
@@ -6602,7 +8381,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql where ilike string (SELECT * WHERE table.col ILIKE '23%'): where ilike string 1`] = `
+exports[`Sql Should parse simple sql where ilike string (SELECT * WHERE table1.col ILIKE '23%'): where ilike string 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -6613,7 +8392,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -6627,11 +8406,11 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
-              "value": "table",
+              "value": "table1",
             },
             Object {
               "tag": "Identifier",
@@ -6654,7 +8433,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql where less than (SELECT * WHERE table.col < 2): where less than 1`] = `
+exports[`Sql Should parse simple sql where less than (SELECT * WHERE table1.col < 2): where less than 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -6665,7 +8444,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -6679,11 +8458,11 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
-              "value": "table",
+              "value": "table1",
             },
             Object {
               "tag": "Identifier",
@@ -6706,7 +8485,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql where less than or equal (SELECT * WHERE table.col <= '23'): where less than or equal 1`] = `
+exports[`Sql Should parse simple sql where less than or equal (SELECT * WHERE table1.col <= '23'): where less than or equal 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -6717,7 +8496,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -6731,11 +8510,11 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
-              "value": "table",
+              "value": "table1",
             },
             Object {
               "tag": "Identifier",
@@ -6758,7 +8537,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql where like string (SELECT * WHERE table.col LIKE '%23%'): where like string 1`] = `
+exports[`Sql Should parse simple sql where like string (SELECT * WHERE table1.col LIKE '%23%'): where like string 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -6769,7 +8548,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -6783,11 +8562,11 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
-              "value": "table",
+              "value": "table1",
             },
             Object {
               "tag": "Identifier",
@@ -6810,7 +8589,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql where not equal to (SELECT * WHERE table.col != '23'): where not equal to 1`] = `
+exports[`Sql Should parse simple sql where not equal to (SELECT * WHERE table1.col != '23'): where not equal to 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -6821,7 +8600,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -6835,11 +8614,11 @@ Object {
       "tag": "Where",
       "value": Object {
         "left": Object {
-          "tag": "SelectIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "tag": "Identifier",
-              "value": "table",
+              "value": "table1",
             },
             Object {
               "tag": "Identifier",
@@ -6873,7 +8652,7 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
-            "tag": "SelectIdentifier",
+            "tag": "StarQualifiedIdentifier",
             "values": Array [
               Object {
                 "tag": "StarIdentifier",
@@ -6896,7 +8675,7 @@ Object {
                   "as": undefined,
                   "tag": "SelectListItem",
                   "value": Object {
-                    "tag": "SelectIdentifier",
+                    "tag": "QualifiedIdentifier",
                     "values": Array [
                       Object {
                         "tag": "Identifier",

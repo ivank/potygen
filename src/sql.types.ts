@@ -1,4 +1,5 @@
 export type NullTag = { tag: 'Null' };
+export type QuotedNameTag = { tag: 'QuotedName'; value: string };
 export type IdentifierTag = { tag: 'Identifier'; value: string };
 export type ParameterTag = { tag: 'Parameter'; value: string; type: 'native' | 'values' };
 export type QualifiedIdentifierTag = { tag: 'QualifiedIdentifier'; values: IdentifierTag[] };
@@ -7,17 +8,23 @@ export type StringTag = { tag: 'String'; value: string };
 export type NumberTag = { tag: 'Number'; value: string };
 export type BooleanTag = { tag: 'Boolean'; value: string };
 export type ConstantTag = NullTag | StringTag | NumberTag | BooleanTag;
-export type CountTag = { tag: 'Count'; value: string };
+export type ArrayIndexRangeTag = { tag: 'ArrayIndexRange'; left: ExpressionTag; right: ExpressionTag };
+export type ArrayIndexTag = { tag: 'ArrayIndex'; value: ExpressionTag; index: ExpressionTag | ArrayIndexRangeTag };
+export type CountTag = { tag: 'Count'; value: string | ParameterTag };
 export type TypeTag = { tag: 'Type'; value: string; param?: string };
+export type TypeArrayTag = { tag: 'TypeArray'; value: TypeTag; dimensions: number };
 export type DistinctTag = { tag: 'Distinct'; values: IdentifierTag[] };
 export type StarIdentifierTag = { tag: 'StarIdentifier' };
-export type SelectIdentifierTag = { tag: 'SelectIdentifier'; values: (IdentifierTag | StarIdentifierTag)[] };
+export type StarQualifiedIdentifierTag = {
+  tag: 'StarQualifiedIdentifier';
+  values: (IdentifierTag | StarIdentifierTag)[];
+};
 export type CastableDataTypeTag =
   | ConstantTag
-  | SelectIdentifierTag
+  | QualifiedIdentifierTag
   | SelectTag
   | ParameterTag
-  | { tag: 'PgCast'; value: ConstantTag | SelectIdentifierTag | ExpressionTag | ParameterTag; type: TypeTag };
+  | { tag: 'PgCast'; value: ConstantTag | QualifiedIdentifierTag | ExpressionTag | ParameterTag; type: TypeTag };
 export type WhenTag = { tag: 'When'; condition: ExpressionTag; value: ExpressionTag };
 export type ElseTag = { tag: 'Else'; value: ExpressionTag };
 export type CaseTag = { tag: 'Case'; expression?: CastableDataTypeTag; values: (WhenTag | ElseTag)[] };
@@ -37,8 +44,20 @@ export type UnaryExpressionTag = {
 export type OperatorExpressionTag = BinaryExpressionTag | UnaryExpressionTag;
 export type BetweenExpressionTag = { tag: 'Between'; left: DataTypeTag; right: DataTypeTag; value: DataTypeTag };
 export type CastTag = { tag: 'Cast'; value: DataTypeTag; type: TypeTag };
-export type ExpressionTag = CastTag | OperatorExpressionTag | BetweenExpressionTag | DataTypeTag;
-export type SelectListItemTag = { tag: 'SelectListItem'; value: ExpressionTag; as?: AsTag };
+export type ArrayConstructorTag = { tag: 'ArrayConstructor'; values: ExpressionTag[] };
+export type FunctionTag = { tag: 'Function'; value: string; args: (ExpressionTag | OrderByTag)[] };
+export type ExpressionTag =
+  | CastTag
+  | OperatorExpressionTag
+  | BetweenExpressionTag
+  | DataTypeTag
+  | FunctionTag
+  | ArrayIndexTag;
+export type SelectListItemTag = {
+  tag: 'SelectListItem';
+  value: ExpressionTag | StarQualifiedIdentifierTag;
+  as?: AsTag;
+};
 export type SelectListTag = { tag: 'SelectList'; values: SelectListItemTag[] };
 export type FromListItemTag = {
   tag: 'FromListItem';
@@ -71,9 +90,9 @@ export type SelectTag = { tag: 'Select'; values: (SelectParts | OrderByTag | Com
 export type DefaultTag = { tag: 'Default' };
 export type SetItemTag = { tag: 'SetItem'; column: QualifiedIdentifierTag; value: ExpressionTag | DefaultTag };
 export type SetListTag = { tag: 'SetList'; values: SetItemTag[] };
-export type SetColumnsTag = { tag: 'SetColumns'; values: QualifiedIdentifierTag[] };
-export type SetValuesTag = { tag: 'SetValues'; values: (ExpressionTag | DefaultTag)[] };
-export type SetMapTag = { tag: 'SetMap'; columns: SetColumnsTag; values: SetValuesTag | SelectTag };
+export type ColumnsTag = { tag: 'Columns'; values: IdentifierTag[] };
+export type ValuesTag = { tag: 'Values'; values: (ExpressionTag | DefaultTag)[] };
+export type SetMapTag = { tag: 'SetMap'; columns: ColumnsTag; values: ValuesTag | SelectTag };
 export type SetTag = { tag: 'Set'; value: SetListTag | SetMapTag };
 export type TableTag = { tag: 'Table'; value: QualifiedIdentifierTag; as?: AsTag };
 export type UpdateFromTag = { tag: 'UpdateFrom'; values: FromListItemTag[] };
@@ -82,6 +101,18 @@ export type UpdateTag = { tag: 'Update'; values: (SetTag | TableTag | UpdateFrom
 
 export type UsingTag = { tag: 'Using'; values: FromListItemTag[] };
 export type DeleteTag = { tag: 'Delete'; values: (TableTag | UsingTag | WhereTag | ReturningTag)[] };
+
+export type ValuesListTag = { tag: 'ValuesList'; values: ValuesTag[] };
+export type CollateTag = { tag: 'Collate'; value: string };
+export type ConflictTargetTag = { tag: 'ConflictTarget'; values: (TableTag | ExpressionTag | CollateTag | WhereTag)[] };
+export type ConflictConstraintTag = { tag: 'ConflictConstraint'; value: string };
+export type DoNothingTag = { tag: 'DoNothing' };
+export type DoUpdateTag = { tag: 'DoUpdate'; value: SetTag; where: WhereTag };
+export type ConflictTag = {
+  tag: 'Conflict';
+  values: (ConflictTargetTag | ConflictConstraintTag | DoNothingTag | DoUpdateTag)[];
+};
+export type InsertTag = { tag: 'Insert'; values: (TableTag | SelectTag | ValuesListTag | ConflictTag)[] };
 
 export type SqlTag = { tag: string };
 
@@ -96,10 +127,13 @@ export type Tag =
   | BooleanTag
   | ConstantTag
   | CountTag
+  | ArrayIndexRangeTag
+  | ArrayIndexTag
   | TypeTag
+  | TypeArrayTag
   | DistinctTag
   | StarIdentifierTag
-  | SelectIdentifierTag
+  | StarQualifiedIdentifierTag
   | CastableDataTypeTag
   | WhenTag
   | ElseTag
@@ -132,8 +166,8 @@ export type Tag =
   | DefaultTag
   | SetItemTag
   | SetListTag
-  | SetColumnsTag
-  | SetValuesTag
+  | ColumnsTag
+  | ValuesTag
   | SetMapTag
   | SetTag
   | TableTag
@@ -141,7 +175,18 @@ export type Tag =
   | ReturningTag
   | UpdateTag
   | UsingTag
-  | DeleteTag;
+  | DeleteTag
+  | ValuesListTag
+  | InsertTag
+  | QuotedNameTag
+  | CollateTag
+  | ConflictTargetTag
+  | ConflictConstraintTag
+  | DoNothingTag
+  | DoUpdateTag
+  | ConflictTag
+  | ArrayConstructorTag
+  | FunctionTag;
 
 export const isNull = (value: SqlTag): value is NullTag => value.tag === 'Null';
 export const isIdentifier = (value: SqlTag): value is IdentifierTag => value.tag === 'Identifier';
@@ -154,10 +199,14 @@ export const isNumber = (value: SqlTag): value is NumberTag => value.tag === 'Nu
 export const isBoolean = (value: SqlTag): value is BooleanTag => value.tag === 'Boolean';
 export const isConstant = (value: SqlTag): value is ConstantTag => value.tag === 'Constant';
 export const isCount = (value: SqlTag): value is CountTag => value.tag === 'Count';
+export const isArrayIndexRangeTag = (value: SqlTag): value is ArrayIndexRangeTag => value.tag === 'ArrayIndexRange';
+export const isArrayIndexTag = (value: SqlTag): value is ArrayIndexTag => value.tag === 'ArrayIndex';
 export const isType = (value: SqlTag): value is TypeTag => value.tag === 'Type';
+export const isTypeArray = (value: SqlTag): value is TypeArrayTag => value.tag === 'TypeArray';
 export const isDistinct = (value: SqlTag): value is DistinctTag => value.tag === 'Distinct';
 export const isStarIdentifier = (value: SqlTag): value is StarIdentifierTag => value.tag === 'StarIdentifier';
-export const isSelectIdentifier = (value: SqlTag): value is SelectIdentifierTag => value.tag === 'SelectIdentifier';
+export const StarQualifiedIdentifier = (value: SqlTag): value is StarQualifiedIdentifierTag =>
+  value.tag === 'SelectIdentifier';
 export const isCastableDataType = (value: SqlTag): value is CastableDataTypeTag => value.tag === 'CastableDataType';
 export const isWhen = (value: SqlTag): value is WhenTag => value.tag === 'When';
 export const isElse = (value: SqlTag): value is ElseTag => value.tag === 'Else';
@@ -190,8 +239,8 @@ export const isSelect = (value: SqlTag): value is SelectTag => value.tag === 'Se
 export const isDefault = (value: SqlTag): value is DefaultTag => value.tag === 'Default';
 export const isSetItem = (value: SqlTag): value is SetItemTag => value.tag === 'SetItem';
 export const isSetList = (value: SqlTag): value is SetListTag => value.tag === 'SetList';
-export const isSetColumns = (value: SqlTag): value is SetColumnsTag => value.tag === 'SetColumns';
-export const isSetValues = (value: SqlTag): value is SetValuesTag => value.tag === 'SetValues';
+export const isColumns = (value: SqlTag): value is ColumnsTag => value.tag === 'Columns';
+export const isValues = (value: SqlTag): value is ValuesTag => value.tag === 'Values';
 export const isSetMap = (value: SqlTag): value is SetMapTag => value.tag === 'SetMap';
 export const isSet = (value: SqlTag): value is SetTag => value.tag === 'Set';
 export const isTable = (value: SqlTag): value is TableTag => value.tag === 'Table';
@@ -200,3 +249,15 @@ export const isReturning = (value: SqlTag): value is ReturningTag => value.tag =
 export const isUpdate = (value: SqlTag): value is UpdateTag => value.tag === 'Update';
 export const isUsing = (value: SqlTag): value is UsingTag => value.tag === 'Using';
 export const isDelete = (value: SqlTag): value is DeleteTag => value.tag === 'Delete';
+export const isValuesListTag = (value: SqlTag): value is ValuesListTag => value.tag === 'ValuesList';
+export const isInsertTag = (value: SqlTag): value is InsertTag => value.tag === 'Insert';
+export const isQuotedNameTag = (value: SqlTag): value is InsertTag => value.tag === 'QuotedName';
+export const isCollateTag = (value: SqlTag): value is CollateTag => value.tag === 'Collate';
+export const isConflictTargetTag = (value: SqlTag): value is ConflictTargetTag => value.tag === 'ConflictTarget';
+export const isConflictConstraintTag = (value: SqlTag): value is ConflictConstraintTag =>
+  value.tag === 'ConflictConstraint';
+export const isDoNothingTag = (value: SqlTag): value is DoNothingTag => value.tag === 'DoNothing';
+export const isDoUpdateTag = (value: SqlTag): value is DoUpdateTag => value.tag === 'DoUpdate';
+export const isConflictTag = (value: SqlTag): value is ConflictTag => value.tag === 'Conflict';
+export const isFunctionTag = (value: SqlTag): value is FunctionTag => value.tag === 'Function';
+export const isArrayConstructorTag = (value: SqlTag): value is ArrayConstructorTag => value.tag === 'ArrayConstructor';
