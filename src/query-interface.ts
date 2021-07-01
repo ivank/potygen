@@ -4,7 +4,6 @@ import {
   isFrom,
   isSelectList,
   isQualifiedIdentifier,
-  isStarIdentifier,
   isIdentifier,
   isAs,
   ExpressionTag,
@@ -19,12 +18,16 @@ import {
   SelectListTag,
   WhereTag,
   IdentifierTag,
+  isExpression,
+  isStarQualifiedIdentifier,
+  isArrayIndexRange,
 } from './sql.types';
 
 export type ColumnType = { type: 'column'; table?: string; schema?: string; column: string };
+export type FunctionType = { type: 'function'; name: string; args: PropertyType[] };
 export type StarType = { type: 'star'; table?: string; schema?: string };
 export type ConstantType = 'string' | 'number' | 'boolean' | 'Date' | 'null' | 'unknown';
-export type SimpleType = ConstantType | ColumnType | StarType;
+export type SimpleType = ConstantType | ColumnType | StarType | FunctionType;
 export type PropertyType = SimpleType[] | SimpleType;
 
 export interface Property {
@@ -113,19 +116,33 @@ const operatorTypes: { [type: string]: ConstantType } = {
 };
 
 const convertExpression = (
-  tag: ExpressionTag,
+  tag: ExpressionTag | OrderByTag,
   contextType?: Param['type'],
 ): { type: PropertyType; params: Param[] } => {
   switch (tag.tag) {
-    case 'SelectIdentifier':
+    case 'OrderBy':
+      return { type: 'unknown', params: tag.values.flatMap((item) => convertExpression(item.value).params) };
+    case 'ArrayIndex':
+      const indexParams = isArrayIndexRange(tag.index)
+        ? [...convertExpression(tag.index.left).params, ...convertExpression(tag.index.right).params]
+        : convertExpression(tag.index).params;
+      return { type: 'unknown', params: convertExpression(tag.value).params.concat(indexParams) };
+    case 'Function':
+      return {
+        type: {
+          type: 'function',
+          name: tag.value,
+          args: tag.args.filter(isExpression).map((arg) => convertExpression(arg).type),
+        },
+        params: tag.args.flatMap((arg) => convertExpression(arg).params),
+      };
+    case 'QualifiedIdentifier':
       const lastIdentifier = last(tag.values);
-      const prefixIdentifiers = initial(tag.values).filter(isIdentifier);
+      const prefixIdentifiers = initial(tag.values);
 
       return {
         type: lastIdentifier
-          ? isStarIdentifier(lastIdentifier)
-            ? { type: 'star', ...toQualifiedTableName(prefixIdentifiers) }
-            : { type: 'column', column: lastIdentifier.value, ...toQualifiedTableName(prefixIdentifiers) }
+          ? { type: 'column', column: lastIdentifier.value, ...toQualifiedTableName(prefixIdentifiers) }
           : 'unknown',
         params: [],
       };
@@ -184,7 +201,11 @@ const convertExpression = (
 const resolveTypeWith = (fromTable: QualifiedTableName, aliases: Record<string, QualifiedTableName>) => (
   prop: SimpleType,
 ): SimpleType =>
-  typeof prop === 'object' ? (prop.table ? { ...prop, ...toName(aliases, prop) } : { ...prop, ...fromTable }) : prop;
+  typeof prop === 'object' && 'table' in prop
+    ? prop.table
+      ? { ...prop, ...toName(aliases, prop) }
+      : { ...prop, ...fromTable }
+    : prop;
 
 const resolveType = (fromTable: QualifiedTableName, aliases: Record<string, QualifiedTableName>) => {
   const resolve = resolveTypeWith(fromTable, aliases);
@@ -221,21 +242,35 @@ export const convertSelect = (selectTag: {
 
   const resolve = resolveType(fromTable, tableAliases);
 
-  const result =
+  const result: Property[] =
     selectList?.values.map(({ value, as }) => {
-      const property = convertExpression(value);
-      const type = resolve(property.type);
-      const name =
-        as?.value.value ?? (isColumnType(type) ? type.column : value.tag === 'Boolean' ? 'bool' : '?column?');
+      if (isStarQualifiedIdentifier(value)) {
+        const lastIdentifier = last(value.values);
+        const prefixIdentifiers = initial(value.values).filter(isIdentifier);
 
-      return { name, type };
+        return {
+          type: lastIdentifier ? { type: 'star', ...toQualifiedTableName(prefixIdentifiers) } : 'unknown',
+          name: '*',
+        };
+      } else {
+        const property = convertExpression(value);
+        const type = resolve(property.type);
+        const name =
+          as?.value.value ?? (isColumnType(type) ? type.column : value.tag === 'Boolean' ? 'bool' : '?column?');
+
+        return { name, type };
+      }
     }) ?? [];
 
-  const params = selectTag.values
+  const params: Param[] = selectTag.values
     .reduce<Param[]>((current, tag) => {
       switch (tag.tag) {
         case 'SelectList':
-          return current.concat(tag.values.flatMap((item) => convertExpression(item.value).params));
+          return current.concat(
+            tag.values.flatMap((item) =>
+              isStarQualifiedIdentifier(item.value) ? [] : convertExpression(item.value).params,
+            ),
+          );
         case 'From':
           return current.concat(
             tag.join.flatMap((item) =>

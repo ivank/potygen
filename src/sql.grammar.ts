@@ -31,7 +31,7 @@ import {
   CaseTag,
   OperatorTag,
   BinaryExpressionTag,
-  BetweenExpressionTag,
+  BetweenTag,
   CastTag,
   SelectListItemTag,
   SelectListTag,
@@ -353,7 +353,7 @@ const ExpressionRule = (SelectExpression: FunctionRule): FunctionRule =>
      * Between Operator
      * ----------------------------------------------------------------------------------------
      */
-    const BetweenExpression = Node<BetweenExpressionTag>(
+    const BetweenExpression = Node<BetweenTag>(
       All(DataType, /^BETWEEN/i, DataType, /^AND/i, DataType),
       ([value, left, right]) => ({ tag: 'Between', left, right, value }),
     );
