@@ -21,13 +21,22 @@ import {
   isExpression,
   isStarQualifiedIdentifier,
   isArrayIndexRange,
+  TypeTag,
+  TypeArrayTag,
+  isBoolean,
+  isAnyCast,
+  isTypeArray,
+  isFunction,
+  isRow,
 } from './sql.types';
 
 export type ColumnType = { type: 'column'; table?: string; schema?: string; column: string };
+export type RecordType = { type: 'record'; name: string };
 export type FunctionType = { type: 'function'; name: string; args: PropertyType[] };
 export type StarType = { type: 'star'; table?: string; schema?: string };
 export type ConstantType = 'string' | 'number' | 'boolean' | 'Date' | 'null' | 'unknown';
-export type SimpleType = ConstantType | ColumnType | StarType | FunctionType;
+export type ArrayType = { type: 'array'; items: ConstantType | ArrayType | RecordType };
+export type SimpleType = ConstantType | ColumnType | StarType | FunctionType | ArrayType | RecordType;
 export type PropertyType = SimpleType[] | SimpleType;
 
 export interface Property {
@@ -85,23 +94,59 @@ const toTableAliases = (from: FromTag): Record<string, QualifiedTableName> => {
 const sqlTypes: { [type: string]: ConstantType } = {
   bigint: 'number',
   int8: 'number',
-  bigserial: 'number',
+  bigserial: 'string',
   serial8: 'number',
+  'bit varying': 'string',
+  varbit: 'string',
+  bit: 'string',
   boolean: 'boolean',
   bool: 'boolean',
+  box: 'string',
+  bytea: 'string',
+  'character varying': 'string',
+  varchar: 'string',
+  character: 'string',
+  char: 'string',
+  cidr: 'string',
+  circle: 'string',
   date: 'Date',
   'double precision': 'number',
   float8: 'number',
+  inet: 'string',
   integer: 'number',
   int4: 'number',
   int: 'number',
+  interval: 'string',
+  jsonb: 'string',
+  json: 'string',
+  line: 'string',
+  lseg: 'string',
+  macaddr: 'string',
+  money: 'string',
+  numeric: 'string',
+  decimal: 'string',
+  path: 'string',
+  pg_lsn: 'string',
+  point: 'string',
+  polygon: 'string',
+  real: 'string',
+  float4: 'number',
   smallint: 'number',
+  int2: 'number',
   smallserial: 'number',
+  serial2: 'number',
   serial4: 'number',
   serial: 'number',
+  text: 'string',
+  timestamptz: 'Date',
   timestamp: 'Date',
   timetz: 'Date',
-  timestamptz: 'Date',
+  time: 'string',
+  tsquery: 'string',
+  tsvector: 'string',
+  txid_snapshot: 'string',
+  uuid: 'string',
+  xml: 'string',
 };
 
 const operatorTypes: { [type: string]: ConstantType } = {
@@ -114,6 +159,14 @@ const operatorTypes: { [type: string]: ConstantType } = {
   NOT: 'boolean',
   '||': 'string',
 };
+
+const convertType = (tag: TypeTag | TypeArrayTag): ConstantType | ArrayType | RecordType =>
+  tag.tag === 'TypeArray'
+    ? Array.from({ length: tag.dimensions }).reduce<ConstantType | ArrayType | RecordType>(
+        (curr) => ({ type: 'array', items: curr }),
+        convertType(tag.value),
+      )
+    : sqlTypes[tag.value] ?? { type: 'record', name: tag.value };
 
 const convertExpression = (
   tag: ExpressionTag | OrderByTag,
@@ -131,11 +184,13 @@ const convertExpression = (
       return {
         type: {
           type: 'function',
-          name: tag.value,
+          name: tag.value.value,
           args: tag.args.filter(isExpression).map((arg) => convertExpression(arg).type),
         },
         params: tag.args.flatMap((arg) => convertExpression(arg).params),
       };
+    case 'Row':
+      return { type: 'string', params: tag.values.flatMap((value) => convertExpression(value).params) };
     case 'QualifiedIdentifier':
       const lastIdentifier = last(tag.values);
       const prefixIdentifiers = initial(tag.values);
@@ -171,8 +226,8 @@ const convertExpression = (
 
     case 'PgCast':
     case 'Cast':
-      const castType = sqlTypes[tag.type.value] ?? 'string';
-      return { type: sqlTypes[tag.type.value] ?? 'string', params: convertExpression(tag.value, castType).params };
+      const castType = convertType(tag.type);
+      return { type: castType, params: convertExpression(tag.value, castType).params };
 
     case 'Case':
       return tag.values.reduce<{ type: SimpleType[]; params: Param[] }>(
@@ -256,7 +311,20 @@ export const convertSelect = (selectTag: {
         const property = convertExpression(value);
         const type = resolve(property.type);
         const name =
-          as?.value.value ?? (isColumnType(type) ? type.column : value.tag === 'Boolean' ? 'bool' : '?column?');
+          as?.value.value ??
+          (isColumnType(type)
+            ? type.column
+            : isBoolean(value)
+            ? 'bool'
+            : isAnyCast(value) && isTypeArray(value.type)
+            ? 'array'
+            : isAnyCast(value) && isQualifiedIdentifier(value.value)
+            ? last(value.value.values)?.value ?? '?column?'
+            : isFunction(value)
+            ? value.value.value.toLowerCase()
+            : isRow(value)
+            ? 'row'
+            : '?column?');
 
         return { name, type };
       }
@@ -280,6 +348,13 @@ export const convertSelect = (selectTag: {
         case 'Where':
         case 'Having':
           return current.concat(convertExpression(tag.value).params);
+        case 'OrderBy':
+          return current.concat(convertExpression(tag).params);
+        case 'Limit':
+        case 'Offset':
+          return typeof tag.value.value === 'string'
+            ? current
+            : current.concat(convertExpression(tag.value.value, 'string').params);
         case 'Combination':
           return current.concat(convertSelect(tag).params);
         default:

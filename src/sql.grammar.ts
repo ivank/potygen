@@ -1,17 +1,4 @@
-import {
-  Ignore,
-  All,
-  Any,
-  Optional,
-  Node,
-  Y,
-  Star,
-  Rule,
-  LeftBinaryOperator,
-  Plus,
-  IfNot,
-  FunctionRule,
-} from '@ikerin/rd-parse';
+import { Ignore, All, Any, Optional, Node, Y, Star, Rule, LeftBinaryOperator, Plus, IfNot } from '@ikerin/rd-parse';
 import {
   IdentifierTag,
   QualifiedIdentifierTag,
@@ -81,6 +68,7 @@ import {
   TypeArrayTag,
   ArrayIndexRangeTag,
   ArrayIndexTag,
+  RowTag,
 } from './sql.types';
 
 /**
@@ -88,6 +76,11 @@ import {
  */
 const List = (item: Rule, { last, separator = ',' }: { last?: Rule; separator?: Rule } = {}) =>
   All(Star(All(item, separator)), last ?? item);
+
+/**
+ * Comma separated list with more than one element
+ */
+const MultiList = (item: Rule, { separator = ',' }: { separator?: Rule } = {}) => All(item, Plus(All(separator, item)));
 
 const Brackets = (rule: Rule) => All('(', rule, ')');
 const OptionalBrackets = (rule: Rule) => Any(Brackets(rule), rule);
@@ -106,14 +99,12 @@ const RestrictedIdentifier = Node<IdentifierTag>(
   Any(IfNot(RestrictedReservedKeywords, NameRule), QuotedNameRule),
   ([value]) => ({ tag: 'Identifier', value }),
 );
-const UnrestrictedIdentifier = Node<IdentifierTag>(Any(NameRule, QuotedNameRule), ([value]) => ({
-  tag: 'Identifier',
-  value,
-}));
-const Identifier = Node<IdentifierTag>(Any(IfNot(ReservedKeywords, NameRule), QuotedNameRule), ([value]) => ({
-  tag: 'Identifier',
-  value,
-}));
+const UnrestrictedIdentifier = Node<IdentifierTag>(Any(NameRule, QuotedNameRule), ([value]) => {
+  return { tag: 'Identifier', value };
+});
+const Identifier = Node<IdentifierTag>(Any(IfNot(ReservedKeywords, NameRule), QuotedNameRule), ([value]) => {
+  return { tag: 'Identifier', value };
+});
 const QualifiedIdentifier = Node<QualifiedIdentifierTag>(List(Identifier, { separator: '.' }), (values) => {
   return { tag: 'QualifiedIdentifier', values };
 });
@@ -257,7 +248,7 @@ const BinaryOperatorPrecedence = [
  * Order
  * ----------------------------------------------------------------------------------------
  */
-const OrderRule = (Expression: FunctionRule): FunctionRule => {
+const OrderRule = (Expression: Rule): Rule => {
   const OrderDirection = Node<OrderDirectionTag>(/^(ASC|DESC|USNIG >|USING <)/i, ([value]) => {
     return { tag: 'OrderDirection', value };
   });
@@ -267,7 +258,7 @@ const OrderRule = (Expression: FunctionRule): FunctionRule => {
   return Node<OrderByTag>(All(/^ORDER BY/i, List(OrderByItem)), (values) => ({ tag: 'OrderBy', values }));
 };
 
-const ExpressionRule = (SelectExpression: FunctionRule): FunctionRule =>
+const ExpressionRule = (SelectExpression: Rule): Rule =>
   Y((ChildExpression) => {
     /**
      * Function
@@ -294,6 +285,11 @@ const ExpressionRule = (SelectExpression: FunctionRule): FunctionRule =>
       ([value, index]) => ({ tag: 'ArrayIndex', value, index }),
     );
 
+    const Row = Node<RowTag>(
+      Any(All(/^ROW/i, Brackets(List(ChildExpression))), Brackets(MultiList(ChildExpression))),
+      (values) => ({ tag: 'Row', values }),
+    );
+
     /**
      * PgCast
      * ----------------------------------------------------------------------------------------
@@ -302,6 +298,7 @@ const ExpressionRule = (SelectExpression: FunctionRule): FunctionRule =>
       Constant,
       ArrayIndex,
       ArrayConstructor,
+      Row,
       Function,
       QualifiedIdentifier,
       Parameter,
@@ -369,7 +366,7 @@ const ExpressionRule = (SelectExpression: FunctionRule): FunctionRule =>
     return Any(Cast, BetweenExpression, BinoryOperatorExpression);
   });
 
-const FromListRule = (Select: FunctionRule): FunctionRule => {
+const FromListRule = (Select: Rule): Rule => {
   const FromListItem = Node<FromListItemTag>(
     All(Any(QualifiedIdentifier, Brackets(Select)), Optional(As)),
     ([value, as]) => ({ tag: 'FromListItem', value, as }),
@@ -377,14 +374,14 @@ const FromListRule = (Select: FunctionRule): FunctionRule => {
   return Node<FromListTag>(List(FromListItem), (values) => ({ tag: 'FromList', values }));
 };
 
-const WhereRule = (Expression: FunctionRule): FunctionRule =>
+const WhereRule = (Expression: Rule): Rule =>
   Node<WhereTag>(All(/^WHERE/i, Expression), ([value]) => ({ tag: 'Where', value }));
 
 const Select = Y((SelectExpression) => {
   const Expression = ExpressionRule(SelectExpression);
 
   const SelectListItem = Node<SelectListItemTag>(
-    Any(StarQualifiedIdentifier, All(Expression, Optional(As))),
+    Any(StarQualifiedIdentifier, All(Any(Expression), Optional(As))),
     ([value, as]) => ({ tag: 'SelectListItem', value, as }),
   );
   const SelectList = Node<SelectListTag>(List(SelectListItem), (values) => ({ tag: 'SelectList', values }));
@@ -406,10 +403,9 @@ const Select = Y((SelectExpression) => {
     ([value]) => ({ tag: 'JoinType', value: value?.toUpperCase() }),
   );
   const JoinOn = Node<JoinOnTag>(All(/^ON/i, Expression), ([value]) => ({ tag: 'JoinOn', value }));
-  const JoinUsing = Node<JoinUsingTag>(All(/^USING/i, List(QualifiedIdentifier)), (values) => ({
-    tag: 'JoinUsing',
-    values,
-  }));
+  const JoinUsing = Node<JoinUsingTag>(All(/^USING/i, List(QualifiedIdentifier)), (values) => {
+    return { tag: 'JoinUsing', values };
+  });
   const Join = Node<JoinTag>(
     All(JoinType, QualifiedIdentifier, Optional(As), Optional(Any(JoinOn, JoinUsing))),
     ([type, table, ...values]) => {
@@ -558,10 +554,9 @@ const ConflictTarget = Node<ConflictTargetTag>(
   All(Brackets(All(Table, Optional(Brackets(Expression)), Optional(Collate))), Optional(Where)),
   (values) => ({ tag: 'ConflictTarget', values }),
 );
-const ConflictConstraint = Node<ConflictConstraintTag>(All(/^ON CONSTRAINT/i, Identifier), ([value]) => ({
-  tag: 'ConflictConstraint',
-  value,
-}));
+const ConflictConstraint = Node<ConflictConstraintTag>(All(/^ON CONSTRAINT/i, Identifier), ([value]) => {
+  return { tag: 'ConflictConstraint', value };
+});
 
 const DoNothing = Node<DoNothingTag>(/^DO NOTHING/i, () => ({ tag: 'DoNothing' }));
 const DoUpdate = Node<DoUpdateTag>(All(/^DO UPDATE/i, Set, Optional(Where)), ([value, where]) => ({

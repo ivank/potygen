@@ -13,12 +13,14 @@ export type ArrayIndexTag = { tag: 'ArrayIndex'; value: ExpressionTag; index: Ex
 export type CountTag = { tag: 'Count'; value: string | ParameterTag };
 export type TypeTag = { tag: 'Type'; value: string; param?: string };
 export type TypeArrayTag = { tag: 'TypeArray'; value: TypeTag; dimensions: number };
+export type AnyTypeTag = TypeTag | TypeArrayTag;
 export type DistinctTag = { tag: 'Distinct'; values: IdentifierTag[] };
 export type StarIdentifierTag = { tag: 'StarIdentifier' };
 export type StarQualifiedIdentifierTag = {
   tag: 'StarQualifiedIdentifier';
   values: (IdentifierTag | StarIdentifierTag)[];
 };
+export type RowTag = { tag: 'Row'; values: ExpressionTag[] };
 export type CastableDataTypeTag =
   | FunctionTag
   | ArrayIndexTag
@@ -26,7 +28,7 @@ export type CastableDataTypeTag =
   | QualifiedIdentifierTag
   | SelectTag
   | ParameterTag
-  | { tag: 'PgCast'; value: ConstantTag | QualifiedIdentifierTag | ExpressionTag | ParameterTag; type: TypeTag };
+  | { tag: 'PgCast'; value: ConstantTag | QualifiedIdentifierTag | ExpressionTag | ParameterTag; type: AnyTypeTag };
 export type WhenTag = { tag: 'When'; condition: ExpressionTag; value: ExpressionTag };
 export type ElseTag = { tag: 'Else'; value: ExpressionTag };
 export type CaseTag = { tag: 'Case'; expression?: CastableDataTypeTag; values: (WhenTag | ElseTag)[] };
@@ -45,10 +47,12 @@ export type UnaryExpressionTag = {
 };
 export type OperatorExpressionTag = BinaryExpressionTag | UnaryExpressionTag;
 export type BetweenTag = { tag: 'Between'; left: DataTypeTag; right: DataTypeTag; value: DataTypeTag };
-export type CastTag = { tag: 'Cast'; value: DataTypeTag; type: TypeTag };
+export type CastTag = { tag: 'Cast'; value: DataTypeTag; type: AnyTypeTag };
+export type PgCastTag = { tag: 'PgCast'; value: DataTypeTag; type: AnyTypeTag };
+export type AnyCastTag = CastTag | PgCastTag;
 export type ArrayConstructorTag = { tag: 'ArrayConstructor'; values: ExpressionTag[] };
-export type FunctionTag = { tag: 'Function'; value: string; args: (ExpressionTag | OrderByTag)[] };
-export type ExpressionTag = CastTag | DataTypeTag | OperatorExpressionTag | BetweenTag | DataTypeTag;
+export type FunctionTag = { tag: 'Function'; value: IdentifierTag; args: (ExpressionTag | OrderByTag)[] };
+export type ExpressionTag = AnyCastTag | DataTypeTag | OperatorExpressionTag | BetweenTag | DataTypeTag | RowTag;
 export type SelectListItemTag = {
   tag: 'SelectListItem';
   value: ExpressionTag | StarQualifiedIdentifierTag;
@@ -139,6 +143,7 @@ export type Tag =
   | BinaryExpressionTag
   | BetweenTag
   | CastTag
+  | PgCastTag
   | ExpressionTag
   | SelectListItemTag
   | SelectListTag
@@ -185,7 +190,7 @@ export type Tag =
   | FunctionTag;
 
 export const isNull = (value: SqlTag): value is NullTag => value.tag === 'Null';
-export const isPgCast = (value: SqlTag): value is NullTag => value.tag === 'PgCast';
+export const isPgCast = (value: SqlTag): value is PgCastTag => value.tag === 'PgCast';
 export const isIdentifier = (value: SqlTag): value is IdentifierTag => value.tag === 'Identifier';
 export const isParameter = (value: SqlTag): value is ParameterTag => value.tag === 'Parameter';
 export const isQualifiedIdentifier = (value: SqlTag): value is QualifiedIdentifierTag =>
@@ -198,6 +203,7 @@ export const isConstant = (value: SqlTag): value is ConstantTag => value.tag ===
 export const isCount = (value: SqlTag): value is CountTag => value.tag === 'Count';
 export const isArrayIndexRange = (value: SqlTag): value is ArrayIndexRangeTag => value.tag === 'ArrayIndexRange';
 export const isType = (value: SqlTag): value is TypeTag => value.tag === 'Type';
+export const isAnyType = (value: SqlTag): value is AnyTypeTag => isType(value) || isTypeArray(value);
 export const isTypeArray = (value: SqlTag): value is TypeArrayTag => value.tag === 'TypeArray';
 export const isDistinct = (value: SqlTag): value is DistinctTag => value.tag === 'Distinct';
 export const isStarIdentifier = (value: SqlTag): value is StarIdentifierTag => value.tag === 'StarIdentifier';
@@ -215,6 +221,7 @@ export const isFunction = (value: SqlTag): value is FunctionTag => value.tag ===
 export const isUnaryExpression = (value: SqlTag): value is UnaryExpressionTag => value.tag === 'UnaryExpression';
 export const isBinaryExpression = (value: SqlTag): value is BinaryExpressionTag => value.tag === 'BinaryExpression';
 export const isCast = (value: SqlTag): value is CastTag => value.tag === 'Cast';
+export const isAnyCast = (value: SqlTag): value is AnyCastTag => isCast(value) || isPgCast(value);
 export const isOperatorExpression = (value: SqlTag): value is OperatorExpressionTag =>
   isBinaryExpression(value) || isUnaryExpression(value);
 export const isExpression = (value: SqlTag): value is ExpressionTag =>
@@ -274,3 +281,4 @@ export const isDoNothing = (value: SqlTag): value is DoNothingTag => value.tag =
 export const isDoUpdate = (value: SqlTag): value is DoUpdateTag => value.tag === 'DoUpdate';
 export const isConflict = (value: SqlTag): value is ConflictTag => value.tag === 'Conflict';
 export const isArrayConstructor = (value: SqlTag): value is ArrayConstructorTag => value.tag === 'ArrayConstructor';
+export const isRow = (value: SqlTag): value is RowTag => value.tag === 'Row';

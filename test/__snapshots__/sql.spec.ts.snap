@@ -6547,6 +6547,153 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql row (SELECT ROW (1,2,3)): row 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Row",
+            "values": Array [
+              Object {
+                "tag": "Number",
+                "value": "1",
+              },
+              Object {
+                "tag": "Number",
+                "value": "2",
+              },
+              Object {
+                "tag": "Number",
+                "value": "3",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql row complex (SELECT (1, 2+2, 3), ROW (123), (1,2,(3))): row complex 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Row",
+            "values": Array [
+              Object {
+                "tag": "Number",
+                "value": "1",
+              },
+              Object {
+                "left": Object {
+                  "tag": "Number",
+                  "value": "2",
+                },
+                "operator": Object {
+                  "tag": "Operator",
+                  "value": "+",
+                },
+                "right": Object {
+                  "tag": "Number",
+                  "value": "2",
+                },
+                "tag": "BinaryExpression",
+              },
+              Object {
+                "tag": "Number",
+                "value": "3",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Row",
+            "values": Array [
+              Object {
+                "tag": "Number",
+                "value": "123",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Row",
+            "values": Array [
+              Object {
+                "tag": "Number",
+                "value": "1",
+              },
+              Object {
+                "tag": "Number",
+                "value": "2",
+              },
+              Object {
+                "tag": "Number",
+                "value": "3",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql row shorthand (SELECT (1,2,3)): row shorthand 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "Row",
+            "values": Array [
+              Object {
+                "tag": "Number",
+                "value": "1",
+              },
+              Object {
+                "tag": "Number",
+                "value": "2",
+              },
+              Object {
+                "tag": "Number",
+                "value": "3",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql star select (SELECT *): star select 1`] = `
 Object {
   "tag": "Select",

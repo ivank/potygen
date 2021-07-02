@@ -1,0 +1,766 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Query Interface Should convert complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "q",
+      "type": "string",
+    },
+    Object {
+      "name": "levelisationId",
+      "type": Object {
+        "column": "levelisation_id",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "ids",
+      "type": Object {
+        "items": "number",
+        "type": "array",
+      },
+    },
+    Object {
+      "name": "limit",
+      "type": "number",
+    },
+    Object {
+      "name": "offset",
+      "type": "number",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "levelisationId",
+      "type": Object {
+        "column": "levelisation_id",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "accountId",
+      "type": Object {
+        "column": "account_id",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "installationId",
+      "type": Object {
+        "column": "installation_id",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "state",
+      "type": Object {
+        "column": "state",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "isAccepted",
+      "type": Object {
+        "column": "is_accepted",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "generationStartReadOn",
+      "type": Object {
+        "column": "generation_start_read_on",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "generationStartReadValue",
+      "type": Object {
+        "column": "generation_start_read_value",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "generationEndReadOn",
+      "type": Object {
+        "column": "generation_end_read_on",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "generationEndReadValue",
+      "type": Object {
+        "column": "generation_end_read_value",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "generationPercentageSplit",
+      "type": Object {
+        "column": "generation_percentage_split",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "generationPayment",
+      "type": Object {
+        "column": "generation_payment",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "generationEnergy",
+      "type": Object {
+        "column": "generation_energy",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "exportStartReadOn",
+      "type": Object {
+        "column": "export_start_read_on",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "exportStartReadValue",
+      "type": Object {
+        "column": "export_start_read_value",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "exportEndReadOn",
+      "type": Object {
+        "column": "export_end_read_on",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "exportEndReadValue",
+      "type": Object {
+        "column": "export_end_read_value",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "exportPercentageSplit",
+      "type": Object {
+        "column": "export_percentage_split",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "exportPayment",
+      "type": Object {
+        "column": "export_payment",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "exportEnergy",
+      "type": Object {
+        "column": "export_energy",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "totalPayment",
+      "type": Object {
+        "column": "total_payment",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "vatPayment",
+      "type": Object {
+        "column": "vat_payment",
+        "schema": undefined,
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "cfrFitId",
+      "type": Object {
+        "column": "scheme_account_reference",
+        "schema": undefined,
+        "table": "contracts",
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "q",
+      "type": "string",
+    },
+    Object {
+      "name": "ids",
+      "type": Object {
+        "items": "number",
+        "type": "array",
+      },
+    },
+    Object {
+      "name": "limit",
+      "type": "number",
+    },
+    Object {
+      "name": "offset",
+      "type": "number",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "table": "accounts",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "state",
+      "type": Object {
+        "column": "state",
+        "schema": undefined,
+        "table": "accounts",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "startOn",
+      "type": Object {
+        "column": "start_on",
+        "schema": undefined,
+        "table": "accounts",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "firstName",
+      "type": Object {
+        "column": "first_name",
+        "schema": undefined,
+        "table": "contacts",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "lastName",
+      "type": Object {
+        "column": "last_name",
+        "schema": undefined,
+        "table": "contacts",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "email",
+      "type": Object {
+        "column": "email",
+        "schema": undefined,
+        "table": "contacts",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "address",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "address_line_1",
+            "schema": undefined,
+            "table": "installation_addresses",
+            "type": "column",
+          },
+          Object {
+            "column": "address_line_2",
+            "schema": undefined,
+            "table": "installation_addresses",
+            "type": "column",
+          },
+          Object {
+            "column": "city",
+            "schema": undefined,
+            "table": "installation_addresses",
+            "type": "column",
+          },
+          Object {
+            "column": "postcode",
+            "schema": undefined,
+            "table": "installation_addresses",
+            "type": "column",
+          },
+        ],
+        "name": "CONCAT_WS",
+        "type": "function",
+      },
+    },
+    Object {
+      "name": "fitIds",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "scheme_account_reference",
+            "schema": undefined,
+            "table": "contracts",
+            "type": "column",
+          },
+        ],
+        "name": "ARRAY_AGG",
+        "type": "function",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql accounts.sql: accounts.sql 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [],
+}
+`;
+
+exports[`Query Interface Should convert complex sql bacs.query.sql: bacs.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "quarter",
+      "type": Object {
+        "column": "levelisation_reference",
+        "schema": undefined,
+        "table": "payments",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "perPage",
+      "type": "string",
+    },
+    Object {
+      "name": "offset",
+      "type": "string",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "fitId",
+      "type": Object {
+        "column": "fit_reference",
+        "schema": undefined,
+        "table": "payments",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "name",
+      "type": Object {
+        "column": "beneficiary_name",
+        "schema": undefined,
+        "table": "accounts",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "amount",
+      "type": Object {
+        "column": "amount",
+        "schema": undefined,
+        "table": "payments",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "quarter",
+      "type": Object {
+        "column": "levelisation_reference",
+        "schema": undefined,
+        "table": "payments",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "bankDetails",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "beneficiary_sort_code",
+            "schema": undefined,
+            "table": "a",
+            "type": "column",
+          },
+          Object {
+            "column": "beneficiary_account_number",
+            "schema": undefined,
+            "table": "a",
+            "type": "column",
+          },
+        ],
+        "name": "CONCAT",
+        "type": "function",
+      },
+    },
+    Object {
+      "name": "addressLine1",
+      "type": Object {
+        "column": "address_line_1",
+        "schema": undefined,
+        "table": "addresses",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "addressLine2",
+      "type": Object {
+        "column": "address_line_2",
+        "schema": undefined,
+        "table": "addresses",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "addressLine3",
+      "type": Object {
+        "column": "address_line_3",
+        "schema": undefined,
+        "table": "addresses",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "postcode",
+      "type": Object {
+        "column": "postcode",
+        "schema": undefined,
+        "table": "addresses",
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql contracts.sql: contracts.sql 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [],
+}
+`;
+
+exports[`Query Interface Should convert complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "installationId",
+      "type": Object {
+        "column": "installation_id",
+        "schema": undefined,
+        "table": "installation_meters",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "exportDateOn",
+      "type": "Date",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "dateOn",
+      "type": Object {
+        "column": "date_on",
+        "schema": undefined,
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "value",
+      "type": Object {
+        "column": "value",
+        "schema": undefined,
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql installations.sql: installations.sql 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [],
+}
+`;
+
+exports[`Query Interface Should convert complex sql meter-reads.sql: meter-reads.sql 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [],
+}
+`;
+
+exports[`Query Interface Should convert complex sql rates-by-tarrif-ids.query.sql: rates-by-tarrif-ids.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "ids",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "table": "tariffs",
+        "type": "column",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "tariffId",
+      "type": Object {
+        "column": "tariff_id",
+        "schema": undefined,
+        "table": "tariff_rates",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "rate",
+      "type": Object {
+        "column": "rate",
+        "schema": undefined,
+        "table": "tariff_rates",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "startOn",
+      "type": Object {
+        "column": "start_date_on",
+        "schema": undefined,
+        "table": "tariff_rates",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "tariffCode",
+      "type": Object {
+        "column": "code",
+        "schema": undefined,
+        "table": "tariffs",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "tariffType",
+      "type": Object {
+        "column": "type",
+        "schema": undefined,
+        "table": "tariffs",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "endOn",
+      "type": Object {
+        "column": "end_date_on",
+        "schema": undefined,
+        "table": "tariff_rates",
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql reads-by-account-id.query.sql: reads-by-account-id.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "account_id",
+        "schema": undefined,
+        "table": "contracts",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "offset",
+      "type": "string",
+    },
+    Object {
+      "name": "perPage",
+      "type": "string",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "msn",
+      "type": Object {
+        "column": "serial_number",
+        "schema": undefined,
+        "table": "meters",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "meterId",
+      "type": Object {
+        "column": "meter_id",
+        "schema": undefined,
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "dateOn",
+      "type": Object {
+        "column": "date_on",
+        "schema": undefined,
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "value",
+      "type": Object {
+        "column": "value",
+        "schema": undefined,
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "type",
+      "type": Object {
+        "column": "type",
+        "schema": undefined,
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "reason",
+      "type": Object {
+        "column": "reason",
+        "schema": undefined,
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "createdAt",
+      "type": Object {
+        "column": "created_at",
+        "schema": undefined,
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "updatedAt",
+      "type": Object {
+        "column": "updated_at",
+        "schema": undefined,
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "sourceSystemId",
+      "type": Object {
+        "column": "source_system_id",
+        "schema": undefined,
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "mpan",
+      "type": Object {
+        "column": "mpan",
+        "schema": undefined,
+        "table": "meters",
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [],
+}
+`;

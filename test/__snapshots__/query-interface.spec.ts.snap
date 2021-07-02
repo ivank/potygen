@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Convert Should convert between fields named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
+exports[`Query Interface Should convert between fields named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
 Object {
   "params": Array [],
   "result": Array [
@@ -16,7 +16,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert between fields not named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
+exports[`Query Interface Should convert between fields not named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
 Object {
   "params": Array [],
   "result": Array [
@@ -32,7 +32,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert binary expression column sql (SELECT (col1 + col2) AS "res1" FROM table1) 1`] = `
+exports[`Query Interface Should convert binary expression column sql (SELECT (col1 + col2) AS "res1" FROM table1) 1`] = `
 Object {
   "params": Array [],
   "result": Array [
@@ -49,7 +49,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert binary expression numbers sql (SELECT 1+2) 1`] = `
+exports[`Query Interface Should convert binary expression numbers sql (SELECT 1+2) 1`] = `
 Object {
   "params": Array [],
   "result": Array [
@@ -61,7 +61,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert binary expression string sql (SELECT 'test' || 'other') 1`] = `
+exports[`Query Interface Should convert binary expression string sql (SELECT 'test' || 'other') 1`] = `
 Object {
   "params": Array [],
   "result": Array [
@@ -73,7 +73,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert boolean fields mixed sql (SELECT FALSE, TRUE as "col2") 1`] = `
+exports[`Query Interface Should convert boolean fields mixed sql (SELECT FALSE, TRUE as "col2") 1`] = `
 Object {
   "params": Array [],
   "result": Array [
@@ -89,7 +89,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert boolean fields named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
+exports[`Query Interface Should convert boolean fields named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
 Object {
   "params": Array [],
   "result": Array [
@@ -105,7 +105,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert boolean fields not named sql (SELECT FALSE, TRUE) 1`] = `
+exports[`Query Interface Should convert boolean fields not named sql (SELECT FALSE, TRUE) 1`] = `
 Object {
   "params": Array [],
   "result": Array [
@@ -121,7 +121,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert case columns sql (
+exports[`Query Interface Should convert case columns sql (
         SELECT
           CASE col1
             WHEN 12 THEN table1.col1
@@ -155,7 +155,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert case sql (SELECT CASE WHEN TRUE THEN TRUE ELSE 'other' END) 1`] = `
+exports[`Query Interface Should convert case sql (SELECT CASE WHEN TRUE THEN TRUE ELSE 'other' END) 1`] = `
 Object {
   "params": Array [],
   "result": Array [
@@ -170,7 +170,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert combination select sql (
+exports[`Query Interface Should convert combination select sql (
         SELECT
           col1 AS "res1",
           (SELECT id FROM table2 JOIN table3 ON table3.id = table2.id AND table3.val > :joinVal LIMIT 1)
@@ -226,7 +226,70 @@ Object {
 }
 `;
 
-exports[`Convert Should convert join fields sql (
+exports[`Query Interface Should convert complex row sql (SELECT (1, 2+2, :param1), ROW (123), (1,2,(3))) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "param1",
+      "type": "unknown",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "row",
+      "type": "string",
+    },
+    Object {
+      "name": "row",
+      "type": "string",
+    },
+    Object {
+      "name": "row",
+      "type": "string",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert enum type sql (SELECT id::custom_type FROM table1) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "name": "custom_type",
+        "type": "record",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert function sql (SELECT ABS(id) FROM table1) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "abs",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "id",
+            "schema": undefined,
+            "table": undefined,
+            "type": "column",
+          },
+        ],
+        "name": "ABS",
+        "type": "function",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert join fields sql (
         SELECT
           t1.col1 as "col1",
           t1.col2 as "myCol2",
@@ -268,7 +331,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert join with aliases fields sql (
+exports[`Query Interface Should convert join with aliases fields sql (
         SELECT
           t1.col1 as "col1",
           t1.col2 as "myCol2",
@@ -321,11 +384,33 @@ Object {
 }
 `;
 
-exports[`Convert Should convert multiple params infer type from one 1 sql (
-        SELECT col1
-        FROM table1
-        WHERE :id = table1.id AND :id
-      ) 1`] = `
+exports[`Query Interface Should convert limit and offset params sql (SELECT id FROM table1 LIMIT :limit OFFSET :offset::int) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "limit",
+      "type": "string",
+    },
+    Object {
+      "name": "offset",
+      "type": "number",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "table": "table1",
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert multiple params infer type from one 1 sql (SELECT col1 FROM table1 WHERE :id = table1.id AND :id) 1`] = `
 Object {
   "params": Array [
     Object {
@@ -352,11 +437,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert multiple params infer type from one 2 sql (
-        SELECT col1
-        FROM table1
-        WHERE :id IS NOT NULL OR :id = table1.id
-      ) 1`] = `
+exports[`Query Interface Should convert multiple params infer type from one 2 sql (SELECT col1 FROM table1 WHERE :id IS NOT NULL OR :id = table1.id) 1`] = `
 Object {
   "params": Array [
     Object {
@@ -383,7 +464,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert multiple params sql (SELECT :test1 AS "res1", :test2) 1`] = `
+exports[`Query Interface Should convert multiple params sql (SELECT :test1 AS "res1", :test2) 1`] = `
 Object {
   "params": Array [
     Object {
@@ -408,7 +489,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert nested select sql (
+exports[`Query Interface Should convert nested select sql (
         SELECT
           col1 AS "res1",
           (SELECT id FROM table2 JOIN table3 ON table3.id = table2.id AND table3.val > :joinVal LIMIT 1)
@@ -459,7 +540,42 @@ Object {
 }
 `;
 
-exports[`Convert Should convert single param sql (SELECT :test1 AS "res1") 1`] = `
+exports[`Query Interface Should convert nested typed array param in select sql (SELECT :param::int[][][]) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "param",
+      "type": Object {
+        "items": Object {
+          "items": Object {
+            "items": "number",
+            "type": "array",
+          },
+          "type": "array",
+        },
+        "type": "array",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "array",
+      "type": Object {
+        "items": Object {
+          "items": Object {
+            "items": "number",
+            "type": "array",
+          },
+          "type": "array",
+        },
+        "type": "array",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert single param sql (SELECT :test1 AS "res1") 1`] = `
 Object {
   "params": Array [
     Object {
@@ -476,7 +592,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert static fields sql (SELECT col1 as "col1", col2 as "myCol2" FROM table1) 1`] = `
+exports[`Query Interface Should convert static fields sql (SELECT col1 as "col1", col2 as "myCol2" FROM table1) 1`] = `
 Object {
   "params": Array [],
   "result": Array [
@@ -502,7 +618,7 @@ Object {
 }
 `;
 
-exports[`Convert Should convert string fields not named sql (SELECT 'test', $$Dianne's horse$$, $SomeTag$Dianne's horse$SomeTag$) 1`] = `
+exports[`Query Interface Should convert string fields not named sql (SELECT 'test', $$Dianne's horse$$, $SomeTag$Dianne's horse$SomeTag$) 1`] = `
 Object {
   "params": Array [],
   "result": Array [
@@ -522,7 +638,52 @@ Object {
 }
 `;
 
-exports[`Convert Should convert where params sql (
+exports[`Query Interface Should convert typed array param in select sql (SELECT :param::int[]) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "param",
+      "type": Object {
+        "items": "number",
+        "type": "array",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "array",
+      "type": Object {
+        "items": "number",
+        "type": "array",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert typed param in where sql (SELECT col1 FROM table1 WHERE :id::int IS NOT NULL) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": "number",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "col1",
+      "type": Object {
+        "column": "col1",
+        "schema": undefined,
+        "table": "table1",
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert where params sql (
         SELECT col1, col2
         FROM table1
         WHERE

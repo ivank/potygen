@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:11
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DATABASE: sql-ast
+      POSTGRES_USER: sql-ast
+      POSTGRES_PASSWORD: dev-pass
+    # volumes:
+    #   - init.sql:/docker-entrypoint-initdb.d/init.sql

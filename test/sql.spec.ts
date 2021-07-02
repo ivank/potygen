@@ -146,6 +146,9 @@ describe('Sql', () => {
     ${'type array nested'}            | ${'SELECT $test::int[][]'}
     ${'limit offset params'}          | ${'SELECT * FROM table1 LIMIT :param1 OFFSET :param2'}
     ${'limit offset param type'}      | ${'SELECT * FROM table1 LIMIT :param1::int OFFSET :param2::int'}
+    ${'row'}                          | ${'SELECT ROW (1,2,3)'}
+    ${'row shorthand'}                | ${'SELECT (1,2,3)'}
+    ${'row complex'}                  | ${'SELECT (1, 2+2, 3), ROW (123), (1,2,(3))'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) => {
     try {
       expect(sqlParser(sql)).toMatchSnapshot(name);

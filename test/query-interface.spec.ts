@@ -3,7 +3,7 @@ import { convertSelect } from '../src/query-interface';
 import { SqlGrammar } from '../src/sql.grammar';
 
 const parser = Parser(SqlGrammar);
-describe('Convert', () => {
+describe('Query Interface', () => {
   it.each<[string, string]>([
     ['between fields named', `SELECT FALSE as "col1", TRUE as "col2"`],
     ['between fields not named', `SELECT FALSE as "col1", TRUE as "col2"`],
@@ -89,23 +89,17 @@ describe('Convert', () => {
         WHERE :id = table1.id AND table4.id = :id
       `,
     ],
-    [
-      'multiple params infer type from one 1',
-      `
-        SELECT col1
-        FROM table1
-        WHERE :id = table1.id AND :id
-      `,
-    ],
-    [
-      'multiple params infer type from one 2',
-      `
-        SELECT col1
-        FROM table1
-        WHERE :id IS NOT NULL OR :id = table1.id
-      `,
-    ],
+    ['multiple params infer type from one 1', `SELECT col1 FROM table1 WHERE :id = table1.id AND :id`],
+    ['multiple params infer type from one 2', `SELECT col1 FROM table1 WHERE :id IS NOT NULL OR :id = table1.id`],
+    ['typed param in where', `SELECT col1 FROM table1 WHERE :id::int IS NOT NULL`],
+    ['typed array param in select', `SELECT :param::int[]`],
+    ['nested typed array param in select', `SELECT :param::int[][][]`],
+    ['function', `SELECT ABS(id) FROM table1`],
+    ['enum type', `SELECT id::custom_type FROM table1`],
+    ['limit and offset params', `SELECT id FROM table1 LIMIT :limit OFFSET :offset::int`],
+    ['complex row', `SELECT (1, 2+2, :param1), ROW (123), (1,2,(3))`],
   ])('Should convert %s sql (%s)', (_, sql) => {
-    expect(convertSelect(parser(sql))).toMatchSnapshot();
+    const ast = parser(sql);
+    expect(convertSelect(ast)).toMatchSnapshot();
   });
 });
