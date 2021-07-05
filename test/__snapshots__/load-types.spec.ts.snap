@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Query Interface Should convert simple sql (SELECT id, name FROM table1 WHERE id = :id) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": "number",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": "number",
+    },
+    Object {
+      "name": "name",
+      "type": "string",
+    },
+  ],
+}
+`;

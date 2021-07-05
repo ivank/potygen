@@ -149,6 +149,7 @@ describe('Sql', () => {
     ${'row'}                          | ${'SELECT ROW (1,2,3)'}
     ${'row shorthand'}                | ${'SELECT (1,2,3)'}
     ${'row complex'}                  | ${'SELECT (1, 2+2, 3), ROW (123), (1,2,(3))'}
+    ${'where in tuples'}              | ${'SELECT col1, col2 WHERE (col1,col2) IN ((1,2),(3,4))'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) => {
     try {
       expect(sqlParser(sql)).toMatchSnapshot(name);

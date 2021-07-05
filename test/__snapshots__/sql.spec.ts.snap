@@ -8580,6 +8580,109 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql where in tuples (SELECT col1, col2 WHERE (col1,col2) IN ((1,2),(3,4))): where in tuples 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col2",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "Row",
+          "values": Array [
+            Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col2",
+                },
+              ],
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "IN",
+        },
+        "right": Object {
+          "tag": "Row",
+          "values": Array [
+            Object {
+              "tag": "Row",
+              "values": Array [
+                Object {
+                  "tag": "Number",
+                  "value": "1",
+                },
+                Object {
+                  "tag": "Number",
+                  "value": "2",
+                },
+              ],
+            },
+            Object {
+              "tag": "Row",
+              "values": Array [
+                Object {
+                  "tag": "Number",
+                  "value": "3",
+                },
+                Object {
+                  "tag": "Number",
+                  "value": "4",
+                },
+              ],
+            },
+          ],
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql where less than (SELECT * WHERE table1.col < 2): where less than 1`] = `
 Object {
   "tag": "Select",

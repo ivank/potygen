@@ -40,7 +40,7 @@ Object {
       "name": "res1",
       "type": Object {
         "column": "col1",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -135,21 +135,24 @@ Object {
   "result": Array [
     Object {
       "name": "res1",
-      "type": Array [
-        Object {
-          "column": "col1",
-          "schema": undefined,
-          "table": "table1",
-          "type": "column",
-        },
-        Object {
-          "column": "col2",
-          "schema": undefined,
-          "table": "table1",
-          "type": "column",
-        },
-        "string",
-      ],
+      "type": Object {
+        "items": Array [
+          Object {
+            "column": "col1",
+            "schema": "public",
+            "table": "table1",
+            "type": "column",
+          },
+          Object {
+            "column": "col2",
+            "schema": "public",
+            "table": "table1",
+            "type": "column",
+          },
+          "string",
+        ],
+        "type": "union",
+      },
     },
   ],
 }
@@ -161,10 +164,13 @@ Object {
   "result": Array [
     Object {
       "name": "?column?",
-      "type": Array [
-        "boolean",
-        "string",
-      ],
+      "type": Object {
+        "items": Array [
+          "boolean",
+          "string",
+        ],
+        "type": "union",
+      },
     },
   ],
 }
@@ -188,7 +194,7 @@ Object {
       "name": "joinVal",
       "type": Object {
         "column": "val",
-        "schema": undefined,
+        "schema": "public",
         "table": "table3",
         "type": "column",
       },
@@ -197,7 +203,7 @@ Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -208,7 +214,7 @@ Object {
       "name": "res1",
       "type": Object {
         "column": "col1",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -217,7 +223,7 @@ Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": undefined,
+        "schema": "public",
         "table": "table2",
         "type": "column",
       },
@@ -276,8 +282,8 @@ Object {
         "args": Array [
           Object {
             "column": "id",
-            "schema": undefined,
-            "table": undefined,
+            "schema": "public",
+            "table": "table1",
             "type": "column",
           },
         ],
@@ -304,7 +310,7 @@ Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -313,7 +319,7 @@ Object {
       "name": "myCol2",
       "type": Object {
         "column": "col2",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -322,7 +328,7 @@ Object {
       "name": "other",
       "type": Object {
         "column": "col2",
-        "schema": undefined,
+        "schema": "public",
         "table": "table2",
         "type": "column",
       },
@@ -375,7 +381,7 @@ Object {
       "name": "test",
       "type": Object {
         "column": "col_9",
-        "schema": undefined,
+        "schema": "public",
         "table": "table3",
         "type": "column",
       },
@@ -401,7 +407,7 @@ Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -417,7 +423,7 @@ Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -428,7 +434,7 @@ Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -444,7 +450,7 @@ Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -455,7 +461,7 @@ Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -502,7 +508,7 @@ Object {
       "name": "joinVal",
       "type": Object {
         "column": "val",
-        "schema": undefined,
+        "schema": "public",
         "table": "table3",
         "type": "column",
       },
@@ -511,7 +517,7 @@ Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -522,7 +528,7 @@ Object {
       "name": "res1",
       "type": Object {
         "column": "col1",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -531,7 +537,7 @@ Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": undefined,
+        "schema": "public",
         "table": "table2",
         "type": "column",
       },
@@ -600,7 +606,7 @@ Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -609,7 +615,7 @@ Object {
       "name": "myCol2",
       "type": Object {
         "column": "col2",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -674,7 +680,7 @@ Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -696,7 +702,7 @@ Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -705,7 +711,7 @@ Object {
       "name": "val1",
       "type": Object {
         "column": "col1",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -716,7 +722,7 @@ Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
@@ -725,7 +731,7 @@ Object {
       "name": "col2",
       "type": Object {
         "column": "col2",
-        "schema": undefined,
+        "schema": "public",
         "table": "table1",
         "type": "column",
       },
