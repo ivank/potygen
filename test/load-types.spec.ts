@@ -25,7 +25,14 @@ describe('Query Interface', () => {
       'nested function explicit type',
       `SELECT ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id`,
     ],
+    ['operators integer', `SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id`],
+    [
+      'operators string',
+      `SELECT integer_varchar + integer_col AS "test1" FROM all_types WHERE integer_varchar = $text`,
+    ],
     ['different result types', `SELECT * FROM all_types`],
+    ['enum', `SELECT 'Pending'::account_levelisation_state`],
+    ['enum column', `SELECT state FROM account_levelisations`],
     ['simple', `SELECT id, character_col FROM all_types WHERE id = :id`],
   ])('Should convert %s sql (%s)', async (_, sql) => {
     const ast = parser(sql);

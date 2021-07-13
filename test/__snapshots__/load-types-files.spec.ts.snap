@@ -46,7 +46,19 @@ Object {
     },
     Object {
       "name": "state",
-      "type": "string",
+      "type": Object {
+        "items": Array [
+          Object {
+            "type": "literal",
+            "value": "Pending",
+          },
+          Object {
+            "type": "literal",
+            "value": "Done",
+          },
+        ],
+        "type": "union",
+      },
     },
     Object {
       "name": "isAccepted",
@@ -154,7 +166,27 @@ Object {
     },
     Object {
       "name": "state",
-      "type": "string",
+      "type": Object {
+        "items": Array [
+          Object {
+            "type": "literal",
+            "value": "Active",
+          },
+          Object {
+            "type": "literal",
+            "value": "Pending",
+          },
+          Object {
+            "type": "literal",
+            "value": "Dispute",
+          },
+          Object {
+            "type": "literal",
+            "value": "Closed",
+          },
+        ],
+        "type": "union",
+      },
     },
     Object {
       "name": "startOn",
@@ -174,52 +206,270 @@ Object {
     },
     Object {
       "name": "address",
-      "type": Object {
-        "args": Array [
-          Object {
-            "column": "address_line_1",
-            "schema": "public",
-            "table": "installation_addresses",
-            "type": "column",
-          },
-          Object {
-            "column": "address_line_2",
-            "schema": "public",
-            "table": "installation_addresses",
-            "type": "column",
-          },
-          Object {
-            "column": "city",
-            "schema": "public",
-            "table": "installation_addresses",
-            "type": "column",
-          },
-          Object {
-            "column": "postcode",
-            "schema": "public",
-            "table": "installation_addresses",
-            "type": "column",
-          },
-        ],
-        "name": "CONCAT_WS",
-        "type": "function",
-      },
+      "type": "string",
     },
     Object {
       "name": "fitIds",
       "type": Object {
-        "args": Array [
-          Object {
-            "column": "scheme_account_reference",
-            "schema": "public",
-            "table": "contracts",
-            "type": "column",
-          },
-        ],
-        "name": "ARRAY_AGG",
-        "type": "function",
+        "items": "string",
+        "type": "array",
       },
     },
   ],
+}
+`;
+
+exports[`Load Files Should convert complex sql accounts.sql: accounts.sql 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [],
+}
+`;
+
+exports[`Load Files Should convert complex sql bacs.query.sql: bacs.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "quarter",
+      "type": "string",
+    },
+    Object {
+      "name": "perPage",
+      "type": "string",
+    },
+    Object {
+      "name": "offset",
+      "type": "string",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "fitId",
+      "type": "string",
+    },
+    Object {
+      "name": "name",
+      "type": "string",
+    },
+    Object {
+      "name": "amount",
+      "type": "string",
+    },
+    Object {
+      "name": "quarter",
+      "type": "string",
+    },
+    Object {
+      "name": "bankDetails",
+      "type": "string",
+    },
+    Object {
+      "name": "addressLine1",
+      "type": "string",
+    },
+    Object {
+      "name": "addressLine2",
+      "type": "string",
+    },
+    Object {
+      "name": "addressLine3",
+      "type": "string",
+    },
+    Object {
+      "name": "postcode",
+      "type": "string",
+    },
+  ],
+}
+`;
+
+exports[`Load Files Should convert complex sql contracts.sql: contracts.sql 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [],
+}
+`;
+
+exports[`Load Files Should convert complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "installationId",
+      "type": "number",
+    },
+    Object {
+      "name": "exportDateOn",
+      "type": "Date",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "dateOn",
+      "type": "Date",
+    },
+    Object {
+      "name": "value",
+      "type": "number",
+    },
+  ],
+}
+`;
+
+exports[`Load Files Should convert complex sql installations.sql: installations.sql 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [],
+}
+`;
+
+exports[`Load Files Should convert complex sql meter-reads.sql: meter-reads.sql 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [],
+}
+`;
+
+exports[`Load Files Should convert complex sql rates-by-tarrif-ids.query.sql: rates-by-tarrif-ids.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "ids",
+      "type": "number",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "tariffId",
+      "type": "number",
+    },
+    Object {
+      "name": "rate",
+      "type": "string",
+    },
+    Object {
+      "name": "startOn",
+      "type": "Date",
+    },
+    Object {
+      "name": "tariffCode",
+      "type": "string",
+    },
+    Object {
+      "name": "tariffType",
+      "type": Object {
+        "items": Array [
+          Object {
+            "type": "literal",
+            "value": "Export",
+          },
+          Object {
+            "type": "literal",
+            "value": "Generation",
+          },
+          Object {
+            "type": "literal",
+            "value": "SEG",
+          },
+        ],
+        "type": "union",
+      },
+    },
+    Object {
+      "name": "endOn",
+      "type": "Date",
+    },
+  ],
+}
+`;
+
+exports[`Load Files Should convert complex sql reads-by-account-id.query.sql: reads-by-account-id.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": "number",
+    },
+    Object {
+      "name": "offset",
+      "type": "string",
+    },
+    Object {
+      "name": "perPage",
+      "type": "string",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": "number",
+    },
+    Object {
+      "name": "msn",
+      "type": "string",
+    },
+    Object {
+      "name": "meterId",
+      "type": "number",
+    },
+    Object {
+      "name": "dateOn",
+      "type": "Date",
+    },
+    Object {
+      "name": "value",
+      "type": "number",
+    },
+    Object {
+      "name": "type",
+      "type": Object {
+        "items": Array [
+          Object {
+            "type": "literal",
+            "value": "Opening",
+          },
+          Object {
+            "type": "literal",
+            "value": "Closing",
+          },
+          Object {
+            "type": "literal",
+            "value": "Quarterly",
+          },
+          Object {
+            "type": "literal",
+            "value": "Meter Verification",
+          },
+        ],
+        "type": "union",
+      },
+    },
+    Object {
+      "name": "reason",
+      "type": "string",
+    },
+    Object {
+      "name": "createdAt",
+      "type": "string",
+    },
+    Object {
+      "name": "updatedAt",
+      "type": "string",
+    },
+    Object {
+      "name": "sourceSystemId",
+      "type": "number",
+    },
+    Object {
+      "name": "mpan",
+      "type": "string",
+    },
+  ],
+}
+`;
+
+exports[`Load Files Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [],
 }
 `;

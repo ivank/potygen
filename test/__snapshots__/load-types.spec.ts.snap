@@ -184,6 +184,54 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert enum column sql (SELECT state FROM account_levelisations) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "state",
+      "type": Object {
+        "items": Array [
+          Object {
+            "type": "literal",
+            "value": "Pending",
+          },
+          Object {
+            "type": "literal",
+            "value": "Done",
+          },
+        ],
+        "type": "union",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert enum sql (SELECT 'Pending'::account_levelisation_state) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "?column?",
+      "type": Object {
+        "items": Array [
+          Object {
+            "type": "literal",
+            "value": "Pending",
+          },
+          Object {
+            "type": "literal",
+            "value": "Done",
+          },
+        ],
+        "type": "union",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert function result sql (SELECT ABS(ABS(integer_col)) FROM all_types) 1`] = `
 Object {
   "params": Array [],
@@ -230,6 +278,40 @@ Object {
     Object {
       "name": "abs",
       "type": "number",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert operators integer sql (SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": "number",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "test1",
+      "type": "number",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert operators string sql (SELECT integer_varchar + integer_col AS "test1" FROM all_types WHERE integer_varchar = $text) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "text",
+      "type": "string",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "test1",
+      "type": "string",
     },
   ],
 }

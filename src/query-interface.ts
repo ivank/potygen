@@ -28,17 +28,19 @@ import {
   isTypeArray,
   isFunction,
   isRow,
+  InsertTag,
 } from './sql.types';
 
 export type ColumnType = { type: 'column'; table: string; schema: string; column: string };
 export type RecordType = { type: 'record'; name: string };
+export type LiteralType = { type: 'literal'; value: string };
 export type FunctionType = { type: 'function'; name: string; args: PropertyType[] };
 export type FunctionArgType = { type: 'function_arg'; name: string; index: number };
 export type StarType = { type: 'star'; table: string; schema: string };
 export type ConstantType = 'string' | 'number' | 'boolean' | 'Date' | 'null' | 'json' | 'unknown';
-export type ArrayType = { type: 'array'; items: ConstantType | ArrayType | RecordType };
+export type ArrayType = { type: 'array'; items: ConstantType | ArrayType | RecordType | UnionType | LiteralType };
 export type UnionType = { type: 'union'; items: PropertyType[] };
-export type PropertyType = ConstantType | ColumnType | FunctionType | ArrayType | RecordType | UnionType;
+export type PropertyType = ConstantType | ColumnType | FunctionType | ArrayType | RecordType | UnionType | LiteralType;
 
 export interface Result {
   name: string;
@@ -64,6 +66,8 @@ export const isColumnType = (type: PropertyType | StarType | FunctionArgType): t
   typeof type === 'object' && 'type' in type && type.type === 'column';
 export const isFunctionType = (type: PropertyType | StarType | FunctionArgType): type is FunctionType =>
   typeof type === 'object' && 'type' in type && type.type === 'function';
+export const isRecordType = (type: PropertyType | StarType | FunctionArgType): type is RecordType =>
+  typeof type === 'object' && 'type' in type && type.type === 'record';
 export const isFunctionArgType = (type: PropertyType | StarType | FunctionArgType): type is FunctionArgType =>
   typeof type === 'object' && 'type' in type && type.type === 'function_arg';
 export const isUnionType = (type: PropertyType | StarType | FunctionArgType): type is UnionType =>
@@ -74,14 +78,16 @@ export const isStarType = (type: PropertyType | StarType | FunctionArgType): typ
   typeof type === 'object' && 'type' in type && type.type === 'star';
 
 const toName = (aliases: Record<string, QualifiedTableName>, table: QualifiedTableName): QualifiedTableName =>
-  aliases[table?.table ?? ''] ?? table;
+  aliases[table?.table?.toLowerCase() ?? ''] ?? table;
 
 const toQualifiedTableName = (
   parts: IdentifierTag[],
   context: { table?: string; schema?: string } = {},
 ): QualifiedTableName => ({
-  table: parts[1] ? parts[1].value : parts[0]?.value ?? context.table ?? '',
-  schema: parts[1] ? parts[0].value : context.schema ?? 'public',
+  table: parts[1]
+    ? parts[1].value?.toLowerCase()
+    : parts[0]?.value?.toLowerCase() ?? context.table?.toLowerCase() ?? '',
+  schema: parts[1] ? parts[0].value?.toLowerCase() : context.schema?.toLowerCase() ?? 'public',
 });
 
 const toTableAliases = (from: FromTag): Record<string, QualifiedTableName> => {
@@ -90,7 +96,7 @@ const toTableAliases = (from: FromTag): Record<string, QualifiedTableName> => {
     return alias && isQualifiedIdentifier(item.value)
       ? {
           ...current,
-          [alias]: toName(current, toQualifiedTableName(item.value.values)),
+          [alias?.toLowerCase()]: toName(current, toQualifiedTableName(item.value.values)),
         }
       : current;
   }, {});
@@ -100,7 +106,7 @@ const toTableAliases = (from: FromTag): Record<string, QualifiedTableName> => {
     return alias
       ? {
           ...current,
-          [alias]: toName(current, toQualifiedTableName(item.table.values)),
+          [alias?.toLowerCase()]: toName(current, toQualifiedTableName(item.table.values)),
         }
       : current;
   }, fromAliases);
@@ -186,7 +192,7 @@ const convertType = (tag: TypeTag | TypeArrayTag): ConstantType | ArrayType | Re
         (curr) => ({ type: 'array', items: curr }),
         convertType(tag.value),
       )
-    : sqlTypes[tag.value] ?? { type: 'record', name: tag.value };
+    : sqlTypes[tag.value] ?? { type: 'record', name: tag.value.toLowerCase() };
 
 const convertExpression = (
   context: { type?: Param['type']; table?: string; schema?: string },
@@ -204,7 +210,7 @@ const convertExpression = (
       return {
         type: {
           type: 'function',
-          name: tag.value.value,
+          name: tag.value.value.toLowerCase(),
           args: tag.args.filter(isExpression).map((arg) => convertExpression(context, arg).type),
         },
         params: tag.args.flatMap(
@@ -220,7 +226,11 @@ const convertExpression = (
 
       return {
         type: lastIdentifier
-          ? { type: 'column', column: lastIdentifier.value, ...toQualifiedTableName(prefixIdentifiers, context) }
+          ? {
+              type: 'column',
+              column: lastIdentifier.value.toLowerCase(),
+              ...toQualifiedTableName(prefixIdentifiers, context),
+            }
           : 'unknown',
         params: [],
       };
