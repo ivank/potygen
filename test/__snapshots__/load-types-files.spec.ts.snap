@@ -1,0 +1,225 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Load Files Should convert complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "q",
+      "type": "string",
+    },
+    Object {
+      "name": "levelisationId",
+      "type": "number",
+    },
+    Object {
+      "name": "ids",
+      "type": Object {
+        "items": "number",
+        "type": "array",
+      },
+    },
+    Object {
+      "name": "limit",
+      "type": "number",
+    },
+    Object {
+      "name": "offset",
+      "type": "number",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": "number",
+    },
+    Object {
+      "name": "levelisationId",
+      "type": "number",
+    },
+    Object {
+      "name": "accountId",
+      "type": "number",
+    },
+    Object {
+      "name": "installationId",
+      "type": "number",
+    },
+    Object {
+      "name": "state",
+      "type": "string",
+    },
+    Object {
+      "name": "isAccepted",
+      "type": "boolean",
+    },
+    Object {
+      "name": "generationStartReadOn",
+      "type": "Date",
+    },
+    Object {
+      "name": "generationStartReadValue",
+      "type": "string",
+    },
+    Object {
+      "name": "generationEndReadOn",
+      "type": "Date",
+    },
+    Object {
+      "name": "generationEndReadValue",
+      "type": "string",
+    },
+    Object {
+      "name": "generationPercentageSplit",
+      "type": "number",
+    },
+    Object {
+      "name": "generationPayment",
+      "type": "string",
+    },
+    Object {
+      "name": "generationEnergy",
+      "type": "string",
+    },
+    Object {
+      "name": "exportStartReadOn",
+      "type": "Date",
+    },
+    Object {
+      "name": "exportStartReadValue",
+      "type": "string",
+    },
+    Object {
+      "name": "exportEndReadOn",
+      "type": "Date",
+    },
+    Object {
+      "name": "exportEndReadValue",
+      "type": "string",
+    },
+    Object {
+      "name": "exportPercentageSplit",
+      "type": "number",
+    },
+    Object {
+      "name": "exportPayment",
+      "type": "string",
+    },
+    Object {
+      "name": "exportEnergy",
+      "type": "string",
+    },
+    Object {
+      "name": "totalPayment",
+      "type": "string",
+    },
+    Object {
+      "name": "vatPayment",
+      "type": "string",
+    },
+    Object {
+      "name": "cfrFitId",
+      "type": "string",
+    },
+  ],
+}
+`;
+
+exports[`Load Files Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "q",
+      "type": "string",
+    },
+    Object {
+      "name": "ids",
+      "type": Object {
+        "items": "number",
+        "type": "array",
+      },
+    },
+    Object {
+      "name": "limit",
+      "type": "number",
+    },
+    Object {
+      "name": "offset",
+      "type": "number",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": "number",
+    },
+    Object {
+      "name": "state",
+      "type": "string",
+    },
+    Object {
+      "name": "startOn",
+      "type": "Date",
+    },
+    Object {
+      "name": "firstName",
+      "type": "string",
+    },
+    Object {
+      "name": "lastName",
+      "type": "string",
+    },
+    Object {
+      "name": "email",
+      "type": "string",
+    },
+    Object {
+      "name": "address",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "address_line_1",
+            "schema": "public",
+            "table": "installation_addresses",
+            "type": "column",
+          },
+          Object {
+            "column": "address_line_2",
+            "schema": "public",
+            "table": "installation_addresses",
+            "type": "column",
+          },
+          Object {
+            "column": "city",
+            "schema": "public",
+            "table": "installation_addresses",
+            "type": "column",
+          },
+          Object {
+            "column": "postcode",
+            "schema": "public",
+            "table": "installation_addresses",
+            "type": "column",
+          },
+        ],
+        "name": "CONCAT_WS",
+        "type": "function",
+      },
+    },
+    Object {
+      "name": "fitIds",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "scheme_account_reference",
+            "schema": "public",
+            "table": "contracts",
+            "type": "column",
+          },
+        ],
+        "name": "ARRAY_AGG",
+        "type": "function",
+      },
+    },
+  ],
+}
+`;

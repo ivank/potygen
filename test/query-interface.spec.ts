@@ -95,9 +95,11 @@ describe('Query Interface', () => {
     ['typed array param in select', `SELECT :param::int[]`],
     ['nested typed array param in select', `SELECT :param::int[][][]`],
     ['function', `SELECT ABS(id) FROM table1`],
+    ['function param', `SELECT ABS($id) FROM table1`],
     ['enum type', `SELECT id::custom_type FROM table1`],
     ['limit and offset params', `SELECT id FROM table1 LIMIT :limit OFFSET :offset::int`],
     ['complex row', `SELECT (1, 2+2, :param1), ROW (123), (1,2,(3))`],
+    ['star', `SELECT * FROM table1`],
   ])('Should convert %s sql (%s)', (_, sql) => {
     const ast = parser(sql);
     expect(convertSelect(ast)).toMatchSnapshot();

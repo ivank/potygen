@@ -32,21 +32,22 @@ import {
 
 export type ColumnType = { type: 'column'; table: string; schema: string; column: string };
 export type RecordType = { type: 'record'; name: string };
-export type FunctionType = { type: 'function'; name: string; args: ProperetyType[] };
+export type FunctionType = { type: 'function'; name: string; args: PropertyType[] };
+export type FunctionArgType = { type: 'function_arg'; name: string; index: number };
 export type StarType = { type: 'star'; table: string; schema: string };
 export type ConstantType = 'string' | 'number' | 'boolean' | 'Date' | 'null' | 'json' | 'unknown';
 export type ArrayType = { type: 'array'; items: ConstantType | ArrayType | RecordType };
-export type UnionType = { type: 'union'; items: ProperetyType[] };
-export type ProperetyType = ConstantType | ColumnType | FunctionType | ArrayType | RecordType | UnionType;
+export type UnionType = { type: 'union'; items: PropertyType[] };
+export type PropertyType = ConstantType | ColumnType | FunctionType | ArrayType | RecordType | UnionType;
 
 export interface Result {
   name: string;
-  type: ProperetyType | StarType;
+  type: PropertyType | StarType;
 }
 
 export interface Param {
   name: string;
-  type: ProperetyType;
+  type: PropertyType | FunctionArgType;
 }
 
 export interface QueryInterface {
@@ -59,13 +60,17 @@ export interface QualifiedTableName {
   schema: string;
 }
 
-export const isColumnType = (type: ProperetyType | StarType): type is ColumnType =>
+export const isColumnType = (type: PropertyType | StarType | FunctionArgType): type is ColumnType =>
   typeof type === 'object' && 'type' in type && type.type === 'column';
-export const isUnionType = (type: ProperetyType | StarType): type is UnionType =>
+export const isFunctionType = (type: PropertyType | StarType | FunctionArgType): type is FunctionType =>
+  typeof type === 'object' && 'type' in type && type.type === 'function';
+export const isFunctionArgType = (type: PropertyType | StarType | FunctionArgType): type is FunctionArgType =>
+  typeof type === 'object' && 'type' in type && type.type === 'function_arg';
+export const isUnionType = (type: PropertyType | StarType | FunctionArgType): type is UnionType =>
   typeof type === 'object' && 'type' in type && type.type === 'union';
-export const isArrayType = (type: ProperetyType | StarType): type is ArrayType =>
+export const isArrayType = (type: PropertyType | StarType | FunctionArgType): type is ArrayType =>
   typeof type === 'object' && 'type' in type && type.type === 'array';
-export const isStarType = (type: ProperetyType | StarType): type is StarType =>
+export const isStarType = (type: PropertyType | StarType | FunctionArgType): type is StarType =>
   typeof type === 'object' && 'type' in type && type.type === 'star';
 
 const toName = (aliases: Record<string, QualifiedTableName>, table: QualifiedTableName): QualifiedTableName =>
@@ -101,7 +106,9 @@ const toTableAliases = (from: FromTag): Record<string, QualifiedTableName> => {
   }, fromAliases);
 };
 
-const sqlTypes: { [type: string]: ConstantType } = {
+const sqlTypes: { [type: string]: ConstantType | ArrayType } = {
+  anyarray: { type: 'array', items: 'unknown' },
+  anyelement: 'unknown',
   bigint: 'string',
   int8: 'string',
   bigserial: 'string',
@@ -159,7 +166,8 @@ const sqlTypes: { [type: string]: ConstantType } = {
   xml: 'string',
 };
 
-export const toConstantType = (type?: string): ConstantType => (type ? sqlTypes[type] ?? 'string' : 'string');
+export const toConstantType = (type?: string): ConstantType | ArrayType =>
+  type ? sqlTypes[type] ?? 'string' : 'string';
 
 const operatorTypes: { [type: string]: ConstantType } = {
   '+': 'number',
@@ -183,7 +191,7 @@ const convertType = (tag: TypeTag | TypeArrayTag): ConstantType | ArrayType | Re
 const convertExpression = (
   context: { type?: Param['type']; table?: string; schema?: string },
   tag: ExpressionTag | OrderByTag,
-): { type: ProperetyType; params: Param[] } => {
+): { type: PropertyType; params: Param[] } => {
   switch (tag.tag) {
     case 'OrderBy':
       return { type: 'unknown', params: tag.values.flatMap((item) => convertExpression(context, item.value).params) };
@@ -199,7 +207,10 @@ const convertExpression = (
           name: tag.value.value,
           args: tag.args.filter(isExpression).map((arg) => convertExpression(context, arg).type),
         },
-        params: tag.args.flatMap((arg) => convertExpression(context, arg).params),
+        params: tag.args.flatMap(
+          (arg, index) =>
+            convertExpression({ ...context, type: { type: 'function_arg', name: tag.value.value, index } }, arg).params,
+        ),
       };
     case 'Row':
       return { type: 'string', params: tag.values.flatMap((value) => convertExpression(context, value).params) };
@@ -273,12 +284,12 @@ const convertExpression = (
   }
 };
 
-const resolveTypeWith = (aliases: Record<string, QualifiedTableName>) => (prop: ProperetyType): ProperetyType =>
+const resolveTypeWith = (aliases: Record<string, QualifiedTableName>) => (prop: PropertyType): PropertyType =>
   isColumnType(prop) ? { ...prop, ...toName(aliases, prop) } : prop;
 
 const resolveType = (aliases: Record<string, QualifiedTableName>) => {
   const resolve = resolveTypeWith(aliases);
-  return (property: ProperetyType): ProperetyType =>
+  return (property: PropertyType): PropertyType =>
     isUnionType(property) ? { ...property, items: property.items.map(resolve) } : resolve(property);
 };
 
@@ -319,7 +330,7 @@ export const convertSelect = (selectTag: {
         const prefixIdentifiers = initial(value.values).filter(isIdentifier);
 
         return {
-          type: lastIdentifier ? { type: 'star', ...toQualifiedTableName(prefixIdentifiers) } : 'unknown',
+          type: lastIdentifier ? { type: 'star', ...toQualifiedTableName(prefixIdentifiers, context) } : 'unknown',
           name: '*',
         };
       } else {
@@ -378,7 +389,7 @@ export const convertSelect = (selectTag: {
     }, [])
     .sort(orderBy((item) => (item.type === 'unknown' ? 3 : item.type === 'null' ? 2 : 1)))
     .filter(isUnique((item) => item.name))
-    .map((param) => ({ ...param, type: resolve(param.type) }));
+    .map((param) => ({ ...param, type: isColumnType(param.type) ? resolve(param.type) : param.type }));
 
   return { params, result };
 };

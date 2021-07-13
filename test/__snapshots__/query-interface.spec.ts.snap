@@ -272,6 +272,33 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert function param sql (SELECT ABS($id) FROM table1) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "index": 0,
+        "name": "ABS",
+        "type": "function_arg",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "abs",
+      "type": Object {
+        "args": Array [
+          "string",
+        ],
+        "name": "ABS",
+        "type": "function",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert function sql (SELECT ABS(id) FROM table1) 1`] = `
 Object {
   "params": Array [],
@@ -593,6 +620,22 @@ Object {
     Object {
       "name": "res1",
       "type": "string",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert star sql (SELECT * FROM table1) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "*",
+      "type": Object {
+        "schema": "public",
+        "table": "table1",
+        "type": "star",
+      },
     },
   ],
 }

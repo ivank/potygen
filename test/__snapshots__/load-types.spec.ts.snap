@@ -1,6 +1,241 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Query Interface Should convert simple sql (SELECT id, name FROM table1 WHERE id = :id) 1`] = `
+exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": "number",
+    },
+    Object {
+      "name": "not_null",
+      "type": "number",
+    },
+    Object {
+      "name": "default_not_null",
+      "type": "number",
+    },
+    Object {
+      "name": "bigint_col",
+      "type": "string",
+    },
+    Object {
+      "name": "bigserial_col",
+      "type": "string",
+    },
+    Object {
+      "name": "bit_col",
+      "type": "string",
+    },
+    Object {
+      "name": "bit_varying_col",
+      "type": "string",
+    },
+    Object {
+      "name": "boolean_col",
+      "type": "boolean",
+    },
+    Object {
+      "name": "box_col",
+      "type": "string",
+    },
+    Object {
+      "name": "bytea_col",
+      "type": "string",
+    },
+    Object {
+      "name": "character_col",
+      "type": "string",
+    },
+    Object {
+      "name": "character_varying_col",
+      "type": "string",
+    },
+    Object {
+      "name": "cidr_col",
+      "type": "string",
+    },
+    Object {
+      "name": "circle_col",
+      "type": "string",
+    },
+    Object {
+      "name": "date_col",
+      "type": "Date",
+    },
+    Object {
+      "name": "double_col",
+      "type": "string",
+    },
+    Object {
+      "name": "inet_col",
+      "type": "string",
+    },
+    Object {
+      "name": "integer_col",
+      "type": "number",
+    },
+    Object {
+      "name": "interval_col",
+      "type": "string",
+    },
+    Object {
+      "name": "json_col",
+      "type": "json",
+    },
+    Object {
+      "name": "jsonb_col",
+      "type": "json",
+    },
+    Object {
+      "name": "line_col",
+      "type": "string",
+    },
+    Object {
+      "name": "lseg_col",
+      "type": "string",
+    },
+    Object {
+      "name": "macaddr_col",
+      "type": "string",
+    },
+    Object {
+      "name": "money_col",
+      "type": "string",
+    },
+    Object {
+      "name": "numeric_col",
+      "type": "string",
+    },
+    Object {
+      "name": "path_col",
+      "type": "string",
+    },
+    Object {
+      "name": "pg_lsn_col",
+      "type": "string",
+    },
+    Object {
+      "name": "point_col",
+      "type": "string",
+    },
+    Object {
+      "name": "polygon_col",
+      "type": "string",
+    },
+    Object {
+      "name": "real_col",
+      "type": "string",
+    },
+    Object {
+      "name": "smallint_col",
+      "type": "number",
+    },
+    Object {
+      "name": "smallserial_col",
+      "type": "number",
+    },
+    Object {
+      "name": "serial_col",
+      "type": "number",
+    },
+    Object {
+      "name": "text_col",
+      "type": "string",
+    },
+    Object {
+      "name": "time_col",
+      "type": "string",
+    },
+    Object {
+      "name": "time_with_time_zone_col",
+      "type": "string",
+    },
+    Object {
+      "name": "timestamp_col",
+      "type": "string",
+    },
+    Object {
+      "name": "timestamp_with_time_zone_col",
+      "type": "string",
+    },
+    Object {
+      "name": "tsquery_col",
+      "type": "string",
+    },
+    Object {
+      "name": "tsvector_col",
+      "type": "string",
+    },
+    Object {
+      "name": "txid_snapshot_col",
+      "type": "string",
+    },
+    Object {
+      "name": "uuid_col",
+      "type": "string",
+    },
+    Object {
+      "name": "xml_col",
+      "type": "string",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert function result sql (SELECT ABS(ABS(integer_col)) FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "abs",
+      "type": "number",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert function result sql (SELECT ABS(integer_col) FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "abs",
+      "type": "number",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert nested function explicit type sql (SELECT ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "array",
+      "type": Object {
+        "items": "number",
+        "type": "array",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert nested function guess type sql (SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "abs",
+      "type": "number",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert simple sql (SELECT id, character_col FROM all_types WHERE id = :id) 1`] = `
 Object {
   "params": Array [
     Object {
@@ -14,7 +249,7 @@ Object {
       "type": "number",
     },
     Object {
-      "name": "name",
+      "name": "character_col",
       "type": "string",
     },
   ],
