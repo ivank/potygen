@@ -28,7 +28,6 @@ import {
   isTypeArray,
   isFunction,
   isRow,
-  InsertTag,
 } from './sql.types';
 
 export type ColumnType = { type: 'column'; table: string; schema: string; column: string };
