@@ -1,29 +1,63 @@
-import { SelectListTag, SelectTag, SqlTag } from './sql.types';
-import { SqlGrammar } from './sql.grammar';
-import { Parser } from '@ikerin/rd-parse';
-import { document, printDocument, DocumentContext, Type } from '@ovotech/ts-compose';
+import { document, printDocument, DocumentContext, Type, withIdentifier } from '@ovotech/ts-compose';
+import { TypeNode } from 'typescript';
+import { LoadedType, isLoadedArrayType, isLoadedUnionType, LoadedQuery } from './load-types';
+import { isLiteralType } from './query-interface';
 
-const parser = Parser<SelectTag>(SqlGrammar);
+const toPropertyType = (type: LoadedType): TypeNode => {
+  if (isLoadedArrayType(type)) {
+    return Type.Array(toPropertyType(type.items));
+  } else if (isLoadedUnionType(type)) {
+    return Type.Union(type.items.map(toPropertyType));
+  } else if (isLiteralType(type)) {
+    return Type.Literal(type.value);
+  } else {
+    switch (type) {
+      case 'Date':
+        return Type.Referance('Date');
+      case 'boolean':
+        return Type.Boolean;
+      case 'json':
+        return Type.Unknown;
+      case 'null':
+        return Type.Null;
+      case 'number':
+        return Type.Number;
+      case 'string':
+        return Type.String;
+      case 'unknown':
+        return Type.Unknown;
+    }
+  }
+};
 
-const isSelectListTag = (item: SqlTag): item is SelectListTag => item.tag === 'SelectList';
+export const toQuery = (context: DocumentContext, query: LoadedQuery) => {
+  const paramsContext = withIdentifier(
+    context,
+    Type.Interface({
+      name: 'QueryParams',
+      isExport: true,
+      props: query.params.map(({ name, type }) => Type.Prop({ name, type: toPropertyType(type) })),
+    }),
+  );
 
-export const convert = (context: DocumentContext, selectTag: SelectTag) => {
-  const selectList = selectTag.values.filter(isSelectListTag)[0];
+  const resultContext = withIdentifier(
+    paramsContext,
+    Type.Interface({
+      name: 'QueryResult',
+      isExport: true,
+      props: query.result.map(({ name, type }) => Type.Prop({ name, type: toPropertyType(type) })),
+    }),
+  );
 
   return document(
-    context,
+    resultContext,
     Type.Interface({
       name: 'Query',
       isExport: true,
-      props: selectList.values.map(({ value }, index) => {
-        switch (value.tag) {
-          case 'SelectIdentifier':
-            const lastName = value.values[value.values.length - 1];
-            return Type.Prop({ name: lastName.tag === 'StarIdentifier' ? 'all' : lastName.value, type: Type.String });
-          default:
-            return Type.Prop({ name: 'prop' + index, type: Type.String });
-        }
-      }),
+      props: [
+        Type.Prop({ name: 'params', type: Type.Referance('QueryParams') }),
+        Type.Prop({ name: 'result', type: Type.Referance('QueryResult') }),
+      ],
     }),
   );
 };
@@ -38,7 +72,6 @@ export const sql = <T>(templateStrings: TemplateStringsArray) => {
   return '123';
 };
 
-export const sqlTs = async (sql: string): Promise<string> => {
-  const tag = parser(sql);
-  return printDocument(convert({}, tag!));
+export const sqlTs = (loadedQuery: LoadedQuery): string => {
+  return printDocument(toQuery({}, loadedQuery));
 };

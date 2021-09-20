@@ -6,6 +6,7 @@ import { join } from 'path';
 import { convertSelect } from '../src/query-interface';
 import { Client } from 'pg';
 import { loadQuery } from '../src/load-types';
+import { sqlTs } from '../src/document';
 
 const parser = Parser(SqlGrammar);
 let db: Client;
@@ -30,7 +31,8 @@ describe('Load Files', () => {
       const ast = parser(sql);
       const query = convertSelect(ast);
       const loadedQuery = await loadQuery(db, query);
-      expect(loadedQuery.query).toMatchSnapshot(name);
+      const ts = sqlTs(loadedQuery.query);
+      expect(ts).toMatchSnapshot(name);
     } catch (e) {
       if (e instanceof ParserError) {
         console.log(inspect(e, { depth: 15, colors: true }));

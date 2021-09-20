@@ -37,7 +37,7 @@ CREATE TABLE all_types (
   time_col time,
   time_with_time_zone_col time with time zone,
   timestamp_col timestamp,
-  timestamp_with_time_zone_col timestamp,
+  timestamp_with_time_zone_col timestamp with time zone,
   tsquery_col tsquery,
   tsvector_col tsvector,
   txid_snapshot_col txid_snapshot,

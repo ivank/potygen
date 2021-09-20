@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+}
+
+export interface QueryResult {
+    id: number;
+    not_null: number;
+    default_not_null: number;
+    bigint_col: string;
+    bigserial_col: string;
+    bit_col: string;
+    bit_varying_col: string;
+    boolean_col: boolean;
+    box_col: string;
+    bytea_col: string;
+    character_col: string;
+    character_varying_col: string;
+    cidr_col: string;
+    circle_col: string;
+    date_col: Date;
+    double_col: string;
+    inet_col: string;
+    integer_col: number;
+    interval_col: string;
+    json_col: unknown;
+    jsonb_col: unknown;
+    line_col: string;
+    lseg_col: string;
+    macaddr_col: string;
+    money_col: string;
+    numeric_col: string;
+    path_col: string;
+    pg_lsn_col: string;
+    point_col: string;
+    polygon_col: string;
+    real_col: string;
+    smallint_col: number;
+    smallserial_col: number;
+    serial_col: number;
+    text_col: string;
+    time_col: string;
+    time_with_time_zone_col: string;
+    timestamp_col: Date;
+    timestamp_with_time_zone_col: Date;
+    tsquery_col: string;
+    tsvector_col: string;
+    txid_snapshot_col: string;
+    uuid_col: string;
+    xml_col: string;
+}
+"
+`;
+
+exports[`Query Interface Should convert enum column sql (SELECT state FROM account_levelisations) 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+}
+
+export interface QueryResult {
+    state: \\"Pending\\" | \\"Done\\";
+}
+"
+`;
+
+exports[`Query Interface Should convert enum sql (SELECT 'Pending'::account_levelisation_state) 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+}
+
+export interface QueryResult {
+    \\"?column?\\": \\"Pending\\" | \\"Done\\";
+}
+"
+`;
+
+exports[`Query Interface Should convert function result double sql (SELECT ABS(ABS(integer_col)) FROM all_types) 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+}
+
+export interface QueryResult {
+    abs: number;
+}
+"
+`;
+
+exports[`Query Interface Should convert function result single sql (SELECT ABS(integer_col) FROM all_types) 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+}
+
+export interface QueryResult {
+    abs: number;
+}
+"
+`;
+
+exports[`Query Interface Should convert nested function explicit type sql (SELECT (ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id) 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+}
+
+export interface QueryResult {
+    array: number[];
+}
+"
+`;
+
+exports[`Query Interface Should convert nested function guess type sql (SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id) 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+}
+
+export interface QueryResult {
+    abs: number;
+}
+"
+`;
+
+exports[`Query Interface Should convert operators integer sql (SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id) 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    id: number;
+}
+
+export interface QueryResult {
+    test1: number;
+}
+"
+`;
+
+exports[`Query Interface Should convert operators string sql (SELECT integer_varchar + integer_col AS "test1" FROM all_types WHERE integer_varchar = $text) 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    text: string;
+}
+
+export interface QueryResult {
+    test1: string;
+}
+"
+`;
+
+exports[`Query Interface Should convert simple sql (SELECT id, character_col FROM all_types WHERE id = :id) 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    id: number;
+}
+
+export interface QueryResult {
+    id: number;
+    character_col: string;
+}
+"
+`;

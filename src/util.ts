@@ -15,4 +15,6 @@ export const orderBy = <T>(predicate: (item: T) => any = identity) => (a: T, b: 
   return orderA === orderB ? 0 : orderA > orderB ? 1 : -1;
 };
 export const isNil = <T>(item: T | undefined | null): item is T => Boolean(item);
-export const uniqBy = <T>(predicate: (item: T) => boolean, items: T[]): T[] => items.filter(isUnique(predicate));
+export const uniqBy = <T>(predicate: (item: T) => unknown, items: T[]): T[] => items.filter(isUnique(predicate));
+export const diffBy = <T>(predicate: (item: T) => unknown, from: T[], to: T[]): T[] =>
+  from.filter((fromItem) => !to.some((toItem) => predicate(fromItem) === predicate(toItem)));

@@ -1,4 +1,17 @@
-import { Ignore, All, Any, Optional, Node, Y, Star, Rule, LeftBinaryOperator, Plus, IfNot } from '@ikerin/rd-parse';
+import {
+  Ignore,
+  All,
+  Any,
+  Optional,
+  Node,
+  Y,
+  Star,
+  Rule,
+  LeftBinaryOperator,
+  Plus,
+  IfNot,
+  FunctionRule,
+} from '@ikerin/rd-parse';
 import {
   IdentifierTag,
   QualifiedIdentifierTag,
@@ -579,4 +592,6 @@ const Insert = Node<InsertTag>(
 );
 
 // Ignore line comments and all whitespace
-export const SqlGrammar = Ignore(/^\s+|^--[^\r\n]*\n/, Any(Select, Update, Delete, Insert));
+const IgnoreComments = (node: FunctionRule) => Ignore(/^\s+|^--[^\r\n]*\n/, node);
+
+export const SqlGrammar = IgnoreComments(Any(Select, Update, Delete, Insert));

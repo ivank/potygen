@@ -154,11 +154,11 @@ Object {
     },
     Object {
       "name": "timestamp_col",
-      "type": "string",
+      "type": "Date",
     },
     Object {
       "name": "timestamp_with_time_zone_col",
-      "type": "string",
+      "type": "Date",
     },
     Object {
       "name": "tsquery_col",
@@ -232,7 +232,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert function result sql (SELECT ABS(ABS(integer_col)) FROM all_types) 1`] = `
+exports[`Query Interface Should convert function result double sql (SELECT ABS(ABS(integer_col)) FROM all_types) 1`] = `
 Object {
   "params": Array [],
   "result": Array [
@@ -244,7 +244,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert function result sql (SELECT ABS(integer_col) FROM all_types) 1`] = `
+exports[`Query Interface Should convert function result single sql (SELECT ABS(integer_col) FROM all_types) 1`] = `
 Object {
   "params": Array [],
   "result": Array [

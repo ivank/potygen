@@ -9,14 +9,7 @@ import {
   ExpressionTag,
   isJoinOn,
   CombinationTag,
-  DistinctTag,
-  GroupByTag,
-  HavingTag,
-  LimitTag,
-  OffsetTag,
   OrderByTag,
-  SelectListTag,
-  WhereTag,
   IdentifierTag,
   isExpression,
   isStarQualifiedIdentifier,
@@ -28,6 +21,8 @@ import {
   isTypeArray,
   isFunction,
   isRow,
+  SelectTag,
+  SelectListItemTag,
 } from './sql.types';
 
 export type ColumnType = { type: 'column'; table: string; schema: string; column: string };
@@ -51,7 +46,7 @@ export interface Param {
   type: PropertyType | FunctionArgType;
 }
 
-export interface QueryInterface {
+export interface Query {
   params: Param[];
   result: Result[];
 }
@@ -60,6 +55,16 @@ export interface QualifiedTableName {
   table: string;
   schema: string;
 }
+
+type TableAliases = Record<string, QualifiedTableName>;
+
+interface QueryContext {
+  table?: string;
+  schema?: string;
+  aliases: TableAliases;
+}
+
+type ResolveIdentifier = (property: PropertyType) => PropertyType;
 
 export const isColumnType = (type: PropertyType | StarType | FunctionArgType): type is ColumnType =>
   typeof type === 'object' && 'type' in type && type.type === 'column';
@@ -73,10 +78,12 @@ export const isUnionType = (type: PropertyType | StarType | FunctionArgType): ty
   typeof type === 'object' && 'type' in type && type.type === 'union';
 export const isArrayType = (type: PropertyType | StarType | FunctionArgType): type is ArrayType =>
   typeof type === 'object' && 'type' in type && type.type === 'array';
+export const isLiteralType = (type: PropertyType | StarType | FunctionArgType): type is LiteralType =>
+  typeof type === 'object' && 'type' in type && type.type === 'literal';
 export const isStarType = (type: PropertyType | StarType | FunctionArgType): type is StarType =>
   typeof type === 'object' && 'type' in type && type.type === 'star';
 
-const toName = (aliases: Record<string, QualifiedTableName>, table: QualifiedTableName): QualifiedTableName =>
+const toName = (aliases: TableAliases, table: QualifiedTableName): QualifiedTableName =>
   aliases[table?.table?.toLowerCase() ?? ''] ?? table;
 
 const toQualifiedTableName = (
@@ -89,7 +96,7 @@ const toQualifiedTableName = (
   schema: parts[1] ? parts[0].value?.toLowerCase() : context.schema?.toLowerCase() ?? 'public',
 });
 
-const toTableAliases = (from: FromTag): Record<string, QualifiedTableName> => {
+const toTableAliases = (from: FromTag): TableAliases => {
   const fromAliases = from.list.values.reduce((current, item) => {
     const alias = item.as?.value.value;
     return alias && isQualifiedIdentifier(item.value)
@@ -162,6 +169,8 @@ const sqlTypes: { [type: string]: ConstantType | ArrayType } = {
   text: 'string',
   timestamptz: 'Date',
   timestamp: 'Date',
+  'timestamp without time zone': 'Date',
+  'timestamp with time zone': 'Date',
   timetz: 'Date',
   time: 'string',
   tsquery: 'string',
@@ -293,77 +302,79 @@ const convertExpression = (
   }
 };
 
-const resolveTypeWith = (aliases: Record<string, QualifiedTableName>) => (prop: PropertyType): PropertyType =>
+const resolveTypeWith = (aliases: TableAliases) => (prop: PropertyType): PropertyType =>
   isColumnType(prop) ? { ...prop, ...toName(aliases, prop) } : prop;
 
-const resolveType = (aliases: Record<string, QualifiedTableName>) => {
+const resolveType = ({ aliases }: QueryContext) => {
   const resolve = resolveTypeWith(aliases);
   return (property: PropertyType): PropertyType =>
     isUnionType(property) ? { ...property, items: property.items.map(resolve) } : resolve(property);
 };
 
-export const convertSelect = (selectTag: {
-  tag: 'Combination' | 'Select';
-  values: (
-    | DistinctTag
-    | SelectListTag
-    | FromTag
-    | WhereTag
-    | GroupByTag
-    | HavingTag
-    | OrderByTag
-    | CombinationTag
-    | LimitTag
-    | OffsetTag
-  )[];
-}): QueryInterface => {
-  const selectList = first(selectTag.values.filter(isSelectList));
-  const from = first(selectTag.values.filter(isFrom));
-  const tableAliases = from ? toTableAliases(from) : {};
+const toContext = (from?: FromTag): QueryContext => {
+  const aliases = from ? toTableAliases(from) : {};
 
   const fromTableExpression = first(from?.list.values)?.value;
 
   const fromTable: QualifiedTableName =
     fromTableExpression && isQualifiedIdentifier(fromTableExpression)
-      ? toName(tableAliases, toQualifiedTableName(fromTableExpression.values))
+      ? toName(aliases, toQualifiedTableName(fromTableExpression.values))
       : { table: '', schema: 'public' };
 
-  const resolve = resolveType(tableAliases);
+  return { table: fromTable.table, schema: fromTable.schema, aliases };
+};
 
-  const context = { table: fromTable.table, schema: fromTable.schema };
+const selectListResults = (context: QueryContext, items: SelectListItemTag[]): Result[] => {
+  const resolve = resolveType(context);
 
-  const result: Result[] =
-    selectList?.values.map(({ value, as }) => {
-      if (isStarQualifiedIdentifier(value)) {
-        const lastIdentifier = last(value.values);
-        const prefixIdentifiers = initial(value.values).filter(isIdentifier);
+  return items.map(({ value, as }) => {
+    if (isStarQualifiedIdentifier(value)) {
+      const lastIdentifier = last(value.values);
+      const prefixIdentifiers = initial(value.values).filter(isIdentifier);
 
-        return {
-          type: lastIdentifier ? { type: 'star', ...toQualifiedTableName(prefixIdentifiers, context) } : 'unknown',
-          name: '*',
-        };
-      } else {
-        const property = convertExpression(context, value);
-        const type = resolve(property.type);
-        const name =
-          as?.value.value ??
-          (isColumnType(type)
-            ? type.column
-            : isBoolean(value)
-            ? 'bool'
-            : isAnyCast(value) && isTypeArray(value.type)
-            ? 'array'
-            : isAnyCast(value) && isQualifiedIdentifier(value.value)
-            ? last(value.value.values)?.value ?? '?column?'
-            : isFunction(value)
-            ? value.value.value.toLowerCase()
-            : isRow(value)
-            ? 'row'
-            : '?column?');
+      return {
+        type: lastIdentifier ? { type: 'star', ...toQualifiedTableName(prefixIdentifiers, context) } : 'unknown',
+        name: '*',
+      };
+    } else {
+      const property = convertExpression(context, value);
+      const type = resolve(property.type);
+      const name =
+        as?.value.value ??
+        (isColumnType(type)
+          ? type.column
+          : isBoolean(value)
+          ? 'bool'
+          : isAnyCast(value) && isTypeArray(value.type)
+          ? 'array'
+          : isAnyCast(value) && isQualifiedIdentifier(value.value)
+          ? last(value.value.values)?.value ?? '?column?'
+          : isFunction(value)
+          ? value.value.value.toLowerCase()
+          : isRow(value)
+          ? 'row'
+          : '?column?');
 
-        return { name, type };
-      }
-    }) ?? [];
+      return { name, type };
+    }
+  });
+};
+
+const resolveParam = (resolve: ResolveIdentifier) => (param: Param): Param => ({
+  ...param,
+  type: isColumnType(param.type) ? resolve(param.type) : param.type,
+});
+
+const orderParam = orderBy<Param>((item) => (item.type === 'unknown' ? 3 : item.type === 'null' ? 2 : 1));
+const uniqParam = isUnique<Param>((item) => item.name);
+
+export const convertSelect = (selectTag: SelectTag): Query => {
+  const selectList = first(selectTag.values.filter(isSelectList));
+  const from = first(selectTag.values.filter(isFrom));
+  const context = toContext(from);
+  const resolve = resolveType(context);
+
+  const result: Result[] = selectListResults(context, selectList?.values ?? []);
 
   const params: Param[] = selectTag.values
     .reduce<Param[]>((current, tag) => {
@@ -391,14 +402,51 @@ export const convertSelect = (selectTag: {
             ? current
             : current.concat(convertExpression({ ...context, type: 'string' }, tag.value.value).params);
         case 'Combination':
-          return current.concat(convertSelect(tag).params);
+          return current.concat(convertCombination(tag).params);
         default:
           return current;
       }
     }, [])
-    .sort(orderBy((item) => (item.type === 'unknown' ? 3 : item.type === 'null' ? 2 : 1)))
-    .filter(isUnique((item) => item.name))
-    .map((param) => ({ ...param, type: isColumnType(param.type) ? resolve(param.type) : param.type }));
+    .sort(orderParam)
+    .filter(uniqParam)
+    .map(resolveParam(resolve));
+
+  return { params, result };
+};
+
+export const convertCombination = (selectTag: CombinationTag): Query => {
+  const selectList = first(selectTag.values.filter(isSelectList));
+  const from = first(selectTag.values.filter(isFrom));
+  const context = toContext(from);
+  const resolve = resolveType(context);
+
+  const result: Result[] = selectListResults(context, selectList?.values ?? []);
+
+  const params: Param[] = selectTag.values
+    .reduce<Param[]>((current, tag) => {
+      switch (tag.tag) {
+        case 'SelectList':
+          return current.concat(
+            tag.values.flatMap((item) =>
+              isStarQualifiedIdentifier(item.value) ? [] : convertExpression(context, item.value).params,
+            ),
+          );
+        case 'From':
+          return current.concat(
+            tag.join.flatMap((item) =>
+              item.values.filter(isJoinOn).flatMap((join) => convertExpression(context, join.value).params),
+            ),
+          );
+        case 'Where':
+        case 'Having':
+          return current.concat(convertExpression(context, tag.value).params);
+        default:
+          return current;
+      }
+    }, [])
+    .sort(orderParam)
+    .filter(uniqParam)
+    .map(resolveParam(resolve));
 
   return { params, result };
 };

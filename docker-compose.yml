@@ -10,5 +10,5 @@ services:
       POSTGRES_DATABASE: sql-ast
       POSTGRES_USER: sql-ast
       POSTGRES_PASSWORD: dev-pass
-    # volumes:
-    #   - init.sql:/docker-entrypoint-initdb.d/init.sql
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql

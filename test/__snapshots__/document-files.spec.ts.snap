@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Load Files Should convert complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    q: string;
+    levelisationId: number;
+    ids: number[];
+    limit: number;
+    offset: number;
+}
+
+export interface QueryResult {
+    id: number;
+    levelisationId: number;
+    accountId: number;
+    installationId: number;
+    state: \\"Pending\\" | \\"Done\\";
+    isAccepted: boolean;
+    generationStartReadOn: Date;
+    generationStartReadValue: string;
+    generationEndReadOn: Date;
+    generationEndReadValue: string;
+    generationPercentageSplit: number;
+    generationPayment: string;
+    generationEnergy: string;
+    exportStartReadOn: Date;
+    exportStartReadValue: string;
+    exportEndReadOn: Date;
+    exportEndReadValue: string;
+    exportPercentageSplit: number;
+    exportPayment: string;
+    exportEnergy: string;
+    totalPayment: string;
+    vatPayment: string;
+    cfrFitId: string;
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    q: string;
+    ids: number[];
+    limit: number;
+    offset: number;
+}
+
+export interface QueryResult {
+    id: number;
+    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    startOn: Date;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: string;
+    fitIds: string[];
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql accounts.sql: accounts.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+}
+
+export interface QueryResult {
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql bacs.query.sql: bacs.query.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    quarter: string;
+    perPage: string;
+    offset: string;
+}
+
+export interface QueryResult {
+    fitId: string;
+    name: string;
+    amount: string;
+    quarter: string;
+    bankDetails: string;
+    addressLine1: string;
+    addressLine2: string;
+    addressLine3: string;
+    postcode: string;
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql contracts.sql: contracts.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+}
+
+export interface QueryResult {
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    installationId: number;
+    exportDateOn: Date;
+}
+
+export interface QueryResult {
+    dateOn: Date;
+    value: number;
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql installations.sql: installations.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+}
+
+export interface QueryResult {
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql meter-reads.sql: meter-reads.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+}
+
+export interface QueryResult {
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql rates-by-tarrif-ids.query.sql: rates-by-tarrif-ids.query.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    ids: number;
+}
+
+export interface QueryResult {
+    tariffId: number;
+    rate: string;
+    startOn: Date;
+    tariffCode: string;
+    tariffType: \\"Export\\" | \\"Generation\\" | \\"SEG\\";
+    endOn: Date;
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql reads-by-account-id.query.sql: reads-by-account-id.query.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    id: number;
+    offset: string;
+    perPage: string;
+}
+
+export interface QueryResult {
+    id: number;
+    msn: string;
+    meterId: number;
+    dateOn: Date;
+    value: number;
+    type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    reason: string;
+    createdAt: Date;
+    updatedAt: Date;
+    sourceSystemId: number;
+    mpan: string;
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+}
+
+export interface QueryResult {
+}
+"
+`;

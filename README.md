@@ -1,3 +1,3 @@
-TODO: custom record types
 TODO: optional params
-TODO: Load Returning types
+TODO: insert / update / delete query interfaces
+TODO: CTE
