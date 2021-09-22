@@ -42,6 +42,22 @@ export interface QueryResult {
 "
 `;
 
+exports[`Load Files Should convert complex sql account-levelisations-set-bulk-update.query.sql: account-levelisations-set-bulk-update.query.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    ids: number[];
+}
+
+export interface QueryResult {
+    id: number;
+}
+"
+`;
+
 exports[`Load Files Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
 "export interface Query {
     params: QueryParams;
@@ -136,6 +152,22 @@ export interface QueryParams {
 export interface QueryResult {
     dateOn: Date;
     value: number;
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    meterId: number;
+    removalDate: unknown;
+}
+
+export interface QueryResult {
 }
 "
 `;

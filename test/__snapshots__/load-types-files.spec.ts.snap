@@ -136,6 +136,26 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql account-levelisations-set-bulk-update.query.sql: account-levelisations-set-bulk-update.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "ids",
+      "type": Object {
+        "items": "number",
+        "type": "array",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": "number",
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
 Object {
   "params": Array [
@@ -312,6 +332,22 @@ Object {
       "type": "number",
     },
   ],
+}
+`;
+
+exports[`Load Files Should convert complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "meterId",
+      "type": "number",
+    },
+    Object {
+      "name": "removalDate",
+      "type": "unknown",
+    },
+  ],
+  "result": Array [],
 }
 `;
 

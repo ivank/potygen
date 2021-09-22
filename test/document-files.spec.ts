@@ -3,7 +3,7 @@ import { SqlGrammar } from '../src/sql.grammar';
 import { inspect } from 'util';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
-import { convertSelect } from '../src/query-interface';
+import { convertTag } from '../src/query-interface';
 import { Client } from 'pg';
 import { loadQuery } from '../src/load-types';
 import { sqlTs } from '../src/document';
@@ -29,7 +29,7 @@ describe('Load Files', () => {
   )('Should convert complex sql %s', async (name, sql) => {
     try {
       const ast = parser(sql);
-      const query = convertSelect(ast);
+      const query = convertTag(ast);
       const loadedQuery = await loadQuery(db, query);
       const ts = sqlTs(loadedQuery.query);
       expect(ts).toMatchSnapshot(name);

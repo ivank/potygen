@@ -52,7 +52,21 @@ export type PgCastTag = { tag: 'PgCast'; value: DataTypeTag; type: AnyTypeTag };
 export type AnyCastTag = CastTag | PgCastTag;
 export type ArrayConstructorTag = { tag: 'ArrayConstructor'; values: ExpressionTag[] };
 export type FunctionTag = { tag: 'Function'; value: IdentifierTag; args: (ExpressionTag | OrderByTag)[] };
-export type ExpressionTag = AnyCastTag | DataTypeTag | OperatorExpressionTag | BetweenTag | DataTypeTag | RowTag;
+export type SubqueryExpressionTag = {
+  tag: 'SubqueryExpression';
+  operator?: OperatorTag;
+  type?: 'in' | 'not in' | 'any' | 'some' | 'all' | 'exists';
+  value?: QualifiedIdentifierTag;
+  subquery: SelectTag;
+};
+export type ExpressionTag =
+  | AnyCastTag
+  | DataTypeTag
+  | OperatorExpressionTag
+  | BetweenTag
+  | DataTypeTag
+  | RowTag
+  | SubqueryExpressionTag;
 export type SelectListItemTag = {
   tag: 'SelectListItem';
   value: ExpressionTag | StarQualifiedIdentifierTag;
@@ -96,7 +110,12 @@ export type SetMapTag = { tag: 'SetMap'; columns: ColumnsTag; values: ValuesTag 
 export type SetTag = { tag: 'Set'; value: SetListTag | SetMapTag };
 export type TableTag = { tag: 'Table'; value: QualifiedIdentifierTag; as?: AsTag };
 export type UpdateFromTag = { tag: 'UpdateFrom'; values: FromListItemTag[] };
-export type ReturningTag = { tag: 'Returning'; values: (QualifiedIdentifierTag | StarIdentifierTag)[] };
+export type ReturningListItemTag = {
+  tag: 'ReturningListItem';
+  value: ExpressionTag | StarQualifiedIdentifierTag;
+  as?: AsTag;
+};
+export type ReturningTag = { tag: 'Returning'; values: ReturningListItemTag[] };
 export type UpdateTag = { tag: 'Update'; values: (SetTag | TableTag | UpdateFromTag | WhereTag | ReturningTag)[] };
 
 export type UsingTag = { tag: 'Using'; values: FromListItemTag[] };
@@ -112,7 +131,7 @@ export type ConflictTag = {
   tag: 'Conflict';
   values: (ConflictTargetTag | ConflictConstraintTag | DoNothingTag | DoUpdateTag)[];
 };
-export type InsertTag = { tag: 'Insert'; values: (TableTag | SelectTag | ValuesListTag | ConflictTag)[] };
+export type InsertTag = { tag: 'Insert'; values: (TableTag | SelectTag | ValuesListTag | ConflictTag | ColumnsTag)[] };
 
 export type SqlTag = { tag: string };
 
@@ -174,6 +193,7 @@ export type Tag =
   | TableTag
   | UpdateFromTag
   | ReturningTag
+  | ReturningListItemTag
   | UpdateTag
   | UsingTag
   | DeleteTag
@@ -237,8 +257,11 @@ export const isExpression = (value: SqlTag): value is ExpressionTag =>
   isBetween(value) ||
   isDataType(value) ||
   isFunction(value) ||
-  isArrayIndex(value);
+  isArrayIndex(value) ||
+  isRow(value) ||
+  isSubqueryExpression(value);
 export const isSelectListItem = (value: SqlTag): value is SelectListItemTag => value.tag === 'SelectListItem';
+export const isReturningListItem = (value: SqlTag): value is ReturningListItemTag => value.tag === 'ReturningListItem';
 export const isSelectList = (value: SqlTag): value is SelectListTag => value.tag === 'SelectList';
 export const isFromListItem = (value: SqlTag): value is FromListItemTag => value.tag === 'FromListItem';
 export const isFrom = (value: SqlTag): value is FromTag => value.tag === 'From';
@@ -282,3 +305,6 @@ export const isDoUpdate = (value: SqlTag): value is DoUpdateTag => value.tag ===
 export const isConflict = (value: SqlTag): value is ConflictTag => value.tag === 'Conflict';
 export const isArrayConstructor = (value: SqlTag): value is ArrayConstructorTag => value.tag === 'ArrayConstructor';
 export const isRow = (value: SqlTag): value is RowTag => value.tag === 'Row';
+export const isSelectTag = (value: SqlTag): value is SelectTag => value.tag === 'Select';
+export const isSubqueryExpression = (value: SqlTag): value is SubqueryExpressionTag =>
+  value.tag === 'SubqueryExpression';

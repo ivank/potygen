@@ -82,6 +82,8 @@ import {
   ArrayIndexRangeTag,
   ArrayIndexTag,
   RowTag,
+  ReturningListItemTag,
+  SubqueryExpressionTag,
 } from './sql.types';
 
 /**
@@ -274,6 +276,50 @@ const OrderRule = (Expression: Rule): Rule => {
 const ExpressionRule = (SelectExpression: Rule): Rule =>
   Y((ChildExpression) => {
     /**
+     * Subquery Expression
+     * ----------------------------------------------------------------------------------------
+     */
+
+    const Exists = Node<SubqueryExpressionTag>(All(/^EXISTS/i, Brackets(SelectExpression)), ([subquery]) => ({
+      tag: 'SubqueryExpression',
+      type: 'exists',
+      subquery,
+    }));
+
+    const InclusionSubquery = Node<SubqueryExpressionTag>(
+      All(QualifiedIdentifier, /^(IN|NOT IN)/i, Brackets(SelectExpression)),
+      ([value, type, subquery]) => ({
+        tag: 'SubqueryExpression',
+        type: type.toLowerCase(),
+        value,
+        subquery,
+      }),
+    );
+
+    const BooleanSubqueryOperator = /^(<=|>=|<|>|<>|!=|=|AND|OR)/;
+
+    const OperatorSubquery = Node<SubqueryExpressionTag>(
+      All(QualifiedIdentifier, BooleanSubqueryOperator, /^(ANY|SOME|ALL)/i, Brackets(SelectExpression)),
+      ([value, operator, type, subquery]) => ({
+        tag: 'SubqueryExpression',
+        operator,
+        type: type.toLowerCase(),
+        value,
+        subquery,
+      }),
+    );
+
+    const RowWiseSubquery = Node<SubqueryExpressionTag>(
+      All(QualifiedIdentifier, BooleanSubqueryOperator, Brackets(SelectExpression)),
+      ([value, operator, subquery]) => ({
+        tag: 'SubqueryExpression',
+        operator,
+        value,
+        subquery,
+      }),
+    );
+
+    /**
      * Function
      * ----------------------------------------------------------------------------------------
      */
@@ -312,6 +358,10 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       ArrayIndex,
       ArrayConstructor,
       Row,
+      Exists,
+      InclusionSubquery,
+      OperatorSubquery,
+      RowWiseSubquery,
       Function,
       QualifiedIdentifier,
       Parameter,
@@ -539,7 +589,11 @@ const SetMap = Node<SetMapTag>(
 const Set = Node<SetTag>(All(/^SET/i, Any(SetList, SetMap)), ([value]) => ({ tag: 'Set', value }));
 
 const UpdateFrom = Node<UpdateFromTag>(All(/^FROM/i, List(FromList)), (values) => ({ tag: 'UpdateFrom', values }));
-const Returning = Node<ReturningTag>(All(/^RETURNING/i, List(Any(StarIdentifier, QualifiedIdentifier))), (values) => ({
+const ReturningListItem = Node<ReturningListItemTag>(
+  Any(StarQualifiedIdentifier, All(Any(Expression), Optional(As))),
+  ([value, as]) => ({ tag: 'ReturningListItem', value, as }),
+);
+const Returning = Node<ReturningTag>(All(/^RETURNING/i, List(ReturningListItem)), (values) => ({
   tag: 'Returning',
   values,
 }));

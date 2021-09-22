@@ -244,6 +244,31 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql account-levelisations-set-bulk-update.query.sql: account-levelisations-set-bulk-update.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "ids",
+      "type": Object {
+        "items": "number",
+        "type": "array",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": "public",
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
 Object {
   "params": Array [
@@ -544,6 +569,27 @@ Object {
       },
     },
   ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "meterId",
+      "type": Object {
+        "column": "meter_id",
+        "schema": "public",
+        "table": "installation_meters",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "removalDate",
+      "type": "unknown",
+    },
+  ],
+  "result": Array [],
 }
 `;
 

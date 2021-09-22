@@ -1,5 +1,5 @@
 import { Parser } from '@ikerin/rd-parse';
-import { convertSelect } from '../src/query-interface';
+import { convertTag } from '../src/query-interface';
 import { SqlGrammar } from '../src/sql.grammar';
 
 const parser = Parser(SqlGrammar);
@@ -100,8 +100,14 @@ describe('Query Interface', () => {
     ['limit and offset params', `SELECT id FROM table1 LIMIT :limit OFFSET :offset::int`],
     ['complex row', `SELECT (1, 2+2, :param1), ROW (123), (1,2,(3))`],
     ['star', `SELECT * FROM table1`],
+    ['update returning star', 'UPDATE table1 SET col1 = 10 WHERE id = :id RETURNING *'],
+    ['update returning', 'UPDATE table1 SET col1 = 10 RETURNING id, col1'],
+    [
+      'update returning expression',
+      "UPDATE table1 SET col1 = 10 RETURNING id, col1, 123 as col2, '2' as col3, 3+4 as col4",
+    ],
   ])('Should convert %s sql (%s)', (_, sql) => {
     const ast = parser(sql);
-    expect(convertSelect(ast)).toMatchSnapshot();
+    expect(convertTag(ast)).toMatchSnapshot();
   });
 });

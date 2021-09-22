@@ -1520,22 +1520,30 @@ Object {
       "tag": "Returning",
       "values": Array [
         Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "id",
-            },
-          ],
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
         },
         Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "col1",
-            },
-          ],
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
+          },
         },
       ],
     },
@@ -2419,22 +2427,30 @@ Object {
       "tag": "Returning",
       "values": Array [
         Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "id",
-            },
-          ],
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
         },
         Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "col1",
-            },
-          ],
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
+          },
         },
       ],
     },
@@ -3443,22 +3459,30 @@ Object {
       "tag": "Returning",
       "values": Array [
         Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "id",
-            },
-          ],
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
         },
         Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "col1",
-            },
-          ],
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
+          },
         },
       ],
     },
@@ -6694,6 +6718,72 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql select exists (SELECT EXISTS(SELECT col2 FROM table2)): select exists 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "subquery": Object {
+              "tag": "Select",
+              "values": Array [
+                Object {
+                  "tag": "SelectList",
+                  "values": Array [
+                    Object {
+                      "as": undefined,
+                      "tag": "SelectListItem",
+                      "value": Object {
+                        "tag": "QualifiedIdentifier",
+                        "values": Array [
+                          Object {
+                            "tag": "Identifier",
+                            "value": "col2",
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+                Object {
+                  "join": Array [],
+                  "list": Object {
+                    "tag": "FromList",
+                    "values": Array [
+                      Object {
+                        "as": undefined,
+                        "tag": "FromListItem",
+                        "value": Object {
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "tag": "Identifier",
+                              "value": "table2",
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                  "tag": "From",
+                },
+              ],
+            },
+            "tag": "SubqueryExpression",
+            "type": "exists",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql star select (SELECT *): star select 1`] = `
 Object {
   "tag": "Select",
@@ -7256,6 +7346,96 @@ Object {
             "tag": "SetItem",
             "value": Object {
               "tag": "Default",
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update exists (UPDATE table1 SET col1 = EXISTS(SELECT col2 FROM table2)): update exists 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "tag": "SetItem",
+            "value": Object {
+              "subquery": Object {
+                "tag": "Select",
+                "values": Array [
+                  Object {
+                    "tag": "SelectList",
+                    "values": Array [
+                      Object {
+                        "as": undefined,
+                        "tag": "SelectListItem",
+                        "value": Object {
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "tag": "Identifier",
+                              "value": "col2",
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                  Object {
+                    "join": Array [],
+                    "list": Object {
+                      "tag": "FromList",
+                      "values": Array [
+                        Object {
+                          "as": undefined,
+                          "tag": "FromListItem",
+                          "value": Object {
+                            "tag": "QualifiedIdentifier",
+                            "values": Array [
+                              Object {
+                                "tag": "Identifier",
+                                "value": "table2",
+                              },
+                            ],
+                          },
+                        },
+                      ],
+                    },
+                    "tag": "From",
+                  },
+                ],
+              },
+              "tag": "SubqueryExpression",
+              "type": "exists",
             },
           },
         ],
@@ -7887,22 +8067,159 @@ Object {
       "tag": "Returning",
       "values": Array [
         Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "id",
-            },
-          ],
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
         },
         Object {
-          "tag": "QualifiedIdentifier",
-          "values": Array [
-            Object {
-              "tag": "Identifier",
-              "value": "col1",
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql update returning expression (UPDATE table1 SET col1 = 10 RETURNING id, col1, 123 as col2, '2' as col3, 3+4 as col4): update returning expression 1`] = `
+Object {
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Set",
+      "value": Object {
+        "tag": "SetList",
+        "values": Array [
+          Object {
+            "column": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
             },
-          ],
+            "tag": "SetItem",
+            "value": Object {
+              "tag": "Number",
+              "value": "10",
+            },
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Returning",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "col2",
+            },
+          },
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "Number",
+            "value": "123",
+          },
+        },
+        Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "col3",
+            },
+          },
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "String",
+            "value": "2",
+          },
+        },
+        Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "col4",
+            },
+          },
+          "tag": "ReturningListItem",
+          "value": Object {
+            "left": Object {
+              "tag": "Number",
+              "value": "3",
+            },
+            "operator": Object {
+              "tag": "Operator",
+              "value": "+",
+            },
+            "right": Object {
+              "tag": "Number",
+              "value": "4",
+            },
+            "tag": "BinaryExpression",
+          },
         },
       ],
     },
@@ -7979,7 +8296,16 @@ Object {
       "tag": "Returning",
       "values": Array [
         Object {
-          "tag": "StarIdentifier",
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
         },
       ],
     },

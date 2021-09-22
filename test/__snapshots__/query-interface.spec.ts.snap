@@ -732,6 +732,96 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert update returning expression sql (UPDATE table1 SET col1 = 10 RETURNING id, col1, 123 as col2, '2' as col3, 3+4 as col4) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": "public",
+        "table": "table1",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "col1",
+      "type": Object {
+        "column": "col1",
+        "schema": "public",
+        "table": "table1",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "col2",
+      "type": "number",
+    },
+    Object {
+      "name": "col3",
+      "type": "string",
+    },
+    Object {
+      "name": "col4",
+      "type": "number",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert update returning sql (UPDATE table1 SET col1 = 10 RETURNING id, col1) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": "public",
+        "table": "table1",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "col1",
+      "type": Object {
+        "column": "col1",
+        "schema": "public",
+        "table": "table1",
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert update returning star sql (UPDATE table1 SET col1 = 10 WHERE id = :id RETURNING *) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": "public",
+        "table": "table1",
+        "type": "column",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "*",
+      "type": Object {
+        "schema": "public",
+        "table": "table1",
+        "type": "star",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert where params sql (
         SELECT col1, col2
         FROM table1

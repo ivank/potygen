@@ -120,6 +120,7 @@ describe('Sql', () => {
     ${'update where'}                 | ${'UPDATE table1 SET deleted_at = TRUE WHERE id = :id'}
     ${'update returning star'}        | ${'UPDATE table1 SET col1 = 10 WHERE id = :id RETURNING *'}
     ${'update returning'}             | ${'UPDATE table1 SET col1 = 10 RETURNING id, col1'}
+    ${'update returning expression'}  | ${"UPDATE table1 SET col1 = 10 RETURNING id, col1, 123 as col2, '2' as col3, 3+4 as col4"}
     ${'delete'}                       | ${'DELETE FROM table1'}
     ${'delete param'}                 | ${'DELETE FROM table1 WHERE id = :id'}
     ${'delete returning'}             | ${'DELETE FROM table1 USING table2 AS "my2" WHERE table1.id = my2.id AND deleted_at IS NOT NULL RETURNING id, col1'}
@@ -150,6 +151,8 @@ describe('Sql', () => {
     ${'row shorthand'}                | ${'SELECT (1,2,3)'}
     ${'row complex'}                  | ${'SELECT (1, 2+2, 3), ROW (123), (1,2,(3))'}
     ${'where in tuples'}              | ${'SELECT col1, col2 WHERE (col1,col2) IN ((1,2),(3,4))'}
+    ${'select exists'}                | ${'SELECT EXISTS(SELECT col2 FROM table2)'}
+    ${'update exists'}                | ${'UPDATE table1 SET col1 = EXISTS(SELECT col2 FROM table2)'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) => {
     try {
       expect(sqlParser(sql)).toMatchSnapshot(name);

@@ -1,7 +1,7 @@
 import { Parser } from '@ikerin/rd-parse';
 import { Client } from 'pg';
 import { loadQueries, loadQuery } from '../src/load-types';
-import { convertSelect } from '../src/query-interface';
+import { convertTag } from '../src/query-interface';
 import { SqlGrammar } from '../src/sql.grammar';
 
 const parser = Parser(SqlGrammar);
@@ -36,7 +36,7 @@ describe('Query Interface', () => {
     ['simple', `SELECT id, character_col FROM all_types WHERE id = :id`],
   ])('Should convert %s sql (%s)', async (_, sql) => {
     const ast = parser(sql);
-    const query = convertSelect(ast);
+    const query = convertTag(ast);
     const loadedQuery = await loadQuery(db, query);
     expect(loadedQuery.query).toMatchSnapshot();
   });
@@ -55,7 +55,7 @@ describe('Query Interface', () => {
       `SELECT id, character_col FROM all_types WHERE id = :id`,
     ].map((sql) => {
       const ast = parser(sql);
-      return convertSelect(ast);
+      return convertTag(ast);
     });
 
     const loadedQueries = await loadQueries(db, queries);
