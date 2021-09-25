@@ -17,6 +17,7 @@ import {
   LiteralType,
   isUnionType,
   ArrayType,
+  isConditionalType,
 } from './query-interface';
 import { ClientBase, QueryConfig } from 'pg';
 import { diffBy, isEmpty, uniqBy } from './util';
@@ -86,6 +87,10 @@ export const isLoadedUnionType = (type: LoadedType): type is LoadedUnion =>
   typeof type === 'object' && 'type' in type && type.type === 'union';
 export const isLoadedArrayType = (type: LoadedType): type is LoadedArray =>
   typeof type === 'object' && 'type' in type && type.type === 'array';
+export const isOptional = (type: LoadedType): boolean =>
+  type === 'null' || (isLoadedUnionType(type) && type.items.some(isOptional));
+export const typeFromOptional = (type: LoadedType): LoadedType | undefined =>
+  isLoadedUnionType(type) ? type.items.filter((item) => item !== 'null')[0] : type;
 
 const infoQuery = (columnTypes: ColumnType[], starTypes: StarType[]): QueryConfig => {
   const starTypesIndex = columnTypes.length * 3;
@@ -188,16 +193,24 @@ const matchesRecordType = (type: RecordType) => (record: Record): boolean => typ
 const matchesFunctionType = (type: FunctionType, context: DataContext) => (value: Function): boolean =>
   type.name === value.name &&
   type.args.every((arg, index) => {
-    const aggType = loadType(context)(arg);
+    const aggType = typeFromOptional(loadType(context)(arg));
     return (
       value.parametersDataType[index] === 'anyelement' ||
-      (value.parametersDataType[index] === 'anyarray' && (value.isAggregate || isArrayType(aggType))) ||
+      (value.parametersDataType[index] === 'anyarray' && aggType && (value.isAggregate || isArrayType(aggType))) ||
       toConstantType(value.parametersDataType[index]) === aggType
     );
   });
 const matchesFunctionArgType = (type: FunctionArgType) => (value: Function): boolean => type.name === value.name;
 const matchesStarType = (columnType: StarType) => (info: Info): boolean =>
   columnType.schema === info.schema && columnType.table === info.table;
+
+const mergeTypes = (dest: LoadedType, src: LoadedType): LoadedType =>
+  dest !== src
+    ? {
+        type: 'union',
+        items: [...(isUnionType(dest) ? dest.items : [dest]), ...(isUnionType(src) ? src.items : [src])],
+      }
+    : dest;
 
 const loadType = (context: DataContext): ToType => (type) => {
   const recur = loadType(context);
@@ -210,6 +223,8 @@ const loadType = (context: DataContext): ToType => (type) => {
     const columType = context.info?.find(matchesColumnType(type));
     return columType?.dataType === 'USER-DEFINED'
       ? recur({ type: 'record', name: columType.recordName })
+      : columType?.isNullable
+      ? { type: 'union', items: ['null', loadConstantType(toConstantType(columType?.dataType))] }
       : loadConstantType(toConstantType(columType?.dataType));
   } else if (isRecordType(type)) {
     return {
@@ -219,7 +234,10 @@ const loadType = (context: DataContext): ToType => (type) => {
   } else if (isArrayType(type)) {
     return { type: 'array', items: recur(type.items) };
   } else if (isUnionType(type)) {
-    return { type: 'union', items: type.items.map(recur) };
+    return type.items.map(recur).reduce(mergeTypes);
+  } else if (isConditionalType(type)) {
+    const coalesceTypes = type.items.map(recur);
+    return coalesceTypes.some(isOptional) ? { type: 'union', items: ['null', coalesceTypes[0]] } : coalesceTypes[0];
   } else if (isFunctionType(type)) {
     switch (type.name) {
       case 'array_agg':

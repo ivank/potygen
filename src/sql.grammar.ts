@@ -84,6 +84,8 @@ import {
   RowTag,
   ReturningListItemTag,
   SubqueryExpressionTag,
+  NullIfTag,
+  ConditionalExpressionTag,
 } from './sql.types';
 
 /**
@@ -282,7 +284,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
 
     const Exists = Node<SubqueryExpressionTag>(All(/^EXISTS/i, Brackets(SelectExpression)), ([subquery]) => ({
       tag: 'SubqueryExpression',
-      type: 'exists',
+      type: 'EXISTS',
       subquery,
     }));
 
@@ -290,7 +292,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       All(QualifiedIdentifier, /^(IN|NOT IN)/i, Brackets(SelectExpression)),
       ([value, type, subquery]) => ({
         tag: 'SubqueryExpression',
-        type: type.toLowerCase(),
+        type: type.toUpperCase(),
         value,
         subquery,
       }),
@@ -320,9 +322,30 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     );
 
     /**
+     * Conditional
+     * ----------------------------------------------------------------------------------------
+     */
+
+    const NullIf = Node<NullIfTag>(
+      All(/^NULLIF/i, Brackets(All(ChildExpression, ',', ChildExpression))),
+      ([value, conditional]) => ({ tag: 'NullIfTag', value, conditional }),
+    );
+
+    const ConditionalExpression = Node<ConditionalExpressionTag>(
+      All(/^(COALESCE|GREATEST|LEAST)/i, Brackets(List(ChildExpression))),
+      ([type, ...values]) => ({ tag: 'ConditionalExpression', type: type.toUpperCase(), values }),
+    );
+
+    /**
      * Function
      * ----------------------------------------------------------------------------------------
      */
+    const BuiltInFunction = Node<FunctionTag>(/^(CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP)/i, ([value]) => ({
+      tag: 'Function',
+      value: { tag: 'Identifier', value },
+      args: [],
+    }));
+
     const Function = Node<FunctionTag>(
       All(
         UnrestrictedIdentifier,
@@ -362,6 +385,9 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       InclusionSubquery,
       OperatorSubquery,
       RowWiseSubquery,
+      BuiltInFunction,
+      NullIf,
+      ConditionalExpression,
       Function,
       QualifiedIdentifier,
       Parameter,

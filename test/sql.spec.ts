@@ -130,8 +130,9 @@ describe('Sql', () => {
     ${'insert do nothing'}            | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO NOTHING'}
     ${'insert do set'}                | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO UPDATE SET id = EXCLUDED.id WHERE id > 10'}
     ${'insert conflict'}              | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL DO UPDATE SET id = EXCLUDED.id WHERE id > 10'}
-    ${'function'}                     | ${'SELECT COALESCE(id, TRUE) FROM table1'}
-    ${'function in set'}              | ${'UPDATE table1 SET col1 = COALESCE(id, TRUE) RETURNING id, col1'}
+    ${'coalesce'}                     | ${'SELECT COALESCE(id, TRUE) FROM table1'}
+    ${'function'}                     | ${'SELECT MY_FUNCTION(id, TRUE) FROM table1'}
+    ${'function in set'}              | ${'UPDATE table1 SET col1 = MY_FUNCTION(id, TRUE) RETURNING id, col1'}
     ${'function in where'}            | ${'SELECT id FROM table1 WHERE table1.col = ANY(table1.test) '}
     ${'function with order'}          | ${'SELECT ARRAY_AGG(id ORDER BY col1 DESC) FROM table1 GROUP BY table1.col2'}
     ${'nested function'}              | ${'SELECT id FROM table1 WHERE table1.col = ANY(ARRAY_AGG(table1.col2)) GROUP BY table1.col2'}

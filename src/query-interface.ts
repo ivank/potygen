@@ -49,18 +49,29 @@ import {
   ArrayConstructorTag,
   InsertTag,
   DeleteTag,
+  isColumns,
+  isDefault,
 } from './sql.types';
 
 export type ColumnType = { type: 'column'; table: string; schema: string; column: string };
 export type RecordType = { type: 'record'; name: string };
 export type LiteralType = { type: 'literal'; value: string };
 export type FunctionType = { type: 'function'; name: string; args: PropertyType[] };
+export type ConditionalType = { type: 'conditional'; name: string; items: PropertyType[] };
 export type FunctionArgType = { type: 'function_arg'; name: string; index: number };
 export type StarType = { type: 'star'; table: string; schema: string };
 export type ConstantType = 'string' | 'number' | 'boolean' | 'Date' | 'null' | 'json' | 'unknown';
 export type ArrayType = { type: 'array'; items: ConstantType | ArrayType | RecordType | UnionType | LiteralType };
 export type UnionType = { type: 'union'; items: PropertyType[] };
-export type PropertyType = ConstantType | ColumnType | FunctionType | ArrayType | RecordType | UnionType | LiteralType;
+export type PropertyType =
+  | ConstantType
+  | ColumnType
+  | FunctionType
+  | ArrayType
+  | RecordType
+  | UnionType
+  | LiteralType
+  | ConditionalType;
 
 export interface Result {
   name: string;
@@ -88,14 +99,18 @@ interface QueryContext {
   table?: string;
   schema?: string;
   aliases: TableAliases;
+  insertColumns?: ColumnsTag;
 }
 
 type ResolveIdentifier = (property: PropertyType) => PropertyType;
 
+export const isNullType = (type: PropertyType | StarType | FunctionArgType): type is 'null' => type === 'null';
 export const isColumnType = (type: PropertyType | StarType | FunctionArgType): type is ColumnType =>
   typeof type === 'object' && 'type' in type && type.type === 'column';
 export const isFunctionType = (type: PropertyType | StarType | FunctionArgType): type is FunctionType =>
   typeof type === 'object' && 'type' in type && type.type === 'function';
+export const isConditionalType = (type: PropertyType | StarType | FunctionArgType): type is ConditionalType =>
+  typeof type === 'object' && 'type' in type && type.type === 'conditional';
 export const isRecordType = (type: PropertyType | StarType | FunctionArgType): type is RecordType =>
   typeof type === 'object' && 'type' in type && type.type === 'record';
 export const isFunctionArgType = (type: PropertyType | StarType | FunctionArgType): type is FunctionArgType =>
@@ -254,22 +269,15 @@ const convertType = (tag: TypeTag | TypeArrayTag): ConstantType | ArrayType | Re
     : sqlTypes[tag.value] ?? { type: 'record', name: tag.value.toLowerCase() };
 
 const convertExpressionMap = (
-  context: { type?: Param['type']; table?: string; schema?: string },
+  context: { type?: Param['type']; table?: string; schema?: string; insertColumns?: ColumnsTag },
   tags: Array<ConvertableTag>,
-): { type: PropertyType; params: Param[] } => {
-  return {
-    type: 'unknown',
-    params: tags.flatMap((tag) => {
-      if (!convertExpression(context, tag)) {
-        console.log(tag);
-      }
-      return convertExpression(context, tag).params;
-    }),
-  };
-};
+): { type: PropertyType; params: Param[] } => ({
+  type: 'unknown',
+  params: tags.flatMap((tag) => convertExpression(context, tag).params),
+});
 
 const convertExpression = (
-  context: { type?: Param['type']; table?: string; schema?: string },
+  context: { type?: Param['type']; table?: string; schema?: string; insertColumns?: ColumnsTag },
   tag: ConvertableTag,
 ): { type: PropertyType; params: Param[] } => {
   switch (tag.tag) {
@@ -282,11 +290,50 @@ const convertExpression = (
       return convertExpressionMap(context, tag.values.map((item) => item.value).filter(isExpression));
     case 'Returning':
       return convertExpressionMap(context, tag.values.map((item) => item.value).filter(isExpression));
+    case 'NullIfTag':
+      const nullIfValue = convertExpression(context, tag.value);
+      return {
+        type: { type: 'union', items: [nullIfValue.type, 'null'] },
+        params: convertExpressionMap(context, [tag.value, tag.conditional]).params,
+      };
+    case 'ConditionalExpression':
+      if (tag.type === 'COALESCE') {
+        const type = tag.values.reduce<{ items: PropertyType[]; params: Param[] }>(
+          (all, item) => {
+            const type = convertExpression(context, item);
+            return { items: all.items.concat(type.type), params: all.params.concat(type.params) };
+          },
+          { items: [], params: [] },
+        );
+        return {
+          type: { type: 'conditional', name: tag.type.toLowerCase(), items: type.items },
+          params: type.params,
+        };
+      } else {
+        return {
+          type: convertExpression(context, tag.values[0]).type,
+          params: convertExpressionMap(context, tag.values).params,
+        };
+      }
     case 'ValuesList':
-      return convertExpressionMap(
-        context,
-        tag.values.flatMap((item) => item.values.filter(isExpression)),
-      );
+      return {
+        type: 'unknown',
+        params: tag.values
+          .flatMap((columns) =>
+            columns.values.flatMap((column, index) => {
+              const columnType = context.insertColumns?.values[index];
+              const type = columnType
+                ? {
+                    type: 'column' as const,
+                    column: columnType.value.toLowerCase(),
+                    ...toQualifiedTableName([], context),
+                  }
+                : undefined;
+              return isDefault(column) ? undefined : convertExpression({ ...context, type }, column).params;
+            }),
+          )
+          .filter(isNil),
+      };
     case 'From':
       return convertExpressionMap(
         context,
@@ -429,7 +476,11 @@ const resolveType = ({ aliases }: QueryContext) => {
     isUnionType(property) ? { ...property, items: property.items.map(resolve) } : resolve(property);
 };
 
-const toContext = (from: FromListItemTag | TableTag | undefined, aliases: TableAliases): QueryContext => {
+const toContext = (
+  from: FromListItemTag | TableTag | undefined,
+  aliases: TableAliases,
+  insertColumns?: ColumnsTag,
+): QueryContext => {
   const fromTableExpression = from?.value;
 
   const fromTable: QualifiedTableName =
@@ -437,7 +488,7 @@ const toContext = (from: FromListItemTag | TableTag | undefined, aliases: TableA
       ? toName(aliases, toQualifiedTableName(fromTableExpression.values))
       : { table: '', schema: 'public' };
 
-  return { table: fromTable.table, schema: fromTable.schema, aliases };
+  return { table: fromTable.table, schema: fromTable.schema, aliases, insertColumns };
 };
 
 const toResults = (context: QueryContext, items: Array<SelectListItemTag | ReturningListItemTag>): Result[] => {
@@ -457,7 +508,9 @@ const toResults = (context: QueryContext, items: Array<SelectListItemTag | Retur
       const type = resolve(property.type);
       const name =
         as?.value.value ??
-        (isColumnType(type)
+        (isConditionalType(type)
+          ? type.name
+          : isColumnType(type)
           ? type.column
           : isBoolean(value)
           ? 'bool'
@@ -524,6 +577,18 @@ const convertUpdate = (tag: UpdateTag): Query => {
   return { params, result };
 };
 
+const convertInsert = (tag: InsertTag): Query => {
+  const returningList = first(tag.values.filter(isReturning));
+  const table = first(tag.values.filter(isTable));
+  const insertColumns = first(tag.values.filter(isColumns));
+  const context = toContext(table, toTableAliasFrom([]), insertColumns);
+
+  const result: Result[] = toResults(context, returningList?.values ?? []);
+  const params: Param[] = resolveParams(context, convertExpressionMap(context, tag.values).params);
+
+  return { params, result };
+};
+
 export const convertTag = (tag: SelectTag | CombinationTag | UpdateTag | InsertTag | DeleteTag): Query => {
   switch (tag.tag) {
     case 'Select':
@@ -533,6 +598,7 @@ export const convertTag = (tag: SelectTag | CombinationTag | UpdateTag | InsertT
     case 'Update':
       return convertUpdate(tag);
     case 'Insert':
+      return convertInsert(tag);
     case 'Delete':
       return { params: [], result: [] };
   }

@@ -1391,7 +1391,7 @@ Object {
                       ],
                     },
                     "tag": "SubqueryExpression",
-                    "type": "exists",
+                    "type": "EXISTS",
                   },
                   "tag": "When",
                   "value": Object {
@@ -1533,7 +1533,7 @@ Object {
                       ],
                     },
                     "tag": "SubqueryExpression",
-                    "type": "exists",
+                    "type": "EXISTS",
                   },
                   "tag": "When",
                   "value": Object {
@@ -3585,7 +3585,9 @@ Object {
               },
               "tag": "SelectListItem",
               "value": Object {
-                "args": Array [
+                "tag": "ConditionalExpression",
+                "type": "COALESCE",
+                "values": Array [
                   Object {
                     "tag": "Select",
                     "values": Array [
@@ -3926,11 +3928,6 @@ Object {
                     ],
                   },
                 ],
-                "tag": "Function",
-                "value": Object {
-                  "tag": "Identifier",
-                  "value": "COALESCE",
-                },
               },
             },
             Object {
@@ -3943,7 +3940,9 @@ Object {
               },
               "tag": "SelectListItem",
               "value": Object {
-                "args": Array [
+                "tag": "ConditionalExpression",
+                "type": "COALESCE",
+                "values": Array [
                   Object {
                     "tag": "Select",
                     "values": Array [
@@ -4323,11 +4322,6 @@ Object {
                     ],
                   },
                 ],
-                "tag": "Function",
-                "value": Object {
-                  "tag": "Identifier",
-                  "value": "COALESCE",
-                },
               },
             },
             Object {
@@ -7515,7 +7509,9 @@ Object {
               "as": undefined,
               "tag": "SelectListItem",
               "value": Object {
-                "args": Array [
+                "tag": "ConditionalExpression",
+                "type": "COALESCE",
+                "values": Array [
                   Object {
                     "args": Array [
                       Object {
@@ -7578,11 +7574,6 @@ Object {
                     ],
                   },
                 ],
-                "tag": "Function",
-                "value": Object {
-                  "tag": "Identifier",
-                  "value": "COALESCE",
-                },
               },
             },
             Object {
@@ -13436,6 +13427,211 @@ Object {
         },
         "tag": "BinaryExpression",
       },
+    },
+  ],
+}
+`;
+
+exports[`Sql Files Should parse complex sql read-create.query.sql: read-create.query.sql 1`] = `
+Object {
+  "tag": "Insert",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "meter_reads",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Columns",
+      "values": Array [
+        Object {
+          "tag": "Identifier",
+          "value": "meter_id",
+        },
+        Object {
+          "tag": "Identifier",
+          "value": "reason",
+        },
+        Object {
+          "tag": "Identifier",
+          "value": "type",
+        },
+        Object {
+          "tag": "Identifier",
+          "value": "date_on",
+        },
+        Object {
+          "tag": "Identifier",
+          "value": "submitted_at",
+        },
+        Object {
+          "tag": "Identifier",
+          "value": "value",
+        },
+      ],
+    },
+    Object {
+      "tag": "ValuesList",
+      "values": Array [
+        Object {
+          "tag": "Values",
+          "values": Array [
+            Object {
+              "tag": "Parameter",
+              "type": "native",
+              "value": "meterId",
+            },
+            Object {
+              "tag": "Parameter",
+              "type": "native",
+              "value": "reason",
+            },
+            Object {
+              "tag": "Parameter",
+              "type": "native",
+              "value": "type",
+            },
+            Object {
+              "tag": "ConditionalExpression",
+              "type": "COALESCE",
+              "values": Array [
+                Object {
+                  "tag": "Parameter",
+                  "type": "native",
+                  "value": "dateOn",
+                },
+                Object {
+                  "args": Array [],
+                  "tag": "Function",
+                  "value": Object {
+                    "tag": "Identifier",
+                    "value": "CURRENT_DATE",
+                  },
+                },
+              ],
+            },
+            Object {
+              "tag": "ConditionalExpression",
+              "type": "COALESCE",
+              "values": Array [
+                Object {
+                  "tag": "Parameter",
+                  "type": "native",
+                  "value": "submittedAt",
+                },
+                Object {
+                  "args": Array [],
+                  "tag": "Function",
+                  "value": Object {
+                    "tag": "Identifier",
+                    "value": "CURRENT_DATE",
+                  },
+                },
+              ],
+            },
+            Object {
+              "tag": "ConditionalExpression",
+              "type": "COALESCE",
+              "values": Array [
+                Object {
+                  "tag": "PgCast",
+                  "type": Object {
+                    "param": undefined,
+                    "tag": "Type",
+                    "value": "int",
+                  },
+                  "value": Object {
+                    "tag": "Parameter",
+                    "type": "native",
+                    "value": "value",
+                  },
+                },
+                Object {
+                  "tag": "Number",
+                  "value": "0",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "tag": "Returning",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "value",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "meterId",
+            },
+          },
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "meter_id",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "submittedAt",
+            },
+          },
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "submitted_at",
+              },
+            ],
+          },
+        },
+      ],
     },
   ],
 }

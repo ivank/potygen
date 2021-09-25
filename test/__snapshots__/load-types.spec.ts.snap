@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Query Interface Should convert coalesce sql (SELECT COALESCE(id, character_col) FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "coalesce",
+      "type": "string",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
 Object {
   "params": Array [],
@@ -288,13 +300,25 @@ Object {
   "params": Array [
     Object {
       "name": "id",
-      "type": "number",
+      "type": Object {
+        "items": Array [
+          "null",
+          "number",
+        ],
+        "type": "union",
+      },
     },
   ],
   "result": Array [
     Object {
       "name": "test1",
-      "type": "number",
+      "type": Object {
+        "items": Array [
+          "null",
+          "number",
+        ],
+        "type": "union",
+      },
     },
   ],
 }
@@ -322,17 +346,35 @@ Object {
   "params": Array [
     Object {
       "name": "id",
-      "type": "number",
+      "type": Object {
+        "items": Array [
+          "null",
+          "number",
+        ],
+        "type": "union",
+      },
     },
   ],
   "result": Array [
     Object {
       "name": "id",
-      "type": "number",
+      "type": Object {
+        "items": Array [
+          "null",
+          "number",
+        ],
+        "type": "union",
+      },
     },
     Object {
       "name": "character_col",
-      "type": "string",
+      "type": Object {
+        "items": Array [
+          "null",
+          "string",
+        ],
+        "type": "union",
+      },
     },
   ],
 }

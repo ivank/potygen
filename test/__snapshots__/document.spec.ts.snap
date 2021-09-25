@@ -155,11 +155,11 @@ exports[`Query Interface Should convert operators integer sql (SELECT integer_co
 }
 
 export interface QueryParams {
-    id: number;
+    id: null | number;
 }
 
 export interface QueryResult {
-    test1: number;
+    test1: null | number;
 }
 "
 `;
@@ -187,12 +187,12 @@ exports[`Query Interface Should convert simple sql (SELECT id, character_col FRO
 }
 
 export interface QueryParams {
-    id: number;
+    id: null | number;
 }
 
 export interface QueryResult {
-    id: number;
-    character_col: string;
+    id: null | number;
+    character_col: null | string;
 }
 "
 `;

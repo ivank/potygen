@@ -955,6 +955,64 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql coalesce (SELECT COALESCE(id, TRUE) FROM table1): coalesce 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "ConditionalExpression",
+            "type": "COALESCE",
+            "values": Array [
+              Object {
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "tag": "Identifier",
+                    "value": "id",
+                  },
+                ],
+              },
+              Object {
+                "tag": "Boolean",
+                "value": "TRUE",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql column select (SELECT column1): column select 1`] = `
 Object {
   "tag": "Select",
@@ -2303,7 +2361,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql function (SELECT COALESCE(id, TRUE) FROM table1): function 1`] = `
+exports[`Sql Should parse simple sql function (SELECT MY_FUNCTION(id, TRUE) FROM table1): function 1`] = `
 Object {
   "tag": "Select",
   "values": Array [
@@ -2332,7 +2390,7 @@ Object {
             "tag": "Function",
             "value": Object {
               "tag": "Identifier",
-              "value": "COALESCE",
+              "value": "MY_FUNCTION",
             },
           },
         },
@@ -2364,7 +2422,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql function in set (UPDATE table1 SET col1 = COALESCE(id, TRUE) RETURNING id, col1): function in set 1`] = `
+exports[`Sql Should parse simple sql function in set (UPDATE table1 SET col1 = MY_FUNCTION(id, TRUE) RETURNING id, col1): function in set 1`] = `
 Object {
   "tag": "Update",
   "values": Array [
@@ -2416,7 +2474,7 @@ Object {
               "tag": "Function",
               "value": Object {
                 "tag": "Identifier",
-                "value": "COALESCE",
+                "value": "MY_FUNCTION",
               },
             },
           },
@@ -6775,7 +6833,7 @@ Object {
               ],
             },
             "tag": "SubqueryExpression",
-            "type": "exists",
+            "type": "EXISTS",
           },
         },
       ],
@@ -7435,7 +7493,7 @@ Object {
                 ],
               },
               "tag": "SubqueryExpression",
-              "type": "exists",
+              "type": "EXISTS",
             },
           },
         ],

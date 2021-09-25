@@ -32,6 +32,12 @@ export type CastableDataTypeTag =
 export type WhenTag = { tag: 'When'; condition: ExpressionTag; value: ExpressionTag };
 export type ElseTag = { tag: 'Else'; value: ExpressionTag };
 export type CaseTag = { tag: 'Case'; expression?: CastableDataTypeTag; values: (WhenTag | ElseTag)[] };
+export type NullIfTag = { tag: 'NullIfTag'; value: ExpressionTag; conditional: ExpressionTag };
+export type ConditionalExpressionTag = {
+  tag: 'ConditionalExpression';
+  type: 'GREATEST' | 'LEAST' | 'COALESCE';
+  values: ExpressionTag[];
+};
 export type DataTypeTag = CaseTag | CastableDataTypeTag;
 export type OperatorTag = { tag: 'Operator'; value: string };
 export type BinaryExpressionTag = {
@@ -55,7 +61,7 @@ export type FunctionTag = { tag: 'Function'; value: IdentifierTag; args: (Expres
 export type SubqueryExpressionTag = {
   tag: 'SubqueryExpression';
   operator?: OperatorTag;
-  type?: 'in' | 'not in' | 'any' | 'some' | 'all' | 'exists';
+  type?: 'IN' | 'NOT IN' | 'ANY' | 'SOME' | 'ALL' | 'EXISTS';
   value?: QualifiedIdentifierTag;
   subquery: SelectTag;
 };
@@ -66,7 +72,9 @@ export type ExpressionTag =
   | BetweenTag
   | DataTypeTag
   | RowTag
-  | SubqueryExpressionTag;
+  | SubqueryExpressionTag
+  | NullIfTag
+  | ConditionalExpressionTag;
 export type SelectListItemTag = {
   tag: 'SelectListItem';
   value: ExpressionTag | StarQualifiedIdentifierTag;
@@ -131,7 +139,10 @@ export type ConflictTag = {
   tag: 'Conflict';
   values: (ConflictTargetTag | ConflictConstraintTag | DoNothingTag | DoUpdateTag)[];
 };
-export type InsertTag = { tag: 'Insert'; values: (TableTag | SelectTag | ValuesListTag | ConflictTag | ColumnsTag)[] };
+export type InsertTag = {
+  tag: 'Insert';
+  values: (TableTag | SelectTag | ValuesListTag | ConflictTag | ColumnsTag | ReturningTag)[];
+};
 
 export type SqlTag = { tag: string };
 
@@ -207,7 +218,9 @@ export type Tag =
   | DoUpdateTag
   | ConflictTag
   | ArrayConstructorTag
-  | FunctionTag;
+  | FunctionTag
+  | NullIfTag
+  | ConditionalExpressionTag;
 
 export const isNull = (value: SqlTag): value is NullTag => value.tag === 'Null';
 export const isPgCast = (value: SqlTag): value is PgCastTag => value.tag === 'PgCast';
@@ -233,6 +246,9 @@ export const isCastableDataType = (value: SqlTag): value is CastableDataTypeTag 
 export const isWhen = (value: SqlTag): value is WhenTag => value.tag === 'When';
 export const isElse = (value: SqlTag): value is ElseTag => value.tag === 'Else';
 export const isCase = (value: SqlTag): value is CaseTag => value.tag === 'Case';
+export const isNullIf = (value: SqlTag): value is NullIfTag => value.tag === 'NullIf';
+export const isConditionalExpression = (value: SqlTag): value is ConditionalExpressionTag =>
+  value.tag === 'ConditionalExpression';
 export const isDataType = (value: SqlTag): value is DataTypeTag => value.tag === 'DataType';
 export const isOperator = (value: SqlTag): value is OperatorTag => value.tag === 'Operator';
 export const isBetween = (value: SqlTag): value is BetweenTag => value.tag === 'Between';
@@ -259,7 +275,9 @@ export const isExpression = (value: SqlTag): value is ExpressionTag =>
   isFunction(value) ||
   isArrayIndex(value) ||
   isRow(value) ||
-  isSubqueryExpression(value);
+  isSubqueryExpression(value) ||
+  isNullIf(value) ||
+  isConditionalExpression(value);
 export const isSelectListItem = (value: SqlTag): value is SelectListItemTag => value.tag === 'SelectListItem';
 export const isReturningListItem = (value: SqlTag): value is ReturningListItemTag => value.tag === 'ReturningListItem';
 export const isSelectList = (value: SqlTag): value is SelectListTag => value.tag === 'SelectList';

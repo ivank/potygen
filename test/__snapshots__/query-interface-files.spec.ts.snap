@@ -679,6 +679,100 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql read-create.query.sql: read-create.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "meterId",
+      "type": Object {
+        "column": "meter_id",
+        "schema": "public",
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "reason",
+      "type": Object {
+        "column": "reason",
+        "schema": "public",
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "type",
+      "type": Object {
+        "column": "type",
+        "schema": "public",
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "dateOn",
+      "type": Object {
+        "column": "date_on",
+        "schema": "public",
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "submittedAt",
+      "type": Object {
+        "column": "submitted_at",
+        "schema": "public",
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "value",
+      "type": "number",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": "public",
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "value",
+      "type": Object {
+        "column": "value",
+        "schema": "public",
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "meterId",
+      "type": Object {
+        "column": "meter_id",
+        "schema": "public",
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "submittedAt",
+      "type": Object {
+        "column": "submitted_at",
+        "schema": "public",
+        "table": "meter_reads",
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql reads-by-account-id.query.sql: reads-by-account-id.query.sql 1`] = `
 Object {
   "params": Array [

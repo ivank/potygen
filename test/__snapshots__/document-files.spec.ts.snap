@@ -8,36 +8,36 @@ exports[`Load Files Should convert complex sql account-levelisations.query.sql: 
 
 export interface QueryParams {
     q: string;
-    levelisationId: number;
+    levelisationId: null | number;
     ids: number[];
     limit: number;
     offset: number;
 }
 
 export interface QueryResult {
-    id: number;
-    levelisationId: number;
-    accountId: number;
-    installationId: number;
+    id: null | number;
+    levelisationId: null | number;
+    accountId: null | number;
+    installationId: null | number;
     state: \\"Pending\\" | \\"Done\\";
-    isAccepted: boolean;
-    generationStartReadOn: Date;
-    generationStartReadValue: string;
-    generationEndReadOn: Date;
-    generationEndReadValue: string;
-    generationPercentageSplit: number;
-    generationPayment: string;
-    generationEnergy: string;
-    exportStartReadOn: Date;
-    exportStartReadValue: string;
-    exportEndReadOn: Date;
-    exportEndReadValue: string;
-    exportPercentageSplit: number;
-    exportPayment: string;
-    exportEnergy: string;
-    totalPayment: string;
-    vatPayment: string;
-    cfrFitId: string;
+    isAccepted: null | boolean;
+    generationStartReadOn: null | Date;
+    generationStartReadValue: null | string;
+    generationEndReadOn: null | Date;
+    generationEndReadValue: null | string;
+    generationPercentageSplit: null | number;
+    generationPayment: null | string;
+    generationEnergy: null | string;
+    exportStartReadOn: null | Date;
+    exportStartReadValue: null | string;
+    exportEndReadOn: null | Date;
+    exportEndReadValue: null | string;
+    exportPercentageSplit: null | number;
+    exportPayment: null | string;
+    exportEnergy: null | string;
+    totalPayment: null | string;
+    vatPayment: null | string;
+    cfrFitId: null | string;
 }
 "
 `;
@@ -53,7 +53,7 @@ export interface QueryParams {
 }
 
 export interface QueryResult {
-    id: number;
+    id: null | number;
 }
 "
 `;
@@ -72,14 +72,14 @@ export interface QueryParams {
 }
 
 export interface QueryResult {
-    id: number;
+    id: null | number;
     state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
-    startOn: Date;
-    firstName: string;
-    lastName: string;
-    email: string;
+    startOn: null | Date;
+    firstName: null | string;
+    lastName: null | string;
+    email: null | string;
     address: string;
-    fitIds: string[];
+    fitIds: (null | string)[];
 }
 "
 `;
@@ -112,14 +112,14 @@ export interface QueryParams {
 
 export interface QueryResult {
     fitId: string;
-    name: string;
+    name: null | string;
     amount: string;
     quarter: string;
     bankDetails: string;
-    addressLine1: string;
-    addressLine2: string;
-    addressLine3: string;
-    postcode: string;
+    addressLine1: null | string;
+    addressLine2: null | string;
+    addressLine3: null | string;
+    postcode: null | string;
 }
 "
 `;
@@ -145,13 +145,13 @@ exports[`Load Files Should convert complex sql generation-read-data.query.sql: g
 }
 
 export interface QueryParams {
-    installationId: number;
+    installationId: null | number;
     exportDateOn: Date;
 }
 
 export interface QueryResult {
-    dateOn: Date;
-    value: number;
+    dateOn: null | Date;
+    value: null | number;
 }
 "
 `;
@@ -163,7 +163,7 @@ exports[`Load Files Should convert complex sql installation-meter-update.query.s
 }
 
 export interface QueryParams {
-    meterId: number;
+    meterId: null | number;
     removalDate: unknown;
 }
 
@@ -207,16 +207,40 @@ exports[`Load Files Should convert complex sql rates-by-tarrif-ids.query.sql: ra
 }
 
 export interface QueryParams {
-    ids: number;
+    ids: null | number;
 }
 
 export interface QueryResult {
-    tariffId: number;
-    rate: string;
-    startOn: Date;
-    tariffCode: string;
+    tariffId: null | number;
+    rate: null | string;
+    startOn: null | Date;
+    tariffCode: null | string;
     tariffType: \\"Export\\" | \\"Generation\\" | \\"SEG\\";
-    endOn: Date;
+    endOn: null | Date;
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql read-create.query.sql: read-create.query.sql 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    meterId: null | number;
+    reason: null | string;
+    type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    dateOn: null | Date;
+    submittedAt: null | Date;
+    value: number;
+}
+
+export interface QueryResult {
+    id: null | number;
+    value: null | number;
+    meterId: null | number;
+    submittedAt: null | Date;
 }
 "
 `;
@@ -228,23 +252,23 @@ exports[`Load Files Should convert complex sql reads-by-account-id.query.sql: re
 }
 
 export interface QueryParams {
-    id: number;
+    id: null | number;
     offset: string;
     perPage: string;
 }
 
 export interface QueryResult {
-    id: number;
-    msn: string;
-    meterId: number;
-    dateOn: Date;
-    value: number;
+    id: null | number;
+    msn: null | string;
+    meterId: null | number;
+    dateOn: null | Date;
+    value: null | number;
     type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
-    reason: string;
-    createdAt: Date;
-    updatedAt: Date;
-    sourceSystemId: number;
-    mpan: string;
+    reason: null | string;
+    createdAt: null | Date;
+    updatedAt: null | Date;
+    sourceSystemId: null | number;
+    mpan: null | string;
 }
 "
 `;

@@ -322,6 +322,22 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert insert returning star sql (INSERT INTO table1 (id) VALUES (1),(2) RETURNING *) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "*",
+      "type": Object {
+        "schema": "public",
+        "table": "table1",
+        "type": "star",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert join fields sql (
         SELECT
           t1.col1 as "col1",
