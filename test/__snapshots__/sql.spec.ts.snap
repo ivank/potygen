@@ -1459,6 +1459,58 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql delete returning (DELETE FROM table1 RETURNING id, col2): delete returning 1`] = `
+Object {
+  "tag": "Delete",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Returning",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "col2",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql delete returning (DELETE FROM table1 USING table2 AS "my2" WHERE table1.id = my2.id AND deleted_at IS NOT NULL RETURNING id, col1): delete returning 1`] = `
 Object {
   "tag": "Delete",

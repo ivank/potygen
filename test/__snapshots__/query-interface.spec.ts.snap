@@ -257,6 +257,49 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert delete with param sql (DELETE FROM table1 WHERE id = :id) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": "public",
+        "table": "table1",
+        "type": "column",
+      },
+    },
+  ],
+  "result": Array [],
+}
+`;
+
+exports[`Query Interface Should convert delete with returning sql (DELETE FROM table1 RETURNING id, col2) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": "public",
+        "table": "table1",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "col2",
+      "type": Object {
+        "column": "col2",
+        "schema": "public",
+        "table": "table1",
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert enum type sql (SELECT id::custom_type FROM table1) 1`] = `
 Object {
   "params": Array [],
@@ -621,6 +664,13 @@ Object {
       },
     },
   ],
+}
+`;
+
+exports[`Query Interface Should convert simple delete sql (DELETE FROM table1) 1`] = `
+Object {
+  "params": Array [],
+  "result": Array [],
 }
 `;
 

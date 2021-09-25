@@ -51,6 +51,8 @@ import {
   DeleteTag,
   isColumns,
   isDefault,
+  isUsing,
+  UsingTag,
 } from './sql.types';
 
 export type ColumnType = { type: 'column'; table: string; schema: string; column: string };
@@ -140,6 +142,7 @@ type ConvertableTag =
   | OffsetTag
   | CombinationTag
   | FromTag
+  | UsingTag
   | UpdateFromTag
   | TableTag
   | ColumnsTag
@@ -338,6 +341,11 @@ const convertExpression = (
       return convertExpressionMap(
         context,
         tag.join.flatMap((item) => item.values.filter(isJoinOn).map((join) => join.value)),
+      );
+    case 'Using':
+      return convertExpressionMap(
+        context,
+        tag.values.map((item) => item.value),
       );
     case 'Set':
       if (isSetList(tag.value)) {
@@ -589,6 +597,18 @@ const convertInsert = (tag: InsertTag): Query => {
   return { params, result };
 };
 
+const convertDelete = (tag: DeleteTag): Query => {
+  const returningList = first(tag.values.filter(isReturning));
+  const table = first(tag.values.filter(isTable));
+  const using = first(tag.values.filter(isUsing));
+  const context = toContext(table, toTableAliasFrom(using?.values ?? []));
+
+  const result: Result[] = toResults(context, returningList?.values ?? []);
+  const params: Param[] = resolveParams(context, convertExpressionMap(context, tag.values).params);
+
+  return { params, result };
+};
+
 export const convertTag = (tag: SelectTag | CombinationTag | UpdateTag | InsertTag | DeleteTag): Query => {
   switch (tag.tag) {
     case 'Select':
@@ -600,6 +620,6 @@ export const convertTag = (tag: SelectTag | CombinationTag | UpdateTag | InsertT
     case 'Insert':
       return convertInsert(tag);
     case 'Delete':
-      return { params: [], result: [] };
+      return convertDelete(tag);
   }
 };

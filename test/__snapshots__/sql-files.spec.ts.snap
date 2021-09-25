@@ -8283,6 +8283,325 @@ Object {
 }
 `;
 
+exports[`Sql Files Should parse complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
+Object {
+  "tag": "Delete",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "tag": "Table",
+      "value": Object {
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "tag": "Identifier",
+            "value": "accounts",
+          },
+        ],
+      },
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "subquery": Object {
+            "tag": "Select",
+            "values": Array [
+              Object {
+                "tag": "SelectList",
+                "values": Array [
+                  Object {
+                    "as": undefined,
+                    "tag": "SelectListItem",
+                    "value": Object {
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "tag": "Identifier",
+                          "value": "tariffs",
+                        },
+                        Object {
+                          "tag": "Identifier",
+                          "value": "id",
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              Object {
+                "join": Array [
+                  Object {
+                    "table": Object {
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "tag": "Identifier",
+                          "value": "tariffs",
+                        },
+                      ],
+                    },
+                    "tag": "Join",
+                    "type": Object {
+                      "tag": "JoinType",
+                      "value": undefined,
+                    },
+                    "values": Array [
+                      Object {
+                        "tag": "JoinOn",
+                        "value": Object {
+                          "left": Object {
+                            "tag": "QualifiedIdentifier",
+                            "values": Array [
+                              Object {
+                                "tag": "Identifier",
+                                "value": "contracts",
+                              },
+                              Object {
+                                "tag": "Identifier",
+                                "value": "generation_tariff_id",
+                              },
+                            ],
+                          },
+                          "operator": Object {
+                            "tag": "Operator",
+                            "value": "=",
+                          },
+                          "right": Object {
+                            "tag": "QualifiedIdentifier",
+                            "values": Array [
+                              Object {
+                                "tag": "Identifier",
+                                "value": "tariffs",
+                              },
+                              Object {
+                                "tag": "Identifier",
+                                "value": "id",
+                              },
+                            ],
+                          },
+                          "tag": "BinaryExpression",
+                        },
+                      },
+                    ],
+                  },
+                ],
+                "list": Object {
+                  "tag": "FromList",
+                  "values": Array [
+                    Object {
+                      "as": undefined,
+                      "tag": "FromListItem",
+                      "value": Object {
+                        "tag": "QualifiedIdentifier",
+                        "values": Array [
+                          Object {
+                            "tag": "Identifier",
+                            "value": "contracts",
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+                "tag": "From",
+              },
+              Object {
+                "tag": "Where",
+                "value": Object {
+                  "left": Object {
+                    "left": Object {
+                      "left": Object {
+                        "tag": "QualifiedIdentifier",
+                        "values": Array [
+                          Object {
+                            "tag": "Identifier",
+                            "value": "contracts",
+                          },
+                          Object {
+                            "tag": "Identifier",
+                            "value": "account_id",
+                          },
+                        ],
+                      },
+                      "operator": Object {
+                        "tag": "Operator",
+                        "value": "=",
+                      },
+                      "right": Object {
+                        "tag": "QualifiedIdentifier",
+                        "values": Array [
+                          Object {
+                            "tag": "Identifier",
+                            "value": "accounts",
+                          },
+                          Object {
+                            "tag": "Identifier",
+                            "value": "id",
+                          },
+                        ],
+                      },
+                      "tag": "BinaryExpression",
+                    },
+                    "operator": Object {
+                      "tag": "Operator",
+                      "value": "AND",
+                    },
+                    "right": Object {
+                      "left": Object {
+                        "tag": "QualifiedIdentifier",
+                        "values": Array [
+                          Object {
+                            "tag": "Identifier",
+                            "value": "tariffs",
+                          },
+                          Object {
+                            "tag": "Identifier",
+                            "value": "type",
+                          },
+                        ],
+                      },
+                      "operator": Object {
+                        "tag": "Operator",
+                        "value": "=",
+                      },
+                      "right": Object {
+                        "tag": "String",
+                        "value": "Generation",
+                      },
+                      "tag": "BinaryExpression",
+                    },
+                    "tag": "BinaryExpression",
+                  },
+                  "operator": Object {
+                    "tag": "Operator",
+                    "value": "AND",
+                  },
+                  "right": Object {
+                    "left": Object {
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "tag": "Identifier",
+                          "value": "contracts",
+                        },
+                        Object {
+                          "tag": "Identifier",
+                          "value": "scheme_type",
+                        },
+                      ],
+                    },
+                    "operator": Object {
+                      "tag": "Operator",
+                      "value": "=",
+                    },
+                    "right": Object {
+                      "tag": "Parameter",
+                      "type": "native",
+                      "value": "type",
+                    },
+                    "tag": "BinaryExpression",
+                  },
+                  "tag": "BinaryExpression",
+                },
+              },
+            ],
+          },
+          "tag": "SubqueryExpression",
+          "type": "EXISTS",
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "AND",
+        },
+        "right": Object {
+          "left": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "accounts",
+              },
+              Object {
+                "tag": "Identifier",
+                "value": "state",
+              },
+            ],
+          },
+          "operator": Object {
+            "tag": "Operator",
+            "value": "=",
+          },
+          "right": Object {
+            "tag": "Parameter",
+            "type": "native",
+            "value": "state",
+          },
+          "tag": "BinaryExpression",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+    Object {
+      "tag": "Returning",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "id",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "sourceSystemId",
+            },
+          },
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "source_system_id",
+              },
+            ],
+          },
+        },
+        Object {
+          "as": Object {
+            "tag": "As",
+            "value": Object {
+              "tag": "Identifier",
+              "value": "customerId",
+            },
+          },
+          "tag": "ReturningListItem",
+          "value": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "customer_id",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Files Should parse complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
 Object {
   "tag": "Select",

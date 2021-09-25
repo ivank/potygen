@@ -6,7 +6,10 @@ Object {
   "result": Array [
     Object {
       "name": "coalesce",
-      "type": "string",
+      "type": Object {
+        "optional": false,
+        "type": "string",
+      },
     },
   ],
 }
@@ -18,179 +21,267 @@ Object {
   "result": Array [
     Object {
       "name": "id",
-      "type": "number",
+      "type": Object {
+        "type": "number",
+      },
     },
     Object {
       "name": "not_null",
-      "type": "number",
+      "type": Object {
+        "type": "number",
+      },
     },
     Object {
       "name": "default_not_null",
-      "type": "number",
+      "type": Object {
+        "type": "number",
+      },
     },
     Object {
       "name": "bigint_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "bigserial_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "bit_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "bit_varying_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "boolean_col",
-      "type": "boolean",
+      "type": Object {
+        "type": "boolean",
+      },
     },
     Object {
       "name": "box_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "bytea_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "character_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "character_varying_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "cidr_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "circle_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "date_col",
-      "type": "Date",
+      "type": Object {
+        "type": "Date",
+      },
     },
     Object {
       "name": "double_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "inet_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "integer_col",
-      "type": "number",
+      "type": Object {
+        "type": "number",
+      },
     },
     Object {
       "name": "interval_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "json_col",
-      "type": "json",
+      "type": Object {
+        "type": "json",
+      },
     },
     Object {
       "name": "jsonb_col",
-      "type": "json",
+      "type": Object {
+        "type": "json",
+      },
     },
     Object {
       "name": "line_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "lseg_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "macaddr_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "money_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "numeric_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "path_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "pg_lsn_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "point_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "polygon_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "real_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "smallint_col",
-      "type": "number",
+      "type": Object {
+        "type": "number",
+      },
     },
     Object {
       "name": "smallserial_col",
-      "type": "number",
+      "type": Object {
+        "type": "number",
+      },
     },
     Object {
       "name": "serial_col",
-      "type": "number",
+      "type": Object {
+        "type": "number",
+      },
     },
     Object {
       "name": "text_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "time_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "time_with_time_zone_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "timestamp_col",
-      "type": "Date",
+      "type": Object {
+        "type": "Date",
+      },
     },
     Object {
       "name": "timestamp_with_time_zone_col",
-      "type": "Date",
+      "type": Object {
+        "type": "Date",
+      },
     },
     Object {
       "name": "tsquery_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "tsvector_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "txid_snapshot_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "uuid_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "xml_col",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
   ],
 }
@@ -250,7 +341,10 @@ Object {
   "result": Array [
     Object {
       "name": "abs",
-      "type": "number",
+      "type": Object {
+        "optional": undefined,
+        "type": "number",
+      },
     },
   ],
 }
@@ -262,7 +356,10 @@ Object {
   "result": Array [
     Object {
       "name": "abs",
-      "type": "number",
+      "type": Object {
+        "optional": undefined,
+        "type": "number",
+      },
     },
   ],
 }
@@ -275,7 +372,9 @@ Object {
     Object {
       "name": "array",
       "type": Object {
-        "items": "number",
+        "items": Object {
+          "type": "number",
+        },
         "type": "array",
       },
     },
@@ -289,7 +388,10 @@ Object {
   "result": Array [
     Object {
       "name": "abs",
-      "type": "number",
+      "type": Object {
+        "optional": undefined,
+        "type": "number",
+      },
     },
   ],
 }
@@ -301,11 +403,8 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
   ],
@@ -313,11 +412,8 @@ Object {
     Object {
       "name": "test1",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "number",
       },
     },
   ],
@@ -329,13 +425,19 @@ Object {
   "params": Array [
     Object {
       "name": "text",
-      "type": "string",
+      "type": Object {
+        "optional": false,
+        "type": "string",
+      },
     },
   ],
   "result": Array [
     Object {
       "name": "test1",
-      "type": "string",
+      "type": Object {
+        "optional": false,
+        "type": "string",
+      },
     },
   ],
 }
@@ -347,11 +449,8 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
   ],
@@ -359,21 +458,15 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "character_col",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
   ],

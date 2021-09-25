@@ -5,73 +5,66 @@ Object {
   "params": Array [
     Object {
       "name": "q",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "levelisationId",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "ids",
       "type": Object {
-        "items": "number",
+        "items": Object {
+          "type": "number",
+        },
         "type": "array",
       },
     },
     Object {
       "name": "limit",
-      "type": "number",
+      "type": Object {
+        "type": "number",
+      },
     },
     Object {
       "name": "offset",
-      "type": "number",
+      "type": Object {
+        "type": "number",
+      },
     },
   ],
   "result": Array [
     Object {
       "name": "id",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "levelisationId",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "accountId",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "installationId",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
@@ -93,181 +86,127 @@ Object {
     Object {
       "name": "isAccepted",
       "type": Object {
-        "items": Array [
-          "null",
-          "boolean",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "boolean",
       },
     },
     Object {
       "name": "generationStartReadOn",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "Date",
       },
     },
     Object {
       "name": "generationStartReadValue",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "generationEndReadOn",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "Date",
       },
     },
     Object {
       "name": "generationEndReadValue",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "generationPercentageSplit",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "number",
       },
     },
     Object {
       "name": "generationPayment",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "generationEnergy",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "exportStartReadOn",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "Date",
       },
     },
     Object {
       "name": "exportStartReadValue",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "exportEndReadOn",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "Date",
       },
     },
     Object {
       "name": "exportEndReadValue",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "exportPercentageSplit",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "number",
       },
     },
     Object {
       "name": "exportPayment",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "exportEnergy",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "totalPayment",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "vatPayment",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "cfrFitId",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "string",
       },
     },
   ],
@@ -280,7 +219,9 @@ Object {
     Object {
       "name": "ids",
       "type": Object {
-        "items": "number",
+        "items": Object {
+          "type": "number",
+        },
         "type": "array",
       },
     },
@@ -289,11 +230,8 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
   ],
@@ -305,33 +243,38 @@ Object {
   "params": Array [
     Object {
       "name": "q",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "ids",
       "type": Object {
-        "items": "number",
+        "items": Object {
+          "type": "number",
+        },
         "type": "array",
       },
     },
     Object {
       "name": "limit",
-      "type": "number",
+      "type": Object {
+        "type": "number",
+      },
     },
     Object {
       "name": "offset",
-      "type": "number",
+      "type": Object {
+        "type": "number",
+      },
     },
   ],
   "result": Array [
     Object {
       "name": "id",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
@@ -361,56 +304,44 @@ Object {
     Object {
       "name": "startOn",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "Date",
       },
     },
     Object {
       "name": "firstName",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "string",
       },
     },
     Object {
       "name": "lastName",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "string",
       },
     },
     Object {
       "name": "email",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "address",
-      "type": "string",
+      "type": Object {
+        "optional": undefined,
+        "type": "string",
+      },
     },
     Object {
       "name": "fitIds",
       "type": Object {
         "items": Object {
-          "items": Array [
-            "null",
-            "string",
-          ],
-          "type": "union",
+          "optional": false,
+          "type": "string",
         },
         "type": "array",
       },
@@ -431,82 +362,86 @@ Object {
   "params": Array [
     Object {
       "name": "quarter",
-      "type": "string",
+      "type": Object {
+        "optional": false,
+        "type": "string",
+      },
     },
     Object {
       "name": "perPage",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "offset",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
   ],
   "result": Array [
     Object {
       "name": "fitId",
-      "type": "string",
+      "type": Object {
+        "optional": false,
+        "type": "string",
+      },
     },
     Object {
       "name": "name",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "amount",
-      "type": "string",
+      "type": Object {
+        "optional": false,
+        "type": "string",
+      },
     },
     Object {
       "name": "quarter",
-      "type": "string",
+      "type": Object {
+        "optional": false,
+        "type": "string",
+      },
     },
     Object {
       "name": "bankDetails",
-      "type": "string",
+      "type": Object {
+        "optional": undefined,
+        "type": "string",
+      },
     },
     Object {
       "name": "addressLine1",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "addressLine2",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "addressLine3",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "postcode",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "string",
       },
     },
   ],
@@ -520,43 +455,106 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "type",
+      "type": Object {
+        "items": Array [
+          Object {
+            "type": "literal",
+            "value": "FIT",
+          },
+          Object {
+            "type": "literal",
+            "value": "SEG",
+          },
+        ],
+        "type": "union",
+      },
+    },
+    Object {
+      "name": "state",
+      "type": Object {
+        "items": Array [
+          Object {
+            "type": "literal",
+            "value": "Active",
+          },
+          Object {
+            "type": "literal",
+            "value": "Pending",
+          },
+          Object {
+            "type": "literal",
+            "value": "Dispute",
+          },
+          Object {
+            "type": "literal",
+            "value": "Closed",
+          },
+        ],
+        "type": "union",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "optional": false,
+        "type": "number",
+      },
+    },
+    Object {
+      "name": "sourceSystemId",
+      "type": Object {
+        "optional": true,
+        "type": "number",
+      },
+    },
+    Object {
+      "name": "customerId",
+      "type": Object {
+        "optional": false,
+        "type": "number",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
       "name": "installationId",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "exportDateOn",
-      "type": "Date",
+      "type": Object {
+        "type": "Date",
+      },
     },
   ],
   "result": Array [
     Object {
       "name": "dateOn",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "Date",
       },
     },
     Object {
       "name": "value",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
   ],
@@ -569,16 +567,15 @@ Object {
     Object {
       "name": "meterId",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "removalDate",
-      "type": "unknown",
+      "type": Object {
+        "type": "unknown",
+      },
     },
   ],
   "result": Array [],
@@ -605,11 +602,8 @@ Object {
     Object {
       "name": "ids",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
   ],
@@ -617,41 +611,29 @@ Object {
     Object {
       "name": "tariffId",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "rate",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "string",
       },
     },
     Object {
       "name": "startOn",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "Date",
       },
     },
     Object {
       "name": "tariffCode",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "string",
       },
     },
     Object {
@@ -677,11 +659,8 @@ Object {
     Object {
       "name": "endOn",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "Date",
       },
     },
   ],
@@ -694,21 +673,15 @@ Object {
     Object {
       "name": "meterId",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "reason",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
@@ -738,67 +711,51 @@ Object {
     Object {
       "name": "dateOn",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "Date",
       },
     },
     Object {
       "name": "submittedAt",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "Date",
       },
     },
     Object {
       "name": "value",
-      "type": "number",
+      "type": Object {
+        "type": "number",
+      },
     },
   ],
   "result": Array [
     Object {
       "name": "id",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "value",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "meterId",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "submittedAt",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "Date",
       },
     },
   ],
@@ -811,71 +768,57 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "offset",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
     Object {
       "name": "perPage",
-      "type": "string",
+      "type": Object {
+        "type": "string",
+      },
     },
   ],
   "result": Array [
     Object {
       "name": "id",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "msn",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "string",
       },
     },
     Object {
       "name": "meterId",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
       "name": "dateOn",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "Date",
       },
     },
     Object {
       "name": "value",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "number",
       },
     },
     Object {
@@ -905,51 +848,36 @@ Object {
     Object {
       "name": "reason",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "string",
       },
     },
     Object {
       "name": "createdAt",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "Date",
       },
     },
     Object {
       "name": "updatedAt",
       "type": Object {
-        "items": Array [
-          "null",
-          "Date",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "Date",
       },
     },
     Object {
       "name": "sourceSystemId",
       "type": Object {
-        "items": Array [
-          "null",
-          "number",
-        ],
-        "type": "union",
+        "optional": true,
+        "type": "number",
       },
     },
     Object {
       "name": "mpan",
       "type": Object {
-        "items": Array [
-          "null",
-          "string",
-        ],
-        "type": "union",
+        "optional": false,
+        "type": "string",
       },
     },
   ],

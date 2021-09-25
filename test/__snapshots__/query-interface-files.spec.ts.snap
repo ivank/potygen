@@ -532,6 +532,60 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "type",
+      "type": Object {
+        "column": "scheme_type",
+        "schema": "public",
+        "table": "contracts",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "state",
+      "type": Object {
+        "column": "state",
+        "schema": "public",
+        "table": "accounts",
+        "type": "column",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": "public",
+        "table": "accounts",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "sourceSystemId",
+      "type": Object {
+        "column": "source_system_id",
+        "schema": "public",
+        "table": "accounts",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "customerId",
+      "type": Object {
+        "column": "customer_id",
+        "schema": "public",
+        "table": "accounts",
+        "type": "column",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
 Object {
   "params": Array [

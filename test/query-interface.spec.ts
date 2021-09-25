@@ -107,6 +107,9 @@ describe('Query Interface', () => {
       "UPDATE table1 SET col1 = 10 RETURNING id, col1, 123 as col2, '2' as col3, 3+4 as col4",
     ],
     ['insert returning star', 'INSERT INTO table1 (id) VALUES (1),(2) RETURNING *'],
+    ['simple delete', 'DELETE FROM table1'],
+    ['delete with param', 'DELETE FROM table1 WHERE id = :id'],
+    ['delete with returning', 'DELETE FROM table1 RETURNING id, col2'],
   ])('Should convert %s sql (%s)', (_, sql) => {
     const ast = parser(sql);
     expect(convertTag(ast)).toMatchSnapshot();
