@@ -10,21 +10,24 @@ import {
   FunctionArgType,
   isFunctionArgType,
   PropertyType,
-  ConstantType,
   RecordType,
   isArrayType,
   isRecordType,
-  LiteralType,
   isUnionType,
-  ArrayType,
   isConditionalType,
+  isLiteralType,
 } from './query-interface';
 import { ClientBase, QueryConfig } from 'pg';
 import { diffBy, isEmpty, uniqBy } from './util';
 
-export type LoadedUnion = { type: 'union'; items: LoadedType[] };
-export type LoadedArray = { type: 'array'; items: LoadedType };
-export type LoadedType = ConstantType | LoadedArray | LoadedUnion | LiteralType;
+export type LoadedUnion = { type: 'union'; items: LoadedType[]; optional?: boolean };
+export type LoadedArray = { type: 'array'; items: LoadedType; optional?: boolean };
+export type LoadedLiteral = { type: 'literal'; value: string; optional?: boolean };
+export type LoadedConstant = {
+  type: 'string' | 'number' | 'boolean' | 'Date' | 'null' | 'json' | 'unknown';
+  optional?: boolean;
+};
+export type LoadedType = LoadedUnion | LoadedArray | LoadedLiteral | LoadedConstant;
 
 export interface LoadedResult {
   name: string;
@@ -83,14 +86,11 @@ interface Context {
 
 type ToType = (type?: PropertyType | FunctionType | FunctionArgType) => LoadedType;
 
-export const isLoadedUnionType = (type: LoadedType): type is LoadedUnion =>
-  typeof type === 'object' && 'type' in type && type.type === 'union';
-export const isLoadedArrayType = (type: LoadedType): type is LoadedArray =>
-  typeof type === 'object' && 'type' in type && type.type === 'array';
-export const isOptional = (type: LoadedType): boolean =>
-  type === 'null' || (isLoadedUnionType(type) && type.items.some(isOptional));
-export const typeFromOptional = (type: LoadedType): LoadedType | undefined =>
-  isLoadedUnionType(type) ? type.items.filter((item) => item !== 'null')[0] : type;
+export const isLoadedUnionType = (type: LoadedType): type is LoadedUnion => type.type === 'union';
+export const isLoadedArrayType = (type: LoadedType): type is LoadedArray => type.type === 'array';
+export const isLoadedLiteralType = (type: LoadedType): type is LoadedLiteral => type.type === 'literal';
+export const isLoadedConstantType = (type: LoadedType): type is LoadedConstant =>
+  ['string', 'number', 'boolean', 'Date', 'null', 'json', 'unknown'].includes(type.type);
 
 const infoQuery = (columnTypes: ColumnType[], starTypes: StarType[]): QueryConfig => {
   const starTypesIndex = columnTypes.length * 3;
@@ -193,39 +193,42 @@ const matchesRecordType = (type: RecordType) => (record: Record): boolean => typ
 const matchesFunctionType = (type: FunctionType, context: DataContext) => (value: Function): boolean =>
   type.name === value.name &&
   type.args.every((arg, index) => {
-    const aggType = typeFromOptional(loadType(context)(arg));
+    const argType = loadType(context)(arg);
     return (
       value.parametersDataType[index] === 'anyelement' ||
-      (value.parametersDataType[index] === 'anyarray' && aggType && (value.isAggregate || isArrayType(aggType))) ||
-      toConstantType(value.parametersDataType[index]) === aggType
+      (value.parametersDataType[index] === 'anyarray' &&
+        argType &&
+        (value.isAggregate || isLoadedArrayType(argType))) ||
+      loadType(context)(toConstantType(value.parametersDataType[index])).type === argType.type
     );
   });
 const matchesFunctionArgType = (type: FunctionArgType) => (value: Function): boolean => type.name === value.name;
 const matchesStarType = (columnType: StarType) => (info: Info): boolean =>
   columnType.schema === info.schema && columnType.table === info.table;
 
+const loadDataType = (toType: ToType, dataType?: string, optional?: boolean): LoadedConstant | LoadedArray => {
+  const type = toConstantType(dataType);
+  return isArrayType(type) ? { type: 'array', items: toType(type.items), optional } : { type, optional };
+};
+
 const mergeTypes = (dest: LoadedType, src: LoadedType): LoadedType =>
   dest !== src
     ? {
         type: 'union',
-        items: [...(isUnionType(dest) ? dest.items : [dest]), ...(isUnionType(src) ? src.items : [src])],
+        items: [...(isLoadedUnionType(dest) ? dest.items : [dest]), ...(isLoadedUnionType(src) ? src.items : [src])],
       }
     : dest;
 
 const loadType = (context: DataContext): ToType => (type) => {
   const recur = loadType(context);
-  const loadConstantType = (constantType: ConstantType | ArrayType) =>
-    isArrayType(constantType) ? recur(constantType) : constantType;
 
   if (type === undefined) {
-    return 'unknown';
+    return { type: 'unknown' };
   } else if (isColumnType(type)) {
     const columType = context.info?.find(matchesColumnType(type));
     return columType?.dataType === 'USER-DEFINED'
       ? recur({ type: 'record', name: columType.recordName })
-      : columType?.isNullable
-      ? { type: 'union', items: ['null', loadConstantType(toConstantType(columType?.dataType))] }
-      : loadConstantType(toConstantType(columType?.dataType));
+      : loadDataType(recur, columType?.dataType, columType?.isNullable === 'YES');
   } else if (isRecordType(type)) {
     return {
       type: 'union',
@@ -236,8 +239,9 @@ const loadType = (context: DataContext): ToType => (type) => {
   } else if (isUnionType(type)) {
     return type.items.map(recur).reduce(mergeTypes);
   } else if (isConditionalType(type)) {
-    const coalesceTypes = type.items.map(recur);
-    return coalesceTypes.some(isOptional) ? { type: 'union', items: ['null', coalesceTypes[0]] } : coalesceTypes[0];
+    return type.items
+      .map(recur)
+      .reduce((curr, item) => ({ ...item, optional: item.optional ? curr.optional : item.optional }));
   } else if (isFunctionType(type)) {
     switch (type.name) {
       case 'array_agg':
@@ -246,14 +250,14 @@ const loadType = (context: DataContext): ToType => (type) => {
       case 'min':
         return recur(type.args[0]);
       default:
-        return loadConstantType(toConstantType(context.functions?.find(matchesFunctionType(type, context))?.dataType));
+        return loadDataType(recur, context.functions?.find(matchesFunctionType(type, context))?.dataType);
     }
   } else if (isFunctionArgType(type)) {
-    return loadConstantType(
-      toConstantType(context.functions?.find(matchesFunctionArgType(type))?.parametersDataType[type.index]),
-    );
-  } else {
+    return loadDataType(recur, context.functions?.find(matchesFunctionArgType(type))?.parametersDataType[type.index]);
+  } else if (isLiteralType(type)) {
     return type;
+  } else {
+    return { type };
   }
 };
 

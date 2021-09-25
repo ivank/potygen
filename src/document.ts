@@ -1,17 +1,16 @@
 import { document, printDocument, DocumentContext, Type, withIdentifier } from '@ovotech/ts-compose';
 import { TypeNode } from 'typescript';
-import { LoadedType, isLoadedArrayType, isLoadedUnionType, LoadedQuery } from './load-types';
-import { isLiteralType } from './query-interface';
+import { LoadedType, isLoadedArrayType, isLoadedUnionType, LoadedQuery, isLoadedLiteralType } from './load-types';
 
 const toPropertyType = (type: LoadedType): TypeNode => {
   if (isLoadedArrayType(type)) {
     return Type.Array(toPropertyType(type.items));
   } else if (isLoadedUnionType(type)) {
     return Type.Union(type.items.map(toPropertyType));
-  } else if (isLiteralType(type)) {
+  } else if (isLoadedLiteralType(type)) {
     return Type.Literal(type.value);
   } else {
-    switch (type) {
+    switch (type.type) {
       case 'Date':
         return Type.Referance('Date');
       case 'boolean':
@@ -36,7 +35,9 @@ export const toQuery = (context: DocumentContext, query: LoadedQuery) => {
     Type.Interface({
       name: 'QueryParams',
       isExport: true,
-      props: query.params.map(({ name, type }) => Type.Prop({ name, type: toPropertyType(type) })),
+      props: query.params.map(({ name, type }) =>
+        Type.Prop({ name, type: toPropertyType(type), isOptional: type.optional }),
+      ),
     }),
   );
 
@@ -45,7 +46,9 @@ export const toQuery = (context: DocumentContext, query: LoadedQuery) => {
     Type.Interface({
       name: 'QueryResult',
       isExport: true,
-      props: query.result.map(({ name, type }) => Type.Prop({ name, type: toPropertyType(type) })),
+      props: query.result.map(({ name, type }) =>
+        Type.Prop({ name, type: toPropertyType(type), isOptional: type.optional }),
+      ),
     }),
   );
 
