@@ -18,6 +18,14 @@ describe('Sql', () => {
     ${'parameter in where'}           | ${'SELECT * FROM table1 WHERE table1.col = :test1'}
     ${'parameter in join with 2'}     | ${'SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1 WHERE table2.col = :test2'}
     ${'parameter in having'}          | ${'SELECT * HAVING table1.col = :test1'}
+    ${'parameter in select'}          | ${'SELECT :test1!'}
+    ${'parameter in where'}           | ${'SELECT * FROM table1 WHERE table1.col = :test1!'}
+    ${'parameter in join with 2'}     | ${'SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1! WHERE table2.col = :test2'}
+    ${'parameter in having'}          | ${'SELECT * HAVING table1.col = :test1'}
+    ${'parameter in select'}          | ${'SELECT $test1!'}
+    ${'parameter in where'}           | ${'SELECT * FROM table1 WHERE table1.col = $test1!'}
+    ${'parameter in join with 2'}     | ${'SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = $test1! WHERE table2.col = $test2'}
+    ${'parameter in having'}          | ${'SELECT * HAVING table1.col = $test1'}
     ${'binary sum'}                   | ${'SELECT 1 + 2'}
     ${'binary sub'}                   | ${'SELECT 1 - 2'}
     ${'binary div'}                   | ${'SELECT 1 / 2'}

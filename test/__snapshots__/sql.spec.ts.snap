@@ -1448,6 +1448,7 @@ Object {
           "value": "=",
         },
         "right": Object {
+          "required": false,
           "tag": "Parameter",
           "type": "native",
           "value": "id",
@@ -4780,6 +4781,7 @@ Object {
             "value": "int",
           },
           "value": Object {
+            "required": false,
             "tag": "Parameter",
             "type": "native",
             "value": "param1",
@@ -4799,6 +4801,7 @@ Object {
             "value": "int",
           },
           "value": Object {
+            "required": false,
             "tag": "Parameter",
             "type": "native",
             "value": "param2",
@@ -4858,6 +4861,7 @@ Object {
       "value": Object {
         "tag": "Count",
         "value": Object {
+          "required": false,
           "tag": "Parameter",
           "type": "native",
           "value": "param1",
@@ -4869,6 +4873,7 @@ Object {
       "value": Object {
         "tag": "Count",
         "value": Object {
+          "required": false,
           "tag": "Parameter",
           "type": "native",
           "value": "param2",
@@ -5796,6 +5801,60 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql parameter in having (SELECT * HAVING table1.col = $test1): parameter in having 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "Having",
+      "value": Object {
+        "left": Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "required": false,
+          "tag": "Parameter",
+          "type": "native",
+          "value": "test1",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql parameter in having (SELECT * HAVING table1.col = :test1): parameter in having 1`] = `
 Object {
   "tag": "Select",
@@ -5838,9 +5897,228 @@ Object {
           "value": "=",
         },
         "right": Object {
+          "required": false,
           "tag": "Parameter",
           "type": "native",
           "value": "test1",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql parameter in having (SELECT * HAVING table1.col = :test1): parameter in having 2`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "tag": "Having",
+      "value": Object {
+        "left": Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "required": false,
+          "tag": "Parameter",
+          "type": "native",
+          "value": "test1",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql parameter in join with 2 (SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = $test1! WHERE table2.col = $test2): parameter in join with 2 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [
+        Object {
+          "table": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table2",
+              },
+            ],
+          },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
+          "values": Array [
+            Object {
+              "tag": "JoinOn",
+              "value": Object {
+                "left": Object {
+                  "left": Object {
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "table1",
+                      },
+                      Object {
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  "operator": Object {
+                    "tag": "Operator",
+                    "value": "=",
+                  },
+                  "right": Object {
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "table2",
+                      },
+                      Object {
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  "tag": "BinaryExpression",
+                },
+                "operator": Object {
+                  "tag": "Operator",
+                  "value": "AND",
+                },
+                "right": Object {
+                  "left": Object {
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "table1",
+                      },
+                      Object {
+                        "tag": "Identifier",
+                        "value": "col",
+                      },
+                    ],
+                  },
+                  "operator": Object {
+                    "tag": "Operator",
+                    "value": "=",
+                  },
+                  "right": Object {
+                    "required": true,
+                    "tag": "Parameter",
+                    "type": "native",
+                    "value": "test1",
+                  },
+                  "tag": "BinaryExpression",
+                },
+                "tag": "BinaryExpression",
+              },
+            },
+          ],
+        },
+      ],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table2",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "required": false,
+          "tag": "Parameter",
+          "type": "native",
+          "value": "test2",
         },
         "tag": "BinaryExpression",
       },
@@ -5947,6 +6225,7 @@ Object {
                     "value": "=",
                   },
                   "right": Object {
+                    "required": false,
                     "tag": "Parameter",
                     "type": "native",
                     "value": "test1",
@@ -6000,12 +6279,223 @@ Object {
           "value": "=",
         },
         "right": Object {
+          "required": false,
           "tag": "Parameter",
           "type": "native",
           "value": "test2",
         },
         "tag": "BinaryExpression",
       },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql parameter in join with 2 (SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1! WHERE table2.col = :test2): parameter in join with 2 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [
+        Object {
+          "table": Object {
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "Identifier",
+                "value": "table2",
+              },
+            ],
+          },
+          "tag": "Join",
+          "type": Object {
+            "tag": "JoinType",
+            "value": undefined,
+          },
+          "values": Array [
+            Object {
+              "tag": "JoinOn",
+              "value": Object {
+                "left": Object {
+                  "left": Object {
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "table1",
+                      },
+                      Object {
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  "operator": Object {
+                    "tag": "Operator",
+                    "value": "=",
+                  },
+                  "right": Object {
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "table2",
+                      },
+                      Object {
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  "tag": "BinaryExpression",
+                },
+                "operator": Object {
+                  "tag": "Operator",
+                  "value": "AND",
+                },
+                "right": Object {
+                  "left": Object {
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "tag": "Identifier",
+                        "value": "table1",
+                      },
+                      Object {
+                        "tag": "Identifier",
+                        "value": "col",
+                      },
+                    ],
+                  },
+                  "operator": Object {
+                    "tag": "Operator",
+                    "value": "=",
+                  },
+                  "right": Object {
+                    "required": true,
+                    "tag": "Parameter",
+                    "type": "native",
+                    "value": "test1",
+                  },
+                  "tag": "BinaryExpression",
+                },
+                "tag": "BinaryExpression",
+              },
+            },
+          ],
+        },
+      ],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table2",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "required": false,
+          "tag": "Parameter",
+          "type": "native",
+          "value": "test2",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql parameter in select (SELECT $test1!): parameter in select 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "required": true,
+            "tag": "Parameter",
+            "type": "native",
+            "value": "test1",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql parameter in select (SELECT :test1!): parameter in select 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "required": true,
+            "tag": "Parameter",
+            "type": "native",
+            "value": "test1",
+          },
+        },
+      ],
     },
   ],
 }
@@ -6022,12 +6512,165 @@ Object {
           "as": undefined,
           "tag": "SelectListItem",
           "value": Object {
+            "required": false,
             "tag": "Parameter",
             "type": "native",
             "value": "test1",
           },
         },
       ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql parameter in where (SELECT * FROM table1 WHERE table1.col = $test1!): parameter in where 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "required": true,
+          "tag": "Parameter",
+          "type": "native",
+          "value": "test1",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql parameter in where (SELECT * FROM table1 WHERE table1.col = :test1!): parameter in where 1`] = `
+Object {
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "tag": "SelectListItem",
+          "value": Object {
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "list": Object {
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "tag": "FromListItem",
+            "value": Object {
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "tag": "From",
+    },
+    Object {
+      "tag": "Where",
+      "value": Object {
+        "left": Object {
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "tag": "Identifier",
+              "value": "col",
+            },
+          ],
+        },
+        "operator": Object {
+          "tag": "Operator",
+          "value": "=",
+        },
+        "right": Object {
+          "required": true,
+          "tag": "Parameter",
+          "type": "native",
+          "value": "test1",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -6097,6 +6740,7 @@ Object {
           "value": "=",
         },
         "right": Object {
+          "required": false,
           "tag": "Parameter",
           "type": "native",
           "value": "test1",
@@ -6994,6 +7638,7 @@ Object {
               },
             },
             "value": Object {
+              "required": false,
               "tag": "Parameter",
               "type": "native",
               "value": "test",
@@ -7028,6 +7673,7 @@ Object {
               },
             },
             "value": Object {
+              "required": false,
               "tag": "Parameter",
               "type": "native",
               "value": "test",
@@ -8103,6 +8749,7 @@ Object {
             },
             "tag": "SetItem",
             "value": Object {
+              "required": false,
               "tag": "Parameter",
               "type": "native",
               "value": "param1",
@@ -8120,6 +8767,7 @@ Object {
             },
             "tag": "SetItem",
             "value": Object {
+              "required": false,
               "tag": "Parameter",
               "type": "native",
               "value": "param2",
@@ -8395,6 +9043,7 @@ Object {
           "value": "=",
         },
         "right": Object {
+          "required": false,
           "tag": "Parameter",
           "type": "native",
           "value": "id",
@@ -8526,6 +9175,7 @@ Object {
           "value": "=",
         },
         "right": Object {
+          "required": false,
           "tag": "Parameter",
           "type": "native",
           "value": "id",

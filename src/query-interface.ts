@@ -83,6 +83,7 @@ export interface Result {
 export interface Param {
   name: string;
   type: PropertyType | FunctionArgType;
+  required?: boolean;
 }
 
 export interface Query {
@@ -106,25 +107,28 @@ interface QueryContext {
 
 type ResolveIdentifier = (property: PropertyType) => PropertyType;
 
+export const isConstantType = (type: PropertyType | StarType | FunctionArgType): type is ConstantType =>
+  !(typeof type === 'object' && 'type' in type);
+
 export const isNullType = (type: PropertyType | StarType | FunctionArgType): type is 'null' => type === 'null';
 export const isColumnType = (type: PropertyType | StarType | FunctionArgType): type is ColumnType =>
-  typeof type === 'object' && 'type' in type && type.type === 'column';
+  !isConstantType(type) && type.type === 'column';
 export const isFunctionType = (type: PropertyType | StarType | FunctionArgType): type is FunctionType =>
-  typeof type === 'object' && 'type' in type && type.type === 'function';
+  !isConstantType(type) && type.type === 'function';
 export const isConditionalType = (type: PropertyType | StarType | FunctionArgType): type is ConditionalType =>
-  typeof type === 'object' && 'type' in type && type.type === 'conditional';
+  !isConstantType(type) && type.type === 'conditional';
 export const isRecordType = (type: PropertyType | StarType | FunctionArgType): type is RecordType =>
-  typeof type === 'object' && 'type' in type && type.type === 'record';
+  !isConstantType(type) && type.type === 'record';
 export const isFunctionArgType = (type: PropertyType | StarType | FunctionArgType): type is FunctionArgType =>
-  typeof type === 'object' && 'type' in type && type.type === 'function_arg';
+  !isConstantType(type) && type.type === 'function_arg';
 export const isUnionType = (type: PropertyType | StarType | FunctionArgType): type is UnionType =>
-  typeof type === 'object' && 'type' in type && type.type === 'union';
+  !isConstantType(type) && type.type === 'union';
 export const isArrayType = (type: PropertyType | StarType | FunctionArgType): type is ArrayType =>
-  typeof type === 'object' && 'type' in type && type.type === 'array';
+  !isConstantType(type) && type.type === 'array';
 export const isLiteralType = (type: PropertyType | StarType | FunctionArgType): type is LiteralType =>
-  typeof type === 'object' && 'type' in type && type.type === 'literal';
+  !isConstantType(type) && type.type === 'literal';
 export const isStarType = (type: PropertyType | StarType | FunctionArgType): type is StarType =>
-  typeof type === 'object' && 'type' in type && type.type === 'star';
+  !isConstantType(type) && type.type === 'star';
 
 const toName = (aliases: TableAliases, table: QualifiedTableName): QualifiedTableName =>
   aliases[table?.table?.toLowerCase() ?? ''] ?? table;
@@ -465,7 +469,7 @@ const convertExpression = (
       return { type: 'string', params: [] };
 
     case 'Parameter':
-      return { type: 'string', params: [{ name: tag.value, type: context.type ?? 'unknown' }] };
+      return { type: 'string', params: [{ name: tag.value, type: context.type ?? 'unknown', required: tag.required }] };
 
     case 'Distinct':
     case 'Columns':

@@ -129,8 +129,8 @@ const QualifiedIdentifier = Node<QualifiedIdentifierTag>(List(Identifier, { sepa
 /**
  * Parameteer
  */
-const Parameter = Node<ParameterTag>(All(/^(\$\$|\$|\:)/, NameRule), ([type, value]) => {
-  return { tag: 'Parameter', value, type: type === '$$' ? 'values' : 'native' };
+const Parameter = Node<ParameterTag>(All(/^(\$\$|\$|\:)/, NameRule, Optional(/^(\!)/)), ([type, value, required]) => {
+  return { tag: 'Parameter', value, type: type === '$$' ? 'values' : 'native', required: !!required };
 });
 
 /**

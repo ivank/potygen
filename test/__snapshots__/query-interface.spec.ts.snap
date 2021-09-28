@@ -192,6 +192,7 @@ Object {
   "params": Array [
     Object {
       "name": "joinVal",
+      "required": false,
       "type": Object {
         "column": "val",
         "schema": "public",
@@ -201,6 +202,7 @@ Object {
     },
     Object {
       "name": "id",
+      "required": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -237,6 +239,7 @@ Object {
   "params": Array [
     Object {
       "name": "param1",
+      "required": false,
       "type": "unknown",
     },
   ],
@@ -262,6 +265,7 @@ Object {
   "params": Array [
     Object {
       "name": "id",
+      "required": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -320,6 +324,7 @@ Object {
   "params": Array [
     Object {
       "name": "id",
+      "required": false,
       "type": Object {
         "index": 0,
         "name": "ABS",
@@ -481,10 +486,12 @@ Object {
   "params": Array [
     Object {
       "name": "limit",
+      "required": false,
       "type": "string",
     },
     Object {
       "name": "offset",
+      "required": false,
       "type": "number",
     },
   ],
@@ -507,6 +514,7 @@ Object {
   "params": Array [
     Object {
       "name": "id",
+      "required": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -534,6 +542,7 @@ Object {
   "params": Array [
     Object {
       "name": "id",
+      "required": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -561,10 +570,12 @@ Object {
   "params": Array [
     Object {
       "name": "test1",
+      "required": false,
       "type": "unknown",
     },
     Object {
       "name": "test2",
+      "required": false,
       "type": "unknown",
     },
   ],
@@ -592,6 +603,7 @@ Object {
   "params": Array [
     Object {
       "name": "joinVal",
+      "required": false,
       "type": Object {
         "column": "val",
         "schema": "public",
@@ -601,6 +613,7 @@ Object {
     },
     Object {
       "name": "id",
+      "required": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -637,6 +650,7 @@ Object {
   "params": Array [
     Object {
       "name": "param",
+      "required": false,
       "type": Object {
         "items": Object {
           "items": Object {
@@ -679,6 +693,7 @@ Object {
   "params": Array [
     Object {
       "name": "test1",
+      "required": false,
       "type": "unknown",
     },
   ],
@@ -758,6 +773,7 @@ Object {
   "params": Array [
     Object {
       "name": "param",
+      "required": false,
       "type": Object {
         "items": "number",
         "type": "array",
@@ -781,6 +797,7 @@ Object {
   "params": Array [
     Object {
       "name": "id",
+      "required": false,
       "type": "number",
     },
   ],
@@ -867,6 +884,7 @@ Object {
   "params": Array [
     Object {
       "name": "id",
+      "required": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -899,6 +917,7 @@ Object {
   "params": Array [
     Object {
       "name": "id",
+      "required": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -908,6 +927,7 @@ Object {
     },
     Object {
       "name": "val1",
+      "required": false,
       "type": Object {
         "column": "col1",
         "schema": "public",

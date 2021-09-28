@@ -1,7 +1,7 @@
 export type NullTag = { tag: 'Null' };
 export type QuotedNameTag = { tag: 'QuotedName'; value: string };
 export type IdentifierTag = { tag: 'Identifier'; value: string };
-export type ParameterTag = { tag: 'Parameter'; value: string; type: 'native' | 'values' };
+export type ParameterTag = { tag: 'Parameter'; value: string; type: 'native' | 'values'; required: boolean };
 export type QualifiedIdentifierTag = { tag: 'QualifiedIdentifier'; values: IdentifierTag[] };
 export type AsTag = { tag: 'As'; value: IdentifierTag };
 export type StringTag = { tag: 'String'; value: string };

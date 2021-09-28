@@ -402,6 +402,7 @@ Object {
   "params": Array [
     Object {
       "name": "id",
+      "required": false,
       "type": Object {
         "optional": false,
         "type": "number",
@@ -425,6 +426,7 @@ Object {
   "params": Array [
     Object {
       "name": "text",
+      "required": false,
       "type": Object {
         "optional": false,
         "type": "string",
@@ -443,11 +445,36 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert parameter coalesce sql (SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "required": false,
+      "type": Object {
+        "optional": true,
+        "type": "number",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "character_col",
+      "type": Object {
+        "optional": true,
+        "type": "string",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert simple sql (SELECT id, character_col FROM all_types WHERE id = :id) 1`] = `
 Object {
   "params": Array [
     Object {
       "name": "id",
+      "required": false,
       "type": Object {
         "optional": false,
         "type": "number",

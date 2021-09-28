@@ -5,12 +5,14 @@ Object {
   "params": Array [
     Object {
       "name": "q",
+      "required": false,
       "type": Object {
         "type": "string",
       },
     },
     Object {
       "name": "levelisationId",
+      "required": false,
       "type": Object {
         "optional": false,
         "type": "number",
@@ -18,6 +20,7 @@ Object {
     },
     Object {
       "name": "ids",
+      "required": false,
       "type": Object {
         "items": Object {
           "type": "number",
@@ -27,12 +30,14 @@ Object {
     },
     Object {
       "name": "limit",
+      "required": false,
       "type": Object {
         "type": "number",
       },
     },
     Object {
       "name": "offset",
+      "required": false,
       "type": Object {
         "type": "number",
       },
@@ -218,6 +223,7 @@ Object {
   "params": Array [
     Object {
       "name": "ids",
+      "required": false,
       "type": Object {
         "items": Object {
           "type": "number",
@@ -243,12 +249,14 @@ Object {
   "params": Array [
     Object {
       "name": "q",
+      "required": false,
       "type": Object {
         "type": "string",
       },
     },
     Object {
       "name": "ids",
+      "required": false,
       "type": Object {
         "items": Object {
           "type": "number",
@@ -258,12 +266,14 @@ Object {
     },
     Object {
       "name": "limit",
+      "required": false,
       "type": Object {
         "type": "number",
       },
     },
     Object {
       "name": "offset",
+      "required": false,
       "type": Object {
         "type": "number",
       },
@@ -362,6 +372,7 @@ Object {
   "params": Array [
     Object {
       "name": "quarter",
+      "required": false,
       "type": Object {
         "optional": false,
         "type": "string",
@@ -369,12 +380,14 @@ Object {
     },
     Object {
       "name": "perPage",
+      "required": false,
       "type": Object {
         "type": "string",
       },
     },
     Object {
       "name": "offset",
+      "required": false,
       "type": Object {
         "type": "string",
       },
@@ -460,6 +473,7 @@ Object {
   "params": Array [
     Object {
       "name": "type",
+      "required": false,
       "type": Object {
         "items": Array [
           Object {
@@ -476,6 +490,7 @@ Object {
     },
     Object {
       "name": "state",
+      "required": false,
       "type": Object {
         "items": Array [
           Object {
@@ -530,6 +545,7 @@ Object {
   "params": Array [
     Object {
       "name": "installationId",
+      "required": false,
       "type": Object {
         "optional": false,
         "type": "number",
@@ -537,6 +553,7 @@ Object {
     },
     Object {
       "name": "exportDateOn",
+      "required": false,
       "type": Object {
         "type": "Date",
       },
@@ -566,6 +583,7 @@ Object {
   "params": Array [
     Object {
       "name": "meterId",
+      "required": false,
       "type": Object {
         "optional": false,
         "type": "number",
@@ -573,6 +591,7 @@ Object {
     },
     Object {
       "name": "removalDate",
+      "required": false,
       "type": Object {
         "type": "unknown",
       },
@@ -601,6 +620,7 @@ Object {
   "params": Array [
     Object {
       "name": "ids",
+      "required": false,
       "type": Object {
         "optional": false,
         "type": "number",
@@ -672,6 +692,7 @@ Object {
   "params": Array [
     Object {
       "name": "meterId",
+      "required": false,
       "type": Object {
         "optional": false,
         "type": "number",
@@ -679,6 +700,7 @@ Object {
     },
     Object {
       "name": "reason",
+      "required": false,
       "type": Object {
         "optional": true,
         "type": "string",
@@ -686,6 +708,7 @@ Object {
     },
     Object {
       "name": "type",
+      "required": false,
       "type": Object {
         "items": Array [
           Object {
@@ -710,6 +733,7 @@ Object {
     },
     Object {
       "name": "dateOn",
+      "required": false,
       "type": Object {
         "optional": false,
         "type": "Date",
@@ -717,6 +741,7 @@ Object {
     },
     Object {
       "name": "submittedAt",
+      "required": false,
       "type": Object {
         "optional": true,
         "type": "Date",
@@ -724,6 +749,7 @@ Object {
     },
     Object {
       "name": "value",
+      "required": false,
       "type": Object {
         "type": "number",
       },
@@ -767,6 +793,7 @@ Object {
   "params": Array [
     Object {
       "name": "id",
+      "required": false,
       "type": Object {
         "optional": false,
         "type": "number",
@@ -774,12 +801,14 @@ Object {
     },
     Object {
       "name": "offset",
+      "required": false,
       "type": Object {
         "type": "string",
       },
     },
     Object {
       "name": "perPage",
+      "required": false,
       "type": Object {
         "type": "string",
       },

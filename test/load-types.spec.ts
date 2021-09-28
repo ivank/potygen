@@ -35,6 +35,7 @@ describe('Query Interface', () => {
     ['enum column', `SELECT state FROM account_levelisations`],
     ['simple', `SELECT id, character_col FROM all_types WHERE id = :id`],
     ['coalesce', `SELECT COALESCE(id, character_col) FROM all_types`],
+    ['parameter coalesce', `SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)`],
   ])('Should convert %s sql (%s)', async (_, sql) => {
     const ast = parser(sql);
     const query = convertTag(ast);

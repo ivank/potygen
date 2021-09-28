@@ -325,10 +325,13 @@ const toDataContext = async (
 };
 
 const toLoadedQuery = (data: DataContext, query: Query): LoadedQuery => {
-  const toType = loadType(data);
+  const toType = loadType({ ...data });
 
   return {
-    params: query.params.map((item) => ({ ...item, type: toType(item.type) })),
+    params: query.params.map((item) => ({
+      ...item,
+      type: item.required === true ? { ...toType(item.type), optional: false } : toType(item.type),
+    })),
     result: query.result.flatMap((item) => {
       const type = item.type;
       if (isStarType(type)) {
