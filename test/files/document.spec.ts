@@ -1,11 +1,12 @@
 import { Parser, ParserError } from '@ikerin/rd-parse';
-import { SqlGrammar } from '../src/sql.grammar';
+import { SqlGrammar } from '../../src/sql.grammar';
 import { inspect } from 'util';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
-import { convertTag } from '../src/query-interface';
+import { convertTag } from '../../src/query-interface';
 import { Client } from 'pg';
-import { loadQuery } from '../src/load-types';
+import { loadQuery } from '../../src/load-types';
+import { sqlTs } from '../../src/document';
 
 const parser = Parser(SqlGrammar);
 let db: Client;
@@ -30,7 +31,8 @@ describe('Load Files', () => {
       const ast = parser(sql);
       const query = convertTag(ast);
       const loadedQuery = await loadQuery(db, query);
-      expect(loadedQuery.query).toMatchSnapshot(name);
+      const ts = sqlTs(loadedQuery.query);
+      expect(ts).toMatchSnapshot(name);
     } catch (e) {
       if (e instanceof ParserError) {
         console.log(inspect(e, { depth: 15, colors: true }));

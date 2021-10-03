@@ -100,6 +100,7 @@ describe('Sql', () => {
     ${'order by'}                     | ${'SELECT * FROM table1 ORDER BY col ASC'}
     ${'order by qualified'}           | ${'SELECT * FROM table1 mr ORDER BY mr."DateOfReading" ASC'}
     ${'order by multiple'}            | ${'SELECT * FROM table1 ORDER BY col1 ASC, col2'}
+    ${'order by with params'}         | ${"SELECT * FROM table1 ORDER BY CASE WHEN $param1 = 'val1' AND $param2 = 'DESC' THEN col2 END DESC"}
     ${'group by'}                     | ${'SELECT * FROM table1 GROUP BY col'}
     ${'group by multiple'}            | ${'SELECT * FROM table1 GROUP BY col1, col2'}
     ${'pg cast column to int'}        | ${'SELECT test::int FROM table1'}
@@ -163,6 +164,7 @@ describe('Sql', () => {
     ${'where in tuples'}              | ${'SELECT col1, col2 WHERE (col1,col2) IN ((1,2),(3,4))'}
     ${'select exists'}                | ${'SELECT EXISTS(SELECT col2 FROM table2)'}
     ${'update exists'}                | ${'UPDATE table1 SET col1 = EXISTS(SELECT col2 FROM table2)'}
+    ${'insert multiple param values'} | ${'INSERT INTO table1 VALUES $$rows(name, test)'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) => {
     try {
       expect(sqlParser(sql)).toMatchSnapshot(name);

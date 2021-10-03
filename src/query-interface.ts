@@ -53,6 +53,9 @@ import {
   isDefault,
   isUsing,
   UsingTag,
+  isWhen,
+  isValues,
+  isParameter,
 } from './sql.types';
 
 export type ColumnType = { type: 'column'; table: string; schema: string; column: string };
@@ -83,7 +86,11 @@ export interface Result {
 export interface Param {
   name: string;
   type: PropertyType | FunctionArgType;
+  spread?: boolean;
+  pos: number;
+  lastPos: number;
   required?: boolean;
+  pick: Array<{ type?: ColumnType; name: string }>;
 }
 
 export interface Query {
@@ -103,6 +110,12 @@ interface QueryContext {
   schema?: string;
   aliases: TableAliases;
   insertColumns?: ColumnsTag;
+}
+
+interface RawQuery {
+  params: Array<ConvertableTag>;
+  result: Array<SelectListItemTag | ReturningListItemTag>;
+  context: QueryContext;
 }
 
 type ResolveIdentifier = (property: PropertyType) => PropertyType;
@@ -326,6 +339,7 @@ const convertExpression = (
       return {
         type: 'unknown',
         params: tag.values
+          .filter(isValues)
           .flatMap((columns) =>
             columns.values.flatMap((column, index) => {
               const columnType = context.insertColumns?.values[index];
@@ -339,7 +353,8 @@ const convertExpression = (
               return isDefault(column) ? undefined : convertExpression({ ...context, type }, column).params;
             }),
           )
-          .filter(isNil),
+          .filter(isNil)
+          .concat(convertExpressionMap(context, tag.values.filter(isParameter)).params),
       };
     case 'From':
       return convertExpressionMap(
@@ -365,7 +380,7 @@ const convertExpression = (
         tag.values.map((item) => item.value),
       );
     case 'Combination':
-      return { type: 'unknown', params: convertCombination(tag).params };
+      return { type: 'unknown', params: convertTag(tag).params };
     case 'Where':
     case 'Having':
       return convertExpression(context, tag.value);
@@ -418,7 +433,7 @@ const convertExpression = (
       };
 
     case 'Select':
-      const select = convertSelect(tag);
+      const select = convertTag(tag);
       const selectType = select.result[0].type;
 
       return { type: isStarType(selectType) ? 'unknown' : selectType, params: select.params };
@@ -451,7 +466,9 @@ const convertExpression = (
         (acc, caseTag) => {
           const caseRes = convertExpression(context, caseTag.value);
           return {
-            params: caseRes.params.concat(caseRes.params),
+            params: isWhen(caseTag)
+              ? caseRes.params.concat(convertExpression(context, caseTag.condition).params)
+              : caseRes.params,
             type: { ...acc.type, items: acc.type.items.concat(caseRes.type) },
           };
         },
@@ -469,7 +486,32 @@ const convertExpression = (
       return { type: 'string', params: [] };
 
     case 'Parameter':
-      return { type: 'string', params: [{ name: tag.value, type: context.type ?? 'unknown', required: tag.required }] };
+      return {
+        type: 'string',
+        params: [
+          {
+            name: tag.value,
+            type: context.type ?? 'unknown',
+            required: tag.required || tag.pick.length > 0,
+            pos: tag.pos,
+            lastPos: tag.lastPos,
+            pick: tag.pick.map((column, index) => {
+              const columnType = context.insertColumns?.values[index];
+              return {
+                name: column.value,
+                type: columnType
+                  ? {
+                      type: 'column',
+                      column: columnType.value.toLowerCase(),
+                      ...toQualifiedTableName([], context),
+                    }
+                  : undefined,
+              };
+            }),
+            spread: tag.type === 'spread',
+          },
+        ],
+      };
 
     case 'Distinct':
     case 'Columns':
@@ -555,65 +597,50 @@ const resolveParams = (context: QueryContext, params: Param[]): Param[] =>
     .filter(uniqParam)
     .map(resolveParam(resolveType(context)));
 
-const convertSelect = (tag: SelectTag): Query => {
+const convertSelect = (tag: SelectTag): RawQuery => {
   const selectList = first(tag.values.filter(isSelectList));
   const from = first(tag.values.filter(isFrom));
   const context = toContext(first(from?.list.values), toTableAliases(from));
 
-  const result: Result[] = toResults(context, selectList?.values ?? []);
-  const params: Param[] = resolveParams(context, convertExpressionMap(context, tag.values).params);
-
-  return { params, result };
+  return { context, result: selectList?.values ?? [], params: tag.values };
 };
 
-const convertCombination = (tag: CombinationTag): Query => {
+const convertCombination = (tag: CombinationTag): RawQuery => {
   const selectList = first(tag.values.filter(isSelectList));
   const from = first(tag.values.filter(isFrom));
   const context = toContext(first(from?.list.values), toTableAliases(from));
 
-  const result: Result[] = toResults(context, selectList?.values ?? []);
-  const params: Param[] = resolveParams(context, convertExpressionMap(context, tag.values).params);
-
-  return { params, result };
+  return { context, params: tag.values, result: selectList?.values ?? [] };
 };
 
-const convertUpdate = (tag: UpdateTag): Query => {
+const convertUpdate = (tag: UpdateTag): RawQuery => {
   const returningList = first(tag.values.filter(isReturning));
   const from = first(tag.values.filter(isUpdateFrom));
   const table = first(tag.values.filter(isTable));
   const context = toContext(table, toTableAliasFrom(from?.values ?? []));
 
-  const result: Result[] = toResults(context, returningList?.values ?? []);
-  const params: Param[] = resolveParams(context, convertExpressionMap(context, tag.values).params);
-
-  return { params, result };
+  return { context, result: returningList?.values ?? [], params: tag.values };
 };
 
-const convertInsert = (tag: InsertTag): Query => {
+const convertInsert = (tag: InsertTag): RawQuery => {
   const returningList = first(tag.values.filter(isReturning));
   const table = first(tag.values.filter(isTable));
   const insertColumns = first(tag.values.filter(isColumns));
   const context = toContext(table, toTableAliasFrom([]), insertColumns);
 
-  const result: Result[] = toResults(context, returningList?.values ?? []);
-  const params: Param[] = resolveParams(context, convertExpressionMap(context, tag.values).params);
-
-  return { params, result };
+  return { context, result: returningList?.values ?? [], params: tag.values };
 };
 
-const convertDelete = (tag: DeleteTag): Query => {
+const convertDelete = (tag: DeleteTag): RawQuery => {
   const returningList = first(tag.values.filter(isReturning));
   const table = first(tag.values.filter(isTable));
   const using = first(tag.values.filter(isUsing));
   const context = toContext(table, toTableAliasFrom(using?.values ?? []));
 
-  const result: Result[] = toResults(context, returningList?.values ?? []);
-  const params: Param[] = resolveParams(context, convertExpressionMap(context, tag.values).params);
-
-  return { params, result };
+  return { context, result: returningList?.values ?? [], params: tag.values };
 };
 
-export const convertTag = (tag: SelectTag | CombinationTag | UpdateTag | InsertTag | DeleteTag): Query => {
+const toRawQuery = (tag: SelectTag | CombinationTag | UpdateTag | InsertTag | DeleteTag): RawQuery => {
   switch (tag.tag) {
     case 'Select':
       return convertSelect(tag);
@@ -626,4 +653,18 @@ export const convertTag = (tag: SelectTag | CombinationTag | UpdateTag | InsertT
     case 'Delete':
       return convertDelete(tag);
   }
+};
+
+export const toTagParams = (tag: SelectTag | CombinationTag | UpdateTag | InsertTag | DeleteTag): Param[] => {
+  const { context, params } = toRawQuery(tag);
+  return convertExpressionMap(context, params).params;
+};
+
+export const convertTag = (tag: SelectTag | CombinationTag | UpdateTag | InsertTag | DeleteTag): Query => {
+  const { context, result, params } = toRawQuery(tag);
+
+  return {
+    result: toResults(context, result),
+    params: resolveParams(context, convertExpressionMap(context, params).params),
+  };
 };

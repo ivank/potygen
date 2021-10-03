@@ -10,6 +10,8 @@ export interface QueryParams {
     q: string;
     levelisationId: number;
     ids: number[];
+    sortField: string;
+    sortOrder: string;
     limit: number;
     offset: number;
 }

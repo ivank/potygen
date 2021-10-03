@@ -118,6 +118,25 @@ export interface QueryResult {
 "
 `;
 
+exports[`Query Interface Should convert insert sql (INSERT INTO all_types(not_null, integer_col, character_col) VALUES $$vals(notNull, integerCol, characterCol)) 1`] = `
+"export interface Query {
+    params: QueryParams;
+    result: QueryResult;
+}
+
+export interface QueryParams {
+    vals: {
+        notNull: number;
+        integerCol: number;
+        characterCol: string;
+    }[];
+}
+
+export interface QueryResult {
+}
+"
+`;
+
 exports[`Query Interface Should convert nested function explicit type sql (SELECT (ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id) 1`] = `
 "export interface Query {
     params: QueryParams;

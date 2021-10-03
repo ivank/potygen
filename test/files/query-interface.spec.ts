@@ -1,9 +1,9 @@
 import { Parser, ParserError } from '@ikerin/rd-parse';
-import { SqlGrammar } from '../src/sql.grammar';
+import { SqlGrammar } from '../../src/sql.grammar';
 import { inspect } from 'util';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
-import { convertTag } from '../src/query-interface';
+import { convertTag } from '../../src/query-interface';
 
 const sqlParser = Parser(SqlGrammar);
 

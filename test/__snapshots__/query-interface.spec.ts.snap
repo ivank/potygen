@@ -191,8 +191,12 @@ exports[`Query Interface Should convert combination select sql (
 Object {
   "params": Array [
     Object {
+      "lastPos": 155,
       "name": "joinVal",
+      "pick": Array [],
+      "pos": 129,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "val",
         "schema": "public",
@@ -201,8 +205,12 @@ Object {
       },
     },
     Object {
+      "lastPos": 282,
       "name": "id",
+      "pick": Array [],
+      "pos": 278,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -238,8 +246,12 @@ exports[`Query Interface Should convert complex row sql (SELECT (1, 2+2, :param1
 Object {
   "params": Array [
     Object {
+      "lastPos": 24,
       "name": "param1",
+      "pick": Array [],
+      "pos": 16,
       "required": false,
+      "spread": false,
       "type": "unknown",
     },
   ],
@@ -264,8 +276,12 @@ exports[`Query Interface Should convert delete with param sql (DELETE FROM table
 Object {
   "params": Array [
     Object {
+      "lastPos": 33,
       "name": "id",
+      "pick": Array [],
+      "pos": 30,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -323,8 +339,12 @@ exports[`Query Interface Should convert function param sql (SELECT ABS($id) FROM
 Object {
   "params": Array [
     Object {
+      "lastPos": 16,
       "name": "id",
+      "pick": Array [],
+      "pos": 11,
       "required": false,
+      "spread": false,
       "type": Object {
         "index": 0,
         "name": "ABS",
@@ -367,6 +387,32 @@ Object {
       },
     },
   ],
+}
+`;
+
+exports[`Query Interface Should convert insert multiple param values sql (INSERT INTO table1 VALUES $$rows(name, test)) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "lastPos": 43,
+      "name": "rows",
+      "pick": Array [
+        Object {
+          "name": "name",
+          "type": undefined,
+        },
+        Object {
+          "name": "test",
+          "type": undefined,
+        },
+      ],
+      "pos": 26,
+      "required": true,
+      "spread": true,
+      "type": "unknown",
+    },
+  ],
+  "result": Array [],
 }
 `;
 
@@ -485,13 +531,21 @@ exports[`Query Interface Should convert limit and offset params sql (SELECT id F
 Object {
   "params": Array [
     Object {
+      "lastPos": 35,
       "name": "limit",
+      "pick": Array [],
+      "pos": 28,
       "required": false,
+      "spread": false,
       "type": "string",
     },
     Object {
+      "lastPos": 49,
       "name": "offset",
+      "pick": Array [],
+      "pos": 42,
       "required": false,
+      "spread": false,
       "type": "number",
     },
   ],
@@ -513,8 +567,12 @@ exports[`Query Interface Should convert multiple params infer type from one 1 sq
 Object {
   "params": Array [
     Object {
+      "lastPos": 34,
       "name": "id",
+      "pick": Array [],
+      "pos": 30,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -541,8 +599,12 @@ exports[`Query Interface Should convert multiple params infer type from one 2 sq
 Object {
   "params": Array [
     Object {
+      "lastPos": 53,
       "name": "id",
+      "pick": Array [],
+      "pos": 49,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -569,13 +631,21 @@ exports[`Query Interface Should convert multiple params sql (SELECT :test1 AS "r
 Object {
   "params": Array [
     Object {
+      "lastPos": 14,
       "name": "test1",
+      "pick": Array [],
+      "pos": 7,
       "required": false,
+      "spread": false,
       "type": "unknown",
     },
     Object {
+      "lastPos": 31,
       "name": "test2",
+      "pick": Array [],
+      "pos": 25,
       "required": false,
+      "spread": false,
       "type": "unknown",
     },
   ],
@@ -602,8 +672,12 @@ exports[`Query Interface Should convert nested select sql (
 Object {
   "params": Array [
     Object {
+      "lastPos": 155,
       "name": "joinVal",
+      "pick": Array [],
+      "pos": 129,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "val",
         "schema": "public",
@@ -612,8 +686,12 @@ Object {
       },
     },
     Object {
+      "lastPos": 185,
       "name": "id",
+      "pick": Array [],
+      "pos": 181,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -649,8 +727,12 @@ exports[`Query Interface Should convert nested typed array param in select sql (
 Object {
   "params": Array [
     Object {
+      "lastPos": 24,
       "name": "param",
+      "pick": Array [],
+      "pos": 7,
       "required": false,
+      "spread": false,
       "type": Object {
         "items": Object {
           "items": Object {
@@ -681,6 +763,41 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert order by with params sql (SELECT * FROM table1 ORDER BY CASE WHEN $param1 = 'val1' AND $param2 = 'DESC' THEN col2 END DESC) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "lastPos": 96,
+      "name": "param1",
+      "pick": Array [],
+      "pos": 40,
+      "required": false,
+      "spread": false,
+      "type": "string",
+    },
+    Object {
+      "lastPos": 96,
+      "name": "param2",
+      "pick": Array [],
+      "pos": 61,
+      "required": false,
+      "spread": false,
+      "type": "string",
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "*",
+      "type": Object {
+        "schema": "public",
+        "table": "table1",
+        "type": "star",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert simple delete sql (DELETE FROM table1) 1`] = `
 Object {
   "params": Array [],
@@ -692,8 +809,12 @@ exports[`Query Interface Should convert single param sql (SELECT :test1 AS "res1
 Object {
   "params": Array [
     Object {
+      "lastPos": 23,
       "name": "test1",
+      "pick": Array [],
+      "pos": 7,
       "required": false,
+      "spread": false,
       "type": "unknown",
     },
   ],
@@ -772,8 +893,12 @@ exports[`Query Interface Should convert typed array param in select sql (SELECT 
 Object {
   "params": Array [
     Object {
+      "lastPos": 20,
       "name": "param",
+      "pick": Array [],
+      "pos": 7,
       "required": false,
+      "spread": false,
       "type": Object {
         "items": "number",
         "type": "array",
@@ -796,8 +921,12 @@ exports[`Query Interface Should convert typed param in where sql (SELECT col1 FR
 Object {
   "params": Array [
     Object {
+      "lastPos": 33,
       "name": "id",
+      "pick": Array [],
+      "pos": 30,
       "required": false,
+      "spread": false,
       "type": "number",
     },
   ],
@@ -883,8 +1012,12 @@ exports[`Query Interface Should convert update returning star sql (UPDATE table1
 Object {
   "params": Array [
     Object {
+      "lastPos": 43,
       "name": "id",
+      "pick": Array [],
+      "pos": 39,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -916,8 +1049,12 @@ exports[`Query Interface Should convert where params sql (
 Object {
   "params": Array [
     Object {
+      "lastPos": 97,
       "name": "id",
+      "pick": Array [],
+      "pos": 83,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -926,8 +1063,12 @@ Object {
       },
     },
     Object {
+      "lastPos": 120,
       "name": "val1",
+      "pick": Array [],
+      "pos": 108,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "col1",
         "schema": "public",

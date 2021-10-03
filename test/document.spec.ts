@@ -32,6 +32,10 @@ describe('Query Interface', () => {
     ['enum', `SELECT 'Pending'::account_levelisation_state`],
     ['enum column', `SELECT state FROM account_levelisations`],
     ['simple', `SELECT id, character_col FROM all_types WHERE id = :id`],
+    [
+      'insert',
+      `INSERT INTO all_types(not_null, integer_col, character_col) VALUES $$vals(notNull, integerCol, characterCol)`,
+    ],
   ])('Should convert %s sql (%s)', async (_, sql) => {
     const ast = parser(sql);
     const query = convertTag(ast);

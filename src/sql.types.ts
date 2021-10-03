@@ -1,26 +1,349 @@
-export type NullTag = { tag: 'Null' };
-export type QuotedNameTag = { tag: 'QuotedName'; value: string };
-export type IdentifierTag = { tag: 'Identifier'; value: string };
-export type ParameterTag = { tag: 'Parameter'; value: string; type: 'native' | 'values'; required: boolean };
-export type QualifiedIdentifierTag = { tag: 'QualifiedIdentifier'; values: IdentifierTag[] };
-export type AsTag = { tag: 'As'; value: IdentifierTag };
-export type StringTag = { tag: 'String'; value: string };
-export type NumberTag = { tag: 'Number'; value: string };
-export type BooleanTag = { tag: 'Boolean'; value: string };
-export type ConstantTag = NullTag | StringTag | NumberTag | BooleanTag;
-export type ArrayIndexRangeTag = { tag: 'ArrayIndexRange'; left: ExpressionTag; right: ExpressionTag };
-export type ArrayIndexTag = { tag: 'ArrayIndex'; value: ExpressionTag; index: ExpressionTag | ArrayIndexRangeTag };
-export type CountTag = { tag: 'Count'; value: string | ParameterTag };
-export type TypeTag = { tag: 'Type'; value: string; param?: string };
-export type TypeArrayTag = { tag: 'TypeArray'; value: TypeTag; dimensions: number };
-export type AnyTypeTag = TypeTag | TypeArrayTag;
-export type DistinctTag = { tag: 'Distinct'; values: IdentifierTag[] };
-export type StarIdentifierTag = { tag: 'StarIdentifier' };
-export type StarQualifiedIdentifierTag = {
+export interface SqlTag {
+  pos: number;
+  lastPos: number;
+  tag: string;
+}
+
+export interface NullTag extends SqlTag {
+  tag: 'Null';
+}
+export interface QuotedNameTag extends SqlTag {
+  tag: 'QuotedName';
+  value: string;
+}
+export interface IdentifierTag extends SqlTag {
+  tag: 'Identifier';
+  value: string;
+}
+export interface ParameterTag extends SqlTag {
+  tag: 'Parameter';
+  type: 'spread' | 'single';
+  value: string;
+  required: boolean;
+  pick: IdentifierTag[];
+  lastPos: number;
+}
+export interface QualifiedIdentifierTag extends SqlTag {
+  tag: 'QualifiedIdentifier';
+  values: IdentifierTag[];
+}
+export interface AsTag extends SqlTag {
+  tag: 'As';
+  value: IdentifierTag;
+}
+export interface StringTag extends SqlTag {
+  tag: 'String';
+  value: string;
+}
+export interface NumberTag extends SqlTag {
+  tag: 'Number';
+  value: string;
+}
+export interface BooleanTag extends SqlTag {
+  tag: 'Boolean';
+  value: string;
+}
+export interface ArrayIndexRangeTag extends SqlTag {
+  tag: 'ArrayIndexRange';
+  left: ExpressionTag;
+  right: ExpressionTag;
+}
+export interface ArrayIndexTag extends SqlTag {
+  tag: 'ArrayIndex';
+  value: ExpressionTag;
+  index: ExpressionTag | ArrayIndexRangeTag;
+}
+export interface CountTag extends SqlTag {
+  tag: 'Count';
+  value: string | ParameterTag;
+}
+export interface TypeTag extends SqlTag {
+  tag: 'Type';
+  value: string;
+  param?: string;
+}
+export interface TypeArrayTag extends SqlTag {
+  tag: 'TypeArray';
+  value: TypeTag;
+  dimensions: number;
+}
+export interface DistinctTag extends SqlTag {
+  tag: 'Distinct';
+  values: IdentifierTag[];
+}
+export interface StarIdentifierTag extends SqlTag {
+  tag: 'StarIdentifier';
+}
+export interface StarQualifiedIdentifierTag extends SqlTag {
   tag: 'StarQualifiedIdentifier';
   values: (IdentifierTag | StarIdentifierTag)[];
-};
-export type RowTag = { tag: 'Row'; values: ExpressionTag[] };
+}
+export interface RowTag extends SqlTag {
+  tag: 'Row';
+  values: ExpressionTag[];
+}
+export interface NativePgCastTag extends SqlTag {
+  tag: 'PgCast';
+  value: ConstantTag | QualifiedIdentifierTag | ExpressionTag | ParameterTag;
+  type: AnyTypeTag;
+}
+
+export interface WhenTag extends SqlTag {
+  tag: 'When';
+  condition: ExpressionTag;
+  value: ExpressionTag;
+}
+export interface ElseTag extends SqlTag {
+  tag: 'Else';
+  value: ExpressionTag;
+}
+export interface CaseTag extends SqlTag {
+  tag: 'Case';
+  expression?: CastableDataTypeTag;
+  values: (WhenTag | ElseTag)[];
+}
+export interface NullIfTag extends SqlTag {
+  tag: 'NullIfTag';
+  value: ExpressionTag;
+  conditional: ExpressionTag;
+}
+export interface ConditionalExpressionTag extends SqlTag {
+  tag: 'ConditionalExpression';
+  type: 'GREATEST' | 'LEAST' | 'COALESCE';
+  values: ExpressionTag[];
+}
+export interface OperatorTag extends SqlTag {
+  tag: 'Operator';
+  value: string;
+}
+export interface BinaryExpressionTag extends SqlTag {
+  tag: 'BinaryExpression';
+  left: DataTypeTag | OperatorExpressionTag;
+  right: DataTypeTag | OperatorExpressionTag;
+  operator: OperatorTag;
+}
+export interface UnaryExpressionTag extends SqlTag {
+  tag: 'UnaryExpression';
+  value: DataTypeTag | OperatorExpressionTag;
+  operator: OperatorTag;
+}
+export interface BetweenTag extends SqlTag {
+  tag: 'Between';
+  left: DataTypeTag;
+  right: DataTypeTag;
+  value: DataTypeTag;
+}
+export interface CastTag extends SqlTag {
+  tag: 'Cast';
+  value: DataTypeTag;
+  type: AnyTypeTag;
+}
+export interface PgCastTag extends SqlTag {
+  tag: 'PgCast';
+  value: DataTypeTag;
+  type: AnyTypeTag;
+}
+export interface ArrayConstructorTag extends SqlTag {
+  tag: 'ArrayConstructor';
+  values: ExpressionTag[];
+}
+export interface FunctionTag extends SqlTag {
+  tag: 'Function';
+  value: IdentifierTag;
+  args: (ExpressionTag | OrderByTag)[];
+}
+export interface SubqueryExpressionTag extends SqlTag {
+  tag: 'SubqueryExpression';
+  operator?: OperatorTag;
+  type?: 'IN' | 'NOT IN' | 'ANY' | 'SOME' | 'ALL' | 'EXISTS';
+  value?: QualifiedIdentifierTag;
+  subquery: SelectTag;
+}
+export interface SelectListItemTag extends SqlTag {
+  tag: 'SelectListItem';
+  value: ExpressionTag | StarQualifiedIdentifierTag;
+  as?: AsTag;
+}
+export interface SelectListTag extends SqlTag {
+  tag: 'SelectList';
+  values: SelectListItemTag[];
+}
+export interface FromListItemTag extends SqlTag {
+  tag: 'FromListItem';
+  value: QualifiedIdentifierTag | ExpressionTag | SelectTag;
+  as?: AsTag;
+}
+export interface JoinTypeTag extends SqlTag {
+  tag: 'JoinType';
+  value: 'LEFT' | 'RIGHT' | 'OUTER' | 'CROSS';
+}
+export interface JoinOnTag extends SqlTag {
+  tag: 'JoinOn';
+  value: ExpressionTag;
+}
+export interface JoinUsingTag extends SqlTag {
+  tag: 'JoinUsing';
+  values: QualifiedIdentifierTag[];
+}
+export interface JoinTag extends SqlTag {
+  tag: 'Join';
+  type: JoinTypeTag;
+  table: QualifiedIdentifierTag;
+  values: (AsTag | JoinOnTag | JoinUsingTag)[];
+}
+export interface FromListTag extends SqlTag {
+  tag: 'FromList';
+  values: FromListItemTag[];
+}
+export interface FromTag extends SqlTag {
+  tag: 'From';
+  list: FromListTag;
+  join: JoinTag[];
+}
+export interface WhereTag extends SqlTag {
+  tag: 'Where';
+  value: ExpressionTag;
+}
+export interface GroupByTag extends SqlTag {
+  tag: 'GroupBy';
+  values: QualifiedIdentifierTag[];
+}
+export interface HavingTag extends SqlTag {
+  tag: 'Having';
+  value: ExpressionTag;
+}
+export interface CombinationTag extends SqlTag {
+  tag: 'Combination';
+  type: 'UNION' | 'INTERSECT' | 'EXCEPT';
+  values: SelectParts[];
+}
+export interface OrderDirectionTag extends SqlTag {
+  tag: 'OrderDirection';
+  value: 'ASC' | 'DESC' | 'USNIG >' | 'USING <';
+}
+export interface OrderByItemTag extends SqlTag {
+  tag: 'OrderByItem';
+  value: ExpressionTag;
+  direction: OrderDirectionTag;
+}
+export interface OrderByTag extends SqlTag {
+  tag: 'OrderBy';
+  values: OrderByItemTag[];
+}
+export interface LimitTag extends SqlTag {
+  tag: 'Limit';
+  value: CountTag;
+}
+export interface OffsetTag extends SqlTag {
+  tag: 'Offset';
+  value: CountTag;
+}
+export interface SelectTag extends SqlTag {
+  tag: 'Select';
+  values: (SelectParts | OrderByTag | CombinationTag | LimitTag | OffsetTag)[];
+}
+
+export interface DefaultTag extends SqlTag {
+  tag: 'Default';
+}
+export interface SetItemTag extends SqlTag {
+  tag: 'SetItem';
+  column: QualifiedIdentifierTag;
+  value: ExpressionTag | DefaultTag;
+}
+export interface SetListTag extends SqlTag {
+  tag: 'SetList';
+  values: SetItemTag[];
+}
+export interface ColumnsTag extends SqlTag {
+  tag: 'Columns';
+  values: IdentifierTag[];
+}
+export interface ValuesTag extends SqlTag {
+  tag: 'Values';
+  values: (ExpressionTag | DefaultTag)[];
+}
+export interface SetMapTag extends SqlTag {
+  tag: 'SetMap';
+  columns: ColumnsTag;
+  values: ValuesTag | SelectTag;
+}
+export interface SetTag extends SqlTag {
+  tag: 'Set';
+  value: SetListTag | SetMapTag;
+}
+export interface TableTag extends SqlTag {
+  tag: 'Table';
+  value: QualifiedIdentifierTag;
+  as?: AsTag;
+}
+export interface UpdateFromTag extends SqlTag {
+  tag: 'UpdateFrom';
+  values: FromListItemTag[];
+}
+export interface ReturningListItemTag extends SqlTag {
+  tag: 'ReturningListItem';
+  value: ExpressionTag | StarQualifiedIdentifierTag;
+  as?: AsTag;
+}
+export interface ReturningTag extends SqlTag {
+  tag: 'Returning';
+  values: ReturningListItemTag[];
+}
+export interface UpdateTag extends SqlTag {
+  tag: 'Update';
+  values: (SetTag | TableTag | UpdateFromTag | WhereTag | ReturningTag)[];
+}
+
+export interface UsingTag extends SqlTag {
+  tag: 'Using';
+  values: FromListItemTag[];
+}
+export interface DeleteTag extends SqlTag {
+  tag: 'Delete';
+  values: (TableTag | UsingTag | WhereTag | ReturningTag)[];
+}
+
+export interface ValuesListTag extends SqlTag {
+  tag: 'ValuesList';
+  values: (ParameterTag | ValuesTag)[];
+}
+export interface CollateTag extends SqlTag {
+  tag: 'Collate';
+  value: string;
+}
+export interface ConflictTargetTag extends SqlTag {
+  tag: 'ConflictTarget';
+  values: (TableTag | ExpressionTag | CollateTag | WhereTag)[];
+}
+export interface ConflictConstraintTag extends SqlTag {
+  tag: 'ConflictConstraint';
+  value: string;
+}
+export interface DoNothingTag extends SqlTag {
+  tag: 'DoNothing';
+}
+export interface DoUpdateTag extends SqlTag {
+  tag: 'DoUpdate';
+  value: SetTag;
+  where: WhereTag;
+}
+export interface ConflictTag extends SqlTag {
+  tag: 'Conflict';
+  values: (ConflictTargetTag | ConflictConstraintTag | DoNothingTag | DoUpdateTag)[];
+}
+export interface InsertTag extends SqlTag {
+  tag: 'Insert';
+  values: (TableTag | SelectTag | ValuesListTag | ConflictTag | ColumnsTag | ReturningTag)[];
+}
+
+type ConstantTag = NullTag | StringTag | NumberTag | BooleanTag;
+type AnyTypeTag = TypeTag | TypeArrayTag;
+type SelectParts = DistinctTag | SelectListTag | FromTag | WhereTag | GroupByTag | HavingTag;
+type OperatorExpressionTag = BinaryExpressionTag | UnaryExpressionTag;
+type AnyCastTag = CastTag | PgCastTag;
+type DataTypeTag = CaseTag | CastableDataTypeTag;
+
 export type CastableDataTypeTag =
   | FunctionTag
   | ArrayIndexTag
@@ -28,43 +351,8 @@ export type CastableDataTypeTag =
   | QualifiedIdentifierTag
   | SelectTag
   | ParameterTag
-  | { tag: 'PgCast'; value: ConstantTag | QualifiedIdentifierTag | ExpressionTag | ParameterTag; type: AnyTypeTag };
-export type WhenTag = { tag: 'When'; condition: ExpressionTag; value: ExpressionTag };
-export type ElseTag = { tag: 'Else'; value: ExpressionTag };
-export type CaseTag = { tag: 'Case'; expression?: CastableDataTypeTag; values: (WhenTag | ElseTag)[] };
-export type NullIfTag = { tag: 'NullIfTag'; value: ExpressionTag; conditional: ExpressionTag };
-export type ConditionalExpressionTag = {
-  tag: 'ConditionalExpression';
-  type: 'GREATEST' | 'LEAST' | 'COALESCE';
-  values: ExpressionTag[];
-};
-export type DataTypeTag = CaseTag | CastableDataTypeTag;
-export type OperatorTag = { tag: 'Operator'; value: string };
-export type BinaryExpressionTag = {
-  tag: 'BinaryExpression';
-  left: DataTypeTag | OperatorExpressionTag;
-  right: DataTypeTag | OperatorExpressionTag;
-  operator: OperatorTag;
-};
-export type UnaryExpressionTag = {
-  tag: 'UnaryExpression';
-  value: DataTypeTag | OperatorExpressionTag;
-  operator: OperatorTag;
-};
-export type OperatorExpressionTag = BinaryExpressionTag | UnaryExpressionTag;
-export type BetweenTag = { tag: 'Between'; left: DataTypeTag; right: DataTypeTag; value: DataTypeTag };
-export type CastTag = { tag: 'Cast'; value: DataTypeTag; type: AnyTypeTag };
-export type PgCastTag = { tag: 'PgCast'; value: DataTypeTag; type: AnyTypeTag };
-export type AnyCastTag = CastTag | PgCastTag;
-export type ArrayConstructorTag = { tag: 'ArrayConstructor'; values: ExpressionTag[] };
-export type FunctionTag = { tag: 'Function'; value: IdentifierTag; args: (ExpressionTag | OrderByTag)[] };
-export type SubqueryExpressionTag = {
-  tag: 'SubqueryExpression';
-  operator?: OperatorTag;
-  type?: 'IN' | 'NOT IN' | 'ANY' | 'SOME' | 'ALL' | 'EXISTS';
-  value?: QualifiedIdentifierTag;
-  subquery: SelectTag;
-};
+  | NativePgCastTag;
+
 export type ExpressionTag =
   | AnyCastTag
   | DataTypeTag
@@ -75,76 +363,6 @@ export type ExpressionTag =
   | SubqueryExpressionTag
   | NullIfTag
   | ConditionalExpressionTag;
-export type SelectListItemTag = {
-  tag: 'SelectListItem';
-  value: ExpressionTag | StarQualifiedIdentifierTag;
-  as?: AsTag;
-};
-export type SelectListTag = { tag: 'SelectList'; values: SelectListItemTag[] };
-export type FromListItemTag = {
-  tag: 'FromListItem';
-  value: QualifiedIdentifierTag | ExpressionTag | SelectTag;
-  as?: AsTag;
-};
-export type JoinTypeTag = { tag: 'JoinType'; value: 'LEFT' | 'RIGHT' | 'OUTER' | 'CROSS' };
-export type JoinOnTag = { tag: 'JoinOn'; value: ExpressionTag };
-export type JoinUsingTag = { tag: 'JoinUsing'; values: QualifiedIdentifierTag[] };
-export type JoinTag = {
-  tag: 'Join';
-  type: JoinTypeTag;
-  table: QualifiedIdentifierTag;
-  values: (AsTag | JoinOnTag | JoinUsingTag)[];
-};
-export type FromListTag = { tag: 'FromList'; values: FromListItemTag[] };
-export type FromTag = { tag: 'From'; list: FromListTag; join: JoinTag[] };
-export type WhereTag = { tag: 'Where'; value: ExpressionTag };
-export type GroupByTag = { tag: 'GroupBy'; values: QualifiedIdentifierTag[] };
-export type HavingTag = { tag: 'Having'; value: ExpressionTag };
-type SelectParts = DistinctTag | SelectListTag | FromTag | WhereTag | GroupByTag | HavingTag;
-export type CombinationTag = { tag: 'Combination'; type: 'UNION' | 'INTERSECT' | 'EXCEPT'; values: SelectParts[] };
-export type OrderDirectionTag = { tag: 'OrderDirection'; value: 'ASC' | 'DESC' | 'USNIG >' | 'USING <' };
-export type OrderByItemTag = { tag: 'OrderByItem'; value: ExpressionTag; direction: OrderDirectionTag };
-export type OrderByTag = { tag: 'OrderBy'; values: OrderByItemTag[] };
-export type LimitTag = { tag: 'Limit'; value: CountTag };
-export type OffsetTag = { tag: 'Offset'; value: CountTag };
-export type SelectTag = { tag: 'Select'; values: (SelectParts | OrderByTag | CombinationTag | LimitTag | OffsetTag)[] };
-
-export type DefaultTag = { tag: 'Default' };
-export type SetItemTag = { tag: 'SetItem'; column: QualifiedIdentifierTag; value: ExpressionTag | DefaultTag };
-export type SetListTag = { tag: 'SetList'; values: SetItemTag[] };
-export type ColumnsTag = { tag: 'Columns'; values: IdentifierTag[] };
-export type ValuesTag = { tag: 'Values'; values: (ExpressionTag | DefaultTag)[] };
-export type SetMapTag = { tag: 'SetMap'; columns: ColumnsTag; values: ValuesTag | SelectTag };
-export type SetTag = { tag: 'Set'; value: SetListTag | SetMapTag };
-export type TableTag = { tag: 'Table'; value: QualifiedIdentifierTag; as?: AsTag };
-export type UpdateFromTag = { tag: 'UpdateFrom'; values: FromListItemTag[] };
-export type ReturningListItemTag = {
-  tag: 'ReturningListItem';
-  value: ExpressionTag | StarQualifiedIdentifierTag;
-  as?: AsTag;
-};
-export type ReturningTag = { tag: 'Returning'; values: ReturningListItemTag[] };
-export type UpdateTag = { tag: 'Update'; values: (SetTag | TableTag | UpdateFromTag | WhereTag | ReturningTag)[] };
-
-export type UsingTag = { tag: 'Using'; values: FromListItemTag[] };
-export type DeleteTag = { tag: 'Delete'; values: (TableTag | UsingTag | WhereTag | ReturningTag)[] };
-
-export type ValuesListTag = { tag: 'ValuesList'; values: ValuesTag[] };
-export type CollateTag = { tag: 'Collate'; value: string };
-export type ConflictTargetTag = { tag: 'ConflictTarget'; values: (TableTag | ExpressionTag | CollateTag | WhereTag)[] };
-export type ConflictConstraintTag = { tag: 'ConflictConstraint'; value: string };
-export type DoNothingTag = { tag: 'DoNothing' };
-export type DoUpdateTag = { tag: 'DoUpdate'; value: SetTag; where: WhereTag };
-export type ConflictTag = {
-  tag: 'Conflict';
-  values: (ConflictTargetTag | ConflictConstraintTag | DoNothingTag | DoUpdateTag)[];
-};
-export type InsertTag = {
-  tag: 'Insert';
-  values: (TableTag | SelectTag | ValuesListTag | ConflictTag | ColumnsTag | ReturningTag)[];
-};
-
-export type SqlTag = { tag: string };
 
 export type Tag =
   | NullTag
@@ -311,7 +529,7 @@ export const isReturning = (value: SqlTag): value is ReturningTag => value.tag =
 export const isUpdate = (value: SqlTag): value is UpdateTag => value.tag === 'Update';
 export const isUsing = (value: SqlTag): value is UsingTag => value.tag === 'Using';
 export const isDelete = (value: SqlTag): value is DeleteTag => value.tag === 'Delete';
-export const isValuesListTag = (value: SqlTag): value is ValuesListTag => value.tag === 'ValuesList';
+export const isValuesList = (value: SqlTag): value is ValuesListTag => value.tag === 'ValuesList';
 export const isInsertTag = (value: SqlTag): value is InsertTag => value.tag === 'Insert';
 export const isQuotedName = (value: SqlTag): value is InsertTag => value.tag === 'QuotedName';
 export const isCollateTag = (value: SqlTag): value is CollateTag => value.tag === 'Collate';

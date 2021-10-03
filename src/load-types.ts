@@ -18,7 +18,7 @@ import {
   isLiteralType,
 } from './query-interface';
 import { ClientBase, QueryConfig } from 'pg';
-import { diffBy, isEmpty, uniqBy } from './util';
+import { diffBy, isEmpty, isNil, uniqBy } from './util';
 
 export type LoadedUnion = { type: 'union'; items: LoadedType[]; optional?: boolean };
 export type LoadedArray = { type: 'array'; items: LoadedType; optional?: boolean };
@@ -27,6 +27,7 @@ export type LoadedConstant = {
   type: 'string' | 'number' | 'boolean' | 'Date' | 'null' | 'json' | 'unknown';
   optional?: boolean;
 };
+export type LoadedValuesPick = { type: 'pick'; items: Array<{ name: string; value: LoadedType }>; optional?: boolean };
 export type LoadedType = LoadedUnion | LoadedArray | LoadedLiteral | LoadedConstant;
 
 export interface LoadedResult {
@@ -36,7 +37,7 @@ export interface LoadedResult {
 
 export interface LoadedParam {
   name: string;
-  type: LoadedType;
+  type: LoadedType | LoadedValuesPick;
 }
 
 export interface LoadedQuery {
@@ -87,6 +88,8 @@ interface Context {
 type ToType = (type?: PropertyType | FunctionType | FunctionArgType) => LoadedType;
 
 export const isLoadedUnionType = (type: LoadedType): type is LoadedUnion => type.type === 'union';
+export const isLoadedValuesPick = (type: LoadedType | LoadedValuesPick): type is LoadedValuesPick =>
+  type.type === 'pick';
 export const isLoadedArrayType = (type: LoadedType): type is LoadedArray => type.type === 'array';
 export const isLoadedLiteralType = (type: LoadedType): type is LoadedLiteral => type.type === 'literal';
 export const isLoadedConstantType = (type: LoadedType): type is LoadedConstant =>
@@ -299,7 +302,10 @@ const mergeContext = (dst: Context, src: Context): Context => ({
 });
 
 const toLoadContext = ({ params, result }: Query): LoadContext => {
-  const types = [...params.map((item) => item.type), ...result.map((item) => item.type)];
+  const types = [
+    ...params.flatMap((item) => [item.type, ...item.pick.map((item) => item.type).filter(isNil)]),
+    ...result.map((item) => item.type),
+  ];
   return {
     columnTypes: types.flatMap(toColumnType),
     starTypes: types.filter(isStarType),
@@ -330,7 +336,15 @@ const toLoadedQuery = (data: DataContext, query: Query): LoadedQuery => {
   return {
     params: query.params.map((item) => ({
       ...item,
-      type: item.required === true ? { ...toType(item.type), optional: false } : toType(item.type),
+      type:
+        item.pick.length > 0
+          ? {
+              type: 'pick',
+              items: item.pick.map(({ name, type }) => ({ name, value: toType(type) })),
+            }
+          : item.required === true
+          ? { ...toType(item.type), optional: false }
+          : toType(item.type),
     })),
     result: query.result.flatMap((item) => {
       const type = item.type;

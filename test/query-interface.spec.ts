@@ -110,6 +110,11 @@ describe('Query Interface', () => {
     ['simple delete', 'DELETE FROM table1'],
     ['delete with param', 'DELETE FROM table1 WHERE id = :id'],
     ['delete with returning', 'DELETE FROM table1 RETURNING id, col2'],
+    [
+      'order by with params',
+      "SELECT * FROM table1 ORDER BY CASE WHEN $param1 = 'val1' AND $param2 = 'DESC' THEN col2 END DESC",
+    ],
+    ['insert multiple param values', 'INSERT INTO table1 VALUES $$rows(name, test)'],
   ])('Should convert %s sql (%s)', (_, sql) => {
     const ast = parser(sql);
     expect(convertTag(ast)).toMatchSnapshot();

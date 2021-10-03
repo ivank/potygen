@@ -1,5 +1,5 @@
 import { Parser, ParserError } from '@ikerin/rd-parse';
-import { SqlGrammar } from '../src/sql.grammar';
+import { SqlGrammar } from '../../src/sql.grammar';
 import { inspect } from 'util';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';

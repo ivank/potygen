@@ -11,6 +11,7 @@ import {
   Plus,
   IfNot,
   FunctionRule,
+  Stack,
 } from '@ikerin/rd-parse';
 import {
   IdentifierTag,
@@ -88,6 +89,8 @@ import {
   ConditionalExpressionTag,
 } from './sql.types';
 
+const context = ({ pos, lastSeen: { pos: lastPos } }: Stack): { pos: number; lastPos: number } => ({ pos, lastPos });
+
 /**
  * Comma separated list
  */
@@ -107,41 +110,51 @@ const OptionalBrackets = (rule: Rule) => Any(Brackets(rule), rule);
  */
 const NameRule = /^([A-Z_][A-Z0-9_]*)/i;
 const QuotedNameRule = /^"((?:""|[^"])*)"/;
-const QuotedName = Node<QuotedNameTag>(QuotedNameRule, ([value]) => ({ tag: 'QuotedName', value }));
+const QuotedName = Node<QuotedNameTag>(QuotedNameRule, ([value], $) => ({ tag: 'QuotedName', value, ...context($) }));
 
 const RestrictedReservedKeywords = /^(?:ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|ABORT|ABSOLUTE|ACCESS|ACTION|ADD|ADMIN|AFTER|AGGREGATE|ALSO|ALTER|ASSERTION|ASSIGNMENT|AT|BACKWARD|BEFORE|BEGIN|BY|CACHE|CALLED|CASCADE|CHAIN|CHARACTERISTICS|CHECKPOINT|CLASS|CLOSE|CLUSTER|COMMENT|COMMIT|COMMITTED|CONNECTION|CONSTRAINTS|CONVERSION|COPY|CREATEDB|CREATEROLE|CREATEUSER|CSV|CURSOR|CYCLE|DATABASE|DAY|DEALLOCATE|DECLARE|DEFAULTS|DEFERRED|DEFINER|DELETE|DELIMITER|DELIMITERS|DISABLE|DOMAIN|DOUBLE|DROP|EACH|ENABLE|ENCODING|ENCRYPTED|ESCAPE|EXCLUDING|EXCLUSIVE|EXECUTE|EXPLAIN|EXTERNAL|FETCH|FIRST|FORCE|FORWARD|FUNCTION|GLOBAL|GRANTED|HANDLER|HEADER|HOLD|HOUR|IMMEDIATE|IMMUTABLE|IMPLICIT|INCLUDING|INCREMENT|INDEX|INHERIT|INHERITS|INPUT|INSENSITIVE|INSERT|INSTEAD|INVOKER|ISOLATION|KEY|LANCOMPILER|LANGUAGE|LARGE|LAST|LEVEL|LISTEN|LOAD|LOCAL|LOCATION|LOCK|LOGIN|MATCH|MAXVALUE|MINUTE|MINVALUE|MODE|MONTH|MOVE|NAMES|NEXT|NO|NOCREATEDB|NOCREATEROLE|NOCREATEUSER|NOINHERIT|NOLOGIN|NOSUPERUSER|NOTHING|NOTIFY|NOWAIT|OBJECT|OF|OIDS|OPERATOR|OPTION|OWNER|PARTIAL|PASSWORD|PREPARE|PREPARED|PRESERVE|PRIOR|PRIVILEGES|PROCEDURAL|PROCEDURE|QUOTE|READ|RECHECK|REINDEX|RELATIVE|RELEASE|RENAME|REPEATABLE|REPLACE|RESET|RESTART|RESTRICT|RETURNS|REVOKE|ROLE|ROLLBACK|ROWS|RULE|SAVEPOINT|SCHEMA|SCROLL|SECOND|SECURITY|SEQUENCE|SERIALIZABLE|SESSION|SET|SHARE|SHOW|SIMPLE|STABLE|START|STATEMENT|STATISTICS|STDIN|STDOUT|STORAGE|STRICT|SUPERUSER|SYSID|SYSTEM|TABLESPACE|TEMP|TEMPLATE|TEMPORARY|TOAST|TRANSACTION|TRIGGER|TRUNCATE|TRUSTED|TYPE|UNCOMMITTED|UNENCRYPTED|UNKNOWN|UNLISTEN|UNTIL|UPDATE|VACUUM|VALID|VALIDATOR|VALUES|VARYING|VIEW|VOLATILE|WITH|WITHOUT|WORK|WRITE|YEAR|ZONE|CROSS|OUTER|RIGHT|LEFT|FULL|JOIN|INNER|RETURNING)$/i;
 const ReservedKeywords = /^(ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|DER|RETURNING)$/i;
 
 const RestrictedIdentifier = Node<IdentifierTag>(
   Any(IfNot(RestrictedReservedKeywords, NameRule), QuotedNameRule),
-  ([value]) => ({ tag: 'Identifier', value }),
+  ([value], $) => ({ tag: 'Identifier', value, ...context($) }),
 );
-const UnrestrictedIdentifier = Node<IdentifierTag>(Any(NameRule, QuotedNameRule), ([value]) => {
-  return { tag: 'Identifier', value };
+const UnrestrictedIdentifier = Node<IdentifierTag>(Any(NameRule, QuotedNameRule), ([value], $) => {
+  return { tag: 'Identifier', value, ...context($) };
 });
-const Identifier = Node<IdentifierTag>(Any(IfNot(ReservedKeywords, NameRule), QuotedNameRule), ([value]) => {
-  return { tag: 'Identifier', value };
+const Identifier = Node<IdentifierTag>(Any(IfNot(ReservedKeywords, NameRule), QuotedNameRule), ([value], $) => {
+  return { tag: 'Identifier', value, ...context($) };
 });
-const QualifiedIdentifier = Node<QualifiedIdentifierTag>(List(Identifier, { separator: '.' }), (values) => {
-  return { tag: 'QualifiedIdentifier', values };
+const QualifiedIdentifier = Node<QualifiedIdentifierTag>(List(Identifier, { separator: '.' }), (values, $) => {
+  return { tag: 'QualifiedIdentifier', values, ...context($) };
 });
 
 /**
  * Parameteer
  */
-const Parameter = Node<ParameterTag>(All(/^(\$\$|\$|\:)/, NameRule, Optional(/^(\!)/)), ([type, value, required]) => {
-  return { tag: 'Parameter', value, type: type === '$$' ? 'values' : 'native', required: !!required };
-});
+const Parameter = Node<ParameterTag>(
+  All(/^(\$\$|\$|\:)/, NameRule, Optional(Any(/^(\!)/, Brackets(List(Identifier))))),
+  ([type, value, ...rest], $) => ({
+    tag: 'Parameter',
+    value,
+    type: type === '$$' ? 'spread' : 'single',
+    required: rest.includes('!'),
+    pick: rest.filter((item) => item !== '!'),
+    ...context($),
+  }),
+);
 
 /**
  * AS Clause
  */
-const As = Node<AsTag>(Any(All(/^AS/i, Identifier), RestrictedIdentifier), ([value]) => ({ tag: 'As', value }));
+const As = Node<AsTag>(Any(All(/^AS/i, Identifier), RestrictedIdentifier), ([value], $) => {
+  return { tag: 'As', value, ...context($) };
+});
 
 /**
  * Constant
  */
-const Null = Node<NullTag>(/^NULL/i, () => ({ tag: 'Null' }));
+const Null = Node<NullTag>(/^NULL/i, (_, $) => ({ tag: 'Null', ...context($) }));
 const Integer = /^([0-9]+)/;
 const NumberRule = Any(
   Integer,
@@ -149,14 +162,16 @@ const NumberRule = Any(
   /^(([0-9]+)?\.[0-9]+(e([+-]?[0-9]+)?))/,
   /^([0-9]+e([+-]?[0-9]+))'/,
 );
-const String = Node<StringTag>(/^'((?:''|[^'])*)'/, ([value]) => ({ tag: 'String', value }));
-const DollarQuatedString = Node<StringTag>(/^\$\$((?:\$\$|.)*)\$\$/, ([value]) => ({ tag: 'String', value }));
+const String = Node<StringTag>(/^'((?:''|[^'])*)'/, ([value], $) => ({ tag: 'String', value, ...context($) }));
+const DollarQuatedString = Node<StringTag>(/^\$\$((?:\$\$|.)*)\$\$/, ([value], $) => {
+  return { tag: 'String', value, ...context($) };
+});
 const CustomDollarQuatedString = Node<StringTag>(
   /^\$(?<tag>[A-Z_][A-Z0-9_]*)\$((?:\$\$|.)*)\$\k<tag>\$/i,
-  ([tag, value]) => ({ tag: 'String', value }),
+  ([_, value], $) => ({ tag: 'String', value, ...context($) }),
 );
-const Number = Node<NumberTag>(NumberRule, ([value]) => ({ tag: 'Number', value }));
-const Boolean = Node<BooleanTag>(/^(TRUE|FALSE)/i, ([value]) => ({ tag: 'Boolean', value }));
+const Number = Node<NumberTag>(NumberRule, ([value], $) => ({ tag: 'Number', value, ...context($) }));
+const Boolean = Node<BooleanTag>(/^(TRUE|FALSE)/i, ([value], $) => ({ tag: 'Boolean', value, ...context($) }));
 const Constant = Any(Null, String, DollarQuatedString, CustomDollarQuatedString, Number, Boolean);
 
 /**
@@ -202,11 +217,11 @@ const Type = Node<TypeTag>(
     /^(xml)/i,
     NameRule,
   ),
-  ([value, param]) => ({ tag: 'Type', value, param }),
+  ([value, param], $) => ({ tag: 'Type', value, param, ...context($) }),
 );
 
-const TypeArray = Node<TypeArrayTag>(All(Type, Plus(/^(\[\])/)), ([value, ...dimensions]) => {
-  return { tag: 'TypeArray', value, dimensions: dimensions.length };
+const TypeArray = Node<TypeArrayTag>(All(Type, Plus(/^(\[\])/)), ([value, ...dimensions], $) => {
+  return { tag: 'TypeArray', value, dimensions: dimensions.length, ...context($) };
 });
 
 const AnyType = Any(TypeArray, Type);
@@ -215,11 +230,13 @@ const AnyType = Any(TypeArray, Type);
  * Count
  */
 const CastableRule = (DataType: Rule) =>
-  Node<CastableDataTypeTag>(Any(All(DataType, '::', AnyType), DataType), ([value, type]) => {
-    return type ? { tag: 'PgCast', type, value } : value;
+  Node<CastableDataTypeTag>(Any(All(DataType, '::', AnyType), DataType), ([value, type], $) => {
+    return type ? { tag: 'PgCast', type, value, ...context($) } : value;
   });
 
-const Count = Node<CountTag>(CastableRule(Any(Integer, Parameter)), ([value]) => ({ tag: 'Count', value }));
+const Count = Node<CountTag>(CastableRule(Any(Integer, Parameter)), ([value], $) => {
+  return { tag: 'Count', value, ...context($) };
+});
 
 /**
  * SELECT
@@ -227,14 +244,14 @@ const Count = Node<CountTag>(CastableRule(Any(Integer, Parameter)), ([value]) =>
  */
 
 const DistinctOnList = All(/^ON/i, '(', List(QualifiedIdentifier), ')');
-const Distinct = Node<DistinctTag>(All(/^DISTINCT/i, Optional(DistinctOnList)), (values) => {
-  return { tag: 'Distinct', values };
+const Distinct = Node<DistinctTag>(All(/^DISTINCT/i, Optional(DistinctOnList)), (values, $) => {
+  return { tag: 'Distinct', values, ...context($) };
 });
 
-const StarIdentifier = Node<StarIdentifierTag>('*', () => ({ tag: 'StarIdentifier' }));
+const StarIdentifier = Node<StarIdentifierTag>('*', (_, $) => ({ tag: 'StarIdentifier', ...context($) }));
 const StarQualifiedIdentifier = Node<StarQualifiedIdentifierTag>(
   List(Identifier, { last: StarIdentifier, separator: '.' }),
-  (values) => ({ tag: 'StarQualifiedIdentifier', values }),
+  (values, $) => ({ tag: 'StarQualifiedIdentifier', values, ...context($) }),
 );
 
 const UnaryOperator = /^(\+|\-|NOT|ISNULL|NOTNULL)/i;
@@ -266,13 +283,17 @@ const BinaryOperatorPrecedence = [
  * ----------------------------------------------------------------------------------------
  */
 const OrderRule = (Expression: Rule): Rule => {
-  const OrderDirection = Node<OrderDirectionTag>(/^(ASC|DESC|USNIG >|USING <)/i, ([value]) => {
-    return { tag: 'OrderDirection', value };
+  const OrderDirection = Node<OrderDirectionTag>(/^(ASC|DESC|USNIG >|USING <)/i, ([value], $) => {
+    return { tag: 'OrderDirection', value, ...context($) };
   });
-  const OrderByItem = Node<OrderByItemTag>(All(Expression, Optional(OrderDirection)), ([value, direction]) => {
-    return { tag: 'OrderByItem', value, direction };
+  const OrderByItem = Node<OrderByItemTag>(All(Expression, Optional(OrderDirection)), ([value, direction], $) => {
+    return { tag: 'OrderByItem', value, direction, ...context($) };
   });
-  return Node<OrderByTag>(All(/^ORDER BY/i, List(OrderByItem)), (values) => ({ tag: 'OrderBy', values }));
+  return Node<OrderByTag>(All(/^ORDER BY/i, List(OrderByItem)), (values, $) => ({
+    tag: 'OrderBy',
+    values,
+    ...context($),
+  }));
 };
 
 const ExpressionRule = (SelectExpression: Rule): Rule =>
@@ -282,43 +303,31 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * ----------------------------------------------------------------------------------------
      */
 
-    const Exists = Node<SubqueryExpressionTag>(All(/^EXISTS/i, Brackets(SelectExpression)), ([subquery]) => ({
-      tag: 'SubqueryExpression',
-      type: 'EXISTS',
-      subquery,
-    }));
+    const Exists = Node<SubqueryExpressionTag>(All(/^EXISTS/i, Brackets(SelectExpression)), ([subquery], $) => {
+      return { tag: 'SubqueryExpression', type: 'EXISTS', subquery, ...context($) };
+    });
 
     const InclusionSubquery = Node<SubqueryExpressionTag>(
       All(QualifiedIdentifier, /^(IN|NOT IN)/i, Brackets(SelectExpression)),
-      ([value, type, subquery]) => ({
-        tag: 'SubqueryExpression',
-        type: type.toUpperCase(),
-        value,
-        subquery,
-      }),
+      ([value, type, subquery], $) => {
+        return { tag: 'SubqueryExpression', type: type.toUpperCase(), value, subquery, ...context($) };
+      },
     );
 
     const BooleanSubqueryOperator = /^(<=|>=|<|>|<>|!=|=|AND|OR)/;
 
     const OperatorSubquery = Node<SubqueryExpressionTag>(
       All(QualifiedIdentifier, BooleanSubqueryOperator, /^(ANY|SOME|ALL)/i, Brackets(SelectExpression)),
-      ([value, operator, type, subquery]) => ({
-        tag: 'SubqueryExpression',
-        operator,
-        type: type.toLowerCase(),
-        value,
-        subquery,
-      }),
+      ([value, operator, type, subquery], $) => {
+        return { tag: 'SubqueryExpression', operator, type: type.toLowerCase(), value, subquery, ...context($) };
+      },
     );
 
     const RowWiseSubquery = Node<SubqueryExpressionTag>(
       All(QualifiedIdentifier, BooleanSubqueryOperator, Brackets(SelectExpression)),
-      ([value, operator, subquery]) => ({
-        tag: 'SubqueryExpression',
-        operator,
-        value,
-        subquery,
-      }),
+      ([value, operator, subquery], $) => {
+        return { tag: 'SubqueryExpression', operator, value, subquery, ...context($) };
+      },
     );
 
     /**
@@ -328,22 +337,23 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
 
     const NullIf = Node<NullIfTag>(
       All(/^NULLIF/i, Brackets(All(ChildExpression, ',', ChildExpression))),
-      ([value, conditional]) => ({ tag: 'NullIfTag', value, conditional }),
+      ([value, conditional], $) => ({ tag: 'NullIfTag', value, conditional, ...context($) }),
     );
 
     const ConditionalExpression = Node<ConditionalExpressionTag>(
       All(/^(COALESCE|GREATEST|LEAST)/i, Brackets(List(ChildExpression))),
-      ([type, ...values]) => ({ tag: 'ConditionalExpression', type: type.toUpperCase(), values }),
+      ([type, ...values], $) => ({ tag: 'ConditionalExpression', type: type.toUpperCase(), values, ...context($) }),
     );
 
     /**
      * Function
      * ----------------------------------------------------------------------------------------
      */
-    const BuiltInFunction = Node<FunctionTag>(/^(CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP)/i, ([value]) => ({
+    const BuiltInFunction = Node<FunctionTag>(/^(CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP)/i, ([value], $) => ({
       tag: 'Function',
-      value: { tag: 'Identifier', value },
+      value: { tag: 'Identifier', value, ...context($) },
       args: [],
+      ...context($),
     }));
 
     const Function = Node<FunctionTag>(
@@ -351,25 +361,27 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
         UnrestrictedIdentifier,
         Brackets(Optional(List(All(Any(ChildExpression, QualifiedIdentifier), Optional(OrderRule(ChildExpression)))))),
       ),
-      ([value, ...args]) => ({ tag: 'Function', value, args }),
+      ([value, ...args], $) => ({ tag: 'Function', value, args, ...context($) }),
     );
 
-    const ArrayConstructor = Node<ArrayConstructorTag>(All(/^ARRAY/i, '[', List(ChildExpression), ']'), (values) => {
-      return { tag: 'ArrayConstructor', values };
-    });
+    const ArrayConstructor = Node<ArrayConstructorTag>(
+      All(/^ARRAY/i, '[', List(ChildExpression), ']'),
+      (values, $) => ({ tag: 'ArrayConstructor', values, ...context($) }),
+    );
 
-    const ArrayIndexRange = Node<ArrayIndexRangeTag>(All(ChildExpression, ':', ChildExpression), ([left, right]) => {
-      return { tag: 'ArrayIndexRange', left, right };
-    });
+    const ArrayIndexRange = Node<ArrayIndexRangeTag>(
+      All(ChildExpression, ':', ChildExpression),
+      ([left, right], $) => ({ tag: 'ArrayIndexRange', left, right, ...context($) }),
+    );
 
     const ArrayIndex = Node<ArrayIndexTag>(
       All(Any(QualifiedIdentifier, Brackets(ChildExpression)), '[', Any(ArrayIndexRange, ChildExpression), ']'),
-      ([value, index]) => ({ tag: 'ArrayIndex', value, index }),
+      ([value, index], $) => ({ tag: 'ArrayIndex', value, index, ...context($) }),
     );
 
     const Row = Node<RowTag>(
       Any(All(/^ROW/i, Brackets(List(ChildExpression))), Brackets(MultiList(ChildExpression))),
-      (values) => ({ tag: 'Row', values }),
+      (values, $) => ({ tag: 'Row', values, ...context($) }),
     );
 
     /**
@@ -401,16 +413,19 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * Case
      * ----------------------------------------------------------------------------------------
      */
-    const When = Node<WhenTag>(All(/^WHEN/i, ChildExpression, /^THEN/i, ChildExpression), ([condition, value]) => {
-      return { tag: 'When', value, condition };
-    });
-    const Else = Node<ElseTag>(All(/^ELSE/i, ChildExpression), ([value]) => ({ tag: 'Else', value }));
+    const When = Node<WhenTag>(All(/^WHEN/i, ChildExpression, /^THEN/i, ChildExpression), ([condition, value], $) => ({
+      tag: 'When',
+      value,
+      condition,
+      ...context($),
+    }));
+    const Else = Node<ElseTag>(All(/^ELSE/i, ChildExpression), ([value], $) => ({ tag: 'Else', value, ...context($) }));
     const CaseWithExpression = Node<CaseTag>(
       All(/^CASE/i, CastableDataType, Plus(When), Optional(Else), /^END/i),
-      ([expression, ...values]) => ({ tag: 'Case', expression, values }),
+      ([expression, ...values], $) => ({ tag: 'Case', expression, values, ...context($) }),
     );
-    const CaseWithoutExpression = Node<CaseTag>(All(/^CASE/i, Plus(When), Optional(Else), /^END/i), (values) => {
-      return { tag: 'Case', values };
+    const CaseWithoutExpression = Node<CaseTag>(All(/^CASE/i, Plus(When), Optional(Else), /^END/i), (values, $) => {
+      return { tag: 'Case', values, ...context($) };
     });
     const Case = Any(CaseWithoutExpression, CaseWithExpression, CastableDataType);
 
@@ -418,7 +433,11 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * Unary Operator
      * ----------------------------------------------------------------------------------------
      */
-    const UnaryOperatorNode = Node<OperatorTag>(UnaryOperator, ([value]) => ({ tag: 'Operator', value }));
+    const UnaryOperatorNode = Node<OperatorTag>(UnaryOperator, ([value], $) => ({
+      tag: 'Operator',
+      value,
+      ...context($),
+    }));
     const UnaryExpression = Node<UnaryExpressionTag>(All(Star(UnaryOperatorNode), Case), (parts) =>
       parts.reduceRight((value, operator) => ({ tag: 'UnaryExpression', value, operator })),
     );
@@ -428,10 +447,12 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * ----------------------------------------------------------------------------------------
      */
     const BinoryOperatorExpression = BinaryOperatorPrecedence.reduce((Current, Operator) => {
-      const OperatorNode = Node<OperatorTag>(Operator, ([value]) => ({ tag: 'Operator', value }));
+      const OperatorNode = Node<OperatorTag>(Operator, ([value], $) => ({ tag: 'Operator', value, ...context($) }));
       return Node<BinaryExpressionTag>(
         All(Current, Star(All(OperatorNode, Current))),
-        LeftBinaryOperator(([left, operator, right]) => ({ tag: 'BinaryExpression', left, operator, right })),
+        LeftBinaryOperator(([left, operator, right], $) => {
+          return { tag: 'BinaryExpression', left, operator, right, ...context($) };
+        }),
       );
     }, UnaryExpression);
 
@@ -441,15 +462,15 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      */
     const BetweenExpression = Node<BetweenTag>(
       All(DataType, /^BETWEEN/i, DataType, /^AND/i, DataType),
-      ([value, left, right]) => ({ tag: 'Between', left, right, value }),
+      ([value, left, right], $) => ({ tag: 'Between', left, right, value, ...context($) }),
     );
 
     /**
      * Cast
      * ----------------------------------------------------------------------------------------
      */
-    const Cast = Node<CastTag>(All(/^CAST/i, '(', DataType, /^AS/i, AnyType, ')'), ([value, type]) => {
-      return { tag: 'Cast', value, type };
+    const Cast = Node<CastTag>(All(/^CAST/i, '(', DataType, /^AS/i, AnyType, ')'), ([value, type], $) => {
+      return { tag: 'Cast', value, type, ...context($) };
     });
 
     return Any(Cast, BetweenExpression, BinoryOperatorExpression);
@@ -458,22 +479,24 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
 const FromListRule = (Select: Rule): Rule => {
   const FromListItem = Node<FromListItemTag>(
     All(Any(QualifiedIdentifier, Brackets(Select)), Optional(As)),
-    ([value, as]) => ({ tag: 'FromListItem', value, as }),
+    ([value, as], $) => ({ tag: 'FromListItem', value, as, ...context($) }),
   );
-  return Node<FromListTag>(List(FromListItem), (values) => ({ tag: 'FromList', values }));
+  return Node<FromListTag>(List(FromListItem), (values, $) => ({ tag: 'FromList', values, ...context($) }));
 };
 
 const WhereRule = (Expression: Rule): Rule =>
-  Node<WhereTag>(All(/^WHERE/i, Expression), ([value]) => ({ tag: 'Where', value }));
+  Node<WhereTag>(All(/^WHERE/i, Expression), ([value], $) => ({ tag: 'Where', value, ...context($) }));
 
 const Select = Y((SelectExpression) => {
   const Expression = ExpressionRule(SelectExpression);
 
   const SelectListItem = Node<SelectListItemTag>(
     Any(StarQualifiedIdentifier, All(Any(Expression), Optional(As))),
-    ([value, as]) => ({ tag: 'SelectListItem', value, as }),
+    ([value, as], $) => ({ tag: 'SelectListItem', value, as, ...context($) }),
   );
-  const SelectList = Node<SelectListTag>(List(SelectListItem), (values) => ({ tag: 'SelectList', values }));
+  const SelectList = Node<SelectListTag>(List(SelectListItem), (values, $) => {
+    return { tag: 'SelectList', values, ...context($) };
+  });
 
   /**
    * From
@@ -489,20 +512,22 @@ const Select = Y((SelectExpression) => {
       All(/^(FULL)/i, Optional(/^OUTER/i), /^JOIN/i),
       /^(CROSS) JOIN/i,
     ),
-    ([value]) => ({ tag: 'JoinType', value: value?.toUpperCase() }),
+    ([value], $) => ({ tag: 'JoinType', value: value?.toUpperCase(), ...context($) }),
   );
-  const JoinOn = Node<JoinOnTag>(All(/^ON/i, Expression), ([value]) => ({ tag: 'JoinOn', value }));
-  const JoinUsing = Node<JoinUsingTag>(All(/^USING/i, List(QualifiedIdentifier)), (values) => {
-    return { tag: 'JoinUsing', values };
+  const JoinOn = Node<JoinOnTag>(All(/^ON/i, Expression), ([value], $) => ({ tag: 'JoinOn', value, ...context($) }));
+  const JoinUsing = Node<JoinUsingTag>(All(/^USING/i, List(QualifiedIdentifier)), (values, $) => {
+    return { tag: 'JoinUsing', values, ...context($) };
   });
   const Join = Node<JoinTag>(
     All(JoinType, QualifiedIdentifier, Optional(As), Optional(Any(JoinOn, JoinUsing))),
-    ([type, table, ...values]) => {
-      return { tag: 'Join', type, table, values };
+    ([type, table, ...values], $) => {
+      return { tag: 'Join', type, table, values, ...context($) };
     },
   );
 
-  const From = Node<FromTag>(All(/^FROM/i, FromList, Star(Join)), ([list, ...join]) => ({ tag: 'From', list, join }));
+  const From = Node<FromTag>(All(/^FROM/i, FromList, Star(Join)), ([list, ...join], $) => {
+    return { tag: 'From', list, join, ...context($) };
+  });
 
   /**
    * Where
@@ -514,15 +539,21 @@ const Select = Y((SelectExpression) => {
    * Group By
    * ----------------------------------------------------------------------------------------
    */
-  const GroupBy = Node<GroupByTag>(All(/^GROUP BY/i, OptionalBrackets(List(QualifiedIdentifier))), (values) => {
-    return { tag: 'GroupBy', values };
-  });
+  const GroupBy = Node<GroupByTag>(All(/^GROUP BY/i, OptionalBrackets(List(QualifiedIdentifier))), (values, $) => ({
+    tag: 'GroupBy',
+    values,
+    ...context($),
+  }));
 
   /**
    * Having
    * ----------------------------------------------------------------------------------------
    */
-  const Having = Node<HavingTag>(All(/^HAVING/i, Expression), ([value]) => ({ tag: 'Having', value }));
+  const Having = Node<HavingTag>(All(/^HAVING/i, Expression), ([value], $) => ({
+    tag: 'Having',
+    value,
+    ...context($),
+  }));
 
   /**
    * Select Parts
@@ -543,9 +574,7 @@ const Select = Y((SelectExpression) => {
    */
   const Combination = Node<CombinationTag>(
     All(/^(UNION|INTERSECT|EXCEPT)/i, /^SELECT/i, ...SelectParts),
-    ([type, ...values]) => {
-      return { tag: 'Combination', type: type.toUpperCase(), values };
-    },
+    ([type, ...values], $) => ({ tag: 'Combination', type: type.toUpperCase(), values, ...context($) }),
   );
 
   /**
@@ -558,8 +587,10 @@ const Select = Y((SelectExpression) => {
    * Limit
    * ----------------------------------------------------------------------------------------
    */
-  const Limit = Node<LimitTag>(All(/^LIMIT/i, Any(Count, /^ALL/i)), ([value]) => ({ tag: 'Limit', value }));
-  const Offset = Node<OffsetTag>(All(/^OFFSET/i, Count), ([value]) => ({ tag: 'Offset', value }));
+  const Limit = Node<LimitTag>(All(/^LIMIT/i, Any(Count, /^ALL/i)), ([value], $) => {
+    return { tag: 'Limit', value, ...context($) };
+  });
+  const Offset = Node<OffsetTag>(All(/^OFFSET/i, Count), ([value], $) => ({ tag: 'Offset', value, ...context($) }));
 
   return Node<SelectTag>(
     All(
@@ -569,7 +600,7 @@ const Select = Y((SelectExpression) => {
       Optional(OrderBy),
       Optional(Any(All(Limit, Offset), All(Offset, Limit), Limit, Offset)),
     ),
-    (values) => ({ tag: 'Select', values }),
+    (values, $) => ({ tag: 'Select', values, ...context($) }),
   );
 });
 
@@ -580,95 +611,97 @@ const Select = Y((SelectExpression) => {
 const Expression = ExpressionRule(Select);
 const FromList = FromListRule(Select);
 const Where = WhereRule(Expression);
-const Table = Node<TableTag>(All(Optional(/^ONLY/i), QualifiedIdentifier, Optional(As)), ([value, as]) => ({
-  tag: 'Table',
-  value,
-  as,
-}));
-const Columns = Node<ColumnsTag>(Brackets(List(Identifier)), (values) => ({
-  tag: 'Columns',
-  values,
-}));
-const Default = Node<DefaultTag>(/^DEFAULT/i, () => ({ tag: 'Default' }));
+const Table = Node<TableTag>(All(Optional(/^ONLY/i), QualifiedIdentifier, Optional(As)), ([value, as], $) => {
+  return { tag: 'Table', value, as, ...context($) };
+});
+const Columns = Node<ColumnsTag>(Brackets(List(Identifier)), (values, $) => {
+  return { tag: 'Columns', values, ...context($) };
+});
+const Default = Node<DefaultTag>(/^DEFAULT/i, (_, $) => ({ tag: 'Default', ...context($) }));
 
 /**
  * Update
  * ----------------------------------------------------------------------------------------
  */
 
-const SetItem = Node<SetItemTag>(All(QualifiedIdentifier, '=', Any(Default, Expression)), ([column, value]) => ({
+const SetItem = Node<SetItemTag>(All(QualifiedIdentifier, '=', Any(Default, Expression)), ([column, value], $) => ({
   tag: 'SetItem',
   column,
   value,
+  ...context($),
 }));
 
-const Values = Node<ValuesTag>(Brackets(List(Any(Default, Expression))), (values) => ({
-  tag: 'Values',
-  values,
-}));
-const SetList = Node<SetListTag>(List(SetItem), (values) => ({ tag: 'SetList', values }));
+const Values = Node<ValuesTag>(Brackets(List(Any(Default, Expression))), (values, $) => {
+  return { tag: 'Values', values, ...context($) };
+});
+const SetList = Node<SetListTag>(List(SetItem), (values, $) => ({ tag: 'SetList', values, ...context($) }));
 const SetMap = Node<SetMapTag>(
   All(Columns, '=', Any(All(Optional(/^ROW/i), Values), Brackets(Select))),
-  ([columns, values]) => ({ tag: 'SetMap', columns, values }),
+  ([columns, values], $) => ({ tag: 'SetMap', columns, values, ...context($) }),
 );
 
-const Set = Node<SetTag>(All(/^SET/i, Any(SetList, SetMap)), ([value]) => ({ tag: 'Set', value }));
+const Set = Node<SetTag>(All(/^SET/i, Any(SetList, SetMap)), ([value], $) => ({ tag: 'Set', value, ...context($) }));
 
-const UpdateFrom = Node<UpdateFromTag>(All(/^FROM/i, List(FromList)), (values) => ({ tag: 'UpdateFrom', values }));
+const UpdateFrom = Node<UpdateFromTag>(All(/^FROM/i, List(FromList)), (values, $) => {
+  return { tag: 'UpdateFrom', values, ...context($) };
+});
 const ReturningListItem = Node<ReturningListItemTag>(
   Any(StarQualifiedIdentifier, All(Any(Expression), Optional(As))),
-  ([value, as]) => ({ tag: 'ReturningListItem', value, as }),
+  ([value, as], $) => ({ tag: 'ReturningListItem', value, as, ...context($) }),
 );
-const Returning = Node<ReturningTag>(All(/^RETURNING/i, List(ReturningListItem)), (values) => ({
-  tag: 'Returning',
-  values,
-}));
+const Returning = Node<ReturningTag>(All(/^RETURNING/i, List(ReturningListItem)), (values, $) => {
+  return { tag: 'Returning', values, ...context($) };
+});
 const Update = Node<UpdateTag>(
   All(/^UPDATE/i, Table, Set, Optional(UpdateFrom), Optional(Where), Optional(Returning)),
-  (values) => ({ tag: 'Update', values }),
+  (values, $) => ({ tag: 'Update', values, ...context($) }),
 );
 
 /**
  * Delete
  * ----------------------------------------------------------------------------------------
  */
-const Using = Node<UsingTag>(All(/^USING/i, List(FromList)), (values) => ({ tag: 'Using', values }));
+const Using = Node<UsingTag>(All(/^USING/i, List(FromList)), (values, $) => ({ tag: 'Using', values, ...context($) }));
 const Delete = Node<DeleteTag>(
   All(/^DELETE FROM/i, Table, Optional(Using), Optional(Where), Optional(Returning)),
-  (values) => ({ tag: 'Delete', values }),
+  (values, $) => ({ tag: 'Delete', values, ...context($) }),
 );
 
 /**
  * Insert
  * ----------------------------------------------------------------------------------------
  */
-const Collate = Node<CollateTag>(All(/^COLLATE/i, QuotedName), ([value]) => ({ tag: 'Collate', value }));
+const Collate = Node<CollateTag>(All(/^COLLATE/i, QuotedName), ([value], $) => ({
+  tag: 'Collate',
+  value,
+  ...context($),
+}));
 const ConflictTarget = Node<ConflictTargetTag>(
   All(Brackets(All(Table, Optional(Brackets(Expression)), Optional(Collate))), Optional(Where)),
-  (values) => ({ tag: 'ConflictTarget', values }),
+  (values, $) => ({ tag: 'ConflictTarget', values, ...context($) }),
 );
-const ConflictConstraint = Node<ConflictConstraintTag>(All(/^ON CONSTRAINT/i, Identifier), ([value]) => {
-  return { tag: 'ConflictConstraint', value };
+const ConflictConstraint = Node<ConflictConstraintTag>(All(/^ON CONSTRAINT/i, Identifier), ([value], $) => {
+  return { tag: 'ConflictConstraint', value, ...context($) };
 });
 
-const DoNothing = Node<DoNothingTag>(/^DO NOTHING/i, () => ({ tag: 'DoNothing' }));
-const DoUpdate = Node<DoUpdateTag>(All(/^DO UPDATE/i, Set, Optional(Where)), ([value, where]) => ({
-  tag: 'DoUpdate',
-  value,
-  where,
-}));
+const DoNothing = Node<DoNothingTag>(/^DO NOTHING/i, (_, $) => ({ tag: 'DoNothing', ...context($) }));
+const DoUpdate = Node<DoUpdateTag>(All(/^DO UPDATE/i, Set, Optional(Where)), ([value, where], $) => {
+  return { tag: 'DoUpdate', value, where, ...context($) };
+});
 const Conflict = Node<ConflictTag>(
   All(
     /^ON CONFLICT/i,
     Any(Any(DoNothing, DoUpdate), All(Any(ConflictTarget, ConflictConstraint), Any(DoNothing, DoUpdate))),
   ),
-  (values) => ({ tag: 'Conflict', values }),
+  (values, $) => ({ tag: 'Conflict', values, ...context($) }),
 );
 
-const ValuesList = Node<ValuesListTag>(All(/^VALUES/i, List(Values)), (values) => ({ tag: 'ValuesList', values }));
+const ValuesList = Node<ValuesListTag>(All(/^VALUES/i, Any(List(Values), Parameter)), (values, $) => {
+  return { tag: 'ValuesList', values, ...context($) };
+});
 const Insert = Node<InsertTag>(
   All(/^INSERT INTO/i, Table, Optional(Columns), Any(ValuesList, Select), Optional(Conflict), Optional(Returning)),
-  (values) => ({ tag: 'Insert', values }),
+  (values, $) => ({ tag: 'Insert', values, ...context($) }),
 );
 
 // Ignore line comments and all whitespace

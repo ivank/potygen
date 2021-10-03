@@ -4,13 +4,21 @@ exports[`Query Interface Should convert complex sql account-levelisations.query.
 Object {
   "params": Array [
     Object {
+      "lastPos": 1661,
       "name": "q",
+      "pick": Array [],
+      "pos": 1605,
       "required": false,
+      "spread": false,
       "type": "string",
     },
     Object {
+      "lastPos": 1788,
       "name": "levelisationId",
+      "pick": Array [],
+      "pos": 1706,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "levelisation_id",
         "schema": "public",
@@ -19,21 +27,51 @@ Object {
       },
     },
     Object {
+      "lastPos": 1910,
       "name": "ids",
+      "pick": Array [],
+      "pos": 1805,
       "required": false,
+      "spread": false,
       "type": Object {
         "items": "number",
         "type": "array",
       },
     },
     Object {
-      "name": "limit",
+      "lastPos": 1942,
+      "name": "sortField",
+      "pick": Array [],
+      "pos": 1931,
       "required": false,
+      "spread": false,
+      "type": "string",
+    },
+    Object {
+      "lastPos": 1970,
+      "name": "sortOrder",
+      "pick": Array [],
+      "pos": 1959,
+      "required": false,
+      "spread": false,
+      "type": "string",
+    },
+    Object {
+      "lastPos": 2581,
+      "name": "limit",
+      "pick": Array [],
+      "pos": 2575,
+      "required": false,
+      "spread": false,
       "type": "number",
     },
     Object {
+      "lastPos": 2601,
       "name": "offset",
+      "pick": Array [],
+      "pos": 2594,
       "required": false,
+      "spread": false,
       "type": "number",
     },
   ],
@@ -253,8 +291,12 @@ exports[`Query Interface Should convert complex sql account-levelisations-set-bu
 Object {
   "params": Array [
     Object {
+      "lastPos": 542,
       "name": "ids",
+      "pick": Array [],
+      "pos": 529,
       "required": false,
+      "spread": false,
       "type": Object {
         "items": "number",
         "type": "array",
@@ -279,26 +321,42 @@ exports[`Query Interface Should convert complex sql accounts.query.sql: accounts
 Object {
   "params": Array [
     Object {
+      "lastPos": 2255,
       "name": "q",
+      "pick": Array [],
+      "pos": 1192,
       "required": false,
+      "spread": false,
       "type": "string",
     },
     Object {
+      "lastPos": 2329,
       "name": "ids",
+      "pick": Array [],
+      "pos": 2272,
       "required": false,
+      "spread": false,
       "type": Object {
         "items": "number",
         "type": "array",
       },
     },
     Object {
+      "lastPos": 2634,
       "name": "limit",
+      "pick": Array [],
+      "pos": 2628,
       "required": false,
+      "spread": false,
       "type": "number",
     },
     Object {
+      "lastPos": 2654,
       "name": "offset",
+      "pick": Array [],
+      "pos": 2647,
       "required": false,
+      "spread": false,
       "type": "number",
     },
   ],
@@ -420,8 +478,12 @@ exports[`Query Interface Should convert complex sql bacs.query.sql: bacs.query.s
 Object {
   "params": Array [
     Object {
+      "lastPos": 620,
       "name": "quarter",
+      "pick": Array [],
+      "pos": 611,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "levelisation_reference",
         "schema": "public",
@@ -430,13 +492,21 @@ Object {
       },
     },
     Object {
+      "lastPos": 635,
       "name": "perPage",
+      "pick": Array [],
+      "pos": 626,
       "required": false,
+      "spread": false,
       "type": "string",
     },
     Object {
+      "lastPos": 650,
       "name": "offset",
+      "pick": Array [],
+      "pos": 642,
       "required": false,
+      "spread": false,
       "type": "string",
     },
   ],
@@ -549,8 +619,12 @@ exports[`Query Interface Should convert complex sql delete-accounts.query.sql: d
 Object {
   "params": Array [
     Object {
+      "lastPos": 263,
       "name": "type",
+      "pick": Array [],
+      "pos": 251,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "scheme_type",
         "schema": "public",
@@ -559,8 +633,12 @@ Object {
       },
     },
     Object {
+      "lastPos": 291,
       "name": "state",
+      "pick": Array [],
+      "pos": 284,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "state",
         "schema": "public",
@@ -605,8 +683,12 @@ exports[`Query Interface Should convert complex sql generation-read-data.query.s
 Object {
   "params": Array [
     Object {
+      "lastPos": 223,
       "name": "installationId",
+      "pick": Array [],
+      "pos": 205,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "installation_id",
         "schema": "public",
@@ -615,8 +697,12 @@ Object {
       },
     },
     Object {
+      "lastPos": 454,
       "name": "exportDateOn",
+      "pick": Array [],
+      "pos": 429,
       "required": false,
+      "spread": false,
       "type": "Date",
     },
   ],
@@ -647,8 +733,12 @@ exports[`Query Interface Should convert complex sql installation-meter-update.qu
 Object {
   "params": Array [
     Object {
+      "lastPos": 98,
       "name": "meterId",
+      "pick": Array [],
+      "pos": 89,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "meter_id",
         "schema": "public",
@@ -657,8 +747,12 @@ Object {
       },
     },
     Object {
+      "lastPos": 53,
       "name": "removalDate",
+      "pick": Array [],
+      "pos": 40,
       "required": false,
+      "spread": false,
       "type": "unknown",
     },
   ],
@@ -684,8 +778,12 @@ exports[`Query Interface Should convert complex sql rates-by-tarrif-ids.query.sq
 Object {
   "params": Array [
     Object {
+      "lastPos": 320,
       "name": "ids",
+      "pick": Array [],
+      "pos": 314,
       "required": false,
+      "spread": true,
       "type": Object {
         "column": "id",
         "schema": "public",
@@ -757,8 +855,12 @@ exports[`Query Interface Should convert complex sql read-create.query.sql: read-
 Object {
   "params": Array [
     Object {
+      "lastPos": 215,
       "name": "meterId",
+      "pick": Array [],
+      "pos": 92,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "meter_id",
         "schema": "public",
@@ -767,8 +869,12 @@ Object {
       },
     },
     Object {
+      "lastPos": 215,
       "name": "reason",
+      "pick": Array [],
+      "pos": 102,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "reason",
         "schema": "public",
@@ -777,8 +883,12 @@ Object {
       },
     },
     Object {
+      "lastPos": 215,
       "name": "type",
+      "pick": Array [],
+      "pos": 111,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "type",
         "schema": "public",
@@ -787,8 +897,12 @@ Object {
       },
     },
     Object {
+      "lastPos": 215,
       "name": "dateOn",
+      "pick": Array [],
+      "pos": 127,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "date_on",
         "schema": "public",
@@ -797,8 +911,12 @@ Object {
       },
     },
     Object {
+      "lastPos": 215,
       "name": "submittedAt",
+      "pick": Array [],
+      "pos": 160,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "submitted_at",
         "schema": "public",
@@ -807,8 +925,12 @@ Object {
       },
     },
     Object {
+      "lastPos": 215,
       "name": "value",
+      "pick": Array [],
+      "pos": 198,
       "required": false,
+      "spread": false,
       "type": "number",
     },
   ],
@@ -857,8 +979,12 @@ exports[`Query Interface Should convert complex sql reads-by-account-id.query.sq
 Object {
   "params": Array [
     Object {
+      "lastPos": 597,
       "name": "id",
+      "pick": Array [],
+      "pos": 593,
       "required": false,
+      "spread": false,
       "type": Object {
         "column": "account_id",
         "schema": "public",
@@ -867,13 +993,21 @@ Object {
       },
     },
     Object {
+      "lastPos": 632,
       "name": "offset",
+      "pick": Array [],
+      "pos": 624,
       "required": false,
+      "spread": false,
       "type": "string",
     },
     Object {
+      "lastPos": 647,
       "name": "perPage",
+      "pick": Array [],
+      "pos": 638,
       "required": false,
+      "spread": false,
       "type": "string",
     },
   ],

@@ -1,9 +1,23 @@
 import { document, printDocument, DocumentContext, Type, withIdentifier } from '@ovotech/ts-compose';
 import { TypeNode } from 'typescript';
-import { LoadedType, isLoadedArrayType, isLoadedUnionType, LoadedQuery, isLoadedLiteralType } from './load-types';
+import {
+  LoadedType,
+  isLoadedArrayType,
+  isLoadedUnionType,
+  LoadedQuery,
+  isLoadedLiteralType,
+  LoadedValuesPick,
+  isLoadedValuesPick,
+} from './load-types';
 
-const toPropertyType = (type: LoadedType): TypeNode => {
-  if (isLoadedArrayType(type)) {
+const toPropertyType = (type: LoadedType | LoadedValuesPick): TypeNode => {
+  if (isLoadedValuesPick(type)) {
+    return Type.Array(
+      Type.TypeLiteral({
+        props: type.items.map((item) => Type.Prop({ name: item.name, type: toPropertyType(item.value) })),
+      }),
+    );
+  } else if (isLoadedArrayType(type)) {
     return Type.Array(toPropertyType(type.items));
   } else if (isLoadedUnionType(type)) {
     return Type.Union(type.items.map(toPropertyType));
