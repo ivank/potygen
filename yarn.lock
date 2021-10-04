@@ -660,7 +660,7 @@ __metadata:
     "@types/jest": ^26.0.14
     "@types/node": ^16.10.2
     jest: ^26.4.2
-    prettier: ^2.1.2
+    prettier: ^2.3.2
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
     typescript: ^4.4.3
@@ -680,7 +680,7 @@ __metadata:
     "@types/pg": ^8.6.0
     jest: ^26.4.2
     pg: ^8.6.0
-    prettier: ^2.1.2
+    prettier: ^2.3.2
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
     typescript: ^4.4.3
@@ -698,7 +698,7 @@ __metadata:
     "@types/pg": ^8.6.1
     jest: ^26.4.2
     pg: ^8.7.1
-    prettier: ^2.1.2
+    prettier: ^2.3.2
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
     typescript: ^4.4.3
@@ -4383,12 +4383,12 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.1.2":
-  version: 2.2.1
-  resolution: "prettier@npm:2.2.1"
+"prettier@npm:^2.3.2":
+  version: 2.4.1
+  resolution: "prettier@npm:2.4.1"
   bin:
     prettier: bin-prettier.js
-  checksum: 800de2df3d37067ab24478c7f32c60ca0c57b01742133287829feeb4a70d239a7bf6bccb56196784777af591ad80fb9ba70c1a49b0fcecf9f5622a764d513edb
+  checksum: cc6830588b401b0d742862fe9c46bc9118204fb307c3abe0e49e95b35ed23629573807ffdf9cdd65289c252a0bb51fc0171437f6626ee36378dea80f0ee80b91
   languageName: node
   linkType: hard
 
@@ -5051,6 +5051,9 @@ fsevents@^2.1.2:
 "sql-ast@workspace:.":
   version: 0.0.0-use.local
   resolution: "sql-ast@workspace:."
+  dependencies:
+    prettier: ^2.3.2
+    typescript: ^4.4.3
   languageName: unknown
   linkType: soft
 

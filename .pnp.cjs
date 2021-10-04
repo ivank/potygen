@@ -50,6 +50,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {
           "packageLocation": "./",
           "packageDependencies": [
+            ["prettier", "npm:2.4.1"],
+            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
           ],
           "linkType": "SOFT",
         }]
@@ -894,7 +896,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.19"],
             ["@types/node", "npm:16.10.2"],
             ["jest", "npm:26.6.3"],
-            ["prettier", "npm:2.2.1"],
+            ["prettier", "npm:2.4.1"],
             ["ts-jest", "virtual:785d6ec794f5f3baad548dc4807d43636660300457f60ac9f46b15585ab2be9faa588cda444186333210dc41478795de5400c45be60e37c2b3821bf0aa617c1a#npm:26.4.4"],
             ["ts-node", "virtual:785d6ec794f5f3baad548dc4807d43636660300457f60ac9f46b15585ab2be9faa588cda444186333210dc41478795de5400c45be60e37c2b3821bf0aa617c1a#npm:10.1.0"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
@@ -916,7 +918,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/pg", "npm:8.6.0"],
             ["jest", "npm:26.6.3"],
             ["pg", "virtual:22abf3cfc406b70ca55c435ffb9c25fa87d49f1f63cf29b0a819a6bcf38de260b126ce6cf68e0fbd36fe0924fc31c4181ac7ae1e29cad06bc261e4e9da1be928#npm:8.6.0"],
-            ["prettier", "npm:2.2.1"],
+            ["prettier", "npm:2.4.1"],
             ["ts-jest", "virtual:785d6ec794f5f3baad548dc4807d43636660300457f60ac9f46b15585ab2be9faa588cda444186333210dc41478795de5400c45be60e37c2b3821bf0aa617c1a#npm:26.4.4"],
             ["ts-node", "virtual:785d6ec794f5f3baad548dc4807d43636660300457f60ac9f46b15585ab2be9faa588cda444186333210dc41478795de5400c45be60e37c2b3821bf0aa617c1a#npm:10.1.0"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
@@ -936,7 +938,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/pg", "npm:8.6.1"],
             ["jest", "npm:26.6.3"],
             ["pg", "virtual:08cc4eaab2497934a327b01210d51fcbcb1a64e578d56f2f4c10bd9a289071e79f7ece95f998e2c8147d60811586336b900ef12b20c66f6d7c850f630ffe0f1b#npm:8.7.1"],
-            ["prettier", "npm:2.2.1"],
+            ["prettier", "npm:2.4.1"],
             ["ts-jest", "virtual:785d6ec794f5f3baad548dc4807d43636660300457f60ac9f46b15585ab2be9faa588cda444186333210dc41478795de5400c45be60e37c2b3821bf0aa617c1a#npm:26.4.4"],
             ["ts-node", "virtual:785d6ec794f5f3baad548dc4807d43636660300457f60ac9f46b15585ab2be9faa588cda444186333210dc41478795de5400c45be60e37c2b3821bf0aa617c1a#npm:10.1.0"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
@@ -5172,10 +5174,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["prettier", [
-        ["npm:2.2.1", {
-          "packageLocation": "./.yarn/cache/prettier-npm-2.2.1-e0670992f8-800de2df3d.zip/node_modules/prettier/",
+        ["npm:2.4.1", {
+          "packageLocation": "./.yarn/cache/prettier-npm-2.4.1-623aac91ee-cc6830588b.zip/node_modules/prettier/",
           "packageDependencies": [
-            ["prettier", "npm:2.2.1"]
+            ["prettier", "npm:2.4.1"]
           ],
           "linkType": "HARD",
         }]
@@ -5939,7 +5941,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:.", {
           "packageLocation": "./",
           "packageDependencies": [
-            ["sql-ast", "workspace:."]
+            ["sql-ast", "workspace:."],
+            ["prettier", "npm:2.4.1"],
+            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
           ],
           "linkType": "SOFT",
         }]

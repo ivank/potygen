@@ -10,7 +10,12 @@
     "lint": "yarn workspaces foreach --parallel --verbose run lint",
     "build": "yarn workspaces foreach --parallel --topological-dev --verbose run build"
   },
+  "devDependencies": {
+    "prettier": "^2.3.2",
+    "typescript": "^4.4.3"
+  },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "packageManager": "yarn@3.0.2"
 }
