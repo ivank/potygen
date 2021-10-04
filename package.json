@@ -1,42 +1,16 @@
 {
   "name": "sql-ast",
   "version": "0.1.0",
+  "private": true,
   "description": "Parse SQL files to an AST",
   "main": "index.js",
   "license": "MIT",
-  "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "jest": "^26.4.2",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.0",
-    "ts-node": "^10.1.0",
-    "typescript": "^4.0.2"
-  },
-  "dependencies": {
-    "@ikerin/rd-parse": "^3.4.1",
-    "@ovotech/ts-compose": "^0.19.1",
-    "@types/pg": "^8.6.0",
-    "pg": "^8.6.0"
-  },
   "scripts": {
-    "build": "tsc --declaration",
-    "test": "jest test --runInBand",
-    "lint": "prettier --list-different '{src,test}/**/*.ts'"
+    "test": "yarn workspaces foreach --verbose run test",
+    "lint": "yarn workspaces foreach --parallel --verbose run lint",
+    "build": "yarn workspaces foreach --parallel --topological-dev --verbose run build"
   },
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "testURL": "http://localhost/",
-    "testEnvironment": "node"
-  }
+  "workspaces": [
+    "packages/*"
+  ]
 }
