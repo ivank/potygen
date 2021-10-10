@@ -20,47 +20,18 @@ import {
 } from '@psql-ts/query';
 import { ClientBase, QueryConfig } from 'pg';
 import { isLoadedArrayType, isLoadedUnionType } from './guards';
-import { LoadedType, LoadedArray, LoadedConstant, LoadedQuery } from './types';
-
-interface Info {
-  schema: string;
-  table: string;
-  column: string;
-  isNullable: 'YES' | 'NO';
-  recordName: string;
-  dataType: string;
-}
-
-interface Function {
-  schema: string;
-  name: string;
-  dataType: string;
-  isAggregate: boolean;
-  parametersDataType: string[];
-}
-
-interface Record {
-  name: string;
-  enum: string[];
-}
-
-interface LoadContext {
-  columnTypes: ColumnType[];
-  starTypes: StarType[];
-  functionTypes: (FunctionType | FunctionArgType)[];
-  recordTypes: RecordType[];
-}
-
-interface DataContext {
-  info: Info[];
-  functions: Function[];
-  records: Record[];
-}
-
-interface Context {
-  data: DataContext;
-  load: LoadContext;
-}
+import {
+  LoadedType,
+  LoadedArray,
+  LoadedConstant,
+  LoadedQuery,
+  Context,
+  DataContext,
+  Info,
+  Function,
+  Record,
+  LoadContext,
+} from './types';
 
 type ToType = (type?: PropertyType | FunctionType | FunctionArgType) => LoadedType;
 
@@ -157,26 +128,38 @@ const recordsQuery = (enumTypes: RecordType[], columnTypes: ColumnType[]): Query
   };
 };
 
-const matchesColumnType = (columnType: ColumnType) => (info: Info): boolean =>
-  columnType.column === info.column && columnType.schema === info.schema && columnType.table === info.table;
+const matchesColumnType =
+  (columnType: ColumnType) =>
+  (info: Info): boolean =>
+    columnType.column === info.column && columnType.schema === info.schema && columnType.table === info.table;
 
-const matchesRecordType = (type: RecordType) => (record: Record): boolean => type.name === record.name;
+const matchesRecordType =
+  (type: RecordType) =>
+  (record: Record): boolean =>
+    type.name === record.name;
 
-const matchesFunctionType = (type: FunctionType, context: DataContext) => (value: Function): boolean =>
-  type.name === value.name &&
-  type.args.every((arg, index) => {
-    const argType = loadType(context)(arg);
-    return (
-      value.parametersDataType[index] === 'anyelement' ||
-      (value.parametersDataType[index] === 'anyarray' &&
-        argType &&
-        (value.isAggregate || isLoadedArrayType(argType))) ||
-      loadType(context)(toConstantType(value.parametersDataType[index])).type === argType.type
-    );
-  });
-const matchesFunctionArgType = (type: FunctionArgType) => (value: Function): boolean => type.name === value.name;
-const matchesStarType = (columnType: StarType) => (info: Info): boolean =>
-  columnType.schema === info.schema && columnType.table === info.table;
+const matchesFunctionType =
+  (type: FunctionType, context: DataContext) =>
+  (value: Function): boolean =>
+    type.name === value.name &&
+    type.args.every((arg, index) => {
+      const argType = loadType(context)(arg);
+      return (
+        value.parametersDataType[index] === 'anyelement' ||
+        (value.parametersDataType[index] === 'anyarray' &&
+          argType &&
+          (value.isAggregate || isLoadedArrayType(argType))) ||
+        loadType(context)(toConstantType(value.parametersDataType[index])).type === argType.type
+      );
+    });
+const matchesFunctionArgType =
+  (type: FunctionArgType) =>
+  (value: Function): boolean =>
+    type.name === value.name;
+const matchesStarType =
+  (columnType: StarType) =>
+  (info: Info): boolean =>
+    columnType.schema === info.schema && columnType.table === info.table;
 
 const loadDataType = (toType: ToType, dataType?: string, optional?: boolean): LoadedConstant | LoadedArray => {
   const type = toConstantType(dataType);
@@ -191,47 +174,49 @@ const mergeTypes = (dest: LoadedType, src: LoadedType): LoadedType =>
       }
     : dest;
 
-const loadType = (context: DataContext): ToType => (type) => {
-  const recur = loadType(context);
+const loadType =
+  (context: DataContext): ToType =>
+  (type) => {
+    const recur = loadType(context);
 
-  if (type === undefined) {
-    return { type: 'unknown' };
-  } else if (isColumnType(type)) {
-    const columType = context.info?.find(matchesColumnType(type));
-    return columType?.dataType === 'USER-DEFINED'
-      ? recur({ type: 'record', name: columType.recordName })
-      : loadDataType(recur, columType?.dataType, columType?.isNullable === 'YES');
-  } else if (isRecordType(type)) {
-    return {
-      type: 'union',
-      items: context.records?.find(matchesRecordType(type))?.enum.map((value) => ({ type: 'literal', value })) ?? [],
-    };
-  } else if (isArrayType(type)) {
-    return { type: 'array', items: recur(type.items) };
-  } else if (isUnionType(type)) {
-    return type.items.map(recur).reduce(mergeTypes);
-  } else if (isConditionalType(type)) {
-    return type.items
-      .map(recur)
-      .reduce((curr, item) => ({ ...item, optional: item.optional ? curr.optional : item.optional }));
-  } else if (isFunctionType(type)) {
-    switch (type.name) {
-      case 'array_agg':
-        return { type: 'array', items: recur(type.args[0]) };
-      case 'max':
-      case 'min':
-        return recur(type.args[0]);
-      default:
-        return loadDataType(recur, context.functions?.find(matchesFunctionType(type, context))?.dataType);
+    if (type === undefined) {
+      return { type: 'unknown' };
+    } else if (isColumnType(type)) {
+      const columType = context.info?.find(matchesColumnType(type));
+      return columType?.dataType === 'USER-DEFINED'
+        ? recur({ type: 'record', name: columType.recordName })
+        : loadDataType(recur, columType?.dataType, columType?.isNullable === 'YES');
+    } else if (isRecordType(type)) {
+      return {
+        type: 'union',
+        items: context.records?.find(matchesRecordType(type))?.enum.map((value) => ({ type: 'literal', value })) ?? [],
+      };
+    } else if (isArrayType(type)) {
+      return { type: 'array', items: recur(type.items) };
+    } else if (isUnionType(type)) {
+      return type.items.map(recur).reduce(mergeTypes);
+    } else if (isConditionalType(type)) {
+      return type.items
+        .map(recur)
+        .reduce((curr, item) => ({ ...item, optional: item.optional ? curr.optional : item.optional }));
+    } else if (isFunctionType(type)) {
+      switch (type.name) {
+        case 'array_agg':
+          return { type: 'array', items: recur(type.args[0]) };
+        case 'max':
+        case 'min':
+          return recur(type.args[0]);
+        default:
+          return loadDataType(recur, context.functions?.find(matchesFunctionType(type, context))?.dataType);
+      }
+    } else if (isFunctionArgType(type)) {
+      return loadDataType(recur, context.functions?.find(matchesFunctionArgType(type))?.parametersDataType[type.index]);
+    } else if (isLiteralType(type)) {
+      return type;
+    } else {
+      return { type };
     }
-  } else if (isFunctionArgType(type)) {
-    return loadDataType(recur, context.functions?.find(matchesFunctionArgType(type))?.parametersDataType[type.index]);
-  } else if (isLiteralType(type)) {
-    return type;
-  } else {
-    return { type };
-  }
-};
+  };
 
 const toColumnType = (type: PropertyType | FunctionType | FunctionArgType | StarType): ColumnType[] =>
   isColumnType(type) ? [type] : isFunctionType(type) ? type.args.flatMap(toColumnType) : [];
@@ -328,7 +313,7 @@ const toLoadedQuery = (data: DataContext, query: QueryInterface): LoadedQuery =>
   };
 };
 
-const defaultContext: Context = {
+export const defaultContext: Context = {
   load: { columnTypes: [], starTypes: [], functionTypes: [], recordTypes: [] },
   data: { info: [], functions: [], records: [] },
 };

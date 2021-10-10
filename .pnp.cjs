@@ -894,7 +894,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@psql-ts/ast", "workspace:packages/ast"],
             ["@ikerin/rd-parse", "npm:3.4.1"],
             ["@types/jest", "npm:26.0.19"],
-            ["@types/node", "npm:16.10.2"],
+            ["@types/node", "npm:14.17.20"],
             ["jest", "npm:26.6.3"],
             ["prettier", "npm:2.4.1"],
             ["ts-jest", "virtual:785d6ec794f5f3baad548dc4807d43636660300457f60ac9f46b15585ab2be9faa588cda444186333210dc41478795de5400c45be60e37c2b3821bf0aa617c1a#npm:26.4.4"],
@@ -914,7 +914,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@psql-ts/ast", "workspace:packages/ast"],
             ["@psql-ts/query", "workspace:packages/query"],
             ["@types/jest", "npm:26.0.19"],
-            ["@types/node", "npm:16.10.2"],
+            ["@types/node", "npm:14.17.20"],
             ["@types/pg", "npm:8.6.0"],
             ["jest", "npm:26.6.3"],
             ["pg", "virtual:22abf3cfc406b70ca55c435ffb9c25fa87d49f1f63cf29b0a819a6bcf38de260b126ce6cf68e0fbd36fe0924fc31c4181ac7ae1e29cad06bc261e4e9da1be928#npm:8.6.0"],
@@ -934,7 +934,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@ikerin/rd-parse", "npm:3.4.1"],
             ["@psql-ts/ast", "workspace:packages/ast"],
             ["@types/jest", "npm:26.0.19"],
-            ["@types/node", "npm:16.10.2"],
+            ["@types/node", "npm:14.17.20"],
             ["@types/pg", "npm:8.6.1"],
             ["jest", "npm:26.6.3"],
             ["pg", "virtual:08cc4eaab2497934a327b01210d51fcbcb1a64e578d56f2f4c10bd9a289071e79f7ece95f998e2c8147d60811586336b900ef12b20c66f6d7c850f630ffe0f1b#npm:8.7.1"],
@@ -1114,10 +1114,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:16.10.2", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-16.10.2-9677b4eef7-83c1c3c68e.zip/node_modules/@types/node/",
+        ["npm:14.17.20", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-14.17.20-516592f5ba-c704d95c4e.zip/node_modules/@types/node/",
           "packageDependencies": [
-            ["@types/node", "npm:16.10.2"]
+            ["@types/node", "npm:14.17.20"]
           ],
           "linkType": "HARD",
         }]
@@ -6349,7 +6349,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/node12", "npm:1.0.9"],
             ["@tsconfig/node14", "npm:1.0.1"],
             ["@tsconfig/node16", "npm:1.0.2"],
-            ["@types/node", "npm:16.10.2"],
+            ["@types/node", "npm:14.17.20"],
             ["@types/swc__core", null],
             ["@types/swc__wasm", null],
             ["@types/typescript", null],

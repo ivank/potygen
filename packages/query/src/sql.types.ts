@@ -1,4 +1,4 @@
 export interface Sql {
-  params: Record<string, unknown>;
+  params: unknown;
   result: unknown;
 }

@@ -88,8 +88,8 @@ export class PSqlQuery<TSql extends Sql = Sql> {
     this.astParams = toAstParams(text);
   }
   toQueryConfig(params: TSql['params'] = {}): QueryConfig<TSql['result'][]> {
-    const text = convertSql(this.astParams, this.text, params);
-    const values = convertValues(this.astParams, params);
+    const text = convertSql(this.astParams, this.text, params as Record<string, unknown>);
+    const values = convertValues(this.astParams, params as Record<string, unknown>);
     return { text, values };
   }
   async run(db: ClientBase, params: TSql['params'] = {}): Promise<TSql['result'][]> {

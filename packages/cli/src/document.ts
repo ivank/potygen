@@ -72,6 +72,6 @@ export const toQueryTypescriptTypes = (context: DocumentContext, query: LoadedQu
   );
 };
 
-export const toQueryTypescript = (loadedQuery: LoadedQuery): string => {
+export function toQueryTypescript(loadedQuery: LoadedQuery): string {
   return printDocument(toQueryTypescriptTypes({}, loadedQuery));
-};
+}
