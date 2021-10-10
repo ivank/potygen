@@ -1,5 +1,5 @@
 import { join } from 'path';
-import { glob } from '../src/glob';
+import { glob } from '../src';
 
 const cwd = (path: string) => join(__dirname, path);
 

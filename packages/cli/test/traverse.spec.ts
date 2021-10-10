@@ -1,11 +1,12 @@
+import { readFileSync } from 'fs';
+import { join, relative } from 'path';
 import { Client } from 'pg';
 import { pipeline } from 'stream';
 import { promisify } from 'util';
+import { glob } from '../src';
 import { SqlRead, QueryLoader } from '../src/traverse';
 
 const asyncPipeline = promisify(pipeline);
-
-// const cwd = (path: string) => join(__dirname, path);
 
 describe('Traverse', () => {
   it('Should work', async () => {
@@ -13,10 +14,14 @@ describe('Traverse', () => {
     try {
       await db.connect();
 
-      const sqls = new SqlRead('dir/**/*.ts', __dirname);
-      const sink = new QueryLoader(db, __dirname, '{{root}}/__generated__/{{name}}.queries.ts');
+      const sqls = new SqlRead('*.sql', join(__dirname, '../../../sql'));
+      const sink = new QueryLoader(db, __dirname, join(__dirname, '__generated__/{{name}}.queries.ts'));
 
       await asyncPipeline(sqls, sink);
+
+      for (const file of Array.from(glob('__generated__/*.queries.ts', __dirname))) {
+        expect(readFileSync(file, 'utf-8')).toMatchSnapshot(relative(__dirname, file));
+      }
     } finally {
       await db.end();
     }

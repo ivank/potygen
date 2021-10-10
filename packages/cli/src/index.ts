@@ -19,4 +19,5 @@ export {
 } from './guards';
 
 export { loadQuery, loadQueries } from './load-types';
-export { toQueryTypescript, toQueryTypescriptTypes } from './document';
+export { emitLoadedFile, toTypeSource } from './emit';
+export { glob } from './glob';

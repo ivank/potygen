@@ -74,15 +74,31 @@ export interface TemplateTagQuery {
 }
 
 export interface ParsedTypescriptFile {
+  type: 'ts';
   path: string;
   source: SourceFile;
   queries: TemplateTagQuery[];
 }
 
+export interface ParsedSqlFile {
+  type: 'sql';
+  path: string;
+  content: string;
+  queryInterface: QueryInterface;
+}
+
+export type ParsedFile = ParsedSqlFile | ParsedTypescriptFile;
+
 export interface LoadedTemplateTagQuery extends TemplateTagQuery {
   loadedQuery: LoadedQuery;
 }
 
-export interface LoadedParsedTypescriptFile extends ParsedTypescriptFile {
+export interface LoadedTypescriptFile extends ParsedTypescriptFile {
   queries: LoadedTemplateTagQuery[];
 }
+
+export interface LoadedSqlFile extends ParsedSqlFile {
+  loadedQuery: LoadedQuery;
+}
+
+export type LoadedFile = LoadedSqlFile | LoadedTypescriptFile;

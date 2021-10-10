@@ -19,8 +19,8 @@ import { toQueryInterface } from '@psql-ts/query';
 import { loadQueries } from '.';
 import { ClientBase } from 'pg';
 import { defaultContext } from './load-types';
-import { Context, LoadedParsedTypescriptFile, ParsedTypescriptFile, TemplateTagQuery } from './types';
-import { emitLoadedParsedTypescriptFile } from './emit';
+import { Context, LoadedFile, ParsedFile, ParsedSqlFile, ParsedTypescriptFile, TemplateTagQuery } from './types';
+import { emitLoadedFile } from './emit';
 
 const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
   const queries: TemplateTagQuery[] = [];
@@ -46,12 +46,11 @@ const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
     ) {
       const sqlAst = parser(node.template.text);
       if (sqlAst) {
-        const queryInterface = toQueryInterface(sqlAst);
         queries.push({
           name: node.parent.getChildAt(0).getText(),
           pos: node.template.pos + 1,
           template: node.template.text,
-          queryInterface,
+          queryInterface: toQueryInterface(sqlAst),
         });
       }
     } else {
@@ -66,25 +65,31 @@ const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
 const toParsedTypescriptFile = (path: string): ParsedTypescriptFile => {
   const sourceText = readFileSync(path, 'utf-8');
   const source = createSourceFile(basename(path), sourceText, ScriptTarget.ES2021, true);
-  return { source, path, queries: getTemplateTagQueries(source) };
+  return { type: 'ts', source, path, queries: getTemplateTagQueries(source) };
 };
 
-const loadParsedTypescriptFiles = async (
+const toParsedSqlFile = (path: string): ParsedSqlFile | undefined => {
+  const content = readFileSync(path, 'utf-8');
+  const sqlAst = parser(content);
+  return sqlAst ? { type: 'sql', path, content, queryInterface: toQueryInterface(sqlAst) } : undefined;
+};
+
+const loadParsedFiles = async (
   db: ClientBase,
   context: Context,
-  files: ParsedTypescriptFile[],
-): Promise<{ context: Context; files: LoadedParsedTypescriptFile[] }> => {
-  const loaded = await loadQueries(
-    db,
-    files.flatMap((file) => file.queries.map((query) => query.queryInterface)),
-    context,
+  files: ParsedFile[],
+): Promise<{ context: Context; files: LoadedFile[] }> => {
+  const queries = files.flatMap((file) =>
+    file.type === 'ts' ? file.queries.map((query) => query.queryInterface) : file.queryInterface,
   );
+  const loaded = await loadQueries(db, queries, context);
 
   return {
-    files: files.map((file) => ({
-      ...file,
-      queries: file.queries.map((query) => ({ ...query, loadedQuery: loaded.queries.shift()! })),
-    })),
+    files: files.map((file) =>
+      file.type === 'ts'
+        ? { ...file, queries: file.queries.map((query) => ({ ...query, loadedQuery: loaded.queries.shift()! })) }
+        : { ...file, loadedQuery: loaded.queries.shift()! },
+    ),
     context: loaded.context,
   };
 };
@@ -106,6 +111,8 @@ export class SqlRead extends Readable {
         if (file.queries.length > 0) {
           return file;
         }
+      } else if (path.value) {
+        return toParsedSqlFile(path.value);
       }
     } while (!path.done);
     return undefined;
@@ -123,13 +130,13 @@ export class QueryLoader extends Writable {
   }
 
   async _writev(
-    chunks: Array<{ chunk: ParsedTypescriptFile; encoding: BufferEncoding }>,
+    chunks: Array<{ chunk: ParsedFile; encoding: BufferEncoding }>,
     callback: (error?: Error | null) => void,
   ): Promise<void> {
     const parsedFiles = chunks.map((file) => file.chunk);
-    const { context, files } = await loadParsedTypescriptFiles(this.db, this.context, parsedFiles);
+    const { context, files } = await loadParsedFiles(this.db, this.context, parsedFiles);
     this.context = context;
-    files.forEach(emitLoadedParsedTypescriptFile(this.root, this.template));
+    files.forEach(emitLoadedFile(this.root, this.template));
     callback();
   }
 
@@ -138,9 +145,9 @@ export class QueryLoader extends Writable {
     encoding: BufferEncoding,
     callback: (error?: Error | null) => void,
   ): Promise<void> {
-    const { context, files } = await loadParsedTypescriptFiles(this.db, this.context, [file]);
+    const { context, files } = await loadParsedFiles(this.db, this.context, [file]);
     this.context = context;
-    files.forEach(emitLoadedParsedTypescriptFile(this.root, this.template));
+    files.forEach(emitLoadedFile(this.root, this.template));
     callback();
   }
 }

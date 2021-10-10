@@ -1,0 +1,279 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Traverse Should work: __generated__/account-levelisations.query.queries.ts 1`] = `
+"export interface Params {
+    q: string;
+    levelisationId: number;
+    ids: number[];
+    sortField: string;
+    sortOrder: string;
+    limit: number;
+    offset: number;
+}
+export interface Result {
+    id: number;
+    levelisationId: number;
+    accountId: number;
+    installationId: number;
+    state: \\"Done\\" | \\"Pending\\";
+    isAccepted: boolean;
+    generationStartReadOn?: Date;
+    generationStartReadValue?: string;
+    generationEndReadOn?: Date;
+    generationEndReadValue?: string;
+    generationPercentageSplit?: number;
+    generationPayment?: string;
+    generationEnergy?: string;
+    exportStartReadOn?: Date;
+    exportStartReadValue?: string;
+    exportEndReadOn?: Date;
+    exportEndReadValue?: string;
+    exportPercentageSplit?: number;
+    exportPayment?: string;
+    exportEnergy?: string;
+    totalPayment?: string;
+    vatPayment?: string;
+    cfrFitId: string;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/account-levelisations-set-bulk-update.query.queries.ts 1`] = `
+"export interface Params {
+    ids: number[];
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/accounts.queries.ts 1`] = `
+"export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/accounts.query.queries.ts 1`] = `
+"export interface Params {
+    q: string;
+    ids: number[];
+    limit: number;
+    offset: number;
+}
+export interface Result {
+    id: number;
+    state: \\"Dispute\\" | \\"Closed\\" | \\"Active\\" | \\"Pending\\";
+    startOn?: Date;
+    firstName: string;
+    lastName: string;
+    email?: string;
+    address: string;
+    fitIds: string[];
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/bacs.query.queries.ts 1`] = `
+"export interface Params {
+    quarter: string;
+    perPage: string;
+    offset: string;
+}
+export interface Result {
+    fitId: string;
+    name?: string;
+    amount: string;
+    quarter: string;
+    bankDetails: string;
+    addressLine1?: string;
+    addressLine2?: string;
+    addressLine3?: string;
+    postcode: string;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/contracts.queries.ts 1`] = `
+"export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/delete-accounts.query.queries.ts 1`] = `
+"export interface Params {
+    type: \\"FIT\\" | \\"SEG\\";
+    state: \\"Dispute\\" | \\"Closed\\" | \\"Active\\" | \\"Pending\\";
+}
+export interface Result {
+    id: number;
+    sourceSystemId?: number;
+    customerId: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/generation-read-data.query.queries.ts 1`] = `
+"export interface Params {
+    installationId: number;
+    exportDateOn: Date;
+}
+export interface Result {
+    dateOn: Date;
+    value: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/installation-meter-update.query.queries.ts 1`] = `
+"export interface Params {
+    meterId: number;
+    removalDate: unknown;
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/installations.queries.ts 1`] = `
+"export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/meter-reads.queries.ts 1`] = `
+"export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/rates-by-tarrif-ids.query.queries.ts 1`] = `
+"export interface Params {
+    ids: number;
+}
+export interface Result {
+    tariffId: number;
+    rate: string;
+    startOn: Date;
+    tariffCode: string;
+    tariffType: \\"Export\\" | \\"Generation\\" | \\"SEG\\";
+    endOn?: Date;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/read-create.query.queries.ts 1`] = `
+"export interface Params {
+    meterId: number;
+    reason?: string;
+    type: \\"Meter Verification\\" | \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\";
+    dateOn: Date;
+    submittedAt?: Date;
+    value: number;
+}
+export interface Result {
+    id: number;
+    value: number;
+    meterId: number;
+    submittedAt?: Date;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/reads-by-account-id.query.queries.ts 1`] = `
+"export interface Params {
+    id: number;
+    offset: string;
+    perPage: string;
+}
+export interface Result {
+    id: number;
+    msn: string;
+    meterId: number;
+    dateOn: Date;
+    value: number;
+    type: \\"Meter Verification\\" | \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\";
+    reason?: string;
+    createdAt: Date;
+    updatedAt?: Date;
+    sourceSystemId?: number;
+    mpan: string;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/tariff-rates.queries.ts 1`] = `
+"export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;

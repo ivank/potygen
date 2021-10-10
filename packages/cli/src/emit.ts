@@ -9,9 +9,11 @@ import {
   SyntaxKind,
   createPrinter,
   NewLineKind,
+  Statement,
 } from 'typescript';
+import { LoadedQuery } from '.';
 import { isLoadedArrayType, isLoadedLiteralType, isLoadedUnionType, isLoadedValuesPick } from './guards';
-import { LoadedParsedTypescriptFile, LoadedType, LoadedValuesPick } from './types';
+import { LoadedFile, LoadedType, LoadedValuesPick } from './types';
 
 const parseTemplate = (root: string, template: string, path: string): string =>
   Object.entries({ ...parse(relative(root, path)), root }).reduce(
@@ -56,60 +58,61 @@ const toPropertyType = (type: LoadedType | LoadedValuesPick): TypeNode => {
 
 const toClassCase = (identifier: string) => identifier[0].toUpperCase() + identifier.slice(1);
 
-const toTypeSource = (file: LoadedParsedTypescriptFile): SourceFile =>
+const toLoadedQueryTypeNodes = (name: string, loadedQuery: LoadedQuery): Statement[] => [
+  factory.createInterfaceDeclaration(
+    undefined,
+    [factory.createModifier(SyntaxKind.ExportKeyword)],
+    `${name}Params`,
+    undefined,
+    undefined,
+    loadedQuery.params.map((item) =>
+      factory.createPropertySignature(
+        undefined,
+        item.name,
+        item.type.optional ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
+        toPropertyType(item.type),
+      ),
+    ),
+  ),
+  factory.createInterfaceDeclaration(
+    undefined,
+    [factory.createModifier(SyntaxKind.ExportKeyword)],
+    `${name}Result`,
+    undefined,
+    undefined,
+    loadedQuery.result.map((item) =>
+      factory.createPropertySignature(
+        undefined,
+        item.name,
+        item.type.optional ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
+        toPropertyType(item.type),
+      ),
+    ),
+  ),
+  factory.createInterfaceDeclaration(
+    undefined,
+    [factory.createModifier(SyntaxKind.ExportKeyword)],
+    `${name}Query`,
+    undefined,
+    undefined,
+    [
+      factory.createPropertySignature(undefined, 'params', undefined, factory.createTypeReferenceNode(`${name}Params`)),
+      factory.createPropertySignature(undefined, 'result', undefined, factory.createTypeReferenceNode(`${name}Result`)),
+    ],
+  ),
+];
+
+export const toTypeSource = (file: LoadedFile): SourceFile =>
   factory.updateSourceFile(
     createSourceFile(file.path, '', ScriptTarget.ES2021, true),
-    file.queries.flatMap((query, index) => {
-      const name = toClassCase(query.name);
-      return [
-        factory.createInterfaceDeclaration(
-          undefined,
-          [factory.createModifier(SyntaxKind.ExportKeyword)],
-          `${name}Params`,
-          undefined,
-          undefined,
-          query.loadedQuery.params.map((item) =>
-            factory.createPropertySignature(undefined, item.name, undefined, toPropertyType(item.type)),
-          ),
-        ),
-        factory.createInterfaceDeclaration(
-          undefined,
-          [factory.createModifier(SyntaxKind.ExportKeyword)],
-          `${name}Result`,
-          undefined,
-          undefined,
-          query.loadedQuery.result.map((item) =>
-            factory.createPropertySignature(undefined, item.name, undefined, toPropertyType(item.type)),
-          ),
-        ),
-        factory.createInterfaceDeclaration(
-          undefined,
-          [factory.createModifier(SyntaxKind.ExportKeyword)],
-          `${name}Query`,
-          undefined,
-          undefined,
-          [
-            factory.createPropertySignature(
-              undefined,
-              'params',
-              undefined,
-              factory.createTypeReferenceNode(`${name}Params`),
-            ),
-            factory.createPropertySignature(
-              undefined,
-              'result',
-              undefined,
-              factory.createTypeReferenceNode(`${name}Result`),
-            ),
-          ],
-        ),
-      ];
-    }),
+    file.type === 'ts'
+      ? file.queries.flatMap((query) => toLoadedQueryTypeNodes(toClassCase(query.name), query.loadedQuery))
+      : toLoadedQueryTypeNodes('', file.loadedQuery),
   );
 
-export const emitLoadedParsedTypescriptFile = (root: string, template: string) => {
+export const emitLoadedFile = (root: string, template: string) => {
   const printer = createPrinter({ newLine: NewLineKind.LineFeed });
-  return (file: LoadedParsedTypescriptFile): void => {
+  return (file: LoadedFile): void => {
     const outputFile = parseTemplate(root, template, file.path);
     const directory = dirname(outputFile);
 
