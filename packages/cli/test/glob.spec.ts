@@ -26,6 +26,33 @@ describe('Glob', () => {
     ],
     ['dir/file1.txt', [cwd('dir/file1.txt')]],
     ['dir/file?.txt', [cwd('dir/file1.txt'), cwd('dir/file2.txt')]],
+    ['dir/{file1,file2}.txt', [cwd('dir/file1.txt'), cwd('dir/file2.txt')]],
+    [
+      'dir/dir1/{dir2,dir3}/*.txt',
+      [
+        cwd('dir/dir1/dir2/file5.txt'),
+        cwd('dir/dir1/dir2/file6.txt'),
+        cwd('dir/dir1/dir3/file7.txt'),
+        cwd('dir/dir1/dir3/file8.txt'),
+      ],
+    ],
+    [
+      'dir/dir1/{dir2,dir3}/*.{txt,ts}',
+      [
+        cwd('dir/dir1/dir2/file5.txt'),
+        cwd('dir/dir1/dir2/file6.txt'),
+        cwd('dir/dir1/dir2/ts-file1.ts'),
+        cwd('dir/dir1/dir2/ts-file2.ts'),
+        cwd('dir/dir1/dir3/file7.txt'),
+        cwd('dir/dir1/dir3/file8.txt'),
+        cwd('dir/dir1/dir3/ts-file3.ts'),
+      ],
+    ],
+    ['dir/dir1/../dir1/dir2/../../*.txt', [cwd('dir/file1.txt'), cwd('dir/file2.txt')]],
+    [
+      'dir/dir1/{dir2,file3.txt}/*.txt',
+      [cwd('dir/dir1/file3.txt'), cwd('dir/dir1/dir2/file5.txt'), cwd('dir/dir1/dir2/file6.txt')],
+    ],
     [
       'dir/**/*',
       [

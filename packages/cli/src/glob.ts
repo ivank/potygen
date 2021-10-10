@@ -29,19 +29,20 @@ type Path = Directory | File;
 type LoadItem = Glob | File;
 
 const toPath = (dirent: Dirent): Path =>
-  dirent.isDirectory() ? { type: 'directory', value: dirent.name } : { type: 'file', value: dirent.name };
+  dirent.isFile() ? { type: 'file', value: dirent.name } : { type: 'directory', value: dirent.name };
 
 const loadDir = (name: string): Path[] => readdirSync(name, { withFileTypes: true }).map(toPath);
 const isFile = (item: Path): item is File => item.type === 'file';
 const isDirectory = (item: Path): item is File => item.type === 'directory';
 
 const escapeRegExp = (str: string) => str.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&');
-const isPartFilter = (str: string) => /[\?\*\[\]]/.test(str);
+const isPartFilter = (str: string) => /[\?\*\[\]\}]/.test(str);
 
 const toPatternFilter = (path: string) =>
   new RegExp(
     '^' +
       escapeRegExp(path)
+        .replace(/\\\{([^\}]+)\\\}/g, (_, items) => `(${items.replace(',', '|')})`)
         .replace(/\\\?/g, '.')
         .replace(/\\\*/g, '.*')
         .replace(/\\\[([^\[]+)\\\]/g, '[$1]') +

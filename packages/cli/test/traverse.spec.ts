@@ -1,10 +1,9 @@
 import { Client } from 'pg';
 import { pipeline } from 'stream';
 import { promisify } from 'util';
+import { SqlRead, QueryLoader } from '../src/traverse';
 
 const asyncPipeline = promisify(pipeline);
-
-import { SqlRead, QueryLoader } from '../src/traverse';
 
 // const cwd = (path: string) => join(__dirname, path);
 
