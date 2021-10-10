@@ -1,4 +1,5 @@
-import { mkdirSync, writeFileSync } from 'fs';
+import { mkdir, writeFile } from 'fs';
+import { promisify } from 'util';
 import { dirname, parse, relative } from 'path';
 import {
   factory,
@@ -14,6 +15,9 @@ import {
 import { LoadedQuery } from '.';
 import { isLoadedArrayType, isLoadedLiteralType, isLoadedUnionType, isLoadedValuesPick } from './guards';
 import { LoadedFile, LoadedType, LoadedValuesPick } from './types';
+
+const mkdirAsync = promisify(mkdir);
+const writeFileAsync = promisify(writeFile);
 
 const parseTemplate = (root: string, template: string, path: string): string =>
   Object.entries({ ...parse(relative(root, path)), root }).reduce(
@@ -112,11 +116,11 @@ export const toTypeSource = (file: LoadedFile): SourceFile =>
 
 export const emitLoadedFile = (root: string, template: string) => {
   const printer = createPrinter({ newLine: NewLineKind.LineFeed });
-  return (file: LoadedFile): void => {
+  return async (file: LoadedFile): Promise<void> => {
     const outputFile = parseTemplate(root, template, file.path);
     const directory = dirname(outputFile);
 
-    mkdirSync(directory, { recursive: true });
-    writeFileSync(outputFile, printer.printFile(toTypeSource(file)));
+    await mkdirAsync(directory, { recursive: true });
+    await writeFileAsync(outputFile, printer.printFile(toTypeSource(file)));
   };
 };

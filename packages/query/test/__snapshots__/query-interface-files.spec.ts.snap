@@ -4,33 +4,49 @@ exports[`Query Interface Should convert complex sql account-levelisations.query.
 Object {
   "params": Array [
     Object {
-      "lastPos": 1661,
+      "lastPos": 2361,
       "name": "q",
       "pick": Array [],
-      "pos": 1605,
+      "pos": 2305,
       "required": false,
       "spread": false,
       "type": "string",
     },
     Object {
-      "lastPos": 1788,
-      "name": "levelisationId",
+      "lastPos": 2487,
+      "name": "resolvedPostlev",
       "pick": Array [],
-      "pos": 1706,
+      "pos": 2366,
+      "required": false,
+      "spread": false,
+      "type": "string",
+    },
+    Object {
+      "lastPos": 2580,
+      "name": "state",
+      "pick": Array [],
+      "pos": 2492,
       "required": false,
       "spread": false,
       "type": Object {
-        "column": "levelisation_id",
-        "schema": "public",
-        "table": "account_levelisations",
-        "type": "column",
+        "name": "account_levelisation_state",
+        "type": "record",
       },
     },
     Object {
-      "lastPos": 1910,
+      "lastPos": 2739,
+      "name": "levelisationId",
+      "pick": Array [],
+      "pos": 2585,
+      "required": false,
+      "spread": false,
+      "type": "number",
+    },
+    Object {
+      "lastPos": 2861,
       "name": "ids",
       "pick": Array [],
-      "pos": 1805,
+      "pos": 2756,
       "required": false,
       "spread": false,
       "type": Object {
@@ -39,37 +55,37 @@ Object {
       },
     },
     Object {
-      "lastPos": 1942,
+      "lastPos": 2893,
       "name": "sortField",
       "pick": Array [],
-      "pos": 1931,
+      "pos": 2882,
       "required": false,
       "spread": false,
       "type": "string",
     },
     Object {
-      "lastPos": 1970,
+      "lastPos": 2925,
       "name": "sortOrder",
       "pick": Array [],
-      "pos": 1959,
+      "pos": 2914,
       "required": false,
       "spread": false,
       "type": "string",
     },
     Object {
-      "lastPos": 2581,
+      "lastPos": 5353,
       "name": "limit",
       "pick": Array [],
-      "pos": 2575,
+      "pos": 5347,
       "required": false,
       "spread": false,
       "type": "number",
     },
     Object {
-      "lastPos": 2601,
+      "lastPos": 5373,
       "name": "offset",
       "pick": Array [],
-      "pos": 2594,
+      "pos": 5366,
       "required": false,
       "spread": false,
       "type": "number",
@@ -257,6 +273,24 @@ Object {
       },
     },
     Object {
+      "name": "exportType",
+      "type": Object {
+        "column": "export_type",
+        "schema": "public",
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "technologyType",
+      "type": Object {
+        "column": "technology_type",
+        "schema": "public",
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
       "name": "totalPayment",
       "type": Object {
         "column": "total_payment",
@@ -275,11 +309,64 @@ Object {
       },
     },
     Object {
+      "name": "generationPeriods",
+      "type": Object {
+        "column": "generation_periods",
+        "schema": "public",
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "exportPeriods",
+      "type": Object {
+        "column": "export_periods",
+        "schema": "public",
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "errorCode",
+      "type": "string",
+    },
+    Object {
+      "name": "errorParams",
+      "type": "json",
+    },
+    Object {
       "name": "cfrFitId",
       "type": Object {
         "column": "scheme_account_reference",
         "schema": "public",
         "table": "contracts",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "resolvedPostlevId",
+      "type": Object {
+        "column": "resolved_postlev_id",
+        "schema": "public",
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "isBacsPaymentsSent",
+      "type": Object {
+        "column": "is_bacs_payments_sent",
+        "schema": "public",
+        "table": "account_levelisations",
+        "type": "column",
+      },
+    },
+    Object {
+      "name": "isChequePaymentsSent",
+      "type": Object {
+        "column": "is_cheque_payments_sent",
+        "schema": "public",
+        "table": "account_levelisations",
         "type": "column",
       },
     },
@@ -312,6 +399,40 @@ Object {
         "table": "account_levelisations",
         "type": "column",
       },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "lastPos": 1893,
+      "name": "q",
+      "pick": Array [],
+      "pos": 738,
+      "required": false,
+      "spread": false,
+      "type": "string",
+    },
+    Object {
+      "lastPos": 1964,
+      "name": "ids",
+      "pick": Array [],
+      "pos": 1910,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "items": "number",
+        "type": "array",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "total",
+      "type": "number",
     },
   ],
 }

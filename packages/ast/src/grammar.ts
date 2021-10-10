@@ -13,6 +13,8 @@ import {
   FunctionRule,
   Stack,
 } from '@ikerin/rd-parse';
+import { first } from './util';
+import { isFilter } from './grammar.guards';
 import {
   IdentifierTag,
   QualifiedIdentifierTag,
@@ -87,6 +89,7 @@ import {
   SubqueryExpressionTag,
   NullIfTag,
   ConditionalExpressionTag,
+  FilterTag,
 } from './grammar.types';
 
 const context = ({ pos, lastSeen: { pos: lastPos } }: Stack): { pos: number; lastPos: number } => ({ pos, lastPos });
@@ -112,8 +115,10 @@ const NameRule = /^([A-Z_][A-Z0-9_]*)/i;
 const QuotedNameRule = /^"((?:""|[^"])*)"/;
 const QuotedName = Node<QuotedNameTag>(QuotedNameRule, ([value], $) => ({ tag: 'QuotedName', value, ...context($) }));
 
-const RestrictedReservedKeywords = /^(?:ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|ABORT|ABSOLUTE|ACCESS|ACTION|ADD|ADMIN|AFTER|AGGREGATE|ALSO|ALTER|ASSERTION|ASSIGNMENT|AT|BACKWARD|BEFORE|BEGIN|BY|CACHE|CALLED|CASCADE|CHAIN|CHARACTERISTICS|CHECKPOINT|CLASS|CLOSE|CLUSTER|COMMENT|COMMIT|COMMITTED|CONNECTION|CONSTRAINTS|CONVERSION|COPY|CREATEDB|CREATEROLE|CREATEUSER|CSV|CURSOR|CYCLE|DATABASE|DAY|DEALLOCATE|DECLARE|DEFAULTS|DEFERRED|DEFINER|DELETE|DELIMITER|DELIMITERS|DISABLE|DOMAIN|DOUBLE|DROP|EACH|ENABLE|ENCODING|ENCRYPTED|ESCAPE|EXCLUDING|EXCLUSIVE|EXECUTE|EXPLAIN|EXTERNAL|FETCH|FIRST|FORCE|FORWARD|FUNCTION|GLOBAL|GRANTED|HANDLER|HEADER|HOLD|HOUR|IMMEDIATE|IMMUTABLE|IMPLICIT|INCLUDING|INCREMENT|INDEX|INHERIT|INHERITS|INPUT|INSENSITIVE|INSERT|INSTEAD|INVOKER|ISOLATION|KEY|LANCOMPILER|LANGUAGE|LARGE|LAST|LEVEL|LISTEN|LOAD|LOCAL|LOCATION|LOCK|LOGIN|MATCH|MAXVALUE|MINUTE|MINVALUE|MODE|MONTH|MOVE|NAMES|NEXT|NO|NOCREATEDB|NOCREATEROLE|NOCREATEUSER|NOINHERIT|NOLOGIN|NOSUPERUSER|NOTHING|NOTIFY|NOWAIT|OBJECT|OF|OIDS|OPERATOR|OPTION|OWNER|PARTIAL|PASSWORD|PREPARE|PREPARED|PRESERVE|PRIOR|PRIVILEGES|PROCEDURAL|PROCEDURE|QUOTE|READ|RECHECK|REINDEX|RELATIVE|RELEASE|RENAME|REPEATABLE|REPLACE|RESET|RESTART|RESTRICT|RETURNS|REVOKE|ROLE|ROLLBACK|ROWS|RULE|SAVEPOINT|SCHEMA|SCROLL|SECOND|SECURITY|SEQUENCE|SERIALIZABLE|SESSION|SET|SHARE|SHOW|SIMPLE|STABLE|START|STATEMENT|STATISTICS|STDIN|STDOUT|STORAGE|STRICT|SUPERUSER|SYSID|SYSTEM|TABLESPACE|TEMP|TEMPLATE|TEMPORARY|TOAST|TRANSACTION|TRIGGER|TRUNCATE|TRUSTED|TYPE|UNCOMMITTED|UNENCRYPTED|UNKNOWN|UNLISTEN|UNTIL|UPDATE|VACUUM|VALID|VALIDATOR|VALUES|VARYING|VIEW|VOLATILE|WITH|WITHOUT|WORK|WRITE|YEAR|ZONE|CROSS|OUTER|RIGHT|LEFT|FULL|JOIN|INNER|RETURNING)$/i;
-const ReservedKeywords = /^(ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|DER|RETURNING)$/i;
+const RestrictedReservedKeywords =
+  /^(?:ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|ABORT|ABSOLUTE|ACCESS|ACTION|ADD|ADMIN|AFTER|AGGREGATE|ALSO|ALTER|ASSERTION|ASSIGNMENT|AT|BACKWARD|BEFORE|BEGIN|BY|CACHE|CALLED|CASCADE|CHAIN|CHARACTERISTICS|CHECKPOINT|CLASS|CLOSE|CLUSTER|COMMENT|COMMIT|COMMITTED|CONNECTION|CONSTRAINTS|CONVERSION|COPY|CREATEDB|CREATEROLE|CREATEUSER|CSV|CURSOR|CYCLE|DATABASE|DAY|DEALLOCATE|DECLARE|DEFAULTS|DEFERRED|DEFINER|DELETE|DELIMITER|DELIMITERS|DISABLE|DOMAIN|DOUBLE|DROP|EACH|ENABLE|ENCODING|ENCRYPTED|ESCAPE|EXCLUDING|EXCLUSIVE|EXECUTE|EXPLAIN|EXTERNAL|FETCH|FIRST|FORCE|FORWARD|FUNCTION|GLOBAL|GRANTED|HANDLER|HEADER|HOLD|HOUR|IMMEDIATE|IMMUTABLE|IMPLICIT|INCLUDING|INCREMENT|INDEX|INHERIT|INHERITS|INPUT|INSENSITIVE|INSERT|INSTEAD|INVOKER|ISOLATION|KEY|LANCOMPILER|LANGUAGE|LARGE|LAST|LEVEL|LISTEN|LOAD|LOCAL|LOCATION|LOCK|LOGIN|MATCH|MAXVALUE|MINUTE|MINVALUE|MODE|MONTH|MOVE|NAMES|NEXT|NO|NOCREATEDB|NOCREATEROLE|NOCREATEUSER|NOINHERIT|NOLOGIN|NOSUPERUSER|NOTHING|NOTIFY|NOWAIT|OBJECT|OF|OIDS|OPERATOR|OPTION|OWNER|PARTIAL|PASSWORD|PREPARE|PREPARED|PRESERVE|PRIOR|PRIVILEGES|PROCEDURAL|PROCEDURE|QUOTE|READ|RECHECK|REINDEX|RELATIVE|RELEASE|RENAME|REPEATABLE|REPLACE|RESET|RESTART|RESTRICT|RETURNS|REVOKE|ROLE|ROLLBACK|ROWS|RULE|SAVEPOINT|SCHEMA|SCROLL|SECOND|SECURITY|SEQUENCE|SERIALIZABLE|SESSION|SET|SHARE|SHOW|SIMPLE|STABLE|START|STATEMENT|STATISTICS|STDIN|STDOUT|STORAGE|STRICT|SUPERUSER|SYSID|SYSTEM|TABLESPACE|TEMP|TEMPLATE|TEMPORARY|TOAST|TRANSACTION|TRIGGER|TRUNCATE|TRUSTED|TYPE|UNCOMMITTED|UNENCRYPTED|UNKNOWN|UNLISTEN|UNTIL|UPDATE|VACUUM|VALID|VALIDATOR|VALUES|VARYING|VIEW|VOLATILE|WITH|WITHOUT|WORK|WRITE|YEAR|ZONE|CROSS|OUTER|RIGHT|LEFT|FULL|JOIN|INNER|RETURNING)$/i;
+const ReservedKeywords =
+  /^(ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|DER|RETURNING)$/i;
 
 const RestrictedIdentifier = Node<IdentifierTag>(
   Any(IfNot(RestrictedReservedKeywords, NameRule), QuotedNameRule),
@@ -199,7 +204,7 @@ const Type = Node<TypeTag>(
     /^(lseg)/i,
     /^(macaddr)/i,
     /^(money)/i,
-    All(/^(numeric|decimal)/i, Optional(Brackets(Any(/^([0-9]+)/, All(/^([0-9]+)/, ',', /^([0-9]+)/))))),
+    All(/^(numeric|decimal)/i, Optional(Brackets(Any(All(/^([0-9]+)/, ',', /^([0-9]+)/), /^([0-9]+)/)))),
     /^(path)/i,
     /^(pg_lsn)/i,
     /^(point)/i,
@@ -217,7 +222,7 @@ const Type = Node<TypeTag>(
     /^(xml)/i,
     NameRule,
   ),
-  ([value, param], $) => ({ tag: 'Type', value, param, ...context($) }),
+  ([value, param], $) => ({ tag: 'Type', value: value.toLowerCase(), param, ...context($) }),
 );
 
 const TypeArray = Node<TypeArrayTag>(All(Type, Plus(/^(\[\])/)), ([value, ...dimensions], $) => {
@@ -260,7 +265,7 @@ const BinaryOperatorPrecedence = [
   /^(\^)/,
   /^(\*|\/|%)/,
   /^(\+|-)/,
-  /^(\+|-)/,
+  /^(->>|->|#>>|#>|@>|<@|\?\||\?\&|\?|#-)/,
   /^(\|\|)/,
   /^(\|)/,
   /^(\&)/,
@@ -356,12 +361,29 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       ...context($),
     }));
 
+    const FunctionDistinct = Node<DistinctTag>(/^DISTINCT/i, (values, $) => {
+      return { tag: 'Distinct', values, ...context($) };
+    });
+
+    const FunctionFilter = Node<FilterTag>(All(/^FILTER/i, Brackets(WhereRule(ChildExpression))), ([value], $) => {
+      return { tag: 'Filter', value, ...context($) };
+    });
+
     const Function = Node<FunctionTag>(
       All(
         UnrestrictedIdentifier,
-        Brackets(Optional(List(All(Any(ChildExpression, QualifiedIdentifier), Optional(OrderRule(ChildExpression)))))),
+        Brackets(
+          Optional(List(All(Optional(FunctionDistinct), ChildExpression, Optional(OrderRule(ChildExpression))))),
+        ),
+        Optional(FunctionFilter),
       ),
-      ([value, ...args], $) => ({ tag: 'Function', value, args, ...context($) }),
+      ([value, ...rest], $) => ({
+        tag: 'Function',
+        value,
+        args: rest.filter((item) => !isFilter(item)),
+        filter: first(rest.filter(isFilter)),
+        ...context($),
+      }),
     );
 
     const ArrayConstructor = Node<ArrayConstructorTag>(
@@ -599,6 +621,7 @@ const Select = Y((SelectExpression) => {
       Star(Combination),
       Optional(OrderBy),
       Optional(Any(All(Limit, Offset), All(Offset, Limit), Limit, Offset)),
+      Optional(';'),
     ),
     (values, $) => ({ tag: 'Select', values, ...context($) }),
   );
@@ -653,7 +676,7 @@ const Returning = Node<ReturningTag>(All(/^RETURNING/i, List(ReturningListItem))
   return { tag: 'Returning', values, ...context($) };
 });
 const Update = Node<UpdateTag>(
-  All(/^UPDATE/i, Table, Set, Optional(UpdateFrom), Optional(Where), Optional(Returning)),
+  All(/^UPDATE/i, Table, Set, Optional(UpdateFrom), Optional(Where), Optional(Returning), Optional(';')),
   (values, $) => ({ tag: 'Update', values, ...context($) }),
 );
 
@@ -663,7 +686,7 @@ const Update = Node<UpdateTag>(
  */
 const Using = Node<UsingTag>(All(/^USING/i, List(FromList)), (values, $) => ({ tag: 'Using', values, ...context($) }));
 const Delete = Node<DeleteTag>(
-  All(/^DELETE FROM/i, Table, Optional(Using), Optional(Where), Optional(Returning)),
+  All(/^DELETE FROM/i, Table, Optional(Using), Optional(Where), Optional(Returning), Optional(';')),
   (values, $) => ({ tag: 'Delete', values, ...context($) }),
 );
 
@@ -677,7 +700,7 @@ const Collate = Node<CollateTag>(All(/^COLLATE/i, QuotedName), ([value], $) => (
   ...context($),
 }));
 const ConflictTarget = Node<ConflictTargetTag>(
-  All(Brackets(All(Table, Optional(Brackets(Expression)), Optional(Collate))), Optional(Where)),
+  All(Brackets(List(All(Table, Optional(Brackets(Expression)), Optional(Collate)))), Optional(Where)),
   (values, $) => ({ tag: 'ConflictTarget', values, ...context($) }),
 );
 const ConflictConstraint = Node<ConflictConstraintTag>(All(/^ON CONSTRAINT/i, Identifier), ([value], $) => {
@@ -700,7 +723,15 @@ const ValuesList = Node<ValuesListTag>(All(/^VALUES/i, Any(List(Values), Paramet
   return { tag: 'ValuesList', values, ...context($) };
 });
 const Insert = Node<InsertTag>(
-  All(/^INSERT INTO/i, Table, Optional(Columns), Any(ValuesList, Select), Optional(Conflict), Optional(Returning)),
+  All(
+    /^INSERT INTO/i,
+    Table,
+    Optional(Columns),
+    Any(ValuesList, Select),
+    Optional(Conflict),
+    Optional(Returning),
+    Optional(';'),
+  ),
   (values, $) => ({ tag: 'Insert', values, ...context($) }),
 );
 

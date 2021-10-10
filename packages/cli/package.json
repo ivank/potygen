@@ -14,7 +14,6 @@
     "ts-node": "^10.1.0"
   },
   "dependencies": {
-    "@ovotech/ts-compose": "^0.19.1",
     "@psql-ts/ast": "workspace:*",
     "@psql-ts/query": "workspace:*",
     "@types/pg": "^8.6.0",
@@ -24,7 +23,8 @@
   "scripts": {
     "build": "tsc --declaration",
     "test": "jest test --runInBand",
-    "lint": "prettier --list-different '{src,test}/**/*.ts'"
+    "lint": "prettier --list-different '{src,test}/**/*.ts'",
+    "cli": "node dist/cli.js"
   },
   "jest": {
     "preset": "../../jest.json"

@@ -61,6 +61,7 @@ import {
   isUnique,
   orderBy,
   isNil,
+  FunctionTag,
 } from '@psql-ts/ast';
 
 import { isStarType, isColumnType, isUnionType, isConditionalType } from './query-interface.guards';
@@ -101,6 +102,7 @@ const toName = (aliases: TableAliases, table: QualifiedTableName): QualifiedTabl
   aliases[table?.table?.toLowerCase() ?? ''] ?? table;
 
 type ConvertableTag =
+  | FunctionTag
   | ExpressionTag
   | SelectListTag
   | OrderByTag
@@ -199,6 +201,7 @@ const sqlTypes: { [type: string]: ConstantType | ArrayType } = {
   point: 'string',
   polygon: 'string',
   real: 'string',
+  float: 'number',
   float4: 'number',
   smallint: 'number',
   int2: 'number',
@@ -223,7 +226,7 @@ const sqlTypes: { [type: string]: ConstantType | ArrayType } = {
 export const toConstantType = (type?: string): ConstantType | ArrayType =>
   type ? sqlTypes[type] ?? 'string' : 'string';
 
-const operatorTypes: { [type: string]: ConstantType } = {
+const unaryTypes: { [type: string]: ConstantType } = {
   '+': 'number',
   '-': 'number',
   '/': 'number',
@@ -232,6 +235,28 @@ const operatorTypes: { [type: string]: ConstantType } = {
   AND: 'boolean',
   NOT: 'boolean',
   '||': 'string',
+};
+
+const binaryOperatorTypes: {
+  [type: string]: { left: ConstantType; right: ConstantType | UnionType | ArrayType; result?: ConstantType };
+} = {
+  '+': { left: 'number', right: 'number' },
+  '-': { left: 'number', right: 'number' },
+  '/': { left: 'number', right: 'number' },
+  '*': { left: 'number', right: 'number' },
+  OR: { left: 'boolean', right: 'boolean' },
+  AND: { left: 'boolean', right: 'boolean' },
+  NOT: { left: 'boolean', right: 'boolean' },
+  '||': { left: 'string', right: 'string' },
+  '->': { left: 'json', right: { type: 'union', items: ['number', 'string'] }, result: 'json' },
+  '->>': { left: 'json', right: { type: 'union', items: ['number', 'string'] }, result: 'string' },
+  '#>': { left: 'json', right: { type: 'array', items: 'string' }, result: 'json' },
+  '#>>': { left: 'json', right: { type: 'array', items: 'string' }, result: 'string' },
+  '?': { left: 'json', right: 'string', result: 'boolean' },
+  '?|': { left: 'json', right: { type: 'array', items: 'string' }, result: 'boolean' },
+  '?&': { left: 'json', right: { type: 'array', items: 'string' }, result: 'boolean' },
+  '@>': { left: 'json', right: 'json', result: 'boolean' },
+  '<@': { left: 'json', right: 'json', result: 'boolean' },
 };
 
 const convertType = (tag: TypeTag | TypeArrayTag): ConstantType | ArrayType | RecordType =>
@@ -364,10 +389,13 @@ const convertExpression = (
           name: tag.value.value.toLowerCase(),
           args: tag.args.filter(isExpression).map((arg) => convertExpression(context, arg).type),
         },
-        params: tag.args.flatMap(
-          (arg, index) =>
-            convertExpression({ ...context, type: { type: 'function_arg', name: tag.value.value, index } }, arg).params,
-        ),
+        params: tag.args
+          .flatMap(
+            (arg, index) =>
+              convertExpression({ ...context, type: { type: 'function_arg', name: tag.value.value, index } }, arg)
+                .params,
+          )
+          .concat(tag.filter ? convertExpression(context, tag.filter.value).params : []),
       };
     case 'Row':
       return { type: 'string', params: convertExpressionMap(context, tag.values).params };
@@ -397,7 +425,7 @@ const convertExpression = (
 
     case 'UnaryExpression':
       const unary = convertExpression(context, tag.value);
-      const unaryOperatorType = operatorTypes[tag.operator.value.toUpperCase()];
+      const unaryOperatorType = unaryTypes[tag.operator.value.toUpperCase()];
       const param = convertExpression({ ...context, type: unaryOperatorType ?? unary.type }, tag.value);
 
       return { type: unary.type, params: param.params };
@@ -405,10 +433,10 @@ const convertExpression = (
     case 'BinaryExpression':
       const left = convertExpression(context, tag.left);
       const right = convertExpression(context, tag.right);
-      const binaryOperatorType = operatorTypes[tag.operator.value.toUpperCase()];
-      const paramLeft = convertExpression({ ...context, type: binaryOperatorType ?? right.type }, tag.left);
-      const paramRight = convertExpression({ ...context, type: binaryOperatorType ?? left.type }, tag.right);
-      return { type: left.type, params: paramLeft.params.concat(paramRight.params) };
+      const binaryOperatorType = binaryOperatorTypes[tag.operator.value.toUpperCase()];
+      const paramLeft = convertExpression({ ...context, type: binaryOperatorType?.left ?? right.type }, tag.left);
+      const paramRight = convertExpression({ ...context, type: binaryOperatorType?.right ?? left.type }, tag.right);
+      return { type: binaryOperatorType?.result ?? left.type, params: paramLeft.params.concat(paramRight.params) };
 
     case 'PgCast':
     case 'Cast':
@@ -475,8 +503,10 @@ const convertExpression = (
   }
 };
 
-const resolveTypeWith = (aliases: TableAliases) => (prop: PropertyType): PropertyType =>
-  isColumnType(prop) ? { ...prop, ...toName(aliases, prop) } : prop;
+const resolveTypeWith =
+  (aliases: TableAliases) =>
+  (prop: PropertyType): PropertyType =>
+    isColumnType(prop) ? { ...prop, ...toName(aliases, prop) } : prop;
 
 const resolveType = ({ aliases }: QueryContext) => {
   const resolve = resolveTypeWith(aliases);
@@ -537,10 +567,12 @@ const toResults = (context: QueryContext, items: Array<SelectListItemTag | Retur
   });
 };
 
-const resolveParam = (resolve: ResolveIdentifier) => (param: Param): Param => ({
-  ...param,
-  type: isColumnType(param.type) ? resolve(param.type) : param.type,
-});
+const resolveParam =
+  (resolve: ResolveIdentifier) =>
+  (param: Param): Param => ({
+    ...param,
+    type: isColumnType(param.type) ? resolve(param.type) : param.type,
+  });
 
 const orderParam = orderBy<Param>((item) => (item.type === 'unknown' ? 3 : item.type === 'null' ? 2 : 1));
 const uniqParam = isUnique<Param>((item) => item.name);

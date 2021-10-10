@@ -29,7 +29,7 @@ type Path = Directory | File;
 type LoadItem = Glob | File;
 
 const toPath = (dirent: Dirent): Path =>
-  dirent.isFile() ? { type: 'file', value: dirent.name } : { type: 'directory', value: dirent.name };
+  dirent.isDirectory() ? { type: 'directory', value: dirent.name } : { type: 'file', value: dirent.name };
 
 const loadDir = (name: string): Path[] => readdirSync(name, { withFileTypes: true }).map(toPath);
 const isFile = (item: Path): item is File => item.type === 'file';

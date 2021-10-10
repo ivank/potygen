@@ -30,6 +30,17 @@ describe('Sql', () => {
     ${'binary sum, sub'}              | ${'SELECT 1 - 2 + 2'}
     ${'binary sum, div, mul'}         | ${'SELECT (1 + 2) / (20 * 32)'}
     ${'string concat'}                | ${"SELECT 'test' || 'other'"}
+    ${'json field int'}               | ${'SELECT col1->1 FROM table1'}
+    ${'json field string'}            | ${"SELECT col1->'col' FROM table1"}
+    ${'json field text string'}       | ${"SELECT col1->>'col' FROM table1"}
+    ${'json field text int'}          | ${'SELECT col1->>2 FROM table1'}
+    ${'json path'}                    | ${"SELECT col1#>'{a,b}' FROM table1"}
+    ${'json path text'}               | ${"SELECT col1#>>'{a,b}' FROM table1"}
+    ${'json contain left'}            | ${'SELECT * FROM table1 WHERE col1 @> \'{"a":2}\''}
+    ${'json contain right'}           | ${'SELECT * FROM table1 WHERE col1 <@ \'{"a":2}\''}
+    ${'json key exists'}              | ${"SELECT * FROM table1 WHERE col1 ? 'a'"}
+    ${'json keys any include'}        | ${"SELECT * FROM table1 WHERE col1 ?| array['b', 'c']"}
+    ${'json delete key'}              | ${"SELECT * FROM table1 WHERE col1 #- '{1,b}'"}
     ${'star select'}                  | ${'SELECT *'}
     ${'qualified star select'}        | ${'SELECT table1.*'}
     ${'const select'}                 | ${"SELECT '2018-01-01'"}
@@ -49,6 +60,9 @@ describe('Sql', () => {
     ${'cast'}                         | ${'SELECT CAST(id AS int4)'}
     ${'cast number'}                  | ${'SELECT CAST(20 AS int4)'}
     ${'cast string'}                  | ${"SELECT CAST('test' AS varchar(20))"}
+    ${'select count distinct'}        | ${'SELECT COUNT(DISTINCT accounts.id)::int as total'}
+    ${'select count filter'}          | ${'SELECT (COUNT(account_levelisations.id) FILTER (WHERE account_levelisations.state = \'Pending\'))::int AS "pendingCount" FROM account_levelisations'}
+    ${'param specific type'}          | ${'SELECT * FROM table1 WHERE ($active::BOOLEAN IS NULL OR $active::BOOLEAN = (case when table1.url IS NOT NULL then FALSE else TRUE end))'}
     ${'limit'}                        | ${'SELECT * LIMIT 10'}
     ${'offset'}                       | ${'SELECT * OFFSET 10'}
     ${'limit offset'}                 | ${'SELECT * LIMIT 10 OFFSET 10'}
@@ -101,6 +115,8 @@ describe('Sql', () => {
     ${'group by'}                     | ${'SELECT * FROM table1 GROUP BY col'}
     ${'group by multiple'}            | ${'SELECT * FROM table1 GROUP BY col1, col2'}
     ${'pg cast column to int'}        | ${'SELECT test::int FROM table1'}
+    ${'pg cast column to decimal'}    | ${'SELECT test::decimal(10,2) FROM table1'}
+    ${'pg cast column to varchar'}    | ${'SELECT test::varchar(10) FROM table1'}
     ${'pg cast string to date'}       | ${"SELECT '2016-01-01'::date FROM table1"}
     ${'nested select'}                | ${'SELECT test, (SELECT id FROM table2 LIMIT 1) FROM table1'}
     ${'pg cast nested select'}        | ${'SELECT test::date, (SELECT id FROM table2 LIMIT 1)::int FROM table1'}
@@ -137,6 +153,7 @@ describe('Sql', () => {
     ${'insert do nothing'}            | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO NOTHING'}
     ${'insert do set'}                | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO UPDATE SET id = EXCLUDED.id WHERE id > 10'}
     ${'insert conflict'}              | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL DO UPDATE SET id = EXCLUDED.id WHERE id > 10'}
+    ${'insert conflict list'}         | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id, type) DO UPDATE SET id = EXCLUDED.id WHERE id > 10'}
     ${'coalesce'}                     | ${'SELECT COALESCE(id, TRUE) FROM table1'}
     ${'function'}                     | ${'SELECT MY_FUNCTION(id, TRUE) FROM table1'}
     ${'function in set'}              | ${'UPDATE table1 SET col1 = MY_FUNCTION(id, TRUE) RETURNING id, col1'}

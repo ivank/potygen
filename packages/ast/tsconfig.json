@@ -1,11 +1,8 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
-    "strict": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "lib": ["es2019"]
+    "outDir": "dist"
   },
+  "extends": "../../tsconfig",
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

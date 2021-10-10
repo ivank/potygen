@@ -156,7 +156,7 @@ exports[`Query Interface Should convert operators integer sql (SELECT integer_co
     id: number;
 }
 export interface Result {
-    test1: number;
+    test1?: number;
 }
 export interface Query {
     params: Params;
@@ -185,7 +185,7 @@ exports[`Query Interface Should convert simple sql (SELECT id, character_col FRO
 }
 export interface Result {
     id: number;
-    character_col: string;
+    character_col?: string;
 }
 export interface Query {
     params: Params;

@@ -3515,6 +3515,7 @@ Object {
                 "value": "TRUE",
               },
             ],
+            "filter": undefined,
             "lastPos": 29,
             "pos": 7,
             "tag": "Function",
@@ -3637,6 +3638,7 @@ Object {
                   "value": "TRUE",
                 },
               ],
+              "filter": undefined,
               "lastPos": 47,
               "pos": 25,
               "tag": "Function",
@@ -3818,6 +3820,7 @@ Object {
               ],
             },
           ],
+          "filter": undefined,
           "lastPos": 58,
           "pos": 41,
           "tag": "Function",
@@ -3953,6 +3956,7 @@ Object {
               ],
             },
           ],
+          "filter": undefined,
           "lastPos": 73,
           "pos": 41,
           "tag": "Function",
@@ -4075,6 +4079,7 @@ Object {
                 ],
               },
             ],
+            "filter": undefined,
             "lastPos": 40,
             "pos": 7,
             "tag": "Function",
@@ -4193,6 +4198,7 @@ Object {
                   ],
                 },
               ],
+              "filter": undefined,
               "lastPos": 24,
               "pos": 7,
               "tag": "Function",
@@ -4823,6 +4829,202 @@ Object {
               "right": Object {
                 "lastPos": 145,
                 "pos": 143,
+                "tag": "Number",
+                "value": "10",
+              },
+              "tag": "BinaryExpression",
+            },
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql insert conflict list (INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id, type) DO UPDATE SET id = EXCLUDED.id WHERE id > 10): insert conflict list 1`] = `
+Object {
+  "lastPos": 116,
+  "pos": 0,
+  "tag": "Insert",
+  "values": Array [
+    Object {
+      "as": undefined,
+      "lastPos": 19,
+      "pos": 12,
+      "tag": "Table",
+      "value": Object {
+        "lastPos": 19,
+        "pos": 12,
+        "tag": "QualifiedIdentifier",
+        "values": Array [
+          Object {
+            "lastPos": 19,
+            "pos": 12,
+            "tag": "Identifier",
+            "value": "table1",
+          },
+        ],
+      },
+    },
+    Object {
+      "lastPos": 35,
+      "pos": 19,
+      "tag": "ValuesList",
+      "values": Array [
+        Object {
+          "lastPos": 35,
+          "pos": 26,
+          "tag": "Values",
+          "values": Array [
+            Object {
+              "lastPos": 35,
+              "pos": 27,
+              "tag": "Number",
+              "value": "10",
+            },
+            Object {
+              "lastPos": 35,
+              "pos": 31,
+              "tag": "Number",
+              "value": "20",
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "lastPos": 116,
+      "pos": 35,
+      "tag": "Conflict",
+      "values": Array [
+        Object {
+          "lastPos": 72,
+          "pos": 47,
+          "tag": "ConflictTarget",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "lastPos": 64,
+              "pos": 48,
+              "tag": "Table",
+              "value": Object {
+                "lastPos": 64,
+                "pos": 48,
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "lastPos": 64,
+                    "pos": 48,
+                    "tag": "Identifier",
+                    "value": "source_system_id",
+                  },
+                ],
+              },
+            },
+            Object {
+              "as": undefined,
+              "lastPos": 70,
+              "pos": 66,
+              "tag": "Table",
+              "value": Object {
+                "lastPos": 70,
+                "pos": 66,
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "lastPos": 70,
+                    "pos": 66,
+                    "tag": "Identifier",
+                    "value": "type",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        Object {
+          "lastPos": 116,
+          "pos": 72,
+          "tag": "DoUpdate",
+          "value": Object {
+            "lastPos": 103,
+            "pos": 82,
+            "tag": "Set",
+            "value": Object {
+              "lastPos": 103,
+              "pos": 86,
+              "tag": "SetList",
+              "values": Array [
+                Object {
+                  "column": Object {
+                    "lastPos": 103,
+                    "pos": 86,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "lastPos": 103,
+                        "pos": 86,
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  "lastPos": 103,
+                  "pos": 86,
+                  "tag": "SetItem",
+                  "value": Object {
+                    "lastPos": 103,
+                    "pos": 91,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "lastPos": 103,
+                        "pos": 91,
+                        "tag": "Identifier",
+                        "value": "EXCLUDED",
+                      },
+                      Object {
+                        "lastPos": 103,
+                        "pos": 100,
+                        "tag": "Identifier",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          "where": Object {
+            "lastPos": 116,
+            "pos": 103,
+            "tag": "Where",
+            "value": Object {
+              "lastPos": 116,
+              "left": Object {
+                "lastPos": 114,
+                "pos": 109,
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "lastPos": 114,
+                    "pos": 109,
+                    "tag": "Identifier",
+                    "value": "id",
+                  },
+                ],
+              },
+              "operator": Object {
+                "lastPos": 114,
+                "pos": 112,
+                "tag": "Operator",
+                "value": ">",
+              },
+              "pos": 109,
+              "right": Object {
+                "lastPos": 116,
+                "pos": 114,
                 "tag": "Number",
                 "value": "10",
               },
@@ -6584,6 +6786,1039 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql json contain left (SELECT * FROM table1 WHERE col1 @> '{"a":2}'): json contain left 1`] = `
+Object {
+  "lastPos": 44,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 9,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 9,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 9,
+            "pos": 7,
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "lastPos": 9,
+                "pos": 7,
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 21,
+      "list": Object {
+        "lastPos": 21,
+        "pos": 14,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 21,
+            "pos": 14,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 21,
+              "pos": 14,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 21,
+                  "pos": 14,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 9,
+      "tag": "From",
+    },
+    Object {
+      "lastPos": 44,
+      "pos": 21,
+      "tag": "Where",
+      "value": Object {
+        "lastPos": 44,
+        "left": Object {
+          "lastPos": 32,
+          "pos": 27,
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "lastPos": 32,
+              "pos": 27,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
+        },
+        "operator": Object {
+          "lastPos": 32,
+          "pos": 32,
+          "tag": "Operator",
+          "value": "@>",
+        },
+        "pos": 27,
+        "right": Object {
+          "lastPos": 44,
+          "pos": 35,
+          "tag": "String",
+          "value": "{\\"a\\":2}",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql json contain right (SELECT * FROM table1 WHERE col1 <@ '{"a":2}'): json contain right 1`] = `
+Object {
+  "lastPos": 44,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 9,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 9,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 9,
+            "pos": 7,
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "lastPos": 9,
+                "pos": 7,
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 21,
+      "list": Object {
+        "lastPos": 21,
+        "pos": 14,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 21,
+            "pos": 14,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 21,
+              "pos": 14,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 21,
+                  "pos": 14,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 9,
+      "tag": "From",
+    },
+    Object {
+      "lastPos": 44,
+      "pos": 21,
+      "tag": "Where",
+      "value": Object {
+        "lastPos": 44,
+        "left": Object {
+          "lastPos": 33,
+          "pos": 27,
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "lastPos": 33,
+              "pos": 27,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
+        },
+        "operator": Object {
+          "lastPos": 33,
+          "pos": 32,
+          "tag": "Operator",
+          "value": "<@",
+        },
+        "pos": 27,
+        "right": Object {
+          "lastPos": 44,
+          "pos": 35,
+          "tag": "String",
+          "value": "{\\"a\\":2}",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql json delete key (SELECT * FROM table1 WHERE col1 #- '{1,b}'): json delete key 1`] = `
+Object {
+  "lastPos": 42,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 9,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 9,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 9,
+            "pos": 7,
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "lastPos": 9,
+                "pos": 7,
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 21,
+      "list": Object {
+        "lastPos": 21,
+        "pos": 14,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 21,
+            "pos": 14,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 21,
+              "pos": 14,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 21,
+                  "pos": 14,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 9,
+      "tag": "From",
+    },
+    Object {
+      "lastPos": 42,
+      "pos": 21,
+      "tag": "Where",
+      "value": Object {
+        "lastPos": 42,
+        "left": Object {
+          "lastPos": 32,
+          "pos": 27,
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "lastPos": 32,
+              "pos": 27,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
+        },
+        "operator": Object {
+          "lastPos": 32,
+          "pos": 32,
+          "tag": "Operator",
+          "value": "#-",
+        },
+        "pos": 27,
+        "right": Object {
+          "lastPos": 42,
+          "pos": 35,
+          "tag": "String",
+          "value": "{1,b}",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql json field int (SELECT col1->1 FROM table1): json field int 1`] = `
+Object {
+  "lastPos": 26,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 15,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 15,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 15,
+            "left": Object {
+              "lastPos": 15,
+              "pos": 7,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 15,
+                  "pos": 7,
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "operator": Object {
+              "lastPos": 15,
+              "pos": 11,
+              "tag": "Operator",
+              "value": "->",
+            },
+            "pos": 7,
+            "right": Object {
+              "lastPos": 15,
+              "pos": 13,
+              "tag": "Number",
+              "value": "1",
+            },
+            "tag": "BinaryExpression",
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 26,
+      "list": Object {
+        "lastPos": 26,
+        "pos": 20,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 26,
+            "pos": 20,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 26,
+              "pos": 20,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 26,
+                  "pos": 20,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 15,
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql json field string (SELECT col1->'col' FROM table1): json field string 1`] = `
+Object {
+  "lastPos": 30,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 19,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 19,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 19,
+            "left": Object {
+              "lastPos": 19,
+              "pos": 7,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 19,
+                  "pos": 7,
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "operator": Object {
+              "lastPos": 19,
+              "pos": 11,
+              "tag": "Operator",
+              "value": "->",
+            },
+            "pos": 7,
+            "right": Object {
+              "lastPos": 19,
+              "pos": 13,
+              "tag": "String",
+              "value": "col",
+            },
+            "tag": "BinaryExpression",
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 30,
+      "list": Object {
+        "lastPos": 30,
+        "pos": 24,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 30,
+            "pos": 24,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 30,
+              "pos": 24,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 30,
+                  "pos": 24,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 19,
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql json field text int (SELECT col1->>2 FROM table1): json field text int 1`] = `
+Object {
+  "lastPos": 27,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 16,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 16,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 16,
+            "left": Object {
+              "lastPos": 16,
+              "pos": 7,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 16,
+                  "pos": 7,
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "operator": Object {
+              "lastPos": 16,
+              "pos": 11,
+              "tag": "Operator",
+              "value": "->>",
+            },
+            "pos": 7,
+            "right": Object {
+              "lastPos": 16,
+              "pos": 14,
+              "tag": "Number",
+              "value": "2",
+            },
+            "tag": "BinaryExpression",
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 27,
+      "list": Object {
+        "lastPos": 27,
+        "pos": 21,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 27,
+            "pos": 21,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 27,
+              "pos": 21,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 27,
+                  "pos": 21,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 16,
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql json field text string (SELECT col1->>'col' FROM table1): json field text string 1`] = `
+Object {
+  "lastPos": 31,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 20,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 20,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 20,
+            "left": Object {
+              "lastPos": 20,
+              "pos": 7,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 20,
+                  "pos": 7,
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "operator": Object {
+              "lastPos": 20,
+              "pos": 11,
+              "tag": "Operator",
+              "value": "->>",
+            },
+            "pos": 7,
+            "right": Object {
+              "lastPos": 20,
+              "pos": 14,
+              "tag": "String",
+              "value": "col",
+            },
+            "tag": "BinaryExpression",
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 31,
+      "list": Object {
+        "lastPos": 31,
+        "pos": 25,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 31,
+            "pos": 25,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 31,
+              "pos": 25,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 31,
+                  "pos": 25,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 20,
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql json key exists (SELECT * FROM table1 WHERE col1 ? 'a'): json key exists 1`] = `
+Object {
+  "lastPos": 37,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 9,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 9,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 9,
+            "pos": 7,
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "lastPos": 9,
+                "pos": 7,
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 21,
+      "list": Object {
+        "lastPos": 21,
+        "pos": 14,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 21,
+            "pos": 14,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 21,
+              "pos": 14,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 21,
+                  "pos": 14,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 9,
+      "tag": "From",
+    },
+    Object {
+      "lastPos": 37,
+      "pos": 21,
+      "tag": "Where",
+      "value": Object {
+        "lastPos": 37,
+        "left": Object {
+          "lastPos": 32,
+          "pos": 27,
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "lastPos": 32,
+              "pos": 27,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
+        },
+        "operator": Object {
+          "lastPos": 32,
+          "pos": 32,
+          "tag": "Operator",
+          "value": "?",
+        },
+        "pos": 27,
+        "right": Object {
+          "lastPos": 37,
+          "pos": 34,
+          "tag": "String",
+          "value": "a",
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql json keys any include (SELECT * FROM table1 WHERE col1 ?| array['b', 'c']): json keys any include 1`] = `
+Object {
+  "lastPos": 50,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 9,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 9,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 9,
+            "pos": 7,
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "lastPos": 9,
+                "pos": 7,
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 21,
+      "list": Object {
+        "lastPos": 21,
+        "pos": 14,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 21,
+            "pos": 14,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 21,
+              "pos": 14,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 21,
+                  "pos": 14,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 9,
+      "tag": "From",
+    },
+    Object {
+      "lastPos": 50,
+      "pos": 21,
+      "tag": "Where",
+      "value": Object {
+        "lastPos": 50,
+        "left": Object {
+          "lastPos": 32,
+          "pos": 27,
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "lastPos": 32,
+              "pos": 27,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
+        },
+        "operator": Object {
+          "lastPos": 32,
+          "pos": 32,
+          "tag": "Operator",
+          "value": "?|",
+        },
+        "pos": 27,
+        "right": Object {
+          "lastPos": 50,
+          "pos": 35,
+          "tag": "ArrayConstructor",
+          "values": Array [
+            Object {
+              "lastPos": 50,
+              "pos": 41,
+              "tag": "String",
+              "value": "b",
+            },
+            Object {
+              "lastPos": 50,
+              "pos": 46,
+              "tag": "String",
+              "value": "c",
+            },
+          ],
+        },
+        "tag": "BinaryExpression",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql json path (SELECT col1#>'{a,b}' FROM table1): json path 1`] = `
+Object {
+  "lastPos": 32,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 21,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 21,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 21,
+            "left": Object {
+              "lastPos": 21,
+              "pos": 7,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 21,
+                  "pos": 7,
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "operator": Object {
+              "lastPos": 21,
+              "pos": 11,
+              "tag": "Operator",
+              "value": "#>",
+            },
+            "pos": 7,
+            "right": Object {
+              "lastPos": 21,
+              "pos": 13,
+              "tag": "String",
+              "value": "{a,b}",
+            },
+            "tag": "BinaryExpression",
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 32,
+      "list": Object {
+        "lastPos": 32,
+        "pos": 26,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 32,
+            "pos": 26,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 32,
+              "pos": 26,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 32,
+                  "pos": 26,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 21,
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql json path text (SELECT col1#>>'{a,b}' FROM table1): json path text 1`] = `
+Object {
+  "lastPos": 33,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 22,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 22,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 22,
+            "left": Object {
+              "lastPos": 22,
+              "pos": 7,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 22,
+                  "pos": 7,
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            "operator": Object {
+              "lastPos": 22,
+              "pos": 11,
+              "tag": "Operator",
+              "value": "#>>",
+            },
+            "pos": 7,
+            "right": Object {
+              "lastPos": 22,
+              "pos": 14,
+              "tag": "String",
+              "value": "{a,b}",
+            },
+            "tag": "BinaryExpression",
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 33,
+      "list": Object {
+        "lastPos": 33,
+        "pos": 27,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 33,
+            "pos": 27,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 33,
+              "pos": 27,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 33,
+                  "pos": 27,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 22,
+      "tag": "From",
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql left join (SELECT * FROM jobs LEFT JOIN test1): left join 1`] = `
 Object {
   "lastPos": 34,
@@ -7727,6 +8962,7 @@ Object {
                   ],
                 },
               ],
+              "filter": undefined,
               "lastPos": 69,
               "pos": 45,
               "tag": "Function",
@@ -7738,6 +8974,7 @@ Object {
               },
             },
           ],
+          "filter": undefined,
           "lastPos": 69,
           "pos": 41,
           "tag": "Function",
@@ -8604,6 +9841,231 @@ Object {
           },
         },
       ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql param specific type (SELECT * FROM table1 WHERE ($active::BOOLEAN IS NULL OR $active::BOOLEAN = (case when table1.url IS NOT NULL then FALSE else TRUE end))): param specific type 1`] = `
+Object {
+  "lastPos": 135,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 9,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 9,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 9,
+            "pos": 7,
+            "tag": "StarQualifiedIdentifier",
+            "values": Array [
+              Object {
+                "lastPos": 9,
+                "pos": 7,
+                "tag": "StarIdentifier",
+              },
+            ],
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 21,
+      "list": Object {
+        "lastPos": 21,
+        "pos": 14,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 21,
+            "pos": 14,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 21,
+              "pos": 14,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 21,
+                  "pos": 14,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 9,
+      "tag": "From",
+    },
+    Object {
+      "lastPos": 135,
+      "pos": 21,
+      "tag": "Where",
+      "value": Object {
+        "lastPos": 135,
+        "left": Object {
+          "lastPos": 135,
+          "left": Object {
+            "lastPos": 135,
+            "pos": 28,
+            "tag": "PgCast",
+            "type": Object {
+              "lastPos": 135,
+              "param": undefined,
+              "pos": 37,
+              "tag": "Type",
+              "value": "boolean",
+            },
+            "value": Object {
+              "lastPos": 135,
+              "pick": Array [],
+              "pos": 28,
+              "required": false,
+              "tag": "Parameter",
+              "type": "single",
+              "value": "active",
+            },
+          },
+          "operator": Object {
+            "lastPos": 135,
+            "pos": 45,
+            "tag": "Operator",
+            "value": "IS",
+          },
+          "pos": 28,
+          "right": Object {
+            "lastPos": 135,
+            "pos": 48,
+            "tag": "Null",
+          },
+          "tag": "BinaryExpression",
+        },
+        "operator": Object {
+          "lastPos": 135,
+          "pos": 53,
+          "tag": "Operator",
+          "value": "OR",
+        },
+        "pos": 28,
+        "right": Object {
+          "lastPos": 135,
+          "left": Object {
+            "lastPos": 135,
+            "pos": 56,
+            "tag": "PgCast",
+            "type": Object {
+              "lastPos": 135,
+              "param": undefined,
+              "pos": 65,
+              "tag": "Type",
+              "value": "boolean",
+            },
+            "value": Object {
+              "lastPos": 135,
+              "pick": Array [],
+              "pos": 56,
+              "required": false,
+              "tag": "Parameter",
+              "type": "single",
+              "value": "active",
+            },
+          },
+          "operator": Object {
+            "lastPos": 135,
+            "pos": 73,
+            "tag": "Operator",
+            "value": "=",
+          },
+          "pos": 56,
+          "right": Object {
+            "lastPos": 135,
+            "pos": 76,
+            "tag": "Case",
+            "values": Array [
+              Object {
+                "condition": Object {
+                  "lastPos": 135,
+                  "left": Object {
+                    "lastPos": 135,
+                    "pos": 86,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "lastPos": 135,
+                        "pos": 86,
+                        "tag": "Identifier",
+                        "value": "table1",
+                      },
+                      Object {
+                        "lastPos": 135,
+                        "pos": 93,
+                        "tag": "Identifier",
+                        "value": "url",
+                      },
+                    ],
+                  },
+                  "operator": Object {
+                    "lastPos": 135,
+                    "pos": 97,
+                    "tag": "Operator",
+                    "value": "IS",
+                  },
+                  "pos": 86,
+                  "right": Object {
+                    "operator": Object {
+                      "lastPos": 135,
+                      "pos": 100,
+                      "tag": "Operator",
+                      "value": "NOT",
+                    },
+                    "tag": "UnaryExpression",
+                    "value": Object {
+                      "lastPos": 135,
+                      "pos": 104,
+                      "tag": "Null",
+                    },
+                  },
+                  "tag": "BinaryExpression",
+                },
+                "lastPos": 135,
+                "pos": 81,
+                "tag": "When",
+                "value": Object {
+                  "lastPos": 135,
+                  "pos": 114,
+                  "tag": "Boolean",
+                  "value": "FALSE",
+                },
+              },
+              Object {
+                "lastPos": 135,
+                "pos": 120,
+                "tag": "Else",
+                "value": Object {
+                  "lastPos": 135,
+                  "pos": 125,
+                  "tag": "Boolean",
+                  "value": "TRUE",
+                },
+              },
+            ],
+          },
+          "tag": "BinaryExpression",
+        },
+        "tag": "BinaryExpression",
+      },
     },
   ],
 }
@@ -10001,6 +11463,86 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql pg cast column to decimal (SELECT test::decimal(10,2) FROM table1): pg cast column to decimal 1`] = `
+Object {
+  "lastPos": 38,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 27,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 27,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 27,
+            "pos": 7,
+            "tag": "PgCast",
+            "type": Object {
+              "lastPos": 27,
+              "param": "10",
+              "pos": 13,
+              "tag": "Type",
+              "value": "decimal",
+            },
+            "value": Object {
+              "lastPos": 27,
+              "pos": 7,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 27,
+                  "pos": 7,
+                  "tag": "Identifier",
+                  "value": "test",
+                },
+              ],
+            },
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 38,
+      "list": Object {
+        "lastPos": 38,
+        "pos": 32,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 38,
+            "pos": 32,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 38,
+              "pos": 32,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 38,
+                  "pos": 32,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 27,
+      "tag": "From",
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql pg cast column to int (SELECT test::int FROM table1): pg cast column to int 1`] = `
 Object {
   "lastPos": 28,
@@ -10075,6 +11617,86 @@ Object {
         ],
       },
       "pos": 17,
+      "tag": "From",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql pg cast column to varchar (SELECT test::varchar(10) FROM table1): pg cast column to varchar 1`] = `
+Object {
+  "lastPos": 36,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 25,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": undefined,
+          "lastPos": 25,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 25,
+            "pos": 7,
+            "tag": "PgCast",
+            "type": Object {
+              "lastPos": 25,
+              "param": "10",
+              "pos": 13,
+              "tag": "Type",
+              "value": "varchar",
+            },
+            "value": Object {
+              "lastPos": 25,
+              "pos": 7,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 25,
+                  "pos": 7,
+                  "tag": "Identifier",
+                  "value": "test",
+                },
+              ],
+            },
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 36,
+      "list": Object {
+        "lastPos": 36,
+        "pos": 30,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 36,
+            "pos": 30,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 36,
+              "pos": 30,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 36,
+                  "pos": 30,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 25,
       "tag": "From",
     },
   ],
@@ -11026,6 +12648,245 @@ Object {
           },
         },
       ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql select count distinct (SELECT COUNT(DISTINCT accounts.id)::int as total): select count distinct 1`] = `
+Object {
+  "lastPos": 48,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 48,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": Object {
+            "lastPos": 48,
+            "pos": 40,
+            "tag": "As",
+            "value": Object {
+              "lastPos": 48,
+              "pos": 43,
+              "tag": "Identifier",
+              "value": "total",
+            },
+          },
+          "lastPos": 48,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 48,
+            "pos": 7,
+            "tag": "PgCast",
+            "type": Object {
+              "lastPos": 48,
+              "param": undefined,
+              "pos": 36,
+              "tag": "Type",
+              "value": "int",
+            },
+            "value": Object {
+              "args": Array [
+                Object {
+                  "lastPos": 48,
+                  "pos": 13,
+                  "tag": "Distinct",
+                  "values": Array [],
+                },
+                Object {
+                  "lastPos": 48,
+                  "pos": 22,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "lastPos": 48,
+                      "pos": 22,
+                      "tag": "Identifier",
+                      "value": "accounts",
+                    },
+                    Object {
+                      "lastPos": 48,
+                      "pos": 31,
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+              ],
+              "filter": undefined,
+              "lastPos": 48,
+              "pos": 7,
+              "tag": "Function",
+              "value": Object {
+                "lastPos": 48,
+                "pos": 7,
+                "tag": "Identifier",
+                "value": "COUNT",
+              },
+            },
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql select count filter (SELECT (COUNT(account_levelisations.id) FILTER (WHERE account_levelisations.state = 'Pending'))::int AS "pendingCount" FROM account_levelisations): select count filter 1`] = `
+Object {
+  "lastPos": 145,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "lastPos": 119,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "as": Object {
+            "lastPos": 119,
+            "pos": 101,
+            "tag": "As",
+            "value": Object {
+              "lastPos": 119,
+              "pos": 104,
+              "tag": "Identifier",
+              "value": "pendingCount",
+            },
+          },
+          "lastPos": 119,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "value": Object {
+            "lastPos": 119,
+            "pos": 7,
+            "tag": "PgCast",
+            "type": Object {
+              "lastPos": 119,
+              "param": undefined,
+              "pos": 97,
+              "tag": "Type",
+              "value": "int",
+            },
+            "value": Object {
+              "args": Array [
+                Object {
+                  "lastPos": 119,
+                  "pos": 14,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "lastPos": 119,
+                      "pos": 14,
+                      "tag": "Identifier",
+                      "value": "account_levelisations",
+                    },
+                    Object {
+                      "lastPos": 119,
+                      "pos": 36,
+                      "tag": "Identifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+              ],
+              "filter": Object {
+                "lastPos": 119,
+                "pos": 40,
+                "tag": "Filter",
+                "value": Object {
+                  "lastPos": 119,
+                  "pos": 48,
+                  "tag": "Where",
+                  "value": Object {
+                    "lastPos": 119,
+                    "left": Object {
+                      "lastPos": 119,
+                      "pos": 54,
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "lastPos": 119,
+                          "pos": 54,
+                          "tag": "Identifier",
+                          "value": "account_levelisations",
+                        },
+                        Object {
+                          "lastPos": 119,
+                          "pos": 76,
+                          "tag": "Identifier",
+                          "value": "state",
+                        },
+                      ],
+                    },
+                    "operator": Object {
+                      "lastPos": 119,
+                      "pos": 82,
+                      "tag": "Operator",
+                      "value": "=",
+                    },
+                    "pos": 54,
+                    "right": Object {
+                      "lastPos": 119,
+                      "pos": 84,
+                      "tag": "String",
+                      "value": "Pending",
+                    },
+                    "tag": "BinaryExpression",
+                  },
+                },
+              },
+              "lastPos": 119,
+              "pos": 8,
+              "tag": "Function",
+              "value": Object {
+                "lastPos": 119,
+                "pos": 8,
+                "tag": "Identifier",
+                "value": "COUNT",
+              },
+            },
+          },
+        },
+      ],
+    },
+    Object {
+      "join": Array [],
+      "lastPos": 145,
+      "list": Object {
+        "lastPos": 145,
+        "pos": 124,
+        "tag": "FromList",
+        "values": Array [
+          Object {
+            "as": undefined,
+            "lastPos": 145,
+            "pos": 124,
+            "tag": "FromListItem",
+            "value": Object {
+              "lastPos": 145,
+              "pos": 124,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "lastPos": 145,
+                  "pos": 124,
+                  "tag": "Identifier",
+                  "value": "account_levelisations",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "pos": 119,
+      "tag": "From",
     },
   ],
 }

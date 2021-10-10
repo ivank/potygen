@@ -3,6 +3,8 @@
 exports[`Traverse Should work: __generated__/account-levelisations.query.queries.ts 1`] = `
 "export interface Params {
     q: string;
+    resolvedPostlev: string;
+    state: \\"Done\\" | \\"Pending\\";
     levelisationId: number;
     ids: number[];
     sortField: string;
@@ -31,9 +33,18 @@ export interface Result {
     exportPercentageSplit?: number;
     exportPayment?: string;
     exportEnergy?: string;
+    exportType: string;
+    technologyType: string;
     totalPayment?: string;
     vatPayment?: string;
+    generationPeriods?: unknown;
+    exportPeriods?: unknown;
+    errorCode: string;
+    errorParams: unknown;
     cfrFitId: string;
+    resolvedPostlevId: string;
+    isBacsPaymentsSent: string;
+    isChequePaymentsSent: string;
 }
 export interface Query {
     params: Params;
@@ -48,6 +59,21 @@ exports[`Traverse Should work: __generated__/account-levelisations-set-bulk-upda
 }
 export interface Result {
     id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/accounts.list.query.queries.ts 1`] = `
+"export interface Params {
+    q: string;
+    ids: number[];
+}
+export interface Result {
+    total: number;
 }
 export interface Query {
     params: Params;

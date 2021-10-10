@@ -23,33 +23,63 @@ Object {
   account_levelisations.export_percentage_split AS \\"exportPercentageSplit\\",
   account_levelisations.export_payment AS \\"exportPayment\\",
   account_levelisations.export_energy AS \\"exportEnergy\\",
+  account_levelisations.export_type AS \\"exportType\\",
+  account_levelisations.technology_type AS \\"technologyType\\",
   account_levelisations.total_payment AS \\"totalPayment\\",
   account_levelisations.vat_payment AS \\"vatPayment\\",
-  contracts.scheme_account_reference AS \\"cfrFitId\\"
+  account_levelisations.generation_periods AS \\"generationPeriods\\",
+  account_levelisations.export_periods AS \\"exportPeriods\\",
+  issues.payload->>'code' AS \\"errorCode\\",
+  issues.payload->'params' AS \\"errorParams\\",
+  contracts.scheme_account_reference AS \\"cfrFitId\\",
+  account_levelisations.resolved_postlev_id as \\"resolvedPostlevId\\",
+  account_levelisations.is_bacs_payments_sent as \\"isBacsPaymentsSent\\",
+  account_levelisations.is_cheque_payments_sent as \\"isChequePaymentsSent\\"
 
 FROM account_levelisations
+LEFT JOIN issues ON issues.reference_id = account_levelisations.id and issues.reference_type = 'Account Levelisation' and issues.type = 'Account Levelisation'
 JOIN contracts ON account_levelisations.installation_id = contracts.installation_id
 WHERE
   -- Filter
   ($1 = '' OR (contracts.scheme_account_reference = $1))
-  AND (account_levelisations.levelisation_id = $2)
+  AND ($2 = '' OR ($2::BOOLEAN = TRUE AND account_levelisations.resolved_postlev_id IS NOT NULL))
+  AND ($3::account_levelisation_state IS NULL OR (account_levelisations.state = $3))
+  AND ($4::int IS NULL OR account_levelisations.levelisation_id = $4)
   -- Ids filter, for loading specific ids, skip if empty array
-  AND (cardinality($3::int[]) = 0 OR (account_levelisations.id = ANY($3::int[])))
+  AND (cardinality($5::int[]) = 0 OR (account_levelisations.id = ANY($5::int[])))
 
 -- Sort by difference, dateOn, value
 ORDER BY
-  CASE WHEN $4 = 'cfrFitId' AND $5 = 'DESC' THEN contracts.scheme_account_reference END DESC,
-  CASE WHEN $4 = 'cfrFitId' AND $5 = 'ASC' THEN contracts.scheme_account_reference END ASC,
-  CASE WHEN $4 = 'state' AND $5 = 'DESC' THEN account_levelisations.state END DESC,
-  CASE WHEN $4 = 'state' AND $5 = 'ASC' THEN account_levelisations.state END ASC,
-  CASE WHEN $4 = 'isAccepted' AND $5 = 'DESC' THEN account_levelisations.is_accepted END DESC,
-  CASE WHEN $4 = 'isAccepted' AND $5 = 'ASC' THEN account_levelisations.is_accepted END ASC
+  CASE WHEN $6 = 'totalPayment' AND $7 = 'DESC' THEN account_levelisations.total_payment END DESC,
+  CASE WHEN $6 = 'totalPayment' AND $7 = 'ASC' THEN account_levelisations.total_payment END ASC,
+  CASE WHEN $6 = 'vatPayment' AND $7 = 'DESC' THEN account_levelisations.vat_payment END DESC,
+  CASE WHEN $6 = 'vatPayment' AND $7 = 'ASC' THEN account_levelisations.vat_payment END ASC,
+  CASE WHEN $6 = 'generationPayment' AND $7 = 'DESC' THEN account_levelisations.generation_payment END DESC,
+  CASE WHEN $6 = 'generationPayment' AND $7 = 'ASC' THEN account_levelisations.generation_payment END ASC,
+  CASE WHEN $6 = 'exportPayment' AND $7 = 'DESC' THEN account_levelisations.export_payment END DESC,
+  CASE WHEN $6 = 'exportPayment' AND $7 = 'ASC' THEN account_levelisations.export_payment END ASC,
+  CASE WHEN $6 = 'generationEnergy' AND $7 = 'DESC' THEN account_levelisations.generation_energy END DESC,
+  CASE WHEN $6 = 'generationEnergy' AND $7 = 'ASC' THEN account_levelisations.generation_energy END ASC,
+  CASE WHEN $6 = 'exportEnergy' AND $7 = 'DESC' THEN account_levelisations.export_energy END DESC,
+  CASE WHEN $6 = 'exportEnergy' AND $7 = 'ASC' THEN account_levelisations.export_energy END ASC,
+  CASE WHEN $6 = 'cfrFitId' AND $7 = 'DESC' THEN contracts.scheme_account_reference END DESC,
+  CASE WHEN $6 = 'cfrFitId' AND $7 = 'ASC' THEN contracts.scheme_account_reference END ASC,
+  CASE WHEN $6 = 'state' AND $7 = 'DESC' THEN account_levelisations.state END DESC,
+  CASE WHEN $6 = 'state' AND $7 = 'ASC' THEN account_levelisations.state END ASC,
+  CASE WHEN $6 = 'isAccepted' AND $7 = 'DESC' THEN account_levelisations.is_accepted END DESC,
+  CASE WHEN $6 = 'isAccepted' AND $7 = 'ASC' THEN account_levelisations.is_accepted END ASC,
+  CASE WHEN $6 = 'error' AND $7 = 'DESC' THEN issues.payload->>'code' END DESC,
+  CASE WHEN $6 = 'error' AND $7 = 'ASC' THEN issues.payload->>'code'END ASC,
+  CASE WHEN $6 = 'exportType' AND $7 = 'DESC' THEN account_levelisations.export_type::text END DESC,
+  CASE WHEN $6 = 'exportType' AND $7 = 'ASC' THEN account_levelisations.export_type::text END ASC
 
 -- Pagination
-LIMIT $6::int OFFSET $7::int
+LIMIT $8::int OFFSET $9::int
 ",
   "values": Array [
     "test",
+    true,
+    "Active",
     1,
     Array [
       2,

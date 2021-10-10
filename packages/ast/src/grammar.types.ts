@@ -71,6 +71,10 @@ export interface DistinctTag extends SqlTag {
   tag: 'Distinct';
   values: IdentifierTag[];
 }
+export interface FilterTag extends SqlTag {
+  tag: 'Filter';
+  value: WhereTag;
+}
 export interface StarIdentifierTag extends SqlTag {
   tag: 'StarIdentifier';
 }
@@ -150,7 +154,8 @@ export interface ArrayConstructorTag extends SqlTag {
 export interface FunctionTag extends SqlTag {
   tag: 'Function';
   value: IdentifierTag;
-  args: (ExpressionTag | OrderByTag)[];
+  filter?: FilterTag;
+  args: (ExpressionTag | OrderByTag | DistinctTag)[];
 }
 export interface SubqueryExpressionTag extends SqlTag {
   tag: 'SubqueryExpression';
@@ -438,4 +443,5 @@ export type Tag =
   | ArrayConstructorTag
   | FunctionTag
   | NullIfTag
+  | FilterTag
   | ConditionalExpressionTag;

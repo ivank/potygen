@@ -79,6 +79,7 @@ import {
   ConstantTag,
   DataTypeTag,
   OperatorExpressionTag,
+  FilterTag,
 } from './grammar.types';
 
 export const isNull = (value: SqlTag): value is NullTag => value.tag === 'Null';
@@ -183,5 +184,6 @@ export const isConflict = (value: SqlTag): value is ConflictTag => value.tag ===
 export const isArrayConstructor = (value: SqlTag): value is ArrayConstructorTag => value.tag === 'ArrayConstructor';
 export const isRow = (value: SqlTag): value is RowTag => value.tag === 'Row';
 export const isSelectTag = (value: SqlTag): value is SelectTag => value.tag === 'Select';
+export const isFilter = (value: SqlTag): value is FilterTag => value.tag === 'Filter';
 export const isSubqueryExpression = (value: SqlTag): value is SubqueryExpressionTag =>
   value.tag === 'SubqueryExpression';

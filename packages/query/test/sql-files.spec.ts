@@ -9,6 +9,8 @@ const values: Record<string, Record<string, unknown>> = {
   'account-levelisations.query.sql': {
     q: 'test',
     levelisationId: 1,
+    resolvedPostlev: true,
+    state: 'Active',
     ids: [2, 3],
     sortField: 'col1',
     sortOrder: 'ASC',

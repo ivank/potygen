@@ -44,14 +44,19 @@ const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
       isIdentifier(node.tag) &&
       node.tag.text === tagPropertyName
     ) {
-      const sqlAst = parser(node.template.text);
-      if (sqlAst) {
-        queries.push({
-          name: node.parent.getChildAt(0).getText(),
-          pos: node.template.pos + 1,
-          template: node.template.text,
-          queryInterface: toQueryInterface(sqlAst),
-        });
+      try {
+        const sqlAst = parser(node.template.text);
+        if (sqlAst) {
+          queries.push({
+            name: node.parent.getChildAt(0).getText(),
+            pos: node.template.pos + 1,
+            template: node.template.text,
+            queryInterface: toQueryInterface(sqlAst),
+          });
+        }
+      } catch (e) {
+        console.log(node.template.text);
+        throw e;
       }
     } else {
       node.forEachChild(visitor);
@@ -136,7 +141,7 @@ export class QueryLoader extends Writable {
     const parsedFiles = chunks.map((file) => file.chunk);
     const { context, files } = await loadParsedFiles(this.db, this.context, parsedFiles);
     this.context = context;
-    files.forEach(emitLoadedFile(this.root, this.template));
+    await Promise.all(files.map(emitLoadedFile(this.root, this.template)));
     callback();
   }
 
@@ -147,7 +152,7 @@ export class QueryLoader extends Writable {
   ): Promise<void> {
     const { context, files } = await loadParsedFiles(this.db, this.context, [file]);
     this.context = context;
-    files.forEach(emitLoadedFile(this.root, this.template));
+    await Promise.all(files.map(emitLoadedFile(this.root, this.template)));
     callback();
   }
 }

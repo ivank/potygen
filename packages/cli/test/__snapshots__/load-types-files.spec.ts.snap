@@ -4,10 +4,10 @@ exports[`Load Files Should convert complex sql account-levelisations.query.sql: 
 Object {
   "params": Array [
     Object {
-      "lastPos": 1661,
+      "lastPos": 2361,
       "name": "q",
       "pick": Array [],
-      "pos": 1605,
+      "pos": 2305,
       "required": false,
       "spread": false,
       "type": Object {
@@ -15,22 +15,53 @@ Object {
       },
     },
     Object {
-      "lastPos": 1788,
-      "name": "levelisationId",
+      "lastPos": 2487,
+      "name": "resolvedPostlev",
       "pick": Array [],
-      "pos": 1706,
+      "pos": 2366,
       "required": false,
       "spread": false,
       "type": Object {
-        "optional": false,
+        "type": "string",
+      },
+    },
+    Object {
+      "lastPos": 2580,
+      "name": "state",
+      "pick": Array [],
+      "pos": 2492,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "items": Array [
+          Object {
+            "type": "literal",
+            "value": "Pending",
+          },
+          Object {
+            "type": "literal",
+            "value": "Done",
+          },
+        ],
+        "type": "union",
+      },
+    },
+    Object {
+      "lastPos": 2739,
+      "name": "levelisationId",
+      "pick": Array [],
+      "pos": 2585,
+      "required": false,
+      "spread": false,
+      "type": Object {
         "type": "number",
       },
     },
     Object {
-      "lastPos": 1910,
+      "lastPos": 2861,
       "name": "ids",
       "pick": Array [],
-      "pos": 1805,
+      "pos": 2756,
       "required": false,
       "spread": false,
       "type": Object {
@@ -41,10 +72,10 @@ Object {
       },
     },
     Object {
-      "lastPos": 1942,
+      "lastPos": 2893,
       "name": "sortField",
       "pick": Array [],
-      "pos": 1931,
+      "pos": 2882,
       "required": false,
       "spread": false,
       "type": Object {
@@ -52,10 +83,10 @@ Object {
       },
     },
     Object {
-      "lastPos": 1970,
+      "lastPos": 2925,
       "name": "sortOrder",
       "pick": Array [],
-      "pos": 1959,
+      "pos": 2914,
       "required": false,
       "spread": false,
       "type": Object {
@@ -63,10 +94,10 @@ Object {
       },
     },
     Object {
-      "lastPos": 2581,
+      "lastPos": 5353,
       "name": "limit",
       "pick": Array [],
-      "pos": 2575,
+      "pos": 5347,
       "required": false,
       "spread": false,
       "type": Object {
@@ -74,10 +105,10 @@ Object {
       },
     },
     Object {
-      "lastPos": 2601,
+      "lastPos": 5373,
       "name": "offset",
       "pick": Array [],
-      "pos": 2594,
+      "pos": 5366,
       "required": false,
       "spread": false,
       "type": Object {
@@ -236,6 +267,20 @@ Object {
       },
     },
     Object {
+      "name": "exportType",
+      "type": Object {
+        "optional": false,
+        "type": "string",
+      },
+    },
+    Object {
+      "name": "technologyType",
+      "type": Object {
+        "optional": false,
+        "type": "string",
+      },
+    },
+    Object {
       "name": "totalPayment",
       "type": Object {
         "optional": true,
@@ -250,7 +295,54 @@ Object {
       },
     },
     Object {
+      "name": "generationPeriods",
+      "type": Object {
+        "optional": true,
+        "type": "json",
+      },
+    },
+    Object {
+      "name": "exportPeriods",
+      "type": Object {
+        "optional": true,
+        "type": "json",
+      },
+    },
+    Object {
+      "name": "errorCode",
+      "type": Object {
+        "type": "string",
+      },
+    },
+    Object {
+      "name": "errorParams",
+      "type": Object {
+        "type": "json",
+      },
+    },
+    Object {
       "name": "cfrFitId",
+      "type": Object {
+        "optional": false,
+        "type": "string",
+      },
+    },
+    Object {
+      "name": "resolvedPostlevId",
+      "type": Object {
+        "optional": false,
+        "type": "string",
+      },
+    },
+    Object {
+      "name": "isBacsPaymentsSent",
+      "type": Object {
+        "optional": false,
+        "type": "string",
+      },
+    },
+    Object {
+      "name": "isChequePaymentsSent",
       "type": Object {
         "optional": false,
         "type": "string",
@@ -283,6 +375,46 @@ Object {
       "name": "id",
       "type": Object {
         "optional": false,
+        "type": "number",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Load Files Should convert complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "lastPos": 1893,
+      "name": "q",
+      "pick": Array [],
+      "pos": 738,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "type": "string",
+      },
+    },
+    Object {
+      "lastPos": 1964,
+      "name": "ids",
+      "pick": Array [],
+      "pos": 1910,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "items": Object {
+          "type": "number",
+        },
+        "type": "array",
+      },
+    },
+  ],
+  "result": Array [
+    Object {
+      "name": "total",
+      "type": Object {
         "type": "number",
       },
     },
