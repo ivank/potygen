@@ -1,4 +1,4 @@
-TODO: CTE
-TODO: more strict parameters
-TODO: json_object built types
-TODO: json access
+- [ ] CTE
+- [ ] more strict parameters
+- [ ] json_object built types
+- [ ] json access
