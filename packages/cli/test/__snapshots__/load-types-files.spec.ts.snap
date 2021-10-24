@@ -464,6 +464,30 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql account-levelisations-bulk-close-accounts.query.sql: account-levelisations-bulk-close-accounts.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "ids",
+      "type": Object {
+        "items": Object {
+          "type": "Number",
+        },
+        "type": "ArrayConstant",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "type": "Number",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql account-levelisations-set-bulk-update.query.sql: account-levelisations-set-bulk-update.query.sql 1`] = `
 Object {
   "params": Array [
@@ -875,6 +899,91 @@ exports[`Load Files Should convert complex sql meter-reads.sql: meter-reads.sql 
 Object {
   "params": Array [],
   "results": Array [],
+}
+`;
+
+exports[`Load Files Should convert complex sql process-batch.query.sql: process-batch.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "fitIds",
+      "type": Object {
+        "items": Object {
+          "optional": true,
+          "type": "String",
+        },
+        "type": "ArrayConstant",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "cfrFiTId",
+      "type": Object {
+        "optional": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "email",
+      "type": Object {
+        "optional": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "contactName",
+      "type": Object {
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "company",
+      "type": Object {
+        "optional": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "line1",
+      "type": Object {
+        "optional": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "line2",
+      "type": Object {
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "town",
+      "type": Object {
+        "optional": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "postcode",
+      "type": Object {
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "county",
+      "type": Object {
+        "optional": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "country",
+      "type": Object {
+        "type": "String",
+      },
+    },
+  ],
 }
 `;
 

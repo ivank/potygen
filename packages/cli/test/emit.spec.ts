@@ -1,9 +1,10 @@
 import { Client } from 'pg';
-import { loadQueryInterface } from '../src';
+
 import { toQueryInterface } from '@psql-ts/query';
 import { parser } from '@psql-ts/ast';
 import { createPrinter, NewLineKind } from 'typescript';
 import { toTypeSource } from '../src/emit';
+import { loadQueryInterfacesData, toLoadedQueryInterface } from '../src/load';
 
 describe('Query Interface', () => {
   it.each<[string, string]>([
@@ -28,7 +29,8 @@ describe('Query Interface', () => {
     const queryInterface = toQueryInterface(ast!);
     try {
       await db.connect();
-      const { queryInterface: loadedQuery } = await loadQueryInterface(db, queryInterface);
+      const data = await loadQueryInterfacesData(db, [queryInterface], []);
+      const loadedQuery = toLoadedQueryInterface(data)(queryInterface);
       const source = toTypeSource({ type: 'sql', path, content, queryInterface, loadedQuery });
       expect(printer.printFile(source)).toMatchSnapshot();
     } finally {

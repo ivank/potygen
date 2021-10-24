@@ -1,7 +1,8 @@
 import { parser } from '@psql-ts/ast';
 import { Client } from 'pg';
-import { loadQueryInterface, loadQueryInterfaces } from '../src/load';
+import { loadQueryInterfacesData, toLoadedQueryInterface } from '../src/load';
 import { toQueryInterface } from '@psql-ts/query';
+import { LoadedData } from '../src';
 
 let db: Client;
 
@@ -36,14 +37,15 @@ describe('Query Interface', () => {
     ['parameter coalesce', `SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)`],
   ])('Should convert %s sql (%s)', async (_, sql) => {
     const ast = parser(sql);
-    const query = toQueryInterface(ast!);
-    const loadedQuery = await loadQueryInterface(db, query);
+    const queryInterface = toQueryInterface(ast!);
+    const data = await loadQueryInterfacesData(db, [queryInterface], []);
+    const loadedQueryInterface = toLoadedQueryInterface(data)(queryInterface);
 
-    expect(loadedQuery.queryInterface).toMatchSnapshot();
+    expect(loadedQueryInterface).toMatchSnapshot();
   });
 
   it('Should load multple queries', async () => {
-    const queries = [
+    const queryInterfaces = [
       `SELECT ABS(integer_col) FROM all_types`,
       `SELECT ABS(ABS(integer_col)) FROM all_types`,
       `SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id`,
@@ -59,11 +61,13 @@ describe('Query Interface', () => {
       return toQueryInterface(ast!);
     });
 
-    const loadedQueries = await loadQueryInterfaces(db, queries);
-    const individuallyLoaded = (await Promise.all(queries.map((query) => loadQueryInterface(db, query)))).map(
-      ({ queryInterface }) => queryInterface,
-    );
+    const data = await loadQueryInterfacesData(db, queryInterfaces, []);
 
-    expect(loadedQueries.queryInterfaces).toEqual(individuallyLoaded);
+    let individuallyLoaded: LoadedData[] = [];
+    for (const query of queryInterfaces) {
+      individuallyLoaded = await loadQueryInterfacesData(db, [query], individuallyLoaded);
+    }
+
+    expect(data).toEqual(expect.arrayContaining(individuallyLoaded));
   });
 });

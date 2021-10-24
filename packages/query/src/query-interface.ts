@@ -22,8 +22,10 @@ import {
   isColumns,
   isColumn,
   isEqual,
+  ArrayConstructorTag,
   TableTag,
 } from '@psql-ts/ast';
+import { ExpressionListTag } from '@psql-ts/ast/dist/grammar.types';
 import {
   typeUnknown,
   binaryOperatorTypes,
@@ -67,8 +69,8 @@ const toSources =
           ...recur(sql.value),
           { type: 'Query', sourceTag: sql, name: sql.as.value.value, value: {} as any },
         ]);
-      case 'SubqueryExpression':
-        return sources.concat(nestedRecur(sql.subquery));
+      case 'ComparationExpression':
+        return sources.concat(nestedRecur(sql.subject));
       case 'BinaryExpression':
         return sources.concat(recur(sql.left), recur(sql.right));
       case 'Select':
@@ -78,6 +80,8 @@ const toSources =
       case 'Using':
       case 'UpdateFrom':
       case 'Combination':
+      case 'SelectList':
+      case 'FromList':
         return sources.concat(sql.values.flatMap(recur));
       case 'From':
         return sources.concat(
@@ -87,6 +91,7 @@ const toSources =
       case 'Where':
       case 'Having':
       case 'UnaryExpression':
+      case 'SelectListItem':
         return sources.concat(recur(sql.value));
       case 'CTE':
         return sources.concat({ type: 'Query', sourceTag: sql, name: sql.name.value, value: {} as any });
@@ -128,9 +133,21 @@ const toBinaryOperatorVariant = (
 
 const toType =
   (context: TypeContext) =>
-  (sql: ExpressionTag | StarIdentifierTag | TypeArrayTag | TypeTag): Type => {
+  (
+    sql:
+      | ExpressionTag
+      | StarIdentifierTag
+      | TypeArrayTag
+      | TypeTag
+      | SelectTag
+      | ExpressionListTag
+      | ArrayConstructorTag,
+  ): Type => {
     const recur = toType(context);
     switch (sql.tag) {
+      case 'ArrayConstructor':
+      case 'ExpressionList':
+        return { type: 'Array', items: { type: 'Union', items: sql.values.map(recur) } };
       case 'ArrayIndex':
       case 'WrappedExpression':
         return recur(sql.value);
@@ -193,7 +210,7 @@ const toType =
         return { type: 'LoadStar', table: sql.table?.value, schema: sql.schema?.value, sourceTag: sql };
       case 'String':
         return { type: 'String', literal: sql.value };
-      case 'SubqueryExpression':
+      case 'ComparationExpression':
         return typeBoolean;
       case 'Type':
         return sqlTypes[sql.value] ?? { type: 'LoadRecord', name: sql.value.toLowerCase() };
@@ -358,8 +375,13 @@ export const toParams =
         ];
       case 'SetMap':
         return recur(sql.values);
-      case 'SubqueryExpression':
-        return recur(sql.subquery);
+      case 'ComparationExpression':
+        return sql.value
+          ? [
+              ...toParams({ ...context, type: { type: 'ArrayItem', value: toTypeRecur(sql.subject) } })(sql.value),
+              ...toParams({ ...context, type: { type: 'Array', items: toTypeRecur(sql.value) } })(sql.subject),
+            ]
+          : recur(sql.subject);
       case 'UnaryExpression':
         return toParams({ ...context, type: unaryOperatorTypes[sql.operator.value] })(sql.value);
       case 'ValuesList':
@@ -413,6 +435,7 @@ export const toParams =
       case 'UpdateFrom':
       case 'Using':
       case 'Values':
+      case 'ExpressionList':
         return sql.values.flatMap(recur);
       case 'Null':
       case 'Number':
@@ -441,7 +464,7 @@ export const toParams =
       case 'Star':
       case 'StarIdentifier':
       case 'String':
-      case 'SubqueryOperator':
+      case 'ComparationOperator':
       case 'Table':
       case 'Type':
       case 'TypeArray':

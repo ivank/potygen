@@ -4173,33 +4173,19 @@ Object {
       "pos": 22,
       "tag": "Where",
       "value": Object {
-        "left": Object {
-          "name": Object {
-            "nextPos": 38,
-            "pos": 35,
-            "tag": "Identifier",
-            "value": "col",
-          },
-          "nextPos": 38,
-          "pos": 28,
-          "table": Object {
-            "nextPos": 34,
-            "pos": 28,
-            "tag": "Identifier",
-            "value": "table1",
-          },
-          "tag": "Column",
-        },
         "nextPos": 57,
         "operator": Object {
           "nextPos": 40,
           "pos": 39,
-          "tag": "BinaryOperator",
+          "tag": "ComparationOperator",
           "value": "=",
         },
         "pos": 28,
-        "right": Object {
-          "args": Array [
+        "subject": Object {
+          "nextPos": 56,
+          "pos": 45,
+          "tag": "ExpressionList",
+          "values": Array [
             Object {
               "name": Object {
                 "nextPos": 56,
@@ -4218,18 +4204,26 @@ Object {
               "tag": "Column",
             },
           ],
-          "filter": undefined,
-          "nextPos": 57,
-          "pos": 41,
-          "tag": "Function",
-          "value": Object {
-            "nextPos": 44,
-            "pos": 41,
-            "tag": "Identifier",
-            "value": "ANY",
-          },
         },
-        "tag": "BinaryExpression",
+        "tag": "ComparationExpression",
+        "type": "any",
+        "value": Object {
+          "name": Object {
+            "nextPos": 38,
+            "pos": 35,
+            "tag": "Identifier",
+            "value": "col",
+          },
+          "nextPos": 38,
+          "pos": 28,
+          "table": Object {
+            "nextPos": 34,
+            "pos": 28,
+            "tag": "Identifier",
+            "value": "table1",
+          },
+          "tag": "Column",
+        },
       },
     },
   ],
@@ -4296,7 +4290,36 @@ Object {
       "pos": 22,
       "tag": "Where",
       "value": Object {
-        "left": Object {
+        "nextPos": 72,
+        "operator": Object {
+          "nextPos": 40,
+          "pos": 39,
+          "tag": "ComparationOperator",
+          "value": "=",
+        },
+        "pos": 28,
+        "subject": Object {
+          "nextPos": 71,
+          "pos": 45,
+          "tag": "ArrayConstructor",
+          "values": Array [
+            Object {
+              "nextPos": 60,
+              "pos": 51,
+              "tag": "String",
+              "value": "opening",
+            },
+            Object {
+              "nextPos": 70,
+              "pos": 61,
+              "tag": "String",
+              "value": "Opening",
+            },
+          ],
+        },
+        "tag": "ComparationExpression",
+        "type": "any",
+        "value": Object {
           "name": Object {
             "nextPos": 38,
             "pos": 35,
@@ -4313,48 +4336,6 @@ Object {
           },
           "tag": "Column",
         },
-        "nextPos": 72,
-        "operator": Object {
-          "nextPos": 40,
-          "pos": 39,
-          "tag": "BinaryOperator",
-          "value": "=",
-        },
-        "pos": 28,
-        "right": Object {
-          "args": Array [
-            Object {
-              "nextPos": 71,
-              "pos": 45,
-              "tag": "ArrayConstructor",
-              "values": Array [
-                Object {
-                  "nextPos": 60,
-                  "pos": 51,
-                  "tag": "String",
-                  "value": "opening",
-                },
-                Object {
-                  "nextPos": 70,
-                  "pos": 61,
-                  "tag": "String",
-                  "value": "Opening",
-                },
-              ],
-            },
-          ],
-          "filter": undefined,
-          "nextPos": 72,
-          "pos": 41,
-          "tag": "Function",
-          "value": Object {
-            "nextPos": 44,
-            "pos": 41,
-            "tag": "Identifier",
-            "value": "ANY",
-          },
-        },
-        "tag": "BinaryExpression",
       },
     },
     Object {
@@ -9533,33 +9514,19 @@ Object {
       "pos": 22,
       "tag": "Where",
       "value": Object {
-        "left": Object {
-          "name": Object {
-            "nextPos": 38,
-            "pos": 35,
-            "tag": "Identifier",
-            "value": "col",
-          },
-          "nextPos": 38,
-          "pos": 28,
-          "table": Object {
-            "nextPos": 34,
-            "pos": 28,
-            "tag": "Identifier",
-            "value": "table1",
-          },
-          "tag": "Column",
-        },
         "nextPos": 68,
         "operator": Object {
           "nextPos": 40,
           "pos": 39,
-          "tag": "BinaryOperator",
+          "tag": "ComparationOperator",
           "value": "=",
         },
         "pos": 28,
-        "right": Object {
-          "args": Array [
+        "subject": Object {
+          "nextPos": 67,
+          "pos": 45,
+          "tag": "ExpressionList",
+          "values": Array [
             Object {
               "args": Array [
                 Object {
@@ -9592,18 +9559,26 @@ Object {
               },
             },
           ],
-          "filter": undefined,
-          "nextPos": 68,
-          "pos": 41,
-          "tag": "Function",
-          "value": Object {
-            "nextPos": 44,
-            "pos": 41,
-            "tag": "Identifier",
-            "value": "ANY",
-          },
         },
-        "tag": "BinaryExpression",
+        "tag": "ComparationExpression",
+        "type": "any",
+        "value": Object {
+          "name": Object {
+            "nextPos": 38,
+            "pos": 35,
+            "tag": "Identifier",
+            "value": "col",
+          },
+          "nextPos": 38,
+          "pos": 28,
+          "table": Object {
+            "nextPos": 34,
+            "pos": 28,
+            "tag": "Identifier",
+            "value": "table1",
+          },
+          "tag": "Column",
+        },
       },
     },
     Object {
@@ -13261,7 +13236,7 @@ Object {
           "value": Object {
             "nextPos": 38,
             "pos": 7,
-            "subquery": Object {
+            "subject": Object {
               "nextPos": 37,
               "pos": 14,
               "tag": "Select",
@@ -13317,7 +13292,7 @@ Object {
                 },
               ],
             },
-            "tag": "SubqueryExpression",
+            "tag": "ComparationExpression",
             "type": "EXISTS",
           },
         },
@@ -15000,7 +14975,7 @@ Object {
             "value": Object {
               "nextPos": 56,
               "pos": 25,
-              "subquery": Object {
+              "subject": Object {
                 "nextPos": 55,
                 "pos": 32,
                 "tag": "Select",
@@ -15056,7 +15031,7 @@ Object {
                   },
                 ],
               },
-              "tag": "SubqueryExpression",
+              "tag": "ComparationExpression",
               "type": "EXISTS",
             },
           },

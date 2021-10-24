@@ -15,13 +15,12 @@ import {
 } from 'typescript';
 import { basename } from 'path';
 import { parser } from '@psql-ts/ast';
-import { toQueryInterface } from '@psql-ts/query';
-import { loadQueryInterfaces } from './load';
+import { QueryInterface, toQueryInterface } from '@psql-ts/query';
+import { loadQueryInterfacesData, toLoadedQueryInterface } from './load';
 import { ClientBase } from 'pg';
 import { LoadedData, LoadedFile, ParsedFile, ParsedSqlFile, ParsedTypescriptFile, TemplateTagQuery } from './types';
 import { emitLoadedFile } from './emit';
-// import { LoadError } from './LoadError';
-import { ParseError } from './ParseError';
+import { LoadError, ParsedSqlFileLoadError, ParsedTypescriptFileLoadError, ParseError } from './errors';
 
 const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
   const queries: TemplateTagQuery[] = [];
@@ -45,21 +44,18 @@ const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
       isIdentifier(node.tag) &&
       node.tag.text === tagPropertyName
     ) {
+      const tag = {
+        name: node.parent.getChildAt(0).getText(),
+        pos: node.template.pos + 1,
+        template: node.template.text,
+      };
       try {
         const sqlAst = parser(node.template.text);
         if (sqlAst) {
-          queries.push({
-            name: node.parent.getChildAt(0).getText(),
-            pos: node.template.pos + 1,
-            template: node.template.text,
-            queryInterface: toQueryInterface(sqlAst),
-          });
+          queries.push({ ...tag, queryInterface: toQueryInterface(sqlAst) });
         }
       } catch (error) {
-        throw new ParseError(
-          node.template,
-          `Error parsing sql: ${error instanceof Error ? error.message : String(error)}`,
-        );
+        throw new ParseError(tag, `Error parsing sql: ${error instanceof Error ? error.message : String(error)}`);
       }
     } else {
       node.forEachChild(visitor);
@@ -82,28 +78,42 @@ const toParsedSqlFile = (path: string): ParsedSqlFile | undefined => {
   return sqlAst ? { type: 'sql', path, content, queryInterface: toQueryInterface(sqlAst) } : undefined;
 };
 
-const loadParsedFiles = async (
+const toQueryInterfaces = (files: ParsedFile[]): QueryInterface[] =>
+  files.flatMap((file) =>
+    file.type === 'ts' ? file.queries.map((query) => query.queryInterface) : file.queryInterface,
+  );
+
+const loadDataFromParsedFiles = async (
   db: ClientBase,
   data: LoadedData[],
   files: ParsedFile[],
-): Promise<{ data: LoadedData[]; files: LoadedFile[] }> => {
-  const queries = files.flatMap((file) =>
-    file.type === 'ts' ? file.queries.map((query) => query.queryInterface) : file.queryInterface,
-  );
-  const loaded = await loadQueryInterfaces(db, queries, data);
+): Promise<LoadedData[]> => loadQueryInterfacesData(db, toQueryInterfaces(files), data);
 
-  return {
-    files: files.map((file) =>
-      file.type === 'ts'
-        ? {
-            ...file,
-            queries: file.queries.map((query) => ({ ...query, loadedQuery: loaded.queryInterfaces.shift()! })),
+const isError = (error: unknown): error is LoadError | ParseError =>
+  error instanceof LoadError || error instanceof ParseError;
+
+const loadFile =
+  (data: LoadedData[]) =>
+  (file: ParsedFile): LoadedFile => {
+    if (file.type === 'sql') {
+      try {
+        return { ...file, loadedQuery: toLoadedQueryInterface(data)(file.queryInterface) };
+      } catch (error) {
+        throw isError(error) ? new ParsedSqlFileLoadError(file, error) : error;
+      }
+    } else {
+      return {
+        ...file,
+        queries: file.queries.map((template) => {
+          try {
+            return { ...template, loadedQuery: toLoadedQueryInterface(data)(template.queryInterface) };
+          } catch (error) {
+            throw isError(error) ? new ParsedTypescriptFileLoadError(file, template, error) : error;
           }
-        : { ...file, loadedQuery: loaded.queryInterfaces.shift()! },
-    ),
-    data: loaded.data,
+        }),
+      };
+    }
   };
-};
 
 export class SqlRead extends Readable {
   public source: Generator<string, void, unknown>;
@@ -146,9 +156,8 @@ export class QueryLoader extends Writable {
   ): Promise<void> {
     try {
       const parsedFiles = chunks.map((file) => file.chunk);
-      const { data, files } = await loadParsedFiles(this.db, this.data, parsedFiles);
-      this.data = data;
-      await Promise.all(files.map(emitLoadedFile(this.root, this.template)));
+      this.data = await loadDataFromParsedFiles(this.db, this.data, parsedFiles);
+      await Promise.all(parsedFiles.map(loadFile(this.data)).map(emitLoadedFile(this.root, this.template)));
     } catch (error) {
       callback(error instanceof Error ? error : new Error(String(error)));
     }
@@ -161,9 +170,8 @@ export class QueryLoader extends Writable {
     callback: (error?: Error | null) => void,
   ): Promise<void> {
     try {
-      const { data, files } = await loadParsedFiles(this.db, this.data, [file]);
-      this.data = data;
-      await Promise.all(files.map(emitLoadedFile(this.root, this.template)));
+      this.data = await loadDataFromParsedFiles(this.db, this.data, [file]);
+      await emitLoadedFile(this.root, this.template)(loadFile(this.data)(file));
     } catch (error) {
       callback(error instanceof Error ? error : new Error(String(error)));
     }

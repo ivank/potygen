@@ -31,6 +31,5 @@ export {
   isLoadedDataEnum,
 } from './guards';
 
-export { loadQueryInterface, loadQueryInterfaces } from './load';
 export { emitLoadedFile, toTypeSource } from './emit';
 export { glob } from './glob';

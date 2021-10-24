@@ -181,8 +181,8 @@ export interface UnaryOperatorTag extends SqlTag {
   tag: 'UnaryOperator';
   value: '+' | '-' | 'NOT' | 'ISNULL' | 'NOTNULL';
 }
-export interface SubqueryOperatorTag extends SqlTag {
-  tag: 'SubqueryOperator';
+export interface ComparationOperatorTag extends SqlTag {
+  tag: 'ComparationOperator';
   value: '<=' | '>=' | '<' | '>' | '<>' | '!=' | '=' | 'AND' | 'OR';
 }
 export interface BinaryExpressionTag extends SqlTag {
@@ -222,12 +222,12 @@ export interface FunctionTag extends SqlTag {
   filter?: FilterTag;
   args: (ExpressionTag | OrderByTag | DistinctTag)[];
 }
-export interface SubqueryExpressionTag extends SqlTag {
-  tag: 'SubqueryExpression';
-  operator?: SubqueryOperatorTag;
+export interface ComparationExpressionTag extends SqlTag {
+  tag: 'ComparationExpression';
+  operator?: ComparationOperatorTag;
   type?: 'IN' | 'NOT IN' | 'ANY' | 'SOME' | 'ALL' | 'EXISTS';
   value?: ColumnTag;
-  subquery: SelectTag;
+  subject: SelectTag | ArrayConstructorTag | ExpressionListTag;
 }
 export interface SelectListItemTag extends SqlTag {
   tag: 'SelectListItem';
@@ -411,6 +411,10 @@ export interface WrappedExpressionTag extends SqlTag {
   tag: 'WrappedExpression';
   value: ExpressionTag;
 }
+export interface ExpressionListTag extends SqlTag {
+  tag: 'ExpressionList';
+  values: ExpressionTag[];
+}
 
 export type FromListItemTag = NamedSelectTag | TableTag;
 export type ConstantTag = NullTag | StringTag | NumberTag | BooleanTag;
@@ -437,7 +441,7 @@ export type ExpressionTag =
   | BetweenTag
   | DataTypeTag
   | RowTag
-  | SubqueryExpressionTag
+  | ComparationExpressionTag
   | NullIfTag
   | ConditionalExpressionTag
   | WrappedExpressionTag;
@@ -467,7 +471,7 @@ export type Tag =
   | DataTypeTag
   | BinaryOperatorTag
   | UnaryOperatorTag
-  | SubqueryOperatorTag
+  | ComparationOperatorTag
   | BinaryExpressionTag
   | BetweenTag
   | CastTag
@@ -522,4 +526,5 @@ export type Tag =
   | ConditionalExpressionTag
   | WithTag
   | CTETag
-  | NameTag;
+  | NameTag
+  | ExpressionListTag;

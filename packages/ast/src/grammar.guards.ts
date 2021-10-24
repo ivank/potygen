@@ -24,7 +24,7 @@ import {
   ConditionalExpressionTag,
   BinaryOperatorTag,
   UnaryOperatorTag,
-  SubqueryOperatorTag,
+  ComparationOperatorTag,
   BetweenTag,
   ArrayIndexTag,
   FunctionTag,
@@ -75,7 +75,7 @@ import {
   ConflictTag,
   ArrayConstructorTag,
   RowTag,
-  SubqueryExpressionTag,
+  ComparationExpressionTag,
   AnyCastTag,
   AnyTypeTag,
   ConstantTag,
@@ -87,6 +87,7 @@ import {
   NamedSelectTag,
   WrappedExpressionTag,
   NameTag,
+  ExpressionListTag,
 } from './grammar.types';
 
 export const isCTETag = (value: SqlTag): value is CTETag => value.tag === 'CTE';
@@ -121,7 +122,8 @@ export const isConditionalExpression = (value: SqlTag): value is ConditionalExpr
 export const isDataType = (value: SqlTag): value is DataTypeTag => value.tag === 'DataType';
 export const isBinaryOperator = (value: SqlTag): value is BinaryOperatorTag => value.tag === 'BinaryOperator';
 export const isUnaryOperator = (value: SqlTag): value is UnaryOperatorTag => value.tag === 'UnaryOperator';
-export const isSubqueryOperator = (value: SqlTag): value is SubqueryOperatorTag => value.tag === 'SubqueryOperator';
+export const isComparationOperator = (value: SqlTag): value is ComparationOperatorTag =>
+  value.tag === 'ComparationOperator';
 export const isBetween = (value: SqlTag): value is BetweenTag => value.tag === 'Between';
 export const isArrayIndex = (value: SqlTag): value is ArrayIndexTag => value.tag === 'ArrayIndex';
 export const isFunction = (value: SqlTag): value is FunctionTag => value.tag === 'Function';
@@ -146,7 +148,7 @@ export const isExpression = (value: SqlTag): value is ExpressionTag =>
   isFunction(value) ||
   isArrayIndex(value) ||
   isRow(value) ||
-  isSubqueryExpression(value) ||
+  isComparationExpression(value) ||
   isNullIf(value) ||
   isConditionalExpression(value) ||
   isWrappedExpression(value);
@@ -198,6 +200,7 @@ export const isArrayConstructor = (value: SqlTag): value is ArrayConstructorTag 
 export const isRow = (value: SqlTag): value is RowTag => value.tag === 'Row';
 export const isSelectTag = (value: SqlTag): value is SelectTag => value.tag === 'Select';
 export const isFilter = (value: SqlTag): value is FilterTag => value.tag === 'Filter';
-export const isSubqueryExpression = (value: SqlTag): value is SubqueryExpressionTag =>
-  value.tag === 'SubqueryExpression';
+export const isComparationExpression = (value: SqlTag): value is ComparationExpressionTag =>
+  value.tag === 'ComparationExpression';
 export const isWrappedExpression = (value: SqlTag): value is WrappedExpressionTag => value.tag === 'WrappedExpression';
+export const isExpressionList = (value: SqlTag): value is ExpressionListTag => value.tag === 'ExpressionList';

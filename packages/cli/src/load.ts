@@ -1,4 +1,4 @@
-import { isEqual, groupBy, isUniqueBy } from '@psql-ts/ast';
+import { isEqual, groupBy, isUniqueBy, isNil } from '@psql-ts/ast';
 import {
   isTypeEqual,
   QueryInterface,
@@ -24,7 +24,7 @@ import {
   isLoadedDataEnum,
   isLoadedDataFunction,
 } from './guards';
-import { LoadError } from './LoadError';
+import { LoadError } from './errors';
 import {
   LoadedDataTable,
   LoadedDataEnum,
@@ -101,7 +101,7 @@ const functionsSql = sql<{ params: { functionNames: string[] }; result: LoadedDa
     routines.routine_definition
   )`;
 
-export const loadData = async (db: ClientBase, data: Data[]): Promise<LoadedData[]> => {
+const loadData = async (db: ClientBase, data: Data[]): Promise<LoadedData[]> => {
   const tableNames = data.filter(isDataTable).map(({ name }) => name);
   const functionNames = data.filter(isDataFunction).map(({ name }) => name);
   const enumNames = data.filter(isDataEnum).map(({ name }) => name);
@@ -177,24 +177,6 @@ const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
       ? params[0]
       : { name, type: { type: 'UnionConstant', items: params.map((param) => param.type).filter(isUniqueBy()) } },
   );
-
-export const toLoadedQueryInterface =
-  (data: LoadedData[]) =>
-  ({ sources, params, results }: QueryInterface): LoadedQueryInterface => {
-    const context = toLoadedContext(data, sources);
-    const toTypeParam = toTypeConstant(context, false);
-    const toTypeResult = toTypeConstant(context, true);
-    return {
-      params: groupLoadedParams(params.map(toLoadedParam(toTypeParam))),
-      results: results.flatMap(({ name, type }) =>
-        isTypeLoadStar(type)
-          ? context.sources
-              .filter((source) => (type.table ? source.name === type.table : true))
-              .flatMap((source) => Object.entries(source.items).map(([name, type]) => ({ name, type })))
-          : { name, type: toTypeResult(type) },
-      ),
-    };
-  };
 
 const loadTypeConstant = (type: string, optional?: boolean): TypeConstant => {
   const sqlType = sqlTypes[type];
@@ -286,10 +268,13 @@ const matchTypeSource = (type: TypeLoadColumn) => (source: LoadedSource) =>
     : true;
 
 const formatLoadedSource = (source: LoadedSource): string =>
-  source.type === 'Table' ? `[${source.name}: Table(${formatTableName(source)})]` : `[${source.name}: Subquery]`;
+  source.type === 'Table' ? `[${source.name}: (${formatTableName(source)})]` : `[${source.name}: Subquery]`;
 const formatTableName = ({ name, schema }: { name: string; schema?: string }): string =>
-  schema ? `${schema}.${name}` : name;
+  schema && schema !== 'public' ? `${schema}.${name}` : name;
 const formatArgumentType = ({ type }: Type): string => type;
+
+const formatLoadColumn = ({ schema, table, column }: TypeLoadColumn): string =>
+  [schema, table, column].filter(isNil).join('.');
 
 const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
   return (type: Type): TypeConstant => {
@@ -297,17 +282,25 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
     switch (type.type) {
       case 'LoadColumn':
         const relevantSources = context.sources.filter(matchTypeSource(type)).filter(isResultSource(isResult));
-        const columns = relevantSources.flatMap((source) => source.items[type.column] ?? []);
+        const columns = relevantSources.flatMap((source) => source.items[type.column.toLowerCase()] ?? []);
 
-        if (columns.length > 1) {
+        if (relevantSources.length === 0) {
           throw new LoadError(
             type.sourceTag,
-            `Ambiguous column ${type.column}, appears in multiple tables: (${relevantSources
+            `Column ${formatLoadColumn(type)} is not present in ${context.sources.map(formatLoadedSource).join(', ')}`,
+          );
+        } else if (columns.length > 1) {
+          throw new LoadError(
+            type.sourceTag,
+            `Ambiguous column ${formatLoadColumn(type)}, appears in multiple tables: (${relevantSources
               .map(formatLoadedSource)
               .join(', ')}).`,
           );
         } else if (columns.length === 0) {
-          throw new LoadError(type.sourceTag, `Column ${type.column} from ${type.table} not found`);
+          throw new LoadError(
+            type.sourceTag,
+            `Column ${formatLoadColumn(type)} not found in ${relevantSources.map(formatLoadedSource).join(', ')}`,
+          );
         } else {
           return columns[0];
         }
@@ -375,25 +368,27 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
   };
 };
 
-export const loadQueryInterface = async (
-  db: ClientBase,
-  queryInterface: QueryInterface,
-  contextData: LoadedData[] = [],
-): Promise<{ queryInterface: LoadedQueryInterface; data: LoadedData[] }> => {
-  const data = contextData.concat(
-    await loadData(db, extractDataFromQueryInterface(queryInterface).filter(notLoaded(contextData))),
-  );
-  return { queryInterface: toLoadedQueryInterface(data)(queryInterface), data };
-};
-
-export const loadQueryInterfaces = async (
+export const loadQueryInterfacesData = async (
   db: ClientBase,
   queryInterfaces: QueryInterface[],
-  contextData: LoadedData[] = [],
-): Promise<{ queryInterfaces: LoadedQueryInterface[]; data: LoadedData[] }> => {
-  const data = contextData.concat(
-    await loadData(db, queryInterfaces.flatMap(extractDataFromQueryInterface).filter(notLoaded(contextData))),
-  );
+  data: LoadedData[],
+): Promise<LoadedData[]> =>
+  data.concat(await loadData(db, queryInterfaces.flatMap(extractDataFromQueryInterface).filter(notLoaded(data))));
 
-  return { queryInterfaces: queryInterfaces.map(toLoadedQueryInterface(data)), data };
-};
+export const toLoadedQueryInterface =
+  (data: LoadedData[]) =>
+  ({ sources, params, results }: QueryInterface): LoadedQueryInterface => {
+    const context = toLoadedContext(data, sources);
+    const toTypeParam = toTypeConstant(context, false);
+    const toTypeResult = toTypeConstant(context, true);
+    return {
+      params: groupLoadedParams(params.map(toLoadedParam(toTypeParam))),
+      results: results.flatMap(({ name, type }) =>
+        isTypeLoadStar(type)
+          ? context.sources
+              .filter((source) => (type.table ? source.name === type.table : true))
+              .flatMap((source) => Object.entries(source.items).map(([name, type]) => ({ name, type })))
+          : { name, type: toTypeResult(type) },
+      ),
+    };
+  };

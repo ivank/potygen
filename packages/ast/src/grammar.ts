@@ -34,7 +34,7 @@ import {
   CaseTag,
   BinaryOperatorTag,
   UnaryOperatorTag,
-  SubqueryOperatorTag,
+  ComparationOperatorTag,
   BinaryExpressionTag,
   BetweenTag,
   CastTag,
@@ -87,7 +87,7 @@ import {
   ArrayIndexTag,
   RowTag,
   ReturningListItemTag,
-  SubqueryExpressionTag,
+  ComparationExpressionTag,
   NullIfTag,
   ConditionalExpressionTag,
   FilterTag,
@@ -96,6 +96,7 @@ import {
   NamedSelectTag,
   WrappedExpressionTag,
   NameTag,
+  ExpressionListTag,
 } from './grammar.types';
 
 const context = ({ pos }: Stack, { pos: nextPos }: Stack): { pos: number; nextPos: number } => ({ pos, nextPos });
@@ -352,39 +353,61 @@ const OrderRule = (Expression: Rule): Rule => {
 
 const ExpressionRule = (SelectExpression: Rule): Rule =>
   Y((ChildExpression) => {
+    const ArrayConstructor = Node<ArrayConstructorTag>(
+      All(/^ARRAY/i, '[', List(ChildExpression), ']'),
+      (values, $, $next) => ({ tag: 'ArrayConstructor', values, ...context($, $next) }),
+    );
+
+    const ExpressionList = Node<ExpressionListTag>(List(ChildExpression), (values, $, $next) => {
+      return { tag: 'ExpressionList', values, ...context($, $next) };
+    });
+
     /**
-     * Subquery Expression
+     * Comparation Expression
      * ----------------------------------------------------------------------------------------
      */
 
-    const Exists = Node<SubqueryExpressionTag>(All(/^EXISTS/i, Brackets(SelectExpression)), ([subquery], $, $next) => {
-      return { tag: 'SubqueryExpression', type: 'EXISTS', subquery, ...context($, $next) };
-    });
-
-    const InclusionSubquery = Node<SubqueryExpressionTag>(
-      All(Column, /^(IN|NOT IN)/i, Brackets(SelectExpression)),
-      ([value, type, subquery], $, $next) => {
-        return { tag: 'SubqueryExpression', type: type.toUpperCase(), value, subquery, ...context($, $next) };
+    const Exists = Node<ComparationExpressionTag>(
+      All(/^EXISTS/i, Brackets(SelectExpression)),
+      ([subject], $, $next) => {
+        return { tag: 'ComparationExpression', type: 'EXISTS', subject, ...context($, $next) };
       },
     );
 
-    const SubqueryOperator = Node<SubqueryOperatorTag>(/^(<=|>=|<|>|<>|!=|=|AND|OR)/, ([value], $, $next) => ({
-      tag: 'SubqueryOperator',
+    const InclusionSubquery = Node<ComparationExpressionTag>(
+      All(Column, /^(IN|NOT IN)/i, Brackets(SelectExpression)),
+      ([value, type, subject], $, $next) => {
+        return { tag: 'ComparationExpression', type: type.toUpperCase(), value, subject, ...context($, $next) };
+      },
+    );
+
+    const ComparationOperator = Node<ComparationOperatorTag>(/^(<=|>=|<|>|<>|!=|=|AND|OR)/, ([value], $, $next) => ({
+      tag: 'ComparationOperator',
       value: value.toUpperCase(),
       ...context($, $next),
     }));
 
-    const OperatorSubquery = Node<SubqueryExpressionTag>(
-      All(Column, SubqueryOperator, /^(ANY|SOME|ALL)/i, Brackets(SelectExpression)),
-      ([value, operator, type, subquery], $, $next) => {
-        return { tag: 'SubqueryExpression', operator, type: type.toLowerCase(), value, subquery, ...context($, $next) };
-      },
+    const OperatorComparation = Node<ComparationExpressionTag>(
+      All(
+        Column,
+        ComparationOperator,
+        /^(ANY|SOME|ALL)/i,
+        Brackets(Any(ArrayConstructor, SelectExpression, ExpressionList)),
+      ),
+      ([value, operator, type, subject], $, $next) => ({
+        tag: 'ComparationExpression',
+        operator,
+        type: type.toLowerCase(),
+        value,
+        subject,
+        ...context($, $next),
+      }),
     );
 
-    const RowWiseSubquery = Node<SubqueryExpressionTag>(
-      All(Column, SubqueryOperator, Brackets(SelectExpression)),
-      ([value, operator, subquery], $, $next) => {
-        return { tag: 'SubqueryExpression', operator, value, subquery, ...context($, $next) };
+    const RowWiseComparation = Node<ComparationExpressionTag>(
+      All(Column, ComparationOperator, Brackets(SelectExpression)),
+      ([value, operator, subject], $, $next) => {
+        return { tag: 'ComparationExpression', operator, value, subject, ...context($, $next) };
       },
     );
 
@@ -450,11 +473,6 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       }),
     );
 
-    const ArrayConstructor = Node<ArrayConstructorTag>(
-      All(/^ARRAY/i, '[', List(ChildExpression), ']'),
-      (values, $, $next) => ({ tag: 'ArrayConstructor', values, ...context($, $next) }),
-    );
-
     const ArrayIndexRange = Node<ArrayIndexRangeTag>(
       All(ChildExpression, ':', ChildExpression),
       ([left, right], $, $next) => ({ tag: 'ArrayIndexRange', left, right, ...context($, $next) }),
@@ -485,8 +503,8 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       Row,
       Exists,
       InclusionSubquery,
-      OperatorSubquery,
-      RowWiseSubquery,
+      OperatorComparation,
+      RowWiseComparation,
       BuiltInFunction,
       NullIf,
       ConditionalExpression,

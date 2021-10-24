@@ -1,7 +1,7 @@
 import { parser } from '@psql-ts/ast';
 import { toQueryInterface } from '@psql-ts/query';
 import { Client } from 'pg';
-import { loadQueryInterface } from '../src/load';
+import { loadQueryInterfacesData, toLoadedQueryInterface } from '../src/load';
 import { sqlFiles, withParserErrors } from './helpers';
 
 let db: Client;
@@ -19,9 +19,9 @@ describe('Load Files', () => {
   it.each(sqlFiles())('Should convert complex sql %s', (name, sql) =>
     withParserErrors(async () => {
       const ast = parser(sql);
-      const query = toQueryInterface(ast!);
-      const { queryInterface } = await loadQueryInterface(db, query);
-      expect(queryInterface).toMatchSnapshot(name);
+      const queryInterface = toQueryInterface(ast!);
+      const data = await loadQueryInterfacesData(db, [queryInterface], []);
+      expect(toLoadedQueryInterface(data)(queryInterface)).toMatchSnapshot(name);
     }),
   );
 });
