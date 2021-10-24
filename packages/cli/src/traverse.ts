@@ -16,11 +16,12 @@ import {
 import { basename } from 'path';
 import { parser } from '@psql-ts/ast';
 import { toQueryInterface } from '@psql-ts/query';
-import { loadQueries } from '.';
+import { loadQueryInterfaces } from './load';
 import { ClientBase } from 'pg';
-import { defaultContext } from './load-types';
-import { Context, LoadedFile, ParsedFile, ParsedSqlFile, ParsedTypescriptFile, TemplateTagQuery } from './types';
+import { LoadedData, LoadedFile, ParsedFile, ParsedSqlFile, ParsedTypescriptFile, TemplateTagQuery } from './types';
 import { emitLoadedFile } from './emit';
+// import { LoadError } from './LoadError';
+import { ParseError } from './ParseError';
 
 const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
   const queries: TemplateTagQuery[] = [];
@@ -54,9 +55,11 @@ const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
             queryInterface: toQueryInterface(sqlAst),
           });
         }
-      } catch (e) {
-        console.log(node.template.text);
-        throw e;
+      } catch (error) {
+        throw new ParseError(
+          node.template,
+          `Error parsing sql: ${error instanceof Error ? error.message : String(error)}`,
+        );
       }
     } else {
       node.forEachChild(visitor);
@@ -81,21 +84,24 @@ const toParsedSqlFile = (path: string): ParsedSqlFile | undefined => {
 
 const loadParsedFiles = async (
   db: ClientBase,
-  context: Context,
+  data: LoadedData[],
   files: ParsedFile[],
-): Promise<{ context: Context; files: LoadedFile[] }> => {
+): Promise<{ data: LoadedData[]; files: LoadedFile[] }> => {
   const queries = files.flatMap((file) =>
     file.type === 'ts' ? file.queries.map((query) => query.queryInterface) : file.queryInterface,
   );
-  const loaded = await loadQueries(db, queries, context);
+  const loaded = await loadQueryInterfaces(db, queries, data);
 
   return {
     files: files.map((file) =>
       file.type === 'ts'
-        ? { ...file, queries: file.queries.map((query) => ({ ...query, loadedQuery: loaded.queries.shift()! })) }
-        : { ...file, loadedQuery: loaded.queries.shift()! },
+        ? {
+            ...file,
+            queries: file.queries.map((query) => ({ ...query, loadedQuery: loaded.queryInterfaces.shift()! })),
+          }
+        : { ...file, loadedQuery: loaded.queryInterfaces.shift()! },
     ),
-    context: loaded.context,
+    data: loaded.data,
   };
 };
 
@@ -129,19 +135,23 @@ export class SqlRead extends Readable {
 }
 
 export class QueryLoader extends Writable {
-  public context = defaultContext;
+  public data: LoadedData[] = [];
   constructor(public db: ClientBase, public root: string, public template: string) {
-    super({ objectMode: true });
+    super({ objectMode: true, highWaterMark: 1 });
   }
 
   async _writev(
     chunks: Array<{ chunk: ParsedFile; encoding: BufferEncoding }>,
     callback: (error?: Error | null) => void,
   ): Promise<void> {
-    const parsedFiles = chunks.map((file) => file.chunk);
-    const { context, files } = await loadParsedFiles(this.db, this.context, parsedFiles);
-    this.context = context;
-    await Promise.all(files.map(emitLoadedFile(this.root, this.template)));
+    try {
+      const parsedFiles = chunks.map((file) => file.chunk);
+      const { data, files } = await loadParsedFiles(this.db, this.data, parsedFiles);
+      this.data = data;
+      await Promise.all(files.map(emitLoadedFile(this.root, this.template)));
+    } catch (error) {
+      callback(error instanceof Error ? error : new Error(String(error)));
+    }
     callback();
   }
 
@@ -150,9 +160,13 @@ export class QueryLoader extends Writable {
     encoding: BufferEncoding,
     callback: (error?: Error | null) => void,
   ): Promise<void> {
-    const { context, files } = await loadParsedFiles(this.db, this.context, [file]);
-    this.context = context;
-    await Promise.all(files.map(emitLoadedFile(this.root, this.template)));
+    try {
+      const { data, files } = await loadParsedFiles(this.db, this.data, [file]);
+      this.data = data;
+      await Promise.all(files.map(emitLoadedFile(this.root, this.template)));
+    } catch (error) {
+      callback(error instanceof Error ? error : new Error(String(error)));
+    }
     callback();
   }
 }

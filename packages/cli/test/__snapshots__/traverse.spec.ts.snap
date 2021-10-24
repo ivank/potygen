@@ -1,14 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Traverse Should work: __generated__/account-levelisation.upsert.query.queries.ts 1`] = `
+"export interface Params {
+    levelisationId: unknown;
+    start?: Date;
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Traverse Should work: __generated__/account-levelisations.query.queries.ts 1`] = `
 "export interface Params {
-    q: string;
-    resolvedPostlev: string;
-    state: \\"Done\\" | \\"Pending\\";
+    q: \\"\\";
+    resolvedPostlev: \\"\\" | boolean;
+    state: (\\"Done\\" | \\"Pending\\");
     levelisationId: number;
     ids: number[];
-    sortField: string;
-    sortOrder: string;
+    sortField: \\"totalPayment\\" | \\"vatPayment\\" | \\"generationPayment\\" | \\"exportPayment\\" | \\"generationEnergy\\" | \\"exportEnergy\\" | \\"cfrFitId\\" | \\"state\\" | \\"isAccepted\\" | \\"error\\" | \\"exportType\\";
+    sortOrder: \\"DESC\\" | \\"ASC\\";
     limit: number;
     offset: number;
 }
@@ -23,28 +38,28 @@ export interface Result {
     generationStartReadValue?: string;
     generationEndReadOn?: Date;
     generationEndReadValue?: string;
-    generationPercentageSplit?: number;
+    generationPercentageSplit?: string;
     generationPayment?: string;
     generationEnergy?: string;
     exportStartReadOn?: Date;
     exportStartReadValue?: string;
     exportEndReadOn?: Date;
     exportEndReadValue?: string;
-    exportPercentageSplit?: number;
+    exportPercentageSplit?: string;
     exportPayment?: string;
     exportEnergy?: string;
-    exportType: string;
-    technologyType: string;
+    exportType: \\"Off Grid\\" | \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\" | \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\" | \\"Deemed\\" | \\"Metered Export\\" | \\"PPA\\";
+    technologyType: \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\" | \\"PV\\" | \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\" | \\"PV\\";
     totalPayment?: string;
     vatPayment?: string;
     generationPeriods?: unknown;
     exportPeriods?: unknown;
-    errorCode: string;
+    errorCode: unknown;
     errorParams: unknown;
     cfrFitId: string;
-    resolvedPostlevId: string;
-    isBacsPaymentsSent: string;
-    isChequePaymentsSent: string;
+    resolvedPostlevId?: number;
+    isBacsPaymentsSent?: boolean;
+    isChequePaymentsSent?: boolean;
 }
 export interface Query {
     params: Params;
@@ -69,7 +84,7 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/accounts.list.query.queries.ts 1`] = `
 "export interface Params {
-    q: string;
+    q: \\"\\" | string;
     ids: number[];
 }
 export interface Result {
@@ -96,20 +111,20 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/accounts.query.queries.ts 1`] = `
 "export interface Params {
-    q: string;
+    q: \\"\\" | string;
     ids: number[];
     limit: number;
     offset: number;
 }
 export interface Result {
     id: number;
-    state: \\"Dispute\\" | \\"Closed\\" | \\"Active\\" | \\"Pending\\";
+    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
     startOn?: Date;
     firstName: string;
     lastName: string;
     email?: string;
     address: string;
-    fitIds: string[];
+    fitIds: any;
 }
 export interface Query {
     params: Params;
@@ -120,7 +135,7 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/bacs.query.queries.ts 1`] = `
 "export interface Params {
-    quarter: string;
+    quarter?: string;
     perPage: string;
     offset: string;
 }
@@ -128,7 +143,7 @@ export interface Result {
     fitId: string;
     name?: string;
     amount: string;
-    quarter: string;
+    quarter?: string;
     bankDetails: string;
     addressLine1?: string;
     addressLine2?: string;
@@ -156,8 +171,8 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/delete-accounts.query.queries.ts 1`] = `
 "export interface Params {
-    type: \\"FIT\\" | \\"SEG\\";
-    state: \\"Dispute\\" | \\"Closed\\" | \\"Active\\" | \\"Pending\\";
+    type: \\"SEG\\" | \\"FIT\\";
+    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
 }
 export interface Result {
     id: number;
@@ -189,8 +204,8 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/installation-meter-update.query.queries.ts 1`] = `
 "export interface Params {
-    meterId: number;
     removalDate: unknown;
+    meterId: number;
 }
 export interface Result {
 }
@@ -227,7 +242,7 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/rates-by-tarrif-ids.query.queries.ts 1`] = `
 "export interface Params {
-    ids: number;
+    ids: number[][];
 }
 export interface Result {
     tariffId: number;
@@ -248,7 +263,7 @@ exports[`Traverse Should work: __generated__/read-create.query.queries.ts 1`] = 
 "export interface Params {
     meterId: number;
     reason?: string;
-    type: \\"Meter Verification\\" | \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\";
+    type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
     dateOn: Date;
     submittedAt?: Date;
     value: number;
@@ -278,7 +293,7 @@ export interface Result {
     meterId: number;
     dateOn: Date;
     value: number;
-    type: \\"Meter Verification\\" | \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\";
+    type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
     reason?: string;
     createdAt: Date;
     updatedAt?: Date;

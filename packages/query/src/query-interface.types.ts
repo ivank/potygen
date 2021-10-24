@@ -1,72 +1,195 @@
-export interface ColumnType {
-  type: 'column';
-  table: string;
-  schema: string;
+import { TableTag, Tag } from '@psql-ts/ast';
+
+export interface TypeLoad {
+  sourceTag: Tag;
+}
+export interface TypeString {
+  type: 'String';
+  literal?: string;
+  optional?: boolean;
+}
+export interface TypeNumber {
+  type: 'Number';
+  literal?: number;
+  optional?: boolean;
+}
+export interface TypeBoolean {
+  type: 'Boolean';
+  literal?: boolean;
+  optional?: boolean;
+}
+export interface TypeDate {
+  type: 'Date';
+  optional?: boolean;
+}
+export interface TypeNull {
+  type: 'Null';
+}
+export interface TypeJson {
+  type: 'Json';
+  optional?: boolean;
+}
+export interface TypeUnknown {
+  type: 'Unknown';
+}
+export interface TypeAny {
+  type: 'Any';
+}
+export interface TypeCoalesce {
+  type: 'Coalesce';
+  items: Type[];
+}
+export interface TypeLoadRecord extends TypeLoad {
+  type: 'LoadRecord';
+  name: string;
+}
+export interface TypeLoadFunction extends TypeLoad {
+  type: 'LoadFunction';
+  name: string;
+  args: Type[];
+}
+export interface TypeLoadColumn extends TypeLoad {
+  type: 'LoadColumn';
   column: string;
+  table?: string;
+  schema?: string;
 }
-export interface RecordType {
-  type: 'record';
-  name: string;
+export interface TypeLoadStar extends TypeLoad {
+  type: 'LoadStar';
+  table?: string;
+  schema?: string;
 }
-export interface LiteralType {
-  type: 'literal';
-  value: string;
-}
-export interface FunctionType {
-  type: 'function';
-  name: string;
-  args: PropertyType[];
-}
-export interface ConditionalType {
-  type: 'conditional';
-  name: string;
-  items: PropertyType[];
-}
-export interface FunctionArgType {
-  type: 'function_arg';
-  name: string;
+export interface TypeLoadFunctionArgument extends TypeLoad {
+  type: 'LoadFunctionArgument';
   index: number;
+  name: string;
+  args: Type[];
 }
-export interface StarType {
-  type: 'star';
-  table: string;
-  schema: string;
+export interface TypeLoadOperator extends TypeLoad {
+  type: 'LoadOperator';
+  index: 0 | 1 | 2;
+  left: Type;
+  right: Type;
+  available: Array<[TypeConstant, TypeConstant, TypeConstant]>;
 }
-export type ConstantType = 'string' | 'number' | 'boolean' | 'Date' | 'null' | 'json' | 'unknown';
-export interface ArrayType {
-  type: 'array';
-  items: ConstantType | ArrayType | RecordType | UnionType | LiteralType;
+export interface TypeNamed {
+  type: 'Named';
+  name: string;
+  value: Type;
 }
-export interface UnionType {
-  type: 'union';
-  items: PropertyType[];
+export interface TypeArray {
+  type: 'Array';
+  items: Type;
 }
-export type PropertyType =
-  | ConstantType
-  | ColumnType
-  | FunctionType
-  | ArrayType
-  | RecordType
-  | UnionType
-  | LiteralType
-  | ConditionalType;
+export interface TypeArrayItem {
+  type: 'ArrayItem';
+  value: Type;
+}
+export interface TypeUnion {
+  type: 'Union';
+  items: Type[];
+}
+export interface TypeArrayConstant {
+  type: 'ArrayConstant';
+  items: TypeConstant;
+  optional?: boolean;
+}
+export interface TypeUnionConstant {
+  type: 'UnionConstant';
+  items: TypeConstant[];
+  optional?: boolean;
+}
+export interface TypeObjectLiteral {
+  type: 'ObjectLiteral';
+  items: Array<{ name: string; type: Type }>;
+  optional?: boolean;
+}
+export interface TypeObjectLiteralConstant {
+  type: 'ObjectLiteralConstant';
+  items: Array<{ name: string; type: TypeConstant }>;
+  optional?: boolean;
+}
+
+export type TypeLiteral = TypeString | TypeNumber | TypeBoolean;
+
+export type TypeOptional =
+  | TypeString
+  | TypeNumber
+  | TypeBoolean
+  | TypeDate
+  | TypeJson
+  | TypeArrayConstant
+  | TypeUnionConstant;
+
+export type TypeConstant =
+  | TypeAny
+  | TypeString
+  | TypeNumber
+  | TypeBoolean
+  | TypeDate
+  | TypeNull
+  | TypeJson
+  | TypeUnknown
+  | TypeArrayConstant
+  | TypeUnionConstant
+  | TypeObjectLiteralConstant;
+
+export type Type =
+  | TypeConstant
+  | TypeLoadColumn
+  | TypeLoadFunction
+  | TypeLoadFunctionArgument
+  | TypeLoadRecord
+  | TypeLoadStar
+  | TypeLoadOperator
+  | TypeNamed
+  | TypeCoalesce
+  | TypeArray
+  | TypeArrayItem
+  | TypeUnion
+  | TypeObjectLiteral;
 
 export interface Result {
   name: string;
-  type: PropertyType | StarType;
+  type: Type | TypeLoadStar;
 }
 
 export interface Param {
   name: string;
-  type: PropertyType | FunctionArgType;
-  spread?: boolean;
+  type: Type;
   pos: number;
-  lastPos: number;
-  required?: boolean;
-  pick: Array<{ type?: ColumnType; name: string }>;
+  nextPos: number;
+  required: boolean;
+  pick: Array<{ name: string; type: Type }>;
+  spread: boolean;
+}
+
+export type Source = SourceTable | SourceQuery;
+
+export interface SourceTable {
+  type: 'Table';
+  sourceTag: Tag;
+  isResult?: boolean;
+  schema?: string;
+  table: string;
+  name: string;
+}
+
+export interface SourceQuery {
+  type: 'Query';
+  sourceTag: Tag;
+  name: string;
+  value: QueryInterface;
 }
 
 export interface QueryInterface {
   params: Param[];
-  result: Result[];
+  results: Result[];
+  sources: Source[];
+}
+
+export interface TypeContext {
+  type: Type;
+  columns: TypeLoadColumn[];
+  from?: TableTag;
 }

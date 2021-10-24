@@ -3,47 +3,171 @@
 exports[`Query Interface Should convert between fields named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "col1",
-      "type": "boolean",
+      "type": Object {
+        "literal": false,
+        "type": "Boolean",
+      },
     },
     Object {
       "name": "col2",
-      "type": "boolean",
+      "type": Object {
+        "literal": true,
+        "type": "Boolean",
+      },
     },
   ],
+  "sources": Array [],
 }
 `;
 
 exports[`Query Interface Should convert between fields not named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "col1",
-      "type": "boolean",
+      "type": Object {
+        "literal": false,
+        "type": "Boolean",
+      },
     },
     Object {
       "name": "col2",
-      "type": "boolean",
+      "type": Object {
+        "literal": true,
+        "type": "Boolean",
+      },
     },
   ],
+  "sources": Array [],
 }
 `;
 
 exports[`Query Interface Should convert binary expression column sql (SELECT (col1 + col2) AS "res1" FROM table1) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "res1",
       "type": Object {
-        "column": "col1",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "available": Array [
+          Array [
+            Object {
+              "type": "Number",
+            },
+            Object {
+              "type": "Number",
+            },
+            Object {
+              "type": "Number",
+            },
+          ],
+          Array [
+            Object {
+              "type": "Date",
+            },
+            Object {
+              "type": "String",
+            },
+            Object {
+              "type": "Date",
+            },
+          ],
+        ],
+        "index": 2,
+        "left": Object {
+          "column": "col1",
+          "schema": undefined,
+          "sourceTag": Object {
+            "name": Object {
+              "nextPos": 12,
+              "pos": 8,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+            "nextPos": 12,
+            "pos": 8,
+            "tag": "Column",
+          },
+          "table": undefined,
+          "type": "LoadColumn",
+        },
+        "right": Object {
+          "column": "col2",
+          "schema": undefined,
+          "sourceTag": Object {
+            "name": Object {
+              "nextPos": 19,
+              "pos": 15,
+              "tag": "Identifier",
+              "value": "col2",
+            },
+            "nextPos": 19,
+            "pos": 15,
+            "tag": "Column",
+          },
+          "table": undefined,
+          "type": "LoadColumn",
+        },
+        "sourceTag": Object {
+          "left": Object {
+            "name": Object {
+              "nextPos": 12,
+              "pos": 8,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+            "nextPos": 12,
+            "pos": 8,
+            "tag": "Column",
+          },
+          "nextPos": 19,
+          "operator": Object {
+            "nextPos": 14,
+            "pos": 13,
+            "tag": "BinaryOperator",
+            "value": "+",
+          },
+          "pos": 8,
+          "right": Object {
+            "name": Object {
+              "nextPos": 19,
+              "pos": 15,
+              "tag": "Identifier",
+              "value": "col2",
+            },
+            "nextPos": 19,
+            "pos": 15,
+            "tag": "Column",
+          },
+          "tag": "BinaryExpression",
+        },
+        "type": "LoadOperator",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 42,
+        "pos": 36,
+        "table": Object {
+          "nextPos": 42,
+          "pos": 36,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -52,72 +176,99 @@ Object {
 exports[`Query Interface Should convert binary expression numbers sql (SELECT 1+2) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "?column?",
-      "type": "number",
+      "type": Object {
+        "type": "Number",
+      },
     },
   ],
+  "sources": Array [],
 }
 `;
 
 exports[`Query Interface Should convert binary expression string sql (SELECT 'test' || 'other') 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "?column?",
-      "type": "string",
+      "type": Object {
+        "type": "String",
+      },
     },
   ],
+  "sources": Array [],
 }
 `;
 
 exports[`Query Interface Should convert boolean fields mixed sql (SELECT FALSE, TRUE as "col2") 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "bool",
-      "type": "boolean",
+      "type": Object {
+        "literal": false,
+        "type": "Boolean",
+      },
     },
     Object {
       "name": "col2",
-      "type": "boolean",
+      "type": Object {
+        "literal": true,
+        "type": "Boolean",
+      },
     },
   ],
+  "sources": Array [],
 }
 `;
 
 exports[`Query Interface Should convert boolean fields named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "col1",
-      "type": "boolean",
+      "type": Object {
+        "literal": false,
+        "type": "Boolean",
+      },
     },
     Object {
       "name": "col2",
-      "type": "boolean",
+      "type": Object {
+        "literal": true,
+        "type": "Boolean",
+      },
     },
   ],
+  "sources": Array [],
 }
 `;
 
 exports[`Query Interface Should convert boolean fields not named sql (SELECT FALSE, TRUE) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "bool",
-      "type": "boolean",
+      "type": Object {
+        "literal": false,
+        "type": "Boolean",
+      },
     },
     Object {
       "name": "bool",
-      "type": "boolean",
+      "type": Object {
+        "literal": true,
+        "type": "Boolean",
+      },
     },
   ],
+  "sources": Array [],
 }
 `;
 
@@ -132,27 +283,79 @@ exports[`Query Interface Should convert case columns sql (
       ) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "res1",
       "type": Object {
         "items": Array [
           Object {
             "column": "col1",
-            "schema": "public",
+            "schema": undefined,
+            "sourceTag": Object {
+              "name": Object {
+                "nextPos": 72,
+                "pos": 68,
+                "tag": "Identifier",
+                "value": "col1",
+              },
+              "nextPos": 72,
+              "pos": 61,
+              "table": Object {
+                "nextPos": 67,
+                "pos": 61,
+                "tag": "Identifier",
+                "value": "table1",
+              },
+              "tag": "Column",
+            },
             "table": "table1",
-            "type": "column",
+            "type": "LoadColumn",
           },
           Object {
             "column": "col2",
-            "schema": "public",
-            "table": "table1",
-            "type": "column",
+            "schema": undefined,
+            "sourceTag": Object {
+              "name": Object {
+                "nextPos": 102,
+                "pos": 98,
+                "tag": "Identifier",
+                "value": "col2",
+              },
+              "nextPos": 102,
+              "pos": 98,
+              "tag": "Column",
+            },
+            "table": undefined,
+            "type": "LoadColumn",
           },
-          "string",
+          Object {
+            "literal": "other",
+            "type": "String",
+          },
         ],
-        "type": "union",
+        "type": "Union",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 171,
+        "pos": 165,
+        "table": Object {
+          "nextPos": 171,
+          "pos": 165,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -161,18 +364,25 @@ Object {
 exports[`Query Interface Should convert case sql (SELECT CASE WHEN TRUE THEN TRUE ELSE 'other' END) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "?column?",
       "type": Object {
         "items": Array [
-          "boolean",
-          "string",
+          Object {
+            "literal": true,
+            "type": "Boolean",
+          },
+          Object {
+            "literal": "other",
+            "type": "String",
+          },
         ],
-        "type": "union",
+        "type": "Union",
       },
     },
   ],
+  "sources": Array [],
 }
 `;
 
@@ -191,52 +401,179 @@ exports[`Query Interface Should convert combination select sql (
 Object {
   "params": Array [
     Object {
-      "lastPos": 155,
       "name": "joinVal",
+      "nextPos": 137,
       "pick": Array [],
       "pos": 129,
       "required": false,
       "spread": false,
       "type": Object {
         "column": "val",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 126,
+            "pos": 123,
+            "tag": "Identifier",
+            "value": "val",
+          },
+          "nextPos": 126,
+          "pos": 116,
+          "table": Object {
+            "nextPos": 122,
+            "pos": 116,
+            "tag": "Identifier",
+            "value": "table3",
+          },
+          "tag": "Column",
+        },
         "table": "table3",
-        "type": "column",
+        "type": "LoadColumn",
       },
     },
     Object {
-      "lastPos": 282,
       "name": "id",
+      "nextPos": 281,
       "pick": Array [],
       "pos": 278,
       "required": false,
       "spread": false,
       "type": Object {
         "column": "id",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 293,
+            "pos": 291,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 293,
+          "pos": 284,
+          "table": Object {
+            "nextPos": 290,
+            "pos": 284,
+            "tag": "Identifier",
+            "value": "table1",
+          },
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "id",
+      "nextPos": 313,
+      "pick": Array [],
+      "pos": 310,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 307,
+            "pos": 305,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 307,
+          "pos": 298,
+          "table": Object {
+            "nextPos": 304,
+            "pos": 298,
+            "tag": "Identifier",
+            "value": "table4",
+          },
+          "tag": "Column",
+        },
+        "table": "table4",
+        "type": "LoadColumn",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "res1",
       "type": Object {
         "column": "col1",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 30,
+            "pos": 26,
+            "tag": "Identifier",
+            "value": "col1",
+          },
+          "nextPos": 30,
+          "pos": 26,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": "public",
-        "table": "table2",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 62,
+            "pos": 60,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 62,
+          "pos": 60,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 166,
+        "pos": 160,
+        "table": Object {
+          "nextPos": 166,
+          "pos": 160,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "table4",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 263,
+        "pos": 257,
+        "table": Object {
+          "nextPos": 263,
+          "pos": 257,
+          "tag": "Identifier",
+          "value": "table4",
+        },
+        "tag": "Table",
+      },
+      "table": "table4",
+      "type": "Table",
     },
   ],
 }
@@ -246,29 +583,50 @@ exports[`Query Interface Should convert complex row sql (SELECT (1, 2+2, :param1
 Object {
   "params": Array [
     Object {
-      "lastPos": 24,
       "name": "param1",
+      "nextPos": 23,
       "pick": Array [],
       "pos": 16,
       "required": false,
       "spread": false,
-      "type": "unknown",
+      "type": Object {
+        "type": "Unknown",
+      },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "row",
-      "type": "string",
+      "type": Object {
+        "name": "row",
+        "type": "Named",
+        "value": Object {
+          "type": "String",
+        },
+      },
     },
     Object {
       "name": "row",
-      "type": "string",
+      "type": Object {
+        "name": "row",
+        "type": "Named",
+        "value": Object {
+          "type": "String",
+        },
+      },
     },
     Object {
       "name": "row",
-      "type": "string",
+      "type": Object {
+        "name": "row",
+        "type": "Named",
+        "value": Object {
+          "type": "String",
+        },
+      },
     },
   ],
+  "sources": Array [],
 }
 `;
 
@@ -276,45 +634,120 @@ exports[`Query Interface Should convert delete with param sql (DELETE FROM table
 Object {
   "params": Array [
     Object {
-      "lastPos": 33,
       "name": "id",
+      "nextPos": 33,
       "pick": Array [],
       "pos": 30,
       "required": false,
       "spread": false,
       "type": Object {
         "column": "id",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 27,
+            "pos": 25,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 27,
+          "pos": 25,
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
       },
     },
   ],
-  "result": Array [],
+  "results": Array [],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 18,
+        "pos": 12,
+        "table": Object {
+          "nextPos": 18,
+          "pos": 12,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
+    },
+  ],
 }
 `;
 
 exports[`Query Interface Should convert delete with returning sql (DELETE FROM table1 RETURNING id, col2) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 31,
+            "pos": 29,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 31,
+          "pos": 29,
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "col2",
       "type": Object {
         "column": "col2",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 37,
+            "pos": 33,
+            "tag": "Identifier",
+            "value": "col2",
+          },
+          "nextPos": 37,
+          "pos": 33,
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 18,
+        "pos": 12,
+        "table": Object {
+          "nextPos": 18,
+          "pos": 12,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -323,13 +756,38 @@ Object {
 exports[`Query Interface Should convert enum type sql (SELECT id::custom_type FROM table1) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
-        "name": "custom_type",
-        "type": "record",
+        "name": "id",
+        "type": "Named",
+        "value": Object {
+          "name": "custom_type",
+          "type": "LoadRecord",
+        },
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 34,
+        "pos": 28,
+        "table": Object {
+          "nextPos": 34,
+          "pos": 28,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -339,29 +797,89 @@ exports[`Query Interface Should convert function param sql (SELECT ABS($id) FROM
 Object {
   "params": Array [
     Object {
-      "lastPos": 16,
       "name": "id",
+      "nextPos": 14,
       "pick": Array [],
       "pos": 11,
       "required": false,
       "spread": false,
       "type": Object {
+        "args": Array [
+          Object {
+            "type": "Any",
+          },
+        ],
         "index": 0,
-        "name": "ABS",
-        "type": "function_arg",
+        "name": "abs",
+        "sourceTag": Object {
+          "nextPos": 14,
+          "pick": Array [],
+          "pos": 11,
+          "required": false,
+          "tag": "Parameter",
+          "type": "single",
+          "value": "id",
+        },
+        "type": "LoadFunctionArgument",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "abs",
       "type": Object {
         "args": Array [
-          "string",
+          Object {
+            "type": "Any",
+          },
         ],
         "name": "abs",
-        "type": "function",
+        "sourceTag": Object {
+          "args": Array [
+            Object {
+              "nextPos": 14,
+              "pick": Array [],
+              "pos": 11,
+              "required": false,
+              "tag": "Parameter",
+              "type": "single",
+              "value": "id",
+            },
+          ],
+          "filter": undefined,
+          "nextPos": 15,
+          "pos": 7,
+          "tag": "Function",
+          "value": Object {
+            "nextPos": 10,
+            "pos": 7,
+            "tag": "Identifier",
+            "value": "ABS",
+          },
+        },
+        "type": "LoadFunction",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 27,
+        "pos": 21,
+        "table": Object {
+          "nextPos": 27,
+          "pos": 21,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -370,21 +888,78 @@ Object {
 exports[`Query Interface Should convert function sql (SELECT ABS(id) FROM table1) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "abs",
       "type": Object {
         "args": Array [
           Object {
             "column": "id",
-            "schema": "public",
-            "table": "table1",
-            "type": "column",
+            "schema": undefined,
+            "sourceTag": Object {
+              "name": Object {
+                "nextPos": 13,
+                "pos": 11,
+                "tag": "Identifier",
+                "value": "id",
+              },
+              "nextPos": 13,
+              "pos": 11,
+              "tag": "Column",
+            },
+            "table": undefined,
+            "type": "LoadColumn",
           },
         ],
         "name": "abs",
-        "type": "function",
+        "sourceTag": Object {
+          "args": Array [
+            Object {
+              "name": Object {
+                "nextPos": 13,
+                "pos": 11,
+                "tag": "Identifier",
+                "value": "id",
+              },
+              "nextPos": 13,
+              "pos": 11,
+              "tag": "Column",
+            },
+          ],
+          "filter": undefined,
+          "nextPos": 14,
+          "pos": 7,
+          "tag": "Function",
+          "value": Object {
+            "nextPos": 10,
+            "pos": 7,
+            "tag": "Identifier",
+            "value": "ABS",
+          },
+        },
+        "type": "LoadFunction",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 26,
+        "pos": 20,
+        "table": Object {
+          "nextPos": 26,
+          "pos": 20,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -394,39 +969,97 @@ exports[`Query Interface Should convert insert multiple param values sql (INSERT
 Object {
   "params": Array [
     Object {
-      "lastPos": 43,
       "name": "rows",
+      "nextPos": 44,
       "pick": Array [
         Object {
           "name": "name",
-          "type": undefined,
+          "type": Object {
+            "type": "Unknown",
+          },
         },
         Object {
           "name": "test",
-          "type": undefined,
+          "type": Object {
+            "type": "Unknown",
+          },
         },
       ],
       "pos": 26,
       "required": true,
       "spread": true,
-      "type": "unknown",
+      "type": Object {
+        "type": "Unknown",
+      },
     },
   ],
-  "result": Array [],
+  "results": Array [],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 18,
+        "pos": 12,
+        "table": Object {
+          "nextPos": 18,
+          "pos": 12,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
+    },
+  ],
 }
 `;
 
 exports[`Query Interface Should convert insert returning star sql (INSERT INTO table1 (id) VALUES (1),(2) RETURNING *) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
-      "name": "*",
+      "name": "?column?",
       "type": Object {
-        "schema": "public",
-        "table": "table1",
-        "type": "star",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 50,
+          "pos": 49,
+          "star": Object {
+            "nextPos": 50,
+            "pos": 49,
+            "tag": "Star",
+          },
+          "tag": "StarIdentifier",
+        },
+        "table": undefined,
+        "type": "LoadStar",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 18,
+        "pos": 12,
+        "table": Object {
+          "nextPos": 18,
+          "pos": 12,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -442,33 +1075,134 @@ exports[`Query Interface Should convert join fields sql (
       ) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 33,
+            "pos": 29,
+            "tag": "Identifier",
+            "value": "col1",
+          },
+          "nextPos": 33,
+          "pos": 26,
+          "table": Object {
+            "nextPos": 28,
+            "pos": 26,
+            "tag": "Identifier",
+            "value": "t1",
+          },
+          "tag": "Column",
+        },
+        "table": "t1",
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "myCol2",
       "type": Object {
         "column": "col2",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 62,
+            "pos": 58,
+            "tag": "Identifier",
+            "value": "col2",
+          },
+          "nextPos": 62,
+          "pos": 55,
+          "table": Object {
+            "nextPos": 57,
+            "pos": 55,
+            "tag": "Identifier",
+            "value": "t1",
+          },
+          "tag": "Column",
+        },
+        "table": "t1",
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "other",
       "type": Object {
         "column": "col2",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 97,
+            "pos": 93,
+            "tag": "Identifier",
+            "value": "col2",
+          },
+          "nextPos": 97,
+          "pos": 86,
+          "table": Object {
+            "nextPos": 92,
+            "pos": 86,
+            "tag": "Identifier",
+            "value": "table2",
+          },
+          "tag": "Column",
+        },
         "table": "table2",
-        "type": "column",
+        "type": "LoadColumn",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "t1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": Object {
+          "nextPos": 134,
+          "pos": 129,
+          "tag": "As",
+          "value": Object {
+            "nextPos": 134,
+            "pos": 132,
+            "tag": "Identifier",
+            "value": "t1",
+          },
+        },
+        "nextPos": 134,
+        "pos": 122,
+        "table": Object {
+          "nextPos": 128,
+          "pos": 122,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "table2",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 154,
+        "pos": 148,
+        "table": Object {
+          "nextPos": 154,
+          "pos": 148,
+          "tag": "Identifier",
+          "value": "table2",
+        },
+        "tag": "Table",
+      },
+      "table": "table2",
+      "type": "Table",
     },
   ],
 }
@@ -486,42 +1220,211 @@ exports[`Query Interface Should convert join with aliases fields sql (
       ) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": "fit",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 33,
+            "pos": 29,
+            "tag": "Identifier",
+            "value": "col1",
+          },
+          "nextPos": 33,
+          "pos": 26,
+          "table": Object {
+            "nextPos": 28,
+            "pos": 26,
+            "tag": "Identifier",
+            "value": "t1",
+          },
+          "tag": "Column",
+        },
+        "table": "t1",
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "myCol2",
       "type": Object {
         "column": "col2",
-        "schema": "fit",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 62,
+            "pos": 58,
+            "tag": "Identifier",
+            "value": "col2",
+          },
+          "nextPos": 62,
+          "pos": 55,
+          "table": Object {
+            "nextPos": 57,
+            "pos": 55,
+            "tag": "Identifier",
+            "value": "t1",
+          },
+          "tag": "Column",
+        },
+        "table": "t1",
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "other",
       "type": Object {
         "column": "col2",
-        "schema": "fit",
-        "table": "table2",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 95,
+            "pos": 91,
+            "tag": "Identifier",
+            "value": "col2",
+          },
+          "nextPos": 95,
+          "pos": 86,
+          "table": Object {
+            "nextPos": 90,
+            "pos": 86,
+            "tag": "Identifier",
+            "value": "myT2",
+          },
+          "tag": "Column",
+        },
+        "table": "myT2",
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "test",
       "type": Object {
         "column": "col_9",
-        "schema": "public",
-        "table": "table3",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 128,
+            "pos": 123,
+            "tag": "Identifier",
+            "value": "col_9",
+          },
+          "nextPos": 128,
+          "pos": 118,
+          "table": Object {
+            "nextPos": 122,
+            "pos": 118,
+            "tag": "Identifier",
+            "value": "myT4",
+          },
+          "tag": "Column",
+        },
+        "table": "myT4",
+        "type": "LoadColumn",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "t1",
+      "schema": "fit",
+      "sourceTag": Object {
+        "as": Object {
+          "nextPos": 168,
+          "pos": 163,
+          "tag": "As",
+          "value": Object {
+            "nextPos": 168,
+            "pos": 166,
+            "tag": "Identifier",
+            "value": "t1",
+          },
+        },
+        "nextPos": 168,
+        "pos": 152,
+        "schema": Object {
+          "nextPos": 155,
+          "pos": 152,
+          "tag": "Identifier",
+          "value": "fit",
+        },
+        "table": Object {
+          "nextPos": 162,
+          "pos": 156,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "myT2",
+      "schema": "fit",
+      "sourceTag": Object {
+        "as": Object {
+          "nextPos": 202,
+          "pos": 193,
+          "tag": "As",
+          "value": Object {
+            "nextPos": 202,
+            "pos": 196,
+            "tag": "Identifier",
+            "value": "myT2",
+          },
+        },
+        "nextPos": 202,
+        "pos": 182,
+        "schema": Object {
+          "nextPos": 185,
+          "pos": 182,
+          "tag": "Identifier",
+          "value": "fit",
+        },
+        "table": Object {
+          "nextPos": 192,
+          "pos": 186,
+          "tag": "Identifier",
+          "value": "table2",
+        },
+        "tag": "Table",
+      },
+      "table": "table2",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "myT4",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": Object {
+          "nextPos": 257,
+          "pos": 248,
+          "tag": "As",
+          "value": Object {
+            "nextPos": 257,
+            "pos": 251,
+            "tag": "Identifier",
+            "value": "myT4",
+          },
+        },
+        "nextPos": 257,
+        "pos": 241,
+        "table": Object {
+          "nextPos": 247,
+          "pos": 241,
+          "tag": "Identifier",
+          "value": "table3",
+        },
+        "tag": "Table",
+      },
+      "table": "table3",
+      "type": "Table",
     },
   ],
 }
@@ -531,33 +1434,69 @@ exports[`Query Interface Should convert limit and offset params sql (SELECT id F
 Object {
   "params": Array [
     Object {
-      "lastPos": 35,
       "name": "limit",
+      "nextPos": 34,
       "pick": Array [],
       "pos": 28,
       "required": false,
       "spread": false,
-      "type": "string",
+      "type": Object {
+        "type": "String",
+      },
     },
     Object {
-      "lastPos": 49,
       "name": "offset",
+      "nextPos": 49,
       "pick": Array [],
       "pos": 42,
       "required": false,
       "spread": false,
-      "type": "number",
+      "type": Object {
+        "type": "Number",
+      },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 9,
+            "pos": 7,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 9,
+          "pos": 7,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 21,
+        "pos": 15,
+        "table": Object {
+          "nextPos": 21,
+          "pos": 15,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -567,29 +1506,89 @@ exports[`Query Interface Should convert multiple params infer type from one 1 sq
 Object {
   "params": Array [
     Object {
-      "lastPos": 34,
       "name": "id",
+      "nextPos": 33,
       "pick": Array [],
       "pos": 30,
       "required": false,
       "spread": false,
       "type": Object {
         "column": "id",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 45,
+            "pos": 43,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 45,
+          "pos": 36,
+          "table": Object {
+            "nextPos": 42,
+            "pos": 36,
+            "tag": "Identifier",
+            "value": "table1",
+          },
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "id",
+      "nextPos": 53,
+      "pick": Array [],
+      "pos": 50,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "type": "Any",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 11,
+            "pos": 7,
+            "tag": "Identifier",
+            "value": "col1",
+          },
+          "nextPos": 11,
+          "pos": 7,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 23,
+        "pos": 17,
+        "table": Object {
+          "nextPos": 23,
+          "pos": 17,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -599,29 +1598,89 @@ exports[`Query Interface Should convert multiple params infer type from one 2 sq
 Object {
   "params": Array [
     Object {
-      "lastPos": 53,
       "name": "id",
+      "nextPos": 33,
+      "pick": Array [],
+      "pos": 30,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "type": "Any",
+      },
+    },
+    Object {
+      "name": "id",
+      "nextPos": 52,
       "pick": Array [],
       "pos": 49,
       "required": false,
       "spread": false,
       "type": Object {
         "column": "id",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 64,
+            "pos": 62,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 64,
+          "pos": 55,
+          "table": Object {
+            "nextPos": 61,
+            "pos": 55,
+            "tag": "Identifier",
+            "value": "table1",
+          },
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 11,
+            "pos": 7,
+            "tag": "Identifier",
+            "value": "col1",
+          },
+          "nextPos": 11,
+          "pos": 7,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 23,
+        "pos": 17,
+        "table": Object {
+          "nextPos": 23,
+          "pos": 17,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -631,32 +1690,241 @@ exports[`Query Interface Should convert multiple params sql (SELECT :test1 AS "r
 Object {
   "params": Array [
     Object {
-      "lastPos": 14,
       "name": "test1",
+      "nextPos": 13,
       "pick": Array [],
       "pos": 7,
       "required": false,
       "spread": false,
-      "type": "unknown",
+      "type": Object {
+        "type": "Unknown",
+      },
     },
     Object {
-      "lastPos": 31,
       "name": "test2",
+      "nextPos": 31,
       "pick": Array [],
       "pos": 25,
       "required": false,
       "spread": false,
-      "type": "unknown",
+      "type": Object {
+        "type": "Unknown",
+      },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "res1",
-      "type": "string",
+      "type": Object {
+        "type": "Any",
+      },
     },
     Object {
       "name": "?column?",
-      "type": "string",
+      "type": Object {
+        "type": "Any",
+      },
+    },
+  ],
+  "sources": Array [],
+}
+`;
+
+exports[`Query Interface Should convert nested functions sql (SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "abs",
+      "type": Object {
+        "args": Array [
+          Object {
+            "args": Array [
+              Object {
+                "args": Array [
+                  Object {
+                    "column": "integer_col",
+                    "schema": undefined,
+                    "sourceTag": Object {
+                      "name": Object {
+                        "nextPos": 45,
+                        "pos": 34,
+                        "tag": "Identifier",
+                        "value": "integer_col",
+                      },
+                      "nextPos": 45,
+                      "pos": 34,
+                      "tag": "Column",
+                    },
+                    "table": undefined,
+                    "type": "LoadColumn",
+                  },
+                ],
+                "name": "array_agg",
+                "sourceTag": Object {
+                  "args": Array [
+                    Object {
+                      "name": Object {
+                        "nextPos": 45,
+                        "pos": 34,
+                        "tag": "Identifier",
+                        "value": "integer_col",
+                      },
+                      "nextPos": 45,
+                      "pos": 34,
+                      "tag": "Column",
+                    },
+                  ],
+                  "filter": undefined,
+                  "nextPos": 46,
+                  "pos": 24,
+                  "tag": "Function",
+                  "value": Object {
+                    "nextPos": 33,
+                    "pos": 24,
+                    "tag": "Identifier",
+                    "value": "ARRAY_AGG",
+                  },
+                },
+                "type": "LoadFunction",
+              },
+              Object {
+                "literal": 1,
+                "type": "Number",
+              },
+            ],
+            "name": "array_length",
+            "sourceTag": Object {
+              "args": Array [
+                Object {
+                  "args": Array [
+                    Object {
+                      "name": Object {
+                        "nextPos": 45,
+                        "pos": 34,
+                        "tag": "Identifier",
+                        "value": "integer_col",
+                      },
+                      "nextPos": 45,
+                      "pos": 34,
+                      "tag": "Column",
+                    },
+                  ],
+                  "filter": undefined,
+                  "nextPos": 46,
+                  "pos": 24,
+                  "tag": "Function",
+                  "value": Object {
+                    "nextPos": 33,
+                    "pos": 24,
+                    "tag": "Identifier",
+                    "value": "ARRAY_AGG",
+                  },
+                },
+                Object {
+                  "nextPos": 49,
+                  "pos": 48,
+                  "tag": "Number",
+                  "value": "1",
+                },
+              ],
+              "filter": undefined,
+              "nextPos": 50,
+              "pos": 11,
+              "tag": "Function",
+              "value": Object {
+                "nextPos": 23,
+                "pos": 11,
+                "tag": "Identifier",
+                "value": "ARRAY_LENGTH",
+              },
+            },
+            "type": "LoadFunction",
+          },
+        ],
+        "name": "abs",
+        "sourceTag": Object {
+          "args": Array [
+            Object {
+              "args": Array [
+                Object {
+                  "args": Array [
+                    Object {
+                      "name": Object {
+                        "nextPos": 45,
+                        "pos": 34,
+                        "tag": "Identifier",
+                        "value": "integer_col",
+                      },
+                      "nextPos": 45,
+                      "pos": 34,
+                      "tag": "Column",
+                    },
+                  ],
+                  "filter": undefined,
+                  "nextPos": 46,
+                  "pos": 24,
+                  "tag": "Function",
+                  "value": Object {
+                    "nextPos": 33,
+                    "pos": 24,
+                    "tag": "Identifier",
+                    "value": "ARRAY_AGG",
+                  },
+                },
+                Object {
+                  "nextPos": 49,
+                  "pos": 48,
+                  "tag": "Number",
+                  "value": "1",
+                },
+              ],
+              "filter": undefined,
+              "nextPos": 50,
+              "pos": 11,
+              "tag": "Function",
+              "value": Object {
+                "nextPos": 23,
+                "pos": 11,
+                "tag": "Identifier",
+                "value": "ARRAY_LENGTH",
+              },
+            },
+          ],
+          "filter": undefined,
+          "nextPos": 51,
+          "pos": 7,
+          "tag": "Function",
+          "value": Object {
+            "nextPos": 10,
+            "pos": 7,
+            "tag": "Identifier",
+            "value": "ABS",
+          },
+        },
+        "type": "LoadFunction",
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "all_types",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 66,
+        "pos": 57,
+        "table": Object {
+          "nextPos": 66,
+          "pos": 57,
+          "tag": "Identifier",
+          "value": "all_types",
+        },
+        "tag": "Table",
+      },
+      "table": "all_types",
+      "type": "Table",
     },
   ],
 }
@@ -672,52 +1940,129 @@ exports[`Query Interface Should convert nested select sql (
 Object {
   "params": Array [
     Object {
-      "lastPos": 155,
       "name": "joinVal",
+      "nextPos": 137,
       "pick": Array [],
       "pos": 129,
       "required": false,
       "spread": false,
       "type": Object {
         "column": "val",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 126,
+            "pos": 123,
+            "tag": "Identifier",
+            "value": "val",
+          },
+          "nextPos": 126,
+          "pos": 116,
+          "table": Object {
+            "nextPos": 122,
+            "pos": 116,
+            "tag": "Identifier",
+            "value": "table3",
+          },
+          "tag": "Column",
+        },
         "table": "table3",
-        "type": "column",
+        "type": "LoadColumn",
       },
     },
     Object {
-      "lastPos": 185,
       "name": "id",
+      "nextPos": 184,
       "pick": Array [],
       "pos": 181,
       "required": false,
       "spread": false,
       "type": Object {
         "column": "id",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 196,
+            "pos": 194,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 196,
+          "pos": 187,
+          "table": Object {
+            "nextPos": 193,
+            "pos": 187,
+            "tag": "Identifier",
+            "value": "table1",
+          },
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "res1",
       "type": Object {
         "column": "col1",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 30,
+            "pos": 26,
+            "tag": "Identifier",
+            "value": "col1",
+          },
+          "nextPos": 30,
+          "pos": 26,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": "public",
-        "table": "table2",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 62,
+            "pos": 60,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 62,
+          "pos": 60,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 166,
+        "pos": 160,
+        "table": Object {
+          "nextPos": 166,
+          "pos": 160,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -727,8 +2072,8 @@ exports[`Query Interface Should convert nested typed array param in select sql (
 Object {
   "params": Array [
     Object {
-      "lastPos": 24,
       "name": "param",
+      "nextPos": 13,
       "pick": Array [],
       "pos": 7,
       "required": false,
@@ -736,30 +2081,35 @@ Object {
       "type": Object {
         "items": Object {
           "items": Object {
-            "items": "number",
-            "type": "array",
+            "items": Object {
+              "type": "Number",
+            },
+            "type": "Array",
           },
-          "type": "array",
+          "type": "Array",
         },
-        "type": "array",
+        "type": "Array",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "array",
       "type": Object {
         "items": Object {
           "items": Object {
-            "items": "number",
-            "type": "array",
+            "items": Object {
+              "type": "Number",
+            },
+            "type": "Array",
           },
-          "type": "array",
+          "type": "Array",
         },
-        "type": "array",
+        "type": "Array",
       },
     },
   ],
+  "sources": Array [],
 }
 `;
 
@@ -767,32 +2117,69 @@ exports[`Query Interface Should convert order by with params sql (SELECT * FROM 
 Object {
   "params": Array [
     Object {
-      "lastPos": 96,
       "name": "param1",
+      "nextPos": 47,
       "pick": Array [],
       "pos": 40,
       "required": false,
       "spread": false,
-      "type": "string",
+      "type": Object {
+        "literal": "val1",
+        "type": "String",
+      },
     },
     Object {
-      "lastPos": 96,
       "name": "param2",
+      "nextPos": 68,
       "pick": Array [],
       "pos": 61,
       "required": false,
       "spread": false,
-      "type": "string",
+      "type": Object {
+        "literal": "DESC",
+        "type": "String",
+      },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
-      "name": "*",
+      "name": "?column?",
       "type": Object {
-        "schema": "public",
-        "table": "table1",
-        "type": "star",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 8,
+          "pos": 7,
+          "star": Object {
+            "nextPos": 8,
+            "pos": 7,
+            "tag": "Star",
+          },
+          "tag": "StarIdentifier",
+        },
+        "table": undefined,
+        "type": "LoadStar",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 20,
+        "pos": 14,
+        "table": Object {
+          "nextPos": 20,
+          "pos": 14,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -801,7 +2188,28 @@ Object {
 exports[`Query Interface Should convert simple delete sql (DELETE FROM table1) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [],
+  "results": Array [],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 18,
+        "pos": 12,
+        "table": Object {
+          "nextPos": 18,
+          "pos": 12,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
+    },
+  ],
 }
 `;
 
@@ -809,35 +2217,71 @@ exports[`Query Interface Should convert single param sql (SELECT :test1 AS "res1
 Object {
   "params": Array [
     Object {
-      "lastPos": 23,
       "name": "test1",
+      "nextPos": 13,
       "pick": Array [],
       "pos": 7,
       "required": false,
       "spread": false,
-      "type": "unknown",
+      "type": Object {
+        "type": "Unknown",
+      },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "res1",
-      "type": "string",
+      "type": Object {
+        "type": "Any",
+      },
     },
   ],
+  "sources": Array [],
 }
 `;
 
 exports[`Query Interface Should convert star sql (SELECT * FROM table1) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
-      "name": "*",
+      "name": "?column?",
       "type": Object {
-        "schema": "public",
-        "table": "table1",
-        "type": "star",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 8,
+          "pos": 7,
+          "star": Object {
+            "nextPos": 8,
+            "pos": 7,
+            "tag": "Star",
+          },
+          "tag": "StarIdentifier",
+        },
+        "table": undefined,
+        "type": "LoadStar",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 20,
+        "pos": 14,
+        "table": Object {
+          "nextPos": 20,
+          "pos": 14,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -846,24 +2290,67 @@ Object {
 exports[`Query Interface Should convert static fields sql (SELECT col1 as "col1", col2 as "myCol2" FROM table1) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 11,
+            "pos": 7,
+            "tag": "Identifier",
+            "value": "col1",
+          },
+          "nextPos": 11,
+          "pos": 7,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "myCol2",
       "type": Object {
         "column": "col2",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 27,
+            "pos": 23,
+            "tag": "Identifier",
+            "value": "col2",
+          },
+          "nextPos": 27,
+          "pos": 23,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 51,
+        "pos": 45,
+        "table": Object {
+          "nextPos": 51,
+          "pos": 45,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -872,20 +2359,30 @@ Object {
 exports[`Query Interface Should convert string fields not named sql (SELECT 'test', $$Dianne's horse$$, $SomeTag$Dianne's horse$SomeTag$) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "?column?",
-      "type": "string",
+      "type": Object {
+        "literal": "test",
+        "type": "String",
+      },
     },
     Object {
       "name": "?column?",
-      "type": "string",
+      "type": Object {
+        "literal": "Dianne's horse",
+        "type": "String",
+      },
     },
     Object {
       "name": "?column?",
-      "type": "string",
+      "type": Object {
+        "literal": "Dianne's horse",
+        "type": "String",
+      },
     },
   ],
+  "sources": Array [],
 }
 `;
 
@@ -893,27 +2390,32 @@ exports[`Query Interface Should convert typed array param in select sql (SELECT 
 Object {
   "params": Array [
     Object {
-      "lastPos": 20,
       "name": "param",
+      "nextPos": 13,
       "pick": Array [],
       "pos": 7,
       "required": false,
       "spread": false,
       "type": Object {
-        "items": "number",
-        "type": "array",
+        "items": Object {
+          "type": "Number",
+        },
+        "type": "Array",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "array",
       "type": Object {
-        "items": "number",
-        "type": "array",
+        "items": Object {
+          "type": "Number",
+        },
+        "type": "Array",
       },
     },
   ],
+  "sources": Array [],
 }
 `;
 
@@ -921,24 +2423,58 @@ exports[`Query Interface Should convert typed param in where sql (SELECT col1 FR
 Object {
   "params": Array [
     Object {
-      "lastPos": 33,
       "name": "id",
+      "nextPos": 33,
       "pick": Array [],
       "pos": 30,
       "required": false,
       "spread": false,
-      "type": "number",
+      "type": Object {
+        "type": "Number",
+      },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 11,
+            "pos": 7,
+            "tag": "Identifier",
+            "value": "col1",
+          },
+          "nextPos": 11,
+          "pos": 7,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 23,
+        "pos": 17,
+        "table": Object {
+          "nextPos": 23,
+          "pos": 17,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -947,36 +2483,87 @@ Object {
 exports[`Query Interface Should convert update returning expression sql (UPDATE table1 SET col1 = 10 RETURNING id, col1, 123 as col2, '2' as col3, 3+4 as col4) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 40,
+            "pos": 38,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 40,
+          "pos": 38,
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 46,
+            "pos": 42,
+            "tag": "Identifier",
+            "value": "col1",
+          },
+          "nextPos": 46,
+          "pos": 42,
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "col2",
-      "type": "number",
+      "type": Object {
+        "literal": 123,
+        "type": "Number",
+      },
     },
     Object {
       "name": "col3",
-      "type": "string",
+      "type": Object {
+        "literal": "2",
+        "type": "String",
+      },
     },
     Object {
       "name": "col4",
-      "type": "number",
+      "type": Object {
+        "type": "Number",
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 13,
+        "pos": 7,
+        "table": Object {
+          "nextPos": 13,
+          "pos": 7,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -985,24 +2572,67 @@ Object {
 exports[`Query Interface Should convert update returning sql (UPDATE table1 SET col1 = 10 RETURNING id, col1) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
         "column": "id",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 40,
+            "pos": 38,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 40,
+          "pos": 38,
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 46,
+            "pos": 42,
+            "tag": "Identifier",
+            "value": "col1",
+          },
+          "nextPos": 46,
+          "pos": 42,
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 13,
+        "pos": 7,
+        "table": Object {
+          "nextPos": 13,
+          "pos": 7,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -1012,28 +2642,70 @@ exports[`Query Interface Should convert update returning star sql (UPDATE table1
 Object {
   "params": Array [
     Object {
-      "lastPos": 43,
       "name": "id",
+      "nextPos": 42,
       "pick": Array [],
       "pos": 39,
       "required": false,
       "spread": false,
       "type": Object {
         "column": "id",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 36,
+            "pos": 34,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 36,
+          "pos": 34,
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
-      "name": "*",
+      "name": "?column?",
       "type": Object {
-        "schema": "public",
-        "table": "table1",
-        "type": "star",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 54,
+          "pos": 53,
+          "star": Object {
+            "nextPos": 54,
+            "pos": 53,
+            "tag": "Star",
+          },
+          "tag": "StarIdentifier",
+        },
+        "table": undefined,
+        "type": "LoadStar",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 13,
+        "pos": 7,
+        "table": Object {
+          "nextPos": 13,
+          "pos": 7,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }
@@ -1049,52 +2721,123 @@ exports[`Query Interface Should convert where params sql (
 Object {
   "params": Array [
     Object {
-      "lastPos": 97,
       "name": "id",
+      "nextPos": 86,
       "pick": Array [],
       "pos": 83,
       "required": false,
       "spread": false,
       "type": Object {
         "column": "id",
-        "schema": "public",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 80,
+            "pos": 78,
+            "tag": "Identifier",
+            "value": "id",
+          },
+          "nextPos": 80,
+          "pos": 71,
+          "table": Object {
+            "nextPos": 77,
+            "pos": 71,
+            "tag": "Identifier",
+            "value": "table1",
+          },
+          "tag": "Column",
+        },
         "table": "table1",
-        "type": "column",
+        "type": "LoadColumn",
       },
     },
     Object {
-      "lastPos": 120,
       "name": "val1",
+      "nextPos": 113,
       "pick": Array [],
       "pos": 108,
       "required": false,
       "spread": false,
       "type": Object {
         "column": "col1",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 105,
+            "pos": 101,
+            "tag": "Identifier",
+            "value": "col1",
+          },
+          "nextPos": 105,
+          "pos": 101,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "col1",
       "type": Object {
         "column": "col1",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 20,
+            "pos": 16,
+            "tag": "Identifier",
+            "value": "col1",
+          },
+          "nextPos": 20,
+          "pos": 16,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
     },
     Object {
       "name": "col2",
       "type": Object {
         "column": "col2",
-        "schema": "public",
-        "table": "table1",
-        "type": "column",
+        "schema": undefined,
+        "sourceTag": Object {
+          "name": Object {
+            "nextPos": 26,
+            "pos": 22,
+            "tag": "Identifier",
+            "value": "col2",
+          },
+          "nextPos": 26,
+          "pos": 22,
+          "tag": "Column",
+        },
+        "table": undefined,
+        "type": "LoadColumn",
       },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 46,
+        "pos": 40,
+        "table": Object {
+          "nextPos": 46,
+          "pos": 40,
+          "tag": "Identifier",
+          "value": "table1",
+        },
+        "tag": "Table",
+      },
+      "table": "table1",
+      "type": "Table",
     },
   ],
 }

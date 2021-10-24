@@ -82,6 +82,70 @@ describe('Template Tag', () => {
         values: [20, 10],
       },
     ],
+    [
+      'Should load spread for IN clause',
+      sql`
+      SELECT
+        r.tariff_id as "tariffId",
+        r.rate,
+        r.start_date_on as "startOn",
+        t.code as "tariffCode",
+        t.type as "tariffType",
+        r.end_date_on as "endOn"
+      from tariff_rates r
+      LEFT JOIN tariffs t on r.tariff_id = t.id
+      where start_date_on < NOW() and (end_date_on::date IS NULL OR end_date_on > NOW()) AND t.id IN $$ids`,
+      {
+        ids: [1, 2, 3],
+      },
+      {
+        text: `
+      SELECT
+        r.tariff_id as "tariffId",
+        r.rate,
+        r.start_date_on as "startOn",
+        t.code as "tariffCode",
+        t.type as "tariffType",
+        r.end_date_on as "endOn"
+      from tariff_rates r
+      LEFT JOIN tariffs t on r.tariff_id = t.id
+      where start_date_on < NOW() and (end_date_on::date IS NULL OR end_date_on > NOW()) AND t.id IN ($1,$2,$3)`,
+        values: [1, 2, 3],
+      },
+    ],
+    [
+      'Should load spread for IN clause for rows',
+      sql`
+      SELECT
+        table_schema AS "schema",
+        table_name AS "table",
+        column_name AS "column",
+        is_nullable AS "isNullable",
+        udt_name AS "recordName",
+        data_type AS "dataType"
+      FROM information_schema.columns
+      WHERE (table_schema, table_name) IN ($$tables(schema, table))`,
+      {
+        tables: [
+          { schema: 'public', table: 'table1' },
+          { schema: 'public', table: 'table2' },
+          { schema: 'fit', table: 'table3' },
+        ],
+      },
+      {
+        text: `
+      SELECT
+        table_schema AS "schema",
+        table_name AS "table",
+        column_name AS "column",
+        is_nullable AS "isNullable",
+        udt_name AS "recordName",
+        data_type AS "dataType"
+      FROM information_schema.columns
+      WHERE (table_schema, table_name) IN (($1,$2),($3,$4),($5,$6))`,
+        values: ['public', 'table1', 'public', 'table2', 'fit', 'table3'],
+      },
+    ],
   ])('Should convert to query an sql with %s', (_, query, params, expected) =>
     withParserErrors(() => {
       expect(query.toQueryConfig(params)).toEqual(expected);

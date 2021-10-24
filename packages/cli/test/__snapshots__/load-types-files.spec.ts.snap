@@ -1,148 +1,208 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Load Files Should convert complex sql account-levelisation.upsert.query.sql: account-levelisation.upsert.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "levelisationId",
+      "type": Object {
+        "type": "Unknown",
+      },
+    },
+    Object {
+      "name": "start",
+      "type": Object {
+        "optional": true,
+        "type": "Date",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "type": "Number",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
-      "lastPos": 2361,
       "name": "q",
-      "pick": Array [],
-      "pos": 2305,
-      "required": false,
-      "spread": false,
-      "type": Object {
-        "type": "string",
-      },
-    },
-    Object {
-      "lastPos": 2487,
-      "name": "resolvedPostlev",
-      "pick": Array [],
-      "pos": 2366,
-      "required": false,
-      "spread": false,
-      "type": Object {
-        "type": "string",
-      },
-    },
-    Object {
-      "lastPos": 2580,
-      "name": "state",
-      "pick": Array [],
-      "pos": 2492,
-      "required": false,
-      "spread": false,
       "type": Object {
         "items": Array [
           Object {
-            "type": "literal",
-            "value": "Pending",
-          },
-          Object {
-            "type": "literal",
-            "value": "Done",
+            "literal": "",
+            "type": "String",
           },
         ],
-        "type": "union",
+        "type": "UnionConstant",
       },
     },
     Object {
-      "lastPos": 2739,
-      "name": "levelisationId",
-      "pick": Array [],
-      "pos": 2585,
-      "required": false,
-      "spread": false,
+      "name": "resolvedPostlev",
       "type": Object {
-        "type": "number",
+        "items": Array [
+          Object {
+            "literal": "",
+            "type": "String",
+          },
+          Object {
+            "type": "Boolean",
+          },
+        ],
+        "type": "UnionConstant",
       },
     },
     Object {
-      "lastPos": 2861,
+      "name": "state",
+      "type": Object {
+        "items": Array [
+          Object {
+            "items": Array [
+              Object {
+                "literal": "Pending",
+                "type": "String",
+              },
+              Object {
+                "literal": "Done",
+                "type": "String",
+              },
+            ],
+            "type": "UnionConstant",
+          },
+        ],
+        "type": "UnionConstant",
+      },
+    },
+    Object {
+      "name": "levelisationId",
+      "type": Object {
+        "items": Array [
+          Object {
+            "type": "Number",
+          },
+        ],
+        "type": "UnionConstant",
+      },
+    },
+    Object {
       "name": "ids",
-      "pick": Array [],
-      "pos": 2756,
-      "required": false,
-      "spread": false,
       "type": Object {
         "items": Object {
-          "type": "number",
+          "type": "Number",
         },
-        "type": "array",
+        "type": "ArrayConstant",
       },
     },
     Object {
-      "lastPos": 2893,
       "name": "sortField",
-      "pick": Array [],
-      "pos": 2882,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "string",
+        "items": Array [
+          Object {
+            "literal": "totalPayment",
+            "type": "String",
+          },
+          Object {
+            "literal": "vatPayment",
+            "type": "String",
+          },
+          Object {
+            "literal": "generationPayment",
+            "type": "String",
+          },
+          Object {
+            "literal": "exportPayment",
+            "type": "String",
+          },
+          Object {
+            "literal": "generationEnergy",
+            "type": "String",
+          },
+          Object {
+            "literal": "exportEnergy",
+            "type": "String",
+          },
+          Object {
+            "literal": "cfrFitId",
+            "type": "String",
+          },
+          Object {
+            "literal": "state",
+            "type": "String",
+          },
+          Object {
+            "literal": "isAccepted",
+            "type": "String",
+          },
+          Object {
+            "literal": "error",
+            "type": "String",
+          },
+          Object {
+            "literal": "exportType",
+            "type": "String",
+          },
+        ],
+        "type": "UnionConstant",
       },
     },
     Object {
-      "lastPos": 2925,
       "name": "sortOrder",
-      "pick": Array [],
-      "pos": 2914,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "string",
+        "items": Array [
+          Object {
+            "literal": "DESC",
+            "type": "String",
+          },
+          Object {
+            "literal": "ASC",
+            "type": "String",
+          },
+        ],
+        "type": "UnionConstant",
       },
     },
     Object {
-      "lastPos": 5353,
       "name": "limit",
-      "pick": Array [],
-      "pos": 5347,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
-      "lastPos": 5373,
       "name": "offset",
-      "pick": Array [],
-      "pos": 5366,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "levelisationId",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "accountId",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "installationId",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
@@ -150,22 +210,21 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "type": "literal",
-            "value": "Pending",
+            "literal": "Pending",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Done",
+            "literal": "Done",
+            "type": "String",
           },
         ],
-        "type": "union",
+        "type": "UnionConstant",
       },
     },
     Object {
       "name": "isAccepted",
       "type": Object {
-        "optional": false,
-        "type": "boolean",
+        "type": "Boolean",
       },
     },
     Object {
@@ -179,7 +238,7 @@ Object {
       "name": "generationStartReadValue",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
@@ -193,28 +252,28 @@ Object {
       "name": "generationEndReadValue",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "generationPercentageSplit",
       "type": Object {
         "optional": true,
-        "type": "number",
+        "type": "String",
       },
     },
     Object {
       "name": "generationPayment",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "generationEnergy",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
@@ -228,7 +287,7 @@ Object {
       "name": "exportStartReadValue",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
@@ -242,110 +301,163 @@ Object {
       "name": "exportEndReadValue",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "exportPercentageSplit",
       "type": Object {
         "optional": true,
-        "type": "number",
+        "type": "String",
       },
     },
     Object {
       "name": "exportPayment",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "exportEnergy",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "exportType",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "items": Array [
+          Object {
+            "literal": "PPA",
+            "type": "String",
+          },
+          Object {
+            "literal": "Deemed",
+            "type": "String",
+          },
+          Object {
+            "literal": "Metered Export",
+            "type": "String",
+          },
+          Object {
+            "literal": "Off Grid",
+            "type": "String",
+          },
+          Object {
+            "literal": "Deemed",
+            "type": "String",
+          },
+          Object {
+            "literal": "Metered Export",
+            "type": "String",
+          },
+          Object {
+            "literal": "Off Grid",
+            "type": "String",
+          },
+          Object {
+            "literal": "PPA",
+            "type": "String",
+          },
+        ],
+        "type": "UnionConstant",
       },
     },
     Object {
       "name": "technologyType",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "items": Array [
+          Object {
+            "literal": "H",
+            "type": "String",
+          },
+          Object {
+            "literal": "PV",
+            "type": "String",
+          },
+          Object {
+            "literal": "CHP",
+            "type": "String",
+          },
+          Object {
+            "literal": "AD",
+            "type": "String",
+          },
+          Object {
+            "literal": "W",
+            "type": "String",
+          },
+        ],
+        "type": "UnionConstant",
       },
     },
     Object {
       "name": "totalPayment",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "vatPayment",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "generationPeriods",
       "type": Object {
         "optional": true,
-        "type": "json",
+        "type": "Json",
       },
     },
     Object {
       "name": "exportPeriods",
       "type": Object {
         "optional": true,
-        "type": "json",
+        "type": "Json",
       },
     },
     Object {
       "name": "errorCode",
       "type": Object {
-        "type": "string",
+        "type": "Unknown",
       },
     },
     Object {
       "name": "errorParams",
       "type": Object {
-        "type": "json",
+        "type": "Unknown",
       },
     },
     Object {
       "name": "cfrFitId",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "resolvedPostlevId",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "optional": true,
+        "type": "Number",
       },
     },
     Object {
       "name": "isBacsPaymentsSent",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "optional": true,
+        "type": "Boolean",
       },
     },
     Object {
       "name": "isChequePaymentsSent",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "optional": true,
+        "type": "Boolean",
       },
     },
   ],
@@ -356,26 +468,20 @@ exports[`Load Files Should convert complex sql account-levelisations-set-bulk-up
 Object {
   "params": Array [
     Object {
-      "lastPos": 542,
       "name": "ids",
-      "pick": Array [],
-      "pos": 529,
-      "required": false,
-      "spread": false,
       "type": Object {
         "items": Object {
-          "type": "number",
+          "type": "Number",
         },
-        "type": "array",
+        "type": "ArrayConstant",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
@@ -386,36 +492,36 @@ exports[`Load Files Should convert complex sql accounts.list.query.sql: accounts
 Object {
   "params": Array [
     Object {
-      "lastPos": 1893,
       "name": "q",
-      "pick": Array [],
-      "pos": 738,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "string",
+        "items": Array [
+          Object {
+            "literal": "",
+            "type": "String",
+          },
+          Object {
+            "optional": true,
+            "type": "String",
+          },
+        ],
+        "type": "UnionConstant",
       },
     },
     Object {
-      "lastPos": 1964,
       "name": "ids",
-      "pick": Array [],
-      "pos": 1910,
-      "required": false,
-      "spread": false,
       "type": Object {
         "items": Object {
-          "type": "number",
+          "type": "Number",
         },
-        "type": "array",
+        "type": "ArrayConstant",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "total",
       "type": Object {
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
@@ -426,59 +532,48 @@ exports[`Load Files Should convert complex sql accounts.query.sql: accounts.quer
 Object {
   "params": Array [
     Object {
-      "lastPos": 2255,
       "name": "q",
-      "pick": Array [],
-      "pos": 1192,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "string",
+        "items": Array [
+          Object {
+            "literal": "",
+            "type": "String",
+          },
+          Object {
+            "optional": true,
+            "type": "String",
+          },
+        ],
+        "type": "UnionConstant",
       },
     },
     Object {
-      "lastPos": 2329,
       "name": "ids",
-      "pick": Array [],
-      "pos": 2272,
-      "required": false,
-      "spread": false,
       "type": Object {
         "items": Object {
-          "type": "number",
+          "type": "Number",
         },
-        "type": "array",
+        "type": "ArrayConstant",
       },
     },
     Object {
-      "lastPos": 2634,
       "name": "limit",
-      "pick": Array [],
-      "pos": 2628,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
-      "lastPos": 2654,
       "name": "offset",
-      "pick": Array [],
-      "pos": 2647,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
@@ -486,23 +581,23 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "type": "literal",
-            "value": "Active",
+            "literal": "Pending",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Pending",
+            "literal": "Active",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Dispute",
+            "literal": "Dispute",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Closed",
+            "literal": "Closed",
+            "type": "String",
           },
         ],
-        "type": "union",
+        "type": "UnionConstant",
       },
     },
     Object {
@@ -515,39 +610,32 @@ Object {
     Object {
       "name": "firstName",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "lastName",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "email",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "address",
       "type": Object {
-        "optional": undefined,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "fitIds",
       "type": Object {
-        "items": Object {
-          "optional": false,
-          "type": "string",
-        },
-        "type": "array",
+        "type": "Any",
       },
     },
   ],
@@ -557,7 +645,7 @@ Object {
 exports[`Load Files Should convert complex sql accounts.sql: accounts.sql 1`] = `
 Object {
   "params": Array [],
-  "result": Array [],
+  "results": Array [],
 }
 `;
 
@@ -565,102 +653,83 @@ exports[`Load Files Should convert complex sql bacs.query.sql: bacs.query.sql 1`
 Object {
   "params": Array [
     Object {
-      "lastPos": 620,
       "name": "quarter",
-      "pick": Array [],
-      "pos": 611,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
-      "lastPos": 635,
       "name": "perPage",
-      "pick": Array [],
-      "pos": 626,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
-      "lastPos": 650,
       "name": "offset",
-      "pick": Array [],
-      "pos": 642,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "string",
+        "type": "String",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "fitId",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "name",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "amount",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "quarter",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "bankDetails",
       "type": Object {
-        "optional": undefined,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "addressLine1",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "addressLine2",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "addressLine3",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "postcode",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "type": "String",
       },
     },
   ],
@@ -670,7 +739,7 @@ Object {
 exports[`Load Files Should convert complex sql contracts.sql: contracts.sql 1`] = `
 Object {
   "params": Array [],
-  "result": Array [],
+  "results": Array [],
 }
 `;
 
@@ -678,76 +747,64 @@ exports[`Load Files Should convert complex sql delete-accounts.query.sql: delete
 Object {
   "params": Array [
     Object {
-      "lastPos": 263,
       "name": "type",
-      "pick": Array [],
-      "pos": 251,
-      "required": false,
-      "spread": false,
       "type": Object {
         "items": Array [
           Object {
-            "type": "literal",
-            "value": "FIT",
+            "literal": "SEG",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "SEG",
+            "literal": "FIT",
+            "type": "String",
           },
         ],
-        "type": "union",
+        "type": "UnionConstant",
       },
     },
     Object {
-      "lastPos": 291,
       "name": "state",
-      "pick": Array [],
-      "pos": 284,
-      "required": false,
-      "spread": false,
       "type": Object {
         "items": Array [
           Object {
-            "type": "literal",
-            "value": "Active",
+            "literal": "Active",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Pending",
+            "literal": "Closed",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Dispute",
+            "literal": "Pending",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Closed",
+            "literal": "Dispute",
+            "type": "String",
           },
         ],
-        "type": "union",
+        "type": "UnionConstant",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "sourceSystemId",
       "type": Object {
         "optional": true,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "customerId",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
@@ -758,42 +815,29 @@ exports[`Load Files Should convert complex sql generation-read-data.query.sql: g
 Object {
   "params": Array [
     Object {
-      "lastPos": 223,
       "name": "installationId",
-      "pick": Array [],
-      "pos": 205,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
-      "lastPos": 454,
       "name": "exportDateOn",
-      "pick": Array [],
-      "pos": 429,
-      "required": false,
-      "spread": false,
       "type": Object {
         "type": "Date",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "dateOn",
       "type": Object {
-        "optional": false,
         "type": "Date",
       },
     },
     Object {
       "name": "value",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
@@ -804,44 +848,33 @@ exports[`Load Files Should convert complex sql installation-meter-update.query.s
 Object {
   "params": Array [
     Object {
-      "lastPos": 98,
-      "name": "meterId",
-      "pick": Array [],
-      "pos": 89,
-      "required": false,
-      "spread": false,
+      "name": "removalDate",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Unknown",
       },
     },
     Object {
-      "lastPos": 53,
-      "name": "removalDate",
-      "pick": Array [],
-      "pos": 40,
-      "required": false,
-      "spread": false,
+      "name": "meterId",
       "type": Object {
-        "type": "unknown",
+        "type": "Number",
       },
     },
   ],
-  "result": Array [],
+  "results": Array [],
 }
 `;
 
 exports[`Load Files Should convert complex sql installations.sql: installations.sql 1`] = `
 Object {
   "params": Array [],
-  "result": Array [],
+  "results": Array [],
 }
 `;
 
 exports[`Load Files Should convert complex sql meter-reads.sql: meter-reads.sql 1`] = `
 Object {
   "params": Array [],
-  "result": Array [],
+  "results": Array [],
 }
 `;
 
@@ -849,45 +882,41 @@ exports[`Load Files Should convert complex sql rates-by-tarrif-ids.query.sql: ra
 Object {
   "params": Array [
     Object {
-      "lastPos": 320,
       "name": "ids",
-      "pick": Array [],
-      "pos": 314,
-      "required": false,
-      "spread": true,
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "items": Object {
+          "items": Object {
+            "type": "Number",
+          },
+          "type": "ArrayConstant",
+        },
+        "type": "ArrayConstant",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "tariffId",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "rate",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "startOn",
       "type": Object {
-        "optional": false,
         "type": "Date",
       },
     },
     Object {
       "name": "tariffCode",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
@@ -895,19 +924,19 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "type": "literal",
-            "value": "Export",
+            "literal": "Export",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Generation",
+            "literal": "Generation",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "SEG",
+            "literal": "SEG",
+            "type": "String",
           },
         ],
-        "type": "union",
+        "type": "UnionConstant",
       },
     },
     Object {
@@ -925,114 +954,79 @@ exports[`Load Files Should convert complex sql read-create.query.sql: read-creat
 Object {
   "params": Array [
     Object {
-      "lastPos": 215,
       "name": "meterId",
-      "pick": Array [],
-      "pos": 92,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
-      "lastPos": 215,
       "name": "reason",
-      "pick": Array [],
-      "pos": 102,
-      "required": false,
-      "spread": false,
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
-      "lastPos": 215,
       "name": "type",
-      "pick": Array [],
-      "pos": 111,
-      "required": false,
-      "spread": false,
       "type": Object {
         "items": Array [
           Object {
-            "type": "literal",
-            "value": "Opening",
+            "literal": "Opening",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Closing",
+            "literal": "Closing",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Quarterly",
+            "literal": "Quarterly",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Meter Verification",
+            "literal": "Meter Verification",
+            "type": "String",
           },
         ],
-        "type": "union",
+        "type": "UnionConstant",
       },
     },
     Object {
-      "lastPos": 215,
       "name": "dateOn",
-      "pick": Array [],
-      "pos": 127,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "optional": false,
         "type": "Date",
       },
     },
     Object {
-      "lastPos": 215,
       "name": "submittedAt",
-      "pick": Array [],
-      "pos": 160,
-      "required": false,
-      "spread": false,
       "type": Object {
         "optional": true,
         "type": "Date",
       },
     },
     Object {
-      "lastPos": 215,
       "name": "value",
-      "pick": Array [],
-      "pos": 198,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "value",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "meterId",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
@@ -1050,74 +1044,53 @@ exports[`Load Files Should convert complex sql reads-by-account-id.query.sql: re
 Object {
   "params": Array [
     Object {
-      "lastPos": 597,
       "name": "id",
-      "pick": Array [],
-      "pos": 593,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
-      "lastPos": 632,
       "name": "offset",
-      "pick": Array [],
-      "pos": 624,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
-      "lastPos": 647,
       "name": "perPage",
-      "pick": Array [],
-      "pos": 638,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "type": "string",
+        "type": "String",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "msn",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "meterId",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "dateOn",
       "type": Object {
-        "optional": false,
         "type": "Date",
       },
     },
     Object {
       "name": "value",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
@@ -1125,36 +1098,35 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "type": "literal",
-            "value": "Opening",
+            "literal": "Opening",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Closing",
+            "literal": "Closing",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Quarterly",
+            "literal": "Quarterly",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Meter Verification",
+            "literal": "Meter Verification",
+            "type": "String",
           },
         ],
-        "type": "union",
+        "type": "UnionConstant",
       },
     },
     Object {
       "name": "reason",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "createdAt",
       "type": Object {
-        "optional": false,
         "type": "Date",
       },
     },
@@ -1169,14 +1141,13 @@ Object {
       "name": "sourceSystemId",
       "type": Object {
         "optional": true,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "mpan",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "type": "String",
       },
     },
   ],
@@ -1186,6 +1157,6 @@ Object {
 exports[`Load Files Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
 Object {
   "params": Array [],
-  "result": Array [],
+  "results": Array [],
 }
 `;

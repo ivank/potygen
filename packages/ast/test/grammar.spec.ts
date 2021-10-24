@@ -47,7 +47,6 @@ describe('Sql', () => {
     ${'deep qualified star select'}   | ${'SELECT table1.table2.*'}
     ${'quoted star select'}           | ${'SELECT "table 2".*'}
     ${'deep quoted star select'}      | ${'SELECT "table 1"."table 2".*'}
-    ${'deeper quoted star select'}    | ${'SELECT "table 1".table2."table 3".*'}
     ${'column select'}                | ${'SELECT column1'}
     ${'qualified column select'}      | ${'SELECT table1.column1'}
     ${'deep qualified column select'} | ${'SELECT schema1.table1.column1'}
@@ -67,14 +66,16 @@ describe('Sql', () => {
     ${'offset'}                       | ${'SELECT * OFFSET 10'}
     ${'limit offset'}                 | ${'SELECT * LIMIT 10 OFFSET 10'}
     ${'from'}                         | ${'SELECT * FROM jobs'}
+    ${'from with schema'}             | ${'SELECT * FROM public.jobs'}
     ${'from select'}                  | ${'SELECT * FROM (SELECT * FROM jobs2) as jobs1'}
-    ${'from select as'}               | ${'SELECT * FROM jobs1, (SELECT * FROM jobs2)'}
+    ${'from select as'}               | ${'SELECT * FROM jobs1, (SELECT * FROM jobs2) as tmp2'}
     ${'from with as'}                 | ${'SELECT * FROM jobs AS test'}
     ${'from with as short'}           | ${'SELECT * FROM jobs test'}
     ${'from with as quoted'}          | ${'SELECT * FROM jobs AS "test 2"'}
     ${'multiple from'}                | ${'SELECT * FROM jobs1, jobs AS "test 2"'}
     ${'multiple from as'}             | ${'SELECT * FROM jobs1 AS j1, jobs2, jobs3 as j3'}
     ${'join'}                         | ${'SELECT * FROM jobs JOIN test1'}
+    ${'join with schema'}             | ${'SELECT * FROM public.jobs JOIN public.test1'}
     ${'join as'}                      | ${'SELECT * FROM jobs JOIN test1 AS my_test'}
     ${'join as quoted'}               | ${'SELECT * FROM jobs JOIN test1 AS "myTest"'}
     ${'join on'}                      | ${'SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id'}
@@ -135,7 +136,7 @@ describe('Sql', () => {
     ${'update params'}                | ${'UPDATE table1 SET col1 = :param1, col2 = :param2'}
     ${'update multiple tables'}       | ${'UPDATE table1 SET col1 = table2.id FROM table2'}
     ${'update multiple as'}           | ${'UPDATE table1 SET col1 = my1.id, col2 = my2.id FROM table2 AS "my1", table3 AS my2'}
-    ${'update as'}                    | ${'UPDATE table1 AS "my1" SET my1.col1 = my2.col2'}
+    ${'update as'}                    | ${'UPDATE table1 AS "my1" SET col1 = my2.col2'}
     ${'update map'}                   | ${'UPDATE table1 SET (col1, col2) = (DEFAULT, 10)'}
     ${'update map row'}               | ${'UPDATE table1 SET (col1, col2) = ROW ("12", FALSE)'}
     ${'update map select'}            | ${'UPDATE table1 SET (col1, col2) = (SELECT col3, col4 FROM table2 WHERE table2.id = table1.id)'}
@@ -179,6 +180,23 @@ describe('Sql', () => {
     ${'select exists'}                | ${'SELECT EXISTS(SELECT col2 FROM table2)'}
     ${'update exists'}                | ${'UPDATE table1 SET col1 = EXISTS(SELECT col2 FROM table2)'}
     ${'insert multiple param values'} | ${'INSERT INTO table1 VALUES $$rows(name, test)'}
+    ${'spread param in clause'}       | ${'SELECT table_schema FROM information_schema.columns WHERE ((table_schema, table_name)) IN (($$tables(schema, table)))'}
+    ${'select with select'}           | ${'WITH tmp AS (SELECT * FROM table1) SELECT id FROM table2 WHERE table2.id = tmp.col2'}
+    ${'select with delete'}           | ${'WITH tmp AS (DELETE FROM table1 RETURNING id) SELECT id FROM table2 WHERE table2.id = tmp.col2'}
+    ${'select with update'}           | ${'WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id) SELECT id FROM table2 WHERE table2.id = tmp.col2'}
+    ${'select with insert'}           | ${'WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id) SELECT id FROM table2 WHERE table2.id = tmp.col2'}
+    ${'update with select'}           | ${'WITH tmp AS (SELECT * FROM table1) UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id'}
+    ${'update with delete'}           | ${'WITH tmp AS (DELETE FROM table1 RETURNING id, col2) UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id'}
+    ${'update with update'}           | ${'WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2) UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id'}
+    ${'update with insert'}           | ${'WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id, col2) UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id'}
+    ${'delete with select'}           | ${'WITH tmp AS (SELECT * FROM table1) DELETE FROM table2 WHERE tmp.col2 = table2.id'}
+    ${'delete with delete'}           | ${'WITH tmp AS (DELETE FROM table1 RETURNING id, col2) DELETE FROM table2 WHERE tmp.col2 = table2.id'}
+    ${'delete with update'}           | ${'WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2) DELETE FROM table2 WHERE tmp.col2 = table2.id'}
+    ${'delete with insert'}           | ${'WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id, col2) DELETE FROM table2 WHERE tmp.col2 = table2.id'}
+    ${'insert with select'}           | ${'WITH tmp AS (SELECT * FROM table1) INSERT INTO table2 SELECT * FROM tmp'}
+    ${'insert with delete'}           | ${'WITH tmp AS (DELETE FROM table1 RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp'}
+    ${'insert with update'}           | ${'WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp'}
+    ${'insert with insert'}           | ${'WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) =>
     withParserErrors(() => {
       expect(parser(sql)).toMatchSnapshot(name);

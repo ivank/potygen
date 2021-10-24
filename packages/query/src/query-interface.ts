@@ -1,658 +1,466 @@
 import {
-  FromTag,
   ExpressionTag,
-  CombinationTag,
-  OrderByTag,
-  IdentifierTag,
-  TypeTag,
-  TypeArrayTag,
-  SelectTag,
+  isSelectList,
+  isTable,
   SelectListItemTag,
-  UpdateTag,
-  FromListItemTag,
-  JoinTag,
-  TableTag,
+  StarIdentifierTag,
+  TypeArrayTag,
+  Tag,
+  TypeTag,
+  isExpression,
+  isReturning,
   ReturningListItemTag,
-  WhereTag,
-  HavingTag,
-  LimitTag,
-  OffsetTag,
-  UpdateFromTag,
-  SelectListTag,
-  DistinctTag,
-  GroupByTag,
-  SetTag,
-  ReturningTag,
-  ColumnsTag,
-  ValuesListTag,
-  ConflictTag,
-  ArrayConstructorTag,
+  SelectTag,
+  UpdateTag,
   InsertTag,
   DeleteTag,
-  UsingTag,
-  isSetList,
-  isSelectTag,
-  isColumns,
-  isDefault,
-  isUsing,
-  isWhen,
+  WithTag,
+  isOrderBy,
   isValues,
+  isDefault,
   isParameter,
-  isFrom,
-  isSelectList,
-  isQualifiedIdentifier,
-  isIdentifier,
-  isAs,
-  isJoinOn,
-  isExpression,
-  isStarQualifiedIdentifier,
-  isArrayIndexRange,
-  isBoolean,
-  isAnyCast,
-  isTypeArray,
-  isFunction,
-  isRow,
-  isUpdateFrom,
-  isReturning,
-  isTable,
-  first,
-  last,
-  initial,
-  isUnique,
-  orderBy,
-  isNil,
-  FunctionTag,
+  isColumns,
+  isColumn,
+  isEqual,
+  TableTag,
 } from '@psql-ts/ast';
-
-import { isStarType, isColumnType, isUnionType, isConditionalType } from './query-interface.guards';
 import {
-  PropertyType,
-  ConstantType,
-  RecordType,
-  ArrayType,
+  typeUnknown,
+  binaryOperatorTypes,
+  unaryOperatorTypes,
+  typeNull,
+  typeString,
+  typeBoolean,
+  sqlTypes,
+  typeAny,
+} from './query-interface-type-instances';
+import { isTypeConstant } from './query-interface.guards';
+import {
+  Type,
   Param,
-  Result,
+  Source,
   QueryInterface,
-  UnionType,
+  TypeConstant,
+  TypeLoadOperator,
+  Result,
+  TypeContext,
 } from './query-interface.types';
 
-interface QualifiedTableName {
-  table: string;
-  schema: string;
-}
-
-type TableAliases = Record<string, QualifiedTableName>;
-
-interface QueryContext {
-  table?: string;
-  schema?: string;
-  aliases: TableAliases;
-  insertColumns?: ColumnsTag;
-}
-
-interface RawQuery {
-  params: Array<ConvertableTag>;
-  result: Array<SelectListItemTag | ReturningListItemTag>;
-  context: QueryContext;
-}
-
-type ResolveIdentifier = (property: PropertyType) => PropertyType;
-
-const toName = (aliases: TableAliases, table: QualifiedTableName): QualifiedTableName =>
-  aliases[table?.table?.toLowerCase() ?? ''] ?? table;
-
-type ConvertableTag =
-  | FunctionTag
-  | ExpressionTag
-  | SelectListTag
-  | OrderByTag
-  | HavingTag
-  | GroupByTag
-  | DistinctTag
-  | WhereTag
-  | HavingTag
-  | LimitTag
-  | OffsetTag
-  | CombinationTag
-  | FromTag
-  | UsingTag
-  | UpdateFromTag
-  | TableTag
-  | ColumnsTag
-  | SetTag
-  | ValuesListTag
-  | ConflictTag
-  | ArrayConstructorTag
-  | ReturningTag;
-
-const toQualifiedTableName = (
-  parts: IdentifierTag[],
-  context: { table?: string; schema?: string } = {},
-): QualifiedTableName => ({
-  table: parts[1]
-    ? parts[1].value?.toLowerCase()
-    : parts[0]?.value?.toLowerCase() ?? context.table?.toLowerCase() ?? '',
-  schema: parts[1] ? parts[0].value?.toLowerCase() : context.schema?.toLowerCase() ?? 'public',
-});
-
-const toTableAliasFrom = (list: FromListItemTag[]): TableAliases =>
-  list.reduce((current, item) => {
-    const alias = item.as?.value.value;
-    return alias && isQualifiedIdentifier(item.value)
-      ? {
-          ...current,
-          [alias?.toLowerCase()]: toName(current, toQualifiedTableName(item.value.values)),
-        }
-      : current;
-  }, {});
-
-const toTableAliasJoin = (list: JoinTag[]): TableAliases =>
-  list.reduce((current, item) => {
-    const alias = first(item.values.filter(isAs))?.value.value;
-    return alias
-      ? {
-          ...current,
-          [alias?.toLowerCase()]: toName(current, toQualifiedTableName(item.table.values)),
-        }
-      : current;
-  }, {});
-
-const toTableAliases = (from?: FromTag): TableAliases =>
-  from ? { ...toTableAliasFrom(from.list.values), ...toTableAliasJoin(from.join) } : {};
-
-const sqlTypes: { [type: string]: ConstantType | ArrayType } = {
-  anyarray: { type: 'array', items: 'unknown' },
-  anyelement: 'unknown',
-  bigint: 'string',
-  int8: 'string',
-  bigserial: 'string',
-  serial8: 'string',
-  'bit varying': 'string',
-  varbit: 'string',
-  bit: 'string',
-  boolean: 'boolean',
-  bool: 'boolean',
-  box: 'string',
-  bytea: 'string',
-  'character varying': 'string',
-  varchar: 'string',
-  character: 'string',
-  char: 'string',
-  cidr: 'string',
-  circle: 'string',
-  date: 'Date',
-  'double precision': 'string',
-  float8: 'string',
-  inet: 'string',
-  integer: 'number',
-  int4: 'number',
-  int: 'number',
-  interval: 'string',
-  jsonb: 'json',
-  json: 'json',
-  line: 'string',
-  lseg: 'string',
-  macaddr: 'string',
-  money: 'string',
-  numeric: 'string',
-  decimal: 'string',
-  path: 'string',
-  pg_lsn: 'string',
-  point: 'string',
-  polygon: 'string',
-  real: 'string',
-  float: 'number',
-  float4: 'number',
-  smallint: 'number',
-  int2: 'number',
-  smallserial: 'number',
-  serial2: 'number',
-  serial4: 'number',
-  serial: 'number',
-  text: 'string',
-  timestamptz: 'Date',
-  timestamp: 'Date',
-  'timestamp without time zone': 'Date',
-  'timestamp with time zone': 'Date',
-  timetz: 'Date',
-  time: 'string',
-  tsquery: 'string',
-  tsvector: 'string',
-  txid_snapshot: 'string',
-  uuid: 'string',
-  xml: 'string',
-};
-
-export const toConstantType = (type?: string): ConstantType | ArrayType =>
-  type ? sqlTypes[type] ?? 'string' : 'string';
-
-const unaryTypes: { [type: string]: ConstantType } = {
-  '+': 'number',
-  '-': 'number',
-  '/': 'number',
-  '*': 'number',
-  OR: 'boolean',
-  AND: 'boolean',
-  NOT: 'boolean',
-  '||': 'string',
-};
-
-const binaryOperatorTypes: {
-  [type: string]: { left: ConstantType; right: ConstantType | UnionType | ArrayType; result?: ConstantType };
-} = {
-  '+': { left: 'number', right: 'number' },
-  '-': { left: 'number', right: 'number' },
-  '/': { left: 'number', right: 'number' },
-  '*': { left: 'number', right: 'number' },
-  OR: { left: 'boolean', right: 'boolean' },
-  AND: { left: 'boolean', right: 'boolean' },
-  NOT: { left: 'boolean', right: 'boolean' },
-  '||': { left: 'string', right: 'string' },
-  '->': { left: 'json', right: { type: 'union', items: ['number', 'string'] }, result: 'json' },
-  '->>': { left: 'json', right: { type: 'union', items: ['number', 'string'] }, result: 'string' },
-  '#>': { left: 'json', right: { type: 'array', items: 'string' }, result: 'json' },
-  '#>>': { left: 'json', right: { type: 'array', items: 'string' }, result: 'string' },
-  '?': { left: 'json', right: 'string', result: 'boolean' },
-  '?|': { left: 'json', right: { type: 'array', items: 'string' }, result: 'boolean' },
-  '?&': { left: 'json', right: { type: 'array', items: 'string' }, result: 'boolean' },
-  '@>': { left: 'json', right: 'json', result: 'boolean' },
-  '<@': { left: 'json', right: 'json', result: 'boolean' },
-};
-
-const convertType = (tag: TypeTag | TypeArrayTag): ConstantType | ArrayType | RecordType =>
-  tag.tag === 'TypeArray'
-    ? Array.from({ length: tag.dimensions }).reduce<ConstantType | ArrayType | RecordType>(
-        (curr) => ({ type: 'array', items: curr }),
-        convertType(tag.value),
-      )
-    : sqlTypes[tag.value] ?? { type: 'record', name: tag.value.toLowerCase() };
-
-const convertExpressionMap = (
-  context: { type?: Param['type']; table?: string; schema?: string; insertColumns?: ColumnsTag },
-  tags: Array<ConvertableTag>,
-): { type: PropertyType; params: Param[] } => ({
-  type: 'unknown',
-  params: tags.flatMap((tag) => convertExpression(context, tag).params),
-});
-
-const convertExpression = (
-  context: { type?: Param['type']; table?: string; schema?: string; insertColumns?: ColumnsTag },
-  tag: ConvertableTag,
-): { type: PropertyType; params: Param[] } => {
-  switch (tag.tag) {
-    case 'SubqueryExpression':
-      return {
-        type: 'boolean',
-        params: convertExpressionMap(context, [tag.value, tag.subquery].filter(isNil)).params,
-      };
-    case 'SelectList':
-      return convertExpressionMap(context, tag.values.map((item) => item.value).filter(isExpression));
-    case 'Returning':
-      return convertExpressionMap(context, tag.values.map((item) => item.value).filter(isExpression));
-    case 'NullIfTag':
-      const nullIfValue = convertExpression(context, tag.value);
-      return {
-        type: { type: 'union', items: [nullIfValue.type, 'null'] },
-        params: convertExpressionMap(context, [tag.value, tag.conditional]).params,
-      };
-    case 'ConditionalExpression':
-      if (tag.type === 'COALESCE') {
-        const type = tag.values.reduce<{ items: PropertyType[]; params: Param[] }>(
-          (all, item) => {
-            const type = convertExpression(context, item);
-            return { items: all.items.concat(type.type), params: all.params.concat(type.params) };
-          },
-          { items: [], params: [] },
+const toSources =
+  (sources: Source[] = [], isResult = true) =>
+  (sql: Tag): Source[] => {
+    const nestedRecur = toSources(sources, false);
+    const recur = toSources(sources, isResult);
+    switch (sql.tag) {
+      case 'Table':
+        const name = sql.as?.value ?? sql.table;
+        return sources.concat({
+          type: 'Table',
+          isResult,
+          sourceTag: sql,
+          name: name.value,
+          schema: sql.schema?.value,
+          table: sql.table.value,
+        });
+      case 'NamedSelect':
+        return sources.concat([
+          ...recur(sql.value),
+          { type: 'Query', sourceTag: sql, name: sql.as.value.value, value: {} as any },
+        ]);
+      case 'SubqueryExpression':
+        return sources.concat(nestedRecur(sql.subquery));
+      case 'BinaryExpression':
+        return sources.concat(recur(sql.left), recur(sql.right));
+      case 'Select':
+      case 'Delete':
+      case 'Update':
+      case 'Insert':
+      case 'Using':
+      case 'UpdateFrom':
+      case 'Combination':
+        return sources.concat(sql.values.flatMap(recur));
+      case 'From':
+        return sources.concat(
+          sql.list.values.flatMap(recur),
+          sql.join.flatMap((join) => recur(join.table)),
         );
-        return {
-          type: { type: 'conditional', name: tag.type.toLowerCase(), items: type.items },
-          params: type.params,
-        };
-      } else {
-        return {
-          type: convertExpression(context, tag.values[0]).type,
-          params: convertExpressionMap(context, tag.values).params,
-        };
-      }
-    case 'ValuesList':
-      return {
-        type: 'unknown',
-        params: tag.values
-          .filter(isValues)
-          .flatMap((columns) =>
-            columns.values.flatMap((column, index) => {
-              const columnType = context.insertColumns?.values[index];
-              const type = columnType
-                ? {
-                    type: 'column' as const,
-                    column: columnType.value.toLowerCase(),
-                    ...toQualifiedTableName([], context),
-                  }
-                : undefined;
-              return isDefault(column) ? undefined : convertExpression({ ...context, type }, column).params;
-            }),
-          )
-          .filter(isNil)
-          .concat(convertExpressionMap(context, tag.values.filter(isParameter)).params),
-      };
-    case 'From':
-      return convertExpressionMap(
-        context,
-        tag.join.flatMap((item) => item.values.filter(isJoinOn).map((join) => join.value)),
-      );
-    case 'Using':
-      return convertExpressionMap(
-        context,
-        tag.values.map((item) => item.value),
-      );
-    case 'Set':
-      if (isSetList(tag.value)) {
-        return convertExpressionMap(context, tag.value.values.map((item) => item.value).filter(isExpression));
-      } else if (isSelectTag(tag.value.values)) {
-        return convertExpression(context, tag.value.values);
-      } else {
-        return convertExpressionMap(context, tag.value.values.values.filter(isExpression));
-      }
-    case 'UpdateFrom':
-      return convertExpressionMap(
-        context,
-        tag.values.map((item) => item.value),
-      );
-    case 'Combination':
-      return { type: 'unknown', params: toQueryInterface(tag).params };
-    case 'Where':
-    case 'Having':
-      return convertExpression(context, tag.value);
-    case 'Limit':
-    case 'Offset':
-      return typeof tag.value.value === 'string'
-        ? { type: 'unknown', params: [] }
-        : convertExpression({ ...context, type: 'string' }, tag.value.value);
-    case 'OrderBy':
-      return convertExpressionMap(
-        context,
-        tag.values.map((item) => item.value),
-      );
-    case 'GroupBy':
-      return convertExpressionMap(context, tag.values);
-    case 'ArrayIndex':
-      const indexParams = isArrayIndexRange(tag.index)
-        ? [...convertExpression(context, tag.index.left).params, ...convertExpression(context, tag.index.right).params]
-        : convertExpression(context, tag.index).params;
-      return { type: 'unknown', params: convertExpression(context, tag.value).params.concat(indexParams) };
-    case 'ArrayConstructor':
-      return convertExpressionMap(context, tag.values);
-    case 'Function':
-      return {
-        type: {
-          type: 'function',
-          name: tag.value.value.toLowerCase(),
-          args: tag.args.filter(isExpression).map((arg) => convertExpression(context, arg).type),
-        },
-        params: tag.args
-          .flatMap(
-            (arg, index) =>
-              convertExpression({ ...context, type: { type: 'function_arg', name: tag.value.value, index } }, arg)
-                .params,
-          )
-          .concat(tag.filter ? convertExpression(context, tag.filter.value).params : []),
-      };
-    case 'Row':
-      return { type: 'string', params: convertExpressionMap(context, tag.values).params };
-    case 'QualifiedIdentifier':
-      const lastIdentifier = last(tag.values);
-      const prefixIdentifiers = initial(tag.values);
-
-      return {
-        type: lastIdentifier
-          ? {
-              type: 'column',
-              column: lastIdentifier.value.toLowerCase(),
-              ...toQualifiedTableName(prefixIdentifiers, context),
-            }
-          : 'unknown',
-        params: [],
-      };
-
-    case 'Select':
-      const select = toQueryInterface(tag);
-      const selectType = select.result[0].type;
-
-      return { type: isStarType(selectType) ? 'unknown' : selectType, params: select.params };
-
-    case 'Null':
-      return { type: 'null', params: [] };
-
-    case 'UnaryExpression':
-      const unary = convertExpression(context, tag.value);
-      const unaryOperatorType = unaryTypes[tag.operator.value.toUpperCase()];
-      const param = convertExpression({ ...context, type: unaryOperatorType ?? unary.type }, tag.value);
-
-      return { type: unary.type, params: param.params };
-
-    case 'BinaryExpression':
-      const left = convertExpression(context, tag.left);
-      const right = convertExpression(context, tag.right);
-      const binaryOperatorType = binaryOperatorTypes[tag.operator.value.toUpperCase()];
-      const paramLeft = convertExpression({ ...context, type: binaryOperatorType?.left ?? right.type }, tag.left);
-      const paramRight = convertExpression({ ...context, type: binaryOperatorType?.right ?? left.type }, tag.right);
-      return { type: binaryOperatorType?.result ?? left.type, params: paramLeft.params.concat(paramRight.params) };
-
-    case 'PgCast':
-    case 'Cast':
-      const castType = convertType(tag.type);
-      return { type: castType, params: convertExpression({ ...context, type: castType }, tag.value).params };
-
-    case 'Case':
-      return tag.values.reduce<{ type: UnionType; params: Param[] }>(
-        (acc, caseTag) => {
-          const caseRes = convertExpression(context, caseTag.value);
-          return {
-            params: isWhen(caseTag)
-              ? caseRes.params.concat(convertExpression(context, caseTag.condition).params)
-              : caseRes.params,
-            type: { ...acc.type, items: acc.type.items.concat(caseRes.type) },
-          };
-        },
-        { params: [], type: { type: 'union', items: [] } },
-      );
-
-    case 'Boolean':
-      return { type: 'boolean', params: [] };
-
-    case 'Number':
-      return { type: 'number', params: [] };
-
-    case 'String':
-    case 'Between':
-      return { type: 'string', params: [] };
-
-    case 'Parameter':
-      return {
-        type: 'string',
-        params: [
-          {
-            name: tag.value,
-            type: context.type ?? 'unknown',
-            required: tag.required || tag.pick.length > 0,
-            pos: tag.pos,
-            lastPos: tag.lastPos,
-            pick: tag.pick.map((column, index) => {
-              const columnType = context.insertColumns?.values[index];
-              return {
-                name: column.value,
-                type: columnType
-                  ? {
-                      type: 'column',
-                      column: columnType.value.toLowerCase(),
-                      ...toQualifiedTableName([], context),
-                    }
-                  : undefined,
-              };
-            }),
-            spread: tag.type === 'spread',
-          },
-        ],
-      };
-
-    case 'Distinct':
-    case 'Columns':
-    case 'Table':
-    case 'Conflict':
-      return { type: 'unknown', params: [] };
-  }
-};
-
-const resolveTypeWith =
-  (aliases: TableAliases) =>
-  (prop: PropertyType): PropertyType =>
-    isColumnType(prop) ? { ...prop, ...toName(aliases, prop) } : prop;
-
-const resolveType = ({ aliases }: QueryContext) => {
-  const resolve = resolveTypeWith(aliases);
-  return (property: PropertyType): PropertyType =>
-    isUnionType(property) ? { ...property, items: property.items.map(resolve) } : resolve(property);
-};
-
-const toContext = (
-  from: FromListItemTag | TableTag | undefined,
-  aliases: TableAliases,
-  insertColumns?: ColumnsTag,
-): QueryContext => {
-  const fromTableExpression = from?.value;
-
-  const fromTable: QualifiedTableName =
-    fromTableExpression && isQualifiedIdentifier(fromTableExpression)
-      ? toName(aliases, toQualifiedTableName(fromTableExpression.values))
-      : { table: '', schema: 'public' };
-
-  return { table: fromTable.table, schema: fromTable.schema, aliases, insertColumns };
-};
-
-const toResults = (context: QueryContext, items: Array<SelectListItemTag | ReturningListItemTag>): Result[] => {
-  const resolve = resolveType(context);
-
-  return items.map(({ value, as }) => {
-    if (isStarQualifiedIdentifier(value)) {
-      const lastIdentifier = last(value.values);
-      const prefixIdentifiers = initial(value.values).filter(isIdentifier);
-
-      return {
-        type: lastIdentifier ? { type: 'star', ...toQualifiedTableName(prefixIdentifiers, context) } : 'unknown',
-        name: '*',
-      };
-    } else {
-      const property = convertExpression(context, value);
-      const type = resolve(property.type);
-      const name =
-        as?.value.value ??
-        (isConditionalType(type)
-          ? type.name
-          : isColumnType(type)
-          ? type.column
-          : isBoolean(value)
-          ? 'bool'
-          : isAnyCast(value) && isTypeArray(value.type)
-          ? 'array'
-          : isAnyCast(value) && isQualifiedIdentifier(value.value)
-          ? last(value.value.values)?.value ?? '?column?'
-          : isFunction(value)
-          ? value.value.value.toLowerCase()
-          : isRow(value)
-          ? 'row'
-          : '?column?');
-
-      return { name, type };
+      case 'Where':
+      case 'Having':
+      case 'UnaryExpression':
+        return sources.concat(recur(sql.value));
+      case 'CTE':
+        return sources.concat({ type: 'Query', sourceTag: sql, name: sql.name.value, value: {} as any });
+      case 'With':
+        return sources.concat(sql.ctes.flatMap(nestedRecur), recur(sql.value));
+      default:
+        return sources;
     }
-  });
+  };
+
+export const isTypeEqual = (a: Type, b: Type): boolean =>
+  a.type === 'Any' || b.type === 'Any' ? true : a.type === 'Unknown' || b.type === 'Unknown' ? false : isEqual(a, b);
+
+const coalesce = (...types: Type[]): Type => types.find((item) => item.type !== 'Unknown') ?? typeUnknown;
+
+export const toContantBinaryOperatorVariant = (
+  availableTypes: Array<[TypeConstant, TypeConstant, TypeConstant]>,
+  left: TypeConstant,
+  right: TypeConstant,
+  index: 0 | 1 | 2,
+): TypeConstant => {
+  const filsteredAvailableTypes = availableTypes.filter(
+    (type) => isTypeEqual(type[0], left) || isTypeEqual(type[1], right),
+  );
+
+  return filsteredAvailableTypes.length === 1 ? filsteredAvailableTypes[0][index] : { type: 'Unknown' };
 };
 
-const resolveParam =
-  (resolve: ResolveIdentifier) =>
-  (param: Param): Param => ({
-    ...param,
-    type: isColumnType(param.type) ? resolve(param.type) : param.type,
-  });
+const toBinaryOperatorVariant = (
+  availableTypes: Array<[TypeConstant, TypeConstant, TypeConstant]>,
+  left: Type,
+  right: Type,
+  sourceTag: Tag,
+  index: 0 | 1 | 2,
+): TypeConstant | TypeLoadOperator =>
+  isTypeConstant(left) && isTypeConstant(right)
+    ? toContantBinaryOperatorVariant(availableTypes, left, right, index)
+    : { type: 'LoadOperator', available: availableTypes, index, left, right, sourceTag };
 
-const orderParam = orderBy<Param>((item) => (item.type === 'unknown' ? 3 : item.type === 'null' ? 2 : 1));
-const uniqParam = isUnique<Param>((item) => item.name);
+const toType =
+  (context: TypeContext) =>
+  (sql: ExpressionTag | StarIdentifierTag | TypeArrayTag | TypeTag): Type => {
+    const recur = toType(context);
+    switch (sql.tag) {
+      case 'ArrayIndex':
+      case 'WrappedExpression':
+        return recur(sql.value);
+      case 'Between':
+        return { type: 'Boolean' };
+      case 'BinaryExpression':
+        return toBinaryOperatorVariant(
+          binaryOperatorTypes[sql.operator.value],
+          recur(sql.left),
+          recur(sql.right),
+          sql,
+          2,
+        );
+      case 'Boolean':
+        return { type: 'Boolean', literal: sql.value.toLowerCase() === 'true' ? true : false };
+      case 'Case':
+        return { type: 'Union', items: sql.values.map((item) => recur(item.value)) };
+      case 'Cast':
+      case 'PgCast':
+        return isColumn(sql.value)
+          ? { type: 'Named', name: sql.value.name.value, value: recur(sql.type) }
+          : recur(sql.type);
+      case 'Column':
+        return {
+          type: 'LoadColumn',
+          column: sql.name.value,
+          table: sql.table?.value ?? context.from?.table.value,
+          schema: sql.schema?.value ?? context.from?.schema?.value,
+          sourceTag: sql,
+        };
+      case 'ConditionalExpression':
+        const conditionalTypes = sql.values.map(recur);
+        return sql.type === 'COALESCE'
+          ? { type: 'Coalesce', items: conditionalTypes }
+          : {
+              type: 'Named',
+              name: sql.type.toLowerCase(),
+              value: conditionalTypes.find(isTypeConstant) ?? conditionalTypes[0],
+            };
+      case 'Function':
+        return {
+          type: 'LoadFunction',
+          name: sql.value.value.toLowerCase(),
+          args: sql.args.filter(isExpression).map(recur),
+          sourceTag: sql,
+        };
+      case 'Null':
+        return typeNull;
+      case 'NullIfTag':
+        return { type: 'Union', items: [typeNull, recur(sql.value)] };
+      case 'Number':
+        return { type: 'Number', literal: Number(sql.value) };
+      case 'Parameter':
+        return typeAny;
+      case 'Row':
+        return { type: 'Named', value: typeString, name: 'row' };
+      case 'Select':
+        return recur(sql.values.filter(isSelectList)[0].values[0].value);
+      case 'StarIdentifier':
+        return { type: 'LoadStar', table: sql.table?.value, schema: sql.schema?.value, sourceTag: sql };
+      case 'String':
+        return { type: 'String', literal: sql.value };
+      case 'SubqueryExpression':
+        return typeBoolean;
+      case 'Type':
+        return sqlTypes[sql.value] ?? { type: 'LoadRecord', name: sql.value.toLowerCase() };
+      case 'TypeArray':
+        return Array.from({ length: sql.dimensions }).reduce<Type>(
+          (items) => ({ type: 'Array', items }),
+          recur(sql.value),
+        );
+      case 'UnaryExpression':
+        return unaryOperatorTypes[sql.operator.value] ?? recur(sql.value);
+    }
+  };
 
-const resolveParams = (context: QueryContext, params: Param[]): Param[] =>
-  params
-    .sort(orderParam)
-    .filter(uniqParam)
-    .map(resolveParam(resolveType(context)));
-
-const convertSelect = (tag: SelectTag): RawQuery => {
-  const selectList = first(tag.values.filter(isSelectList));
-  const from = first(tag.values.filter(isFrom));
-  const context = toContext(first(from?.list.values), toTableAliases(from));
-
-  return { context, result: selectList?.values ?? [], params: tag.values };
-};
-
-const convertCombination = (tag: CombinationTag): RawQuery => {
-  const selectList = first(tag.values.filter(isSelectList));
-  const from = first(tag.values.filter(isFrom));
-  const context = toContext(first(from?.list.values), toTableAliases(from));
-
-  return { context, params: tag.values, result: selectList?.values ?? [] };
-};
-
-const convertUpdate = (tag: UpdateTag): RawQuery => {
-  const returningList = first(tag.values.filter(isReturning));
-  const from = first(tag.values.filter(isUpdateFrom));
-  const table = first(tag.values.filter(isTable));
-  const context = toContext(table, toTableAliasFrom(from?.values ?? []));
-
-  return { context, result: returningList?.values ?? [], params: tag.values };
-};
-
-const convertInsert = (tag: InsertTag): RawQuery => {
-  const returningList = first(tag.values.filter(isReturning));
-  const table = first(tag.values.filter(isTable));
-  const insertColumns = first(tag.values.filter(isColumns));
-  const context = toContext(table, toTableAliasFrom([]), insertColumns);
-
-  return { context, result: returningList?.values ?? [], params: tag.values };
-};
-
-const convertDelete = (tag: DeleteTag): RawQuery => {
-  const returningList = first(tag.values.filter(isReturning));
-  const table = first(tag.values.filter(isTable));
-  const using = first(tag.values.filter(isUsing));
-  const context = toContext(table, toTableAliasFrom(using?.values ?? []));
-
-  return { context, result: returningList?.values ?? [], params: tag.values };
-};
-
-const toRawQuery = (tag: SelectTag | CombinationTag | UpdateTag | InsertTag | DeleteTag): RawQuery => {
-  switch (tag.tag) {
-    case 'Select':
-      return convertSelect(tag);
-    case 'Combination':
-      return convertCombination(tag);
-    case 'Update':
-      return convertUpdate(tag);
-    case 'Insert':
-      return convertInsert(tag);
-    case 'Delete':
-      return convertDelete(tag);
+const toResultName = (type: Type): string => {
+  switch (type.type) {
+    case 'Coalesce':
+      return 'coalesce';
+    case 'Named':
+      return type.name;
+    case 'Array':
+    case 'ArrayConstant':
+      return 'array';
+    case 'Boolean':
+      return 'bool';
+    case 'LoadColumn':
+      return type.column;
+    case 'LoadFunction':
+      return type.name;
+    case 'LoadRecord':
+      return 'row';
+    default:
+      return '?column?';
   }
 };
 
-export const toParams = (tag: SelectTag | CombinationTag | UpdateTag | InsertTag | DeleteTag): Param[] => {
-  const { context, params } = toRawQuery(tag);
-  return convertExpressionMap(context, params).params;
+const toResult =
+  (context: TypeContext) =>
+  (sql: SelectListItemTag | ReturningListItemTag): Result => {
+    const type = toType(context)(sql.value);
+    return { name: sql.as?.value.value ?? toResultName(type), type: toType(context)(sql.value) };
+  };
+
+const toQueryResults = (
+  sql: SelectTag | UpdateTag | InsertTag | DeleteTag | WithTag,
+): { from?: TableTag; items: Array<SelectListItemTag | ReturningListItemTag> } => {
+  switch (sql.tag) {
+    case 'Select':
+      return {
+        items: sql.values.filter(isSelectList).flatMap((list) => list.values),
+      };
+    case 'Update':
+      return {
+        from: sql.values.filter(isTable)[0],
+        items: sql.values.filter(isReturning).flatMap((item) => item.values),
+      };
+    case 'Insert':
+      return {
+        from: sql.values.filter(isTable)[0],
+        items: sql.values.filter(isReturning).flatMap((item) => item.values),
+      };
+    case 'Delete':
+      return {
+        from: sql.values.filter(isTable)[0],
+        items: sql.values.filter(isReturning).flatMap((item) => item.values),
+      };
+    case 'With': {
+      return toQueryResults(sql.value);
+    }
+  }
 };
 
-export const toQueryInterface = (
-  tag: SelectTag | CombinationTag | UpdateTag | InsertTag | DeleteTag,
-): QueryInterface => {
-  const { context, result, params } = toRawQuery(tag);
+export const toParams =
+  (context: TypeContext) =>
+  (sql: Tag): Param[] => {
+    const recur = toParams(context);
+    const toTypeRecur = toType(context);
+    switch (sql.tag) {
+      case 'ArrayIndex':
+        return recur(sql.value).concat(recur(sql.index));
+      case 'Between': {
+        const rightType = toTypeRecur(sql.right);
+        const leftType = toTypeRecur(sql.left);
+        const valueType = toTypeRecur(sql.value);
+        return [
+          ...toParams({ ...context, type: coalesce(leftType, rightType) })(sql.value),
+          ...toParams({ ...context, type: coalesce(valueType, rightType) })(sql.left),
+          ...toParams({ ...context, type: coalesce(valueType, leftType) })(sql.right),
+        ];
+      }
+      case 'BinaryExpression': {
+        switch (sql.operator.value) {
+          case 'IN':
+            return [
+              ...toParams({ ...context, type: { type: 'ArrayItem', value: toTypeRecur(sql.right) } })(sql.left),
+              ...toParams({ ...context, type: { type: 'Array', items: toTypeRecur(sql.left) } })(sql.right),
+            ];
+          default:
+            const operator = binaryOperatorTypes[sql.operator.value];
+            return [
+              ...toParams({ ...context, type: operator.length === 1 ? operator[0][0] : toTypeRecur(sql.right) })(
+                sql.left,
+              ),
+              ...toParams({ ...context, type: operator.length === 1 ? operator[0][1] : toTypeRecur(sql.left) })(
+                sql.right,
+              ),
+            ];
+        }
+      }
+      case 'Case':
+        return sql.values.flatMap(recur).concat(sql.expression ? recur(sql.expression) : []);
+      case 'Insert':
+        const table = sql.values.filter(isTable)[0];
+        return sql.values.flatMap(
+          toParams({
+            ...context,
+            columns: sql.values.filter(isColumns).flatMap((columns) =>
+              columns.values.map((column) => ({
+                type: 'LoadColumn',
+                column: column.value,
+                table: table.table.value,
+                schema: table.schema?.value,
+                sourceTag: sql,
+              })),
+            ),
+          }),
+        );
+      case 'Count':
+        return typeof sql.value === 'string' ? [] : recur(sql.value);
+      case 'DoUpdate':
+        return recur(sql.value).concat(sql.where ? recur(sql.where) : []);
+      case 'From':
+        return recur(sql.list).concat(sql.join.flatMap(recur));
+      case 'Function':
+        return sql.args
+          .filter(isExpression)
+          .flatMap((arg, index) =>
+            toParams({
+              ...context,
+              type: {
+                type: 'LoadFunctionArgument',
+                args: sql.args.filter(isExpression).map(toTypeRecur),
+                name: sql.value.value.toLowerCase(),
+                index,
+                sourceTag: arg,
+              },
+            })(arg),
+          )
+          .concat(sql.args.filter(isOrderBy).flatMap(recur));
+      case 'NullIfTag':
+        return recur(sql.value).concat(recur(sql.conditional));
+      case 'Parameter':
+        return [
+          {
+            name: sql.value,
+            pos: sql.pos,
+            nextPos: sql.nextPos,
+            spread: sql.type === 'spread',
+            required: sql.required || sql.pick.length > 0,
+            type: context.type,
+            pick: sql.pick.map((name, index) => ({ name: name.value, type: context.columns[index] ?? typeUnknown })),
+          },
+        ];
+      case 'SetMap':
+        return recur(sql.values);
+      case 'SubqueryExpression':
+        return recur(sql.subquery);
+      case 'UnaryExpression':
+        return toParams({ ...context, type: unaryOperatorTypes[sql.operator.value] })(sql.value);
+      case 'ValuesList':
+        return sql.values
+          .filter(isValues)
+          .flatMap((item) =>
+            item.values.flatMap((column, index) =>
+              isDefault(column) ? [] : toParams({ ...context, type: context.columns[index] })(column),
+            ),
+          )
+          .concat(sql.values.filter(isParameter).flatMap(recur));
+      case 'When':
+        return recur(sql.value).concat(recur(sql.condition));
+      case 'With':
+        return recur(sql.value).concat(sql.ctes.flatMap(recur));
+      case 'PgCast':
+      case 'Cast':
+        return toParams({ ...context, type: toTypeRecur(sql.type) })(sql.value);
+      case 'Limit':
+      case 'Offset':
+        return toParams({ ...context, type: typeString })(sql.value);
+      case 'Else':
+      case 'Filter':
+      case 'Having':
+      case 'JoinOn':
+      case 'NamedSelect':
+      case 'OrderByItem':
+      case 'ReturningListItem':
+      case 'SelectListItem':
+      case 'Set':
+      case 'SetItem':
+      case 'Where':
+      case 'CTE':
+      case 'WrappedExpression':
+        return recur(sql.value);
+      case 'Combination':
+      case 'ConditionalExpression':
+      case 'ArrayConstructor':
+      case 'Conflict':
+      case 'ConflictTarget':
+      case 'Delete':
+      case 'FromList':
+      case 'Join':
+      case 'OrderBy':
+      case 'Returning':
+      case 'Row':
+      case 'Select':
+      case 'SelectList':
+      case 'SetList':
+      case 'Update':
+      case 'UpdateFrom':
+      case 'Using':
+      case 'Values':
+        return sql.values.flatMap(recur);
+      case 'Null':
+      case 'Number':
+      case 'String':
+      case 'Boolean':
+      case 'ArrayIndexRange':
+      case 'BinaryOperator':
+      case 'As':
+      case 'Cast':
+      case 'Collate':
+      case 'Column':
+      case 'Columns':
+      case 'ConflictConstraint':
+      case 'Default':
+      case 'Distinct':
+      case 'DoNothing':
+      case 'GroupBy':
+      case 'Identifier':
+      case 'JoinType':
+      case 'JoinUsing':
+      case 'Null':
+      case 'Number':
+      case 'OrderDirection':
+      case 'Collate':
+      case 'QuotedName':
+      case 'Star':
+      case 'StarIdentifier':
+      case 'String':
+      case 'SubqueryOperator':
+      case 'Table':
+      case 'Type':
+      case 'TypeArray':
+      case 'UnaryOperator':
+      case 'Name':
+        return [];
+    }
+  };
+
+const isUniqParam = (item: Param, index: number, all: Param[]) =>
+  all.findIndex((current) => item.name === current.name && isEqual(item.type, current.type)) === index;
+
+export const toQueryInterface = (sql: SelectTag | UpdateTag | InsertTag | DeleteTag | WithTag): QueryInterface => {
+  const { from, items } = toQueryResults(sql);
+  const typeContext = { type: typeUnknown, columns: [], from };
 
   return {
-    result: toResults(context, result),
-    params: resolveParams(context, convertExpressionMap(context, params).params),
+    sources: toSources()(sql),
+    results: items.map(toResult(typeContext)),
+    params: toParams(typeContext)(sql).filter(isUniqParam),
   };
 };

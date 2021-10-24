@@ -1,9 +1,18 @@
-import { LoadedType, LoadedUnion, LoadedValuesPick, LoadedArray, LoadedLiteral, LoadedConstant } from './types';
+import {
+  Data,
+  DataEnum,
+  DataFunction,
+  DataTable,
+  LoadedData,
+  LoadedDataEnum,
+  LoadedDataFunction,
+  LoadedDataTable,
+} from './types';
 
-export const isLoadedUnionType = (type: LoadedType): type is LoadedUnion => type.type === 'union';
-export const isLoadedValuesPick = (type: LoadedType | LoadedValuesPick): type is LoadedValuesPick =>
-  type.type === 'pick';
-export const isLoadedArrayType = (type: LoadedType): type is LoadedArray => type.type === 'array';
-export const isLoadedLiteralType = (type: LoadedType): type is LoadedLiteral => type.type === 'literal';
-export const isLoadedConstantType = (type: LoadedType): type is LoadedConstant =>
-  ['string', 'number', 'boolean', 'Date', 'null', 'json', 'unknown'].includes(type.type);
+export const isDataTable = (item: Data): item is DataTable => item.type === 'Table';
+export const isDataFunction = (item: Data): item is DataFunction => item.type === 'Function';
+export const isDataEnum = (item: Data): item is DataEnum => item.type === 'Enum';
+
+export const isLoadedDataTable = (item: LoadedData): item is LoadedDataTable => item.type === 'Table';
+export const isLoadedDataFunction = (item: LoadedData): item is LoadedDataFunction => item.type === 'Function';
+export const isLoadedDataEnum = (item: LoadedData): item is LoadedDataEnum => item.type === 'Enum';

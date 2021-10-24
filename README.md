@@ -1,4 +1,4 @@
-- [ ] CTE
 - [ ] more strict parameters
 - [ ] json_object built types
 - [ ] json access
+- [ ] CLI

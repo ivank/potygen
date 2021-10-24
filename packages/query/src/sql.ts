@@ -1,12 +1,13 @@
 import { parser, isObject, orderBy } from '@psql-ts/ast';
 import { ClientBase, QueryConfig } from 'pg';
 import { toParams } from './query-interface';
+import { typeUnknown } from './query-interface-type-instances';
 import { Param } from './query-interface.types';
 import { Sql } from './sql.types';
 
 const toAstParams = (sql: string): Param[] => {
   const ast = parser(sql);
-  return ast ? toParams(ast).sort(orderBy((p) => p.pos)) : [];
+  return ast ? toParams({ type: typeUnknown, columns: [] })(ast).sort(orderBy((p) => p.pos)) : [];
 };
 
 const toSpreadIndexParam = (param: Param, index: number, values: unknown): string =>
@@ -43,8 +44,7 @@ const convertSql = (params: Param[], sql: string, values: Record<string, unknown
     indexes: Record<string, number>;
   }>(
     (current, param) => {
-      const nameLength =
-        param.pick.length > 0 ? param.lastPos - param.pos + 1 : param.name.length + (param.spread ? 2 : 1);
+      const nameLength = param.nextPos - param.pos;
       const index = param.spread
         ? current.indexes[param.name] ?? current.index + toSpreadIndex(values[param.name])
         : current.indexes[param.name] ?? current.index + 1;
@@ -87,7 +87,7 @@ export class PSqlQuery<TSql extends Sql = Sql> {
   constructor(public text: string) {
     this.astParams = toAstParams(text);
   }
-  toQueryConfig(params: TSql['params'] = {}): QueryConfig<TSql['result'][]> {
+  toQueryConfig(params: TSql['params'] = {}): QueryConfig {
     const text = convertSql(this.astParams, this.text, params as Record<string, unknown>);
     const values = convertValues(this.astParams, params as Record<string, unknown>);
     return { text, values };
@@ -98,16 +98,3 @@ export class PSqlQuery<TSql extends Sql = Sql> {
 }
 
 export const sql = <TSql extends Sql = Sql>([text]: TemplateStringsArray): PSqlQuery<TSql> => new PSqlQuery(text);
-
-// interface A {
-//   params: { a: string; b: number };
-//   result: { other: Date };
-// }
-
-// const test1 = sql<A>`asds`;
-
-// const c = new Client();
-
-// const main = async () => {
-//   const z = await test1.run(c);
-// };

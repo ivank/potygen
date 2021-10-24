@@ -12,9 +12,8 @@ import {
   NewLineKind,
   Statement,
 } from 'typescript';
-import { LoadedQuery } from '.';
-import { isLoadedArrayType, isLoadedLiteralType, isLoadedUnionType, isLoadedValuesPick } from './guards';
-import { LoadedFile, LoadedType, LoadedValuesPick } from './types';
+import { LoadedFile, LoadedQueryInterface } from './types';
+import { isTypeArrayConstant, isTypeUnionConstant, TypeConstant, isTypeObjectLiteralConstant } from '@psql-ts/query';
 
 const mkdirAsync = promisify(mkdir);
 const writeFileAsync = promisify(writeFile);
@@ -25,44 +24,48 @@ const parseTemplate = (root: string, template: string, path: string): string =>
     template,
   );
 
-const toPropertyType = (type: LoadedType | LoadedValuesPick): TypeNode => {
-  if (isLoadedValuesPick(type)) {
-    return factory.createArrayTypeNode(
-      factory.createTypeLiteralNode(
-        type.items.map((item) =>
-          factory.createPropertySignature(undefined, item.name, undefined, toPropertyType(item.value)),
-        ),
+const toPropertyType = (type: TypeConstant): TypeNode => {
+  if (isTypeObjectLiteralConstant(type)) {
+    return factory.createTypeLiteralNode(
+      type.items.map((item) =>
+        factory.createPropertySignature(undefined, item.name, undefined, toPropertyType(item.type)),
       ),
     );
-  } else if (isLoadedArrayType(type)) {
+  } else if (isTypeArrayConstant(type)) {
     return factory.createArrayTypeNode(toPropertyType(type.items));
-  } else if (isLoadedUnionType(type)) {
+  } else if (isTypeUnionConstant(type)) {
     return factory.createUnionTypeNode(type.items.map(toPropertyType));
-  } else if (isLoadedLiteralType(type)) {
-    return factory.createLiteralTypeNode(factory.createStringLiteral(type.value));
   } else {
     switch (type.type) {
       case 'Date':
         return factory.createTypeReferenceNode('Date');
-      case 'boolean':
-        return factory.createToken(SyntaxKind.BooleanKeyword);
-      case 'json':
+      case 'Boolean':
+        return type.literal !== undefined
+          ? factory.createLiteralTypeNode(factory.createStringLiteral(type.literal ? 'true' : 'false'))
+          : factory.createToken(SyntaxKind.BooleanKeyword);
+      case 'Json':
         return factory.createToken(SyntaxKind.UnknownKeyword);
-      case 'null':
+      case 'Null':
         return factory.createLiteralTypeNode(factory.createToken(SyntaxKind.NullKeyword));
-      case 'number':
-        return factory.createToken(SyntaxKind.NumberKeyword);
-      case 'string':
-        return factory.createToken(SyntaxKind.StringKeyword);
-      case 'unknown':
+      case 'Number':
+        return type.literal !== undefined
+          ? factory.createLiteralTypeNode(factory.createStringLiteral(String(type.literal)))
+          : factory.createToken(SyntaxKind.NumberKeyword);
+      case 'String':
+        return type.literal !== undefined
+          ? factory.createLiteralTypeNode(factory.createStringLiteral(type.literal))
+          : factory.createToken(SyntaxKind.StringKeyword);
+      case 'Unknown':
         return factory.createToken(SyntaxKind.UnknownKeyword);
+      case 'Any':
+        return factory.createToken(SyntaxKind.AnyKeyword);
     }
   }
 };
 
 const toClassCase = (identifier: string) => identifier[0].toUpperCase() + identifier.slice(1);
 
-const toLoadedQueryTypeNodes = (name: string, loadedQuery: LoadedQuery): Statement[] => [
+const toLoadedQueryTypeNodes = (name: string, loadedQuery: LoadedQueryInterface): Statement[] => [
   factory.createInterfaceDeclaration(
     undefined,
     [factory.createModifier(SyntaxKind.ExportKeyword)],
@@ -73,7 +76,7 @@ const toLoadedQueryTypeNodes = (name: string, loadedQuery: LoadedQuery): Stateme
       factory.createPropertySignature(
         undefined,
         item.name,
-        item.type.optional ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
+        'optional' in item.type && item.type.optional ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
         toPropertyType(item.type),
       ),
     ),
@@ -84,11 +87,11 @@ const toLoadedQueryTypeNodes = (name: string, loadedQuery: LoadedQuery): Stateme
     `${name}Result`,
     undefined,
     undefined,
-    loadedQuery.result.map((item) =>
+    loadedQuery.results.map((item) =>
       factory.createPropertySignature(
         undefined,
         item.name,
-        item.type.optional ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
+        'optional' in item.type && item.type.optional ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
         toPropertyType(item.type),
       ),
     ),

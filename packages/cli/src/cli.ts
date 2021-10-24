@@ -1,6 +1,7 @@
 import { Client } from 'pg';
 import { pipeline } from 'stream';
 import { promisify } from 'util';
+// import { SourceLoadError } from './LoadError';
 import { SqlRead, QueryLoader } from './traverse';
 
 const asyncPipeline = promisify(pipeline);
@@ -25,6 +26,10 @@ const main = async () => {
     );
 
     await asyncPipeline(sqls, sink);
+    // } catch (error) {
+    //   if (error instanceof SourceLoadError) {
+    //     console.error(`Error in ${error.source.path}: ${error.message}`);
+    //   }
   } finally {
     await db.end();
   }

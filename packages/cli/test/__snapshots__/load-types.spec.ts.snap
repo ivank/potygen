@@ -1,14 +1,100 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Query Interface Should convert coalesce sql (SELECT COALESCE(id, character_col) FROM all_types) 1`] = `
+exports[`Query Interface Should convert coalesce 1 sql (SELECT COALESCE(id, character_col) FROM all_types) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "coalesce",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "items": Array [
+          Object {
+            "type": "Number",
+          },
+          Object {
+            "optional": true,
+            "type": "String",
+          },
+        ],
+        "optional": true,
+        "type": "UnionConstant",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert coalesce 2 sql (SELECT COALESCE(character_col, id) FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "coalesce",
+      "type": Object {
+        "items": Array [
+          Object {
+            "optional": true,
+            "type": "String",
+          },
+          Object {
+            "type": "Number",
+          },
+        ],
+        "optional": true,
+        "type": "UnionConstant",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert coalesce 3 sql (SELECT COALESCE(12, character_col, id) FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "coalesce",
+      "type": Object {
+        "items": Array [
+          Object {
+            "literal": 12,
+            "type": "Number",
+          },
+          Object {
+            "optional": true,
+            "type": "String",
+          },
+          Object {
+            "type": "Number",
+          },
+        ],
+        "optional": true,
+        "type": "UnionConstant",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert coalesce 4 sql (SELECT COALESCE(integer_col, character_col) FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "coalesce",
+      "type": Object {
+        "items": Array [
+          Object {
+            "optional": true,
+            "type": "Number",
+          },
+          Object {
+            "optional": true,
+            "type": "String",
+          },
+        ],
+        "optional": true,
+        "type": "UnionConstant",
       },
     },
   ],
@@ -18,269 +104,307 @@ Object {
 exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "not_null",
       "type": Object {
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "default_not_null",
       "type": Object {
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "bigint_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "bigserial_col",
       "type": Object {
-        "type": "string",
+        "type": "String",
       },
     },
     Object {
       "name": "bit_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "bit_varying_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "boolean_col",
       "type": Object {
-        "type": "boolean",
+        "optional": true,
+        "type": "Boolean",
       },
     },
     Object {
       "name": "box_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "bytea_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "character_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "character_varying_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "cidr_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "circle_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "date_col",
       "type": Object {
+        "optional": true,
         "type": "Date",
       },
     },
     Object {
       "name": "double_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "inet_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "integer_col",
       "type": Object {
-        "type": "number",
+        "optional": true,
+        "type": "Number",
       },
     },
     Object {
       "name": "interval_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "json_col",
       "type": Object {
-        "type": "json",
+        "optional": true,
+        "type": "Json",
       },
     },
     Object {
       "name": "jsonb_col",
       "type": Object {
-        "type": "json",
+        "optional": true,
+        "type": "Json",
       },
     },
     Object {
       "name": "line_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "lseg_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "macaddr_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "money_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "numeric_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "path_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "pg_lsn_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "point_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "polygon_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "real_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "smallint_col",
       "type": Object {
-        "type": "number",
+        "optional": true,
+        "type": "Number",
       },
     },
     Object {
       "name": "smallserial_col",
       "type": Object {
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "serial_col",
       "type": Object {
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "text_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "time_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "time_with_time_zone_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "timestamp_col",
       "type": Object {
+        "optional": true,
         "type": "Date",
       },
     },
     Object {
       "name": "timestamp_with_time_zone_col",
       "type": Object {
+        "optional": true,
         "type": "Date",
       },
     },
     Object {
       "name": "tsquery_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "tsvector_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "txid_snapshot_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "uuid_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
     Object {
       "name": "xml_col",
       "type": Object {
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
   ],
@@ -290,21 +414,21 @@ Object {
 exports[`Query Interface Should convert enum column sql (SELECT state FROM account_levelisations) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "state",
       "type": Object {
         "items": Array [
           Object {
-            "type": "literal",
-            "value": "Pending",
+            "literal": "Pending",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Done",
+            "literal": "Done",
+            "type": "String",
           },
         ],
-        "type": "union",
+        "type": "UnionConstant",
       },
     },
   ],
@@ -314,21 +438,21 @@ Object {
 exports[`Query Interface Should convert enum sql (SELECT 'Pending'::account_levelisation_state) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
-      "name": "?column?",
+      "name": "row",
       "type": Object {
         "items": Array [
           Object {
-            "type": "literal",
-            "value": "Pending",
+            "literal": "Pending",
+            "type": "String",
           },
           Object {
-            "type": "literal",
-            "value": "Done",
+            "literal": "Done",
+            "type": "String",
           },
         ],
-        "type": "union",
+        "type": "UnionConstant",
       },
     },
   ],
@@ -338,12 +462,11 @@ Object {
 exports[`Query Interface Should convert function result double sql (SELECT ABS(ABS(integer_col)) FROM all_types) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "abs",
       "type": Object {
-        "optional": undefined,
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
@@ -353,12 +476,11 @@ Object {
 exports[`Query Interface Should convert function result single sql (SELECT ABS(integer_col) FROM all_types) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "abs",
       "type": Object {
-        "optional": undefined,
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
@@ -368,14 +490,14 @@ Object {
 exports[`Query Interface Should convert nested function explicit type sql (SELECT ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "array",
       "type": Object {
         "items": Object {
-          "type": "number",
+          "type": "Number",
         },
-        "type": "array",
+        "type": "ArrayConstant",
       },
     },
   ],
@@ -385,12 +507,11 @@ Object {
 exports[`Query Interface Should convert nested function guess type sql (SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id) 1`] = `
 Object {
   "params": Array [],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "abs",
       "type": Object {
-        "optional": undefined,
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
@@ -401,52 +522,41 @@ exports[`Query Interface Should convert operators integer sql (SELECT integer_co
 Object {
   "params": Array [
     Object {
-      "lastPos": 73,
       "name": "id",
-      "pick": Array [],
-      "pos": 70,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "test1",
       "type": Object {
         "optional": true,
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
 }
 `;
 
-exports[`Query Interface Should convert operators string sql (SELECT integer_varchar + integer_col AS "test1" FROM all_types WHERE integer_varchar = $text) 1`] = `
+exports[`Query Interface Should convert operators string sql (SELECT character_col + integer_col AS "test1" FROM all_types WHERE character_col = $text) 1`] = `
 Object {
   "params": Array [
     Object {
-      "lastPos": 92,
       "name": "text",
-      "pick": Array [],
-      "pos": 87,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "optional": true,
+        "type": "String",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "test1",
       "type": Object {
-        "optional": false,
-        "type": "string",
+        "optional": true,
+        "type": "Number",
       },
     },
   ],
@@ -457,24 +567,19 @@ exports[`Query Interface Should convert parameter coalesce sql (SELECT character
 Object {
   "params": Array [
     Object {
-      "lastPos": 72,
       "name": "id",
-      "pick": Array [],
-      "pos": 65,
-      "required": false,
-      "spread": false,
       "type": Object {
         "optional": true,
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "character_col",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
   ],
@@ -485,31 +590,24 @@ exports[`Query Interface Should convert simple sql (SELECT id, character_col FRO
 Object {
   "params": Array [
     Object {
-      "lastPos": 54,
       "name": "id",
-      "pick": Array [],
-      "pos": 51,
-      "required": false,
-      "spread": false,
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
   ],
-  "result": Array [
+  "results": Array [
     Object {
       "name": "id",
       "type": Object {
-        "optional": false,
-        "type": "number",
+        "type": "Number",
       },
     },
     Object {
       "name": "character_col",
       "type": Object {
         "optional": true,
-        "type": "string",
+        "type": "String",
       },
     },
   ],

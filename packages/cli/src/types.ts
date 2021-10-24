@@ -1,69 +1,81 @@
-import { ColumnType, FunctionArgType, FunctionType, QueryInterface, RecordType, StarType } from '@psql-ts/query';
+import { QueryInterface, TypeConstant, TypeUnionConstant } from '@psql-ts/query';
 import { SourceFile } from 'typescript';
 
-export type LoadedUnion = { type: 'union'; items: LoadedType[]; optional?: boolean };
-export type LoadedArray = { type: 'array'; items: LoadedType; optional?: boolean };
-export type LoadedLiteral = { type: 'literal'; value: string; optional?: boolean };
-export type LoadedConstant = {
-  type: 'string' | 'number' | 'boolean' | 'Date' | 'null' | 'json' | 'unknown';
-  optional?: boolean;
-};
-export type LoadedValuesPick = { type: 'pick'; items: Array<{ name: string; value: LoadedType }>; optional?: boolean };
-export type LoadedType = LoadedUnion | LoadedArray | LoadedLiteral | LoadedConstant;
-
-export interface LoadedResult {
+export interface DataTable {
+  type: 'Table';
+  name: { schema: string; name: string };
+}
+export interface DataFunction {
+  type: 'Function';
   name: string;
-  type: LoadedType;
 }
-
-export interface LoadedParam {
+export interface DataEnum {
+  type: 'Enum';
   name: string;
-  type: LoadedType | LoadedValuesPick;
 }
-
-export interface LoadedQuery {
-  params: LoadedParam[];
-  result: LoadedResult[];
-}
-
-export interface LoadContext {
-  columnTypes: ColumnType[];
-  starTypes: StarType[];
-  functionTypes: (FunctionType | FunctionArgType)[];
-  recordTypes: RecordType[];
-}
-
-export interface Info {
-  schema: string;
-  table: string;
-  column: string;
+export interface LoadedDataColumn {
+  name: string;
   isNullable: 'YES' | 'NO';
-  recordName: string;
-  dataType: string;
+  enum: string;
+  type: string;
 }
 
-export interface Function {
-  schema: string;
-  name: string;
-  dataType: string;
+export interface LoadedDataTable extends DataTable {
+  columns: LoadedDataColumn[];
+}
+
+export interface LoadedDataFunction extends DataFunction {
+  returnType: string;
   isAggregate: boolean;
-  parametersDataType: string[];
+  argTypes: string[];
 }
-
-export interface Record {
-  name: string;
+export interface LoadedDataEnum extends DataEnum {
   enum: string[];
 }
 
-export interface DataContext {
-  info: Info[];
-  functions: Function[];
-  records: Record[];
+export type Data = DataTable | DataFunction | DataEnum;
+export type LoadedData = LoadedDataTable | LoadedDataFunction | LoadedDataEnum;
+
+export interface LoadedParam {
+  name: string;
+  type: TypeConstant;
+}
+export interface LoadedResult {
+  name: string;
+  type: TypeConstant;
 }
 
-export interface Context {
-  data: DataContext;
-  load: LoadContext;
+export interface LoadedQueryInterface {
+  params: LoadedParam[];
+  results: LoadedResult[];
+}
+
+export interface LoadedFunction {
+  name: string;
+  returnType: TypeConstant;
+  argTypes: TypeConstant[];
+  isAggregate: boolean;
+}
+
+export interface LoadedSourceTable {
+  type: 'Table';
+  isResult?: boolean;
+  name: string;
+  table: string;
+  schema: string;
+  items: Record<string, TypeConstant>;
+}
+export interface LoadedSourceQuery {
+  type: 'Query';
+  name: string;
+  items: Record<string, TypeConstant>;
+}
+export type LoadedSource = LoadedSourceTable | LoadedSourceQuery;
+
+export interface LoadedContext {
+  sources: LoadedSource[];
+  funcs: LoadedFunction[];
+  enums: Record<string, TypeUnionConstant>;
 }
 
 export interface TemplateTagQuery {
@@ -90,7 +102,7 @@ export interface ParsedSqlFile {
 export type ParsedFile = ParsedSqlFile | ParsedTypescriptFile;
 
 export interface LoadedTemplateTagQuery extends TemplateTagQuery {
-  loadedQuery: LoadedQuery;
+  loadedQuery: LoadedQueryInterface;
 }
 
 export interface LoadedTypescriptFile extends ParsedTypescriptFile {
@@ -98,7 +110,7 @@ export interface LoadedTypescriptFile extends ParsedTypescriptFile {
 }
 
 export interface LoadedSqlFile extends ParsedSqlFile {
-  loadedQuery: LoadedQuery;
+  loadedQuery: LoadedQueryInterface;
 }
 
 export type LoadedFile = LoadedSqlFile | LoadedTypescriptFile;

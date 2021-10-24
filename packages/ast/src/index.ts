@@ -1,6 +1,6 @@
 import { Parser } from '@ikerin/rd-parse';
 import { Grammar } from './grammar';
-import { SelectTag, UpdateTag, DeleteTag, InsertTag, CombinationTag } from './grammar.types';
+import { QueryTag, WithTag } from './grammar.types';
 
 export {
   SqlTag,
@@ -8,7 +8,7 @@ export {
   QuotedNameTag,
   IdentifierTag,
   ParameterTag,
-  QualifiedIdentifierTag,
+  ColumnTag,
   AsTag,
   StringTag,
   NumberTag,
@@ -19,8 +19,8 @@ export {
   TypeTag,
   TypeArrayTag,
   DistinctTag,
+  StarTag,
   StarIdentifierTag,
-  StarQualifiedIdentifierTag,
   RowTag,
   NativePgCastTag,
   WhenTag,
@@ -28,7 +28,9 @@ export {
   CaseTag,
   NullIfTag,
   ConditionalExpressionTag,
-  OperatorTag,
+  BinaryOperatorTag,
+  UnaryOperatorTag,
+  SubqueryOperatorTag,
   BinaryExpressionTag,
   UnaryExpressionTag,
   BetweenTag,
@@ -86,6 +88,8 @@ export {
   DataTypeTag,
   CastableDataTypeTag,
   ExpressionTag,
+  WithTag,
+  CTETag,
   Tag,
 } from './grammar.types';
 
@@ -94,7 +98,7 @@ export {
   isPgCast,
   isIdentifier,
   isParameter,
-  isQualifiedIdentifier,
+  isColumn,
   isAs,
   isString,
   isNumber,
@@ -106,8 +110,8 @@ export {
   isAnyType,
   isTypeArray,
   isDistinct,
+  isStar,
   isStarIdentifier,
-  isStarQualifiedIdentifier,
   isCastableDataType,
   isWhen,
   isElse,
@@ -115,7 +119,9 @@ export {
   isNullIf,
   isConditionalExpression,
   isDataType,
-  isOperator,
+  isBinaryOperator,
+  isUnaryOperator,
+  isSubqueryOperator,
   isBetween,
   isArrayIndex,
   isFunction,
@@ -171,6 +177,8 @@ export {
   isRow,
   isSelectTag,
   isSubqueryExpression,
+  isWithTag,
+  isCTETag,
 } from './grammar.guards';
 
 export {
@@ -182,13 +190,15 @@ export {
   first,
   initial,
   isUnique,
+  isUniqueBy,
   orderBy,
   isNil,
-  uniqBy,
-  diffBy,
+  isDiffBy,
   isObject,
+  isEqual,
+  groupBy,
 } from './util';
 
 export { Grammar } from './grammar';
 
-export const parser = Parser<SelectTag | UpdateTag | DeleteTag | InsertTag | CombinationTag>(Grammar);
+export const parser = Parser<QueryTag | WithTag>(Grammar);

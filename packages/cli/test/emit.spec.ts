@@ -1,5 +1,5 @@
 import { Client } from 'pg';
-import { loadQuery } from '../src';
+import { loadQueryInterface } from '../src';
 import { toQueryInterface } from '@psql-ts/query';
 import { parser } from '@psql-ts/ast';
 import { createPrinter, NewLineKind } from 'typescript';
@@ -12,10 +12,7 @@ describe('Query Interface', () => {
     ['nested function guess type', `SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id`],
     ['nested function explicit type', `SELECT (ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id`],
     ['operators integer', `SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id`],
-    [
-      'operators string',
-      `SELECT integer_varchar + integer_col AS "test1" FROM all_types WHERE integer_varchar = $text`,
-    ],
+    ['operators string', `SELECT character_col + integer_col AS "test1" FROM all_types WHERE character_col = $text`],
     ['different result types', `SELECT * FROM all_types`],
     ['enum', `SELECT 'Pending'::account_levelisation_state`],
     ['enum column', `SELECT state FROM account_levelisations`],
@@ -31,7 +28,7 @@ describe('Query Interface', () => {
     const queryInterface = toQueryInterface(ast!);
     try {
       await db.connect();
-      const { query: loadedQuery } = await loadQuery(db, queryInterface);
+      const { queryInterface: loadedQuery } = await loadQueryInterface(db, queryInterface);
       const source = toTypeSource({ type: 'sql', path, content, queryInterface, loadedQuery });
       expect(printer.printFile(source)).toMatchSnapshot();
     } finally {
