@@ -1,4 +1,4 @@
-- [ ] more strict parameters
-- [ ] json_object built types
 - [ ] json access
 - [ ] CLI
+- [ ] Hardcode native functions + operators
+- [ ] Standardise tags from grammar

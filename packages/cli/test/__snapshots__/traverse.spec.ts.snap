@@ -19,7 +19,7 @@ exports[`Traverse Should work: __generated__/account-levelisations.query.queries
 "export interface Params {
     q: \\"\\";
     resolvedPostlev: \\"\\" | boolean;
-    state: (\\"Done\\" | \\"Pending\\");
+    state: (\\"Done\\" | \\"Pending\\") | (\\"Done\\" | \\"Pending\\");
     levelisationId: number;
     ids: number[];
     sortField: \\"totalPayment\\" | \\"vatPayment\\" | \\"generationPayment\\" | \\"exportPayment\\" | \\"generationEnergy\\" | \\"exportEnergy\\" | \\"cfrFitId\\" | \\"state\\" | \\"isAccepted\\" | \\"error\\" | \\"exportType\\";
@@ -48,8 +48,8 @@ export interface Result {
     exportPercentageSplit?: string;
     exportPayment?: string;
     exportEnergy?: string;
-    exportType: \\"Off Grid\\" | \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\" | \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\" | \\"Deemed\\" | \\"Metered Export\\" | \\"PPA\\";
-    technologyType: \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\" | \\"PV\\" | \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\" | \\"PV\\";
+    exportType?: \\"Off Grid\\" | \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\" | \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\" | \\"Deemed\\" | \\"Metered Export\\" | \\"PPA\\";
+    technologyType?: \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\" | \\"PV\\" | \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\" | \\"PV\\";
     totalPayment?: string;
     vatPayment?: string;
     generationPeriods?: unknown;

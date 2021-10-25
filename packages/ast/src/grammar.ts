@@ -13,8 +13,6 @@ import {
   FunctionRule,
   Stack,
 } from '@ikerin/rd-parse';
-import { first, last } from './util';
-import { isCTETag, isFilter } from './grammar.guards';
 import {
   IdentifierTag,
   ColumnTag,
@@ -97,7 +95,13 @@ import {
   WrappedExpressionTag,
   NameTag,
   ExpressionListTag,
+  QueryTag,
+  IntegerTag,
+  ExpressionTag,
+  ComparationTypeTag,
+  CaseSimpleTag,
 } from './grammar.types';
+import { AnyTypeTag, DataTypeTag } from '.';
 
 const context = ({ pos }: Stack, { pos: nextPos }: Stack): { pos: number; nextPos: number } => ({ pos, nextPos });
 
@@ -120,11 +124,9 @@ const OptionalBrackets = (rule: Rule) => Any(Brackets(rule), rule);
  */
 const NameRule = /^([A-Z_][A-Z0-9_]*)/i;
 const QuotedNameRule = /^"((?:""|[^"])*)"/;
-const QuotedName = Node<QuotedNameTag>(QuotedNameRule, ([value], $, $next) => ({
-  tag: 'QuotedName',
-  value,
-  ...context($, $next),
-}));
+const QuotedName = Node<QuotedNameTag>(QuotedNameRule, ([value], $, $next) => {
+  return { tag: 'QuotedName', value, ...context($, $next) };
+});
 
 const RestrictedReservedKeywords =
   /^(?:ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|ABORT|ABSOLUTE|ACCESS|ACTION|ADD|ADMIN|AFTER|AGGREGATE|ALSO|ALTER|ASSERTION|ASSIGNMENT|AT|BACKWARD|BEFORE|BEGIN|BY|CACHE|CALLED|CASCADE|CHAIN|CHARACTERISTICS|CHECKPOINT|CLASS|CLOSE|CLUSTER|COMMENT|COMMIT|COMMITTED|CONNECTION|CONSTRAINTS|CONVERSION|COPY|CREATEDB|CREATEROLE|CREATEUSER|CSV|CURSOR|CYCLE|DATABASE|DAY|DEALLOCATE|DECLARE|DEFAULTS|DEFERRED|DEFINER|DELETE|DELIMITER|DELIMITERS|DISABLE|DOMAIN|DOUBLE|DROP|EACH|ENABLE|ENCODING|ENCRYPTED|ESCAPE|EXCLUDING|EXCLUSIVE|EXECUTE|EXPLAIN|EXTERNAL|FETCH|FIRST|FORCE|FORWARD|FUNCTION|GLOBAL|GRANTED|HANDLER|HEADER|HOLD|HOUR|IMMEDIATE|IMMUTABLE|IMPLICIT|INCLUDING|INCREMENT|INDEX|INHERIT|INHERITS|INPUT|INSENSITIVE|INSERT|INSTEAD|INVOKER|ISOLATION|KEY|LANCOMPILER|LANGUAGE|LARGE|LAST|LEVEL|LISTEN|LOAD|LOCAL|LOCATION|LOCK|LOGIN|MATCH|MAXVALUE|MINUTE|MINVALUE|MODE|MONTH|MOVE|NAMES|NEXT|NO|NOCREATEDB|NOCREATEROLE|NOCREATEUSER|NOINHERIT|NOLOGIN|NOSUPERUSER|NOTHING|NOTIFY|NOWAIT|OBJECT|OF|OIDS|OPERATOR|OPTION|OWNER|PARTIAL|PASSWORD|PREPARE|PREPARED|PRESERVE|PRIOR|PRIVILEGES|PROCEDURAL|PROCEDURE|QUOTE|READ|RECHECK|REINDEX|RELATIVE|RELEASE|RENAME|REPEATABLE|REPLACE|RESET|RESTART|RESTRICT|RETURNS|REVOKE|ROLE|ROLLBACK|ROWS|RULE|SAVEPOINT|SCHEMA|SCROLL|SECOND|SECURITY|SEQUENCE|SERIALIZABLE|SESSION|SET|SHARE|SHOW|SIMPLE|STABLE|START|STATEMENT|STATISTICS|STDIN|STDOUT|STORAGE|STRICT|SUPERUSER|SYSID|SYSTEM|TABLESPACE|TEMP|TEMPLATE|TEMPORARY|TOAST|TRANSACTION|TRIGGER|TRUNCATE|TRUSTED|TYPE|UNCOMMITTED|UNENCRYPTED|UNKNOWN|UNLISTEN|UNTIL|UPDATE|VACUUM|VALID|VALIDATOR|VALUES|VARYING|VIEW|VOLATILE|WITH|WITHOUT|WORK|WRITE|YEAR|ZONE|CROSS|OUTER|RIGHT|LEFT|FULL|JOIN|INNER|RETURNING)$/i;
@@ -143,13 +145,16 @@ const Identifier = Node<IdentifierTag>(Any(IfNot(ReservedKeywords, NameRule), Qu
 });
 
 const Column = Any(
-  Node<ColumnTag>(All(Identifier, '.', Identifier, '.', Identifier), ([schema, table, name], $, $next) => {
-    return { tag: 'Column', schema, table, name, ...context($, $next) };
+  Node<ColumnTag, [IdentifierTag, IdentifierTag, IdentifierTag]>(
+    All(Identifier, '.', Identifier, '.', Identifier),
+    (values, $, $next) => ({ tag: 'Column', values, ...context($, $next) }),
+  ),
+  Node<ColumnTag, [IdentifierTag, IdentifierTag]>(All(Identifier, '.', Identifier), (values, $, $next) => {
+    return { tag: 'Column', values, ...context($, $next) };
   }),
-  Node<ColumnTag>(All(Identifier, '.', Identifier), ([table, name], $, $next) => {
-    return { tag: 'Column', table, name, ...context($, $next) };
+  Node<ColumnTag, [IdentifierTag]>(Identifier, (values, $, $next) => {
+    return { tag: 'Column', values, ...context($, $next) };
   }),
-  Node<ColumnTag>(Identifier, ([name], $, $next) => ({ tag: 'Column', name, ...context($, $next) })),
 );
 
 /**
@@ -172,17 +177,17 @@ const Parameter = Node<ParameterTag>(
 /**
  * AS Clause
  */
-const As = Node<AsTag>(Any(All(/^AS/i, Identifier), RestrictedIdentifier), ([value], $, $next) => {
-  return { tag: 'As', value, ...context($, $next) };
+const As = Node<AsTag, [IdentifierTag]>(Any(All(/^AS/i, Identifier), RestrictedIdentifier), (values, $, $next) => {
+  return { tag: 'As', values, ...context($, $next) };
 });
 
 /**
  * Constant
  */
 const Null = Node<NullTag>(/^NULL/i, (_, $, $next) => ({ tag: 'Null', ...context($, $next) }));
-const Integer = /^([0-9]+)/;
+const IntegerRule = /^([0-9]+)/;
 const NumberRule = Any(
-  Integer,
+  IntegerRule,
   /^([0-9]+(\.[0-9]+)?(e([+-]?[0-9]+))?)/,
   /^(([0-9]+)?\.[0-9]+(e([+-]?[0-9]+)?))/,
   /^([0-9]+e([+-]?[0-9]+))'/,
@@ -199,6 +204,7 @@ const CustomDollarQuatedString = Node<StringTag>(
   /^\$(?<tag>[A-Z_][A-Z0-9_]*)\$((?:\$\$|.)*)\$\k<tag>\$/i,
   ([_, value], $, $next) => ({ tag: 'String', value, ...context($, $next) }),
 );
+const Integer = Node<IntegerTag>(IntegerRule, ([value], $, $next) => ({ tag: 'Integer', value, ...context($, $next) }));
 const Number = Node<NumberTag>(NumberRule, ([value], $, $next) => ({ tag: 'Number', value, ...context($, $next) }));
 const Boolean = Node<BooleanTag>(/^(TRUE|FALSE)/i, ([value], $, $next) => ({
   tag: 'Boolean',
@@ -253,9 +259,12 @@ const Type = Node<TypeTag>(
   ([value, param], $, $next) => ({ tag: 'Type', value: value.toLowerCase(), param, ...context($, $next) }),
 );
 
-const TypeArray = Node<TypeArrayTag>(All(Type, Plus(/^(\[\])/)), ([value, ...dimensions], $, $next) => {
-  return { tag: 'TypeArray', value, dimensions: dimensions.length, ...context($, $next) };
-});
+const TypeArray = Node<TypeArrayTag, [TypeTag, ...string[]]>(
+  All(Type, Plus(/^(\[\])/)),
+  ([type, ...dimensions], $, $next) => {
+    return { tag: 'TypeArray', values: [type], value: dimensions.length, ...context($, $next) };
+  },
+);
 
 const AnyType = Any(TypeArray, Type);
 
@@ -264,11 +273,11 @@ const AnyType = Any(TypeArray, Type);
  */
 const CastableRule = (DataType: Rule) =>
   Node<CastableDataTypeTag>(Any(All(DataType, '::', AnyType), DataType), ([value, type], $, $next) => {
-    return type ? { tag: 'PgCast', type, value, ...context($, $next) } : value;
+    return type ? { tag: 'PgCast', values: [value, type], ...context($, $next) } : value;
   });
 
-const Count = Node<CountTag>(CastableRule(Any(Integer, Parameter)), ([value], $, $next) => {
-  return { tag: 'Count', value, ...context($, $next) };
+const Count = Node<CountTag, [IntegerTag | ParameterTag]>(CastableRule(Any(Integer, Parameter)), (values, $, $next) => {
+  return { tag: 'Count', values, ...context($, $next) };
 });
 
 /**
@@ -289,20 +298,21 @@ const Table = Any(
  */
 
 const DistinctOnList = All(/^ON/i, '(', List(Column), ')');
-const Distinct = Node<DistinctTag>(All(/^DISTINCT/i, Optional(DistinctOnList)), (values, $, $next) => {
+const Distinct = Node<DistinctTag, ColumnTag[]>(All(/^DISTINCT/i, Optional(DistinctOnList)), (values, $, $next) => {
   return { tag: 'Distinct', values, ...context($, $next) };
 });
 
-const StarSql = Node<StarTag>('*', (_, $, $next) => ({ tag: 'Star', ...context($, $next) }));
+const StarSql = Node<StarTag, []>('*', (_, $, $next) => ({ tag: 'Star', ...context($, $next) }));
 const StarIdentifier = Any(
-  Node<StarIdentifierTag>(All(Identifier, '.', Identifier, '.', StarSql), ([schema, table, star], $, $next) => {
-    return { tag: 'StarIdentifier', schema, table, star, ...context($, $next) };
+  Node<StarIdentifierTag, [IdentifierTag, IdentifierTag, StarTag]>(
+    All(Identifier, '.', Identifier, '.', StarSql),
+    (values, $, $next) => ({ tag: 'StarIdentifier', values, ...context($, $next) }),
+  ),
+  Node<StarIdentifierTag, [IdentifierTag, StarTag]>(All(Identifier, '.', StarSql), (values, $, $next) => {
+    return { tag: 'StarIdentifier', values, ...context($, $next) };
   }),
-  Node<StarIdentifierTag>(All(Identifier, '.', StarSql), ([table, star], $, $next) => {
-    return { tag: 'StarIdentifier', table, star, ...context($, $next) };
-  }),
-  Node<StarIdentifierTag>(StarSql, ([star], $, $next) => {
-    return { tag: 'StarIdentifier', star, ...context($, $next) };
+  Node<StarIdentifierTag, [StarTag]>(StarSql, (values, $, $next) => {
+    return { tag: 'StarIdentifier', values, ...context($, $next) };
   }),
 );
 
@@ -344,11 +354,9 @@ const OrderRule = (Expression: Rule): Rule => {
       return { tag: 'OrderByItem', value, direction, ...context($, $next) };
     },
   );
-  return Node<OrderByTag>(All(/^ORDER BY/i, List(OrderByItem)), (values, $, $next) => ({
-    tag: 'OrderBy',
-    values,
-    ...context($, $next),
-  }));
+  return Node<OrderByTag>(All(/^ORDER BY/i, List(OrderByItem)), (values, $, $next) => {
+    return { tag: 'OrderBy', values, ...context($, $next) };
+  });
 };
 
 const ExpressionRule = (SelectExpression: Rule): Rule =>
@@ -367,18 +375,24 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * ----------------------------------------------------------------------------------------
      */
 
-    const Exists = Node<ComparationExpressionTag>(
-      All(/^EXISTS/i, Brackets(SelectExpression)),
-      ([subject], $, $next) => {
-        return { tag: 'ComparationExpression', type: 'EXISTS', subject, ...context($, $next) };
-      },
+    const ComparationTypeExists = Node<ComparationTypeTag>(/^EXISTS/i, (_, $, $next) => {
+      return { tag: 'ComparationType', value: 'EXISTS', ...context($, $next) };
+    });
+    const ComparationTypeInclusion = Node<ComparationTypeTag>(/^(IN|NOT IN)/i, ([type], $, $next) => {
+      return { tag: 'ComparationType', value: type.toUpperCase(), ...context($, $next) };
+    });
+    const ComparationTypeOperator = Node<ComparationTypeTag>(/^(ANY|SOME|ALL)/i, ([type], $, $next) => {
+      return { tag: 'ComparationType', value: type.toUpperCase(), ...context($, $next) };
+    });
+
+    const Exists = Node<ComparationExpressionTag, [ComparationTypeTag, SelectTag]>(
+      All(ComparationTypeExists, Brackets(SelectExpression)),
+      (values, $, $next) => ({ tag: 'ComparationExpression', values, ...context($, $next) }),
     );
 
-    const InclusionSubquery = Node<ComparationExpressionTag>(
-      All(Column, /^(IN|NOT IN)/i, Brackets(SelectExpression)),
-      ([value, type, subject], $, $next) => {
-        return { tag: 'ComparationExpression', type: type.toUpperCase(), value, subject, ...context($, $next) };
-      },
+    const InclusionComparation = Node<ComparationExpressionTag, [ColumnTag, ComparationTypeTag, SelectTag]>(
+      All(Column, ComparationTypeInclusion, Brackets(SelectExpression)),
+      (values, $, $next) => ({ tag: 'ComparationExpression', values, ...context($, $next) }),
     );
 
     const ComparationOperator = Node<ComparationOperatorTag>(/^(<=|>=|<|>|<>|!=|=|AND|OR)/, ([value], $, $next) => ({
@@ -387,28 +401,22 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       ...context($, $next),
     }));
 
-    const OperatorComparation = Node<ComparationExpressionTag>(
+    const OperatorComparation = Node<
+      ComparationExpressionTag,
+      [ColumnTag, ComparationOperatorTag, ComparationTypeTag, ArrayConstructorTag | SelectTag | ExpressionListTag]
+    >(
       All(
         Column,
         ComparationOperator,
-        /^(ANY|SOME|ALL)/i,
+        ComparationTypeOperator,
         Brackets(Any(ArrayConstructor, SelectExpression, ExpressionList)),
       ),
-      ([value, operator, type, subject], $, $next) => ({
-        tag: 'ComparationExpression',
-        operator,
-        type: type.toLowerCase(),
-        value,
-        subject,
-        ...context($, $next),
-      }),
+      (values, $, $next) => ({ tag: 'ComparationExpression', values, ...context($, $next) }),
     );
 
-    const RowWiseComparation = Node<ComparationExpressionTag>(
+    const RowWiseComparation = Node<ComparationExpressionTag, [ColumnTag, ComparationOperatorTag, SelectTag]>(
       All(Column, ComparationOperator, Brackets(SelectExpression)),
-      ([value, operator, subject], $, $next) => {
-        return { tag: 'ComparationExpression', operator, value, subject, ...context($, $next) };
-      },
+      (values, $, $next) => ({ tag: 'ComparationExpression', values, ...context($, $next) }),
     );
 
     /**
@@ -416,9 +424,9 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * ----------------------------------------------------------------------------------------
      */
 
-    const NullIf = Node<NullIfTag>(
+    const NullIf = Node<NullIfTag, [ExpressionTag, ExpressionTag]>(
       All(/^NULLIF/i, Brackets(All(ChildExpression, ',', ChildExpression))),
-      ([value, conditional], $, $next) => ({ tag: 'NullIfTag', value, conditional, ...context($, $next) }),
+      (values, $, $next) => ({ tag: 'NullIfTag', values, ...context($, $next) }),
     );
 
     const ConditionalExpression = Node<ConditionalExpressionTag>(
@@ -437,26 +445,21 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      */
     const BuiltInFunction = Node<FunctionTag>(
       /^(CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP)/i,
-      ([value], $, $next) => ({
-        tag: 'Function',
-        value: { tag: 'Identifier', value, ...context($, $next) },
-        args: [],
-        ...context($, $next),
-      }),
+      ([value], $, $next) => {
+        return { tag: 'Function', values: [{ tag: 'Identifier', value, ...context($, $next) }], ...context($, $next) };
+      },
     );
 
     const FunctionDistinct = Node<DistinctTag>(/^DISTINCT/i, (values, $, $next) => {
       return { tag: 'Distinct', values, ...context($, $next) };
     });
 
-    const FunctionFilter = Node<FilterTag>(
+    const FunctionFilter = Node<FilterTag, [WhereTag]>(
       All(/^FILTER/i, Brackets(WhereRule(ChildExpression))),
-      ([value], $, $next) => {
-        return { tag: 'Filter', value, ...context($, $next) };
-      },
+      (values, $, $next) => ({ tag: 'Filter', values, ...context($, $next) }),
     );
 
-    const Function = Node<FunctionTag>(
+    const Function = Node<FunctionTag, [IdentifierTag, ...(ExpressionTag | DistinctTag | OrderByTag | FilterTag)[]]>(
       All(
         UnrestrictedIdentifier,
         Brackets(
@@ -464,23 +467,17 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
         ),
         Optional(FunctionFilter),
       ),
-      ([value, ...rest], $, $next) => ({
-        tag: 'Function',
-        value,
-        args: rest.filter((item) => !isFilter(item)),
-        filter: first(rest.filter(isFilter)),
-        ...context($, $next),
-      }),
+      (values, $, $next) => ({ tag: 'Function', values, ...context($, $next) }),
     );
 
-    const ArrayIndexRange = Node<ArrayIndexRangeTag>(
+    const ArrayIndexRange = Node<ArrayIndexRangeTag, [ExpressionTag, ExpressionTag]>(
       All(ChildExpression, ':', ChildExpression),
-      ([left, right], $, $next) => ({ tag: 'ArrayIndexRange', left, right, ...context($, $next) }),
+      (values, $, $next) => ({ tag: 'ArrayIndexRange', values, ...context($, $next) }),
     );
 
-    const ArrayIndex = Node<ArrayIndexTag>(
+    const ArrayIndex = Node<ArrayIndexTag, [ExpressionTag, ArrayIndexRangeTag | ExpressionTag]>(
       All(Any(Column, Brackets(ChildExpression)), '[', Any(ArrayIndexRange, ChildExpression), ']'),
-      ([value, index], $, $next) => ({ tag: 'ArrayIndex', value, index, ...context($, $next) }),
+      (values, $, $next) => ({ tag: 'ArrayIndex', values, ...context($, $next) }),
     );
 
     const Row = Node<RowTag>(
@@ -497,16 +494,16 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * ----------------------------------------------------------------------------------------
      */
     const DataType = Any(
+      NullIf,
       Constant,
       ArrayIndex,
       ArrayConstructor,
       Row,
       Exists,
-      InclusionSubquery,
+      InclusionComparation,
       OperatorComparation,
       RowWiseComparation,
       BuiltInFunction,
-      NullIf,
       ConditionalExpression,
       Function,
       Column,
@@ -521,31 +518,22 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * Case
      * ----------------------------------------------------------------------------------------
      */
-    const When = Node<WhenTag>(
+    const When = Node<WhenTag, [ExpressionTag, ExpressionTag]>(
       All(/^WHEN/i, ChildExpression, /^THEN/i, ChildExpression),
-      ([condition, value], $, $next) => ({
-        tag: 'When',
-        value,
-        condition,
-        ...context($, $next),
-      }),
+      (values, $, $next) => ({ tag: 'When', values, ...context($, $next) }),
     );
-    const Else = Node<ElseTag>(All(/^ELSE/i, ChildExpression), ([value], $, $next) => ({
-      tag: 'Else',
-      value,
-      ...context($, $next),
-    }));
-    const CaseWithExpression = Node<CaseTag>(
+    const Else = Node<ElseTag, [ExpressionTag]>(All(/^ELSE/i, ChildExpression), (values, $, $next) => {
+      return { tag: 'Else', values, ...context($, $next) };
+    });
+    const CaseSimple = Node<CaseSimpleTag, [CastableDataTypeTag, ...(WhenTag | ElseTag)[]]>(
       All(/^CASE/i, CastableDataType, Plus(When), Optional(Else), /^END/i),
-      ([expression, ...values], $, $next) => ({ tag: 'Case', expression, values, ...context($, $next) }),
+      (values, $, $next) => ({ tag: 'CaseSimple', values, ...context($, $next) }),
     );
-    const CaseWithoutExpression = Node<CaseTag>(
+    const CaseNormal = Node<CaseTag, (WhenTag | ElseTag)[]>(
       All(/^CASE/i, Plus(When), Optional(Else), /^END/i),
-      (values, $, $next) => {
-        return { tag: 'Case', values, ...context($, $next) };
-      },
+      (values, $, $next) => ({ tag: 'Case', values, ...context($, $next) }),
     );
-    const Case = Any(CaseWithoutExpression, CaseWithExpression, CastableDataType);
+    const Case = Any(CaseNormal, CaseSimple, CastableDataType);
 
     /**
      * Unary Operator
@@ -554,8 +542,10 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const UnaryOperatorNode = Node<UnaryOperatorTag>(UnaryOperator, ([value], $, $next) => {
       return { tag: 'UnaryOperator', value: value.toUpperCase(), ...context($, $next) };
     });
-    const UnaryExpression = Node<UnaryExpressionTag>(All(Star(UnaryOperatorNode), Case), (parts) =>
-      parts.reduceRight((value, operator) => ({ tag: 'UnaryExpression', value, operator })),
+    const UnaryExpression = Node<UnaryExpressionTag>(All(Star(UnaryOperatorNode), Case), (parts, $, $next) =>
+      parts.reduceRight((value, operator) => {
+        return { tag: 'UnaryExpression', values: [operator, value], ...context($, $next) };
+      }),
     );
 
     /**
@@ -566,11 +556,9 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       const OperatorNode = Node<BinaryOperatorTag>(Operator, ([value], $, $next) => {
         return { tag: 'BinaryOperator', value: value.toUpperCase(), ...context($, $next) };
       });
-      return Node<BinaryExpressionTag>(
+      return Node<BinaryExpressionTag, any>(
         All(Current, Star(All(OperatorNode, Current))),
-        LeftBinaryOperator(([left, operator, right], $, $next) => {
-          return { tag: 'BinaryExpression', left, operator, right, ...context($, $next) };
-        }),
+        LeftBinaryOperator((values, $, $next) => ({ tag: 'BinaryExpression', values, ...context($, $next) })),
       );
     }, UnaryExpression);
 
@@ -578,25 +566,26 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * Between Operator
      * ----------------------------------------------------------------------------------------
      */
-    const BetweenExpression = Node<BetweenTag>(
+    const BetweenExpression = Node<BetweenTag, [DataTypeTag, DataTypeTag, DataTypeTag]>(
       All(DataType, /^BETWEEN/i, DataType, /^AND/i, DataType),
-      ([value, left, right], $, $next) => ({ tag: 'Between', left, right, value, ...context($, $next) }),
+      (values, $, $next) => ({ tag: 'Between', values, ...context($, $next) }),
     );
 
     /**
      * Cast
      * ----------------------------------------------------------------------------------------
      */
-    const Cast = Node<CastTag>(All(/^CAST/i, '(', DataType, /^AS/i, AnyType, ')'), ([value, type], $, $next) => {
-      return { tag: 'Cast', value, type, ...context($, $next) };
-    });
+    const Cast = Node<CastTag, [DataTypeTag, AnyTypeTag]>(
+      All(/^CAST/i, '(', DataType, /^AS/i, AnyType, ')'),
+      (values, $, $next) => ({ tag: 'Cast', values, ...context($, $next) }),
+    );
 
     return Any(Cast, BetweenExpression, BinoryOperatorExpression);
   });
 
 const FromListRule = (Select: Rule): Rule => {
-  const NamedSelect = Node<NamedSelectTag>(All(Brackets(Select), As), ([value, as], $, $next) => {
-    return { tag: 'NamedSelect', value, as, ...context($, $next) };
+  const NamedSelect = Node<NamedSelectTag, [SelectTag, AsTag]>(All(Brackets(Select), As), (values, $, $next) => {
+    return { tag: 'NamedSelect', values, ...context($, $next) };
   });
   return Node<FromListTag>(List(Any(Table, NamedSelect)), (values, $, $next) => {
     return { tag: 'FromList', values, ...context($, $next) };
@@ -609,9 +598,9 @@ const WhereRule = (Expression: Rule): Rule =>
 const Select = Y((SelectExpression) => {
   const Expression = ExpressionRule(SelectExpression);
 
-  const SelectListItem = Node<SelectListItemTag>(
+  const SelectListItem = Node<SelectListItemTag, [StarIdentifierTag] | [ExpressionTag] | [ExpressionTag, AsTag]>(
     Any(StarIdentifier, All(Any(Expression), Optional(As))),
-    ([value, as], $, $next) => ({ tag: 'SelectListItem', value, as, ...context($, $next) }),
+    (values, $, $next) => ({ tag: 'SelectListItem', values, ...context($, $next) }),
   );
   const SelectList = Node<SelectListTag>(List(SelectListItem), (values, $, $next) => {
     return { tag: 'SelectList', values, ...context($, $next) };
@@ -633,19 +622,15 @@ const Select = Y((SelectExpression) => {
     ),
     ([value], $, $next) => ({ tag: 'JoinType', value: value?.toUpperCase(), ...context($, $next) }),
   );
-  const JoinOn = Node<JoinOnTag>(All(/^ON/i, Expression), ([value], $, $next) => ({
-    tag: 'JoinOn',
-    value,
-    ...context($, $next),
-  }));
+  const JoinOn = Node<JoinOnTag, [ExpressionTag]>(All(/^ON/i, Expression), (values, $, $next) => {
+    return { tag: 'JoinOn', values, ...context($, $next) };
+  });
   const JoinUsing = Node<JoinUsingTag>(All(/^USING/i, List(Column)), (values, $, $next) => {
     return { tag: 'JoinUsing', values, ...context($, $next) };
   });
-  const Join = Node<JoinTag>(
+  const Join = Node<JoinTag, [JoinTypeTag, TableTag] | [JoinTypeTag, TableTag, JoinOnTag | JoinUsingTag]>(
     All(JoinType, Table, Optional(Any(JoinOn, JoinUsing))),
-    ([type, table, ...values], $, $next) => {
-      return { tag: 'Join', type, table, values, ...context($, $next) };
-    },
+    (values, $, $next) => ({ tag: 'Join', values, ...context($, $next) }),
   );
 
   const From = Node<FromTag>(All(/^FROM/i, FromList, Star(Join)), ([list, ...join], $, $next) => {
@@ -761,7 +746,7 @@ const SetList = Node<SetListTag>(List(SetItem), (values, $, $next) => ({
 }));
 const SetMap = Node<SetMapTag>(
   All(Columns, '=', Any(All(Optional(/^ROW/i), Values), Brackets(Select))),
-  ([columns, values], $, $next) => ({ tag: 'SetMap', columns, values, ...context($, $next) }),
+  ([columns, value], $, $next) => ({ tag: 'SetMap', columns, value, ...context($, $next) }),
 );
 
 const Set = Node<SetTag>(All(/^SET/i, Any(SetList, SetMap)), ([value], $, $next) => ({
@@ -773,9 +758,9 @@ const Set = Node<SetTag>(All(/^SET/i, Any(SetList, SetMap)), ([value], $, $next)
 const UpdateFrom = Node<UpdateFromTag>(All(/^FROM/i, List(FromList)), (values, $, $next) => {
   return { tag: 'UpdateFrom', values, ...context($, $next) };
 });
-const ReturningListItem = Node<ReturningListItemTag>(
+const ReturningListItem = Node<ReturningListItemTag, [StarIdentifierTag] | [ExpressionTag] | [ExpressionTag, AsTag]>(
   Any(StarIdentifier, All(Any(Expression), Optional(As))),
-  ([value, as], $, $next) => ({ tag: 'ReturningListItem', value, as, ...context($, $next) }),
+  (values, $, $next) => ({ tag: 'ReturningListItem', values, ...context($, $next) }),
 );
 const Returning = Node<ReturningTag>(All(/^RETURNING/i, List(ReturningListItem)), (values, $, $next) => {
   return { tag: 'Returning', values, ...context($, $next) };
@@ -860,16 +845,13 @@ const Insert = Node<InsertTag>(
 
 const Query = Any(Select, Update, Delete, Insert);
 
-const CTE = Node<CTETag>(All(Identifier, /^AS/, Brackets(Query)), ([name, value], $, $next) => {
-  return { tag: 'CTE', name, value, ...context($, $next) };
+const CTE = Node<CTETag, [IdentifierTag, QueryTag]>(All(Identifier, /^AS/, Brackets(Query)), (values, $, $next) => {
+  return { tag: 'CTE', values, ...context($, $next) };
 });
 
-const With = Node<WithTag>(All(/^WITH/i, List(CTE), Query), (values, $, $next) => ({
-  tag: 'With',
-  ctes: values.filter(isCTETag),
-  value: last(values),
-  ...context($, $next),
-}));
+const With = Node<WithTag, [...CTETag[], QueryTag]>(All(/^WITH/i, List(CTE), Query), (values, $, $next) => {
+  return { tag: 'With', values, ...context($, $next) };
+});
 
 // Ignore line comments and all whitespace
 const IgnoreComments = (node: FunctionRule) => Ignore(/^\s+|^--[^\r\n]*\n/, node);

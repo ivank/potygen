@@ -166,6 +166,7 @@ describe('Sql', () => {
     ${'array index expression'}       | ${'SELECT arr[12+3]'}
     ${'array index expression col'}   | ${'SELECT arr[table1.id+3] FROM table1'}
     ${'array index slice'}            | ${'SELECT (ARRAY[1,2,3,4])[2:3]'}
+    ${'nullif'}                       | ${"SELECT NULLIF(col1, '(none)') FROM table1"}
     ${'function with array'}          | ${"SELECT id FROM table1 WHERE table1.col = ANY(ARRAY['opening','Opening']) ORDER BY col ASC LIMIT 1"}
     ${'function with type cast'}      | ${'SELECT TRIM(name)::text FROM table1'}
     ${'array nested'}                 | ${"SELECT ARRAY[ARRAY[1,2], ARRAY['test','other']]"}

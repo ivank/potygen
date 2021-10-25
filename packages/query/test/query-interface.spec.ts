@@ -89,6 +89,7 @@ describe('Query Interface', () => {
       `,
     ],
     ['multiple params infer type from one 1', `SELECT col1 FROM table1 WHERE :id = table1.id AND :id`],
+    ['params in array range', `SELECT (ARRAY[1,2,3,4])[$from:3]`],
     ['multiple params infer type from one 2', `SELECT col1 FROM table1 WHERE :id IS NOT NULL OR :id = table1.id`],
     ['typed param in where', `SELECT col1 FROM table1 WHERE :id::int IS NOT NULL`],
     ['typed array param in select', `SELECT :param::int[]`],

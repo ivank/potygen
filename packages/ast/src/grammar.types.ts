@@ -2,18 +2,17 @@ export interface SqlTag {
   pos: number;
   nextPos: number;
   tag: string;
+  values?: Tag[];
 }
 
 export interface CTETag extends SqlTag {
   tag: 'CTE';
-  value: QueryTag;
-  name: IdentifierTag;
+  values: [name: IdentifierTag, query: QueryTag];
 }
 
 export interface WithTag extends SqlTag {
   tag: 'With';
-  ctes: CTETag[];
-  value: QueryTag;
+  values: [...cte: CTETag[], query: QueryTag];
 }
 
 export interface NullTag extends SqlTag {
@@ -40,13 +39,14 @@ export interface ParameterTag extends SqlTag {
 }
 export interface ColumnTag extends SqlTag {
   tag: 'Column';
-  name: IdentifierTag;
-  table?: IdentifierTag;
-  schema?: IdentifierTag;
+  values:
+    | [schema: IdentifierTag, table: IdentifierTag, name: IdentifierTag]
+    | [table: IdentifierTag, name: IdentifierTag]
+    | [name: IdentifierTag];
 }
 export interface AsTag extends SqlTag {
   tag: 'As';
-  value: IdentifierTag;
+  values: [IdentifierTag];
 }
 export interface StringTag extends SqlTag {
   tag: 'String';
@@ -56,23 +56,25 @@ export interface NumberTag extends SqlTag {
   tag: 'Number';
   value: string;
 }
+export interface IntegerTag extends SqlTag {
+  tag: 'Integer';
+  value: string;
+}
 export interface BooleanTag extends SqlTag {
   tag: 'Boolean';
   value: string;
 }
 export interface ArrayIndexRangeTag extends SqlTag {
   tag: 'ArrayIndexRange';
-  left: ExpressionTag;
-  right: ExpressionTag;
+  values: [from: ExpressionTag, to: ExpressionTag];
 }
 export interface ArrayIndexTag extends SqlTag {
   tag: 'ArrayIndex';
-  value: ExpressionTag;
-  index: ExpressionTag | ArrayIndexRangeTag;
+  values: [array: ExpressionTag, index: ExpressionTag | ArrayIndexRangeTag];
 }
 export interface CountTag extends SqlTag {
   tag: 'Count';
-  value: string | ParameterTag;
+  values: [ParameterTag | IntegerTag];
 }
 export interface TypeTag extends SqlTag {
   tag: 'Type';
@@ -81,54 +83,50 @@ export interface TypeTag extends SqlTag {
 }
 export interface TypeArrayTag extends SqlTag {
   tag: 'TypeArray';
-  value: TypeTag;
-  dimensions: number;
+  value: number;
+  values: [TypeTag];
 }
 export interface DistinctTag extends SqlTag {
   tag: 'Distinct';
-  values: IdentifierTag[];
+  values: ColumnTag[];
 }
 export interface FilterTag extends SqlTag {
   tag: 'Filter';
-  value: WhereTag;
+  values: [WhereTag];
 }
 export interface StarTag extends SqlTag {
   tag: 'Star';
 }
 export interface StarIdentifierTag extends SqlTag {
   tag: 'StarIdentifier';
-  star: StarTag;
-  table?: IdentifierTag;
-  schema?: IdentifierTag;
+  values:
+    | [schema: IdentifierTag, table: IdentifierTag, star: StarTag]
+    | [table: IdentifierTag, star: StarTag]
+    | [star: StarTag];
 }
 export interface RowTag extends SqlTag {
   tag: 'Row';
   values: ExpressionTag[];
 }
-export interface NativePgCastTag extends SqlTag {
-  tag: 'PgCast';
-  value: ConstantTag | ColumnTag | ExpressionTag | ParameterTag;
-  type: AnyTypeTag;
-}
-
 export interface WhenTag extends SqlTag {
   tag: 'When';
-  condition: ExpressionTag;
-  value: ExpressionTag;
+  values: [when: ExpressionTag, then: ExpressionTag];
 }
 export interface ElseTag extends SqlTag {
   tag: 'Else';
-  value: ExpressionTag;
+  values: [ExpressionTag];
+}
+export interface CaseSimpleTag extends SqlTag {
+  tag: 'CaseSimple';
+  values: [CastableDataTypeTag, ...(WhenTag | ElseTag)[]];
 }
 export interface CaseTag extends SqlTag {
   tag: 'Case';
-  expression?: CastableDataTypeTag;
   values: (WhenTag | ElseTag)[];
 }
 export interface NullIfTag extends SqlTag {
   tag: 'NullIfTag';
-  value: ExpressionTag;
-  conditional: ExpressionTag;
+  values: [value: ExpressionTag, condition: ExpressionTag];
 }
 export interface ConditionalExpressionTag extends SqlTag {
   tag: 'ConditionalExpression';
@@ -185,32 +183,33 @@ export interface ComparationOperatorTag extends SqlTag {
   tag: 'ComparationOperator';
   value: '<=' | '>=' | '<' | '>' | '<>' | '!=' | '=' | 'AND' | 'OR';
 }
+export interface ComparationTypeTag extends SqlTag {
+  tag: 'ComparationType';
+  value: 'IN' | 'NOT IN' | 'ANY' | 'SOME' | 'ALL' | 'EXISTS';
+}
 export interface BinaryExpressionTag extends SqlTag {
   tag: 'BinaryExpression';
-  left: DataTypeTag | OperatorExpressionTag;
-  right: DataTypeTag | OperatorExpressionTag;
-  operator: BinaryOperatorTag;
+  values: [
+    left: DataTypeTag | OperatorExpressionTag,
+    operator: BinaryOperatorTag,
+    right: DataTypeTag | OperatorExpressionTag,
+  ];
 }
 export interface UnaryExpressionTag extends SqlTag {
   tag: 'UnaryExpression';
-  value: DataTypeTag | OperatorExpressionTag;
-  operator: UnaryOperatorTag;
+  values: [operator: UnaryOperatorTag, value: DataTypeTag | OperatorExpressionTag];
 }
 export interface BetweenTag extends SqlTag {
   tag: 'Between';
-  left: DataTypeTag;
-  right: DataTypeTag;
-  value: DataTypeTag;
+  values: [value: DataTypeTag, from: DataTypeTag, to: DataTypeTag];
 }
 export interface CastTag extends SqlTag {
   tag: 'Cast';
-  value: DataTypeTag;
-  type: AnyTypeTag;
+  values: [data: DataTypeTag, type: AnyTypeTag];
 }
 export interface PgCastTag extends SqlTag {
   tag: 'PgCast';
-  value: DataTypeTag;
-  type: AnyTypeTag;
+  values: [data: DataTypeTag, type: AnyTypeTag];
 }
 export interface ArrayConstructorTag extends SqlTag {
   tag: 'ArrayConstructor';
@@ -218,21 +217,24 @@ export interface ArrayConstructorTag extends SqlTag {
 }
 export interface FunctionTag extends SqlTag {
   tag: 'Function';
-  value: IdentifierTag;
-  filter?: FilterTag;
-  args: (ExpressionTag | OrderByTag | DistinctTag)[];
+  values: [IdentifierTag, ...(ExpressionTag | OrderByTag | DistinctTag | FilterTag)[]];
 }
 export interface ComparationExpressionTag extends SqlTag {
   tag: 'ComparationExpression';
-  operator?: ComparationOperatorTag;
-  type?: 'IN' | 'NOT IN' | 'ANY' | 'SOME' | 'ALL' | 'EXISTS';
-  value?: ColumnTag;
-  subject: SelectTag | ArrayConstructorTag | ExpressionListTag;
+  values:
+    | [type: ComparationTypeTag, subject: SelectTag]
+    | [column: ColumnTag, type: ComparationTypeTag, subject: SelectTag]
+    | [
+        column: ColumnTag,
+        operator: ComparationOperatorTag,
+        type: ComparationTypeTag,
+        subject: SelectTag | ArrayConstructorTag | ExpressionListTag,
+      ]
+    | [column: ColumnTag, operator: ComparationOperatorTag, subject: SelectTag];
 }
 export interface SelectListItemTag extends SqlTag {
   tag: 'SelectListItem';
-  value: ExpressionTag | StarIdentifierTag;
-  as?: AsTag;
+  values: [value: StarIdentifierTag | ExpressionTag] | [value: ExpressionTag, as: AsTag];
 }
 export interface SelectListTag extends SqlTag {
   tag: 'SelectList';
@@ -240,8 +242,7 @@ export interface SelectListTag extends SqlTag {
 }
 export interface NamedSelectTag extends SqlTag {
   tag: 'NamedSelect';
-  value: SelectTag;
-  as: AsTag;
+  values: [select: SelectTag, as: AsTag];
 }
 export interface JoinTypeTag extends SqlTag {
   tag: 'JoinType';
@@ -249,7 +250,7 @@ export interface JoinTypeTag extends SqlTag {
 }
 export interface JoinOnTag extends SqlTag {
   tag: 'JoinOn';
-  value: ExpressionTag;
+  values: [ExpressionTag];
 }
 export interface JoinUsingTag extends SqlTag {
   tag: 'JoinUsing';
@@ -257,9 +258,9 @@ export interface JoinUsingTag extends SqlTag {
 }
 export interface JoinTag extends SqlTag {
   tag: 'Join';
-  type: JoinTypeTag;
-  table: TableTag;
-  values: (JoinOnTag | JoinUsingTag)[];
+  values:
+    | [type: JoinTypeTag, table: TableTag]
+    | [type: JoinTypeTag, table: TableTag, condition: JoinOnTag | JoinUsingTag];
 }
 export interface FromListTag extends SqlTag {
   tag: 'FromList';
@@ -336,7 +337,7 @@ export interface ValuesTag extends SqlTag {
 export interface SetMapTag extends SqlTag {
   tag: 'SetMap';
   columns: ColumnsTag;
-  values: ValuesTag | SelectTag;
+  value: ValuesTag | SelectTag;
 }
 export interface SetTag extends SqlTag {
   tag: 'Set';
@@ -354,8 +355,7 @@ export interface UpdateFromTag extends SqlTag {
 }
 export interface ReturningListItemTag extends SqlTag {
   tag: 'ReturningListItem';
-  value: ExpressionTag | StarIdentifierTag;
-  as?: AsTag;
+  values: [value: StarIdentifierTag | ExpressionTag] | [value: ExpressionTag, as: AsTag];
 }
 export interface ReturningTag extends SqlTag {
   tag: 'Returning';
@@ -422,7 +422,7 @@ export type AnyTypeTag = TypeTag | TypeArrayTag;
 export type SelectParts = DistinctTag | SelectListTag | FromTag | WhereTag | GroupByTag | HavingTag;
 export type OperatorExpressionTag = BinaryExpressionTag | UnaryExpressionTag;
 export type AnyCastTag = CastTag | PgCastTag;
-export type DataTypeTag = CaseTag | CastableDataTypeTag;
+export type DataTypeTag = CaseTag | CaseSimpleTag | CastableDataTypeTag;
 export type QueryTag = SelectTag | UpdateTag | InsertTag | DeleteTag;
 
 export type CastableDataTypeTag =
@@ -432,14 +432,13 @@ export type CastableDataTypeTag =
   | ColumnTag
   | SelectTag
   | ParameterTag
-  | NativePgCastTag;
+  | PgCastTag;
 
 export type ExpressionTag =
   | AnyCastTag
   | DataTypeTag
   | OperatorExpressionTag
   | BetweenTag
-  | DataTypeTag
   | RowTag
   | ComparationExpressionTag
   | NullIfTag
@@ -454,6 +453,7 @@ export type Tag =
   | AsTag
   | StringTag
   | NumberTag
+  | IntegerTag
   | BooleanTag
   | ConstantTag
   | CountTag
@@ -472,6 +472,7 @@ export type Tag =
   | BinaryOperatorTag
   | UnaryOperatorTag
   | ComparationOperatorTag
+  | ComparationTypeTag
   | BinaryExpressionTag
   | BetweenTag
   | CastTag

@@ -88,6 +88,9 @@ import {
   WrappedExpressionTag,
   NameTag,
   ExpressionListTag,
+  IntegerTag,
+  ComparationTypeTag,
+  CaseSimpleTag,
 } from './grammar.types';
 
 export const isCTETag = (value: SqlTag): value is CTETag => value.tag === 'CTE';
@@ -101,6 +104,7 @@ export const isColumn = (value: SqlTag): value is ColumnTag => value.tag === 'Co
 export const isAs = (value: SqlTag): value is AsTag => value.tag === 'As';
 export const isString = (value: SqlTag): value is StringTag => value.tag === 'String';
 export const isNumber = (value: SqlTag): value is NumberTag => value.tag === 'Number';
+export const isInteger = (value: SqlTag): value is IntegerTag => value.tag === 'Integer';
 export const isBoolean = (value: SqlTag): value is BooleanTag => value.tag === 'Boolean';
 export const isConstant = (value: SqlTag): value is ConstantTag =>
   isNull(value) || isString(value) || isNumber(value) || isBoolean(value);
@@ -116,6 +120,7 @@ export const isCastableDataType = (value: SqlTag): value is CastableDataTypeTag 
 export const isWhen = (value: SqlTag): value is WhenTag => value.tag === 'When';
 export const isElse = (value: SqlTag): value is ElseTag => value.tag === 'Else';
 export const isCase = (value: SqlTag): value is CaseTag => value.tag === 'Case';
+export const isCaseSimple = (value: SqlTag): value is CaseSimpleTag => value.tag === 'CaseSimple';
 export const isNullIf = (value: SqlTag): value is NullIfTag => value.tag === 'NullIf';
 export const isConditionalExpression = (value: SqlTag): value is ConditionalExpressionTag =>
   value.tag === 'ConditionalExpression';
@@ -124,6 +129,7 @@ export const isBinaryOperator = (value: SqlTag): value is BinaryOperatorTag => v
 export const isUnaryOperator = (value: SqlTag): value is UnaryOperatorTag => value.tag === 'UnaryOperator';
 export const isComparationOperator = (value: SqlTag): value is ComparationOperatorTag =>
   value.tag === 'ComparationOperator';
+export const isComparationType = (value: SqlTag): value is ComparationTypeTag => value.tag === 'ComparationType';
 export const isBetween = (value: SqlTag): value is BetweenTag => value.tag === 'Between';
 export const isArrayIndex = (value: SqlTag): value is ArrayIndexTag => value.tag === 'ArrayIndex';
 export const isFunction = (value: SqlTag): value is FunctionTag => value.tag === 'Function';

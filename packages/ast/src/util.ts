@@ -2,15 +2,31 @@ export const length = (item: unknown): number | undefined => (Array.isArray(item
 
 export const identity = <T>(item: T): T => item;
 
-export const tail = <T>(items: T[]): T[] => items.slice(1);
-
 export const isEmpty = <T>(items?: T[]): boolean => !items || items?.length === 0;
 
-export const last = <T>(items?: T[]): T | undefined => items?.[items.length - 1];
+export function tail<T>(items: [unknown, ...T[]]): T[];
+export function tail<T>(items: T[]): T[];
+export function tail<T>(items: T[]): T[] {
+  return items.slice(1);
+}
 
-export const first = <T>(items?: T[]): T | undefined => items?.[0];
+export function last<T>(items?: [...unknown[], T]): T;
+export function last<T>(items?: T[]): T | undefined;
+export function last<T>(items?: T[]): T | undefined {
+  return items?.[items.length - 1];
+}
 
-export const initial = <T>(items: T[]): T[] => items.slice(0, -1);
+export function first<T>(items?: [T, ...unknown[]]): T;
+export function first<T>(items?: T[]): T | undefined;
+export function first<T>(items?: T[]): T | undefined {
+  return items?.[0];
+}
+
+export function initial<T>(items: [...T[], unknown]): T[];
+export function initial<T>(items: T[]): T[];
+export function initial<T>(items: T[]): T[] {
+  return items.slice(0, -1);
+}
 
 export const isUnique =
   <T>(predicate: (item: T) => unknown = identity) =>

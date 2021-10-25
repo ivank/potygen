@@ -22,7 +22,6 @@ export {
   StarTag,
   StarIdentifierTag,
   RowTag,
-  NativePgCastTag,
   WhenTag,
   ElseTag,
   CaseTag,

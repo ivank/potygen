@@ -82,15 +82,17 @@ Object {
           "column": "col1",
           "schema": undefined,
           "sourceTag": Object {
-            "name": Object {
-              "nextPos": 12,
-              "pos": 8,
-              "tag": "Identifier",
-              "value": "col1",
-            },
             "nextPos": 12,
             "pos": 8,
             "tag": "Column",
+            "values": Array [
+              Object {
+                "nextPos": 12,
+                "pos": 8,
+                "tag": "Identifier",
+                "value": "col1",
+              },
+            ],
           },
           "table": undefined,
           "type": "LoadColumn",
@@ -99,51 +101,59 @@ Object {
           "column": "col2",
           "schema": undefined,
           "sourceTag": Object {
-            "name": Object {
-              "nextPos": 19,
-              "pos": 15,
-              "tag": "Identifier",
-              "value": "col2",
-            },
             "nextPos": 19,
             "pos": 15,
             "tag": "Column",
+            "values": Array [
+              Object {
+                "nextPos": 19,
+                "pos": 15,
+                "tag": "Identifier",
+                "value": "col2",
+              },
+            ],
           },
           "table": undefined,
           "type": "LoadColumn",
         },
         "sourceTag": Object {
-          "left": Object {
-            "name": Object {
+          "nextPos": 19,
+          "pos": 8,
+          "tag": "BinaryExpression",
+          "values": Array [
+            Object {
               "nextPos": 12,
               "pos": 8,
-              "tag": "Identifier",
-              "value": "col1",
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 12,
+                  "pos": 8,
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
             },
-            "nextPos": 12,
-            "pos": 8,
-            "tag": "Column",
-          },
-          "nextPos": 19,
-          "operator": Object {
-            "nextPos": 14,
-            "pos": 13,
-            "tag": "BinaryOperator",
-            "value": "+",
-          },
-          "pos": 8,
-          "right": Object {
-            "name": Object {
+            Object {
+              "nextPos": 14,
+              "pos": 13,
+              "tag": "BinaryOperator",
+              "value": "+",
+            },
+            Object {
               "nextPos": 19,
               "pos": 15,
-              "tag": "Identifier",
-              "value": "col2",
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 19,
+                  "pos": 15,
+                  "tag": "Identifier",
+                  "value": "col2",
+                },
+              ],
             },
-            "nextPos": 19,
-            "pos": 15,
-            "tag": "Column",
-          },
-          "tag": "BinaryExpression",
+          ],
         },
         "type": "LoadOperator",
       },
@@ -292,21 +302,23 @@ Object {
             "column": "col1",
             "schema": undefined,
             "sourceTag": Object {
-              "name": Object {
-                "nextPos": 72,
-                "pos": 68,
-                "tag": "Identifier",
-                "value": "col1",
-              },
               "nextPos": 72,
               "pos": 61,
-              "table": Object {
-                "nextPos": 67,
-                "pos": 61,
-                "tag": "Identifier",
-                "value": "table1",
-              },
               "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 67,
+                  "pos": 61,
+                  "tag": "Identifier",
+                  "value": "table1",
+                },
+                Object {
+                  "nextPos": 72,
+                  "pos": 68,
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
             },
             "table": "table1",
             "type": "LoadColumn",
@@ -315,15 +327,17 @@ Object {
             "column": "col2",
             "schema": undefined,
             "sourceTag": Object {
-              "name": Object {
-                "nextPos": 102,
-                "pos": 98,
-                "tag": "Identifier",
-                "value": "col2",
-              },
               "nextPos": 102,
               "pos": 98,
               "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 102,
+                  "pos": 98,
+                  "tag": "Identifier",
+                  "value": "col2",
+                },
+              ],
             },
             "table": undefined,
             "type": "LoadColumn",
@@ -411,21 +425,23 @@ Object {
         "column": "val",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 126,
-            "pos": 123,
-            "tag": "Identifier",
-            "value": "val",
-          },
           "nextPos": 126,
           "pos": 116,
-          "table": Object {
-            "nextPos": 122,
-            "pos": 116,
-            "tag": "Identifier",
-            "value": "table3",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 122,
+              "pos": 116,
+              "tag": "Identifier",
+              "value": "table3",
+            },
+            Object {
+              "nextPos": 126,
+              "pos": 123,
+              "tag": "Identifier",
+              "value": "val",
+            },
+          ],
         },
         "table": "table3",
         "type": "LoadColumn",
@@ -442,21 +458,23 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 293,
-            "pos": 291,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 293,
           "pos": 284,
-          "table": Object {
-            "nextPos": 290,
-            "pos": 284,
-            "tag": "Identifier",
-            "value": "table1",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 290,
+              "pos": 284,
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "nextPos": 293,
+              "pos": 291,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -473,21 +491,23 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 307,
-            "pos": 305,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 307,
           "pos": 298,
-          "table": Object {
-            "nextPos": 304,
-            "pos": 298,
-            "tag": "Identifier",
-            "value": "table4",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 304,
+              "pos": 298,
+              "tag": "Identifier",
+              "value": "table4",
+            },
+            Object {
+              "nextPos": 307,
+              "pos": 305,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": "table4",
         "type": "LoadColumn",
@@ -501,15 +521,17 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 30,
-            "pos": 26,
-            "tag": "Identifier",
-            "value": "col1",
-          },
           "nextPos": 30,
           "pos": 26,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 30,
+              "pos": 26,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
@@ -521,15 +543,17 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 62,
-            "pos": 60,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 62,
           "pos": 60,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 62,
+              "pos": 60,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
@@ -682,15 +706,17 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 27,
-            "pos": 25,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 27,
           "pos": 25,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 27,
+              "pos": 25,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -732,15 +758,17 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 31,
-            "pos": 29,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 31,
           "pos": 29,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 31,
+              "pos": 29,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -752,15 +780,17 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 37,
-            "pos": 33,
-            "tag": "Identifier",
-            "value": "col2",
-          },
           "nextPos": 37,
           "pos": 33,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 37,
+              "pos": 33,
+              "tag": "Identifier",
+              "value": "col2",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -873,7 +903,16 @@ Object {
         ],
         "name": "abs",
         "sourceTag": Object {
-          "args": Array [
+          "nextPos": 15,
+          "pos": 7,
+          "tag": "Function",
+          "values": Array [
+            Object {
+              "nextPos": 10,
+              "pos": 7,
+              "tag": "Identifier",
+              "value": "ABS",
+            },
             Object {
               "nextPos": 14,
               "pick": Array [],
@@ -884,16 +923,6 @@ Object {
               "value": "id",
             },
           ],
-          "filter": undefined,
-          "nextPos": 15,
-          "pos": 7,
-          "tag": "Function",
-          "value": Object {
-            "nextPos": 10,
-            "pos": 7,
-            "tag": "Identifier",
-            "value": "ABS",
-          },
         },
         "type": "LoadFunction",
       },
@@ -935,15 +964,17 @@ Object {
             "column": "id",
             "schema": undefined,
             "sourceTag": Object {
-              "name": Object {
-                "nextPos": 13,
-                "pos": 11,
-                "tag": "Identifier",
-                "value": "id",
-              },
               "nextPos": 13,
               "pos": 11,
               "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 13,
+                  "pos": 11,
+                  "tag": "Identifier",
+                  "value": "id",
+                },
+              ],
             },
             "table": undefined,
             "type": "LoadColumn",
@@ -951,29 +982,30 @@ Object {
         ],
         "name": "abs",
         "sourceTag": Object {
-          "args": Array [
-            Object {
-              "name": Object {
-                "nextPos": 13,
-                "pos": 11,
-                "tag": "Identifier",
-                "value": "id",
-              },
-              "nextPos": 13,
-              "pos": 11,
-              "tag": "Column",
-            },
-          ],
-          "filter": undefined,
           "nextPos": 14,
           "pos": 7,
           "tag": "Function",
-          "value": Object {
-            "nextPos": 10,
-            "pos": 7,
-            "tag": "Identifier",
-            "value": "ABS",
-          },
+          "values": Array [
+            Object {
+              "nextPos": 10,
+              "pos": 7,
+              "tag": "Identifier",
+              "value": "ABS",
+            },
+            Object {
+              "nextPos": 13,
+              "pos": 11,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 13,
+                  "pos": 11,
+                  "tag": "Identifier",
+                  "value": "id",
+                },
+              ],
+            },
+          ],
         },
         "type": "LoadFunction",
       },
@@ -1067,12 +1099,14 @@ Object {
         "sourceTag": Object {
           "nextPos": 50,
           "pos": 49,
-          "star": Object {
-            "nextPos": 50,
-            "pos": 49,
-            "tag": "Star",
-          },
           "tag": "StarIdentifier",
+          "values": Array [
+            Object {
+              "nextPos": 50,
+              "pos": 49,
+              "tag": "Star",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadStar",
@@ -1120,21 +1154,23 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 33,
-            "pos": 29,
-            "tag": "Identifier",
-            "value": "col1",
-          },
           "nextPos": 33,
           "pos": 26,
-          "table": Object {
-            "nextPos": 28,
-            "pos": 26,
-            "tag": "Identifier",
-            "value": "t1",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 28,
+              "pos": 26,
+              "tag": "Identifier",
+              "value": "t1",
+            },
+            Object {
+              "nextPos": 33,
+              "pos": 29,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
         },
         "table": "t1",
         "type": "LoadColumn",
@@ -1146,21 +1182,23 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 62,
-            "pos": 58,
-            "tag": "Identifier",
-            "value": "col2",
-          },
           "nextPos": 62,
           "pos": 55,
-          "table": Object {
-            "nextPos": 57,
-            "pos": 55,
-            "tag": "Identifier",
-            "value": "t1",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 57,
+              "pos": 55,
+              "tag": "Identifier",
+              "value": "t1",
+            },
+            Object {
+              "nextPos": 62,
+              "pos": 58,
+              "tag": "Identifier",
+              "value": "col2",
+            },
+          ],
         },
         "table": "t1",
         "type": "LoadColumn",
@@ -1172,21 +1210,23 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 97,
-            "pos": 93,
-            "tag": "Identifier",
-            "value": "col2",
-          },
           "nextPos": 97,
           "pos": 86,
-          "table": Object {
-            "nextPos": 92,
-            "pos": 86,
-            "tag": "Identifier",
-            "value": "table2",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 92,
+              "pos": 86,
+              "tag": "Identifier",
+              "value": "table2",
+            },
+            Object {
+              "nextPos": 97,
+              "pos": 93,
+              "tag": "Identifier",
+              "value": "col2",
+            },
+          ],
         },
         "table": "table2",
         "type": "LoadColumn",
@@ -1203,12 +1243,14 @@ Object {
           "nextPos": 134,
           "pos": 129,
           "tag": "As",
-          "value": Object {
-            "nextPos": 134,
-            "pos": 132,
-            "tag": "Identifier",
-            "value": "t1",
-          },
+          "values": Array [
+            Object {
+              "nextPos": 134,
+              "pos": 132,
+              "tag": "Identifier",
+              "value": "t1",
+            },
+          ],
         },
         "nextPos": 134,
         "pos": 122,
@@ -1265,21 +1307,23 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 33,
-            "pos": 29,
-            "tag": "Identifier",
-            "value": "col1",
-          },
           "nextPos": 33,
           "pos": 26,
-          "table": Object {
-            "nextPos": 28,
-            "pos": 26,
-            "tag": "Identifier",
-            "value": "t1",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 28,
+              "pos": 26,
+              "tag": "Identifier",
+              "value": "t1",
+            },
+            Object {
+              "nextPos": 33,
+              "pos": 29,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
         },
         "table": "t1",
         "type": "LoadColumn",
@@ -1291,21 +1335,23 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 62,
-            "pos": 58,
-            "tag": "Identifier",
-            "value": "col2",
-          },
           "nextPos": 62,
           "pos": 55,
-          "table": Object {
-            "nextPos": 57,
-            "pos": 55,
-            "tag": "Identifier",
-            "value": "t1",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 57,
+              "pos": 55,
+              "tag": "Identifier",
+              "value": "t1",
+            },
+            Object {
+              "nextPos": 62,
+              "pos": 58,
+              "tag": "Identifier",
+              "value": "col2",
+            },
+          ],
         },
         "table": "t1",
         "type": "LoadColumn",
@@ -1317,21 +1363,23 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 95,
-            "pos": 91,
-            "tag": "Identifier",
-            "value": "col2",
-          },
           "nextPos": 95,
           "pos": 86,
-          "table": Object {
-            "nextPos": 90,
-            "pos": 86,
-            "tag": "Identifier",
-            "value": "myT2",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 90,
+              "pos": 86,
+              "tag": "Identifier",
+              "value": "myT2",
+            },
+            Object {
+              "nextPos": 95,
+              "pos": 91,
+              "tag": "Identifier",
+              "value": "col2",
+            },
+          ],
         },
         "table": "myT2",
         "type": "LoadColumn",
@@ -1343,21 +1391,23 @@ Object {
         "column": "col_9",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 128,
-            "pos": 123,
-            "tag": "Identifier",
-            "value": "col_9",
-          },
           "nextPos": 128,
           "pos": 118,
-          "table": Object {
-            "nextPos": 122,
-            "pos": 118,
-            "tag": "Identifier",
-            "value": "myT4",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 122,
+              "pos": 118,
+              "tag": "Identifier",
+              "value": "myT4",
+            },
+            Object {
+              "nextPos": 128,
+              "pos": 123,
+              "tag": "Identifier",
+              "value": "col_9",
+            },
+          ],
         },
         "table": "myT4",
         "type": "LoadColumn",
@@ -1374,12 +1424,14 @@ Object {
           "nextPos": 168,
           "pos": 163,
           "tag": "As",
-          "value": Object {
-            "nextPos": 168,
-            "pos": 166,
-            "tag": "Identifier",
-            "value": "t1",
-          },
+          "values": Array [
+            Object {
+              "nextPos": 168,
+              "pos": 166,
+              "tag": "Identifier",
+              "value": "t1",
+            },
+          ],
         },
         "nextPos": 168,
         "pos": 152,
@@ -1409,12 +1461,14 @@ Object {
           "nextPos": 202,
           "pos": 193,
           "tag": "As",
-          "value": Object {
-            "nextPos": 202,
-            "pos": 196,
-            "tag": "Identifier",
-            "value": "myT2",
-          },
+          "values": Array [
+            Object {
+              "nextPos": 202,
+              "pos": 196,
+              "tag": "Identifier",
+              "value": "myT2",
+            },
+          ],
         },
         "nextPos": 202,
         "pos": 182,
@@ -1444,12 +1498,14 @@ Object {
           "nextPos": 257,
           "pos": 248,
           "tag": "As",
-          "value": Object {
-            "nextPos": 257,
-            "pos": 251,
-            "tag": "Identifier",
-            "value": "myT4",
-          },
+          "values": Array [
+            Object {
+              "nextPos": 257,
+              "pos": 251,
+              "tag": "Identifier",
+              "value": "myT4",
+            },
+          ],
         },
         "nextPos": 257,
         "pos": 241,
@@ -1501,15 +1557,17 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 9,
-            "pos": 7,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 9,
           "pos": 7,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 9,
+              "pos": 7,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
@@ -1554,21 +1612,23 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 45,
-            "pos": 43,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 45,
           "pos": 36,
-          "table": Object {
-            "nextPos": 42,
-            "pos": 36,
-            "tag": "Identifier",
-            "value": "table1",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 42,
+              "pos": 36,
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "nextPos": 45,
+              "pos": 43,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -1593,15 +1653,17 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 11,
-            "pos": 7,
-            "tag": "Identifier",
-            "value": "col1",
-          },
           "nextPos": 11,
           "pos": 7,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 11,
+              "pos": 7,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
@@ -1657,21 +1719,23 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 64,
-            "pos": 62,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 64,
           "pos": 55,
-          "table": Object {
-            "nextPos": 61,
-            "pos": 55,
-            "tag": "Identifier",
-            "value": "table1",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 61,
+              "pos": 55,
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "nextPos": 64,
+              "pos": 62,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -1685,15 +1749,17 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 11,
-            "pos": 7,
-            "tag": "Identifier",
-            "value": "col1",
-          },
           "nextPos": 11,
           "pos": 7,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 11,
+              "pos": 7,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
@@ -1783,15 +1849,17 @@ Object {
                   "column": "integer_col",
                   "schema": undefined,
                   "sourceTag": Object {
-                    "name": Object {
-                      "nextPos": 45,
-                      "pos": 34,
-                      "tag": "Identifier",
-                      "value": "integer_col",
-                    },
                     "nextPos": 45,
                     "pos": 34,
                     "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "nextPos": 45,
+                        "pos": 34,
+                        "tag": "Identifier",
+                        "value": "integer_col",
+                      },
+                    ],
                   },
                   "table": undefined,
                   "type": "LoadColumn",
@@ -1805,31 +1873,41 @@ Object {
             ],
             "name": "array_length",
             "sourceTag": Object {
-              "args": Array [
+              "nextPos": 50,
+              "pos": 11,
+              "tag": "Function",
+              "values": Array [
                 Object {
-                  "args": Array [
-                    Object {
-                      "name": Object {
-                        "nextPos": 45,
-                        "pos": 34,
-                        "tag": "Identifier",
-                        "value": "integer_col",
-                      },
-                      "nextPos": 45,
-                      "pos": 34,
-                      "tag": "Column",
-                    },
-                  ],
-                  "filter": undefined,
+                  "nextPos": 23,
+                  "pos": 11,
+                  "tag": "Identifier",
+                  "value": "ARRAY_LENGTH",
+                },
+                Object {
                   "nextPos": 46,
                   "pos": 24,
                   "tag": "Function",
-                  "value": Object {
-                    "nextPos": 33,
-                    "pos": 24,
-                    "tag": "Identifier",
-                    "value": "ARRAY_AGG",
-                  },
+                  "values": Array [
+                    Object {
+                      "nextPos": 33,
+                      "pos": 24,
+                      "tag": "Identifier",
+                      "value": "ARRAY_AGG",
+                    },
+                    Object {
+                      "nextPos": 45,
+                      "pos": 34,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 45,
+                          "pos": 34,
+                          "tag": "Identifier",
+                          "value": "integer_col",
+                        },
+                      ],
+                    },
+                  ],
                 },
                 Object {
                   "nextPos": 49,
@@ -1838,49 +1916,58 @@ Object {
                   "value": "1",
                 },
               ],
-              "filter": undefined,
-              "nextPos": 50,
-              "pos": 11,
-              "tag": "Function",
-              "value": Object {
-                "nextPos": 23,
-                "pos": 11,
-                "tag": "Identifier",
-                "value": "ARRAY_LENGTH",
-              },
             },
             "type": "LoadFunction",
           },
         ],
         "name": "abs",
         "sourceTag": Object {
-          "args": Array [
+          "nextPos": 51,
+          "pos": 7,
+          "tag": "Function",
+          "values": Array [
             Object {
-              "args": Array [
+              "nextPos": 10,
+              "pos": 7,
+              "tag": "Identifier",
+              "value": "ABS",
+            },
+            Object {
+              "nextPos": 50,
+              "pos": 11,
+              "tag": "Function",
+              "values": Array [
                 Object {
-                  "args": Array [
-                    Object {
-                      "name": Object {
-                        "nextPos": 45,
-                        "pos": 34,
-                        "tag": "Identifier",
-                        "value": "integer_col",
-                      },
-                      "nextPos": 45,
-                      "pos": 34,
-                      "tag": "Column",
-                    },
-                  ],
-                  "filter": undefined,
+                  "nextPos": 23,
+                  "pos": 11,
+                  "tag": "Identifier",
+                  "value": "ARRAY_LENGTH",
+                },
+                Object {
                   "nextPos": 46,
                   "pos": 24,
                   "tag": "Function",
-                  "value": Object {
-                    "nextPos": 33,
-                    "pos": 24,
-                    "tag": "Identifier",
-                    "value": "ARRAY_AGG",
-                  },
+                  "values": Array [
+                    Object {
+                      "nextPos": 33,
+                      "pos": 24,
+                      "tag": "Identifier",
+                      "value": "ARRAY_AGG",
+                    },
+                    Object {
+                      "nextPos": 45,
+                      "pos": 34,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 45,
+                          "pos": 34,
+                          "tag": "Identifier",
+                          "value": "integer_col",
+                        },
+                      ],
+                    },
+                  ],
                 },
                 Object {
                   "nextPos": 49,
@@ -1889,28 +1976,8 @@ Object {
                   "value": "1",
                 },
               ],
-              "filter": undefined,
-              "nextPos": 50,
-              "pos": 11,
-              "tag": "Function",
-              "value": Object {
-                "nextPos": 23,
-                "pos": 11,
-                "tag": "Identifier",
-                "value": "ARRAY_LENGTH",
-              },
             },
           ],
-          "filter": undefined,
-          "nextPos": 51,
-          "pos": 7,
-          "tag": "Function",
-          "value": Object {
-            "nextPos": 10,
-            "pos": 7,
-            "tag": "Identifier",
-            "value": "ABS",
-          },
         },
         "type": "LoadFunction",
       },
@@ -1960,21 +2027,23 @@ Object {
         "column": "val",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 126,
-            "pos": 123,
-            "tag": "Identifier",
-            "value": "val",
-          },
           "nextPos": 126,
           "pos": 116,
-          "table": Object {
-            "nextPos": 122,
-            "pos": 116,
-            "tag": "Identifier",
-            "value": "table3",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 122,
+              "pos": 116,
+              "tag": "Identifier",
+              "value": "table3",
+            },
+            Object {
+              "nextPos": 126,
+              "pos": 123,
+              "tag": "Identifier",
+              "value": "val",
+            },
+          ],
         },
         "table": "table3",
         "type": "LoadColumn",
@@ -1991,21 +2060,23 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 196,
-            "pos": 194,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 196,
           "pos": 187,
-          "table": Object {
-            "nextPos": 193,
-            "pos": 187,
-            "tag": "Identifier",
-            "value": "table1",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 193,
+              "pos": 187,
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "nextPos": 196,
+              "pos": 194,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -2019,15 +2090,17 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 30,
-            "pos": 26,
-            "tag": "Identifier",
-            "value": "col1",
-          },
           "nextPos": 30,
           "pos": 26,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 30,
+              "pos": 26,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
@@ -2039,15 +2112,17 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 62,
-            "pos": 60,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 62,
           "pos": 60,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 62,
+              "pos": 60,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
@@ -2197,12 +2272,14 @@ Object {
         "sourceTag": Object {
           "nextPos": 8,
           "pos": 7,
-          "star": Object {
-            "nextPos": 8,
-            "pos": 7,
-            "tag": "Star",
-          },
           "tag": "StarIdentifier",
+          "values": Array [
+            Object {
+              "nextPos": 8,
+              "pos": 7,
+              "tag": "Star",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadStar",
@@ -2230,6 +2307,57 @@ Object {
       "type": "Table",
     },
   ],
+}
+`;
+
+exports[`Query Interface Should convert params in array range sql (SELECT (ARRAY[1,2,3,4])[$from:3]) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "from",
+      "nextPos": 29,
+      "pick": Array [],
+      "pos": 24,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "type": "Unknown",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "array",
+      "type": Object {
+        "type": "ArrayItem",
+        "value": Object {
+          "items": Object {
+            "items": Array [
+              Object {
+                "literal": 1,
+                "type": "Number",
+              },
+              Object {
+                "literal": 2,
+                "type": "Number",
+              },
+              Object {
+                "literal": 3,
+                "type": "Number",
+              },
+              Object {
+                "literal": 4,
+                "type": "Number",
+              },
+            ],
+            "type": "Union",
+          },
+          "type": "Array",
+        },
+      },
+    },
+  ],
+  "sources": Array [],
 }
 `;
 
@@ -2299,12 +2427,14 @@ Object {
         "sourceTag": Object {
           "nextPos": 8,
           "pos": 7,
-          "star": Object {
-            "nextPos": 8,
-            "pos": 7,
-            "tag": "Star",
-          },
           "tag": "StarIdentifier",
+          "values": Array [
+            Object {
+              "nextPos": 8,
+              "pos": 7,
+              "tag": "Star",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadStar",
@@ -2345,15 +2475,17 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 11,
-            "pos": 7,
-            "tag": "Identifier",
-            "value": "col1",
-          },
           "nextPos": 11,
           "pos": 7,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 11,
+              "pos": 7,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
@@ -2365,15 +2497,17 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 27,
-            "pos": 23,
-            "tag": "Identifier",
-            "value": "col2",
-          },
           "nextPos": 27,
           "pos": 23,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 27,
+              "pos": 23,
+              "tag": "Identifier",
+              "value": "col2",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
@@ -2489,15 +2623,17 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 11,
-            "pos": 7,
-            "tag": "Identifier",
-            "value": "col1",
-          },
           "nextPos": 11,
           "pos": 7,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 11,
+              "pos": 7,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
@@ -2538,15 +2674,17 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 40,
-            "pos": 38,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 40,
           "pos": 38,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 40,
+              "pos": 38,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -2558,15 +2696,17 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 46,
-            "pos": 42,
-            "tag": "Identifier",
-            "value": "col1",
-          },
           "nextPos": 46,
           "pos": 42,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 46,
+              "pos": 42,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -2627,15 +2767,17 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 40,
-            "pos": 38,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 40,
           "pos": 38,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 40,
+              "pos": 38,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -2647,15 +2789,17 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 46,
-            "pos": 42,
-            "tag": "Identifier",
-            "value": "col1",
-          },
           "nextPos": 46,
           "pos": 42,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 46,
+              "pos": 42,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -2700,15 +2844,17 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 36,
-            "pos": 34,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 36,
           "pos": 34,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 36,
+              "pos": 34,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -2723,12 +2869,14 @@ Object {
         "sourceTag": Object {
           "nextPos": 54,
           "pos": 53,
-          "star": Object {
-            "nextPos": 54,
-            "pos": 53,
-            "tag": "Star",
-          },
           "tag": "StarIdentifier",
+          "values": Array [
+            Object {
+              "nextPos": 54,
+              "pos": 53,
+              "tag": "Star",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadStar",
@@ -2779,21 +2927,23 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 80,
-            "pos": 78,
-            "tag": "Identifier",
-            "value": "id",
-          },
           "nextPos": 80,
           "pos": 71,
-          "table": Object {
-            "nextPos": 77,
-            "pos": 71,
-            "tag": "Identifier",
-            "value": "table1",
-          },
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 77,
+              "pos": 71,
+              "tag": "Identifier",
+              "value": "table1",
+            },
+            Object {
+              "nextPos": 80,
+              "pos": 78,
+              "tag": "Identifier",
+              "value": "id",
+            },
+          ],
         },
         "table": "table1",
         "type": "LoadColumn",
@@ -2810,15 +2960,17 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 105,
-            "pos": 101,
-            "tag": "Identifier",
-            "value": "col1",
-          },
           "nextPos": 105,
           "pos": 101,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 105,
+              "pos": 101,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
@@ -2832,15 +2984,17 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 20,
-            "pos": 16,
-            "tag": "Identifier",
-            "value": "col1",
-          },
           "nextPos": 20,
           "pos": 16,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 20,
+              "pos": 16,
+              "tag": "Identifier",
+              "value": "col1",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
@@ -2852,15 +3006,17 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "name": Object {
-            "nextPos": 26,
-            "pos": 22,
-            "tag": "Identifier",
-            "value": "col2",
-          },
           "nextPos": 26,
           "pos": 22,
           "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 26,
+              "pos": 22,
+              "tag": "Identifier",
+              "value": "col2",
+            },
+          ],
         },
         "table": undefined,
         "type": "LoadColumn",
