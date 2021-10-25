@@ -22,6 +22,7 @@ import {
   isColumns,
   isColumn,
   isEqual,
+  chunk,
   ArrayConstructorTag,
   TableTag,
 } from '@psql-ts/ast';
@@ -36,7 +37,7 @@ import {
   sqlTypes,
   typeAny,
 } from './query-interface-type-instances';
-import { isTypeConstant } from './query-interface.guards';
+import { isTypeConstant, isTypeString } from './query-interface.guards';
 import {
   Type,
   Param,
@@ -102,8 +103,19 @@ const toSources =
     }
   };
 
-export const isTypeEqual = (a: Type, b: Type): boolean =>
-  a.type === 'Any' || b.type === 'Any' ? true : a.type === 'Unknown' || b.type === 'Unknown' ? false : isEqual(a, b);
+export const isTypeEqual = (a: Type, b: Type): boolean => {
+  if (a.type === 'Any' || b.type === 'Any') {
+    return true;
+  } else if (a.type === 'Unknown' || b.type === 'Unknown') {
+    return false;
+  } else if ((a.type === 'Array' && b.type === 'Array') || (a.type === 'ArrayConstant' && b.type === 'ArrayConstant')) {
+    return isTypeEqual(a.items, b.items);
+  } else if ((a.type === 'Union' && b.type === 'Union') || (a.type === 'UnionConstant' && b.type === 'UnionConstant')) {
+    return a.items.every((aItem) => b.items.some((bItem) => isTypeEqual(aItem, bItem)));
+  } else {
+    return isEqual(a, b);
+  }
+};
 
 const coalesce = (...types: Type[]): Type => types.find((item) => item.type !== 'Unknown') ?? typeUnknown;
 
@@ -188,12 +200,25 @@ const toType =
               value: conditionalTypes.find(isTypeConstant) ?? conditionalTypes[0],
             };
       case 'Function':
-        return {
-          type: 'LoadFunction',
-          name: sql.value.value.toLowerCase(),
-          args: sql.args.filter(isExpression).map(recur),
-          sourceTag: sql,
-        };
+        const functionName = sql.value.value.toLowerCase();
+        const args = sql.args.filter(isExpression).map(recur);
+        switch (functionName) {
+          case 'array_agg':
+            return { type: 'ToArray', items: args[0] ?? typeUnknown };
+          case 'json_agg':
+          case 'jsonb_agg':
+            return { type: 'Array', items: args[0] ?? typeUnknown };
+          case 'json_build_object':
+          case 'jsonb_build_object':
+            return {
+              type: 'ObjectLiteral',
+              items: chunk(2, args).flatMap(([name, type]) =>
+                isTypeString(name) && name.literal ? { name: name.literal, type } : [],
+              ),
+            };
+          default:
+            return { type: 'LoadFunction', name: functionName, args, sourceTag: sql };
+        }
       case 'Null':
         return typeNull;
       case 'NullIfTag':

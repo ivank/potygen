@@ -14,5 +14,5 @@ LEFT JOIN customers c2 ON c2.id = a.customer_id
 LEFT JOIN contacts c3 ON c3.id = c2.primary_contact_id
 LEFT JOIN addresses a2 ON a2.id = c3.address_id
 WHERE
-  a.payment_plan = 'BACS' AND p.levelisation_reference = $quarter
+  a.payment_plan = 'BACs' AND p.levelisation_reference = $quarter
 LIMIT $perPage OFFSET $offset

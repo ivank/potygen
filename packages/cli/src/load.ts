@@ -187,7 +187,9 @@ const loadTypeConstant = (type: string, optional?: boolean): TypeConstant => {
 };
 
 const dataColumnToTypeConstant = (enums: Record<string, TypeUnionConstant>, column: LoadedDataColumn): TypeConstant =>
-  column.type === 'USER-DEFINED' ? enums[column.enum] : loadTypeConstant(column.type, column.isNullable === 'YES');
+  column.type === 'USER-DEFINED'
+    ? { ...enums[column.enum], optional: column.isNullable === 'YES' }
+    : loadTypeConstant(column.type, column.isNullable === 'YES');
 
 const toLoadedFunction = ({ returnType, argTypes, ...rest }: LoadedDataFunction): LoadedFunction => ({
   ...rest,
@@ -307,33 +309,39 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
       case 'LoadRecord':
         return context.enums[type.name] ?? { type: 'Unknown' };
       case 'LoadFunction':
-        const funcVariant = context.funcs
-          .filter((func) => func.name === type.name)
-          .find(matchFuncVariant(type.args.map(recur)));
-        if (!funcVariant) {
-          throw new LoadError(
-            type.sourceTag,
-            `No variant of ${type.name} and agrument types (${type.args.map(formatArgumentType).join(', ')})`,
-          );
-        } else {
-          return funcVariant.isAggregate && isTypeArrayConstant(funcVariant.returnType)
-            ? funcVariant.returnType.items
-            : funcVariant.returnType;
-        }
       case 'LoadFunctionArgument':
-        const funcArgVariant = context.funcs
-          .filter((func) => func.name === type.name)
-          .find(matchFuncVariant(type.args.map(recur)));
-        if (!funcArgVariant) {
+        const args = type.args.map(recur);
+        const variants = context.funcs.filter((func) => func.name === type.name);
+        const funcVariant = variants.find(matchFuncVariant(args));
+
+        if (!funcVariant) {
+          const formattedArgs = args.map(formatArgumentType).join(', ');
+          const availableVariants = variants
+            .map((variant) => `(${variant.argTypes.map(formatArgumentType).join(', ')})`)
+            .join(', ');
+
+          console.log(JSON.stringify(variants, null, 2));
+          console.log(args);
+          console.log(funcVariant);
           throw new LoadError(
             type.sourceTag,
-            `No variant of ${type.name} and agrument types (${type.args.map(formatArgumentType).join(', ')})`,
+            `No variant of ${type.name} with arguments: (${formattedArgs}). Available variants were: ${availableVariants}`,
           );
         } else {
-          return funcArgVariant.argTypes[type.index];
+          switch (type.type) {
+            case 'LoadFunction':
+              return funcVariant.isAggregate && isTypeArrayConstant(funcVariant.returnType)
+                ? funcVariant.returnType.items
+                : funcVariant.returnType;
+            case 'LoadFunctionArgument':
+              return funcVariant.argTypes[type.index];
+          }
         }
       case 'LoadStar':
         throw new LoadError(type.sourceTag, 'Should never have load star here');
+      case 'ToArray':
+        const items = recur(type.items);
+        return isTypeArrayConstant(items) ? items : { type: 'ArrayConstant', items };
       case 'Array':
         return { type: 'ArrayConstant', items: recur(type.items) };
       case 'Union':

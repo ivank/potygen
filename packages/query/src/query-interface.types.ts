@@ -81,6 +81,10 @@ export interface TypeArray {
   type: 'Array';
   items: Type;
 }
+export interface TypeToArray {
+  type: 'ToArray';
+  items: Type;
+}
 export interface TypeArrayItem {
   type: 'ArrayItem';
   value: Type;
@@ -145,6 +149,7 @@ export type Type =
   | TypeNamed
   | TypeCoalesce
   | TypeArray
+  | TypeToArray
   | TypeArrayItem
   | TypeUnion
   | TypeObjectLiteral;

@@ -138,7 +138,7 @@ export interface Result {
     lastName: string;
     email?: string;
     address: string;
-    fitIds: any;
+    fitIds: string[];
 }
 export interface Query {
     params: Params;
@@ -336,6 +336,33 @@ export interface Result {
     updatedAt?: Date;
     sourceSystemId?: number;
     mpan: string;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/tables.queries.ts 1`] = `
+"export interface Params {
+    tableNames: {
+        schema: unknown;
+        name: unknown;
+    }[];
+}
+export interface Result {
+    type: \\"Table\\";
+    name: {
+        schema: string;
+        name: string;
+    };
+    columns: {
+        name: string;
+        isNullable: string;
+        enum: string;
+        type: string;
+    }[];
 }
 export interface Query {
     params: Params;

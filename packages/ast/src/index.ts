@@ -200,6 +200,7 @@ export {
   isObject,
   isEqual,
   groupBy,
+  chunk,
 } from './util';
 
 export { Grammar } from './grammar';

@@ -15,6 +15,13 @@ export {
   TypeLoadOperator,
   TypeNamed,
   TypeArray,
+  TypeToArray,
+  TypeAny,
+  TypeArrayItem,
+  TypeContext,
+  TypeLiteral,
+  TypeLoad,
+  TypeOptional,
   TypeUnion,
   TypeUnionConstant,
   TypeArrayConstant,
@@ -56,6 +63,7 @@ export {
   isTypeObjectLiteral,
   isTypeAny,
   isTypeArrayItem,
+  isTypeToArray,
   isTypeObjectLiteralConstant,
 } from './query-interface.guards';
 

@@ -659,7 +659,10 @@ Object {
     Object {
       "name": "fitIds",
       "type": Object {
-        "type": "Any",
+        "items": Object {
+          "type": "String",
+        },
+        "type": "ArrayConstant",
       },
     },
   ],
@@ -1257,6 +1260,107 @@ Object {
       "name": "mpan",
       "type": Object {
         "type": "String",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Load Files Should convert complex sql tables.sql: tables.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "tableNames",
+      "type": Object {
+        "items": Object {
+          "items": Array [
+            Object {
+              "name": "schema",
+              "type": Object {
+                "type": "Unknown",
+              },
+            },
+            Object {
+              "name": "name",
+              "type": Object {
+                "type": "Unknown",
+              },
+            },
+          ],
+          "optional": false,
+          "type": "ObjectLiteralConstant",
+        },
+        "type": "ArrayConstant",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "type",
+      "type": Object {
+        "literal": "Table",
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "name",
+      "type": Object {
+        "items": Array [
+          Object {
+            "name": "schema",
+            "type": Object {
+              "optional": true,
+              "type": "String",
+            },
+          },
+          Object {
+            "name": "name",
+            "type": Object {
+              "optional": true,
+              "type": "String",
+            },
+          },
+        ],
+        "type": "ObjectLiteralConstant",
+      },
+    },
+    Object {
+      "name": "columns",
+      "type": Object {
+        "items": Object {
+          "items": Array [
+            Object {
+              "name": "name",
+              "type": Object {
+                "optional": true,
+                "type": "String",
+              },
+            },
+            Object {
+              "name": "isNullable",
+              "type": Object {
+                "optional": true,
+                "type": "String",
+              },
+            },
+            Object {
+              "name": "enum",
+              "type": Object {
+                "optional": true,
+                "type": "String",
+              },
+            },
+            Object {
+              "name": "type",
+              "type": Object {
+                "optional": true,
+                "type": "String",
+              },
+            },
+          ],
+          "type": "ObjectLiteralConstant",
+        },
+        "type": "ArrayConstant",
       },
     },
   ],

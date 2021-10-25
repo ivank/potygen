@@ -26,6 +26,7 @@ import {
   TypeObjectLiteralConstant,
   TypeObjectLiteral,
   TypeLiteral,
+  TypeToArray,
 } from './query-interface.types';
 
 const typeConstant = [
@@ -68,6 +69,7 @@ export const isTypeLoadFunctionArgument = (type: Type): type is TypeLoadFunction
 export const isTypeLoadOperator = (type: Type): type is TypeLoadOperator => type.type === 'LoadOperator';
 export const isTypeNamed = (type: Type): type is TypeNamed => type.type === 'Named';
 export const isTypeArray = (type: Type): type is TypeArray => type.type === 'Array';
+export const isTypeToArray = (type: Type): type is TypeToArray => type.type === 'ToArray';
 export const isTypeObjectLiteral = (type: Type): type is TypeObjectLiteral => type.type === 'ObjectLiteral';
 export const isTypeUnion = (type: Type): type is TypeUnion => type.type === 'Union';
 export const isTypeArrayConstant = (type: Type): type is TypeArrayConstant => type.type === 'ArrayConstant';

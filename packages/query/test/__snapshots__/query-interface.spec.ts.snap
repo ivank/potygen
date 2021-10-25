@@ -1779,52 +1779,24 @@ Object {
           Object {
             "args": Array [
               Object {
-                "args": Array [
-                  Object {
-                    "column": "integer_col",
-                    "schema": undefined,
-                    "sourceTag": Object {
-                      "name": Object {
-                        "nextPos": 45,
-                        "pos": 34,
-                        "tag": "Identifier",
-                        "value": "integer_col",
-                      },
+                "items": Object {
+                  "column": "integer_col",
+                  "schema": undefined,
+                  "sourceTag": Object {
+                    "name": Object {
                       "nextPos": 45,
                       "pos": 34,
-                      "tag": "Column",
+                      "tag": "Identifier",
+                      "value": "integer_col",
                     },
-                    "table": undefined,
-                    "type": "LoadColumn",
+                    "nextPos": 45,
+                    "pos": 34,
+                    "tag": "Column",
                   },
-                ],
-                "name": "array_agg",
-                "sourceTag": Object {
-                  "args": Array [
-                    Object {
-                      "name": Object {
-                        "nextPos": 45,
-                        "pos": 34,
-                        "tag": "Identifier",
-                        "value": "integer_col",
-                      },
-                      "nextPos": 45,
-                      "pos": 34,
-                      "tag": "Column",
-                    },
-                  ],
-                  "filter": undefined,
-                  "nextPos": 46,
-                  "pos": 24,
-                  "tag": "Function",
-                  "value": Object {
-                    "nextPos": 33,
-                    "pos": 24,
-                    "tag": "Identifier",
-                    "value": "ARRAY_AGG",
-                  },
+                  "table": undefined,
+                  "type": "LoadColumn",
                 },
-                "type": "LoadFunction",
+                "type": "ToArray",
               },
               Object {
                 "literal": 1,

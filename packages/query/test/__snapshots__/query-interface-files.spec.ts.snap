@@ -2856,64 +2856,30 @@ Object {
     Object {
       "name": "fitIds",
       "type": Object {
-        "args": Array [
-          Object {
-            "column": "scheme_account_reference",
-            "schema": undefined,
-            "sourceTag": Object {
-              "name": Object {
-                "nextPos": 463,
-                "pos": 439,
-                "tag": "Identifier",
-                "value": "scheme_account_reference",
-              },
+        "items": Object {
+          "column": "scheme_account_reference",
+          "schema": undefined,
+          "sourceTag": Object {
+            "name": Object {
               "nextPos": 463,
-              "pos": 429,
-              "table": Object {
-                "nextPos": 438,
-                "pos": 429,
-                "tag": "Identifier",
-                "value": "contracts",
-              },
-              "tag": "Column",
+              "pos": 439,
+              "tag": "Identifier",
+              "value": "scheme_account_reference",
             },
-            "table": "contracts",
-            "type": "LoadColumn",
-          },
-        ],
-        "name": "array_agg",
-        "sourceTag": Object {
-          "args": Array [
-            Object {
-              "name": Object {
-                "nextPos": 463,
-                "pos": 439,
-                "tag": "Identifier",
-                "value": "scheme_account_reference",
-              },
-              "nextPos": 463,
+            "nextPos": 463,
+            "pos": 429,
+            "table": Object {
+              "nextPos": 438,
               "pos": 429,
-              "table": Object {
-                "nextPos": 438,
-                "pos": 429,
-                "tag": "Identifier",
-                "value": "contracts",
-              },
-              "tag": "Column",
+              "tag": "Identifier",
+              "value": "contracts",
             },
-          ],
-          "filter": undefined,
-          "nextPos": 464,
-          "pos": 419,
-          "tag": "Function",
-          "value": Object {
-            "nextPos": 428,
-            "pos": 419,
-            "tag": "Identifier",
-            "value": "ARRAY_AGG",
+            "tag": "Column",
           },
+          "table": "contracts",
+          "type": "LoadColumn",
         },
-        "type": "LoadFunction",
+        "type": "ToArray",
       },
     },
   ],
@@ -8546,6 +8512,219 @@ Object {
         "tag": "Table",
       },
       "table": "contracts",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql tables.sql: tables.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "tableNames",
+      "nextPos": 376,
+      "pick": Array [
+        Object {
+          "name": "schema",
+          "type": Object {
+            "type": "Unknown",
+          },
+        },
+        Object {
+          "name": "name",
+          "type": Object {
+            "type": "Unknown",
+          },
+        },
+      ],
+      "pos": 350,
+      "required": true,
+      "spread": true,
+      "type": Object {
+        "items": Object {
+          "name": "row",
+          "type": "Named",
+          "value": Object {
+            "type": "String",
+          },
+        },
+        "type": "Array",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "type",
+      "type": Object {
+        "literal": "Table",
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "name",
+      "type": Object {
+        "items": Array [
+          Object {
+            "name": "schema",
+            "type": Object {
+              "column": "table_schema",
+              "schema": undefined,
+              "sourceTag": Object {
+                "name": Object {
+                  "nextPos": 70,
+                  "pos": 58,
+                  "tag": "Identifier",
+                  "value": "table_schema",
+                },
+                "nextPos": 70,
+                "pos": 58,
+                "tag": "Column",
+              },
+              "table": undefined,
+              "type": "LoadColumn",
+            },
+          },
+          Object {
+            "name": "name",
+            "type": Object {
+              "column": "table_name",
+              "schema": undefined,
+              "sourceTag": Object {
+                "name": Object {
+                  "nextPos": 90,
+                  "pos": 80,
+                  "tag": "Identifier",
+                  "value": "table_name",
+                },
+                "nextPos": 90,
+                "pos": 80,
+                "tag": "Column",
+              },
+              "table": undefined,
+              "type": "LoadColumn",
+            },
+          },
+        ],
+        "type": "ObjectLiteral",
+      },
+    },
+    Object {
+      "name": "columns",
+      "type": Object {
+        "items": Object {
+          "items": Array [
+            Object {
+              "name": "name",
+              "type": Object {
+                "column": "column_name",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "name": Object {
+                    "nextPos": 156,
+                    "pos": 145,
+                    "tag": "Identifier",
+                    "value": "column_name",
+                  },
+                  "nextPos": 156,
+                  "pos": 145,
+                  "tag": "Column",
+                },
+                "table": undefined,
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "isNullable",
+              "type": Object {
+                "column": "is_nullable",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "name": Object {
+                    "nextPos": 183,
+                    "pos": 172,
+                    "tag": "Identifier",
+                    "value": "is_nullable",
+                  },
+                  "nextPos": 183,
+                  "pos": 172,
+                  "tag": "Column",
+                },
+                "table": undefined,
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "enum",
+              "type": Object {
+                "column": "udt_name",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "name": Object {
+                    "nextPos": 201,
+                    "pos": 193,
+                    "tag": "Identifier",
+                    "value": "udt_name",
+                  },
+                  "nextPos": 201,
+                  "pos": 193,
+                  "tag": "Column",
+                },
+                "table": undefined,
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "type",
+              "type": Object {
+                "column": "data_type",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "name": Object {
+                    "nextPos": 220,
+                    "pos": 211,
+                    "tag": "Identifier",
+                    "value": "data_type",
+                  },
+                  "nextPos": 220,
+                  "pos": 211,
+                  "tag": "Column",
+                },
+                "table": undefined,
+                "type": "LoadColumn",
+              },
+            },
+          ],
+          "type": "ObjectLiteral",
+        },
+        "type": "Array",
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "columns",
+      "schema": "information_schema",
+      "sourceTag": Object {
+        "as": undefined,
+        "nextPos": 312,
+        "pos": 286,
+        "schema": Object {
+          "nextPos": 304,
+          "pos": 286,
+          "tag": "Identifier",
+          "value": "information_schema",
+        },
+        "table": Object {
+          "nextPos": 312,
+          "pos": 305,
+          "tag": "Identifier",
+          "value": "columns",
+        },
+        "tag": "Table",
+      },
+      "table": "columns",
       "type": "Table",
     },
   ],

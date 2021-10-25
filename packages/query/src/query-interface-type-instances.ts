@@ -30,6 +30,7 @@ export const sqlTypes: Record<string, TypeConstant> = {
   anyelement: typeAny,
   '"any"': typeAny,
   regconfig: typeString,
+  null: typeNull,
   bigint: typeString,
   int8: typeString,
   bigserial: typeString,

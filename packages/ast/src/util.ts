@@ -43,6 +43,9 @@ export const groupBy = <T, K extends string | number>(predicate: (item: T) => K,
     return { ...acc, [key]: (acc[key] ?? ([] as T[])).concat(item) };
   }, {} as Record<K, T[]>);
 
+export const chunk = <T>(size: number, items: T[]): T[][] =>
+  [...Array(Math.ceil(items.length / size))].map((_, index) => items.slice(index * size, (index + 1) * size));
+
 export const isObject = (item: unknown): item is Record<string, unknown> => typeof item === 'object' && item !== null;
 
 export const isEqual = (a: unknown, b: unknown): boolean => {
