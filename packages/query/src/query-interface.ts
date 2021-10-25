@@ -412,8 +412,6 @@ export const toParams =
             pick: sql.pick.map((name, index) => ({ name: name.value, type: context.columns[index] ?? typeUnknown })),
           },
         ];
-      case 'SetMap':
-        return recur(sql.value);
       case 'ComparationExpression':
         const column = first(sql.values);
         return column && isColumn(column)
@@ -442,6 +440,7 @@ export const toParams =
       case 'Set':
       case 'WrappedExpression':
         return recur(sql.value);
+      case 'SetMap':
       case 'SetItem':
       case 'OrderByItem':
       case 'Having':

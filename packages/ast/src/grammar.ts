@@ -743,9 +743,9 @@ const SetList = Node<SetListTag>(List(SetItem), (values, $, $next) => ({
   values,
   ...context($, $next),
 }));
-const SetMap = Node<SetMapTag>(
+const SetMap = Node<SetMapTag, [ColumnsTag, ValuesTag | SelectTag]>(
   All(Columns, '=', Any(All(Optional(/^ROW/i), Values), Brackets(Select))),
-  ([columns, value], $, $next) => ({ tag: 'SetMap', columns, value, ...context($, $next) }),
+  (values, $, $next) => ({ tag: 'SetMap', values, ...context($, $next) }),
 );
 
 const Set = Node<SetTag>(All(/^SET/i, Any(SetList, SetMap)), ([value], $, $next) => ({

@@ -336,8 +336,7 @@ export interface ValuesTag extends SqlTag {
 }
 export interface SetMapTag extends SqlTag {
   tag: 'SetMap';
-  columns: ColumnsTag;
-  value: ValuesTag | SelectTag;
+  values: [columns: ColumnsTag, values: ValuesTag | SelectTag];
 }
 export interface SetTag extends SqlTag {
   tag: 'Set';
