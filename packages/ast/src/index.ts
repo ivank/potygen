@@ -200,6 +200,7 @@ export {
   isEqual,
   groupBy,
   chunk,
+  toMilliseconds,
 } from './util';
 
 export { Grammar } from './grammar';

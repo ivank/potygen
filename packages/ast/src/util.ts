@@ -64,6 +64,8 @@ export const chunk = <T>(size: number, items: T[]): T[][] =>
 
 export const isObject = (item: unknown): item is Record<string, unknown> => typeof item === 'object' && item !== null;
 
+export const toMilliseconds = (time: [number, number]) => time[0] * 1e3 + time[1] * 1e-6;
+
 export const isEqual = (a: unknown, b: unknown): boolean => {
   if (a === b) {
     return true;

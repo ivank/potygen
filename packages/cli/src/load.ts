@@ -71,7 +71,7 @@ const enumsSql = sql<{ params: { enumNames: string[] }; result: LoadedDataEnum }
   SELECT
     'Enum' AS "type",
     pg_type.typname as "name",
-    JSONB_AGG(pg_enum.enumlabel) as "enum"
+    JSONB_AGG(pg_enum.enumlabel ORDER BY pg_enum.enumsortorder ASC) as "enum"
   FROM pg_catalog.pg_type
   JOIN pg_catalog.pg_enum ON pg_enum.enumtypid = pg_type.oid
   LEFT JOIN information_schema.columns

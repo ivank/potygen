@@ -147,7 +147,7 @@ export class SqlRead extends Readable {
 export class QueryLoader extends Writable {
   public data: LoadedData[] = [];
   constructor(public db: ClientBase, public root: string, public template: string) {
-    super({ objectMode: true, highWaterMark: 1 });
+    super({ objectMode: true });
   }
 
   async _writev(

@@ -286,7 +286,7 @@ export interface Result {
     rate: string;
     startOn: Date;
     tariffCode: string;
-    tariffType: \\"Export\\" | \\"Generation\\" | \\"SEG\\";
+    tariffType: \\"SEG\\" | \\"Generation\\" | \\"Export\\";
     endOn?: Date;
 }
 export interface Query {
@@ -300,7 +300,7 @@ exports[`Traverse Should work: __generated__/read-create.query.queries.ts 1`] = 
 "export interface Params {
     meterId: number;
     reason?: string;
-    type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    type: \\"Closing\\" | \\"Opening\\" | \\"Meter Verification\\" | \\"Quarterly\\";
     dateOn: Date;
     submittedAt?: Date;
     value: number;
@@ -330,7 +330,7 @@ export interface Result {
     meterId: number;
     dateOn: Date;
     value: number;
-    type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    type: \\"Closing\\" | \\"Opening\\" | \\"Meter Verification\\" | \\"Quarterly\\";
     reason?: string;
     createdAt: Date;
     updatedAt?: Date;

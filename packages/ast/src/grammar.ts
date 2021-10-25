@@ -14,104 +14,104 @@ import {
   Stack,
 } from '@ikerin/rd-parse';
 import {
-  IdentifierTag,
-  ColumnTag,
+  AnyTypeTag,
+  ArrayConstructorTag,
+  ArrayIndexRangeTag,
+  ArrayIndexTag,
   AsTag,
-  StringTag,
-  NumberTag,
-  BooleanTag,
-  CountTag,
-  TypeTag,
-  DistinctTag,
-  StarTag,
-  StarIdentifierTag,
-  ParameterTag,
-  CastableDataTypeTag,
-  WhenTag,
-  ElseTag,
-  CaseTag,
-  BinaryOperatorTag,
-  UnaryOperatorTag,
-  ComparationOperatorTag,
-  BinaryExpressionTag,
   BetweenTag,
+  BinaryExpressionTag,
+  BinaryOperatorTag,
+  BooleanTag,
+  CaseSimpleTag,
+  CaseTag,
+  CastableDataTypeTag,
   CastTag,
-  SelectListItemTag,
-  SelectListTag,
+  CollateTag,
+  ColumnsTag,
+  ColumnTag,
+  CombinationTag,
+  ComparationExpressionTag,
+  ComparationOperatorTag,
+  ComparationTypeTag,
+  ConditionalExpressionTag,
+  ConflictConstraintTag,
+  ConflictTag,
+  ConflictTargetTag,
+  CountTag,
+  CTETag,
+  DataTypeTag,
+  DefaultTag,
+  DeleteTag,
+  DistinctTag,
+  DoNothingTag,
+  DoUpdateTag,
+  ElseTag,
+  ExpressionListTag,
+  ExpressionTag,
+  FilterTag,
+  FromListTag,
   FromTag,
-  JoinTypeTag,
-  JoinOnTag,
-  JoinUsingTag,
-  JoinTag,
-  WhereTag,
+  FunctionTag,
   GroupByTag,
   HavingTag,
-  CombinationTag,
-  OrderDirectionTag,
+  IdentifierTag,
+  InsertTag,
+  IntegerTag,
+  JoinOnTag,
+  JoinTag,
+  JoinTypeTag,
+  JoinUsingTag,
+  LimitAllTag,
+  LimitTag,
+  NamedSelectTag,
+  NameTag,
+  NullIfTag,
+  NullTag,
+  NumberTag,
+  OffsetTag,
   OrderByItemTag,
   OrderByTag,
-  LimitTag,
-  OffsetTag,
+  OrderDirectionTag,
+  ParameterTag,
+  QueryTag,
+  QuotedNameTag,
+  ReturningListItemTag,
+  ReturningTag,
+  RowTag,
+  SelectListItemTag,
+  SelectListTag,
   SelectTag,
-  FromListTag,
-  UnaryExpressionTag,
-  NullTag,
-  DefaultTag,
   SetItemTag,
-  ColumnsTag,
-  ValuesTag,
   SetListTag,
   SetMapTag,
   SetTag,
-  TableTag,
-  UpdateFromTag,
-  ReturningTag,
-  UpdateTag,
-  DeleteTag,
-  UsingTag,
-  InsertTag,
-  ValuesListTag,
-  QuotedNameTag,
-  CollateTag,
-  ConflictTargetTag,
-  ConflictConstraintTag,
-  DoNothingTag,
-  DoUpdateTag,
-  ConflictTag,
-  FunctionTag,
-  ArrayConstructorTag,
-  TypeArrayTag,
-  ArrayIndexRangeTag,
-  ArrayIndexTag,
-  RowTag,
-  ReturningListItemTag,
-  ComparationExpressionTag,
-  NullIfTag,
-  ConditionalExpressionTag,
-  FilterTag,
-  WithTag,
-  CTETag,
-  NamedSelectTag,
-  WrappedExpressionTag,
-  NameTag,
-  ExpressionListTag,
-  QueryTag,
-  IntegerTag,
-  ExpressionTag,
-  ComparationTypeTag,
-  CaseSimpleTag,
-  LimitAllTag,
+  StarIdentifierTag,
+  StarTag,
+  StringTag,
   TableIdentifierTag,
+  TableTag,
+  TypeArrayTag,
+  TypeTag,
+  UnaryExpressionTag,
+  UnaryOperatorTag,
+  UpdateFromTag,
+  UpdateTag,
+  UsingTag,
+  ValuesListTag,
+  ValuesTag,
+  WhenTag,
+  WhereTag,
+  WithTag,
+  WrappedExpressionTag,
 } from './grammar.types';
-import { AnyTypeTag, DataTypeTag } from '.';
 
 const context = ({ pos }: Stack, { pos: nextPos }: Stack): { pos: number; nextPos: number } => ({ pos, nextPos });
 
 /**
  * Comma separated list
  */
-const List = (item: Rule, { last, separator = ',' }: { last?: Rule; separator?: Rule } = {}) =>
-  All(Star(All(item, separator)), last ?? item);
+const List = (item: Rule, { separator = ',' }: { separator?: Rule } = {}) => All(Star(All(item, separator)), item);
 
 /**
  * Comma separated list with more than one element
@@ -135,29 +135,33 @@ const RestrictedReservedKeywords =
 const ReservedKeywords =
   /^(ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|DER|RETURNING)$/i;
 
-const RestrictedIdentifier = Node<IdentifierTag>(
+const IdentifierRestricted = Node<IdentifierTag>(
+  Any(IfNot(ReservedKeywords, NameRule), QuotedNameRule),
+  ([value], $, $next) => ({ tag: 'Identifier', value, ...context($, $next) }),
+);
+const IdentifierLessRestricted = Node<IdentifierTag>(
   Any(IfNot(RestrictedReservedKeywords, NameRule), QuotedNameRule),
   ([value], $, $next) => ({ tag: 'Identifier', value, ...context($, $next) }),
 );
-const UnrestrictedIdentifier = Node<IdentifierTag>(Any(NameRule, QuotedNameRule), ([value], $, $next) => {
-  return { tag: 'Identifier', value, ...context($, $next) };
-});
-const Identifier = Node<IdentifierTag>(Any(IfNot(ReservedKeywords, NameRule), QuotedNameRule), ([value], $, $next) => {
+const Identifier = Node<IdentifierTag>(Any(NameRule, QuotedNameRule), ([value], $, $next) => {
   return { tag: 'Identifier', value, ...context($, $next) };
 });
 
-const Column = Any(
-  Node<ColumnTag, [IdentifierTag, IdentifierTag, IdentifierTag]>(
-    All(Identifier, '.', Identifier, '.', Identifier),
-    (values, $, $next) => ({ tag: 'Column', values, ...context($, $next) }),
-  ),
-  Node<ColumnTag, [IdentifierTag, IdentifierTag]>(All(Identifier, '.', Identifier), (values, $, $next) => {
-    return { tag: 'Column', values, ...context($, $next) };
-  }),
-  Node<ColumnTag, [IdentifierTag]>(Identifier, (values, $, $next) => {
-    return { tag: 'Column', values, ...context($, $next) };
-  }),
+const ColumnFullyQualified = Node<ColumnTag, [IdentifierTag, IdentifierTag, IdentifierTag]>(
+  All(Identifier, '.', Identifier, '.', Identifier),
+  (values, $, $next) => ({ tag: 'Column', values, ...context($, $next) }),
 );
+const ColumnQualified = Node<ColumnTag, [IdentifierTag, IdentifierTag]>(
+  All(Identifier, '.', Identifier),
+  (values, $, $next) => {
+    return { tag: 'Column', values, ...context($, $next) };
+  },
+);
+const ColumnUnqualified = Node<ColumnTag, [IdentifierTag]>(IdentifierRestricted, (values, $, $next) => {
+  return { tag: 'Column', values, ...context($, $next) };
+});
+
+const Column = Any(ColumnFullyQualified, ColumnQualified, ColumnUnqualified);
 
 /**
  * Parameteer
@@ -179,7 +183,7 @@ const Parameter = Node<ParameterTag>(
 /**
  * AS Clause
  */
-const As = Node<AsTag, [IdentifierTag]>(Any(All(/^AS/i, Identifier), RestrictedIdentifier), (values, $, $next) => {
+const As = Node<AsTag, [IdentifierTag]>(Any(All(/^AS/i, Identifier), IdentifierLessRestricted), (values, $, $next) => {
   return { tag: 'As', values, ...context($, $next) };
 });
 
@@ -274,7 +278,7 @@ const AnyType = Any(TypeArray, Type);
  * Count
  */
 const CastableRule = (DataType: Rule) =>
-  Node<CastableDataTypeTag>(Any(All(DataType, '::', AnyType), DataType), ([value, type], $, $next) => {
+  Node<CastableDataTypeTag>(All(DataType, Optional(All('::', AnyType))), ([value, type], $, $next) => {
     return type ? { tag: 'PgCast', values: [value, type], ...context($, $next) } : value;
   });
 
@@ -286,7 +290,7 @@ const Count = Node<CountTag, [IntegerTag | ParameterTag]>(CastableRule(Any(Integ
  * Table
  */
 const TableIdentifier = Node<TableIdentifierTag, [IdentifierTag, IdentifierTag] | [IdentifierTag]>(
-  Any(All(Identifier, '.', Identifier), Identifier),
+  Any(All(Identifier, '.', Identifier), IdentifierRestricted),
   (values, $, $next) => ({ tag: 'TableIdentifier', values, ...context($, $next) }),
 );
 const Table = Node<TableTag, [TableIdentifierTag] | [TableIdentifierTag, AsTag]>(
@@ -461,9 +465,10 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
 
     const Function = Node<FunctionTag, [IdentifierTag, ...(ExpressionTag | DistinctTag | OrderByTag | FilterTag)[]]>(
       All(
-        UnrestrictedIdentifier,
-        Brackets(
-          Optional(List(All(Optional(FunctionDistinct), ChildExpression, Optional(OrderRule(ChildExpression))))),
+        Identifier,
+        Any(
+          All('(', ')'),
+          Brackets(List(All(Optional(FunctionDistinct), ChildExpression, Optional(OrderRule(ChildExpression))))),
         ),
         Optional(FunctionFilter),
       ),
@@ -487,9 +492,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
 
     const WrappedExpression = Node<WrappedExpressionTag, [ExpressionTag]>(
       Brackets(ChildExpression),
-      (values, $, $next) => {
-        return { tag: 'WrappedExpression', values, ...context($, $next) };
-      },
+      (values, $, $next) => ({ tag: 'WrappedExpression', values, ...context($, $next) }),
     );
 
     /**
@@ -497,20 +500,22 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * ----------------------------------------------------------------------------------------
      */
     const DataType = Any(
+      OperatorComparation,
+      ColumnFullyQualified,
+      ColumnQualified,
       NullIf,
       Constant,
-      ArrayIndex,
+      Parameter,
       ArrayConstructor,
       Row,
       Exists,
-      InclusionComparation,
-      OperatorComparation,
-      RowWiseComparation,
       BuiltInFunction,
       ConditionalExpression,
       Function,
-      Column,
-      Parameter,
+      InclusionComparation,
+      ArrayIndex,
+      RowWiseComparation,
+      ColumnUnqualified,
       Brackets(SelectExpression),
       WrappedExpression,
     );
@@ -724,7 +729,7 @@ const Select = Y((SelectExpression) => {
 const Expression = ExpressionRule(Select);
 const FromList = FromListRule(Select);
 const Where = WhereRule(Expression);
-const Columns = Node<ColumnsTag>(Brackets(List(Identifier)), (values, $, $next) => {
+const Columns = Node<ColumnsTag>(Brackets(List(IdentifierRestricted)), (values, $, $next) => {
   return { tag: 'Columns', values, ...context($, $next) };
 });
 const Default = Node<DefaultTag>(/^DEFAULT/i, (_, $, $next) => ({ tag: 'Default', ...context($, $next) }));
