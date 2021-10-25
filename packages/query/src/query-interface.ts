@@ -440,9 +440,9 @@ export const toParams =
       case 'Offset':
         return toParams({ ...context, type: typeString })(first(sql.values));
       case 'Set':
-      case 'SetItem':
       case 'WrappedExpression':
         return recur(sql.value);
+      case 'SetItem':
       case 'OrderByItem':
       case 'Having':
       case 'Where':

@@ -730,9 +730,10 @@ const Default = Node<DefaultTag>(/^DEFAULT/i, (_, $, $next) => ({ tag: 'Default'
  * ----------------------------------------------------------------------------------------
  */
 
-const SetItem = Node<SetItemTag>(All(Identifier, '=', Any(Default, Expression)), ([column, value], $, $next) => {
-  return { tag: 'SetItem', column, value, ...context($, $next) };
-});
+const SetItem = Node<SetItemTag, [IdentifierTag, DefaultTag | ExpressionTag]>(
+  All(Identifier, '=', Any(Default, Expression)),
+  (values, $, $next) => ({ tag: 'SetItem', values, ...context($, $next) }),
+);
 
 const Values = Node<ValuesTag>(Brackets(List(Any(Default, Expression))), (values, $, $next) => {
   return { tag: 'Values', values, ...context($, $next) };

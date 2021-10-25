@@ -320,8 +320,7 @@ export interface DefaultTag extends SqlTag {
 }
 export interface SetItemTag extends SqlTag {
   tag: 'SetItem';
-  column: IdentifierTag;
-  value: ExpressionTag | DefaultTag;
+  values: [column: IdentifierTag, value: ExpressionTag | DefaultTag];
 }
 export interface SetListTag extends SqlTag {
   tag: 'SetList';
