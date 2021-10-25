@@ -340,7 +340,7 @@ export interface SetMapTag extends SqlTag {
 }
 export interface SetTag extends SqlTag {
   tag: 'Set';
-  value: SetListTag | SetMapTag;
+  values: [SetListTag | SetMapTag];
 }
 export interface TableTag extends SqlTag {
   tag: 'Table';

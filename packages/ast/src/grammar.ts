@@ -748,11 +748,9 @@ const SetMap = Node<SetMapTag, [ColumnsTag, ValuesTag | SelectTag]>(
   (values, $, $next) => ({ tag: 'SetMap', values, ...context($, $next) }),
 );
 
-const Set = Node<SetTag>(All(/^SET/i, Any(SetList, SetMap)), ([value], $, $next) => ({
-  tag: 'Set',
-  value,
-  ...context($, $next),
-}));
+const Set = Node<SetTag, [SetListTag | SetMapTag]>(All(/^SET/i, Any(SetList, SetMap)), (values, $, $next) => {
+  return { tag: 'Set', values, ...context($, $next) };
+});
 
 const UpdateFrom = Node<UpdateFromTag>(All(/^FROM/i, List(FromList)), (values, $, $next) => {
   return { tag: 'UpdateFrom', values, ...context($, $next) };
