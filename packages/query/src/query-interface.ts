@@ -61,14 +61,19 @@ const toSources =
     const recur = toSources(sources, isResult);
     switch (sql.tag) {
       case 'Table':
-        const name = sql.as ? first(sql.as.values) : sql.table;
+        const asTag = sql.values[1];
+        const tableTags = first(sql.values).values;
+        const table = last(tableTags);
+        const schema = tableTags.length === 2 ? first(tableTags) : undefined;
+
+        const name = asTag ? first(asTag.values) : table;
         return sources.concat({
           type: 'Table',
           isResult,
           sourceTag: sql,
           name: name.value,
-          schema: sql.schema?.value,
-          table: sql.table.value,
+          schema: schema?.value,
+          table: table.value,
         });
       case 'NamedSelect':
         return sources.concat([
@@ -196,6 +201,7 @@ const toType =
         const castType = recur(last(sql.values));
         return isColumn(castData) ? { type: 'Named', name: last(castData.values).value, value: castType } : castType;
       case 'Column':
+        const contextFromTable = context.from ? first(context.from.values) : undefined;
         return {
           type: 'LoadColumn',
           column: last(sql.values).value,
@@ -204,8 +210,15 @@ const toType =
               ? sql.values[1].value
               : sql.values.length === 2
               ? sql.values[0].value
-              : context.from?.table.value,
-          schema: sql.values.length === 3 ? sql.values[0].value : context.from?.schema?.value,
+              : contextFromTable
+              ? last(contextFromTable.values).value
+              : undefined,
+          schema:
+            sql.values.length === 3
+              ? sql.values[0].value
+              : contextFromTable?.values.length === 2
+              ? contextFromTable.values[0].value
+              : undefined,
           sourceTag: sql,
         };
       case 'ConditionalExpression':
@@ -375,6 +388,7 @@ export const toParams =
       }
       case 'Insert':
         const table = sql.values.filter(isTable)[0];
+        const tableName = first(table.values);
         return sql.values.flatMap(
           toParams({
             ...context,
@@ -382,8 +396,8 @@ export const toParams =
               columns.values.map((column) => ({
                 type: 'LoadColumn',
                 column: column.value,
-                table: table.table.value,
-                schema: table.schema?.value,
+                table: last(tableName.values).value,
+                schema: tableName.values.length === 2 ? tableName.values[0].value : undefined,
                 sourceTag: sql,
               })),
             ),
@@ -499,6 +513,7 @@ export const toParams =
       case 'DoNothing':
       case 'GroupBy':
       case 'Identifier':
+      case 'TableIdentifier':
       case 'JoinType':
       case 'JoinUsing':
       case 'Null':

@@ -101,6 +101,7 @@ import {
   ComparationTypeTag,
   CaseSimpleTag,
   LimitAllTag,
+  TableIdentifierTag,
 } from './grammar.types';
 import { AnyTypeTag, DataTypeTag } from '.';
 
@@ -284,13 +285,13 @@ const Count = Node<CountTag, [IntegerTag | ParameterTag]>(CastableRule(Any(Integ
 /**
  * Table
  */
-const Table = Any(
-  Node<TableTag>(All(Identifier, '.', Identifier, Optional(As)), ([schema, table, as], $, $next) => {
-    return { tag: 'Table', table, schema, as, ...context($, $next) };
-  }),
-  Node<TableTag>(All(Identifier, Optional(As)), ([table, as], $, $next) => {
-    return { tag: 'Table', table, as, ...context($, $next) };
-  }),
+const TableIdentifier = Node<TableIdentifierTag, [IdentifierTag, IdentifierTag] | [IdentifierTag]>(
+  Any(All(Identifier, '.', Identifier), Identifier),
+  (values, $, $next) => ({ tag: 'TableIdentifier', values, ...context($, $next) }),
+);
+const Table = Node<TableTag, [TableIdentifierTag] | [TableIdentifierTag, AsTag]>(
+  All(TableIdentifier, Optional(As)),
+  (values, $, $next) => ({ tag: 'Table', values, ...context($, $next) }),
 );
 
 /**

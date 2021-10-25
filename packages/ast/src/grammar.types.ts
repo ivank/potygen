@@ -342,11 +342,13 @@ export interface SetTag extends SqlTag {
   tag: 'Set';
   values: [SetListTag | SetMapTag];
 }
+export interface TableIdentifierTag extends SqlTag {
+  tag: 'TableIdentifier';
+  values: [schema: IdentifierTag, table: IdentifierTag] | [table: IdentifierTag];
+}
 export interface TableTag extends SqlTag {
   tag: 'Table';
-  schema?: IdentifierTag;
-  table: IdentifierTag;
-  as?: AsTag;
+  values: [table: TableIdentifierTag] | [table: TableIdentifierTag, as: AsTag];
 }
 export interface UpdateFromTag extends SqlTag {
   tag: 'UpdateFrom';
@@ -447,6 +449,7 @@ export type ExpressionTag =
 export type Tag =
   | NullTag
   | IdentifierTag
+  | TableIdentifierTag
   | ParameterTag
   | ColumnTag
   | AsTag
