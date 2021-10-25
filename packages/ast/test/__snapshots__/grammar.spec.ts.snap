@@ -4727,28 +4727,30 @@ Object {
       "tag": "OrderBy",
       "values": Array [
         Object {
-          "direction": Object {
-            "nextPos": 89,
-            "pos": 86,
-            "tag": "OrderDirection",
-            "value": "ASC",
-          },
           "nextPos": 89,
           "pos": 82,
           "tag": "OrderByItem",
-          "value": Object {
-            "nextPos": 85,
-            "pos": 82,
-            "tag": "Column",
-            "values": Array [
-              Object {
-                "nextPos": 85,
-                "pos": 82,
-                "tag": "Identifier",
-                "value": "col",
-              },
-            ],
-          },
+          "values": Array [
+            Object {
+              "nextPos": 85,
+              "pos": 82,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 85,
+                  "pos": 82,
+                  "tag": "Identifier",
+                  "value": "col",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 89,
+              "pos": 86,
+              "tag": "OrderDirection",
+              "value": "ASC",
+            },
+          ],
         },
       ],
     },
@@ -4820,28 +4822,30 @@ Object {
                   "tag": "OrderBy",
                   "values": Array [
                     Object {
-                      "direction": Object {
-                        "nextPos": 38,
-                        "pos": 34,
-                        "tag": "OrderDirection",
-                        "value": "DESC",
-                      },
                       "nextPos": 38,
                       "pos": 29,
                       "tag": "OrderByItem",
-                      "value": Object {
-                        "nextPos": 33,
-                        "pos": 29,
-                        "tag": "Column",
-                        "values": Array [
-                          Object {
-                            "nextPos": 33,
-                            "pos": 29,
-                            "tag": "Identifier",
-                            "value": "col1",
-                          },
-                        ],
-                      },
+                      "values": Array [
+                        Object {
+                          "nextPos": 33,
+                          "pos": 29,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "nextPos": 33,
+                              "pos": 29,
+                              "tag": "Identifier",
+                              "value": "col1",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 38,
+                          "pos": 34,
+                          "tag": "OrderDirection",
+                          "value": "DESC",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -10885,28 +10889,30 @@ Object {
       "tag": "OrderBy",
       "values": Array [
         Object {
-          "direction": Object {
-            "nextPos": 37,
-            "pos": 34,
-            "tag": "OrderDirection",
-            "value": "ASC",
-          },
           "nextPos": 37,
           "pos": 30,
           "tag": "OrderByItem",
-          "value": Object {
-            "nextPos": 33,
-            "pos": 30,
-            "tag": "Column",
-            "values": Array [
-              Object {
-                "nextPos": 33,
-                "pos": 30,
-                "tag": "Identifier",
-                "value": "col",
-              },
-            ],
-          },
+          "values": Array [
+            Object {
+              "nextPos": 33,
+              "pos": 30,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 33,
+                  "pos": 30,
+                  "tag": "Identifier",
+                  "value": "col",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 37,
+              "pos": 34,
+              "tag": "OrderDirection",
+              "value": "ASC",
+            },
+          ],
         },
       ],
     },
@@ -10978,47 +10984,50 @@ Object {
       "tag": "OrderBy",
       "values": Array [
         Object {
-          "direction": Object {
-            "nextPos": 38,
-            "pos": 35,
-            "tag": "OrderDirection",
-            "value": "ASC",
-          },
           "nextPos": 38,
           "pos": 30,
           "tag": "OrderByItem",
-          "value": Object {
-            "nextPos": 34,
-            "pos": 30,
-            "tag": "Column",
-            "values": Array [
-              Object {
-                "nextPos": 34,
-                "pos": 30,
-                "tag": "Identifier",
-                "value": "col1",
-              },
-            ],
-          },
+          "values": Array [
+            Object {
+              "nextPos": 34,
+              "pos": 30,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 34,
+                  "pos": 30,
+                  "tag": "Identifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 38,
+              "pos": 35,
+              "tag": "OrderDirection",
+              "value": "ASC",
+            },
+          ],
         },
         Object {
-          "direction": undefined,
           "nextPos": 44,
           "pos": 40,
           "tag": "OrderByItem",
-          "value": Object {
-            "nextPos": 44,
-            "pos": 40,
-            "tag": "Column",
-            "values": Array [
-              Object {
-                "nextPos": 44,
-                "pos": 40,
-                "tag": "Identifier",
-                "value": "col2",
-              },
-            ],
-          },
+          "values": Array [
+            Object {
+              "nextPos": 44,
+              "pos": 40,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 44,
+                  "pos": 40,
+                  "tag": "Identifier",
+                  "value": "col2",
+                },
+              ],
+            },
+          ],
         },
       ],
     },
@@ -11102,34 +11111,36 @@ Object {
       "tag": "OrderBy",
       "values": Array [
         Object {
-          "direction": Object {
-            "nextPos": 55,
-            "pos": 52,
-            "tag": "OrderDirection",
-            "value": "ASC",
-          },
           "nextPos": 55,
           "pos": 33,
           "tag": "OrderByItem",
-          "value": Object {
-            "nextPos": 51,
-            "pos": 33,
-            "tag": "Column",
-            "values": Array [
-              Object {
-                "nextPos": 35,
-                "pos": 33,
-                "tag": "Identifier",
-                "value": "mr",
-              },
-              Object {
-                "nextPos": 51,
-                "pos": 36,
-                "tag": "Identifier",
-                "value": "DateOfReading",
-              },
-            ],
-          },
+          "values": Array [
+            Object {
+              "nextPos": 51,
+              "pos": 33,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 35,
+                  "pos": 33,
+                  "tag": "Identifier",
+                  "value": "mr",
+                },
+                Object {
+                  "nextPos": 51,
+                  "pos": 36,
+                  "tag": "Identifier",
+                  "value": "DateOfReading",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 55,
+              "pos": 52,
+              "tag": "OrderDirection",
+              "value": "ASC",
+            },
+          ],
         },
       ],
     },
@@ -11201,111 +11212,113 @@ Object {
       "tag": "OrderBy",
       "values": Array [
         Object {
-          "direction": Object {
-            "nextPos": 96,
-            "pos": 92,
-            "tag": "OrderDirection",
-            "value": "DESC",
-          },
           "nextPos": 96,
           "pos": 30,
           "tag": "OrderByItem",
-          "value": Object {
-            "nextPos": 91,
-            "pos": 30,
-            "tag": "Case",
-            "values": Array [
-              Object {
-                "nextPos": 87,
-                "pos": 35,
-                "tag": "When",
-                "values": Array [
-                  Object {
-                    "nextPos": 77,
-                    "pos": 40,
-                    "tag": "BinaryExpression",
-                    "values": Array [
-                      Object {
-                        "nextPos": 56,
-                        "pos": 40,
-                        "tag": "BinaryExpression",
-                        "values": Array [
-                          Object {
-                            "nextPos": 47,
-                            "pick": Array [],
-                            "pos": 40,
-                            "required": false,
-                            "tag": "Parameter",
-                            "type": "single",
-                            "value": "param1",
-                          },
-                          Object {
-                            "nextPos": 49,
-                            "pos": 48,
-                            "tag": "BinaryOperator",
-                            "value": "=",
-                          },
-                          Object {
-                            "nextPos": 56,
-                            "pos": 50,
-                            "tag": "String",
-                            "value": "val1",
-                          },
-                        ],
-                      },
-                      Object {
-                        "nextPos": 60,
-                        "pos": 57,
-                        "tag": "BinaryOperator",
-                        "value": "AND",
-                      },
-                      Object {
-                        "nextPos": 77,
-                        "pos": 61,
-                        "tag": "BinaryExpression",
-                        "values": Array [
-                          Object {
-                            "nextPos": 68,
-                            "pick": Array [],
-                            "pos": 61,
-                            "required": false,
-                            "tag": "Parameter",
-                            "type": "single",
-                            "value": "param2",
-                          },
-                          Object {
-                            "nextPos": 70,
-                            "pos": 69,
-                            "tag": "BinaryOperator",
-                            "value": "=",
-                          },
-                          Object {
-                            "nextPos": 77,
-                            "pos": 71,
-                            "tag": "String",
-                            "value": "DESC",
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                  Object {
-                    "nextPos": 87,
-                    "pos": 83,
-                    "tag": "Column",
-                    "values": Array [
-                      Object {
-                        "nextPos": 87,
-                        "pos": 83,
-                        "tag": "Identifier",
-                        "value": "col2",
-                      },
-                    ],
-                  },
-                ],
-              },
-            ],
-          },
+          "values": Array [
+            Object {
+              "nextPos": 91,
+              "pos": 30,
+              "tag": "Case",
+              "values": Array [
+                Object {
+                  "nextPos": 87,
+                  "pos": 35,
+                  "tag": "When",
+                  "values": Array [
+                    Object {
+                      "nextPos": 77,
+                      "pos": 40,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 56,
+                          "pos": 40,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 47,
+                              "pick": Array [],
+                              "pos": 40,
+                              "required": false,
+                              "tag": "Parameter",
+                              "type": "single",
+                              "value": "param1",
+                            },
+                            Object {
+                              "nextPos": 49,
+                              "pos": 48,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "nextPos": 56,
+                              "pos": 50,
+                              "tag": "String",
+                              "value": "val1",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 60,
+                          "pos": 57,
+                          "tag": "BinaryOperator",
+                          "value": "AND",
+                        },
+                        Object {
+                          "nextPos": 77,
+                          "pos": 61,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 68,
+                              "pick": Array [],
+                              "pos": 61,
+                              "required": false,
+                              "tag": "Parameter",
+                              "type": "single",
+                              "value": "param2",
+                            },
+                            Object {
+                              "nextPos": 70,
+                              "pos": 69,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "nextPos": 77,
+                              "pos": 71,
+                              "tag": "String",
+                              "value": "DESC",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 87,
+                      "pos": 83,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 87,
+                          "pos": 83,
+                          "tag": "Identifier",
+                          "value": "col2",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 96,
+              "pos": 92,
+              "tag": "OrderDirection",
+              "value": "DESC",
+            },
+          ],
         },
       ],
     },

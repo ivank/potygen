@@ -293,8 +293,7 @@ export interface OrderDirectionTag extends SqlTag {
 }
 export interface OrderByItemTag extends SqlTag {
   tag: 'OrderByItem';
-  value: ExpressionTag;
-  direction: OrderDirectionTag;
+  values: [order: ExpressionTag] | [order: ExpressionTag, direction: OrderDirectionTag];
 }
 export interface OrderByTag extends SqlTag {
   tag: 'OrderBy';

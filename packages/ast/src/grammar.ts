@@ -348,13 +348,11 @@ const OrderRule = (Expression: Rule): Rule => {
   const OrderDirection = Node<OrderDirectionTag>(/^(ASC|DESC|USNIG >|USING <)/i, ([value], $, $next) => {
     return { tag: 'OrderDirection', value, ...context($, $next) };
   });
-  const OrderByItem = Node<OrderByItemTag>(
+  const OrderByItem = Node<OrderByItemTag, [ExpressionTag] | [ExpressionTag, OrderDirectionTag]>(
     All(Expression, Optional(OrderDirection)),
-    ([value, direction], $, $next) => {
-      return { tag: 'OrderByItem', value, direction, ...context($, $next) };
-    },
+    (values, $, $next) => ({ tag: 'OrderByItem', values, ...context($, $next) }),
   );
-  return Node<OrderByTag>(All(/^ORDER BY/i, List(OrderByItem)), (values, $, $next) => {
+  return Node<OrderByTag, OrderByItemTag[]>(All(/^ORDER BY/i, List(OrderByItem)), (values, $, $next) => {
     return { tag: 'OrderBy', values, ...context($, $next) };
   });
 };

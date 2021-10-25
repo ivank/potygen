@@ -439,11 +439,11 @@ export const toParams =
       case 'Limit':
       case 'Offset':
         return toParams({ ...context, type: typeString })(sql.value);
-      case 'OrderByItem':
       case 'Set':
       case 'SetItem':
       case 'WrappedExpression':
         return recur(sql.value);
+      case 'OrderByItem':
       case 'Having':
       case 'Where':
       case 'From':
