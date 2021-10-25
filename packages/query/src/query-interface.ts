@@ -97,9 +97,8 @@ const toSources =
       case 'Join':
       case 'From':
       case 'Where':
-        return sources.concat(sql.values.flatMap(recur));
       case 'Having':
-        return sources.concat(recur(sql.value));
+        return sources.concat(sql.values.flatMap(recur));
       case 'CTE':
         return sources.concat({
           type: 'Query',
@@ -440,12 +439,12 @@ export const toParams =
       case 'Limit':
       case 'Offset':
         return toParams({ ...context, type: typeString })(sql.value);
-      case 'Having':
       case 'OrderByItem':
       case 'Set':
       case 'SetItem':
       case 'WrappedExpression':
         return recur(sql.value);
+      case 'Having':
       case 'Where':
       case 'From':
       case 'JoinOn':

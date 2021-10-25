@@ -280,7 +280,7 @@ export interface GroupByTag extends SqlTag {
 }
 export interface HavingTag extends SqlTag {
   tag: 'Having';
-  value: ExpressionTag;
+  values: [ExpressionTag];
 }
 export interface CombinationTag extends SqlTag {
   tag: 'Combination';

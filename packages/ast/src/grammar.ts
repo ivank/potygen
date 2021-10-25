@@ -657,11 +657,9 @@ const Select = Y((SelectExpression) => {
    * Having
    * ----------------------------------------------------------------------------------------
    */
-  const Having = Node<HavingTag>(All(/^HAVING/i, Expression), ([value], $, $next) => ({
-    tag: 'Having',
-    value,
-    ...context($, $next),
-  }));
+  const Having = Node<HavingTag, [ExpressionTag]>(All(/^HAVING/i, Expression), (values, $, $next) => {
+    return { tag: 'Having', values, ...context($, $next) };
+  });
 
   /**
    * Select Parts
