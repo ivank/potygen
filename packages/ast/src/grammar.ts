@@ -100,6 +100,7 @@ import {
   ExpressionTag,
   ComparationTypeTag,
   CaseSimpleTag,
+  LimitAllTag,
 } from './grammar.types';
 import { AnyTypeTag, DataTypeTag } from '.';
 
@@ -691,14 +692,13 @@ const Select = Y((SelectExpression) => {
    * Limit
    * ----------------------------------------------------------------------------------------
    */
-  const Limit = Node<LimitTag>(All(/^LIMIT/i, Any(Count, /^ALL/i)), ([value], $, $next) => {
-    return { tag: 'Limit', value, ...context($, $next) };
+  const LimitAll = Node<LimitAllTag>(/^ALL/i, (_, $, $next) => ({ tag: 'LimitAll', ...context($, $next) }));
+  const Limit = Node<LimitTag, [CountTag | LimitAllTag]>(All(/^LIMIT/i, Any(Count, LimitAll)), (values, $, $next) => {
+    return { tag: 'Limit', values, ...context($, $next) };
   });
-  const Offset = Node<OffsetTag>(All(/^OFFSET/i, Count), ([value], $, $next) => ({
-    tag: 'Offset',
-    value,
-    ...context($, $next),
-  }));
+  const Offset = Node<OffsetTag, [CountTag]>(All(/^OFFSET/i, Count), (values, $, $next) => {
+    return { tag: 'Offset', values, ...context($, $next) };
+  });
 
   return Node<SelectTag>(
     All(

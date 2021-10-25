@@ -91,6 +91,7 @@ import {
   IntegerTag,
   ComparationTypeTag,
   CaseSimpleTag,
+  LimitAllTag,
 } from './grammar.types';
 
 export const isCTETag = (value: SqlTag): value is CTETag => value.tag === 'CTE';
@@ -177,6 +178,7 @@ export const isOrderDirection = (value: SqlTag): value is OrderDirectionTag => v
 export const isOrderByItem = (value: SqlTag): value is OrderByItemTag => value.tag === 'OrderByItem';
 export const isOrderBy = (value: SqlTag): value is OrderByTag => value.tag === 'OrderBy';
 export const isLimit = (value: SqlTag): value is LimitTag => value.tag === 'Limit';
+export const isLimitAll = (value: SqlTag): value is LimitAllTag => value.tag === 'LimitAll';
 export const isOffset = (value: SqlTag): value is OffsetTag => value.tag === 'Offset';
 export const isSelect = (value: SqlTag): value is SelectTag => value.tag === 'Select';
 export const isDefault = (value: SqlTag): value is DefaultTag => value.tag === 'Default';

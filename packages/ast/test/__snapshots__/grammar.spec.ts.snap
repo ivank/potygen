@@ -4758,19 +4758,21 @@ Object {
       "nextPos": 97,
       "pos": 90,
       "tag": "Limit",
-      "value": Object {
-        "nextPos": 97,
-        "pos": 96,
-        "tag": "Count",
-        "values": Array [
-          Object {
-            "nextPos": 97,
-            "pos": 96,
-            "tag": "Integer",
-            "value": "1",
-          },
-        ],
-      },
+      "values": Array [
+        Object {
+          "nextPos": 97,
+          "pos": 96,
+          "tag": "Count",
+          "values": Array [
+            Object {
+              "nextPos": 97,
+              "pos": 96,
+              "tag": "Integer",
+              "value": "1",
+            },
+          ],
+        },
+      ],
     },
   ],
 }
@@ -9438,19 +9440,69 @@ Object {
       "nextPos": 17,
       "pos": 9,
       "tag": "Limit",
-      "value": Object {
-        "nextPos": 17,
-        "pos": 15,
-        "tag": "Count",
-        "values": Array [
-          Object {
-            "nextPos": 17,
-            "pos": 15,
-            "tag": "Integer",
-            "value": "10",
-          },
-        ],
-      },
+      "values": Array [
+        Object {
+          "nextPos": 17,
+          "pos": 15,
+          "tag": "Count",
+          "values": Array [
+            Object {
+              "nextPos": 17,
+              "pos": 15,
+              "tag": "Integer",
+              "value": "10",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql limit all (SELECT * LIMIT ALL): limit all 1`] = `
+Object {
+  "nextPos": 18,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 8,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 8,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 8,
+              "pos": 7,
+              "tag": "StarIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 8,
+                  "pos": 7,
+                  "tag": "Star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 18,
+      "pos": 9,
+      "tag": "Limit",
+      "values": Array [
+        Object {
+          "nextPos": 18,
+          "pos": 15,
+          "tag": "LimitAll",
+        },
+      ],
     },
   ],
 }
@@ -9492,37 +9544,41 @@ Object {
       "nextPos": 17,
       "pos": 9,
       "tag": "Limit",
-      "value": Object {
-        "nextPos": 17,
-        "pos": 15,
-        "tag": "Count",
-        "values": Array [
-          Object {
-            "nextPos": 17,
-            "pos": 15,
-            "tag": "Integer",
-            "value": "10",
-          },
-        ],
-      },
+      "values": Array [
+        Object {
+          "nextPos": 17,
+          "pos": 15,
+          "tag": "Count",
+          "values": Array [
+            Object {
+              "nextPos": 17,
+              "pos": 15,
+              "tag": "Integer",
+              "value": "10",
+            },
+          ],
+        },
+      ],
     },
     Object {
       "nextPos": 27,
       "pos": 18,
       "tag": "Offset",
-      "value": Object {
-        "nextPos": 27,
-        "pos": 25,
-        "tag": "Count",
-        "values": Array [
-          Object {
-            "nextPos": 27,
-            "pos": 25,
-            "tag": "Integer",
-            "value": "10",
-          },
-        ],
-      },
+      "values": Array [
+        Object {
+          "nextPos": 27,
+          "pos": 25,
+          "tag": "Count",
+          "values": Array [
+            Object {
+              "nextPos": 27,
+              "pos": 25,
+              "tag": "Integer",
+              "value": "10",
+            },
+          ],
+        },
+      ],
     },
   ],
 }
@@ -9590,71 +9646,75 @@ Object {
       "nextPos": 39,
       "pos": 21,
       "tag": "Limit",
-      "value": Object {
-        "nextPos": 39,
-        "pos": 27,
-        "tag": "Count",
-        "values": Array [
-          Object {
-            "nextPos": 39,
-            "pos": 27,
-            "tag": "PgCast",
-            "values": Array [
-              Object {
-                "nextPos": 34,
-                "pick": Array [],
-                "pos": 27,
-                "required": false,
-                "tag": "Parameter",
-                "type": "single",
-                "value": "param1",
-              },
-              Object {
-                "nextPos": 39,
-                "param": undefined,
-                "pos": 36,
-                "tag": "Type",
-                "value": "int",
-              },
-            ],
-          },
-        ],
-      },
+      "values": Array [
+        Object {
+          "nextPos": 39,
+          "pos": 27,
+          "tag": "Count",
+          "values": Array [
+            Object {
+              "nextPos": 39,
+              "pos": 27,
+              "tag": "PgCast",
+              "values": Array [
+                Object {
+                  "nextPos": 34,
+                  "pick": Array [],
+                  "pos": 27,
+                  "required": false,
+                  "tag": "Parameter",
+                  "type": "single",
+                  "value": "param1",
+                },
+                Object {
+                  "nextPos": 39,
+                  "param": undefined,
+                  "pos": 36,
+                  "tag": "Type",
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
     Object {
       "nextPos": 59,
       "pos": 40,
       "tag": "Offset",
-      "value": Object {
-        "nextPos": 59,
-        "pos": 47,
-        "tag": "Count",
-        "values": Array [
-          Object {
-            "nextPos": 59,
-            "pos": 47,
-            "tag": "PgCast",
-            "values": Array [
-              Object {
-                "nextPos": 54,
-                "pick": Array [],
-                "pos": 47,
-                "required": false,
-                "tag": "Parameter",
-                "type": "single",
-                "value": "param2",
-              },
-              Object {
-                "nextPos": 59,
-                "param": undefined,
-                "pos": 56,
-                "tag": "Type",
-                "value": "int",
-              },
-            ],
-          },
-        ],
-      },
+      "values": Array [
+        Object {
+          "nextPos": 59,
+          "pos": 47,
+          "tag": "Count",
+          "values": Array [
+            Object {
+              "nextPos": 59,
+              "pos": 47,
+              "tag": "PgCast",
+              "values": Array [
+                Object {
+                  "nextPos": 54,
+                  "pick": Array [],
+                  "pos": 47,
+                  "required": false,
+                  "tag": "Parameter",
+                  "type": "single",
+                  "value": "param2",
+                },
+                Object {
+                  "nextPos": 59,
+                  "param": undefined,
+                  "pos": 56,
+                  "tag": "Type",
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
   ],
 }
@@ -9722,43 +9782,47 @@ Object {
       "nextPos": 34,
       "pos": 21,
       "tag": "Limit",
-      "value": Object {
-        "nextPos": 34,
-        "pos": 27,
-        "tag": "Count",
-        "values": Array [
-          Object {
-            "nextPos": 34,
-            "pick": Array [],
-            "pos": 27,
-            "required": false,
-            "tag": "Parameter",
-            "type": "single",
-            "value": "param1",
-          },
-        ],
-      },
+      "values": Array [
+        Object {
+          "nextPos": 34,
+          "pos": 27,
+          "tag": "Count",
+          "values": Array [
+            Object {
+              "nextPos": 34,
+              "pick": Array [],
+              "pos": 27,
+              "required": false,
+              "tag": "Parameter",
+              "type": "single",
+              "value": "param1",
+            },
+          ],
+        },
+      ],
     },
     Object {
       "nextPos": 49,
       "pos": 35,
       "tag": "Offset",
-      "value": Object {
-        "nextPos": 49,
-        "pos": 42,
-        "tag": "Count",
-        "values": Array [
-          Object {
-            "nextPos": 49,
-            "pick": Array [],
-            "pos": 42,
-            "required": false,
-            "tag": "Parameter",
-            "type": "single",
-            "value": "param2",
-          },
-        ],
-      },
+      "values": Array [
+        Object {
+          "nextPos": 49,
+          "pos": 42,
+          "tag": "Count",
+          "values": Array [
+            Object {
+              "nextPos": 49,
+              "pick": Array [],
+              "pos": 42,
+              "required": false,
+              "tag": "Parameter",
+              "type": "single",
+              "value": "param2",
+            },
+          ],
+        },
+      ],
     },
   ],
 }
@@ -10515,19 +10579,21 @@ Object {
                   "nextPos": 43,
                   "pos": 36,
                   "tag": "Limit",
-                  "value": Object {
-                    "nextPos": 43,
-                    "pos": 42,
-                    "tag": "Count",
-                    "values": Array [
-                      Object {
-                        "nextPos": 43,
-                        "pos": 42,
-                        "tag": "Integer",
-                        "value": "1",
-                      },
-                    ],
-                  },
+                  "values": Array [
+                    Object {
+                      "nextPos": 43,
+                      "pos": 42,
+                      "tag": "Count",
+                      "values": Array [
+                        Object {
+                          "nextPos": 43,
+                          "pos": 42,
+                          "tag": "Integer",
+                          "value": "1",
+                        },
+                      ],
+                    },
+                  ],
                 },
               ],
             },
@@ -10807,19 +10873,21 @@ Object {
       "nextPos": 18,
       "pos": 9,
       "tag": "Offset",
-      "value": Object {
-        "nextPos": 18,
-        "pos": 16,
-        "tag": "Count",
-        "values": Array [
-          Object {
-            "nextPos": 18,
-            "pos": 16,
-            "tag": "Integer",
-            "value": "10",
-          },
-        ],
-      },
+      "values": Array [
+        Object {
+          "nextPos": 18,
+          "pos": 16,
+          "tag": "Count",
+          "values": Array [
+            Object {
+              "nextPos": 18,
+              "pos": 16,
+              "tag": "Integer",
+              "value": "10",
+            },
+          ],
+        },
+      ],
     },
   ],
 }
@@ -13348,19 +13416,21 @@ Object {
                       "nextPos": 49,
                       "pos": 42,
                       "tag": "Limit",
-                      "value": Object {
-                        "nextPos": 49,
-                        "pos": 48,
-                        "tag": "Count",
-                        "values": Array [
-                          Object {
-                            "nextPos": 49,
-                            "pos": 48,
-                            "tag": "Integer",
-                            "value": "1",
-                          },
-                        ],
-                      },
+                      "values": Array [
+                        Object {
+                          "nextPos": 49,
+                          "pos": 48,
+                          "tag": "Count",
+                          "values": Array [
+                            Object {
+                              "nextPos": 49,
+                              "pos": 48,
+                              "tag": "Integer",
+                              "value": "1",
+                            },
+                          ],
+                        },
+                      ],
                     },
                   ],
                 },
@@ -19948,19 +20018,21 @@ Object {
                   "nextPos": 43,
                   "pos": 36,
                   "tag": "Limit",
-                  "value": Object {
-                    "nextPos": 43,
-                    "pos": 42,
-                    "tag": "Count",
-                    "values": Array [
-                      Object {
-                        "nextPos": 43,
-                        "pos": 42,
-                        "tag": "Integer",
-                        "value": "1",
-                      },
-                    ],
-                  },
+                  "values": Array [
+                    Object {
+                      "nextPos": 43,
+                      "pos": 42,
+                      "tag": "Count",
+                      "values": Array [
+                        Object {
+                          "nextPos": 43,
+                          "pos": 42,
+                          "tag": "Integer",
+                          "value": "1",
+                        },
+                      ],
+                    },
+                  ],
                 },
               ],
             },

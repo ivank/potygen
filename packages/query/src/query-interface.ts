@@ -438,7 +438,7 @@ export const toParams =
         return toParams({ ...context, type: toTypeRecur(last(sql.values)) })(first(sql.values));
       case 'Limit':
       case 'Offset':
-        return toParams({ ...context, type: typeString })(sql.value);
+        return toParams({ ...context, type: typeString })(first(sql.values));
       case 'Set':
       case 'SetItem':
       case 'WrappedExpression':
@@ -482,6 +482,7 @@ export const toParams =
       case 'When':
       case 'NullIfTag':
         return sql.values.flatMap(recur);
+      case 'LimitAll':
       case 'Null':
       case 'Number':
       case 'Integer':

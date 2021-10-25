@@ -63,6 +63,7 @@ describe('Sql', () => {
     ${'select count filter'}          | ${'SELECT (COUNT(account_levelisations.id) FILTER (WHERE account_levelisations.state = \'Pending\'))::int AS "pendingCount" FROM account_levelisations'}
     ${'param specific type'}          | ${'SELECT * FROM table1 WHERE ($active::BOOLEAN IS NULL OR $active::BOOLEAN = (case when table1.url IS NOT NULL then FALSE else TRUE end))'}
     ${'limit'}                        | ${'SELECT * LIMIT 10'}
+    ${'limit all'}                    | ${'SELECT * LIMIT ALL'}
     ${'offset'}                       | ${'SELECT * OFFSET 10'}
     ${'limit offset'}                 | ${'SELECT * LIMIT 10 OFFSET 10'}
     ${'from'}                         | ${'SELECT * FROM jobs'}

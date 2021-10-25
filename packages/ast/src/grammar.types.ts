@@ -301,11 +301,14 @@ export interface OrderByTag extends SqlTag {
 }
 export interface LimitTag extends SqlTag {
   tag: 'Limit';
-  value: CountTag;
+  values: [CountTag | LimitAllTag];
+}
+export interface LimitAllTag extends SqlTag {
+  tag: 'LimitAll';
 }
 export interface OffsetTag extends SqlTag {
   tag: 'Offset';
-  value: CountTag;
+  values: [CountTag];
 }
 export interface SelectTag extends SqlTag {
   tag: 'Select';
@@ -493,6 +496,7 @@ export type Tag =
   | OrderByItemTag
   | OrderByTag
   | LimitTag
+  | LimitAllTag
   | OffsetTag
   | SelectTag
   | DefaultTag
