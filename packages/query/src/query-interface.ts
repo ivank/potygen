@@ -87,23 +87,6 @@ const toSources =
         ]);
       case 'ComparationExpression':
         return sources.concat(nestedRecur(last(sql.values)));
-      case 'BinaryExpression':
-      case 'UnaryExpression':
-      case 'Select':
-      case 'Delete':
-      case 'Update':
-      case 'Insert':
-      case 'Using':
-      case 'UpdateFrom':
-      case 'Combination':
-      case 'SelectList':
-      case 'FromList':
-      case 'SelectListItem':
-      case 'Join':
-      case 'From':
-      case 'Where':
-      case 'Having':
-        return sources.concat(sql.values.flatMap(recur));
       case 'CTE':
         return sources.concat({
           type: 'Query',
@@ -114,7 +97,7 @@ const toSources =
       case 'With':
         return sources.concat(initial(sql.values).flatMap(nestedRecur), recur(last(sql.values)));
       default:
-        return sources;
+        return sql.values ? sources.concat(sql.values.flatMap(recur)) : sources;
     }
   };
 
@@ -178,7 +161,7 @@ const toType =
       case 'ArrayIndex':
         return { type: 'ArrayItem', value: recur(first(sql.values)) };
       case 'WrappedExpression':
-        return recur(sql.value);
+        return recur(first(sql.values));
       case 'Between':
         return { type: 'Boolean' };
       case 'BinaryExpression':
@@ -403,8 +386,6 @@ export const toParams =
             ),
           }),
         );
-      case 'DoUpdate':
-        return recur(sql.value).concat(sql.where ? recur(sql.where) : []);
       case 'Function':
         const args = sql.values.filter(isExpression);
         const argType = { args: args.map(toTypeRecur), name: first(sql.values).value.toLowerCase() };
@@ -451,86 +432,8 @@ export const toParams =
       case 'Limit':
       case 'Offset':
         return toParams({ ...context, type: typeString })(first(sql.values));
-      case 'WrappedExpression':
-        return recur(sql.value);
-      case 'Set':
-      case 'SetMap':
-      case 'SetItem':
-      case 'OrderByItem':
-      case 'Having':
-      case 'Where':
-      case 'From':
-      case 'JoinOn':
-      case 'NamedSelect':
-      case 'ReturningListItem':
-      case 'SelectListItem':
-      case 'Filter':
-      case 'Combination':
-      case 'ConditionalExpression':
-      case 'ArrayConstructor':
-      case 'Conflict':
-      case 'ConflictTarget':
-      case 'Delete':
-      case 'FromList':
-      case 'Join':
-      case 'OrderBy':
-      case 'Returning':
-      case 'Row':
-      case 'Select':
-      case 'SelectList':
-      case 'SetList':
-      case 'Update':
-      case 'UpdateFrom':
-      case 'Using':
-      case 'Values':
-      case 'ExpressionList':
-      case 'CTE':
-      case 'With':
-      case 'ArrayIndexRange':
-      case 'ArrayIndex':
-      case 'Count':
-      case 'Case':
-      case 'CaseSimple':
-      case 'Else':
-      case 'When':
-      case 'NullIfTag':
-        return sql.values.flatMap(recur);
-      case 'LimitAll':
-      case 'Null':
-      case 'Number':
-      case 'Integer':
-      case 'String':
-      case 'Boolean':
-      case 'BinaryOperator':
-      case 'As':
-      case 'Cast':
-      case 'Collate':
-      case 'Column':
-      case 'Columns':
-      case 'ConflictConstraint':
-      case 'Default':
-      case 'Distinct':
-      case 'DoNothing':
-      case 'GroupBy':
-      case 'Identifier':
-      case 'TableIdentifier':
-      case 'JoinType':
-      case 'JoinUsing':
-      case 'Null':
-      case 'OrderDirection':
-      case 'Collate':
-      case 'QuotedName':
-      case 'Star':
-      case 'StarIdentifier':
-      case 'String':
-      case 'ComparationOperator':
-      case 'ComparationType':
-      case 'Table':
-      case 'Type':
-      case 'TypeArray':
-      case 'UnaryOperator':
-      case 'Name':
-        return [];
+      default:
+        return sql.values?.flatMap(recur) ?? [];
     }
   };
 

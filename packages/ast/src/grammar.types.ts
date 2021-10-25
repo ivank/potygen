@@ -397,8 +397,7 @@ export interface DoNothingTag extends SqlTag {
 }
 export interface DoUpdateTag extends SqlTag {
   tag: 'DoUpdate';
-  value: SetTag;
-  where?: WhereTag;
+  values: [set: SetTag] | [set: SetTag, where: WhereTag];
 }
 export interface ConflictTag extends SqlTag {
   tag: 'Conflict';
@@ -410,7 +409,7 @@ export interface InsertTag extends SqlTag {
 }
 export interface WrappedExpressionTag extends SqlTag {
   tag: 'WrappedExpression';
-  value: ExpressionTag;
+  values: [ExpressionTag];
 }
 export interface ExpressionListTag extends SqlTag {
   tag: 'ExpressionList';

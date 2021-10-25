@@ -485,9 +485,12 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       (values, $, $next) => ({ tag: 'Row', values, ...context($, $next) }),
     );
 
-    const WrappedExpression = Node<WrappedExpressionTag>(Brackets(ChildExpression), ([value], $, $next) => {
-      return { tag: 'WrappedExpression', value, ...context($, $next) };
-    });
+    const WrappedExpression = Node<WrappedExpressionTag, [ExpressionTag]>(
+      Brackets(ChildExpression),
+      (values, $, $next) => {
+        return { tag: 'WrappedExpression', values, ...context($, $next) };
+      },
+    );
 
     /**
      * PgCast
@@ -801,7 +804,7 @@ const Collate = Node<CollateTag>(All(/^COLLATE/i, QuotedName), ([value], $, $nex
   ...context($, $next),
 }));
 const ConflictTarget = Node<ConflictTargetTag>(
-  All(Brackets(List(All(Table, Optional(Brackets(Expression)), Optional(Collate)))), Optional(Where)),
+  All(Brackets(List(All(Column, Optional(Brackets(Expression)), Optional(Collate)))), Optional(Where)),
   (values, $, $next) => ({ tag: 'ConflictTarget', values, ...context($, $next) }),
 );
 const ConflictConstraint = Node<ConflictConstraintTag>(All(/^ON CONSTRAINT/i, Identifier), ([value], $, $next) => {
@@ -809,9 +812,10 @@ const ConflictConstraint = Node<ConflictConstraintTag>(All(/^ON CONSTRAINT/i, Id
 });
 
 const DoNothing = Node<DoNothingTag>(/^DO NOTHING/i, (_, $, $next) => ({ tag: 'DoNothing', ...context($, $next) }));
-const DoUpdate = Node<DoUpdateTag>(All(/^DO UPDATE/i, Set, Optional(Where)), ([value, where], $, $next) => {
-  return { tag: 'DoUpdate', value, where, ...context($, $next) };
-});
+const DoUpdate = Node<DoUpdateTag, [SetTag] | [SetTag, WhereTag]>(
+  All(/^DO UPDATE/i, Set, Optional(Where)),
+  (values, $, $next) => ({ tag: 'DoUpdate', values, ...context($, $next) }),
+);
 const Conflict = Node<ConflictTag>(
   All(
     /^ON CONFLICT/i,
