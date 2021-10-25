@@ -593,7 +593,9 @@ const FromListRule = (Select: Rule): Rule => {
 };
 
 const WhereRule = (Expression: Rule): Rule =>
-  Node<WhereTag>(All(/^WHERE/i, Expression), ([value], $, $next) => ({ tag: 'Where', value, ...context($, $next) }));
+  Node<WhereTag, [ExpressionTag]>(All(/^WHERE/i, Expression), (values, $, $next) => {
+    return { tag: 'Where', values, ...context($, $next) };
+  });
 
 const Select = Y((SelectExpression) => {
   const Expression = ExpressionRule(SelectExpression);

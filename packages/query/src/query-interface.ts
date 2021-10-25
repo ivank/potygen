@@ -96,8 +96,8 @@ const toSources =
       case 'SelectListItem':
       case 'Join':
       case 'From':
-        return sources.concat(sql.values.flatMap(recur));
       case 'Where':
+        return sources.concat(sql.values.flatMap(recur));
       case 'Having':
         return sources.concat(recur(sql.value));
       case 'CTE':
@@ -444,9 +444,9 @@ export const toParams =
       case 'OrderByItem':
       case 'Set':
       case 'SetItem':
-      case 'Where':
       case 'WrappedExpression':
         return recur(sql.value);
+      case 'Where':
       case 'From':
       case 'JoinOn':
       case 'NamedSelect':

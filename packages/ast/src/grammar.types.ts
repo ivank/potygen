@@ -272,7 +272,7 @@ export interface FromTag extends SqlTag {
 }
 export interface WhereTag extends SqlTag {
   tag: 'Where';
-  value: ExpressionTag;
+  values: [ExpressionTag];
 }
 export interface GroupByTag extends SqlTag {
   tag: 'GroupBy';
