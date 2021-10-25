@@ -633,8 +633,8 @@ const Select = Y((SelectExpression) => {
     (values, $, $next) => ({ tag: 'Join', values, ...context($, $next) }),
   );
 
-  const From = Node<FromTag>(All(/^FROM/i, FromList, Star(Join)), ([list, ...join], $, $next) => {
-    return { tag: 'From', list, join, ...context($, $next) };
+  const From = Node<FromTag, [FromListTag, ...JoinTag[]]>(All(/^FROM/i, FromList, Star(Join)), (values, $, $next) => {
+    return { tag: 'From', values, ...context($, $next) };
   });
 
   /**

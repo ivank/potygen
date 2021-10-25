@@ -94,12 +94,9 @@ const toSources =
       case 'SelectList':
       case 'FromList':
       case 'SelectListItem':
-        return sources.concat(sql.values.flatMap(recur));
+      case 'Join':
       case 'From':
-        return sources.concat(
-          sql.list.values.flatMap(recur),
-          sql.join.flatMap((join) => join.values.flatMap(recur)),
-        );
+        return sources.concat(sql.values.flatMap(recur));
       case 'Where':
       case 'Having':
         return sources.concat(recur(sql.value));
@@ -395,8 +392,6 @@ export const toParams =
         );
       case 'DoUpdate':
         return recur(sql.value).concat(sql.where ? recur(sql.where) : []);
-      case 'From':
-        return recur(sql.list).concat(sql.join.flatMap(recur));
       case 'Function':
         const args = sql.values.filter(isExpression);
         const argType = { args: args.map(toTypeRecur), name: first(sql.values).value.toLowerCase() };
@@ -452,6 +447,7 @@ export const toParams =
       case 'Where':
       case 'WrappedExpression':
         return recur(sql.value);
+      case 'From':
       case 'JoinOn':
       case 'NamedSelect':
       case 'ReturningListItem':

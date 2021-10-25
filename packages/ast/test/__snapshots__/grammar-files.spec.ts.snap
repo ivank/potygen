@@ -182,7 +182,29 @@ Object {
           ],
         },
         Object {
-          "join": Array [
+          "nextPos": 354,
+          "pos": 216,
+          "tag": "From",
+          "values": Array [
+            Object {
+              "nextPos": 229,
+              "pos": 221,
+              "tag": "FromList",
+              "values": Array [
+                Object {
+                  "as": undefined,
+                  "nextPos": 229,
+                  "pos": 221,
+                  "table": Object {
+                    "nextPos": 229,
+                    "pos": 221,
+                    "tag": "Identifier",
+                    "value": "accounts",
+                  },
+                  "tag": "Table",
+                },
+              ],
+            },
             Object {
               "nextPos": 282,
               "pos": 230,
@@ -350,28 +372,6 @@ Object {
               ],
             },
           ],
-          "list": Object {
-            "nextPos": 229,
-            "pos": 221,
-            "tag": "FromList",
-            "values": Array [
-              Object {
-                "as": undefined,
-                "nextPos": 229,
-                "pos": 221,
-                "table": Object {
-                  "nextPos": 229,
-                  "pos": 221,
-                  "tag": "Identifier",
-                  "value": "accounts",
-                },
-                "tag": "Table",
-              },
-            ],
-          },
-          "nextPos": 354,
-          "pos": 216,
-          "tag": "From",
         },
         Object {
           "nextPos": 513,
@@ -2049,7 +2049,29 @@ Object {
       ],
     },
     Object {
-      "join": Array [
+      "nextPos": 2283,
+      "pos": 2014,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 2040,
+          "pos": 2019,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "nextPos": 2040,
+              "pos": 2019,
+              "table": Object {
+                "nextPos": 2040,
+                "pos": 2019,
+                "tag": "Identifier",
+                "value": "account_levelisations",
+              },
+              "tag": "Table",
+            },
+          ],
+        },
         Object {
           "nextPos": 2199,
           "pos": 2041,
@@ -2319,28 +2341,6 @@ Object {
           ],
         },
       ],
-      "list": Object {
-        "nextPos": 2040,
-        "pos": 2019,
-        "tag": "FromList",
-        "values": Array [
-          Object {
-            "as": undefined,
-            "nextPos": 2040,
-            "pos": 2019,
-            "table": Object {
-              "nextPos": 2040,
-              "pos": 2019,
-              "tag": "Identifier",
-              "value": "account_levelisations",
-            },
-            "tag": "Table",
-          },
-        ],
-      },
-      "nextPos": 2283,
-      "pos": 2014,
-      "tag": "From",
     },
     Object {
       "nextPos": 2822,
@@ -6202,29 +6202,30 @@ Object {
                               ],
                             },
                             Object {
-                              "join": Array [],
-                              "list": Object {
-                                "nextPos": 118,
-                                "pos": 110,
-                                "tag": "FromList",
-                                "values": Array [
-                                  Object {
-                                    "as": undefined,
-                                    "nextPos": 118,
-                                    "pos": 110,
-                                    "table": Object {
-                                      "nextPos": 118,
-                                      "pos": 110,
-                                      "tag": "Identifier",
-                                      "value": "accounts",
-                                    },
-                                    "tag": "Table",
-                                  },
-                                ],
-                              },
                               "nextPos": 118,
                               "pos": 105,
                               "tag": "From",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 118,
+                                  "pos": 110,
+                                  "tag": "FromList",
+                                  "values": Array [
+                                    Object {
+                                      "as": undefined,
+                                      "nextPos": 118,
+                                      "pos": 110,
+                                      "table": Object {
+                                        "nextPos": 118,
+                                        "pos": 110,
+                                        "tag": "Identifier",
+                                        "value": "accounts",
+                                      },
+                                      "tag": "Table",
+                                    },
+                                  ],
+                                },
+                              ],
                             },
                             Object {
                               "nextPos": 221,
@@ -6418,29 +6419,30 @@ Object {
                               ],
                             },
                             Object {
-                              "join": Array [],
-                              "list": Object {
-                                "nextPos": 348,
-                                "pos": 340,
-                                "tag": "FromList",
-                                "values": Array [
-                                  Object {
-                                    "as": undefined,
-                                    "nextPos": 348,
-                                    "pos": 340,
-                                    "table": Object {
-                                      "nextPos": 348,
-                                      "pos": 340,
-                                      "tag": "Identifier",
-                                      "value": "accounts",
-                                    },
-                                    "tag": "Table",
-                                  },
-                                ],
-                              },
                               "nextPos": 348,
                               "pos": 335,
                               "tag": "From",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 348,
+                                  "pos": 340,
+                                  "tag": "FromList",
+                                  "values": Array [
+                                    Object {
+                                      "as": undefined,
+                                      "nextPos": 348,
+                                      "pos": 340,
+                                      "table": Object {
+                                        "nextPos": 348,
+                                        "pos": 340,
+                                        "tag": "Identifier",
+                                        "value": "accounts",
+                                      },
+                                      "tag": "Table",
+                                    },
+                                  ],
+                                },
+                              ],
                             },
                             Object {
                               "nextPos": 449,
@@ -6816,7 +6818,29 @@ Object {
       ],
     },
     Object {
-      "join": Array [
+      "nextPos": 502,
+      "pos": 49,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 62,
+          "pos": 54,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "nextPos": 62,
+              "pos": 54,
+              "table": Object {
+                "nextPos": 62,
+                "pos": 54,
+                "tag": "Identifier",
+                "value": "accounts",
+              },
+              "tag": "Table",
+            },
+          ],
+        },
         Object {
           "nextPos": 172,
           "pos": 119,
@@ -7328,28 +7352,6 @@ Object {
           ],
         },
       ],
-      "list": Object {
-        "nextPos": 62,
-        "pos": 54,
-        "tag": "FromList",
-        "values": Array [
-          Object {
-            "as": undefined,
-            "nextPos": 62,
-            "pos": 54,
-            "table": Object {
-              "nextPos": 62,
-              "pos": 54,
-              "tag": "Identifier",
-              "value": "accounts",
-            },
-            "tag": "Table",
-          },
-        ],
-      },
-      "nextPos": 502,
-      "pos": 49,
-      "tag": "From",
     },
     Object {
       "nextPos": 1963,
@@ -8982,7 +8984,29 @@ Object {
       ],
     },
     Object {
-      "join": Array [
+      "nextPos": 946,
+      "pos": 479,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 492,
+          "pos": 484,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "nextPos": 492,
+              "pos": 484,
+              "table": Object {
+                "nextPos": 492,
+                "pos": 484,
+                "tag": "Identifier",
+                "value": "accounts",
+              },
+              "tag": "Table",
+            },
+          ],
+        },
         Object {
           "nextPos": 606,
           "pos": 553,
@@ -9494,28 +9518,6 @@ Object {
           ],
         },
       ],
-      "list": Object {
-        "nextPos": 492,
-        "pos": 484,
-        "tag": "FromList",
-        "values": Array [
-          Object {
-            "as": undefined,
-            "nextPos": 492,
-            "pos": 484,
-            "table": Object {
-              "nextPos": 492,
-              "pos": 484,
-              "tag": "Identifier",
-              "value": "accounts",
-            },
-            "tag": "Table",
-          },
-        ],
-      },
-      "nextPos": 946,
-      "pos": 479,
-      "tag": "From",
     },
     Object {
       "nextPos": 2325,
@@ -11026,29 +11028,30 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [],
-                      "list": Object {
-                        "nextPos": 289,
-                        "pos": 280,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": undefined,
-                            "nextPos": 289,
-                            "pos": 280,
-                            "table": Object {
-                              "nextPos": 289,
-                              "pos": 280,
-                              "tag": "Identifier",
-                              "value": "customers",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
                       "nextPos": 289,
                       "pos": 275,
                       "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 289,
+                          "pos": 280,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": undefined,
+                              "nextPos": 289,
+                              "pos": 280,
+                              "table": Object {
+                                "nextPos": 289,
+                                "pos": 280,
+                                "tag": "Identifier",
+                                "value": "customers",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 340,
@@ -11700,47 +11703,48 @@ Object {
                           ],
                         },
                         Object {
-                          "join": Array [],
-                          "list": Object {
-                            "nextPos": 1182,
-                            "pos": 1163,
-                            "tag": "FromList",
-                            "values": Array [
-                              Object {
-                                "as": Object {
-                                  "nextPos": 1182,
-                                  "pos": 1180,
-                                  "tag": "As",
-                                  "values": Array [
-                                    Object {
-                                      "nextPos": 1182,
-                                      "pos": 1180,
-                                      "tag": "Identifier",
-                                      "value": "mr",
-                                    },
-                                  ],
-                                },
-                                "nextPos": 1182,
-                                "pos": 1163,
-                                "schema": Object {
-                                  "nextPos": 1166,
-                                  "pos": 1163,
-                                  "tag": "Identifier",
-                                  "value": "fit",
-                                },
-                                "table": Object {
-                                  "nextPos": 1179,
-                                  "pos": 1167,
-                                  "tag": "Identifier",
-                                  "value": "MeterReading",
-                                },
-                                "tag": "Table",
-                              },
-                            ],
-                          },
                           "nextPos": 1182,
                           "pos": 1158,
                           "tag": "From",
+                          "values": Array [
+                            Object {
+                              "nextPos": 1182,
+                              "pos": 1163,
+                              "tag": "FromList",
+                              "values": Array [
+                                Object {
+                                  "as": Object {
+                                    "nextPos": 1182,
+                                    "pos": 1180,
+                                    "tag": "As",
+                                    "values": Array [
+                                      Object {
+                                        "nextPos": 1182,
+                                        "pos": 1180,
+                                        "tag": "Identifier",
+                                        "value": "mr",
+                                      },
+                                    ],
+                                  },
+                                  "nextPos": 1182,
+                                  "pos": 1163,
+                                  "schema": Object {
+                                    "nextPos": 1166,
+                                    "pos": 1163,
+                                    "tag": "Identifier",
+                                    "value": "fit",
+                                  },
+                                  "table": Object {
+                                    "nextPos": 1179,
+                                    "pos": 1167,
+                                    "tag": "Identifier",
+                                    "value": "MeterReading",
+                                  },
+                                  "tag": "Table",
+                                },
+                              ],
+                            },
+                          ],
                         },
                         Object {
                           "nextPos": 1306,
@@ -11990,47 +11994,48 @@ Object {
                           ],
                         },
                         Object {
-                          "join": Array [],
-                          "list": Object {
-                            "nextPos": 1432,
-                            "pos": 1413,
-                            "tag": "FromList",
-                            "values": Array [
-                              Object {
-                                "as": Object {
-                                  "nextPos": 1432,
-                                  "pos": 1430,
-                                  "tag": "As",
-                                  "values": Array [
-                                    Object {
-                                      "nextPos": 1432,
-                                      "pos": 1430,
-                                      "tag": "Identifier",
-                                      "value": "mr",
-                                    },
-                                  ],
-                                },
-                                "nextPos": 1432,
-                                "pos": 1413,
-                                "schema": Object {
-                                  "nextPos": 1416,
-                                  "pos": 1413,
-                                  "tag": "Identifier",
-                                  "value": "fit",
-                                },
-                                "table": Object {
-                                  "nextPos": 1429,
-                                  "pos": 1417,
-                                  "tag": "Identifier",
-                                  "value": "MeterReading",
-                                },
-                                "tag": "Table",
-                              },
-                            ],
-                          },
                           "nextPos": 1432,
                           "pos": 1408,
                           "tag": "From",
+                          "values": Array [
+                            Object {
+                              "nextPos": 1432,
+                              "pos": 1413,
+                              "tag": "FromList",
+                              "values": Array [
+                                Object {
+                                  "as": Object {
+                                    "nextPos": 1432,
+                                    "pos": 1430,
+                                    "tag": "As",
+                                    "values": Array [
+                                      Object {
+                                        "nextPos": 1432,
+                                        "pos": 1430,
+                                        "tag": "Identifier",
+                                        "value": "mr",
+                                      },
+                                    ],
+                                  },
+                                  "nextPos": 1432,
+                                  "pos": 1413,
+                                  "schema": Object {
+                                    "nextPos": 1416,
+                                    "pos": 1413,
+                                    "tag": "Identifier",
+                                    "value": "fit",
+                                  },
+                                  "table": Object {
+                                    "nextPos": 1429,
+                                    "pos": 1417,
+                                    "tag": "Identifier",
+                                    "value": "MeterReading",
+                                  },
+                                  "tag": "Table",
+                                },
+                              ],
+                            },
+                          ],
                         },
                         Object {
                           "nextPos": 1488,
@@ -12238,47 +12243,48 @@ Object {
                           ],
                         },
                         Object {
-                          "join": Array [],
-                          "list": Object {
-                            "nextPos": 1883,
-                            "pos": 1864,
-                            "tag": "FromList",
-                            "values": Array [
-                              Object {
-                                "as": Object {
-                                  "nextPos": 1883,
-                                  "pos": 1881,
-                                  "tag": "As",
-                                  "values": Array [
-                                    Object {
-                                      "nextPos": 1883,
-                                      "pos": 1881,
-                                      "tag": "Identifier",
-                                      "value": "mr",
-                                    },
-                                  ],
-                                },
-                                "nextPos": 1883,
-                                "pos": 1864,
-                                "schema": Object {
-                                  "nextPos": 1867,
-                                  "pos": 1864,
-                                  "tag": "Identifier",
-                                  "value": "fit",
-                                },
-                                "table": Object {
-                                  "nextPos": 1880,
-                                  "pos": 1868,
-                                  "tag": "Identifier",
-                                  "value": "MeterReading",
-                                },
-                                "tag": "Table",
-                              },
-                            ],
-                          },
                           "nextPos": 1883,
                           "pos": 1859,
                           "tag": "From",
+                          "values": Array [
+                            Object {
+                              "nextPos": 1883,
+                              "pos": 1864,
+                              "tag": "FromList",
+                              "values": Array [
+                                Object {
+                                  "as": Object {
+                                    "nextPos": 1883,
+                                    "pos": 1881,
+                                    "tag": "As",
+                                    "values": Array [
+                                      Object {
+                                        "nextPos": 1883,
+                                        "pos": 1881,
+                                        "tag": "Identifier",
+                                        "value": "mr",
+                                      },
+                                    ],
+                                  },
+                                  "nextPos": 1883,
+                                  "pos": 1864,
+                                  "schema": Object {
+                                    "nextPos": 1867,
+                                    "pos": 1864,
+                                    "tag": "Identifier",
+                                    "value": "fit",
+                                  },
+                                  "table": Object {
+                                    "nextPos": 1880,
+                                    "pos": 1868,
+                                    "tag": "Identifier",
+                                    "value": "MeterReading",
+                                  },
+                                  "tag": "Table",
+                                },
+                              ],
+                            },
+                          ],
                         },
                         Object {
                           "nextPos": 2025,
@@ -12575,47 +12581,48 @@ Object {
                                   ],
                                 },
                                 Object {
-                                  "join": Array [],
-                                  "list": Object {
-                                    "nextPos": 2199,
-                                    "pos": 2180,
-                                    "tag": "FromList",
-                                    "values": Array [
-                                      Object {
-                                        "as": Object {
-                                          "nextPos": 2199,
-                                          "pos": 2197,
-                                          "tag": "As",
-                                          "values": Array [
-                                            Object {
-                                              "nextPos": 2199,
-                                              "pos": 2197,
-                                              "tag": "Identifier",
-                                              "value": "mr",
-                                            },
-                                          ],
-                                        },
-                                        "nextPos": 2199,
-                                        "pos": 2180,
-                                        "schema": Object {
-                                          "nextPos": 2183,
-                                          "pos": 2180,
-                                          "tag": "Identifier",
-                                          "value": "fit",
-                                        },
-                                        "table": Object {
-                                          "nextPos": 2196,
-                                          "pos": 2184,
-                                          "tag": "Identifier",
-                                          "value": "MeterReading",
-                                        },
-                                        "tag": "Table",
-                                      },
-                                    ],
-                                  },
                                   "nextPos": 2199,
                                   "pos": 2175,
                                   "tag": "From",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 2199,
+                                      "pos": 2180,
+                                      "tag": "FromList",
+                                      "values": Array [
+                                        Object {
+                                          "as": Object {
+                                            "nextPos": 2199,
+                                            "pos": 2197,
+                                            "tag": "As",
+                                            "values": Array [
+                                              Object {
+                                                "nextPos": 2199,
+                                                "pos": 2197,
+                                                "tag": "Identifier",
+                                                "value": "mr",
+                                              },
+                                            ],
+                                          },
+                                          "nextPos": 2199,
+                                          "pos": 2180,
+                                          "schema": Object {
+                                            "nextPos": 2183,
+                                            "pos": 2180,
+                                            "tag": "Identifier",
+                                            "value": "fit",
+                                          },
+                                          "table": Object {
+                                            "nextPos": 2196,
+                                            "pos": 2184,
+                                            "tag": "Identifier",
+                                            "value": "MeterReading",
+                                          },
+                                          "tag": "Table",
+                                        },
+                                      ],
+                                    },
+                                  ],
                                 },
                                 Object {
                                   "nextPos": 2257,
@@ -12870,7 +12877,47 @@ Object {
           ],
         },
         Object {
-          "join": Array [
+          "nextPos": 2957,
+          "pos": 2430,
+          "tag": "From",
+          "values": Array [
+            Object {
+              "nextPos": 2457,
+              "pos": 2435,
+              "tag": "FromList",
+              "values": Array [
+                Object {
+                  "as": Object {
+                    "nextPos": 2457,
+                    "pos": 2455,
+                    "tag": "As",
+                    "values": Array [
+                      Object {
+                        "nextPos": 2457,
+                        "pos": 2455,
+                        "tag": "Identifier",
+                        "value": "ca",
+                      },
+                    ],
+                  },
+                  "nextPos": 2457,
+                  "pos": 2435,
+                  "schema": Object {
+                    "nextPos": 2438,
+                    "pos": 2435,
+                    "tag": "Identifier",
+                    "value": "fit",
+                  },
+                  "table": Object {
+                    "nextPos": 2454,
+                    "pos": 2439,
+                    "tag": "Identifier",
+                    "value": "CustomerAccount",
+                  },
+                  "tag": "Table",
+                },
+              ],
+            },
             Object {
               "nextPos": 2518,
               "pos": 2458,
@@ -13529,46 +13576,6 @@ Object {
               ],
             },
           ],
-          "list": Object {
-            "nextPos": 2457,
-            "pos": 2435,
-            "tag": "FromList",
-            "values": Array [
-              Object {
-                "as": Object {
-                  "nextPos": 2457,
-                  "pos": 2455,
-                  "tag": "As",
-                  "values": Array [
-                    Object {
-                      "nextPos": 2457,
-                      "pos": 2455,
-                      "tag": "Identifier",
-                      "value": "ca",
-                    },
-                  ],
-                },
-                "nextPos": 2457,
-                "pos": 2435,
-                "schema": Object {
-                  "nextPos": 2438,
-                  "pos": 2435,
-                  "tag": "Identifier",
-                  "value": "fit",
-                },
-                "table": Object {
-                  "nextPos": 2454,
-                  "pos": 2439,
-                  "tag": "Identifier",
-                  "value": "CustomerAccount",
-                },
-                "tag": "Table",
-              },
-            ],
-          },
-          "nextPos": 2957,
-          "pos": 2430,
-          "tag": "From",
         },
         Object {
           "nextPos": 3159,
@@ -14667,7 +14674,41 @@ Object {
       ],
     },
     Object {
-      "join": Array [
+      "nextPos": 547,
+      "pos": 337,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 352,
+          "pos": 342,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "as": Object {
+                "nextPos": 352,
+                "pos": 351,
+                "tag": "As",
+                "values": Array [
+                  Object {
+                    "nextPos": 352,
+                    "pos": 351,
+                    "tag": "Identifier",
+                    "value": "p",
+                  },
+                ],
+              },
+              "nextPos": 352,
+              "pos": 342,
+              "table": Object {
+                "nextPos": 350,
+                "pos": 342,
+                "tag": "Identifier",
+                "value": "payments",
+              },
+              "tag": "Table",
+            },
+          ],
+        },
         Object {
           "nextPos": 396,
           "pos": 353,
@@ -15049,40 +15090,6 @@ Object {
           ],
         },
       ],
-      "list": Object {
-        "nextPos": 352,
-        "pos": 342,
-        "tag": "FromList",
-        "values": Array [
-          Object {
-            "as": Object {
-              "nextPos": 352,
-              "pos": 351,
-              "tag": "As",
-              "values": Array [
-                Object {
-                  "nextPos": 352,
-                  "pos": 351,
-                  "tag": "Identifier",
-                  "value": "p",
-                },
-              ],
-            },
-            "nextPos": 352,
-            "pos": 342,
-            "table": Object {
-              "nextPos": 350,
-              "pos": 342,
-              "tag": "Identifier",
-              "value": "payments",
-            },
-            "tag": "Table",
-          },
-        ],
-      },
-      "nextPos": 547,
-      "pos": 337,
-      "tag": "From",
     },
     Object {
       "nextPos": 619,
@@ -15416,29 +15423,30 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [],
-                      "list": Object {
-                        "nextPos": 398,
-                        "pos": 390,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": undefined,
-                            "nextPos": 398,
-                            "pos": 390,
-                            "table": Object {
-                              "nextPos": 398,
-                              "pos": 390,
-                              "tag": "Identifier",
-                              "value": "accounts",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
                       "nextPos": 398,
                       "pos": 385,
                       "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 398,
+                          "pos": 390,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": undefined,
+                              "nextPos": 398,
+                              "pos": 390,
+                              "table": Object {
+                                "nextPos": 398,
+                                "pos": 390,
+                                "tag": "Identifier",
+                                "value": "accounts",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 455,
@@ -15544,29 +15552,30 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [],
-                      "list": Object {
-                        "nextPos": 493,
-                        "pos": 485,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": undefined,
-                            "nextPos": 493,
-                            "pos": 485,
-                            "table": Object {
-                              "nextPos": 493,
-                              "pos": 485,
-                              "tag": "Identifier",
-                              "value": "contacts",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
                       "nextPos": 493,
                       "pos": 480,
                       "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 493,
+                          "pos": 485,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": undefined,
+                              "nextPos": 493,
+                              "pos": 485,
+                              "table": Object {
+                                "nextPos": 493,
+                                "pos": 485,
+                                "tag": "Identifier",
+                                "value": "contacts",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 543,
@@ -15672,29 +15681,30 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [],
-                      "list": Object {
-                        "nextPos": 591,
-                        "pos": 578,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": undefined,
-                            "nextPos": 591,
-                            "pos": 578,
-                            "table": Object {
-                              "nextPos": 591,
-                              "pos": 578,
-                              "tag": "Identifier",
-                              "value": "installations",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
                       "nextPos": 591,
                       "pos": 573,
                       "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 591,
+                          "pos": 578,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": undefined,
+                              "nextPos": 591,
+                              "pos": 578,
+                              "table": Object {
+                                "nextPos": 591,
+                                "pos": 578,
+                                "tag": "Identifier",
+                                "value": "installations",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 651,
@@ -15800,7 +15810,47 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [
+                      "nextPos": 1007,
+                      "pos": 803,
+                      "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 832,
+                          "pos": 808,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": Object {
+                                "nextPos": 832,
+                                "pos": 830,
+                                "tag": "As",
+                                "values": Array [
+                                  Object {
+                                    "nextPos": 832,
+                                    "pos": 830,
+                                    "tag": "Identifier",
+                                    "value": "im",
+                                  },
+                                ],
+                              },
+                              "nextPos": 832,
+                              "pos": 808,
+                              "schema": Object {
+                                "nextPos": 811,
+                                "pos": 808,
+                                "tag": "Identifier",
+                                "value": "fit",
+                              },
+                              "table": Object {
+                                "nextPos": 829,
+                                "pos": 812,
+                                "tag": "Identifier",
+                                "value": "InstallationMeter",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
                         Object {
                           "nextPos": 883,
                           "pos": 837,
@@ -16087,46 +16137,6 @@ Object {
                           ],
                         },
                       ],
-                      "list": Object {
-                        "nextPos": 832,
-                        "pos": 808,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": Object {
-                              "nextPos": 832,
-                              "pos": 830,
-                              "tag": "As",
-                              "values": Array [
-                                Object {
-                                  "nextPos": 832,
-                                  "pos": 830,
-                                  "tag": "Identifier",
-                                  "value": "im",
-                                },
-                              ],
-                            },
-                            "nextPos": 832,
-                            "pos": 808,
-                            "schema": Object {
-                              "nextPos": 811,
-                              "pos": 808,
-                              "tag": "Identifier",
-                              "value": "fit",
-                            },
-                            "table": Object {
-                              "nextPos": 829,
-                              "pos": 812,
-                              "tag": "Identifier",
-                              "value": "InstallationMeter",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
-                      "nextPos": 1007,
-                      "pos": 803,
-                      "tag": "From",
                     },
                     Object {
                       "nextPos": 1097,
@@ -16301,29 +16311,30 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [],
-                      "list": Object {
-                        "nextPos": 1317,
-                        "pos": 1310,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": undefined,
-                            "nextPos": 1317,
-                            "pos": 1310,
-                            "table": Object {
-                              "nextPos": 1317,
-                              "pos": 1310,
-                              "tag": "Identifier",
-                              "value": "tariffs",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
                       "nextPos": 1317,
                       "pos": 1305,
                       "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1317,
+                          "pos": 1310,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": undefined,
+                              "nextPos": 1317,
+                              "pos": 1310,
+                              "table": Object {
+                                "nextPos": 1317,
+                                "pos": 1310,
+                                "tag": "Identifier",
+                                "value": "tariffs",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 1423,
@@ -16481,7 +16492,47 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [
+                      "nextPos": 1754,
+                      "pos": 1610,
+                      "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1639,
+                          "pos": 1615,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": Object {
+                                "nextPos": 1639,
+                                "pos": 1637,
+                                "tag": "As",
+                                "values": Array [
+                                  Object {
+                                    "nextPos": 1639,
+                                    "pos": 1637,
+                                    "tag": "Identifier",
+                                    "value": "im",
+                                  },
+                                ],
+                              },
+                              "nextPos": 1639,
+                              "pos": 1615,
+                              "schema": Object {
+                                "nextPos": 1618,
+                                "pos": 1615,
+                                "tag": "Identifier",
+                                "value": "fit",
+                              },
+                              "table": Object {
+                                "nextPos": 1636,
+                                "pos": 1619,
+                                "tag": "Identifier",
+                                "value": "InstallationMeter",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
                         Object {
                           "nextPos": 1690,
                           "pos": 1644,
@@ -16685,46 +16736,6 @@ Object {
                           ],
                         },
                       ],
-                      "list": Object {
-                        "nextPos": 1639,
-                        "pos": 1615,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": Object {
-                              "nextPos": 1639,
-                              "pos": 1637,
-                              "tag": "As",
-                              "values": Array [
-                                Object {
-                                  "nextPos": 1639,
-                                  "pos": 1637,
-                                  "tag": "Identifier",
-                                  "value": "im",
-                                },
-                              ],
-                            },
-                            "nextPos": 1639,
-                            "pos": 1615,
-                            "schema": Object {
-                              "nextPos": 1618,
-                              "pos": 1615,
-                              "tag": "Identifier",
-                              "value": "fit",
-                            },
-                            "table": Object {
-                              "nextPos": 1636,
-                              "pos": 1619,
-                              "tag": "Identifier",
-                              "value": "InstallationMeter",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
-                      "nextPos": 1754,
-                      "pos": 1610,
-                      "tag": "From",
                     },
                     Object {
                       "nextPos": 1937,
@@ -17013,7 +17024,47 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [
+                      "nextPos": 2281,
+                      "pos": 2137,
+                      "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 2166,
+                          "pos": 2142,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": Object {
+                                "nextPos": 2166,
+                                "pos": 2164,
+                                "tag": "As",
+                                "values": Array [
+                                  Object {
+                                    "nextPos": 2166,
+                                    "pos": 2164,
+                                    "tag": "Identifier",
+                                    "value": "im",
+                                  },
+                                ],
+                              },
+                              "nextPos": 2166,
+                              "pos": 2142,
+                              "schema": Object {
+                                "nextPos": 2145,
+                                "pos": 2142,
+                                "tag": "Identifier",
+                                "value": "fit",
+                              },
+                              "table": Object {
+                                "nextPos": 2163,
+                                "pos": 2146,
+                                "tag": "Identifier",
+                                "value": "InstallationMeter",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
                         Object {
                           "nextPos": 2217,
                           "pos": 2171,
@@ -17217,46 +17268,6 @@ Object {
                           ],
                         },
                       ],
-                      "list": Object {
-                        "nextPos": 2166,
-                        "pos": 2142,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": Object {
-                              "nextPos": 2166,
-                              "pos": 2164,
-                              "tag": "As",
-                              "values": Array [
-                                Object {
-                                  "nextPos": 2166,
-                                  "pos": 2164,
-                                  "tag": "Identifier",
-                                  "value": "im",
-                                },
-                              ],
-                            },
-                            "nextPos": 2166,
-                            "pos": 2142,
-                            "schema": Object {
-                              "nextPos": 2145,
-                              "pos": 2142,
-                              "tag": "Identifier",
-                              "value": "fit",
-                            },
-                            "table": Object {
-                              "nextPos": 2163,
-                              "pos": 2146,
-                              "tag": "Identifier",
-                              "value": "InstallationMeter",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
-                      "nextPos": 2281,
-                      "pos": 2137,
-                      "tag": "From",
                     },
                     Object {
                       "nextPos": 2460,
@@ -17858,7 +17869,47 @@ Object {
           ],
         },
         Object {
-          "join": Array [
+          "nextPos": 3328,
+          "pos": 2862,
+          "tag": "From",
+          "values": Array [
+            Object {
+              "nextPos": 2904,
+              "pos": 2867,
+              "tag": "FromList",
+              "values": Array [
+                Object {
+                  "as": Object {
+                    "nextPos": 2904,
+                    "pos": 2901,
+                    "tag": "As",
+                    "values": Array [
+                      Object {
+                        "nextPos": 2904,
+                        "pos": 2901,
+                        "tag": "Identifier",
+                        "value": "gai",
+                      },
+                    ],
+                  },
+                  "nextPos": 2904,
+                  "pos": 2867,
+                  "schema": Object {
+                    "nextPos": 2870,
+                    "pos": 2867,
+                    "tag": "Identifier",
+                    "value": "fit",
+                  },
+                  "table": Object {
+                    "nextPos": 2900,
+                    "pos": 2871,
+                    "tag": "Identifier",
+                    "value": "GenerationAccountInstallation",
+                  },
+                  "tag": "Table",
+                },
+              ],
+            },
             Object {
               "nextPos": 2990,
               "pos": 2905,
@@ -18294,46 +18345,6 @@ Object {
               ],
             },
           ],
-          "list": Object {
-            "nextPos": 2904,
-            "pos": 2867,
-            "tag": "FromList",
-            "values": Array [
-              Object {
-                "as": Object {
-                  "nextPos": 2904,
-                  "pos": 2901,
-                  "tag": "As",
-                  "values": Array [
-                    Object {
-                      "nextPos": 2904,
-                      "pos": 2901,
-                      "tag": "Identifier",
-                      "value": "gai",
-                    },
-                  ],
-                },
-                "nextPos": 2904,
-                "pos": 2867,
-                "schema": Object {
-                  "nextPos": 2870,
-                  "pos": 2867,
-                  "tag": "Identifier",
-                  "value": "fit",
-                },
-                "table": Object {
-                  "nextPos": 2900,
-                  "pos": 2871,
-                  "tag": "Identifier",
-                  "value": "GenerationAccountInstallation",
-                },
-                "tag": "Table",
-              },
-            ],
-          },
-          "nextPos": 3328,
-          "pos": 2862,
-          "tag": "From",
         },
       ],
     },
@@ -18841,7 +18852,29 @@ Object {
                     ],
                   },
                   Object {
-                    "join": Array [
+                    "nextPos": 137,
+                    "pos": 59,
+                    "tag": "From",
+                    "values": Array [
+                      Object {
+                        "nextPos": 73,
+                        "pos": 64,
+                        "tag": "FromList",
+                        "values": Array [
+                          Object {
+                            "as": undefined,
+                            "nextPos": 73,
+                            "pos": 64,
+                            "table": Object {
+                              "nextPos": 73,
+                              "pos": 64,
+                              "tag": "Identifier",
+                              "value": "contracts",
+                            },
+                            "tag": "Table",
+                          },
+                        ],
+                      },
                       Object {
                         "nextPos": 137,
                         "pos": 78,
@@ -18926,28 +18959,6 @@ Object {
                         ],
                       },
                     ],
-                    "list": Object {
-                      "nextPos": 73,
-                      "pos": 64,
-                      "tag": "FromList",
-                      "values": Array [
-                        Object {
-                          "as": undefined,
-                          "nextPos": 73,
-                          "pos": 64,
-                          "table": Object {
-                            "nextPos": 73,
-                            "pos": 64,
-                            "tag": "Identifier",
-                            "value": "contracts",
-                          },
-                          "tag": "Table",
-                        },
-                      ],
-                    },
-                    "nextPos": 137,
-                    "pos": 59,
-                    "tag": "From",
                   },
                   Object {
                     "nextPos": 256,
@@ -19340,7 +19351,29 @@ Object {
       ],
     },
     Object {
-      "join": Array [
+      "nextPos": 158,
+      "pos": 62,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 78,
+          "pos": 67,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "nextPos": 78,
+              "pos": 67,
+              "table": Object {
+                "nextPos": 78,
+                "pos": 67,
+                "tag": "Identifier",
+                "value": "meter_reads",
+              },
+              "tag": "Table",
+            },
+          ],
+        },
         Object {
           "nextPos": 158,
           "pos": 79,
@@ -19425,28 +19458,6 @@ Object {
           ],
         },
       ],
-      "list": Object {
-        "nextPos": 78,
-        "pos": 67,
-        "tag": "FromList",
-        "values": Array [
-          Object {
-            "as": undefined,
-            "nextPos": 78,
-            "pos": 67,
-            "table": Object {
-              "nextPos": 78,
-              "pos": 67,
-              "tag": "Identifier",
-              "value": "meter_reads",
-            },
-            "tag": "Table",
-          },
-        ],
-      },
-      "nextPos": 158,
-      "pos": 62,
-      "tag": "From",
     },
     Object {
       "nextPos": 393,
@@ -20258,29 +20269,30 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [],
-                      "list": Object {
-                        "nextPos": 691,
-                        "pos": 682,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": undefined,
-                            "nextPos": 691,
-                            "pos": 682,
-                            "table": Object {
-                              "nextPos": 691,
-                              "pos": 682,
-                              "tag": "Identifier",
-                              "value": "addresses",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
                       "nextPos": 691,
                       "pos": 677,
                       "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 691,
+                          "pos": 682,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": undefined,
+                              "nextPos": 691,
+                              "pos": 682,
+                              "table": Object {
+                                "nextPos": 691,
+                                "pos": 682,
+                                "tag": "Identifier",
+                                "value": "addresses",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 740,
@@ -20844,47 +20856,48 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [],
-                      "list": Object {
-                        "nextPos": 1458,
-                        "pos": 1422,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": Object {
-                              "nextPos": 1458,
-                              "pos": 1455,
-                              "tag": "As",
-                              "values": Array [
-                                Object {
-                                  "nextPos": 1458,
-                                  "pos": 1455,
-                                  "tag": "Identifier",
-                                  "value": "ivi",
-                                },
-                              ],
-                            },
-                            "nextPos": 1458,
-                            "pos": 1422,
-                            "schema": Object {
-                              "nextPos": 1425,
-                              "pos": 1422,
-                              "tag": "Identifier",
-                              "value": "fit",
-                            },
-                            "table": Object {
-                              "nextPos": 1454,
-                              "pos": 1426,
-                              "tag": "Identifier",
-                              "value": "InstallationVerificationInfo",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
                       "nextPos": 1458,
                       "pos": 1417,
                       "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1458,
+                          "pos": 1422,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": Object {
+                                "nextPos": 1458,
+                                "pos": 1455,
+                                "tag": "As",
+                                "values": Array [
+                                  Object {
+                                    "nextPos": 1458,
+                                    "pos": 1455,
+                                    "tag": "Identifier",
+                                    "value": "ivi",
+                                  },
+                                ],
+                              },
+                              "nextPos": 1458,
+                              "pos": 1422,
+                              "schema": Object {
+                                "nextPos": 1425,
+                                "pos": 1422,
+                                "tag": "Identifier",
+                                "value": "fit",
+                              },
+                              "table": Object {
+                                "nextPos": 1454,
+                                "pos": 1426,
+                                "tag": "Identifier",
+                                "value": "InstallationVerificationInfo",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 1506,
@@ -21096,47 +21109,48 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [],
-                      "list": Object {
-                        "nextPos": 1781,
-                        "pos": 1745,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": Object {
-                              "nextPos": 1781,
-                              "pos": 1778,
-                              "tag": "As",
-                              "values": Array [
-                                Object {
-                                  "nextPos": 1781,
-                                  "pos": 1778,
-                                  "tag": "Identifier",
-                                  "value": "ivi",
-                                },
-                              ],
-                            },
-                            "nextPos": 1781,
-                            "pos": 1745,
-                            "schema": Object {
-                              "nextPos": 1748,
-                              "pos": 1745,
-                              "tag": "Identifier",
-                              "value": "fit",
-                            },
-                            "table": Object {
-                              "nextPos": 1777,
-                              "pos": 1749,
-                              "tag": "Identifier",
-                              "value": "InstallationVerificationInfo",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
                       "nextPos": 1781,
                       "pos": 1740,
                       "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1781,
+                          "pos": 1745,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": Object {
+                                "nextPos": 1781,
+                                "pos": 1778,
+                                "tag": "As",
+                                "values": Array [
+                                  Object {
+                                    "nextPos": 1781,
+                                    "pos": 1778,
+                                    "tag": "Identifier",
+                                    "value": "ivi",
+                                  },
+                                ],
+                              },
+                              "nextPos": 1781,
+                              "pos": 1745,
+                              "schema": Object {
+                                "nextPos": 1748,
+                                "pos": 1745,
+                                "tag": "Identifier",
+                                "value": "fit",
+                              },
+                              "table": Object {
+                                "nextPos": 1777,
+                                "pos": 1749,
+                                "tag": "Identifier",
+                                "value": "InstallationVerificationInfo",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 1833,
@@ -21608,7 +21622,47 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [
+                      "nextPos": 2325,
+                      "pos": 2181,
+                      "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 2210,
+                          "pos": 2186,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": Object {
+                                "nextPos": 2210,
+                                "pos": 2208,
+                                "tag": "As",
+                                "values": Array [
+                                  Object {
+                                    "nextPos": 2210,
+                                    "pos": 2208,
+                                    "tag": "Identifier",
+                                    "value": "im",
+                                  },
+                                ],
+                              },
+                              "nextPos": 2210,
+                              "pos": 2186,
+                              "schema": Object {
+                                "nextPos": 2189,
+                                "pos": 2186,
+                                "tag": "Identifier",
+                                "value": "fit",
+                              },
+                              "table": Object {
+                                "nextPos": 2207,
+                                "pos": 2190,
+                                "tag": "Identifier",
+                                "value": "InstallationMeter",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
                         Object {
                           "nextPos": 2261,
                           "pos": 2215,
@@ -21812,46 +21866,6 @@ Object {
                           ],
                         },
                       ],
-                      "list": Object {
-                        "nextPos": 2210,
-                        "pos": 2186,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": Object {
-                              "nextPos": 2210,
-                              "pos": 2208,
-                              "tag": "As",
-                              "values": Array [
-                                Object {
-                                  "nextPos": 2210,
-                                  "pos": 2208,
-                                  "tag": "Identifier",
-                                  "value": "im",
-                                },
-                              ],
-                            },
-                            "nextPos": 2210,
-                            "pos": 2186,
-                            "schema": Object {
-                              "nextPos": 2189,
-                              "pos": 2186,
-                              "tag": "Identifier",
-                              "value": "fit",
-                            },
-                            "table": Object {
-                              "nextPos": 2207,
-                              "pos": 2190,
-                              "tag": "Identifier",
-                              "value": "InstallationMeter",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
-                      "nextPos": 2325,
-                      "pos": 2181,
-                      "tag": "From",
                     },
                     Object {
                       "nextPos": 2423,
@@ -22052,47 +22066,48 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [],
-                      "list": Object {
-                        "nextPos": 2507,
-                        "pos": 2495,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": Object {
-                              "nextPos": 2507,
-                              "pos": 2506,
-                              "tag": "As",
-                              "values": Array [
-                                Object {
-                                  "nextPos": 2507,
-                                  "pos": 2506,
-                                  "tag": "Identifier",
-                                  "value": "s",
-                                },
-                              ],
-                            },
-                            "nextPos": 2507,
-                            "pos": 2495,
-                            "schema": Object {
-                              "nextPos": 2498,
-                              "pos": 2495,
-                              "tag": "Identifier",
-                              "value": "fit",
-                            },
-                            "table": Object {
-                              "nextPos": 2505,
-                              "pos": 2499,
-                              "tag": "Identifier",
-                              "value": "Switch",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
                       "nextPos": 2507,
                       "pos": 2490,
                       "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 2507,
+                          "pos": 2495,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": Object {
+                                "nextPos": 2507,
+                                "pos": 2506,
+                                "tag": "As",
+                                "values": Array [
+                                  Object {
+                                    "nextPos": 2507,
+                                    "pos": 2506,
+                                    "tag": "Identifier",
+                                    "value": "s",
+                                  },
+                                ],
+                              },
+                              "nextPos": 2507,
+                              "pos": 2495,
+                              "schema": Object {
+                                "nextPos": 2498,
+                                "pos": 2495,
+                                "tag": "Identifier",
+                                "value": "fit",
+                              },
+                              "table": Object {
+                                "nextPos": 2505,
+                                "pos": 2499,
+                                "tag": "Identifier",
+                                "value": "Switch",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 2583,
@@ -22304,47 +22319,48 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [],
-                      "list": Object {
-                        "nextPos": 2684,
-                        "pos": 2672,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": Object {
-                              "nextPos": 2684,
-                              "pos": 2683,
-                              "tag": "As",
-                              "values": Array [
-                                Object {
-                                  "nextPos": 2684,
-                                  "pos": 2683,
-                                  "tag": "Identifier",
-                                  "value": "s",
-                                },
-                              ],
-                            },
-                            "nextPos": 2684,
-                            "pos": 2672,
-                            "schema": Object {
-                              "nextPos": 2675,
-                              "pos": 2672,
-                              "tag": "Identifier",
-                              "value": "fit",
-                            },
-                            "table": Object {
-                              "nextPos": 2682,
-                              "pos": 2676,
-                              "tag": "Identifier",
-                              "value": "Switch",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
                       "nextPos": 2684,
                       "pos": 2667,
                       "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 2684,
+                          "pos": 2672,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": Object {
+                                "nextPos": 2684,
+                                "pos": 2683,
+                                "tag": "As",
+                                "values": Array [
+                                  Object {
+                                    "nextPos": 2684,
+                                    "pos": 2683,
+                                    "tag": "Identifier",
+                                    "value": "s",
+                                  },
+                                ],
+                              },
+                              "nextPos": 2684,
+                              "pos": 2672,
+                              "schema": Object {
+                                "nextPos": 2675,
+                                "pos": 2672,
+                                "tag": "Identifier",
+                                "value": "fit",
+                              },
+                              "table": Object {
+                                "nextPos": 2682,
+                                "pos": 2676,
+                                "tag": "Identifier",
+                                "value": "Switch",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 2761,
@@ -22556,47 +22572,48 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [],
-                      "list": Object {
-                        "nextPos": 2871,
-                        "pos": 2859,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": Object {
-                              "nextPos": 2871,
-                              "pos": 2870,
-                              "tag": "As",
-                              "values": Array [
-                                Object {
-                                  "nextPos": 2871,
-                                  "pos": 2870,
-                                  "tag": "Identifier",
-                                  "value": "s",
-                                },
-                              ],
-                            },
-                            "nextPos": 2871,
-                            "pos": 2859,
-                            "schema": Object {
-                              "nextPos": 2862,
-                              "pos": 2859,
-                              "tag": "Identifier",
-                              "value": "fit",
-                            },
-                            "table": Object {
-                              "nextPos": 2869,
-                              "pos": 2863,
-                              "tag": "Identifier",
-                              "value": "Switch",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
                       "nextPos": 2871,
                       "pos": 2854,
                       "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 2871,
+                          "pos": 2859,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": Object {
+                                "nextPos": 2871,
+                                "pos": 2870,
+                                "tag": "As",
+                                "values": Array [
+                                  Object {
+                                    "nextPos": 2871,
+                                    "pos": 2870,
+                                    "tag": "Identifier",
+                                    "value": "s",
+                                  },
+                                ],
+                              },
+                              "nextPos": 2871,
+                              "pos": 2859,
+                              "schema": Object {
+                                "nextPos": 2862,
+                                "pos": 2859,
+                                "tag": "Identifier",
+                                "value": "fit",
+                              },
+                              "table": Object {
+                                "nextPos": 2869,
+                                "pos": 2863,
+                                "tag": "Identifier",
+                                "value": "Switch",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 2921,
@@ -22794,7 +22811,47 @@ Object {
           ],
         },
         Object {
-          "join": Array [
+          "nextPos": 3845,
+          "pos": 3064,
+          "tag": "From",
+          "values": Array [
+            Object {
+              "nextPos": 3087,
+              "pos": 3069,
+              "tag": "FromList",
+              "values": Array [
+                Object {
+                  "as": Object {
+                    "nextPos": 3087,
+                    "pos": 3086,
+                    "tag": "As",
+                    "values": Array [
+                      Object {
+                        "nextPos": 3087,
+                        "pos": 3086,
+                        "tag": "Identifier",
+                        "value": "i",
+                      },
+                    ],
+                  },
+                  "nextPos": 3087,
+                  "pos": 3069,
+                  "schema": Object {
+                    "nextPos": 3072,
+                    "pos": 3069,
+                    "tag": "Identifier",
+                    "value": "fit",
+                  },
+                  "table": Object {
+                    "nextPos": 3085,
+                    "pos": 3073,
+                    "tag": "Identifier",
+                    "value": "Installation",
+                  },
+                  "tag": "Table",
+                },
+              ],
+            },
             Object {
               "nextPos": 3168,
               "pos": 3088,
@@ -23634,46 +23691,6 @@ Object {
               ],
             },
           ],
-          "list": Object {
-            "nextPos": 3087,
-            "pos": 3069,
-            "tag": "FromList",
-            "values": Array [
-              Object {
-                "as": Object {
-                  "nextPos": 3087,
-                  "pos": 3086,
-                  "tag": "As",
-                  "values": Array [
-                    Object {
-                      "nextPos": 3087,
-                      "pos": 3086,
-                      "tag": "Identifier",
-                      "value": "i",
-                    },
-                  ],
-                },
-                "nextPos": 3087,
-                "pos": 3069,
-                "schema": Object {
-                  "nextPos": 3072,
-                  "pos": 3069,
-                  "tag": "Identifier",
-                  "value": "fit",
-                },
-                "table": Object {
-                  "nextPos": 3085,
-                  "pos": 3073,
-                  "tag": "Identifier",
-                  "value": "Installation",
-                },
-                "tag": "Table",
-              },
-            ],
-          },
-          "nextPos": 3845,
-          "pos": 3064,
-          "tag": "From",
         },
       ],
     },
@@ -24959,29 +24976,30 @@ Object {
                       ],
                     },
                     Object {
-                      "join": Array [],
-                      "list": Object {
-                        "nextPos": 214,
-                        "pos": 208,
-                        "tag": "FromList",
-                        "values": Array [
-                          Object {
-                            "as": undefined,
-                            "nextPos": 214,
-                            "pos": 208,
-                            "table": Object {
-                              "nextPos": 214,
-                              "pos": 208,
-                              "tag": "Identifier",
-                              "value": "meters",
-                            },
-                            "tag": "Table",
-                          },
-                        ],
-                      },
                       "nextPos": 214,
                       "pos": 203,
                       "tag": "From",
+                      "values": Array [
+                        Object {
+                          "nextPos": 214,
+                          "pos": 208,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "as": undefined,
+                              "nextPos": 214,
+                              "pos": 208,
+                              "table": Object {
+                                "nextPos": 214,
+                                "pos": 208,
+                                "tag": "Identifier",
+                                "value": "meters",
+                              },
+                              "tag": "Table",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 259,
@@ -25587,7 +25605,47 @@ Object {
           ],
         },
         Object {
-          "join": Array [
+          "nextPos": 1205,
+          "pos": 1134,
+          "tag": "From",
+          "values": Array [
+            Object {
+              "nextPos": 1158,
+              "pos": 1139,
+              "tag": "FromList",
+              "values": Array [
+                Object {
+                  "as": Object {
+                    "nextPos": 1158,
+                    "pos": 1156,
+                    "tag": "As",
+                    "values": Array [
+                      Object {
+                        "nextPos": 1158,
+                        "pos": 1156,
+                        "tag": "Identifier",
+                        "value": "mr",
+                      },
+                    ],
+                  },
+                  "nextPos": 1158,
+                  "pos": 1139,
+                  "schema": Object {
+                    "nextPos": 1142,
+                    "pos": 1139,
+                    "tag": "Identifier",
+                    "value": "fit",
+                  },
+                  "table": Object {
+                    "nextPos": 1155,
+                    "pos": 1143,
+                    "tag": "Identifier",
+                    "value": "MeterReading",
+                  },
+                  "tag": "Table",
+                },
+              ],
+            },
             Object {
               "nextPos": 1205,
               "pos": 1159,
@@ -25690,46 +25748,6 @@ Object {
               ],
             },
           ],
-          "list": Object {
-            "nextPos": 1158,
-            "pos": 1139,
-            "tag": "FromList",
-            "values": Array [
-              Object {
-                "as": Object {
-                  "nextPos": 1158,
-                  "pos": 1156,
-                  "tag": "As",
-                  "values": Array [
-                    Object {
-                      "nextPos": 1158,
-                      "pos": 1156,
-                      "tag": "Identifier",
-                      "value": "mr",
-                    },
-                  ],
-                },
-                "nextPos": 1158,
-                "pos": 1139,
-                "schema": Object {
-                  "nextPos": 1142,
-                  "pos": 1139,
-                  "tag": "Identifier",
-                  "value": "fit",
-                },
-                "table": Object {
-                  "nextPos": 1155,
-                  "pos": 1143,
-                  "tag": "Identifier",
-                  "value": "MeterReading",
-                },
-                "tag": "Table",
-              },
-            ],
-          },
-          "nextPos": 1205,
-          "pos": 1134,
-          "tag": "From",
         },
         Object {
           "nextPos": 1383,
@@ -26790,7 +26808,29 @@ Object {
       ],
     },
     Object {
-      "join": Array [
+      "nextPos": 746,
+      "pos": 441,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 459,
+          "pos": 446,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "nextPos": 459,
+              "pos": 446,
+              "table": Object {
+                "nextPos": 459,
+                "pos": 446,
+                "tag": "Identifier",
+                "value": "installations",
+              },
+              "tag": "Table",
+            },
+          ],
+        },
         Object {
           "nextPos": 522,
           "pos": 460,
@@ -27207,28 +27247,6 @@ Object {
           ],
         },
       ],
-      "list": Object {
-        "nextPos": 459,
-        "pos": 446,
-        "tag": "FromList",
-        "values": Array [
-          Object {
-            "as": undefined,
-            "nextPos": 459,
-            "pos": 446,
-            "table": Object {
-              "nextPos": 459,
-              "pos": 446,
-              "tag": "Identifier",
-              "value": "installations",
-            },
-            "tag": "Table",
-          },
-        ],
-      },
-      "nextPos": 746,
-      "pos": 441,
-      "tag": "From",
     },
     Object {
       "nextPos": 798,
@@ -27528,7 +27546,41 @@ Object {
       ],
     },
     Object {
-      "join": Array [
+      "nextPos": 218,
+      "pos": 157,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 176,
+          "pos": 162,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "as": Object {
+                "nextPos": 176,
+                "pos": 175,
+                "tag": "As",
+                "values": Array [
+                  Object {
+                    "nextPos": 176,
+                    "pos": 175,
+                    "tag": "Identifier",
+                    "value": "r",
+                  },
+                ],
+              },
+              "nextPos": 176,
+              "pos": 162,
+              "table": Object {
+                "nextPos": 174,
+                "pos": 162,
+                "tag": "Identifier",
+                "value": "tariff_rates",
+              },
+              "tag": "Table",
+            },
+          ],
+        },
         Object {
           "nextPos": 218,
           "pos": 177,
@@ -27625,40 +27677,6 @@ Object {
           ],
         },
       ],
-      "list": Object {
-        "nextPos": 176,
-        "pos": 162,
-        "tag": "FromList",
-        "values": Array [
-          Object {
-            "as": Object {
-              "nextPos": 176,
-              "pos": 175,
-              "tag": "As",
-              "values": Array [
-                Object {
-                  "nextPos": 176,
-                  "pos": 175,
-                  "tag": "Identifier",
-                  "value": "r",
-                },
-              ],
-            },
-            "nextPos": 176,
-            "pos": 162,
-            "table": Object {
-              "nextPos": 174,
-              "pos": 162,
-              "tag": "Identifier",
-              "value": "tariff_rates",
-            },
-            "tag": "Table",
-          },
-        ],
-      },
-      "nextPos": 218,
-      "pos": 157,
-      "tag": "From",
     },
     Object {
       "nextPos": 319,
@@ -28553,7 +28571,41 @@ Object {
       ],
     },
     Object {
-      "join": Array [
+      "nextPos": 545,
+      "pos": 241,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 260,
+          "pos": 246,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "as": Object {
+                "nextPos": 260,
+                "pos": 258,
+                "tag": "As",
+                "values": Array [
+                  Object {
+                    "nextPos": 260,
+                    "pos": 258,
+                    "tag": "Identifier",
+                    "value": "mr",
+                  },
+                ],
+              },
+              "nextPos": 260,
+              "pos": 246,
+              "table": Object {
+                "nextPos": 257,
+                "pos": 246,
+                "tag": "Identifier",
+                "value": "meter_reads",
+              },
+              "tag": "Table",
+            },
+          ],
+        },
         Object {
           "nextPos": 325,
           "pos": 268,
@@ -28935,40 +28987,6 @@ Object {
           ],
         },
       ],
-      "list": Object {
-        "nextPos": 260,
-        "pos": 246,
-        "tag": "FromList",
-        "values": Array [
-          Object {
-            "as": Object {
-              "nextPos": 260,
-              "pos": 258,
-              "tag": "As",
-              "values": Array [
-                Object {
-                  "nextPos": 260,
-                  "pos": 258,
-                  "tag": "Identifier",
-                  "value": "mr",
-                },
-              ],
-            },
-            "nextPos": 260,
-            "pos": 246,
-            "table": Object {
-              "nextPos": 257,
-              "pos": 246,
-              "tag": "Identifier",
-              "value": "meter_reads",
-            },
-            "tag": "Table",
-          },
-        ],
-      },
-      "nextPos": 545,
-      "pos": 241,
-      "tag": "From",
     },
     Object {
       "nextPos": 596,
@@ -29419,35 +29437,36 @@ Object {
       ],
     },
     Object {
-      "join": Array [],
-      "list": Object {
-        "nextPos": 312,
-        "pos": 286,
-        "tag": "FromList",
-        "values": Array [
-          Object {
-            "as": undefined,
-            "nextPos": 312,
-            "pos": 286,
-            "schema": Object {
-              "nextPos": 304,
-              "pos": 286,
-              "tag": "Identifier",
-              "value": "information_schema",
-            },
-            "table": Object {
-              "nextPos": 312,
-              "pos": 305,
-              "tag": "Identifier",
-              "value": "columns",
-            },
-            "tag": "Table",
-          },
-        ],
-      },
       "nextPos": 312,
       "pos": 281,
       "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 312,
+          "pos": 286,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "as": undefined,
+              "nextPos": 312,
+              "pos": 286,
+              "schema": Object {
+                "nextPos": 304,
+                "pos": 286,
+                "tag": "Identifier",
+                "value": "information_schema",
+              },
+              "table": Object {
+                "nextPos": 312,
+                "pos": 305,
+                "tag": "Identifier",
+                "value": "columns",
+              },
+              "tag": "Table",
+            },
+          ],
+        },
+      ],
     },
     Object {
       "nextPos": 377,

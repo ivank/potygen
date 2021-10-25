@@ -268,8 +268,7 @@ export interface FromListTag extends SqlTag {
 }
 export interface FromTag extends SqlTag {
   tag: 'From';
-  list: FromListTag;
-  join: JoinTag[];
+  values: [list: FromListTag, ...join: JoinTag[]];
 }
 export interface WhereTag extends SqlTag {
   tag: 'Where';
