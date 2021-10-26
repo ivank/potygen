@@ -1,17 +1,17 @@
 import {
-  Ignore,
   All,
   Any,
-  Optional,
-  Node,
-  Y,
-  Star,
-  Rule,
-  LeftBinaryOperator,
-  Plus,
-  IfNot,
   FunctionRule,
+  IfNot,
+  Ignore,
+  LeftBinaryOperator,
+  Node,
+  Optional,
+  Plus,
+  Rule,
   Stack,
+  Star,
+  Y,
 } from '@ikerin/rd-parse';
 import {
   AnyTypeTag,
@@ -111,12 +111,12 @@ const context = ({ pos }: Stack, { pos: nextPos }: Stack): { pos: number; nextPo
 /**
  * Comma separated list
  */
-const List = (item: Rule, { separator = ',' }: { separator?: Rule } = {}) => All(Star(All(item, separator)), item);
+const List = (item: Rule) => All(item, Star(All(',', item)));
 
 /**
  * Comma separated list with more than one element
  */
-const MultiList = (item: Rule, { separator = ',' }: { separator?: Rule } = {}) => All(item, Plus(All(separator, item)));
+const MultiList = (item: Rule) => All(item, Plus(All(',', item)));
 
 const Brackets = (rule: Rule) => All('(', rule, ')');
 const OptionalBrackets = (rule: Rule) => Any(Brackets(rule), rule);

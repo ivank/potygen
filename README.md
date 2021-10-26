@@ -1,4 +1,4 @@
 - [ ] json access
 - [ ] CLI
 - [ ] Hardcode native functions + operators
-- [ ] Standardise tags from grammar
+- [x] Standardise tags from grammar

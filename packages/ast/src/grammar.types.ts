@@ -426,108 +426,108 @@ export type DataTypeTag = CaseTag | CaseSimpleTag | CastableDataTypeTag;
 export type QueryTag = SelectTag | UpdateTag | InsertTag | DeleteTag;
 
 export type CastableDataTypeTag =
-  | FunctionTag
   | ArrayIndexTag
-  | ConstantTag
   | ColumnTag
-  | SelectTag
+  | ConstantTag
+  | FunctionTag
   | ParameterTag
-  | PgCastTag;
+  | PgCastTag
+  | SelectTag;
 
 export type ExpressionTag =
   | AnyCastTag
-  | DataTypeTag
-  | OperatorExpressionTag
   | BetweenTag
-  | RowTag
   | ComparationExpressionTag
-  | NullIfTag
   | ConditionalExpressionTag
+  | DataTypeTag
+  | NullIfTag
+  | OperatorExpressionTag
+  | RowTag
   | WrappedExpressionTag;
 
 export type Tag =
-  | NullTag
-  | IdentifierTag
-  | TableIdentifierTag
-  | ParameterTag
-  | ColumnTag
-  | AsTag
-  | StringTag
-  | NumberTag
-  | IntegerTag
-  | BooleanTag
-  | ConstantTag
-  | CountTag
+  | ArrayConstructorTag
   | ArrayIndexRangeTag
   | ArrayIndexTag
-  | TypeTag
-  | TypeArrayTag
-  | DistinctTag
-  | StarTag
-  | StarIdentifierTag
-  | CastableDataTypeTag
-  | WhenTag
-  | ElseTag
-  | CaseTag
-  | DataTypeTag
+  | AsTag
+  | BetweenTag
+  | BinaryExpressionTag
   | BinaryOperatorTag
-  | UnaryOperatorTag
+  | BooleanTag
+  | CaseTag
+  | CastableDataTypeTag
+  | CastTag
+  | CollateTag
+  | ColumnsTag
+  | ColumnTag
+  | CombinationTag
   | ComparationOperatorTag
   | ComparationTypeTag
-  | BinaryExpressionTag
-  | BetweenTag
-  | CastTag
-  | PgCastTag
-  | ExpressionTag
-  | SelectListItemTag
-  | SelectListTag
-  | FromListItemTag
-  | FromTag
-  | FromListTag
-  | JoinTypeTag
-  | JoinOnTag
-  | JoinUsingTag
-  | JoinTag
-  | WhereTag
-  | GroupByTag
-  | HavingTag
-  | CombinationTag
-  | OrderDirectionTag
-  | OrderByItemTag
-  | OrderByTag
-  | LimitTag
-  | LimitAllTag
-  | OffsetTag
-  | SelectTag
-  | DefaultTag
-  | SetItemTag
-  | SetListTag
-  | ColumnsTag
-  | ValuesTag
-  | SetMapTag
-  | SetTag
-  | TableTag
-  | UpdateFromTag
-  | ReturningTag
-  | ReturningListItemTag
-  | UpdateTag
-  | UsingTag
-  | DeleteTag
-  | ValuesListTag
-  | InsertTag
-  | QuotedNameTag
-  | CollateTag
-  | ConflictTargetTag
+  | ConditionalExpressionTag
   | ConflictConstraintTag
+  | ConflictTag
+  | ConflictTargetTag
+  | ConstantTag
+  | CountTag
+  | CTETag
+  | DataTypeTag
+  | DefaultTag
+  | DeleteTag
+  | DistinctTag
   | DoNothingTag
   | DoUpdateTag
-  | ConflictTag
-  | ArrayConstructorTag
-  | FunctionTag
-  | NullIfTag
+  | ElseTag
+  | ExpressionListTag
+  | ExpressionTag
   | FilterTag
-  | ConditionalExpressionTag
-  | WithTag
-  | CTETag
+  | FromListItemTag
+  | FromListTag
+  | FromTag
+  | FunctionTag
+  | GroupByTag
+  | HavingTag
+  | IdentifierTag
+  | InsertTag
+  | IntegerTag
+  | JoinOnTag
+  | JoinTag
+  | JoinTypeTag
+  | JoinUsingTag
+  | LimitAllTag
+  | LimitTag
   | NameTag
-  | ExpressionListTag;
+  | NullIfTag
+  | NullTag
+  | NumberTag
+  | OffsetTag
+  | OrderByItemTag
+  | OrderByTag
+  | OrderDirectionTag
+  | ParameterTag
+  | PgCastTag
+  | QuotedNameTag
+  | ReturningListItemTag
+  | ReturningTag
+  | SelectListItemTag
+  | SelectListTag
+  | SelectTag
+  | SetItemTag
+  | SetListTag
+  | SetMapTag
+  | SetTag
+  | StarIdentifierTag
+  | StarTag
+  | StringTag
+  | TableIdentifierTag
+  | TableTag
+  | TypeArrayTag
+  | TypeTag
+  | UnaryOperatorTag
+  | UpdateFromTag
+  | UpdateTag
+  | UsingTag
+  | ValuesListTag
+  | ValuesTag
+  | WhenTag
+  | WhereTag
+  | WithTag;
