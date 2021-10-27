@@ -321,6 +321,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
             .join(', ');
 
           console.log(JSON.stringify(variants, null, 2));
+          console.log(type);
           console.log(args);
           console.log(funcVariant);
           throw new LoadError(

@@ -12,6 +12,7 @@ import {
   Stack,
   Star,
   Y,
+  Token,
 } from '@ikerin/rd-parse';
 import {
   AnyTypeTag,
@@ -34,7 +35,6 @@ import {
   ComparationExpressionTag,
   ComparationOperatorTag,
   ComparationTypeTag,
-  ConditionalExpressionTag,
   ConflictConstraintTag,
   ConflictTag,
   ConflictTargetTag,
@@ -66,7 +66,6 @@ import {
   LimitTag,
   NamedSelectTag,
   NameTag,
-  NullIfTag,
   NullTag,
   NumberTag,
   OffsetTag,
@@ -75,7 +74,6 @@ import {
   OrderDirectionTag,
   ParameterTag,
   QueryTag,
-  QuotedNameTag,
   ReturningListItemTag,
   ReturningTag,
   RowTag,
@@ -104,9 +102,13 @@ import {
   WhereTag,
   WithTag,
   WrappedExpressionTag,
+  Tag,
 } from './grammar.types';
 
 const context = ({ pos }: Stack, { pos: nextPos }: Stack): { pos: number; nextPos: number } => ({ pos, nextPos });
+
+const toTag = <Capture extends Token[], TTag extends Tag = Tag>(tag: TTag['tag'], rule: Rule) =>
+  Node<TTag, Capture>(rule, (values, $, $next) => ({ tag, values, ...context($, $next) } as any));
 
 /**
  * Comma separated list
@@ -126,9 +128,7 @@ const OptionalBrackets = (rule: Rule) => Any(Brackets(rule), rule);
  */
 const NameRule = /^([A-Z_][A-Z0-9_]*)/i;
 const QuotedNameRule = /^"((?:""|[^"])*)"/;
-const QuotedName = Node<QuotedNameTag>(QuotedNameRule, ([value], $, $next) => {
-  return { tag: 'QuotedName', value, ...context($, $next) };
-});
+const QuotedName = toTag<[string]>('QuotedName', QuotedNameRule);
 
 const RestrictedReservedKeywords =
   /^(?:ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|ABORT|ABSOLUTE|ACCESS|ACTION|ADD|ADMIN|AFTER|AGGREGATE|ALSO|ALTER|ASSERTION|ASSIGNMENT|AT|BACKWARD|BEFORE|BEGIN|BY|CACHE|CALLED|CASCADE|CHAIN|CHARACTERISTICS|CHECKPOINT|CLASS|CLOSE|CLUSTER|COMMENT|COMMIT|COMMITTED|CONNECTION|CONSTRAINTS|CONVERSION|COPY|CREATEDB|CREATEROLE|CREATEUSER|CSV|CURSOR|CYCLE|DATABASE|DAY|DEALLOCATE|DECLARE|DEFAULTS|DEFERRED|DEFINER|DELETE|DELIMITER|DELIMITERS|DISABLE|DOMAIN|DOUBLE|DROP|EACH|ENABLE|ENCODING|ENCRYPTED|ESCAPE|EXCLUDING|EXCLUSIVE|EXECUTE|EXPLAIN|EXTERNAL|FETCH|FIRST|FORCE|FORWARD|FUNCTION|GLOBAL|GRANTED|HANDLER|HEADER|HOLD|HOUR|IMMEDIATE|IMMUTABLE|IMPLICIT|INCLUDING|INCREMENT|INDEX|INHERIT|INHERITS|INPUT|INSENSITIVE|INSERT|INSTEAD|INVOKER|ISOLATION|KEY|LANCOMPILER|LANGUAGE|LARGE|LAST|LEVEL|LISTEN|LOAD|LOCAL|LOCATION|LOCK|LOGIN|MATCH|MAXVALUE|MINUTE|MINVALUE|MODE|MONTH|MOVE|NAMES|NEXT|NO|NOCREATEDB|NOCREATEROLE|NOCREATEUSER|NOINHERIT|NOLOGIN|NOSUPERUSER|NOTHING|NOTIFY|NOWAIT|OBJECT|OF|OIDS|OPERATOR|OPTION|OWNER|PARTIAL|PASSWORD|PREPARE|PREPARED|PRESERVE|PRIOR|PRIVILEGES|PROCEDURAL|PROCEDURE|QUOTE|READ|RECHECK|REINDEX|RELATIVE|RELEASE|RENAME|REPEATABLE|REPLACE|RESET|RESTART|RESTRICT|RETURNS|REVOKE|ROLE|ROLLBACK|ROWS|RULE|SAVEPOINT|SCHEMA|SCROLL|SECOND|SECURITY|SEQUENCE|SERIALIZABLE|SESSION|SET|SHARE|SHOW|SIMPLE|STABLE|START|STATEMENT|STATISTICS|STDIN|STDOUT|STORAGE|STRICT|SUPERUSER|SYSID|SYSTEM|TABLESPACE|TEMP|TEMPLATE|TEMPORARY|TOAST|TRANSACTION|TRIGGER|TRUNCATE|TRUSTED|TYPE|UNCOMMITTED|UNENCRYPTED|UNKNOWN|UNLISTEN|UNTIL|UPDATE|VACUUM|VALID|VALIDATOR|VALUES|VARYING|VIEW|VOLATILE|WITH|WITHOUT|WORK|WRITE|YEAR|ZONE|CROSS|OUTER|RIGHT|LEFT|FULL|JOIN|INNER|RETURNING)$/i;
@@ -217,7 +217,7 @@ const Boolean = Node<BooleanTag>(/^(TRUE|FALSE)/i, ([value], $, $next) => ({
   value,
   ...context($, $next),
 }));
-const Constant = Any(Null, String, DollarQuatedString, CustomDollarQuatedString, Number, Boolean);
+const Constant = Any(String, DollarQuatedString, CustomDollarQuatedString, Number, Boolean);
 
 /**
  * Type
@@ -268,7 +268,7 @@ const Type = Node<TypeTag>(
 const TypeArray = Node<TypeArrayTag, [TypeTag, ...string[]]>(
   All(Type, Plus(/^(\[\])/)),
   ([type, ...dimensions], $, $next) => {
-    return { tag: 'TypeArray', values: [type], value: dimensions.length, ...context($, $next) };
+    return { tag: 'TypeArray', values: [type], dimensions: dimensions.length, ...context($, $next) };
   },
 );
 
@@ -424,26 +424,6 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     );
 
     /**
-     * Conditional
-     * ----------------------------------------------------------------------------------------
-     */
-
-    const NullIf = Node<NullIfTag, [ExpressionTag, ExpressionTag]>(
-      All(/^NULLIF/i, Brackets(All(ChildExpression, ',', ChildExpression))),
-      (values, $, $next) => ({ tag: 'NullIfTag', values, ...context($, $next) }),
-    );
-
-    const ConditionalExpression = Node<ConditionalExpressionTag>(
-      All(/^(COALESCE|GREATEST|LEAST)/i, Brackets(List(ChildExpression))),
-      ([type, ...values], $, $next) => ({
-        tag: 'ConditionalExpression',
-        type: type.toUpperCase(),
-        values,
-        ...context($, $next),
-      }),
-    );
-
-    /**
      * Function
      * ----------------------------------------------------------------------------------------
      */
@@ -503,15 +483,14 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       OperatorComparation,
       ColumnFullyQualified,
       ColumnQualified,
-      NullIf,
       Constant,
       Parameter,
       ArrayConstructor,
       Row,
       Exists,
       BuiltInFunction,
-      ConditionalExpression,
       Function,
+      Null,
       InclusionComparation,
       ArrayIndex,
       RowWiseComparation,

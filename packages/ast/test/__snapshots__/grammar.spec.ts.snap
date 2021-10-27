@@ -1514,9 +1514,14 @@ Object {
             Object {
               "nextPos": 25,
               "pos": 7,
-              "tag": "ConditionalExpression",
-              "type": "COALESCE",
+              "tag": "Function",
               "values": Array [
+                Object {
+                  "nextPos": 15,
+                  "pos": 7,
+                  "tag": "Identifier",
+                  "value": "COALESCE",
+                },
                 Object {
                   "nextPos": 18,
                   "pos": 16,
@@ -11732,8 +11737,14 @@ Object {
             Object {
               "nextPos": 29,
               "pos": 7,
-              "tag": "NullIfTag",
+              "tag": "Function",
               "values": Array [
+                Object {
+                  "nextPos": 13,
+                  "pos": 7,
+                  "tag": "Identifier",
+                  "value": "NULLIF",
+                },
                 Object {
                   "nextPos": 18,
                   "pos": 14,
@@ -17002,10 +17013,10 @@ Object {
                   "value": "test",
                 },
                 Object {
+                  "dimensions": 1,
                   "nextPos": 19,
                   "pos": 14,
                   "tag": "TypeArray",
-                  "value": 1,
                   "values": Array [
                     Object {
                       "nextPos": 17,
@@ -17057,10 +17068,10 @@ Object {
                   "value": "test",
                 },
                 Object {
+                  "dimensions": 2,
                   "nextPos": 21,
                   "pos": 14,
                   "tag": "TypeArray",
-                  "value": 2,
                   "values": Array [
                     Object {
                       "nextPos": 17,

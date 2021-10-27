@@ -20,7 +20,6 @@ import {
   ComparationExpressionTag,
   ComparationOperatorTag,
   ComparationTypeTag,
-  ConditionalExpressionTag,
   ConflictConstraintTag,
   ConflictTag,
   ConflictTargetTag,
@@ -54,7 +53,6 @@ import {
   LimitTag,
   NamedSelectTag,
   NameTag,
-  NullIfTag,
   NullTag,
   NumberTag,
   OffsetTag,
@@ -122,9 +120,6 @@ export const isWhen = (value: SqlTag): value is WhenTag => value.tag === 'When';
 export const isElse = (value: SqlTag): value is ElseTag => value.tag === 'Else';
 export const isCase = (value: SqlTag): value is CaseTag => value.tag === 'Case';
 export const isCaseSimple = (value: SqlTag): value is CaseSimpleTag => value.tag === 'CaseSimple';
-export const isNullIf = (value: SqlTag): value is NullIfTag => value.tag === 'NullIf';
-export const isConditionalExpression = (value: SqlTag): value is ConditionalExpressionTag =>
-  value.tag === 'ConditionalExpression';
 export const isDataType = (value: SqlTag): value is DataTypeTag => value.tag === 'DataType';
 export const isBinaryOperator = (value: SqlTag): value is BinaryOperatorTag => value.tag === 'BinaryOperator';
 export const isUnaryOperator = (value: SqlTag): value is UnaryOperatorTag => value.tag === 'UnaryOperator';
@@ -156,8 +151,6 @@ export const isExpression = (value: SqlTag): value is ExpressionTag =>
   isArrayIndex(value) ||
   isRow(value) ||
   isComparationExpression(value) ||
-  isNullIf(value) ||
-  isConditionalExpression(value) ||
   isWrappedExpression(value);
 export const isSelectListItem = (value: SqlTag): value is SelectListItemTag => value.tag === 'SelectListItem';
 export const isReturningListItem = (value: SqlTag): value is ReturningListItemTag => value.tag === 'ReturningListItem';

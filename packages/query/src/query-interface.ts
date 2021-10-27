@@ -41,6 +41,7 @@ import {
   typeBoolean,
   sqlTypes,
   typeAny,
+  typeDate,
 } from './query-interface-type-instances';
 import { isTypeConstant, isTypeString } from './query-interface.guards';
 import {
@@ -204,24 +205,27 @@ const toType =
               : undefined,
           sourceTag: sql,
         };
-      case 'ConditionalExpression':
-        const conditionalTypes = sql.values.map(recur);
-        return sql.type === 'COALESCE'
-          ? { type: 'Coalesce', items: conditionalTypes }
-          : {
-              type: 'Named',
-              name: sql.type.toLowerCase(),
-              value: conditionalTypes.find(isTypeConstant) ?? conditionalTypes[0],
-            };
       case 'Function':
         const functionName = first(sql.values).value.toLowerCase();
         const args = sql.values.filter(isExpression).map(recur);
         switch (functionName) {
+          case 'coalesce':
+            return { type: 'Coalesce', items: args };
+          case 'greatest':
+          case 'least':
+            return { type: 'Named', name: functionName, value: args.find(isTypeConstant) ?? args[0] };
+          case 'nullif':
+            return { type: 'Union', items: [typeNull, args[0]] };
           case 'array_agg':
             return { type: 'ToArray', items: args[0] ?? typeUnknown };
           case 'json_agg':
           case 'jsonb_agg':
             return { type: 'Array', items: args[0] ?? typeUnknown };
+          case 'current_date':
+          case 'current_timestamp':
+            return typeDate;
+          case 'curtent_time':
+            return typeString;
           case 'json_build_object':
           case 'jsonb_build_object':
             return {
@@ -235,8 +239,6 @@ const toType =
         }
       case 'Null':
         return typeNull;
-      case 'NullIfTag':
-        return { type: 'Union', items: [typeNull, recur(first(sql.values))] };
       case 'Number':
         return { type: 'Number', literal: Number(sql.value) };
       case 'Parameter':
@@ -260,7 +262,7 @@ const toType =
       case 'Type':
         return sqlTypes[sql.value] ?? { type: 'LoadRecord', name: sql.value.toLowerCase() };
       case 'TypeArray':
-        return Array.from({ length: sql.value }).reduce<Type>(
+        return Array.from({ length: sql.dimensions }).reduce<Type>(
           (items) => ({ type: 'Array', items }),
           recur(first(sql.values)),
         );
@@ -387,14 +389,24 @@ export const toParams =
           }),
         );
       case 'Function':
-        const args = sql.values.filter(isExpression);
-        const argType = { args: args.map(toTypeRecur), name: first(sql.values).value.toLowerCase() };
+        const functionName = first(sql.values).value.toLowerCase();
+        switch (functionName) {
+          case 'coalesce':
+          case 'greatest':
+          case 'least':
+            return sql.values.flatMap(recur);
+          default:
+            const args = sql.values.filter(isExpression);
+            const argType = { args: args.map(toTypeRecur), name: functionName };
 
-        return args
-          .flatMap((arg, index) =>
-            toParams({ ...context, type: { type: 'LoadFunctionArgument', ...argType, index, sourceTag: arg } })(arg),
-          )
-          .concat(sql.values.filter(isOrderBy).flatMap(recur), sql.values.filter(isFilter).flatMap(recur));
+            return args
+              .flatMap((arg, index) =>
+                toParams({ ...context, type: { type: 'LoadFunctionArgument', ...argType, index, sourceTag: arg } })(
+                  arg,
+                ),
+              )
+              .concat(sql.values.filter(isOrderBy).flatMap(recur), sql.values.filter(isFilter).flatMap(recur));
+        }
       case 'Parameter':
         return [
           {

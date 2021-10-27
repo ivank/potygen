@@ -3,6 +3,7 @@ export interface SqlTag {
   nextPos: number;
   tag: string;
   values?: Tag[];
+  value?: string;
 }
 
 export interface CTETag extends SqlTag {
@@ -83,7 +84,7 @@ export interface TypeTag extends SqlTag {
 }
 export interface TypeArrayTag extends SqlTag {
   tag: 'TypeArray';
-  value: number;
+  dimensions: number;
   values: [TypeTag];
 }
 export interface DistinctTag extends SqlTag {
@@ -123,15 +124,6 @@ export interface CaseSimpleTag extends SqlTag {
 export interface CaseTag extends SqlTag {
   tag: 'Case';
   values: (WhenTag | ElseTag)[];
-}
-export interface NullIfTag extends SqlTag {
-  tag: 'NullIfTag';
-  values: [value: ExpressionTag, condition: ExpressionTag];
-}
-export interface ConditionalExpressionTag extends SqlTag {
-  tag: 'ConditionalExpression';
-  type: 'GREATEST' | 'LEAST' | 'COALESCE';
-  values: ExpressionTag[];
 }
 export interface BinaryOperatorTag extends SqlTag {
   tag: 'BinaryOperator';
@@ -417,12 +409,12 @@ export interface ExpressionListTag extends SqlTag {
 }
 
 export type FromListItemTag = NamedSelectTag | TableTag;
-export type ConstantTag = NullTag | StringTag | NumberTag | BooleanTag;
+export type ConstantTag = StringTag | NumberTag | BooleanTag;
 export type AnyTypeTag = TypeTag | TypeArrayTag;
 export type SelectParts = DistinctTag | SelectListTag | FromTag | WhereTag | GroupByTag | HavingTag;
 export type OperatorExpressionTag = BinaryExpressionTag | UnaryExpressionTag;
 export type AnyCastTag = CastTag | PgCastTag;
-export type DataTypeTag = CaseTag | CaseSimpleTag | CastableDataTypeTag;
+export type DataTypeTag = NullTag | CaseTag | CaseSimpleTag | CastableDataTypeTag;
 export type QueryTag = SelectTag | UpdateTag | InsertTag | DeleteTag;
 
 export type CastableDataTypeTag =
@@ -438,9 +430,7 @@ export type ExpressionTag =
   | AnyCastTag
   | BetweenTag
   | ComparationExpressionTag
-  | ConditionalExpressionTag
   | DataTypeTag
-  | NullIfTag
   | OperatorExpressionTag
   | RowTag
   | WrappedExpressionTag;
@@ -463,7 +453,6 @@ export type Tag =
   | CombinationTag
   | ComparationOperatorTag
   | ComparationTypeTag
-  | ConditionalExpressionTag
   | ConflictConstraintTag
   | ConflictTag
   | ConflictTargetTag
@@ -496,7 +485,6 @@ export type Tag =
   | LimitAllTag
   | LimitTag
   | NameTag
-  | NullIfTag
   | NullTag
   | NumberTag
   | OffsetTag
