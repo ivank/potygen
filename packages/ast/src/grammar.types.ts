@@ -200,9 +200,23 @@ export interface UnaryExpressionTag extends NodeSqlTag {
   tag: 'UnaryExpression';
   values: [operator: UnaryOperatorTag, value: DataTypeTag | OperatorExpressionTag];
 }
-export interface BetweenTag extends NodeSqlTag {
-  tag: 'Between';
-  values: [value: DataTypeTag, from: DataTypeTag, to: DataTypeTag];
+export interface TernaryOperatorTag extends LeafSqlTag {
+  tag: 'TernaryOperator';
+  value: 'BETWEEN' | 'NOT BETWEEN' | 'BETWEEN SYMMETRIC' | 'NOT BETWEEN SYMMETRIC';
+}
+export interface TernarySeparatorTag extends LeafSqlTag {
+  tag: 'TernarySeparator';
+  value: 'AND';
+}
+export interface TernaryExpressionTag extends NodeSqlTag {
+  tag: 'TernaryExpression';
+  values: [
+    value: DataTypeTag,
+    operator: TernarySeparatorTag,
+    arg1: DataTypeTag,
+    separator: TernarySeparatorTag,
+    arg2: DataTypeTag,
+  ];
 }
 export interface CastTag extends NodeSqlTag {
   tag: 'Cast';
@@ -448,7 +462,7 @@ export type CastableDataTypeTag =
 
 export type ExpressionTag =
   | AnyCastTag
-  | BetweenTag
+  | TernaryExpressionTag
   | ComparationExpressionTag
   | DataTypeTag
   | OperatorExpressionTag
@@ -458,6 +472,8 @@ export type ExpressionTag =
 export type EmptyLeafTag = NullTag | StarTag | DefaultTag | DoNothingTag | LimitAllTag | DimensionTag;
 
 export type LeafTag =
+  | TernaryOperatorTag
+  | TernarySeparatorTag
   | QuotedNameTag
   | IdentifierTag
   | NameTag
@@ -497,7 +513,7 @@ export type NodeTag =
   | CaseTag
   | BinaryExpressionTag
   | UnaryExpressionTag
-  | BetweenTag
+  | TernaryExpressionTag
   | CastTag
   | PgCastTag
   | ArrayConstructorTag
@@ -541,89 +557,4 @@ export type NodeTag =
   | WrappedExpressionTag
   | ExpressionListTag;
 
-export type Tag =
-  | ArrayConstructorTag
-  | ArrayIndexRangeTag
-  | ArrayIndexTag
-  | AsTag
-  | BetweenTag
-  | BinaryExpressionTag
-  | BinaryOperatorTag
-  | BooleanTag
-  | CaseTag
-  | CastableDataTypeTag
-  | CastTag
-  | CollateTag
-  | ColumnsTag
-  | ColumnTag
-  | CombinationTag
-  | ComparationOperatorTag
-  | ComparationTypeTag
-  | ConflictConstraintTag
-  | ConflictTag
-  | ConflictTargetTag
-  | ConstantTag
-  | CountTag
-  | CTETag
-  | DataTypeTag
-  | DefaultTag
-  | DeleteTag
-  | DistinctTag
-  | DoNothingTag
-  | DoUpdateTag
-  | ElseTag
-  | ExpressionListTag
-  | ExpressionTag
-  | FilterTag
-  | FromListItemTag
-  | FromListTag
-  | FromTag
-  | FunctionTag
-  | GroupByTag
-  | HavingTag
-  | IdentifierTag
-  | InsertTag
-  | IntegerTag
-  | JoinOnTag
-  | JoinTag
-  | JoinTypeTag
-  | JoinUsingTag
-  | LimitAllTag
-  | LimitTag
-  | NameTag
-  | NullTag
-  | NumberTag
-  | OffsetTag
-  | OrderByItemTag
-  | OrderByTag
-  | OrderDirectionTag
-  | ParameterTag
-  | PgCastTag
-  | QuotedNameTag
-  | ReturningListItemTag
-  | ReturningTag
-  | SelectListItemTag
-  | SelectListTag
-  | SelectTag
-  | SetItemTag
-  | SetListTag
-  | SetMapTag
-  | SetTag
-  | StarIdentifierTag
-  | StarTag
-  | StringTag
-  | TableIdentifierTag
-  | TableTag
-  | TypeArrayTag
-  | TypeTag
-  | UnaryOperatorTag
-  | UpdateFromTag
-  | UpdateTag
-  | UsingTag
-  | ValuesListTag
-  | ValuesTag
-  | WhenTag
-  | WhereTag
-  | WithTag
-  | DimensionTag
-  | CombinationType;
+export type Tag = EmptyLeafTag | LeafTag | NodeTag;

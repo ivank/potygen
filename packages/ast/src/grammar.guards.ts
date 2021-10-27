@@ -5,7 +5,7 @@ import {
   ArrayIndexRangeTag,
   ArrayIndexTag,
   AsTag,
-  BetweenTag,
+  TernaryExpressionTag,
   BinaryExpressionTag,
   BinaryOperatorTag,
   BooleanTag,
@@ -126,7 +126,7 @@ export const isUnaryOperator = (value: SqlTag): value is UnaryOperatorTag => val
 export const isComparationOperator = (value: SqlTag): value is ComparationOperatorTag =>
   value.tag === 'ComparationOperator';
 export const isComparationType = (value: SqlTag): value is ComparationTypeTag => value.tag === 'ComparationType';
-export const isBetween = (value: SqlTag): value is BetweenTag => value.tag === 'Between';
+export const isTernaryExpression = (value: SqlTag): value is TernaryExpressionTag => value.tag === 'TernaryExpression';
 export const isArrayIndex = (value: SqlTag): value is ArrayIndexTag => value.tag === 'ArrayIndex';
 export const isFunction = (value: SqlTag): value is FunctionTag => value.tag === 'Function';
 export const isUnaryExpression = (value: SqlTag): value is UnaryExpressionTag => value.tag === 'UnaryExpression';
@@ -145,7 +145,7 @@ export const isExpression = (value: SqlTag): value is ExpressionTag =>
   isCast(value) ||
   isPgCast(value) ||
   isOperatorExpression(value) ||
-  isBetween(value) ||
+  isTernaryExpression(value) ||
   isDataType(value) ||
   isFunction(value) ||
   isArrayIndex(value) ||

@@ -518,7 +518,7 @@ Object {
         Object {
           "nextPos": 63,
           "pos": 15,
-          "tag": "Between",
+          "tag": "TernaryExpression",
           "values": Array [
             Object {
               "nextPos": 25,
@@ -540,10 +540,22 @@ Object {
               ],
             },
             Object {
+              "nextPos": 33,
+              "pos": 26,
+              "tag": "TernaryOperator",
+              "value": "BETWEEN",
+            },
+            Object {
               "nextPos": 46,
               "pos": 34,
               "tag": "String",
               "value": "2006-01-01",
+            },
+            Object {
+              "nextPos": 50,
+              "pos": 47,
+              "tag": "TernarySeparator",
+              "value": "AND",
             },
             Object {
               "nextPos": 63,

@@ -163,7 +163,7 @@ const toType =
         return { type: 'ArrayItem', value: recur(first(sql.values)) };
       case 'WrappedExpression':
         return recur(first(sql.values));
-      case 'Between':
+      case 'TernaryExpression':
         return { type: 'Boolean' };
       case 'BinaryExpression':
         return toBinaryOperatorVariant(
@@ -341,14 +341,14 @@ export const toParams =
     const recur = toParams(context);
     const toTypeRecur = toType(context);
     switch (sql.tag) {
-      case 'Between': {
-        const toType = toTypeRecur(sql.values[2]);
-        const fromType = toTypeRecur(sql.values[1]);
+      case 'TernaryExpression': {
+        const arg1Type = toTypeRecur(sql.values[2]);
+        const arg2Type = toTypeRecur(sql.values[4]);
         const valueType = toTypeRecur(sql.values[0]);
         return [
-          ...toParams({ ...context, type: coalesce(fromType, toType) })(sql.values[0]),
-          ...toParams({ ...context, type: coalesce(valueType, toType) })(sql.values[1]),
-          ...toParams({ ...context, type: coalesce(valueType, fromType) })(sql.values[2]),
+          ...toParams({ ...context, type: coalesce(arg1Type, arg2Type) })(sql.values[0]),
+          ...toParams({ ...context, type: coalesce(valueType, arg2Type) })(sql.values[2]),
+          ...toParams({ ...context, type: coalesce(valueType, arg1Type) })(sql.values[4]),
         ];
       }
       case 'BinaryExpression': {

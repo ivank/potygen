@@ -178,10 +178,11 @@ const StarIdentifier = Any(
 
 const UnaryOperator = /^(\+|\-|NOT|ISNULL|NOTNULL)/i;
 
-const BinaryOperatorPrecedence = [
+const BinaryOperator = [
   /^(\^)/,
   /^(\*|\/|%)/,
   /^(\+|-)/,
+  /^(IS)/i,
   /^(->>|->|#>>|#>|@>|<@|\?\||\?\&|\?|#-|!!|<->)/,
   /^(\|\|)/,
   /^(\|)/,
@@ -191,7 +192,6 @@ const BinaryOperatorPrecedence = [
   /^(<<)/,
   /^(>>)/,
   /^(@@)/,
-  /^(IS)/i,
   /^(IN)/i,
   /^(LIKE|ILIKE)/i,
   /^(<=|>=|<|>)/,
@@ -199,6 +199,8 @@ const BinaryOperatorPrecedence = [
   /^(AND)/i,
   /^(OR)/i,
 ];
+
+const TernaryOperator = [[/^(BETWEEN|NOT BETWEEN|BETWEEN SYMMETRIC|NOT BETWEEN SYMMETRIC)/i, /^(AND)/i]];
 
 /**
  * Order
@@ -302,7 +304,11 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       Brackets(SelectExpression),
       WrappedExpression,
     );
-
+    /**
+     * Cast
+     * ----------------------------------------------------------------------------------------
+     */
+    const Cast = astNode('Cast', All(/^CAST/i, Brackets(All(DataType, /^AS/i, AnyType))));
     const CastableDataType = CastableRule(DataType);
 
     /**
@@ -313,14 +319,15 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const Else = astNode('Else', All(/^ELSE/i, ChildExpression));
     const CaseSimple = astNode('CaseSimple', All(/^CASE/i, CastableDataType, Plus(When), Optional(Else), /^END/i));
     const CaseNormal = astNode('Case', All(/^CASE/i, Plus(When), Optional(Else), /^END/i));
-    const Case = Any(CaseNormal, CaseSimple, CastableDataType);
+
+    const DataExpression = Any(CaseNormal, CaseSimple, CastableDataType);
 
     /**
      * Unary Operator
      * ----------------------------------------------------------------------------------------
      */
     const UnaryOperatorNode = astUpperLeaf('UnaryOperator', UnaryOperator);
-    const UnaryExpression = Node<UnaryExpressionTag>(All(Star(UnaryOperatorNode), Case), (parts, $, $next) =>
+    const UnaryExpression = Node<UnaryExpressionTag>(All(Star(UnaryOperatorNode), DataExpression), (parts, $, $next) =>
       parts.reduceRight((value, operator) => {
         return { tag: 'UnaryExpression', values: [operator, value], pos: $.pos, nextPos: $next.pos };
       }),
@@ -330,7 +337,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * Binary Operator
      * ----------------------------------------------------------------------------------------
      */
-    const BinoryOperatorExpression = BinaryOperatorPrecedence.reduce((Current, Operator) => {
+    const BinaryExpression = BinaryOperator.reduce((Current, Operator) => {
       const OperatorNode = astUpperLeaf('BinaryOperator', Operator);
       return Node<BinaryExpressionTag, any>(
         All(Current, Star(All(OperatorNode, Current))),
@@ -339,18 +346,16 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     }, UnaryExpression);
 
     /**
-     * Between Operator
+     * Ternary Operator
      * ----------------------------------------------------------------------------------------
      */
-    const BetweenExpression = astNode('Between', All(DataType, /^BETWEEN/i, DataType, /^AND/i, DataType));
+    const TernaryExpression = TernaryOperator.reduce((Current, [Operator, Separator]) => {
+      const OperatorNode = astUpperLeaf('TernaryOperator', Operator);
+      const SeparatorNode = astUpperLeaf('TernarySeparator', Separator);
+      return astNode('TernaryExpression', All(Current, OperatorNode, Current, SeparatorNode, Current));
+    }, DataExpression);
 
-    /**
-     * Cast
-     * ----------------------------------------------------------------------------------------
-     */
-    const Cast = astNode('Cast', All(/^CAST/i, Brackets(All(DataType, /^AS/i, AnyType))));
-
-    return Any(Cast, BetweenExpression, BinoryOperatorExpression);
+    return Any(Cast, TernaryExpression, BinaryExpression);
   });
 
 const FromListRule = (Select: Rule): Rule => {
