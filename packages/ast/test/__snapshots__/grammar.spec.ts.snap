@@ -1392,10 +1392,16 @@ Object {
                 },
                 Object {
                   "nextPos": 22,
-                  "param": undefined,
                   "pos": 18,
                   "tag": "Type",
-                  "value": "int4",
+                  "values": Array [
+                    Object {
+                      "nextPos": 22,
+                      "pos": 18,
+                      "tag": "Identifier",
+                      "value": "int4",
+                    },
+                  ],
                 },
               ],
             },
@@ -1436,10 +1442,16 @@ Object {
                 },
                 Object {
                   "nextPos": 22,
-                  "param": undefined,
                   "pos": 18,
                   "tag": "Type",
-                  "value": "int4",
+                  "values": Array [
+                    Object {
+                      "nextPos": 22,
+                      "pos": 18,
+                      "tag": "Identifier",
+                      "value": "int4",
+                    },
+                  ],
                 },
               ],
             },
@@ -1480,10 +1492,17 @@ Object {
                 },
                 Object {
                   "nextPos": 33,
-                  "param": "20",
                   "pos": 22,
                   "tag": "Type",
-                  "value": "varchar",
+                  "values": Array [
+                    Object {
+                      "nextPos": 29,
+                      "pos": 22,
+                      "tag": "Identifier",
+                      "value": "varchar",
+                    },
+                    "20",
+                  ],
                 },
               ],
             },
@@ -1765,7 +1784,7 @@ Object {
               "nextPos": 29,
               "pos": 19,
               "tag": "JoinType",
-              "value": "CROSS",
+              "value": "CROSS JOIN",
             },
             Object {
               "nextPos": 35,
@@ -3396,8 +3415,13 @@ Object {
       "nextPos": 48,
       "pos": 21,
       "tag": "Combination",
-      "type": "EXCEPT",
       "values": Array [
+        Object {
+          "nextPos": 27,
+          "pos": 21,
+          "tag": "CombinationType",
+          "value": "EXCEPT",
+        },
         Object {
           "nextPos": 36,
           "pos": 35,
@@ -3555,8 +3579,13 @@ Object {
       "nextPos": 66,
       "pos": 30,
       "tag": "Combination",
-      "type": "EXCEPT",
       "values": Array [
+        Object {
+          "nextPos": 36,
+          "pos": 30,
+          "tag": "CombinationType",
+          "value": "EXCEPT",
+        },
         Object {
           "nextPos": 54,
           "pos": 44,
@@ -4406,7 +4435,7 @@ Object {
               "nextPos": 28,
               "pos": 19,
               "tag": "JoinType",
-              "value": "FULL",
+              "value": "FULL JOIN",
             },
             Object {
               "nextPos": 34,
@@ -4509,7 +4538,7 @@ Object {
               "nextPos": 34,
               "pos": 19,
               "tag": "JoinType",
-              "value": "FULL",
+              "value": "FULL OUTER JOIN",
             },
             Object {
               "nextPos": 40,
@@ -5287,10 +5316,16 @@ Object {
                 },
                 Object {
                   "nextPos": 23,
-                  "param": undefined,
                   "pos": 19,
                   "tag": "Type",
-                  "value": "text",
+                  "values": Array [
+                    Object {
+                      "nextPos": 23,
+                      "pos": 19,
+                      "tag": "Identifier",
+                      "value": "text",
+                    },
+                  ],
                 },
               ],
             },
@@ -5602,7 +5637,7 @@ Object {
               "nextPos": 29,
               "pos": 19,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "INNER JOIN",
             },
             Object {
               "nextPos": 35,
@@ -7574,8 +7609,13 @@ Object {
       "nextPos": 51,
       "pos": 21,
       "tag": "Combination",
-      "type": "INTERSECT",
       "values": Array [
+        Object {
+          "nextPos": 30,
+          "pos": 21,
+          "tag": "CombinationType",
+          "value": "INTERSECT",
+        },
         Object {
           "nextPos": 39,
           "pos": 38,
@@ -7733,8 +7773,13 @@ Object {
       "nextPos": 69,
       "pos": 30,
       "tag": "Combination",
-      "type": "INTERSECT",
       "values": Array [
+        Object {
+          "nextPos": 39,
+          "pos": 30,
+          "tag": "CombinationType",
+          "value": "INTERSECT",
+        },
         Object {
           "nextPos": 57,
           "pos": 47,
@@ -7895,7 +7940,7 @@ Object {
               "nextPos": 23,
               "pos": 19,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 29,
@@ -7998,7 +8043,7 @@ Object {
               "nextPos": 23,
               "pos": 19,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 40,
@@ -8114,7 +8159,7 @@ Object {
               "nextPos": 23,
               "pos": 19,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 41,
@@ -8230,7 +8275,7 @@ Object {
               "nextPos": 23,
               "pos": 19,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 29,
@@ -8391,7 +8436,7 @@ Object {
               "nextPos": 23,
               "pos": 19,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 29,
@@ -8552,7 +8597,7 @@ Object {
               "nextPos": 23,
               "pos": 19,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 40,
@@ -8726,7 +8771,7 @@ Object {
               "nextPos": 23,
               "pos": 19,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 41,
@@ -8906,7 +8951,7 @@ Object {
               "nextPos": 30,
               "pos": 26,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 43,
@@ -10113,7 +10158,7 @@ Object {
               "nextPos": 28,
               "pos": 19,
               "tag": "JoinType",
-              "value": "LEFT",
+              "value": "LEFT JOIN",
             },
             Object {
               "nextPos": 34,
@@ -10216,7 +10261,7 @@ Object {
               "nextPos": 34,
               "pos": 19,
               "tag": "JoinType",
-              "value": "LEFT",
+              "value": "LEFT OUTER JOIN",
             },
             Object {
               "nextPos": 40,
@@ -10518,10 +10563,16 @@ Object {
                 },
                 Object {
                   "nextPos": 39,
-                  "param": undefined,
                   "pos": 36,
                   "tag": "Type",
-                  "value": "int",
+                  "values": Array [
+                    Object {
+                      "nextPos": 39,
+                      "pos": 36,
+                      "tag": "Identifier",
+                      "value": "int",
+                    },
+                  ],
                 },
               ],
             },
@@ -10555,10 +10606,16 @@ Object {
                 },
                 Object {
                   "nextPos": 59,
-                  "param": undefined,
                   "pos": 56,
                   "tag": "Type",
-                  "value": "int",
+                  "values": Array [
+                    Object {
+                      "nextPos": 59,
+                      "pos": 56,
+                      "tag": "Identifier",
+                      "value": "int",
+                    },
+                  ],
                 },
               ],
             },
@@ -11170,7 +11227,7 @@ Object {
               "nextPos": 23,
               "pos": 19,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 29,
@@ -11203,7 +11260,7 @@ Object {
               "nextPos": 34,
               "pos": 30,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 40,
@@ -12500,10 +12557,16 @@ Object {
                         },
                         Object {
                           "nextPos": 44,
-                          "param": undefined,
                           "pos": 37,
                           "tag": "Type",
-                          "value": "boolean",
+                          "values": Array [
+                            Object {
+                              "nextPos": 44,
+                              "pos": 37,
+                              "tag": "Identifier",
+                              "value": "BOOLEAN",
+                            },
+                          ],
                         },
                       ],
                     },
@@ -12547,10 +12610,16 @@ Object {
                         },
                         Object {
                           "nextPos": 72,
-                          "param": undefined,
                           "pos": 65,
                           "tag": "Type",
-                          "value": "boolean",
+                          "values": Array [
+                            Object {
+                              "nextPos": 72,
+                              "pos": 65,
+                              "tag": "Identifier",
+                              "value": "BOOLEAN",
+                            },
+                          ],
                         },
                       ],
                     },
@@ -12987,7 +13056,7 @@ Object {
               "nextPos": 25,
               "pos": 21,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 32,
@@ -13250,7 +13319,7 @@ Object {
               "nextPos": 25,
               "pos": 21,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 32,
@@ -13513,7 +13582,7 @@ Object {
               "nextPos": 25,
               "pos": 21,
               "tag": "JoinType",
-              "value": undefined,
+              "value": "JOIN",
             },
             Object {
               "nextPos": 32,
@@ -14192,10 +14261,18 @@ Object {
                 },
                 Object {
                   "nextPos": 26,
-                  "param": "10",
                   "pos": 13,
                   "tag": "Type",
-                  "value": "decimal",
+                  "values": Array [
+                    Object {
+                      "nextPos": 20,
+                      "pos": 13,
+                      "tag": "Identifier",
+                      "value": "decimal",
+                    },
+                    "10",
+                    "2",
+                  ],
                 },
               ],
             },
@@ -14277,10 +14354,16 @@ Object {
                 },
                 Object {
                   "nextPos": 16,
-                  "param": undefined,
                   "pos": 13,
                   "tag": "Type",
-                  "value": "int",
+                  "values": Array [
+                    Object {
+                      "nextPos": 16,
+                      "pos": 13,
+                      "tag": "Identifier",
+                      "value": "int",
+                    },
+                  ],
                 },
               ],
             },
@@ -14362,10 +14445,17 @@ Object {
                 },
                 Object {
                   "nextPos": 24,
-                  "param": "10",
                   "pos": 13,
                   "tag": "Type",
-                  "value": "varchar",
+                  "values": Array [
+                    Object {
+                      "nextPos": 20,
+                      "pos": 13,
+                      "tag": "Identifier",
+                      "value": "varchar",
+                    },
+                    "10",
+                  ],
                 },
               ],
             },
@@ -14447,10 +14537,16 @@ Object {
                 },
                 Object {
                   "nextPos": 17,
-                  "param": undefined,
                   "pos": 13,
                   "tag": "Type",
-                  "value": "date",
+                  "values": Array [
+                    Object {
+                      "nextPos": 17,
+                      "pos": 13,
+                      "tag": "Identifier",
+                      "value": "date",
+                    },
+                  ],
                 },
               ],
             },
@@ -14556,10 +14652,16 @@ Object {
                 },
                 Object {
                   "nextPos": 55,
-                  "param": undefined,
                   "pos": 52,
                   "tag": "Type",
-                  "value": "int",
+                  "values": Array [
+                    Object {
+                      "nextPos": 55,
+                      "pos": 52,
+                      "tag": "Identifier",
+                      "value": "int",
+                    },
+                  ],
                 },
               ],
             },
@@ -14634,10 +14736,16 @@ Object {
                 },
                 Object {
                   "nextPos": 25,
-                  "param": undefined,
                   "pos": 21,
                   "tag": "Type",
-                  "value": "date",
+                  "values": Array [
+                    Object {
+                      "nextPos": 25,
+                      "pos": 21,
+                      "tag": "Identifier",
+                      "value": "date",
+                    },
+                  ],
                 },
               ],
             },
@@ -15075,7 +15183,7 @@ Object {
               "nextPos": 29,
               "pos": 19,
               "tag": "JoinType",
-              "value": "RIGHT",
+              "value": "RIGHT JOIN",
             },
             Object {
               "nextPos": 35,
@@ -15178,7 +15286,7 @@ Object {
               "nextPos": 35,
               "pos": 19,
               "tag": "JoinType",
-              "value": "RIGHT",
+              "value": "RIGHT OUTER JOIN",
             },
             Object {
               "nextPos": 41,
@@ -15494,10 +15602,16 @@ Object {
                 },
                 Object {
                   "nextPos": 39,
-                  "param": undefined,
                   "pos": 36,
                   "tag": "Type",
-                  "value": "int",
+                  "values": Array [
+                    Object {
+                      "nextPos": 39,
+                      "pos": 36,
+                      "tag": "Identifier",
+                      "value": "int",
+                    },
+                  ],
                 },
               ],
             },
@@ -15636,10 +15750,16 @@ Object {
                 },
                 Object {
                   "nextPos": 100,
-                  "param": undefined,
                   "pos": 97,
                   "tag": "Type",
-                  "value": "int",
+                  "values": Array [
+                    Object {
+                      "nextPos": 100,
+                      "pos": 97,
+                      "tag": "Identifier",
+                      "value": "int",
+                    },
+                  ],
                 },
               ],
             },
@@ -17013,17 +17133,27 @@ Object {
                   "value": "test",
                 },
                 Object {
-                  "dimensions": 1,
                   "nextPos": 19,
                   "pos": 14,
                   "tag": "TypeArray",
                   "values": Array [
                     Object {
                       "nextPos": 17,
-                      "param": undefined,
                       "pos": 14,
                       "tag": "Type",
-                      "value": "int",
+                      "values": Array [
+                        Object {
+                          "nextPos": 17,
+                          "pos": 14,
+                          "tag": "Identifier",
+                          "value": "int",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 19,
+                      "pos": 17,
+                      "tag": "Dimension",
                     },
                   ],
                 },
@@ -17068,17 +17198,32 @@ Object {
                   "value": "test",
                 },
                 Object {
-                  "dimensions": 2,
                   "nextPos": 21,
                   "pos": 14,
                   "tag": "TypeArray",
                   "values": Array [
                     Object {
                       "nextPos": 17,
-                      "param": undefined,
                       "pos": 14,
                       "tag": "Type",
-                      "value": "int",
+                      "values": Array [
+                        Object {
+                          "nextPos": 17,
+                          "pos": 14,
+                          "tag": "Identifier",
+                          "value": "int",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 19,
+                      "pos": 17,
+                      "tag": "Dimension",
+                    },
+                    Object {
+                      "nextPos": 21,
+                      "pos": 19,
+                      "tag": "Dimension",
                     },
                   ],
                 },
@@ -17327,8 +17472,13 @@ Object {
       "nextPos": 47,
       "pos": 21,
       "tag": "Combination",
-      "type": "UNION",
       "values": Array [
+        Object {
+          "nextPos": 26,
+          "pos": 21,
+          "tag": "CombinationType",
+          "value": "UNION",
+        },
         Object {
           "nextPos": 35,
           "pos": 34,
@@ -17486,8 +17636,13 @@ Object {
       "nextPos": 65,
       "pos": 30,
       "tag": "Combination",
-      "type": "UNION",
       "values": Array [
+        Object {
+          "nextPos": 35,
+          "pos": 30,
+          "tag": "CombinationType",
+          "value": "UNION",
+        },
         Object {
           "nextPos": 53,
           "pos": 43,

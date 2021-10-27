@@ -98,7 +98,7 @@ const toSources =
       case 'With':
         return sources.concat(initial(sql.values).flatMap(nestedRecur), recur(last(sql.values)));
       default:
-        return sql.values ? sources.concat(sql.values.flatMap(recur)) : sources;
+        return 'values' in sql ? sources.concat(sql.values.flatMap(recur)) : sources;
     }
   };
 
@@ -260,9 +260,10 @@ const toType =
       case 'ComparationExpression':
         return typeBoolean;
       case 'Type':
-        return sqlTypes[sql.value] ?? { type: 'LoadRecord', name: sql.value.toLowerCase() };
+        const typeName = first(sql.values).value.toLowerCase();
+        return sqlTypes[typeName] ?? { type: 'LoadRecord', name: typeName };
       case 'TypeArray':
-        return Array.from({ length: sql.dimensions }).reduce<Type>(
+        return Array.from({ length: tail(sql.values).length }).reduce<Type>(
           (items) => ({ type: 'Array', items }),
           recur(first(sql.values)),
         );
@@ -445,7 +446,7 @@ export const toParams =
       case 'Offset':
         return toParams({ ...context, type: typeString })(first(sql.values));
       default:
-        return sql.values?.flatMap(recur) ?? [];
+        return 'values' in sql ? sql.values.flatMap(recur) : [];
     }
   };
 
