@@ -61,9 +61,150 @@ export interface StringTag extends LeafSqlTag {
   tag: 'String';
   value: string;
 }
+export interface BinaryStringTag extends LeafSqlTag {
+  tag: 'BinaryString';
+  value: string;
+}
 export interface NumberTag extends LeafSqlTag {
   tag: 'Number';
   value: string;
+}
+export interface ConstantTypeTag extends LeafSqlTag {
+  tag: 'ConstantType';
+  value:
+    | 'XML'
+    | 'XID'
+    | 'VOID'
+    | 'VARCHAR'
+    | 'VARBIT'
+    | 'UUID'
+    | 'UNKNOWN'
+    | 'TXID_SNAPSHOT'
+    | 'TSVECTOR'
+    | 'TSTZRANGE'
+    | 'TSRANGE'
+    | 'TSM_HANDLER'
+    | 'TRIGGER'
+    | 'TINTERVAL'
+    | 'TIMETZ'
+    | 'TIMESTAMPTZ'
+    | 'TIMESTAMP'
+    | 'TIME'
+    | 'TID'
+    | 'TEXT'
+    | 'SMGR'
+    | 'RELTIME'
+    | 'REGTYPE'
+    | 'REGROLE'
+    | 'REGPROCEDURE'
+    | 'REGPROC'
+    | 'REGOPERATOR'
+    | 'REGOPER'
+    | 'REGNAMESPACE'
+    | 'REGDICTIONARY'
+    | 'REGCONFIG'
+    | 'REGCLASS'
+    | 'REFCURSOR'
+    | 'RECORD'
+    | 'QUERY'
+    | 'POLYGON'
+    | 'POINT'
+    | 'PG_LSN'
+    | 'PG_DDL_COMMAND'
+    | 'PATH'
+    | 'OPAQUE'
+    | 'OID'
+    | 'NUMERIC'
+    | 'NAME'
+    | 'MRANGE'
+    | 'MONEY'
+    | 'MACADDR8'
+    | 'MACADDR'
+    | 'LSEG'
+    | 'LINE'
+    | 'LANGUAGE_HANDLER'
+    | 'JSONB'
+    | 'JSON'
+    | 'INTERVAL'
+    | 'INTERNAL'
+    | 'INT8RANGE'
+    | 'INT8'
+    | 'INT4RANGE'
+    | 'INT4'
+    | 'INT2VECTOR'
+    | 'INT2'
+    | 'INET'
+    | 'INDEX_AM_HANDLER'
+    | 'FLOAT8'
+    | 'FLOAT4'
+    | 'FDW_HANDLER'
+    | 'EVENT_TRIGGER'
+    | 'DATERANGE'
+    | 'DATE'
+    | 'CSTRING'
+    | 'CIRCLE'
+    | 'CIDR'
+    | 'CID'
+    | 'CHAR'
+    | 'BYTEA'
+    | 'BPCHAR'
+    | 'BOX'
+    | 'BOOL'
+    | 'BIT'
+    | 'ACLITEM'
+    | 'ABSTIME'
+    | 'TIMESTAMP WITHOUT TIME ZONE'
+    | 'TIMESTAMP WITH TIME ZONE'
+    | 'TIME WITHOUT TIME ZONE'
+    | 'TIME WITH TIME ZONE'
+    | 'SMALLSERIAL'
+    | 'SMALLINT'
+    | 'SERIAL'
+    | 'REAL'
+    | 'NUMERIC'
+    | 'INTEGER'
+    | 'INT'
+    | 'DOUBLE PRECISION'
+    | 'CHARACTER VARYING'
+    | 'CHARACTER'
+    | 'BOOLEAN'
+    | 'BIT VARYING'
+    | 'BIGSERIAL'
+    | 'BIGINT';
+}
+export interface TypedConstantTag extends NodeSqlTag {
+  tag: 'TypedConstant';
+  values: [type: ConstantTypeTag, value: StringTag];
+}
+export interface ExtractFieldTag extends LeafSqlTag {
+  tag: 'ExtractField';
+  value:
+    | 'CENTURY'
+    | 'DAY'
+    | 'DECADE'
+    | 'DOW'
+    | 'DOY'
+    | 'EPOCH'
+    | 'HOUR'
+    | 'ISODOW'
+    | 'ISOYEAR'
+    | 'JULIAN'
+    | 'MICROSECONDS'
+    | 'MILLENNIUM'
+    | 'MILLISECONDS'
+    | 'MINUTE'
+    | 'MONTH'
+    | 'QUARTER'
+    | 'SECOND'
+    | 'TIMEZONE'
+    | 'TIMEZONE_HOUR'
+    | 'TIMEZONE_MINUTE'
+    | 'WEEK'
+    | 'YEAR';
+}
+export interface ExtractTag extends NodeSqlTag {
+  tag: 'Extract';
+  values: [field: ExtractFieldTag, value: ExpressionTag];
 }
 export interface IntegerTag extends LeafSqlTag {
   tag: 'Integer';
@@ -174,7 +315,11 @@ export interface BinaryOperatorTag extends LeafSqlTag {
     | '!='
     | '='
     | 'AND'
-    | 'OR';
+    | 'OR'
+    | 'IS NOT DISTINCT FROM'
+    | 'IS DISTINCT FROM'
+    | 'AT TIME ZONE'
+    | 'OVERLAPS';
 }
 export interface UnaryOperatorTag extends LeafSqlTag {
   tag: 'UnaryOperator';
@@ -443,7 +588,7 @@ export interface ExpressionListTag extends NodeSqlTag {
 }
 
 export type FromListItemTag = NamedSelectTag | TableTag;
-export type ConstantTag = StringTag | NumberTag | BooleanTag;
+export type ConstantTag = StringTag | NumberTag | BooleanTag | TypedConstantTag;
 export type AnyTypeTag = TypeTag | TypeArrayTag;
 export type SelectParts = DistinctTag | SelectListTag | FromTag | WhereTag | GroupByTag | HavingTag;
 export type OperatorExpressionTag = BinaryExpressionTag | UnaryExpressionTag;
@@ -462,6 +607,7 @@ export type CastableDataTypeTag =
 
 export type ExpressionTag =
   | AnyCastTag
+  | ExtractTag
   | TernaryExpressionTag
   | ComparationExpressionTag
   | DataTypeTag
@@ -472,6 +618,9 @@ export type ExpressionTag =
 export type EmptyLeafTag = NullTag | StarTag | DefaultTag | DoNothingTag | LimitAllTag | DimensionTag;
 
 export type LeafTag =
+  | ExtractFieldTag
+  | BinaryStringTag
+  | ConstantTypeTag
   | TernaryOperatorTag
   | TernarySeparatorTag
   | QuotedNameTag
@@ -493,6 +642,8 @@ export type LeafTag =
   | CombinationType;
 
 export type NodeTag =
+  | ExtractTag
+  | TypedConstantTag
   | TypeTag
   | JoinTag
   | CTETag
@@ -558,3 +709,5 @@ export type NodeTag =
   | ExpressionListTag;
 
 export type Tag = EmptyLeafTag | LeafTag | NodeTag;
+
+export type AstTag = QueryTag | WithTag;

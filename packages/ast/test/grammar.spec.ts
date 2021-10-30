@@ -178,6 +178,7 @@ describe('Sql', () => {
     ${'row'}                          | ${'SELECT ROW (1,2,3)'}
     ${'row shorthand'}                | ${'SELECT (1,2,3)'}
     ${'row complex'}                  | ${'SELECT (1, 2+2, 3), ROW (123), (1,2,(3))'}
+    ${'binary constant'}              | ${"SELECT E'111'::varbit"}
     ${'where in tuples'}              | ${'SELECT col1, col2 WHERE (col1,col2) IN ((1,2),(3,4))'}
     ${'select exists'}                | ${'SELECT EXISTS(SELECT col2 FROM table2)'}
     ${'update exists'}                | ${'UPDATE table1 SET col1 = EXISTS(SELECT col2 FROM table2)'}
@@ -199,6 +200,10 @@ describe('Sql', () => {
     ${'insert with delete'}           | ${'WITH tmp AS (DELETE FROM table1 RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp'}
     ${'insert with update'}           | ${'WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp'}
     ${'insert with insert'}           | ${'WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp'}
+    ${'overlaps with typed constant'} | ${"SELECT (DATE '2001-02-16', DATE '2001-12-21') OVERLAPS (DATE '2001-10-30', DATE '2002-10-30')"}
+    ${'typed constant'}               | ${"SELECT double precision '3.5' * interval '1 hour'"}
+    ${'extract field century'}        | ${"SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')"}
+    ${'extract field day'}            | ${"SELECT EXTRACT(DAY FROM INTERVAL '40 days 1 minute')"}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) =>
     withParserErrors(() => {
       expect(parser(sql)).toMatchSnapshot(name);

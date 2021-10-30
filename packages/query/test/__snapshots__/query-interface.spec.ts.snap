@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Query Interface Should convert Extract const sql (SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "date_part",
+      "type": Object {
+        "name": "date_part",
+        "type": "Named",
+        "value": Object {
+          "type": "Number",
+        },
+      },
+    },
+  ],
+  "sources": Array [],
+}
+`;
+
 exports[`Query Interface Should convert between fields named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
 Object {
   "params": Array [],
@@ -896,6 +915,19 @@ Object {
         "type": "Named",
         "value": Object {
           "name": "custom_type",
+          "sourceTag": Object {
+            "nextPos": 22,
+            "pos": 11,
+            "tag": "Type",
+            "values": Array [
+              Object {
+                "nextPos": 22,
+                "pos": 11,
+                "tag": "Identifier",
+                "value": "custom_type",
+              },
+            ],
+          },
           "type": "LoadRecord",
         },
       },

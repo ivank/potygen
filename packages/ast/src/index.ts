@@ -1,6 +1,6 @@
 import { Parser } from '@ikerin/rd-parse';
 import { Grammar } from './grammar';
-import { QueryTag, WithTag } from './grammar.types';
+import { AstTag } from './grammar.types';
 
 export {
   AnyCastTag,
@@ -89,6 +89,7 @@ export {
   WhenTag,
   WhereTag,
   WithTag,
+  AstTag,
 } from './grammar.types';
 
 export {
@@ -201,4 +202,4 @@ export {
 
 export { Grammar } from './grammar';
 
-export const parser = Parser<QueryTag | WithTag>(Grammar);
+export const parser = Parser<AstTag>(Grammar);

@@ -571,6 +571,61 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql binary constant (SELECT E'111'::varbit): binary constant 1`] = `
+Object {
+  "nextPos": 21,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 21,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 21,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 21,
+              "pos": 7,
+              "tag": "PgCast",
+              "values": Array [
+                Object {
+                  "nextPos": 13,
+                  "pos": 7,
+                  "tag": "BinaryString",
+                  "value": Object {
+                    "nextPos": 13,
+                    "pos": 8,
+                    "tag": "String",
+                    "value": "111",
+                  },
+                },
+                Object {
+                  "nextPos": 21,
+                  "pos": 15,
+                  "tag": "Type",
+                  "values": Array [
+                    Object {
+                      "nextPos": 21,
+                      "pos": 15,
+                      "tag": "Identifier",
+                      "value": "varbit",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql binary div (SELECT 1 / 2): binary div 1`] = `
 Object {
   "nextPos": 12,
@@ -3672,6 +3727,118 @@ Object {
                           "value": "table2",
                         },
                       ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql extract field century (SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')): extract field century 1`] = `
+Object {
+  "nextPos": 60,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 60,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 60,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 60,
+              "pos": 7,
+              "tag": "Extract",
+              "values": Array [
+                Object {
+                  "nextPos": 22,
+                  "pos": 15,
+                  "tag": "ExtractField",
+                  "value": "CENTURY",
+                },
+                Object {
+                  "nextPos": 59,
+                  "pos": 28,
+                  "tag": "TypedConstant",
+                  "values": Array [
+                    Object {
+                      "nextPos": 37,
+                      "pos": 28,
+                      "tag": "ConstantType",
+                      "value": "TIMESTAMP",
+                    },
+                    Object {
+                      "nextPos": 59,
+                      "pos": 38,
+                      "tag": "String",
+                      "value": "2000-12-16 12:21:13",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql extract field day (SELECT EXTRACT(DAY FROM INTERVAL '40 days 1 minute')): extract field day 1`] = `
+Object {
+  "nextPos": 52,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 52,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 52,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 52,
+              "pos": 7,
+              "tag": "Extract",
+              "values": Array [
+                Object {
+                  "nextPos": 18,
+                  "pos": 15,
+                  "tag": "ExtractField",
+                  "value": "DAY",
+                },
+                Object {
+                  "nextPos": 51,
+                  "pos": 24,
+                  "tag": "TypedConstant",
+                  "values": Array [
+                    Object {
+                      "nextPos": 32,
+                      "pos": 24,
+                      "tag": "ConstantType",
+                      "value": "INTERVAL",
+                    },
+                    Object {
+                      "nextPos": 51,
+                      "pos": 33,
+                      "tag": "String",
+                      "value": "40 days 1 minute",
                     },
                   ],
                 },
@@ -12467,6 +12634,133 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql overlaps with typed constant (SELECT (DATE '2001-02-16', DATE '2001-12-21') OVERLAPS (DATE '2001-10-30', DATE '2002-10-30')): overlaps with typed constant 1`] = `
+Object {
+  "nextPos": 93,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 93,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 93,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 93,
+              "pos": 7,
+              "tag": "BinaryExpression",
+              "values": Array [
+                Object {
+                  "nextPos": 45,
+                  "pos": 7,
+                  "tag": "Row",
+                  "values": Array [
+                    Object {
+                      "nextPos": 25,
+                      "pos": 8,
+                      "tag": "TypedConstant",
+                      "values": Array [
+                        Object {
+                          "nextPos": 12,
+                          "pos": 8,
+                          "tag": "ConstantType",
+                          "value": "DATE",
+                        },
+                        Object {
+                          "nextPos": 25,
+                          "pos": 13,
+                          "tag": "String",
+                          "value": "2001-02-16",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 44,
+                      "pos": 27,
+                      "tag": "TypedConstant",
+                      "values": Array [
+                        Object {
+                          "nextPos": 31,
+                          "pos": 27,
+                          "tag": "ConstantType",
+                          "value": "DATE",
+                        },
+                        Object {
+                          "nextPos": 44,
+                          "pos": 32,
+                          "tag": "String",
+                          "value": "2001-12-21",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 54,
+                  "pos": 46,
+                  "tag": "BinaryOperator",
+                  "value": "OVERLAPS",
+                },
+                Object {
+                  "nextPos": 93,
+                  "pos": 55,
+                  "tag": "Row",
+                  "values": Array [
+                    Object {
+                      "nextPos": 73,
+                      "pos": 56,
+                      "tag": "TypedConstant",
+                      "values": Array [
+                        Object {
+                          "nextPos": 60,
+                          "pos": 56,
+                          "tag": "ConstantType",
+                          "value": "DATE",
+                        },
+                        Object {
+                          "nextPos": 73,
+                          "pos": 61,
+                          "tag": "String",
+                          "value": "2001-10-30",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 92,
+                      "pos": 75,
+                      "tag": "TypedConstant",
+                      "values": Array [
+                        Object {
+                          "nextPos": 79,
+                          "pos": 75,
+                          "tag": "ConstantType",
+                          "value": "DATE",
+                        },
+                        Object {
+                          "nextPos": 92,
+                          "pos": 80,
+                          "tag": "String",
+                          "value": "2002-10-30",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql param specific type (SELECT * FROM table1 WHERE ($active::BOOLEAN IS NULL OR $active::BOOLEAN = (case when table1.url IS NOT NULL then FALSE else TRUE end))): param specific type 1`] = `
 Object {
   "nextPos": 135,
@@ -17236,6 +17530,81 @@ Object {
                       "nextPos": 21,
                       "pos": 19,
                       "tag": "Dimension",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql typed constant (SELECT double precision '3.5' * interval '1 hour'): typed constant 1`] = `
+Object {
+  "nextPos": 49,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 49,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 49,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 49,
+              "pos": 7,
+              "tag": "BinaryExpression",
+              "values": Array [
+                Object {
+                  "nextPos": 29,
+                  "pos": 7,
+                  "tag": "TypedConstant",
+                  "values": Array [
+                    Object {
+                      "nextPos": 23,
+                      "pos": 7,
+                      "tag": "ConstantType",
+                      "value": "DOUBLE PRECISION",
+                    },
+                    Object {
+                      "nextPos": 29,
+                      "pos": 24,
+                      "tag": "String",
+                      "value": "3.5",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 31,
+                  "pos": 30,
+                  "tag": "BinaryOperator",
+                  "value": "*",
+                },
+                Object {
+                  "nextPos": 49,
+                  "pos": 32,
+                  "tag": "TypedConstant",
+                  "values": Array [
+                    Object {
+                      "nextPos": 40,
+                      "pos": 32,
+                      "tag": "ConstantType",
+                      "value": "INTERVAL",
+                    },
+                    Object {
+                      "nextPos": 49,
+                      "pos": 41,
+                      "tag": "String",
+                      "value": "1 hour",
                     },
                   ],
                 },

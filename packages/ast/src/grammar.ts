@@ -110,6 +110,7 @@ const NumberRule = Any(
   /^([0-9]+e([+-]?[0-9]+))'/,
 );
 const String = astLeaf('String', /^'((?:''|[^'])*)'/);
+const BinaryString = astLeaf('BinaryString', All(/^E/i, String));
 const DollarQuatedString = astLeaf('String', /^\$\$((?:\$\$|.)*)\$\$/);
 const CustomDollarQuatedString = Node<StringTag>(
   /^\$(?<tag>[A-Z_][A-Z0-9_]*)\$((?:\$\$|.)*)\$\k<tag>\$/i,
@@ -118,13 +119,27 @@ const CustomDollarQuatedString = Node<StringTag>(
 const Integer = astLeaf('Integer', IntegerRule);
 const Number = astLeaf('Number', NumberRule);
 const Boolean = astLeaf('Boolean', /^(TRUE|FALSE)/i);
-const Constant = Any(String, DollarQuatedString, CustomDollarQuatedString, Number, Boolean);
+
+const AllTypesRule =
+  /^(xml|xid|void|varchar|varbit|uuid|unknown|txid_snapshot|tsvector|tstzrange|tsrange|tsm_handler|trigger|tinterval|timetz|timestamptz|timestamp without time zone|timestamp with time zone|timestamp|time without time zone|time with time zone|time|tid|text|smgr|smallserial|smallint|serial|reltime|regtype|regrole|regprocedure|regproc|regoperator|regoper|regnamespace|regdictionary|regconfig|regclass|refcursor|record|real|query|polygon|point|pg_lsn|pg_ddl_command|path|opaque|oid|numeric|name|mrange|money|macaddr8|macaddr|lseg|line|language_handler|jsonb|json|interval|internal|integer|int8range|int8|int4range|int4|int2vector|int2|int|inet|index_am_handler|float8|float4|fdw_handler|event_trigger|double precision|daterange|date|cstring|circle|cidr|cid|character varying|character|char|bytea|bpchar|box|boolean|bool|bit varying|bit|bigserial|bigint|aclitem|abstime)/i;
+
+const ConstantType = astUpperLeaf('ConstantType', AllTypesRule);
+
+// const ConstantType = astUpperLeaf('ConstantType', Any(AliasTypeRule, NativeTypeRule));
+const TypedConstant = astNode('TypedConstant', All(ConstantType, Any(BinaryString, String)));
+const Constant = Any(
+  String,
+  DollarQuatedString,
+  CustomDollarQuatedString,
+  Number,
+  Boolean,
+  BinaryString,
+  TypedConstant,
+);
 
 /**
  * Type
  */
-const NoParamTypeRule =
-  /^(bigint|int8|bigserial|serial8|boolean|bool|box|bytea|cidr|circle|date|double precision|float8|inet|integer|int4|int|jsonb|json|line|lseg|macaddr|money|path|pg_lsn|point|polygon|real|float4|smallint|int2|smallserial|serial2|serial4|serial|text|tsquery|tsvector|txid_snapshot|uuid|xml)/i;
 const SingleParamTypeRule =
   /^(bit varying|varbit|bit|character varying|varchar|character|char|interval|timestamptz|timestamp|timetz|time)/i;
 const DoubleParamTypeRule = /^(numeric|decimal)/i;
@@ -137,7 +152,7 @@ const Type = astNode(
       Optional(Brackets(Any(All(IntegerRule, ',', IntegerRule), IntegerRule))),
     ),
     All(SpecificIdentifier(SingleParamTypeRule), Optional(Brackets(IntegerRule))),
-    SpecificIdentifier(NoParamTypeRule),
+    SpecificIdentifier(AllTypesRule),
     SpecificIdentifier(NameRule),
   ),
 );
@@ -182,7 +197,7 @@ const BinaryOperator = [
   /^(\^)/,
   /^(\*|\/|%)/,
   /^(\+|-)/,
-  /^(IS)/i,
+  /^(IS NOT DISTINCT FROM|IS DISTINCT FROM|IS|AT TIME ZONE)/i,
   /^(->>|->|#>>|#>|@>|<@|\?\||\?\&|\?|#-|!!|<->)/,
   /^(\|\|)/,
   /^(\|)/,
@@ -192,7 +207,7 @@ const BinaryOperator = [
   /^(<<)/,
   /^(>>)/,
   /^(@@)/,
-  /^(IN)/i,
+  /^(OVERLAPS|IN)/i,
   /^(LIKE|ILIKE)/i,
   /^(<=|>=|<|>)/,
   /^(<>|!=|=)/,
@@ -280,6 +295,13 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       'Row',
       Any(All(/^ROW/i, Brackets(List(ChildExpression))), Brackets(MultiList(ChildExpression))),
     );
+
+    const ExtractField = astLeaf(
+      'ExtractField',
+      /^(century|day|decade|dow|doy|epoch|hour|isodow|isoyear|julian|microseconds|millennium|milliseconds|minute|month|quarter|second|timezone|timezone_hour|timezone_minute|week|year)/i,
+    );
+    const Extract = astNode('Extract', All(/^EXTRACT/i, Brackets(All(ExtractField, /^FROM/i, ChildExpression))));
+
     const WrappedExpression = astNode('WrappedExpression', Brackets(ChildExpression));
 
     /**
@@ -295,6 +317,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       ArrayConstructor,
       Row,
       Exists,
+      Extract,
       Function,
       Null,
       InclusionComparation,

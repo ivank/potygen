@@ -4,7 +4,7 @@ import {
   QueryInterface,
   Source,
   sql,
-  sqlTypes,
+  toPgType,
   Type,
   TypeConstant,
   toContantBinaryOperatorVariant,
@@ -179,7 +179,7 @@ const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
   );
 
 const loadTypeConstant = (type: string, optional?: boolean): TypeConstant => {
-  const sqlType = sqlTypes[type];
+  const sqlType = toPgType(type);
   if (!sqlType) {
     throw Error(`Type '${type}' unknown`);
   }

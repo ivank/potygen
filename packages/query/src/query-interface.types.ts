@@ -8,6 +8,10 @@ export interface TypeString {
   literal?: string;
   optional?: boolean;
 }
+export interface TypeBuffer {
+  type: 'Buffer';
+  optional?: boolean;
+}
 export interface TypeNumber {
   type: 'Number';
   literal?: number;
@@ -117,6 +121,7 @@ export interface TypeObjectLiteralConstant {
 export type TypeLiteral = TypeString | TypeNumber | TypeBoolean;
 
 export type TypeOptional =
+  | TypeBuffer
   | TypeString
   | TypeNumber
   | TypeBoolean
@@ -126,6 +131,7 @@ export type TypeOptional =
   | TypeUnionConstant;
 
 export type TypeConstant =
+  | TypeBuffer
   | TypeAny
   | TypeString
   | TypeNumber

@@ -167,8 +167,7 @@ Object {
     Object {
       "name": "bytea_col",
       "type": Object {
-        "optional": true,
-        "type": "String",
+        "type": "Buffer",
       },
     },
     Object {
@@ -195,8 +194,27 @@ Object {
     Object {
       "name": "circle_col",
       "type": Object {
-        "optional": true,
-        "type": "String",
+        "items": Array [
+          Object {
+            "name": "x",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "y",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "radius",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+        ],
+        "type": "ObjectLiteralConstant",
       },
     },
     Object {
@@ -230,8 +248,51 @@ Object {
     Object {
       "name": "interval_col",
       "type": Object {
-        "optional": true,
-        "type": "String",
+        "items": Array [
+          Object {
+            "name": "years",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "months",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "days",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "hours",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "minutes",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "seconds",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "milliseconds",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+        ],
+        "type": "ObjectLiteralConstant",
       },
     },
     Object {
@@ -300,8 +361,21 @@ Object {
     Object {
       "name": "point_col",
       "type": Object {
-        "optional": true,
-        "type": "String",
+        "items": Array [
+          Object {
+            "name": "x",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "y",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+        ],
+        "type": "ObjectLiteralConstant",
       },
     },
     Object {
@@ -315,7 +389,7 @@ Object {
       "name": "real_col",
       "type": Object {
         "optional": true,
-        "type": "String",
+        "type": "Number",
       },
     },
     Object {
@@ -355,7 +429,7 @@ Object {
       "name": "time_with_time_zone_col",
       "type": Object {
         "optional": true,
-        "type": "String",
+        "type": "Date",
       },
     },
     Object {

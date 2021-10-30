@@ -10,6 +10,7 @@ import {
   TypeArrayConstant,
   TypeConstant,
   TypeAny,
+  TypeBuffer,
 } from './query-interface.types';
 
 export const typeJson: TypeJson = { type: 'Json' };
@@ -17,80 +18,154 @@ export const typeNull: TypeNull = { type: 'Null' };
 export const typeUnknown: TypeUnknown = { type: 'Unknown' };
 export const typeAny: TypeAny = { type: 'Any' };
 export const typeString: TypeString = { type: 'String' };
+export const typeBuffer: TypeBuffer = { type: 'Buffer' };
 export const typeBoolean: TypeBoolean = { type: 'Boolean' };
 export const typeNumber: TypeNumber = { type: 'Number' };
 export const typeDate: TypeDate = { type: 'Date' };
-export const typeArrayString: TypeArrayConstant = { type: 'ArrayConstant', items: { type: 'String' } };
-export const typeArrayNumber: TypeArrayConstant = { type: 'ArrayConstant', items: { type: 'Number' } };
-export const typeArrayAny: TypeArrayConstant = { type: 'ArrayConstant', items: { type: 'Any' } };
 
-export const sqlTypes: Record<string, TypeConstant> = {
-  anyarray: typeArrayAny,
-  anynonarray: typeAny,
-  anyelement: typeAny,
-  '"any"': typeAny,
-  regconfig: typeString,
-  null: typeNull,
-  bigint: typeString,
-  int8: typeString,
-  bigserial: typeString,
-  serial8: typeString,
-  'bit varying': typeString,
-  varbit: typeString,
-  bit: typeString,
-  boolean: typeBoolean,
-  bool: typeBoolean,
-  box: typeString,
-  bytea: typeString,
-  'character varying': typeString,
-  varchar: typeString,
-  character: typeString,
-  char: typeString,
-  cidr: typeString,
-  circle: typeString,
-  date: typeDate,
-  'double precision': typeString,
-  float8: typeString,
-  inet: typeString,
-  integer: typeNumber,
-  int4: typeNumber,
-  int: typeNumber,
-  interval: typeString,
-  jsonb: typeJson,
-  json: typeJson,
-  line: typeString,
-  lseg: typeString,
+// const spread = (items: TypeConstant): TypeSpreadConstant => ({ type: 'SpreadConstant', items });
+// const nullable = (type: TypeOptional): TypeOptional => ({ ...type, optional: true });
+const arr = (items: TypeConstant): TypeArrayConstant => ({ type: 'ArrayConstant', items });
+
+export const pgTypeAliases: Record<string, string> = {
+  bigint: 'int8',
+  bigserial: 'serial8',
+  'bit varying': 'varbit',
+  boolean: 'bool',
+  character: 'char',
+  'character varying': 'varchar',
+  'double precision': 'float8',
+  integer: 'int4',
+  int: 'int4',
+  numeric: 'decimal',
+  real: 'float4',
+  smallint: 'int2',
+  smallserial: 'serial2',
+  serial: 'serial4',
+  'time with time zone': 'timetz',
+  'time without time zone': 'time',
+  'timestamp without time zone': 'timestamp',
+  'timestamp with time zone': 'timestamptz',
+};
+
+export const pgTypes: { [key: string]: TypeConstant } = {
+  aclitem: typeString,
+  cid: typeString,
   macaddr: typeString,
+  macaddr8: typeString,
+  pg_lsn: typeString,
+  smgr: typeString,
+  tid: typeString,
+  uuid: typeString,
+  xid: typeString,
+  interval: {
+    type: 'ObjectLiteralConstant',
+    items: [
+      { name: 'years', type: typeNumber },
+      { name: 'months', type: typeNumber },
+      { name: 'days', type: typeNumber },
+      { name: 'hours', type: typeNumber },
+      { name: 'minutes', type: typeNumber },
+      { name: 'seconds', type: typeNumber },
+      { name: 'milliseconds', type: typeNumber },
+    ],
+  },
+  bytea: typeBuffer,
+  reltime: typeString,
+  tinterval: typeString,
+  char: typeString,
+  cstring: typeString,
+  daterange: typeString,
+  decimal: typeString,
+  name: typeString,
+  any: typeAny,
+  anyelement: arr(typeString),
+  anyenum: arr(typeString),
+  anynonarray: typeAny,
+  anyarray: arr(typeAny),
+  anyrange: arr(typeString),
+  event_trigger: typeString,
+  fdw_handler: typeString,
+  index_am_handler: typeString,
+  internal: typeString,
+  language_handler: typeString,
+  opaque: typeString,
+  pg_ddl_command: typeString,
+  trigger: typeString,
+  tsm_handler: typeString,
+  bit: typeString,
+  bpchar: typeString,
+  cidr: typeString,
+  inet: typeString,
+  void: typeString,
+  float4: typeNumber,
+  float8: typeString,
+  int2vector: typeString,
+  int4range: typeString,
+  int2: typeNumber,
+  int4: typeNumber,
+  int8range: typeString,
+  int8: typeString,
   money: typeString,
   numeric: typeString,
-  decimal: typeString,
+  jsonb: typeJson,
+  json: typeJson,
+  oid: typeNumber,
+  regclass: typeString,
+  regconfig: typeString,
+  regdictionary: typeString,
+  regnamespace: typeString,
+  regoper: typeString,
+  regoperator: typeString,
+  regproc: typeString,
+  regprocedure: typeString,
+  regrole: typeString,
+  regtype: typeString,
+  box: typeString,
   path: typeString,
-  pg_lsn: typeString,
-  point: typeString,
   polygon: typeString,
-  real: typeString,
-  float: typeNumber,
-  float4: typeNumber,
-  smallint: typeNumber,
-  int2: typeNumber,
-  smallserial: typeNumber,
-  serial2: typeNumber,
-  serial4: typeNumber,
-  serial: typeNumber,
-  text: typeString,
-  timestamptz: typeDate,
-  timestamp: typeDate,
-  'timestamp without time zone': typeDate,
-  'timestamp with time zone': typeDate,
-  'time without time zone': typeString,
-  'time with time zone': typeString,
-  timetz: typeDate,
+  circle: {
+    type: 'ObjectLiteralConstant',
+    items: [
+      { name: 'x', type: typeNumber },
+      { name: 'y', type: typeNumber },
+      { name: 'radius', type: typeNumber },
+    ],
+  },
+  line: typeString,
+  lseg: typeString,
+  point: {
+    type: 'ObjectLiteralConstant',
+    items: [
+      { name: 'x', type: typeNumber },
+      { name: 'y', type: typeNumber },
+    ],
+  },
+  abstime: typeString,
+  date: typeDate,
   time: typeString,
+  timestamp: typeDate,
+  timestamptz: typeDate,
+  timetz: typeDate,
+  bool: typeBoolean,
+  tsrange: typeString,
+  numrange: typeString,
+  tstzrange: typeString,
+  oidvector: typeString,
+  record: typeString,
+  refcursor: typeString,
+  text: typeString,
   tsquery: typeString,
   tsvector: typeString,
   txid_snapshot: typeString,
-  uuid: typeString,
+  unknown: typeUnknown,
+  varbit: typeString,
+  varchar: typeString,
   xml: typeString,
+
+  // Weird types
+  null: typeNull,
+  '"any"': typeAny,
 };
 
 export const unaryOperatorTypes: { [type in UnaryOperatorTag['value']]: TypeConstant } = {
@@ -113,7 +188,7 @@ export const binaryOperatorTypes: {
   '-': [
     [typeNumber, typeNumber, typeNumber],
     [typeJson, typeString, typeJson],
-    [typeJson, typeArrayString, typeJson],
+    [typeJson, arr(typeString), typeJson],
     [typeDate, typeString, typeDate],
     [typeDate, typeDate, typeDate],
   ],
@@ -183,12 +258,12 @@ export const binaryOperatorTypes: {
     [typeJson, typeNumber, typeString],
     [typeJson, typeString, typeString],
   ],
-  '#>': [[typeJson, typeArrayString, typeJson]],
-  '#-': [[typeJson, typeArrayString, typeJson]],
-  '#>>': [[typeJson, typeArrayString, typeString]],
+  '#>': [[typeJson, arr(typeString), typeJson]],
+  '#-': [[typeJson, arr(typeString), typeJson]],
+  '#>>': [[typeJson, arr(typeString), typeString]],
   '?': [[typeJson, typeString, typeBoolean]],
-  '?|': [[typeJson, typeArrayString, typeBoolean]],
-  '?&': [[typeJson, typeArrayString, typeBoolean]],
+  '?|': [[typeJson, arr(typeString), typeBoolean]],
+  '?&': [[typeJson, arr(typeString), typeBoolean]],
   '@>': [
     [typeString, typeString, typeBoolean],
     [typeJson, typeJson, typeBoolean],
@@ -207,4 +282,77 @@ export const binaryOperatorTypes: {
   '~': [[typeString, typeString, typeString]],
   '<<': [[typeString, typeNumber, typeString]],
   '>>': [[typeString, typeNumber, typeString]],
+  OVERLAPS: [[typeAny, typeAny, typeBoolean]],
+  'AT TIME ZONE': [
+    [typeDate, typeString, typeDate],
+    [typeAny, typeString, typeDate],
+  ],
+  'IS DISTINCT FROM': [[typeAny, typeAny, typeBoolean]],
+  'IS NOT DISTINCT FROM': [[typeAny, typeAny, typeBoolean]],
 };
+
+export interface TypeSpreadConstant {
+  type: 'SpreadConstant';
+  items: TypeConstant;
+}
+
+// const builtInFunctionTypes: {
+//   [key: string]: Array<[returnType: TypeConstant, ...argTypes: (TypeConstant | TypeSpreadConstant)[]]>;
+// } = {
+//   greatest: [
+//     [typeNumber, spread(typeNumber)],
+//     [typeDate, spread(typeDate)],
+//     [typeBoolean, spread(typeBoolean)],
+//   ],
+//   least: [
+//     [typeNumber, spread(typeNumber)],
+//     [typeDate, spread(typeDate)],
+//     [typeBoolean, spread(typeBoolean)],
+//   ],
+//   array_agg: [
+//     [arr(typeNumber), typeNumber],
+//     [arr(typeString), typeString],
+//     [arr(typeBoolean), typeBoolean],
+//     [arr(typeDate), typeDate],
+//     [arr(typeJson), typeJson],
+
+//     [arr(typeNumber), arr(typeNumber)],
+//     [arr(typeString), arr(typeString)],
+//     [arr(typeBoolean), arr(typeBoolean)],
+//     [arr(typeDate), arr(typeDate)],
+//     [arr(typeJson), arr(typeJson)],
+//   ],
+//   nullif: [
+//     [nullable(typeNumber), typeNumber, typeNumber],
+//     [nullable(typeString), typeString, typeString],
+//     [nullable(typeDate), typeDate, typeDate],
+//     [nullable(typeJson), typeJson, typeJson],
+//   ],
+
+// };
+
+// case 'coalesce':
+//             return { type: 'Coalesce', items: args };
+//           case 'greatest':
+//           case 'least':
+//             return { type: 'Named', name: functionName, value: args.find(isTypeConstant) ?? args[0] };
+//           case 'nullif':
+//             return { type: 'Union', items: [typeNull, args[0]] };
+//           case 'array_agg':
+//             return { type: 'ToArray', items: args[0] ?? typeUnknown };
+//           case 'json_agg':
+//           case 'jsonb_agg':
+//             return { type: 'Array', items: args[0] ?? typeUnknown };
+//           case 'current_date':
+//           case 'current_timestamp':
+//             return typeDate;
+//           case 'curtent_time':
+//             return typeString;
+//           case 'json_build_object':
+//           case 'jsonb_build_object':
+//             return {
+//               type: 'ObjectLiteral',
+//               items: chunk(2, args).flatMap(([name, type]) =>
+//                 isTypeString(name) && name.literal ? { name: name.literal, type } : [],
+//               ),
+//             };

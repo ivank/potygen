@@ -39,9 +39,11 @@ import {
   typeNull,
   typeString,
   typeBoolean,
-  sqlTypes,
   typeAny,
   typeDate,
+  typeNumber,
+  pgTypeAliases,
+  pgTypes,
 } from './query-interface-type-instances';
 import { isTypeConstant, isTypeString } from './query-interface.guards';
 import {
@@ -130,6 +132,8 @@ export const toContantBinaryOperatorVariant = (
 
   return filsteredAvailableTypes.length === 1 ? filsteredAvailableTypes[0][index] : { type: 'Unknown' };
 };
+
+export const toPgType = (type: string): TypeConstant | undefined => pgTypes[pgTypeAliases[type] ?? type];
 
 const toBinaryOperatorVariant = (
   availableTypes: Array<[TypeConstant, TypeConstant, TypeConstant]>,
@@ -261,12 +265,24 @@ const toType =
         return typeBoolean;
       case 'Type':
         const typeName = first(sql.values).value.toLowerCase();
-        return sqlTypes[typeName] ?? { type: 'LoadRecord', name: typeName };
+        const pgType = toPgType(typeName);
+        return pgType
+          ? { type: 'Named', name: pgTypeAliases[typeName] ?? typeName, value: pgType }
+          : { type: 'LoadRecord', name: typeName, sourceTag: sql };
       case 'TypeArray':
         return Array.from({ length: tail(sql.values).length }).reduce<Type>(
           (items) => ({ type: 'Array', items }),
           recur(first(sql.values)),
         );
+      case 'TypedConstant':
+        const typeConstantName = first(sql.values).value.toLowerCase();
+        return {
+          type: 'Named',
+          name: pgTypeAliases[typeConstantName] ?? typeConstantName,
+          value: toPgType(typeConstantName) ?? typeUnknown,
+        };
+      case 'Extract':
+        return { type: 'Named', name: 'date_part', value: typeNumber };
       case 'UnaryExpression':
         return unaryOperatorTypes[sql.values[0].value] ?? recur(sql.values[1]);
     }

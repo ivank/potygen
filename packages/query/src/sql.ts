@@ -1,14 +1,12 @@
-import { parser, isObject, orderBy } from '@psql-ts/ast';
+import { parser, isObject, orderBy, AstTag } from '@psql-ts/ast';
 import { ClientBase, QueryConfig } from 'pg';
 import { toParams } from './query-interface';
 import { typeUnknown } from './query-interface-type-instances';
 import { Param } from './query-interface.types';
 import { Sql } from './sql.types';
 
-const toAstParams = (sql: string): Param[] => {
-  const ast = parser(sql);
-  return ast ? toParams({ type: typeUnknown, columns: [] })(ast).sort(orderBy((p) => p.pos)) : [];
-};
+const toAstParams = (ast: AstTag): Param[] =>
+  toParams({ type: typeUnknown, columns: [] })(ast).sort(orderBy((p) => p.pos));
 
 const toSpreadIndexParam = (param: Param, index: number, values: unknown): string =>
   Array.isArray(values)
@@ -84,8 +82,13 @@ const convertValues = (params: Param[], values: Record<string, unknown>): unknow
 
 export class PSqlQuery<TSql extends Sql = Sql> {
   public astParams: Param[];
+  public ast?: AstTag;
   constructor(public text: string) {
-    this.astParams = toAstParams(text);
+    this.ast = parser(text);
+    this.astParams = this.ast ? toAstParams(this.ast) : [];
+  }
+  toString() {
+    return `[PSql "${this.text}"]`;
   }
   toQueryConfig(params: TSql['params'] = {}): QueryConfig {
     const text = convertSql(this.astParams, this.text, params as Record<string, unknown>);
