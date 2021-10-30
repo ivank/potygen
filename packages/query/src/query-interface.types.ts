@@ -6,32 +6,32 @@ export interface TypeLoad {
 export interface TypeString {
   type: 'String';
   literal?: string;
-  optional?: boolean;
+  nullable?: boolean;
 }
 export interface TypeBuffer {
   type: 'Buffer';
-  optional?: boolean;
+  nullable?: boolean;
 }
 export interface TypeNumber {
   type: 'Number';
   literal?: number;
-  optional?: boolean;
+  nullable?: boolean;
 }
 export interface TypeBoolean {
   type: 'Boolean';
   literal?: boolean;
-  optional?: boolean;
+  nullable?: boolean;
 }
 export interface TypeDate {
   type: 'Date';
-  optional?: boolean;
+  nullable?: boolean;
 }
 export interface TypeNull {
   type: 'Null';
 }
 export interface TypeJson {
   type: 'Json';
-  optional?: boolean;
+  nullable?: boolean;
 }
 export interface TypeUnknown {
   type: 'Unknown';
@@ -100,27 +100,27 @@ export interface TypeUnion {
 export interface TypeArrayConstant {
   type: 'ArrayConstant';
   items: TypeConstant;
-  optional?: boolean;
+  nullable?: boolean;
 }
 export interface TypeUnionConstant {
   type: 'UnionConstant';
   items: TypeConstant[];
-  optional?: boolean;
+  nullable?: boolean;
 }
 export interface TypeObjectLiteral {
   type: 'ObjectLiteral';
   items: Array<{ name: string; type: Type }>;
-  optional?: boolean;
+  nullable?: boolean;
 }
 export interface TypeObjectLiteralConstant {
   type: 'ObjectLiteralConstant';
   items: Array<{ name: string; type: TypeConstant }>;
-  optional?: boolean;
+  nullable?: boolean;
 }
 
 export type TypeLiteral = TypeString | TypeNumber | TypeBoolean;
 
-export type TypeOptional =
+export type TypeNullable =
   | TypeBuffer
   | TypeString
   | TypeNumber

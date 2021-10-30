@@ -12,11 +12,11 @@ Object {
             "type": "Number",
           },
           Object {
-            "optional": true,
+            "nullable": true,
             "type": "String",
           },
         ],
-        "optional": true,
+        "nullable": true,
         "type": "UnionConstant",
       },
     },
@@ -33,14 +33,14 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "optional": true,
+            "nullable": true,
             "type": "String",
           },
           Object {
             "type": "Number",
           },
         ],
-        "optional": true,
+        "nullable": true,
         "type": "UnionConstant",
       },
     },
@@ -61,14 +61,14 @@ Object {
             "type": "Number",
           },
           Object {
-            "optional": true,
+            "nullable": true,
             "type": "String",
           },
           Object {
             "type": "Number",
           },
         ],
-        "optional": true,
+        "nullable": true,
         "type": "UnionConstant",
       },
     },
@@ -85,15 +85,15 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "optional": true,
+            "nullable": true,
             "type": "Number",
           },
           Object {
-            "optional": true,
+            "nullable": true,
             "type": "String",
           },
         ],
-        "optional": true,
+        "nullable": true,
         "type": "UnionConstant",
       },
     },
@@ -126,7 +126,7 @@ Object {
     Object {
       "name": "bigint_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -139,28 +139,28 @@ Object {
     Object {
       "name": "bit_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "bit_varying_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "boolean_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Boolean",
       },
     },
     Object {
       "name": "box_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -173,21 +173,21 @@ Object {
     Object {
       "name": "character_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "character_varying_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "cidr_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -220,28 +220,28 @@ Object {
     Object {
       "name": "date_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
     Object {
       "name": "double_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "inet_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "integer_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Number",
       },
     },
@@ -298,63 +298,63 @@ Object {
     Object {
       "name": "json_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Json",
       },
     },
     Object {
       "name": "jsonb_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Json",
       },
     },
     Object {
       "name": "line_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "lseg_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "macaddr_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "money_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "numeric_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "path_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "pg_lsn_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -381,21 +381,21 @@ Object {
     Object {
       "name": "polygon_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "real_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Number",
       },
     },
     Object {
       "name": "smallint_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Number",
       },
     },
@@ -414,70 +414,70 @@ Object {
     Object {
       "name": "text_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "time_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "time_with_time_zone_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
     Object {
       "name": "timestamp_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
     Object {
       "name": "timestamp_with_time_zone_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
     Object {
       "name": "tsquery_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "tsvector_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "txid_snapshot_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "uuid_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "xml_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -502,7 +502,7 @@ Object {
             "type": "String",
           },
         ],
-        "optional": false,
+        "nullable": false,
         "type": "UnionConstant",
       },
     },
@@ -607,7 +607,7 @@ Object {
     Object {
       "name": "test1",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Number",
       },
     },
@@ -621,7 +621,7 @@ Object {
     Object {
       "name": "text",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -630,7 +630,7 @@ Object {
     Object {
       "name": "test1",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Number",
       },
     },
@@ -644,7 +644,7 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Number",
       },
     },
@@ -653,7 +653,7 @@ Object {
     Object {
       "name": "character_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -681,7 +681,7 @@ Object {
     Object {
       "name": "character_col",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },

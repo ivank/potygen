@@ -21,7 +21,7 @@ import {
   TypeUnknown,
   TypeAny,
   TypeArrayItem,
-  TypeOptional,
+  TypeNullable,
   TypeUnionConstant,
   TypeObjectLiteralConstant,
   TypeObjectLiteral,
@@ -44,11 +44,11 @@ const typeConstant = [
   'LiteralString',
   'LiteralBoolean',
 ];
-const typeOptional = ['String', 'Number', 'Boolean', 'Date', 'Json', 'ArrayConstant', 'UnionConstant'];
+const typeNullable = ['String', 'Number', 'Boolean', 'Date', 'Json', 'ArrayConstant', 'UnionConstant'];
 const typeLiteral = ['String', 'Number', 'Boolean'];
 
 export const isTypeConstant = (item: Type): item is TypeConstant => typeConstant.includes(item.type);
-export const isTypeOptional = (item: Type): item is TypeOptional => typeOptional.includes(item.type);
+export const isTypeNullable = (item: Type): item is TypeNullable => typeNullable.includes(item.type);
 export const isTypeLiteral = (item: Type): item is TypeLiteral => typeLiteral.includes(item.type);
 
 export const isTypeString = (type: Type): type is TypeString => type.type === 'String';

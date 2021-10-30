@@ -13,7 +13,7 @@ export interface Result {
     bit_varying_col?: string;
     boolean_col?: boolean;
     box_col?: string;
-    bytea_col;
+    bytea_col: Buffer;
     character_col?: string;
     character_varying_col?: string;
     cidr_col?: string;

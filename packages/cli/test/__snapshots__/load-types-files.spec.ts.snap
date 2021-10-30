@@ -12,7 +12,7 @@ Object {
     Object {
       "name": "start",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
@@ -86,7 +86,7 @@ Object {
                 "type": "String",
               },
             ],
-            "optional": false,
+            "nullable": false,
             "type": "UnionConstant",
           },
         ],
@@ -232,7 +232,7 @@ Object {
             "type": "String",
           },
         ],
-        "optional": false,
+        "nullable": false,
         "type": "UnionConstant",
       },
     },
@@ -245,98 +245,98 @@ Object {
     Object {
       "name": "generationStartReadOn",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
     Object {
       "name": "generationStartReadValue",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "generationEndReadOn",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
     Object {
       "name": "generationEndReadValue",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "generationPercentageSplit",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "generationPayment",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "generationEnergy",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "exportStartReadOn",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
     Object {
       "name": "exportStartReadValue",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "exportEndReadOn",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
     Object {
       "name": "exportEndReadValue",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "exportPercentageSplit",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "exportPayment",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "exportEnergy",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -377,7 +377,7 @@ Object {
             "type": "String",
           },
         ],
-        "optional": true,
+        "nullable": true,
         "type": "UnionConstant",
       },
     },
@@ -406,35 +406,35 @@ Object {
             "type": "String",
           },
         ],
-        "optional": true,
+        "nullable": true,
         "type": "UnionConstant",
       },
     },
     Object {
       "name": "totalPayment",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "vatPayment",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "generationPeriods",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Json",
       },
     },
     Object {
       "name": "exportPeriods",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Json",
       },
     },
@@ -459,21 +459,21 @@ Object {
     Object {
       "name": "resolvedPostlevId",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Number",
       },
     },
     Object {
       "name": "isBacsPaymentsSent",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Boolean",
       },
     },
     Object {
       "name": "isChequePaymentsSent",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Boolean",
       },
     },
@@ -541,7 +541,7 @@ Object {
             "type": "String",
           },
           Object {
-            "optional": true,
+            "nullable": true,
             "type": "String",
           },
         ],
@@ -581,7 +581,7 @@ Object {
             "type": "String",
           },
           Object {
-            "optional": true,
+            "nullable": true,
             "type": "String",
           },
         ],
@@ -638,14 +638,14 @@ Object {
             "type": "String",
           },
         ],
-        "optional": false,
+        "nullable": false,
         "type": "UnionConstant",
       },
     },
     Object {
       "name": "startOn",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
@@ -664,7 +664,7 @@ Object {
     Object {
       "name": "email",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -700,7 +700,7 @@ Object {
     Object {
       "name": "quarter",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -727,7 +727,7 @@ Object {
     Object {
       "name": "name",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -740,7 +740,7 @@ Object {
     Object {
       "name": "quarter",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -753,21 +753,21 @@ Object {
     Object {
       "name": "addressLine1",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "addressLine2",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "addressLine3",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -804,7 +804,7 @@ Object {
             "type": "String",
           },
         ],
-        "optional": false,
+        "nullable": false,
         "type": "UnionConstant",
       },
     },
@@ -829,7 +829,7 @@ Object {
             "type": "String",
           },
         ],
-        "optional": false,
+        "nullable": false,
         "type": "UnionConstant",
       },
     },
@@ -844,7 +844,7 @@ Object {
     Object {
       "name": "sourceSystemId",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Number",
       },
     },
@@ -932,7 +932,7 @@ Object {
       "name": "fitIds",
       "type": Object {
         "items": Object {
-          "optional": true,
+          "nullable": true,
           "type": "String",
         },
         "type": "ArrayConstant",
@@ -943,14 +943,14 @@ Object {
     Object {
       "name": "cfrFiTId",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "email",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -963,14 +963,14 @@ Object {
     Object {
       "name": "company",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
     Object {
       "name": "line1",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -983,7 +983,7 @@ Object {
     Object {
       "name": "town",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -996,7 +996,7 @@ Object {
     Object {
       "name": "county",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -1068,14 +1068,14 @@ Object {
             "type": "String",
           },
         ],
-        "optional": false,
+        "nullable": false,
         "type": "UnionConstant",
       },
     },
     Object {
       "name": "endOn",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
@@ -1095,7 +1095,7 @@ Object {
     Object {
       "name": "reason",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -1120,7 +1120,7 @@ Object {
             "type": "String",
           },
         ],
-        "optional": false,
+        "nullable": false,
         "type": "UnionConstant",
       },
     },
@@ -1133,7 +1133,7 @@ Object {
     Object {
       "name": "submittedAt",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
@@ -1166,7 +1166,7 @@ Object {
     Object {
       "name": "submittedAt",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
@@ -1248,14 +1248,14 @@ Object {
             "type": "String",
           },
         ],
-        "optional": false,
+        "nullable": false,
         "type": "UnionConstant",
       },
     },
     Object {
       "name": "reason",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "String",
       },
     },
@@ -1268,14 +1268,14 @@ Object {
     Object {
       "name": "updatedAt",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Date",
       },
     },
     Object {
       "name": "sourceSystemId",
       "type": Object {
-        "optional": true,
+        "nullable": true,
         "type": "Number",
       },
     },
@@ -1310,7 +1310,7 @@ Object {
               },
             },
           ],
-          "optional": false,
+          "nullable": false,
           "type": "ObjectLiteralConstant",
         },
         "type": "ArrayConstant",
@@ -1332,14 +1332,14 @@ Object {
           Object {
             "name": "schema",
             "type": Object {
-              "optional": true,
+              "nullable": true,
               "type": "String",
             },
           },
           Object {
             "name": "name",
             "type": Object {
-              "optional": true,
+              "nullable": true,
               "type": "String",
             },
           },
@@ -1355,28 +1355,28 @@ Object {
             Object {
               "name": "name",
               "type": Object {
-                "optional": true,
+                "nullable": true,
                 "type": "String",
               },
             },
             Object {
               "name": "isNullable",
               "type": Object {
-                "optional": true,
+                "nullable": true,
                 "type": "String",
               },
             },
             Object {
               "name": "enum",
               "type": Object {
-                "optional": true,
+                "nullable": true,
                 "type": "String",
               },
             },
             Object {
               "name": "type",
               "type": Object {
-                "optional": true,
+                "nullable": true,
                 "type": "String",
               },
             },

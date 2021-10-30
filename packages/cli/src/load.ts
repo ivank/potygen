@@ -8,7 +8,7 @@ import {
   Type,
   TypeConstant,
   toContantBinaryOperatorVariant,
-  isTypeOptional,
+  isTypeNullable,
   isTypeArrayConstant,
   isTypeLoadStar,
   TypeUnionConstant,
@@ -164,7 +164,7 @@ const toLoadedParam =
       pick.length > 0
         ? {
             type: 'ObjectLiteralConstant',
-            optional: !required,
+            nullable: !required,
             items: pick.map((item) => ({ name: item.name, type: toType(item.type) })),
           }
         : toType(type);
@@ -178,17 +178,17 @@ const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
       : { name, type: { type: 'UnionConstant', items: params.map((param) => param.type).filter(isUniqueBy()) } },
   );
 
-const loadTypeConstant = (type: string, optional?: boolean): TypeConstant => {
+const loadTypeConstant = (type: string, nullable?: boolean): TypeConstant => {
   const sqlType = toPgType(type);
   if (!sqlType) {
     throw Error(`Type '${type}' unknown`);
   }
-  return optional && isTypeOptional(sqlType) ? { ...sqlType, optional } : sqlType;
+  return nullable && isTypeNullable(sqlType) ? { ...sqlType, nullable } : sqlType;
 };
 
 const dataColumnToTypeConstant = (enums: Record<string, TypeUnionConstant>, column: LoadedDataColumn): TypeConstant =>
   column.type === 'USER-DEFINED'
-    ? { ...enums[column.enum], optional: column.isNullable === 'YES' }
+    ? { ...enums[column.enum], nullable: column.isNullable === 'YES' }
     : loadTypeConstant(column.type, column.isNullable === 'YES');
 
 const toLoadedFunction = ({ returnType, argTypes, ...rest }: LoadedDataFunction): LoadedFunction => ({
@@ -358,16 +358,16 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
         const left = recur(type.left);
         const right = recur(type.right);
         const operatorResult = toContantBinaryOperatorVariant(type.available, left, right, type.index);
-        return isTypeOptional(operatorResult) &&
-          ((isTypeOptional(left) && left.optional) || (isTypeOptional(right) && right.optional))
-          ? { ...operatorResult, optional: true }
+        return isTypeNullable(operatorResult) &&
+          ((isTypeNullable(left) && left.nullable) || (isTypeNullable(right) && right.nullable))
+          ? { ...operatorResult, nullable: true }
           : operatorResult;
       case 'Coalesce':
         const argTypes = type.items.map(recur);
         return {
           type: 'UnionConstant',
           items: argTypes,
-          optional: argTypes.some((type) => isTypeOptional(type) && type.optional),
+          nullable: argTypes.some((type) => isTypeNullable(type) && type.nullable),
         };
       case 'Named':
         return recur(type.value);

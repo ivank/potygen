@@ -38,7 +38,8 @@ const toPropertyType = (type: TypeConstant): TypeNode => {
   } else {
     switch (type.type) {
       case 'Date':
-        return factory.createTypeReferenceNode('Date');
+      case 'Buffer':
+        return factory.createTypeReferenceNode(type.type);
       case 'Boolean':
         return type.literal !== undefined
           ? factory.createLiteralTypeNode(factory.createStringLiteral(type.literal ? 'true' : 'false'))
@@ -76,7 +77,7 @@ const toLoadedQueryTypeNodes = (name: string, loadedQuery: LoadedQueryInterface)
       factory.createPropertySignature(
         undefined,
         item.name,
-        'optional' in item.type && item.type.optional ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
+        'nullable' in item.type && item.type.nullable ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
         toPropertyType(item.type),
       ),
     ),
@@ -91,7 +92,7 @@ const toLoadedQueryTypeNodes = (name: string, loadedQuery: LoadedQueryInterface)
       factory.createPropertySignature(
         undefined,
         item.name,
-        'optional' in item.type && item.type.optional ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
+        'nullable' in item.type && item.type.nullable ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
         toPropertyType(item.type),
       ),
     ),
