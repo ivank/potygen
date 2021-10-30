@@ -119,8 +119,7 @@ describe('Query Interface', () => {
     ['Extract const', "SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')"],
   ])('Should convert %s sql (%s)', (_, sql) =>
     withParserErrors(() => {
-      const ast = parser(sql);
-      expect(toQueryInterface(ast!)).toMatchSnapshot();
+      expect(toQueryInterface(parser(sql))).toMatchSnapshot();
     }),
   );
 });

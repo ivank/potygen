@@ -1,4 +1,4 @@
-import { PSqlQuery } from '../src';
+import { Sql } from '../src';
 import { isNil } from '@psql-ts/ast';
 import { sqlFiles, withParserErrors } from './helpers';
 
@@ -54,7 +54,7 @@ describe('Sql Files', () => {
       .filter(isNil),
   )('Should convert complex sql template tags %s', (name, text, values) =>
     withParserErrors(() => {
-      expect(new PSqlQuery(text).toQueryConfig(values)).toMatchSnapshot(name);
+      expect(new Sql(text).toQueryConfig(values)).toMatchSnapshot(name);
     }),
   );
 });

@@ -1,12 +1,6 @@
+import { markTextError } from '@ikerin/rd-parse';
 import { Tag } from '@psql-ts/ast';
 import { ParsedTypescriptFile, ParsedSqlFile, TemplateTagQuery } from './types';
-
-const markSqlError = (text: string, message: string, pos: number, nextPos: number): string => {
-  const nextNewLinePos = text.indexOf('\n', pos);
-  const prevNewLinePos = text.lastIndexOf('\n', pos);
-  const indent = ' '.repeat(pos - prevNewLinePos);
-  return text.slice(0, nextNewLinePos) + `\n${indent}^\n${indent}| ${message}\n` + text.slice(nextNewLinePos);
-};
 
 export class LoadError extends Error {
   constructor(public tag: Tag, message: string) {
@@ -31,10 +25,7 @@ export class ParsedTypescriptFileLoadError extends Error {
 
   toString() {
     const text = this.template.template;
-    const template =
-      this.error instanceof LoadError
-        ? markSqlError(text, this.message, this.error.tag.pos, this.error.tag.nextPos)
-        : text;
+    const template = this.error instanceof LoadError ? markTextError(text, this.message, this.error.tag.nextPos) : text;
     return `Error: ${this.message}
 
 File: ${this.file.path} (${this.template.pos})
@@ -51,10 +42,7 @@ export class ParsedSqlFileLoadError extends Error {
 
   toString() {
     const text = this.file.content;
-    const template =
-      this.error instanceof LoadError
-        ? markSqlError(text, this.message, this.error.tag.pos, this.error.tag.nextPos)
-        : text;
+    const template = this.error instanceof LoadError ? markTextError(text, this.message, this.error.tag.pos) : text;
 
     return `Error: ${this.message}
 

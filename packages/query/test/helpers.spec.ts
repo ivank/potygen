@@ -6,7 +6,7 @@ describe('Util', () => {
     [
       'array constants',
       { type: 'ArrayConstant', items: { type: 'Any' } },
-      { type: 'ArrayConstant', items: { type: 'Number', optional: true } },
+      { type: 'ArrayConstant', items: { type: 'Number', nullable: true } },
       true,
     ],
   ])('Should calculate uniq for %s', (name, a, b, expected) => {

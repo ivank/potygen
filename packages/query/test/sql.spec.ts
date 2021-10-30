@@ -1,9 +1,8 @@
-import { sql } from '../src';
-import { PSqlQuery } from '../src/sql';
+import { sql, Sql } from '../src';
 import { withParserErrors } from './helpers';
 
 describe('Template Tag', () => {
-  it.each<[string, PSqlQuery, Record<string, unknown>, { text: string; values: unknown[] }]>([
+  it.each<[string, Sql, Record<string, unknown>, { text: string; values: unknown[] }]>([
     [
       'Multiple params',
       sql`SELECT * FROM table1 WHERE id IN $$ids`,

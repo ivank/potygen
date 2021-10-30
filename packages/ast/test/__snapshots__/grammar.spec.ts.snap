@@ -478,6 +478,22 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql begin (BEGIN): begin 1`] = `
+Object {
+  "nextPos": 5,
+  "pos": 0,
+  "tag": "Begin",
+}
+`;
+
+exports[`Sql Should parse simple sql begin semicolon (BEGIN;): begin semicolon 1`] = `
+Object {
+  "nextPos": 6,
+  "pos": 0,
+  "tag": "Begin",
+}
+`;
+
 exports[`Sql Should parse simple sql between (SELECT * WHERE table1.col BETWEEN '2006-01-01' AND '2007-01-01'): between 1`] = `
 Object {
   "nextPos": 63,
@@ -1745,6 +1761,22 @@ Object {
       ],
     },
   ],
+}
+`;
+
+exports[`Sql Should parse simple sql commit (COMMIT): commit 1`] = `
+Object {
+  "nextPos": 6,
+  "pos": 0,
+  "tag": "Commit",
+}
+`;
+
+exports[`Sql Should parse simple sql commit semicolon (COMMIT;): commit semicolon 1`] = `
+Object {
+  "nextPos": 7,
+  "pos": 0,
+  "tag": "Commit",
 }
 `;
 
@@ -15622,6 +15654,56 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql rollback (ROLLBACK): rollback 1`] = `
+Object {
+  "nextPos": 8,
+  "pos": 0,
+  "tag": "Rollback",
+  "values": Array [],
+}
+`;
+
+exports[`Sql Should parse simple sql rollback semicolon (ROLLBACK;): rollback semicolon 1`] = `
+Object {
+  "nextPos": 9,
+  "pos": 0,
+  "tag": "Rollback",
+  "values": Array [],
+}
+`;
+
+exports[`Sql Should parse simple sql rollback to (ROLLBACK TO my_savepoint): rollback to 1`] = `
+Object {
+  "nextPos": 24,
+  "pos": 0,
+  "tag": "Rollback",
+  "values": Array [
+    Object {
+      "nextPos": 24,
+      "pos": 12,
+      "tag": "Identifier",
+      "value": "my_savepoint",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql rollback to semicolon (ROLLBACK TO my_savepoint;): rollback to semicolon 1`] = `
+Object {
+  "nextPos": 25,
+  "pos": 0,
+  "tag": "Rollback",
+  "values": Array [
+    Object {
+      "nextPos": 24,
+      "pos": 12,
+      "tag": "Identifier",
+      "value": "my_savepoint",
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql row (SELECT ROW (1,2,3)): row 1`] = `
 Object {
   "nextPos": 18,
@@ -15842,6 +15924,38 @@ Object {
           ],
         },
       ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql savepoint (SAVEPOINT my_savepoint): savepoint 1`] = `
+Object {
+  "nextPos": 22,
+  "pos": 0,
+  "tag": "Savepoint",
+  "values": Array [
+    Object {
+      "nextPos": 22,
+      "pos": 10,
+      "tag": "Identifier",
+      "value": "my_savepoint",
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql savepoint semicolon (SAVEPOINT my_savepoint;): savepoint semicolon 1`] = `
+Object {
+  "nextPos": 23,
+  "pos": 0,
+  "tag": "Savepoint",
+  "values": Array [
+    Object {
+      "nextPos": 22,
+      "pos": 10,
+      "tag": "Identifier",
+      "value": "my_savepoint",
     },
   ],
 }

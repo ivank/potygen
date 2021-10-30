@@ -5,8 +5,7 @@ import { sqlFiles, withParserErrors } from './helpers';
 describe('Query Interface', () => {
   it.each(sqlFiles())('Should convert complex sql %s', (name, sql) =>
     withParserErrors(() => {
-      const ast = parser(sql);
-      expect(toQueryInterface(ast!)).toMatchSnapshot(name);
+      expect(toQueryInterface(parser(sql))).toMatchSnapshot(name);
     }),
   );
 });

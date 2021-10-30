@@ -3,9 +3,9 @@ import { ClientBase, QueryConfig } from 'pg';
 import { toParams } from './query-interface';
 import { typeUnknown } from './query-interface-type-instances';
 import { Param } from './query-interface.types';
-import { Sql } from './sql.types';
+import { SqlInterface } from './sql.types';
 
-const toAstParams = (ast: AstTag): Param[] =>
+const toParamsFromAst = (ast: AstTag): Param[] =>
   toParams({ type: typeUnknown, columns: [] })(ast).sort(orderBy((p) => p.pos));
 
 const toSpreadIndexParam = (param: Param, index: number, values: unknown): string =>
@@ -80,24 +80,38 @@ const convertValues = (params: Param[], values: Record<string, unknown>): unknow
     { values: [], indexes: {} },
   ).values;
 
-export class PSqlQuery<TSql extends Sql = Sql> {
-  public astParams: Param[];
-  public ast?: AstTag;
+const nullToUndefinedInPlace = (row: Record<string, unknown>): Record<string, unknown> => {
+  for (const key in row) {
+    if (row[key] === null) {
+      row[key] = undefined;
+    }
+  }
+  return row;
+};
+
+export class Sql<TSqlInterface extends SqlInterface = SqlInterface> {
+  public params: Param[];
+  public ast: AstTag;
   constructor(public text: string) {
     this.ast = parser(text);
-    this.astParams = this.ast ? toAstParams(this.ast) : [];
+    this.params = toParamsFromAst(this.ast);
   }
+
   toString() {
-    return `[PSql "${this.text}"]`;
+    return `[Sql "${this.text}"]`;
   }
-  toQueryConfig(params: TSql['params'] = {}): QueryConfig {
-    const text = convertSql(this.astParams, this.text, params as Record<string, unknown>);
-    const values = convertValues(this.astParams, params as Record<string, unknown>);
+
+  toQueryConfig(params: TSqlInterface['params'] = {}): QueryConfig {
+    const text = convertSql(this.params, this.text, params as Record<string, unknown>);
+    const values = convertValues(this.params, params as Record<string, unknown>);
     return { text, values };
   }
-  async run(db: ClientBase, params: TSql['params'] = {}): Promise<TSql['result'][]> {
-    return (await db.query(this.toQueryConfig(params))).rows;
+
+  async run(db: ClientBase, params: TSqlInterface['params'] = {}): Promise<TSqlInterface['result'][]> {
+    return (await db.query(this.toQueryConfig(params))).rows.map(nullToUndefinedInPlace);
   }
 }
 
-export const sql = <TSql extends Sql = Sql>([text]: TemplateStringsArray): PSqlQuery<TSql> => new PSqlQuery(text);
+export const sql = <TSqlInterface extends SqlInterface = SqlInterface>([
+  text,
+]: TemplateStringsArray): Sql<TSqlInterface> => new Sql(text);

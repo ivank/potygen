@@ -11,10 +11,7 @@ import {
   isReturning,
   ReturningListItemTag,
   SelectTag,
-  UpdateTag,
-  InsertTag,
-  DeleteTag,
-  WithTag,
+  AstTag,
   isOrderBy,
   isValues,
   isDefault,
@@ -322,10 +319,13 @@ const toResult =
     };
   };
 
-const toQueryResults = (
-  sql: SelectTag | UpdateTag | InsertTag | DeleteTag | WithTag,
-): { from?: TableTag; items: Array<SelectListItemTag | ReturningListItemTag> } => {
+const toQueryResults = (sql: AstTag): { from?: TableTag; items: Array<SelectListItemTag | ReturningListItemTag> } => {
   switch (sql.tag) {
+    case 'Begin':
+    case 'Savepoint':
+    case 'Rollback':
+    case 'Commit':
+      return { items: [] };
     case 'Select':
       return {
         items: sql.values.filter(isSelectList).flatMap((list) => list.values),
@@ -469,7 +469,7 @@ export const toParams =
 const isUniqParam = (item: Param, index: number, all: Param[]) =>
   all.findIndex((current) => item.name === current.name && isEqual(item.type, current.type)) === index;
 
-export const toQueryInterface = (sql: SelectTag | UpdateTag | InsertTag | DeleteTag | WithTag): QueryInterface => {
+export const toQueryInterface = (sql: AstTag): QueryInterface => {
   const { from, items } = toQueryResults(sql);
   const typeContext = { type: typeUnknown, columns: [], from };
 

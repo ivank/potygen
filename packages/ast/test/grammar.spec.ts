@@ -204,6 +204,16 @@ describe('Sql', () => {
     ${'typed constant'}               | ${"SELECT double precision '3.5' * interval '1 hour'"}
     ${'extract field century'}        | ${"SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')"}
     ${'extract field day'}            | ${"SELECT EXTRACT(DAY FROM INTERVAL '40 days 1 minute')"}
+    ${'begin semicolon'}              | ${'BEGIN;'}
+    ${'savepoint semicolon'}          | ${'SAVEPOINT my_savepoint;'}
+    ${'rollback semicolon'}           | ${'ROLLBACK;'}
+    ${'rollback to semicolon'}        | ${'ROLLBACK TO my_savepoint;'}
+    ${'commit semicolon'}             | ${'COMMIT;'}
+    ${'begin'}                        | ${'BEGIN'}
+    ${'savepoint'}                    | ${'SAVEPOINT my_savepoint'}
+    ${'rollback'}                     | ${'ROLLBACK'}
+    ${'rollback to'}                  | ${'ROLLBACK TO my_savepoint'}
+    ${'commit'}                       | ${'COMMIT'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) =>
     withParserErrors(() => {
       expect(parser(sql)).toMatchSnapshot(name);

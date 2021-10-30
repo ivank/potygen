@@ -566,7 +566,17 @@ const Query = Any(Select, Update, Delete, Insert);
 const CTE = astNode('CTE', All(Identifier, /^AS/, Brackets(Query)));
 const With = astNode('With', All(/^WITH/i, List(CTE), Query));
 
+/**
+ * Transaction
+ * ----------------------------------------------------------------------------------------
+ */
+
+const Begin = astEmptyLeaf('Begin', All(/^BEGIN/i, Optional(';')));
+const Savepoint = astNode('Savepoint', All(/^SAVEPOINT/i, Identifier, Optional(';')));
+const Commit = astEmptyLeaf('Commit', All(/^COMMIT/i, Optional(';')));
+const Rollback = astNode('Rollback', All(/^ROLLBACK/i, Optional(All(/^TO/i, Identifier)), Optional(';')));
+
 // Ignore line comments and all whitespace
 const IgnoreComments = (node: FunctionRule) => Ignore(/^\s+|^--[^\r\n]*\n/, node);
 
-export const Grammar = IgnoreComments(Any(With, Select, Update, Delete, Insert));
+export const Grammar = IgnoreComments(Any(With, Select, Update, Delete, Insert, Begin, Savepoint, Commit, Rollback));

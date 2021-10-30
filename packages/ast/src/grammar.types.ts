@@ -586,6 +586,20 @@ export interface ExpressionListTag extends NodeSqlTag {
   tag: 'ExpressionList';
   values: ExpressionTag[];
 }
+export interface BeginTag extends EmptyLeafSqlTag {
+  tag: 'Begin';
+}
+export interface CommitTag extends EmptyLeafSqlTag {
+  tag: 'Commit';
+}
+export interface SavepointTag extends NodeSqlTag {
+  tag: 'Savepoint';
+  values: [IdentifierTag];
+}
+export interface RollbackTag extends NodeSqlTag {
+  tag: 'Rollback';
+  values: [] | [IdentifierTag];
+}
 
 export type FromListItemTag = NamedSelectTag | TableTag;
 export type ConstantTag = StringTag | NumberTag | BooleanTag | TypedConstantTag;
@@ -595,6 +609,7 @@ export type OperatorExpressionTag = BinaryExpressionTag | UnaryExpressionTag;
 export type AnyCastTag = CastTag | PgCastTag;
 export type DataTypeTag = NullTag | CaseTag | CaseSimpleTag | CastableDataTypeTag;
 export type QueryTag = SelectTag | UpdateTag | InsertTag | DeleteTag;
+export type TransactionTag = BeginTag | CommitTag | SavepointTag | RollbackTag;
 
 export type CastableDataTypeTag =
   | ArrayIndexTag
@@ -615,7 +630,15 @@ export type ExpressionTag =
   | RowTag
   | WrappedExpressionTag;
 
-export type EmptyLeafTag = NullTag | StarTag | DefaultTag | DoNothingTag | LimitAllTag | DimensionTag;
+export type EmptyLeafTag =
+  | NullTag
+  | StarTag
+  | DefaultTag
+  | DoNothingTag
+  | LimitAllTag
+  | DimensionTag
+  | BeginTag
+  | CommitTag;
 
 export type LeafTag =
   | ExtractFieldTag
@@ -642,6 +665,8 @@ export type LeafTag =
   | CombinationType;
 
 export type NodeTag =
+  | SavepointTag
+  | RollbackTag
   | ExtractTag
   | TypedConstantTag
   | TypeTag
@@ -710,4 +735,4 @@ export type NodeTag =
 
 export type Tag = EmptyLeafTag | LeafTag | NodeTag;
 
-export type AstTag = QueryTag | WithTag;
+export type AstTag = QueryTag | WithTag | TransactionTag;
