@@ -178,6 +178,10 @@ describe('Sql', () => {
     ${'row'}                          | ${'SELECT ROW (1,2,3)'}
     ${'row shorthand'}                | ${'SELECT (1,2,3)'}
     ${'row complex'}                  | ${'SELECT (1, 2+2, 3), ROW (123), (1,2,(3))'}
+    ${'escape constant'}              | ${"SELECT E'111'::varbit"}
+    ${'escape string'}                | ${"SELECT E'\\o'"}
+    ${'bit string'}                   | ${"SELECT B'111'"}
+    ${'hexademical string'}           | ${"SELECT X'FFFFFF'"}
     ${'binary constant'}              | ${"SELECT E'111'::varbit"}
     ${'where in tuples'}              | ${'SELECT col1, col2 WHERE (col1,col2) IN ((1,2),(3,4))'}
     ${'select exists'}                | ${'SELECT EXISTS(SELECT col2 FROM table2)'}

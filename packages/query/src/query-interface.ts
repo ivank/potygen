@@ -257,6 +257,12 @@ const toType =
           sourceTag: sql,
         };
       case 'String':
+      case 'DollarQuotedString':
+      case 'CustomQuotedString':
+      case 'BitString':
+      case 'EscapeString':
+      case 'HexademicalString':
+      case 'CustomQuotedString':
         return { type: 'String', literal: sql.value };
       case 'ComparationExpression':
         return typeBoolean;

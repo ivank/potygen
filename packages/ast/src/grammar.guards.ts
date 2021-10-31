@@ -43,6 +43,8 @@ import {
   GroupByTag,
   HavingTag,
   IdentifierTag,
+  QuotedIdentifierTag,
+  UnquotedIdentifierTag,
   InsertTag,
   IntegerTag,
   JoinOnTag,
@@ -52,7 +54,6 @@ import {
   LimitAllTag,
   LimitTag,
   NamedSelectTag,
-  NameTag,
   NullTag,
   NumberTag,
   OffsetTag,
@@ -90,23 +91,46 @@ import {
   WhereTag,
   WithTag,
   WrappedExpressionTag,
+  CustomQuotedStringTag,
+  DollarQuotedStringTag,
+  BitStringTag,
+  EscapeStringTag,
+  HexademicalStringTag,
 } from './grammar.types';
 
 export const isCTETag = (value: SqlTag): value is CTETag => value.tag === 'CTE';
 export const isWithTag = (value: SqlTag): value is WithTag => value.tag === 'With';
 export const isNull = (value: SqlTag): value is NullTag => value.tag === 'Null';
 export const isPgCast = (value: SqlTag): value is PgCastTag => value.tag === 'PgCast';
-export const isIdentifier = (value: SqlTag): value is IdentifierTag => value.tag === 'Identifier';
-export const isName = (value: SqlTag): value is NameTag => value.tag === 'Name';
+export const isIdentifier = (value: SqlTag): value is IdentifierTag =>
+  isUnquotedIdentifier(value) || isQuotedIdentifier(value);
+export const isQuotedIdentifier = (value: SqlTag): value is QuotedIdentifierTag => value.tag === 'QuotedIdentifier';
+export const isUnquotedIdentifier = (value: SqlTag): value is UnquotedIdentifierTag =>
+  value.tag === 'UnquotedIdentifier';
 export const isParameter = (value: SqlTag): value is ParameterTag => value.tag === 'Parameter';
 export const isColumn = (value: SqlTag): value is ColumnTag => value.tag === 'Column';
 export const isAs = (value: SqlTag): value is AsTag => value.tag === 'As';
 export const isString = (value: SqlTag): value is StringTag => value.tag === 'String';
+export const isBitString = (value: SqlTag): value is BitStringTag => value.tag === 'BitString';
+export const isHexademicalString = (value: SqlTag): value is HexademicalStringTag => value.tag === 'HexademicalString';
+export const isEscapeString = (value: SqlTag): value is EscapeStringTag => value.tag === 'EscapeString';
+export const isDollarQuotedString = (value: SqlTag): value is DollarQuotedStringTag =>
+  value.tag === 'DollarQuotedString';
+export const isCustomQuotedString = (value: SqlTag): value is CustomQuotedStringTag =>
+  value.tag === 'CustomQuotedString';
 export const isNumber = (value: SqlTag): value is NumberTag => value.tag === 'Number';
 export const isInteger = (value: SqlTag): value is IntegerTag => value.tag === 'Integer';
 export const isBoolean = (value: SqlTag): value is BooleanTag => value.tag === 'Boolean';
 export const isConstant = (value: SqlTag): value is ConstantTag =>
-  isNull(value) || isString(value) || isNumber(value) || isBoolean(value);
+  isNull(value) ||
+  isNumber(value) ||
+  isString(value) ||
+  isBoolean(value) ||
+  isEscapeString(value) ||
+  isBitString(value) ||
+  isHexademicalString(value) ||
+  isDollarQuotedString(value) ||
+  isCustomQuotedString(value);
 export const isCount = (value: SqlTag): value is CountTag => value.tag === 'Count';
 export const isArrayIndexRange = (value: SqlTag): value is ArrayIndexRangeTag => value.tag === 'ArrayIndexRange';
 export const isType = (value: SqlTag): value is TypeTag => value.tag === 'Type';
@@ -189,7 +213,6 @@ export const isUsing = (value: SqlTag): value is UsingTag => value.tag === 'Usin
 export const isDelete = (value: SqlTag): value is DeleteTag => value.tag === 'Delete';
 export const isValuesList = (value: SqlTag): value is ValuesListTag => value.tag === 'ValuesList';
 export const isInsertTag = (value: SqlTag): value is InsertTag => value.tag === 'Insert';
-export const isQuotedName = (value: SqlTag): value is InsertTag => value.tag === 'QuotedName';
 export const isCollateTag = (value: SqlTag): value is CollateTag => value.tag === 'Collate';
 export const isConflictTarget = (value: SqlTag): value is ConflictTargetTag => value.tag === 'ConflictTarget';
 export const isConflictConstraint = (value: SqlTag): value is ConflictConstraintTag =>

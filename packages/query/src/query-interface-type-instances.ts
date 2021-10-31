@@ -23,8 +23,6 @@ export const typeBoolean: TypeBoolean = { type: 'Boolean' };
 export const typeNumber: TypeNumber = { type: 'Number' };
 export const typeDate: TypeDate = { type: 'Date' };
 
-// const spread = (items: TypeConstant): TypeSpreadConstant => ({ type: 'SpreadConstant', items });
-// const nullable = (type: TypeOptional): TypeOptional => ({ ...type, optional: true });
 const arr = (items: TypeConstant): TypeArrayConstant => ({ type: 'ArrayConstant', items });
 
 export const pgTypeAliases: Record<string, string> = {
@@ -295,64 +293,3 @@ export interface TypeSpreadConstant {
   type: 'SpreadConstant';
   items: TypeConstant;
 }
-
-// const builtInFunctionTypes: {
-//   [key: string]: Array<[returnType: TypeConstant, ...argTypes: (TypeConstant | TypeSpreadConstant)[]]>;
-// } = {
-//   greatest: [
-//     [typeNumber, spread(typeNumber)],
-//     [typeDate, spread(typeDate)],
-//     [typeBoolean, spread(typeBoolean)],
-//   ],
-//   least: [
-//     [typeNumber, spread(typeNumber)],
-//     [typeDate, spread(typeDate)],
-//     [typeBoolean, spread(typeBoolean)],
-//   ],
-//   array_agg: [
-//     [arr(typeNumber), typeNumber],
-//     [arr(typeString), typeString],
-//     [arr(typeBoolean), typeBoolean],
-//     [arr(typeDate), typeDate],
-//     [arr(typeJson), typeJson],
-
-//     [arr(typeNumber), arr(typeNumber)],
-//     [arr(typeString), arr(typeString)],
-//     [arr(typeBoolean), arr(typeBoolean)],
-//     [arr(typeDate), arr(typeDate)],
-//     [arr(typeJson), arr(typeJson)],
-//   ],
-//   nullif: [
-//     [nullable(typeNumber), typeNumber, typeNumber],
-//     [nullable(typeString), typeString, typeString],
-//     [nullable(typeDate), typeDate, typeDate],
-//     [nullable(typeJson), typeJson, typeJson],
-//   ],
-
-// };
-
-// case 'coalesce':
-//             return { type: 'Coalesce', items: args };
-//           case 'greatest':
-//           case 'least':
-//             return { type: 'Named', name: functionName, value: args.find(isTypeConstant) ?? args[0] };
-//           case 'nullif':
-//             return { type: 'Union', items: [typeNull, args[0]] };
-//           case 'array_agg':
-//             return { type: 'ToArray', items: args[0] ?? typeUnknown };
-//           case 'json_agg':
-//           case 'jsonb_agg':
-//             return { type: 'Array', items: args[0] ?? typeUnknown };
-//           case 'current_date':
-//           case 'current_timestamp':
-//             return typeDate;
-//           case 'curtent_time':
-//             return typeString;
-//           case 'json_build_object':
-//           case 'jsonb_build_object':
-//             return {
-//               type: 'ObjectLiteral',
-//               items: chunk(2, args).flatMap(([name, type]) =>
-//                 isTypeString(name) && name.literal ? { name: name.literal, type } : [],
-//               ),
-//             };

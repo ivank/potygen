@@ -16,7 +16,7 @@ import {
   BinaryExpressionTag,
   CastableDataTypeTag,
   ParameterTag,
-  StringTag,
+  CustomQuotedStringTag,
   UnaryExpressionTag,
   NodeTag,
   EmptyLeafTag,
@@ -54,20 +54,21 @@ const OptionalBrackets = (rule: Rule) => Any(Brackets(rule), rule);
  */
 const NameRule = /^([A-Z_][A-Z0-9_]*)/i;
 const QuotedNameRule = /^"((?:""|[^"])*)"/;
-const QuotedName = astLeaf('QuotedName', QuotedNameRule);
 
 const RestrictedReservedKeywords =
   /^(?:ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|ABORT|ABSOLUTE|ACCESS|ACTION|ADD|ADMIN|AFTER|AGGREGATE|ALSO|ALTER|ASSERTION|ASSIGNMENT|AT|BACKWARD|BEFORE|BEGIN|BY|CACHE|CALLED|CASCADE|CHAIN|CHARACTERISTICS|CHECKPOINT|CLASS|CLOSE|CLUSTER|COMMENT|COMMIT|COMMITTED|CONNECTION|CONSTRAINTS|CONVERSION|COPY|CREATEDB|CREATEROLE|CREATEUSER|CSV|CURSOR|CYCLE|DATABASE|DAY|DEALLOCATE|DECLARE|DEFAULTS|DEFERRED|DEFINER|DELETE|DELIMITER|DELIMITERS|DISABLE|DOMAIN|DOUBLE|DROP|EACH|ENABLE|ENCODING|ENCRYPTED|ESCAPE|EXCLUDING|EXCLUSIVE|EXECUTE|EXPLAIN|EXTERNAL|FETCH|FIRST|FORCE|FORWARD|FUNCTION|GLOBAL|GRANTED|HANDLER|HEADER|HOLD|HOUR|IMMEDIATE|IMMUTABLE|IMPLICIT|INCLUDING|INCREMENT|INDEX|INHERIT|INHERITS|INPUT|INSENSITIVE|INSERT|INSTEAD|INVOKER|ISOLATION|KEY|LANCOMPILER|LANGUAGE|LARGE|LAST|LEVEL|LISTEN|LOAD|LOCAL|LOCATION|LOCK|LOGIN|MATCH|MAXVALUE|MINUTE|MINVALUE|MODE|MONTH|MOVE|NAMES|NEXT|NO|NOCREATEDB|NOCREATEROLE|NOCREATEUSER|NOINHERIT|NOLOGIN|NOSUPERUSER|NOTHING|NOTIFY|NOWAIT|OBJECT|OF|OIDS|OPERATOR|OPTION|OWNER|PARTIAL|PASSWORD|PREPARE|PREPARED|PRESERVE|PRIOR|PRIVILEGES|PROCEDURAL|PROCEDURE|QUOTE|READ|RECHECK|REINDEX|RELATIVE|RELEASE|RENAME|REPEATABLE|REPLACE|RESET|RESTART|RESTRICT|RETURNS|REVOKE|ROLE|ROLLBACK|ROWS|RULE|SAVEPOINT|SCHEMA|SCROLL|SECOND|SECURITY|SEQUENCE|SERIALIZABLE|SESSION|SET|SHARE|SHOW|SIMPLE|STABLE|START|STATEMENT|STATISTICS|STDIN|STDOUT|STORAGE|STRICT|SUPERUSER|SYSID|SYSTEM|TABLESPACE|TEMP|TEMPLATE|TEMPORARY|TOAST|TRANSACTION|TRIGGER|TRUNCATE|TRUSTED|TYPE|UNCOMMITTED|UNENCRYPTED|UNKNOWN|UNLISTEN|UNTIL|UPDATE|VACUUM|VALID|VALIDATOR|VALUES|VARYING|VIEW|VOLATILE|WITH|WITHOUT|WORK|WRITE|YEAR|ZONE|CROSS|OUTER|RIGHT|LEFT|FULL|JOIN|INNER|RETURNING)$/i;
 const ReservedKeywords =
   /^(?:ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|DER|RETURNING)$/i;
 
-const IdentifierRestricted = astLeaf('Identifier', Any(IfNot(ReservedKeywords, NameRule), QuotedNameRule));
-const IdentifierLessRestricted = astLeaf(
-  'Identifier',
-  Any(IfNot(RestrictedReservedKeywords, NameRule), QuotedNameRule),
-);
-const Identifier = astLeaf('Identifier', Any(NameRule, QuotedNameRule));
-const SpecificIdentifier = (rule: RegExp) => astLeaf('Identifier', rule);
+const QuotedIdentifier = astLeaf('QuotedIdentifier', QuotedNameRule);
+const UnquotedIdentifierRestricted = astLeaf('UnquotedIdentifier', IfNot(ReservedKeywords, NameRule));
+const QuotedIdentifierLessRestricted = astLeaf('UnquotedIdentifier', IfNot(RestrictedReservedKeywords, NameRule));
+const UnquotedIdentifier = astLeaf('UnquotedIdentifier', NameRule);
+const SpecificIdentifier = (rule: RegExp) => astLeaf('UnquotedIdentifier', rule);
+
+const Identifier = Any(UnquotedIdentifier, QuotedIdentifier);
+const IdentifierRestricted = Any(UnquotedIdentifierRestricted, QuotedIdentifier);
+const IdentifierLessRestricted = Any(QuotedIdentifierLessRestricted, QuotedIdentifier);
 
 const ColumnFullyQualified = astNode('Column', All(Identifier, '.', Identifier, '.', Identifier));
 const ColumnQualified = astNode('Column', All(Identifier, '.', Identifier));
@@ -78,10 +79,8 @@ const Column = Any(ColumnFullyQualified, ColumnQualified, ColumnUnqualified);
 /**
  * Parameteer
  */
-const Name = astLeaf('Name', NameRule);
-
 const Parameter = Node<ParameterTag>(
-  All(/^(\$\$|\$|\:)/, NameRule, Optional(Any(/^(\!)/, Brackets(List(Name))))),
+  All(/^(\$\$|\$|\:)/, NameRule, Optional(Any(/^(\!)/, Brackets(List(UnquotedIdentifier))))),
   ([type, value, ...rest], $, $next) => ({
     tag: 'Parameter',
     value,
@@ -110,30 +109,36 @@ const NumberRule = Any(
   /^([0-9]+e([+-]?[0-9]+))'/,
 );
 const String = astLeaf('String', /^'((?:''|[^'])*)'/);
-const BinaryString = astLeaf('BinaryString', All(/^E/i, String));
-const DollarQuatedString = astLeaf('String', /^\$\$((?:\$\$|.)*)\$\$/);
-const CustomDollarQuatedString = Node<StringTag>(
-  /^\$(?<tag>[A-Z_][A-Z0-9_]*)\$((?:\$\$|.)*)\$\k<tag>\$/i,
-  ([_, value], $, $next) => ({ tag: 'String', value, pos: $.pos, nextPos: $next.pos }),
+const EscapeString = astLeaf('EscapeString', All(/^E/i, String));
+const HexademicalString = astLeaf('HexademicalString', All(/^X/i, String));
+const BitString = astLeaf('BitString', All(/^B/i, String));
+const DollarQuatedString = astLeaf('DollarQuotedString', /^\$\$((?:\$\$|.)*)\$\$/);
+const CustomDollarQuatedString = Node<CustomQuotedStringTag>(
+  /^\$(?<delimiter>[A-Z_][A-Z0-9_]*)\$((?:\$\$|.)*)\$\k<delimiter>\$/i,
+  ([delimiter, value], $, $next) => ({ tag: 'CustomQuotedString', value, delimiter, pos: $.pos, nextPos: $next.pos }),
 );
 const Integer = astLeaf('Integer', IntegerRule);
 const Number = astLeaf('Number', NumberRule);
-const Boolean = astLeaf('Boolean', /^(TRUE|FALSE)/i);
+const Boolean = astUpperLeaf('Boolean', /^(TRUE|FALSE)/i);
 
 const AllTypesRule =
   /^(xml|xid|void|varchar|varbit|uuid|unknown|txid_snapshot|tsvector|tstzrange|tsrange|tsm_handler|trigger|tinterval|timetz|timestamptz|timestamp without time zone|timestamp with time zone|timestamp|time without time zone|time with time zone|time|tid|text|smgr|smallserial|smallint|serial|reltime|regtype|regrole|regprocedure|regproc|regoperator|regoper|regnamespace|regdictionary|regconfig|regclass|refcursor|record|real|query|polygon|point|pg_lsn|pg_ddl_command|path|opaque|oid|numeric|name|mrange|money|macaddr8|macaddr|lseg|line|language_handler|jsonb|json|interval|internal|integer|int8range|int8|int4range|int4|int2vector|int2|int|inet|index_am_handler|float8|float4|fdw_handler|event_trigger|double precision|daterange|date|cstring|circle|cidr|cid|character varying|character|char|bytea|bpchar|box|boolean|bool|bit varying|bit|bigserial|bigint|aclitem|abstime)/i;
 
 const ConstantType = astUpperLeaf('ConstantType', AllTypesRule);
 
-// const ConstantType = astUpperLeaf('ConstantType', Any(AliasTypeRule, NativeTypeRule));
-const TypedConstant = astNode('TypedConstant', All(ConstantType, Any(BinaryString, String)));
+const TypedConstant = astNode(
+  'TypedConstant',
+  All(ConstantType, Any(String, EscapeString, HexademicalString, BitString)),
+);
 const Constant = Any(
   String,
   DollarQuatedString,
   CustomDollarQuatedString,
   Number,
   Boolean,
-  BinaryString,
+  EscapeString,
+  HexademicalString,
+  BitString,
   TypedConstant,
 );
 
@@ -526,7 +531,7 @@ const Delete = astNode(
  * Insert
  * ----------------------------------------------------------------------------------------
  */
-const Collate = astLeaf('Collate', All(/^COLLATE/i, QuotedName));
+const Collate = astLeaf('Collate', All(/^COLLATE/i, QuotedNameRule));
 const ConflictTarget = astNode(
   'ConflictTarget',
   All(Brackets(List(All(Column, Optional(Brackets(Expression)), Optional(Collate)))), Optional(Where)),

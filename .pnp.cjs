@@ -960,6 +960,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:14.17.32"],
             ["@types/pg", "npm:8.6.1"],
+            ["commander", "npm:8.3.0"],
             ["jest", "npm:26.6.3"],
             ["pg", "virtual:08cc4eaab2497934a327b01210d51fcbcb1a64e578d56f2f4c10bd9a289071e79f7ece95f998e2c8147d60811586336b900ef12b20c66f6d7c850f630ffe0f1b#npm:8.7.1"],
             ["prettier", "npm:2.4.1"],
@@ -1979,6 +1980,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["combined-stream", "npm:1.0.8"],
             ["delayed-stream", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["commander", [
+        ["npm:8.3.0", {
+          "packageLocation": "./.yarn/cache/commander-npm-8.3.0-c0d18c66d5-0f82321821.zip/node_modules/commander/",
+          "packageDependencies": [
+            ["commander", "npm:8.3.0"]
           ],
           "linkType": "HARD",
         }]
