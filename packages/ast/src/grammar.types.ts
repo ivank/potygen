@@ -27,7 +27,7 @@ export interface NodeSqlTag extends SqlTag {
  * Common Table Expression
  * Representing one of the additional queries of a With Expression
  * https://www.postgresql.org/docs/current/queries-with.html
- *
+ * ```
  *       ┌─── name
  *       ▼                                          ─┐
  * ┌ ─ ─┌─┬ ─               ┌─── query               │
@@ -37,6 +37,7 @@ export interface NodeSqlTag extends SqlTag {
  *   └ ┴────────────────────────────────────────┴ ┘  │
  *                                                  ─┘
  *  SELECT * FROM t;
+ * ```
  */
 export interface CTETag extends NodeSqlTag {
   tag: 'CTE';
@@ -46,7 +47,7 @@ export interface CTETag extends NodeSqlTag {
 /**
  * With Expression
  * https://www.postgresql.org/docs/current/queries-with.html
- *
+ * ```
  *                       ┌───── cte
  *                       │                          ─┐
  *                       ▼                           │
@@ -57,6 +58,7 @@ export interface CTETag extends NodeSqlTag {
  * ├────────────────┬──────────────────────────┘     │
  * │SELECT * FROM t;│◀──────── query                 │
  * └────────────────┘                               ─┘
+ * ```
  */
 export interface WithTag extends NodeSqlTag {
   tag: 'With';
@@ -108,7 +110,7 @@ export interface ParameterTag extends LeafSqlTag {
 /**
  * Column Tag, representing qualified or unqulified names
  * https://www.postgresql.org/docs/current/sql-expressions.html#FIELD-SELECTION
- *
+ * ```
  *            ┌─schema ┌─table   ┌─ name
  *            ▼        ▼         ▼
  *        ┌──────┬ ┬──────┬ ┬─────────┐
@@ -116,6 +118,7 @@ export interface ParameterTag extends LeafSqlTag {
  *        └──────┴ ┴──────┴ ┴─────────┘
  *       └─────────────────────────────┘
  *                      └─▶ColumnTag
+ * ```
  */
 export interface ColumnTag extends NodeSqlTag {
   tag: 'Column';
@@ -127,7 +130,7 @@ export interface ColumnTag extends NodeSqlTag {
 
 /**
  * "As" tag desginating an alias for tables or columns
- *
+ * ```
  *                        ┌──── name
  *                        ▼
  *                   ┌ ─┌───┐
@@ -135,6 +138,7 @@ export interface ColumnTag extends NodeSqlTag {
  *                   └ ─└───┘
  *                  └────────┘
  *                       └─▶AsTag
+ * ```
  */
 export interface AsTag extends NodeSqlTag {
   tag: 'As';
@@ -340,7 +344,7 @@ export interface ConstantTypeTag extends LeafSqlTag {
 /**
  * An explicitly specified type of constant tag.
  * https://www.postgresql.org/docs/14/sql-syntax-lexical.html
- *
+ * ```
  *                  ┌─type     ┌───────value
  *                  ▼          ▼
  *         ┌────────────────┬─────┐
@@ -348,6 +352,7 @@ export interface ConstantTypeTag extends LeafSqlTag {
  *         └────────────────┴─────┘
  *        └────────────────────────┘
  *                     └──▶TypedConstantTag
+ * ```
  */
 export interface TypedConstantTag extends NodeSqlTag {
   tag: 'TypedConstant';
@@ -387,7 +392,7 @@ export interface ExtractFieldTag extends LeafSqlTag {
 /**
  * Extract expression tag for extracting from dates
  * https://www.postgresql.org/docs/8.3/functions-datetime.html
- *
+ * ```
  *                    ┌───field              ┌───value
  *                    ▼                      ▼
  *        ┌ ─ ─ ─ ┬ ┬───┬ ─ ─┌───────────────────────────────┬ ┐
@@ -395,6 +400,7 @@ export interface ExtractFieldTag extends LeafSqlTag {
  *        └ ─ ─ ─ ┴ ┴───┴ ─ ─└───────────────────────────────┴ ┘
  *       └──────────────────────────────────────────────────────┘
  *                                   └─▶ExtractTag
+ * ```
  */
 export interface ExtractTag extends NodeSqlTag {
   tag: 'Extract';
@@ -404,7 +410,7 @@ export interface ExtractTag extends NodeSqlTag {
 /**
  * A tag representing the range inside array index. e.g. 1:2
  * https://www.postgresql.org/docs/current/arrays.html
- *
+ * ```
  *                         ┌─from
  *                         │   ┌──to
  *                         ▼   ▼
@@ -413,6 +419,7 @@ export interface ExtractTag extends NodeSqlTag {
  *                        └─┴ ┴─┘
  *                       └───────┘
  *                           └─▶ArrayIndexRangeTag
+ * ```
  */
 export interface ArrayIndexRangeTag extends NodeSqlTag {
   tag: 'ArrayIndexRange';
@@ -422,7 +429,7 @@ export interface ArrayIndexRangeTag extends NodeSqlTag {
 /**
  * A tag representing an array index accessing an expression. e.g. `my_array[1:2]`
  * https://www.postgresql.org/docs/current/arrays.html
- *
+ * ```
  *               ┌───array
  *               │           ┌────index
  *               ▼           ▼
@@ -431,6 +438,7 @@ export interface ArrayIndexRangeTag extends NodeSqlTag {
  *         └───────────┘   └───┘
  *        └──────────────────────┘
  *                    └─▶ArrayIndexTag
+ * ```
  */
 export interface ArrayIndexTag extends NodeSqlTag {
   tag: 'ArrayIndex';
@@ -456,7 +464,7 @@ export interface DimensionTag extends EmptyLeafSqlTag {
 
 /**
  * A tag representing a type with or without parameters
- *
+ * ```
  *                           ┌─parameter1
  *           name ───┐       │   ┌─parameter2
  *                   ▼       ▼   ▼
@@ -465,6 +473,7 @@ export interface DimensionTag extends EmptyLeafSqlTag {
  *               └───────┴ ┴──┴ ┴─┴ ┘
  *              └────────────────────┘
  *                         └──▶TypeTag
+ * ```
  */
 export interface TypeTag extends NodeSqlTag {
   tag: 'Type';
@@ -477,14 +486,15 @@ export interface TypeTag extends NodeSqlTag {
 /**
  * A tag representing array type, with multiple levels of dimensions
  * https://www.postgresql.org/docs/current/arrays.html
- *
- *            type────┐   ┌────dimension
+ * ```
+ *               type─┐   ┌─dimension
  *                    ▼   ▼
  *                  ┌───┬──┬──┐
  * SELECT '{1,2}':: │int│[]│[]│
  *                  └───┴──┴──┘
  *                 └───────────┘
  *                       └─▶TypeArrayTag
+ * ```
  */
 export interface TypeArrayTag extends NodeSqlTag {
   tag: 'TypeArray';
@@ -494,7 +504,7 @@ export interface TypeArrayTag extends NodeSqlTag {
 /**
  * A distinct tag, with optionally specifying column names
  * https://www.postgresql.org/docs/current/sql-select.html
- *
+ * ```
  *                         ┌─column
  *                         ▼
  *        ┌ ─ ─ ─ ─ ─ ┬ ┬────┬ ┬────┬ ┐
@@ -502,6 +512,7 @@ export interface TypeArrayTag extends NodeSqlTag {
  *        └ ─ ─ ─ ─ ─ ┴ ┴────┴ ┴────┴ ┘
  *       └─────────────────────────────┘
  *                      └─▶DistinctTag
+ * ```
  */
 export interface DistinctTag extends NodeSqlTag {
   tag: 'Distinct';
@@ -511,7 +522,7 @@ export interface DistinctTag extends NodeSqlTag {
 /**
  * A tag adding a filter to aggregate function
  * https://www.postgresql.org/docs/14/sql-expressions.html
- *
+ * ```
  *                                          ┌─condition
  *                                          ▼
  *                       ─ ─ ─ ┬ ┬─────────────────────┬ ┐
@@ -519,6 +530,7 @@ export interface DistinctTag extends NodeSqlTag {
  *                       ─ ─ ─ ┴ ┴─────────────────────┴ ┘
  *                     └──────────────────────────────────┘
  *                                       └─▶FilterTag
+ * ```
  */
 export interface FilterTag extends NodeSqlTag {
   tag: 'Filter';
@@ -535,7 +547,7 @@ export interface StarTag extends EmptyLeafSqlTag {
 /**
  * A tag reprsenting a qualified "*", e.g. `public.table1.*`
  * https://www.postgresql.org/docs/current/sql-expressions.html#FIELD-SELECTION
- *
+ * ```
  *          ┌─schema ┌─table ┌─ star
  *          ▼        ▼       ▼
  *        ┌──────┬ ┬──────┬ ┬─┐
@@ -543,6 +555,7 @@ export interface StarTag extends EmptyLeafSqlTag {
  *        └──────┴ ┴──────┴ ┴─┘
  *       └─────────────────────┘
  *                  └─▶StarIdentifierTag
+ * ```
  */
 export interface StarIdentifierTag extends NodeSqlTag {
   tag: 'StarIdentifier';
@@ -555,14 +568,15 @@ export interface StarIdentifierTag extends NodeSqlTag {
 /**
  * A tag representing a row constructor
  * https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-ROW-CONSTRUCTORS
- *
+ * ```
  *                ┌─expression
  *                ▼
  *         ┌ ─ ┬ ┬─┬ ┬───┬ ┬──────┬ ┐
  *  SELECT  ROW (│1│,│2.5│,│'test'│)
  *         └ ─ ┴ ┴─┴ ┴───┴ ┴──────┴ ┘
  *        └──────────────────────────┘
- *                     └▶RowTag
+ *                     └─▶RowTag
+ * ```
  */
 export interface RowTag extends NodeSqlTag {
   tag: 'Row';
@@ -572,7 +586,7 @@ export interface RowTag extends NodeSqlTag {
 /**
  * A tag for "when" in a case conditional.
  * https://www.postgresql.org/docs/current/functions-conditional.html#FUNCTIONS-CASE
- *
+ * ```
  *                    ┌── when  ┌── then
  *                    ▼         ▼
  *             ┌ ─ ─┌───┬ ─ ─┌─────┐
@@ -580,6 +594,7 @@ export interface RowTag extends NodeSqlTag {
  *             └ ─ ─└───┴ ─ ─└─────┘
  *            └─────────────────────┘
  *                       └─▶WhenTag
+ * ```
  */
 export interface WhenTag extends NodeSqlTag {
   tag: 'When';
@@ -589,12 +604,13 @@ export interface WhenTag extends NodeSqlTag {
 /**
  * A tag for "else" in a case conditional
  * https://www.postgresql.org/docs/current/functions-conditional.html#FUNCTIONS-CASE
- *
+ * ```
  *                                                     ┌ ─ ─┌───────┐
  *  SELECT CASE WHEN a=1 THEN 'one' WHEN a=2 THEN 'two' ELSE│'other'│ END FROM table1
  *                                                     └ ─ ─└───────┘
  *                                                    └──────────────┘
  *                                                           └─▶ElseTag
+ * ```
  */
 export interface ElseTag extends NodeSqlTag {
   tag: 'Else';
@@ -604,13 +620,14 @@ export interface ElseTag extends NodeSqlTag {
 /**
  * A simple case conditional
  * https://www.postgresql.org/docs/current/functions-conditional.html#FUNCTIONS-CASE
- *
+ * ```
  *              ┌─▶value  ┌─▶option         ┌─▶option       ┌─▶option
  *        ┌ ─ ─┌─┬─────────────────┬─────────────────┬────────────┬ ─ ┐
  * SELECT  CASE│a│WHEN 1 THEN 'one'│WHEN 2 THEN 'two'│ELSE 'other'│END FROM table1
  *        └ ─ ─└─┴─────────────────┴─────────────────┴────────────┴ ─ ┘
  *       └─────────────────────────────────────────────────────────────┘
  *                                      └─▶CaseSimpleTag
+ * ```
  */
 export interface CaseSimpleTag extends NodeSqlTag {
   tag: 'CaseSimple';
@@ -620,13 +637,14 @@ export interface CaseSimpleTag extends NodeSqlTag {
 /**
  * A normal case conditional
  * https://www.postgresql.org/docs/current/functions-conditional.html#FUNCTIONS-CASE
- *
+ * ```
  *                      ┌─▶option           ┌─▶option        ┌─▶option
  *       ┌ ─ ─┌───────────────────┬───────────────────┬────────────┬ ─ ┐
  * SELECT CASE│WHEN a=1 THEN 'one'│WHEN a=2 THEN 'two'│ELSE 'other'│END FROM table1
  *       └ ─ ─└───────────────────┴───────────────────┴────────────┴ ─ ┘
  *      └───────────────────────────────────────────────────────────────┘
  *                                    └─▶CaseTag
+ * ```
  */
 export interface CaseTag extends NodeSqlTag {
   tag: 'Case';
@@ -714,9 +732,8 @@ export interface ComparationTypeTag extends LeafSqlTag {
  * If changed (1 + 2 + 2), one of the operands will be a binary expression itself.
  * Depending on the precedence order
  * https://www.postgresql.org/docs/current/typeconv-oper.html
- *
- *         ┌─left
- *         │  ┌─operator
+ * ```
+ *    left─┐  ┌─operator
  *         │  │   ┌─right
  *         ▼  ▼   ▼
  *       ┌───┬─┬─────┐
@@ -724,6 +741,7 @@ export interface ComparationTypeTag extends LeafSqlTag {
  *       └───┴─┴─────┘
  *      └─────────────┘
  *             └▶BinaryExpressionTag
+ * ```
  */
 export interface BinaryExpressionTag extends NodeSqlTag {
   tag: 'BinaryExpression';
@@ -737,7 +755,7 @@ export interface BinaryExpressionTag extends NodeSqlTag {
 /**
  * An unary expression e.g. -32
  * https://www.postgresql.org/docs/current/typeconv-oper.html
- *
+ * ```
  *        ┌─operator
  *        │  ┌──value
  *        ▼  ▼
@@ -746,6 +764,7 @@ export interface BinaryExpressionTag extends NodeSqlTag {
  *       └─┴───┘
  *      └───────┘
  *          └─▶UnaryExpressionTag
+ * ```
  */
 export interface UnaryExpressionTag extends NodeSqlTag {
   tag: 'UnaryExpression';
@@ -771,18 +790,17 @@ export interface TernarySeparatorTag extends LeafSqlTag {
 /**
  * Ternary expression (with 2 operatrs and 3 arguments).
  * https://www.postgresql.org/docs/current/functions-comparison.html
- *
- *         ┌─────value
- *         │     ┌──operator
- *         │     │     ┌──arg1
- *         │     │     │  ┌──separator
- *         │     │     │  │   ┌──arg2
+ * ```
+ *                     ┌──arg1
+ *      operator─┐     │  ┌──separator
+ *   value─┐     │     │  │   ┌──arg2
  *         ▼     ▼     ▼  ▼   ▼
  *       ┌───┬───────┬──┬───┬──┐
  * SELECT│col│BETWEEN│12│AND│25│ROM table1
  *       └───┴───────┴──┴───┴──┘
  *      └───────────────────────┘
  *                  └─▶TernaryExpressionTag
+ * ```
  */
 export interface TernaryExpressionTag extends NodeSqlTag {
   tag: 'TernaryExpression';
@@ -798,15 +816,15 @@ export interface TernaryExpressionTag extends NodeSqlTag {
 /**
  * The CAST tag
  * https://www.postgresql.org/docs/14/sql-expressions.html#SQL-SYNTAX-TYPE-CASTS
- *
- *                 ┌─data
- *                 │        ┌─type
+ * ```
+ *                 ┌─data   ┌─type
  *                 ▼        ▼
  *       ┌ ─ ─┌ ┬─────┬ ─┌─────┬ ┐
  * SELECT CAST│(│'3.5'│AS│float│)
  *       └ ─ ─└ ┴─────┴ ─└─────┴ ┘
  *      └─────────────────────────┘
- *                   └▶CastTag
+ *                   └─▶CastTag
+ * ```
  */
 export interface CastTag extends NodeSqlTag {
   tag: 'Cast';
@@ -816,29 +834,64 @@ export interface CastTag extends NodeSqlTag {
 /**
  * A postgres style cast with "::"
  * https://www.postgresql.org/docs/14/sql-expressions.html#SQL-SYNTAX-TYPE-CASTS
- *
- *          ┌─data
- *          │        ┌─type
+ * ```
+ *          ┌─data   ┌─type
  *          ▼        ▼
  *       ┌─────┬ ─┌─────┐
  * SELECT│'3.5'│::│float│
  *       └─────┴ ─└─────┘
  *      └────────────────┘
- *               │
  *               └──▶PgCastTag
+ * ```
  */
 export interface PgCastTag extends NodeSqlTag {
   tag: 'PgCast';
   values: [data: DataTypeTag, type: AnyTypeTag];
 }
+
+/**
+ * Create a constant array with expressions for items, separated by a comma
+ * https://www.postgresql.org/docs/14/sql-expressions.html#SQL-SYNTAX-ARRAY-CONSTRUCTORS
+ * ```
+ *                 ┌─expression
+ *                 ▼
+ *       ┌ ─ ─ ┬ ┐┌─┬ ┬───┬ ┬───┬ ┐
+ * SELECT ARRAY [ │1│,│2.5│,│321│]
+ *       └ ─ ─ ┴ ┘└─┴ ┴───┴ ┴───┴ ┘
+ *      └──────────────────────────┘
+ *                    └─▶ArrayConstructorTag
+ * ```
+ */
 export interface ArrayConstructorTag extends NodeSqlTag {
   tag: 'ArrayConstructor';
   values: ExpressionTag[];
 }
+
+/**
+ * A generic function. Matches any user-create or built in function,
+ * As well as function-like expressions like "GREATEST" and "LEAST"
+ * https://www.postgresql.org/docs/14/sql-expressions.html#SQL-EXPRESSIONS-FUNCTION-CALLS
+ * ```
+ *            ┌─name   ┌─arg
+ *            ▼        ▼
+ *       ┌─────────┬ ┬───┬ ┬──────┬ ┬───┬ ┐
+ * SELECT│CONCAT_WS│(│'_'│,│'test'│,│321│)
+ *       └─────────┴ ┴───┴ ┴──────┴ ┴───┴ ┘
+ *      └──────────────────────────────────┘
+ *                        └─▶FunctionTag
+ * ```
+ */
 export interface FunctionTag extends NodeSqlTag {
   tag: 'Function';
-  values: [IdentifierTag, ...(ExpressionTag | OrderByTag | DistinctTag | FilterTag)[]];
+  values: [name: IdentifierTag, ...args: (ExpressionTag | OrderByTag | DistinctTag | FilterTag)[]];
 }
+
+/**
+ * Comparation expression, capturing all the possible types.
+ * https://www.postgresql.org/docs/current/functions-comparisons.html
+ *
+ * TODO: Split this into more managable tags
+ */
 export interface ComparationExpressionTag extends NodeSqlTag {
   tag: 'ComparationExpression';
   values:
@@ -852,18 +905,65 @@ export interface ComparationExpressionTag extends NodeSqlTag {
       ]
     | [column: ColumnTag, operator: ComparationOperatorTag, subject: SelectTag];
 }
+
+/**
+ * An item of a select list
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-SELECT-LIST
+ * ```
+ *                ┌─value  ┌─as
+ *                ▼        ▼
+ *             ┌────┬ ─┌───────┐
+ * SELECT col1,│col2│AS│"test1"│FROM table1
+ *             └────┴ ─└───────┘
+ *            └─────────────────┘
+ *                     └─▶SelectListItemTag
+ * ```
+ */
 export interface SelectListItemTag extends NodeSqlTag {
   tag: 'SelectListItem';
   values: [value: StarIdentifierTag | ExpressionTag] | [value: ExpressionTag, as: AsTag];
 }
+
+/**
+ * The select list of a select query
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-SELECT-LIST
+ * ```
+ *              ┌─item
+ *              ▼
+ *       ┌─────────────┬ ┬───────────────┐
+ * SELECT│col1 AS "val"│,│col2 AS "test1"│FROM table1
+ *       └─────────────┴ ┴───────────────┘
+ *      └─────────────────────────────────┘
+ *                       └─▶SelectListTag
+ * ```
+ */
 export interface SelectListTag extends NodeSqlTag {
   tag: 'SelectList';
   values: SelectListItemTag[];
 }
+
+/**
+ * A select tag accompanied by an alias (required)
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-FROM
+ * ```
+ *                            ┌─select       as─┐
+ *                            ▼                 ▼
+ *              ┌ ┬───────────────────────┬ ┬───────┐
+ * SELECT * FROM (│SELECT col1 FROM table1│)│AS tmp1│
+ *              └ ┴───────────────────────┴ ┴───────┘
+ *             └─────────────────────────────────────┘
+ *                                └─▶NamedSelectTag
+ * ```
+ */
 export interface NamedSelectTag extends NodeSqlTag {
   tag: 'NamedSelect';
   values: [select: SelectTag, as: AsTag];
 }
+
+/**
+ * A type of join from a select tag
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-FROM
+ */
 export interface JoinTypeTag extends LeafSqlTag {
   tag: 'JoinType';
   value:
@@ -877,185 +977,715 @@ export interface JoinTypeTag extends LeafSqlTag {
     | 'FULL OUTER JOIN'
     | 'CROSS JOIN';
 }
+
+/**
+ * Part of a join clause of a select tag
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-FROM
+ * ```
+ *                                                ┌─value
+ *                                                ▼
+ *                                 ┌ ─┌───────────────────────┐
+ * SELECT * FROM table1 JOIN table2 ON│ table1.id = table2.id │
+ *                                 └ ─└───────────────────────┘
+ *                                └────────────────────────────┘
+ *                                               └─▶JoinOnTag
+ * ```
+ */
 export interface JoinOnTag extends NodeSqlTag {
   tag: 'JoinOn';
-  values: [ExpressionTag];
+  values: [value: ExpressionTag];
 }
+
+/**
+ * Part of a join clause of a select tag
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-FROM
+ * ```
+ *                                           ┌─value
+ *                                           ▼
+ *                                 ┌ ─ ─ ┬ ┬──┬ ┐
+ * SELECT * FROM table1 JOIN table2 USING (│id│)
+ *                                 └ ─ ─ ┴ ┴──┴ ┘
+ *                                └──────────────┘
+ *                                        └─▶JoinUsing
+ * ```
+ */
 export interface JoinUsingTag extends NodeSqlTag {
   tag: 'JoinUsing';
   values: ColumnTag[];
 }
+
+/**
+ * Join clause of a select tag
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-FROM
+ * ```
+ *                          ┌──type  ┌─table         ┌─condition
+ *                          ▼        ▼               ▼
+ *                     ┌─────────┬──────┬────────────────────────┐
+ * SELECT * FROM table1│LEFT JOIN│table2│ON table1.id = table2.id│
+ *                     └─────────┴──────┴────────────────────────┘
+ *                    └───────────────────────────────────────────┘
+ *                                          └─▶JoinTag
+ * ```
+ */
 export interface JoinTag extends NodeSqlTag {
   tag: 'Join';
   values:
     | [type: JoinTypeTag, table: TableTag]
     | [type: JoinTypeTag, table: TableTag, condition: JoinOnTag | JoinUsingTag];
 }
+
+/**
+ * A list of tables / selects
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-FROM
+ * ```
+ *      table─┐     ┌─item
+ *            ▼     ▼
+ *         ┌ ─ ─┌──────┐─┌──────┐
+ * SELECT * FROM│table1│,│table2│WHERE table1.id = table2.id
+ *         └ ─ ─└──────┘─└──────┘
+ *        └──────────────────────┘
+ *                    │
+ *                    └─▶FromListTag
+ * ```
+ */
 export interface FromListTag extends NodeSqlTag {
   tag: 'FromList';
   values: FromListItemTag[];
 }
+
+/**
+ * A from tag that combines from clause plus joins
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-FROM
+ * ```
+ *                ┌─list                   ┌─join
+ *                ▼                        ▼
+ *          ┌───────────┬────────────────────────────────────┐
+ * SELECT * │FROM table1│JOIN table2 ON table1.id = table2.id│
+ *          └───────────┴────────────────────────────────────┘
+ *         └──────────────────────────────────────────────────┘
+ *                                   └─▶FromTag
+ * ```
+ */
 export interface FromTag extends NodeSqlTag {
   tag: 'From';
   values: [list: FromListTag, ...join: JoinTag[]];
 }
+
+/**
+ * A Where tag with its conditional expression
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-WHERE
+ * ```
+ *                                ┌─condition
+ *                                ▼
+ *                     ┌ ─ ─ ┬────────┐
+ * SELECT * FROM table1 WHERE│col1 > 2│
+ *                     └ ─ ─ ┴────────┘
+ *                    └────────────────┘
+ *                             └─▶WhereTag
+ * ```
+ */
 export interface WhereTag extends NodeSqlTag {
   tag: 'Where';
-  values: [ExpressionTag];
+  values: [condition: ExpressionTag];
 }
+
+/**
+ * A Group by tag with its conditional expression
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-GROUPBY
+ * ```
+ *                                 ┌─column
+ *                                 ▼
+ *                     ┌ ─ ─ ─ ─┌────┐
+ * SELECT * FROM table1 GROUP BY│col1│
+ *                     └ ─ ─ ─ ─└────┘
+ *                    └───────────────┘
+ *                            └─▶GroupByTag
+ * ```
+ */
 export interface GroupByTag extends NodeSqlTag {
   tag: 'GroupBy';
   values: ColumnTag[];
 }
+
+/**
+ * A Having tag with its conditional expression
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-HAVING
+ * ```
+ *                                 ┌─condition
+ *                                 ▼
+ *                     ┌ ─ ─ ─┌────────┐
+ * SELECT * FROM table1 HAVING│col1 > 2│
+ *                     └ ─ ─ ─└────────┘
+ *                    └─────────────────┘
+ *                             └─▶WhereTag
+ * ```
+ */
 export interface HavingTag extends NodeSqlTag {
   tag: 'Having';
-  values: [ExpressionTag];
+  values: [condtion: ExpressionTag];
 }
+
+/**
+ * Combination of multiple selects
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-UNION
+ */
 export interface CombinationType extends LeafSqlTag {
   tag: 'CombinationType';
   value: 'UNION' | 'INTERSECT' | 'EXCEPT';
 }
+
+/**
+ * Combination select
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-UNION
+ * ```
+ *                        ┌─type        ┌─parts
+ *                        ▼             ▼
+ *                     ┌─────┬─────────────────────┐
+ * SELECT * FROM table1│UNION│SELECT * FROM table2 │
+ *                     └─────┴─────────────────────┘
+ *                    └─────────────────────────────┘
+ *                                   └─▶CombinationTag
+ * ```
+ */
 export interface CombinationTag extends NodeSqlTag {
   tag: 'Combination';
-  values: [CombinationType, ...SelectParts[]];
+  values: [type: CombinationType, ...parts: SelectParts[]];
 }
+
+/**
+ * The type of ordering - asc / desc
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-ORDERBY
+ */
 export interface OrderDirectionTag extends LeafSqlTag {
   tag: 'OrderDirection';
   value: 'ASC' | 'DESC' | 'USNIG >' | 'USING <';
 }
+
+/**
+ * Item of the order by clause
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-ORDERBY
+ * ```
+ *                            order─┐   ┌─direction
+ *                                  ▼   ▼
+ *                               ┌────┬───┐
+ * SELECT * FROM table1 ORDER BY │col1│ASC│
+ *                               └────┴───┘
+ *                              └──────────┘
+ *                                    └─▶OrderByItemTag
+ * ```
+ */
 export interface OrderByItemTag extends NodeSqlTag {
   tag: 'OrderByItem';
   values: [order: ExpressionTag] | [order: ExpressionTag, direction: OrderDirectionTag];
 }
+/**
+ * Order by clause
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-ORDERBY
+ * ```
+ *                        order item─┐
+ *                                   ▼
+ *                     ┌ ─ ─ ─ ─┌────────┐
+ * SELECT * FROM table1 ORDER BY│col1 ASC│
+ *                     └ ─ ─ ─ ─└────────┘
+ *                    └───────────────────┘
+ *                              └─▶OrderByTag
+ * ```
+ */
 export interface OrderByTag extends NodeSqlTag {
   tag: 'OrderBy';
   values: OrderByItemTag[];
 }
+/**
+ * Limit clause
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-LIMIT
+ * ```
+ *                       count─┐
+ *                             ▼
+ *                     ┌ ─ ─ ┬──┐
+ * SELECT * FROM table1 LIMIT│10│
+ *                     └ ─ ─ ┴──┘
+ *                    └──────────┘
+ *                          └─▶LimitTag
+ * ```
+ */
 export interface LimitTag extends NodeSqlTag {
   tag: 'Limit';
   values: [CountTag | LimitAllTag];
 }
+
+/**
+ * the "ALL" token in the limit clause, used instead of count.
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-LIMIT
+ */
 export interface LimitAllTag extends EmptyLeafSqlTag {
   tag: 'LimitAll';
 }
+
+/**
+ * Offset clause
+ * https://www.postgresql.org/docs/current/sql-select.html#SQL-LIMIT
+ * ```
+ *                                count──┐
+ *                                       ▼
+ *                              ┌ ─ ─ ─┌───┐
+ * SELECT * FROM table1 LIMIT 10 OFFSET│100│
+ *                              └ ─ ─ ─└───┘
+ *                             └────────────┘
+ *                                   └─▶OffsetTag
+ * ```
+ */
 export interface OffsetTag extends NodeSqlTag {
   tag: 'Offset';
   values: [CountTag];
 }
+
+/**
+ * Select Tag
+ * https://www.postgresql.org/docs/current/sql-select.html
+ * ```
+ *            part─┐
+ *                 ▼
+ *  ┌ ─ ─ ─┌─┬───────────┬───────────┐
+ *   SELECT│*│FROM table1│ LIMIT 10  │
+ *  └ ─ ─ ─└─┴───────────┴───────────┘
+ * └──────────────────────────────────┘
+ *                   └─▶SelectTag
+ * ```
+ */
 export interface SelectTag extends NodeSqlTag {
   tag: 'Select';
   values: (SelectParts | OrderByTag | CombinationTag | LimitTag | OffsetTag)[];
 }
+
+/**
+ * Default token for UPDATEs and INSERTs
+ * ```
+ */
 export interface DefaultTag extends EmptyLeafSqlTag {
   tag: 'Default';
 }
+
+/**
+ * Setting of a specific column in an UPDATE query
+ * https://www.postgresql.org/docs/current/sql-update.html
+ * ```
+ *                     value─┐
+ *                           ▼
+ *                  ┌ ─ ─ ─┌───┐
+ * UPDATE table1 SET col1 =│100│
+ *                  └ ─ ─ ─└───┘
+ *                 └────────────┘
+ *                       └─▶SetItemTag
+ * ```
+ */
 export interface SetItemTag extends NodeSqlTag {
   tag: 'SetItem';
   values: [column: IdentifierTag, value: ExpressionTag | DefaultTag];
 }
+
+/**
+ * Setting of a columns in an UPDATE tag
+ * https://www.postgresql.org/docs/current/sql-update.html
+ * ```
+ *                       item─┐
+ *                            ▼
+ *                  ┌ ─ ┬──────────┐
+ *    UPDATE table1  SET│col1 = 100│
+ *                  └ ─ ┴──────────┘
+ *                 └────────────────┘
+ *                          └─▶SetListTag
+ * ```
+ */
 export interface SetListTag extends NodeSqlTag {
   tag: 'SetList';
   values: SetItemTag[];
 }
+
+/**
+ * Picking specific columns in an INSERT query
+ * https://www.postgresql.org/docs/current/sql-insert.html
+ * ```
+ *                   item─┐
+ *                        ▼
+ *                   ┌ ┬────┬ ┬────┬ ┐
+ * INSERT INTO table1 (│col1│,│col2│) VALUES (1, 2)
+ *                   └ ┴────┴ ┴────┴ ┘
+ *                  └─────────────────┘
+ *                           └─▶ColumnsTag
+ * ```
+ */
 export interface ColumnsTag extends NodeSqlTag {
   tag: 'Columns';
   values: IdentifierTag[];
 }
+
+/**
+ * Picking specific columns in an INSERT query
+ * https://www.postgresql.org/docs/current/sql-insert.html
+ * ```
+ *                                        item─┐
+ *                                             ▼
+ *                                ┌ ─ ─ ─ ─ ┌────┬ ┬───────┬ ┐
+ * INSERT INTO table1 (col1, col2) VALUES│(││123 │,│DEFAULT│)
+ *                                └ ─ ─ ─ ─ └────┴ ┴───────┴ ┘
+ *                               └────────────────────────────┘
+ *                                              └─▶ValuesTag
+ * ```
+ */
 export interface ValuesTag extends NodeSqlTag {
   tag: 'Values';
   values: (ExpressionTag | DefaultTag)[];
 }
+
+/**
+ * Setting of a columns and values in an UPDATE query
+ * https://www.postgresql.org/docs/current/sql-update.html
+ * ```
+ *                  columns─┐             ┌─values
+ *                          ▼             ▼
+ *                   ┌────────────┬ ┬──────────┐
+ * UPDATE table1  SET│(col1, col2)│=│(100, 200)│
+ *                   └────────────┴ ┴──────────┘
+ *                  └───────────────────────────┘
+ *                                └─▶SetMapTag
+ * ```
+ */
 export interface SetMapTag extends NodeSqlTag {
   tag: 'SetMap';
   values: [columns: ColumnsTag, values: ValuesTag | SelectTag];
 }
+
+/**
+ * Set part of an update query
+ * https://www.postgresql.org/docs/current/sql-update.html
+ * ```
+ *                          value─┐
+ *                                ▼
+ *               ┌ ─ ┬─────────────────────────┐
+ * UPDATE table1  SET│(col1, col2) = (100, 200)│
+ *               └ ─ ┴─────────────────────────┘
+ *              └───────────────────────────────┘
+ *                              └─▶SetTag
+ * ```
+ */
 export interface SetTag extends NodeSqlTag {
   tag: 'Set';
   values: [SetListTag | SetMapTag];
 }
+
+/**
+ * Table name, can be fully qualified with a schema.
+ */
 export interface TableIdentifierTag extends NodeSqlTag {
   tag: 'TableIdentifier';
   values: [schema: IdentifierTag, table: IdentifierTag] | [table: IdentifierTag];
 }
+
+/**
+ * Table name, with an optional alias
+ * ```
+ *            table─┐        ┌─as
+ *                  ▼        ▼
+ *              ┌──────┬ ─┌────┐
+ * SELECT * FROM│table1│AS│tmp1│
+ *              └──────┴ ─└────┘
+ *             └────────────────┘
+ *                      └───────▶TableTag
+ * ```
+ */
 export interface TableTag extends NodeSqlTag {
   tag: 'Table';
   values: [table: TableIdentifierTag] | [table: TableIdentifierTag, as: AsTag];
 }
+
+/**
+ * Form clause of an update query.
+ * https://www.postgresql.org/docs/current/sql-update.html
+ * ```
+ *                                         item─┐
+ *                                              ▼
+ *                                     ┌ ─ ─┌──────┐
+ * UPDATE table1 SET col1 = table2.col2 FROM│table2│WHERE table2.id = table1.id
+ *                                     └ ─ ─└──────┘
+ *                                    └─────────────┘
+ *                                           └─▶UpdateFromTag
+ * ```
+ */
 export interface UpdateFromTag extends NodeSqlTag {
   tag: 'UpdateFrom';
   values: FromListItemTag[];
 }
+
+/**
+ * Returning clause of an update query.
+ * https://www.postgresql.org/docs/current/sql-update.html
+ * ```
+ *                                            value─┐   as─┐
+ *                                                  ▼      ▼
+ *                                               ┌────┬ ─┌────┐
+ * UPDATE table1 SET col1 = table2.col2 RETURNING│col1│AS│tmp1│
+ *                                               └────┴ ─└────┘
+ *                                              └──────────────┘
+ *                                                     └─▶ReturningListItemTag
+ * ```
+ */
 export interface ReturningListItemTag extends NodeSqlTag {
   tag: 'ReturningListItem';
   values: [value: StarIdentifierTag | ExpressionTag] | [value: ExpressionTag, as: AsTag];
 }
+
+/**
+ * Returning clause
+ * ```
+ *                                                 item─┐
+ *                                                      ▼
+ *                                     ┌ ─ ─ ─ ─ ┬────────────┐
+ * UPDATE table1 SET col1 = table2.col2 RETURNING│col1 AS tmp1│
+ *                                     └ ─ ─ ─ ─ ┴────────────┘
+ *                                    └────────────────────────┘
+ *                                                 └─▶ReturningTag
+ * ```
+ */
 export interface ReturningTag extends NodeSqlTag {
   tag: 'Returning';
   values: ReturningListItemTag[];
 }
+
+/**
+ * Update query
+ * https://www.postgresql.org/docs/current/sql-update.html
+ * ```
+ *        part─┐
+ *             ▼
+ *  ┌ ─ ─ ─┌──────┬──────────────────────┐
+ *   UPDATE│table1│SET col1 = table2.col2│
+ *  └ ─ ─ ─└──────┴──────────────────────┘
+ * └──────────────────────────────────────┘
+ *                     └─▶UpdateTag
+ * ```
+ */
 export interface UpdateTag extends NodeSqlTag {
   tag: 'Update';
   values: (SetTag | TableTag | UpdateFromTag | WhereTag | ReturningTag)[];
 }
 
+/**
+ * Using clause of an delete query.
+ * https://www.postgresql.org/docs/current/sql-delete.html
+ * ```
+ *                       item─┐
+ *                            ▼
+ *                   ┌ ─ ─ ┬──────┐
+ * DELETE FROM table1 USING│table2│WHERE table2.id = table1.id
+ *                   └ ─ ─ ┴──────┘
+ *                  └─────────────┘
+ *                         └─▶UsingTag
+ * ```
+ */
 export interface UsingTag extends NodeSqlTag {
   tag: 'Using';
   values: FromListItemTag[];
 }
+
+/**
+ * Delete query
+ * https://www.postgresql.org/docs/current/sql-delete.html
+ * ```
+ *            part─┐
+ *                 ▼
+ *  ┌ ─ ─ ─ ─ ─ ┬──────┬────────────────┐
+ *   DELETE FROM│table1│WHERE col1 = 123│
+ *  └ ─ ─ ─ ─ ─ ┴──────┴────────────────┘
+ * └─────────────────────────────────────┘
+ *                   └─▶DeleteTag
+ * ```
+ */
 export interface DeleteTag extends NodeSqlTag {
   tag: 'Delete';
   values: (TableTag | UsingTag | WhereTag | ReturningTag)[];
 }
 
+/**
+ * Values Clause for INSERT query
+ * https://www.postgresql.org/docs/current/sql-insert.html
+ * ```
+ *                                        item─┐
+ *                                             ▼
+ *                                ┌ ─ ─ ─ ┬──────────────┐
+ * INSERT INTO table1 (col1, col2) VALUES │(123, DEFAULT)│
+ *                                └ ─ ─ ─ ┴──────────────┘
+ *                               └────────────────────────┘
+ *                                          └─▶ValuesListTag
+ * ```
+ */
 export interface ValuesListTag extends NodeSqlTag {
   tag: 'ValuesList';
   values: (ParameterTag | ValuesTag)[];
 }
+
+/**
+ * Collate in on conflict issert
+ * https://www.postgresql.org/docs/current/sql-insert.html
+ */
 export interface CollateTag extends LeafSqlTag {
   tag: 'Collate';
   value: string;
 }
+
+/**
+ * Conflict target clause on insert query
+ * https://www.postgresql.org/docs/current/sql-insert.html
+ * ```
+ * INSERT INTO table1 (col1, col2)
+ * VALUES (1, 2)
+ *
+ *            item─┐
+ *                 ▼
+ *             ─┌────┬ ┬──────────────────────┐
+ * ON CONFLICT│(│col1│)│WHERE col1 IS NOT NULL│DO NOTHING
+ *             ─└────┴ ┴──────────────────────┘
+ *           └─────────────────────────────────┘
+ *                             └─▶ConflictTargetTag
+ * ```
+ */
 export interface ConflictTargetTag extends NodeSqlTag {
   tag: 'ConflictTarget';
   values: (TableTag | ExpressionTag | CollateTag | WhereTag)[];
 }
+
+/**
+ * Conflict constraint clause on insert query
+ * https://www.postgresql.org/docs/current/sql-insert.html
+ * ```
+ * INSERT INTO table1 (col1, col2) VALUES (1, 2)
+ *                         value─┐
+ *                               ▼
+ *             ─ ─ ─ ─ ─ ─ ─┌─────────┐
+ * ON CONFLICT│ON CONSTRAINT│col1_uniq│DO NOTHING
+ *             ─ ─ ─ ─ ─ ─ ─└─────────┘
+ *           └─────────────────────────┘
+ *                        └─▶ConflictConstraintTag
+ * ```
+ */
 export interface ConflictConstraintTag extends LeafSqlTag {
   tag: 'ConflictConstraint';
   value: string;
 }
+
+/**
+ * Do nothing clause on insert query
+ * https://www.postgresql.org/docs/current/sql-insert.html
+ * ```
+ * INSERT INTO table1 (col1, col2) VALUES (1, 2)
+ *                  ─ ─ ─ ─ ─ ┐
+ * ON CONFLICT (id)│DO NOTHING
+ *                  ─ ─ ─ ─ ─ ┘
+ *                └────────────┘
+ *                       └─▶DoNothingTag
+ * ```
+ */
 export interface DoNothingTag extends LeafSqlTag {
   tag: 'DoNothing';
 }
+
+/**
+ * Do nothing clause on insert query
+ * https://www.postgresql.org/docs/current/sql-insert.html
+ * ```
+ * INSERT INTO table1 (col1, col2) VALUES (1, 2)
+ *
+ *                                 value──┐
+ *                                        ▼
+ *                  ─ ─ ─ ─ ─┌────────────────────────┐
+ * ON CONFLICT (id)│DO UPDATE│SET col1 = EXCLUDED.col1│
+ *                  ─ ─ ─ ─ ─└────────────────────────┘
+ *                └────────────────────────────────────┘
+ *                                   └─▶DoUpdateTag
+ * ```
+ */
 export interface DoUpdateTag extends NodeSqlTag {
   tag: 'DoUpdate';
   values: [set: SetTag] | [set: SetTag, where: WhereTag];
 }
+
+/**
+ * Conflict clause on insert query
+ * https://www.postgresql.org/docs/current/sql-insert.html
+ * ```
+ * INSERT INTO table1 (col1, col2) VALUES (1, 2)
+ * ┌ ─ ─ ─ ─ ─ ┬───────────────┐
+ *  ON CONFLICT (id) DO NOTHING│
+ * └ ─ ─ ─ ─ ─ ┴───────────────┘
+ *└─────────────────────────────┘
+ *             └─▶ConflictTag
+ * ```
+ */
 export interface ConflictTag extends NodeSqlTag {
   tag: 'Conflict';
   values: (ConflictTargetTag | ConflictConstraintTag | DoNothingTag | DoUpdateTag)[];
 }
+
+/**
+ * Insert query
+ * https://www.postgresql.org/docs/current/sql-insert.html
+ * ```
+ * ┌ ─ ─ ─ ─ ─ ┬──────┬────────────┬─────────────┐
+ *  INSERT INTO table1│(col1, col2)│VALUES (1, 2)│
+ * └ ─ ─ ─ ─ ─ ┴──────┴────────────┴─────────────┘
+ *└───────────────────────────────────────────────┘
+ *                       └─▶InsertTag
+ * ```
+ */
 export interface InsertTag extends NodeSqlTag {
   tag: 'Insert';
   values: (TableTag | SelectTag | ValuesListTag | ConflictTag | ColumnsTag | ReturningTag)[];
 }
+
+/**
+ * An expression, wrapped in brackets ()
+ */
 export interface WrappedExpressionTag extends NodeSqlTag {
   tag: 'WrappedExpression';
   values: [ExpressionTag];
 }
+
+/**
+ * A list of expressions, separated by comma (,)
+ */
 export interface ExpressionListTag extends NodeSqlTag {
   tag: 'ExpressionList';
   values: ExpressionTag[];
 }
+
+/**
+ * BEGIN query
+ * https://www.postgresql.org/docs/current/tutorial-transactions.html
+ */
 export interface BeginTag extends EmptyLeafSqlTag {
   tag: 'Begin';
 }
+
+/**
+ * COMMIT query
+ * https://www.postgresql.org/docs/current/tutorial-transactions.html
+ */
 export interface CommitTag extends EmptyLeafSqlTag {
   tag: 'Commit';
 }
+
+/**
+ * Savepoint query
+ * https://www.postgresql.org/docs/current/tutorial-transactions.html
+ */
 export interface SavepointTag extends NodeSqlTag {
   tag: 'Savepoint';
   values: [IdentifierTag];
 }
+
+/**
+ * Rollback query
+ * https://www.postgresql.org/docs/current/tutorial-transactions.html
+ */
 export interface RollbackTag extends NodeSqlTag {
   tag: 'Rollback';
   values: [] | [IdentifierTag];
