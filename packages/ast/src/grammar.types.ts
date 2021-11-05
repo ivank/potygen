@@ -1,3 +1,6 @@
+/**
+ * Base Sql tag, holding state of the tag poistion in the text
+ */
 export interface SqlTag {
   pos: number;
   nextPos: number;
@@ -1129,7 +1132,7 @@ export interface HavingTag extends NodeSqlTag {
  * Combination of multiple selects
  * https://www.postgresql.org/docs/current/sql-select.html#SQL-UNION
  */
-export interface CombinationType extends LeafSqlTag {
+export interface CombinationTypeTag extends LeafSqlTag {
   tag: 'CombinationType';
   value: 'UNION' | 'INTERSECT' | 'EXCEPT';
 }
@@ -1149,7 +1152,7 @@ export interface CombinationType extends LeafSqlTag {
  */
 export interface CombinationTag extends NodeSqlTag {
   tag: 'Combination';
-  values: [type: CombinationType, ...parts: SelectParts[]];
+  values: [type: CombinationTypeTag, ...parts: SelectParts[]];
 }
 
 /**
@@ -1730,6 +1733,10 @@ export type ExpressionTag =
   | RowTag
   | WrappedExpressionTag;
 
+/**
+ * All the types extending {@link EmptyLeafSqlTag}.
+ * Each one should have "value" with a string content
+ */
 export type EmptyLeafTag =
   | NullTag
   | StarTag
@@ -1740,6 +1747,10 @@ export type EmptyLeafTag =
   | BeginTag
   | CommitTag;
 
+/**
+ * All the types extending {@link LeafSqlTag}.
+ * Each one should have "value" with a string content
+ */
 export type LeafTag =
   | ExtractFieldTag
   | BitStringTag
@@ -1765,8 +1776,12 @@ export type LeafTag =
   | OrderDirectionTag
   | CollateTag
   | ConflictConstraintTag
-  | CombinationType;
+  | CombinationTypeTag;
 
+/**
+ * All the types extending {@link NodeSqlTag}.
+ * Each one should have "values" that holds child nodes
+ */
 export type NodeTag =
   | SavepointTag
   | RollbackTag

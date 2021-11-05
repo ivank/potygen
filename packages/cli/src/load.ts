@@ -1,4 +1,4 @@
-import { isEqual, groupBy, isUniqueBy, isNil } from '@psql-ts/ast';
+import { isEqual, groupBy, isNil } from '@psql-ts/ast';
 import {
   isTypeEqual,
   QueryInterface,
@@ -175,7 +175,7 @@ const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
   Object.entries(groupBy((param) => param.name, params)).map(([name, params]) =>
     params.length === 1
       ? params[0]
-      : { name, type: { type: 'UnionConstant', items: params.map((param) => param.type).filter(isUniqueBy()) } },
+      : { name, type: { type: 'UnionConstant', items: params.map((param) => param.type) } },
   );
 
 const loadTypeConstant = (type: string, nullable?: boolean): TypeConstant => {
@@ -320,10 +320,6 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
             .map((variant) => `(${variant.argTypes.map(formatArgumentType).join(', ')})`)
             .join(', ');
 
-          console.log(JSON.stringify(variants, null, 2));
-          console.log(type);
-          console.log(args);
-          console.log(funcVariant);
           throw new LoadError(
             type.sourceTag,
             `No variant of ${type.name} with arguments: (${formattedArgs}). Available variants were: ${availableVariants}`,

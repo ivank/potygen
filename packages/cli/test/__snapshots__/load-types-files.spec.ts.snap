@@ -1,12 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Load Files Should convert complex sql account-levelisation.update.query.sql: account-levelisation.update.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "isAccepted",
+      "type": Object {
+        "type": "Boolean",
+      },
+    },
+    Object {
+      "name": "id",
+      "type": Object {
+        "type": "Number",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "isAccepted",
+      "type": Object {
+        "type": "Boolean",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql account-levelisation.upsert.query.sql: account-levelisation.upsert.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
       "name": "levelisationId",
       "type": Object {
-        "type": "Unknown",
+        "type": "Number",
       },
     },
     Object {
@@ -37,6 +70,9 @@ Object {
         "items": Array [
           Object {
             "literal": "",
+            "type": "String",
+          },
+          Object {
             "type": "String",
           },
         ],
@@ -97,6 +133,9 @@ Object {
       "name": "levelisationId",
       "type": Object {
         "items": Array [
+          Object {
+            "type": "Number",
+          },
           Object {
             "type": "Number",
           },
@@ -441,13 +480,15 @@ Object {
     Object {
       "name": "errorCode",
       "type": Object {
-        "type": "Unknown",
+        "nullable": true,
+        "type": "String",
       },
     },
     Object {
       "name": "errorParams",
       "type": Object {
-        "type": "Unknown",
+        "nullable": true,
+        "type": "Json",
       },
     },
     Object {
@@ -541,7 +582,40 @@ Object {
             "type": "String",
           },
           Object {
+            "type": "String",
+          },
+          Object {
+            "type": "String",
+          },
+          Object {
+            "type": "String",
+          },
+          Object {
+            "type": "String",
+          },
+          Object {
+            "type": "String",
+          },
+          Object {
+            "type": "String",
+          },
+          Object {
             "nullable": true,
+            "type": "String",
+          },
+          Object {
+            "nullable": true,
+            "type": "String",
+          },
+          Object {
+            "nullable": true,
+            "type": "String",
+          },
+          Object {
+            "nullable": true,
+            "type": "String",
+          },
+          Object {
             "type": "String",
           },
         ],
@@ -581,7 +655,33 @@ Object {
             "type": "String",
           },
           Object {
+            "type": "String",
+          },
+          Object {
+            "type": "String",
+          },
+          Object {
+            "type": "String",
+          },
+          Object {
+            "type": "String",
+          },
+          Object {
+            "type": "String",
+          },
+          Object {
             "nullable": true,
+            "type": "String",
+          },
+          Object {
+            "nullable": true,
+            "type": "String",
+          },
+          Object {
+            "nullable": true,
+            "type": "String",
+          },
+          Object {
             "type": "String",
           },
         ],
@@ -897,7 +997,8 @@ Object {
     Object {
       "name": "removalDate",
       "type": Object {
-        "type": "Unknown",
+        "nullable": true,
+        "type": "Date",
       },
     },
     Object {
@@ -915,6 +1016,98 @@ exports[`Load Files Should convert complex sql installations.sql: installations.
 Object {
   "params": Array [],
   "results": Array [],
+}
+`;
+
+exports[`Load Files Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "q",
+      "type": Object {
+        "items": Array [
+          Object {
+            "literal": "",
+            "type": "String",
+          },
+          Object {
+            "type": "String",
+          },
+        ],
+        "type": "UnionConstant",
+      },
+    },
+    Object {
+      "name": "ids",
+      "type": Object {
+        "items": Object {
+          "type": "Number",
+        },
+        "type": "ArrayConstant",
+      },
+    },
+    Object {
+      "name": "sortField",
+      "type": Object {
+        "literal": "quarter",
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "sortOrder",
+      "type": Object {
+        "items": Array [
+          Object {
+            "literal": "DESC",
+            "type": "String",
+          },
+          Object {
+            "literal": "ASC",
+            "type": "String",
+          },
+        ],
+        "type": "UnionConstant",
+      },
+    },
+    Object {
+      "name": "limit",
+      "type": Object {
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "offset",
+      "type": Object {
+        "type": "Number",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "quarter",
+      "type": Object {
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "startOn",
+      "type": Object {
+        "type": "Date",
+      },
+    },
+    Object {
+      "name": "endOn",
+      "type": Object {
+        "type": "Date",
+      },
+    },
+  ],
 }
 `;
 

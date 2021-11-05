@@ -13,6 +13,9 @@
     "ts-jest": "^26.4.0",
     "ts-node": "^10.1.0"
   },
+  "bin": {
+    "psql-ts": "./scripts/psql-ts"
+  },
   "dependencies": {
     "@ikerin/rd-parse": "3.4.4",
     "@psql-ts/ast": "workspace:*",
@@ -26,7 +29,7 @@
     "build": "tsc --declaration",
     "test": "jest test --runInBand",
     "lint": "prettier --list-different '{src,test}/**/*.ts'",
-    "cli": "node dist/cli.js"
+    "psql-ts": "yarn tsc && node -r ../../.pnp.cjs dist/cli.js"
   },
   "jest": {
     "preset": "../../jest.json"

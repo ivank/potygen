@@ -1,6 +1,7 @@
 import { Client } from 'pg';
-import { PSqlQuery, sql, toQueryInterface } from '@psql-ts/query';
+import { Sql, sql, toQueryInterface, TypeConstant } from '@psql-ts/query';
 import { toLoadedQueryInterface } from '../src/load';
+import { compactTypes } from '../src/emit';
 let db: Client;
 
 describe('Query Interface', () => {
@@ -13,7 +14,7 @@ describe('Query Interface', () => {
     await db.end();
   });
 
-  it.each<[string, PSqlQuery]>([
+  it.each<[string, Sql]>([
     ['aclitem', sql`SELECT 'pg_monitor=r*/pg_read_all_stats'::aclitem`],
     ['cid', sql`SELECT '1'::cid`],
     ['macaddr', sql`SELECT '08:00:2b:01:02:03'::macaddr`],
@@ -66,5 +67,27 @@ describe('Query Interface', () => {
     const loadedQueryInterface = toLoadedQueryInterface([])(queryInterface);
     expect((await sql.run(db))[0]).toMatchSnapshot();
     expect(loadedQueryInterface).toMatchSnapshot();
+  });
+
+  it.each<[string, TypeConstant[], TypeConstant[]]>([
+    ['single value literal', [{ type: 'Boolean', literal: true }, { type: 'Boolean' }], [{ type: 'Boolean' }]],
+    [
+      'keep if no need to compact',
+      [
+        { type: 'String', literal: 'tmp' },
+        { type: 'String', literal: 'tmp2' },
+      ],
+      [
+        { type: 'String', literal: 'tmp' },
+        { type: 'String', literal: 'tmp2' },
+      ],
+    ],
+    [
+      'compact if at least one non literal',
+      [{ type: 'String', literal: 'tmp' }, { type: 'String', literal: 'tmp2' }, { type: 'String' }],
+      [{ type: 'String' }],
+    ],
+  ])('Should compact union types for %s', async (_, types, expected) => {
+    expect(compactTypes(types)).toEqual(expected);
   });
 });

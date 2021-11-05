@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFileSync, watchFile } from 'fs';
 import { Readable, Writable } from 'stream';
 import { glob } from './glob';
 import {
@@ -115,32 +115,55 @@ const loadFile =
     }
   };
 
+const parseFile = (path: string): ParsedFile | undefined => {
+  if (path.endsWith('.ts')) {
+    const file = toParsedTypescriptFile(path);
+    return file.queries.length > 0 ? file : undefined;
+  } else {
+    return toParsedSqlFile(path);
+  }
+};
+
 export class SqlRead extends Readable {
   public source: Generator<string, void, unknown>;
+  public watchedFiles = new Set<string>();
 
-  constructor(public path: string, public root = '.') {
+  constructor(public path: string, public root = '.', public watch = false) {
     super({ objectMode: true });
     this.source = glob(path, root);
   }
 
   next() {
     let path: IteratorResult<string>;
-    do {
-      path = this.source.next();
-      if (path.value?.endsWith('.ts')) {
-        const file = toParsedTypescriptFile(path.value);
-        if (file.queries.length > 0) {
-          return file;
-        }
-      } else if (path.value) {
-        return toParsedSqlFile(path.value);
+    while (!(path = this.source.next()).done) {
+      const parsedFile = parseFile(path.value);
+      if (parsedFile) {
+        return parsedFile;
       }
-    } while (!path.done);
+    }
     return undefined;
   }
 
+  watchFile(path: string): () => void {
+    return () => {
+      const parsedFile = parseFile(path);
+      if (parsedFile) {
+        this.push(parseFile);
+      }
+    };
+  }
+
   _read() {
-    this.push(this.next() ?? null);
+    const next = this.next();
+    if (next) {
+      if (this.watch && !this.watchedFiles.has(next.path)) {
+        this.watchedFiles.add(next.path);
+        watchFile(next.path, this.watchFile(next.path));
+      }
+      this.push(next);
+    } else if (!this.watch) {
+      this.push(null);
+    }
   }
 }
 

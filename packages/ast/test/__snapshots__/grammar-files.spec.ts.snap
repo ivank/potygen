@@ -1,5 +1,179 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Sql Files Should parse complex sql account-levelisation.update.query.sql: account-levelisation.update.query.sql 1`] = `
+Object {
+  "nextPos": 161,
+  "pos": 2,
+  "tag": "Update",
+  "values": Array [
+    Object {
+      "nextPos": 30,
+      "pos": 9,
+      "tag": "Table",
+      "values": Array [
+        Object {
+          "nextPos": 30,
+          "pos": 9,
+          "tag": "TableIdentifier",
+          "values": Array [
+            Object {
+              "nextPos": 30,
+              "pos": 9,
+              "tag": "UnquotedIdentifier",
+              "value": "account_levelisations",
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 66,
+      "pos": 33,
+      "tag": "Set",
+      "values": Array [
+        Object {
+          "nextPos": 66,
+          "pos": 41,
+          "tag": "SetList",
+          "values": Array [
+            Object {
+              "nextPos": 66,
+              "pos": 41,
+              "tag": "SetItem",
+              "values": Array [
+                Object {
+                  "nextPos": 52,
+                  "pos": 41,
+                  "tag": "UnquotedIdentifier",
+                  "value": "is_accepted",
+                },
+                Object {
+                  "nextPos": 66,
+                  "pick": Array [],
+                  "pos": 55,
+                  "required": false,
+                  "tag": "Parameter",
+                  "type": "single",
+                  "value": "isAccepted",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 109,
+      "pos": 69,
+      "tag": "Where",
+      "values": Array [
+        Object {
+          "nextPos": 109,
+          "pos": 79,
+          "tag": "BinaryExpression",
+          "values": Array [
+            Object {
+              "nextPos": 103,
+              "pos": 79,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 100,
+                  "pos": 79,
+                  "tag": "UnquotedIdentifier",
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "nextPos": 103,
+                  "pos": 101,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 105,
+              "pos": 104,
+              "tag": "BinaryOperator",
+              "value": "=",
+            },
+            Object {
+              "nextPos": 109,
+              "pick": Array [],
+              "pos": 106,
+              "required": false,
+              "tag": "Parameter",
+              "type": "single",
+              "value": "id",
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 161,
+      "pos": 112,
+      "tag": "Returning",
+      "values": Array [
+        Object {
+          "nextPos": 128,
+          "pos": 126,
+          "tag": "ReturningListItem",
+          "values": Array [
+            Object {
+              "nextPos": 128,
+              "pos": 126,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 128,
+                  "pos": 126,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 161,
+          "pos": 134,
+          "tag": "ReturningListItem",
+          "values": Array [
+            Object {
+              "nextPos": 145,
+              "pos": 134,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 145,
+                  "pos": 134,
+                  "tag": "UnquotedIdentifier",
+                  "value": "is_accepted",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 161,
+              "pos": 146,
+              "tag": "As",
+              "values": Array [
+                Object {
+                  "nextPos": 161,
+                  "pos": 149,
+                  "tag": "QuotedIdentifier",
+                  "value": "isAccepted",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Files Should parse complex sql account-levelisation.upsert.query.sql: account-levelisation.upsert.query.sql 1`] = `
 Object {
   "nextPos": 665,
@@ -26144,6 +26318,814 @@ Object {
                           ],
                         },
                       ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Files Should parse complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
+Object {
+  "nextPos": 634,
+  "pos": 2,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 127,
+      "pos": 13,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 37,
+          "pos": 13,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 29,
+              "pos": 13,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 26,
+                  "pos": 13,
+                  "tag": "UnquotedIdentifier",
+                  "value": "levelisations",
+                },
+                Object {
+                  "nextPos": 29,
+                  "pos": 27,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 37,
+              "pos": 30,
+              "tag": "As",
+              "values": Array [
+                Object {
+                  "nextPos": 37,
+                  "pos": 33,
+                  "tag": "QuotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 77,
+          "pos": 43,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 64,
+              "pos": 43,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 56,
+                  "pos": 43,
+                  "tag": "UnquotedIdentifier",
+                  "value": "levelisations",
+                },
+                Object {
+                  "nextPos": 64,
+                  "pos": 57,
+                  "tag": "UnquotedIdentifier",
+                  "value": "quarter",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 77,
+              "pos": 65,
+              "tag": "As",
+              "values": Array [
+                Object {
+                  "nextPos": 77,
+                  "pos": 68,
+                  "tag": "QuotedIdentifier",
+                  "value": "quarter",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 104,
+          "pos": 83,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 91,
+              "pos": 83,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 91,
+                  "pos": 83,
+                  "tag": "UnquotedIdentifier",
+                  "value": "start_on",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 104,
+              "pos": 92,
+              "tag": "As",
+              "values": Array [
+                Object {
+                  "nextPos": 104,
+                  "pos": 95,
+                  "tag": "QuotedIdentifier",
+                  "value": "startOn",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 127,
+          "pos": 110,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 116,
+              "pos": 110,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 116,
+                  "pos": 110,
+                  "tag": "UnquotedIdentifier",
+                  "value": "end_on",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 127,
+              "pos": 117,
+              "tag": "As",
+              "values": Array [
+                Object {
+                  "nextPos": 127,
+                  "pos": 120,
+                  "tag": "QuotedIdentifier",
+                  "value": "endOn",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 148,
+      "pos": 130,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 148,
+          "pos": 135,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 148,
+              "pos": 135,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 148,
+                  "pos": 135,
+                  "tag": "TableIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 148,
+                      "pos": 135,
+                      "tag": "UnquotedIdentifier",
+                      "value": "levelisations",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 361,
+      "pos": 151,
+      "tag": "Where",
+      "values": Array [
+        Object {
+          "nextPos": 361,
+          "pos": 175,
+          "tag": "BinaryExpression",
+          "values": Array [
+            Object {
+              "nextPos": 216,
+              "pos": 175,
+              "tag": "WrappedExpression",
+              "values": Array [
+                Object {
+                  "nextPos": 215,
+                  "pos": 176,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "nextPos": 183,
+                      "pos": 176,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 178,
+                          "pick": Array [],
+                          "pos": 176,
+                          "required": false,
+                          "tag": "Parameter",
+                          "type": "single",
+                          "value": "q",
+                        },
+                        Object {
+                          "nextPos": 180,
+                          "pos": 179,
+                          "tag": "BinaryOperator",
+                          "value": "=",
+                        },
+                        Object {
+                          "nextPos": 183,
+                          "pos": 181,
+                          "tag": "String",
+                          "value": "",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 186,
+                      "pos": 184,
+                      "tag": "BinaryOperator",
+                      "value": "OR",
+                    },
+                    Object {
+                      "nextPos": 215,
+                      "pos": 187,
+                      "tag": "WrappedExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 214,
+                          "pos": 188,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 209,
+                              "pos": 188,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 201,
+                                  "pos": 188,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "levelisations",
+                                },
+                                Object {
+                                  "nextPos": 209,
+                                  "pos": 202,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "quarter",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 211,
+                              "pos": 210,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "nextPos": 214,
+                              "pick": Array [],
+                              "pos": 212,
+                              "required": false,
+                              "tag": "Parameter",
+                              "type": "single",
+                              "value": "q",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 289,
+              "pos": 286,
+              "tag": "BinaryOperator",
+              "value": "AND",
+            },
+            Object {
+              "nextPos": 361,
+              "pos": 290,
+              "tag": "WrappedExpression",
+              "values": Array [
+                Object {
+                  "nextPos": 360,
+                  "pos": 291,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "nextPos": 319,
+                      "pos": 291,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 315,
+                          "pos": 291,
+                          "tag": "Function",
+                          "values": Array [
+                            Object {
+                              "nextPos": 302,
+                              "pos": 291,
+                              "tag": "UnquotedIdentifier",
+                              "value": "cardinality",
+                            },
+                            Object {
+                              "nextPos": 314,
+                              "pos": 303,
+                              "tag": "PgCast",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 307,
+                                  "pick": Array [],
+                                  "pos": 303,
+                                  "required": false,
+                                  "tag": "Parameter",
+                                  "type": "single",
+                                  "value": "ids",
+                                },
+                                Object {
+                                  "nextPos": 314,
+                                  "pos": 309,
+                                  "tag": "TypeArray",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 312,
+                                      "pos": 309,
+                                      "tag": "Type",
+                                      "values": Array [
+                                        Object {
+                                          "nextPos": 312,
+                                          "pos": 309,
+                                          "tag": "UnquotedIdentifier",
+                                          "value": "int",
+                                        },
+                                      ],
+                                    },
+                                    Object {
+                                      "nextPos": 314,
+                                      "pos": 312,
+                                      "tag": "Dimension",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 317,
+                          "pos": 316,
+                          "tag": "BinaryOperator",
+                          "value": "=",
+                        },
+                        Object {
+                          "nextPos": 319,
+                          "pos": 318,
+                          "tag": "Number",
+                          "value": "0",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 322,
+                      "pos": 320,
+                      "tag": "BinaryOperator",
+                      "value": "OR",
+                    },
+                    Object {
+                      "nextPos": 360,
+                      "pos": 323,
+                      "tag": "WrappedExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 359,
+                          "pos": 324,
+                          "tag": "ComparationExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 340,
+                              "pos": 324,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 337,
+                                  "pos": 324,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "levelisations",
+                                },
+                                Object {
+                                  "nextPos": 340,
+                                  "pos": 338,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "id",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 342,
+                              "pos": 341,
+                              "tag": "ComparationOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "nextPos": 346,
+                              "pos": 343,
+                              "tag": "ComparationType",
+                              "value": "ANY",
+                            },
+                            Object {
+                              "nextPos": 358,
+                              "pos": 347,
+                              "tag": "ExpressionList",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 358,
+                                  "pos": 347,
+                                  "tag": "PgCast",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 351,
+                                      "pick": Array [],
+                                      "pos": 347,
+                                      "required": false,
+                                      "tag": "Parameter",
+                                      "type": "single",
+                                      "value": "ids",
+                                    },
+                                    Object {
+                                      "nextPos": 358,
+                                      "pos": 353,
+                                      "tag": "TypeArray",
+                                      "values": Array [
+                                        Object {
+                                          "nextPos": 356,
+                                          "pos": 353,
+                                          "tag": "Type",
+                                          "values": Array [
+                                            Object {
+                                              "nextPos": 356,
+                                              "pos": 353,
+                                              "tag": "UnquotedIdentifier",
+                                              "value": "int",
+                                            },
+                                          ],
+                                        },
+                                        Object {
+                                          "nextPos": 358,
+                                          "pos": 356,
+                                          "tag": "Dimension",
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 577,
+      "pos": 404,
+      "tag": "OrderBy",
+      "values": Array [
+        Object {
+          "nextPos": 495,
+          "pos": 417,
+          "tag": "OrderByItem",
+          "values": Array [
+            Object {
+              "nextPos": 490,
+              "pos": 417,
+              "tag": "Case",
+              "values": Array [
+                Object {
+                  "nextPos": 486,
+                  "pos": 422,
+                  "tag": "When",
+                  "values": Array [
+                    Object {
+                      "nextPos": 473,
+                      "pos": 427,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 449,
+                          "pos": 427,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 437,
+                              "pick": Array [],
+                              "pos": 427,
+                              "required": false,
+                              "tag": "Parameter",
+                              "type": "single",
+                              "value": "sortField",
+                            },
+                            Object {
+                              "nextPos": 439,
+                              "pos": 438,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "nextPos": 449,
+                              "pos": 440,
+                              "tag": "String",
+                              "value": "quarter",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 453,
+                          "pos": 450,
+                          "tag": "BinaryOperator",
+                          "value": "AND",
+                        },
+                        Object {
+                          "nextPos": 473,
+                          "pos": 454,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 464,
+                              "pick": Array [],
+                              "pos": 454,
+                              "required": false,
+                              "tag": "Parameter",
+                              "type": "single",
+                              "value": "sortOrder",
+                            },
+                            Object {
+                              "nextPos": 466,
+                              "pos": 465,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "nextPos": 473,
+                              "pos": 467,
+                              "tag": "String",
+                              "value": "DESC",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 486,
+                      "pos": 479,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 486,
+                          "pos": 479,
+                          "tag": "UnquotedIdentifier",
+                          "value": "quarter",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 495,
+              "pos": 491,
+              "tag": "OrderDirection",
+              "value": "DESC",
+            },
+          ],
+        },
+        Object {
+          "nextPos": 577,
+          "pos": 501,
+          "tag": "OrderByItem",
+          "values": Array [
+            Object {
+              "nextPos": 573,
+              "pos": 501,
+              "tag": "Case",
+              "values": Array [
+                Object {
+                  "nextPos": 569,
+                  "pos": 506,
+                  "tag": "When",
+                  "values": Array [
+                    Object {
+                      "nextPos": 556,
+                      "pos": 511,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 533,
+                          "pos": 511,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 521,
+                              "pick": Array [],
+                              "pos": 511,
+                              "required": false,
+                              "tag": "Parameter",
+                              "type": "single",
+                              "value": "sortField",
+                            },
+                            Object {
+                              "nextPos": 523,
+                              "pos": 522,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "nextPos": 533,
+                              "pos": 524,
+                              "tag": "String",
+                              "value": "quarter",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 537,
+                          "pos": 534,
+                          "tag": "BinaryOperator",
+                          "value": "AND",
+                        },
+                        Object {
+                          "nextPos": 556,
+                          "pos": 538,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 548,
+                              "pick": Array [],
+                              "pos": 538,
+                              "required": false,
+                              "tag": "Parameter",
+                              "type": "single",
+                              "value": "sortOrder",
+                            },
+                            Object {
+                              "nextPos": 550,
+                              "pos": 549,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "nextPos": 556,
+                              "pos": 551,
+                              "tag": "String",
+                              "value": "ASC",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 569,
+                      "pos": 562,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 569,
+                          "pos": 562,
+                          "tag": "UnquotedIdentifier",
+                          "value": "quarter",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 577,
+              "pos": 574,
+              "tag": "OrderDirection",
+              "value": "ASC",
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 614,
+      "pos": 597,
+      "tag": "Limit",
+      "values": Array [
+        Object {
+          "nextPos": 614,
+          "pos": 603,
+          "tag": "Count",
+          "values": Array [
+            Object {
+              "nextPos": 614,
+              "pos": 603,
+              "tag": "PgCast",
+              "values": Array [
+                Object {
+                  "nextPos": 609,
+                  "pick": Array [],
+                  "pos": 603,
+                  "required": false,
+                  "tag": "Parameter",
+                  "type": "single",
+                  "value": "limit",
+                },
+                Object {
+                  "nextPos": 614,
+                  "pos": 611,
+                  "tag": "Type",
+                  "values": Array [
+                    Object {
+                      "nextPos": 614,
+                      "pos": 611,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 634,
+      "pos": 615,
+      "tag": "Offset",
+      "values": Array [
+        Object {
+          "nextPos": 634,
+          "pos": 622,
+          "tag": "Count",
+          "values": Array [
+            Object {
+              "nextPos": 634,
+              "pos": 622,
+              "tag": "PgCast",
+              "values": Array [
+                Object {
+                  "nextPos": 629,
+                  "pick": Array [],
+                  "pos": 622,
+                  "required": false,
+                  "tag": "Parameter",
+                  "type": "single",
+                  "value": "offset",
+                },
+                Object {
+                  "nextPos": 634,
+                  "pos": 631,
+                  "tag": "Type",
+                  "values": Array [
+                    Object {
+                      "nextPos": 634,
+                      "pos": 631,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
                     },
                   ],
                 },

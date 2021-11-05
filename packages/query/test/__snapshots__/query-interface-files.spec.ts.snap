@@ -1,5 +1,140 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Query Interface Should convert complex sql account-levelisation.update.query.sql: account-levelisation.update.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "isAccepted",
+      "nextPos": 66,
+      "pick": Array [],
+      "pos": 55,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "column": "is_accepted",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 52,
+          "pos": 41,
+          "tag": "UnquotedIdentifier",
+          "value": "is_accepted",
+        },
+        "table": "account_levelisations",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "id",
+      "nextPos": 109,
+      "pick": Array [],
+      "pos": 106,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 103,
+          "pos": 79,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 100,
+              "pos": 79,
+              "tag": "UnquotedIdentifier",
+              "value": "account_levelisations",
+            },
+            Object {
+              "nextPos": 103,
+              "pos": 101,
+              "tag": "UnquotedIdentifier",
+              "value": "id",
+            },
+          ],
+        },
+        "table": "account_levelisations",
+        "type": "LoadColumn",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 128,
+          "pos": 126,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 128,
+              "pos": 126,
+              "tag": "UnquotedIdentifier",
+              "value": "id",
+            },
+          ],
+        },
+        "table": "account_levelisations",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "isAccepted",
+      "type": Object {
+        "column": "is_accepted",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 145,
+          "pos": 134,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 145,
+              "pos": 134,
+              "tag": "UnquotedIdentifier",
+              "value": "is_accepted",
+            },
+          ],
+        },
+        "table": "account_levelisations",
+        "type": "LoadColumn",
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "account_levelisations",
+      "schema": undefined,
+      "sourceTag": Object {
+        "nextPos": 30,
+        "pos": 9,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "nextPos": 30,
+            "pos": 9,
+            "tag": "TableIdentifier",
+            "values": Array [
+              Object {
+                "nextPos": 30,
+                "pos": 9,
+                "tag": "UnquotedIdentifier",
+                "value": "account_levelisations",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "account_levelisations",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql account-levelisation.upsert.query.sql: account-levelisation.upsert.query.sql 1`] = `
 Object {
   "params": Array [
@@ -11,7 +146,810 @@ Object {
       "required": false,
       "spread": false,
       "type": Object {
-        "type": "Unknown",
+        "column": "levelisation_id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 665,
+          "pos": 1,
+          "tag": "Insert",
+          "values": Array [
+            Object {
+              "nextPos": 36,
+              "pos": 15,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 36,
+                  "pos": 15,
+                  "tag": "TableIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 36,
+                      "pos": 15,
+                      "tag": "UnquotedIdentifier",
+                      "value": "account_levelisations",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 90,
+              "pos": 37,
+              "tag": "Columns",
+              "values": Array [
+                Object {
+                  "nextPos": 48,
+                  "pos": 38,
+                  "tag": "UnquotedIdentifier",
+                  "value": "account_id",
+                },
+                Object {
+                  "nextPos": 65,
+                  "pos": 50,
+                  "tag": "UnquotedIdentifier",
+                  "value": "installation_id",
+                },
+                Object {
+                  "nextPos": 82,
+                  "pos": 67,
+                  "tag": "UnquotedIdentifier",
+                  "value": "levelisation_id",
+                },
+                Object {
+                  "nextPos": 89,
+                  "pos": 84,
+                  "tag": "UnquotedIdentifier",
+                  "value": "state",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 552,
+              "pos": 91,
+              "tag": "Select",
+              "values": Array [
+                Object {
+                  "nextPos": 215,
+                  "pos": 100,
+                  "tag": "SelectList",
+                  "values": Array [
+                    Object {
+                      "nextPos": 125,
+                      "pos": 100,
+                      "tag": "SelectListItem",
+                      "values": Array [
+                        Object {
+                          "nextPos": 111,
+                          "pos": 100,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "nextPos": 108,
+                              "pos": 100,
+                              "tag": "UnquotedIdentifier",
+                              "value": "accounts",
+                            },
+                            Object {
+                              "nextPos": 111,
+                              "pos": 109,
+                              "tag": "UnquotedIdentifier",
+                              "value": "id",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 125,
+                          "pos": 112,
+                          "tag": "As",
+                          "values": Array [
+                            Object {
+                              "nextPos": 125,
+                              "pos": 115,
+                              "tag": "UnquotedIdentifier",
+                              "value": "account_id",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 164,
+                      "pos": 129,
+                      "tag": "SelectListItem",
+                      "values": Array [
+                        Object {
+                          "nextPos": 145,
+                          "pos": 129,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "nextPos": 142,
+                              "pos": 129,
+                              "tag": "UnquotedIdentifier",
+                              "value": "installations",
+                            },
+                            Object {
+                              "nextPos": 145,
+                              "pos": 143,
+                              "tag": "UnquotedIdentifier",
+                              "value": "id",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 164,
+                          "pos": 146,
+                          "tag": "As",
+                          "values": Array [
+                            Object {
+                              "nextPos": 164,
+                              "pos": 149,
+                              "tag": "UnquotedIdentifier",
+                              "value": "installation_id",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 202,
+                      "pos": 168,
+                      "tag": "SelectListItem",
+                      "values": Array [
+                        Object {
+                          "nextPos": 183,
+                          "pick": Array [],
+                          "pos": 168,
+                          "required": false,
+                          "tag": "Parameter",
+                          "type": "single",
+                          "value": "levelisationId",
+                        },
+                        Object {
+                          "nextPos": 202,
+                          "pos": 184,
+                          "tag": "As",
+                          "values": Array [
+                            Object {
+                              "nextPos": 202,
+                              "pos": 187,
+                              "tag": "UnquotedIdentifier",
+                              "value": "levelisation_id",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 215,
+                      "pos": 206,
+                      "tag": "SelectListItem",
+                      "values": Array [
+                        Object {
+                          "nextPos": 215,
+                          "pos": 206,
+                          "tag": "String",
+                          "value": "Pending",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 354,
+                  "pos": 216,
+                  "tag": "From",
+                  "values": Array [
+                    Object {
+                      "nextPos": 229,
+                      "pos": 221,
+                      "tag": "FromList",
+                      "values": Array [
+                        Object {
+                          "nextPos": 229,
+                          "pos": 221,
+                          "tag": "Table",
+                          "values": Array [
+                            Object {
+                              "nextPos": 229,
+                              "pos": 221,
+                              "tag": "TableIdentifier",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 229,
+                                  "pos": 221,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "accounts",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 282,
+                      "pos": 230,
+                      "tag": "Join",
+                      "values": Array [
+                        Object {
+                          "nextPos": 234,
+                          "pos": 230,
+                          "tag": "JoinType",
+                          "value": "JOIN",
+                        },
+                        Object {
+                          "nextPos": 244,
+                          "pos": 235,
+                          "tag": "Table",
+                          "values": Array [
+                            Object {
+                              "nextPos": 244,
+                              "pos": 235,
+                              "tag": "TableIdentifier",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 244,
+                                  "pos": 235,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "contracts",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 282,
+                          "pos": 245,
+                          "tag": "JoinOn",
+                          "values": Array [
+                            Object {
+                              "nextPos": 282,
+                              "pos": 248,
+                              "tag": "BinaryExpression",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 268,
+                                  "pos": 248,
+                                  "tag": "Column",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 257,
+                                      "pos": 248,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "contracts",
+                                    },
+                                    Object {
+                                      "nextPos": 268,
+                                      "pos": 258,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "account_id",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "nextPos": 270,
+                                  "pos": 269,
+                                  "tag": "BinaryOperator",
+                                  "value": "=",
+                                },
+                                Object {
+                                  "nextPos": 282,
+                                  "pos": 271,
+                                  "tag": "Column",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 279,
+                                      "pos": 271,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "accounts",
+                                    },
+                                    Object {
+                                      "nextPos": 282,
+                                      "pos": 280,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "id",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 354,
+                      "pos": 283,
+                      "tag": "Join",
+                      "values": Array [
+                        Object {
+                          "nextPos": 292,
+                          "pos": 283,
+                          "tag": "JoinType",
+                          "value": "LEFT JOIN",
+                        },
+                        Object {
+                          "nextPos": 306,
+                          "pos": 293,
+                          "tag": "Table",
+                          "values": Array [
+                            Object {
+                              "nextPos": 306,
+                              "pos": 293,
+                              "tag": "TableIdentifier",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 306,
+                                  "pos": 293,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "installations",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 354,
+                          "pos": 307,
+                          "tag": "JoinOn",
+                          "values": Array [
+                            Object {
+                              "nextPos": 354,
+                              "pos": 310,
+                              "tag": "BinaryExpression",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 335,
+                                  "pos": 310,
+                                  "tag": "Column",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 319,
+                                      "pos": 310,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "contracts",
+                                    },
+                                    Object {
+                                      "nextPos": 335,
+                                      "pos": 320,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "installation_id",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "nextPos": 337,
+                                  "pos": 336,
+                                  "tag": "BinaryOperator",
+                                  "value": "=",
+                                },
+                                Object {
+                                  "nextPos": 354,
+                                  "pos": 338,
+                                  "tag": "Column",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 351,
+                                      "pos": 338,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "installations",
+                                    },
+                                    Object {
+                                      "nextPos": 354,
+                                      "pos": 352,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "id",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 513,
+                  "pos": 355,
+                  "tag": "Where",
+                  "values": Array [
+                    Object {
+                      "nextPos": 513,
+                      "pos": 363,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 417,
+                          "pos": 363,
+                          "tag": "WrappedExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 416,
+                              "pos": 364,
+                              "tag": "BinaryExpression",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 387,
+                                  "pos": 364,
+                                  "tag": "BinaryExpression",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 379,
+                                      "pos": 364,
+                                      "tag": "Column",
+                                      "values": Array [
+                                        Object {
+                                          "nextPos": 372,
+                                          "pos": 364,
+                                          "tag": "UnquotedIdentifier",
+                                          "value": "accounts",
+                                        },
+                                        Object {
+                                          "nextPos": 379,
+                                          "pos": 373,
+                                          "tag": "UnquotedIdentifier",
+                                          "value": "end_on",
+                                        },
+                                      ],
+                                    },
+                                    Object {
+                                      "nextPos": 382,
+                                      "pos": 380,
+                                      "tag": "BinaryOperator",
+                                      "value": "IS",
+                                    },
+                                    Object {
+                                      "nextPos": 387,
+                                      "pos": 383,
+                                      "tag": "Null",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "nextPos": 390,
+                                  "pos": 388,
+                                  "tag": "BinaryOperator",
+                                  "value": "OR",
+                                },
+                                Object {
+                                  "nextPos": 416,
+                                  "pos": 391,
+                                  "tag": "BinaryExpression",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 406,
+                                      "pos": 391,
+                                      "tag": "Column",
+                                      "values": Array [
+                                        Object {
+                                          "nextPos": 399,
+                                          "pos": 391,
+                                          "tag": "UnquotedIdentifier",
+                                          "value": "accounts",
+                                        },
+                                        Object {
+                                          "nextPos": 406,
+                                          "pos": 400,
+                                          "tag": "UnquotedIdentifier",
+                                          "value": "end_on",
+                                        },
+                                      ],
+                                    },
+                                    Object {
+                                      "nextPos": 409,
+                                      "pos": 407,
+                                      "tag": "BinaryOperator",
+                                      "value": ">=",
+                                    },
+                                    Object {
+                                      "nextPos": 416,
+                                      "pick": Array [],
+                                      "pos": 410,
+                                      "required": false,
+                                      "tag": "Parameter",
+                                      "type": "single",
+                                      "value": "start",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 423,
+                          "pos": 420,
+                          "tag": "BinaryOperator",
+                          "value": "AND",
+                        },
+                        Object {
+                          "nextPos": 513,
+                          "pos": 424,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 445,
+                              "pos": 424,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 433,
+                                  "pos": 424,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "contracts",
+                                },
+                                Object {
+                                  "nextPos": 445,
+                                  "pos": 434,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "export_type",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 447,
+                              "pos": 446,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "nextPos": 513,
+                              "pos": 448,
+                              "tag": "Function",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 451,
+                                  "pos": 448,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "ANY",
+                                },
+                                Object {
+                                  "nextPos": 512,
+                                  "pos": 452,
+                                  "tag": "PgCast",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 484,
+                                      "pos": 452,
+                                      "tag": "ArrayConstructor",
+                                      "values": Array [
+                                        Object {
+                                          "nextPos": 474,
+                                          "pos": 458,
+                                          "tag": "String",
+                                          "value": "Metered Export",
+                                        },
+                                        Object {
+                                          "nextPos": 483,
+                                          "pos": 475,
+                                          "tag": "String",
+                                          "value": "Deemed",
+                                        },
+                                      ],
+                                    },
+                                    Object {
+                                      "nextPos": 512,
+                                      "pos": 486,
+                                      "tag": "TypeArray",
+                                      "values": Array [
+                                        Object {
+                                          "nextPos": 510,
+                                          "pos": 486,
+                                          "tag": "Type",
+                                          "values": Array [
+                                            Object {
+                                              "nextPos": 510,
+                                              "pos": 486,
+                                              "tag": "UnquotedIdentifier",
+                                              "value": "installation_export_type",
+                                            },
+                                          ],
+                                        },
+                                        Object {
+                                          "nextPos": 512,
+                                          "pos": 510,
+                                          "tag": "Dimension",
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 552,
+                  "pos": 514,
+                  "tag": "GroupBy",
+                  "values": Array [
+                    Object {
+                      "nextPos": 534,
+                      "pos": 523,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 531,
+                          "pos": 523,
+                          "tag": "UnquotedIdentifier",
+                          "value": "accounts",
+                        },
+                        Object {
+                          "nextPos": 534,
+                          "pos": 532,
+                          "tag": "UnquotedIdentifier",
+                          "value": "id",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 552,
+                      "pos": 536,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 549,
+                          "pos": 536,
+                          "tag": "UnquotedIdentifier",
+                          "value": "installations",
+                        },
+                        Object {
+                          "nextPos": 552,
+                          "pos": 550,
+                          "tag": "UnquotedIdentifier",
+                          "value": "id",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 650,
+              "pos": 553,
+              "tag": "Conflict",
+              "values": Array [
+                Object {
+                  "nextPos": 611,
+                  "pos": 565,
+                  "tag": "ConflictTarget",
+                  "values": Array [
+                    Object {
+                      "nextPos": 576,
+                      "pos": 566,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 576,
+                          "pos": 566,
+                          "tag": "UnquotedIdentifier",
+                          "value": "account_id",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 593,
+                      "pos": 578,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 593,
+                          "pos": 578,
+                          "tag": "UnquotedIdentifier",
+                          "value": "installation_id",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 610,
+                      "pos": 595,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 610,
+                          "pos": 595,
+                          "tag": "UnquotedIdentifier",
+                          "value": "levelisation_id",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 650,
+                  "pos": 612,
+                  "tag": "DoUpdate",
+                  "values": Array [
+                    Object {
+                      "nextPos": 650,
+                      "pos": 622,
+                      "tag": "Set",
+                      "values": Array [
+                        Object {
+                          "nextPos": 650,
+                          "pos": 628,
+                          "tag": "SetList",
+                          "values": Array [
+                            Object {
+                              "nextPos": 650,
+                              "pos": 628,
+                              "tag": "SetItem",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 633,
+                                  "pos": 628,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "state",
+                                },
+                                Object {
+                                  "nextPos": 650,
+                                  "pos": 636,
+                                  "tag": "Column",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 644,
+                                      "pos": 636,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "EXCLUDED",
+                                    },
+                                    Object {
+                                      "nextPos": 650,
+                                      "pos": 645,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "state",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 665,
+              "pos": 651,
+              "tag": "Returning",
+              "values": Array [
+                Object {
+                  "nextPos": 665,
+                  "pos": 663,
+                  "tag": "ReturningListItem",
+                  "values": Array [
+                    Object {
+                      "nextPos": 665,
+                      "pos": 663,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 665,
+                          "pos": 663,
+                          "tag": "UnquotedIdentifier",
+                          "value": "id",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "table": "account_levelisations",
+        "type": "LoadColumn",
       },
     },
     Object {
@@ -5827,7 +6765,16 @@ Object {
       "required": false,
       "spread": false,
       "type": Object {
-        "type": "Unknown",
+        "column": "end_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 37,
+          "pos": 31,
+          "tag": "UnquotedIdentifier",
+          "value": "end_on",
+        },
+        "table": "installation_meters",
+        "type": "LoadColumn",
       },
     },
     Object {
@@ -6684,6 +7631,273 @@ Object {
         ],
       },
       "table": "Customer",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "q",
+      "nextPos": 178,
+      "pick": Array [],
+      "pos": 176,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "literal": "",
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "q",
+      "nextPos": 214,
+      "pick": Array [],
+      "pos": 212,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "column": "quarter",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 209,
+          "pos": 188,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 201,
+              "pos": 188,
+              "tag": "UnquotedIdentifier",
+              "value": "levelisations",
+            },
+            Object {
+              "nextPos": 209,
+              "pos": 202,
+              "tag": "UnquotedIdentifier",
+              "value": "quarter",
+            },
+          ],
+        },
+        "table": "levelisations",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "ids",
+      "nextPos": 307,
+      "pick": Array [],
+      "pos": 303,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "items": Object {
+          "name": "int4",
+          "type": "Named",
+          "value": Object {
+            "type": "Number",
+          },
+        },
+        "type": "Array",
+      },
+    },
+    Object {
+      "name": "sortField",
+      "nextPos": 437,
+      "pick": Array [],
+      "pos": 427,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "literal": "quarter",
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "sortOrder",
+      "nextPos": 464,
+      "pick": Array [],
+      "pos": 454,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "literal": "DESC",
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "sortOrder",
+      "nextPos": 548,
+      "pick": Array [],
+      "pos": 538,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "literal": "ASC",
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "limit",
+      "nextPos": 609,
+      "pick": Array [],
+      "pos": 603,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "name": "int4",
+        "type": "Named",
+        "value": Object {
+          "type": "Number",
+        },
+      },
+    },
+    Object {
+      "name": "offset",
+      "nextPos": 629,
+      "pick": Array [],
+      "pos": 622,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "name": "int4",
+        "type": "Named",
+        "value": Object {
+          "type": "Number",
+        },
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 29,
+          "pos": 13,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 26,
+              "pos": 13,
+              "tag": "UnquotedIdentifier",
+              "value": "levelisations",
+            },
+            Object {
+              "nextPos": 29,
+              "pos": 27,
+              "tag": "UnquotedIdentifier",
+              "value": "id",
+            },
+          ],
+        },
+        "table": "levelisations",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "quarter",
+      "type": Object {
+        "column": "quarter",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 64,
+          "pos": 43,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 56,
+              "pos": 43,
+              "tag": "UnquotedIdentifier",
+              "value": "levelisations",
+            },
+            Object {
+              "nextPos": 64,
+              "pos": 57,
+              "tag": "UnquotedIdentifier",
+              "value": "quarter",
+            },
+          ],
+        },
+        "table": "levelisations",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "startOn",
+      "type": Object {
+        "column": "start_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 91,
+          "pos": 83,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 91,
+              "pos": 83,
+              "tag": "UnquotedIdentifier",
+              "value": "start_on",
+            },
+          ],
+        },
+        "table": undefined,
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "endOn",
+      "type": Object {
+        "column": "end_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 116,
+          "pos": 110,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 116,
+              "pos": 110,
+              "tag": "UnquotedIdentifier",
+              "value": "end_on",
+            },
+          ],
+        },
+        "table": undefined,
+        "type": "LoadColumn",
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "levelisations",
+      "schema": undefined,
+      "sourceTag": Object {
+        "nextPos": 148,
+        "pos": 135,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "nextPos": 148,
+            "pos": 135,
+            "tag": "TableIdentifier",
+            "values": Array [
+              Object {
+                "nextPos": 148,
+                "pos": 135,
+                "tag": "UnquotedIdentifier",
+                "value": "levelisations",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "levelisations",
       "type": "Table",
     },
   ],

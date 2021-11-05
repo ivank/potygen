@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
-"export interface Params {
+"import { Json } from \\"@psql-ts/query\\";
+export interface Params {
 }
-export interface Result {
+export interface Result<TJson_col = unknown, TJsonb_col = unknown> {
     id: number;
     not_null: number;
     default_not_null: number;
@@ -35,8 +36,8 @@ export interface Result {
         seconds: number;
         milliseconds: number;
     };
-    json_col?: unknown;
-    jsonb_col?: unknown;
+    json_col?: Json<TJson_col>;
+    jsonb_col?: Json<TJsonb_col>;
     line_col?: string;
     lseg_col?: string;
     macaddr_col?: string;
@@ -64,9 +65,9 @@ export interface Result {
     uuid_col?: string;
     xml_col?: string;
 }
-export interface Query {
+export interface Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: Params;
-    result: Result;
+    result: Result<TJson_col, TJsonb_col>;
 }
 "
 `;

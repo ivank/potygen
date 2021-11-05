@@ -29,6 +29,7 @@ import {
 } from '@psql-ts/ast';
 import { isFilter } from '@psql-ts/ast/dist/grammar.guards';
 import { ExpressionListTag } from '@psql-ts/ast/dist/grammar.types';
+import { TypeLoadColumn, TypeUnknown } from '.';
 import {
   typeUnknown,
   binaryOperatorTypes,
@@ -118,16 +119,24 @@ export const isTypeEqual = (a: Type, b: Type): boolean => {
 const coalesce = (...types: Type[]): Type => types.find((item) => item.type !== 'Unknown') ?? typeUnknown;
 
 export const toContantBinaryOperatorVariant = (
-  availableTypes: Array<[TypeConstant, TypeConstant, TypeConstant]>,
+  availableTypes: Array<[left: TypeConstant, rigth: TypeConstant, result: TypeConstant]>,
   left: TypeConstant,
   right: TypeConstant,
   index: 0 | 1 | 2,
 ): TypeConstant => {
-  const filsteredAvailableTypes = availableTypes.filter(
+  const matchedAvailableTypes = availableTypes.filter(
+    (type) => isTypeEqual(type[0], left) && isTypeEqual(type[1], right),
+  );
+
+  if (matchedAvailableTypes.length === 1) {
+    return matchedAvailableTypes[0][index];
+  }
+
+  const looseAvailableTypes = availableTypes.filter(
     (type) => isTypeEqual(type[0], left) || isTypeEqual(type[1], right),
   );
 
-  return filsteredAvailableTypes.length === 1 ? filsteredAvailableTypes[0][index] : { type: 'Unknown' };
+  return looseAvailableTypes.length === 1 ? looseAvailableTypes[0][index] : { type: 'Unknown' };
 };
 
 export const toPgType = (type: string): TypeConstant | undefined => pgTypes[pgTypeAliases[type] ?? type];
@@ -338,17 +347,17 @@ const toQueryResults = (sql: AstTag): { from?: TableTag; items: Array<SelectList
       };
     case 'Update':
       return {
-        from: sql.values.filter(isTable)[0],
+        from: sql.values.find(isTable),
         items: sql.values.filter(isReturning).flatMap((item) => item.values),
       };
     case 'Insert':
       return {
-        from: sql.values.filter(isTable)[0],
+        from: sql.values.find(isTable),
         items: sql.values.filter(isReturning).flatMap((item) => item.values),
       };
     case 'Delete':
       return {
-        from: sql.values.filter(isTable)[0],
+        from: sql.values.find(isTable),
         items: sql.values.filter(isReturning).flatMap((item) => item.values),
       };
     case 'With': {
@@ -363,7 +372,7 @@ export const toParams =
     const recur = toParams(context);
     const toTypeRecur = toType(context);
     switch (sql.tag) {
-      case 'TernaryExpression': {
+      case 'TernaryExpression':
         const arg1Type = toTypeRecur(sql.values[2]);
         const arg2Type = toTypeRecur(sql.values[4]);
         const valueType = toTypeRecur(sql.values[0]);
@@ -372,7 +381,27 @@ export const toParams =
           ...toParams({ ...context, type: coalesce(valueType, arg2Type) })(sql.values[2]),
           ...toParams({ ...context, type: coalesce(valueType, arg1Type) })(sql.values[4]),
         ];
-      }
+
+      case 'SelectList':
+        return context.columns.length
+          ? sql.values.flatMap((item, index) =>
+              toParams({ ...context, columns: [], type: context.columns[index] })(item),
+            )
+          : sql.values.flatMap(recur);
+
+      case 'SetItem':
+        const from = first(context.from?.values);
+        const setType: TypeLoadColumn | TypeUnknown = from
+          ? {
+              type: 'LoadColumn',
+              column: first(sql.values).value,
+              table: from.values.length === 2 ? from.values[1].value : from.values[0].value,
+              schema: from.values.length === 2 ? from.values[0].value : undefined,
+              sourceTag: first(sql.values),
+            }
+          : typeUnknown;
+        return toParams({ ...context, type: setType })(last(sql.values));
+
       case 'BinaryExpression': {
         switch (sql.values[1].value) {
           case 'IN':

@@ -67,6 +67,6 @@ export {
   isTypeObjectLiteralConstant,
 } from './query-interface.guards';
 
-export { SqlInterface } from './sql.types';
+export { SqlInterface, Json } from './sql.types';
 export { toParams, toQueryInterface, isTypeEqual, toContantBinaryOperatorVariant, toPgType } from './query-interface';
 export { Sql, sql } from './sql';

@@ -1,5 +1,4 @@
 import { Client } from 'pg';
-
 import { toQueryInterface } from '@psql-ts/query';
 import { parser } from '@psql-ts/ast';
 import { createPrinter, NewLineKind } from 'typescript';

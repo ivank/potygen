@@ -1,8 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Traverse Should work: __generated__/account-levelisation.update.query.queries.ts 1`] = `
+"export interface Params {
+    isAccepted: boolean;
+    id: number;
+}
+export interface Result {
+    id: number;
+    isAccepted: boolean;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Traverse Should work: __generated__/account-levelisation.upsert.query.queries.ts 1`] = `
 "export interface Params {
-    levelisationId: unknown;
+    levelisationId: number;
     start?: Date;
 }
 export interface Result {
@@ -16,10 +32,11 @@ export interface Query {
 `;
 
 exports[`Traverse Should work: __generated__/account-levelisations.query.queries.ts 1`] = `
-"export interface Params {
-    q: \\"\\";
+"import { Json } from \\"@psql-ts/query\\";
+export interface Params {
+    q: string;
     resolvedPostlev: \\"\\" | boolean;
-    state: (\\"Done\\" | \\"Pending\\") | (\\"Done\\" | \\"Pending\\");
+    state: (\\"Pending\\" | \\"Done\\");
     levelisationId: number;
     ids: number[];
     sortField: \\"totalPayment\\" | \\"vatPayment\\" | \\"generationPayment\\" | \\"exportPayment\\" | \\"generationEnergy\\" | \\"exportEnergy\\" | \\"cfrFitId\\" | \\"state\\" | \\"isAccepted\\" | \\"error\\" | \\"exportType\\";
@@ -27,12 +44,12 @@ exports[`Traverse Should work: __generated__/account-levelisations.query.queries
     limit: number;
     offset: number;
 }
-export interface Result {
+export interface Result<TGenerationPeriods = unknown, TExportPeriods = unknown, TErrorParams = unknown> {
     id: number;
     levelisationId: number;
     accountId: number;
     installationId: number;
-    state: \\"Done\\" | \\"Pending\\";
+    state: \\"Pending\\" | \\"Done\\";
     isAccepted: boolean;
     generationStartReadOn?: Date;
     generationStartReadValue?: string;
@@ -48,22 +65,22 @@ export interface Result {
     exportPercentageSplit?: string;
     exportPayment?: string;
     exportEnergy?: string;
-    exportType?: \\"Off Grid\\" | \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\" | \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\" | \\"Deemed\\" | \\"Metered Export\\" | \\"PPA\\";
-    technologyType?: \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\" | \\"PV\\" | \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\" | \\"PV\\";
+    exportType?: \\"Metered Export\\" | \\"Deemed\\" | \\"PPA\\" | \\"Off Grid\\";
+    technologyType?: \\"AD\\" | \\"H\\" | \\"PV\\" | \\"W\\" | \\"CHP\\";
     totalPayment?: string;
     vatPayment?: string;
-    generationPeriods?: unknown;
-    exportPeriods?: unknown;
-    errorCode: unknown;
-    errorParams: unknown;
+    generationPeriods?: Json<TGenerationPeriods>;
+    exportPeriods?: Json<TExportPeriods>;
+    errorCode?: string;
+    errorParams?: Json<TErrorParams>;
     cfrFitId: string;
     resolvedPostlevId?: number;
     isBacsPaymentsSent?: boolean;
     isChequePaymentsSent?: boolean;
 }
-export interface Query {
+export interface Query<TGenerationPeriods = unknown, TExportPeriods = unknown, TErrorParams = unknown> {
     params: Params;
-    result: Result;
+    result: Result<TGenerationPeriods, TExportPeriods, TErrorParams>;
 }
 "
 `;
@@ -98,7 +115,7 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/accounts.list.query.queries.ts 1`] = `
 "export interface Params {
-    q: \\"\\" | string;
+    q: string | string;
     ids: number[];
 }
 export interface Result {
@@ -125,14 +142,14 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/accounts.query.queries.ts 1`] = `
 "export interface Params {
-    q: \\"\\" | string;
+    q: string | string;
     ids: number[];
     limit: number;
     offset: number;
 }
 export interface Result {
     id: number;
-    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    state: \\"Closed\\" | \\"Dispute\\" | \\"Active\\" | \\"Pending\\";
     startOn?: Date;
     firstName: string;
     lastName: string;
@@ -186,7 +203,7 @@ export interface Query {
 exports[`Traverse Should work: __generated__/delete-accounts.query.queries.ts 1`] = `
 "export interface Params {
     type: \\"SEG\\" | \\"FIT\\";
-    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    state: \\"Closed\\" | \\"Dispute\\" | \\"Active\\" | \\"Pending\\";
 }
 export interface Result {
     id: number;
@@ -218,7 +235,7 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/installation-meter-update.query.queries.ts 1`] = `
 "export interface Params {
-    removalDate: unknown;
+    removalDate?: Date;
     meterId: number;
 }
 export interface Result {
@@ -234,6 +251,28 @@ exports[`Traverse Should work: __generated__/installations.queries.ts 1`] = `
 "export interface Params {
 }
 export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/levelisations.list.query.queries.ts 1`] = `
+"export interface Params {
+    q: string;
+    ids: number[];
+    sortField: \\"quarter\\";
+    sortOrder: \\"DESC\\" | \\"ASC\\";
+    limit: number;
+    offset: number;
+}
+export interface Result {
+    id: number;
+    quarter: string;
+    startOn: Date;
+    endOn: Date;
 }
 export interface Query {
     params: Params;
@@ -286,7 +325,7 @@ export interface Result {
     rate: string;
     startOn: Date;
     tariffCode: string;
-    tariffType: \\"SEG\\" | \\"Generation\\" | \\"Export\\";
+    tariffType: \\"Generation\\" | \\"SEG\\" | \\"Export\\";
     endOn?: Date;
 }
 export interface Query {
@@ -300,7 +339,7 @@ exports[`Traverse Should work: __generated__/read-create.query.queries.ts 1`] = 
 "export interface Params {
     meterId: number;
     reason?: string;
-    type: \\"Closing\\" | \\"Opening\\" | \\"Meter Verification\\" | \\"Quarterly\\";
+    type: \\"Quarterly\\" | \\"Meter Verification\\" | \\"Opening\\" | \\"Closing\\";
     dateOn: Date;
     submittedAt?: Date;
     value: number;
@@ -330,7 +369,7 @@ export interface Result {
     meterId: number;
     dateOn: Date;
     value: number;
-    type: \\"Closing\\" | \\"Opening\\" | \\"Meter Verification\\" | \\"Quarterly\\";
+    type: \\"Quarterly\\" | \\"Meter Verification\\" | \\"Opening\\" | \\"Closing\\";
     reason?: string;
     createdAt: Date;
     updatedAt?: Date;

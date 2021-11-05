@@ -37,6 +37,7 @@ export const pgTypeAliases: Record<string, string> = {
   int: 'int4',
   numeric: 'decimal',
   real: 'float4',
+  float: 'float4',
   smallint: 'int2',
   smallserial: 'serial2',
   serial: 'serial4',
@@ -175,7 +176,7 @@ export const unaryOperatorTypes: { [type in UnaryOperatorTag['value']]: TypeCons
 };
 
 export const binaryOperatorTypes: {
-  [type in BinaryOperatorTag['value']]: Array<[TypeConstant, TypeConstant, TypeConstant]>;
+  [type in BinaryOperatorTag['value']]: Array<[left: TypeConstant, right: TypeConstant, result: TypeConstant]>;
 } = {
   '^': [[typeNumber, typeNumber, typeNumber]],
   '%': [[typeNumber, typeNumber, typeNumber]],

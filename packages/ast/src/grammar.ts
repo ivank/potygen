@@ -12,27 +12,31 @@ import {
   Star,
   Y,
 } from '@ikerin/rd-parse';
-import {
-  BinaryExpressionTag,
-  CastableDataTypeTag,
-  ParameterTag,
-  CustomQuotedStringTag,
-  UnaryExpressionTag,
-  NodeTag,
-  EmptyLeafTag,
-  LeafTag,
-} from './grammar.types';
+import * as Tag from './grammar.types';
 
-const astNode = (tag: NodeTag['tag'], rule: Rule) =>
+/**
+ * A helper function that creates a {@link NodeTag}.
+ */
+const astNode = <T extends Tag.NodeTag>(tag: T['tag'], rule: Rule) =>
   Node(rule, (values, $, $next) => ({ tag, values, pos: $.pos, nextPos: $next.pos }));
 
-const astLeaf = (tag: LeafTag['tag'], rule: Rule) =>
+/**
+ * A helper function that creates a {@link LeafTag}.
+ */
+const astLeaf = <T extends Tag.LeafTag>(tag: T['tag'], rule: Rule) =>
   Node(rule, ([value], $, $next) => ({ tag, value, pos: $.pos, nextPos: $next.pos }));
 
-const astEmptyLeaf = (tag: EmptyLeafTag['tag'], rule: Rule) =>
+/**
+ * A helper function that creates a {@link EmptyLeafTag}.
+ */
+const astEmptyLeaf = <T extends Tag.EmptyLeafTag>(tag: T['tag'], rule: Rule) =>
   Node(rule, (_, $, $next) => ({ tag, pos: $.pos, nextPos: $next.pos }));
 
-const astUpperLeaf = (tag: LeafTag['tag'], rule: Rule) =>
+/**
+ * A helper function that creates a {@link LeafTag} and transforms the value to uppercase.
+ * Used for various SQL releated tasks that are all uppercased like "DEFAULT", "LEFT JOIN" etc.
+ */
+const astUpperLeaf = <T extends Tag.LeafTag>(tag: T['tag'], rule: Rule) =>
   Node(rule, ([value], $, $next) => ({ tag, value: value.toUpperCase(), pos: $.pos, nextPos: $next.pos }));
 
 /**
@@ -45,8 +49,21 @@ const List = (item: Rule) => All(item, Star(All(',', item)));
  */
 const MultiList = (item: Rule) => All(item, Plus(All(',', item)));
 
+/**
+ * Put brackets around the rule, e.g. (rule).
+ * If rule is missing it'll match empty brackets e.g. ()
+ */
 const Brackets = (rule?: Rule) => (rule ? All('(', rule, ')') : All('(', ')'));
+
+/**
+ * Put square brackets around the rule, e.g. [rule].
+ * If rule is missing it'll match empty brackets e.g. []
+ */
 const SquareBrackets = (rule?: Rule) => (rule ? All('[', rule, ']') : All('[', ']'));
+
+/**
+ * Optionally wrap a rule with brackets, or leave it unchanged
+ */
 const OptionalBrackets = (rule: Rule) => Any(Brackets(rule), rule);
 
 /**
@@ -60,26 +77,52 @@ const RestrictedReservedKeywords =
 const ReservedKeywords =
   /^(?:ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|DER|RETURNING)$/i;
 
-const QuotedIdentifier = astLeaf('QuotedIdentifier', QuotedNameRule);
-const UnquotedIdentifierRestricted = astLeaf('UnquotedIdentifier', IfNot(ReservedKeywords, NameRule));
-const QuotedIdentifierLessRestricted = astLeaf('UnquotedIdentifier', IfNot(RestrictedReservedKeywords, NameRule));
-const UnquotedIdentifier = astLeaf('UnquotedIdentifier', NameRule);
-const SpecificIdentifier = (rule: RegExp) => astLeaf('UnquotedIdentifier', rule);
+const QuotedIdentifier = astLeaf<Tag.QuotedIdentifierTag>('QuotedIdentifier', QuotedNameRule);
+const UnquotedIdentifierRestricted = astLeaf<Tag.UnquotedIdentifierTag>(
+  'UnquotedIdentifier',
+  IfNot(ReservedKeywords, NameRule),
+);
+const QuotedIdentifierLessRestricted = astLeaf<Tag.UnquotedIdentifierTag>(
+  'UnquotedIdentifier',
+  IfNot(RestrictedReservedKeywords, NameRule),
+);
+const UnquotedIdentifier = astLeaf<Tag.UnquotedIdentifierTag>('UnquotedIdentifier', NameRule);
 
+/**
+ * An identifier, but only allows specific names
+ */
+const SpecificIdentifier = (rule: RegExp) => astLeaf<Tag.UnquotedIdentifierTag>('UnquotedIdentifier', rule);
+
+/**
+ * Identifier
+ * https://www.postgresql.org/docs/9.1/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS
+ */
 const Identifier = Any(UnquotedIdentifier, QuotedIdentifier);
+/**
+ * Identifier but not a keyword
+ * https://www.postgresql.org/docs/9.1/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS
+ */
 const IdentifierRestricted = Any(UnquotedIdentifierRestricted, QuotedIdentifier);
+/**
+ * Identifier but not a keyword
+ * https://www.postgresql.org/docs/9.1/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS
+ * https://www.postgresql.org/docs/current/sql-keywords-appendix.html
+ */
 const IdentifierLessRestricted = Any(QuotedIdentifierLessRestricted, QuotedIdentifier);
 
-const ColumnFullyQualified = astNode('Column', All(Identifier, '.', Identifier, '.', Identifier));
-const ColumnQualified = astNode('Column', All(Identifier, '.', Identifier));
-const ColumnUnqualified = astNode('Column', IdentifierRestricted);
+const ColumnFullyQualified = astNode<Tag.ColumnTag>('Column', All(Identifier, '.', Identifier, '.', Identifier));
+const ColumnQualified = astNode<Tag.ColumnTag>('Column', All(Identifier, '.', Identifier));
+const ColumnUnqualified = astNode<Tag.ColumnTag>('Column', IdentifierRestricted);
 
+/**
+ * Columns with qualifiers
+ */
 const Column = Any(ColumnFullyQualified, ColumnQualified, ColumnUnqualified);
 
 /**
  * Parameteer
  */
-const Parameter = Node<ParameterTag>(
+const Parameter = Node<Tag.ParameterTag>(
   All(/^(\$\$|\$|\:)/, NameRule, Optional(Any(/^(\!)/, Brackets(List(UnquotedIdentifier))))),
   ([type, value, ...rest], $, $next) => ({
     tag: 'Parameter',
@@ -95,12 +138,12 @@ const Parameter = Node<ParameterTag>(
 /**
  * AS Clause
  */
-const As = astNode('As', Any(All(/^AS/i, Identifier), IdentifierLessRestricted));
+const As = astNode<Tag.AsTag>('As', Any(All(/^AS/i, Identifier), IdentifierLessRestricted));
 
 /**
  * Constant
  */
-const Null = astEmptyLeaf('Null', /^NULL/i);
+const Null = astEmptyLeaf<Tag.NullTag>('Null', /^NULL/i);
 const IntegerRule = /^([0-9]+)/;
 const NumberRule = Any(
   IntegerRule,
@@ -108,25 +151,25 @@ const NumberRule = Any(
   /^(([0-9]+)?\.[0-9]+(e([+-]?[0-9]+)?))/,
   /^([0-9]+e([+-]?[0-9]+))'/,
 );
-const String = astLeaf('String', /^'((?:''|[^'])*)'/);
-const EscapeString = astLeaf('EscapeString', All(/^E/i, String));
-const HexademicalString = astLeaf('HexademicalString', All(/^X/i, String));
-const BitString = astLeaf('BitString', All(/^B/i, String));
-const DollarQuatedString = astLeaf('DollarQuotedString', /^\$\$((?:\$\$|.)*)\$\$/);
-const CustomDollarQuatedString = Node<CustomQuotedStringTag>(
+const String = astLeaf<Tag.StringTag>('String', /^'((?:''|[^'])*)'/);
+const EscapeString = astLeaf<Tag.EscapeStringTag>('EscapeString', All(/^E/i, String));
+const HexademicalString = astLeaf<Tag.HexademicalStringTag>('HexademicalString', All(/^X/i, String));
+const BitString = astLeaf<Tag.BitStringTag>('BitString', All(/^B/i, String));
+const DollarQuatedString = astLeaf<Tag.DollarQuotedStringTag>('DollarQuotedString', /^\$\$((?:\$\$|.)*)\$\$/);
+const CustomDollarQuatedString = Node<Tag.CustomQuotedStringTag>(
   /^\$(?<delimiter>[A-Z_][A-Z0-9_]*)\$((?:\$\$|.)*)\$\k<delimiter>\$/i,
   ([delimiter, value], $, $next) => ({ tag: 'CustomQuotedString', value, delimiter, pos: $.pos, nextPos: $next.pos }),
 );
-const Integer = astLeaf('Integer', IntegerRule);
-const Number = astLeaf('Number', NumberRule);
-const Boolean = astUpperLeaf('Boolean', /^(TRUE|FALSE)/i);
+const Integer = astLeaf<Tag.IntegerTag>('Integer', IntegerRule);
+const Number = astLeaf<Tag.NumberTag>('Number', NumberRule);
+const Boolean = astUpperLeaf<Tag.BooleanTag>('Boolean', /^(TRUE|FALSE)/i);
 
 const AllTypesRule =
   /^(xml|xid|void|varchar|varbit|uuid|unknown|txid_snapshot|tsvector|tstzrange|tsrange|tsm_handler|trigger|tinterval|timetz|timestamptz|timestamp without time zone|timestamp with time zone|timestamp|time without time zone|time with time zone|time|tid|text|smgr|smallserial|smallint|serial|reltime|regtype|regrole|regprocedure|regproc|regoperator|regoper|regnamespace|regdictionary|regconfig|regclass|refcursor|record|real|query|polygon|point|pg_lsn|pg_ddl_command|path|opaque|oid|numeric|name|mrange|money|macaddr8|macaddr|lseg|line|language_handler|jsonb|json|interval|internal|integer|int8range|int8|int4range|int4|int2vector|int2|int|inet|index_am_handler|float8|float4|fdw_handler|event_trigger|double precision|daterange|date|cstring|circle|cidr|cid|character varying|character|char|bytea|bpchar|box|boolean|bool|bit varying|bit|bigserial|bigint|aclitem|abstime)/i;
 
-const ConstantType = astUpperLeaf('ConstantType', AllTypesRule);
+const ConstantType = astUpperLeaf<Tag.ConstantTypeTag>('ConstantType', AllTypesRule);
 
-const TypedConstant = astNode(
+const TypedConstant = astNode<Tag.TypedConstantTag>(
   'TypedConstant',
   All(ConstantType, Any(String, EscapeString, HexademicalString, BitString)),
 );
@@ -149,7 +192,7 @@ const SingleParamTypeRule =
   /^(bit varying|varbit|bit|character varying|varchar|character|char|interval|timestamptz|timestamp|timetz|time)/i;
 const DoubleParamTypeRule = /^(numeric|decimal)/i;
 
-const Type = astNode(
+const Type = astNode<Tag.TypeTag>(
   'Type',
   Any(
     All(
@@ -161,25 +204,28 @@ const Type = astNode(
     SpecificIdentifier(NameRule),
   ),
 );
-const Dimension = astEmptyLeaf('Dimension', SquareBrackets());
-const TypeArray = astNode('TypeArray', All(Type, Plus(Dimension)));
+const Dimension = astEmptyLeaf<Tag.DimensionTag>('Dimension', SquareBrackets());
+const TypeArray = astNode<Tag.TypeArrayTag>('TypeArray', All(Type, Plus(Dimension)));
 const AnyType = Any(TypeArray, Type);
 
 /**
  * Count
  */
 const CastableRule = (DataType: Rule) =>
-  Node<CastableDataTypeTag>(All(DataType, Optional(All('::', AnyType))), ([value, type], $, $next) => {
+  Node<Tag.CastableDataTypeTag>(All(DataType, Optional(All('::', AnyType))), ([value, type], $, $next) => {
     return type ? { tag: 'PgCast', values: [value, type], pos: $.pos, nextPos: $next.pos } : value;
   });
 
-const Count = astNode('Count', CastableRule(Any(Integer, Parameter)));
+const Count = astNode<Tag.CountTag>('Count', CastableRule(Any(Integer, Parameter)));
 
 /**
  * Table
  */
-const TableIdentifier = astNode('TableIdentifier', Any(All(Identifier, '.', Identifier), IdentifierRestricted));
-const Table = astNode('Table', All(TableIdentifier, Optional(As)));
+const TableIdentifier = astNode<Tag.TableIdentifierTag>(
+  'TableIdentifier',
+  Any(All(Identifier, '.', Identifier), IdentifierRestricted),
+);
+const Table = astNode<Tag.TableTag>('Table', All(TableIdentifier, Optional(As)));
 
 /**
  * SELECT
@@ -187,13 +233,13 @@ const Table = astNode('Table', All(TableIdentifier, Optional(As)));
  */
 
 const DistinctOnList = All(/^ON/i, Brackets(List(Column)));
-const Distinct = astNode('Distinct', All(/^DISTINCT/i, Optional(DistinctOnList)));
+const Distinct = astNode<Tag.DistinctTag>('Distinct', All(/^DISTINCT/i, Optional(DistinctOnList)));
 
-const StarSql = astEmptyLeaf('Star', '*');
+const StarSql = astEmptyLeaf<Tag.StarTag>('Star', '*');
 const StarIdentifier = Any(
-  astNode('StarIdentifier', All(Identifier, '.', Identifier, '.', StarSql)),
-  astNode('StarIdentifier', All(Identifier, '.', StarSql)),
-  astNode('StarIdentifier', StarSql),
+  astNode<Tag.StarIdentifierTag>('StarIdentifier', All(Identifier, '.', Identifier, '.', StarSql)),
+  astNode<Tag.StarIdentifierTag>('StarIdentifier', All(Identifier, '.', StarSql)),
+  astNode<Tag.StarIdentifierTag>('StarIdentifier', StarSql),
 );
 
 const UnaryOperator = /^(\+|\-|NOT|ISNULL|NOTNULL)/i;
@@ -227,34 +273,43 @@ const TernaryOperator = [[/^(BETWEEN|NOT BETWEEN|BETWEEN SYMMETRIC|NOT BETWEEN S
  * ----------------------------------------------------------------------------------------
  */
 const OrderRule = (Expression: Rule): Rule => {
-  const OrderDirection = astLeaf('OrderDirection', /^(ASC|DESC|USNIG >|USING <)/i);
-  const OrderByItem = astNode('OrderByItem', All(Expression, Optional(OrderDirection)));
-  return astNode('OrderBy', All(/^ORDER BY/i, List(OrderByItem)));
+  const OrderDirection = astLeaf<Tag.OrderDirectionTag>('OrderDirection', /^(ASC|DESC|USNIG >|USING <)/i);
+  const OrderByItem = astNode<Tag.OrderByItemTag>('OrderByItem', All(Expression, Optional(OrderDirection)));
+  return astNode<Tag.OrderByTag>('OrderBy', All(/^ORDER BY/i, List(OrderByItem)));
 };
 
 const ExpressionRule = (SelectExpression: Rule): Rule =>
   Y((ChildExpression) => {
-    const ArrayConstructor = astNode('ArrayConstructor', All(/^ARRAY/i, SquareBrackets(List(ChildExpression))));
-    const ExpressionList = astNode('ExpressionList', List(ChildExpression));
+    const ArrayConstructor = astNode<Tag.ArrayConstructorTag>(
+      'ArrayConstructor',
+      All(/^ARRAY/i, SquareBrackets(List(ChildExpression))),
+    );
+    const ExpressionList = astNode<Tag.ExpressionListTag>('ExpressionList', List(ChildExpression));
 
     /**
      * Comparation Expression
      * ----------------------------------------------------------------------------------------
      */
 
-    const ComparationTypeExists = astUpperLeaf('ComparationType', /^(EXISTS)/i);
-    const ComparationTypeInclusion = astUpperLeaf('ComparationType', /^(IN|NOT IN)/i);
-    const ComparationTypeOperator = astUpperLeaf('ComparationType', /^(ANY|SOME|ALL)/i);
+    const ComparationTypeExists = astUpperLeaf<Tag.ComparationTypeTag>('ComparationType', /^(EXISTS)/i);
+    const ComparationTypeInclusion = astUpperLeaf<Tag.ComparationTypeTag>('ComparationType', /^(IN|NOT IN)/i);
+    const ComparationTypeOperator = astUpperLeaf<Tag.ComparationTypeTag>('ComparationType', /^(ANY|SOME|ALL)/i);
 
-    const Exists = astNode('ComparationExpression', All(ComparationTypeExists, Brackets(SelectExpression)));
-    const InclusionComparation = astNode(
+    const Exists = astNode<Tag.ComparationExpressionTag>(
+      'ComparationExpression',
+      All(ComparationTypeExists, Brackets(SelectExpression)),
+    );
+    const InclusionComparation = astNode<Tag.ComparationExpressionTag>(
       'ComparationExpression',
       All(Column, ComparationTypeInclusion, Brackets(SelectExpression)),
     );
 
-    const ComparationOperator = astUpperLeaf('ComparationOperator', /^(<=|>=|<|>|<>|!=|=|AND|OR)/);
+    const ComparationOperator = astUpperLeaf<Tag.ComparationOperatorTag>(
+      'ComparationOperator',
+      /^(<=|>=|<|>|<>|!=|=|AND|OR)/,
+    );
 
-    const OperatorComparation = astNode(
+    const OperatorComparation = astNode<Tag.ComparationExpressionTag>(
       'ComparationExpression',
       All(
         Column,
@@ -264,7 +319,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       ),
     );
 
-    const RowWiseComparation = astNode(
+    const RowWiseComparation = astNode<Tag.ComparationExpressionTag>(
       'ComparationExpression',
       All(Column, ComparationOperator, Brackets(SelectExpression)),
     );
@@ -273,9 +328,9 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * Function
      * ----------------------------------------------------------------------------------------
      */
-    const FunctionDistinct = astNode('Distinct', /^DISTINCT/i);
-    const FunctionFilter = astNode('Filter', All(/^FILTER/i, Brackets(WhereRule(ChildExpression))));
-    const Function = astNode(
+    const FunctionDistinct = astNode<Tag.DistinctTag>('Distinct', /^DISTINCT/i);
+    const FunctionFilter = astNode<Tag.FilterTag>('Filter', All(/^FILTER/i, Brackets(WhereRule(ChildExpression))));
+    const Function = astNode<Tag.FunctionTag>(
       'Function',
       Any(
         SpecificIdentifier(/^(CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP)/i),
@@ -290,24 +345,30 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       ),
     );
 
-    const ArrayIndexRange = astNode('ArrayIndexRange', All(ChildExpression, ':', ChildExpression));
-    const ArrayIndex = astNode(
+    const ArrayIndexRange = astNode<Tag.ArrayIndexRangeTag>(
+      'ArrayIndexRange',
+      All(ChildExpression, ':', ChildExpression),
+    );
+    const ArrayIndex = astNode<Tag.ArrayIndexTag>(
       'ArrayIndex',
       All(Any(Column, Brackets(ChildExpression)), SquareBrackets(Any(ArrayIndexRange, ChildExpression))),
     );
 
-    const Row = astNode(
+    const Row = astNode<Tag.RowTag>(
       'Row',
       Any(All(/^ROW/i, Brackets(List(ChildExpression))), Brackets(MultiList(ChildExpression))),
     );
 
-    const ExtractField = astLeaf(
+    const ExtractField = astLeaf<Tag.ExtractFieldTag>(
       'ExtractField',
       /^(century|day|decade|dow|doy|epoch|hour|isodow|isoyear|julian|microseconds|millennium|milliseconds|minute|month|quarter|second|timezone|timezone_hour|timezone_minute|week|year)/i,
     );
-    const Extract = astNode('Extract', All(/^EXTRACT/i, Brackets(All(ExtractField, /^FROM/i, ChildExpression))));
+    const Extract = astNode<Tag.ExtractTag>(
+      'Extract',
+      All(/^EXTRACT/i, Brackets(All(ExtractField, /^FROM/i, ChildExpression))),
+    );
 
-    const WrappedExpression = astNode('WrappedExpression', Brackets(ChildExpression));
+    const WrappedExpression = astNode<Tag.WrappedExpressionTag>('WrappedExpression', Brackets(ChildExpression));
 
     /**
      * PgCast
@@ -336,17 +397,20 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * Cast
      * ----------------------------------------------------------------------------------------
      */
-    const Cast = astNode('Cast', All(/^CAST/i, Brackets(All(DataType, /^AS/i, AnyType))));
+    const Cast = astNode<Tag.CastTag>('Cast', All(/^CAST/i, Brackets(All(DataType, /^AS/i, AnyType))));
     const CastableDataType = CastableRule(DataType);
 
     /**
      * Case
      * ----------------------------------------------------------------------------------------
      */
-    const When = astNode('When', All(/^WHEN/i, ChildExpression, /^THEN/i, ChildExpression));
-    const Else = astNode('Else', All(/^ELSE/i, ChildExpression));
-    const CaseSimple = astNode('CaseSimple', All(/^CASE/i, CastableDataType, Plus(When), Optional(Else), /^END/i));
-    const CaseNormal = astNode('Case', All(/^CASE/i, Plus(When), Optional(Else), /^END/i));
+    const When = astNode<Tag.WhenTag>('When', All(/^WHEN/i, ChildExpression, /^THEN/i, ChildExpression));
+    const Else = astNode<Tag.ElseTag>('Else', All(/^ELSE/i, ChildExpression));
+    const CaseSimple = astNode<Tag.CaseSimpleTag>(
+      'CaseSimple',
+      All(/^CASE/i, CastableDataType, Plus(When), Optional(Else), /^END/i),
+    );
+    const CaseNormal = astNode<Tag.CaseTag>('Case', All(/^CASE/i, Plus(When), Optional(Else), /^END/i));
 
     const DataExpression = Any(CaseNormal, CaseSimple, CastableDataType);
 
@@ -354,11 +418,13 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * Unary Operator
      * ----------------------------------------------------------------------------------------
      */
-    const UnaryOperatorNode = astUpperLeaf('UnaryOperator', UnaryOperator);
-    const UnaryExpression = Node<UnaryExpressionTag>(All(Star(UnaryOperatorNode), DataExpression), (parts, $, $next) =>
-      parts.reduceRight((value, operator) => {
-        return { tag: 'UnaryExpression', values: [operator, value], pos: $.pos, nextPos: $next.pos };
-      }),
+    const UnaryOperatorNode = astUpperLeaf<Tag.UnaryOperatorTag>('UnaryOperator', UnaryOperator);
+    const UnaryExpression = Node<Tag.UnaryExpressionTag>(
+      All(Star(UnaryOperatorNode), DataExpression),
+      (parts, $, $next) =>
+        parts.reduceRight((value, operator) => {
+          return { tag: 'UnaryExpression', values: [operator, value], pos: $.pos, nextPos: $next.pos };
+        }),
     );
 
     /**
@@ -366,8 +432,8 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * ----------------------------------------------------------------------------------------
      */
     const BinaryExpression = BinaryOperator.reduce((Current, Operator) => {
-      const OperatorNode = astUpperLeaf('BinaryOperator', Operator);
-      return Node<BinaryExpressionTag, any>(
+      const OperatorNode = astUpperLeaf<Tag.BinaryOperatorTag>('BinaryOperator', Operator);
+      return Node<Tag.BinaryExpressionTag, any>(
         All(Current, Star(All(OperatorNode, Current))),
         LeftBinaryOperator((values, $, $next) => ({ tag: 'BinaryExpression', values, pos: $.pos, nextPos: $next.pos })),
       );
@@ -378,26 +444,32 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * ----------------------------------------------------------------------------------------
      */
     const TernaryExpression = TernaryOperator.reduce((Current, [Operator, Separator]) => {
-      const OperatorNode = astUpperLeaf('TernaryOperator', Operator);
-      const SeparatorNode = astUpperLeaf('TernarySeparator', Separator);
-      return astNode('TernaryExpression', All(Current, OperatorNode, Current, SeparatorNode, Current));
+      const OperatorNode = astUpperLeaf<Tag.TernaryOperatorTag>('TernaryOperator', Operator);
+      const SeparatorNode = astUpperLeaf<Tag.TernarySeparatorTag>('TernarySeparator', Separator);
+      return astNode<Tag.TernaryExpressionTag>(
+        'TernaryExpression',
+        All(Current, OperatorNode, Current, SeparatorNode, Current),
+      );
     }, DataExpression);
 
     return Any(Cast, TernaryExpression, BinaryExpression);
   });
 
 const FromListRule = (Select: Rule): Rule => {
-  const NamedSelect = astNode('NamedSelect', All(Brackets(Select), As));
-  return astNode('FromList', List(Any(Table, NamedSelect)));
+  const NamedSelect = astNode<Tag.NamedSelectTag>('NamedSelect', All(Brackets(Select), As));
+  return astNode<Tag.FromListTag>('FromList', List(Any(Table, NamedSelect)));
 };
 
-const WhereRule = (Expression: Rule): Rule => astNode('Where', All(/^WHERE/i, Expression));
+const WhereRule = (Expression: Rule): Rule => astNode<Tag.WhereTag>('Where', All(/^WHERE/i, Expression));
 
 const Select = Y((SelectExpression) => {
   const Expression = ExpressionRule(SelectExpression);
 
-  const SelectListItem = astNode('SelectListItem', Any(StarIdentifier, All(Any(Expression), Optional(As))));
-  const SelectList = astNode('SelectList', List(SelectListItem));
+  const SelectListItem = astNode<Tag.SelectListItemTag>(
+    'SelectListItem',
+    Any(StarIdentifier, All(Any(Expression), Optional(As))),
+  );
+  const SelectList = astNode<Tag.SelectListTag>('SelectList', List(SelectListItem));
 
   /**
    * From
@@ -409,10 +481,10 @@ const Select = Y((SelectExpression) => {
     'JoinType',
     /^(JOIN|INNER JOIN|LEFT JOIN|LEFT OUTER JOIN|RIGHT JOIN|RIGHT OUTER JOIN|FULL JOIN|FULL OUTER JOIN|CROSS JOIN)/i,
   );
-  const JoinOn = astNode('JoinOn', All(/^ON/i, Expression));
-  const JoinUsing = astNode('JoinUsing', All(/^USING/i, List(Column)));
-  const Join = astNode('Join', All(JoinType, Table, Optional(Any(JoinOn, JoinUsing))));
-  const From = astNode('From', All(/^FROM/i, FromList, Star(Join)));
+  const JoinOn = astNode<Tag.JoinOnTag>('JoinOn', All(/^ON/i, Expression));
+  const JoinUsing = astNode<Tag.JoinUsingTag>('JoinUsing', All(/^USING/i, List(Column)));
+  const Join = astNode<Tag.JoinTag>('Join', All(JoinType, Table, Optional(Any(JoinOn, JoinUsing))));
+  const From = astNode<Tag.FromTag>('From', All(/^FROM/i, FromList, Star(Join)));
 
   /**
    * Where
@@ -424,13 +496,13 @@ const Select = Y((SelectExpression) => {
    * Group By
    * ----------------------------------------------------------------------------------------
    */
-  const GroupBy = astNode('GroupBy', All(/^GROUP BY/i, OptionalBrackets(List(Column))));
+  const GroupBy = astNode<Tag.GroupByTag>('GroupBy', All(/^GROUP BY/i, OptionalBrackets(List(Column))));
 
   /**
    * Having
    * ----------------------------------------------------------------------------------------
    */
-  const Having = astNode('Having', All(/^HAVING/i, Expression));
+  const Having = astNode<Tag.HavingTag>('Having', All(/^HAVING/i, Expression));
 
   /**
    * Select Parts
@@ -449,8 +521,8 @@ const Select = Y((SelectExpression) => {
    * Combination
    * ----------------------------------------------------------------------------------------
    */
-  const CombinationType = astUpperLeaf('CombinationType', /^(UNION|INTERSECT|EXCEPT)/i);
-  const Combination = astNode('Combination', All(CombinationType, /^SELECT/i, ...SelectParts));
+  const CombinationType = astUpperLeaf<Tag.CombinationTypeTag>('CombinationType', /^(UNION|INTERSECT|EXCEPT)/i);
+  const Combination = astNode<Tag.CombinationTag>('Combination', All(CombinationType, /^SELECT/i, ...SelectParts));
 
   /**
    * Order
@@ -462,11 +534,11 @@ const Select = Y((SelectExpression) => {
    * Limit
    * ----------------------------------------------------------------------------------------
    */
-  const LimitAll = astEmptyLeaf('LimitAll', /^ALL/i);
-  const Limit = astNode('Limit', All(/^LIMIT/i, Any(Count, LimitAll)));
-  const Offset = astNode('Offset', All(/^OFFSET/i, Count));
+  const LimitAll = astEmptyLeaf<Tag.LimitAllTag>('LimitAll', /^ALL/i);
+  const Limit = astNode<Tag.LimitTag>('Limit', All(/^LIMIT/i, Any(Count, LimitAll)));
+  const Offset = astNode<Tag.OffsetTag>('Offset', All(/^OFFSET/i, Count));
 
-  return astNode(
+  return astNode<Tag.SelectTag>(
     'Select',
     All(
       /^SELECT/i,
@@ -486,24 +558,30 @@ const Select = Y((SelectExpression) => {
 const Expression = ExpressionRule(Select);
 const FromList = FromListRule(Select);
 const Where = WhereRule(Expression);
-const Columns = astNode('Columns', Brackets(List(IdentifierRestricted)));
-const Default = astEmptyLeaf('Default', /^DEFAULT/i);
+const Columns = astNode<Tag.ColumnsTag>('Columns', Brackets(List(IdentifierRestricted)));
+const Default = astEmptyLeaf<Tag.DefaultTag>('Default', /^DEFAULT/i);
 
 /**
  * Update
  * ----------------------------------------------------------------------------------------
  */
 
-const SetItem = astNode('SetItem', All(Identifier, '=', Any(Default, Expression)));
-const Values = astNode('Values', Brackets(List(Any(Default, Expression))));
-const SetList = astNode('SetList', List(SetItem));
-const SetMap = astNode('SetMap', All(Columns, '=', Any(All(Optional(/^ROW/i), Values), Brackets(Select))));
-const Set = astNode('Set', All(/^SET/i, Any(SetList, SetMap)));
+const SetItem = astNode<Tag.SetItemTag>('SetItem', All(Identifier, '=', Any(Default, Expression)));
+const Values = astNode<Tag.ValuesTag>('Values', Brackets(List(Any(Default, Expression))));
+const SetList = astNode<Tag.SetListTag>('SetList', List(SetItem));
+const SetMap = astNode<Tag.SetMapTag>(
+  'SetMap',
+  All(Columns, '=', Any(All(Optional(/^ROW/i), Values), Brackets(Select))),
+);
+const Set = astNode<Tag.SetTag>('Set', All(/^SET/i, Any(SetList, SetMap)));
 
-const UpdateFrom = astNode('UpdateFrom', All(/^FROM/i, List(FromList)));
-const ReturningListItem = astNode('ReturningListItem', Any(StarIdentifier, All(Any(Expression), Optional(As))));
-const Returning = astNode('Returning', All(/^RETURNING/i, List(ReturningListItem)));
-const Update = astNode(
+const UpdateFrom = astNode<Tag.UpdateFromTag>('UpdateFrom', All(/^FROM/i, List(FromList)));
+const ReturningListItem = astNode<Tag.ReturningListItemTag>(
+  'ReturningListItem',
+  Any(StarIdentifier, All(Any(Expression), Optional(As))),
+);
+const Returning = astNode<Tag.ReturningTag>('Returning', All(/^RETURNING/i, List(ReturningListItem)));
+const Update = astNode<Tag.UpdateTag>(
   'Update',
   All(
     /^UPDATE/i,
@@ -521,8 +599,8 @@ const Update = astNode(
  * Delete
  * ----------------------------------------------------------------------------------------
  */
-const Using = astNode('Using', All(/^USING/i, List(FromList)));
-const Delete = astNode(
+const Using = astNode<Tag.UsingTag>('Using', All(/^USING/i, List(FromList)));
+const Delete = astNode<Tag.DeleteTag>(
   'Delete',
   All(/^DELETE FROM/i, Table, Optional(Using), Optional(Where), Optional(Returning), Optional(';')),
 );
@@ -531,16 +609,16 @@ const Delete = astNode(
  * Insert
  * ----------------------------------------------------------------------------------------
  */
-const Collate = astLeaf('Collate', All(/^COLLATE/i, QuotedNameRule));
-const ConflictTarget = astNode(
+const Collate = astLeaf<Tag.CollateTag>('Collate', All(/^COLLATE/i, QuotedNameRule));
+const ConflictTarget = astNode<Tag.ConflictTargetTag>(
   'ConflictTarget',
   All(Brackets(List(All(Column, Optional(Brackets(Expression)), Optional(Collate)))), Optional(Where)),
 );
-const ConflictConstraint = astLeaf('ConflictConstraint', All(/^ON CONSTRAINT/i, Identifier));
+const ConflictConstraint = astLeaf<Tag.ConflictConstraintTag>('ConflictConstraint', All(/^ON CONSTRAINT/i, Identifier));
 
-const DoNothing = astEmptyLeaf('DoNothing', /^DO NOTHING/i);
-const DoUpdate = astNode('DoUpdate', All(/^DO UPDATE/i, Set, Optional(Where)));
-const Conflict = astNode(
+const DoNothing = astEmptyLeaf<Tag.DoNothingTag>('DoNothing', /^DO NOTHING/i);
+const DoUpdate = astNode<Tag.DoUpdateTag>('DoUpdate', All(/^DO UPDATE/i, Set, Optional(Where)));
+const Conflict = astNode<Tag.ConflictTag>(
   'Conflict',
   All(
     /^ON CONFLICT/i,
@@ -548,8 +626,8 @@ const Conflict = astNode(
   ),
 );
 
-const ValuesList = astNode('ValuesList', All(/^VALUES/i, Any(List(Values), Parameter)));
-const Insert = astNode(
+const ValuesList = astNode<Tag.ValuesListTag>('ValuesList', All(/^VALUES/i, Any(List(Values), Parameter)));
+const Insert = astNode<Tag.InsertTag>(
   'Insert',
   All(
     /^INSERT INTO/i,
@@ -568,18 +646,21 @@ const Insert = astNode(
  */
 
 const Query = Any(Select, Update, Delete, Insert);
-const CTE = astNode('CTE', All(Identifier, /^AS/, Brackets(Query)));
-const With = astNode('With', All(/^WITH/i, List(CTE), Query));
+const CTE = astNode<Tag.CTETag>('CTE', All(Identifier, /^AS/, Brackets(Query)));
+const With = astNode<Tag.WithTag>('With', All(/^WITH/i, List(CTE), Query));
 
 /**
  * Transaction
  * ----------------------------------------------------------------------------------------
  */
 
-const Begin = astEmptyLeaf('Begin', All(/^BEGIN/i, Optional(';')));
-const Savepoint = astNode('Savepoint', All(/^SAVEPOINT/i, Identifier, Optional(';')));
-const Commit = astEmptyLeaf('Commit', All(/^COMMIT/i, Optional(';')));
-const Rollback = astNode('Rollback', All(/^ROLLBACK/i, Optional(All(/^TO/i, Identifier)), Optional(';')));
+const Begin = astEmptyLeaf<Tag.BeginTag>('Begin', All(/^BEGIN/i, Optional(';')));
+const Savepoint = astNode<Tag.SavepointTag>('Savepoint', All(/^SAVEPOINT/i, Identifier, Optional(';')));
+const Commit = astEmptyLeaf<Tag.CommitTag>('Commit', All(/^COMMIT/i, Optional(';')));
+const Rollback = astNode<Tag.RollbackTag>(
+  'Rollback',
+  All(/^ROLLBACK/i, Optional(All(/^TO/i, Identifier)), Optional(';')),
+);
 
 // Ignore line comments and all whitespace
 const IgnoreComments = (node: FunctionRule) => Ignore(/^\s+|^--[^\r\n]*\n/, node);

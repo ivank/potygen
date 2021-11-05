@@ -114,3 +114,8 @@ export interface LoadedSqlFile extends ParsedSqlFile {
 }
 
 export type LoadedFile = LoadedSqlFile | LoadedTypescriptFile;
+
+export interface Logger {
+  info(args: unknown): void;
+  error(args: unknown): void;
+}
