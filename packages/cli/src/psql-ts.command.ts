@@ -18,16 +18,16 @@ export const psqlTsCommand = (logger: Logger = console): Command =>
       "A template of the path, where to generate the typescript type files. The parameters are the response from node's path.parse function",
       '{{dir}}/{{name}}.queries.ts',
     )
-    .action(async (glob, { watch, root, output, connection }) => {
+    .action(async (path, { watch, root, output, connection }) => {
       const db = new Client(connection);
       await db.connect();
       try {
-        const sqls = new SqlRead(glob, root, watch);
+        const sqls = new SqlRead({ path, root, watch, logger });
         const sink = new QueryLoader(db, root, output);
 
         await asyncPipeline(sqls, sink);
-      } catch (error) {
-        logger.error(error instanceof Error ? error.message : String(error));
+        // } catch (error) {
+        //   logger.error(String(error));
       } finally {
         await db.end();
       }

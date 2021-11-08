@@ -1,6 +1,5 @@
 import { join, normalize, sep } from 'path';
 import { Dirent, readdirSync } from 'fs';
-import { Readable } from 'stream';
 
 interface PartFilter {
   type: 'filter';

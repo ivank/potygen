@@ -13,12 +13,20 @@ import {
   SourceFile,
   isIdentifier,
 } from 'typescript';
-import { basename } from 'path';
+import { basename, relative } from 'path';
 import { parser } from '@psql-ts/ast';
 import { QueryInterface, toQueryInterface } from '@psql-ts/query';
 import { loadQueryInterfacesData, toLoadedQueryInterface } from './load';
 import { ClientBase } from 'pg';
-import { LoadedData, LoadedFile, ParsedFile, ParsedSqlFile, ParsedTypescriptFile, TemplateTagQuery } from './types';
+import {
+  LoadedData,
+  LoadedFile,
+  Logger,
+  ParsedFile,
+  ParsedSqlFile,
+  ParsedTypescriptFile,
+  TemplateTagQuery,
+} from './types';
 import { emitLoadedFile } from './emit';
 import { LoadError, ParsedSqlFileLoadError, ParsedTypescriptFileLoadError, ParseError } from './errors';
 
@@ -128,17 +136,17 @@ export class SqlRead extends Readable {
   public source: Generator<string, void, unknown>;
   public watchedFiles = new Set<string>();
 
-  constructor(public path: string, public root = '.', public watch = false) {
+  constructor(public options: { path: string; root: string; watch: boolean; logger: Logger }) {
     super({ objectMode: true });
-    this.source = glob(path, root);
+    this.source = glob(options.path, options.root);
   }
 
   next() {
     let path: IteratorResult<string>;
     while (!(path = this.source.next()).done) {
-      const parsedFile = parseFile(path.value);
-      if (parsedFile) {
-        return parsedFile;
+      const file = parseFile(path.value);
+      if (file) {
+        return file;
       }
     }
     return undefined;
@@ -146,9 +154,10 @@ export class SqlRead extends Readable {
 
   watchFile(path: string): () => void {
     return () => {
-      const parsedFile = parseFile(path);
-      if (parsedFile) {
-        this.push(parseFile);
+      const file = parseFile(path);
+      if (file) {
+        this.options.logger.info(`Processing ${relative(this.options.root ?? '.', path)}`);
+        this.push(file);
       }
     };
   }
@@ -156,12 +165,14 @@ export class SqlRead extends Readable {
   _read() {
     const next = this.next();
     if (next) {
-      if (this.watch && !this.watchedFiles.has(next.path)) {
+      if (this.options.watch && !this.watchedFiles.has(next.path)) {
         this.watchedFiles.add(next.path);
         watchFile(next.path, this.watchFile(next.path));
       }
+      this.options.logger.info(`Processing ${relative(this.options.root ?? '.', next.path)}`);
       this.push(next);
-    } else if (!this.watch) {
+    } else if (!this.options.watch) {
+      this.options.logger.info(`Done`);
       this.push(null);
     }
   }
