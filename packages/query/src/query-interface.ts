@@ -26,9 +26,9 @@ import {
   last,
   initial,
   tail,
-} from '@psql-ts/ast';
-import { isFilter } from '@psql-ts/ast/dist/grammar.guards';
-import { ExpressionListTag } from '@psql-ts/ast/dist/grammar.types';
+} from '@potygen/ast';
+import { isFilter } from '@potygen/ast/dist/grammar.guards';
+import { ExpressionListTag } from '@potygen/ast/dist/grammar.types';
 import { TypeLoadColumn, TypeUnknown } from '.';
 import {
   typeUnknown,

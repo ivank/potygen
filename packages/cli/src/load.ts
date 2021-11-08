@@ -1,4 +1,4 @@
-import { isEqual, groupBy, isNil } from '@psql-ts/ast';
+import { isEqual, groupBy, isNil } from '@potygen/ast';
 import {
   isTypeEqual,
   QueryInterface,
@@ -14,7 +14,7 @@ import {
   TypeUnionConstant,
   TypeLoadColumn,
   Param,
-} from '@psql-ts/query';
+} from '@potygen/query';
 import { ClientBase } from 'pg';
 import {
   isDataTable,

@@ -677,9 +677,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@psql-ts/ast@workspace:*, @psql-ts/ast@workspace:packages/ast":
+"@potygen/ast@workspace:*, @potygen/ast@workspace:packages/ast":
   version: 0.0.0-use.local
-  resolution: "@psql-ts/ast@workspace:packages/ast"
+  resolution: "@potygen/ast@workspace:packages/ast"
   dependencies:
     "@ikerin/rd-parse": ^3.4.4
     "@types/jest": ^26.0.14
@@ -692,13 +692,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@psql-ts/cli@workspace:packages/cli":
+"@potygen/cli@workspace:packages/cli":
   version: 0.0.0-use.local
-  resolution: "@psql-ts/cli@workspace:packages/cli"
+  resolution: "@potygen/cli@workspace:packages/cli"
   dependencies:
     "@ikerin/rd-parse": 3.4.4
-    "@psql-ts/ast": "workspace:*"
-    "@psql-ts/query": "workspace:*"
+    "@potygen/ast": "workspace:*"
+    "@potygen/query": "workspace:*"
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15
     "@types/pg": ^8.6.0
@@ -709,15 +709,17 @@ __metadata:
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
     typescript: ^4.4.3
+  bin:
+    potygen: ./scripts/potygen
   languageName: unknown
   linkType: soft
 
-"@psql-ts/query@workspace:*, @psql-ts/query@workspace:packages/query":
+"@potygen/query@workspace:*, @potygen/query@workspace:packages/query":
   version: 0.0.0-use.local
-  resolution: "@psql-ts/query@workspace:packages/query"
+  resolution: "@potygen/query@workspace:packages/query"
   dependencies:
     "@ikerin/rd-parse": 3.4.4
-    "@psql-ts/ast": "workspace:*"
+    "@potygen/ast": "workspace:*"
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15
     "@types/pg": ^8.6.1
@@ -4185,6 +4187,15 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
+"potygen@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "potygen@workspace:."
+  dependencies:
+    prettier: ^2.3.2
+    typescript: ^4.4.3
+  languageName: unknown
+  linkType: soft
+
 "prelude-ls@npm:~1.1.2":
   version: 1.1.2
   resolution: "prelude-ls@npm:1.1.2"
@@ -4786,15 +4797,6 @@ fsevents@^2.1.2:
   checksum: 19d79aec211f09b99ec3099b5b2ae2f6e9cdefe50bc91ac4c69144b6d3928a640bb6ae5b3def70c2e85a2c3d9f5ec2719921e3a59d3ca3ef4b2fd1a4656a0df3
   languageName: node
   linkType: hard
-
-"sql-ast@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "sql-ast@workspace:."
-  dependencies:
-    prettier: ^2.3.2
-    typescript: ^4.4.3
-  languageName: unknown
-  linkType: soft
 
 "ssri@npm:^8.0.0, ssri@npm:^8.0.1":
   version: 8.0.1

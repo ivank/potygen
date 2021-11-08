@@ -1,4 +1,4 @@
-import { parser, isObject, orderBy, AstTag } from '@psql-ts/ast';
+import { parser, isObject, orderBy, AstTag } from '@potygen/ast';
 import { ClientBase, QueryConfig } from 'pg';
 import { toParams } from './query-interface';
 import { typeUnknown } from './query-interface-type-instances';

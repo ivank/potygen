@@ -1,5 +1,5 @@
 import { Client } from 'pg';
-import { sql } from '@psql-ts/query';
+import { sql } from '@potygen/query';
 import { EndQuery, InitQuery, RetrieveQuery, StartQuery } from './data.spec.queries';
 
 describe('Data', () => {

@@ -1,4 +1,4 @@
-import { sql as otherSql } from '@psql-ts/query';
+import { sql as otherSql } from '@potygen/query';
 
 const sql = (test: TemplateStringsArray) => '';
 

@@ -1,7 +1,7 @@
-import { parser } from '@psql-ts/ast';
+import { parser } from '@potygen/ast';
 import { Client } from 'pg';
 import { loadQueryInterfacesData, toLoadedQueryInterface } from '../src/load';
-import { toQueryInterface } from '@psql-ts/query';
+import { toQueryInterface } from '@potygen/query';
 import { LoadedData } from '../src';
 
 let db: Client;

@@ -6,8 +6,8 @@ import { promisify } from 'util';
 import { pipeline } from 'stream';
 const asyncPipeline = promisify(pipeline);
 
-export const psqlTsCommand = (logger: Logger = console): Command =>
-  createCommand('psql-ts')
+export const potygen = (logger: Logger = console): Command =>
+  createCommand('psqpotygen')
     .description('Convert postgres query files inty typescript types')
     .argument('<glob>', 'The glob pattern to search by')
     .option('-w, --watch', 'Watch for file changes and update live')

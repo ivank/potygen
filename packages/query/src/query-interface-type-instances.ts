@@ -1,4 +1,4 @@
-import { UnaryOperatorTag, BinaryOperatorTag } from '@psql-ts/ast';
+import { UnaryOperatorTag, BinaryOperatorTag } from '@potygen/ast';
 import {
   TypeJson,
   TypeNull,

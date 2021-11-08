@@ -1,4 +1,4 @@
-import { TableTag, Tag } from '@psql-ts/ast';
+import { TableTag, Tag } from '@potygen/ast';
 
 export interface TypeLoad {
   sourceTag: Tag;

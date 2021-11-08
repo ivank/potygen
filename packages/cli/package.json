@@ -1,7 +1,7 @@
 {
-  "name": "@psql-ts/cli",
+  "name": "@potygen/cli",
   "version": "0.1.0",
-  "description": "Parse SQL files to an AST",
+  "description": "Command line interface for potygen (Postgres Typescript Generator)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
@@ -14,12 +14,12 @@
     "ts-node": "^10.1.0"
   },
   "bin": {
-    "psql-ts": "./scripts/psql-ts"
+    "potygen": "./scripts/potygen"
   },
   "dependencies": {
     "@ikerin/rd-parse": "3.4.4",
-    "@psql-ts/ast": "workspace:*",
-    "@psql-ts/query": "workspace:*",
+    "@potygen/ast": "workspace:*",
+    "@potygen/query": "workspace:*",
     "@types/pg": "^8.6.0",
     "commander": "^8.3.0",
     "pg": "^8.6.0",
@@ -29,7 +29,7 @@
     "build": "tsc --declaration",
     "test": "jest test --runInBand",
     "lint": "prettier --list-different '{src,test}/**/*.ts'",
-    "psql-ts": "yarn tsc && node -r ../../.pnp.cjs dist/cli.js"
+    "potygen": "yarn tsc && node -r ../../.pnp.cjs dist/cli.js"
   },
   "jest": {
     "preset": "../../jest.json"

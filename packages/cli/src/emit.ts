@@ -23,8 +23,8 @@ import {
   isTypeObjectLiteralConstant,
   isTypeLiteral,
   isTypeEqual,
-} from '@psql-ts/query';
-import { isUniqueBy } from '@psql-ts/ast';
+} from '@potygen/query';
+import { isUniqueBy } from '@potygen/ast';
 
 const mkdirAsync = promisify(mkdir);
 const writeFileAsync = promisify(writeFile);
@@ -137,7 +137,7 @@ const toAstImports = (names: string[]): Statement =>
         names.map((name) => factory.createImportSpecifier(undefined, factory.createIdentifier(name))),
       ),
     ),
-    factory.createStringLiteral('@psql-ts/query'),
+    factory.createStringLiteral('@potygen/query'),
   );
 
 const toLoadedQueryTypeNodes = (

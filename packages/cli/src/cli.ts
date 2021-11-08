@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import { psqlTsCommand } from './psql-ts.command';
+import { potygen } from './potygen';
 
-psqlTsCommand().parse(process.argv);
+potygen().parse(process.argv);

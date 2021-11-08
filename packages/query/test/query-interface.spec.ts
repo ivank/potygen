@@ -1,4 +1,4 @@
-import { parser } from '@psql-ts/ast';
+import { parser } from '@potygen/ast';
 import { toQueryInterface } from '../src';
 import { withParserErrors } from './helpers';
 
