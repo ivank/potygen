@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Traverse Should work: __generated__/account-levelisation.update.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql account-levelisation.update.query.sql: account-levelisation.update.query.sql 1`] = `
 "export interface Params {
     isAccepted: boolean;
     id: number;
@@ -16,7 +16,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/account-levelisation.upsert.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql account-levelisation.upsert.query.sql: account-levelisation.upsert.query.sql 1`] = `
 "export interface Params {
     levelisationId: number;
     start?: Date;
@@ -31,7 +31,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/account-levelisations.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
 "import { Json } from \\"@potygen/query\\";
 export interface Params {
     q: string;
@@ -85,7 +85,7 @@ export interface Query<TGenerationPeriods = unknown, TExportPeriods = unknown, T
 "
 `;
 
-exports[`Traverse Should work: __generated__/account-levelisations-bulk-close-accounts.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql account-levelisations-bulk-close-accounts.query.sql: account-levelisations-bulk-close-accounts.query.sql 1`] = `
 "export interface Params {
     ids: number[];
 }
@@ -99,7 +99,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/account-levelisations-set-bulk-update.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql account-levelisations-set-bulk-update.query.sql: account-levelisations-set-bulk-update.query.sql 1`] = `
 "export interface Params {
     ids: number[];
 }
@@ -113,7 +113,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/accounts.list.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
 "export interface Params {
     q: string | string;
     ids: number[];
@@ -128,19 +128,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/accounts.queries.ts 1`] = `
-"export interface Params {
-}
-export interface Result {
-}
-export interface Query {
-    params: Params;
-    result: Result;
-}
-"
-`;
-
-exports[`Traverse Should work: __generated__/accounts.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
 "export interface Params {
     q: string | string;
     ids: number[];
@@ -164,7 +152,19 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/bacs.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql accounts.sql: accounts.sql 1`] = `
+"export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Load Files Should convert complex sql bacs.query.sql: bacs.query.sql 1`] = `
 "export interface Params {
     quarter?: string;
     perPage: string;
@@ -188,7 +188,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/contracts.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql contracts.sql: contracts.sql 1`] = `
 "export interface Params {
 }
 export interface Result {
@@ -200,7 +200,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/delete-accounts.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 "export interface Params {
     type: \\"FIT\\" | \\"SEG\\";
     state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
@@ -217,7 +217,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/generation-read-data.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
 "export interface Params {
     installationId: number;
     exportDateOn: Date;
@@ -233,7 +233,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/installation-meter-update.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
 "export interface Params {
     removalDate?: Date;
     meterId: number;
@@ -247,7 +247,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/installations.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql installations.sql: installations.sql 1`] = `
 "export interface Params {
 }
 export interface Result {
@@ -259,7 +259,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/levelisations.list.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
 "export interface Params {
     q: string;
     ids: number[];
@@ -281,7 +281,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/meter-reads.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql meter-reads.sql: meter-reads.sql 1`] = `
 "export interface Params {
 }
 export interface Result {
@@ -293,7 +293,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/process-batch.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql process-batch.query.sql: process-batch.query.sql 1`] = `
 "export interface Params {
     fitIds: string[];
 }
@@ -316,7 +316,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/rates-by-tarrif-ids.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql rates-by-tarrif-ids.query.sql: rates-by-tarrif-ids.query.sql 1`] = `
 "export interface Params {
     ids: number[][];
 }
@@ -335,7 +335,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/read-create.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql read-create.query.sql: read-create.query.sql 1`] = `
 "export interface Params {
     meterId: number;
     reason?: string;
@@ -357,7 +357,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/reads-by-account-id.query.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql reads-by-account-id.query.sql: reads-by-account-id.query.sql 1`] = `
 "export interface Params {
     id: number;
     offset: string;
@@ -383,7 +383,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/tables.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql tables.sql: tables.sql 1`] = `
 "export interface Params {
     tableNames: {
         schema: unknown;
@@ -410,7 +410,7 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/tariff-rates.queries.ts 1`] = `
+exports[`Load Files Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
 "export interface Params {
 }
 export interface Result {

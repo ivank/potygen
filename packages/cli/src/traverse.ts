@@ -180,7 +180,7 @@ export class SqlRead extends Readable {
 
 export class QueryLoader extends Writable {
   public data: LoadedData[] = [];
-  constructor(public db: ClientBase, public root: string, public template: string) {
+  constructor(public options: { db: ClientBase; root: string; template: string }) {
     super({ objectMode: true });
   }
 
@@ -190,8 +190,10 @@ export class QueryLoader extends Writable {
   ): Promise<void> {
     try {
       const parsedFiles = chunks.map((file) => file.chunk);
-      this.data = await loadDataFromParsedFiles(this.db, this.data, parsedFiles);
-      await Promise.all(parsedFiles.map(loadFile(this.data)).map(emitLoadedFile(this.root, this.template)));
+      this.data = await loadDataFromParsedFiles(this.options.db, this.data, parsedFiles);
+      await Promise.all(
+        parsedFiles.map(loadFile(this.data)).map(emitLoadedFile(this.options.root, this.options.template)),
+      );
     } catch (error) {
       callback(error instanceof Error ? error : new Error(String(error)));
     }
@@ -204,8 +206,8 @@ export class QueryLoader extends Writable {
     callback: (error?: Error | null) => void,
   ): Promise<void> {
     try {
-      this.data = await loadDataFromParsedFiles(this.db, this.data, [file]);
-      await emitLoadedFile(this.root, this.template)(loadFile(this.data)(file));
+      this.data = await loadDataFromParsedFiles(this.options.db, this.data, [file]);
+      await emitLoadedFile(this.options.root, this.options.template)(loadFile(this.data)(file));
     } catch (error) {
       callback(error instanceof Error ? error : new Error(String(error)));
     }

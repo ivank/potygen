@@ -5,7 +5,16 @@ import { createPrinter, NewLineKind } from 'typescript';
 import { toTypeSource } from '../src/emit';
 import { loadQueryInterfacesData, toLoadedQueryInterface } from '../src/load';
 
+let db: Client;
+
 describe('Query Interface', () => {
+  beforeAll(async () => {
+    db = new Client({ database: 'sql-ast', user: 'sql-ast', password: 'dev-pass' });
+    await db.connect();
+  });
+
+  afterAll(() => db.end());
+
   it.each<[string, string]>([
     ['function result single', `SELECT ABS(integer_col) FROM all_types`],
     ['function result double', `SELECT ABS(ABS(integer_col)) FROM all_types`],
@@ -22,18 +31,13 @@ describe('Query Interface', () => {
       `INSERT INTO all_types(not_null, integer_col, character_col) VALUES $$vals(notNull, integerCol, characterCol)`,
     ],
   ])('Should convert %s sql (%s)', async (path, content) => {
-    const db = new Client({ database: 'sql-ast', user: 'sql-ast', password: 'dev-pass' });
     const printer = createPrinter({ newLine: NewLineKind.LineFeed });
     const ast = parser(content);
     const queryInterface = toQueryInterface(ast!);
-    try {
-      await db.connect();
-      const data = await loadQueryInterfacesData(db, [queryInterface], []);
-      const loadedQuery = toLoadedQueryInterface(data)(queryInterface);
-      const source = toTypeSource({ type: 'sql', path, content, queryInterface, loadedQuery });
-      expect(printer.printFile(source)).toMatchSnapshot();
-    } finally {
-      await db.end();
-    }
+
+    const data = await loadQueryInterfacesData(db, [queryInterface], []);
+    const loadedQuery = toLoadedQueryInterface(data)(queryInterface);
+    const source = toTypeSource({ type: 'sql', path, content, queryInterface, loadedQuery });
+    expect(printer.printFile(source)).toMatchSnapshot();
   });
 });

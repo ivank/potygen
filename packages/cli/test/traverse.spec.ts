@@ -14,8 +14,18 @@ describe('Traverse', () => {
     try {
       await db.connect();
 
-      const sqls = new SqlRead('*.sql', join(__dirname, '../../../sql'));
-      const sink = new QueryLoader(db, __dirname, join(__dirname, '__generated__/{{name}}.queries.ts'));
+      const logger = { info: jest.fn(), error: jest.fn() };
+      const sqls = new SqlRead({
+        path: '*.sql',
+        root: join(__dirname, '../../../sql'),
+        logger,
+        watch: false,
+      });
+      const sink = new QueryLoader({
+        db,
+        root: __dirname,
+        template: join(__dirname, '__generated__/{{name}}.queries.ts'),
+      });
 
       await asyncPipeline(sqls, sink);
 

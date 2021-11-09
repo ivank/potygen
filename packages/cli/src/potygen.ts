@@ -14,20 +14,20 @@ export const potygen = (logger: Logger = console): Command =>
     .option('-r, --root <root>', 'Set the root directory', process.cwd())
     .option('-c, --connection <connection>', 'Connection to the postgres database. URI', 'postgres://localhost:5432/db')
     .option(
-      '-o, --output <output>',
+      '-o, --template <template>',
       "A template of the path, where to generate the typescript type files. The parameters are the response from node's path.parse function",
       '{{dir}}/{{name}}.queries.ts',
     )
-    .action(async (path, { watch, root, output, connection }) => {
+    .action(async (path, { watch, root, template, connection }) => {
       const db = new Client(connection);
       await db.connect();
       try {
         const sqls = new SqlRead({ path, root, watch, logger });
-        const sink = new QueryLoader(db, root, output);
+        const sink = new QueryLoader({ db, root, template });
 
         await asyncPipeline(sqls, sink);
-        // } catch (error) {
-        //   logger.error(String(error));
+      } catch (error) {
+        logger.error(String(error));
       } finally {
         await db.end();
       }

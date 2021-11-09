@@ -12,9 +12,7 @@ describe('Query Interface', () => {
     await db.connect();
   });
 
-  afterAll(async () => {
-    await db.end();
-  });
+  afterAll(() => db.end());
 
   it.each<[string, string]>([
     ['function result single', `SELECT ABS(integer_col) FROM all_types`],

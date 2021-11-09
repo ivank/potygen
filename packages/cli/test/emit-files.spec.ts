@@ -1,6 +1,8 @@
 import { parser } from '@potygen/ast';
 import { toQueryInterface } from '@potygen/query';
 import { Client } from 'pg';
+import { createPrinter, NewLineKind } from 'typescript';
+import { toTypeSource } from '../src';
 import { loadQueryInterfacesData, toLoadedQueryInterface } from '../src/load';
 import { sqlFiles, withParserErrors } from './helpers';
 
@@ -14,12 +16,16 @@ describe('Load Files', () => {
 
   afterAll(() => db.end());
 
-  it.each(sqlFiles())('Should convert complex sql %s', (name, sql) =>
+  it.each(sqlFiles())('Should convert complex sql %s', (path, content) =>
     withParserErrors(async () => {
-      const ast = parser(sql);
+      const printer = createPrinter({ newLine: NewLineKind.LineFeed });
+      const ast = parser(content);
       const queryInterface = toQueryInterface(ast!);
+
       const data = await loadQueryInterfacesData(db, [queryInterface], []);
-      expect(toLoadedQueryInterface(data)(queryInterface)).toMatchSnapshot(name);
+      const loadedQuery = toLoadedQueryInterface(data)(queryInterface);
+      const source = toTypeSource({ type: 'sql', path: path, content, queryInterface, loadedQuery });
+      expect(printer.printFile(source)).toMatchSnapshot(path);
     }),
   );
 });
