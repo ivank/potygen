@@ -139,7 +139,10 @@ export const toContantBinaryOperatorVariant = (
   return looseAvailableTypes.length === 1 ? looseAvailableTypes[0][index] : { type: 'Unknown' };
 };
 
-export const toPgType = (type: string): TypeConstant | undefined => pgTypes[pgTypeAliases[type] ?? type];
+export const toPgType = (type: string): TypeConstant | undefined => {
+  const trimmedType = type.replace(/\"/g, '').toLowerCase();
+  return pgTypes[pgTypeAliases[trimmedType] ?? trimmedType];
+};
 
 const toBinaryOperatorVariant = (
   availableTypes: Array<[TypeConstant, TypeConstant, TypeConstant]>,

@@ -964,6 +964,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "npm:26.6.3"],
             ["pg", "virtual:b19b1dfb1f46980a52c955a1b0d68d369d84a16d19206255b2e576fc8d9911f9ca0e7a50774b62899565087615cc656d9f26257a94b7cb6de63950ad466be0a9#npm:8.7.1"],
             ["prettier", "npm:2.4.1"],
+            ["runtypes", "npm:6.5.0"],
             ["ts-jest", "virtual:77c252bec73257fbc9f65e3ba14492b9fb5398717306b8d6f4d1b7fdb13b952a0d7dc65ddef925a9e8b98d168d91c2bab7b03d6393dcc724fe4d86686283677a#npm:26.5.6"],
             ["ts-node", "virtual:77c252bec73257fbc9f65e3ba14492b9fb5398717306b8d6f4d1b7fdb13b952a0d7dc65ddef925a9e8b98d168d91c2bab7b03d6393dcc724fe4d86686283677a#npm:10.4.0"],
             ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=32657b"]
@@ -5242,6 +5243,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/rsvp-npm-4.8.5-09f3c6ed40-2d8ef30d8f.zip/node_modules/rsvp/",
           "packageDependencies": [
             ["rsvp", "npm:4.8.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["runtypes", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/runtypes-npm-6.5.0-c1a3561250-72f9cbd392.zip/node_modules/runtypes/",
+          "packageDependencies": [
+            ["runtypes", "npm:6.5.0"]
           ],
           "linkType": "HARD",
         }]

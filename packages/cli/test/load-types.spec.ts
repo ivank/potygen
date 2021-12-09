@@ -25,6 +25,7 @@ describe('Query Interface', () => {
     ['operators integer', `SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id`],
     ['operators string', `SELECT character_col + integer_col AS "test1" FROM all_types WHERE character_col = $text`],
     ['different result types', `SELECT * FROM all_types`],
+    ['views types', `SELECT * FROM all_types_view`],
     ['enum', `SELECT 'Pending'::account_levelisation_state`],
     ['enum column', `SELECT state FROM account_levelisations`],
     ['simple', `SELECT id, character_col FROM all_types WHERE id = :id`],

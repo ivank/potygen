@@ -15,7 +15,7 @@ export interface DataEnum {
 }
 export interface LoadedDataColumn {
   name: string;
-  isNullable: 'YES' | 'NO';
+  isNullable: string;
   enum: string;
   type: string;
 }
@@ -115,6 +115,10 @@ export interface LoadedSqlFile extends ParsedSqlFile {
 
 export type LoadedFile = LoadedSqlFile | LoadedTypescriptFile;
 
+/**
+ * A logger interface that `console` can fulfull.
+ * So we can use console by default but have an abstraction for testing
+ */
 export interface Logger {
   info(args: unknown): void;
   error(args: unknown): void;

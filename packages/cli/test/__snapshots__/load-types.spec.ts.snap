@@ -16,7 +16,7 @@ Object {
             "type": "String",
           },
         ],
-        "nullable": true,
+        "nullable": false,
         "type": "UnionConstant",
       },
     },
@@ -40,7 +40,7 @@ Object {
             "type": "Number",
           },
         ],
-        "nullable": true,
+        "nullable": false,
         "type": "UnionConstant",
       },
     },
@@ -68,7 +68,7 @@ Object {
             "type": "Number",
           },
         ],
-        "nullable": true,
+        "nullable": false,
         "type": "UnionConstant",
       },
     },
@@ -680,6 +680,396 @@ Object {
     },
     Object {
       "name": "character_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert views types sql (SELECT * FROM all_types_view) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "nullable": true,
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "not_null",
+      "type": Object {
+        "nullable": true,
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "default_not_null",
+      "type": Object {
+        "nullable": true,
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "bigint_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "bigserial_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "bit_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "bit_varying_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "boolean_col",
+      "type": Object {
+        "nullable": true,
+        "type": "Boolean",
+      },
+    },
+    Object {
+      "name": "box_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "bytea_col",
+      "type": Object {
+        "type": "Buffer",
+      },
+    },
+    Object {
+      "name": "character_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "character_varying_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "cidr_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "circle_col",
+      "type": Object {
+        "items": Array [
+          Object {
+            "name": "x",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "y",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "radius",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+        ],
+        "type": "ObjectLiteralConstant",
+      },
+    },
+    Object {
+      "name": "date_col",
+      "type": Object {
+        "nullable": true,
+        "type": "Date",
+      },
+    },
+    Object {
+      "name": "double_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "inet_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "integer_col",
+      "type": Object {
+        "nullable": true,
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "interval_col",
+      "type": Object {
+        "items": Array [
+          Object {
+            "name": "years",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "months",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "days",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "hours",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "minutes",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "seconds",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "milliseconds",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+        ],
+        "type": "ObjectLiteralConstant",
+      },
+    },
+    Object {
+      "name": "json_col",
+      "type": Object {
+        "nullable": true,
+        "type": "Json",
+      },
+    },
+    Object {
+      "name": "jsonb_col",
+      "type": Object {
+        "nullable": true,
+        "type": "Json",
+      },
+    },
+    Object {
+      "name": "line_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "lseg_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "macaddr_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "money_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "numeric_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "path_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "pg_lsn_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "point_col",
+      "type": Object {
+        "items": Array [
+          Object {
+            "name": "x",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "y",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+        ],
+        "type": "ObjectLiteralConstant",
+      },
+    },
+    Object {
+      "name": "polygon_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "real_col",
+      "type": Object {
+        "nullable": true,
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "smallint_col",
+      "type": Object {
+        "nullable": true,
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "smallserial_col",
+      "type": Object {
+        "nullable": true,
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "serial_col",
+      "type": Object {
+        "nullable": true,
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "text_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "time_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "time_with_time_zone_col",
+      "type": Object {
+        "nullable": true,
+        "type": "Date",
+      },
+    },
+    Object {
+      "name": "timestamp_col",
+      "type": Object {
+        "nullable": true,
+        "type": "Date",
+      },
+    },
+    Object {
+      "name": "timestamp_with_time_zone_col",
+      "type": Object {
+        "nullable": true,
+        "type": "Date",
+      },
+    },
+    Object {
+      "name": "tsquery_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "tsvector_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "txid_snapshot_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "uuid_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "xml_col",
       "type": Object {
         "nullable": true,
         "type": "String",

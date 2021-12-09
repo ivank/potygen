@@ -26,7 +26,6 @@ import {
 } from './guards';
 import { LoadError } from './errors';
 import {
-  LoadedDataTable,
   LoadedDataEnum,
   LoadedDataFunction,
   Data,
@@ -39,8 +38,9 @@ import {
   LoadedContext,
   LoadedParam,
 } from './types';
+import { FunctionsSqlQuery, EnumsSqlQuery, TableEnumsSqlQuery, TablesSqlQuery } from './__generated__/load.queries';
 
-const tablesSql = sql<{ params: { tableNames: { name: string; schema: string }[] }; result: LoadedDataTable }>`
+const tablesSql = sql<TablesSqlQuery>`
   SELECT
     'Table' AS "type",
     json_build_object('schema', table_schema, 'name', table_name) AS "name",
@@ -52,7 +52,7 @@ const tablesSql = sql<{ params: { tableNames: { name: string; schema: string }[]
   WHERE (table_schema, table_name) IN ($$tableNames(schema, name))
   GROUP BY columns.table_schema, columns.table_name`;
 
-const tableEnumsSql = sql<{ params: { tableNames: { name: string; schema: string }[] }; result: LoadedDataEnum }>`
+const tableEnumsSql = sql<TableEnumsSqlQuery>`
   SELECT
     'Enum' AS "type",
     pg_type.typname as "name",
@@ -67,7 +67,7 @@ const tableEnumsSql = sql<{ params: { tableNames: { name: string; schema: string
     AND pg_type.typcategory = 'E'
   GROUP BY pg_type.typname, pg_type.typcategory, pg_type.oid`;
 
-const enumsSql = sql<{ params: { enumNames: string[] }; result: LoadedDataEnum }>`
+const enumsSql = sql<EnumsSqlQuery>`
   SELECT
     'Enum' AS "type",
     pg_type.typname as "name",
@@ -78,21 +78,21 @@ const enumsSql = sql<{ params: { enumNames: string[] }; result: LoadedDataEnum }
     ON columns.data_type = 'USER-DEFINED'
     AND columns.udt_name = pg_catalog.pg_type.typname
   WHERE
-    pg_type.typname IN $$enumNames
+    pg_type.typname = ANY($enumNames)
     AND pg_type.typcategory = 'E'
   GROUP BY pg_type.typname, pg_type.typcategory, pg_type.oid`;
 
-const functionsSql = sql<{ params: { functionNames: string[] }; result: LoadedDataFunction }>`
+const functionsSql = sql<FunctionsSqlQuery>`
   SELECT
     'Function' AS "type",
     routines.routine_schema AS "schema",
-    routines.routine_name AS "name",
-    routines.data_type AS "returnType",
-    routines.routine_definition = 'aggregate_dummy' AS "isAggregate",
+    COALESCE(routines.routine_name, '_') AS "name",
+    COALESCE(routines.data_type, 'any') AS "returnType",
+    COALESCE(routines.routine_definition = 'aggregate_dummy', FALSE) AS "isAggregate",
     JSONB_AGG(parameters.data_type ORDER BY parameters.ordinal_position ASC) AS "argTypes"
   FROM information_schema.routines
   LEFT JOIN information_schema.parameters ON parameters.specific_name = routines.specific_name
-  WHERE routine_name IN $$functionNames
+  WHERE routine_name = ANY($functionNames)
   GROUP BY (
     routines.routine_schema,
     routines.routine_name,
@@ -181,7 +181,7 @@ const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
 const loadTypeConstant = (type: string, nullable?: boolean): TypeConstant => {
   const sqlType = toPgType(type);
   if (!sqlType) {
-    throw Error(`Type '${type}' unknown`);
+    throw Error(`'${type}' was not part of the known postgres types or aliases`);
   }
   return nullable && isTypeNullable(sqlType) ? { ...sqlType, nullable } : sqlType;
 };
@@ -191,8 +191,9 @@ const dataColumnToTypeConstant = (enums: Record<string, TypeUnionConstant>, colu
     ? { ...enums[column.enum], nullable: column.isNullable === 'YES' }
     : loadTypeConstant(column.type, column.isNullable === 'YES');
 
-const toLoadedFunction = ({ returnType, argTypes, ...rest }: LoadedDataFunction): LoadedFunction => ({
+const toLoadedFunction = ({ returnType, argTypes, isAggregate, ...rest }: LoadedDataFunction): LoadedFunction => ({
   ...rest,
+  isAggregate: Boolean(isAggregate),
   returnType: loadTypeConstant(returnType),
   argTypes: argTypes.map((arg) => loadTypeConstant(arg)),
 });
@@ -264,8 +265,8 @@ const isResultSource = (isResult: boolean) => (source: LoadedSource) =>
 
 const matchTypeSource = (type: TypeLoadColumn) => (source: LoadedSource) =>
   type.table
-    ? source.type === 'Table'
-      ? source.schema === (type.schema ?? 'public') && source.name == type.table
+    ? source.type === 'Table' && type.schema
+      ? source.schema === type.schema && source.name == type.table
       : source.name === type.table
     : true;
 
@@ -363,7 +364,10 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
         return {
           type: 'UnionConstant',
           items: argTypes,
-          nullable: argTypes.some((type) => isTypeNullable(type) && type.nullable),
+          nullable: argTypes.reduce<boolean>(
+            (isNullable, type) => isNullable && isTypeNullable(type) && Boolean(type.nullable),
+            true,
+          ),
         };
       case 'Named':
         return recur(type.value);

@@ -10,6 +10,7 @@
     "@types/node": "^14.17.15",
     "jest": "^26.4.2",
     "prettier": "^2.3.2",
+    "runtypes": "^6.5.0",
     "ts-jest": "^26.4.0",
     "ts-node": "^10.1.0"
   },
@@ -26,6 +27,7 @@
     "typescript": "^4.4.3"
   },
   "scripts": {
+    "build:queries": "yarn potygen --files 'src/**/*.ts' --template 'src/__generated__/{{name}}.queries.ts' --connection 'postgres://sql-ast:dev-pass@localhost:5432/sql-ast'",
     "build": "tsc --declaration",
     "test": "jest test --runInBand",
     "lint": "prettier --list-different '{src,test}/**/*.ts'",

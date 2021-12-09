@@ -966,3 +966,8 @@ CREATE TABLE fit.TariffRate (
     CONSTRAINT FK_TariffRate_Tariff FOREIGN KEY ("TariffId") REFERENCES fit.Tariff("TariffId"),
     PRIMARY KEY ("TariffRateId")
 );
+
+CREATE VIEW all_types_view AS
+    SELECT *
+    FROM all_types
+    WHERE boolean_col IS NOT NULL;

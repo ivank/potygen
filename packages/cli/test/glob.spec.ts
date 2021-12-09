@@ -2,6 +2,7 @@ import { join } from 'path';
 import { glob } from '../src';
 
 const cwd = (path: string) => join(__dirname, path);
+const sql = (path: string) => join(__dirname, '../../../sql/', path);
 
 describe('Glob', () => {
   it.each<[string, string[]]>([
@@ -84,5 +85,32 @@ describe('Glob', () => {
     ],
   ])('Should glob generator %s', async (path, expected) => {
     expect(Array.from(glob(path, __dirname))).toEqual(expected);
+  });
+
+  it('Should parse route outside of current folder, when provided cwd', () => {
+    expect(Array.from(glob('*.sql', sql('.')))).toEqual([
+      sql('account-levelisation.update.query.sql'),
+      sql('account-levelisation.upsert.query.sql'),
+      sql('account-levelisations-bulk-close-accounts.query.sql'),
+      sql('account-levelisations-set-bulk-update.query.sql'),
+      sql('account-levelisations.query.sql'),
+      sql('accounts.list.query.sql'),
+      sql('accounts.query.sql'),
+      sql('accounts.sql'),
+      sql('bacs.query.sql'),
+      sql('contracts.sql'),
+      sql('delete-accounts.query.sql'),
+      sql('generation-read-data.query.sql'),
+      sql('installation-meter-update.query.sql'),
+      sql('installations.sql'),
+      sql('levelisations.list.query.sql'),
+      sql('meter-reads.sql'),
+      sql('process-batch.query.sql'),
+      sql('rates-by-tarrif-ids.query.sql'),
+      sql('read-create.query.sql'),
+      sql('reads-by-account-id.query.sql'),
+      sql('tables.sql'),
+      sql('tariff-rates.sql'),
+    ]);
   });
 });
