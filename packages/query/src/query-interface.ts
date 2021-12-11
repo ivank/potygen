@@ -7,7 +7,6 @@ import {
   TypeArrayTag,
   Tag,
   TypeTag,
-  isExpression,
   isReturning,
   ReturningListItemTag,
   SelectTag,
@@ -26,10 +25,10 @@ import {
   last,
   initial,
   tail,
+  isFilter,
+  isFunctionArg,
+  ExpressionListTag,
 } from '@potygen/ast';
-import { isFilter } from '@potygen/ast/dist/grammar.guards';
-import { ExpressionListTag } from '@potygen/ast/dist/grammar.types';
-import { TypeLoadColumn, TypeUnknown } from '.';
 import {
   typeUnknown,
   binaryOperatorTypes,
@@ -53,6 +52,8 @@ import {
   TypeLoadOperator,
   Result,
   TypeContext,
+  TypeLoadColumn,
+  TypeUnknown,
 } from './query-interface.types';
 
 const toSources =
@@ -174,6 +175,8 @@ const toType =
         return { type: 'Array', items: { type: 'Union', items: sql.values.map(recur) } };
       case 'ArrayIndex':
         return { type: 'ArrayItem', value: recur(first(sql.values)) };
+      case 'CompositeAccess':
+        return { type: 'CompositeAccess', value: recur(first(sql.values)), name: sql.values[1].value, sourceTag: sql };
       case 'WrappedExpression':
         return recur(first(sql.values));
       case 'TernaryExpression':
@@ -219,8 +222,10 @@ const toType =
           sourceTag: sql,
         };
       case 'Function':
-        const functionName = first(sql.values).value.toLowerCase();
-        const args = sql.values.filter(isExpression).map(recur);
+        const functionNameParts = first(sql.values).values;
+        const functionName = last(functionNameParts).value.toLowerCase();
+        const schema = functionNameParts.length === 2 ? functionNameParts[0].value.toLowerCase() : undefined;
+        const args = sql.values.filter(isFunctionArg).map(recur);
         switch (functionName) {
           case 'coalesce':
             return { type: 'Coalesce', items: args };
@@ -248,7 +253,7 @@ const toType =
               ),
             };
           default:
-            return { type: 'LoadFunction', name: functionName, args, sourceTag: sql };
+            return { type: 'LoadFunction', schema, name: functionName, args, sourceTag: sql };
         }
       case 'Null':
         return typeNull;
@@ -279,11 +284,13 @@ const toType =
       case 'ComparationExpression':
         return typeBoolean;
       case 'Type':
-        const typeName = first(sql.values).value.toLowerCase();
+        const typeParts = first(sql.values).values;
+        const typeName = last(typeParts).value.toLowerCase();
+        const typeSchema = typeParts.length === 2 ? typeParts[0].value : undefined;
         const pgType = toPgType(typeName);
         return pgType
           ? { type: 'Named', name: pgTypeAliases[typeName] ?? typeName, value: pgType }
-          : { type: 'LoadRecord', name: typeName, sourceTag: sql };
+          : { type: 'LoadRecord', name: typeName, schema: typeSchema, sourceTag: sql };
       case 'TypeArray':
         return Array.from({ length: tail(sql.values).length }).reduce<Type>(
           (items) => ({ type: 'Array', items }),
@@ -322,6 +329,8 @@ const toResultName = (type: Type): string => {
       return type.name;
     case 'LoadRecord':
       return 'row';
+    case 'CompositeAccess':
+      return type.name;
     default:
       return '?column?';
   }
@@ -444,14 +453,14 @@ export const toParams =
           }),
         );
       case 'Function':
-        const functionName = first(sql.values).value.toLowerCase();
+        const functionName = last(first(sql.values).values).value.toLowerCase();
         switch (functionName) {
           case 'coalesce':
           case 'greatest':
           case 'least':
             return sql.values.flatMap(recur);
           default:
-            const args = sql.values.filter(isExpression);
+            const args = sql.values.filter(isFunctionArg);
             const argType = { args: args.map(toTypeRecur), name: functionName };
 
             return args

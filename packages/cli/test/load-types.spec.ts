@@ -33,6 +33,8 @@ describe('Query Interface', () => {
     ['coalesce 2', `SELECT COALESCE(character_col, id) FROM all_types`],
     ['coalesce 3', `SELECT COALESCE(12, character_col, id) FROM all_types`],
     ['coalesce 4', `SELECT COALESCE(integer_col, character_col) FROM all_types`],
+    ['composite type from table', `SELECT (item).supplier_id FROM all_types`],
+    ['composite type from view', `SELECT (item).supplier_id FROM all_types_view`],
     ['parameter coalesce', `SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)`],
   ])('Should convert %s sql (%s)', async (_, sql) => {
     const ast = parser(sql);

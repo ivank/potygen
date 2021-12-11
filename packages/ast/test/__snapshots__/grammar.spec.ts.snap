@@ -1,5 +1,282 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Sql Should parse simple sql access expression (SELECT (ss.x).n FROM ss): access expression 1`] = `
+Object {
+  "nextPos": 23,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 15,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 15,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 15,
+              "pos": 7,
+              "tag": "CompositeAccess",
+              "values": Array [
+                Object {
+                  "nextPos": 12,
+                  "pos": 8,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 10,
+                      "pos": 8,
+                      "tag": "UnquotedIdentifier",
+                      "value": "ss",
+                    },
+                    Object {
+                      "nextPos": 12,
+                      "pos": 11,
+                      "tag": "UnquotedIdentifier",
+                      "value": "x",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 15,
+                  "pos": 14,
+                  "tag": "UnquotedIdentifier",
+                  "value": "n",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 23,
+      "pos": 16,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 23,
+          "pos": 21,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 23,
+              "pos": 21,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 23,
+                  "pos": 21,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 23,
+                      "pos": 21,
+                      "tag": "UnquotedIdentifier",
+                      "value": "ss",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql access in a range (SELECT ss.proargmodes[(ss.x).n] FROM ss): access in a range 1`] = `
+Object {
+  "nextPos": 39,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 31,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 31,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 31,
+              "pos": 7,
+              "tag": "ArrayIndex",
+              "values": Array [
+                Object {
+                  "nextPos": 21,
+                  "pos": 7,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 9,
+                      "pos": 7,
+                      "tag": "UnquotedIdentifier",
+                      "value": "ss",
+                    },
+                    Object {
+                      "nextPos": 21,
+                      "pos": 10,
+                      "tag": "UnquotedIdentifier",
+                      "value": "proargmodes",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 30,
+                  "pos": 22,
+                  "tag": "CompositeAccess",
+                  "values": Array [
+                    Object {
+                      "nextPos": 27,
+                      "pos": 23,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 25,
+                          "pos": 23,
+                          "tag": "UnquotedIdentifier",
+                          "value": "ss",
+                        },
+                        Object {
+                          "nextPos": 27,
+                          "pos": 26,
+                          "tag": "UnquotedIdentifier",
+                          "value": "x",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 30,
+                      "pos": 29,
+                      "tag": "UnquotedIdentifier",
+                      "value": "n",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 39,
+      "pos": 32,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 39,
+          "pos": 37,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 39,
+              "pos": 37,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 39,
+                  "pos": 37,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 39,
+                      "pos": 37,
+                      "tag": "UnquotedIdentifier",
+                      "value": "ss",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql all (SELECT ALL col1 FROM table1): all 1`] = `
+Object {
+  "nextPos": 27,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 15,
+      "pos": 11,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 15,
+          "pos": 11,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 15,
+              "pos": 11,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 15,
+                  "pos": 11,
+                  "tag": "UnquotedIdentifier",
+                  "value": "col1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 27,
+      "pos": 16,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 27,
+          "pos": 21,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 27,
+              "pos": 21,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 27,
+                  "pos": 21,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 27,
+                      "pos": 21,
+                      "tag": "UnquotedIdentifier",
+                      "value": "table1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql array (SELECT ARRAY[1, 2]): array 1`] = `
 Object {
   "nextPos": 18,
@@ -258,7 +535,7 @@ Object {
                 Object {
                   "nextPos": 35,
                   "pos": 29,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 35,
@@ -627,8 +904,15 @@ Object {
                     Object {
                       "nextPos": 21,
                       "pos": 15,
-                      "tag": "UnquotedIdentifier",
-                      "value": "varbit",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 21,
+                          "pos": 15,
+                          "tag": "UnquotedIdentifier",
+                          "value": "varbit",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -1516,8 +1800,197 @@ Object {
                     Object {
                       "nextPos": 22,
                       "pos": 18,
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 22,
+                          "pos": 18,
+                          "tag": "UnquotedIdentifier",
+                          "value": "int4",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql cast from function (SELECT (pg_get_expr(ad.adbin, ad.adrelid))::information_schema.character_data AS column_default FROM table1 AS ad): cast from function 1`] = `
+Object {
+  "nextPos": 113,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 95,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 95,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 77,
+              "pos": 7,
+              "tag": "PgCast",
+              "values": Array [
+                Object {
+                  "nextPos": 42,
+                  "pos": 7,
+                  "tag": "WrappedExpression",
+                  "values": Array [
+                    Object {
+                      "nextPos": 41,
+                      "pos": 8,
+                      "tag": "Function",
+                      "values": Array [
+                        Object {
+                          "nextPos": 19,
+                          "pos": 8,
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "nextPos": 19,
+                              "pos": 8,
+                              "tag": "UnquotedIdentifier",
+                              "value": "pg_get_expr",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 28,
+                          "pos": 20,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "nextPos": 22,
+                              "pos": 20,
+                              "tag": "UnquotedIdentifier",
+                              "value": "ad",
+                            },
+                            Object {
+                              "nextPos": 28,
+                              "pos": 23,
+                              "tag": "UnquotedIdentifier",
+                              "value": "adbin",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 40,
+                          "pos": 30,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "nextPos": 32,
+                              "pos": 30,
+                              "tag": "UnquotedIdentifier",
+                              "value": "ad",
+                            },
+                            Object {
+                              "nextPos": 40,
+                              "pos": 33,
+                              "tag": "UnquotedIdentifier",
+                              "value": "adrelid",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 77,
+                  "pos": 44,
+                  "tag": "Type",
+                  "values": Array [
+                    Object {
+                      "nextPos": 77,
+                      "pos": 44,
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 62,
+                          "pos": 44,
+                          "tag": "UnquotedIdentifier",
+                          "value": "information_schema",
+                        },
+                        Object {
+                          "nextPos": 77,
+                          "pos": 63,
+                          "tag": "UnquotedIdentifier",
+                          "value": "character_data",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 95,
+              "pos": 78,
+              "tag": "As",
+              "values": Array [
+                Object {
+                  "nextPos": 95,
+                  "pos": 81,
+                  "tag": "UnquotedIdentifier",
+                  "value": "column_default",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 113,
+      "pos": 96,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 113,
+          "pos": 101,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 113,
+              "pos": 101,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 107,
+                  "pos": 101,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 107,
+                      "pos": 101,
                       "tag": "UnquotedIdentifier",
-                      "value": "int4",
+                      "value": "table1",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 113,
+                  "pos": 108,
+                  "tag": "As",
+                  "values": Array [
+                    Object {
+                      "nextPos": 113,
+                      "pos": 111,
+                      "tag": "UnquotedIdentifier",
+                      "value": "ad",
                     },
                   ],
                 },
@@ -1566,8 +2039,72 @@ Object {
                     Object {
                       "nextPos": 22,
                       "pos": 18,
-                      "tag": "UnquotedIdentifier",
-                      "value": "int4",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 22,
+                          "pos": 18,
+                          "tag": "UnquotedIdentifier",
+                          "value": "int4",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql cast quoted (SELECT 'd'::"char"): cast quoted 1`] = `
+Object {
+  "nextPos": 18,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 18,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 18,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 18,
+              "pos": 7,
+              "tag": "PgCast",
+              "values": Array [
+                Object {
+                  "nextPos": 10,
+                  "pos": 7,
+                  "tag": "String",
+                  "value": "d",
+                },
+                Object {
+                  "nextPos": 18,
+                  "pos": 12,
+                  "tag": "Type",
+                  "values": Array [
+                    Object {
+                      "nextPos": 18,
+                      "pos": 12,
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 18,
+                          "pos": 12,
+                          "tag": "QuotedIdentifier",
+                          "value": "char",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -1616,10 +2153,87 @@ Object {
                     Object {
                       "nextPos": 29,
                       "pos": 22,
-                      "tag": "UnquotedIdentifier",
-                      "value": "varchar",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 29,
+                          "pos": 22,
+                          "tag": "UnquotedIdentifier",
+                          "value": "varchar",
+                        },
+                      ],
                     },
                     "20",
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql cast type with schema (SELECT CAST(id AS information_schema.sql_identifier)): cast type with schema 1`] = `
+Object {
+  "nextPos": 52,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 52,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 52,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 52,
+              "pos": 7,
+              "tag": "Cast",
+              "values": Array [
+                Object {
+                  "nextPos": 14,
+                  "pos": 12,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 14,
+                      "pos": 12,
+                      "tag": "UnquotedIdentifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 51,
+                  "pos": 18,
+                  "tag": "Type",
+                  "values": Array [
+                    Object {
+                      "nextPos": 51,
+                      "pos": 18,
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 36,
+                          "pos": 18,
+                          "tag": "UnquotedIdentifier",
+                          "value": "information_schema",
+                        },
+                        Object {
+                          "nextPos": 51,
+                          "pos": 37,
+                          "tag": "UnquotedIdentifier",
+                          "value": "sql_identifier",
+                        },
+                      ],
+                    },
                   ],
                 },
               ],
@@ -1656,8 +2270,15 @@ Object {
                 Object {
                   "nextPos": 15,
                   "pos": 7,
-                  "tag": "UnquotedIdentifier",
-                  "value": "COALESCE",
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 15,
+                      "pos": 7,
+                      "tag": "UnquotedIdentifier",
+                      "value": "COALESCE",
+                    },
+                  ],
                 },
                 Object {
                   "nextPos": 18,
@@ -1702,7 +2323,7 @@ Object {
                 Object {
                   "nextPos": 37,
                   "pos": 31,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 37,
@@ -1815,6 +2436,174 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql complex dimensions (SELECT contracts.export_type = ANY(ARRAY['Metered Export','Deemed']::installation_export_type[]) FROM contracts): complex dimensions 1`] = `
+Object {
+  "nextPos": 111,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 96,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 96,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 96,
+              "pos": 7,
+              "tag": "BinaryExpression",
+              "values": Array [
+                Object {
+                  "nextPos": 28,
+                  "pos": 7,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 16,
+                      "pos": 7,
+                      "tag": "UnquotedIdentifier",
+                      "value": "contracts",
+                    },
+                    Object {
+                      "nextPos": 28,
+                      "pos": 17,
+                      "tag": "UnquotedIdentifier",
+                      "value": "export_type",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 30,
+                  "pos": 29,
+                  "tag": "BinaryOperator",
+                  "value": "=",
+                },
+                Object {
+                  "nextPos": 96,
+                  "pos": 31,
+                  "tag": "Function",
+                  "values": Array [
+                    Object {
+                      "nextPos": 34,
+                      "pos": 31,
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 34,
+                          "pos": 31,
+                          "tag": "UnquotedIdentifier",
+                          "value": "ANY",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 95,
+                      "pos": 35,
+                      "tag": "PgCast",
+                      "values": Array [
+                        Object {
+                          "nextPos": 67,
+                          "pos": 35,
+                          "tag": "ArrayConstructor",
+                          "values": Array [
+                            Object {
+                              "nextPos": 57,
+                              "pos": 41,
+                              "tag": "String",
+                              "value": "Metered Export",
+                            },
+                            Object {
+                              "nextPos": 66,
+                              "pos": 58,
+                              "tag": "String",
+                              "value": "Deemed",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 95,
+                          "pos": 69,
+                          "tag": "TypeArray",
+                          "values": Array [
+                            Object {
+                              "nextPos": 93,
+                              "pos": 69,
+                              "tag": "Type",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 93,
+                                  "pos": 69,
+                                  "tag": "QualifiedIdentifier",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 93,
+                                      "pos": 69,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "installation_export_type",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 95,
+                              "pos": 93,
+                              "tag": "Dimension",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 111,
+      "pos": 97,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 111,
+          "pos": 102,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 111,
+              "pos": 102,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 111,
+                  "pos": 102,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 111,
+                      "pos": 102,
+                      "tag": "UnquotedIdentifier",
+                      "value": "contracts",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql const select (SELECT '2018-01-01'): const select 1`] = `
 Object {
   "nextPos": 19,
@@ -1895,7 +2684,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -1928,7 +2717,7 @@ Object {
                 Object {
                   "nextPos": 35,
                   "pos": 30,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 35,
@@ -2259,7 +3048,7 @@ Object {
         Object {
           "nextPos": 18,
           "pos": 12,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 18,
@@ -2289,7 +3078,7 @@ Object {
         Object {
           "nextPos": 18,
           "pos": 12,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 18,
@@ -2361,7 +3150,7 @@ Object {
         Object {
           "nextPos": 18,
           "pos": 12,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 18,
@@ -2438,7 +3227,7 @@ Object {
         Object {
           "nextPos": 18,
           "pos": 12,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 18,
@@ -2468,7 +3257,7 @@ Object {
                 Object {
                   "nextPos": 31,
                   "pos": 25,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 31,
@@ -2693,7 +3482,7 @@ Object {
                 Object {
                   "nextPos": 31,
                   "pos": 25,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 31,
@@ -2769,7 +3558,7 @@ Object {
             Object {
               "nextPos": 70,
               "pos": 64,
-              "tag": "TableIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "nextPos": 70,
@@ -2875,7 +3664,7 @@ Object {
                 Object {
                   "nextPos": 31,
                   "pos": 25,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 31,
@@ -2984,7 +3773,7 @@ Object {
             Object {
               "nextPos": 84,
               "pos": 78,
-              "tag": "TableIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "nextPos": 84,
@@ -3126,7 +3915,7 @@ Object {
                         Object {
                           "nextPos": 33,
                           "pos": 27,
-                          "tag": "TableIdentifier",
+                          "tag": "QualifiedIdentifier",
                           "values": Array [
                             Object {
                               "nextPos": 33,
@@ -3159,7 +3948,7 @@ Object {
             Object {
               "nextPos": 53,
               "pos": 47,
-              "tag": "TableIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "nextPos": 53,
@@ -3265,7 +4054,7 @@ Object {
                 Object {
                   "nextPos": 26,
                   "pos": 20,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 26,
@@ -3374,7 +4163,7 @@ Object {
             Object {
               "nextPos": 77,
               "pos": 71,
-              "tag": "TableIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "nextPos": 77,
@@ -3520,8 +4309,15 @@ Object {
                     Object {
                       "nextPos": 21,
                       "pos": 15,
-                      "tag": "UnquotedIdentifier",
-                      "value": "varbit",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 21,
+                          "pos": 15,
+                          "tag": "UnquotedIdentifier",
+                          "value": "varbit",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -3620,7 +4416,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -3691,7 +4487,7 @@ Object {
                     Object {
                       "nextPos": 48,
                       "pos": 42,
-                      "tag": "TableIdentifier",
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
                           "nextPos": 48,
@@ -3784,7 +4580,7 @@ Object {
                 Object {
                   "nextPos": 29,
                   "pos": 23,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 29,
@@ -3876,7 +4672,7 @@ Object {
                     Object {
                       "nextPos": 66,
                       "pos": 60,
-                      "tag": "TableIdentifier",
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
                           "nextPos": 66,
@@ -4060,7 +4856,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -4176,7 +4972,7 @@ Object {
                                 Object {
                                   "nextPos": 34,
                                   "pos": 29,
-                                  "tag": "TableIdentifier",
+                                  "tag": "QualifiedIdentifier",
                                   "values": Array [
                                     Object {
                                       "nextPos": 34,
@@ -4267,7 +5063,7 @@ Object {
                 Object {
                   "nextPos": 19,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 19,
@@ -4333,7 +5129,7 @@ Object {
                                 Object {
                                   "nextPos": 41,
                                   "pos": 36,
-                                  "tag": "TableIdentifier",
+                                  "tag": "QualifiedIdentifier",
                                   "values": Array [
                                     Object {
                                       "nextPos": 41,
@@ -4424,7 +5220,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -4507,7 +5303,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -4590,7 +5386,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -4673,7 +5469,7 @@ Object {
                 Object {
                   "nextPos": 25,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -4749,7 +5545,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -4782,7 +5578,7 @@ Object {
                 Object {
                   "nextPos": 34,
                   "pos": 29,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 34,
@@ -4852,7 +5648,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -4885,7 +5681,7 @@ Object {
                 Object {
                   "nextPos": 40,
                   "pos": 35,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 40,
@@ -4929,8 +5725,15 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 7,
-                  "tag": "UnquotedIdentifier",
-                  "value": "MY_FUNCTION",
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 18,
+                      "pos": 7,
+                      "tag": "UnquotedIdentifier",
+                      "value": "MY_FUNCTION",
+                    },
+                  ],
                 },
                 Object {
                   "nextPos": 21,
@@ -4975,7 +5778,7 @@ Object {
                 Object {
                   "nextPos": 40,
                   "pos": 34,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 40,
@@ -5009,7 +5812,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -5050,8 +5853,15 @@ Object {
                     Object {
                       "nextPos": 36,
                       "pos": 25,
-                      "tag": "UnquotedIdentifier",
-                      "value": "MY_FUNCTION",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 36,
+                          "pos": 25,
+                          "tag": "UnquotedIdentifier",
+                          "value": "MY_FUNCTION",
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 39,
@@ -5182,7 +5992,7 @@ Object {
                 Object {
                   "nextPos": 21,
                   "pos": 15,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 21,
@@ -5324,7 +6134,7 @@ Object {
                 Object {
                   "nextPos": 21,
                   "pos": 15,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 21,
@@ -5485,8 +6295,15 @@ Object {
                 Object {
                   "nextPos": 16,
                   "pos": 7,
-                  "tag": "UnquotedIdentifier",
-                  "value": "ARRAY_AGG",
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 16,
+                      "pos": 7,
+                      "tag": "UnquotedIdentifier",
+                      "value": "ARRAY_AGG",
+                    },
+                  ],
                 },
                 Object {
                   "nextPos": 19,
@@ -5558,7 +6375,7 @@ Object {
                 Object {
                   "nextPos": 51,
                   "pos": 45,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 51,
@@ -5604,6 +6421,126 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql function with star (SELECT information_schema._pg_truetypmod(a.*, t.*) FROM table1): function with star 1`] = `
+Object {
+  "nextPos": 62,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 50,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 50,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 50,
+              "pos": 7,
+              "tag": "Function",
+              "values": Array [
+                Object {
+                  "nextPos": 40,
+                  "pos": 7,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 25,
+                      "pos": 7,
+                      "tag": "UnquotedIdentifier",
+                      "value": "information_schema",
+                    },
+                    Object {
+                      "nextPos": 40,
+                      "pos": 26,
+                      "tag": "UnquotedIdentifier",
+                      "value": "_pg_truetypmod",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 44,
+                  "pos": 41,
+                  "tag": "StarIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 42,
+                      "pos": 41,
+                      "tag": "UnquotedIdentifier",
+                      "value": "a",
+                    },
+                    Object {
+                      "nextPos": 44,
+                      "pos": 43,
+                      "tag": "Star",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 49,
+                  "pos": 46,
+                  "tag": "StarIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 47,
+                      "pos": 46,
+                      "tag": "UnquotedIdentifier",
+                      "value": "t",
+                    },
+                    Object {
+                      "nextPos": 49,
+                      "pos": 48,
+                      "tag": "Star",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 62,
+      "pos": 51,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 62,
+          "pos": 56,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 62,
+              "pos": 56,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 62,
+                  "pos": 56,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 62,
+                      "pos": 56,
+                      "tag": "UnquotedIdentifier",
+                      "value": "table1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql function with type cast (SELECT TRIM(name)::text FROM table1): function with type cast 1`] = `
 Object {
   "nextPos": 35,
@@ -5633,8 +6570,15 @@ Object {
                     Object {
                       "nextPos": 11,
                       "pos": 7,
-                      "tag": "UnquotedIdentifier",
-                      "value": "TRIM",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 11,
+                          "pos": 7,
+                          "tag": "UnquotedIdentifier",
+                          "value": "TRIM",
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 16,
@@ -5659,8 +6603,15 @@ Object {
                     Object {
                       "nextPos": 23,
                       "pos": 19,
-                      "tag": "UnquotedIdentifier",
-                      "value": "text",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 23,
+                          "pos": 19,
+                          "tag": "UnquotedIdentifier",
+                          "value": "text",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -5688,7 +6639,7 @@ Object {
                 Object {
                   "nextPos": 35,
                   "pos": 29,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 35,
@@ -5758,7 +6709,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -5848,7 +6799,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -5986,7 +6937,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -6019,7 +6970,7 @@ Object {
                 Object {
                   "nextPos": 35,
                   "pos": 30,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 35,
@@ -6053,7 +7004,7 @@ Object {
         Object {
           "nextPos": 18,
           "pos": 12,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 18,
@@ -6147,7 +7098,7 @@ Object {
         Object {
           "nextPos": 18,
           "pos": 12,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 18,
@@ -6373,7 +7324,7 @@ Object {
         Object {
           "nextPos": 18,
           "pos": 12,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 18,
@@ -6561,7 +7512,7 @@ Object {
         Object {
           "nextPos": 18,
           "pos": 12,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 18,
@@ -6629,7 +7580,7 @@ Object {
         Object {
           "nextPos": 18,
           "pos": 12,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 18,
@@ -6784,7 +7735,7 @@ Object {
         Object {
           "nextPos": 18,
           "pos": 12,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 18,
@@ -6843,7 +7794,7 @@ Object {
         Object {
           "nextPos": 18,
           "pos": 12,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 18,
@@ -6984,7 +7935,7 @@ Object {
         Object {
           "nextPos": 18,
           "pos": 12,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 18,
@@ -7066,7 +8017,7 @@ Object {
                     Object {
                       "nextPos": 45,
                       "pos": 39,
-                      "tag": "TableIdentifier",
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
                           "nextPos": 45,
@@ -7118,7 +8069,7 @@ Object {
                 Object {
                   "nextPos": 31,
                   "pos": 25,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 31,
@@ -7194,7 +8145,7 @@ Object {
             Object {
               "nextPos": 70,
               "pos": 64,
-              "tag": "TableIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "nextPos": 70,
@@ -7255,7 +8206,7 @@ Object {
                         Object {
                           "nextPos": 88,
                           "pos": 85,
-                          "tag": "TableIdentifier",
+                          "tag": "QualifiedIdentifier",
                           "values": Array [
                             Object {
                               "nextPos": 88,
@@ -7309,7 +8260,7 @@ Object {
                 Object {
                   "nextPos": 31,
                   "pos": 25,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 31,
@@ -7418,7 +8369,7 @@ Object {
             Object {
               "nextPos": 84,
               "pos": 78,
-              "tag": "TableIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "nextPos": 84,
@@ -7479,7 +8430,7 @@ Object {
                         Object {
                           "nextPos": 102,
                           "pos": 99,
-                          "tag": "TableIdentifier",
+                          "tag": "QualifiedIdentifier",
                           "values": Array [
                             Object {
                               "nextPos": 102,
@@ -7569,7 +8520,7 @@ Object {
                         Object {
                           "nextPos": 33,
                           "pos": 27,
-                          "tag": "TableIdentifier",
+                          "tag": "QualifiedIdentifier",
                           "values": Array [
                             Object {
                               "nextPos": 33,
@@ -7602,7 +8553,7 @@ Object {
             Object {
               "nextPos": 53,
               "pos": 47,
-              "tag": "TableIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "nextPos": 53,
@@ -7663,7 +8614,7 @@ Object {
                         Object {
                           "nextPos": 71,
                           "pos": 68,
-                          "tag": "TableIdentifier",
+                          "tag": "QualifiedIdentifier",
                           "values": Array [
                             Object {
                               "nextPos": 71,
@@ -7717,7 +8668,7 @@ Object {
                 Object {
                   "nextPos": 26,
                   "pos": 20,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 26,
@@ -7826,7 +8777,7 @@ Object {
             Object {
               "nextPos": 77,
               "pos": 71,
-              "tag": "TableIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "nextPos": 77,
@@ -7887,7 +8838,7 @@ Object {
                         Object {
                           "nextPos": 95,
                           "pos": 92,
-                          "tag": "TableIdentifier",
+                          "tag": "QualifiedIdentifier",
                           "values": Array [
                             Object {
                               "nextPos": 95,
@@ -7961,7 +8912,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -8032,7 +8983,7 @@ Object {
                     Object {
                       "nextPos": 51,
                       "pos": 45,
-                      "tag": "TableIdentifier",
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
                           "nextPos": 51,
@@ -8125,7 +9076,7 @@ Object {
                 Object {
                   "nextPos": 29,
                   "pos": 23,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 29,
@@ -8217,7 +9168,7 @@ Object {
                     Object {
                       "nextPos": 69,
                       "pos": 63,
-                      "tag": "TableIdentifier",
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
                           "nextPos": 69,
@@ -8289,7 +9240,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -8322,7 +9273,7 @@ Object {
                 Object {
                   "nextPos": 29,
                   "pos": 24,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 29,
@@ -8392,7 +9343,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -8425,7 +9376,7 @@ Object {
                 Object {
                   "nextPos": 29,
                   "pos": 24,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 29,
@@ -8508,7 +9459,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -8541,7 +9492,7 @@ Object {
                 Object {
                   "nextPos": 29,
                   "pos": 24,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 29,
@@ -8561,6 +9512,304 @@ Object {
                       "pos": 33,
                       "tag": "QuotedIdentifier",
                       "value": "myTest",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql join nested (SELECT * FROM table1 AS t1 LEFT JOIN (table2 AS t2 INNER JOIN table3 AS t3 ON t3.col1 = t2.col1) ON t2.col1 = t1.col1): join nested 1`] = `
+Object {
+  "nextPos": 117,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 8,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 8,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 8,
+              "pos": 7,
+              "tag": "StarIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 8,
+                  "pos": 7,
+                  "tag": "Star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 117,
+      "pos": 9,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 26,
+          "pos": 14,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 26,
+              "pos": 14,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 20,
+                  "pos": 14,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 20,
+                      "pos": 14,
+                      "tag": "UnquotedIdentifier",
+                      "value": "table1",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 26,
+                  "pos": 21,
+                  "tag": "As",
+                  "values": Array [
+                    Object {
+                      "nextPos": 26,
+                      "pos": 24,
+                      "tag": "UnquotedIdentifier",
+                      "value": "t1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 117,
+          "pos": 27,
+          "tag": "Join",
+          "values": Array [
+            Object {
+              "nextPos": 36,
+              "pos": 27,
+              "tag": "JoinType",
+              "value": "LEFT JOIN",
+            },
+            Object {
+              "nextPos": 96,
+              "pos": 37,
+              "tag": "TableWithJoin",
+              "values": Array [
+                Object {
+                  "nextPos": 50,
+                  "pos": 38,
+                  "tag": "Table",
+                  "values": Array [
+                    Object {
+                      "nextPos": 44,
+                      "pos": 38,
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 44,
+                          "pos": 38,
+                          "tag": "UnquotedIdentifier",
+                          "value": "table2",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 50,
+                      "pos": 45,
+                      "tag": "As",
+                      "values": Array [
+                        Object {
+                          "nextPos": 50,
+                          "pos": 48,
+                          "tag": "UnquotedIdentifier",
+                          "value": "t2",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 95,
+                  "pos": 51,
+                  "tag": "Join",
+                  "values": Array [
+                    Object {
+                      "nextPos": 61,
+                      "pos": 51,
+                      "tag": "JoinType",
+                      "value": "INNER JOIN",
+                    },
+                    Object {
+                      "nextPos": 74,
+                      "pos": 62,
+                      "tag": "Table",
+                      "values": Array [
+                        Object {
+                          "nextPos": 68,
+                          "pos": 62,
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "nextPos": 68,
+                              "pos": 62,
+                              "tag": "UnquotedIdentifier",
+                              "value": "table3",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 74,
+                          "pos": 69,
+                          "tag": "As",
+                          "values": Array [
+                            Object {
+                              "nextPos": 74,
+                              "pos": 72,
+                              "tag": "UnquotedIdentifier",
+                              "value": "t3",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 95,
+                      "pos": 75,
+                      "tag": "JoinOn",
+                      "values": Array [
+                        Object {
+                          "nextPos": 95,
+                          "pos": 78,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 85,
+                              "pos": 78,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 80,
+                                  "pos": 78,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "t3",
+                                },
+                                Object {
+                                  "nextPos": 85,
+                                  "pos": 81,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "col1",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 87,
+                              "pos": 86,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "nextPos": 95,
+                              "pos": 88,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 90,
+                                  "pos": 88,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "t2",
+                                },
+                                Object {
+                                  "nextPos": 95,
+                                  "pos": 91,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "col1",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 117,
+              "pos": 97,
+              "tag": "JoinOn",
+              "values": Array [
+                Object {
+                  "nextPos": 117,
+                  "pos": 100,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "nextPos": 107,
+                      "pos": 100,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 102,
+                          "pos": 100,
+                          "tag": "UnquotedIdentifier",
+                          "value": "t2",
+                        },
+                        Object {
+                          "nextPos": 107,
+                          "pos": 103,
+                          "tag": "UnquotedIdentifier",
+                          "value": "col1",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 109,
+                      "pos": 108,
+                      "tag": "BinaryOperator",
+                      "value": "=",
+                    },
+                    Object {
+                      "nextPos": 117,
+                      "pos": 110,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 112,
+                          "pos": 110,
+                          "tag": "UnquotedIdentifier",
+                          "value": "t1",
+                        },
+                        Object {
+                          "nextPos": 117,
+                          "pos": 113,
+                          "tag": "UnquotedIdentifier",
+                          "value": "col1",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -8624,7 +9873,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -8657,7 +9906,7 @@ Object {
                 Object {
                   "nextPos": 29,
                   "pos": 24,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 29,
@@ -8785,7 +10034,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -8818,7 +10067,7 @@ Object {
                 Object {
                   "nextPos": 29,
                   "pos": 24,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 29,
@@ -8946,7 +10195,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -8979,7 +10228,7 @@ Object {
                 Object {
                   "nextPos": 29,
                   "pos": 24,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 29,
@@ -9120,7 +10369,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -9153,7 +10402,7 @@ Object {
                 Object {
                   "nextPos": 29,
                   "pos": 24,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 29,
@@ -9294,7 +10543,7 @@ Object {
                 Object {
                   "nextPos": 25,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -9333,7 +10582,7 @@ Object {
                 Object {
                   "nextPos": 43,
                   "pos": 31,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 37,
@@ -9409,7 +10658,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -9518,7 +10767,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -9627,7 +10876,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -9756,7 +11005,7 @@ Object {
                 Object {
                   "nextPos": 26,
                   "pos": 20,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 26,
@@ -9846,7 +11095,7 @@ Object {
                 Object {
                   "nextPos": 30,
                   "pos": 24,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 30,
@@ -9936,7 +11185,7 @@ Object {
                 Object {
                   "nextPos": 27,
                   "pos": 21,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 27,
@@ -10026,7 +11275,7 @@ Object {
                 Object {
                   "nextPos": 31,
                   "pos": 25,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 31,
@@ -10096,7 +11345,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -10205,7 +11454,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -10347,7 +11596,7 @@ Object {
                 Object {
                   "nextPos": 32,
                   "pos": 26,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 32,
@@ -10437,7 +11686,7 @@ Object {
                 Object {
                   "nextPos": 33,
                   "pos": 27,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 33,
@@ -10507,7 +11756,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -10540,7 +11789,7 @@ Object {
                 Object {
                   "nextPos": 34,
                   "pos": 29,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 34,
@@ -10610,7 +11859,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -10643,7 +11892,7 @@ Object {
                 Object {
                   "nextPos": 40,
                   "pos": 35,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 40,
@@ -10893,7 +12142,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -10941,8 +12190,15 @@ Object {
                     Object {
                       "nextPos": 39,
                       "pos": 36,
-                      "tag": "UnquotedIdentifier",
-                      "value": "int",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 39,
+                          "pos": 36,
+                          "tag": "UnquotedIdentifier",
+                          "value": "int",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -10984,8 +12240,15 @@ Object {
                     Object {
                       "nextPos": 59,
                       "pos": 56,
-                      "tag": "UnquotedIdentifier",
-                      "value": "int",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 59,
+                          "pos": 56,
+                          "tag": "UnquotedIdentifier",
+                          "value": "int",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -11049,7 +12312,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -11337,7 +12600,7 @@ Object {
                 Object {
                   "nextPos": 19,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 19,
@@ -11357,7 +12620,7 @@ Object {
                 Object {
                   "nextPos": 25,
                   "pos": 21,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 25,
@@ -11440,7 +12703,7 @@ Object {
                 Object {
                   "nextPos": 19,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 19,
@@ -11473,7 +12736,7 @@ Object {
                 Object {
                   "nextPos": 32,
                   "pos": 27,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 32,
@@ -11493,7 +12756,7 @@ Object {
                 Object {
                   "nextPos": 39,
                   "pos": 34,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 39,
@@ -11576,7 +12839,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -11609,7 +12872,7 @@ Object {
                 Object {
                   "nextPos": 29,
                   "pos": 24,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 29,
@@ -11642,7 +12905,7 @@ Object {
                 Object {
                   "nextPos": 40,
                   "pos": 35,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 40,
@@ -11713,7 +12976,7 @@ Object {
                 Object {
                   "nextPos": 21,
                   "pos": 15,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 21,
@@ -11783,8 +13046,15 @@ Object {
                     Object {
                       "nextPos": 54,
                       "pos": 45,
-                      "tag": "UnquotedIdentifier",
-                      "value": "ARRAY_AGG",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 54,
+                          "pos": 45,
+                          "tag": "UnquotedIdentifier",
+                          "value": "ARRAY_AGG",
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 66,
@@ -11929,7 +13199,7 @@ Object {
                             Object {
                               "nextPos": 35,
                               "pos": 29,
-                              "tag": "TableIdentifier",
+                              "tag": "QualifiedIdentifier",
                               "values": Array [
                                 Object {
                                   "nextPos": 35,
@@ -11989,7 +13259,7 @@ Object {
                 Object {
                   "nextPos": 56,
                   "pos": 50,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 56,
@@ -12089,7 +13359,7 @@ Object {
                 Object {
                   "nextPos": 23,
                   "pos": 17,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 23,
@@ -12171,8 +13441,15 @@ Object {
                 Object {
                   "nextPos": 13,
                   "pos": 7,
-                  "tag": "UnquotedIdentifier",
-                  "value": "NULLIF",
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 13,
+                      "pos": 7,
+                      "tag": "UnquotedIdentifier",
+                      "value": "NULLIF",
+                    },
+                  ],
                 },
                 Object {
                   "nextPos": 18,
@@ -12217,7 +13494,7 @@ Object {
                 Object {
                   "nextPos": 41,
                   "pos": 35,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 41,
@@ -12343,7 +13620,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -12446,7 +13723,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -12569,7 +13846,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -12691,7 +13968,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -13004,7 +14281,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -13062,8 +14339,15 @@ Object {
                             Object {
                               "nextPos": 44,
                               "pos": 37,
-                              "tag": "UnquotedIdentifier",
-                              "value": "BOOLEAN",
+                              "tag": "QualifiedIdentifier",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 44,
+                                  "pos": 37,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "BOOLEAN",
+                                },
+                              ],
                             },
                           ],
                         },
@@ -13115,8 +14399,15 @@ Object {
                             Object {
                               "nextPos": 72,
                               "pos": 65,
-                              "tag": "UnquotedIdentifier",
-                              "value": "BOOLEAN",
+                              "tag": "QualifiedIdentifier",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 72,
+                                  "pos": 65,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "BOOLEAN",
+                                },
+                              ],
                             },
                           ],
                         },
@@ -13532,7 +14823,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -13565,7 +14856,7 @@ Object {
                 Object {
                   "nextPos": 32,
                   "pos": 26,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 32,
@@ -13795,7 +15086,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -13828,7 +15119,7 @@ Object {
                 Object {
                   "nextPos": 32,
                   "pos": 26,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 32,
@@ -14058,7 +15349,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -14091,7 +15382,7 @@ Object {
                 Object {
                   "nextPos": 32,
                   "pos": 26,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 32,
@@ -14420,7 +15711,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -14538,7 +15829,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -14656,7 +15947,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -14724,6 +16015,110 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql pg cast column schema type (SELECT test::information_schema.sql_identifier FROM table1): pg cast column schema type 1`] = `
+Object {
+  "nextPos": 58,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 46,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 46,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 46,
+              "pos": 7,
+              "tag": "PgCast",
+              "values": Array [
+                Object {
+                  "nextPos": 11,
+                  "pos": 7,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 11,
+                      "pos": 7,
+                      "tag": "UnquotedIdentifier",
+                      "value": "test",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 46,
+                  "pos": 13,
+                  "tag": "Type",
+                  "values": Array [
+                    Object {
+                      "nextPos": 46,
+                      "pos": 13,
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 31,
+                          "pos": 13,
+                          "tag": "UnquotedIdentifier",
+                          "value": "information_schema",
+                        },
+                        Object {
+                          "nextPos": 46,
+                          "pos": 32,
+                          "tag": "UnquotedIdentifier",
+                          "value": "sql_identifier",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 58,
+      "pos": 47,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 58,
+          "pos": 52,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 58,
+              "pos": 52,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 58,
+                  "pos": 52,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 58,
+                      "pos": 52,
+                      "tag": "UnquotedIdentifier",
+                      "value": "table1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql pg cast column to decimal (SELECT test::decimal(10,2) FROM table1): pg cast column to decimal 1`] = `
 Object {
   "nextPos": 38,
@@ -14766,8 +16161,15 @@ Object {
                     Object {
                       "nextPos": 20,
                       "pos": 13,
-                      "tag": "UnquotedIdentifier",
-                      "value": "decimal",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 20,
+                          "pos": 13,
+                          "tag": "UnquotedIdentifier",
+                          "value": "decimal",
+                        },
+                      ],
                     },
                     "10",
                     "2",
@@ -14797,7 +16199,7 @@ Object {
                 Object {
                   "nextPos": 38,
                   "pos": 32,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 38,
@@ -14859,8 +16261,15 @@ Object {
                     Object {
                       "nextPos": 16,
                       "pos": 13,
-                      "tag": "UnquotedIdentifier",
-                      "value": "int",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 16,
+                          "pos": 13,
+                          "tag": "UnquotedIdentifier",
+                          "value": "int",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -14888,7 +16297,7 @@ Object {
                 Object {
                   "nextPos": 28,
                   "pos": 22,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 28,
@@ -14950,8 +16359,15 @@ Object {
                     Object {
                       "nextPos": 20,
                       "pos": 13,
-                      "tag": "UnquotedIdentifier",
-                      "value": "varchar",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 20,
+                          "pos": 13,
+                          "tag": "UnquotedIdentifier",
+                          "value": "varchar",
+                        },
+                      ],
                     },
                     "10",
                   ],
@@ -14980,7 +16396,7 @@ Object {
                 Object {
                   "nextPos": 36,
                   "pos": 30,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 36,
@@ -15042,8 +16458,15 @@ Object {
                     Object {
                       "nextPos": 17,
                       "pos": 13,
-                      "tag": "UnquotedIdentifier",
-                      "value": "date",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 17,
+                          "pos": 13,
+                          "tag": "UnquotedIdentifier",
+                          "value": "date",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -15111,7 +16534,7 @@ Object {
                                 Object {
                                   "nextPos": 41,
                                   "pos": 35,
-                                  "tag": "TableIdentifier",
+                                  "tag": "QualifiedIdentifier",
                                   "values": Array [
                                     Object {
                                       "nextPos": 41,
@@ -15157,8 +16580,15 @@ Object {
                     Object {
                       "nextPos": 55,
                       "pos": 52,
-                      "tag": "UnquotedIdentifier",
-                      "value": "int",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 55,
+                          "pos": 52,
+                          "tag": "UnquotedIdentifier",
+                          "value": "int",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -15186,7 +16616,7 @@ Object {
                 Object {
                   "nextPos": 67,
                   "pos": 61,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 67,
@@ -15241,8 +16671,15 @@ Object {
                     Object {
                       "nextPos": 25,
                       "pos": 21,
-                      "tag": "UnquotedIdentifier",
-                      "value": "date",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 25,
+                          "pos": 21,
+                          "tag": "UnquotedIdentifier",
+                          "value": "date",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -15270,7 +16707,7 @@ Object {
                 Object {
                   "nextPos": 37,
                   "pos": 31,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 37,
@@ -15322,6 +16759,62 @@ Object {
                   "pos": 14,
                   "tag": "UnquotedIdentifier",
                   "value": "column1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql qualified function (SELECT information_schema._pg_char_max_length('123')): qualified function 1`] = `
+Object {
+  "nextPos": 52,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 52,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 52,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 52,
+              "pos": 7,
+              "tag": "Function",
+              "values": Array [
+                Object {
+                  "nextPos": 45,
+                  "pos": 7,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 25,
+                      "pos": 7,
+                      "tag": "UnquotedIdentifier",
+                      "value": "information_schema",
+                    },
+                    Object {
+                      "nextPos": 45,
+                      "pos": 26,
+                      "tag": "UnquotedIdentifier",
+                      "value": "_pg_char_max_length",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 51,
+                  "pos": 46,
+                  "tag": "String",
+                  "value": "123",
                 },
               ],
             },
@@ -15609,6 +17102,83 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql restricted (SELECT all_types.id FROM all_types): restricted 1`] = `
+Object {
+  "nextPos": 34,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 19,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 19,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 19,
+              "pos": 7,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 16,
+                  "pos": 7,
+                  "tag": "UnquotedIdentifier",
+                  "value": "all_types",
+                },
+                Object {
+                  "nextPos": 19,
+                  "pos": 17,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 34,
+      "pos": 20,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 34,
+          "pos": 25,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 34,
+              "pos": 25,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 34,
+                  "pos": 25,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 34,
+                      "pos": 25,
+                      "tag": "UnquotedIdentifier",
+                      "value": "all_types",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql right join (SELECT * FROM jobs RIGHT JOIN test1): right join 1`] = `
 Object {
   "nextPos": 35,
@@ -15659,7 +17229,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -15692,7 +17262,7 @@ Object {
                 Object {
                   "nextPos": 35,
                   "pos": 30,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 35,
@@ -15762,7 +17332,7 @@ Object {
                 Object {
                   "nextPos": 18,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 18,
@@ -15795,7 +17365,7 @@ Object {
                 Object {
                   "nextPos": 41,
                   "pos": 36,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 41,
@@ -16151,8 +17721,15 @@ Object {
                     Object {
                       "nextPos": 12,
                       "pos": 7,
-                      "tag": "UnquotedIdentifier",
-                      "value": "COUNT",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 12,
+                          "pos": 7,
+                          "tag": "UnquotedIdentifier",
+                          "value": "COUNT",
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 21,
@@ -16189,8 +17766,15 @@ Object {
                     Object {
                       "nextPos": 39,
                       "pos": 36,
-                      "tag": "UnquotedIdentifier",
-                      "value": "int",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 39,
+                          "pos": 36,
+                          "tag": "UnquotedIdentifier",
+                          "value": "int",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -16251,8 +17835,15 @@ Object {
                         Object {
                           "nextPos": 13,
                           "pos": 8,
-                          "tag": "UnquotedIdentifier",
-                          "value": "COUNT",
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "nextPos": 13,
+                              "pos": 8,
+                              "tag": "UnquotedIdentifier",
+                              "value": "COUNT",
+                            },
+                          ],
                         },
                         Object {
                           "nextPos": 38,
@@ -16337,8 +17928,15 @@ Object {
                     Object {
                       "nextPos": 100,
                       "pos": 97,
-                      "tag": "UnquotedIdentifier",
-                      "value": "int",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 100,
+                          "pos": 97,
+                          "tag": "UnquotedIdentifier",
+                          "value": "int",
+                        },
+                      ],
                     },
                   ],
                 },
@@ -16379,7 +17977,7 @@ Object {
                 Object {
                   "nextPos": 145,
                   "pos": 124,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 145,
@@ -16476,7 +18074,7 @@ Object {
                                 Object {
                                   "nextPos": 37,
                                   "pos": 31,
-                                  "tag": "TableIdentifier",
+                                  "tag": "QualifiedIdentifier",
                                   "values": Array [
                                     Object {
                                       "nextPos": 37,
@@ -16534,7 +18132,7 @@ Object {
                 Object {
                   "nextPos": 31,
                   "pos": 25,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 31,
@@ -16627,7 +18225,7 @@ Object {
                     Object {
                       "nextPos": 67,
                       "pos": 61,
-                      "tag": "TableIdentifier",
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
                           "nextPos": 67,
@@ -16737,7 +18335,7 @@ Object {
                 Object {
                   "nextPos": 31,
                   "pos": 25,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 31,
@@ -16863,7 +18461,7 @@ Object {
                     Object {
                       "nextPos": 81,
                       "pos": 75,
-                      "tag": "TableIdentifier",
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
                           "nextPos": 81,
@@ -17009,7 +18607,7 @@ Object {
                         Object {
                           "nextPos": 33,
                           "pos": 27,
-                          "tag": "TableIdentifier",
+                          "tag": "QualifiedIdentifier",
                           "values": Array [
                             Object {
                               "nextPos": 33,
@@ -17079,7 +18677,7 @@ Object {
                     Object {
                       "nextPos": 56,
                       "pos": 50,
-                      "tag": "TableIdentifier",
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
                           "nextPos": 56,
@@ -17189,7 +18787,7 @@ Object {
                 Object {
                   "nextPos": 26,
                   "pos": 20,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 26,
@@ -17315,7 +18913,7 @@ Object {
                     Object {
                       "nextPos": 74,
                       "pos": 68,
-                      "tag": "TableIdentifier",
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
                           "nextPos": 74,
@@ -17446,7 +19044,7 @@ Object {
                 Object {
                   "nextPos": 51,
                   "pos": 25,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 43,
@@ -17726,8 +19324,15 @@ Object {
                         Object {
                           "nextPos": 17,
                           "pos": 14,
-                          "tag": "UnquotedIdentifier",
-                          "value": "int",
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "nextPos": 17,
+                              "pos": 14,
+                              "tag": "UnquotedIdentifier",
+                              "value": "int",
+                            },
+                          ],
                         },
                       ],
                     },
@@ -17791,8 +19396,15 @@ Object {
                         Object {
                           "nextPos": 17,
                           "pos": 14,
-                          "tag": "UnquotedIdentifier",
-                          "value": "int",
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "nextPos": 17,
+                              "pos": 14,
+                              "tag": "UnquotedIdentifier",
+                              "value": "int",
+                            },
+                          ],
                         },
                       ],
                     },
@@ -17987,7 +19599,7 @@ Object {
                 Object {
                   "nextPos": 23,
                   "pos": 17,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 23,
@@ -18108,7 +19720,7 @@ Object {
                 Object {
                   "nextPos": 20,
                   "pos": 14,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 20,
@@ -18179,7 +19791,7 @@ Object {
                     Object {
                       "nextPos": 47,
                       "pos": 41,
-                      "tag": "TableIdentifier",
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
                           "nextPos": 47,
@@ -18272,7 +19884,7 @@ Object {
                 Object {
                   "nextPos": 29,
                   "pos": 23,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 29,
@@ -18364,7 +19976,7 @@ Object {
                     Object {
                       "nextPos": 65,
                       "pos": 59,
-                      "tag": "TableIdentifier",
+                      "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
                           "nextPos": 65,
@@ -18400,7 +20012,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -18489,7 +20101,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -18551,7 +20163,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -18645,7 +20257,7 @@ Object {
                                     Object {
                                       "nextPos": 55,
                                       "pos": 49,
-                                      "tag": "TableIdentifier",
+                                      "tag": "QualifiedIdentifier",
                                       "values": Array [
                                         Object {
                                           "nextPos": 55,
@@ -18689,7 +20301,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -18778,7 +20390,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -18859,7 +20471,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -18948,7 +20560,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -19059,7 +20671,7 @@ Object {
                             Object {
                               "nextPos": 63,
                               "pos": 57,
-                              "tag": "TableIdentifier",
+                              "tag": "QualifiedIdentifier",
                               "values": Array [
                                 Object {
                                   "nextPos": 63,
@@ -19157,7 +20769,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -19265,7 +20877,7 @@ Object {
                 Object {
                   "nextPos": 58,
                   "pos": 52,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 58,
@@ -19298,7 +20910,7 @@ Object {
                 Object {
                   "nextPos": 75,
                   "pos": 69,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 75,
@@ -19345,7 +20957,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -19421,7 +21033,7 @@ Object {
                 Object {
                   "nextPos": 46,
                   "pos": 40,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 46,
@@ -19455,7 +21067,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -19543,7 +21155,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -19653,7 +21265,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -19860,7 +21472,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -19991,7 +21603,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -20054,7 +21666,7 @@ Object {
         Object {
           "nextPos": 13,
           "pos": 7,
-          "tag": "TableIdentifier",
+          "tag": "QualifiedIdentifier",
           "values": Array [
             Object {
               "nextPos": 13,
@@ -20175,7 +21787,7 @@ Object {
                 Object {
                   "nextPos": 31,
                   "pos": 25,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 31,
@@ -20251,7 +21863,7 @@ Object {
             Object {
               "nextPos": 65,
               "pos": 59,
-              "tag": "TableIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "nextPos": 65,
@@ -20403,7 +22015,7 @@ Object {
                 Object {
                   "nextPos": 31,
                   "pos": 25,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 31,
@@ -20512,7 +22124,7 @@ Object {
             Object {
               "nextPos": 79,
               "pos": 73,
-              "tag": "TableIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "nextPos": 79,
@@ -20700,7 +22312,7 @@ Object {
                         Object {
                           "nextPos": 33,
                           "pos": 27,
-                          "tag": "TableIdentifier",
+                          "tag": "QualifiedIdentifier",
                           "values": Array [
                             Object {
                               "nextPos": 33,
@@ -20733,7 +22345,7 @@ Object {
             Object {
               "nextPos": 48,
               "pos": 42,
-              "tag": "TableIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "nextPos": 48,
@@ -20885,7 +22497,7 @@ Object {
                 Object {
                   "nextPos": 26,
                   "pos": 20,
-                  "tag": "TableIdentifier",
+                  "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
                       "nextPos": 26,
@@ -20994,7 +22606,7 @@ Object {
             Object {
               "nextPos": 72,
               "pos": 66,
-              "tag": "TableIdentifier",
+              "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
                   "nextPos": 72,
@@ -22440,7 +24052,7 @@ Object {
                             Object {
                               "nextPos": 35,
                               "pos": 31,
-                              "tag": "TableIdentifier",
+                              "tag": "QualifiedIdentifier",
                               "values": Array [
                                 Object {
                                   "nextPos": 35,

@@ -383,33 +383,6 @@ export interface Query {
 "
 `;
 
-exports[`Load Files Should convert complex sql tables.sql: tables.sql 1`] = `
-"export interface Params {
-    tableNames: {
-        schema: unknown;
-        name: unknown;
-    }[];
-}
-export interface Result {
-    type: \\"Table\\";
-    name: {
-        schema: string;
-        name: string;
-    };
-    columns: {
-        name: string;
-        isNullable: string;
-        enum: string;
-        type: string;
-    }[];
-}
-export interface Query {
-    params: Params;
-    result: Result;
-}
-"
-`;
-
 exports[`Load Files Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
 "export interface Params {
 }

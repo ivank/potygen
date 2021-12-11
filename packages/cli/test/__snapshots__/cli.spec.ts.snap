@@ -22,7 +22,6 @@ Array [
   "rates-by-tarrif-ids.query.queries.ts",
   "read-create.query.queries.ts",
   "reads-by-account-id.query.queries.ts",
-  "tables.queries.ts",
   "tariff-rates.queries.ts",
 ]
 `;
@@ -412,33 +411,6 @@ export interface Query {
 
 exports[`CLI Should use cli to run pipeline on sql files 22`] = `
 "export interface Params {
-    tableNames: {
-        schema: unknown;
-        name: unknown;
-    }[];
-}
-export interface Result {
-    type: \\"Table\\";
-    name: {
-        schema: string;
-        name: string;
-    };
-    columns: {
-        name: string;
-        isNullable: string;
-        enum: string;
-        type: string;
-    }[];
-}
-export interface Query {
-    params: Params;
-    result: Result;
-}
-"
-`;
-
-exports[`CLI Should use cli to run pipeline on sql files 23`] = `
-"export interface Params {
 }
 export interface Result {
 }
@@ -519,6 +491,7 @@ export interface Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
     txid_snapshot_col?: string;
     uuid_col?: string;
     xml_col?: string;
+    item: string;
 }
 export interface Sql1Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: Sql1Params;

@@ -27,6 +27,8 @@ import {
   TypeObjectLiteral,
   TypeLiteral,
   TypeToArray,
+  TypeCompositeConstant,
+  TypeCompositeAccess,
 } from './query-interface.types';
 
 const typeConstant = [
@@ -43,8 +45,18 @@ const typeConstant = [
   'LiteralNumber',
   'LiteralString',
   'LiteralBoolean',
+  'CompositeConstant',
 ];
-const typeNullable = ['String', 'Number', 'Boolean', 'Date', 'Json', 'ArrayConstant', 'UnionConstant'];
+const typeNullable = [
+  'String',
+  'Number',
+  'Boolean',
+  'Date',
+  'Json',
+  'ArrayConstant',
+  'UnionConstant',
+  'CompositeConstant',
+];
 const typeLiteral = ['String', 'Number', 'Boolean'];
 
 export const isTypeConstant = (item: Type): item is TypeConstant => typeConstant.includes(item.type);
@@ -77,3 +89,5 @@ export const isTypeUnionConstant = (type: Type): type is TypeUnionConstant => ty
 export const isTypeObjectLiteralConstant = (type: Type): type is TypeObjectLiteralConstant =>
   type.type === 'ObjectLiteralConstant';
 export const isTypeArrayItem = (type: Type): type is TypeArrayItem => type.type === 'ArrayItem';
+export const isCompositeConstant = (type: Type): type is TypeCompositeConstant => type.type === 'CompositeConstant';
+export const isCompositeAccess = (type: Type): type is TypeCompositeAccess => type.type === 'CompositeAccess';

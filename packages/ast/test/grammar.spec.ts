@@ -4,6 +4,9 @@ import { withParserErrors } from './helpers';
 describe('Sql', () => {
   it.each`
     name                              | sql
+    ${'restricted'}                   | ${'SELECT all_types.id FROM all_types'}
+    ${'all'}                          | ${'SELECT ALL col1 FROM table1'}
+    ${'complex dimensions'}           | ${"SELECT contracts.export_type = ANY(ARRAY['Metered Export','Deemed']::installation_export_type[]) FROM contracts"}
     ${'null'}                         | ${'SELECT NULL'}
     ${'null where'}                   | ${'SELECT col1 FROM table1 WHERE name IS NULL'}
     ${'unary'}                        | ${'SELECT NOT TRUE'}
@@ -57,6 +60,9 @@ describe('Sql', () => {
     ${'quoted escaped as select'}     | ${'SELECT schema1.table1.column1 as "col ""2"""'}
     ${'multiple as columns select'}   | ${'SELECT column1 as "test", table1.column2, "test".column2 as col1'}
     ${'cast'}                         | ${'SELECT CAST(id AS int4)'}
+    ${'cast type with schema'}        | ${'SELECT CAST(id AS information_schema.sql_identifier)'}
+    ${'cast quoted'}                  | ${`SELECT 'd'::"char"`}
+    ${'cast from function'}           | ${'SELECT (pg_get_expr(ad.adbin, ad.adrelid))::information_schema.character_data AS column_default FROM table1 AS ad'}
     ${'cast number'}                  | ${'SELECT CAST(20 AS int4)'}
     ${'cast string'}                  | ${"SELECT CAST('test' AS varchar(20))"}
     ${'select count distinct'}        | ${'SELECT COUNT(DISTINCT accounts.id)::int as total'}
@@ -83,6 +89,7 @@ describe('Sql', () => {
     ${'join on as'}                   | ${'SELECT * FROM jobs JOIN test1 AS my_test ON jobs.id = test1.id'}
     ${'join on as quoted'}            | ${'SELECT * FROM jobs JOIN test1 AS "myTest" ON jobs.id = test1.id'}
     ${'join on'}                      | ${'SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id'}
+    ${'join nested'}                  | ${'SELECT * FROM table1 AS t1 LEFT JOIN (table2 AS t2 INNER JOIN table3 AS t3 ON t3.col1 = t2.col1) ON t2.col1 = t1.col1'}
     ${'inner join'}                   | ${'SELECT * FROM jobs INNER JOIN test1'}
     ${'left join'}                    | ${'SELECT * FROM jobs LEFT JOIN test1'}
     ${'left outer join'}              | ${'SELECT * FROM jobs LEFT OUTER JOIN test1'}
@@ -92,6 +99,8 @@ describe('Sql', () => {
     ${'full outer join'}              | ${'SELECT * FROM jobs FULL OUTER JOIN test1'}
     ${'cross join'}                   | ${'SELECT * FROM jobs CROSS JOIN test1'}
     ${'multiple joins'}               | ${'SELECT * FROM jobs JOIN test1 JOIN test2'}
+    ${'access expression'}            | ${'SELECT (ss.x).n FROM ss'}
+    ${'access in a range'}            | ${`SELECT ss.proargmodes[(ss.x).n] FROM ss`}
     ${'where'}                        | ${'SELECT * WHERE id = 5'}
     ${'where and'}                    | ${"SELECT * WHERE id = 5 AND name = 'test'"}
     ${'where boolean'}                | ${'SELECT * WHERE id = 5 AND TRUE'}
@@ -117,6 +126,7 @@ describe('Sql', () => {
     ${'group by'}                     | ${'SELECT * FROM table1 GROUP BY col'}
     ${'group by multiple'}            | ${'SELECT * FROM table1 GROUP BY col1, col2'}
     ${'pg cast column to int'}        | ${'SELECT test::int FROM table1'}
+    ${'pg cast column schema type'}   | ${'SELECT test::information_schema.sql_identifier FROM table1'}
     ${'pg cast column to decimal'}    | ${'SELECT test::decimal(10,2) FROM table1'}
     ${'pg cast column to varchar'}    | ${'SELECT test::varchar(10) FROM table1'}
     ${'pg cast string to date'}       | ${"SELECT '2016-01-01'::date FROM table1"}
@@ -158,6 +168,8 @@ describe('Sql', () => {
     ${'insert conflict list'}         | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id, type) DO UPDATE SET id = EXCLUDED.id WHERE id > 10'}
     ${'coalesce'}                     | ${'SELECT COALESCE(id, TRUE) FROM table1'}
     ${'function'}                     | ${'SELECT MY_FUNCTION(id, TRUE) FROM table1'}
+    ${'qualified function'}           | ${"SELECT information_schema._pg_char_max_length('123')"}
+    ${'function with star'}           | ${'SELECT information_schema._pg_truetypmod(a.*, t.*) FROM table1'}
     ${'function in set'}              | ${'UPDATE table1 SET col1 = MY_FUNCTION(id, TRUE) RETURNING id, col1'}
     ${'function in where'}            | ${'SELECT id FROM table1 WHERE table1.col = ANY(table1.test) '}
     ${'function with order'}          | ${'SELECT ARRAY_AGG(id ORDER BY col1 DESC) FROM table1 GROUP BY table1.col2'}

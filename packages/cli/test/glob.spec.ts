@@ -109,7 +109,6 @@ describe('Glob', () => {
       sql('rates-by-tarrif-ids.query.sql'),
       sql('read-create.query.sql'),
       sql('reads-by-account-id.query.sql'),
-      sql('tables.sql'),
       sql('tariff-rates.sql'),
     ]);
   });

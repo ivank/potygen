@@ -1,3 +1,9 @@
+CREATE TYPE inventory_item AS (
+    name            text,
+    supplier_id     integer,
+    price           numeric
+);
+
 CREATE TABLE all_types (
   id SERIAL PRIMARY KEY,
   not_null INT NOT NULL,
@@ -42,7 +48,8 @@ CREATE TABLE all_types (
   tsvector_col tsvector,
   txid_snapshot_col txid_snapshot,
   uuid_col uuid,
-  xml_col xml
+  xml_col xml,
+  item inventory_item
 );
 
 CREATE TABLE addresses (

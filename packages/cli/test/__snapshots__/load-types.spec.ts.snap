@@ -101,6 +101,36 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert composite type from table sql (SELECT (item).supplier_id FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "supplier_id",
+      "type": Object {
+        "nullable": true,
+        "type": "Number",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert composite type from view sql (SELECT (item).supplier_id FROM all_types_view) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "supplier_id",
+      "type": Object {
+        "nullable": true,
+        "type": "Number",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
 Object {
   "params": Array [],
@@ -481,6 +511,28 @@ Object {
         "type": "String",
       },
     },
+    Object {
+      "name": "item",
+      "type": Object {
+        "attributes": Object {
+          "name": Object {
+            "nullable": true,
+            "type": "String",
+          },
+          "price": Object {
+            "nullable": true,
+            "type": "String",
+          },
+          "supplier_id": Object {
+            "nullable": true,
+            "type": "Number",
+          },
+        },
+        "name": "inventory_item",
+        "schema": "public",
+        "type": "CompositeConstant",
+      },
+    },
   ],
 }
 `;
@@ -696,21 +748,18 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "nullable": true,
         "type": "Number",
       },
     },
     Object {
       "name": "not_null",
       "type": Object {
-        "nullable": true,
         "type": "Number",
       },
     },
     Object {
       "name": "default_not_null",
       "type": Object {
-        "nullable": true,
         "type": "Number",
       },
     },
@@ -724,7 +773,6 @@ Object {
     Object {
       "name": "bigserial_col",
       "type": Object {
-        "nullable": true,
         "type": "String",
       },
     },
@@ -994,14 +1042,12 @@ Object {
     Object {
       "name": "smallserial_col",
       "type": Object {
-        "nullable": true,
         "type": "Number",
       },
     },
     Object {
       "name": "serial_col",
       "type": Object {
-        "nullable": true,
         "type": "Number",
       },
     },
@@ -1073,6 +1119,28 @@ Object {
       "type": Object {
         "nullable": true,
         "type": "String",
+      },
+    },
+    Object {
+      "name": "item",
+      "type": Object {
+        "attributes": Object {
+          "name": Object {
+            "nullable": true,
+            "type": "String",
+          },
+          "price": Object {
+            "nullable": true,
+            "type": "String",
+          },
+          "supplier_id": Object {
+            "nullable": true,
+            "type": "Number",
+          },
+        },
+        "name": "inventory_item",
+        "schema": "public",
+        "type": "CompositeConstant",
       },
     },
   ],

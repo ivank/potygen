@@ -46,10 +46,12 @@ export interface TypeCoalesce {
 export interface TypeLoadRecord extends TypeLoad {
   type: 'LoadRecord';
   name: string;
+  schema?: string;
 }
 export interface TypeLoadFunction extends TypeLoad {
   type: 'LoadFunction';
   name: string;
+  schema?: string;
   args: Type[];
 }
 export interface TypeLoadColumn extends TypeLoad {
@@ -92,6 +94,18 @@ export interface TypeToArray {
 export interface TypeArrayItem {
   type: 'ArrayItem';
   value: Type;
+}
+export interface TypeCompositeAccess {
+  type: 'CompositeAccess';
+  value: Type;
+  name: string;
+  sourceTag: Tag;
+}
+export interface TypeCompositeConstant {
+  type: 'CompositeConstant';
+  name: string;
+  schema?: string;
+  attributes: Record<string, TypeConstant>;
 }
 export interface TypeUnion {
   type: 'Union';
@@ -140,6 +154,7 @@ export type TypeConstant =
   | TypeNull
   | TypeJson
   | TypeUnknown
+  | TypeCompositeConstant
   | TypeArrayConstant
   | TypeUnionConstant
   | TypeObjectLiteralConstant;
@@ -157,6 +172,7 @@ export type Type =
   | TypeArray
   | TypeToArray
   | TypeArrayItem
+  | TypeCompositeAccess
   | TypeUnion
   | TypeObjectLiteral;
 

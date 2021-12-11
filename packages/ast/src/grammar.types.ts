@@ -449,6 +449,25 @@ export interface ArrayIndexTag extends NodeSqlTag {
 }
 
 /**
+ * A tag representing an field access to a composite row. e.g. `(item).name`
+ * https://www.postgresql.org/docs/9.4/rowtypes.html#ROWTYPES-ACCESSING
+ * ```
+ *               ┌───composite row
+ *               │           ┌────field
+ *               ▼           ▼
+ *         ┌───────────┐   ┌────┐
+ * SELECT  │(composite)│ . │name│ FROM table1
+ *         └───────────┘   └────┘
+ *        └──────────────────────┘
+ *                    └─▶CompositeAccessTag
+ * ```
+ */
+export interface CompositeAccessTag extends NodeSqlTag {
+  tag: 'CompositeAccess';
+  values: [composite: ExpressionTag, field: IdentifierTag];
+}
+
+/**
  * A tag representing the "count" part of LIMITs or OFFSETs
  * https://www.postgresql.org/docs/current/queries-limit.html
  */
@@ -481,9 +500,9 @@ export interface DimensionTag extends EmptyLeafSqlTag {
 export interface TypeTag extends NodeSqlTag {
   tag: 'Type';
   values:
-    | [name: IdentifierTag]
-    | [name: IdentifierTag, parameter: IntegerTag]
-    | [name: IdentifierTag, parameter1: IntegerTag, parameter2: IntegerTag];
+    | [identifier: QualifiedIdentifierTag]
+    | [name: QualifiedIdentifierTag, parameter: IntegerTag]
+    | [name: QualifiedIdentifierTag, parameter1: IntegerTag, parameter2: IntegerTag];
 }
 
 /**
@@ -682,6 +701,9 @@ export interface BinaryOperatorTag extends LeafSqlTag {
     | '&'
     | '#'
     | '~'
+    | '!~'
+    | '~*'
+    | '!~*'
     | '<<'
     | '>>'
     | '@@'
@@ -886,7 +908,7 @@ export interface ArrayConstructorTag extends NodeSqlTag {
  */
 export interface FunctionTag extends NodeSqlTag {
   tag: 'Function';
-  values: [name: IdentifierTag, ...args: (ExpressionTag | OrderByTag | DistinctTag | FilterTag)[]];
+  values: [name: QualifiedIdentifierTag, ...args: (FunctionArgTag | OrderByTag | DistinctTag | FilterTag)[]];
 }
 
 /**
@@ -1034,6 +1056,7 @@ export interface JoinTag extends NodeSqlTag {
   tag: 'Join';
   values:
     | [type: JoinTypeTag, table: TableTag]
+    | [type: JoinTypeTag, table: TableWithJoinTag]
     | [type: JoinTypeTag, table: TableTag, condition: JoinOnTag | JoinUsingTag];
 }
 
@@ -1377,10 +1400,10 @@ export interface SetTag extends NodeSqlTag {
 }
 
 /**
- * Table name, can be fully qualified with a schema.
+ * An identifier that can be fully qualified with a schema.
  */
-export interface TableIdentifierTag extends NodeSqlTag {
-  tag: 'TableIdentifier';
+export interface QualifiedIdentifierTag extends NodeSqlTag {
+  tag: 'QualifiedIdentifier';
   values: [schema: IdentifierTag, table: IdentifierTag] | [table: IdentifierTag];
 }
 
@@ -1398,7 +1421,7 @@ export interface TableIdentifierTag extends NodeSqlTag {
  */
 export interface TableTag extends NodeSqlTag {
   tag: 'Table';
-  values: [table: TableIdentifierTag] | [table: TableIdentifierTag, as: AsTag];
+  values: [table: QualifiedIdentifierTag] | [table: QualifiedIdentifierTag, as: AsTag];
 }
 
 /**
@@ -1653,6 +1676,14 @@ export interface WrappedExpressionTag extends NodeSqlTag {
 }
 
 /**
+ * A join expression, wrapped in brackets ()
+ */
+export interface TableWithJoinTag extends NodeSqlTag {
+  tag: 'TableWithJoin';
+  values: [table: TableTag, ...joins: JoinTag[]];
+}
+
+/**
  * A list of expressions, separated by comma (,)
  */
 export interface ExpressionListTag extends NodeSqlTag {
@@ -1716,6 +1747,7 @@ export type TransactionTag = BeginTag | CommitTag | SavepointTag | RollbackTag;
 
 export type CastableDataTypeTag =
   | ArrayIndexTag
+  | CompositeAccessTag
   | ColumnTag
   | ConstantTag
   | FunctionTag
@@ -1732,6 +1764,8 @@ export type ExpressionTag =
   | OperatorExpressionTag
   | RowTag
   | WrappedExpressionTag;
+
+export type FunctionArgTag = ExpressionTag | StarIdentifierTag;
 
 /**
  * All the types extending {@link EmptyLeafSqlTag}.
@@ -1789,12 +1823,14 @@ export type NodeTag =
   | TypedConstantTag
   | TypeTag
   | JoinTag
+  | TableWithJoinTag
   | CTETag
   | WithTag
   | ColumnTag
   | AsTag
   | ArrayIndexRangeTag
   | ArrayIndexTag
+  | CompositeAccessTag
   | CountTag
   | TypeArrayTag
   | DistinctTag
@@ -1835,7 +1871,7 @@ export type NodeTag =
   | ValuesTag
   | SetMapTag
   | SetTag
-  | TableIdentifierTag
+  | QualifiedIdentifierTag
   | TableTag
   | UpdateFromTag
   | ReturningListItemTag

@@ -25,6 +25,7 @@ import {
   isTypeEqual,
 } from '@potygen/query';
 import { isUniqueBy } from '@potygen/ast';
+import { isCompositeConstant } from '@potygen/query/dist/query-interface.guards';
 
 const mkdirAsync = promisify(mkdir);
 const writeFileAsync = promisify(writeFile);
@@ -57,7 +58,9 @@ export const compactTypes = (types: TypeConstant[]): TypeConstant[] =>
 const toPropertyType =
   (context: TypeContext) =>
   (type: TypeConstant): TypeContext & { type: TypeNode } => {
-    if (isTypeObjectLiteralConstant(type)) {
+    if (isCompositeConstant(type)) {
+      return { ...context, type: factory.createToken(SyntaxKind.StringKeyword) };
+    } else if (isTypeObjectLiteralConstant(type)) {
       return type.items.reduce<TypeContext & { type: TypeLiteralNode }>(
         (acc, item) => {
           const itemType = toPropertyType({ ...context, name: context.name + toClassCase(item.name) })(item.type);

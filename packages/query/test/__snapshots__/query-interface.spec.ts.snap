@@ -191,7 +191,7 @@ Object {
           Object {
             "nextPos": 42,
             "pos": 36,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 42,
@@ -391,7 +391,7 @@ Object {
           Object {
             "nextPos": 171,
             "pos": 165,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 171,
@@ -428,6 +428,49 @@ Object {
           },
         ],
         "type": "Union",
+      },
+    },
+  ],
+  "sources": Array [],
+}
+`;
+
+exports[`Query Interface Should convert cast with schema sql (SELECT 'text'::information_schema.sql_identifier) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "row",
+      "type": Object {
+        "name": "sql_identifier",
+        "schema": "information_schema",
+        "sourceTag": Object {
+          "nextPos": 48,
+          "pos": 15,
+          "tag": "Type",
+          "values": Array [
+            Object {
+              "nextPos": 48,
+              "pos": 15,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 33,
+                  "pos": 15,
+                  "tag": "UnquotedIdentifier",
+                  "value": "information_schema",
+                },
+                Object {
+                  "nextPos": 48,
+                  "pos": 34,
+                  "tag": "UnquotedIdentifier",
+                  "value": "sql_identifier",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadRecord",
       },
     },
   ],
@@ -608,7 +651,7 @@ Object {
           Object {
             "nextPos": 74,
             "pos": 68,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 74,
@@ -635,7 +678,7 @@ Object {
           Object {
             "nextPos": 86,
             "pos": 80,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 86,
@@ -662,7 +705,7 @@ Object {
           Object {
             "nextPos": 166,
             "pos": 160,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 166,
@@ -689,7 +732,7 @@ Object {
           Object {
             "nextPos": 263,
             "pos": 257,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 263,
@@ -759,6 +802,95 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert composite type from table sql (SELECT (item).supplier_id FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "supplier_id",
+      "type": Object {
+        "name": "supplier_id",
+        "sourceTag": Object {
+          "nextPos": 25,
+          "pos": 7,
+          "tag": "CompositeAccess",
+          "values": Array [
+            Object {
+              "nextPos": 12,
+              "pos": 8,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 12,
+                  "pos": 8,
+                  "tag": "UnquotedIdentifier",
+                  "value": "item",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 25,
+              "pos": 14,
+              "tag": "UnquotedIdentifier",
+              "value": "supplier_id",
+            },
+          ],
+        },
+        "type": "CompositeAccess",
+        "value": Object {
+          "column": "item",
+          "schema": undefined,
+          "sourceTag": Object {
+            "nextPos": 12,
+            "pos": 8,
+            "tag": "Column",
+            "values": Array [
+              Object {
+                "nextPos": 12,
+                "pos": 8,
+                "tag": "UnquotedIdentifier",
+                "value": "item",
+              },
+            ],
+          },
+          "table": undefined,
+          "type": "LoadColumn",
+        },
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "all_types",
+      "schema": undefined,
+      "sourceTag": Object {
+        "nextPos": 40,
+        "pos": 31,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "nextPos": 40,
+            "pos": 31,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "nextPos": 40,
+                "pos": 31,
+                "tag": "UnquotedIdentifier",
+                "value": "all_types",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "all_types",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert delete with param sql (DELETE FROM table1 WHERE id = :id) 1`] = `
 Object {
   "params": Array [
@@ -804,7 +936,7 @@ Object {
           Object {
             "nextPos": 18,
             "pos": 12,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 18,
@@ -885,7 +1017,7 @@ Object {
           Object {
             "nextPos": 18,
             "pos": 12,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 18,
@@ -915,6 +1047,7 @@ Object {
         "type": "Named",
         "value": Object {
           "name": "custom_type",
+          "schema": undefined,
           "sourceTag": Object {
             "nextPos": 22,
             "pos": 11,
@@ -923,8 +1056,15 @@ Object {
               Object {
                 "nextPos": 22,
                 "pos": 11,
-                "tag": "UnquotedIdentifier",
-                "value": "custom_type",
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "nextPos": 22,
+                    "pos": 11,
+                    "tag": "UnquotedIdentifier",
+                    "value": "custom_type",
+                  },
+                ],
               },
             ],
           },
@@ -946,7 +1086,7 @@ Object {
           Object {
             "nextPos": 34,
             "pos": 28,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 34,
@@ -1006,6 +1146,7 @@ Object {
           },
         ],
         "name": "abs",
+        "schema": undefined,
         "sourceTag": Object {
           "nextPos": 15,
           "pos": 7,
@@ -1014,8 +1155,15 @@ Object {
             Object {
               "nextPos": 10,
               "pos": 7,
-              "tag": "UnquotedIdentifier",
-              "value": "ABS",
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 10,
+                  "pos": 7,
+                  "tag": "UnquotedIdentifier",
+                  "value": "ABS",
+                },
+              ],
             },
             Object {
               "nextPos": 14,
@@ -1045,7 +1193,7 @@ Object {
           Object {
             "nextPos": 27,
             "pos": 21,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 27,
@@ -1093,6 +1241,7 @@ Object {
           },
         ],
         "name": "abs",
+        "schema": undefined,
         "sourceTag": Object {
           "nextPos": 14,
           "pos": 7,
@@ -1101,8 +1250,15 @@ Object {
             Object {
               "nextPos": 10,
               "pos": 7,
-              "tag": "UnquotedIdentifier",
-              "value": "ABS",
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 10,
+                  "pos": 7,
+                  "tag": "UnquotedIdentifier",
+                  "value": "ABS",
+                },
+              ],
             },
             Object {
               "nextPos": 13,
@@ -1136,11 +1292,221 @@ Object {
           Object {
             "nextPos": 26,
             "pos": 20,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 26,
                 "pos": 20,
+                "tag": "UnquotedIdentifier",
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "table1",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert function with schema sql (SELECT information_schema._pg_char_max_length('123')) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "_pg_char_max_length",
+      "type": Object {
+        "args": Array [
+          Object {
+            "literal": "123",
+            "type": "String",
+          },
+        ],
+        "name": "_pg_char_max_length",
+        "schema": "information_schema",
+        "sourceTag": Object {
+          "nextPos": 52,
+          "pos": 7,
+          "tag": "Function",
+          "values": Array [
+            Object {
+              "nextPos": 45,
+              "pos": 7,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 25,
+                  "pos": 7,
+                  "tag": "UnquotedIdentifier",
+                  "value": "information_schema",
+                },
+                Object {
+                  "nextPos": 45,
+                  "pos": 26,
+                  "tag": "UnquotedIdentifier",
+                  "value": "_pg_char_max_length",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 51,
+              "pos": 46,
+              "tag": "String",
+              "value": "123",
+            },
+          ],
+        },
+        "type": "LoadFunction",
+      },
+    },
+  ],
+  "sources": Array [],
+}
+`;
+
+exports[`Query Interface Should convert function with star sql (SELECT information_schema._pg_truetypmod(a.*, t.*) FROM table1) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "_pg_truetypmod",
+      "type": Object {
+        "args": Array [
+          Object {
+            "schema": undefined,
+            "sourceTag": Object {
+              "nextPos": 44,
+              "pos": 41,
+              "tag": "StarIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 42,
+                  "pos": 41,
+                  "tag": "UnquotedIdentifier",
+                  "value": "a",
+                },
+                Object {
+                  "nextPos": 44,
+                  "pos": 43,
+                  "tag": "Star",
+                },
+              ],
+            },
+            "table": "a",
+            "type": "LoadStar",
+          },
+          Object {
+            "schema": undefined,
+            "sourceTag": Object {
+              "nextPos": 49,
+              "pos": 46,
+              "tag": "StarIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 47,
+                  "pos": 46,
+                  "tag": "UnquotedIdentifier",
+                  "value": "t",
+                },
+                Object {
+                  "nextPos": 49,
+                  "pos": 48,
+                  "tag": "Star",
+                },
+              ],
+            },
+            "table": "t",
+            "type": "LoadStar",
+          },
+        ],
+        "name": "_pg_truetypmod",
+        "schema": "information_schema",
+        "sourceTag": Object {
+          "nextPos": 50,
+          "pos": 7,
+          "tag": "Function",
+          "values": Array [
+            Object {
+              "nextPos": 40,
+              "pos": 7,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 25,
+                  "pos": 7,
+                  "tag": "UnquotedIdentifier",
+                  "value": "information_schema",
+                },
+                Object {
+                  "nextPos": 40,
+                  "pos": 26,
+                  "tag": "UnquotedIdentifier",
+                  "value": "_pg_truetypmod",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 44,
+              "pos": 41,
+              "tag": "StarIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 42,
+                  "pos": 41,
+                  "tag": "UnquotedIdentifier",
+                  "value": "a",
+                },
+                Object {
+                  "nextPos": 44,
+                  "pos": 43,
+                  "tag": "Star",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 49,
+              "pos": 46,
+              "tag": "StarIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 47,
+                  "pos": 46,
+                  "tag": "UnquotedIdentifier",
+                  "value": "t",
+                },
+                Object {
+                  "nextPos": 49,
+                  "pos": 48,
+                  "tag": "Star",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadFunction",
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "table1",
+      "schema": undefined,
+      "sourceTag": Object {
+        "nextPos": 62,
+        "pos": 56,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "nextPos": 62,
+            "pos": 56,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "nextPos": 62,
+                "pos": 56,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -1197,7 +1563,7 @@ Object {
           Object {
             "nextPos": 18,
             "pos": 12,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 18,
@@ -1254,7 +1620,7 @@ Object {
           Object {
             "nextPos": 18,
             "pos": 12,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 18,
@@ -1382,7 +1748,7 @@ Object {
           Object {
             "nextPos": 128,
             "pos": 122,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 128,
@@ -1422,7 +1788,7 @@ Object {
           Object {
             "nextPos": 154,
             "pos": 148,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 154,
@@ -1580,7 +1946,7 @@ Object {
           Object {
             "nextPos": 162,
             "pos": 152,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 155,
@@ -1626,7 +1992,7 @@ Object {
           Object {
             "nextPos": 192,
             "pos": 182,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 185,
@@ -1672,7 +2038,7 @@ Object {
           Object {
             "nextPos": 247,
             "pos": 241,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 247,
@@ -1771,7 +2137,7 @@ Object {
           Object {
             "nextPos": 21,
             "pos": 15,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 21,
@@ -1875,7 +2241,7 @@ Object {
           Object {
             "nextPos": 23,
             "pos": 17,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 23,
@@ -1979,7 +2345,7 @@ Object {
           Object {
             "nextPos": 23,
             "pos": 17,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 23,
@@ -2080,6 +2446,7 @@ Object {
               },
             ],
             "name": "array_length",
+            "schema": undefined,
             "sourceTag": Object {
               "nextPos": 50,
               "pos": 11,
@@ -2088,8 +2455,15 @@ Object {
                 Object {
                   "nextPos": 23,
                   "pos": 11,
-                  "tag": "UnquotedIdentifier",
-                  "value": "ARRAY_LENGTH",
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 23,
+                      "pos": 11,
+                      "tag": "UnquotedIdentifier",
+                      "value": "ARRAY_LENGTH",
+                    },
+                  ],
                 },
                 Object {
                   "nextPos": 46,
@@ -2099,8 +2473,15 @@ Object {
                     Object {
                       "nextPos": 33,
                       "pos": 24,
-                      "tag": "UnquotedIdentifier",
-                      "value": "ARRAY_AGG",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 33,
+                          "pos": 24,
+                          "tag": "UnquotedIdentifier",
+                          "value": "ARRAY_AGG",
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 45,
@@ -2129,6 +2510,7 @@ Object {
           },
         ],
         "name": "abs",
+        "schema": undefined,
         "sourceTag": Object {
           "nextPos": 51,
           "pos": 7,
@@ -2137,8 +2519,15 @@ Object {
             Object {
               "nextPos": 10,
               "pos": 7,
-              "tag": "UnquotedIdentifier",
-              "value": "ABS",
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 10,
+                  "pos": 7,
+                  "tag": "UnquotedIdentifier",
+                  "value": "ABS",
+                },
+              ],
             },
             Object {
               "nextPos": 50,
@@ -2148,8 +2537,15 @@ Object {
                 Object {
                   "nextPos": 23,
                   "pos": 11,
-                  "tag": "UnquotedIdentifier",
-                  "value": "ARRAY_LENGTH",
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 23,
+                      "pos": 11,
+                      "tag": "UnquotedIdentifier",
+                      "value": "ARRAY_LENGTH",
+                    },
+                  ],
                 },
                 Object {
                   "nextPos": 46,
@@ -2159,8 +2555,15 @@ Object {
                     Object {
                       "nextPos": 33,
                       "pos": 24,
-                      "tag": "UnquotedIdentifier",
-                      "value": "ARRAY_AGG",
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "nextPos": 33,
+                          "pos": 24,
+                          "tag": "UnquotedIdentifier",
+                          "value": "ARRAY_AGG",
+                        },
+                      ],
                     },
                     Object {
                       "nextPos": 45,
@@ -2204,7 +2607,7 @@ Object {
           Object {
             "nextPos": 66,
             "pos": 57,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 66,
@@ -2358,7 +2761,7 @@ Object {
           Object {
             "nextPos": 74,
             "pos": 68,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 74,
@@ -2385,7 +2788,7 @@ Object {
           Object {
             "nextPos": 86,
             "pos": 80,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 86,
@@ -2412,7 +2815,7 @@ Object {
           Object {
             "nextPos": 166,
             "pos": 160,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 166,
@@ -2547,7 +2950,7 @@ Object {
           Object {
             "nextPos": 20,
             "pos": 14,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 20,
@@ -2634,7 +3037,7 @@ Object {
           Object {
             "nextPos": 18,
             "pos": 12,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 18,
@@ -2718,7 +3121,7 @@ Object {
           Object {
             "nextPos": 20,
             "pos": 14,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 20,
@@ -2799,7 +3202,7 @@ Object {
           Object {
             "nextPos": 51,
             "pos": 45,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 51,
@@ -2945,7 +3348,7 @@ Object {
           Object {
             "nextPos": 23,
             "pos": 17,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 23,
@@ -3046,7 +3449,7 @@ Object {
           Object {
             "nextPos": 13,
             "pos": 7,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 13,
@@ -3127,7 +3530,7 @@ Object {
           Object {
             "nextPos": 13,
             "pos": 7,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 13,
@@ -3212,7 +3615,7 @@ Object {
           Object {
             "nextPos": 13,
             "pos": 7,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 13,
@@ -3360,7 +3763,7 @@ Object {
           Object {
             "nextPos": 46,
             "pos": 40,
-            "tag": "TableIdentifier",
+            "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
                 "nextPos": 46,

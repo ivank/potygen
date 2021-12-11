@@ -64,6 +64,7 @@ export interface Result<TJson_col = unknown, TJsonb_col = unknown> {
     txid_snapshot_col?: string;
     uuid_col?: string;
     xml_col?: string;
+    item: string;
 }
 export interface Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: Params;

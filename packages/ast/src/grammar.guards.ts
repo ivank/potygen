@@ -75,6 +75,7 @@ import {
   SetTag,
   SqlTag,
   StarIdentifierTag,
+  QualifiedIdentifierTag,
   StarTag,
   StringTag,
   TableTag,
@@ -96,6 +97,9 @@ import {
   BitStringTag,
   EscapeStringTag,
   HexademicalStringTag,
+  FunctionArgTag,
+  TableWithJoinTag,
+  CompositeAccessTag,
 } from './grammar.types';
 
 export const isCTETag = (value: SqlTag): value is CTETag => value.tag === 'CTE';
@@ -139,6 +143,8 @@ export const isTypeArray = (value: SqlTag): value is TypeArrayTag => value.tag =
 export const isDistinct = (value: SqlTag): value is DistinctTag => value.tag === 'Distinct';
 export const isStar = (value: SqlTag): value is StarTag => value.tag === 'Star';
 export const isStarIdentifier = (value: SqlTag): value is StarIdentifierTag => value.tag === 'StarIdentifier';
+export const isQualifiedIdentifier = (value: SqlTag): value is QualifiedIdentifierTag =>
+  value.tag === 'QualifiedIdentifier';
 export const isCastableDataType = (value: SqlTag): value is CastableDataTypeTag => value.tag === 'CastableDataType';
 export const isWhen = (value: SqlTag): value is WhenTag => value.tag === 'When';
 export const isElse = (value: SqlTag): value is ElseTag => value.tag === 'Else';
@@ -162,6 +168,7 @@ export const isOperatorExpression = (value: SqlTag): value is OperatorExpression
 export const isExpression = (value: SqlTag): value is ExpressionTag =>
   isFunction(value) ||
   isArrayIndex(value) ||
+  isCompositeAccess(value) ||
   isConstant(value) ||
   isColumn(value) ||
   isSelect(value) ||
@@ -176,6 +183,8 @@ export const isExpression = (value: SqlTag): value is ExpressionTag =>
   isRow(value) ||
   isComparationExpression(value) ||
   isWrappedExpression(value);
+export const isFunctionArg = (value: SqlTag): value is FunctionArgTag => isExpression(value) || isStarIdentifier(value);
+export const isCompositeAccess = (value: SqlTag): value is CompositeAccessTag => value.tag === 'CompositeAccess';
 export const isSelectListItem = (value: SqlTag): value is SelectListItemTag => value.tag === 'SelectListItem';
 export const isReturningListItem = (value: SqlTag): value is ReturningListItemTag => value.tag === 'ReturningListItem';
 export const isSelectList = (value: SqlTag): value is SelectListTag => value.tag === 'SelectList';
@@ -187,6 +196,7 @@ export const isJoinType = (value: SqlTag): value is JoinTypeTag => value.tag ===
 export const isJoinOn = (value: SqlTag): value is JoinOnTag => value.tag === 'JoinOn';
 export const isJoinUsing = (value: SqlTag): value is JoinUsingTag => value.tag === 'JoinUsing';
 export const isJoin = (value: SqlTag): value is JoinTag => value.tag === 'Join';
+export const isTableWithJoin = (value: SqlTag): value is TableWithJoinTag => value.tag === 'TableWithJoin';
 export const isWhere = (value: SqlTag): value is WhereTag => value.tag === 'Where';
 export const isGroupBy = (value: SqlTag): value is GroupByTag => value.tag === 'GroupBy';
 export const isHaving = (value: SqlTag): value is HavingTag => value.tag === 'Having';

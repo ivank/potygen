@@ -111,7 +111,7 @@ const IdentifierRestricted = Any(UnquotedIdentifierRestricted, QuotedIdentifier)
 const IdentifierLessRestricted = Any(QuotedIdentifierLessRestricted, QuotedIdentifier);
 
 const ColumnFullyQualified = astNode<Tag.ColumnTag>('Column', All(Identifier, '.', Identifier, '.', Identifier));
-const ColumnQualified = astNode<Tag.ColumnTag>('Column', All(Identifier, '.', Identifier));
+const ColumnQualified = astNode<Tag.ColumnTag>('Column', All(IdentifierRestricted, '.', Identifier));
 const ColumnUnqualified = astNode<Tag.ColumnTag>('Column', IdentifierRestricted);
 
 /**
@@ -192,16 +192,23 @@ const SingleParamTypeRule =
   /^(bit varying|varbit|bit|character varying|varchar|character|char|interval|timestamptz|timestamp|timetz|time)/i;
 const DoubleParamTypeRule = /^(numeric|decimal)/i;
 
+const TypeIdentifier = (rule: RegExp) =>
+  astNode<Tag.QualifiedIdentifierTag>('QualifiedIdentifier', Any(SpecificIdentifier(rule), QuotedIdentifier));
+
+const TypeQualifiedIdentifier = (rule: RegExp) => {
+  const IdentifierNode = Any(SpecificIdentifier(rule), QuotedIdentifier);
+  return astNode<Tag.QualifiedIdentifierTag>(
+    'QualifiedIdentifier',
+    Any(All(SpecificIdentifier(NameRule), '.', IdentifierNode), IdentifierNode),
+  );
+};
+
 const Type = astNode<Tag.TypeTag>(
   'Type',
   Any(
-    All(
-      SpecificIdentifier(DoubleParamTypeRule),
-      Optional(Brackets(Any(All(IntegerRule, ',', IntegerRule), IntegerRule))),
-    ),
-    All(SpecificIdentifier(SingleParamTypeRule), Optional(Brackets(IntegerRule))),
-    SpecificIdentifier(AllTypesRule),
-    SpecificIdentifier(NameRule),
+    All(TypeIdentifier(DoubleParamTypeRule), Optional(Brackets(Any(All(IntegerRule, ',', IntegerRule), IntegerRule)))),
+    All(TypeIdentifier(SingleParamTypeRule), Optional(Brackets(IntegerRule))),
+    TypeQualifiedIdentifier(NameRule),
   ),
 );
 const Dimension = astEmptyLeaf<Tag.DimensionTag>('Dimension', SquareBrackets());
@@ -221,11 +228,11 @@ const Count = astNode<Tag.CountTag>('Count', CastableRule(Any(Integer, Parameter
 /**
  * Table
  */
-const TableIdentifier = astNode<Tag.TableIdentifierTag>(
-  'TableIdentifier',
+const QualifiedIdentifier = astNode<Tag.QualifiedIdentifierTag>(
+  'QualifiedIdentifier',
   Any(All(Identifier, '.', Identifier), IdentifierRestricted),
 );
-const Table = astNode<Tag.TableTag>('Table', All(TableIdentifier, Optional(As)));
+const Table = astNode<Tag.TableTag>('Table', All(QualifiedIdentifier, Optional(As)));
 
 /**
  * SELECT
@@ -254,7 +261,7 @@ const BinaryOperator = [
   /^(\|)/,
   /^(\&)/,
   /^(\#)/,
-  /^(\~)/,
+  /^(\!\~\*|\!\~|\~\*|\~)/,
   /^(<<)/,
   /^(>>)/,
   /^(@@)/,
@@ -330,15 +337,30 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      */
     const FunctionDistinct = astNode<Tag.DistinctTag>('Distinct', /^DISTINCT/i);
     const FunctionFilter = astNode<Tag.FilterTag>('Filter', All(/^FILTER/i, Brackets(WhereRule(ChildExpression))));
+    const FunctionIdentifier = astNode<Tag.QualifiedIdentifierTag>(
+      'QualifiedIdentifier',
+      Any(All(Identifier, '.', Identifier), Identifier),
+    );
     const Function = astNode<Tag.FunctionTag>(
       'Function',
       Any(
-        SpecificIdentifier(/^(CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP)/i),
+        astNode<Tag.QualifiedIdentifierTag>(
+          'QualifiedIdentifier',
+          SpecificIdentifier(/^(CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP)/i),
+        ),
         All(
-          Identifier,
+          FunctionIdentifier,
           Any(
             Brackets(),
-            Brackets(List(All(Optional(FunctionDistinct), ChildExpression, Optional(OrderRule(ChildExpression))))),
+            Brackets(
+              List(
+                All(
+                  Optional(FunctionDistinct),
+                  Any(StarIdentifier, ChildExpression),
+                  Optional(OrderRule(ChildExpression)),
+                ),
+              ),
+            ),
           ),
           Optional(FunctionFilter),
         ),
@@ -352,6 +374,10 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const ArrayIndex = astNode<Tag.ArrayIndexTag>(
       'ArrayIndex',
       All(Any(Column, Brackets(ChildExpression)), SquareBrackets(Any(ArrayIndexRange, ChildExpression))),
+    );
+    const CompositeAccess = astNode<Tag.CompositeAccessTag>(
+      'CompositeAccess',
+      All(Brackets(ChildExpression), '.', Identifier),
     );
 
     const Row = astNode<Tag.RowTag>(
@@ -377,7 +403,6 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const DataType = Any(
       OperatorComparation,
       ColumnFullyQualified,
-      ColumnQualified,
       Constant,
       Parameter,
       ArrayConstructor,
@@ -385,9 +410,11 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       Exists,
       Extract,
       Function,
+      ArrayIndex,
+      ColumnQualified,
       Null,
       InclusionComparation,
-      ArrayIndex,
+      CompositeAccess,
       RowWiseComparation,
       ColumnUnqualified,
       Brackets(SelectExpression),
@@ -483,8 +510,19 @@ const Select = Y((SelectExpression) => {
   );
   const JoinOn = astNode<Tag.JoinOnTag>('JoinOn', All(/^ON/i, Expression));
   const JoinUsing = astNode<Tag.JoinUsingTag>('JoinUsing', All(/^USING/i, List(Column)));
-  const Join = astNode<Tag.JoinTag>('Join', All(JoinType, Table, Optional(Any(JoinOn, JoinUsing))));
-  const From = astNode<Tag.FromTag>('From', All(/^FROM/i, FromList, Star(Join)));
+
+  const Join = Y((ChildJoin) => {
+    const InnerTableWithJoin = astNode<Tag.TableWithJoinTag>('TableWithJoin', Brackets(All(Table, Star(ChildJoin))));
+    return astNode<Tag.JoinTag>(
+      'Join',
+      All(JoinType, Any(Table, InnerTableWithJoin), Optional(Any(JoinOn, JoinUsing))),
+    );
+  });
+  const TableWithJoin = Y((Child) =>
+    astNode<Tag.TableWithJoinTag>('TableWithJoin', Brackets(All(Any(Table, Child), Star(Join)))),
+  );
+
+  const From = astNode<Tag.FromTag>('From', All(/^FROM/i, Any(All(FromList, Star(Join)), TableWithJoin)));
 
   /**
    * Where
@@ -509,7 +547,7 @@ const Select = Y((SelectExpression) => {
    * ----------------------------------------------------------------------------------------
    */
   const SelectParts = [
-    Optional(Any(/^ALL/i, Distinct)),
+    Optional(Any(/^ALL /i, Distinct)),
     SelectList,
     Optional(From),
     Optional(Where),

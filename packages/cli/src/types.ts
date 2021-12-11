@@ -11,7 +11,7 @@ export interface DataFunction {
 }
 export interface DataEnum {
   type: 'Enum';
-  name: string;
+  name: { schema: string; name: string };
 }
 export interface LoadedDataColumn {
   name: string;
@@ -22,6 +22,27 @@ export interface LoadedDataColumn {
 
 export interface LoadedDataTable extends DataTable {
   columns: LoadedDataColumn[];
+}
+export interface LoadedDataAttribute {
+  name: string;
+  isNullable: string;
+  type: string;
+}
+export interface LoadedDataComposite {
+  type: 'Composite';
+  name: { schema: string; name: string };
+  attributes: LoadedDataAttribute[];
+}
+
+export interface ParsedDataView {
+  type: 'View';
+  name: { schema: string; name: string };
+  definition: string;
+  queryInterface: QueryInterface;
+}
+
+export interface LoadedDataView extends ParsedDataView {
+  columns: LoadedResult[];
 }
 
 export interface LoadedDataFunction extends DataFunction {
@@ -34,7 +55,7 @@ export interface LoadedDataEnum extends DataEnum {
 }
 
 export type Data = DataTable | DataFunction | DataEnum;
-export type LoadedData = LoadedDataTable | LoadedDataFunction | LoadedDataEnum;
+export type LoadedData = LoadedDataTable | LoadedDataFunction | LoadedDataEnum | LoadedDataView | LoadedDataComposite;
 
 export interface LoadedParam {
   name: string;
@@ -56,6 +77,11 @@ export interface LoadedFunction {
   argTypes: TypeConstant[];
   isAggregate: boolean;
 }
+export interface LoadedComposite {
+  name: string;
+  schema?: string;
+  attributes: Record<string, TypeConstant>;
+}
 
 export interface LoadedSourceTable {
   type: 'Table';
@@ -70,12 +96,20 @@ export interface LoadedSourceQuery {
   name: string;
   items: Record<string, TypeConstant>;
 }
-export type LoadedSource = LoadedSourceTable | LoadedSourceQuery;
+export interface LoadedSourceView {
+  type: 'View';
+  name: string;
+  table: string;
+  schema: string;
+  items: Record<string, TypeConstant>;
+}
+export type LoadedSource = LoadedSourceTable | LoadedSourceQuery | LoadedSourceView;
 
 export interface LoadedContext {
   sources: LoadedSource[];
   funcs: LoadedFunction[];
   enums: Record<string, TypeUnionConstant>;
+  composites: LoadedComposite[];
 }
 
 export interface TemplateTagQuery {
