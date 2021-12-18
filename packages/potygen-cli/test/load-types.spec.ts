@@ -38,9 +38,10 @@ describe('Query Interface', () => {
     ['composite type from view', `SELECT (item).supplier_id FROM all_types_view`],
     ['parameter coalesce', `SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)`],
   ])('Should convert %s sql (%s)', async (_, sql) => {
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     const ast = parser(sql);
-    const queryInterface = toQueryInterface(ast!);
-    const data = await loadQueryInterfacesData(db, [queryInterface], []);
+    const queryInterface = toQueryInterface(ast);
+    const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
     const loadedQueryInterface = toLoadedQueryInterface(data)(queryInterface);
 
     expect(loadedQueryInterface).toMatchSnapshot();
@@ -62,12 +63,12 @@ describe('Query Interface', () => {
       const ast = parser(sql);
       return toQueryInterface(ast!);
     });
-
-    const data = await loadQueryInterfacesData(db, queryInterfaces, []);
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+    const data = await loadQueryInterfacesData({ db, logger }, queryInterfaces, []);
 
     let individuallyLoaded: LoadedData[] = [];
     for (const query of queryInterfaces) {
-      individuallyLoaded = await loadQueryInterfacesData(db, [query], individuallyLoaded);
+      individuallyLoaded = await loadQueryInterfacesData({ db, logger }, [query], individuallyLoaded);
     }
 
     expect(data).toEqual(expect.arrayContaining(individuallyLoaded));

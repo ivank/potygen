@@ -1,4 +1,5 @@
 import { QueryInterface, TypeConstant, TypeUnionConstant } from '@potygen/query';
+import { ClientBase } from 'pg';
 import { SourceFile } from 'typescript';
 
 export interface DataTable {
@@ -151,5 +152,11 @@ export type LoadedFile = LoadedSqlFile | LoadedTypescriptFile;
  */
 export interface Logger {
   info(args: unknown): void;
+  debug(args: unknown): void;
   error(args: unknown): void;
+}
+
+export interface LoadContext {
+  db: ClientBase;
+  logger: Logger;
 }

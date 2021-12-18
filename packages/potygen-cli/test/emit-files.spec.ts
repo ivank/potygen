@@ -18,11 +18,12 @@ describe('Load Files', () => {
 
   it.each(sqlFiles())('Should convert complex sql %s', (path, content) =>
     withParserErrors(async () => {
+      const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
       const printer = createPrinter({ newLine: NewLineKind.LineFeed });
       const ast = parser(content);
-      const queryInterface = toQueryInterface(ast!);
+      const queryInterface = toQueryInterface(ast);
 
-      const data = await loadQueryInterfacesData(db, [queryInterface], []);
+      const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
       const loadedQuery = toLoadedQueryInterface(data)(queryInterface);
       const source = toTypeSource({ type: 'sql', path: path, content, queryInterface, loadedQuery });
       expect(printer.printFile(source)).toMatchSnapshot(path);

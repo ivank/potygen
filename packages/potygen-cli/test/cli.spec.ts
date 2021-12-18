@@ -10,7 +10,7 @@ describe('CLI', () => {
   );
 
   it('Should use cli to run pipeline on ts files', async () => {
-    const logger = { info: jest.fn(), error: jest.fn() };
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
 
     await potygen(logger).parseAsync([
       'node',
@@ -37,7 +37,7 @@ describe('CLI', () => {
   });
 
   it('Should use cli to run pipeline on sql files', async () => {
-    const logger = { info: jest.fn(), error: jest.fn() };
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
 
     await potygen(logger).parseAsync([
       'node',

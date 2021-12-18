@@ -18,7 +18,6 @@ import {
   TypeCompositeConstant,
   toQueryInterface,
 } from '@potygen/query';
-import { ClientBase } from 'pg';
 import {
   isDataTable,
   isDataFunction,
@@ -44,7 +43,9 @@ import {
   LoadedDataTable,
   LoadedDataComposite,
   DataViewRaw,
+  LoadContext,
 } from './types';
+import { inspect } from 'util';
 
 interface LoadAllSql {
   params: {
@@ -199,20 +200,30 @@ const allSql = sql<LoadAllSql>`
 `;
 
 const orEmptyNameList = (names: Array<{ schema: string; name: string }>): Array<{ schema: string; name: string }> =>
-  names.length === 0 ? [{ name: '_', schema: '_' }] : names.filter(isUniqueBy(isEqual));
+  names.length === 0 ? [{ name: '_', schema: '_' }] : names;
 
-const loadData = async (db: ClientBase, currentData: LoadedData[], newData: Data[]): Promise<LoadedData[]> => {
-  const data = newData.filter(notLoaded(currentData));
+const loadData = async (ctx: LoadContext, currentData: LoadedData[], newData: Data[]): Promise<LoadedData[]> => {
+  const data = newData.filter(notLoaded(currentData)).filter(isUniqueBy());
   const tableNames = data.filter(isDataTable).map(({ name }) => name);
   const functionNames = data.filter(isDataFunction).map(({ name }) => name);
   const enumNames = data.filter(isDataEnum).map(({ name }) => name);
   const compositeNames = data.filter(isDataEnum).map(({ name }) => name);
 
   if (isEmpty(tableNames) && isEmpty(enumNames) && isEmpty(compositeNames) && isEmpty(functionNames)) {
+    ctx.logger.debug('No additional data found, skipping');
     return currentData;
   }
 
-  const loaded = await allSql.run(db, {
+  ctx.logger.debug(
+    `Load additional data: ${data.length}. ${inspect({
+      tableNames: tableNames.map(formatTableName),
+      functionNames: functionNames.map(formatTableName),
+      enumNames: enumNames.map(formatTableName),
+      compositeNames: compositeNames.map(formatTableName),
+    })}`,
+  );
+
+  const loaded = await allSql.run(ctx.db, {
     tableNames: orEmptyNameList(tableNames),
     functionNames: orEmptyNameList(functionNames),
     enumNames: orEmptyNameList(enumNames),
@@ -225,9 +236,13 @@ const loadData = async (db: ClientBase, currentData: LoadedData[], newData: Data
     .filter(isDataViewRaw)
     .map((view) => ({ ...view, queryInterface: toQueryInterface(parser(view.data)) }));
 
+  if (parsedViews.length) {
+    ctx.logger.debug(`Load views: ${parsedViews.map((item) => formatTableName(item.name)).join(',')}.`);
+  }
+
   const loadedDataWithViews = parsedViews.length
     ? await loadData(
-        db,
+        ctx,
         [...currentData, ...loadedData],
         parsedViews.flatMap(({ queryInterface }) => extractDataFromQueryInterface(queryInterface)),
       )
@@ -597,10 +612,10 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
 };
 
 export const loadQueryInterfacesData = async (
-  db: ClientBase,
+  ctx: LoadContext,
   queryInterfaces: QueryInterface[],
   data: LoadedData[],
-): Promise<LoadedData[]> => await loadData(db, data, queryInterfaces.flatMap(extractDataFromQueryInterface));
+): Promise<LoadedData[]> => await loadData(ctx, data, queryInterfaces.flatMap(extractDataFromQueryInterface));
 
 export const toLoadedQueryInterface =
   (data: LoadedData[]) =>

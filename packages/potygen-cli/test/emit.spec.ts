@@ -31,11 +31,12 @@ describe('Query Interface', () => {
       `INSERT INTO all_types(not_null, integer_col, character_col) VALUES $$vals(notNull, integerCol, characterCol)`,
     ],
   ])('Should convert %s sql (%s)', async (path, content) => {
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     const printer = createPrinter({ newLine: NewLineKind.LineFeed });
     const ast = parser(content);
-    const queryInterface = toQueryInterface(ast!);
+    const queryInterface = toQueryInterface(ast);
 
-    const data = await loadQueryInterfacesData(db, [queryInterface], []);
+    const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
     const loadedQuery = toLoadedQueryInterface(data)(queryInterface);
     const source = toTypeSource({ type: 'sql', path, content, queryInterface, loadedQuery });
     expect(printer.printFile(source)).toMatchSnapshot();

@@ -14,7 +14,7 @@ describe('Traverse', () => {
     try {
       await db.connect();
 
-      const logger = { info: jest.fn(), error: jest.fn() };
+      const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
       const sqls = new SqlRead({
         path: '*.sql',
         root: join(__dirname, '../../../sql'),
@@ -25,6 +25,7 @@ describe('Traverse', () => {
         db,
         root: __dirname,
         template: join(__dirname, '__generated__/{{name}}.queries.ts'),
+        logger,
       });
 
       await asyncPipeline(sqls, sink);

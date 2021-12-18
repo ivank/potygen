@@ -19,6 +19,7 @@ import { QueryInterface, toQueryInterface } from '@potygen/query';
 import { loadQueryInterfacesData, toLoadedQueryInterface } from './load';
 import { ClientBase } from 'pg';
 import {
+  LoadContext,
   LoadedData,
   LoadedFile,
   Logger,
@@ -29,6 +30,7 @@ import {
 } from './types';
 import { emitLoadedFile } from './emit';
 import { LoadError, ParsedSqlFileLoadError, ParsedTypescriptFileLoadError, ParseError } from './errors';
+import { inspect } from 'util';
 
 const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
   const queries: TemplateTagQuery[] = [];
@@ -92,10 +94,10 @@ const toQueryInterfaces = (files: ParsedFile[]): QueryInterface[] =>
   );
 
 const loadDataFromParsedFiles = async (
-  db: ClientBase,
+  ctx: LoadContext,
   data: LoadedData[],
   files: ParsedFile[],
-): Promise<LoadedData[]> => loadQueryInterfacesData(db, toQueryInterfaces(files), data);
+): Promise<LoadedData[]> => loadQueryInterfacesData(ctx, toQueryInterfaces(files), data);
 
 const isError = (error: unknown): error is LoadError | ParseError =>
   error instanceof LoadError || error instanceof ParseError;
@@ -179,9 +181,11 @@ export class SqlRead extends Readable {
 }
 
 export class QueryLoader extends Writable {
+  public ctx: LoadContext;
   public data: LoadedData[] = [];
-  constructor(public options: { db: ClientBase; root: string; template: string }) {
+  constructor(public options: { db: ClientBase; root: string; template: string; logger: Logger }) {
     super({ objectMode: true });
+    this.ctx = { db: options.db, logger: options.logger ?? console };
   }
 
   async _writev(
@@ -190,7 +194,12 @@ export class QueryLoader extends Writable {
   ): Promise<void> {
     try {
       const parsedFiles = chunks.map((file) => file.chunk);
-      this.data = await loadDataFromParsedFiles(this.options.db, this.data, parsedFiles);
+      this.ctx.logger.debug(
+        `Parse files: ${inspect(
+          parsedFiles.map((file) => `${relative(this.options.root, file.path)} (${file.type})`),
+        )}`,
+      );
+      this.data = await loadDataFromParsedFiles(this.ctx, this.data, parsedFiles);
       await Promise.all(
         parsedFiles.map(loadFile(this.data)).map(emitLoadedFile(this.options.root, this.options.template)),
       );
@@ -206,7 +215,8 @@ export class QueryLoader extends Writable {
     callback: (error?: Error | null) => void,
   ): Promise<void> {
     try {
-      this.data = await loadDataFromParsedFiles(this.options.db, this.data, [file]);
+      this.ctx.logger.debug(`Parse file: ${relative(this.options.root, file.path)} (${file.type})`);
+      this.data = await loadDataFromParsedFiles(this.ctx, this.data, [file]);
       await emitLoadedFile(this.options.root, this.options.template)(loadFile(this.data)(file));
     } catch (error) {
       callback(error instanceof Error ? error : new Error(String(error)));
