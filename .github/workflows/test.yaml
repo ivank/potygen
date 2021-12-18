@@ -22,7 +22,6 @@ jobs:
           POSTGRES_USER: potygen
           POSTGRES_PASSWORD: dev-pass
           POSTGRES_PORT: 5432
-          POSTGRES_HOST: localhost
         ports:
           - 5432:5432
         options: >-
@@ -44,7 +43,7 @@ jobs:
           apt-get update
           apt-get install --yes --no-install-recommends postgresql-client
       - name: Initialze Database
-        run: psql postgres://potygen:dev-pass@localhost:5432/potygen < init.sql
+        run: psql postgres://potygen:dev-pass@postgres:5432/potygen < init.sql
       - run: yarn install
       - run: yarn build
       - run: yarn lint
