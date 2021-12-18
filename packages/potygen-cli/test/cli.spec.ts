@@ -15,13 +15,13 @@ describe('CLI', () => {
     await potygen(logger).parseAsync([
       'node',
       'potygen',
-      '-r',
+      '--root',
       join(__dirname, '../'),
-      '-f',
+      '--files',
       'test/dir/**/*.ts',
-      '-t',
+      '--template',
       'test/cli/__generated__/{{name}}.queries.ts',
-      '-n',
+      '--connection',
       process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
     ]);
 
@@ -44,11 +44,11 @@ describe('CLI', () => {
       'potygen',
       '--root',
       join(__dirname, '../../../'),
-      '-f',
+      '--files',
       'sql/*.sql',
-      '-t',
+      '--template',
       '{{root}}/packages/potygen-cli/test/cli/__generated__/{{name}}.queries.ts',
-      '-n',
+      '--connection',
       process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
     ]);
 

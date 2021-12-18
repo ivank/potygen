@@ -47,6 +47,6 @@ jobs:
       - run: yarn install
       - run: yarn build
       - run: yarn lint
-      - run: yarn test --runInBand --ci --verbose
+      - run: yarn test --runInBand --ci
         env:
           POSTGRES_CONNECTION: postgres://potygen:dev-pass@postgres:5432/potygen
