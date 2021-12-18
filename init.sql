@@ -4,6 +4,8 @@ CREATE TYPE inventory_item AS (
     price           numeric
 );
 
+CREATE TYPE account_state as ENUM('Active', 'Pending', 'Dispute', 'Closed');
+
 CREATE TABLE all_types (
   id SERIAL PRIMARY KEY,
   not_null INT NOT NULL,
@@ -49,7 +51,8 @@ CREATE TABLE all_types (
   txid_snapshot_col txid_snapshot,
   uuid_col uuid,
   xml_col xml,
-  item inventory_item
+  item inventory_item,
+  state account_state
 );
 
 CREATE TABLE addresses (
@@ -99,7 +102,6 @@ CREATE TABLE customers (
     generator_id character varying(20) DEFAULT NULL::character varying
 );
 
-CREATE TYPE account_state as ENUM('Active', 'Pending', 'Dispute', 'Closed');
 CREATE TYPE account_payment_plans as ENUM('BACs', 'Cheque', 'Internal Transfer');
 
 CREATE TABLE accounts (

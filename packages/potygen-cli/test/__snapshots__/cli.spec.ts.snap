@@ -1,0 +1,527 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CLI Should use cli to run pipeline on sql files 1`] = `
+Array [
+  "account-levelisation.update.query.queries.ts",
+  "account-levelisation.upsert.query.queries.ts",
+  "account-levelisations-bulk-close-accounts.query.queries.ts",
+  "account-levelisations-set-bulk-update.query.queries.ts",
+  "account-levelisations.query.queries.ts",
+  "accounts.list.query.queries.ts",
+  "accounts.queries.ts",
+  "accounts.query.queries.ts",
+  "bacs.query.queries.ts",
+  "contracts.queries.ts",
+  "delete-accounts.query.queries.ts",
+  "generation-read-data.query.queries.ts",
+  "installation-meter-update.query.queries.ts",
+  "installations.queries.ts",
+  "levelisations.list.query.queries.ts",
+  "meter-reads.queries.ts",
+  "process-batch.query.queries.ts",
+  "rates-by-tarrif-ids.query.queries.ts",
+  "read-create.query.queries.ts",
+  "reads-by-account-id.query.queries.ts",
+  "tariff-rates.queries.ts",
+]
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 2`] = `
+"export interface Params {
+    isAccepted: boolean;
+    id: number;
+}
+export interface Result {
+    id: number;
+    isAccepted: boolean;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 3`] = `
+"export interface Params {
+    levelisationId: number;
+    start?: Date;
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 4`] = `
+"export interface Params {
+    ids: number[];
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 5`] = `
+"export interface Params {
+    ids: number[];
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 6`] = `
+"import { Json } from \\"@potygen/query\\";
+export interface Params {
+    q: string;
+    resolvedPostlev: \\"\\" | boolean;
+    state: (\\"Pending\\" | \\"Done\\");
+    levelisationId: number;
+    ids: number[];
+    sortField: \\"totalPayment\\" | \\"vatPayment\\" | \\"generationPayment\\" | \\"exportPayment\\" | \\"generationEnergy\\" | \\"exportEnergy\\" | \\"cfrFitId\\" | \\"state\\" | \\"isAccepted\\" | \\"error\\" | \\"exportType\\";
+    sortOrder: \\"DESC\\" | \\"ASC\\";
+    limit: number;
+    offset: number;
+}
+export interface Result<TGenerationPeriods = unknown, TExportPeriods = unknown, TErrorParams = unknown> {
+    id: number;
+    levelisationId: number;
+    accountId: number;
+    installationId: number;
+    state: \\"Pending\\" | \\"Done\\";
+    isAccepted: boolean;
+    generationStartReadOn?: Date;
+    generationStartReadValue?: string;
+    generationEndReadOn?: Date;
+    generationEndReadValue?: string;
+    generationPercentageSplit?: string;
+    generationPayment?: string;
+    generationEnergy?: string;
+    exportStartReadOn?: Date;
+    exportStartReadValue?: string;
+    exportEndReadOn?: Date;
+    exportEndReadValue?: string;
+    exportPercentageSplit?: string;
+    exportPayment?: string;
+    exportEnergy?: string;
+    exportType?: \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\";
+    technologyType?: \\"PV\\" | \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\";
+    totalPayment?: string;
+    vatPayment?: string;
+    generationPeriods?: Json<TGenerationPeriods>;
+    exportPeriods?: Json<TExportPeriods>;
+    errorCode?: string;
+    errorParams?: Json<TErrorParams>;
+    cfrFitId: string;
+    resolvedPostlevId?: number;
+    isBacsPaymentsSent?: boolean;
+    isChequePaymentsSent?: boolean;
+}
+export interface Query<TGenerationPeriods = unknown, TExportPeriods = unknown, TErrorParams = unknown> {
+    params: Params;
+    result: Result<TGenerationPeriods, TExportPeriods, TErrorParams>;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 7`] = `
+"export interface Params {
+    q: string | string;
+    ids: number[];
+}
+export interface Result {
+    total: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 8`] = `
+"export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 9`] = `
+"export interface Params {
+    q: string | string;
+    ids: number[];
+    limit: number;
+    offset: number;
+}
+export interface Result {
+    id: number;
+    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    startOn?: Date;
+    firstName: string;
+    lastName: string;
+    email?: string;
+    address: string;
+    fitIds: string[];
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 10`] = `
+"export interface Params {
+    quarter?: string;
+    perPage: string;
+    offset: string;
+}
+export interface Result {
+    fitId: string;
+    name?: string;
+    amount: string;
+    quarter?: string;
+    bankDetails: string;
+    addressLine1?: string;
+    addressLine2?: string;
+    addressLine3?: string;
+    postcode: string;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 11`] = `
+"export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 12`] = `
+"export interface Params {
+    type: \\"FIT\\" | \\"SEG\\";
+    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+}
+export interface Result {
+    id: number;
+    sourceSystemId?: number;
+    customerId: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 13`] = `
+"export interface Params {
+    installationId: number;
+    exportDateOn: Date;
+}
+export interface Result {
+    dateOn: Date;
+    value: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 14`] = `
+"export interface Params {
+    removalDate?: Date;
+    meterId: number;
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 15`] = `
+"export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 16`] = `
+"export interface Params {
+    q: string;
+    ids: number[];
+    sortField: \\"quarter\\";
+    sortOrder: \\"DESC\\" | \\"ASC\\";
+    limit: number;
+    offset: number;
+}
+export interface Result {
+    id: number;
+    quarter: string;
+    startOn: Date;
+    endOn: Date;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 17`] = `
+"export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 18`] = `
+"export interface Params {
+    fitIds: string[];
+}
+export interface Result {
+    cfrFiTId?: string;
+    email?: string;
+    contactName: string;
+    company?: string;
+    line1?: string;
+    line2: string;
+    town?: string;
+    postcode: string;
+    county?: string;
+    country: string;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 19`] = `
+"export interface Params {
+    ids: number[][];
+}
+export interface Result {
+    tariffId: number;
+    rate: string;
+    startOn: Date;
+    tariffCode: string;
+    tariffType: \\"Export\\" | \\"Generation\\" | \\"SEG\\";
+    endOn?: Date;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 20`] = `
+"export interface Params {
+    meterId: number;
+    reason?: string;
+    type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    dateOn: Date;
+    submittedAt?: Date;
+    value: number;
+}
+export interface Result {
+    id: number;
+    value: number;
+    meterId: number;
+    submittedAt?: Date;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 21`] = `
+"export interface Params {
+    id: number;
+    offset: string;
+    perPage: string;
+}
+export interface Result {
+    id: number;
+    msn: string;
+    meterId: number;
+    dateOn: Date;
+    value: number;
+    type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    reason?: string;
+    createdAt: Date;
+    updatedAt?: Date;
+    sourceSystemId?: number;
+    mpan: string;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files 22`] = `
+"export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on ts files 1`] = `
+Array [
+  "ts-file1.queries.ts",
+  "ts-file2.queries.ts",
+]
+`;
+
+exports[`CLI Should use cli to run pipeline on ts files 2`] = `
+"export interface Sql1Params {
+}
+export interface Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
+    id: number;
+    not_null: number;
+    default_not_null: number;
+    bigint_col?: string;
+    bigserial_col: string;
+    bit_col?: string;
+    bit_varying_col?: string;
+    boolean_col?: boolean;
+    box_col?: string;
+    bytea_col: Buffer;
+    character_col?: string;
+    character_varying_col?: string;
+    cidr_col?: string;
+    circle_col: {
+        x: number;
+        y: number;
+        radius: number;
+    };
+    date_col?: Date;
+    double_col?: string;
+    inet_col?: string;
+    integer_col?: number;
+    interval_col: {
+        years: number;
+        months: number;
+        days: number;
+        hours: number;
+        minutes: number;
+        seconds: number;
+        milliseconds: number;
+    };
+    json_col?: Json<TJson_col>;
+    jsonb_col?: Json<TJsonb_col>;
+    line_col?: string;
+    lseg_col?: string;
+    macaddr_col?: string;
+    money_col?: string;
+    numeric_col?: string;
+    path_col?: string;
+    pg_lsn_col?: string;
+    point_col: {
+        x: number;
+        y: number;
+    };
+    polygon_col?: string;
+    real_col?: number;
+    smallint_col?: number;
+    smallserial_col: number;
+    serial_col: number;
+    text_col?: string;
+    time_col?: string;
+    time_with_time_zone_col?: Date;
+    timestamp_col?: Date;
+    timestamp_with_time_zone_col?: Date;
+    tsquery_col?: string;
+    tsvector_col?: string;
+    txid_snapshot_col?: string;
+    uuid_col?: string;
+    xml_col?: string;
+    item: string;
+    state?: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+}
+export interface Sql1Query<TJson_col = unknown, TJsonb_col = unknown> {
+    params: Sql1Params;
+    result: Sql1Result<TJson_col, TJsonb_col>;
+}
+export interface Sql2Params<TJson_col = unknown, TJsonb_col = unknown> {
+    id: number;
+}
+export interface Sql2Result {
+    id: number;
+    character_col?: string;
+}
+export interface Sql2Query<TJson_col = unknown, TJsonb_col = unknown> {
+    params: Sql2Params<TJson_col, TJsonb_col>;
+    result: Sql2Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on ts files 3`] = `
+"export interface Sql2Params {
+    id?: number;
+}
+export interface Sql2Result {
+    character_col?: string;
+}
+export interface Sql2Query {
+    params: Sql2Params;
+    result: Sql2Result;
+}
+"
+`;

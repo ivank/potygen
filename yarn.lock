@@ -677,9 +677,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@potygen/ast@workspace:*, @potygen/ast@workspace:packages/ast":
+"@ovotech/potygen-ast@workspace:*, @ovotech/potygen-ast@workspace:packages/potygen-ast":
   version: 0.0.0-use.local
-  resolution: "@potygen/ast@workspace:packages/ast"
+  resolution: "@ovotech/potygen-ast@workspace:packages/potygen-ast"
   dependencies:
     "@ikerin/rd-parse": ^3.4.4
     "@types/jest": ^26.0.14
@@ -692,13 +692,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@potygen/cli@workspace:packages/cli":
+"@ovotech/potygen-cli@workspace:packages/potygen-cli":
   version: 0.0.0-use.local
-  resolution: "@potygen/cli@workspace:packages/cli"
+  resolution: "@ovotech/potygen-cli@workspace:packages/potygen-cli"
   dependencies:
     "@ikerin/rd-parse": 3.4.4
-    "@potygen/ast": "workspace:*"
-    "@potygen/query": "workspace:*"
+    "@ovotech/potygen-ast": "workspace:*"
+    "@ovotech/potygen-query": "workspace:*"
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15
     "@types/pg": ^8.6.0
@@ -715,12 +715,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@potygen/query@workspace:*, @potygen/query@workspace:packages/query":
+"@ovotech/potygen-query@workspace:*, @ovotech/potygen-query@workspace:packages/potygen-query":
   version: 0.0.0-use.local
-  resolution: "@potygen/query@workspace:packages/query"
+  resolution: "@ovotech/potygen-query@workspace:packages/potygen-query"
   dependencies:
     "@ikerin/rd-parse": 3.4.4
-    "@potygen/ast": "workspace:*"
+    "@ovotech/potygen-ast": "workspace:*"
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15
     "@types/pg": ^8.6.1
