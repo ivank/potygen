@@ -25,6 +25,8 @@ describe('CLI', () => {
       'postgres://potygen:dev-pass@localhost:5432/potygen',
     ]);
 
+    expect(logger.error).not.toHaveBeenCalled();
+
     const resultQueries = readdirSync(join(__dirname, 'cli/__generated__'));
 
     expect(resultQueries).toMatchSnapshot();
@@ -50,11 +52,11 @@ describe('CLI', () => {
       'postgres://potygen:dev-pass@localhost:5432/potygen',
     ]);
 
+    expect(logger.error).not.toHaveBeenCalled();
+
     const resultQueries = readdirSync(join(__dirname, 'cli/__generated__'));
 
     expect(resultQueries).toMatchSnapshot();
-
-    expect(logger.error).not.toHaveBeenCalled();
 
     for (const name of resultQueries) {
       expect(readFileSync(join(__dirname, 'cli/__generated__', name), 'utf-8')).toMatchSnapshot();

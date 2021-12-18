@@ -42,4 +42,4 @@ jobs:
       - run: yarn install
       - run: yarn build
       - run: yarn lint
-      - run: yarn test
+      - run: yarn test --runInBand --ci --verbose
