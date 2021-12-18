@@ -1,4 +1,4 @@
-import { parser, isObject, orderBy, AstTag } from '@ovotech/potygen-ast';
+import { parser, isObject, orderBy, AstTag } from '@potygen/ast';
 import { ClientBase, QueryConfig, DatabaseError } from 'pg';
 import { RunQueryError } from './errors';
 import { toParams } from './query-interface';

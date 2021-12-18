@@ -1,4 +1,4 @@
-import { UnaryOperatorTag, BinaryOperatorTag } from '@ovotech/potygen-ast';
+import { UnaryOperatorTag, BinaryOperatorTag } from '@potygen/ast';
 import {
   TypeJson,
   TypeNull,

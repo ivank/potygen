@@ -1,5 +1,5 @@
 import { Client } from 'pg';
-import { Sql, sql, toQueryInterface, TypeConstant } from '@ovotech/potygen-query';
+import { Sql, sql, toQueryInterface, TypeConstant } from '@potygen/query';
 import { toLoadedQueryInterface } from '../src/load';
 import { compactTypes } from '../src/emit';
 let db: Client;

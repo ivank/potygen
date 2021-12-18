@@ -1,4 +1,4 @@
-import { sql } from '@ovotech/potygen-query';
+import { sql } from '@potygen/query';
 
 export const sql1 = sql`SELECT * FROM all_types`;
 

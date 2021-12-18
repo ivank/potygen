@@ -1,4 +1,4 @@
-import { parser } from '@ovotech/potygen-ast';
+import { parser } from '@potygen/ast';
 import { toQueryInterface } from '../src';
 import { withParserErrors } from './helpers';
 

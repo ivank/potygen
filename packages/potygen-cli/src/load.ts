@@ -1,4 +1,4 @@
-import { isEqual, groupBy, isNil, parser, isEmpty, isUniqueBy } from '@ovotech/potygen-ast';
+import { isEqual, groupBy, isNil, parser, isEmpty, isUniqueBy } from '@potygen/ast';
 import {
   isTypeEqual,
   QueryInterface,
@@ -17,7 +17,7 @@ import {
   isCompositeConstant,
   TypeCompositeConstant,
   toQueryInterface,
-} from '@ovotech/potygen-query';
+} from '@potygen/query';
 import { ClientBase } from 'pg';
 import {
   isDataTable,

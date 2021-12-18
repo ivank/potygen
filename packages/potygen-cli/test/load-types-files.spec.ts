@@ -1,5 +1,5 @@
-import { parser } from '@ovotech/potygen-ast';
-import { toQueryInterface } from '@ovotech/potygen-query';
+import { parser } from '@potygen/ast';
+import { toQueryInterface } from '@potygen/query';
 import { Client } from 'pg';
 import { loadQueryInterfacesData, toLoadedQueryInterface } from '../src/load';
 import { sqlFiles, withParserErrors } from './helpers';

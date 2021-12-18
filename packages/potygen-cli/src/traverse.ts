@@ -14,8 +14,8 @@ import {
   isIdentifier,
 } from 'typescript';
 import { basename, relative } from 'path';
-import { parser } from '@ovotech/potygen-ast';
-import { QueryInterface, toQueryInterface } from '@ovotech/potygen-query';
+import { parser } from '@potygen/ast';
+import { QueryInterface, toQueryInterface } from '@potygen/query';
 import { loadQueryInterfacesData, toLoadedQueryInterface } from './load';
 import { ClientBase } from 'pg';
 import {
@@ -40,7 +40,7 @@ const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
       isStringLiteral(node.moduleSpecifier) &&
       node.importClause?.namedBindings &&
       isNamedImports(node.importClause.namedBindings) &&
-      node.moduleSpecifier.text === '@ovotech/potygen-query'
+      node.moduleSpecifier.text === '@potygen/query'
     ) {
       tagPropertyName =
         node.importClause?.namedBindings.elements.find(

@@ -1,5 +1,5 @@
 import { markTextError } from '@ikerin/rd-parse';
-import { Tag } from '@ovotech/potygen-ast';
+import { Tag } from '@potygen/ast';
 import { ParsedTypescriptFile, ParsedSqlFile, TemplateTagQuery } from './types';
 
 export class LoadError extends Error {

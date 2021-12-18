@@ -1,5 +1,5 @@
 import { Sql } from '../src';
-import { isNil } from '@ovotech/potygen-ast';
+import { isNil } from '@potygen/ast';
 import { sqlFiles, withParserErrors } from './helpers';
 
 const values: Record<string, Record<string, unknown>> = {

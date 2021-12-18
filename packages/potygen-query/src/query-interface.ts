@@ -30,7 +30,7 @@ import {
   tail,
   TypeArrayTag,
   TypeTag,
-} from '@ovotech/potygen-ast';
+} from '@potygen/ast';
 
 import {
   typeUnknown,

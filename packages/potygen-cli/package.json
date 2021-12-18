@@ -1,7 +1,7 @@
 {
-  "name": "@ovotech/potygen-cli",
+  "name": "@potygen/cli",
   "version": "0.1.0",
-  "homepage": "https://github.com/ovotech/potygen/tree/main/packages/potygen-cli",
+  "homepage": "https://github.com/ivank/potygen/tree/main/packages/potygen-cli",
   "description": "Command line interface for potygen (Postgres Typescript Generator)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@ikerin/rd-parse": "3.4.4",
-    "@ovotech/potygen-ast": "workspace:*",
-    "@ovotech/potygen-query": "workspace:*",
+    "@potygen/ast": "workspace:*",
+    "@potygen/query": "workspace:*",
     "@types/pg": "^8.6.0",
     "commander": "^8.3.0",
     "pg": "^8.6.0",

@@ -1,7 +1,7 @@
-import { parser } from '@ovotech/potygen-ast';
+import { parser } from '@potygen/ast';
 import { Client } from 'pg';
 import { loadQueryInterfacesData, toLoadedQueryInterface } from '../src/load';
-import { toQueryInterface } from '@ovotech/potygen-query';
+import { toQueryInterface } from '@potygen/query';
 import { LoadedData } from '../src';
 
 let db: Client;

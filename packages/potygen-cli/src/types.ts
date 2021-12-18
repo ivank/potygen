@@ -1,4 +1,4 @@
-import { QueryInterface, TypeConstant, TypeUnionConstant } from '@ovotech/potygen-query';
+import { QueryInterface, TypeConstant, TypeUnionConstant } from '@potygen/query';
 import { SourceFile } from 'typescript';
 
 export interface DataTable {

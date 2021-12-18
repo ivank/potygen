@@ -1,6 +1,6 @@
 import { Client } from 'pg';
-import { toQueryInterface } from '@ovotech/potygen-query';
-import { parser } from '@ovotech/potygen-ast';
+import { toQueryInterface } from '@potygen/query';
+import { parser } from '@potygen/ast';
 import { createPrinter, NewLineKind } from 'typescript';
 import { toTypeSource } from '../src/emit';
 import { loadQueryInterfacesData, toLoadedQueryInterface } from '../src/load';
