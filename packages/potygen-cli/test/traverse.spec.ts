@@ -10,7 +10,9 @@ const asyncPipeline = promisify(pipeline);
 
 describe('Traverse', () => {
   it('Should work', async () => {
-    const db = new Client({ connectionString: 'postgres://potygen:dev-pass@localhost:5432/potygen' });
+    const db = new Client({
+      connectionString: process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
+    });
     try {
       await db.connect();
 

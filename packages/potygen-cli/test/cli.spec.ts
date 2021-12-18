@@ -22,7 +22,7 @@ describe('CLI', () => {
       '-t',
       'test/cli/__generated__/{{name}}.queries.ts',
       '-n',
-      'postgres://potygen:dev-pass@localhost:5432/potygen',
+      process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
     ]);
 
     expect(logger.error).not.toHaveBeenCalled();
@@ -49,7 +49,7 @@ describe('CLI', () => {
       '-t',
       '{{root}}/packages/potygen-cli/test/cli/__generated__/{{name}}.queries.ts',
       '-n',
-      'postgres://potygen:dev-pass@localhost:5432/potygen',
+      process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
     ]);
 
     expect(logger.error).not.toHaveBeenCalled();

@@ -4,7 +4,9 @@ import { EndQuery, InitQuery, RetrieveQuery, StartQuery } from './data.spec.quer
 
 describe('Data', () => {
   it('Should return data correctly', async () => {
-    const db = new Client({ connectionString: 'postgres://potygen:dev-pass@localhost:5432/potygen' });
+    const db = new Client({
+      connectionString: process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
+    });
 
     const start = sql<StartQuery>`BEGIN`;
     const init = sql<InitQuery>`INSERT INTO all_types (id,not_null) VALUES (1,1),(2,2)`;

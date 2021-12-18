@@ -6,7 +6,9 @@ let db: Client;
 
 describe('Query Interface', () => {
   beforeAll(async () => {
-    db = new Client({ connectionString: 'postgres://potygen:dev-pass@localhost:5432/potygen' });
+    db = new Client({
+      connectionString: process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
+    });
     await db.connect();
   });
 
