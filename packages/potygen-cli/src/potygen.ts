@@ -49,6 +49,10 @@ export const potygen = (logger: Logger = console): Command =>
         ...options,
       };
 
+      if (process.env.POTYGEN_DEBUG) {
+        console.info('Potygen Config', { root, connection, watch, files, template });
+      }
+
       const db = new Client(connection);
       await db.connect();
       try {

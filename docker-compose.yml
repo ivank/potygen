@@ -7,8 +7,8 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DATABASE: sql-ast
-      POSTGRES_USER: sql-ast
+      POSTGRES_DATABASE: potygen
+      POSTGRES_USER: potygen
       POSTGRES_PASSWORD: dev-pass
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql

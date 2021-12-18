@@ -6,7 +6,7 @@
   "main": "index.js",
   "license": "Apache-2.0",
   "scripts": {
-    "test": "yarn workspaces foreach --verbose run test",
+    "test": "yarn workspaces foreach --parallel --verbose run test",
     "lint": "yarn workspaces foreach --parallel --verbose run lint",
     "build": "yarn workspaces foreach --parallel --topological-dev --verbose run build"
   },

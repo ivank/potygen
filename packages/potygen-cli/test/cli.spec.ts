@@ -22,7 +22,7 @@ describe('CLI', () => {
       '-t',
       'test/cli/__generated__/{{name}}.queries.ts',
       '-n',
-      'postgres://sql-ast:dev-pass@localhost:5432/sql-ast',
+      'postgres://potygen:dev-pass@localhost:5432/potygen',
     ]);
 
     const resultQueries = readdirSync(join(__dirname, 'cli/__generated__'));
@@ -45,14 +45,16 @@ describe('CLI', () => {
       '-f',
       'sql/*.sql',
       '-t',
-      '{{root}}/packages/cli/test/cli/__generated__/{{name}}.queries.ts',
+      '{{root}}/packages/potygen-cli/test/cli/__generated__/{{name}}.queries.ts',
       '-n',
-      'postgres://sql-ast:dev-pass@localhost:5432/sql-ast',
+      'postgres://potygen:dev-pass@localhost:5432/potygen',
     ]);
 
     const resultQueries = readdirSync(join(__dirname, 'cli/__generated__'));
 
     expect(resultQueries).toMatchSnapshot();
+
+    expect(logger.error).not.toHaveBeenCalled();
 
     for (const name of resultQueries) {
       expect(readFileSync(join(__dirname, 'cli/__generated__', name), 'utf-8')).toMatchSnapshot();

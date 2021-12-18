@@ -28,7 +28,7 @@
     "typescript": "^4.4.3"
   },
   "scripts": {
-    "build:queries": "yarn potygen --files 'src/**/*.ts' --template 'src/__generated__/{{name}}.queries.ts' --connection 'postgres://sql-ast:dev-pass@localhost:5432/sql-ast'",
+    "build:queries": "yarn potygen --files 'src/**/*.ts' --template 'src/__generated__/{{name}}.queries.ts' --connection 'postgres://potygen:dev-pass@localhost:5432/potygen'",
     "build": "tsc --declaration",
     "test": "jest test --runInBand",
     "lint": "prettier --list-different '{src,test}/**/*.ts'",

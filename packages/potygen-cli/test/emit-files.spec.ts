@@ -10,7 +10,7 @@ let db: Client;
 
 describe('Load Files', () => {
   beforeAll(async () => {
-    db = new Client({ database: 'sql-ast', user: 'sql-ast', password: 'dev-pass' });
+    db = new Client({ database: 'potygen', user: 'potygen', password: 'dev-pass' });
     await db.connect();
   });
 

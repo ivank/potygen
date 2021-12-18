@@ -9,7 +9,7 @@ let db: Client;
 
 describe('Query Interface', () => {
   beforeAll(async () => {
-    db = new Client({ database: 'sql-ast', user: 'sql-ast', password: 'dev-pass' });
+    db = new Client({ database: 'potygen', user: 'potygen', password: 'dev-pass' });
     await db.connect();
   });
 

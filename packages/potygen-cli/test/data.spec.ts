@@ -4,7 +4,7 @@ import { EndQuery, InitQuery, RetrieveQuery, StartQuery } from './data.spec.quer
 
 describe('Data', () => {
   it('Should return data correctly', async () => {
-    const db = new Client({ database: 'sql-ast', user: 'sql-ast', password: 'dev-pass' });
+    const db = new Client({ database: 'potygen', user: 'potygen', password: 'dev-pass' });
 
     const start = sql<StartQuery>`BEGIN`;
     const init = sql<InitQuery>`INSERT INTO all_types (id,not_null) VALUES (1,1),(2,2)`;

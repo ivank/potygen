@@ -1191,6 +1191,31 @@ Object {
         "type": "CompositeConstant",
       },
     },
+    Object {
+      "name": "state",
+      "type": Object {
+        "items": Array [
+          Object {
+            "literal": "Active",
+            "type": "String",
+          },
+          Object {
+            "literal": "Pending",
+            "type": "String",
+          },
+          Object {
+            "literal": "Dispute",
+            "type": "String",
+          },
+          Object {
+            "literal": "Closed",
+            "type": "String",
+          },
+        ],
+        "nullable": true,
+        "type": "UnionConstant",
+      },
+    },
   ],
 }
 `;
