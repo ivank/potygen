@@ -383,33 +383,6 @@ export interface Query {
 "
 `;
 
-exports[`Traverse Should work: __generated__/tables.queries.ts 1`] = `
-"export interface Params {
-    tableNames: {
-        schema: unknown;
-        name: unknown;
-    }[];
-}
-export interface Result {
-    type: \\"Table\\";
-    name: {
-        schema: string;
-        name: string;
-    };
-    columns: {
-        name: string;
-        isNullable: string;
-        enum: string;
-        type: string;
-    }[];
-}
-export interface Query {
-    params: Params;
-    result: Result;
-}
-"
-`;
-
 exports[`Traverse Should work: __generated__/tariff-rates.queries.ts 1`] = `
 "export interface Params {
 }
