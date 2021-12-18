@@ -38,11 +38,10 @@ jobs:
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Postgres Client (psql)
+        run: apt-get install --yes --no-install-recommends postgresql-client
       - name: Initialze Database
-        run: |
-          apt-get update
-          apt-get install --yes --no-install-recommends postgresql-client
-          psql -f init.sql postgresql://potygen:dev-pass@localhost:5432/potygen
+        run: psql -f init.sql postgresql://potygen:dev-pass@localhost:5432/potygen
       - run: yarn install
       - run: yarn build
       - run: yarn lint
