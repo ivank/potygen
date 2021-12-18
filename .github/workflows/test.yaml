@@ -21,8 +21,12 @@ jobs:
           POSTGRES_DATABASE: potygen
           POSTGRES_USER: potygen
           POSTGRES_PASSWORD: dev-pass
-        volumes:
-          - ${{ github.workspace }}/init.sql:/docker-entrypoint-initdb.d/init.sql
+          POSTGRES_PORT: 5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - uses: actions/checkout@v2
@@ -33,6 +37,8 @@ jobs:
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      - name: Initialze Database
+        run: psql -f init.sql postgresql://potygen:dev-pass@localhost:5432/potygen
       - run: yarn install
       - run: yarn build
       - run: yarn lint

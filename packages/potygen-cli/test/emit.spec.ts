@@ -9,7 +9,7 @@ let db: Client;
 
 describe('Query Interface', () => {
   beforeAll(async () => {
-    db = new Client({ database: 'potygen', user: 'potygen', password: 'dev-pass' });
+    db = new Client({ connectionString: 'postgres://potygen:dev-pass@localhost:5432/potygen' });
     await db.connect();
   });
 
