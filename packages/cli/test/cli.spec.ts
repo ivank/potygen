@@ -28,12 +28,14 @@ describe('CLI', () => {
 
     expect(logger.error).not.toHaveBeenCalled();
 
-    const resultQueries = readdirSync(join(__dirname, 'cli/__generated__'));
+    const resultQueries = readdirSync(join(__dirname, 'cli/__generated__'))
+      .filter((item) => item.endsWith('.ts'))
+      .sort();
 
     expect(resultQueries).toMatchSnapshot();
 
     for (const name of resultQueries) {
-      expect(readFileSync(join(__dirname, 'cli/__generated__', name), 'utf-8')).toMatchSnapshot();
+      expect(readFileSync(join(__dirname, 'cli/__generated__', name), 'utf-8')).toMatchSnapshot(name);
     }
   });
 
@@ -55,12 +57,14 @@ describe('CLI', () => {
 
     expect(logger.error).not.toHaveBeenCalled();
 
-    const resultQueries = readdirSync(join(__dirname, 'cli/__generated__'));
+    const resultQueries = readdirSync(join(__dirname, 'cli/__generated__'))
+      .filter((item) => item.endsWith('.ts'))
+      .sort();
 
     expect(resultQueries).toMatchSnapshot();
 
     for (const name of resultQueries) {
-      expect(readFileSync(join(__dirname, 'cli/__generated__', name), 'utf-8')).toMatchSnapshot();
+      expect(readFileSync(join(__dirname, 'cli/__generated__', name), 'utf-8')).toMatchSnapshot(name);
     }
   });
 });

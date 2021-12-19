@@ -26,7 +26,7 @@ Array [
 ]
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 2`] = `
+exports[`CLI Should use cli to run pipeline on sql files: account-levelisation.update.query.queries.ts 1`] = `
 "export interface Params {
     isAccepted: boolean;
     id: number;
@@ -42,7 +42,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 3`] = `
+exports[`CLI Should use cli to run pipeline on sql files: account-levelisation.upsert.query.queries.ts 1`] = `
 "export interface Params {
     levelisationId: number;
     start?: Date;
@@ -57,35 +57,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 4`] = `
-"export interface Params {
-    ids: number[];
-}
-export interface Result {
-    id: number;
-}
-export interface Query {
-    params: Params;
-    result: Result;
-}
-"
-`;
-
-exports[`CLI Should use cli to run pipeline on sql files 5`] = `
-"export interface Params {
-    ids: number[];
-}
-export interface Result {
-    id: number;
-}
-export interface Query {
-    params: Params;
-    result: Result;
-}
-"
-`;
-
-exports[`CLI Should use cli to run pipeline on sql files 6`] = `
+exports[`CLI Should use cli to run pipeline on sql files: account-levelisations.query.queries.ts 1`] = `
 "import { Json } from \\"@potygen/query\\";
 export interface Params {
     q: string;
@@ -139,7 +111,35 @@ export interface Query<TGenerationPeriods = unknown, TExportPeriods = unknown, T
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 7`] = `
+exports[`CLI Should use cli to run pipeline on sql files: account-levelisations-bulk-close-accounts.query.queries.ts 1`] = `
+"export interface Params {
+    ids: number[];
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: account-levelisations-set-bulk-update.query.queries.ts 1`] = `
+"export interface Params {
+    ids: number[];
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: accounts.list.query.queries.ts 1`] = `
 "export interface Params {
     q: string | string;
     ids: number[];
@@ -154,7 +154,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 8`] = `
+exports[`CLI Should use cli to run pipeline on sql files: accounts.queries.ts 1`] = `
 "export interface Params {
 }
 export interface Result {
@@ -166,7 +166,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 9`] = `
+exports[`CLI Should use cli to run pipeline on sql files: accounts.query.queries.ts 1`] = `
 "export interface Params {
     q: string | string;
     ids: number[];
@@ -190,7 +190,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 10`] = `
+exports[`CLI Should use cli to run pipeline on sql files: bacs.query.queries.ts 1`] = `
 "export interface Params {
     quarter?: string;
     perPage: string;
@@ -214,7 +214,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 11`] = `
+exports[`CLI Should use cli to run pipeline on sql files: contracts.queries.ts 1`] = `
 "export interface Params {
 }
 export interface Result {
@@ -226,7 +226,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 12`] = `
+exports[`CLI Should use cli to run pipeline on sql files: delete-accounts.query.queries.ts 1`] = `
 "export interface Params {
     type: \\"FIT\\" | \\"SEG\\";
     state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
@@ -243,7 +243,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 13`] = `
+exports[`CLI Should use cli to run pipeline on sql files: generation-read-data.query.queries.ts 1`] = `
 "export interface Params {
     installationId: number;
     exportDateOn: Date;
@@ -259,7 +259,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 14`] = `
+exports[`CLI Should use cli to run pipeline on sql files: installation-meter-update.query.queries.ts 1`] = `
 "export interface Params {
     removalDate?: Date;
     meterId: number;
@@ -273,7 +273,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 15`] = `
+exports[`CLI Should use cli to run pipeline on sql files: installations.queries.ts 1`] = `
 "export interface Params {
 }
 export interface Result {
@@ -285,7 +285,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 16`] = `
+exports[`CLI Should use cli to run pipeline on sql files: levelisations.list.query.queries.ts 1`] = `
 "export interface Params {
     q: string;
     ids: number[];
@@ -307,7 +307,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 17`] = `
+exports[`CLI Should use cli to run pipeline on sql files: meter-reads.queries.ts 1`] = `
 "export interface Params {
 }
 export interface Result {
@@ -319,7 +319,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 18`] = `
+exports[`CLI Should use cli to run pipeline on sql files: process-batch.query.queries.ts 1`] = `
 "export interface Params {
     fitIds: string[];
 }
@@ -342,7 +342,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 19`] = `
+exports[`CLI Should use cli to run pipeline on sql files: rates-by-tarrif-ids.query.queries.ts 1`] = `
 "export interface Params {
     ids: number[][];
 }
@@ -361,7 +361,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 20`] = `
+exports[`CLI Should use cli to run pipeline on sql files: read-create.query.queries.ts 1`] = `
 "export interface Params {
     meterId: number;
     reason?: string;
@@ -383,7 +383,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 21`] = `
+exports[`CLI Should use cli to run pipeline on sql files: reads-by-account-id.query.queries.ts 1`] = `
 "export interface Params {
     id: number;
     offset: string;
@@ -409,7 +409,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files 22`] = `
+exports[`CLI Should use cli to run pipeline on sql files: tariff-rates.queries.ts 1`] = `
 "export interface Params {
 }
 export interface Result {
@@ -428,7 +428,7 @@ Array [
 ]
 `;
 
-exports[`CLI Should use cli to run pipeline on ts files 2`] = `
+exports[`CLI Should use cli to run pipeline on ts files: ts-file1.queries.ts 1`] = `
 "export interface Sql1Params {
 }
 export interface Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
@@ -512,7 +512,7 @@ export interface Sql2Query<TJson_col = unknown, TJsonb_col = unknown> {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on ts files 3`] = `
+exports[`CLI Should use cli to run pipeline on ts files: ts-file2.queries.ts 1`] = `
 "export interface Sql2Params {
     id?: number;
 }
