@@ -43,9 +43,9 @@ jobs:
         run: psql postgres://potygen:dev-pass@postgres:5432/potygen < init.sql
       - uses: actions/setup-node@v2
         with:
-          node-version: '16.x'
+          node-version: 16
           registry-url: 'https://registry.npmjs.org'
-          scope: '@potygen'
+          always-auth: true
       - run: yarn install
       - run: yarn build
       - run: yarn lint
