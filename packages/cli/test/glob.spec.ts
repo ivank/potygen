@@ -1,8 +1,9 @@
 import { join } from 'path';
 import { glob } from '../src';
+import { sqlDir } from './helpers';
 
 const cwd = (path: string) => join(__dirname, path);
-const sql = (path: string) => join(__dirname, '../../../sql/', path);
+const sql = (path: string) => join(sqlDir, path);
 
 describe('Glob', () => {
   it.each<[string, string[]]>([

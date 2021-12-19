@@ -1,15 +1,13 @@
-name: Test
+name: TestAndPublish
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
-    container: node:16
 
     services:
       postgres:
@@ -41,9 +39,17 @@ jobs:
           apt-get install --yes --no-install-recommends postgresql-client
       - name: Initialze Database
         run: psql postgres://potygen:dev-pass@postgres:5432/potygen < init.sql
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@potygen'
       - run: yarn install
       - run: yarn build
       - run: yarn lint
       - run: yarn test --runInBand --ci
         env:
           POSTGRES_CONNECTION: postgres://potygen:dev-pass@postgres:5432/potygen
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

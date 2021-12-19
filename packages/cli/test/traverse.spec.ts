@@ -1,25 +1,23 @@
 import { readFileSync } from 'fs';
 import { join, relative } from 'path';
-import { Client } from 'pg';
 import { pipeline } from 'stream';
 import { promisify } from 'util';
 import { glob } from '../src';
 import { SqlRead, QueryLoader } from '../src/traverse';
+import { sqlDir, testDb } from './helpers';
 
 const asyncPipeline = promisify(pipeline);
 
 describe('Traverse', () => {
   it('Should work', async () => {
-    const db = new Client({
-      connectionString: process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
-    });
+    const db = testDb();
     try {
       await db.connect();
 
       const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
       const sqls = new SqlRead({
         path: '*.sql',
-        root: join(__dirname, '../../../sql'),
+        root: sqlDir,
         logger,
         watch: false,
       });

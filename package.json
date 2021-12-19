@@ -8,7 +8,8 @@
   "scripts": {
     "test": "yarn workspaces foreach --verbose run test",
     "lint": "yarn workspaces foreach --parallel --verbose run lint",
-    "build": "yarn workspaces foreach --parallel --topological-dev --verbose run build"
+    "build": "yarn workspaces foreach --parallel --topological-dev --verbose run build",
+    "publish": "yarn workspaces foreach --no-private --verbose npm publish --tolerate-republish --access public"
   },
   "devDependencies": {
     "prettier": "^2.3.2",

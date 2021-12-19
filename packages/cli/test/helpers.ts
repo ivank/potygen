@@ -2,6 +2,7 @@ import { ParserError } from '@ikerin/rd-parse';
 import { inspect } from 'util';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
+import { Client } from 'pg';
 
 type CB = () => void;
 type AsyncCB = () => Promise<void>;
@@ -16,7 +17,12 @@ export const withParserErrors = async (cb: CB | AsyncCB): Promise<void> => {
   }
 };
 
-const files = join(__dirname, '../../../sql');
+export const rootDir = join(__dirname, '../../../');
+export const sqlDir = join(rootDir, 'sql');
 
 export const sqlFiles = (): [string, string][] =>
-  readdirSync(files).map((filename) => [filename, readFileSync(join(files, filename), 'utf-8')]);
+  readdirSync(sqlDir).map((filename) => [filename, readFileSync(join(sqlDir, filename), 'utf-8')]);
+
+export const connectionString = process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen';
+
+export const testDb = () => new Client({ connectionString });

@@ -4,14 +4,13 @@ import { parser } from '@potygen/ast';
 import { createPrinter, NewLineKind } from 'typescript';
 import { toTypeSource } from '../src/emit';
 import { loadQueryInterfacesData, toLoadedQueryInterface } from '../src/load';
+import { testDb } from './helpers';
 
 let db: Client;
 
 describe('Query Interface', () => {
   beforeAll(async () => {
-    db = new Client({
-      connectionString: process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
-    });
+    db = testDb();
     await db.connect();
   });
 

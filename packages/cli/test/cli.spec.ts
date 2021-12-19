@@ -1,12 +1,13 @@
 import { readdirSync, readFileSync, unlinkSync } from 'fs';
 import { join } from 'path';
 import { potygen } from '../src/potygen';
+import { connectionString, rootDir } from './helpers';
 
 describe('CLI', () => {
   beforeEach(() =>
-    readdirSync(join(__dirname, 'cli/__generated__')).forEach((name) =>
-      unlinkSync(join(__dirname, 'cli/__generated__', name)),
-    ),
+    readdirSync(join(__dirname, 'cli/__generated__'))
+      .filter((name) => name.endsWith('.ts'))
+      .forEach((name) => unlinkSync(join(__dirname, 'cli/__generated__', name))),
   );
 
   it('Should use cli to run pipeline on ts files', async () => {
@@ -22,7 +23,7 @@ describe('CLI', () => {
       '--template',
       'test/cli/__generated__/{{name}}.queries.ts',
       '--connection',
-      process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
+      connectionString,
     ]);
 
     expect(logger.error).not.toHaveBeenCalled();
@@ -43,13 +44,13 @@ describe('CLI', () => {
       'node',
       'potygen',
       '--root',
-      join(__dirname, '../../../'),
+      rootDir,
       '--files',
       'sql/*.sql',
       '--template',
-      '{{root}}/packages/potygen-cli/test/cli/__generated__/{{name}}.queries.ts',
+      '{{root}}/packages/cli/test/cli/__generated__/{{name}}.queries.ts',
       '--connection',
-      process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
+      connectionString,
     ]);
 
     expect(logger.error).not.toHaveBeenCalled();

@@ -4,15 +4,13 @@ import { Client } from 'pg';
 import { createPrinter, NewLineKind } from 'typescript';
 import { toTypeSource } from '../src';
 import { loadQueryInterfacesData, toLoadedQueryInterface } from '../src/load';
-import { sqlFiles, withParserErrors } from './helpers';
+import { sqlFiles, testDb, withParserErrors } from './helpers';
 
 let db: Client;
 
 describe('Load Files', () => {
   beforeAll(async () => {
-    db = new Client({
-      connectionString: process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
-    });
+    db = testDb();
     await db.connect();
   });
 

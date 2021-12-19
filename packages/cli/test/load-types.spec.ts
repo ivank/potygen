@@ -3,14 +3,13 @@ import { Client } from 'pg';
 import { loadQueryInterfacesData, toLoadedQueryInterface } from '../src/load';
 import { toQueryInterface } from '@potygen/query';
 import { LoadedData } from '../src';
+import { testDb } from './helpers';
 
 let db: Client;
 
 describe('Query Interface', () => {
   beforeAll(async () => {
-    db = new Client({
-      connectionString: process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
-    });
+    db = testDb();
     await db.connect();
   });
 

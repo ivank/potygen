@@ -677,9 +677,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@potygen/ast@workspace:*, @potygen/ast@workspace:packages/potygen-ast":
+"@potygen/ast@workspace:*, @potygen/ast@workspace:packages/ast":
   version: 0.0.0-use.local
-  resolution: "@potygen/ast@workspace:packages/potygen-ast"
+  resolution: "@potygen/ast@workspace:packages/ast"
   dependencies:
     "@ikerin/rd-parse": ^3.4.4
     "@types/jest": ^26.0.14
@@ -692,9 +692,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@potygen/cli@workspace:packages/potygen-cli":
+"@potygen/cli@workspace:packages/cli":
   version: 0.0.0-use.local
-  resolution: "@potygen/cli@workspace:packages/potygen-cli"
+  resolution: "@potygen/cli@workspace:packages/cli"
   dependencies:
     "@ikerin/rd-parse": 3.4.4
     "@potygen/ast": "workspace:*"
@@ -715,9 +715,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@potygen/query@workspace:*, @potygen/query@workspace:packages/potygen-query":
+"@potygen/query@workspace:*, @potygen/query@workspace:packages/query":
   version: 0.0.0-use.local
-  resolution: "@potygen/query@workspace:packages/potygen-query"
+  resolution: "@potygen/query@workspace:packages/query"
   dependencies:
     "@ikerin/rd-parse": 3.4.4
     "@potygen/ast": "workspace:*"

@@ -1,12 +1,10 @@
-import { Client } from 'pg';
 import { sql } from '@potygen/query';
 import { EndQuery, InitQuery, RetrieveQuery, StartQuery } from './data.spec.queries';
+import { testDb } from './helpers';
 
 describe('Data', () => {
   it('Should return data correctly', async () => {
-    const db = new Client({
-      connectionString: process.env.POSTGRES_CONNECTION ?? 'postgres://potygen:dev-pass@localhost:5432/potygen',
-    });
+    const db = testDb();
 
     const start = sql<StartQuery>`BEGIN`;
     const init = sql<InitQuery>`INSERT INTO all_types (id,not_null) VALUES (1,1),(2,2)`;

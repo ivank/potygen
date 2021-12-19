@@ -1,19 +1,25 @@
 {
-  "name": "@potygen/ast",
+  "name": "@potygen/query",
   "version": "0.1.0",
-  "homepage": "https://github.com/ivank/potygen/tree/main/packages/potygen-ast",
-  "description": "Abstract syntax tree generator for potygen (Postgres Typescript Generator)",
+  "homepage": "https://github.com/ivank/potygen/tree/main/packages/@potygen/query",
+  "description": "Runtime interface for potygen (Postgres Typescript Generator)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@ikerin/rd-parse": "3.4.4",
     "@types/jest": "^26.0.14",
     "@types/node": "^14.17.15",
+    "@types/pg": "^8.6.1",
     "jest": "^26.4.2",
     "prettier": "^2.3.2",
     "ts-jest": "^26.4.0",
     "ts-node": "^10.1.0",
     "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "@potygen/ast": "workspace:*",
+    "pg": "^8.7.1"
   },
   "scripts": {
     "build": "tsc --declaration",
@@ -22,8 +28,5 @@
   },
   "jest": {
     "preset": "../../jest.json"
-  },
-  "dependencies": {
-    "@ikerin/rd-parse": "^3.4.4"
   }
 }
