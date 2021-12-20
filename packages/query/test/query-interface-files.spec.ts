@@ -1,5 +1,5 @@
 import { parser } from '@potygen/ast';
-import { toQueryInterface } from '../src/';
+import { toQueryInterface } from '../src';
 import { sqlFiles, withParserErrors } from './helpers';
 
 describe('Query Interface', () => {
