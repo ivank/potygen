@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Initialze Database
-        run: cat init.sql | docker -i postgres exec psql postgres://potygen:dev-pass@postgres:5432/potygen
+        run: docker -it postgres exec psql postgres://potygen:dev-pass@postgres:5432/potygen -c 'SELECT * FROM all_types'
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
