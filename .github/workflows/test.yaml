@@ -16,10 +16,17 @@ jobs:
       - uses: danielweller-swp/postgresql-action@v2
         with:
           postgresql version: '11'
-          postgresql db: potygen
-          postgresql user: potygen
-          postgresql password: dev-pass
-          postgresql init scripts: initdb.d
+          postgresql db: 'potygen'
+          postgresql user: 'potygen'
+          postgresql password: 'dev-pass'
+          postgresql init scripts: './initdb.d'
+      - name: Install Postgres Client (psql)
+        run: |
+          apt-get update
+          apt-get install --yes --no-install-recommends postgresql-client
+      - name: Initialze Database
+        run: psql postgres://potygen:dev-pass@localhost:5432/potygen -c 'SELECT * FROM all_types;'
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
