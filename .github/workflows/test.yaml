@@ -22,7 +22,7 @@ jobs:
         ports:
           - 5432:5432
         options: >-
-          --volume ${{ github.workspace }}/init.sql:/docker-entrypoint-initdb.d/init.sql
+          -v '${{ github.workspace }}/init.sql:/docker-entrypoint-initdb.d/init.sql'
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
