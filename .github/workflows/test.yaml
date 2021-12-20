@@ -18,6 +18,7 @@ jobs:
           POSTGRES_DATABASE: potygen
           POSTGRES_USER: potygen
           POSTGRES_PASSWORD: dev-pass
+          POSTGRES_PORT: 5432
         ports:
           - 5432:5432
         options: >-
