@@ -25,7 +25,7 @@ jobs:
           apt-get update
           apt-get install --yes --no-install-recommends postgresql-client
       - name: Initialze Database
-        run: psql postgres://potygen:dev-pass@localhost:5432/potygen -c 'SELECT * FROM all_types;'
+        run: psql postgres://potygen:dev-pass@postgres:5432/potygen -c 'SELECT * FROM all_types;'
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
