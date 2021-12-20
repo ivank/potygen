@@ -13,19 +13,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: danielweller-swp/postgresql-action@v2
+      - uses: harmon758/postgresql-action@v1
         with:
           postgresql version: '11'
           postgresql db: 'potygen'
           postgresql user: 'potygen'
           postgresql password: 'dev-pass'
-          postgresql init scripts: './initdb.d'
+          # postgresql init scripts: './initdb.d'
       - name: Install Postgres Client (psql)
         run: |
           apt-get update
           apt-get install --yes --no-install-recommends postgresql-client
       - name: Initialze Database
-        run: psql postgres://potygen:dev-pass@postgres:5432/potygen -c 'SELECT * FROM all_types;'
+        run: psql postgres://potygen:dev-pass@postgres:5432/potygen < ./initdb.d/init.sql
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
