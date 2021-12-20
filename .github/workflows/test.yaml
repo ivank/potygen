@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: harmon758/postgresql-action@v1
+      - uses: danielweller-swp/postgresql-action@v2
         with:
           postgresql version: '11'
           postgresql db: potygen
@@ -32,4 +32,4 @@ jobs:
       - run: yarn lint
       - run: yarn test --runInBand --ci
         env:
-          POSTGRES_CONNECTION: postgres://potygen:dev-pass@postgres:5432/potygen
+          POSTGRES_CONNECTION: postgres://potygen:dev-pass@localhost:5432/potygen
