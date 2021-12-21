@@ -27,7 +27,7 @@ jobs:
           node-version: '16'
       - name: Initialze Database
         run: cat init.sql | docker exec --interactive postgres psql postgres://potygen:dev-pass@postgres:5432/potygen
-      - uses: .github/actions/yarn-install
+      - uses: ./.github/actions/yarn-install
       - run: yarn build
       - run: yarn lint
       - run: yarn test --runInBand --ci
