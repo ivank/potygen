@@ -5027,10 +5027,10 @@ Object {
   "params": Array [
     Object {
       "name": "intervalStart",
-      "nextPos": 679,
+      "nextPos": 680,
       "pick": Array [],
       "pos": 665,
-      "required": false,
+      "required": true,
       "spread": false,
       "type": Object {
         "column": "date_on",
@@ -5060,10 +5060,10 @@ Object {
     },
     Object {
       "name": "intervalEnd",
-      "nextPos": 696,
+      "nextPos": 698,
       "pick": Array [],
-      "pos": 684,
-      "required": false,
+      "pos": 685,
+      "required": true,
       "spread": false,
       "type": Object {
         "column": "date_on",
@@ -5093,28 +5093,28 @@ Object {
     },
     Object {
       "name": "intervalStart",
-      "nextPos": 1287,
+      "nextPos": 1290,
       "pick": Array [],
-      "pos": 1273,
-      "required": false,
+      "pos": 1275,
+      "required": true,
       "spread": false,
       "type": Object {
         "column": "date_on",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 1270,
-          "pos": 1248,
+          "nextPos": 1272,
+          "pos": 1250,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 1262,
-              "pos": 1248,
+              "nextPos": 1264,
+              "pos": 1250,
               "tag": "UnquotedIdentifier",
               "value": "previous_reads",
             },
             Object {
-              "nextPos": 1270,
-              "pos": 1263,
+              "nextPos": 1272,
+              "pos": 1265,
               "tag": "UnquotedIdentifier",
               "value": "date_on",
             },
@@ -5126,28 +5126,28 @@ Object {
     },
     Object {
       "name": "accountId",
-      "nextPos": 1616,
+      "nextPos": 1620,
       "pick": Array [],
-      "pos": 1606,
-      "required": false,
+      "pos": 1609,
+      "required": true,
       "spread": false,
       "type": Object {
         "column": "account_id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 1603,
-          "pos": 1583,
+          "nextPos": 1606,
+          "pos": 1586,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 1592,
-              "pos": 1583,
+              "nextPos": 1595,
+              "pos": 1586,
               "tag": "UnquotedIdentifier",
               "value": "contracts",
             },
             Object {
-              "nextPos": 1603,
-              "pos": 1593,
+              "nextPos": 1606,
+              "pos": 1596,
               "tag": "UnquotedIdentifier",
               "value": "account_id",
             },
@@ -5159,9 +5159,9 @@ Object {
     },
     Object {
       "name": "meterId",
-      "nextPos": 1632,
+      "nextPos": 1636,
       "pick": Array [],
-      "pos": 1624,
+      "pos": 1628,
       "required": false,
       "spread": false,
       "type": Object {
@@ -5174,28 +5174,28 @@ Object {
     },
     Object {
       "name": "meterId",
-      "nextPos": 1669,
+      "nextPos": 1673,
       "pick": Array [],
-      "pos": 1661,
+      "pos": 1665,
       "required": false,
       "spread": false,
       "type": Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 1658,
-          "pos": 1649,
+          "nextPos": 1662,
+          "pos": 1653,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 1655,
-              "pos": 1649,
+              "nextPos": 1659,
+              "pos": 1653,
               "tag": "UnquotedIdentifier",
               "value": "meters",
             },
             Object {
-              "nextPos": 1658,
-              "pos": 1656,
+              "nextPos": 1662,
+              "pos": 1660,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -5568,19 +5568,19 @@ Object {
                 "column": "id",
                 "schema": undefined,
                 "sourceTag": Object {
-                  "nextPos": 852,
-                  "pos": 835,
+                  "nextPos": 854,
+                  "pos": 837,
                   "tag": "Column",
                   "values": Array [
                     Object {
-                      "nextPos": 849,
-                      "pos": 835,
+                      "nextPos": 851,
+                      "pos": 837,
                       "tag": "UnquotedIdentifier",
                       "value": "previous_reads",
                     },
                     Object {
-                      "nextPos": 852,
-                      "pos": 850,
+                      "nextPos": 854,
+                      "pos": 852,
                       "tag": "UnquotedIdentifier",
                       "value": "id",
                     },
@@ -5596,19 +5596,19 @@ Object {
                 "column": "value",
                 "schema": undefined,
                 "sourceTag": Object {
-                  "nextPos": 891,
-                  "pos": 871,
+                  "nextPos": 893,
+                  "pos": 873,
                   "tag": "Column",
                   "values": Array [
                     Object {
-                      "nextPos": 885,
-                      "pos": 871,
+                      "nextPos": 887,
+                      "pos": 873,
                       "tag": "UnquotedIdentifier",
                       "value": "previous_reads",
                     },
                     Object {
-                      "nextPos": 891,
-                      "pos": 886,
+                      "nextPos": 893,
+                      "pos": 888,
                       "tag": "UnquotedIdentifier",
                       "value": "value",
                     },
@@ -5624,19 +5624,19 @@ Object {
                 "column": "date_on",
                 "schema": undefined,
                 "sourceTag": Object {
-                  "nextPos": 933,
-                  "pos": 911,
+                  "nextPos": 935,
+                  "pos": 913,
                   "tag": "Column",
                   "values": Array [
                     Object {
-                      "nextPos": 925,
-                      "pos": 911,
+                      "nextPos": 927,
+                      "pos": 913,
                       "tag": "UnquotedIdentifier",
                       "value": "previous_reads",
                     },
                     Object {
-                      "nextPos": 933,
-                      "pos": 926,
+                      "nextPos": 935,
+                      "pos": 928,
                       "tag": "UnquotedIdentifier",
                       "value": "date_on",
                     },
@@ -5652,19 +5652,19 @@ Object {
                 "column": "submitted_at",
                 "schema": undefined,
                 "sourceTag": Object {
-                  "nextPos": 985,
-                  "pos": 958,
+                  "nextPos": 987,
+                  "pos": 960,
                   "tag": "Column",
                   "values": Array [
                     Object {
-                      "nextPos": 972,
-                      "pos": 958,
+                      "nextPos": 974,
+                      "pos": 960,
                       "tag": "UnquotedIdentifier",
                       "value": "previous_reads",
                     },
                     Object {
-                      "nextPos": 985,
-                      "pos": 973,
+                      "nextPos": 987,
+                      "pos": 975,
                       "tag": "UnquotedIdentifier",
                       "value": "submitted_at",
                     },
@@ -5680,19 +5680,19 @@ Object {
                 "column": "reason",
                 "schema": undefined,
                 "sourceTag": Object {
-                  "nextPos": 1026,
-                  "pos": 1005,
+                  "nextPos": 1028,
+                  "pos": 1007,
                   "tag": "Column",
                   "values": Array [
                     Object {
-                      "nextPos": 1019,
-                      "pos": 1005,
+                      "nextPos": 1021,
+                      "pos": 1007,
                       "tag": "UnquotedIdentifier",
                       "value": "previous_reads",
                     },
                     Object {
-                      "nextPos": 1026,
-                      "pos": 1020,
+                      "nextPos": 1028,
+                      "pos": 1022,
                       "tag": "UnquotedIdentifier",
                       "value": "reason",
                     },
@@ -5708,19 +5708,19 @@ Object {
                 "column": "type",
                 "schema": undefined,
                 "sourceTag": Object {
-                  "nextPos": 1063,
-                  "pos": 1044,
+                  "nextPos": 1065,
+                  "pos": 1046,
                   "tag": "Column",
                   "values": Array [
                     Object {
-                      "nextPos": 1058,
-                      "pos": 1044,
+                      "nextPos": 1060,
+                      "pos": 1046,
                       "tag": "UnquotedIdentifier",
                       "value": "previous_reads",
                     },
                     Object {
-                      "nextPos": 1063,
-                      "pos": 1059,
+                      "nextPos": 1065,
+                      "pos": 1061,
                       "tag": "UnquotedIdentifier",
                       "value": "type",
                     },
@@ -5782,31 +5782,31 @@ Object {
       "name": "previous_reads",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 1123,
-        "pos": 1093,
+        "nextPos": 1125,
+        "pos": 1095,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 1105,
-            "pos": 1093,
+            "nextPos": 1107,
+            "pos": 1095,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 1105,
-                "pos": 1093,
+                "nextPos": 1107,
+                "pos": 1095,
                 "tag": "UnquotedIdentifier",
                 "value": "active_reads",
               },
             ],
           },
           Object {
-            "nextPos": 1123,
-            "pos": 1106,
+            "nextPos": 1125,
+            "pos": 1108,
             "tag": "As",
             "values": Array [
               Object {
-                "nextPos": 1123,
-                "pos": 1109,
+                "nextPos": 1125,
+                "pos": 1111,
                 "tag": "UnquotedIdentifier",
                 "value": "previous_reads",
               },
@@ -5822,18 +5822,18 @@ Object {
       "name": "meters",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 1384,
-        "pos": 1378,
+        "nextPos": 1387,
+        "pos": 1381,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 1384,
-            "pos": 1378,
+            "nextPos": 1387,
+            "pos": 1381,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 1384,
-                "pos": 1378,
+                "nextPos": 1387,
+                "pos": 1381,
                 "tag": "UnquotedIdentifier",
                 "value": "meters",
               },
@@ -5849,18 +5849,18 @@ Object {
       "name": "installation_meters",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 1409,
-        "pos": 1390,
+        "nextPos": 1412,
+        "pos": 1393,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 1409,
-            "pos": 1390,
+            "nextPos": 1412,
+            "pos": 1393,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 1409,
-                "pos": 1390,
+                "nextPos": 1412,
+                "pos": 1393,
                 "tag": "UnquotedIdentifier",
                 "value": "installation_meters",
               },
@@ -5876,18 +5876,18 @@ Object {
       "name": "contracts",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 1468,
-        "pos": 1459,
+        "nextPos": 1471,
+        "pos": 1462,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 1468,
-            "pos": 1459,
+            "nextPos": 1471,
+            "pos": 1462,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 1468,
-                "pos": 1459,
+                "nextPos": 1471,
+                "pos": 1462,
                 "tag": "UnquotedIdentifier",
                 "value": "contracts",
               },
