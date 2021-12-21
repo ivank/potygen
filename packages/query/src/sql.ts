@@ -109,7 +109,7 @@ export class Sql<TSqlInterface extends SqlInterface = SqlInterface> {
     return { text, values };
   }
 
-  async run(db: ClientBase, params: TSqlInterface['params'] = {}): Promise<TSqlInterface['result'][]> {
+  async run(db: Pick<ClientBase, 'query'>, params: TSqlInterface['params'] = {}): Promise<TSqlInterface['result'][]> {
     const query = this.toQueryConfig(params);
     try {
       return (await db.query(query)).rows.map(nullToUndefinedInPlace);
