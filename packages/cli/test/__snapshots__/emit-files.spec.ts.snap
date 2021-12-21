@@ -2,8 +2,8 @@
 
 exports[`Load Files Should convert complex sql account-levelisation.update.query.sql: account-levelisation.update.query.sql 1`] = `
 "export interface Params {
-    isAccepted: boolean;
-    id: number;
+    isAccepted?: boolean;
+    id?: number;
 }
 export interface Result {
     id: number;
@@ -18,7 +18,7 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql account-levelisation.upsert.query.sql: account-levelisation.upsert.query.sql 1`] = `
 "export interface Params {
-    levelisationId: number;
+    levelisationId?: number;
     start?: Date;
 }
 export interface Result {
@@ -34,15 +34,15 @@ export interface Query {
 exports[`Load Files Should convert complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
 "import { Json } from \\"@potygen/query\\";
 export interface Params {
-    q: string;
+    q: \\"\\";
     resolvedPostlev: \\"\\" | boolean;
-    state: (\\"Pending\\" | \\"Done\\");
+    state: (\\"Pending\\" | \\"Done\\") | (\\"Pending\\" | \\"Done\\");
     levelisationId: number;
-    ids: number[];
+    ids?: number[];
     sortField: \\"totalPayment\\" | \\"vatPayment\\" | \\"generationPayment\\" | \\"exportPayment\\" | \\"generationEnergy\\" | \\"exportEnergy\\" | \\"cfrFitId\\" | \\"state\\" | \\"isAccepted\\" | \\"error\\" | \\"exportType\\";
     sortOrder: \\"DESC\\" | \\"ASC\\";
-    limit: number;
-    offset: number;
+    limit?: number;
+    offset?: number;
 }
 export interface Result<TGenerationPeriods = unknown, TExportPeriods = unknown, TErrorParams = unknown> {
     id: number;
@@ -87,7 +87,7 @@ export interface Query<TGenerationPeriods = unknown, TExportPeriods = unknown, T
 
 exports[`Load Files Should convert complex sql account-levelisations-bulk-close-accounts.query.sql: account-levelisations-bulk-close-accounts.query.sql 1`] = `
 "export interface Params {
-    ids: number[];
+    ids?: number[];
 }
 export interface Result {
     id: number;
@@ -101,7 +101,7 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql account-levelisations-set-bulk-update.query.sql: account-levelisations-set-bulk-update.query.sql 1`] = `
 "export interface Params {
-    ids: number[];
+    ids?: number[];
 }
 export interface Result {
     id: number;
@@ -115,8 +115,8 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
 "export interface Params {
-    q: string | string;
-    ids: number[];
+    q: \\"\\" | string;
+    ids?: number[];
 }
 export interface Result {
     total: number;
@@ -130,10 +130,10 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
 "export interface Params {
-    q: string | string;
-    ids: number[];
-    limit: number;
-    offset: number;
+    q: \\"\\" | string;
+    ids?: number[];
+    limit?: number;
+    offset?: number;
 }
 export interface Result {
     id: number;
@@ -205,8 +205,8 @@ export interface Query {
 exports[`Load Files Should convert complex sql bacs.query.sql: bacs.query.sql 1`] = `
 "export interface Params {
     quarter?: string;
-    perPage: string;
-    offset: string;
+    perPage?: string;
+    offset?: string;
 }
 export interface Result {
     fitId: string;
@@ -240,8 +240,8 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 "export interface Params {
-    type: \\"FIT\\" | \\"SEG\\";
-    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    type?: \\"FIT\\" | \\"SEG\\";
+    state?: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
 }
 export interface Result {
     id: number;
@@ -257,8 +257,8 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
 "export interface Params {
-    installationId: number;
-    exportDateOn: Date;
+    installationId?: number;
+    exportDateOn?: Date;
 }
 export interface Result {
     dateOn: Date;
@@ -274,7 +274,7 @@ export interface Query {
 exports[`Load Files Should convert complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
 "export interface Params {
     removalDate?: Date;
-    meterId: number;
+    meterId?: number;
 }
 export interface Result {
 }
@@ -299,12 +299,12 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
 "export interface Params {
-    q: string;
-    ids: number[];
-    sortField: \\"quarter\\";
+    q: \\"\\";
+    ids?: number[];
+    sortField?: \\"quarter\\";
     sortOrder: \\"DESC\\" | \\"ASC\\";
-    limit: number;
-    offset: number;
+    limit?: number;
+    offset?: number;
 }
 export interface Result {
     id: number;
@@ -333,7 +333,7 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql process-batch.query.sql: process-batch.query.sql 1`] = `
 "export interface Params {
-    fitIds: string[];
+    fitIds?: string[];
 }
 export interface Result {
     cfrFiTId?: string;
@@ -375,12 +375,12 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql read-create.query.sql: read-create.query.sql 1`] = `
 "export interface Params {
-    meterId: number;
+    meterId?: number;
     reason?: string;
-    type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
-    dateOn: Date;
+    type?: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    dateOn?: Date;
     submittedAt?: Date;
-    value: number;
+    value?: number;
 }
 export interface Result {
     id: number;
@@ -397,9 +397,9 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql reads-by-account-id.query.sql: reads-by-account-id.query.sql 1`] = `
 "export interface Params {
-    id: number;
-    offset: string;
-    perPage: string;
+    id?: number;
+    offset?: string;
+    perPage?: string;
 }
 export interface Result {
     id: number;

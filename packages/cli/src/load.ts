@@ -316,7 +316,7 @@ const toLoadedParam =
             nullable: !required,
             items: pick.map((item) => ({ name: item.name, type: toType(item.type) })),
           }
-        : toType(type);
+        : { type: 'OptionalConstant', nullable: !required, value: toType(type) };
     return { name, type: spread ? { type: 'ArrayConstant', items: paramType } : paramType };
   };
 

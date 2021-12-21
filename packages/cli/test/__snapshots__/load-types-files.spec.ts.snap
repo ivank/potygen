@@ -6,13 +6,21 @@ Object {
     Object {
       "name": "isAccepted",
       "type": Object {
-        "type": "Boolean",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Boolean",
+        },
       },
     },
     Object {
       "name": "id",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
   ],
@@ -39,14 +47,22 @@ Object {
     Object {
       "name": "levelisationId",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
     Object {
       "name": "start",
       "type": Object {
         "nullable": true,
-        "type": "Date",
+        "type": "OptionalConstant",
+        "value": Object {
+          "nullable": true,
+          "type": "Date",
+        },
       },
     },
   ],
@@ -69,11 +85,19 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "literal": "",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "",
+              "type": "String",
+            },
           },
           Object {
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
           },
         ],
         "type": "UnionConstant",
@@ -84,11 +108,19 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "literal": "",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "",
+              "type": "String",
+            },
           },
           Object {
-            "type": "Boolean",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "Boolean",
+            },
           },
         ],
         "type": "UnionConstant",
@@ -99,31 +131,39 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "items": Array [
-              Object {
-                "literal": "Pending",
-                "type": "String",
-              },
-              Object {
-                "literal": "Done",
-                "type": "String",
-              },
-            ],
-            "type": "UnionConstant",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "items": Array [
+                Object {
+                  "literal": "Pending",
+                  "type": "String",
+                },
+                Object {
+                  "literal": "Done",
+                  "type": "String",
+                },
+              ],
+              "type": "UnionConstant",
+            },
           },
           Object {
-            "items": Array [
-              Object {
-                "literal": "Pending",
-                "type": "String",
-              },
-              Object {
-                "literal": "Done",
-                "type": "String",
-              },
-            ],
-            "nullable": false,
-            "type": "UnionConstant",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "items": Array [
+                Object {
+                  "literal": "Pending",
+                  "type": "String",
+                },
+                Object {
+                  "literal": "Done",
+                  "type": "String",
+                },
+              ],
+              "nullable": false,
+              "type": "UnionConstant",
+            },
           },
         ],
         "type": "UnionConstant",
@@ -134,10 +174,18 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "type": "Number",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "Number",
+            },
           },
           Object {
-            "type": "Number",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "Number",
+            },
           },
         ],
         "type": "UnionConstant",
@@ -146,10 +194,14 @@ Object {
     Object {
       "name": "ids",
       "type": Object {
-        "items": Object {
-          "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "items": Object {
+            "type": "Number",
+          },
+          "type": "ArrayConstant",
         },
-        "type": "ArrayConstant",
       },
     },
     Object {
@@ -157,48 +209,92 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "literal": "totalPayment",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "totalPayment",
+              "type": "String",
+            },
           },
           Object {
-            "literal": "vatPayment",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "vatPayment",
+              "type": "String",
+            },
           },
           Object {
-            "literal": "generationPayment",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "generationPayment",
+              "type": "String",
+            },
           },
           Object {
-            "literal": "exportPayment",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "exportPayment",
+              "type": "String",
+            },
           },
           Object {
-            "literal": "generationEnergy",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "generationEnergy",
+              "type": "String",
+            },
           },
           Object {
-            "literal": "exportEnergy",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "exportEnergy",
+              "type": "String",
+            },
           },
           Object {
-            "literal": "cfrFitId",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "cfrFitId",
+              "type": "String",
+            },
           },
           Object {
-            "literal": "state",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "state",
+              "type": "String",
+            },
           },
           Object {
-            "literal": "isAccepted",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "isAccepted",
+              "type": "String",
+            },
           },
           Object {
-            "literal": "error",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "error",
+              "type": "String",
+            },
           },
           Object {
-            "literal": "exportType",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "exportType",
+              "type": "String",
+            },
           },
         ],
         "type": "UnionConstant",
@@ -209,12 +305,20 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "literal": "DESC",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "DESC",
+              "type": "String",
+            },
           },
           Object {
-            "literal": "ASC",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "ASC",
+              "type": "String",
+            },
           },
         ],
         "type": "UnionConstant",
@@ -223,13 +327,21 @@ Object {
     Object {
       "name": "limit",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
     Object {
       "name": "offset",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
   ],
@@ -528,10 +640,14 @@ Object {
     Object {
       "name": "ids",
       "type": Object {
-        "items": Object {
-          "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "items": Object {
+            "type": "Number",
+          },
+          "type": "ArrayConstant",
         },
-        "type": "ArrayConstant",
       },
     },
   ],
@@ -552,10 +668,14 @@ Object {
     Object {
       "name": "ids",
       "type": Object {
-        "items": Object {
-          "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "items": Object {
+            "type": "Number",
+          },
+          "type": "ArrayConstant",
         },
-        "type": "ArrayConstant",
       },
     },
   ],
@@ -578,45 +698,93 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "literal": "",
-            "type": "String",
-          },
-          Object {
-            "type": "String",
-          },
-          Object {
-            "type": "String",
-          },
-          Object {
-            "type": "String",
-          },
-          Object {
-            "type": "String",
-          },
-          Object {
-            "type": "String",
-          },
-          Object {
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "",
+              "type": "String",
+            },
           },
           Object {
             "nullable": true,
-            "type": "String",
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
           },
           Object {
             "nullable": true,
-            "type": "String",
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
           },
           Object {
             "nullable": true,
-            "type": "String",
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
           },
           Object {
             "nullable": true,
-            "type": "String",
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
           },
           Object {
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
+          },
+          Object {
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
+          },
+          Object {
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "nullable": true,
+              "type": "String",
+            },
+          },
+          Object {
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "nullable": true,
+              "type": "String",
+            },
+          },
+          Object {
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "nullable": true,
+              "type": "String",
+            },
+          },
+          Object {
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "nullable": true,
+              "type": "String",
+            },
+          },
+          Object {
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
           },
         ],
         "type": "UnionConstant",
@@ -625,10 +793,14 @@ Object {
     Object {
       "name": "ids",
       "type": Object {
-        "items": Object {
-          "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "items": Object {
+            "type": "Number",
+          },
+          "type": "ArrayConstant",
         },
-        "type": "ArrayConstant",
       },
     },
   ],
@@ -651,38 +823,78 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "literal": "",
-            "type": "String",
-          },
-          Object {
-            "type": "String",
-          },
-          Object {
-            "type": "String",
-          },
-          Object {
-            "type": "String",
-          },
-          Object {
-            "type": "String",
-          },
-          Object {
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "",
+              "type": "String",
+            },
           },
           Object {
             "nullable": true,
-            "type": "String",
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
           },
           Object {
             "nullable": true,
-            "type": "String",
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
           },
           Object {
             "nullable": true,
-            "type": "String",
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
           },
           Object {
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
+          },
+          Object {
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
+          },
+          Object {
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "nullable": true,
+              "type": "String",
+            },
+          },
+          Object {
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "nullable": true,
+              "type": "String",
+            },
+          },
+          Object {
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "nullable": true,
+              "type": "String",
+            },
+          },
+          Object {
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
           },
         ],
         "type": "UnionConstant",
@@ -691,22 +903,34 @@ Object {
     Object {
       "name": "ids",
       "type": Object {
-        "items": Object {
-          "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "items": Object {
+            "type": "Number",
+          },
+          "type": "ArrayConstant",
         },
-        "type": "ArrayConstant",
       },
     },
     Object {
       "name": "limit",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
     Object {
       "name": "offset",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
   ],
@@ -802,10 +1026,18 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "type": "Date",
+            "nullable": false,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "Date",
+            },
           },
           Object {
-            "type": "Date",
+            "nullable": false,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "Date",
+            },
           },
         ],
         "type": "UnionConstant",
@@ -814,13 +1046,21 @@ Object {
     Object {
       "name": "intervalEnd",
       "type": Object {
-        "type": "Date",
+        "nullable": false,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Date",
+        },
       },
     },
     Object {
       "name": "accountId",
       "type": Object {
-        "type": "Number",
+        "nullable": false,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
     Object {
@@ -828,10 +1068,18 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "type": "Number",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "Number",
+            },
           },
           Object {
-            "type": "Number",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "Number",
+            },
           },
         ],
         "type": "UnionConstant",
@@ -1035,19 +1283,31 @@ Object {
       "name": "quarter",
       "type": Object {
         "nullable": true,
-        "type": "String",
+        "type": "OptionalConstant",
+        "value": Object {
+          "nullable": true,
+          "type": "String",
+        },
       },
     },
     Object {
       "name": "perPage",
       "type": Object {
-        "type": "String",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "String",
+        },
       },
     },
     Object {
       "name": "offset",
       "type": Object {
-        "type": "String",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "String",
+        },
       },
     },
   ],
@@ -1128,43 +1388,51 @@ Object {
     Object {
       "name": "type",
       "type": Object {
-        "items": Array [
-          Object {
-            "literal": "FIT",
-            "type": "String",
-          },
-          Object {
-            "literal": "SEG",
-            "type": "String",
-          },
-        ],
-        "nullable": false,
-        "type": "UnionConstant",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "items": Array [
+            Object {
+              "literal": "FIT",
+              "type": "String",
+            },
+            Object {
+              "literal": "SEG",
+              "type": "String",
+            },
+          ],
+          "nullable": false,
+          "type": "UnionConstant",
+        },
       },
     },
     Object {
       "name": "state",
       "type": Object {
-        "items": Array [
-          Object {
-            "literal": "Active",
-            "type": "String",
-          },
-          Object {
-            "literal": "Pending",
-            "type": "String",
-          },
-          Object {
-            "literal": "Dispute",
-            "type": "String",
-          },
-          Object {
-            "literal": "Closed",
-            "type": "String",
-          },
-        ],
-        "nullable": false,
-        "type": "UnionConstant",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "items": Array [
+            Object {
+              "literal": "Active",
+              "type": "String",
+            },
+            Object {
+              "literal": "Pending",
+              "type": "String",
+            },
+            Object {
+              "literal": "Dispute",
+              "type": "String",
+            },
+            Object {
+              "literal": "Closed",
+              "type": "String",
+            },
+          ],
+          "nullable": false,
+          "type": "UnionConstant",
+        },
       },
     },
   ],
@@ -1198,13 +1466,21 @@ Object {
     Object {
       "name": "installationId",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
     Object {
       "name": "exportDateOn",
       "type": Object {
-        "type": "Date",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Date",
+        },
       },
     },
   ],
@@ -1232,13 +1508,21 @@ Object {
       "name": "removalDate",
       "type": Object {
         "nullable": true,
-        "type": "Date",
+        "type": "OptionalConstant",
+        "value": Object {
+          "nullable": true,
+          "type": "Date",
+        },
       },
     },
     Object {
       "name": "meterId",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
   ],
@@ -1261,11 +1545,19 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "literal": "",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "",
+              "type": "String",
+            },
           },
           Object {
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "type": "String",
+            },
           },
         ],
         "type": "UnionConstant",
@@ -1274,17 +1566,25 @@ Object {
     Object {
       "name": "ids",
       "type": Object {
-        "items": Object {
-          "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "items": Object {
+            "type": "Number",
+          },
+          "type": "ArrayConstant",
         },
-        "type": "ArrayConstant",
       },
     },
     Object {
       "name": "sortField",
       "type": Object {
-        "literal": "quarter",
-        "type": "String",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "literal": "quarter",
+          "type": "String",
+        },
       },
     },
     Object {
@@ -1292,12 +1592,20 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "literal": "DESC",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "DESC",
+              "type": "String",
+            },
           },
           Object {
-            "literal": "ASC",
-            "type": "String",
+            "nullable": true,
+            "type": "OptionalConstant",
+            "value": Object {
+              "literal": "ASC",
+              "type": "String",
+            },
           },
         ],
         "type": "UnionConstant",
@@ -1306,13 +1614,21 @@ Object {
     Object {
       "name": "limit",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
     Object {
       "name": "offset",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
   ],
@@ -1358,11 +1674,15 @@ Object {
     Object {
       "name": "fitIds",
       "type": Object {
-        "items": Object {
-          "nullable": true,
-          "type": "String",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "items": Object {
+            "nullable": true,
+            "type": "String",
+          },
+          "type": "ArrayConstant",
         },
-        "type": "ArrayConstant",
       },
     },
   ],
@@ -1444,10 +1764,14 @@ Object {
       "name": "ids",
       "type": Object {
         "items": Object {
-          "items": Object {
-            "type": "Number",
+          "nullable": true,
+          "type": "OptionalConstant",
+          "value": Object {
+            "items": Object {
+              "type": "Number",
+            },
+            "type": "ArrayConstant",
           },
-          "type": "ArrayConstant",
         },
         "type": "ArrayConstant",
       },
@@ -1516,58 +1840,82 @@ Object {
     Object {
       "name": "meterId",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
     Object {
       "name": "reason",
       "type": Object {
         "nullable": true,
-        "type": "String",
+        "type": "OptionalConstant",
+        "value": Object {
+          "nullable": true,
+          "type": "String",
+        },
       },
     },
     Object {
       "name": "type",
       "type": Object {
-        "items": Array [
-          Object {
-            "literal": "Opening",
-            "type": "String",
-          },
-          Object {
-            "literal": "Closing",
-            "type": "String",
-          },
-          Object {
-            "literal": "Quarterly",
-            "type": "String",
-          },
-          Object {
-            "literal": "Meter Verification",
-            "type": "String",
-          },
-        ],
-        "nullable": false,
-        "type": "UnionConstant",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "items": Array [
+            Object {
+              "literal": "Opening",
+              "type": "String",
+            },
+            Object {
+              "literal": "Closing",
+              "type": "String",
+            },
+            Object {
+              "literal": "Quarterly",
+              "type": "String",
+            },
+            Object {
+              "literal": "Meter Verification",
+              "type": "String",
+            },
+          ],
+          "nullable": false,
+          "type": "UnionConstant",
+        },
       },
     },
     Object {
       "name": "dateOn",
       "type": Object {
-        "type": "Date",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Date",
+        },
       },
     },
     Object {
       "name": "submittedAt",
       "type": Object {
         "nullable": true,
-        "type": "Date",
+        "type": "OptionalConstant",
+        "value": Object {
+          "nullable": true,
+          "type": "Date",
+        },
       },
     },
     Object {
       "name": "value",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
   ],
@@ -1607,19 +1955,31 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
     Object {
       "name": "offset",
       "type": Object {
-        "type": "String",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "String",
+        },
       },
     },
     Object {
       "name": "perPage",
       "type": Object {
-        "type": "String",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "String",
+        },
       },
     },
   ],

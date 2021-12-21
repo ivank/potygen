@@ -20,7 +20,7 @@ SELECT
       WHERE
         current_reads.meter_id = meters.id
         AND current_reads.type <> 'Meter Verification'
-        AND current_reads.date_on BETWEEN $intervalStart AND $intervalEnd
+        AND current_reads.date_on BETWEEN $intervalStart! AND $intervalEnd!
       ORDER BY current_reads.date_on DESC
       LIMIT 1
   ) AS "currentPeriodRead",
@@ -38,7 +38,7 @@ SELECT
       WHERE
         previous_reads.meter_id = meters.id
         AND previous_reads.type <> 'Meter Verification'
-        AND previous_reads.date_on < $intervalStart
+        AND previous_reads.date_on < $intervalStart!
       ORDER BY previous_reads.date_on DESC
       LIMIT 1
   ) AS "previousPeriodRead"
@@ -46,7 +46,7 @@ FROM meters
 JOIN installation_meters ON installation_meters.meter_id = meters.id
 JOIN contracts ON contracts.installation_id = installation_meters.installation_id
 WHERE installation_meters.end_on IS NULL
-  AND contracts.account_id = $accountId
+  AND contracts.account_id = $accountId!
   AND ($meterId::int IS NULL OR meters.id = $meterId)
 ORDER BY
   meters.id ASC,

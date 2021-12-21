@@ -676,7 +676,11 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
   ],
@@ -699,7 +703,11 @@ Object {
       "name": "text",
       "type": Object {
         "nullable": true,
-        "type": "String",
+        "type": "OptionalConstant",
+        "value": Object {
+          "nullable": true,
+          "type": "String",
+        },
       },
     },
   ],
@@ -722,7 +730,38 @@ Object {
       "name": "id",
       "type": Object {
         "nullable": true,
-        "type": "Number",
+        "type": "OptionalConstant",
+        "value": Object {
+          "nullable": true,
+          "type": "Number",
+        },
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "character_col",
+      "type": Object {
+        "nullable": true,
+        "type": "String",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert parameter required sql (SELECT character_col FROM all_types WHERE integer_col > $id!) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "nullable": false,
+        "type": "OptionalConstant",
+        "value": Object {
+          "nullable": true,
+          "type": "Number",
+        },
       },
     },
   ],
@@ -745,7 +784,11 @@ Object {
       "name": "id",
       "type": Object {
         "nullable": true,
-        "type": "Number",
+        "type": "OptionalConstant",
+        "value": Object {
+          "nullable": true,
+          "type": "Number",
+        },
       },
     },
   ],
@@ -767,7 +810,11 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "type": "Number",
+        },
       },
     },
   ],
