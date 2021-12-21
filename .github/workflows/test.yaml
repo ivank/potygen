@@ -16,15 +16,9 @@ jobs:
           POSTGRES_DATABASE: potygen
           POSTGRES_USER: potygen
           POSTGRES_PASSWORD: dev-pass
-          POSTGRES_PORT: 5432
         ports:
           - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 6
-          --name postgres
+        options: --name postgres --health-cmd pg_isready  --health-interval 10s  --health-timeout 5s  --health-retries 5
 
     steps:
       - uses: actions/checkout@v2
@@ -33,14 +27,7 @@ jobs:
           node-version: '16'
       - name: Initialze Database
         run: cat init.sql | docker exec --interactive postgres psql postgres://potygen:dev-pass@postgres:5432/potygen
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
-      - uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn install
+      - uses: actions/yarn-install
       - run: yarn build
       - run: yarn lint
       - run: yarn test --runInBand --ci
