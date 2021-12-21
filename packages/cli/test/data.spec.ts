@@ -7,8 +7,8 @@ describe('Data', () => {
     const db = testDb();
 
     const start = sql<StartQuery>`BEGIN`;
-    const init = sql<InitQuery>`INSERT INTO all_types (id,not_null) VALUES (1,1),(2,2)`;
-    const retrieve = sql<RetrieveQuery>`SELECT * FROM all_types`;
+    const init = sql<InitQuery>`INSERT INTO all_types (id,not_null) VALUES (10,10),(11,11)`;
+    const retrieve = sql<RetrieveQuery>`SELECT * FROM all_types WHERE id >= 10`;
     const end = sql<EndQuery>`ROLLBACK`;
 
     try {
@@ -18,7 +18,7 @@ describe('Data', () => {
       await init.run(db);
       const data = await retrieve.run(db);
       expect(data).toHaveLength(2);
-      expect(data[0].id).toEqual(1);
+      expect(data[0].id).toEqual(10);
       expect(data[0].character_col).toBe(undefined);
     } finally {
       await end.run(db);
