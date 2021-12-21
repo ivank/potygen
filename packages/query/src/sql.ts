@@ -146,7 +146,7 @@ export class SqlMap<TSqlInterface extends SqlInterface = SqlInterface, TResult =
     return this.sql.toQueryConfig(params);
   }
 
-  async run(db: ClientBase, params = {}): Promise<TResult> {
+  async run(db: Pick<ClientBase, 'query'>, params = {}): Promise<TResult> {
     const rows = await this.sql.run(db, params);
     return this.map(rows);
   }
