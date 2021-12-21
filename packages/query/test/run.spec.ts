@@ -1,11 +1,16 @@
 import { Client } from 'pg';
-import { maybeOne, one, sql } from '../src';
+import { maybeOne, one, sql, map } from '../src';
 import { testDb } from './helpers';
 
 let db: Client;
 
-const allSql = sql`SELECT id FROM all_types`;
-const oneSql = sql`SELECT id FROM all_types WHERE id = $id`;
+interface Query {
+  params: unknown;
+  result: { id: number };
+}
+
+const allSql = sql<Query>`SELECT id FROM all_types`;
+const oneSql = sql<Query>`SELECT id FROM all_types WHERE id = $id`;
 
 describe('Template Tag', () => {
   beforeAll(async () => {
@@ -33,6 +38,10 @@ describe('Template Tag', () => {
 
   it('Should select only one', async () => {
     expect(await one(oneSql).run(db, { id: 1 })).toEqual({ id: 1 });
+  });
+
+  it('Should select map', async () => {
+    expect(await map((rows) => rows.map((item) => `!${item.id}`), allSql).run(db)).toEqual(['!1', '!2']);
   });
 
   it('Should select error if one empty', async () => {

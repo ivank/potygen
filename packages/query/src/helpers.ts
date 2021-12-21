@@ -8,8 +8,8 @@ import { SqlInterface } from './sql.types';
  * ```typescript
  * const showSql = sql<ShowSqlQuery>`
  *   SELECT id, name
- *   FROM table1;
- *   WHEERE id = $id
+ *   FROM table1
+ *   WHERE id = $id
  * `;
  * const showQuery = maybeOne(showSql);
  *
@@ -47,3 +47,25 @@ export const one = <TQueryInterface extends SqlInterface>(sql: Sql<TQueryInterfa
     }
     return result;
   });
+
+/**
+ * Return the first element, useful for queries where we always expect at least one result
+ *
+ * @throws PotygenRuntimeError if row is empty
+ *
+ * ```typescript
+ * const showSql = sql<ShowSqlQuery>`
+ *   SELECT id, name
+ *   FROM table1
+ *   WHERE id = $id
+ * `;
+ * const idsQuery = map((rows) => rows.map(({ id }) => id)), showSql);
+ *
+ * const ids = await showQuery(db, { name: 'myNewRow' });
+ *
+ * ```
+ */
+export const map = <TQueryInterface extends SqlInterface, TResult>(
+  predicate: (rows: TQueryInterface['result'][]) => TResult,
+  sql: Sql<TQueryInterface>,
+) => new SqlMap<TQueryInterface, TResult>(sql, predicate);
