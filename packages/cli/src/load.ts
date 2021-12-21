@@ -14,7 +14,7 @@ import {
   TypeUnionConstant,
   TypeLoadColumn,
   Param,
-  isCompositeConstant,
+  isTypeCompositeConstant,
   TypeCompositeConstant,
   toQueryInterface,
 } from '@potygen/query';
@@ -558,6 +558,8 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
         }
       case 'LoadStar':
         throw new LoadError(type.sourceTag, 'Should never have load star here');
+      case 'Optional':
+        return { type: 'OptionalConstant', nullable: type.nullable, value: recur(type.value) };
       case 'ToArray':
         const items = recur(type.items);
         return isTypeArrayConstant(items) ? items : { type: 'ArrayConstant', items };
@@ -569,7 +571,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
         return recur(type.value);
       case 'CompositeAccess':
         const composite = recur(type.value);
-        if (!isCompositeConstant(composite)) {
+        if (!isTypeCompositeConstant(composite)) {
           throw new LoadError(type.sourceTag, 'Composite type access can be performed only on composite types');
         }
         const compositeFieldType = composite.attributes[type.name];

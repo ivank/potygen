@@ -23,9 +23,10 @@ import {
   isTypeObjectLiteralConstant,
   isTypeLiteral,
   isTypeEqual,
-  isCompositeConstant,
+  isTypeCompositeConstant,
 } from '@potygen/query';
 import { isUniqueBy } from '@potygen/ast';
+import { isTypeOptionalConstant } from '@potygen/query/dist/query-interface.guards';
 
 const mkdirAsync = promisify(mkdir);
 const writeFileAsync = promisify(writeFile);
@@ -58,13 +59,18 @@ export const compactTypes = (types: TypeConstant[]): TypeConstant[] =>
 const toPropertyType =
   (context: TypeContext) =>
   (type: TypeConstant): TypeContext & { type: TypeNode } => {
-    if (isCompositeConstant(type)) {
+    if (isTypeCompositeConstant(type)) {
       return { ...context, type: factory.createToken(SyntaxKind.StringKeyword) };
     } else if (isTypeObjectLiteralConstant(type)) {
       return type.items.reduce<TypeContext & { type: TypeLiteralNode }>(
         (acc, item) => {
           const itemType = toPropertyType({ ...context, name: context.name + toClassCase(item.name) })(item.type);
-          const memeber = factory.createPropertySignature(undefined, item.name, undefined, itemType.type);
+          const memeber = factory.createPropertySignature(
+            undefined,
+            item.name,
+            'nullable' in item.type && item.type.nullable ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
+            itemType.type,
+          );
           return { ...itemType, type: factory.createTypeLiteralNode(acc.type.members.concat(memeber)) };
         },
         { ...context, type: factory.createTypeLiteralNode([]) },
@@ -80,6 +86,8 @@ const toPropertyType =
         },
         { ...context, type: factory.createUnionTypeNode([]) },
       );
+    } else if (isTypeOptionalConstant(type)) {
+      return toPropertyType(context)(type.value);
     } else {
       switch (type.type) {
         case 'Date':

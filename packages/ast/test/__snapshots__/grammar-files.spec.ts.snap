@@ -15573,6 +15573,1719 @@ Object {
 }
 `;
 
+exports[`Sql Files Should parse complex sql active-meters-wth-reads.query.sql: active-meters-wth-reads.query.sql 1`] = `
+Object {
+  "nextPos": 1733,
+  "pos": 34,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 1372,
+      "pos": 43,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 52,
+          "pos": 43,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 52,
+              "pos": 43,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 49,
+                  "pos": 43,
+                  "tag": "UnquotedIdentifier",
+                  "value": "meters",
+                },
+                Object {
+                  "nextPos": 52,
+                  "pos": 50,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 85,
+          "pos": 56,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 76,
+              "pos": 56,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 62,
+                  "pos": 56,
+                  "tag": "UnquotedIdentifier",
+                  "value": "meters",
+                },
+                Object {
+                  "nextPos": 76,
+                  "pos": 63,
+                  "tag": "UnquotedIdentifier",
+                  "value": "serial_number",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 85,
+              "pos": 77,
+              "tag": "As",
+              "values": Array [
+                Object {
+                  "nextPos": 85,
+                  "pos": 80,
+                  "tag": "QuotedIdentifier",
+                  "value": "msn",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 100,
+          "pos": 89,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 100,
+              "pos": 89,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 95,
+                  "pos": 89,
+                  "tag": "UnquotedIdentifier",
+                  "value": "meters",
+                },
+                Object {
+                  "nextPos": 100,
+                  "pos": 96,
+                  "tag": "UnquotedIdentifier",
+                  "value": "mpan",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 115,
+          "pos": 104,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 115,
+              "pos": 104,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 110,
+                  "pos": 104,
+                  "tag": "UnquotedIdentifier",
+                  "value": "meters",
+                },
+                Object {
+                  "nextPos": 115,
+                  "pos": 111,
+                  "tag": "UnquotedIdentifier",
+                  "value": "make",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 131,
+          "pos": 119,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 131,
+              "pos": 119,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 125,
+                  "pos": 119,
+                  "tag": "UnquotedIdentifier",
+                  "value": "meters",
+                },
+                Object {
+                  "nextPos": 131,
+                  "pos": 126,
+                  "tag": "UnquotedIdentifier",
+                  "value": "model",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 175,
+          "pos": 135,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 165,
+              "pos": 135,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 154,
+                  "pos": 135,
+                  "tag": "UnquotedIdentifier",
+                  "value": "installation_meters",
+                },
+                Object {
+                  "nextPos": 165,
+                  "pos": 155,
+                  "tag": "UnquotedIdentifier",
+                  "value": "meter_type",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 175,
+              "pos": 166,
+              "tag": "As",
+              "values": Array [
+                Object {
+                  "nextPos": 175,
+                  "pos": 169,
+                  "tag": "QuotedIdentifier",
+                  "value": "type",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 779,
+          "pos": 179,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 752,
+              "pos": 185,
+              "tag": "Select",
+              "values": Array [
+                Object {
+                  "nextPos": 471,
+                  "pos": 198,
+                  "tag": "SelectList",
+                  "values": Array [
+                    Object {
+                      "nextPos": 471,
+                      "pos": 198,
+                      "tag": "SelectListItem",
+                      "values": Array [
+                        Object {
+                          "nextPos": 461,
+                          "pos": 198,
+                          "tag": "Function",
+                          "values": Array [
+                            Object {
+                              "nextPos": 215,
+                              "pos": 198,
+                              "tag": "QualifiedIdentifier",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 215,
+                                  "pos": 198,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "json_build_object",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 229,
+                              "pos": 225,
+                              "tag": "String",
+                              "value": "id",
+                            },
+                            Object {
+                              "nextPos": 247,
+                              "pos": 231,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 244,
+                                  "pos": 231,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "current_reads",
+                                },
+                                Object {
+                                  "nextPos": 247,
+                                  "pos": 245,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "id",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 264,
+                              "pos": 257,
+                              "tag": "String",
+                              "value": "value",
+                            },
+                            Object {
+                              "nextPos": 285,
+                              "pos": 266,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 279,
+                                  "pos": 266,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "current_reads",
+                                },
+                                Object {
+                                  "nextPos": 285,
+                                  "pos": 280,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "value",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 303,
+                              "pos": 295,
+                              "tag": "String",
+                              "value": "dateOn",
+                            },
+                            Object {
+                              "nextPos": 326,
+                              "pos": 305,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 318,
+                                  "pos": 305,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "current_reads",
+                                },
+                                Object {
+                                  "nextPos": 326,
+                                  "pos": 319,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "date_on",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 349,
+                              "pos": 336,
+                              "tag": "String",
+                              "value": "submittedAt",
+                            },
+                            Object {
+                              "nextPos": 377,
+                              "pos": 351,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 364,
+                                  "pos": 351,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "current_reads",
+                                },
+                                Object {
+                                  "nextPos": 377,
+                                  "pos": 365,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "submitted_at",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 395,
+                              "pos": 387,
+                              "tag": "String",
+                              "value": "reason",
+                            },
+                            Object {
+                              "nextPos": 417,
+                              "pos": 397,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 410,
+                                  "pos": 397,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "current_reads",
+                                },
+                                Object {
+                                  "nextPos": 417,
+                                  "pos": 411,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "reason",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 433,
+                              "pos": 427,
+                              "tag": "String",
+                              "value": "type",
+                            },
+                            Object {
+                              "nextPos": 453,
+                              "pos": 435,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 448,
+                                  "pos": 435,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "current_reads",
+                                },
+                                Object {
+                                  "nextPos": 453,
+                                  "pos": 449,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "type",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 471,
+                          "pos": 462,
+                          "tag": "As",
+                          "values": Array [
+                            Object {
+                              "nextPos": 471,
+                              "pos": 465,
+                              "tag": "QuotedIdentifier",
+                              "value": "read",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 512,
+                  "pos": 478,
+                  "tag": "From",
+                  "values": Array [
+                    Object {
+                      "nextPos": 512,
+                      "pos": 483,
+                      "tag": "FromList",
+                      "values": Array [
+                        Object {
+                          "nextPos": 512,
+                          "pos": 483,
+                          "tag": "Table",
+                          "values": Array [
+                            Object {
+                              "nextPos": 495,
+                              "pos": 483,
+                              "tag": "QualifiedIdentifier",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 495,
+                                  "pos": 483,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "active_reads",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 512,
+                              "pos": 496,
+                              "tag": "As",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 512,
+                                  "pos": 499,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "current_reads",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 696,
+                  "pos": 519,
+                  "tag": "Where",
+                  "values": Array [
+                    Object {
+                      "nextPos": 696,
+                      "pos": 533,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 696,
+                          "pos": 533,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 567,
+                              "pos": 533,
+                              "tag": "BinaryExpression",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 555,
+                                  "pos": 533,
+                                  "tag": "Column",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 546,
+                                      "pos": 533,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "current_reads",
+                                    },
+                                    Object {
+                                      "nextPos": 555,
+                                      "pos": 547,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "meter_id",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "nextPos": 557,
+                                  "pos": 556,
+                                  "tag": "BinaryOperator",
+                                  "value": "=",
+                                },
+                                Object {
+                                  "nextPos": 567,
+                                  "pos": 558,
+                                  "tag": "Column",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 564,
+                                      "pos": 558,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "meters",
+                                    },
+                                    Object {
+                                      "nextPos": 567,
+                                      "pos": 565,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "id",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 579,
+                              "pos": 576,
+                              "tag": "BinaryOperator",
+                              "value": "AND",
+                            },
+                            Object {
+                              "nextPos": 622,
+                              "pos": 580,
+                              "tag": "BinaryExpression",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 598,
+                                  "pos": 580,
+                                  "tag": "Column",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 593,
+                                      "pos": 580,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "current_reads",
+                                    },
+                                    Object {
+                                      "nextPos": 598,
+                                      "pos": 594,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "type",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "nextPos": 601,
+                                  "pos": 599,
+                                  "tag": "BinaryOperator",
+                                  "value": "<>",
+                                },
+                                Object {
+                                  "nextPos": 622,
+                                  "pos": 602,
+                                  "tag": "String",
+                                  "value": "Meter Verification",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 634,
+                          "pos": 631,
+                          "tag": "BinaryOperator",
+                          "value": "AND",
+                        },
+                        Object {
+                          "nextPos": 696,
+                          "pos": 635,
+                          "tag": "TernaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 656,
+                              "pos": 635,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 648,
+                                  "pos": 635,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "current_reads",
+                                },
+                                Object {
+                                  "nextPos": 656,
+                                  "pos": 649,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "date_on",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 664,
+                              "pos": 657,
+                              "tag": "TernaryOperator",
+                              "value": "BETWEEN",
+                            },
+                            Object {
+                              "nextPos": 679,
+                              "pick": Array [],
+                              "pos": 665,
+                              "required": false,
+                              "tag": "Parameter",
+                              "type": "single",
+                              "value": "intervalStart",
+                            },
+                            Object {
+                              "nextPos": 683,
+                              "pos": 680,
+                              "tag": "TernarySeparator",
+                              "value": "AND",
+                            },
+                            Object {
+                              "nextPos": 696,
+                              "pick": Array [],
+                              "pos": 684,
+                              "required": false,
+                              "tag": "Parameter",
+                              "type": "single",
+                              "value": "intervalEnd",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 738,
+                  "pos": 703,
+                  "tag": "OrderBy",
+                  "values": Array [
+                    Object {
+                      "nextPos": 738,
+                      "pos": 712,
+                      "tag": "OrderByItem",
+                      "values": Array [
+                        Object {
+                          "nextPos": 733,
+                          "pos": 712,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "nextPos": 725,
+                              "pos": 712,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "nextPos": 733,
+                              "pos": 726,
+                              "tag": "UnquotedIdentifier",
+                              "value": "date_on",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 738,
+                          "pos": 734,
+                          "tag": "OrderDirection",
+                          "value": "DESC",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 752,
+                  "pos": 745,
+                  "tag": "Limit",
+                  "values": Array [
+                    Object {
+                      "nextPos": 752,
+                      "pos": 751,
+                      "tag": "Count",
+                      "values": Array [
+                        Object {
+                          "nextPos": 752,
+                          "pos": 751,
+                          "tag": "Integer",
+                          "value": "1",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 779,
+              "pos": 757,
+              "tag": "As",
+              "values": Array [
+                Object {
+                  "nextPos": 779,
+                  "pos": 760,
+                  "tag": "QuotedIdentifier",
+                  "value": "currentPeriodRead",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 1372,
+          "pos": 783,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 1344,
+              "pos": 789,
+              "tag": "Select",
+              "values": Array [
+                Object {
+                  "nextPos": 1081,
+                  "pos": 802,
+                  "tag": "SelectList",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1081,
+                      "pos": 802,
+                      "tag": "SelectListItem",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1071,
+                          "pos": 802,
+                          "tag": "Function",
+                          "values": Array [
+                            Object {
+                              "nextPos": 819,
+                              "pos": 802,
+                              "tag": "QualifiedIdentifier",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 819,
+                                  "pos": 802,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "json_build_object",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 833,
+                              "pos": 829,
+                              "tag": "String",
+                              "value": "id",
+                            },
+                            Object {
+                              "nextPos": 852,
+                              "pos": 835,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 849,
+                                  "pos": 835,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "previous_reads",
+                                },
+                                Object {
+                                  "nextPos": 852,
+                                  "pos": 850,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "id",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 869,
+                              "pos": 862,
+                              "tag": "String",
+                              "value": "value",
+                            },
+                            Object {
+                              "nextPos": 891,
+                              "pos": 871,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 885,
+                                  "pos": 871,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "previous_reads",
+                                },
+                                Object {
+                                  "nextPos": 891,
+                                  "pos": 886,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "value",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 909,
+                              "pos": 901,
+                              "tag": "String",
+                              "value": "dateOn",
+                            },
+                            Object {
+                              "nextPos": 933,
+                              "pos": 911,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 925,
+                                  "pos": 911,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "previous_reads",
+                                },
+                                Object {
+                                  "nextPos": 933,
+                                  "pos": 926,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "date_on",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 956,
+                              "pos": 943,
+                              "tag": "String",
+                              "value": "submittedAt",
+                            },
+                            Object {
+                              "nextPos": 985,
+                              "pos": 958,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 972,
+                                  "pos": 958,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "previous_reads",
+                                },
+                                Object {
+                                  "nextPos": 985,
+                                  "pos": 973,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "submitted_at",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 1003,
+                              "pos": 995,
+                              "tag": "String",
+                              "value": "reason",
+                            },
+                            Object {
+                              "nextPos": 1026,
+                              "pos": 1005,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 1019,
+                                  "pos": 1005,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "previous_reads",
+                                },
+                                Object {
+                                  "nextPos": 1026,
+                                  "pos": 1020,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "reason",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 1042,
+                              "pos": 1036,
+                              "tag": "String",
+                              "value": "type",
+                            },
+                            Object {
+                              "nextPos": 1063,
+                              "pos": 1044,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 1058,
+                                  "pos": 1044,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "previous_reads",
+                                },
+                                Object {
+                                  "nextPos": 1063,
+                                  "pos": 1059,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "type",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 1081,
+                          "pos": 1072,
+                          "tag": "As",
+                          "values": Array [
+                            Object {
+                              "nextPos": 1081,
+                              "pos": 1075,
+                              "tag": "QuotedIdentifier",
+                              "value": "read",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 1123,
+                  "pos": 1088,
+                  "tag": "From",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1123,
+                      "pos": 1093,
+                      "tag": "FromList",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1123,
+                          "pos": 1093,
+                          "tag": "Table",
+                          "values": Array [
+                            Object {
+                              "nextPos": 1105,
+                              "pos": 1093,
+                              "tag": "QualifiedIdentifier",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 1105,
+                                  "pos": 1093,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "active_reads",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 1123,
+                              "pos": 1106,
+                              "tag": "As",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 1123,
+                                  "pos": 1109,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "previous_reads",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 1287,
+                  "pos": 1130,
+                  "tag": "Where",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1287,
+                      "pos": 1144,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1287,
+                          "pos": 1144,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 1179,
+                              "pos": 1144,
+                              "tag": "BinaryExpression",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 1167,
+                                  "pos": 1144,
+                                  "tag": "Column",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 1158,
+                                      "pos": 1144,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "previous_reads",
+                                    },
+                                    Object {
+                                      "nextPos": 1167,
+                                      "pos": 1159,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "meter_id",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "nextPos": 1169,
+                                  "pos": 1168,
+                                  "tag": "BinaryOperator",
+                                  "value": "=",
+                                },
+                                Object {
+                                  "nextPos": 1179,
+                                  "pos": 1170,
+                                  "tag": "Column",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 1176,
+                                      "pos": 1170,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "meters",
+                                    },
+                                    Object {
+                                      "nextPos": 1179,
+                                      "pos": 1177,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "id",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 1191,
+                              "pos": 1188,
+                              "tag": "BinaryOperator",
+                              "value": "AND",
+                            },
+                            Object {
+                              "nextPos": 1235,
+                              "pos": 1192,
+                              "tag": "BinaryExpression",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 1211,
+                                  "pos": 1192,
+                                  "tag": "Column",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 1206,
+                                      "pos": 1192,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "previous_reads",
+                                    },
+                                    Object {
+                                      "nextPos": 1211,
+                                      "pos": 1207,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "type",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "nextPos": 1214,
+                                  "pos": 1212,
+                                  "tag": "BinaryOperator",
+                                  "value": "<>",
+                                },
+                                Object {
+                                  "nextPos": 1235,
+                                  "pos": 1215,
+                                  "tag": "String",
+                                  "value": "Meter Verification",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 1247,
+                          "pos": 1244,
+                          "tag": "BinaryOperator",
+                          "value": "AND",
+                        },
+                        Object {
+                          "nextPos": 1287,
+                          "pos": 1248,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "nextPos": 1270,
+                              "pos": 1248,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 1262,
+                                  "pos": 1248,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "previous_reads",
+                                },
+                                Object {
+                                  "nextPos": 1270,
+                                  "pos": 1263,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "date_on",
+                                },
+                              ],
+                            },
+                            Object {
+                              "nextPos": 1272,
+                              "pos": 1271,
+                              "tag": "BinaryOperator",
+                              "value": "<",
+                            },
+                            Object {
+                              "nextPos": 1287,
+                              "pick": Array [],
+                              "pos": 1273,
+                              "required": false,
+                              "tag": "Parameter",
+                              "type": "single",
+                              "value": "intervalStart",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 1330,
+                  "pos": 1294,
+                  "tag": "OrderBy",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1330,
+                      "pos": 1303,
+                      "tag": "OrderByItem",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1325,
+                          "pos": 1303,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "nextPos": 1317,
+                              "pos": 1303,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "nextPos": 1325,
+                              "pos": 1318,
+                              "tag": "UnquotedIdentifier",
+                              "value": "date_on",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 1330,
+                          "pos": 1326,
+                          "tag": "OrderDirection",
+                          "value": "DESC",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 1344,
+                  "pos": 1337,
+                  "tag": "Limit",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1344,
+                      "pos": 1343,
+                      "tag": "Count",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1344,
+                          "pos": 1343,
+                          "tag": "Integer",
+                          "value": "1",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 1372,
+              "pos": 1349,
+              "tag": "As",
+              "values": Array [
+                Object {
+                  "nextPos": 1372,
+                  "pos": 1352,
+                  "tag": "QuotedIdentifier",
+                  "value": "previousPeriodRead",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 1535,
+      "pos": 1373,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 1384,
+          "pos": 1378,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 1384,
+              "pos": 1378,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 1384,
+                  "pos": 1378,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1384,
+                      "pos": 1378,
+                      "tag": "UnquotedIdentifier",
+                      "value": "meters",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 1453,
+          "pos": 1385,
+          "tag": "Join",
+          "values": Array [
+            Object {
+              "nextPos": 1389,
+              "pos": 1385,
+              "tag": "JoinType",
+              "value": "JOIN",
+            },
+            Object {
+              "nextPos": 1409,
+              "pos": 1390,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 1409,
+                  "pos": 1390,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1409,
+                      "pos": 1390,
+                      "tag": "UnquotedIdentifier",
+                      "value": "installation_meters",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 1453,
+              "pos": 1410,
+              "tag": "JoinOn",
+              "values": Array [
+                Object {
+                  "nextPos": 1453,
+                  "pos": 1413,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1441,
+                      "pos": 1413,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1432,
+                          "pos": 1413,
+                          "tag": "UnquotedIdentifier",
+                          "value": "installation_meters",
+                        },
+                        Object {
+                          "nextPos": 1441,
+                          "pos": 1433,
+                          "tag": "UnquotedIdentifier",
+                          "value": "meter_id",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 1443,
+                      "pos": 1442,
+                      "tag": "BinaryOperator",
+                      "value": "=",
+                    },
+                    Object {
+                      "nextPos": 1453,
+                      "pos": 1444,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1450,
+                          "pos": 1444,
+                          "tag": "UnquotedIdentifier",
+                          "value": "meters",
+                        },
+                        Object {
+                          "nextPos": 1453,
+                          "pos": 1451,
+                          "tag": "UnquotedIdentifier",
+                          "value": "id",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 1535,
+          "pos": 1454,
+          "tag": "Join",
+          "values": Array [
+            Object {
+              "nextPos": 1458,
+              "pos": 1454,
+              "tag": "JoinType",
+              "value": "JOIN",
+            },
+            Object {
+              "nextPos": 1468,
+              "pos": 1459,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 1468,
+                  "pos": 1459,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1468,
+                      "pos": 1459,
+                      "tag": "UnquotedIdentifier",
+                      "value": "contracts",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 1535,
+              "pos": 1469,
+              "tag": "JoinOn",
+              "values": Array [
+                Object {
+                  "nextPos": 1535,
+                  "pos": 1472,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1497,
+                      "pos": 1472,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1481,
+                          "pos": 1472,
+                          "tag": "UnquotedIdentifier",
+                          "value": "contracts",
+                        },
+                        Object {
+                          "nextPos": 1497,
+                          "pos": 1482,
+                          "tag": "UnquotedIdentifier",
+                          "value": "installation_id",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 1499,
+                      "pos": 1498,
+                      "tag": "BinaryOperator",
+                      "value": "=",
+                    },
+                    Object {
+                      "nextPos": 1535,
+                      "pos": 1500,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1519,
+                          "pos": 1500,
+                          "tag": "UnquotedIdentifier",
+                          "value": "installation_meters",
+                        },
+                        Object {
+                          "nextPos": 1535,
+                          "pos": 1520,
+                          "tag": "UnquotedIdentifier",
+                          "value": "installation_id",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 1670,
+      "pos": 1536,
+      "tag": "Where",
+      "values": Array [
+        Object {
+          "nextPos": 1670,
+          "pos": 1542,
+          "tag": "BinaryExpression",
+          "values": Array [
+            Object {
+              "nextPos": 1670,
+              "pos": 1542,
+              "tag": "BinaryExpression",
+              "values": Array [
+                Object {
+                  "nextPos": 1576,
+                  "pos": 1542,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1568,
+                      "pos": 1542,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1561,
+                          "pos": 1542,
+                          "tag": "UnquotedIdentifier",
+                          "value": "installation_meters",
+                        },
+                        Object {
+                          "nextPos": 1568,
+                          "pos": 1562,
+                          "tag": "UnquotedIdentifier",
+                          "value": "end_on",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 1571,
+                      "pos": 1569,
+                      "tag": "BinaryOperator",
+                      "value": "IS",
+                    },
+                    Object {
+                      "nextPos": 1576,
+                      "pos": 1572,
+                      "tag": "Null",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 1582,
+                  "pos": 1579,
+                  "tag": "BinaryOperator",
+                  "value": "AND",
+                },
+                Object {
+                  "nextPos": 1616,
+                  "pos": 1583,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1603,
+                      "pos": 1583,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1592,
+                          "pos": 1583,
+                          "tag": "UnquotedIdentifier",
+                          "value": "contracts",
+                        },
+                        Object {
+                          "nextPos": 1603,
+                          "pos": 1593,
+                          "tag": "UnquotedIdentifier",
+                          "value": "account_id",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 1605,
+                      "pos": 1604,
+                      "tag": "BinaryOperator",
+                      "value": "=",
+                    },
+                    Object {
+                      "nextPos": 1616,
+                      "pick": Array [],
+                      "pos": 1606,
+                      "required": false,
+                      "tag": "Parameter",
+                      "type": "single",
+                      "value": "accountId",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 1622,
+              "pos": 1619,
+              "tag": "BinaryOperator",
+              "value": "AND",
+            },
+            Object {
+              "nextPos": 1670,
+              "pos": 1623,
+              "tag": "WrappedExpression",
+              "values": Array [
+                Object {
+                  "nextPos": 1669,
+                  "pos": 1624,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1645,
+                      "pos": 1624,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1637,
+                          "pos": 1624,
+                          "tag": "PgCast",
+                          "values": Array [
+                            Object {
+                              "nextPos": 1632,
+                              "pick": Array [],
+                              "pos": 1624,
+                              "required": false,
+                              "tag": "Parameter",
+                              "type": "single",
+                              "value": "meterId",
+                            },
+                            Object {
+                              "nextPos": 1637,
+                              "pos": 1634,
+                              "tag": "Type",
+                              "values": Array [
+                                Object {
+                                  "nextPos": 1637,
+                                  "pos": 1634,
+                                  "tag": "QualifiedIdentifier",
+                                  "values": Array [
+                                    Object {
+                                      "nextPos": 1637,
+                                      "pos": 1634,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "int",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 1640,
+                          "pos": 1638,
+                          "tag": "BinaryOperator",
+                          "value": "IS",
+                        },
+                        Object {
+                          "nextPos": 1645,
+                          "pos": 1641,
+                          "tag": "Null",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 1648,
+                      "pos": 1646,
+                      "tag": "BinaryOperator",
+                      "value": "OR",
+                    },
+                    Object {
+                      "nextPos": 1669,
+                      "pos": 1649,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 1658,
+                          "pos": 1649,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "nextPos": 1655,
+                              "pos": 1649,
+                              "tag": "UnquotedIdentifier",
+                              "value": "meters",
+                            },
+                            Object {
+                              "nextPos": 1658,
+                              "pos": 1656,
+                              "tag": "UnquotedIdentifier",
+                              "value": "id",
+                            },
+                          ],
+                        },
+                        Object {
+                          "nextPos": 1660,
+                          "pos": 1659,
+                          "tag": "BinaryOperator",
+                          "value": "=",
+                        },
+                        Object {
+                          "nextPos": 1669,
+                          "pick": Array [],
+                          "pos": 1661,
+                          "required": false,
+                          "tag": "Parameter",
+                          "type": "single",
+                          "value": "meterId",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 1733,
+      "pos": 1671,
+      "tag": "OrderBy",
+      "values": Array [
+        Object {
+          "nextPos": 1695,
+          "pos": 1682,
+          "tag": "OrderByItem",
+          "values": Array [
+            Object {
+              "nextPos": 1691,
+              "pos": 1682,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 1688,
+                  "pos": 1682,
+                  "tag": "UnquotedIdentifier",
+                  "value": "meters",
+                },
+                Object {
+                  "nextPos": 1691,
+                  "pos": 1689,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 1695,
+              "pos": 1692,
+              "tag": "OrderDirection",
+              "value": "ASC",
+            },
+          ],
+        },
+        Object {
+          "nextPos": 1733,
+          "pos": 1699,
+          "tag": "OrderByItem",
+          "values": Array [
+            Object {
+              "nextPos": 1729,
+              "pos": 1699,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 1718,
+                  "pos": 1699,
+                  "tag": "UnquotedIdentifier",
+                  "value": "installation_meters",
+                },
+                Object {
+                  "nextPos": 1729,
+                  "pos": 1719,
+                  "tag": "UnquotedIdentifier",
+                  "value": "meter_type",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 1733,
+              "pos": 1730,
+              "tag": "OrderDirection",
+              "value": "ASC",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Files Should parse complex sql bacs.query.sql: bacs.query.sql 1`] = `
 Object {
   "nextPos": 649,

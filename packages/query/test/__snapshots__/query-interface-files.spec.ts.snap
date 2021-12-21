@@ -5022,6 +5022,886 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql active-meters-wth-reads.query.sql: active-meters-wth-reads.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "intervalStart",
+      "nextPos": 679,
+      "pick": Array [],
+      "pos": 665,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "column": "date_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 656,
+          "pos": 635,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 648,
+              "pos": 635,
+              "tag": "UnquotedIdentifier",
+              "value": "current_reads",
+            },
+            Object {
+              "nextPos": 656,
+              "pos": 649,
+              "tag": "UnquotedIdentifier",
+              "value": "date_on",
+            },
+          ],
+        },
+        "table": "current_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "intervalEnd",
+      "nextPos": 696,
+      "pick": Array [],
+      "pos": 684,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "column": "date_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 656,
+          "pos": 635,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 648,
+              "pos": 635,
+              "tag": "UnquotedIdentifier",
+              "value": "current_reads",
+            },
+            Object {
+              "nextPos": 656,
+              "pos": 649,
+              "tag": "UnquotedIdentifier",
+              "value": "date_on",
+            },
+          ],
+        },
+        "table": "current_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "intervalStart",
+      "nextPos": 1287,
+      "pick": Array [],
+      "pos": 1273,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "column": "date_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 1270,
+          "pos": 1248,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 1262,
+              "pos": 1248,
+              "tag": "UnquotedIdentifier",
+              "value": "previous_reads",
+            },
+            Object {
+              "nextPos": 1270,
+              "pos": 1263,
+              "tag": "UnquotedIdentifier",
+              "value": "date_on",
+            },
+          ],
+        },
+        "table": "previous_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "accountId",
+      "nextPos": 1616,
+      "pick": Array [],
+      "pos": 1606,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "column": "account_id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 1603,
+          "pos": 1583,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 1592,
+              "pos": 1583,
+              "tag": "UnquotedIdentifier",
+              "value": "contracts",
+            },
+            Object {
+              "nextPos": 1603,
+              "pos": 1593,
+              "tag": "UnquotedIdentifier",
+              "value": "account_id",
+            },
+          ],
+        },
+        "table": "contracts",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "meterId",
+      "nextPos": 1632,
+      "pick": Array [],
+      "pos": 1624,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "name": "int4",
+        "type": "Named",
+        "value": Object {
+          "type": "Number",
+        },
+      },
+    },
+    Object {
+      "name": "meterId",
+      "nextPos": 1669,
+      "pick": Array [],
+      "pos": 1661,
+      "required": false,
+      "spread": false,
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 1658,
+          "pos": 1649,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 1655,
+              "pos": 1649,
+              "tag": "UnquotedIdentifier",
+              "value": "meters",
+            },
+            Object {
+              "nextPos": 1658,
+              "pos": 1656,
+              "tag": "UnquotedIdentifier",
+              "value": "id",
+            },
+          ],
+        },
+        "table": "meters",
+        "type": "LoadColumn",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 52,
+          "pos": 43,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 49,
+              "pos": 43,
+              "tag": "UnquotedIdentifier",
+              "value": "meters",
+            },
+            Object {
+              "nextPos": 52,
+              "pos": 50,
+              "tag": "UnquotedIdentifier",
+              "value": "id",
+            },
+          ],
+        },
+        "table": "meters",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "msn",
+      "type": Object {
+        "column": "serial_number",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 76,
+          "pos": 56,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 62,
+              "pos": 56,
+              "tag": "UnquotedIdentifier",
+              "value": "meters",
+            },
+            Object {
+              "nextPos": 76,
+              "pos": 63,
+              "tag": "UnquotedIdentifier",
+              "value": "serial_number",
+            },
+          ],
+        },
+        "table": "meters",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "mpan",
+      "type": Object {
+        "column": "mpan",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 100,
+          "pos": 89,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 95,
+              "pos": 89,
+              "tag": "UnquotedIdentifier",
+              "value": "meters",
+            },
+            Object {
+              "nextPos": 100,
+              "pos": 96,
+              "tag": "UnquotedIdentifier",
+              "value": "mpan",
+            },
+          ],
+        },
+        "table": "meters",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "make",
+      "type": Object {
+        "column": "make",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 115,
+          "pos": 104,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 110,
+              "pos": 104,
+              "tag": "UnquotedIdentifier",
+              "value": "meters",
+            },
+            Object {
+              "nextPos": 115,
+              "pos": 111,
+              "tag": "UnquotedIdentifier",
+              "value": "make",
+            },
+          ],
+        },
+        "table": "meters",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "model",
+      "type": Object {
+        "column": "model",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 131,
+          "pos": 119,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 125,
+              "pos": 119,
+              "tag": "UnquotedIdentifier",
+              "value": "meters",
+            },
+            Object {
+              "nextPos": 131,
+              "pos": 126,
+              "tag": "UnquotedIdentifier",
+              "value": "model",
+            },
+          ],
+        },
+        "table": "meters",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "type",
+      "type": Object {
+        "column": "meter_type",
+        "schema": undefined,
+        "sourceTag": Object {
+          "nextPos": 165,
+          "pos": 135,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "nextPos": 154,
+              "pos": 135,
+              "tag": "UnquotedIdentifier",
+              "value": "installation_meters",
+            },
+            Object {
+              "nextPos": 165,
+              "pos": 155,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_type",
+            },
+          ],
+        },
+        "table": "installation_meters",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "currentPeriodRead",
+      "type": Object {
+        "nullable": true,
+        "type": "Optional",
+        "value": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "column": "id",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 247,
+                  "pos": 231,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 244,
+                      "pos": 231,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "nextPos": 247,
+                      "pos": 245,
+                      "tag": "UnquotedIdentifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "value",
+              "type": Object {
+                "column": "value",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 285,
+                  "pos": 266,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 279,
+                      "pos": 266,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "nextPos": 285,
+                      "pos": 280,
+                      "tag": "UnquotedIdentifier",
+                      "value": "value",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "dateOn",
+              "type": Object {
+                "column": "date_on",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 326,
+                  "pos": 305,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 318,
+                      "pos": 305,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "nextPos": 326,
+                      "pos": 319,
+                      "tag": "UnquotedIdentifier",
+                      "value": "date_on",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "submittedAt",
+              "type": Object {
+                "column": "submitted_at",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 377,
+                  "pos": 351,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 364,
+                      "pos": 351,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "nextPos": 377,
+                      "pos": 365,
+                      "tag": "UnquotedIdentifier",
+                      "value": "submitted_at",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "reason",
+              "type": Object {
+                "column": "reason",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 417,
+                  "pos": 397,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 410,
+                      "pos": 397,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "nextPos": 417,
+                      "pos": 411,
+                      "tag": "UnquotedIdentifier",
+                      "value": "reason",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "type",
+              "type": Object {
+                "column": "type",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 453,
+                  "pos": 435,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 448,
+                      "pos": 435,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "nextPos": 453,
+                      "pos": 449,
+                      "tag": "UnquotedIdentifier",
+                      "value": "type",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
+              },
+            },
+          ],
+          "type": "ObjectLiteral",
+        },
+      },
+    },
+    Object {
+      "name": "previousPeriodRead",
+      "type": Object {
+        "nullable": true,
+        "type": "Optional",
+        "value": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "column": "id",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 852,
+                  "pos": 835,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 849,
+                      "pos": 835,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "nextPos": 852,
+                      "pos": 850,
+                      "tag": "UnquotedIdentifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "value",
+              "type": Object {
+                "column": "value",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 891,
+                  "pos": 871,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 885,
+                      "pos": 871,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "nextPos": 891,
+                      "pos": 886,
+                      "tag": "UnquotedIdentifier",
+                      "value": "value",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "dateOn",
+              "type": Object {
+                "column": "date_on",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 933,
+                  "pos": 911,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 925,
+                      "pos": 911,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "nextPos": 933,
+                      "pos": 926,
+                      "tag": "UnquotedIdentifier",
+                      "value": "date_on",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "submittedAt",
+              "type": Object {
+                "column": "submitted_at",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 985,
+                  "pos": 958,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 972,
+                      "pos": 958,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "nextPos": 985,
+                      "pos": 973,
+                      "tag": "UnquotedIdentifier",
+                      "value": "submitted_at",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "reason",
+              "type": Object {
+                "column": "reason",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 1026,
+                  "pos": 1005,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1019,
+                      "pos": 1005,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "nextPos": 1026,
+                      "pos": 1020,
+                      "tag": "UnquotedIdentifier",
+                      "value": "reason",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "type",
+              "type": Object {
+                "column": "type",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 1063,
+                  "pos": 1044,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1058,
+                      "pos": 1044,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "nextPos": 1063,
+                      "pos": 1059,
+                      "tag": "UnquotedIdentifier",
+                      "value": "type",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
+              },
+            },
+          ],
+          "type": "ObjectLiteral",
+        },
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "current_reads",
+      "schema": undefined,
+      "sourceTag": Object {
+        "nextPos": 512,
+        "pos": 483,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "nextPos": 495,
+            "pos": 483,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "nextPos": 495,
+                "pos": 483,
+                "tag": "UnquotedIdentifier",
+                "value": "active_reads",
+              },
+            ],
+          },
+          Object {
+            "nextPos": 512,
+            "pos": 496,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "nextPos": 512,
+                "pos": 499,
+                "tag": "UnquotedIdentifier",
+                "value": "current_reads",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "active_reads",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "previous_reads",
+      "schema": undefined,
+      "sourceTag": Object {
+        "nextPos": 1123,
+        "pos": 1093,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "nextPos": 1105,
+            "pos": 1093,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "nextPos": 1105,
+                "pos": 1093,
+                "tag": "UnquotedIdentifier",
+                "value": "active_reads",
+              },
+            ],
+          },
+          Object {
+            "nextPos": 1123,
+            "pos": 1106,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "nextPos": 1123,
+                "pos": 1109,
+                "tag": "UnquotedIdentifier",
+                "value": "previous_reads",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "active_reads",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "meters",
+      "schema": undefined,
+      "sourceTag": Object {
+        "nextPos": 1384,
+        "pos": 1378,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "nextPos": 1384,
+            "pos": 1378,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "nextPos": 1384,
+                "pos": 1378,
+                "tag": "UnquotedIdentifier",
+                "value": "meters",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "meters",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "installation_meters",
+      "schema": undefined,
+      "sourceTag": Object {
+        "nextPos": 1409,
+        "pos": 1390,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "nextPos": 1409,
+            "pos": 1390,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "nextPos": 1409,
+                "pos": 1390,
+                "tag": "UnquotedIdentifier",
+                "value": "installation_meters",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "installation_meters",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "contracts",
+      "schema": undefined,
+      "sourceTag": Object {
+        "nextPos": 1468,
+        "pos": 1459,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "nextPos": 1468,
+            "pos": 1459,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "nextPos": 1468,
+                "pos": 1459,
+                "tag": "UnquotedIdentifier",
+                "value": "contracts",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "contracts",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql bacs.query.sql: bacs.query.sql 1`] = `
 Object {
   "params": Array [

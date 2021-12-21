@@ -595,23 +595,27 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "column": "id",
-        "schema": undefined,
-        "sourceTag": Object {
-          "nextPos": 62,
-          "pos": 60,
-          "tag": "Column",
-          "values": Array [
-            Object {
-              "nextPos": 62,
-              "pos": 60,
-              "tag": "UnquotedIdentifier",
-              "value": "id",
-            },
-          ],
+        "nullable": true,
+        "type": "Optional",
+        "value": Object {
+          "column": "id",
+          "schema": undefined,
+          "sourceTag": Object {
+            "nextPos": 62,
+            "pos": 60,
+            "tag": "Column",
+            "values": Array [
+              Object {
+                "nextPos": 62,
+                "pos": 60,
+                "tag": "UnquotedIdentifier",
+                "value": "id",
+              },
+            ],
+          },
+          "table": undefined,
+          "type": "LoadColumn",
         },
-        "table": undefined,
-        "type": "LoadColumn",
       },
     },
   ],
@@ -2982,23 +2986,27 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "column": "id",
-        "schema": undefined,
-        "sourceTag": Object {
-          "nextPos": 62,
-          "pos": 60,
-          "tag": "Column",
-          "values": Array [
-            Object {
-              "nextPos": 62,
-              "pos": 60,
-              "tag": "UnquotedIdentifier",
-              "value": "id",
-            },
-          ],
+        "nullable": true,
+        "type": "Optional",
+        "value": Object {
+          "column": "id",
+          "schema": undefined,
+          "sourceTag": Object {
+            "nextPos": 62,
+            "pos": 60,
+            "tag": "Column",
+            "values": Array [
+              Object {
+                "nextPos": 62,
+                "pos": 60,
+                "tag": "UnquotedIdentifier",
+                "value": "id",
+              },
+            ],
+          },
+          "table": undefined,
+          "type": "LoadColumn",
         },
-        "table": undefined,
-        "type": "LoadColumn",
       },
     },
   ],

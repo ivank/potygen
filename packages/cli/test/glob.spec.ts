@@ -98,6 +98,7 @@ describe('Glob', () => {
       sql('accounts.list.query.sql'),
       sql('accounts.query.sql'),
       sql('accounts.sql'),
+      sql('active-meters-wth-reads.query.sql'),
       sql('bacs.query.sql'),
       sql('contracts.sql'),
       sql('delete-accounts.query.sql'),

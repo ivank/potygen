@@ -10,6 +10,7 @@ Array [
   "accounts.list.query.queries.ts",
   "accounts.queries.ts",
   "accounts.query.queries.ts",
+  "active-meters-wth-reads.query.queries.ts",
   "bacs.query.queries.ts",
   "contracts.queries.ts",
   "delete-accounts.query.queries.ts",
@@ -182,6 +183,44 @@ export interface Result {
     email?: string;
     address: string;
     fitIds: string[];
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: active-meters-wth-reads.query.queries.ts 1`] = `
+"export interface Params {
+    intervalStart: Date;
+    intervalEnd: Date;
+    accountId: number;
+    meterId: number;
+}
+export interface Result {
+    id: number;
+    msn: string;
+    mpan: string;
+    make: string;
+    model: string;
+    type: \\"Export\\" | \\"Generation\\";
+    currentPeriodRead?: {
+        id: number;
+        value: number;
+        dateOn: Date;
+        submittedAt?: Date;
+        reason?: string;
+        type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    };
+    previousPeriodRead?: {
+        id: number;
+        value: number;
+        dateOn: Date;
+        submittedAt?: Date;
+        reason?: string;
+        type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    };
 }
 export interface Query {
     params: Params;
