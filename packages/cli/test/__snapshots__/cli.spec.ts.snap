@@ -61,13 +61,13 @@ export interface Query {
 exports[`CLI Should use cli to run pipeline on sql files: account-levelisations.query.queries.ts 1`] = `
 "import { Json } from \\"@potygen/query\\";
 export interface Params {
-    q: \\"\\";
-    resolvedPostlev: \\"\\" | boolean;
-    state: (\\"Pending\\" | \\"Done\\") | (\\"Pending\\" | \\"Done\\");
-    levelisationId: number;
+    q?: \\"\\";
+    resolvedPostlev?: \\"\\" | boolean;
+    state?: (\\"Pending\\" | \\"Done\\") | (\\"Pending\\" | \\"Done\\");
+    levelisationId?: number;
     ids?: number[];
-    sortField: \\"totalPayment\\" | \\"vatPayment\\" | \\"generationPayment\\" | \\"exportPayment\\" | \\"generationEnergy\\" | \\"exportEnergy\\" | \\"cfrFitId\\" | \\"state\\" | \\"isAccepted\\" | \\"error\\" | \\"exportType\\";
-    sortOrder: \\"DESC\\" | \\"ASC\\";
+    sortField?: \\"totalPayment\\" | \\"vatPayment\\" | \\"generationPayment\\" | \\"exportPayment\\" | \\"generationEnergy\\" | \\"exportEnergy\\" | \\"cfrFitId\\" | \\"state\\" | \\"isAccepted\\" | \\"error\\" | \\"exportType\\";
+    sortOrder?: \\"DESC\\" | \\"ASC\\";
     limit?: number;
     offset?: number;
 }
@@ -142,7 +142,7 @@ export interface Query {
 
 exports[`CLI Should use cli to run pipeline on sql files: accounts.list.query.queries.ts 1`] = `
 "export interface Params {
-    q: \\"\\" | string;
+    q?: \\"\\" | string;
     ids?: number[];
 }
 export interface Result {
@@ -169,7 +169,7 @@ export interface Query {
 
 exports[`CLI Should use cli to run pipeline on sql files: accounts.query.queries.ts 1`] = `
 "export interface Params {
-    q: \\"\\" | string;
+    q?: \\"\\" | string;
     ids?: number[];
     limit?: number;
     offset?: number;
@@ -196,7 +196,7 @@ exports[`CLI Should use cli to run pipeline on sql files: active-meters-wth-read
     intervalStart: Date;
     intervalEnd: Date;
     accountId: number;
-    meterId: number;
+    meterId?: number;
 }
 export interface Result {
     id: number;
@@ -326,10 +326,10 @@ export interface Query {
 
 exports[`CLI Should use cli to run pipeline on sql files: levelisations.list.query.queries.ts 1`] = `
 "export interface Params {
-    q: \\"\\";
+    q?: \\"\\";
     ids?: number[];
     sortField?: \\"quarter\\";
-    sortOrder: \\"DESC\\" | \\"ASC\\";
+    sortOrder?: \\"DESC\\" | \\"ASC\\";
     limit?: number;
     offset?: number;
 }

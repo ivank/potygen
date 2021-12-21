@@ -34,13 +34,13 @@ export interface Query {
 exports[`Traverse Should work: __generated__/account-levelisations.query.queries.ts 1`] = `
 "import { Json } from \\"@potygen/query\\";
 export interface Params {
-    q: \\"\\";
-    resolvedPostlev: \\"\\" | boolean;
-    state: (\\"Pending\\" | \\"Done\\") | (\\"Pending\\" | \\"Done\\");
-    levelisationId: number;
+    q?: \\"\\";
+    resolvedPostlev?: \\"\\" | boolean;
+    state?: (\\"Pending\\" | \\"Done\\") | (\\"Pending\\" | \\"Done\\");
+    levelisationId?: number;
     ids?: number[];
-    sortField: \\"totalPayment\\" | \\"vatPayment\\" | \\"generationPayment\\" | \\"exportPayment\\" | \\"generationEnergy\\" | \\"exportEnergy\\" | \\"cfrFitId\\" | \\"state\\" | \\"isAccepted\\" | \\"error\\" | \\"exportType\\";
-    sortOrder: \\"DESC\\" | \\"ASC\\";
+    sortField?: \\"totalPayment\\" | \\"vatPayment\\" | \\"generationPayment\\" | \\"exportPayment\\" | \\"generationEnergy\\" | \\"exportEnergy\\" | \\"cfrFitId\\" | \\"state\\" | \\"isAccepted\\" | \\"error\\" | \\"exportType\\";
+    sortOrder?: \\"DESC\\" | \\"ASC\\";
     limit?: number;
     offset?: number;
 }
@@ -115,7 +115,7 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/accounts.list.query.queries.ts 1`] = `
 "export interface Params {
-    q: \\"\\" | string;
+    q?: \\"\\" | string;
     ids?: number[];
 }
 export interface Result {
@@ -142,7 +142,7 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/accounts.query.queries.ts 1`] = `
 "export interface Params {
-    q: \\"\\" | string;
+    q?: \\"\\" | string;
     ids?: number[];
     limit?: number;
     offset?: number;
@@ -169,7 +169,7 @@ exports[`Traverse Should work: __generated__/active-meters-wth-reads.query.queri
     intervalStart: Date;
     intervalEnd: Date;
     accountId: number;
-    meterId: number;
+    meterId?: number;
 }
 export interface Result {
     id: number;
@@ -299,10 +299,10 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/levelisations.list.query.queries.ts 1`] = `
 "export interface Params {
-    q: \\"\\";
+    q?: \\"\\";
     ids?: number[];
     sortField?: \\"quarter\\";
-    sortOrder: \\"DESC\\" | \\"ASC\\";
+    sortOrder?: \\"DESC\\" | \\"ASC\\";
     limit?: number;
     offset?: number;
 }
