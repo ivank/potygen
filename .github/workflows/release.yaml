@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:11
+        env:
+          POSTGRES_DATABASE: potygen
+          POSTGRES_USER: potygen
+          POSTGRES_PASSWORD: dev-pass
+        ports:
+          - 5432:5432
+        options: --name postgres --health-cmd pg_isready  --health-interval 10s  --health-timeout 5s  --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Initialze Database
+        run: cat init.sql | docker exec --interactive postgres psql postgres://potygen:dev-pass@postgres:5432/potygen
+      - uses: ./.github/actions/yarn-install
+      - run: yarn build
+      - run: yarn lint
+      - run: yarn test --runInBand --ci
+        env:
+          POSTGRES_CONNECTION: postgres://potygen:dev-pass@localhost:5432/potygen
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
