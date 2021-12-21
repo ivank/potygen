@@ -1,6 +1,6 @@
 import { parser, isObject, orderBy, AstTag } from '@potygen/ast';
 import { ClientBase, QueryConfig, DatabaseError } from 'pg';
-import { RunQueryError } from './errors';
+import { PotygenDatabaseError } from './errors';
 import { toParams } from './query-interface';
 import { typeUnknown } from './query-interface-type-instances';
 import { Param } from './query-interface.types';
@@ -115,12 +115,40 @@ export class Sql<TSqlInterface extends SqlInterface = SqlInterface> {
       return (await db.query(query)).rows.map(nullToUndefinedInPlace);
     } catch (error) {
       if (error instanceof DatabaseError) {
-        console.log(new RunQueryError(error, query).toString());
-        throw new RunQueryError(error, query);
+        throw new PotygenDatabaseError(error, query);
       } else {
         throw error;
       }
     }
+  }
+}
+
+export class SqlMap<TSqlInterface extends SqlInterface = SqlInterface, TResult = TSqlInterface['result'][]> {
+  constructor(public sql: Sql<TSqlInterface>, public map: (rows: TSqlInterface['result'][]) => TResult) {}
+
+  public get text(): string {
+    return this.sql.text;
+  }
+
+  public get params(): Param[] {
+    return this.sql.params;
+  }
+
+  public get ast(): AstTag {
+    return this.sql.ast;
+  }
+
+  toString() {
+    return this.sql.toString();
+  }
+
+  toQueryConfig(params: TSqlInterface['params'] = {}): QueryConfig {
+    return this.sql.toQueryConfig(params);
+  }
+
+  async run(db: ClientBase, params = {}): Promise<TResult> {
+    const rows = await this.sql.run(db, params);
+    return this.map(rows);
   }
 }
 

@@ -72,5 +72,7 @@ export {
 } from './query-interface.guards';
 
 export { SqlInterface, Json } from './sql.types';
+export { one, maybeOne } from './helpers';
 export { toParams, toQueryInterface, isTypeEqual, toContantBinaryOperatorVariant, toPgType } from './query-interface';
 export { Sql, sql } from './sql';
+export { PotygenDatabaseError, PotygenNotFoundError, PotygenError } from './errors';
