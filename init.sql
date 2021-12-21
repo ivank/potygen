@@ -980,3 +980,5 @@ CREATE VIEW all_types_view AS
     SELECT *
     FROM all_types
     WHERE boolean_col IS NOT NULL;
+
+INSERT INTO all_types(not_null) VALUES (1), (2);

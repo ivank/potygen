@@ -1,9 +1,23 @@
 import { DatabaseError, QueryConfig } from 'pg';
 import { markTextError } from '@ikerin/rd-parse';
 
-export class RunQueryError extends Error {
-  constructor(public databaseError: DatabaseError, public query: QueryConfig) {
-    super(databaseError.message);
+export class PotygenError extends Error {
+  constructor(message: string, public query: QueryConfig) {
+    super(message);
+  }
+
+  toString() {
+    return `Error: ${this.message}
+
+Potygen Error Code
+--------------------
+${this.query.text}`;
+  }
+}
+
+export class PotygenDatabaseError extends PotygenError {
+  constructor(public databaseError: DatabaseError, query: QueryConfig) {
+    super(databaseError.message, query);
   }
 
   toString() {
@@ -12,8 +26,10 @@ export class RunQueryError extends Error {
     const template = this.databaseError.position ? markTextError(text, this.message, position) : text;
     return `Error: ${this.message}
 
-Postgres Error Code: ${this.databaseError.code}
+Potygen Error Code: ${this.databaseError.code}
 --------------------
 ${template}`;
   }
 }
+
+export class PotygenNotFoundError extends PotygenError {}
