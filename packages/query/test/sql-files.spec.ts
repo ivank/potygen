@@ -50,6 +50,12 @@ const values: Record<string, Record<string, unknown>> = {
     functionNames: [{ name: 'concat_ws', schema: 'pg_catalog' }],
   },
   'routines.sql': {},
+  'active-meters-wth-reads.query.sql': {
+    intervalStart: new Date('2021-12-01'),
+    intervalEnd: new Date('2021-12-31'),
+    accountId: 1,
+    meterId: undefined,
+  },
 };
 
 describe('Sql Files', () => {

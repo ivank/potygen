@@ -45,14 +45,16 @@ const convertSql = (params: Param[], sql: string, values: Record<string, unknown
   }>(
     (current, param) => {
       const nameLength = param.nextPos - param.pos;
-      const index = param.spread
-        ? current.indexes[param.name] ?? current.index + toSpreadIndex(values[param.name])
-        : current.indexes[param.name] ?? current.index + 1;
+      const reusedIndex = current.indexes[param.name];
+      const newIndex = param.spread ? current.index + toSpreadIndex(values[param.name]) : current.index + 1;
+      const index = reusedIndex ?? newIndex;
+      const nextIndex = reusedIndex ? current.index : newIndex;
+
       const indexParam = param.spread ? toSpreadIndexParam(param, current.index + 1, values[param.name]) : '$' + index;
       const pos = param.pos + current.offset;
       return {
         sql: current.sql.slice(0, pos) + indexParam + current.sql.slice(pos + nameLength),
-        index,
+        index: nextIndex,
         indexes: { ...current.indexes, [param.name]: index },
         offset: indexParam.length + current.offset - nameLength,
       };
