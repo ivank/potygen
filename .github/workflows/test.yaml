@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    container: node:16
+    container: node:16-alpine
 
     services:
       postgres:
@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Initialze Database
-        run: docker -it postgres exec psql postgres://potygen:dev-pass@postgres:5432/potygen -c 'SELECT * FROM all_types'
+        run: docker exec -it postgres psql postgres://potygen:dev-pass@postgres:5432/potygen -c 'SELECT * FROM all_types'
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
