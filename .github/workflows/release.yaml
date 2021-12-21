@@ -1,7 +1,7 @@
-name: Test
+name: Release
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
@@ -33,3 +33,7 @@ jobs:
       - run: yarn test --runInBand --ci
         env:
           POSTGRES_CONNECTION: postgres://potygen:dev-pass@localhost:5432/potygen
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
