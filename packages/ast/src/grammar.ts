@@ -443,12 +443,27 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const DataExpression = CastableRule(Any(CaseNormal, CaseSimple, CastableDataType));
 
     /**
+     * Ternary Operator
+     * ----------------------------------------------------------------------------------------
+     */
+    const TernaryExpression = TernaryOperator.reduce((Current, [Operator, Separator]) => {
+      const OperatorNode = astUpperLeaf<Tag.TernaryOperatorTag>('TernaryOperator', Operator);
+      const SeparatorNode = astUpperLeaf<Tag.TernarySeparatorTag>('TernarySeparator', Separator);
+      return astNode<Tag.TernaryExpressionTag>(
+        'TernaryExpression',
+        All(Current, OperatorNode, Current, SeparatorNode, Current),
+      );
+    }, DataExpression);
+
+    const DataOrTernaryExpression = Any(TernaryExpression, DataExpression);
+
+    /**
      * Unary Operator
      * ----------------------------------------------------------------------------------------
      */
     const UnaryOperatorNode = astUpperLeaf<Tag.UnaryOperatorTag>('UnaryOperator', UnaryOperator);
     const UnaryExpression = Node<Tag.UnaryExpressionTag>(
-      All(Star(UnaryOperatorNode), DataExpression),
+      All(Star(UnaryOperatorNode), DataOrTernaryExpression),
       (parts, $, $next) =>
         parts.reduceRight((value, operator) => {
           return { tag: 'UnaryExpression', values: [operator, value], pos: $.pos, nextPos: $next.pos };
@@ -467,20 +482,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       );
     }, UnaryExpression);
 
-    /**
-     * Ternary Operator
-     * ----------------------------------------------------------------------------------------
-     */
-    const TernaryExpression = TernaryOperator.reduce((Current, [Operator, Separator]) => {
-      const OperatorNode = astUpperLeaf<Tag.TernaryOperatorTag>('TernaryOperator', Operator);
-      const SeparatorNode = astUpperLeaf<Tag.TernarySeparatorTag>('TernarySeparator', Separator);
-      return astNode<Tag.TernaryExpressionTag>(
-        'TernaryExpression',
-        All(Current, OperatorNode, Current, SeparatorNode, Current),
-      );
-    }, DataExpression);
-
-    return Any(Cast, TernaryExpression, BinaryExpression);
+    return Any(Cast, BinaryExpression);
   });
 
 const FromListRule = (Select: Rule): Rule => {

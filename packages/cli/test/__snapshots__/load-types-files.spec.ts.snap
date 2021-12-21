@@ -794,6 +794,232 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql active-meters-wth-reads.query.sql: active-meters-wth-reads.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "intervalStart",
+      "type": Object {
+        "items": Array [
+          Object {
+            "type": "Date",
+          },
+          Object {
+            "type": "Date",
+          },
+        ],
+        "type": "UnionConstant",
+      },
+    },
+    Object {
+      "name": "intervalEnd",
+      "type": Object {
+        "type": "Date",
+      },
+    },
+    Object {
+      "name": "accountId",
+      "type": Object {
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "meterId",
+      "type": Object {
+        "items": Array [
+          Object {
+            "type": "Number",
+          },
+          Object {
+            "type": "Number",
+          },
+        ],
+        "type": "UnionConstant",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "msn",
+      "type": Object {
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "mpan",
+      "type": Object {
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "make",
+      "type": Object {
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "model",
+      "type": Object {
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "type",
+      "type": Object {
+        "items": Array [
+          Object {
+            "literal": "Export",
+            "type": "String",
+          },
+          Object {
+            "literal": "Generation",
+            "type": "String",
+          },
+        ],
+        "nullable": false,
+        "type": "UnionConstant",
+      },
+    },
+    Object {
+      "name": "currentPeriodRead",
+      "type": Object {
+        "items": Array [
+          Object {
+            "name": "id",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "value",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "dateOn",
+            "type": Object {
+              "type": "Date",
+            },
+          },
+          Object {
+            "name": "submittedAt",
+            "type": Object {
+              "nullable": true,
+              "type": "Date",
+            },
+          },
+          Object {
+            "name": "reason",
+            "type": Object {
+              "nullable": true,
+              "type": "String",
+            },
+          },
+          Object {
+            "name": "type",
+            "type": Object {
+              "items": Array [
+                Object {
+                  "literal": "Opening",
+                  "type": "String",
+                },
+                Object {
+                  "literal": "Closing",
+                  "type": "String",
+                },
+                Object {
+                  "literal": "Quarterly",
+                  "type": "String",
+                },
+                Object {
+                  "literal": "Meter Verification",
+                  "type": "String",
+                },
+              ],
+              "nullable": false,
+              "type": "UnionConstant",
+            },
+          },
+        ],
+        "type": "ObjectLiteralConstant",
+      },
+    },
+    Object {
+      "name": "previousPeriodRead",
+      "type": Object {
+        "items": Array [
+          Object {
+            "name": "id",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "value",
+            "type": Object {
+              "type": "Number",
+            },
+          },
+          Object {
+            "name": "dateOn",
+            "type": Object {
+              "type": "Date",
+            },
+          },
+          Object {
+            "name": "submittedAt",
+            "type": Object {
+              "nullable": true,
+              "type": "Date",
+            },
+          },
+          Object {
+            "name": "reason",
+            "type": Object {
+              "nullable": true,
+              "type": "String",
+            },
+          },
+          Object {
+            "name": "type",
+            "type": Object {
+              "items": Array [
+                Object {
+                  "literal": "Opening",
+                  "type": "String",
+                },
+                Object {
+                  "literal": "Closing",
+                  "type": "String",
+                },
+                Object {
+                  "literal": "Quarterly",
+                  "type": "String",
+                },
+                Object {
+                  "literal": "Meter Verification",
+                  "type": "String",
+                },
+              ],
+              "nullable": false,
+              "type": "UnionConstant",
+            },
+          },
+        ],
+        "type": "ObjectLiteralConstant",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql bacs.query.sql: bacs.query.sql 1`] = `
 Object {
   "params": Array [

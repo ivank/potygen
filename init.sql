@@ -142,6 +142,10 @@ CREATE TABLE tariff_rates (
     source_system_id integer
 );
 
+CREATE VIEW active_reads AS
+    SELECT *
+    FROM meter_reads
+    WHERE deleted_at IS NOT NULL;
 
 CREATE TYPE installation_types as ENUM(
   'Retrofit',

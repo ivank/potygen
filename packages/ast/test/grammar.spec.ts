@@ -119,6 +119,8 @@ describe('Sql', () => {
     ${'where like string'}            | ${"SELECT * WHERE table1.col LIKE '%23%'"}
     ${'where ilike string'}           | ${"SELECT * WHERE table1.col ILIKE '23%'"}
     ${'between'}                      | ${"SELECT * WHERE table1.col BETWEEN '2006-01-01' AND '2007-01-01'"}
+    ${'between params'}               | ${'SELECT * FROM table1 WHERE table1.col BETWEEN $start AND $end'}
+    ${'between params more'}          | ${'SELECT * FROM table1 WHERE active_reads.meter_id = meters.id AND active_reads.date_on BETWEEN $start AND $end'}
     ${'where select'}                 | ${'SELECT * WHERE (SELECT id FROM test LIMIT 1) = 5'}
     ${'quoted identifier'}            | ${'SELECT "test"'}
     ${'quoted identifier escaped'}    | ${'SELECT "test me ""o donald"" true"'}

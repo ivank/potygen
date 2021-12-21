@@ -130,8 +130,8 @@ exports[`Query Interface Should convert insert sql (INSERT INTO all_types(not_nu
 "export interface Params {
     vals: {
         notNull: number;
-        integerCol: number;
-        characterCol: string;
+        integerCol?: number;
+        characterCol?: string;
     }[];
 }
 export interface Result {

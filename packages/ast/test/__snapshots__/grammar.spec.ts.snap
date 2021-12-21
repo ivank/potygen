@@ -864,6 +864,336 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql between params (SELECT * FROM table1 WHERE table1.col BETWEEN $start AND $end): between params 1`] = `
+Object {
+  "nextPos": 61,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 8,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 8,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 8,
+              "pos": 7,
+              "tag": "StarIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 8,
+                  "pos": 7,
+                  "tag": "Star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 20,
+      "pos": 9,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 20,
+          "pos": 14,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 20,
+              "pos": 14,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 20,
+                  "pos": 14,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 20,
+                      "pos": 14,
+                      "tag": "UnquotedIdentifier",
+                      "value": "table1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 61,
+      "pos": 21,
+      "tag": "Where",
+      "values": Array [
+        Object {
+          "nextPos": 61,
+          "pos": 27,
+          "tag": "TernaryExpression",
+          "values": Array [
+            Object {
+              "nextPos": 37,
+              "pos": 27,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 33,
+                  "pos": 27,
+                  "tag": "UnquotedIdentifier",
+                  "value": "table1",
+                },
+                Object {
+                  "nextPos": 37,
+                  "pos": 34,
+                  "tag": "UnquotedIdentifier",
+                  "value": "col",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 45,
+              "pos": 38,
+              "tag": "TernaryOperator",
+              "value": "BETWEEN",
+            },
+            Object {
+              "nextPos": 52,
+              "pick": Array [],
+              "pos": 46,
+              "required": false,
+              "tag": "Parameter",
+              "type": "single",
+              "value": "start",
+            },
+            Object {
+              "nextPos": 56,
+              "pos": 53,
+              "tag": "TernarySeparator",
+              "value": "AND",
+            },
+            Object {
+              "nextPos": 61,
+              "pick": Array [],
+              "pos": 57,
+              "required": false,
+              "tag": "Parameter",
+              "type": "single",
+              "value": "end",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Sql Should parse simple sql between params more (SELECT * FROM table1 WHERE active_reads.meter_id = meters.id AND active_reads.date_on BETWEEN $start AND $end): between params more 1`] = `
+Object {
+  "nextPos": 109,
+  "pos": 0,
+  "tag": "Select",
+  "values": Array [
+    Object {
+      "nextPos": 8,
+      "pos": 7,
+      "tag": "SelectList",
+      "values": Array [
+        Object {
+          "nextPos": 8,
+          "pos": 7,
+          "tag": "SelectListItem",
+          "values": Array [
+            Object {
+              "nextPos": 8,
+              "pos": 7,
+              "tag": "StarIdentifier",
+              "values": Array [
+                Object {
+                  "nextPos": 8,
+                  "pos": 7,
+                  "tag": "Star",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 20,
+      "pos": 9,
+      "tag": "From",
+      "values": Array [
+        Object {
+          "nextPos": 20,
+          "pos": 14,
+          "tag": "FromList",
+          "values": Array [
+            Object {
+              "nextPos": 20,
+              "pos": 14,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "nextPos": 20,
+                  "pos": 14,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "nextPos": 20,
+                      "pos": 14,
+                      "tag": "UnquotedIdentifier",
+                      "value": "table1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 109,
+      "pos": 21,
+      "tag": "Where",
+      "values": Array [
+        Object {
+          "nextPos": 109,
+          "pos": 27,
+          "tag": "BinaryExpression",
+          "values": Array [
+            Object {
+              "nextPos": 60,
+              "pos": 27,
+              "tag": "BinaryExpression",
+              "values": Array [
+                Object {
+                  "nextPos": 48,
+                  "pos": 27,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 39,
+                      "pos": 27,
+                      "tag": "UnquotedIdentifier",
+                      "value": "active_reads",
+                    },
+                    Object {
+                      "nextPos": 48,
+                      "pos": 40,
+                      "tag": "UnquotedIdentifier",
+                      "value": "meter_id",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 50,
+                  "pos": 49,
+                  "tag": "BinaryOperator",
+                  "value": "=",
+                },
+                Object {
+                  "nextPos": 60,
+                  "pos": 51,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 57,
+                      "pos": 51,
+                      "tag": "UnquotedIdentifier",
+                      "value": "meters",
+                    },
+                    Object {
+                      "nextPos": 60,
+                      "pos": 58,
+                      "tag": "UnquotedIdentifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "nextPos": 64,
+              "pos": 61,
+              "tag": "BinaryOperator",
+              "value": "AND",
+            },
+            Object {
+              "nextPos": 109,
+              "pos": 65,
+              "tag": "TernaryExpression",
+              "values": Array [
+                Object {
+                  "nextPos": 85,
+                  "pos": 65,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 77,
+                      "pos": 65,
+                      "tag": "UnquotedIdentifier",
+                      "value": "active_reads",
+                    },
+                    Object {
+                      "nextPos": 85,
+                      "pos": 78,
+                      "tag": "UnquotedIdentifier",
+                      "value": "date_on",
+                    },
+                  ],
+                },
+                Object {
+                  "nextPos": 93,
+                  "pos": 86,
+                  "tag": "TernaryOperator",
+                  "value": "BETWEEN",
+                },
+                Object {
+                  "nextPos": 100,
+                  "pick": Array [],
+                  "pos": 94,
+                  "required": false,
+                  "tag": "Parameter",
+                  "type": "single",
+                  "value": "start",
+                },
+                Object {
+                  "nextPos": 104,
+                  "pos": 101,
+                  "tag": "TernarySeparator",
+                  "value": "AND",
+                },
+                Object {
+                  "nextPos": 109,
+                  "pick": Array [],
+                  "pos": 105,
+                  "required": false,
+                  "tag": "Parameter",
+                  "type": "single",
+                  "value": "end",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Should parse simple sql binary constant (SELECT E'111'::varbit): binary constant 1`] = `
 Object {
   "nextPos": 21,

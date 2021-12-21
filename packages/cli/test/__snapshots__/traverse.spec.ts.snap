@@ -164,6 +164,44 @@ export interface Query {
 "
 `;
 
+exports[`Traverse Should work: __generated__/active-meters-wth-reads.query.queries.ts 1`] = `
+"export interface Params {
+    intervalStart: Date;
+    intervalEnd: Date;
+    accountId: number;
+    meterId: number;
+}
+export interface Result {
+    id: number;
+    msn: string;
+    mpan: string;
+    make: string;
+    model: string;
+    type: \\"Export\\" | \\"Generation\\";
+    currentPeriodRead: {
+        id: number;
+        value: number;
+        dateOn: Date;
+        submittedAt?: Date;
+        reason?: string;
+        type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    };
+    previousPeriodRead: {
+        id: number;
+        value: number;
+        dateOn: Date;
+        submittedAt?: Date;
+        reason?: string;
+        type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    };
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Traverse Should work: __generated__/bacs.query.queries.ts 1`] = `
 "export interface Params {
     quarter?: string;
