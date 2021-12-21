@@ -1511,6 +1511,64 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql insert.process.query.sql: insert.process.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "items",
+      "type": Object {
+        "items": Object {
+          "items": Array [
+            Object {
+              "name": "processId",
+              "type": Object {
+                "type": "Number",
+              },
+            },
+            Object {
+              "name": "idempotencyKey",
+              "type": Object {
+                "nullable": true,
+                "type": "String",
+              },
+            },
+            Object {
+              "name": "data",
+              "type": Object {
+                "type": "Json",
+              },
+            },
+            Object {
+              "name": "accountId",
+              "type": Object {
+                "type": "Number",
+              },
+            },
+          ],
+          "nullable": false,
+          "type": "ObjectLiteralConstant",
+        },
+        "type": "ArrayConstant",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "type": "Number",
+      },
+    },
+    Object {
+      "name": "data",
+      "type": Object {
+        "type": "Json",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
 Object {
   "params": Array [

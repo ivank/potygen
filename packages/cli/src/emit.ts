@@ -64,7 +64,7 @@ const toPropertyType =
     } else if (isTypeObjectLiteralConstant(type)) {
       return type.items.reduce<TypeContext & { type: TypeLiteralNode }>(
         (acc, item) => {
-          const itemType = toPropertyType({ ...context, name: context.name + toClassCase(item.name) })(item.type);
+          const itemType = toPropertyType({ ...acc, name: context.name + toClassCase(item.name) })(item.type);
           const memeber = factory.createPropertySignature(
             undefined,
             item.name,
@@ -81,7 +81,7 @@ const toPropertyType =
     } else if (isTypeUnionConstant(type)) {
       return compactTypes(type.items).reduce<TypeContext & { type: UnionTypeNode }>(
         (acc, item, index) => {
-          const itemType = toPropertyType({ ...context, name: context.name + index })(item);
+          const itemType = toPropertyType({ ...acc, name: context.name + index })(item);
           return { ...itemType, type: factory.createUnionTypeNode(acc.type.types.concat(itemType.type)) };
         },
         { ...context, type: factory.createUnionTypeNode([]) },

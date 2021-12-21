@@ -15,6 +15,7 @@ Array [
   "contracts.queries.ts",
   "delete-accounts.query.queries.ts",
   "generation-read-data.query.queries.ts",
+  "insert.process.query.queries.ts",
   "installation-meter-update.query.queries.ts",
   "installations.queries.ts",
   "levelisations.list.query.queries.ts",
@@ -294,6 +295,27 @@ export interface Result {
 export interface Query {
     params: Params;
     result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: insert.process.query.queries.ts 1`] = `
+"import { Json } from \\"@potygen/query\\";
+export interface Params<TParamItemsData = unknown> {
+    items: {
+        processId: number;
+        idempotencyKey?: string;
+        data: TParamItemsData;
+        accountId: number;
+    }[];
+}
+export interface Result<TData = unknown> {
+    id: number;
+    data: Json<TData>;
+}
+export interface Query<TParamItemsData = unknown, TData = unknown> {
+    params: Params<TParamItemsData>;
+    result: Result<TData>;
 }
 "
 `;

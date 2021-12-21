@@ -271,6 +271,27 @@ export interface Query {
 "
 `;
 
+exports[`Load Files Should convert complex sql insert.process.query.sql: insert.process.query.sql 1`] = `
+"import { Json } from \\"@potygen/query\\";
+export interface Params<TParamItemsData = unknown> {
+    items: {
+        processId: number;
+        idempotencyKey?: string;
+        data: TParamItemsData;
+        accountId: number;
+    }[];
+}
+export interface Result<TData = unknown> {
+    id: number;
+    data: Json<TData>;
+}
+export interface Query<TParamItemsData = unknown, TData = unknown> {
+    params: Params<TParamItemsData>;
+    result: Result<TData>;
+}
+"
+`;
+
 exports[`Load Files Should convert complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
 "export interface Params {
     removalDate?: Date;

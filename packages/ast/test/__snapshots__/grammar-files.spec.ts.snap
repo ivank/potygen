@@ -23211,6 +23211,238 @@ Object {
 }
 `;
 
+exports[`Sql Files Should parse complex sql insert.process.query.sql: insert.process.query.sql 1`] = `
+Object {
+  "nextPos": 226,
+  "pos": 0,
+  "tag": "Insert",
+  "values": Array [
+    Object {
+      "nextPos": 25,
+      "pos": 12,
+      "tag": "Table",
+      "values": Array [
+        Object {
+          "nextPos": 25,
+          "pos": 12,
+          "tag": "QualifiedIdentifier",
+          "values": Array [
+            Object {
+              "nextPos": 25,
+              "pos": 12,
+              "tag": "UnquotedIdentifier",
+              "value": "process_items",
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "nextPos": 73,
+      "pos": 26,
+      "tag": "Columns",
+      "values": Array [
+        Object {
+          "nextPos": 37,
+          "pos": 27,
+          "tag": "UnquotedIdentifier",
+          "value": "process_id",
+        },
+        Object {
+          "nextPos": 54,
+          "pos": 39,
+          "tag": "UnquotedIdentifier",
+          "value": "idempotency_key",
+        },
+        Object {
+          "nextPos": 60,
+          "pos": 56,
+          "tag": "UnquotedIdentifier",
+          "value": "data",
+        },
+        Object {
+          "nextPos": 72,
+          "pos": 62,
+          "tag": "UnquotedIdentifier",
+          "value": "account_id",
+        },
+      ],
+    },
+    Object {
+      "nextPos": 132,
+      "pos": 74,
+      "tag": "ValuesList",
+      "values": Array [
+        Object {
+          "nextPos": 132,
+          "pick": Array [
+            Object {
+              "nextPos": 98,
+              "pos": 89,
+              "tag": "UnquotedIdentifier",
+              "value": "processId",
+            },
+            Object {
+              "nextPos": 114,
+              "pos": 100,
+              "tag": "UnquotedIdentifier",
+              "value": "idempotencyKey",
+            },
+            Object {
+              "nextPos": 120,
+              "pos": 116,
+              "tag": "UnquotedIdentifier",
+              "value": "data",
+            },
+            Object {
+              "nextPos": 131,
+              "pos": 122,
+              "tag": "UnquotedIdentifier",
+              "value": "accountId",
+            },
+          ],
+          "pos": 81,
+          "required": false,
+          "tag": "Parameter",
+          "type": "spread",
+          "value": "items",
+        },
+      ],
+    },
+    Object {
+      "nextPos": 207,
+      "pos": 133,
+      "tag": "Conflict",
+      "values": Array [
+        Object {
+          "nextPos": 196,
+          "pos": 145,
+          "tag": "ConflictTarget",
+          "values": Array [
+            Object {
+              "nextPos": 161,
+              "pos": 146,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 161,
+                  "pos": 146,
+                  "tag": "UnquotedIdentifier",
+                  "value": "idempotency_key",
+                },
+              ],
+            },
+            Object {
+              "nextPos": 196,
+              "pos": 163,
+              "tag": "Where",
+              "values": Array [
+                Object {
+                  "nextPos": 196,
+                  "pos": 169,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "nextPos": 184,
+                      "pos": 169,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "nextPos": 184,
+                          "pos": 169,
+                          "tag": "UnquotedIdentifier",
+                          "value": "idempotency_key",
+                        },
+                      ],
+                    },
+                    Object {
+                      "nextPos": 187,
+                      "pos": 185,
+                      "tag": "BinaryOperator",
+                      "value": "IS",
+                    },
+                    Object {
+                      "nextPos": 196,
+                      "pos": 188,
+                      "tag": "UnaryExpression",
+                      "values": Array [
+                        Object {
+                          "nextPos": 191,
+                          "pos": 188,
+                          "tag": "UnaryOperator",
+                          "value": "NOT",
+                        },
+                        Object {
+                          "nextPos": 196,
+                          "pos": 192,
+                          "tag": "Null",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 207,
+          "pos": 197,
+          "tag": "DoNothing",
+        },
+      ],
+    },
+    Object {
+      "nextPos": 226,
+      "pos": 208,
+      "tag": "Returning",
+      "values": Array [
+        Object {
+          "nextPos": 220,
+          "pos": 218,
+          "tag": "ReturningListItem",
+          "values": Array [
+            Object {
+              "nextPos": 220,
+              "pos": 218,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 220,
+                  "pos": 218,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "nextPos": 226,
+          "pos": 222,
+          "tag": "ReturningListItem",
+          "values": Array [
+            Object {
+              "nextPos": 226,
+              "pos": 222,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "nextPos": 226,
+                  "pos": 222,
+                  "tag": "UnquotedIdentifier",
+                  "value": "data",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+`;
+
 exports[`Sql Files Should parse complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
 Object {
   "nextPos": 97,

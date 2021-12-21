@@ -389,6 +389,25 @@ CREATE VIEW active_reads AS
     FROM meter_reads
     WHERE deleted_at IS NOT NULL;
 
+
+CREATE TYPE public.process_item_status AS ENUM (
+    'Pending',
+    'Done',
+    'Error'
+);
+
+CREATE TABLE public.process_items (
+    id SERIAL PRIMARY KEY,
+    process_id integer NOT NULL,
+    account_id integer NOT NULL,
+    idempotency_key character varying,
+    data jsonb NOT NULL,
+    status public.process_item_status DEFAULT 'Pending'::public.process_item_status NOT NULL,
+    error character varying,
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp without time zone
+);
+
 CREATE SCHEMA fit;
 
 CREATE TABLE fit.Address (

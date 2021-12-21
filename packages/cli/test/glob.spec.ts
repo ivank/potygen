@@ -103,6 +103,7 @@ describe('Glob', () => {
       sql('contracts.sql'),
       sql('delete-accounts.query.sql'),
       sql('generation-read-data.query.sql'),
+      sql('insert.process.query.sql'),
       sql('installation-meter-update.query.sql'),
       sql('installations.sql'),
       sql('levelisations.list.query.sql'),

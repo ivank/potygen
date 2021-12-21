@@ -271,6 +271,27 @@ export interface Query {
 "
 `;
 
+exports[`Traverse Should work: __generated__/insert.process.query.queries.ts 1`] = `
+"import { Json } from \\"@potygen/query\\";
+export interface Params<TParamItemsData = unknown> {
+    items: {
+        processId: number;
+        idempotencyKey?: string;
+        data: TParamItemsData;
+        accountId: number;
+    }[];
+}
+export interface Result<TData = unknown> {
+    id: number;
+    data: Json<TData>;
+}
+export interface Query<TParamItemsData = unknown, TData = unknown> {
+    params: Params<TParamItemsData>;
+    result: Result<TData>;
+}
+"
+`;
+
 exports[`Traverse Should work: __generated__/installation-meter-update.query.queries.ts 1`] = `
 "export interface Params {
     removalDate?: Date;
