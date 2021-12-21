@@ -9,8 +9,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    container: node:16-alpine
-
     services:
       postgres:
         image: postgres:11
@@ -30,6 +28,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
       - name: Initialze Database
         run: docker exec -it postgres psql postgres://potygen:dev-pass@postgres:5432/potygen -c 'SELECT * FROM all_types'
       - name: Get yarn cache directory path
