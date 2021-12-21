@@ -37,6 +37,8 @@ export {
   TypeObjectLiteralConstant,
   TypeCompositeAccess,
   TypeCompositeConstant,
+  TypeOptional,
+  TypeOptionalConstant,
 } from './query-interface.types';
 
 export {
@@ -67,8 +69,10 @@ export {
   isTypeArrayItem,
   isTypeToArray,
   isTypeObjectLiteralConstant,
-  isCompositeConstant,
-  isCompositeAccess,
+  isTypeCompositeConstant,
+  isTypeCompositeAccess,
+  isTypeOptional,
+  isTypeOptionalConstant,
 } from './query-interface.guards';
 
 export { SqlInterface, Json } from './sql.types';

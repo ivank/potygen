@@ -287,7 +287,11 @@ const toType =
       case 'Row':
         return { type: 'Named', value: typeString, name: 'row' };
       case 'Select':
-        return recur(sql.values.filter(isSelectList)[0].values[0].values[0]);
+        return {
+          type: 'Optional',
+          nullable: true,
+          value: recur(sql.values.filter(isSelectList)[0].values[0].values[0]),
+        };
       case 'StarIdentifier':
         return {
           type: 'LoadStar',
@@ -340,6 +344,7 @@ const toResultName = (type: Type): string => {
     case 'Named':
       return type.name;
     case 'ArrayItem':
+    case 'Optional':
       return toResultName(type.value);
     case 'Array':
     case 'ArrayConstant':

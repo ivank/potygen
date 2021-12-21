@@ -178,7 +178,7 @@ export interface Result {
     make: string;
     model: string;
     type: \\"Export\\" | \\"Generation\\";
-    currentPeriodRead: {
+    currentPeriodRead?: {
         id: number;
         value: number;
         dateOn: Date;
@@ -186,7 +186,7 @@ export interface Result {
         reason?: string;
         type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
     };
-    previousPeriodRead: {
+    previousPeriodRead?: {
         id: number;
         value: number;
         dateOn: Date;

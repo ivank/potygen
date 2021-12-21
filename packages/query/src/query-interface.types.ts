@@ -132,6 +132,16 @@ export interface TypeObjectLiteralConstant {
   items: Array<{ name: string; type: TypeConstant }>;
   nullable?: boolean;
 }
+export interface TypeOptional {
+  type: 'Optional';
+  nullable?: boolean;
+  value: Type;
+}
+export interface TypeOptionalConstant {
+  type: 'OptionalConstant';
+  nullable?: boolean;
+  value: TypeConstant;
+}
 
 export type TypeLiteral = TypeString | TypeNumber | TypeBoolean;
 
@@ -143,7 +153,8 @@ export type TypeNullable =
   | TypeDate
   | TypeJson
   | TypeArrayConstant
-  | TypeUnionConstant;
+  | TypeUnionConstant
+  | TypeOptional;
 
 export type TypeConstant =
   | TypeBuffer
@@ -158,9 +169,11 @@ export type TypeConstant =
   | TypeCompositeConstant
   | TypeArrayConstant
   | TypeUnionConstant
-  | TypeObjectLiteralConstant;
+  | TypeObjectLiteralConstant
+  | TypeOptionalConstant;
 
 export type Type =
+  | TypeOptional
   | TypeConstant
   | TypeLoadColumn
   | TypeLoadFunction

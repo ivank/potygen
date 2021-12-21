@@ -889,131 +889,139 @@ Object {
     Object {
       "name": "currentPeriodRead",
       "type": Object {
-        "items": Array [
-          Object {
-            "name": "id",
-            "type": Object {
-              "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "type": "Number",
+              },
             },
-          },
-          Object {
-            "name": "value",
-            "type": Object {
-              "type": "Number",
+            Object {
+              "name": "value",
+              "type": Object {
+                "type": "Number",
+              },
             },
-          },
-          Object {
-            "name": "dateOn",
-            "type": Object {
-              "type": "Date",
+            Object {
+              "name": "dateOn",
+              "type": Object {
+                "type": "Date",
+              },
             },
-          },
-          Object {
-            "name": "submittedAt",
-            "type": Object {
-              "nullable": true,
-              "type": "Date",
+            Object {
+              "name": "submittedAt",
+              "type": Object {
+                "nullable": true,
+                "type": "Date",
+              },
             },
-          },
-          Object {
-            "name": "reason",
-            "type": Object {
-              "nullable": true,
-              "type": "String",
+            Object {
+              "name": "reason",
+              "type": Object {
+                "nullable": true,
+                "type": "String",
+              },
             },
-          },
-          Object {
-            "name": "type",
-            "type": Object {
-              "items": Array [
-                Object {
-                  "literal": "Opening",
-                  "type": "String",
-                },
-                Object {
-                  "literal": "Closing",
-                  "type": "String",
-                },
-                Object {
-                  "literal": "Quarterly",
-                  "type": "String",
-                },
-                Object {
-                  "literal": "Meter Verification",
-                  "type": "String",
-                },
-              ],
-              "nullable": false,
-              "type": "UnionConstant",
+            Object {
+              "name": "type",
+              "type": Object {
+                "items": Array [
+                  Object {
+                    "literal": "Opening",
+                    "type": "String",
+                  },
+                  Object {
+                    "literal": "Closing",
+                    "type": "String",
+                  },
+                  Object {
+                    "literal": "Quarterly",
+                    "type": "String",
+                  },
+                  Object {
+                    "literal": "Meter Verification",
+                    "type": "String",
+                  },
+                ],
+                "nullable": false,
+                "type": "UnionConstant",
+              },
             },
-          },
-        ],
-        "type": "ObjectLiteralConstant",
+          ],
+          "type": "ObjectLiteralConstant",
+        },
       },
     },
     Object {
       "name": "previousPeriodRead",
       "type": Object {
-        "items": Array [
-          Object {
-            "name": "id",
-            "type": Object {
-              "type": "Number",
+        "nullable": true,
+        "type": "OptionalConstant",
+        "value": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "type": "Number",
+              },
             },
-          },
-          Object {
-            "name": "value",
-            "type": Object {
-              "type": "Number",
+            Object {
+              "name": "value",
+              "type": Object {
+                "type": "Number",
+              },
             },
-          },
-          Object {
-            "name": "dateOn",
-            "type": Object {
-              "type": "Date",
+            Object {
+              "name": "dateOn",
+              "type": Object {
+                "type": "Date",
+              },
             },
-          },
-          Object {
-            "name": "submittedAt",
-            "type": Object {
-              "nullable": true,
-              "type": "Date",
+            Object {
+              "name": "submittedAt",
+              "type": Object {
+                "nullable": true,
+                "type": "Date",
+              },
             },
-          },
-          Object {
-            "name": "reason",
-            "type": Object {
-              "nullable": true,
-              "type": "String",
+            Object {
+              "name": "reason",
+              "type": Object {
+                "nullable": true,
+                "type": "String",
+              },
             },
-          },
-          Object {
-            "name": "type",
-            "type": Object {
-              "items": Array [
-                Object {
-                  "literal": "Opening",
-                  "type": "String",
-                },
-                Object {
-                  "literal": "Closing",
-                  "type": "String",
-                },
-                Object {
-                  "literal": "Quarterly",
-                  "type": "String",
-                },
-                Object {
-                  "literal": "Meter Verification",
-                  "type": "String",
-                },
-              ],
-              "nullable": false,
-              "type": "UnionConstant",
+            Object {
+              "name": "type",
+              "type": Object {
+                "items": Array [
+                  Object {
+                    "literal": "Opening",
+                    "type": "String",
+                  },
+                  Object {
+                    "literal": "Closing",
+                    "type": "String",
+                  },
+                  Object {
+                    "literal": "Quarterly",
+                    "type": "String",
+                  },
+                  Object {
+                    "literal": "Meter Verification",
+                    "type": "String",
+                  },
+                ],
+                "nullable": false,
+                "type": "UnionConstant",
+              },
             },
-          },
-        ],
-        "type": "ObjectLiteralConstant",
+          ],
+          "type": "ObjectLiteralConstant",
+        },
       },
     },
   ],

@@ -5378,353 +5378,361 @@ Object {
     Object {
       "name": "currentPeriodRead",
       "type": Object {
-        "items": Array [
-          Object {
-            "name": "id",
-            "type": Object {
-              "column": "id",
-              "schema": undefined,
-              "sourceTag": Object {
-                "nextPos": 247,
-                "pos": 231,
-                "tag": "Column",
-                "values": Array [
-                  Object {
-                    "nextPos": 244,
-                    "pos": 231,
-                    "tag": "UnquotedIdentifier",
-                    "value": "current_reads",
-                  },
-                  Object {
-                    "nextPos": 247,
-                    "pos": 245,
-                    "tag": "UnquotedIdentifier",
-                    "value": "id",
-                  },
-                ],
+        "nullable": true,
+        "type": "Optional",
+        "value": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "column": "id",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 247,
+                  "pos": 231,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 244,
+                      "pos": 231,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "nextPos": 247,
+                      "pos": 245,
+                      "tag": "UnquotedIdentifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
               },
-              "table": "current_reads",
-              "type": "LoadColumn",
             },
-          },
-          Object {
-            "name": "value",
-            "type": Object {
-              "column": "value",
-              "schema": undefined,
-              "sourceTag": Object {
-                "nextPos": 285,
-                "pos": 266,
-                "tag": "Column",
-                "values": Array [
-                  Object {
-                    "nextPos": 279,
-                    "pos": 266,
-                    "tag": "UnquotedIdentifier",
-                    "value": "current_reads",
-                  },
-                  Object {
-                    "nextPos": 285,
-                    "pos": 280,
-                    "tag": "UnquotedIdentifier",
-                    "value": "value",
-                  },
-                ],
+            Object {
+              "name": "value",
+              "type": Object {
+                "column": "value",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 285,
+                  "pos": 266,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 279,
+                      "pos": 266,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "nextPos": 285,
+                      "pos": 280,
+                      "tag": "UnquotedIdentifier",
+                      "value": "value",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
               },
-              "table": "current_reads",
-              "type": "LoadColumn",
             },
-          },
-          Object {
-            "name": "dateOn",
-            "type": Object {
-              "column": "date_on",
-              "schema": undefined,
-              "sourceTag": Object {
-                "nextPos": 326,
-                "pos": 305,
-                "tag": "Column",
-                "values": Array [
-                  Object {
-                    "nextPos": 318,
-                    "pos": 305,
-                    "tag": "UnquotedIdentifier",
-                    "value": "current_reads",
-                  },
-                  Object {
-                    "nextPos": 326,
-                    "pos": 319,
-                    "tag": "UnquotedIdentifier",
-                    "value": "date_on",
-                  },
-                ],
+            Object {
+              "name": "dateOn",
+              "type": Object {
+                "column": "date_on",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 326,
+                  "pos": 305,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 318,
+                      "pos": 305,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "nextPos": 326,
+                      "pos": 319,
+                      "tag": "UnquotedIdentifier",
+                      "value": "date_on",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
               },
-              "table": "current_reads",
-              "type": "LoadColumn",
             },
-          },
-          Object {
-            "name": "submittedAt",
-            "type": Object {
-              "column": "submitted_at",
-              "schema": undefined,
-              "sourceTag": Object {
-                "nextPos": 377,
-                "pos": 351,
-                "tag": "Column",
-                "values": Array [
-                  Object {
-                    "nextPos": 364,
-                    "pos": 351,
-                    "tag": "UnquotedIdentifier",
-                    "value": "current_reads",
-                  },
-                  Object {
-                    "nextPos": 377,
-                    "pos": 365,
-                    "tag": "UnquotedIdentifier",
-                    "value": "submitted_at",
-                  },
-                ],
+            Object {
+              "name": "submittedAt",
+              "type": Object {
+                "column": "submitted_at",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 377,
+                  "pos": 351,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 364,
+                      "pos": 351,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "nextPos": 377,
+                      "pos": 365,
+                      "tag": "UnquotedIdentifier",
+                      "value": "submitted_at",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
               },
-              "table": "current_reads",
-              "type": "LoadColumn",
             },
-          },
-          Object {
-            "name": "reason",
-            "type": Object {
-              "column": "reason",
-              "schema": undefined,
-              "sourceTag": Object {
-                "nextPos": 417,
-                "pos": 397,
-                "tag": "Column",
-                "values": Array [
-                  Object {
-                    "nextPos": 410,
-                    "pos": 397,
-                    "tag": "UnquotedIdentifier",
-                    "value": "current_reads",
-                  },
-                  Object {
-                    "nextPos": 417,
-                    "pos": 411,
-                    "tag": "UnquotedIdentifier",
-                    "value": "reason",
-                  },
-                ],
+            Object {
+              "name": "reason",
+              "type": Object {
+                "column": "reason",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 417,
+                  "pos": 397,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 410,
+                      "pos": 397,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "nextPos": 417,
+                      "pos": 411,
+                      "tag": "UnquotedIdentifier",
+                      "value": "reason",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
               },
-              "table": "current_reads",
-              "type": "LoadColumn",
             },
-          },
-          Object {
-            "name": "type",
-            "type": Object {
-              "column": "type",
-              "schema": undefined,
-              "sourceTag": Object {
-                "nextPos": 453,
-                "pos": 435,
-                "tag": "Column",
-                "values": Array [
-                  Object {
-                    "nextPos": 448,
-                    "pos": 435,
-                    "tag": "UnquotedIdentifier",
-                    "value": "current_reads",
-                  },
-                  Object {
-                    "nextPos": 453,
-                    "pos": 449,
-                    "tag": "UnquotedIdentifier",
-                    "value": "type",
-                  },
-                ],
+            Object {
+              "name": "type",
+              "type": Object {
+                "column": "type",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 453,
+                  "pos": 435,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 448,
+                      "pos": 435,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "nextPos": 453,
+                      "pos": 449,
+                      "tag": "UnquotedIdentifier",
+                      "value": "type",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
               },
-              "table": "current_reads",
-              "type": "LoadColumn",
             },
-          },
-        ],
-        "type": "ObjectLiteral",
+          ],
+          "type": "ObjectLiteral",
+        },
       },
     },
     Object {
       "name": "previousPeriodRead",
       "type": Object {
-        "items": Array [
-          Object {
-            "name": "id",
-            "type": Object {
-              "column": "id",
-              "schema": undefined,
-              "sourceTag": Object {
-                "nextPos": 852,
-                "pos": 835,
-                "tag": "Column",
-                "values": Array [
-                  Object {
-                    "nextPos": 849,
-                    "pos": 835,
-                    "tag": "UnquotedIdentifier",
-                    "value": "previous_reads",
-                  },
-                  Object {
-                    "nextPos": 852,
-                    "pos": 850,
-                    "tag": "UnquotedIdentifier",
-                    "value": "id",
-                  },
-                ],
+        "nullable": true,
+        "type": "Optional",
+        "value": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "column": "id",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 852,
+                  "pos": 835,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 849,
+                      "pos": 835,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "nextPos": 852,
+                      "pos": 850,
+                      "tag": "UnquotedIdentifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
               },
-              "table": "previous_reads",
-              "type": "LoadColumn",
             },
-          },
-          Object {
-            "name": "value",
-            "type": Object {
-              "column": "value",
-              "schema": undefined,
-              "sourceTag": Object {
-                "nextPos": 891,
-                "pos": 871,
-                "tag": "Column",
-                "values": Array [
-                  Object {
-                    "nextPos": 885,
-                    "pos": 871,
-                    "tag": "UnquotedIdentifier",
-                    "value": "previous_reads",
-                  },
-                  Object {
-                    "nextPos": 891,
-                    "pos": 886,
-                    "tag": "UnquotedIdentifier",
-                    "value": "value",
-                  },
-                ],
+            Object {
+              "name": "value",
+              "type": Object {
+                "column": "value",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 891,
+                  "pos": 871,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 885,
+                      "pos": 871,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "nextPos": 891,
+                      "pos": 886,
+                      "tag": "UnquotedIdentifier",
+                      "value": "value",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
               },
-              "table": "previous_reads",
-              "type": "LoadColumn",
             },
-          },
-          Object {
-            "name": "dateOn",
-            "type": Object {
-              "column": "date_on",
-              "schema": undefined,
-              "sourceTag": Object {
-                "nextPos": 933,
-                "pos": 911,
-                "tag": "Column",
-                "values": Array [
-                  Object {
-                    "nextPos": 925,
-                    "pos": 911,
-                    "tag": "UnquotedIdentifier",
-                    "value": "previous_reads",
-                  },
-                  Object {
-                    "nextPos": 933,
-                    "pos": 926,
-                    "tag": "UnquotedIdentifier",
-                    "value": "date_on",
-                  },
-                ],
+            Object {
+              "name": "dateOn",
+              "type": Object {
+                "column": "date_on",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 933,
+                  "pos": 911,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 925,
+                      "pos": 911,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "nextPos": 933,
+                      "pos": 926,
+                      "tag": "UnquotedIdentifier",
+                      "value": "date_on",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
               },
-              "table": "previous_reads",
-              "type": "LoadColumn",
             },
-          },
-          Object {
-            "name": "submittedAt",
-            "type": Object {
-              "column": "submitted_at",
-              "schema": undefined,
-              "sourceTag": Object {
-                "nextPos": 985,
-                "pos": 958,
-                "tag": "Column",
-                "values": Array [
-                  Object {
-                    "nextPos": 972,
-                    "pos": 958,
-                    "tag": "UnquotedIdentifier",
-                    "value": "previous_reads",
-                  },
-                  Object {
-                    "nextPos": 985,
-                    "pos": 973,
-                    "tag": "UnquotedIdentifier",
-                    "value": "submitted_at",
-                  },
-                ],
+            Object {
+              "name": "submittedAt",
+              "type": Object {
+                "column": "submitted_at",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 985,
+                  "pos": 958,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 972,
+                      "pos": 958,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "nextPos": 985,
+                      "pos": 973,
+                      "tag": "UnquotedIdentifier",
+                      "value": "submitted_at",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
               },
-              "table": "previous_reads",
-              "type": "LoadColumn",
             },
-          },
-          Object {
-            "name": "reason",
-            "type": Object {
-              "column": "reason",
-              "schema": undefined,
-              "sourceTag": Object {
-                "nextPos": 1026,
-                "pos": 1005,
-                "tag": "Column",
-                "values": Array [
-                  Object {
-                    "nextPos": 1019,
-                    "pos": 1005,
-                    "tag": "UnquotedIdentifier",
-                    "value": "previous_reads",
-                  },
-                  Object {
-                    "nextPos": 1026,
-                    "pos": 1020,
-                    "tag": "UnquotedIdentifier",
-                    "value": "reason",
-                  },
-                ],
+            Object {
+              "name": "reason",
+              "type": Object {
+                "column": "reason",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 1026,
+                  "pos": 1005,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1019,
+                      "pos": 1005,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "nextPos": 1026,
+                      "pos": 1020,
+                      "tag": "UnquotedIdentifier",
+                      "value": "reason",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
               },
-              "table": "previous_reads",
-              "type": "LoadColumn",
             },
-          },
-          Object {
-            "name": "type",
-            "type": Object {
-              "column": "type",
-              "schema": undefined,
-              "sourceTag": Object {
-                "nextPos": 1063,
-                "pos": 1044,
-                "tag": "Column",
-                "values": Array [
-                  Object {
-                    "nextPos": 1058,
-                    "pos": 1044,
-                    "tag": "UnquotedIdentifier",
-                    "value": "previous_reads",
-                  },
-                  Object {
-                    "nextPos": 1063,
-                    "pos": 1059,
-                    "tag": "UnquotedIdentifier",
-                    "value": "type",
-                  },
-                ],
+            Object {
+              "name": "type",
+              "type": Object {
+                "column": "type",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "nextPos": 1063,
+                  "pos": 1044,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "nextPos": 1058,
+                      "pos": 1044,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "nextPos": 1063,
+                      "pos": 1059,
+                      "tag": "UnquotedIdentifier",
+                      "value": "type",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
               },
-              "table": "previous_reads",
-              "type": "LoadColumn",
             },
-          },
-        ],
-        "type": "ObjectLiteral",
+          ],
+          "type": "ObjectLiteral",
+        },
       },
     },
   ],
