@@ -15,6 +15,7 @@ const Config = Record({
   template: Optional(String),
   verbose: Optional(Boolean),
   silent: Optional(Boolean),
+  typePrefix: Optional(String),
 });
 
 type ConfigType = Static<typeof Config>;
@@ -58,6 +59,7 @@ export const potygen = (overwriteLogger?: Logger): Command =>
     .option('-w, --watch', 'Watch for file changes and update live')
     .option('-v, --verbose', 'Show verbose logs')
     .option('-s, --silent', 'Only show error logs')
+    .option('-p, --typePrefix <typePrefix>', 'Prefix generated types')
     .option('-r, --root <root>', `Set the root directory (default: ${process.cwd()})`)
     .option(
       '-n, --connection <connection>',
@@ -72,7 +74,7 @@ export const potygen = (overwriteLogger?: Logger): Command =>
         ? Config.check(JSON.parse(readFileSync(options.config, 'utf-8')))
         : {};
 
-      const { root, connection, watch, files, template, verbose, silent } = {
+      const { root, connection, watch, files, template, verbose, silent, typePrefix } = {
         files: '**/*.sql',
         root: process.cwd(),
         template: '{{dir}}/{{name}}.queries.ts',
@@ -91,7 +93,7 @@ export const potygen = (overwriteLogger?: Logger): Command =>
       await db.connect();
       try {
         const sqls = new SqlRead({ path: files, root, watch, logger });
-        const sink = new QueryLoader({ db, root, template, logger });
+        const sink = new QueryLoader({ db, root, template, logger, typePrefix });
 
         logger.info(`Potygen started processing ("${files}", watch: ${watch})`);
 

@@ -39,6 +39,37 @@ describe('CLI', () => {
     }
   });
 
+  it('Should use type prefix when generating files', async () => {
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+
+    await potygen(logger).parseAsync([
+      'node',
+      'potygen',
+      '--root',
+      join(__dirname, '../'),
+      '--files',
+      'test/dir/**/*.ts',
+      '--template',
+      'test/cli/__generated__/{{name}}.queries.ts',
+      '--connection',
+      connectionString,
+      '--typePrefix',
+      'TMP2',
+    ]);
+
+    expect(logger.error).not.toHaveBeenCalled();
+
+    const resultQueries = readdirSync(join(__dirname, 'cli/__generated__'))
+      .filter((item) => item.endsWith('.ts'))
+      .sort();
+
+    expect(resultQueries).toMatchSnapshot();
+
+    for (const name of resultQueries) {
+      expect(readFileSync(join(__dirname, 'cli/__generated__', name), 'utf-8')).toMatchSnapshot(name);
+    }
+  });
+
   it('Should use cli to run pipeline on sql files', async () => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
 

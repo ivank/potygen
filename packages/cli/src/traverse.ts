@@ -183,7 +183,7 @@ export class SqlRead extends Readable {
 export class QueryLoader extends Writable {
   public ctx: LoadContext;
   public data: LoadedData[] = [];
-  constructor(public options: { db: ClientBase; root: string; template: string; logger: Logger }) {
+  constructor(public options: { db: ClientBase; root: string; template: string; logger: Logger; typePrefix?: string }) {
     super({ objectMode: true });
     this.ctx = { db: options.db, logger: options.logger ?? console };
   }
@@ -201,7 +201,9 @@ export class QueryLoader extends Writable {
       );
       this.data = await loadDataFromParsedFiles(this.ctx, this.data, parsedFiles);
       await Promise.all(
-        parsedFiles.map(loadFile(this.data)).map(emitLoadedFile(this.options.root, this.options.template)),
+        parsedFiles
+          .map(loadFile(this.data))
+          .map(emitLoadedFile(this.options.root, this.options.template, this.options.typePrefix)),
       );
     } catch (error) {
       callback(error instanceof Error ? error : new Error(String(error)));
@@ -217,7 +219,11 @@ export class QueryLoader extends Writable {
     try {
       this.ctx.logger.debug(`Parse file: ${relative(this.options.root, file.path)} (${file.type})`);
       this.data = await loadDataFromParsedFiles(this.ctx, this.data, [file]);
-      await emitLoadedFile(this.options.root, this.options.template)(loadFile(this.data)(file));
+      await emitLoadedFile(
+        this.options.root,
+        this.options.template,
+        this.options.typePrefix,
+      )(loadFile(this.data)(file));
     } catch (error) {
       callback(error instanceof Error ? error : new Error(String(error)));
     }

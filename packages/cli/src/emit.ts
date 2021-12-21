@@ -242,21 +242,21 @@ const toLoadedQueryTypeNodes = (
   };
 };
 
-export const toTypeSource = (file: LoadedFile): SourceFile => {
+export const toTypeSource = (file: LoadedFile, typePrefix: string = ''): SourceFile => {
   const content =
     file.type === 'ts'
       ? file.queries.reduce<{ resultRefs: Refs; statements: Statement[] }>(
           (acc, query) => {
             const { statements, resultRefs } = toLoadedQueryTypeNodes(
               acc.resultRefs,
-              toClassCase(query.name),
+              typePrefix + toClassCase(query.name),
               query.loadedQuery,
             );
             return { resultRefs, statements: acc.statements.concat(statements) };
           },
           { resultRefs: [], statements: [] },
         )
-      : toLoadedQueryTypeNodes([], '', file.loadedQuery);
+      : toLoadedQueryTypeNodes([], typePrefix, file.loadedQuery);
 
   return factory.updateSourceFile(
     createSourceFile(file.path, '', ScriptTarget.ES2021, true),
@@ -264,13 +264,13 @@ export const toTypeSource = (file: LoadedFile): SourceFile => {
   );
 };
 
-export const emitLoadedFile = (root: string, template: string) => {
+export const emitLoadedFile = (root: string, template: string, typePrefix?: string) => {
   const printer = createPrinter({ newLine: NewLineKind.LineFeed });
   return async (file: LoadedFile): Promise<void> => {
     const outputFile = parseTemplate(root, template, file.path);
     const directory = dirname(outputFile);
 
     await mkdirAsync(directory, { recursive: true });
-    await writeFileAsync(outputFile, printer.printFile(toTypeSource(file)));
+    await writeFileAsync(outputFile, printer.printFile(toTypeSource(file, typePrefix)));
   };
 };
