@@ -23,6 +23,7 @@ export {
   TypeLoad,
   TypeNullable,
   TypeUnion,
+  TypeBuffer,
   TypeUnionConstant,
   TypeArrayConstant,
   TypeConstant,
@@ -39,6 +40,7 @@ export {
   TypeCompositeConstant,
   TypeOptional,
   TypeOptionalConstant,
+  TypeLoadColumnCast,
 } from './query-interface.types';
 
 export {
@@ -73,6 +75,7 @@ export {
   isTypeCompositeAccess,
   isTypeOptional,
   isTypeOptionalConstant,
+  isTypeLoadColumnCast,
 } from './query-interface.guards';
 
 export { SqlInterface, Json } from './sql.types';

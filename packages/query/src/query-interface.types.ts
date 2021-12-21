@@ -43,6 +43,11 @@ export interface TypeCoalesce {
   type: 'Coalesce';
   items: Type[];
 }
+export interface TypeLoadColumnCast {
+  type: 'LoadColumnCast';
+  column: Type;
+  value: Type;
+}
 export interface TypeLoadRecord extends TypeLoad {
   type: 'LoadRecord';
   name: string;
@@ -60,6 +65,7 @@ export interface TypeLoadColumn extends TypeLoad {
   table?: string;
   schema?: string;
 }
+
 export interface TypeLoadStar extends TypeLoad {
   type: 'LoadStar';
   table?: string;
@@ -188,6 +194,7 @@ export type Type =
   | TypeArrayItem
   | TypeCompositeAccess
   | TypeUnion
+  | TypeLoadColumnCast
   | TypeObjectLiteral;
 
 export interface Result {

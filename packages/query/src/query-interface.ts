@@ -222,7 +222,7 @@ const toType =
       case 'PgCast':
         const castData = first(sql.values);
         const castType = recur(last(sql.values));
-        return isColumn(castData) ? { type: 'Named', name: last(castData.values).value, value: castType } : castType;
+        return isColumn(castData) ? { type: 'LoadColumnCast', column: recur(castData), value: castType } : castType;
       case 'Column':
         const contextFromTable = context.from ? first(context.from.values) : undefined;
         return {
@@ -353,6 +353,8 @@ const toResultName = (type: Type): string => {
       return 'bool';
     case 'LoadColumn':
       return type.column;
+    case 'LoadColumnCast':
+      return toResultName(type.column);
     case 'LoadFunction':
       return type.name;
     case 'LoadRecord':

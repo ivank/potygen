@@ -536,6 +536,12 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
             return { type: 'Unknown' };
           }
         }
+      case 'LoadColumnCast':
+        const columnType = recur(type.column);
+        const castType = recur(type.value);
+        return 'nullable' in columnType
+          ? { type: 'OptionalConstant', value: castType, nullable: columnType.nullable }
+          : castType;
 
       case 'LoadFunction':
       case 'LoadFunctionArgument':

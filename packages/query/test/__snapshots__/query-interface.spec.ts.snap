@@ -1301,8 +1301,26 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "name": "id",
-        "type": "Named",
+        "column": Object {
+          "column": "id",
+          "schema": undefined,
+          "sourceTag": Object {
+            "nextPos": 9,
+            "pos": 7,
+            "tag": "Column",
+            "values": Array [
+              Object {
+                "nextPos": 9,
+                "pos": 7,
+                "tag": "UnquotedIdentifier",
+                "value": "id",
+              },
+            ],
+          },
+          "table": undefined,
+          "type": "LoadColumn",
+        },
+        "type": "LoadColumnCast",
         "value": Object {
           "name": "custom_type",
           "schema": undefined,

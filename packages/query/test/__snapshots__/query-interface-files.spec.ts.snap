@@ -3076,8 +3076,32 @@ Object {
       "required": false,
       "spread": false,
       "type": Object {
-        "name": "id",
-        "type": "Named",
+        "column": Object {
+          "column": "id",
+          "schema": undefined,
+          "sourceTag": Object {
+            "nextPos": 1602,
+            "pos": 1591,
+            "tag": "Column",
+            "values": Array [
+              Object {
+                "nextPos": 1599,
+                "pos": 1591,
+                "tag": "UnquotedIdentifier",
+                "value": "accounts",
+              },
+              Object {
+                "nextPos": 1602,
+                "pos": 1600,
+                "tag": "UnquotedIdentifier",
+                "value": "id",
+              },
+            ],
+          },
+          "table": "accounts",
+          "type": "LoadColumn",
+        },
+        "type": "LoadColumnCast",
         "value": Object {
           "name": "varchar",
           "type": "Named",
@@ -3637,8 +3661,32 @@ Object {
       "required": false,
       "spread": false,
       "type": Object {
-        "name": "id",
-        "type": "Named",
+        "column": Object {
+          "column": "id",
+          "schema": undefined,
+          "sourceTag": Object {
+            "nextPos": 1985,
+            "pos": 1974,
+            "tag": "Column",
+            "values": Array [
+              Object {
+                "nextPos": 1982,
+                "pos": 1974,
+                "tag": "UnquotedIdentifier",
+                "value": "accounts",
+              },
+              Object {
+                "nextPos": 1985,
+                "pos": 1983,
+                "tag": "UnquotedIdentifier",
+                "value": "id",
+              },
+            ],
+          },
+          "table": "accounts",
+          "type": "LoadColumn",
+        },
+        "type": "LoadColumnCast",
         "value": Object {
           "name": "varchar",
           "type": "Named",

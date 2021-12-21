@@ -19,6 +19,11 @@ describe('Query Interface', () => {
   it.each<[string, string]>([
     ['function result single', `SELECT ABS(integer_col) FROM all_types`],
     ['function result double', `SELECT ABS(ABS(integer_col)) FROM all_types`],
+    ['load nullable column', `SELECT integer_col FROM all_types`],
+    ['load non nullable column', `SELECT not_null FROM all_types`],
+    ['load nullable column', `SELECT integer_col::text FROM all_types`],
+    ['load non nullable column', `SELECT not_null::text FROM all_types`],
+    ['nullability', `SELECT not_null FROM all_types`],
     ['nested function guess type', `SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id`],
     ['nested function explicit type', `SELECT (ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id`],
     ['operators integer', `SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id`],

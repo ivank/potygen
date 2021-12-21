@@ -31,6 +31,7 @@ import {
   TypeCompositeAccess,
   TypeOptional,
   TypeOptionalConstant,
+  TypeLoadColumnCast,
 } from './query-interface.types';
 
 const typeConstant = [
@@ -97,3 +98,4 @@ export const isTypeCompositeConstant = (type: Type): type is TypeCompositeConsta
 export const isTypeCompositeAccess = (type: Type): type is TypeCompositeAccess => type.type === 'CompositeAccess';
 export const isTypeOptional = (type: Type): type is TypeOptional => type.type === 'Optional';
 export const isTypeOptionalConstant = (type: Type): type is TypeOptionalConstant => type.type === 'OptionalConstant';
+export const isTypeLoadColumnCast = (type: Type): type is TypeLoadColumnCast => type.type === 'LoadColumnCast';

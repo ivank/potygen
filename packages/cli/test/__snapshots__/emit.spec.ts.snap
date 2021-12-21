@@ -143,6 +143,58 @@ export interface Query {
 "
 `;
 
+exports[`Query Interface Should convert load non nullable column sql (SELECT not_null FROM all_types) 1`] = `
+"export interface Params {
+}
+export interface Result {
+    bool: boolean;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Query Interface Should convert load non nullable column sql (SELECT not_null::text FROM all_types) 1`] = `
+"export interface Params {
+}
+export interface Result {
+    bool: boolean;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Query Interface Should convert load nullable column sql (SELECT integer_col FROM all_types) 1`] = `
+"export interface Params {
+}
+export interface Result {
+    integer_col?: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Query Interface Should convert load nullable column sql (SELECT integer_col::text FROM all_types) 1`] = `
+"export interface Params {
+}
+export interface Result {
+    integer_col?: string;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Query Interface Should convert nested function explicit type sql (SELECT (ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id) 1`] = `
 "export interface Params {
 }
@@ -161,6 +213,19 @@ exports[`Query Interface Should convert nested function guess type sql (SELECT A
 }
 export interface Result {
     abs: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Query Interface Should convert nullability sql (SELECT not_null FROM all_types) 1`] = `
+"export interface Params {
+}
+export interface Result {
+    bool: boolean;
 }
 export interface Query {
     params: Params;
