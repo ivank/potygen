@@ -80,23 +80,23 @@ export interface Result<TGenerationPeriods = unknown, TExportPeriods = unknown, 
     state: \\"Pending\\" | \\"Done\\";
     isAccepted: boolean;
     generationStartReadOn?: Date;
-    generationStartReadValue?: string;
+    generationStartReadValue?: number;
     generationEndReadOn?: Date;
-    generationEndReadValue?: string;
-    generationPercentageSplit?: string;
-    generationPayment?: string;
-    generationEnergy?: string;
+    generationEndReadValue?: number;
+    generationPercentageSplit?: number;
+    generationPayment?: number;
+    generationEnergy?: number;
     exportStartReadOn?: Date;
-    exportStartReadValue?: string;
+    exportStartReadValue?: number;
     exportEndReadOn?: Date;
-    exportEndReadValue?: string;
-    exportPercentageSplit?: string;
-    exportPayment?: string;
-    exportEnergy?: string;
+    exportEndReadValue?: number;
+    exportPercentageSplit?: number;
+    exportPayment?: number;
+    exportEnergy?: number;
     exportType?: \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\";
     technologyType?: \\"PV\\" | \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\";
-    totalPayment?: string;
-    vatPayment?: string;
+    totalPayment?: number;
+    vatPayment?: number;
     generationPeriods?: Json<TGenerationPeriods>;
     exportPeriods?: Json<TExportPeriods>;
     errorCode?: string;
@@ -239,7 +239,7 @@ exports[`CLI Should use cli to run pipeline on sql files: bacs.query.queries.ts 
 export interface Result {
     fitId: string;
     name?: string;
-    amount: string;
+    amount: number;
     quarter?: string;
     bankDetails: string;
     addressLine1?: string;
@@ -409,7 +409,7 @@ exports[`CLI Should use cli to run pipeline on sql files: rates-by-tarrif-ids.qu
 }
 export interface Result {
     tariffId: number;
-    rate: string;
+    rate: number;
     startOn: Date;
     tariffCode: string;
     tariffType: \\"Export\\" | \\"Generation\\" | \\"SEG\\";
@@ -530,7 +530,7 @@ export interface Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
     lseg_col?: string;
     macaddr_col?: string;
     money_col?: string;
-    numeric_col?: string;
+    numeric_col?: number;
     path_col?: string;
     pg_lsn_col?: string;
     point_col: {
@@ -635,7 +635,7 @@ export interface TMP2Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
     lseg_col?: string;
     macaddr_col?: string;
     money_col?: string;
-    numeric_col?: string;
+    numeric_col?: number;
     path_col?: string;
     pg_lsn_col?: string;
     point_col: {

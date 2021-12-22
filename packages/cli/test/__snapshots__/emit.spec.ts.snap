@@ -42,7 +42,7 @@ export interface Result<TJson_col = unknown, TJsonb_col = unknown> {
     lseg_col?: string;
     macaddr_col?: string;
     money_col?: string;
-    numeric_col?: string;
+    numeric_col?: number;
     path_col?: string;
     pg_lsn_col?: string;
     point_col: {

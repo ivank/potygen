@@ -121,6 +121,7 @@ describe('Query Interface', () => {
     ['insert multiple param values', 'INSERT INTO table1 VALUES $$rows(name, test)'],
     ['nested functions', 'SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id'],
     ['Extract const', "SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')"],
+    ['numeric', "SELECT '123'::numeric"],
   ])('Should convert %s sql (%s)', (_, sql) =>
     withParserErrors(() => {
       expect(toQueryInterface(parser(sql))).toMatchSnapshot();

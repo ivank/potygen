@@ -3167,6 +3167,25 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert numeric sql (SELECT '123'::numeric) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "decimal",
+      "type": Object {
+        "name": "decimal",
+        "type": "Named",
+        "value": Object {
+          "type": "Number",
+        },
+      },
+    },
+  ],
+  "sources": Array [],
+}
+`;
+
 exports[`Query Interface Should convert order by with params sql (SELECT * FROM table1 ORDER BY CASE WHEN $param1 = 'val1' AND $param2 = 'DESC' THEN col2 END DESC) 1`] = `
 Object {
   "params": Array [

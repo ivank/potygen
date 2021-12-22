@@ -52,23 +52,23 @@ export interface Result<TGenerationPeriods = unknown, TExportPeriods = unknown, 
     state: \\"Pending\\" | \\"Done\\";
     isAccepted: boolean;
     generationStartReadOn?: Date;
-    generationStartReadValue?: string;
+    generationStartReadValue?: number;
     generationEndReadOn?: Date;
-    generationEndReadValue?: string;
-    generationPercentageSplit?: string;
-    generationPayment?: string;
-    generationEnergy?: string;
+    generationEndReadValue?: number;
+    generationPercentageSplit?: number;
+    generationPayment?: number;
+    generationEnergy?: number;
     exportStartReadOn?: Date;
-    exportStartReadValue?: string;
+    exportStartReadValue?: number;
     exportEndReadOn?: Date;
-    exportEndReadValue?: string;
-    exportPercentageSplit?: string;
-    exportPayment?: string;
-    exportEnergy?: string;
+    exportEndReadValue?: number;
+    exportPercentageSplit?: number;
+    exportPayment?: number;
+    exportEnergy?: number;
     exportType?: \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\";
     technologyType?: \\"PV\\" | \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\";
-    totalPayment?: string;
-    vatPayment?: string;
+    totalPayment?: number;
+    vatPayment?: number;
     generationPeriods?: Json<TGenerationPeriods>;
     exportPeriods?: Json<TExportPeriods>;
     errorCode?: string;
@@ -211,7 +211,7 @@ exports[`Traverse Should work: __generated__/bacs.query.queries.ts 1`] = `
 export interface Result {
     fitId: string;
     name?: string;
-    amount: string;
+    amount: number;
     quarter?: string;
     bankDetails: string;
     addressLine1?: string;
@@ -381,7 +381,7 @@ exports[`Traverse Should work: __generated__/rates-by-tarrif-ids.query.queries.t
 }
 export interface Result {
     tariffId: number;
-    rate: string;
+    rate: number;
     startOn: Date;
     tariffCode: string;
     tariffType: \\"Export\\" | \\"Generation\\" | \\"SEG\\";
