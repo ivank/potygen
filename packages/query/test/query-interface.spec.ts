@@ -122,6 +122,7 @@ describe('Query Interface', () => {
     ['nested functions', 'SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id'],
     ['Extract const', "SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')"],
     ['numeric', "SELECT '123'::numeric"],
+    ['double percision', "SELECT '123'::double precision"],
   ])('Should convert %s sql (%s)', (_, sql) =>
     withParserErrors(() => {
       expect(toQueryInterface(parser(sql))).toMatchSnapshot();

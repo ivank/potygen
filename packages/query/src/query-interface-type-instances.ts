@@ -192,7 +192,7 @@ export const pgTypes = {
   inet: typeString,
   void: typeString,
   float4: typeNumber,
-  float8: typeString,
+  float8: typeNumber,
   int2vector: typeString,
   int4range: typeString,
   int2: typeNumber,

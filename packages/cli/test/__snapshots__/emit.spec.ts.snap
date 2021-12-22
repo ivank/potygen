@@ -24,7 +24,7 @@ export interface Result<TJson_col = unknown, TJsonb_col = unknown> {
         radius: number;
     };
     date_col?: Date;
-    double_col?: string;
+    double_col?: number;
     inet_col?: string;
     integer_col?: number;
     interval_col: {

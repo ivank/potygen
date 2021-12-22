@@ -1294,6 +1294,25 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert double percision sql (SELECT '123'::double precision) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "float8",
+      "type": Object {
+        "name": "float8",
+        "type": "Named",
+        "value": Object {
+          "type": "Number",
+        },
+      },
+    },
+  ],
+  "sources": Array [],
+}
+`;
+
 exports[`Query Interface Should convert enum type sql (SELECT id::custom_type FROM table1) 1`] = `
 Object {
   "params": Array [],
