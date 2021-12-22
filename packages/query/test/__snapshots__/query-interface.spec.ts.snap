@@ -42,6 +42,25 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert big int sql (SELECT '123'::int8) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "int8",
+      "type": Object {
+        "name": "int8",
+        "type": "Named",
+        "value": Object {
+          "type": "BigInt",
+        },
+      },
+    },
+  ],
+  "sources": Array [],
+}
+`;
+
 exports[`Query Interface Should convert binary expression column sql (SELECT (col1 + col2) AS "res1" FROM table1) 1`] = `
 Object {
   "params": Array [],
@@ -56,6 +75,17 @@ Object {
             },
             Object {
               "type": "Number",
+            },
+            Object {
+              "type": "Number",
+            },
+          ],
+          Array [
+            Object {
+              "type": "BigInt",
+            },
+            Object {
+              "type": "BigInt",
             },
             Object {
               "type": "Number",

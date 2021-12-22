@@ -17,6 +17,11 @@ export interface TypeNumber {
   literal?: number;
   nullable?: boolean;
 }
+export interface TypeBigInt {
+  type: 'BigInt';
+  literal?: number;
+  nullable?: boolean;
+}
 export interface TypeBoolean {
   type: 'Boolean';
   literal?: boolean;
@@ -149,12 +154,13 @@ export interface TypeOptionalConstant {
   value: TypeConstant;
 }
 
-export type TypeLiteral = TypeString | TypeNumber | TypeBoolean;
+export type TypeLiteral = TypeString | TypeNumber | TypeBigInt | TypeBoolean;
 
 export type TypeNullable =
   | TypeBuffer
   | TypeString
   | TypeNumber
+  | TypeBigInt
   | TypeBoolean
   | TypeDate
   | TypeJson
@@ -167,6 +173,7 @@ export type TypeConstant =
   | TypeAny
   | TypeString
   | TypeNumber
+  | TypeBigInt
   | TypeBoolean
   | TypeDate
   | TypeNull

@@ -112,6 +112,7 @@ const toPropertyType =
         case 'Null':
           return { ...context, type: factory.createLiteralTypeNode(factory.createToken(SyntaxKind.NullKeyword)) };
         case 'Number':
+        case 'BigInt':
           return {
             ...context,
             type:

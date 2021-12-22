@@ -6,6 +6,7 @@ import {
   TypeString,
   TypeBoolean,
   TypeNumber,
+  TypeBigInt,
   TypeDate,
   TypeArrayConstant,
   TypeConstant,
@@ -22,6 +23,7 @@ export const typeString: TypeString = { type: 'String' };
 export const typeBuffer: TypeBuffer = { type: 'Buffer' };
 export const typeBoolean: TypeBoolean = { type: 'Boolean' };
 export const typeNumber: TypeNumber = { type: 'Number' };
+export const typeBigInt: TypeBigInt = { type: 'BigInt' };
 export const typeDate: TypeDate = { type: 'Date' };
 
 const arr = (items: TypeConstant): TypeArrayConstant => ({ type: 'ArrayConstant', items });
@@ -198,7 +200,7 @@ export const pgTypes = {
   int2: typeNumber,
   int4: typeNumber,
   int8range: typeString,
-  int8: typeString,
+  int8: typeBigInt,
   money: typeString,
   jsonb: typeJson,
   json: typeJson,
@@ -271,14 +273,22 @@ export const unaryOperatorTypes: { [type in UnaryOperatorTag['value']]: TypeCons
 export const binaryOperatorTypes: {
   [type in BinaryOperatorTag['value']]: Array<[left: TypeConstant, right: TypeConstant, result: TypeConstant]>;
 } = {
-  '^': [[typeNumber, typeNumber, typeNumber]],
-  '%': [[typeNumber, typeNumber, typeNumber]],
+  '^': [
+    [typeNumber, typeNumber, typeNumber],
+    [typeBigInt, typeBigInt, typeBigInt],
+  ],
+  '%': [
+    [typeNumber, typeNumber, typeNumber],
+    [typeBigInt, typeBigInt, typeBigInt],
+  ],
   '+': [
     [typeNumber, typeNumber, typeNumber],
+    [typeBigInt, typeBigInt, typeNumber],
     [typeDate, typeString, typeDate],
   ],
   '-': [
     [typeNumber, typeNumber, typeNumber],
+    [typeBigInt, typeBigInt, typeNumber],
     [typeJson, typeString, typeJson],
     [typeJson, arr(typeString), typeJson],
     [typeDate, typeString, typeDate],
@@ -287,6 +297,7 @@ export const binaryOperatorTypes: {
   '/': [[typeNumber, typeNumber, typeNumber]],
   '*': [
     [typeNumber, typeNumber, typeNumber],
+    [typeBigInt, typeBigInt, typeBigInt],
     [typeNumber, typeString, typeString],
     [typeDate, typeString, typeDate],
   ],
@@ -300,24 +311,29 @@ export const binaryOperatorTypes: {
     [typeBoolean, typeBoolean, typeBoolean],
     [typeDate, typeDate, typeBoolean],
     [typeNumber, typeNumber, typeBoolean],
+    [typeBigInt, typeBigInt, typeBoolean],
   ],
   '<=': [
     [typeBoolean, typeBoolean, typeBoolean],
     [typeDate, typeDate, typeBoolean],
     [typeNumber, typeNumber, typeBoolean],
+    [typeBigInt, typeBigInt, typeBoolean],
   ],
   '>': [
     [typeBoolean, typeBoolean, typeBoolean],
     [typeDate, typeDate, typeBoolean],
     [typeNumber, typeNumber, typeBoolean],
+    [typeBigInt, typeBigInt, typeBoolean],
   ],
   '<': [
     [typeBoolean, typeBoolean, typeBoolean],
     [typeDate, typeDate, typeBoolean],
     [typeNumber, typeNumber, typeBoolean],
+    [typeBigInt, typeBigInt, typeBoolean],
   ],
   '=': [
     [typeNumber, typeNumber, typeBoolean],
+    [typeBigInt, typeBigInt, typeBoolean],
     [typeDate, typeDate, typeBoolean],
     [typeString, typeString, typeBoolean],
     [typeBoolean, typeBoolean, typeBoolean],
@@ -325,6 +341,7 @@ export const binaryOperatorTypes: {
   ],
   '!=': [
     [typeNumber, typeNumber, typeBoolean],
+    [typeBigInt, typeBigInt, typeBoolean],
     [typeDate, typeDate, typeBoolean],
     [typeString, typeString, typeBoolean],
     [typeBoolean, typeBoolean, typeBoolean],
@@ -332,6 +349,7 @@ export const binaryOperatorTypes: {
   ],
   '<>': [
     [typeNumber, typeNumber, typeBoolean],
+    [typeBigInt, typeBigInt, typeBoolean],
     [typeDate, typeDate, typeBoolean],
     [typeString, typeString, typeBoolean],
     [typeBoolean, typeBoolean, typeBoolean],

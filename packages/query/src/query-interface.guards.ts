@@ -9,6 +9,7 @@ import {
   TypeJson,
   TypeLoadColumn,
   TypeNamed,
+  TypeBigInt,
   TypeLoadFunction,
   TypeLoadFunctionArgument,
   TypeLoadOperator,
@@ -37,6 +38,7 @@ import {
 const typeConstant = [
   'String',
   'Number',
+  'BigInt',
   'Boolean',
   'Date',
   'Null',
@@ -54,6 +56,7 @@ const typeConstant = [
 const typeNullable = [
   'String',
   'Number',
+  'BigInt',
   'Boolean',
   'Date',
   'Json',
@@ -62,7 +65,7 @@ const typeNullable = [
   'CompositeConstant',
   'OptionalConstant',
 ];
-const typeLiteral = ['String', 'Number', 'Boolean'];
+const typeLiteral = ['String', 'Number', 'Boolean', 'BigInt'];
 
 export const isTypeConstant = (item: Type): item is TypeConstant => typeConstant.includes(item.type);
 export const isTypeNullable = (item: Type): item is TypeNullable => typeNullable.includes(item.type);
@@ -70,6 +73,7 @@ export const isTypeLiteral = (item: Type): item is TypeLiteral => typeLiteral.in
 
 export const isTypeString = (type: Type): type is TypeString => type.type === 'String';
 export const isTypeNumber = (type: Type): type is TypeNumber => type.type === 'Number';
+export const isTypeBigInt = (type: Type): type is TypeBigInt => type.type === 'BigInt';
 export const isTypeBoolean = (type: Type): type is TypeBoolean => type.type === 'Boolean';
 export const isTypeDate = (type: Type): type is TypeDate => type.type === 'Date';
 export const isTypeNull = (type: Type): type is TypeNull => type.type === 'Null';

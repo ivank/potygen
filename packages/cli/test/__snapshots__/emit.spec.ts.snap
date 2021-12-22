@@ -8,8 +8,8 @@ export interface Result<TJson_col = unknown, TJsonb_col = unknown> {
     id: number;
     not_null: number;
     default_not_null: number;
-    bigint_col?: string;
-    bigserial_col: string;
+    bigint_col?: number;
+    bigserial_col: number;
     bit_col?: string;
     bit_varying_col?: string;
     boolean_col?: boolean;

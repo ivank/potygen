@@ -157,13 +157,13 @@ Object {
       "name": "bigint_col",
       "type": Object {
         "nullable": true,
-        "type": "String",
+        "type": "BigInt",
       },
     },
     Object {
       "name": "bigserial_col",
       "type": Object {
-        "type": "String",
+        "type": "BigInt",
       },
     },
     Object {
@@ -836,6 +836,20 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert sum sql (SELECT SUM(integer_col) FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "sum",
+      "type": Object {
+        "type": "BigInt",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert views types sql (SELECT * FROM all_types_view) 1`] = `
 Object {
   "params": Array [],
@@ -862,13 +876,13 @@ Object {
       "name": "bigint_col",
       "type": Object {
         "nullable": true,
-        "type": "String",
+        "type": "BigInt",
       },
     },
     Object {
       "name": "bigserial_col",
       "type": Object {
-        "type": "String",
+        "type": "BigInt",
       },
     },
     Object {

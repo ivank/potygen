@@ -39,6 +39,7 @@ describe('Query Interface', () => {
     ['composite type from view', `SELECT (item).supplier_id FROM all_types_view`],
     ['parameter required', `SELECT character_col FROM all_types WHERE integer_col > $id!`],
     ['parameter coalesce', `SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)`],
+    ['sum', `SELECT SUM(integer_col) FROM all_types`],
   ])('Should convert %s sql (%s)', async (_, sql) => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     const ast = parser(sql);

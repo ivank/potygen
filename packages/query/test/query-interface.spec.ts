@@ -123,6 +123,7 @@ describe('Query Interface', () => {
     ['Extract const', "SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')"],
     ['numeric', "SELECT '123'::numeric"],
     ['double percision', "SELECT '123'::double precision"],
+    ['big int', "SELECT '123'::int8"],
   ])('Should convert %s sql (%s)', (_, sql) =>
     withParserErrors(() => {
       expect(toQueryInterface(parser(sql))).toMatchSnapshot();
