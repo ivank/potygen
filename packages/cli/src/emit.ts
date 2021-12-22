@@ -47,6 +47,7 @@ interface TypeContext {
 
 export const compactTypes = (types: TypeConstant[]): TypeConstant[] =>
   types
+    .map((type) => (isTypeOptionalConstant(type) ? { ...type.value, nullable: type.nullable } : type))
     .filter((item, index, all) =>
       isTypeLiteral(item) && item.literal !== undefined
         ? !all.some(

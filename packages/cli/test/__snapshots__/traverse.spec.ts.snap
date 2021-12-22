@@ -34,9 +34,9 @@ export interface Query {
 exports[`Traverse Should work: __generated__/account-levelisations.query.queries.ts 1`] = `
 "import { Json } from \\"@potygen/query\\";
 export interface Params {
-    q?: \\"\\";
+    q?: string;
     resolvedPostlev?: \\"\\" | boolean;
-    state?: (\\"Pending\\" | \\"Done\\") | (\\"Pending\\" | \\"Done\\");
+    state?: (\\"Pending\\" | \\"Done\\");
     levelisationId?: number;
     ids?: number[];
     sortField?: \\"totalPayment\\" | \\"vatPayment\\" | \\"generationPayment\\" | \\"exportPayment\\" | \\"generationEnergy\\" | \\"exportEnergy\\" | \\"cfrFitId\\" | \\"state\\" | \\"isAccepted\\" | \\"error\\" | \\"exportType\\";
@@ -115,7 +115,7 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/accounts.list.query.queries.ts 1`] = `
 "export interface Params {
-    q?: \\"\\" | string;
+    q?: string;
     ids?: number[];
 }
 export interface Result {
@@ -142,7 +142,7 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/accounts.query.queries.ts 1`] = `
 "export interface Params {
-    q?: \\"\\" | string;
+    q?: string;
     ids?: number[];
     limit?: number;
     offset?: number;
@@ -320,7 +320,7 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/levelisations.list.query.queries.ts 1`] = `
 "export interface Params {
-    q?: \\"\\";
+    q?: string;
     ids?: number[];
     sortField?: \\"quarter\\";
     sortOrder?: \\"DESC\\" | \\"ASC\\";

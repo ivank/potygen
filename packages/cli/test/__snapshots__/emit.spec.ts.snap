@@ -262,6 +262,20 @@ export interface Query {
 "
 `;
 
+exports[`Query Interface Should convert parameter group collapse sql (SELECT id FROM all_types WHERE $q = '' OR character_varying_col = $q) 1`] = `
+"export interface Params {
+    q?: string;
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Query Interface Should convert simple sql (SELECT id, character_col FROM all_types WHERE id = :id) 1`] = `
 "export interface Params {
     id?: number;

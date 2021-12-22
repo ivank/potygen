@@ -34,9 +34,9 @@ export interface Query {
 exports[`Load Files Should convert complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
 "import { Json } from \\"@potygen/query\\";
 export interface Params {
-    q?: \\"\\";
+    q?: string;
     resolvedPostlev?: \\"\\" | boolean;
-    state?: (\\"Pending\\" | \\"Done\\") | (\\"Pending\\" | \\"Done\\");
+    state?: (\\"Pending\\" | \\"Done\\");
     levelisationId?: number;
     ids?: number[];
     sortField?: \\"totalPayment\\" | \\"vatPayment\\" | \\"generationPayment\\" | \\"exportPayment\\" | \\"generationEnergy\\" | \\"exportEnergy\\" | \\"cfrFitId\\" | \\"state\\" | \\"isAccepted\\" | \\"error\\" | \\"exportType\\";
@@ -115,7 +115,7 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
 "export interface Params {
-    q?: \\"\\" | string;
+    q?: string;
     ids?: number[];
 }
 export interface Result {
@@ -130,7 +130,7 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
 "export interface Params {
-    q?: \\"\\" | string;
+    q?: string;
     ids?: number[];
     limit?: number;
     offset?: number;
@@ -320,7 +320,7 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
 "export interface Params {
-    q?: \\"\\";
+    q?: string;
     ids?: number[];
     sortField?: \\"quarter\\";
     sortOrder?: \\"DESC\\" | \\"ASC\\";

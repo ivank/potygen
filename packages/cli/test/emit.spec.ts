@@ -36,6 +36,7 @@ describe('Query Interface', () => {
       'insert',
       `INSERT INTO all_types(not_null, integer_col, character_col) VALUES $$vals(notNull, integerCol, characterCol)`,
     ],
+    ['parameter group collapse', `SELECT id FROM all_types WHERE $q = '' OR character_varying_col = $q`],
   ])('Should convert %s sql (%s)', async (path, content) => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     const printer = createPrinter({ newLine: NewLineKind.LineFeed });
