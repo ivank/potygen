@@ -23,7 +23,7 @@ export interface DataComposite {
   name: { schema: string; name: string };
 }
 export interface LoadedDataTable extends DataTable {
-  data: Array<{ name: string; isNullable: string; record: string; type: string }>;
+  data: Array<{ name: string; isNullable: string; record: string; type: string; comment?: string }>;
 }
 export interface LoadedDataComposite extends DataComposite {
   data: Array<{ name: string; isNullable: string; type: string }>;

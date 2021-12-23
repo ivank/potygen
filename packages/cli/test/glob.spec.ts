@@ -1,3 +1,4 @@
+import { readdirSync } from 'fs';
 import { join } from 'path';
 import { glob } from '../src';
 import { sqlDir } from './helpers';
@@ -89,30 +90,7 @@ describe('Glob', () => {
   });
 
   it('Should parse route outside of current folder, when provided cwd', () => {
-    expect(Array.from(glob('*.sql', sql('.')))).toEqual([
-      sql('account-levelisation.update.query.sql'),
-      sql('account-levelisation.upsert.query.sql'),
-      sql('account-levelisations-bulk-close-accounts.query.sql'),
-      sql('account-levelisations-set-bulk-update.query.sql'),
-      sql('account-levelisations.query.sql'),
-      sql('accounts.list.query.sql'),
-      sql('accounts.query.sql'),
-      sql('accounts.sql'),
-      sql('active-meters-wth-reads.query.sql'),
-      sql('bacs.query.sql'),
-      sql('contracts.sql'),
-      sql('delete-accounts.query.sql'),
-      sql('generation-read-data.query.sql'),
-      sql('insert.process.query.sql'),
-      sql('installation-meter-update.query.sql'),
-      sql('installations.sql'),
-      sql('levelisations.list.query.sql'),
-      sql('meter-reads.sql'),
-      sql('process-batch.query.sql'),
-      sql('rates-by-tarrif-ids.query.sql'),
-      sql('read-create.query.sql'),
-      sql('reads-by-account-id.query.sql'),
-      sql('tariff-rates.sql'),
-    ]);
+    const expectedFiles = readdirSync(sqlDir).map(sql);
+    expect(Array.from(glob('*.sql', sql('.')))).toEqual(expectedFiles);
   });
 });

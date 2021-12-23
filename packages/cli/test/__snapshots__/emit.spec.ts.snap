@@ -6,6 +6,9 @@ export interface Params {
 }
 export interface Result<TJson_col = unknown, TJsonb_col = unknown> {
     id: number;
+    /**
+     * This column should never be null
+     */
     not_null: number;
     default_not_null: number;
     bigint_col?: number;
@@ -65,6 +68,9 @@ export interface Result<TJson_col = unknown, TJsonb_col = unknown> {
     uuid_col?: string;
     xml_col?: string;
     item: string;
+    /**
+     * This column is an enum
+     */
     state?: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
 }
 export interface Query<TJson_col = unknown, TJsonb_col = unknown> {

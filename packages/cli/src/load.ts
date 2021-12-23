@@ -95,7 +95,13 @@ const allSql = sql<LoadAllSql>`
     'Table' AS "type",
     json_build_object('schema', table_schema, 'name', table_name) AS "name",
     json_agg(
-      json_build_object('name', column_name, 'isNullable', is_nullable, 'record', udt_name, 'type', data_type)
+      json_build_object(
+        'name', column_name,
+        'isNullable', is_nullable,
+        'record', udt_name,
+        'type', data_type,
+        'comment', COL_DESCRIPTION(CONCAT_WS('.', table_schema, table_name)::regclass, columns.ordinal_position)
+      )
       ORDER BY columns.ordinal_position ASC
     ) AS "data"
   FROM information_schema.columns
@@ -334,12 +340,12 @@ const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
         },
   );
 
-const loadTypeConstant = (type: string, nullable?: boolean): TypeConstant => {
+const loadTypeConstant = (type: string, nullable?: boolean, comment?: string): TypeConstant => {
   const sqlType = toPgType(type);
   if (!sqlType) {
     throw Error(`'${type}' was not part of the known postgres types or aliases`);
   }
-  return nullable && isTypeNullable(sqlType) ? { ...sqlType, nullable } : sqlType;
+  return nullable && isTypeNullable(sqlType) ? { ...sqlType, nullable, comment } : { ...sqlType, comment };
 };
 
 const dataColumnToTypeConstant = (
@@ -349,9 +355,9 @@ const dataColumnToTypeConstant = (
 ): TypeConstant =>
   column.type === 'USER-DEFINED'
     ? enums[column.record]
-      ? { ...enums[column.record], nullable: column.isNullable === 'YES' }
+      ? { ...enums[column.record], nullable: column.isNullable === 'YES', comment: column.comment }
       : composites.find((item) => column.record === item.name) ?? { type: 'Unknown' }
-    : loadTypeConstant(column.type, column.isNullable === 'YES');
+    : loadTypeConstant(column.type, column.isNullable === 'YES', column.comment);
 
 const toLoadedFunction = ({ data, name }: LoadedDataFunction): LoadedFunction => ({
   name: name.name,

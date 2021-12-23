@@ -11,9 +11,11 @@ import {
   createPrinter,
   NewLineKind,
   Statement,
+  Node,
   UnionTypeNode,
   PropertySignature,
   TypeLiteralNode,
+  addSyntheticLeadingComment,
 } from 'typescript';
 import { LoadedFile, LoadedQueryInterface } from './types';
 import {
@@ -44,6 +46,15 @@ interface TypeContext {
   refs: Refs;
   toJson: boolean;
 }
+
+const jsDoc = (doc: string): string =>
+  `*\n${doc
+    .split('\n')
+    .map((line) => ` * ${line}`)
+    .join('\n')}\n `;
+
+const withJSDoc = <T extends Node>(doc: string | undefined, node: T): T =>
+  doc === undefined ? node : addSyntheticLeadingComment(node, SyntaxKind.MultiLineCommentTrivia, jsDoc(doc), true);
 
 export const compactTypes = (types: TypeConstant[]): TypeConstant[] =>
   types
@@ -177,11 +188,14 @@ const toLoadedQueryTypeNodes = (
   const results = loadedQuery.results.reduce<{ refs: Refs; props: PropertySignature[] }>(
     (acc, item) => {
       const itemType = toPropertyType({ toJson: true, name: 'T' + toClassCase(item.name), refs: acc.refs })(item.type);
-      const prop = factory.createPropertySignature(
-        undefined,
-        item.name,
-        'nullable' in item.type && item.type.nullable ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
-        itemType.type,
+      const prop = withJSDoc(
+        item.type.comment ?? undefined,
+        factory.createPropertySignature(
+          undefined,
+          item.name,
+          'nullable' in item.type && item.type.nullable ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
+          itemType.type,
+        ),
       );
       return { ...itemType, props: acc.props.concat(prop) };
     },

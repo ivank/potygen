@@ -126,6 +126,14 @@ const toSources =
     }
   };
 
+/**
+ * Do not load tables that are named the same as queries
+ */
+const isRedundantSource = (source: Source, index: number, all: Source[]): boolean =>
+  source.type === 'Table'
+    ? !all.some((item) => (item.type === 'Query' || item.type == 'Values') && item.name === source.name)
+    : true;
+
 export const isTypeEqual = (a: Type, b: Type): boolean => {
   if (a.type === 'Any' || b.type === 'Any') {
     return true;
@@ -135,8 +143,22 @@ export const isTypeEqual = (a: Type, b: Type): boolean => {
     return isTypeEqual(a.items, b.items);
   } else if ((a.type === 'Union' && b.type === 'Union') || (a.type === 'UnionConstant' && b.type === 'UnionConstant')) {
     return a.items.every((aItem) => b.items.some((bItem) => isTypeEqual(aItem, bItem)));
+  } else if (
+    (a.type === 'ObjectLiteral' && b.type === 'ObjectLiteral') ||
+    (a.type === 'ObjectLiteralConstant' && b.type === 'ObjectLiteralConstant')
+  ) {
+    return a.items.every((aItem) =>
+      b.items.some((bItem) => aItem.name === bItem.name && isTypeEqual(aItem.type, bItem.type)),
+    );
+  } else if ('literal' in a && 'literal' in b) {
+    return a.type === b.type && a.literal === b.literal;
+  } else if (
+    (a.type === 'Optional' && b.type === 'Optional') ||
+    (a.type === 'OptionalConstant' && b.type === 'OptionalConstant')
+  ) {
+    return isTypeEqual(a.value, b.value);
   } else {
-    return isEqual(a, b);
+    return a.type === b.type;
   }
 };
 
@@ -164,7 +186,7 @@ export const toContantBinaryOperatorVariant = (
 };
 
 export const toPgType = (type: string): TypeConstant | undefined => {
-  const trimmedType = type.replace(/\"/g, '').toLowerCase();
+  const trimmedType = type.replace(/^_/, '').replace(/\"/g, '').toLowerCase();
   return pgTypes[pgTypeAliases[trimmedType] ?? trimmedType];
 };
 
@@ -551,7 +573,7 @@ export const toQueryInterface = (sql: AstTag): QueryInterface => {
   const typeContext = { type: typeUnknown, columns: [], from };
 
   return {
-    sources: toSources()(sql),
+    sources: toSources()(sql).filter(isRedundantSource),
     results: items.map(toResult(typeContext)),
     params: toParams(typeContext)(sql).filter(isUniqParam),
   };

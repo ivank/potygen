@@ -494,6 +494,9 @@ exports[`CLI Should use cli to run pipeline on ts files: ts-file1.queries.ts 1`]
 }
 export interface Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
     id: number;
+    /**
+     * This column should never be null
+     */
     not_null: number;
     default_not_null: number;
     bigint_col?: number;
@@ -553,6 +556,9 @@ export interface Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
     uuid_col?: string;
     xml_col?: string;
     item: string;
+    /**
+     * This column is an enum
+     */
     state?: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
 }
 export interface Sql1Query<TJson_col = unknown, TJsonb_col = unknown> {
@@ -599,6 +605,9 @@ exports[`CLI Should use type prefix when generating files: ts-file1.queries.ts 1
 }
 export interface TMP2Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
     id: number;
+    /**
+     * This column should never be null
+     */
     not_null: number;
     default_not_null: number;
     bigint_col?: number;
@@ -658,6 +667,9 @@ export interface TMP2Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
     uuid_col?: string;
     xml_col?: string;
     item: string;
+    /**
+     * This column is an enum
+     */
     state?: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
 }
 export interface TMP2Sql1Query<TJson_col = unknown, TJsonb_col = unknown> {

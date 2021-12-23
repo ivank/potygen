@@ -3,50 +3,62 @@ import { TableTag, Tag } from '@potygen/ast';
 export interface TypeLoad {
   sourceTag: Tag;
 }
+
 export interface TypeString {
   type: 'String';
   literal?: string;
   nullable?: boolean;
+  comment?: string;
 }
 export interface TypeBuffer {
   type: 'Buffer';
   nullable?: boolean;
+  comment?: string;
 }
 export interface TypeNumber {
   type: 'Number';
   literal?: number;
   nullable?: boolean;
+  comment?: string;
 }
 export interface TypeBigInt {
   type: 'BigInt';
   literal?: number;
   nullable?: boolean;
+  comment?: string;
 }
 export interface TypeBoolean {
   type: 'Boolean';
   literal?: boolean;
   nullable?: boolean;
+  comment?: string;
 }
 export interface TypeDate {
   type: 'Date';
   nullable?: boolean;
+  comment?: string;
 }
 export interface TypeNull {
   type: 'Null';
+  comment?: string;
 }
 export interface TypeJson {
   type: 'Json';
   nullable?: boolean;
+  comment?: string;
 }
 export interface TypeUnknown {
   type: 'Unknown';
+  comment?: string;
 }
 export interface TypeAny {
   type: 'Any';
+  comment?: string;
 }
 export interface TypeCoalesce {
   type: 'Coalesce';
   items: Type[];
+  comment?: string;
 }
 export interface TypeLoadColumnCast {
   type: 'LoadColumnCast';
@@ -118,6 +130,7 @@ export interface TypeCompositeConstant {
   name: string;
   schema?: string;
   attributes: Record<string, TypeConstant>;
+  comment?: string;
 }
 export interface TypeUnion {
   type: 'Union';
@@ -127,11 +140,13 @@ export interface TypeArrayConstant {
   type: 'ArrayConstant';
   items: TypeConstant;
   nullable?: boolean;
+  comment?: string;
 }
 export interface TypeUnionConstant {
   type: 'UnionConstant';
   items: TypeConstant[];
   nullable?: boolean;
+  comment?: string;
 }
 export interface TypeObjectLiteral {
   type: 'ObjectLiteral';
@@ -142,6 +157,7 @@ export interface TypeObjectLiteralConstant {
   type: 'ObjectLiteralConstant';
   items: Array<{ name: string; type: TypeConstant }>;
   nullable?: boolean;
+  comment?: string;
 }
 export interface TypeOptional {
   type: 'Optional';
@@ -152,6 +168,7 @@ export interface TypeOptionalConstant {
   type: 'OptionalConstant';
   nullable?: boolean;
   value: TypeConstant;
+  comment?: string;
 }
 
 export type TypeLiteral = TypeString | TypeNumber | TypeBigInt | TypeBoolean;

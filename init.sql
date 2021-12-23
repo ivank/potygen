@@ -55,6 +55,9 @@ CREATE TABLE all_types (
   state account_state
 );
 
+COMMENT ON COLUMN all_types.not_null IS 'This column should never be null';
+COMMENT ON COLUMN all_types.state IS 'This column is an enum';
+
 CREATE TABLE addresses (
     id SERIAL PRIMARY KEY,
     city character varying(50),
