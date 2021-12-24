@@ -126,7 +126,7 @@ describe('Query Interface', () => {
     ['big int', "SELECT '123'::int8"],
   ])('Should convert %s sql (%s)', (_, sql) =>
     withParserErrors(() => {
-      expect(toQueryInterface(parser(sql))).toMatchSnapshot();
+      expect(toQueryInterface(parser(sql).ast)).toMatchSnapshot();
     }),
   );
 });

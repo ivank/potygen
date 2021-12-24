@@ -1,43 +1,30 @@
-import {
-  All,
-  Any,
-  FunctionRule,
-  IfNot,
-  Ignore,
-  LeftBinaryOperator,
-  Node,
-  Optional,
-  Plus,
-  Rule,
-  Star,
-  Y,
-} from '@ikerin/rd-parse';
+import { All, Any, IfNot, Ignore, LeftBinaryOperator, Node, Optional, Plus, Rule, Star, Y } from '@ikerin/rd-parse';
 import * as Tag from './grammar.types';
 
 /**
  * A helper function that creates a {@link NodeTag}.
  */
 const astNode = <T extends Tag.NodeTag>(tag: T['tag'], rule: Rule) =>
-  Node(rule, (values, $, $next) => ({ tag, values, pos: $.pos, nextPos: $next.pos }));
+  Node(rule, (values, $, $next) => ({ tag, values, start: $.pos, end: $next.pos - 1 }));
 
 /**
  * A helper function that creates a {@link LeafTag}.
  */
-const astLeaf = <T extends Tag.LeafTag>(tag: T['tag'], rule: Rule) =>
-  Node(rule, ([value], $, $next) => ({ tag, value, pos: $.pos, nextPos: $next.pos }));
+const astLeaf = <T extends Tag.LeafTag | Tag.CommentTag>(tag: T['tag'], rule: Rule) =>
+  Node(rule, ([value], $, $next) => ({ tag, value, start: $.pos, end: $next.pos - 1 }));
 
 /**
  * A helper function that creates a {@link EmptyLeafTag}.
  */
 const astEmptyLeaf = <T extends Tag.EmptyLeafTag>(tag: T['tag'], rule: Rule) =>
-  Node(rule, (_, $, $next) => ({ tag, pos: $.pos, nextPos: $next.pos }));
+  Node(rule, (_, $, $next) => ({ tag, start: $.pos, end: $next.pos - 1 }));
 
 /**
  * A helper function that creates a {@link LeafTag} and transforms the value to uppercase.
  * Used for various SQL releated tasks that are all uppercased like "DEFAULT", "LEFT JOIN" etc.
  */
 const astUpperLeaf = <T extends Tag.LeafTag>(tag: T['tag'], rule: Rule) =>
-  Node(rule, ([value], $, $next) => ({ tag, value: value.toUpperCase(), pos: $.pos, nextPos: $next.pos }));
+  Node(rule, ([value], $, $next) => ({ tag, value: value.toUpperCase(), start: $.pos, end: $next.pos - 1 }));
 
 /**
  * Comma separated list
@@ -130,8 +117,8 @@ const Parameter = Node<Tag.ParameterTag>(
     type: type === '$$' ? 'spread' : 'single',
     required: rest.includes('!'),
     pick: rest.filter((item) => item !== '!'),
-    pos: $.pos,
-    nextPos: $next.pos,
+    start: $.pos,
+    end: $next.pos - 1,
   }),
 );
 
@@ -158,7 +145,7 @@ const BitString = astLeaf<Tag.BitStringTag>('BitString', All(/^B/i, String));
 const DollarQuatedString = astLeaf<Tag.DollarQuotedStringTag>('DollarQuotedString', /^\$\$((?:\$\$|.)*)\$\$/);
 const CustomDollarQuatedString = Node<Tag.CustomQuotedStringTag>(
   /^\$(?<delimiter>[A-Z_][A-Z0-9_]*)\$((?:\$\$|.)*)\$\k<delimiter>\$/i,
-  ([delimiter, value], $, $next) => ({ tag: 'CustomQuotedString', value, delimiter, pos: $.pos, nextPos: $next.pos }),
+  ([delimiter, value], $, $next) => ({ tag: 'CustomQuotedString', value, delimiter, start: $.pos, end: $next.pos - 1 }),
 );
 const Integer = astLeaf<Tag.IntegerTag>('Integer', IntegerRule);
 const Number = astLeaf<Tag.NumberTag>('Number', NumberRule);
@@ -478,7 +465,12 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       const OperatorNode = astUpperLeaf<Tag.BinaryOperatorTag>('BinaryOperator', Operator);
       return Node<Tag.BinaryExpressionTag, any>(
         All(Current, Star(All(OperatorNode, Current))),
-        LeftBinaryOperator((values, $, $next) => ({ tag: 'BinaryExpression', values, pos: $.pos, nextPos: $next.pos })),
+        LeftBinaryOperator((values, $, $next) => ({
+          tag: 'BinaryExpression',
+          values,
+          start: $.pos,
+          end: $next.pos - 1,
+        })),
       );
     }, UnaryExpression);
 
@@ -709,7 +701,10 @@ const Rollback = astNode<Tag.RollbackTag>(
   All(/^ROLLBACK/i, Optional(All(/^TO/i, Identifier)), Optional(';')),
 );
 
-// Ignore line comments and all whitespace
-const IgnoreComments = (node: FunctionRule) => Ignore(/^\s+|^--[^\r\n]*\n/, node);
+const Comment = astLeaf<Tag.CommentTag>('Comment', /^--([^\r\n]*)\n/);
 
-export const Grammar = IgnoreComments(Any(With, Select, Update, Delete, Insert, Begin, Savepoint, Commit, Rollback));
+export const Grammar = Ignore(
+  // Ignore line comments and all whitespace
+  Any(/^\s+/, Comment),
+  Any(With, Select, Update, Delete, Insert, Begin, Savepoint, Commit, Rollback),
+);

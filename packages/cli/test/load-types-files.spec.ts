@@ -17,8 +17,7 @@ describe('Load Files', () => {
   it.each(sqlFiles())('Should convert complex sql %s', (name, sql) =>
     withParserErrors(async () => {
       const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
-      const ast = parser(sql);
-      const queryInterface = toQueryInterface(ast);
+      const queryInterface = toQueryInterface(parser(sql).ast);
       const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
       expect(toLoadedQueryInterface(data)(queryInterface)).toMatchSnapshot(name);
     }),

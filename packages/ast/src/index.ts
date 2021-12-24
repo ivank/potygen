@@ -1,6 +1,6 @@
 import { Parser } from '@ikerin/rd-parse';
 import { Grammar } from './grammar';
-import { AstTag } from './grammar.types';
+import { AstTag, CommentTag } from './grammar.types';
 
 export {
   AnyCastTag,
@@ -21,6 +21,7 @@ export {
   ColumnsTag,
   ColumnTag,
   CombinationTag,
+  CommentTag,
   ComparationExpressionTag,
   ComparationOperatorTag,
   CompositeAccessTag,
@@ -29,10 +30,10 @@ export {
   ConflictTargetTag,
   ConstantTag,
   CountTag,
-  CTETag,
   CTENameTag,
-  CTEValuesTag,
+  CTETag,
   CTEValuesListTag,
+  CTEValuesTag,
   DataTypeTag,
   DefaultTag,
   DeleteTag,
@@ -223,4 +224,4 @@ export {
 
 export { Grammar } from './grammar';
 
-export const parser = Parser<AstTag>(Grammar);
+export const parser = Parser<AstTag, CommentTag>(Grammar);

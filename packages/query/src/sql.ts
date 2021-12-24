@@ -7,7 +7,7 @@ import { Param } from './query-interface.types';
 import { SqlInterface } from './sql.types';
 
 const toParamsFromAst = (ast: AstTag): Param[] =>
-  toParams({ type: typeUnknown, columns: [] })(ast).sort(orderBy((p) => p.pos));
+  toParams({ type: typeUnknown, columns: [] })(ast).sort(orderBy((p) => p.start));
 
 const toSpreadIndexParam = (param: Param, index: number, values: unknown): string =>
   Array.isArray(values)
@@ -44,14 +44,14 @@ const convertSql = (params: Param[], sql: string, values: Record<string, unknown
     indexes: Record<string, number>;
   }>(
     (current, param) => {
-      const nameLength = param.nextPos - param.pos;
+      const nameLength = param.end - param.start + 1;
       const reusedIndex = current.indexes[param.name];
       const newIndex = param.spread ? current.index + toSpreadIndex(values[param.name]) : current.index + 1;
       const index = reusedIndex ?? newIndex;
       const nextIndex = reusedIndex ? current.index : newIndex;
 
       const indexParam = param.spread ? toSpreadIndexParam(param, current.index + 1, values[param.name]) : '$' + index;
-      const pos = param.pos + current.offset;
+      const pos = param.start + current.offset;
       return {
         sql: current.sql.slice(0, pos) + indexParam + current.sql.slice(pos + nameLength),
         index: nextIndex,
@@ -97,7 +97,7 @@ export class Sql<TSqlInterface extends SqlInterface = SqlInterface> {
   public params: Param[];
   public ast: AstTag;
   constructor(public text: string) {
-    this.ast = parser(text);
+    this.ast = parser(text).ast;
     this.params = toParamsFromAst(this.ast);
   }
 

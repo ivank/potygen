@@ -240,7 +240,7 @@ const loadData = async (ctx: LoadContext, currentData: LoadedData[], newData: Da
 
   const parsedViews = loaded
     .filter(isDataViewRaw)
-    .map((view) => ({ ...view, queryInterface: toQueryInterface(parser(view.data)) }));
+    .map((view) => ({ ...view, queryInterface: toQueryInterface(parser(view.data).ast) }));
 
   if (parsedViews.length) {
     ctx.logger.debug(`Load views: ${parsedViews.map((item) => formatTableName(item.name)).join(',')}.`);
