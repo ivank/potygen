@@ -25,7 +25,7 @@ export class ParsedTypescriptFileLoadError extends Error {
 
   toString() {
     const text = this.template.template;
-    const template = this.error instanceof LoadError ? markTextError(text, this.message, this.error.tag.nextPos) : text;
+    const template = this.error instanceof LoadError ? markTextError(text, this.message, this.error.tag.end) : text;
     return `Error: ${this.message}
 
 File: ${this.file.path} (${this.template.pos})
@@ -42,7 +42,7 @@ export class ParsedSqlFileLoadError extends Error {
 
   toString() {
     const text = this.file.content;
-    const template = this.error instanceof LoadError ? markTextError(text, this.message, this.error.tag.pos) : text;
+    const template = this.error instanceof LoadError ? markTextError(text, this.message, this.error.tag.end) : text;
 
     return `Error: ${this.message}
 

@@ -42,8 +42,7 @@ describe('Query Interface', () => {
     ['sum', `SELECT SUM(integer_col) FROM all_types`],
   ])('Should convert %s sql (%s)', async (_, sql) => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
-    const ast = parser(sql);
-    const queryInterface = toQueryInterface(ast);
+    const queryInterface = toQueryInterface(parser(sql).ast);
     const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
     const loadedQueryInterface = toLoadedQueryInterface(data)(queryInterface);
 
@@ -63,8 +62,7 @@ describe('Query Interface', () => {
       `SELECT state FROM account_levelisations`,
       `SELECT id, character_col FROM all_types WHERE id = :id`,
     ].map((sql) => {
-      const ast = parser(sql);
-      return toQueryInterface(ast!);
+      return toQueryInterface(parser(sql).ast);
     });
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     const data = await loadQueryInterfacesData({ db, logger }, queryInterfaces, []);

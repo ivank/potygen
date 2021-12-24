@@ -108,13 +108,13 @@ Object {
           "column": "col1",
           "schema": undefined,
           "sourceTag": Object {
-            "nextPos": 12,
-            "pos": 8,
+            "end": 11,
+            "start": 8,
             "tag": "Column",
             "values": Array [
               Object {
-                "nextPos": 12,
-                "pos": 8,
+                "end": 11,
+                "start": 8,
                 "tag": "UnquotedIdentifier",
                 "value": "col1",
               },
@@ -127,13 +127,13 @@ Object {
           "column": "col2",
           "schema": undefined,
           "sourceTag": Object {
-            "nextPos": 19,
-            "pos": 15,
+            "end": 18,
+            "start": 15,
             "tag": "Column",
             "values": Array [
               Object {
-                "nextPos": 19,
-                "pos": 15,
+                "end": 18,
+                "start": 15,
                 "tag": "UnquotedIdentifier",
                 "value": "col2",
               },
@@ -143,37 +143,37 @@ Object {
           "type": "LoadColumn",
         },
         "sourceTag": Object {
-          "nextPos": 19,
-          "pos": 8,
+          "end": 18,
+          "start": 8,
           "tag": "BinaryExpression",
           "values": Array [
             Object {
-              "nextPos": 12,
-              "pos": 8,
+              "end": 11,
+              "start": 8,
               "tag": "Column",
               "values": Array [
                 Object {
-                  "nextPos": 12,
-                  "pos": 8,
+                  "end": 11,
+                  "start": 8,
                   "tag": "UnquotedIdentifier",
                   "value": "col1",
                 },
               ],
             },
             Object {
-              "nextPos": 14,
-              "pos": 13,
+              "end": 13,
+              "start": 13,
               "tag": "BinaryOperator",
               "value": "+",
             },
             Object {
-              "nextPos": 19,
-              "pos": 15,
+              "end": 18,
+              "start": 15,
               "tag": "Column",
               "values": Array [
                 Object {
-                  "nextPos": 19,
-                  "pos": 15,
+                  "end": 18,
+                  "start": 15,
                   "tag": "UnquotedIdentifier",
                   "value": "col2",
                 },
@@ -191,18 +191,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 42,
-        "pos": 36,
+        "end": 41,
+        "start": 36,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 42,
-            "pos": 36,
+            "end": 41,
+            "start": 36,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 42,
-                "pos": 36,
+                "end": 41,
+                "start": 36,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -336,19 +336,19 @@ Object {
             "column": "col1",
             "schema": undefined,
             "sourceTag": Object {
-              "nextPos": 72,
-              "pos": 61,
+              "end": 71,
+              "start": 61,
               "tag": "Column",
               "values": Array [
                 Object {
-                  "nextPos": 67,
-                  "pos": 61,
+                  "end": 66,
+                  "start": 61,
                   "tag": "UnquotedIdentifier",
                   "value": "table1",
                 },
                 Object {
-                  "nextPos": 72,
-                  "pos": 68,
+                  "end": 71,
+                  "start": 68,
                   "tag": "UnquotedIdentifier",
                   "value": "col1",
                 },
@@ -361,13 +361,13 @@ Object {
             "column": "col2",
             "schema": undefined,
             "sourceTag": Object {
-              "nextPos": 102,
-              "pos": 98,
+              "end": 101,
+              "start": 98,
               "tag": "Column",
               "values": Array [
                 Object {
-                  "nextPos": 102,
-                  "pos": 98,
+                  "end": 101,
+                  "start": 98,
                   "tag": "UnquotedIdentifier",
                   "value": "col2",
                 },
@@ -391,18 +391,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 171,
-        "pos": 165,
+        "end": 170,
+        "start": 165,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 171,
-            "pos": 165,
+            "end": 170,
+            "start": 165,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 171,
-                "pos": 165,
+                "end": 170,
+                "start": 165,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -452,24 +452,24 @@ Object {
         "name": "sql_identifier",
         "schema": "information_schema",
         "sourceTag": Object {
-          "nextPos": 48,
-          "pos": 15,
+          "end": 47,
+          "start": 15,
           "tag": "Type",
           "values": Array [
             Object {
-              "nextPos": 48,
-              "pos": 15,
+              "end": 47,
+              "start": 15,
               "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
-                  "nextPos": 33,
-                  "pos": 15,
+                  "end": 32,
+                  "start": 15,
                   "tag": "UnquotedIdentifier",
                   "value": "information_schema",
                 },
                 Object {
-                  "nextPos": 48,
-                  "pos": 34,
+                  "end": 47,
+                  "start": 34,
                   "tag": "UnquotedIdentifier",
                   "value": "sql_identifier",
                 },
@@ -500,29 +500,29 @@ exports[`Query Interface Should convert combination select sql (
 Object {
   "params": Array [
     Object {
+      "end": 136,
       "name": "joinVal",
-      "nextPos": 137,
       "pick": Array [],
-      "pos": 129,
       "required": false,
       "spread": false,
+      "start": 129,
       "type": Object {
         "column": "val",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 126,
-          "pos": 116,
+          "end": 125,
+          "start": 116,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 122,
-              "pos": 116,
+              "end": 121,
+              "start": 116,
               "tag": "UnquotedIdentifier",
               "value": "table3",
             },
             Object {
-              "nextPos": 126,
-              "pos": 123,
+              "end": 125,
+              "start": 123,
               "tag": "UnquotedIdentifier",
               "value": "val",
             },
@@ -533,29 +533,29 @@ Object {
       },
     },
     Object {
+      "end": 280,
       "name": "id",
-      "nextPos": 281,
       "pick": Array [],
-      "pos": 278,
       "required": false,
       "spread": false,
+      "start": 278,
       "type": Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 293,
-          "pos": 284,
+          "end": 292,
+          "start": 284,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 290,
-              "pos": 284,
+              "end": 289,
+              "start": 284,
               "tag": "UnquotedIdentifier",
               "value": "table1",
             },
             Object {
-              "nextPos": 293,
-              "pos": 291,
+              "end": 292,
+              "start": 291,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -566,29 +566,29 @@ Object {
       },
     },
     Object {
+      "end": 312,
       "name": "id",
-      "nextPos": 313,
       "pick": Array [],
-      "pos": 310,
       "required": false,
       "spread": false,
+      "start": 310,
       "type": Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 307,
-          "pos": 298,
+          "end": 306,
+          "start": 298,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 304,
-              "pos": 298,
+              "end": 303,
+              "start": 298,
               "tag": "UnquotedIdentifier",
               "value": "table4",
             },
             Object {
-              "nextPos": 307,
-              "pos": 305,
+              "end": 306,
+              "start": 305,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -606,13 +606,13 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 30,
-          "pos": 26,
+          "end": 29,
+          "start": 26,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 30,
-              "pos": 26,
+              "end": 29,
+              "start": 26,
               "tag": "UnquotedIdentifier",
               "value": "col1",
             },
@@ -631,13 +631,13 @@ Object {
           "column": "id",
           "schema": undefined,
           "sourceTag": Object {
-            "nextPos": 62,
-            "pos": 60,
+            "end": 61,
+            "start": 60,
             "tag": "Column",
             "values": Array [
               Object {
-                "nextPos": 62,
-                "pos": 60,
+                "end": 61,
+                "start": 60,
                 "tag": "UnquotedIdentifier",
                 "value": "id",
               },
@@ -655,18 +655,18 @@ Object {
       "name": "table2",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 74,
-        "pos": 68,
+        "end": 73,
+        "start": 68,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 74,
-            "pos": 68,
+            "end": 73,
+            "start": 68,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 74,
-                "pos": 68,
+                "end": 73,
+                "start": 68,
                 "tag": "UnquotedIdentifier",
                 "value": "table2",
               },
@@ -682,18 +682,18 @@ Object {
       "name": "table3",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 86,
-        "pos": 80,
+        "end": 85,
+        "start": 80,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 86,
-            "pos": 80,
+            "end": 85,
+            "start": 80,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 86,
-                "pos": 80,
+                "end": 85,
+                "start": 80,
                 "tag": "UnquotedIdentifier",
                 "value": "table3",
               },
@@ -709,18 +709,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 166,
-        "pos": 160,
+        "end": 165,
+        "start": 160,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 166,
-            "pos": 160,
+            "end": 165,
+            "start": 160,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 166,
-                "pos": 160,
+                "end": 165,
+                "start": 160,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -736,18 +736,18 @@ Object {
       "name": "table4",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 263,
-        "pos": 257,
+        "end": 262,
+        "start": 257,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 263,
-            "pos": 257,
+            "end": 262,
+            "start": 257,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 263,
-                "pos": 257,
+                "end": 262,
+                "start": 257,
                 "tag": "UnquotedIdentifier",
                 "value": "table4",
               },
@@ -766,12 +766,12 @@ exports[`Query Interface Should convert complex row sql (SELECT (1, 2+2, :param1
 Object {
   "params": Array [
     Object {
+      "end": 22,
       "name": "param1",
-      "nextPos": 23,
       "pick": Array [],
-      "pos": 16,
       "required": false,
       "spread": false,
+      "start": 16,
       "type": Object {
         "type": "Unknown",
       },
@@ -822,26 +822,26 @@ Object {
       "type": Object {
         "name": "supplier_id",
         "sourceTag": Object {
-          "nextPos": 25,
-          "pos": 7,
+          "end": 24,
+          "start": 7,
           "tag": "CompositeAccess",
           "values": Array [
             Object {
-              "nextPos": 12,
-              "pos": 8,
+              "end": 11,
+              "start": 8,
               "tag": "Column",
               "values": Array [
                 Object {
-                  "nextPos": 12,
-                  "pos": 8,
+                  "end": 11,
+                  "start": 8,
                   "tag": "UnquotedIdentifier",
                   "value": "item",
                 },
               ],
             },
             Object {
-              "nextPos": 25,
-              "pos": 14,
+              "end": 24,
+              "start": 14,
               "tag": "UnquotedIdentifier",
               "value": "supplier_id",
             },
@@ -852,13 +852,13 @@ Object {
           "column": "item",
           "schema": undefined,
           "sourceTag": Object {
-            "nextPos": 12,
-            "pos": 8,
+            "end": 11,
+            "start": 8,
             "tag": "Column",
             "values": Array [
               Object {
-                "nextPos": 12,
-                "pos": 8,
+                "end": 11,
+                "start": 8,
                 "tag": "UnquotedIdentifier",
                 "value": "item",
               },
@@ -876,18 +876,18 @@ Object {
       "name": "all_types",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 40,
-        "pos": 31,
+        "end": 39,
+        "start": 31,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 40,
-            "pos": 31,
+            "end": 39,
+            "start": 31,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 40,
-                "pos": 31,
+                "end": 39,
+                "start": 31,
                 "tag": "UnquotedIdentifier",
                 "value": "all_types",
               },
@@ -911,13 +911,13 @@ Object {
       "type": Object {
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 72,
-          "pos": 71,
+          "end": 71,
+          "start": 71,
           "tag": "StarIdentifier",
           "values": Array [
             Object {
-              "nextPos": 72,
-              "pos": 71,
+              "end": 71,
+              "start": 71,
               "tag": "Star",
             },
           ],
@@ -931,35 +931,35 @@ Object {
     Object {
       "name": "ins",
       "sourceTag": Object {
-        "nextPos": 63,
-        "pos": 5,
+        "end": 62,
+        "start": 5,
         "tag": "CTE",
         "values": Array [
           Object {
-            "nextPos": 17,
-            "pos": 5,
+            "end": 16,
+            "start": 5,
             "tag": "CTEName",
             "values": Array [
               Object {
-                "nextPos": 8,
-                "pos": 5,
+                "end": 7,
+                "start": 5,
                 "tag": "UnquotedIdentifier",
                 "value": "ins",
               },
               Object {
-                "nextPos": 17,
-                "pos": 8,
+                "end": 16,
+                "start": 8,
                 "tag": "Columns",
                 "values": Array [
                   Object {
-                    "nextPos": 11,
-                    "pos": 9,
+                    "end": 10,
+                    "start": 9,
                     "tag": "UnquotedIdentifier",
                     "value": "id",
                   },
                   Object {
-                    "nextPos": 16,
-                    "pos": 13,
+                    "end": 15,
+                    "start": 13,
                     "tag": "UnquotedIdentifier",
                     "value": "val",
                   },
@@ -968,13 +968,13 @@ Object {
             ],
           },
           Object {
-            "nextPos": 62,
-            "pos": 22,
+            "end": 61,
+            "start": 22,
             "tag": "CTEValuesList",
             "values": Array [
               Object {
-                "nextPos": 45,
-                "pos": 29,
+                "end": 44,
+                "start": 29,
                 "tag": "CTEValues",
                 "values": Array [
                   Object {
@@ -983,24 +983,24 @@ Object {
                     "tag": "PgCast",
                     "values": Array [
                       Object {
-                        "nextPos": 31,
-                        "pos": 30,
+                        "end": 30,
+                        "start": 30,
                         "tag": "Number",
                         "value": "1",
                       },
                       Object {
-                        "nextPos": 36,
-                        "pos": 33,
+                        "end": 35,
+                        "start": 33,
                         "tag": "Type",
                         "values": Array [
                           Object {
-                            "nextPos": 36,
-                            "pos": 33,
+                            "end": 35,
+                            "start": 33,
                             "tag": "QualifiedIdentifier",
                             "values": Array [
                               Object {
-                                "nextPos": 36,
-                                "pos": 33,
+                                "end": 35,
+                                "start": 33,
                                 "tag": "UnquotedIdentifier",
                                 "value": "int",
                               },
@@ -1016,24 +1016,24 @@ Object {
                     "tag": "PgCast",
                     "values": Array [
                       Object {
-                        "nextPos": 39,
-                        "pos": 38,
+                        "end": 38,
+                        "start": 38,
                         "tag": "Number",
                         "value": "2",
                       },
                       Object {
-                        "nextPos": 44,
-                        "pos": 41,
+                        "end": 43,
+                        "start": 41,
                         "tag": "Type",
                         "values": Array [
                           Object {
-                            "nextPos": 44,
-                            "pos": 41,
+                            "end": 43,
+                            "start": 41,
                             "tag": "QualifiedIdentifier",
                             "values": Array [
                               Object {
-                                "nextPos": 44,
-                                "pos": 41,
+                                "end": 43,
+                                "start": 41,
                                 "tag": "UnquotedIdentifier",
                                 "value": "int",
                               },
@@ -1046,8 +1046,8 @@ Object {
                 ],
               },
               Object {
-                "nextPos": 62,
-                "pos": 46,
+                "end": 61,
+                "start": 46,
                 "tag": "CTEValues",
                 "values": Array [
                   Object {
@@ -1056,24 +1056,24 @@ Object {
                     "tag": "PgCast",
                     "values": Array [
                       Object {
-                        "nextPos": 48,
-                        "pos": 47,
+                        "end": 47,
+                        "start": 47,
                         "tag": "Number",
                         "value": "3",
                       },
                       Object {
-                        "nextPos": 53,
-                        "pos": 50,
+                        "end": 52,
+                        "start": 50,
                         "tag": "Type",
                         "values": Array [
                           Object {
-                            "nextPos": 53,
-                            "pos": 50,
+                            "end": 52,
+                            "start": 50,
                             "tag": "QualifiedIdentifier",
                             "values": Array [
                               Object {
-                                "nextPos": 53,
-                                "pos": 50,
+                                "end": 52,
+                                "start": 50,
                                 "tag": "UnquotedIdentifier",
                                 "value": "int",
                               },
@@ -1089,24 +1089,24 @@ Object {
                     "tag": "PgCast",
                     "values": Array [
                       Object {
-                        "nextPos": 56,
-                        "pos": 55,
+                        "end": 55,
+                        "start": 55,
                         "tag": "Number",
                         "value": "4",
                       },
                       Object {
-                        "nextPos": 61,
-                        "pos": 58,
+                        "end": 60,
+                        "start": 58,
                         "tag": "Type",
                         "values": Array [
                           Object {
-                            "nextPos": 61,
-                            "pos": 58,
+                            "end": 60,
+                            "start": 58,
                             "tag": "QualifiedIdentifier",
                             "values": Array [
                               Object {
-                                "nextPos": 61,
-                                "pos": 58,
+                                "end": 60,
+                                "start": 58,
                                 "tag": "UnquotedIdentifier",
                                 "value": "int",
                               },
@@ -1156,23 +1156,23 @@ exports[`Query Interface Should convert delete with param sql (DELETE FROM table
 Object {
   "params": Array [
     Object {
+      "end": 32,
       "name": "id",
-      "nextPos": 33,
       "pick": Array [],
-      "pos": 30,
       "required": false,
       "spread": false,
+      "start": 30,
       "type": Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 27,
-          "pos": 25,
+          "end": 26,
+          "start": 25,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 27,
-              "pos": 25,
+              "end": 26,
+              "start": 25,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -1190,18 +1190,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 18,
-        "pos": 12,
+        "end": 17,
+        "start": 12,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 18,
-            "pos": 12,
+            "end": 17,
+            "start": 12,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 18,
-                "pos": 12,
+                "end": 17,
+                "start": 12,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -1226,13 +1226,13 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 31,
-          "pos": 29,
+          "end": 30,
+          "start": 29,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 31,
-              "pos": 29,
+              "end": 30,
+              "start": 29,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -1248,13 +1248,13 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 37,
-          "pos": 33,
+          "end": 36,
+          "start": 33,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 37,
-              "pos": 33,
+              "end": 36,
+              "start": 33,
               "tag": "UnquotedIdentifier",
               "value": "col2",
             },
@@ -1271,18 +1271,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 18,
-        "pos": 12,
+        "end": 17,
+        "start": 12,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 18,
-            "pos": 12,
+            "end": 17,
+            "start": 12,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 18,
-                "pos": 12,
+                "end": 17,
+                "start": 12,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -1327,13 +1327,13 @@ Object {
           "column": "id",
           "schema": undefined,
           "sourceTag": Object {
-            "nextPos": 9,
-            "pos": 7,
+            "end": 8,
+            "start": 7,
             "tag": "Column",
             "values": Array [
               Object {
-                "nextPos": 9,
-                "pos": 7,
+                "end": 8,
+                "start": 7,
                 "tag": "UnquotedIdentifier",
                 "value": "id",
               },
@@ -1347,18 +1347,18 @@ Object {
           "name": "custom_type",
           "schema": undefined,
           "sourceTag": Object {
-            "nextPos": 22,
-            "pos": 11,
+            "end": 21,
+            "start": 11,
             "tag": "Type",
             "values": Array [
               Object {
-                "nextPos": 22,
-                "pos": 11,
+                "end": 21,
+                "start": 11,
                 "tag": "QualifiedIdentifier",
                 "values": Array [
                   Object {
-                    "nextPos": 22,
-                    "pos": 11,
+                    "end": 21,
+                    "start": 11,
                     "tag": "UnquotedIdentifier",
                     "value": "custom_type",
                   },
@@ -1377,18 +1377,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 34,
-        "pos": 28,
+        "end": 33,
+        "start": 28,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 34,
-            "pos": 28,
+            "end": 33,
+            "start": 28,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 34,
-                "pos": 28,
+                "end": 33,
+                "start": 28,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -1407,12 +1407,12 @@ exports[`Query Interface Should convert function param sql (SELECT ABS($id) FROM
 Object {
   "params": Array [
     Object {
+      "end": 13,
       "name": "id",
-      "nextPos": 14,
       "pick": Array [],
-      "pos": 11,
       "required": false,
       "spread": false,
+      "start": 11,
       "type": Object {
         "args": Array [
           Object {
@@ -1422,10 +1422,10 @@ Object {
         "index": 0,
         "name": "abs",
         "sourceTag": Object {
-          "nextPos": 14,
+          "end": 13,
           "pick": Array [],
-          "pos": 11,
           "required": false,
+          "start": 11,
           "tag": "Parameter",
           "type": "single",
           "value": "id",
@@ -1446,28 +1446,28 @@ Object {
         "name": "abs",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 15,
-          "pos": 7,
+          "end": 14,
+          "start": 7,
           "tag": "Function",
           "values": Array [
             Object {
-              "nextPos": 10,
-              "pos": 7,
+              "end": 9,
+              "start": 7,
               "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
-                  "nextPos": 10,
-                  "pos": 7,
+                  "end": 9,
+                  "start": 7,
                   "tag": "UnquotedIdentifier",
                   "value": "ABS",
                 },
               ],
             },
             Object {
-              "nextPos": 14,
+              "end": 13,
               "pick": Array [],
-              "pos": 11,
               "required": false,
+              "start": 11,
               "tag": "Parameter",
               "type": "single",
               "value": "id",
@@ -1484,18 +1484,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 27,
-        "pos": 21,
+        "end": 26,
+        "start": 21,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 27,
-            "pos": 21,
+            "end": 26,
+            "start": 21,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 27,
-                "pos": 21,
+                "end": 26,
+                "start": 21,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -1522,13 +1522,13 @@ Object {
             "column": "id",
             "schema": undefined,
             "sourceTag": Object {
-              "nextPos": 13,
-              "pos": 11,
+              "end": 12,
+              "start": 11,
               "tag": "Column",
               "values": Array [
                 Object {
-                  "nextPos": 13,
-                  "pos": 11,
+                  "end": 12,
+                  "start": 11,
                   "tag": "UnquotedIdentifier",
                   "value": "id",
                 },
@@ -1541,31 +1541,31 @@ Object {
         "name": "abs",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 14,
-          "pos": 7,
+          "end": 13,
+          "start": 7,
           "tag": "Function",
           "values": Array [
             Object {
-              "nextPos": 10,
-              "pos": 7,
+              "end": 9,
+              "start": 7,
               "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
-                  "nextPos": 10,
-                  "pos": 7,
+                  "end": 9,
+                  "start": 7,
                   "tag": "UnquotedIdentifier",
                   "value": "ABS",
                 },
               ],
             },
             Object {
-              "nextPos": 13,
-              "pos": 11,
+              "end": 12,
+              "start": 11,
               "tag": "Column",
               "values": Array [
                 Object {
-                  "nextPos": 13,
-                  "pos": 11,
+                  "end": 12,
+                  "start": 11,
                   "tag": "UnquotedIdentifier",
                   "value": "id",
                 },
@@ -1583,18 +1583,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 26,
-        "pos": 20,
+        "end": 25,
+        "start": 20,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 26,
-            "pos": 20,
+            "end": 25,
+            "start": 20,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 26,
-                "pos": 20,
+                "end": 25,
+                "start": 20,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -1625,32 +1625,32 @@ Object {
         "name": "_pg_char_max_length",
         "schema": "information_schema",
         "sourceTag": Object {
-          "nextPos": 52,
-          "pos": 7,
+          "end": 51,
+          "start": 7,
           "tag": "Function",
           "values": Array [
             Object {
-              "nextPos": 45,
-              "pos": 7,
+              "end": 44,
+              "start": 7,
               "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
-                  "nextPos": 25,
-                  "pos": 7,
+                  "end": 24,
+                  "start": 7,
                   "tag": "UnquotedIdentifier",
                   "value": "information_schema",
                 },
                 Object {
-                  "nextPos": 45,
-                  "pos": 26,
+                  "end": 44,
+                  "start": 26,
                   "tag": "UnquotedIdentifier",
                   "value": "_pg_char_max_length",
                 },
               ],
             },
             Object {
-              "nextPos": 51,
-              "pos": 46,
+              "end": 50,
+              "start": 46,
               "tag": "String",
               "value": "123",
             },
@@ -1675,19 +1675,19 @@ Object {
           Object {
             "schema": undefined,
             "sourceTag": Object {
-              "nextPos": 44,
-              "pos": 41,
+              "end": 43,
+              "start": 41,
               "tag": "StarIdentifier",
               "values": Array [
                 Object {
-                  "nextPos": 42,
-                  "pos": 41,
+                  "end": 41,
+                  "start": 41,
                   "tag": "UnquotedIdentifier",
                   "value": "a",
                 },
                 Object {
-                  "nextPos": 44,
-                  "pos": 43,
+                  "end": 43,
+                  "start": 43,
                   "tag": "Star",
                 },
               ],
@@ -1698,19 +1698,19 @@ Object {
           Object {
             "schema": undefined,
             "sourceTag": Object {
-              "nextPos": 49,
-              "pos": 46,
+              "end": 48,
+              "start": 46,
               "tag": "StarIdentifier",
               "values": Array [
                 Object {
-                  "nextPos": 47,
-                  "pos": 46,
+                  "end": 46,
+                  "start": 46,
                   "tag": "UnquotedIdentifier",
                   "value": "t",
                 },
                 Object {
-                  "nextPos": 49,
-                  "pos": 48,
+                  "end": 48,
+                  "start": 48,
                   "tag": "Star",
                 },
               ],
@@ -1722,61 +1722,61 @@ Object {
         "name": "_pg_truetypmod",
         "schema": "information_schema",
         "sourceTag": Object {
-          "nextPos": 50,
-          "pos": 7,
+          "end": 49,
+          "start": 7,
           "tag": "Function",
           "values": Array [
             Object {
-              "nextPos": 40,
-              "pos": 7,
+              "end": 39,
+              "start": 7,
               "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
-                  "nextPos": 25,
-                  "pos": 7,
+                  "end": 24,
+                  "start": 7,
                   "tag": "UnquotedIdentifier",
                   "value": "information_schema",
                 },
                 Object {
-                  "nextPos": 40,
-                  "pos": 26,
+                  "end": 39,
+                  "start": 26,
                   "tag": "UnquotedIdentifier",
                   "value": "_pg_truetypmod",
                 },
               ],
             },
             Object {
-              "nextPos": 44,
-              "pos": 41,
+              "end": 43,
+              "start": 41,
               "tag": "StarIdentifier",
               "values": Array [
                 Object {
-                  "nextPos": 42,
-                  "pos": 41,
+                  "end": 41,
+                  "start": 41,
                   "tag": "UnquotedIdentifier",
                   "value": "a",
                 },
                 Object {
-                  "nextPos": 44,
-                  "pos": 43,
+                  "end": 43,
+                  "start": 43,
                   "tag": "Star",
                 },
               ],
             },
             Object {
-              "nextPos": 49,
-              "pos": 46,
+              "end": 48,
+              "start": 46,
               "tag": "StarIdentifier",
               "values": Array [
                 Object {
-                  "nextPos": 47,
-                  "pos": 46,
+                  "end": 46,
+                  "start": 46,
                   "tag": "UnquotedIdentifier",
                   "value": "t",
                 },
                 Object {
-                  "nextPos": 49,
-                  "pos": 48,
+                  "end": 48,
+                  "start": 48,
                   "tag": "Star",
                 },
               ],
@@ -1793,18 +1793,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 62,
-        "pos": 56,
+        "end": 61,
+        "start": 56,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 62,
-            "pos": 56,
+            "end": 61,
+            "start": 56,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 62,
-                "pos": 56,
+                "end": 61,
+                "start": 56,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -1823,8 +1823,8 @@ exports[`Query Interface Should convert insert multiple param values sql (INSERT
 Object {
   "params": Array [
     Object {
+      "end": 43,
       "name": "rows",
-      "nextPos": 44,
       "pick": Array [
         Object {
           "name": "name",
@@ -1839,9 +1839,9 @@ Object {
           },
         },
       ],
-      "pos": 26,
       "required": true,
       "spread": true,
+      "start": 26,
       "type": Object {
         "type": "Unknown",
       },
@@ -1854,18 +1854,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 18,
-        "pos": 12,
+        "end": 17,
+        "start": 12,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 18,
-            "pos": 12,
+            "end": 17,
+            "start": 12,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 18,
-                "pos": 12,
+                "end": 17,
+                "start": 12,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -1889,13 +1889,13 @@ Object {
       "type": Object {
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 50,
-          "pos": 49,
+          "end": 49,
+          "start": 49,
           "tag": "StarIdentifier",
           "values": Array [
             Object {
-              "nextPos": 50,
-              "pos": 49,
+              "end": 49,
+              "start": 49,
               "tag": "Star",
             },
           ],
@@ -1911,18 +1911,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 18,
-        "pos": 12,
+        "end": 17,
+        "start": 12,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 18,
-            "pos": 12,
+            "end": 17,
+            "start": 12,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 18,
-                "pos": 12,
+                "end": 17,
+                "start": 12,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -1954,19 +1954,19 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 33,
-          "pos": 26,
+          "end": 32,
+          "start": 26,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 28,
-              "pos": 26,
+              "end": 27,
+              "start": 26,
               "tag": "UnquotedIdentifier",
               "value": "t1",
             },
             Object {
-              "nextPos": 33,
-              "pos": 29,
+              "end": 32,
+              "start": 29,
               "tag": "UnquotedIdentifier",
               "value": "col1",
             },
@@ -1982,19 +1982,19 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 62,
-          "pos": 55,
+          "end": 61,
+          "start": 55,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 57,
-              "pos": 55,
+              "end": 56,
+              "start": 55,
               "tag": "UnquotedIdentifier",
               "value": "t1",
             },
             Object {
-              "nextPos": 62,
-              "pos": 58,
+              "end": 61,
+              "start": 58,
               "tag": "UnquotedIdentifier",
               "value": "col2",
             },
@@ -2010,19 +2010,19 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 97,
-          "pos": 86,
+          "end": 96,
+          "start": 86,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 92,
-              "pos": 86,
+              "end": 91,
+              "start": 86,
               "tag": "UnquotedIdentifier",
               "value": "table2",
             },
             Object {
-              "nextPos": 97,
-              "pos": 93,
+              "end": 96,
+              "start": 93,
               "tag": "UnquotedIdentifier",
               "value": "col2",
             },
@@ -2039,31 +2039,31 @@ Object {
       "name": "t1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 134,
-        "pos": 122,
+        "end": 133,
+        "start": 122,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 128,
-            "pos": 122,
+            "end": 127,
+            "start": 122,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 128,
-                "pos": 122,
+                "end": 127,
+                "start": 122,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
             ],
           },
           Object {
-            "nextPos": 134,
-            "pos": 129,
+            "end": 133,
+            "start": 129,
             "tag": "As",
             "values": Array [
               Object {
-                "nextPos": 134,
-                "pos": 132,
+                "end": 133,
+                "start": 132,
                 "tag": "UnquotedIdentifier",
                 "value": "t1",
               },
@@ -2079,18 +2079,18 @@ Object {
       "name": "table2",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 154,
-        "pos": 148,
+        "end": 153,
+        "start": 148,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 154,
-            "pos": 148,
+            "end": 153,
+            "start": 148,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 154,
-                "pos": 148,
+                "end": 153,
+                "start": 148,
                 "tag": "UnquotedIdentifier",
                 "value": "table2",
               },
@@ -2124,19 +2124,19 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 33,
-          "pos": 26,
+          "end": 32,
+          "start": 26,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 28,
-              "pos": 26,
+              "end": 27,
+              "start": 26,
               "tag": "UnquotedIdentifier",
               "value": "t1",
             },
             Object {
-              "nextPos": 33,
-              "pos": 29,
+              "end": 32,
+              "start": 29,
               "tag": "UnquotedIdentifier",
               "value": "col1",
             },
@@ -2152,19 +2152,19 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 62,
-          "pos": 55,
+          "end": 61,
+          "start": 55,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 57,
-              "pos": 55,
+              "end": 56,
+              "start": 55,
               "tag": "UnquotedIdentifier",
               "value": "t1",
             },
             Object {
-              "nextPos": 62,
-              "pos": 58,
+              "end": 61,
+              "start": 58,
               "tag": "UnquotedIdentifier",
               "value": "col2",
             },
@@ -2180,19 +2180,19 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 95,
-          "pos": 86,
+          "end": 94,
+          "start": 86,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 90,
-              "pos": 86,
+              "end": 89,
+              "start": 86,
               "tag": "UnquotedIdentifier",
               "value": "myT2",
             },
             Object {
-              "nextPos": 95,
-              "pos": 91,
+              "end": 94,
+              "start": 91,
               "tag": "UnquotedIdentifier",
               "value": "col2",
             },
@@ -2208,19 +2208,19 @@ Object {
         "column": "col_9",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 128,
-          "pos": 118,
+          "end": 127,
+          "start": 118,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 122,
-              "pos": 118,
+              "end": 121,
+              "start": 118,
               "tag": "UnquotedIdentifier",
               "value": "myT4",
             },
             Object {
-              "nextPos": 128,
-              "pos": 123,
+              "end": 127,
+              "start": 123,
               "tag": "UnquotedIdentifier",
               "value": "col_9",
             },
@@ -2237,37 +2237,37 @@ Object {
       "name": "t1",
       "schema": "fit",
       "sourceTag": Object {
-        "nextPos": 168,
-        "pos": 152,
+        "end": 167,
+        "start": 152,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 162,
-            "pos": 152,
+            "end": 161,
+            "start": 152,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 155,
-                "pos": 152,
+                "end": 154,
+                "start": 152,
                 "tag": "UnquotedIdentifier",
                 "value": "fit",
               },
               Object {
-                "nextPos": 162,
-                "pos": 156,
+                "end": 161,
+                "start": 156,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
             ],
           },
           Object {
-            "nextPos": 168,
-            "pos": 163,
+            "end": 167,
+            "start": 163,
             "tag": "As",
             "values": Array [
               Object {
-                "nextPos": 168,
-                "pos": 166,
+                "end": 167,
+                "start": 166,
                 "tag": "UnquotedIdentifier",
                 "value": "t1",
               },
@@ -2283,37 +2283,37 @@ Object {
       "name": "myT2",
       "schema": "fit",
       "sourceTag": Object {
-        "nextPos": 202,
-        "pos": 182,
+        "end": 201,
+        "start": 182,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 192,
-            "pos": 182,
+            "end": 191,
+            "start": 182,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 185,
-                "pos": 182,
+                "end": 184,
+                "start": 182,
                 "tag": "UnquotedIdentifier",
                 "value": "fit",
               },
               Object {
-                "nextPos": 192,
-                "pos": 186,
+                "end": 191,
+                "start": 186,
                 "tag": "UnquotedIdentifier",
                 "value": "table2",
               },
             ],
           },
           Object {
-            "nextPos": 202,
-            "pos": 193,
+            "end": 201,
+            "start": 193,
             "tag": "As",
             "values": Array [
               Object {
-                "nextPos": 202,
-                "pos": 196,
+                "end": 201,
+                "start": 196,
                 "tag": "QuotedIdentifier",
                 "value": "myT2",
               },
@@ -2329,31 +2329,31 @@ Object {
       "name": "myT4",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 257,
-        "pos": 241,
+        "end": 256,
+        "start": 241,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 247,
-            "pos": 241,
+            "end": 246,
+            "start": 241,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 247,
-                "pos": 241,
+                "end": 246,
+                "start": 241,
                 "tag": "UnquotedIdentifier",
                 "value": "table3",
               },
             ],
           },
           Object {
-            "nextPos": 257,
-            "pos": 248,
+            "end": 256,
+            "start": 248,
             "tag": "As",
             "values": Array [
               Object {
-                "nextPos": 257,
-                "pos": 251,
+                "end": 256,
+                "start": 251,
                 "tag": "QuotedIdentifier",
                 "value": "myT4",
               },
@@ -2372,23 +2372,23 @@ exports[`Query Interface Should convert limit and offset params sql (SELECT id F
 Object {
   "params": Array [
     Object {
+      "end": 33,
       "name": "limit",
-      "nextPos": 34,
       "pick": Array [],
-      "pos": 28,
       "required": false,
       "spread": false,
+      "start": 28,
       "type": Object {
         "type": "String",
       },
     },
     Object {
+      "end": 48,
       "name": "offset",
-      "nextPos": 49,
       "pick": Array [],
-      "pos": 42,
       "required": false,
       "spread": false,
+      "start": 42,
       "type": Object {
         "name": "int4",
         "type": "Named",
@@ -2405,13 +2405,13 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 9,
-          "pos": 7,
+          "end": 8,
+          "start": 7,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 9,
-              "pos": 7,
+              "end": 8,
+              "start": 7,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -2428,18 +2428,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 21,
-        "pos": 15,
+        "end": 20,
+        "start": 15,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 21,
-            "pos": 15,
+            "end": 20,
+            "start": 15,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 21,
-                "pos": 15,
+                "end": 20,
+                "start": 15,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -2458,29 +2458,29 @@ exports[`Query Interface Should convert multiple params infer type from one 1 sq
 Object {
   "params": Array [
     Object {
+      "end": 32,
       "name": "id",
-      "nextPos": 33,
       "pick": Array [],
-      "pos": 30,
       "required": false,
       "spread": false,
+      "start": 30,
       "type": Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 45,
-          "pos": 36,
+          "end": 44,
+          "start": 36,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 42,
-              "pos": 36,
+              "end": 41,
+              "start": 36,
               "tag": "UnquotedIdentifier",
               "value": "table1",
             },
             Object {
-              "nextPos": 45,
-              "pos": 43,
+              "end": 44,
+              "start": 43,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -2491,12 +2491,12 @@ Object {
       },
     },
     Object {
+      "end": 52,
       "name": "id",
-      "nextPos": 53,
       "pick": Array [],
-      "pos": 50,
       "required": false,
       "spread": false,
+      "start": 50,
       "type": Object {
         "type": "Any",
       },
@@ -2509,13 +2509,13 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 11,
-          "pos": 7,
+          "end": 10,
+          "start": 7,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 11,
-              "pos": 7,
+              "end": 10,
+              "start": 7,
               "tag": "UnquotedIdentifier",
               "value": "col1",
             },
@@ -2532,18 +2532,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 23,
-        "pos": 17,
+        "end": 22,
+        "start": 17,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 23,
-            "pos": 17,
+            "end": 22,
+            "start": 17,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 23,
-                "pos": 17,
+                "end": 22,
+                "start": 17,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -2562,40 +2562,40 @@ exports[`Query Interface Should convert multiple params infer type from one 2 sq
 Object {
   "params": Array [
     Object {
+      "end": 32,
       "name": "id",
-      "nextPos": 33,
       "pick": Array [],
-      "pos": 30,
       "required": false,
       "spread": false,
+      "start": 30,
       "type": Object {
         "type": "Any",
       },
     },
     Object {
+      "end": 51,
       "name": "id",
-      "nextPos": 52,
       "pick": Array [],
-      "pos": 49,
       "required": false,
       "spread": false,
+      "start": 49,
       "type": Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 64,
-          "pos": 55,
+          "end": 63,
+          "start": 55,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 61,
-              "pos": 55,
+              "end": 60,
+              "start": 55,
               "tag": "UnquotedIdentifier",
               "value": "table1",
             },
             Object {
-              "nextPos": 64,
-              "pos": 62,
+              "end": 63,
+              "start": 62,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -2613,13 +2613,13 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 11,
-          "pos": 7,
+          "end": 10,
+          "start": 7,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 11,
-              "pos": 7,
+              "end": 10,
+              "start": 7,
               "tag": "UnquotedIdentifier",
               "value": "col1",
             },
@@ -2636,18 +2636,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 23,
-        "pos": 17,
+        "end": 22,
+        "start": 17,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 23,
-            "pos": 17,
+            "end": 22,
+            "start": 17,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 23,
-                "pos": 17,
+                "end": 22,
+                "start": 17,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -2666,23 +2666,23 @@ exports[`Query Interface Should convert multiple params sql (SELECT :test1 AS "r
 Object {
   "params": Array [
     Object {
+      "end": 12,
       "name": "test1",
-      "nextPos": 13,
       "pick": Array [],
-      "pos": 7,
       "required": false,
       "spread": false,
+      "start": 7,
       "type": Object {
         "type": "Unknown",
       },
     },
     Object {
+      "end": 30,
       "name": "test2",
-      "nextPos": 31,
       "pick": Array [],
-      "pos": 25,
       "required": false,
       "spread": false,
+      "start": 25,
       "type": Object {
         "type": "Unknown",
       },
@@ -2721,13 +2721,13 @@ Object {
                   "column": "integer_col",
                   "schema": undefined,
                   "sourceTag": Object {
-                    "nextPos": 45,
-                    "pos": 34,
+                    "end": 44,
+                    "start": 34,
                     "tag": "Column",
                     "values": Array [
                       Object {
-                        "nextPos": 45,
-                        "pos": 34,
+                        "end": 44,
+                        "start": 34,
                         "tag": "UnquotedIdentifier",
                         "value": "integer_col",
                       },
@@ -2746,49 +2746,49 @@ Object {
             "name": "array_length",
             "schema": undefined,
             "sourceTag": Object {
-              "nextPos": 50,
-              "pos": 11,
+              "end": 49,
+              "start": 11,
               "tag": "Function",
               "values": Array [
                 Object {
-                  "nextPos": 23,
-                  "pos": 11,
+                  "end": 22,
+                  "start": 11,
                   "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
-                      "nextPos": 23,
-                      "pos": 11,
+                      "end": 22,
+                      "start": 11,
                       "tag": "UnquotedIdentifier",
                       "value": "ARRAY_LENGTH",
                     },
                   ],
                 },
                 Object {
-                  "nextPos": 46,
-                  "pos": 24,
+                  "end": 45,
+                  "start": 24,
                   "tag": "Function",
                   "values": Array [
                     Object {
-                      "nextPos": 33,
-                      "pos": 24,
+                      "end": 32,
+                      "start": 24,
                       "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
-                          "nextPos": 33,
-                          "pos": 24,
+                          "end": 32,
+                          "start": 24,
                           "tag": "UnquotedIdentifier",
                           "value": "ARRAY_AGG",
                         },
                       ],
                     },
                     Object {
-                      "nextPos": 45,
-                      "pos": 34,
+                      "end": 44,
+                      "start": 34,
                       "tag": "Column",
                       "values": Array [
                         Object {
-                          "nextPos": 45,
-                          "pos": 34,
+                          "end": 44,
+                          "start": 34,
                           "tag": "UnquotedIdentifier",
                           "value": "integer_col",
                         },
@@ -2797,8 +2797,8 @@ Object {
                   ],
                 },
                 Object {
-                  "nextPos": 49,
-                  "pos": 48,
+                  "end": 48,
+                  "start": 48,
                   "tag": "Number",
                   "value": "1",
                 },
@@ -2810,67 +2810,67 @@ Object {
         "name": "abs",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 51,
-          "pos": 7,
+          "end": 50,
+          "start": 7,
           "tag": "Function",
           "values": Array [
             Object {
-              "nextPos": 10,
-              "pos": 7,
+              "end": 9,
+              "start": 7,
               "tag": "QualifiedIdentifier",
               "values": Array [
                 Object {
-                  "nextPos": 10,
-                  "pos": 7,
+                  "end": 9,
+                  "start": 7,
                   "tag": "UnquotedIdentifier",
                   "value": "ABS",
                 },
               ],
             },
             Object {
-              "nextPos": 50,
-              "pos": 11,
+              "end": 49,
+              "start": 11,
               "tag": "Function",
               "values": Array [
                 Object {
-                  "nextPos": 23,
-                  "pos": 11,
+                  "end": 22,
+                  "start": 11,
                   "tag": "QualifiedIdentifier",
                   "values": Array [
                     Object {
-                      "nextPos": 23,
-                      "pos": 11,
+                      "end": 22,
+                      "start": 11,
                       "tag": "UnquotedIdentifier",
                       "value": "ARRAY_LENGTH",
                     },
                   ],
                 },
                 Object {
-                  "nextPos": 46,
-                  "pos": 24,
+                  "end": 45,
+                  "start": 24,
                   "tag": "Function",
                   "values": Array [
                     Object {
-                      "nextPos": 33,
-                      "pos": 24,
+                      "end": 32,
+                      "start": 24,
                       "tag": "QualifiedIdentifier",
                       "values": Array [
                         Object {
-                          "nextPos": 33,
-                          "pos": 24,
+                          "end": 32,
+                          "start": 24,
                           "tag": "UnquotedIdentifier",
                           "value": "ARRAY_AGG",
                         },
                       ],
                     },
                     Object {
-                      "nextPos": 45,
-                      "pos": 34,
+                      "end": 44,
+                      "start": 34,
                       "tag": "Column",
                       "values": Array [
                         Object {
-                          "nextPos": 45,
-                          "pos": 34,
+                          "end": 44,
+                          "start": 34,
                           "tag": "UnquotedIdentifier",
                           "value": "integer_col",
                         },
@@ -2879,8 +2879,8 @@ Object {
                   ],
                 },
                 Object {
-                  "nextPos": 49,
-                  "pos": 48,
+                  "end": 48,
+                  "start": 48,
                   "tag": "Number",
                   "value": "1",
                 },
@@ -2898,18 +2898,18 @@ Object {
       "name": "all_types",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 66,
-        "pos": 57,
+        "end": 65,
+        "start": 57,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 66,
-            "pos": 57,
+            "end": 65,
+            "start": 57,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 66,
-                "pos": 57,
+                "end": 65,
+                "start": 57,
                 "tag": "UnquotedIdentifier",
                 "value": "all_types",
               },
@@ -2934,29 +2934,29 @@ exports[`Query Interface Should convert nested select sql (
 Object {
   "params": Array [
     Object {
+      "end": 136,
       "name": "joinVal",
-      "nextPos": 137,
       "pick": Array [],
-      "pos": 129,
       "required": false,
       "spread": false,
+      "start": 129,
       "type": Object {
         "column": "val",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 126,
-          "pos": 116,
+          "end": 125,
+          "start": 116,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 122,
-              "pos": 116,
+              "end": 121,
+              "start": 116,
               "tag": "UnquotedIdentifier",
               "value": "table3",
             },
             Object {
-              "nextPos": 126,
-              "pos": 123,
+              "end": 125,
+              "start": 123,
               "tag": "UnquotedIdentifier",
               "value": "val",
             },
@@ -2967,29 +2967,29 @@ Object {
       },
     },
     Object {
+      "end": 183,
       "name": "id",
-      "nextPos": 184,
       "pick": Array [],
-      "pos": 181,
       "required": false,
       "spread": false,
+      "start": 181,
       "type": Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 196,
-          "pos": 187,
+          "end": 195,
+          "start": 187,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 193,
-              "pos": 187,
+              "end": 192,
+              "start": 187,
               "tag": "UnquotedIdentifier",
               "value": "table1",
             },
             Object {
-              "nextPos": 196,
-              "pos": 194,
+              "end": 195,
+              "start": 194,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -3007,13 +3007,13 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 30,
-          "pos": 26,
+          "end": 29,
+          "start": 26,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 30,
-              "pos": 26,
+              "end": 29,
+              "start": 26,
               "tag": "UnquotedIdentifier",
               "value": "col1",
             },
@@ -3032,13 +3032,13 @@ Object {
           "column": "id",
           "schema": undefined,
           "sourceTag": Object {
-            "nextPos": 62,
-            "pos": 60,
+            "end": 61,
+            "start": 60,
             "tag": "Column",
             "values": Array [
               Object {
-                "nextPos": 62,
-                "pos": 60,
+                "end": 61,
+                "start": 60,
                 "tag": "UnquotedIdentifier",
                 "value": "id",
               },
@@ -3056,18 +3056,18 @@ Object {
       "name": "table2",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 74,
-        "pos": 68,
+        "end": 73,
+        "start": 68,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 74,
-            "pos": 68,
+            "end": 73,
+            "start": 68,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 74,
-                "pos": 68,
+                "end": 73,
+                "start": 68,
                 "tag": "UnquotedIdentifier",
                 "value": "table2",
               },
@@ -3083,18 +3083,18 @@ Object {
       "name": "table3",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 86,
-        "pos": 80,
+        "end": 85,
+        "start": 80,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 86,
-            "pos": 80,
+            "end": 85,
+            "start": 80,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 86,
-                "pos": 80,
+                "end": 85,
+                "start": 80,
                 "tag": "UnquotedIdentifier",
                 "value": "table3",
               },
@@ -3110,18 +3110,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 166,
-        "pos": 160,
+        "end": 165,
+        "start": 160,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 166,
-            "pos": 160,
+            "end": 165,
+            "start": 160,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 166,
-                "pos": 160,
+                "end": 165,
+                "start": 160,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -3140,12 +3140,12 @@ exports[`Query Interface Should convert nested typed array param in select sql (
 Object {
   "params": Array [
     Object {
+      "end": 12,
       "name": "param",
-      "nextPos": 13,
       "pick": Array [],
-      "pos": 7,
       "required": false,
       "spread": false,
+      "start": 7,
       "type": Object {
         "items": Object {
           "items": Object {
@@ -3212,24 +3212,24 @@ exports[`Query Interface Should convert order by with params sql (SELECT * FROM 
 Object {
   "params": Array [
     Object {
+      "end": 46,
       "name": "param1",
-      "nextPos": 47,
       "pick": Array [],
-      "pos": 40,
       "required": false,
       "spread": false,
+      "start": 40,
       "type": Object {
         "literal": "val1",
         "type": "String",
       },
     },
     Object {
+      "end": 67,
       "name": "param2",
-      "nextPos": 68,
       "pick": Array [],
-      "pos": 61,
       "required": false,
       "spread": false,
+      "start": 61,
       "type": Object {
         "literal": "DESC",
         "type": "String",
@@ -3242,13 +3242,13 @@ Object {
       "type": Object {
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 8,
-          "pos": 7,
+          "end": 7,
+          "start": 7,
           "tag": "StarIdentifier",
           "values": Array [
             Object {
-              "nextPos": 8,
-              "pos": 7,
+              "end": 7,
+              "start": 7,
               "tag": "Star",
             },
           ],
@@ -3264,18 +3264,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 20,
-        "pos": 14,
+        "end": 19,
+        "start": 14,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 20,
-            "pos": 14,
+            "end": 19,
+            "start": 14,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 20,
-                "pos": 14,
+                "end": 19,
+                "start": 14,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -3294,12 +3294,12 @@ exports[`Query Interface Should convert params in array range sql (SELECT (ARRAY
 Object {
   "params": Array [
     Object {
+      "end": 28,
       "name": "from",
-      "nextPos": 29,
       "pick": Array [],
-      "pos": 24,
       "required": false,
       "spread": false,
+      "start": 24,
       "type": Object {
         "type": "Unknown",
       },
@@ -3351,18 +3351,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 18,
-        "pos": 12,
+        "end": 17,
+        "start": 12,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 18,
-            "pos": 12,
+            "end": 17,
+            "start": 12,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 18,
-                "pos": 12,
+                "end": 17,
+                "start": 12,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -3381,12 +3381,12 @@ exports[`Query Interface Should convert single param sql (SELECT :test1 AS "res1
 Object {
   "params": Array [
     Object {
+      "end": 12,
       "name": "test1",
-      "nextPos": 13,
       "pick": Array [],
-      "pos": 7,
       "required": false,
       "spread": false,
+      "start": 7,
       "type": Object {
         "type": "Unknown",
       },
@@ -3413,13 +3413,13 @@ Object {
       "type": Object {
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 8,
-          "pos": 7,
+          "end": 7,
+          "start": 7,
           "tag": "StarIdentifier",
           "values": Array [
             Object {
-              "nextPos": 8,
-              "pos": 7,
+              "end": 7,
+              "start": 7,
               "tag": "Star",
             },
           ],
@@ -3435,18 +3435,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 20,
-        "pos": 14,
+        "end": 19,
+        "start": 14,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 20,
-            "pos": 14,
+            "end": 19,
+            "start": 14,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 20,
-                "pos": 14,
+                "end": 19,
+                "start": 14,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -3471,13 +3471,13 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 11,
-          "pos": 7,
+          "end": 10,
+          "start": 7,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 11,
-              "pos": 7,
+              "end": 10,
+              "start": 7,
               "tag": "UnquotedIdentifier",
               "value": "col1",
             },
@@ -3493,13 +3493,13 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 27,
-          "pos": 23,
+          "end": 26,
+          "start": 23,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 27,
-              "pos": 23,
+              "end": 26,
+              "start": 23,
               "tag": "UnquotedIdentifier",
               "value": "col2",
             },
@@ -3516,18 +3516,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 51,
-        "pos": 45,
+        "end": 50,
+        "start": 45,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 51,
-            "pos": 45,
+            "end": 50,
+            "start": 45,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 51,
-                "pos": 45,
+                "end": 50,
+                "start": 45,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -3576,12 +3576,12 @@ exports[`Query Interface Should convert typed array param in select sql (SELECT 
 Object {
   "params": Array [
     Object {
+      "end": 12,
       "name": "param",
-      "nextPos": 13,
       "pick": Array [],
-      "pos": 7,
       "required": false,
       "spread": false,
+      "start": 7,
       "type": Object {
         "items": Object {
           "name": "int4",
@@ -3617,12 +3617,12 @@ exports[`Query Interface Should convert typed param in where sql (SELECT col1 FR
 Object {
   "params": Array [
     Object {
+      "end": 32,
       "name": "id",
-      "nextPos": 33,
       "pick": Array [],
-      "pos": 30,
       "required": false,
       "spread": false,
+      "start": 30,
       "type": Object {
         "name": "int4",
         "type": "Named",
@@ -3639,13 +3639,13 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 11,
-          "pos": 7,
+          "end": 10,
+          "start": 7,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 11,
-              "pos": 7,
+              "end": 10,
+              "start": 7,
               "tag": "UnquotedIdentifier",
               "value": "col1",
             },
@@ -3662,18 +3662,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 23,
-        "pos": 17,
+        "end": 22,
+        "start": 17,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 23,
-            "pos": 17,
+            "end": 22,
+            "start": 17,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 23,
-                "pos": 17,
+                "end": 22,
+                "start": 17,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -3698,13 +3698,13 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 40,
-          "pos": 38,
+          "end": 39,
+          "start": 38,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 40,
-              "pos": 38,
+              "end": 39,
+              "start": 38,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -3720,13 +3720,13 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 46,
-          "pos": 42,
+          "end": 45,
+          "start": 42,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 46,
-              "pos": 42,
+              "end": 45,
+              "start": 42,
               "tag": "UnquotedIdentifier",
               "value": "col1",
             },
@@ -3763,18 +3763,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 13,
-        "pos": 7,
+        "end": 12,
+        "start": 7,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 13,
-            "pos": 7,
+            "end": 12,
+            "start": 7,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 13,
-                "pos": 7,
+                "end": 12,
+                "start": 7,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -3799,13 +3799,13 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 40,
-          "pos": 38,
+          "end": 39,
+          "start": 38,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 40,
-              "pos": 38,
+              "end": 39,
+              "start": 38,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -3821,13 +3821,13 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 46,
-          "pos": 42,
+          "end": 45,
+          "start": 42,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 46,
-              "pos": 42,
+              "end": 45,
+              "start": 42,
               "tag": "UnquotedIdentifier",
               "value": "col1",
             },
@@ -3844,18 +3844,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 13,
-        "pos": 7,
+        "end": 12,
+        "start": 7,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 13,
-            "pos": 7,
+            "end": 12,
+            "start": 7,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 13,
-                "pos": 7,
+                "end": 12,
+                "start": 7,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -3874,23 +3874,23 @@ exports[`Query Interface Should convert update returning star sql (UPDATE table1
 Object {
   "params": Array [
     Object {
+      "end": 41,
       "name": "id",
-      "nextPos": 42,
       "pick": Array [],
-      "pos": 39,
       "required": false,
       "spread": false,
+      "start": 39,
       "type": Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 36,
-          "pos": 34,
+          "end": 35,
+          "start": 34,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 36,
-              "pos": 34,
+              "end": 35,
+              "start": 34,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -3907,13 +3907,13 @@ Object {
       "type": Object {
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 54,
-          "pos": 53,
+          "end": 53,
+          "start": 53,
           "tag": "StarIdentifier",
           "values": Array [
             Object {
-              "nextPos": 54,
-              "pos": 53,
+              "end": 53,
+              "start": 53,
               "tag": "Star",
             },
           ],
@@ -3929,18 +3929,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 13,
-        "pos": 7,
+        "end": 12,
+        "start": 7,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 13,
-            "pos": 7,
+            "end": 12,
+            "start": 7,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 13,
-                "pos": 7,
+                "end": 12,
+                "start": 7,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },
@@ -3965,29 +3965,29 @@ exports[`Query Interface Should convert where params sql (
 Object {
   "params": Array [
     Object {
+      "end": 85,
       "name": "id",
-      "nextPos": 86,
       "pick": Array [],
-      "pos": 83,
       "required": false,
       "spread": false,
+      "start": 83,
       "type": Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 80,
-          "pos": 71,
+          "end": 79,
+          "start": 71,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 77,
-              "pos": 71,
+              "end": 76,
+              "start": 71,
               "tag": "UnquotedIdentifier",
               "value": "table1",
             },
             Object {
-              "nextPos": 80,
-              "pos": 78,
+              "end": 79,
+              "start": 78,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -3998,23 +3998,23 @@ Object {
       },
     },
     Object {
+      "end": 112,
       "name": "val1",
-      "nextPos": 113,
       "pick": Array [],
-      "pos": 108,
       "required": false,
       "spread": false,
+      "start": 108,
       "type": Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 105,
-          "pos": 101,
+          "end": 104,
+          "start": 101,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 105,
-              "pos": 101,
+              "end": 104,
+              "start": 101,
               "tag": "UnquotedIdentifier",
               "value": "col1",
             },
@@ -4032,13 +4032,13 @@ Object {
         "column": "col1",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 20,
-          "pos": 16,
+          "end": 19,
+          "start": 16,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 20,
-              "pos": 16,
+              "end": 19,
+              "start": 16,
               "tag": "UnquotedIdentifier",
               "value": "col1",
             },
@@ -4054,13 +4054,13 @@ Object {
         "column": "col2",
         "schema": undefined,
         "sourceTag": Object {
-          "nextPos": 26,
-          "pos": 22,
+          "end": 25,
+          "start": 22,
           "tag": "Column",
           "values": Array [
             Object {
-              "nextPos": 26,
-              "pos": 22,
+              "end": 25,
+              "start": 22,
               "tag": "UnquotedIdentifier",
               "value": "col2",
             },
@@ -4077,18 +4077,18 @@ Object {
       "name": "table1",
       "schema": undefined,
       "sourceTag": Object {
-        "nextPos": 46,
-        "pos": 40,
+        "end": 45,
+        "start": 40,
         "tag": "Table",
         "values": Array [
           Object {
-            "nextPos": 46,
-            "pos": 40,
+            "end": 45,
+            "start": 40,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "nextPos": 46,
-                "pos": 40,
+                "end": 45,
+                "start": 40,
                 "tag": "UnquotedIdentifier",
                 "value": "table1",
               },

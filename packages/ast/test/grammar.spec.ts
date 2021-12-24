@@ -242,6 +242,7 @@ describe('Sql', () => {
     ${'rollback'}                     | ${'ROLLBACK'}
     ${'rollback to'}                  | ${'ROLLBACK TO my_savepoint'}
     ${'commit'}                       | ${'COMMIT'}
+    ${'with comment'}                 | ${'SELECT * \n-- test comment\nFROM table1'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) =>
     withParserErrors(() => {
       expect(parser(sql)).toMatchSnapshot(name);

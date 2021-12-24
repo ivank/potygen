@@ -60,10 +60,7 @@ const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
         template: node.template.text,
       };
       try {
-        const sqlAst = parser(node.template.text);
-        if (sqlAst) {
-          queries.push({ ...tag, queryInterface: toQueryInterface(sqlAst) });
-        }
+        queries.push({ ...tag, queryInterface: toQueryInterface(parser(node.template.text).ast) });
       } catch (error) {
         throw new ParseError(tag, `Error parsing sql: ${error instanceof Error ? error.message : String(error)}`);
       }
@@ -84,8 +81,7 @@ const toParsedTypescriptFile = (path: string): ParsedTypescriptFile => {
 
 const toParsedSqlFile = (path: string): ParsedSqlFile | undefined => {
   const content = readFileSync(path, 'utf-8');
-  const sqlAst = parser(content);
-  return sqlAst ? { type: 'sql', path, content, queryInterface: toQueryInterface(sqlAst) } : undefined;
+  return { type: 'sql', path, content, queryInterface: toQueryInterface(parser(content).ast) };
 };
 
 const toQueryInterfaces = (files: ParsedFile[]): QueryInterface[] =>

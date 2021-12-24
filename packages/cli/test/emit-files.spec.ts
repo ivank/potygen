@@ -20,7 +20,7 @@ describe('Load Files', () => {
     withParserErrors(async () => {
       const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
       const printer = createPrinter({ newLine: NewLineKind.LineFeed });
-      const ast = parser(content);
+      const { ast } = parser(content);
       const queryInterface = toQueryInterface(ast);
 
       const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);

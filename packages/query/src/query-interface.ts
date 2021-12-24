@@ -527,8 +527,8 @@ export const toParams =
         return [
           {
             name: sql.value,
-            pos: sql.pos,
-            nextPos: sql.nextPos,
+            start: sql.start,
+            end: sql.end,
             spread: sql.type === 'spread',
             required: sql.required || sql.pick.length > 0,
             type: context.type,

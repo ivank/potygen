@@ -229,8 +229,8 @@ export interface Result {
 export interface Param {
   name: string;
   type: Type;
-  pos: number;
-  nextPos: number;
+  start: number;
+  end: number;
   required: boolean;
   pick: Array<{ name: string; type: Type }>;
   spread: boolean;

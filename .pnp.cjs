@@ -682,6 +682,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@ikerin/rd-parse", "npm:3.4.4"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:4.0.1", {
+          "packageLocation": "./.yarn/cache/@ikerin-rd-parse-npm-4.0.1-a7eb775516-68c1c041f2.zip/node_modules/@ikerin/rd-parse/",
+          "packageDependencies": [
+            ["@ikerin/rd-parse", "npm:4.0.1"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["@istanbuljs/load-nyc-config", [
@@ -937,7 +944,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/ast/",
           "packageDependencies": [
             ["@potygen/ast", "workspace:packages/ast"],
-            ["@ikerin/rd-parse", "npm:3.4.4"],
+            ["@ikerin/rd-parse", "npm:4.0.1"],
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:14.17.32"],
             ["jest", "npm:26.6.3"],

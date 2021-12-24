@@ -2,8 +2,8 @@
  * Base Sql tag, holding state of the tag poistion in the text
  */
 export interface SqlTag {
-  pos: number;
-  nextPos: number;
+  start: number;
+  end: number;
   tag: string;
 }
 
@@ -24,6 +24,13 @@ export interface LeafSqlTag extends SqlTag {
  */
 export interface NodeSqlTag extends SqlTag {
   values: Tag[];
+}
+
+/**
+ * A comment (`-- my comment`) sql tag. Sits outside of the AST.
+ */
+export interface CommentTag extends LeafSqlTag {
+  tag: 'Comment';
 }
 
 /**
