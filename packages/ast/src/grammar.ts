@@ -138,10 +138,11 @@ const NumberRule = Any(
   /^(([0-9]+)?\.[0-9]+(e([+-]?[0-9]+)?))/,
   /^([0-9]+e([+-]?[0-9]+))'/,
 );
+const StringRule = /^'((?:''|[^'])*)'/;
 const String = astLeaf<Tag.StringTag>('String', /^'((?:''|[^'])*)'/);
-const EscapeString = astLeaf<Tag.EscapeStringTag>('EscapeString', All(/^E/i, String));
-const HexademicalString = astLeaf<Tag.HexademicalStringTag>('HexademicalString', All(/^X/i, String));
-const BitString = astLeaf<Tag.BitStringTag>('BitString', All(/^B/i, String));
+const EscapeString = astLeaf<Tag.EscapeStringTag>('EscapeString', All(/^E/i, StringRule));
+const HexademicalString = astLeaf<Tag.HexademicalStringTag>('HexademicalString', All(/^X/i, StringRule));
+const BitString = astLeaf<Tag.BitStringTag>('BitString', All(/^B/i, StringRule));
 const DollarQuatedString = astLeaf<Tag.DollarQuotedStringTag>('DollarQuotedString', /^\$\$((?:\$\$|.)*)\$\$/);
 const CustomDollarQuatedString = Node<Tag.CustomQuotedStringTag>(
   /^\$(?<delimiter>[A-Z_][A-Z0-9_]*)\$((?:\$\$|.)*)\$\k<delimiter>\$/i,
@@ -193,8 +194,8 @@ const TypeQualifiedIdentifier = (rule: RegExp) => {
 const Type = astNode<Tag.TypeTag>(
   'Type',
   Any(
-    All(TypeIdentifier(DoubleParamTypeRule), Brackets(Any(All(IntegerRule, ',', IntegerRule), IntegerRule))),
-    All(TypeIdentifier(SingleParamTypeRule), Brackets(IntegerRule)),
+    All(TypeIdentifier(DoubleParamTypeRule), Brackets(Any(All(Integer, ',', Integer), Integer))),
+    All(TypeIdentifier(SingleParamTypeRule), Brackets(Integer)),
     TypeIdentifier(AllTypesRule),
     TypeQualifiedIdentifier(NameRule),
   ),
@@ -208,7 +209,7 @@ const AnyType = Any(TypeArray, Type);
  */
 const CastableRule = (DataType: Rule) =>
   Node<Tag.CastableDataTypeTag>(All(DataType, Optional(All('::', AnyType))), ([value, type], $, $next) => {
-    return type ? { tag: 'PgCast', values: [value, type], pos: $.pos, nextPos: $next.pos } : value;
+    return type ? { tag: 'PgCast', values: [value, type], start: $.pos, end: $next.pos } : value;
   });
 
 const Count = astNode<Tag.CountTag>('Count', CastableRule(Any(Integer, Parameter)));
@@ -453,7 +454,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       All(Star(UnaryOperatorNode), DataOrTernaryExpression),
       (parts, $, $next) =>
         parts.reduceRight((value, operator) => {
-          return { tag: 'UnaryExpression', values: [operator, value], pos: $.pos, nextPos: $next.pos };
+          return { tag: 'UnaryExpression', values: [operator, value], start: $.pos, end: $next.pos };
         }),
     );
 
@@ -646,9 +647,15 @@ const Delete = astNode<Tag.DeleteTag>(
  * ----------------------------------------------------------------------------------------
  */
 const Collate = astLeaf<Tag.CollateTag>('Collate', All(/^COLLATE/i, QuotedNameRule));
+const WrappedExpression = astNode<Tag.WrappedExpressionTag>('WrappedExpression', Brackets(Expression));
+
+const ConflictTargetIndex = astNode<Tag.ConflictTargetIndexTag>(
+  'ConflictTargetIndex',
+  All(Any(Column, WrappedExpression), Optional(Collate)),
+);
 const ConflictTarget = astNode<Tag.ConflictTargetTag>(
   'ConflictTarget',
-  All(Brackets(List(All(Column, Optional(Brackets(Expression)), Optional(Collate)))), Optional(Where)),
+  All(Brackets(List(ConflictTargetIndex)), Optional(Where)),
 );
 const ConflictConstraint = astLeaf<Tag.ConflictConstraintTag>('ConflictConstraint', All(/^ON CONSTRAINT/i, Identifier));
 

@@ -1,4 +1,4 @@
-import { isDiffBy, identity, isUnique, isUniqueBy, chunk, groupBy } from '../src';
+import { isDiffBy, identity, isUnique, isUniqueBy, chunk, groupBy, range } from '../src';
 
 describe('Util', () => {
   it.each<[string, string[], string[]]>([
@@ -14,6 +14,14 @@ describe('Util', () => {
     ['one', ['one', 'two', 'three', 'one'], ['one'], ['two', 'three']],
   ])('Should claculate diff for %s', (name, from, to, expected) => {
     expect(from.filter(isDiffBy(identity, to))).toEqual(expected);
+  });
+
+  it.each<[string, [start: number, end: number], number[]]>([
+    ['two', [0, 3], [0, 1, 2]],
+    ['five', [0, 5], [0, 1, 2, 3, 4]],
+    ['five starting two', [2, 5], [2, 3, 4]],
+  ])('Should generate range for %s', (name, [start, end], expected) => {
+    expect(range(start, end)).toEqual(expected);
   });
 
   it.each<[string, string[], Record<string, string[]>]>([

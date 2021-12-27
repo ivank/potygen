@@ -247,7 +247,7 @@ export interface BitStringTag extends LeafSqlTag {
 }
 
 /**
- * A string representing a hexademical value, prefixed with a X', e.g. B'AF21'
+ * A string representing a hexademical value, prefixed with a X', e.g. X'AF21'
  * https://www.postgresql.org/docs/14/sql-syntax-lexical.html
  */
 export interface HexademicalStringTag extends LeafSqlTag {
@@ -608,10 +608,10 @@ export interface DistinctTag extends NodeSqlTag {
  * ```
  *                                          ┌─condition
  *                                          ▼
- *                       ─ ─ ─ ┬ ┬─────────────────────┬ ┐
- * SELECT array_agg (id │FILTER (│WHERE visible = TRUE │)  FROM table1
- *                       ─ ─ ─ ┴ ┴─────────────────────┴ ┘
- *                     └──────────────────────────────────┘
+ *                        ─ ─ ─ ┬ ┬─────────────────────┬ ┐
+ * SELECT array_agg (id) │FILTER (│WHERE visible = TRUE │) FROM table1
+ *                        ─ ─ ─ ┴ ┴─────────────────────┴ ┘
+ *                      └──────────────────────────────────┘
  *                                       └─▶FilterTag
  * ```
  */
@@ -882,7 +882,7 @@ export interface TernarySeparatorTag extends LeafSqlTag {
  *   value─┐     │     │  │   ┌──arg2
  *         ▼     ▼     ▼  ▼   ▼
  *       ┌───┬───────┬──┬───┬──┐
- * SELECT│col│BETWEEN│12│AND│25│ROM table1
+ * SELECT│col│BETWEEN│12│AND│25│FROM table1
  *       └───┴───────┴──┴───┴──┘
  *      └───────────────────────┘
  *                  └─▶TernaryExpressionTag
@@ -1410,13 +1410,13 @@ export interface ColumnsTag extends NodeSqlTag {
  * Picking specific columns in an INSERT query
  * https://www.postgresql.org/docs/current/sql-insert.html
  * ```
- *                                        item─┐
- *                                             ▼
- *                                ┌ ─ ─ ─ ─ ┌────┬ ┬───────┬ ┐
- * INSERT INTO table1 (col1, col2) VALUES│(││123 │,│DEFAULT│)
- *                                └ ─ ─ ─ ─ └────┴ ┴───────┴ ┘
- *                               └────────────────────────────┘
- *                                              └─▶ValuesTag
+ *                                      item─┐
+ *                                           ▼
+ *                                       ┌ ┬────┬ ┬───────┬ ┐
+ * INSERT INTO table1 (col1, col2) VALUES│(│123 │,│DEFAULT│)
+ *                                       └ ┴────┴ ┴───────┴ ┘
+ *                                      └────────────────────┘
+ *                                                 └─▶ValuesTag
  * ```
  */
 export interface ValuesTag extends NodeSqlTag {
@@ -1620,6 +1620,27 @@ export interface CollateTag extends LeafSqlTag {
 }
 
 /**
+ * Conflict target index clause on insert query
+ * https://www.postgresql.org/docs/current/sql-insert.html
+ * ```
+ * INSERT INTO table1 (col1, col2)
+ * VALUES (1, 2)
+ *
+ *            item─┐
+ *                 ▼
+ *             ─┌────┬ ┐
+ * ON CONFLICT│(│col1│)│WHERE col1 IS NOT NULL│DO NOTHING
+ *             ─└────┴ ┘
+ *           └──────────┘
+ *                 └─▶ConflictTargetTag
+ * ```
+ */
+export interface ConflictTargetIndexTag extends NodeSqlTag {
+  tag: 'ConflictTargetIndex';
+  values: [index: ColumnTag | WrappedExpressionTag] | [index: ColumnTag | WrappedExpressionTag, collate: CollateTag];
+}
+
+/**
  * Conflict target clause on insert query
  * https://www.postgresql.org/docs/current/sql-insert.html
  * ```
@@ -1637,7 +1658,7 @@ export interface CollateTag extends LeafSqlTag {
  */
 export interface ConflictTargetTag extends NodeSqlTag {
   tag: 'ConflictTarget';
-  values: (TableTag | ExpressionTag | CollateTag | WhereTag)[];
+  values: ConflictTargetIndexTag[] | [...indexes: ConflictTargetIndexTag[], where: WhereTag];
 }
 
 /**
@@ -1821,6 +1842,8 @@ export type ExpressionTag =
   | ExtractTag
   | TernaryExpressionTag
   | ComparationExpressionTag
+  | CaseTag
+  | CaseSimpleTag
   | DataTypeTag
   | OperatorExpressionTag
   | RowTag
@@ -1944,6 +1967,7 @@ export type NodeTag =
   | UsingTag
   | DeleteTag
   | ValuesListTag
+  | ConflictTargetIndexTag
   | ConflictTargetTag
   | DoUpdateTag
   | ConflictTag

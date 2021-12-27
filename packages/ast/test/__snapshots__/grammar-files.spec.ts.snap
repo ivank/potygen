@@ -746,8 +746,8 @@ Object {
                             ],
                           },
                           Object {
-                            "nextPos": 512,
-                            "pos": 452,
+                            "end": 512,
+                            "start": 452,
                             "tag": "PgCast",
                             "values": Array [
                               Object {
@@ -871,39 +871,60 @@ Object {
               Object {
                 "end": 575,
                 "start": 566,
-                "tag": "Column",
+                "tag": "ConflictTargetIndex",
                 "values": Array [
                   Object {
                     "end": 575,
                     "start": 566,
-                    "tag": "UnquotedIdentifier",
-                    "value": "account_id",
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 575,
+                        "start": 566,
+                        "tag": "UnquotedIdentifier",
+                        "value": "account_id",
+                      },
+                    ],
                   },
                 ],
               },
               Object {
                 "end": 592,
                 "start": 578,
-                "tag": "Column",
+                "tag": "ConflictTargetIndex",
                 "values": Array [
                   Object {
                     "end": 592,
                     "start": 578,
-                    "tag": "UnquotedIdentifier",
-                    "value": "installation_id",
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 592,
+                        "start": 578,
+                        "tag": "UnquotedIdentifier",
+                        "value": "installation_id",
+                      },
+                    ],
                   },
                 ],
               },
               Object {
                 "end": 609,
                 "start": 595,
-                "tag": "Column",
+                "tag": "ConflictTargetIndex",
                 "values": Array [
                   Object {
                     "end": 609,
                     "start": 595,
-                    "tag": "UnquotedIdentifier",
-                    "value": "levelisation_id",
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 609,
+                        "start": 595,
+                        "tag": "UnquotedIdentifier",
+                        "value": "levelisation_id",
+                      },
+                    ],
                   },
                 ],
               },
@@ -2802,8 +2823,8 @@ Object {
                                             "tag": "BinaryExpression",
                                             "values": Array [
                                               Object {
-                                                "nextPos": 2417,
-                                                "pos": 2392,
+                                                "end": 2417,
+                                                "start": 2392,
                                                 "tag": "PgCast",
                                                 "values": Array [
                                                   Object {
@@ -2888,8 +2909,8 @@ Object {
                                                 "value": "IS",
                                               },
                                               Object {
-                                                "nextPos": 2482,
-                                                "pos": 2474,
+                                                "end": 2482,
+                                                "start": 2474,
                                                 "tag": "UnaryExpression",
                                                 "values": Array [
                                                   Object {
@@ -2939,8 +2960,8 @@ Object {
                                 "tag": "BinaryExpression",
                                 "values": Array [
                                   Object {
-                                    "nextPos": 2526,
-                                    "pos": 2492,
+                                    "end": 2526,
+                                    "start": 2492,
                                     "tag": "PgCast",
                                     "values": Array [
                                       Object {
@@ -3069,8 +3090,8 @@ Object {
                             "tag": "BinaryExpression",
                             "values": Array [
                               Object {
-                                "nextPos": 2605,
-                                "pos": 2585,
+                                "end": 2605,
+                                "start": 2585,
                                 "tag": "PgCast",
                                 "values": Array [
                                   Object {
@@ -3210,8 +3231,8 @@ Object {
                                 ],
                               },
                               Object {
-                                "nextPos": 2767,
-                                "pos": 2756,
+                                "end": 2767,
+                                "start": 2756,
                                 "tag": "PgCast",
                                 "values": Array [
                                   Object {
@@ -3326,8 +3347,8 @@ Object {
                                 "tag": "ExpressionList",
                                 "values": Array [
                                   Object {
-                                    "nextPos": 2819,
-                                    "pos": 2808,
+                                    "end": 2819,
+                                    "start": 2808,
                                     "tag": "PgCast",
                                     "values": Array [
                                       Object {
@@ -5815,8 +5836,8 @@ Object {
                         ],
                       },
                       Object {
-                        "nextPos": 5201,
-                        "pos": 5162,
+                        "end": 5201,
+                        "start": 5162,
                         "tag": "PgCast",
                         "values": Array [
                           Object {
@@ -5957,8 +5978,8 @@ Object {
                         ],
                       },
                       Object {
-                        "nextPos": 5317,
-                        "pos": 5278,
+                        "end": 5317,
+                        "start": 5278,
                         "tag": "PgCast",
                         "values": Array [
                           Object {
@@ -6027,8 +6048,8 @@ Object {
             "tag": "Count",
             "values": Array [
               Object {
-                "nextPos": 5358,
-                "pos": 5347,
+                "end": 5358,
+                "start": 5347,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -6077,8 +6098,8 @@ Object {
             "tag": "Count",
             "values": Array [
               Object {
-                "nextPos": 5378,
-                "pos": 5366,
+                "end": 5378,
+                "start": 5366,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -6411,8 +6432,8 @@ Object {
                             "tag": "ExpressionList",
                             "values": Array [
                               Object {
-                                "nextPos": 205,
-                                "pos": 194,
+                                "end": 205,
+                                "start": 194,
                                 "tag": "PgCast",
                                 "values": Array [
                                   Object {
@@ -7206,8 +7227,8 @@ Object {
                     "tag": "ExpressionList",
                     "values": Array [
                       Object {
-                        "nextPos": 540,
-                        "pos": 529,
+                        "end": 540,
+                        "start": 529,
                         "tag": "PgCast",
                         "values": Array [
                           Object {
@@ -7350,8 +7371,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 39,
-                "pos": 7,
+                "end": 39,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -8879,8 +8900,8 @@ Object {
                                                     "tag": "BinaryExpression",
                                                     "values": Array [
                                                       Object {
-                                                        "nextPos": 1611,
-                                                        "pos": 1591,
+                                                        "end": 1611,
+                                                        "start": 1591,
                                                         "tag": "PgCast",
                                                         "values": Array [
                                                           Object {
@@ -9234,8 +9255,8 @@ Object {
                                 ],
                               },
                               Object {
-                                "nextPos": 1921,
-                                "pos": 1910,
+                                "end": 1921,
+                                "start": 1910,
                                 "tag": "PgCast",
                                 "values": Array [
                                   Object {
@@ -9350,8 +9371,8 @@ Object {
                                 "tag": "ExpressionList",
                                 "values": Array [
                                   Object {
-                                    "nextPos": 1960,
-                                    "pos": 1949,
+                                    "end": 1960,
+                                    "start": 1949,
                                     "tag": "PgCast",
                                     "values": Array [
                                       Object {
@@ -11200,8 +11221,8 @@ Object {
                                                 "tag": "BinaryExpression",
                                                 "values": Array [
                                                   Object {
-                                                    "nextPos": 1994,
-                                                    "pos": 1974,
+                                                    "end": 1994,
+                                                    "start": 1974,
                                                     "tag": "PgCast",
                                                     "values": Array [
                                                       Object {
@@ -11506,8 +11527,8 @@ Object {
                                 ],
                               },
                               Object {
-                                "nextPos": 2283,
-                                "pos": 2272,
+                                "end": 2283,
+                                "start": 2272,
                                 "tag": "PgCast",
                                 "values": Array [
                                   Object {
@@ -11622,8 +11643,8 @@ Object {
                                 "tag": "ExpressionList",
                                 "values": Array [
                                   Object {
-                                    "nextPos": 2322,
-                                    "pos": 2311,
+                                    "end": 2322,
+                                    "start": 2311,
                                     "tag": "PgCast",
                                     "values": Array [
                                       Object {
@@ -11872,8 +11893,8 @@ Object {
             "tag": "Count",
             "values": Array [
               Object {
-                "nextPos": 2639,
-                "pos": 2628,
+                "end": 2639,
+                "start": 2628,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -11922,8 +11943,8 @@ Object {
             "tag": "Count",
             "values": Array [
               Object {
-                "nextPos": 2659,
-                "pos": 2647,
+                "end": 2659,
+                "start": 2647,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -12311,8 +12332,8 @@ Object {
                 "tag": "SelectListItem",
                 "values": Array [
                   Object {
-                    "nextPos": 683,
-                    "pos": 498,
+                    "end": 683,
+                    "start": 498,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -12705,8 +12726,8 @@ Object {
                                         "value": "IS",
                                       },
                                       Object {
-                                        "nextPos": 876,
-                                        "pos": 868,
+                                        "end": 876,
+                                        "start": 868,
                                         "tag": "UnaryExpression",
                                         "values": Array [
                                           Object {
@@ -12771,8 +12792,8 @@ Object {
                                 ],
                               },
                               Object {
-                                "nextPos": 952,
-                                "pos": 908,
+                                "end": 952,
+                                "start": 908,
                                 "tag": "PgCast",
                                 "values": Array [
                                   Object {
@@ -15290,13 +15311,20 @@ Object {
               Object {
                 "end": 3579,
                 "start": 3564,
-                "tag": "Column",
+                "tag": "ConflictTargetIndex",
                 "values": Array [
                   Object {
                     "end": 3579,
                     "start": 3564,
-                    "tag": "UnquotedIdentifier",
-                    "value": "source_system_id",
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 3579,
+                        "start": 3564,
+                        "tag": "UnquotedIdentifier",
+                        "value": "source_system_id",
+                      },
+                    ],
                   },
                 ],
               },
@@ -15330,8 +15358,8 @@ Object {
                         "value": "IS",
                       },
                       Object {
-                        "nextPos": 3616,
-                        "pos": 3608,
+                        "end": 3616,
+                        "start": 3608,
                         "tag": "UnaryExpression",
                         "values": Array [
                           Object {
@@ -17311,8 +17339,8 @@ Object {
                         "tag": "BinaryExpression",
                         "values": Array [
                           Object {
-                            "nextPos": 1641,
-                            "pos": 1628,
+                            "end": 1641,
+                            "start": 1628,
                             "tag": "PgCast",
                             "values": Array [
                               Object {
@@ -20288,8 +20316,8 @@ Object {
                                         "value": "IS",
                                       },
                                       Object {
-                                        "nextPos": 1899,
-                                        "pos": 1891,
+                                        "end": 1899,
+                                        "start": 1891,
                                         "tag": "UnaryExpression",
                                         "values": Array [
                                           Object {
@@ -20851,8 +20879,8 @@ Object {
                                         "value": "IS",
                                       },
                                       Object {
-                                        "nextPos": 2422,
-                                        "pos": 2414,
+                                        "end": 2422,
+                                        "start": 2414,
                                         "tag": "UnaryExpression",
                                         "values": Array [
                                           Object {
@@ -20950,8 +20978,8 @@ Object {
                 "tag": "SelectListItem",
                 "values": Array [
                   Object {
-                    "nextPos": 2666,
-                    "pos": 2549,
+                    "end": 2666,
+                    "start": 2549,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -21005,8 +21033,8 @@ Object {
                                             "value": "IS",
                                           },
                                           Object {
-                                            "nextPos": 2585,
-                                            "pos": 2577,
+                                            "end": 2585,
+                                            "start": 2577,
                                             "tag": "UnaryExpression",
                                             "values": Array [
                                               Object {
@@ -21874,13 +21902,20 @@ Object {
               Object {
                 "end": 3358,
                 "start": 3343,
-                "tag": "Column",
+                "tag": "ConflictTargetIndex",
                 "values": Array [
                   Object {
                     "end": 3358,
                     "start": 3343,
-                    "tag": "UnquotedIdentifier",
-                    "value": "source_system_id",
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 3358,
+                        "start": 3343,
+                        "tag": "UnquotedIdentifier",
+                        "value": "source_system_id",
+                      },
+                    ],
                   },
                 ],
               },
@@ -21914,8 +21949,8 @@ Object {
                         "value": "IS",
                       },
                       Object {
-                        "nextPos": 3395,
-                        "pos": 3387,
+                        "end": 3395,
+                        "start": 3387,
                         "tag": "UnaryExpression",
                         "values": Array [
                           Object {
@@ -23427,8 +23462,8 @@ Object {
                         "value": "-",
                       },
                       Object {
-                        "nextPos": 448,
-                        "pos": 429,
+                        "end": 448,
+                        "start": 429,
                         "tag": "PgCast",
                         "values": Array [
                           Object {
@@ -23614,13 +23649,20 @@ Object {
               Object {
                 "end": 160,
                 "start": 146,
-                "tag": "Column",
+                "tag": "ConflictTargetIndex",
                 "values": Array [
                   Object {
                     "end": 160,
                     "start": 146,
-                    "tag": "UnquotedIdentifier",
-                    "value": "idempotency_key",
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 160,
+                        "start": 146,
+                        "tag": "UnquotedIdentifier",
+                        "value": "idempotency_key",
+                      },
+                    ],
                   },
                 ],
               },
@@ -23654,8 +23696,8 @@ Object {
                         "value": "IS",
                       },
                       Object {
-                        "nextPos": 196,
-                        "pos": 188,
+                        "end": 196,
+                        "start": 188,
                         "tag": "UnaryExpression",
                         "values": Array [
                           Object {
@@ -24343,8 +24385,8 @@ Object {
                 "tag": "SelectListItem",
                 "values": Array [
                   Object {
-                    "nextPos": 815,
-                    "pos": 769,
+                    "end": 815,
+                    "start": 769,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -24396,8 +24438,8 @@ Object {
                 "tag": "SelectListItem",
                 "values": Array [
                   Object {
-                    "nextPos": 882,
-                    "pos": 819,
+                    "end": 882,
+                    "start": 819,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -24449,8 +24491,8 @@ Object {
                 "tag": "SelectListItem",
                 "values": Array [
                   Object {
-                    "nextPos": 936,
-                    "pos": 886,
+                    "end": 936,
+                    "start": 886,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -24502,8 +24544,8 @@ Object {
                 "tag": "SelectListItem",
                 "values": Array [
                   Object {
-                    "nextPos": 1229,
-                    "pos": 940,
+                    "end": 1229,
+                    "start": 940,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -27914,13 +27956,20 @@ Object {
               Object {
                 "end": 3875,
                 "start": 3860,
-                "tag": "Column",
+                "tag": "ConflictTargetIndex",
                 "values": Array [
                   Object {
                     "end": 3875,
                     "start": 3860,
-                    "tag": "UnquotedIdentifier",
-                    "value": "source_system_id",
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 3875,
+                        "start": 3860,
+                        "tag": "UnquotedIdentifier",
+                        "value": "source_system_id",
+                      },
+                    ],
                   },
                 ],
               },
@@ -27954,8 +28003,8 @@ Object {
                         "value": "IS",
                       },
                       Object {
-                        "nextPos": 3912,
-                        "pos": 3904,
+                        "end": 3912,
+                        "start": 3904,
                         "tag": "UnaryExpression",
                         "values": Array [
                           Object {
@@ -29469,8 +29518,8 @@ Object {
                                 ],
                               },
                               Object {
-                                "nextPos": 314,
-                                "pos": 303,
+                                "end": 314,
+                                "start": 303,
                                 "tag": "PgCast",
                                 "values": Array [
                                   Object {
@@ -29585,8 +29634,8 @@ Object {
                                 "tag": "ExpressionList",
                                 "values": Array [
                                   Object {
-                                    "nextPos": 358,
-                                    "pos": 347,
+                                    "end": 358,
+                                    "start": 347,
                                     "tag": "PgCast",
                                     "values": Array [
                                       Object {
@@ -29882,8 +29931,8 @@ Object {
             "tag": "Count",
             "values": Array [
               Object {
-                "nextPos": 614,
-                "pos": 603,
+                "end": 614,
+                "start": 603,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -29932,8 +29981,8 @@ Object {
             "tag": "Count",
             "values": Array [
               Object {
-                "nextPos": 634,
-                "pos": 622,
+                "end": 634,
+                "start": 622,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -30329,8 +30378,8 @@ Object {
                 "tag": "SelectListItem",
                 "values": Array [
                   Object {
-                    "nextPos": 782,
-                    "pos": 386,
+                    "end": 782,
+                    "start": 386,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -30738,8 +30787,8 @@ Object {
                             ],
                           },
                           Object {
-                            "nextPos": 1078,
-                            "pos": 1053,
+                            "end": 1078,
+                            "start": 1053,
                             "tag": "PgCast",
                             "values": Array [
                               Object {
@@ -31041,8 +31090,8 @@ Object {
                     "value": "IS",
                   },
                   Object {
-                    "nextPos": 1383,
-                    "pos": 1375,
+                    "end": 1383,
+                    "start": 1375,
                     "tag": "UnaryExpression",
                     "values": Array [
                       Object {
@@ -31077,13 +31126,20 @@ Object {
               Object {
                 "end": 1413,
                 "start": 1398,
-                "tag": "Column",
+                "tag": "ConflictTargetIndex",
                 "values": Array [
                   Object {
                     "end": 1413,
                     "start": 1398,
-                    "tag": "UnquotedIdentifier",
-                    "value": "source_system_id",
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 1413,
+                        "start": 1398,
+                        "tag": "UnquotedIdentifier",
+                        "value": "source_system_id",
+                      },
+                    ],
                   },
                 ],
               },
@@ -31117,8 +31173,8 @@ Object {
                         "value": "IS",
                       },
                       Object {
-                        "nextPos": 1450,
-                        "pos": 1442,
+                        "end": 1450,
+                        "start": 1442,
                         "tag": "UnaryExpression",
                         "values": Array [
                           Object {
@@ -33168,8 +33224,8 @@ Object {
                             "tag": "BinaryExpression",
                             "values": Array [
                               Object {
-                                "nextPos": 269,
-                                "pos": 252,
+                                "end": 269,
+                                "start": 252,
                                 "tag": "PgCast",
                                 "values": Array [
                                   Object {
@@ -33559,8 +33615,8 @@ Object {
                     ],
                   },
                   Object {
-                    "nextPos": 209,
-                    "pos": 198,
+                    "end": 209,
+                    "start": 198,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -34812,8 +34868,8 @@ Object {
                 "value": "ALL/EXPORT/01",
               },
               Object {
-                "nextPos": 114,
-                "pos": 92,
+                "end": 114,
+                "start": 92,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -34864,8 +34920,8 @@ Object {
                 "value": "ALL/EXPORT/02",
               },
               Object {
-                "nextPos": 165,
-                "pos": 143,
+                "end": 165,
+                "start": 143,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -34913,13 +34969,20 @@ Object {
               Object {
                 "end": 196,
                 "start": 181,
-                "tag": "Column",
+                "tag": "ConflictTargetIndex",
                 "values": Array [
                   Object {
                     "end": 196,
                     "start": 181,
-                    "tag": "UnquotedIdentifier",
-                    "value": "source_system_id",
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 196,
+                        "start": 181,
+                        "tag": "UnquotedIdentifier",
+                        "value": "source_system_id",
+                      },
+                    ],
                   },
                 ],
               },
@@ -34953,8 +35016,8 @@ Object {
                         "value": "IS",
                       },
                       Object {
-                        "nextPos": 233,
-                        "pos": 225,
+                        "end": 233,
+                        "start": 225,
                         "tag": "UnaryExpression",
                         "values": Array [
                           Object {

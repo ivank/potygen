@@ -1,0 +1,1336 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Format Should parse simple sql access expression (SELECT (ss.x).n FROM ss): access expression 1`] = `
+"SELECT (ss.x).n FROM ss
+"
+`;
+
+exports[`Format Should parse simple sql access in a range (SELECT ss.proargmodes[(ss.x).n] FROM ss): access in a range 1`] = `
+"SELECT (ss.proargmodes)[(ss.x).n] FROM ss
+"
+`;
+
+exports[`Format Should parse simple sql all (SELECT ALL col1 FROM table1): all 1`] = `
+"SELECT col1 FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql array (SELECT ARRAY[1, 2]): array 1`] = `
+"SELECT ARRAY[1, 2]
+"
+`;
+
+exports[`Format Should parse simple sql array index (SELECT arr[12]): array index 1`] = `
+"SELECT (arr)[12]
+"
+`;
+
+exports[`Format Should parse simple sql array index expression (SELECT arr[12+3]): array index expression 1`] = `
+"SELECT (arr)[12 + 3]
+"
+`;
+
+exports[`Format Should parse simple sql array index expression col (SELECT arr[table1.id+3] FROM table1): array index expression col 1`] = `
+"SELECT (arr)[table1.id + 3] FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql array index slice (SELECT (ARRAY[1,2,3,4])[2:3]): array index slice 1`] = `
+"SELECT (ARRAY[1, 2, 3, 4])[2:3]
+"
+`;
+
+exports[`Format Should parse simple sql array nested (SELECT ARRAY[ARRAY[1,2], ARRAY['test','other']]): array nested 1`] = `
+"SELECT ARRAY[ARRAY[1, 2], ARRAY['test', 'other']]
+"
+`;
+
+exports[`Format Should parse simple sql as select (SELECT column1 as col1): as select 1`] = `
+"SELECT column1 AS col1
+"
+`;
+
+exports[`Format Should parse simple sql begin (BEGIN): begin 1`] = `
+"BEGIN
+"
+`;
+
+exports[`Format Should parse simple sql begin semicolon (BEGIN;): begin semicolon 1`] = `
+"BEGIN
+"
+`;
+
+exports[`Format Should parse simple sql between (SELECT * WHERE table1.col BETWEEN '2006-01-01' AND '2007-01-01'): between 1`] = `
+"SELECT * WHERE table1.col BETWEEN '2006-01-01' AND '2007-01-01'
+"
+`;
+
+exports[`Format Should parse simple sql between params (SELECT * FROM table1 WHERE table1.col BETWEEN $start AND $end): between params 1`] = `
+"SELECT * FROM table1 WHERE table1.col BETWEEN $start AND $end
+"
+`;
+
+exports[`Format Should parse simple sql between params more (SELECT * FROM table1 WHERE active_reads.meter_id = meters.id AND active_reads.date_on BETWEEN $start AND $end): between params more 1`] = `
+"SELECT *
+FROM table1
+WHERE
+  active_reads.meter_id = meters.id
+  AND active_reads.date_on BETWEEN $start AND $end
+"
+`;
+
+exports[`Format Should parse simple sql binary constant (SELECT E'111'::varbit): binary constant 1`] = `
+"SELECT E'111'::varbit
+"
+`;
+
+exports[`Format Should parse simple sql binary div (SELECT 1 / 2): binary div 1`] = `
+"SELECT 1 / 2
+"
+`;
+
+exports[`Format Should parse simple sql binary mul (SELECT 1 * 2): binary mul 1`] = `
+"SELECT 1 * 2
+"
+`;
+
+exports[`Format Should parse simple sql binary sub (SELECT 1 - 2): binary sub 1`] = `
+"SELECT 1 - 2
+"
+`;
+
+exports[`Format Should parse simple sql binary sum (SELECT 1 + 2): binary sum 1`] = `
+"SELECT 1 + 2
+"
+`;
+
+exports[`Format Should parse simple sql binary sum, div, mul (SELECT (1 + 2) / (20 * 32)): binary sum, div, mul 1`] = `
+"SELECT (1 + 2) / (20 * 32)
+"
+`;
+
+exports[`Format Should parse simple sql binary sum, sub (SELECT 1 - 2 + 2): binary sum, sub 1`] = `
+"SELECT
+  1 - 2
+  + 2
+"
+`;
+
+exports[`Format Should parse simple sql bit string (SELECT B'111'): bit string 1`] = `
+"SELECT B'111'
+"
+`;
+
+exports[`Format Should parse simple sql case no else (SELECT CASE test1 WHEN 1 THEN TRUE WHEN 2 THEN FALSE END): case no else 1`] = `
+"SELECT CASE test1 WHEN 1 THEN TRUE WHEN 2 THEN FALSE END
+"
+`;
+
+exports[`Format Should parse simple sql case no else and expression (SELECT CASE WHEN test1 <> 1 THEN TRUE WHEN test1 <> 2 THEN FALSE END): case no else and expression 1`] = `
+"SELECT CASE WHEN test1 <> 1 THEN TRUE WHEN test1 <> 2 THEN FALSE END
+"
+`;
+
+exports[`Format Should parse simple sql case with else (SELECT CASE test1 WHEN 1 THEN TRUE WHEN 2 THEN FALSE ELSE 0 END): case with else 1`] = `
+"SELECT CASE test1 WHEN 1 THEN TRUE WHEN 2 THEN FALSE ELSE 0 END
+"
+`;
+
+exports[`Format Should parse simple sql case with type (SELECT CASE p.prokind WHEN 'f'::"char" THEN 'FUNCTION'::text ELSE NULL::text END::information_schema.character_data FROM table1 p): case with type 1`] = `
+"SELECT
+  CASE p.prokind
+    WHEN 'f'::\\"char\\" THEN 'FUNCTION'::text
+    ELSE NULL::text
+  END::information_schema.character_data
+FROM table1 AS p
+"
+`;
+
+exports[`Format Should parse simple sql case without expression (SELECT CASE WHEN test1 <> 1 THEN TRUE WHEN test1 <> 2 THEN FALSE ELSE 0 END): case without expression 1`] = `
+"SELECT CASE WHEN test1 <> 1 THEN TRUE WHEN test1 <> 2 THEN FALSE ELSE 0 END
+"
+`;
+
+exports[`Format Should parse simple sql cast (SELECT CAST(id AS int4)): cast 1`] = `
+"SELECT CAST ( id AS int4 )
+"
+`;
+
+exports[`Format Should parse simple sql cast from function (SELECT (pg_get_expr(ad.adbin, ad.adrelid))::information_schema.character_data AS column_default FROM table1 AS ad): cast from function 1`] = `
+"SELECT
+  (pg_get_expr(ad.adbin, ad.adrelid))::information_schema.character_data AS
+  column_default
+FROM table1 AS ad
+"
+`;
+
+exports[`Format Should parse simple sql cast nested (SELECT 'd'::character varying::information_schema.sql_identifier): cast nested 1`] = `
+"SELECT 'd'::character varying::information_schema.sql_identifier
+"
+`;
+
+exports[`Format Should parse simple sql cast number (SELECT CAST(20 AS int4)): cast number 1`] = `
+"SELECT CAST ( 20 AS int4 )
+"
+`;
+
+exports[`Format Should parse simple sql cast quoted (SELECT 'd'::"char"): cast quoted 1`] = `
+"SELECT 'd'::\\"char\\"
+"
+`;
+
+exports[`Format Should parse simple sql cast string (SELECT CAST('test' AS varchar(20))): cast string 1`] = `
+"SELECT CAST ( 'test' AS varchar(20) )
+"
+`;
+
+exports[`Format Should parse simple sql cast type with schema (SELECT CAST(id AS information_schema.sql_identifier)): cast type with schema 1`] = `
+"SELECT CAST ( id AS information_schema.sql_identifier )
+"
+`;
+
+exports[`Format Should parse simple sql cast with tz (SELECT 'd'::timestampz): cast with tz 1`] = `
+"SELECT 'd'::timestamp AS z
+"
+`;
+
+exports[`Format Should parse simple sql cast with tz nested (SELECT 'd'::character varying::information_schema.sql_identifier): cast with tz nested 1`] = `
+"SELECT 'd'::character varying::information_schema.sql_identifier
+"
+`;
+
+exports[`Format Should parse simple sql coalesce (SELECT COALESCE(id, TRUE) FROM table1): coalesce 1`] = `
+"SELECT COALESCE(id, TRUE) FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql column select (SELECT column1): column select 1`] = `
+"SELECT column1
+"
+`;
+
+exports[`Format Should parse simple sql comments (-- test
+SELECT "test"
+-- other
+): comments 1`] = `
+"-- test
+SELECT \\"test\\"
+-- other
+"
+`;
+
+exports[`Format Should parse simple sql commit (COMMIT): commit 1`] = `
+"COMMIT
+"
+`;
+
+exports[`Format Should parse simple sql commit semicolon (COMMIT;): commit semicolon 1`] = `
+"COMMIT
+"
+`;
+
+exports[`Format Should parse simple sql complex dimensions (SELECT contracts.export_type = ANY(ARRAY['Metered Export','Deemed']::installation_export_type[]) FROM contracts): complex dimensions 1`] = `
+"SELECT
+  contracts.export_type
+  = ANY(ARRAY['Metered Export', 'Deemed']::installation_export_type[])
+FROM contracts
+"
+`;
+
+exports[`Format Should parse simple sql const select (SELECT '2018-01-01'): const select 1`] = `
+"SELECT '2018-01-01'
+"
+`;
+
+exports[`Format Should parse simple sql cross join (SELECT * FROM jobs CROSS JOIN test1): cross join 1`] = `
+"SELECT * FROM jobs CROSS JOIN test1
+"
+`;
+
+exports[`Format Should parse simple sql cte with columns (WITH ins(id, val) AS (VALUES (1::int, 2::int),(3::int, 4::int)) INSERT INTO table2 SELECT * FROM ins): cte with columns 1`] = `
+"WITH
+  ins (id, val) AS (VALUES (1::int, 2::int), (3::int, 4::int))
+INSERT INTO table2 SELECT * FROM ins
+"
+`;
+
+exports[`Format Should parse simple sql cte without columns (WITH mv AS (DELETE FROM table1 RETURNING *) INSERT INTO table2 SELECT * FROM mv): cte without columns 1`] = `
+"WITH mv AS (DELETE FROM table1 RETURNING *) INSERT INTO table2 SELECT * FROM mv
+"
+`;
+
+exports[`Format Should parse simple sql customdollar quoted string (SELECT $SomeTag$Dianne's horse$SomeTag$): customdollar quoted string 1`] = `
+"SELECT $SomeTag$Dianne's horse$SomeTag$
+"
+`;
+
+exports[`Format Should parse simple sql deep multiple columns select (SELECT column1, table1.column2, table1.column3, schema1.table3.colum2): deep multiple columns select 1`] = `
+"SELECT column1, table1.column2, table1.column3, schema1.table3.colum2
+"
+`;
+
+exports[`Format Should parse simple sql deep qualified column select (SELECT schema1.table1.column1): deep qualified column select 1`] = `
+"SELECT schema1.table1.column1
+"
+`;
+
+exports[`Format Should parse simple sql deep qualified star select (SELECT table1.table2.*): deep qualified star select 1`] = `
+"SELECT table1.table2.*
+"
+`;
+
+exports[`Format Should parse simple sql deep quoted star select (SELECT "table 1"."table 2".*): deep quoted star select 1`] = `
+"SELECT \\"table 1\\".\\"table 2\\".*
+"
+`;
+
+exports[`Format Should parse simple sql delete (DELETE FROM table1): delete 1`] = `
+"DELETE FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql delete param (DELETE FROM table1 WHERE id = :id): delete param 1`] = `
+"DELETE FROM table1 WHERE id = $id
+"
+`;
+
+exports[`Format Should parse simple sql delete returning (DELETE FROM table1 RETURNING id, col2): delete returning 1`] = `
+"DELETE FROM table1 RETURNING id, col2
+"
+`;
+
+exports[`Format Should parse simple sql delete returning (DELETE FROM table1 USING table2 AS "my2" WHERE table1.id = my2.id AND deleted_at IS NOT NULL RETURNING id, col1): delete returning 1`] = `
+"DELETE FROM table1
+USING table2 AS \\"my2\\"
+WHERE
+  table1.id = my2.id
+  AND deleted_at IS NOT NULL
+RETURNING id, col1
+"
+`;
+
+exports[`Format Should parse simple sql delete with delete (WITH tmp AS (DELETE FROM table1 RETURNING id, col2) DELETE FROM table2 WHERE tmp.col2 = table2.id): delete with delete 1`] = `
+"WITH
+  tmp AS (DELETE FROM table1 RETURNING id, col2)
+DELETE FROM table2 WHERE tmp.col2 = table2.id
+"
+`;
+
+exports[`Format Should parse simple sql delete with insert (WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id, col2) DELETE FROM table2 WHERE tmp.col2 = table2.id): delete with insert 1`] = `
+"WITH
+  tmp AS (INSERT INTO table1 (id) VALUES (2) RETURNING id, col2)
+DELETE FROM table2 WHERE tmp.col2 = table2.id
+"
+`;
+
+exports[`Format Should parse simple sql delete with select (WITH tmp AS (SELECT * FROM table1) DELETE FROM table2 WHERE tmp.col2 = table2.id): delete with select 1`] = `
+"WITH tmp AS (SELECT * FROM table1) DELETE FROM table2 WHERE tmp.col2 = table2.id
+"
+`;
+
+exports[`Format Should parse simple sql delete with update (WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2) DELETE FROM table2 WHERE tmp.col2 = table2.id): delete with update 1`] = `
+"WITH
+  tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2)
+DELETE FROM table2 WHERE tmp.col2 = table2.id
+"
+`;
+
+exports[`Format Should parse simple sql dollar quoted string (SELECT $Dianne's horse$): dollar quoted string 1`] = `
+"SELECT $$Dianne's horse$$
+"
+`;
+
+exports[`Format Should parse simple sql escape constant (SELECT E'111'::varbit): escape constant 1`] = `
+"SELECT E'111'::varbit
+"
+`;
+
+exports[`Format Should parse simple sql escape string (SELECT E'\\o'): escape string 1`] = `
+"SELECT E'\\\\o'
+"
+`;
+
+exports[`Format Should parse simple sql except (SELECT * FROM table1 EXCEPT SELECT * FROM table2): except 1`] = `
+"SELECT * FROM table1  EXCEPT SELECT * FROM table2
+"
+`;
+
+exports[`Format Should parse simple sql except all (SELECT * FROM table1 EXCEPT ALL SELECT * FROM table2): except all 1`] = `
+"SELECT * FROM table1  EXCEPT ALL SELECT * FROM table2
+"
+`;
+
+exports[`Format Should parse simple sql except select (SELECT col1, col2 FROM table1 EXCEPT SELECT col1, col2 FROM table2): except select 1`] = `
+"SELECT col1, col2 FROM table1  EXCEPT SELECT col1, col2 FROM table2
+"
+`;
+
+exports[`Format Should parse simple sql extract field century (SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')): extract field century 1`] = `
+"SELECT EXTRACT (CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')
+"
+`;
+
+exports[`Format Should parse simple sql extract field day (SELECT EXTRACT(DAY FROM INTERVAL '40 days 1 minute')): extract field day 1`] = `
+"SELECT EXTRACT (DAY FROM INTERVAL '40 days 1 minute')
+"
+`;
+
+exports[`Format Should parse simple sql from (SELECT * FROM jobs): from 1`] = `
+"SELECT * FROM jobs
+"
+`;
+
+exports[`Format Should parse simple sql from select (SELECT * FROM (SELECT * FROM jobs2) as jobs1): from select 1`] = `
+"SELECT * FROM (SELECT * FROM jobs2) AS jobs1
+"
+`;
+
+exports[`Format Should parse simple sql from select as (SELECT * FROM jobs1, (SELECT * FROM jobs2) as tmp2): from select as 1`] = `
+"SELECT * FROM jobs1, (SELECT * FROM jobs2) AS tmp2
+"
+`;
+
+exports[`Format Should parse simple sql from with as (SELECT * FROM jobs AS test): from with as 1`] = `
+"SELECT * FROM jobs AS test
+"
+`;
+
+exports[`Format Should parse simple sql from with as quoted (SELECT * FROM jobs AS "test 2"): from with as quoted 1`] = `
+"SELECT * FROM jobs AS \\"test 2\\"
+"
+`;
+
+exports[`Format Should parse simple sql from with as short (SELECT * FROM jobs test): from with as short 1`] = `
+"SELECT * FROM jobs AS test
+"
+`;
+
+exports[`Format Should parse simple sql from with schema (SELECT * FROM public.jobs): from with schema 1`] = `
+"SELECT * FROM public.jobs
+"
+`;
+
+exports[`Format Should parse simple sql full join (SELECT * FROM jobs FULL JOIN test1): full join 1`] = `
+"SELECT * FROM jobs FULL JOIN test1
+"
+`;
+
+exports[`Format Should parse simple sql full outer join (SELECT * FROM jobs FULL OUTER JOIN test1): full outer join 1`] = `
+"SELECT * FROM jobs FULL OUTER JOIN test1
+"
+`;
+
+exports[`Format Should parse simple sql function (SELECT MY_FUNCTION(id, TRUE) FROM table1): function 1`] = `
+"SELECT MY_FUNCTION(id, TRUE) FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql function in set (UPDATE table1 SET col1 = MY_FUNCTION(id, TRUE) RETURNING id, col1): function in set 1`] = `
+"UPDATE table1 SET col1 = MY_FUNCTION(id, TRUE) RETURNING id, col1
+"
+`;
+
+exports[`Format Should parse simple sql function in where (SELECT id FROM table1 WHERE table1.col = ANY(table1.test) ): function in where 1`] = `
+"SELECT id FROM table1 WHERE table1.col = ANY (table1.test)
+"
+`;
+
+exports[`Format Should parse simple sql function with array (SELECT id FROM table1 WHERE table1.col = ANY(ARRAY['opening','Opening']) ORDER BY col ASC LIMIT 1): function with array 1`] = `
+"SELECT id
+FROM table1
+WHERE table1.col = ANY (ARRAY['opening', 'Opening'])
+ORDER BY col ASC
+LIMIT 1
+"
+`;
+
+exports[`Format Should parse simple sql function with order (SELECT ARRAY_AGG(id ORDER BY col1 DESC) FROM table1 GROUP BY table1.col2): function with order 1`] = `
+"SELECT ARRAY_AGG(id ORDER BY col1 DESC) FROM table1 GROUP BY table1.col2
+"
+`;
+
+exports[`Format Should parse simple sql function with star (SELECT information_schema._pg_truetypmod(a.*, t.*) FROM table1): function with star 1`] = `
+"SELECT information_schema._pg_truetypmod(a.*, t.*) FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql function with type cast (SELECT TRIM(name)::text FROM table1): function with type cast 1`] = `
+"SELECT TRIM(name)::text FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql group by (SELECT * FROM table1 GROUP BY col): group by 1`] = `
+"SELECT * FROM table1 GROUP BY col
+"
+`;
+
+exports[`Format Should parse simple sql group by multiple (SELECT * FROM table1 GROUP BY col1, col2): group by multiple 1`] = `
+"SELECT * FROM table1 GROUP BY col1, col2
+"
+`;
+
+exports[`Format Should parse simple sql hexademical string (SELECT X'FFFFFF'): hexademical string 1`] = `
+"SELECT X'FFFFFF'
+"
+`;
+
+exports[`Format Should parse simple sql inner join (SELECT * FROM jobs INNER JOIN test1): inner join 1`] = `
+"SELECT * FROM jobs INNER JOIN test1
+"
+`;
+
+exports[`Format Should parse simple sql insert (INSERT INTO table1 (id, col1) VALUES (10,20),(30,40)): insert 1`] = `
+"INSERT INTO table1 (id, col1) VALUES (10, 20), (30, 40)
+"
+`;
+
+exports[`Format Should parse simple sql insert conflict (INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL DO UPDATE SET id = EXCLUDED.id WHERE id > 10): insert conflict 1`] = `
+"INSERT INTO table1 VALUES (10, 20)
+ON CONFLICT
+  (source_system_id) WHERE source_system_id IS NOT NULL
+  DO UPDATE SET id = EXCLUDED.id WHERE id > 10
+"
+`;
+
+exports[`Format Should parse simple sql insert conflict list (INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id, type) DO UPDATE SET id = EXCLUDED.id WHERE id > 10): insert conflict list 1`] = `
+"INSERT INTO table1 VALUES (10, 20)
+ON CONFLICT
+  (source_system_id, type)
+  DO UPDATE SET id = EXCLUDED.id WHERE id > 10
+"
+`;
+
+exports[`Format Should parse simple sql insert do nothing (INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO NOTHING): insert do nothing 1`] = `
+"INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO NOTHING
+"
+`;
+
+exports[`Format Should parse simple sql insert do set (INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO UPDATE SET id = EXCLUDED.id WHERE id > 10): insert do set 1`] = `
+"INSERT INTO table1 VALUES (10, 20)
+ON CONFLICT DO UPDATE SET id = EXCLUDED.id WHERE id > 10
+"
+`;
+
+exports[`Format Should parse simple sql insert multiple param values (INSERT INTO table1 VALUES $rows(name, test)): insert multiple param values 1`] = `
+"INSERT INTO table1 VALUES $$rows(name, test)
+"
+`;
+
+exports[`Format Should parse simple sql insert returning (INSERT INTO table1 (id, col1) VALUES (10,20),(30,40) RETURNING id, col1): insert returning 1`] = `
+"INSERT INTO table1 (id, col1) VALUES (10, 20), (30, 40) RETURNING id, col1
+"
+`;
+
+exports[`Format Should parse simple sql insert select (INSERT INTO table1 SELECT id, col FROM table2): insert select 1`] = `
+"INSERT INTO table1 SELECT id, col FROM table2
+"
+`;
+
+exports[`Format Should parse simple sql insert with delete (WITH tmp AS (DELETE FROM table1 RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp): insert with delete 1`] = `
+"WITH
+  tmp AS (DELETE FROM table1 RETURNING id, col2)
+INSERT INTO table2 SELECT * FROM tmp
+"
+`;
+
+exports[`Format Should parse simple sql insert with insert (WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp): insert with insert 1`] = `
+"WITH
+  tmp AS (INSERT INTO table1 (id) VALUES (2) RETURNING id, col2)
+INSERT INTO table2 SELECT * FROM tmp
+"
+`;
+
+exports[`Format Should parse simple sql insert with select (WITH tmp AS (SELECT * FROM table1) INSERT INTO table2 SELECT * FROM tmp): insert with select 1`] = `
+"WITH tmp AS (SELECT * FROM table1) INSERT INTO table2 SELECT * FROM tmp
+"
+`;
+
+exports[`Format Should parse simple sql insert with update (WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp): insert with update 1`] = `
+"WITH
+  tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2)
+INSERT INTO table2 SELECT * FROM tmp
+"
+`;
+
+exports[`Format Should parse simple sql intersect (SELECT * FROM table1 INTERSECT SELECT * FROM table2): intersect 1`] = `
+"SELECT * FROM table1  INTERSECT SELECT * FROM table2
+"
+`;
+
+exports[`Format Should parse simple sql intersect all (SELECT * FROM table1 INTERSECT ALL SELECT * FROM table2): intersect all 1`] = `
+"SELECT * FROM table1  INTERSECT ALL SELECT * FROM table2
+"
+`;
+
+exports[`Format Should parse simple sql intersect select (SELECT col1, col2 FROM table1 INTERSECT SELECT col1, col2 FROM table2): intersect select 1`] = `
+"SELECT col1, col2 FROM table1  INTERSECT SELECT col1, col2 FROM table2
+"
+`;
+
+exports[`Format Should parse simple sql join (SELECT * FROM jobs JOIN test1): join 1`] = `
+"SELECT * FROM jobs JOIN test1
+"
+`;
+
+exports[`Format Should parse simple sql join as (SELECT * FROM jobs JOIN test1 AS my_test): join as 1`] = `
+"SELECT * FROM jobs JOIN test1 AS my_test
+"
+`;
+
+exports[`Format Should parse simple sql join as quoted (SELECT * FROM jobs JOIN test1 AS "myTest"): join as quoted 1`] = `
+"SELECT * FROM jobs JOIN test1 AS \\"myTest\\"
+"
+`;
+
+exports[`Format Should parse simple sql join nested (SELECT * FROM table1 AS t1 LEFT JOIN (table2 AS t2 INNER JOIN table3 AS t3 ON t3.col1 = t2.col1) ON t2.col1 = t1.col1): join nested 1`] = `
+"SELECT *
+FROM
+  table1 AS t1
+  LEFT JOIN (table2 AS t2 INNER JOIN table3 AS t3 ON t3.col1 = t2.col1)
+    ON t2.col1 = t1.col1
+"
+`;
+
+exports[`Format Should parse simple sql join on (SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id): join on 1`] = `
+"SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id
+"
+`;
+
+exports[`Format Should parse simple sql join on (SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id): join on 2`] = `
+"SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id
+"
+`;
+
+exports[`Format Should parse simple sql join on as (SELECT * FROM jobs JOIN test1 AS my_test ON jobs.id = test1.id): join on as 1`] = `
+"SELECT * FROM jobs JOIN test1 AS my_test ON jobs.id = test1.id
+"
+`;
+
+exports[`Format Should parse simple sql join on as quoted (SELECT * FROM jobs JOIN test1 AS "myTest" ON jobs.id = test1.id): join on as quoted 1`] = `
+"SELECT * FROM jobs JOIN test1 AS \\"myTest\\" ON jobs.id = test1.id
+"
+`;
+
+exports[`Format Should parse simple sql join with schema (SELECT * FROM public.jobs JOIN public.test1): join with schema 1`] = `
+"SELECT * FROM public.jobs JOIN public.test1
+"
+`;
+
+exports[`Format Should parse simple sql json contain left (SELECT * FROM table1 WHERE col1 @> '{"a":2}'): json contain left 1`] = `
+"SELECT * FROM table1 WHERE col1 @> '{\\"a\\":2}'
+"
+`;
+
+exports[`Format Should parse simple sql json contain right (SELECT * FROM table1 WHERE col1 <@ '{"a":2}'): json contain right 1`] = `
+"SELECT * FROM table1 WHERE col1 <@ '{\\"a\\":2}'
+"
+`;
+
+exports[`Format Should parse simple sql json delete key (SELECT * FROM table1 WHERE col1 #- '{1,b}'): json delete key 1`] = `
+"SELECT * FROM table1 WHERE col1 #- '{1,b}'
+"
+`;
+
+exports[`Format Should parse simple sql json field int (SELECT col1->1 FROM table1): json field int 1`] = `
+"SELECT col1 -> 1 FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql json field string (SELECT col1->'col' FROM table1): json field string 1`] = `
+"SELECT col1 -> 'col' FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql json field text int (SELECT col1->>2 FROM table1): json field text int 1`] = `
+"SELECT col1 ->> 2 FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql json field text string (SELECT col1->>'col' FROM table1): json field text string 1`] = `
+"SELECT col1 ->> 'col' FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql json key exists (SELECT * FROM table1 WHERE col1 ? 'a'): json key exists 1`] = `
+"SELECT * FROM table1 WHERE col1 ? 'a'
+"
+`;
+
+exports[`Format Should parse simple sql json keys any include (SELECT * FROM table1 WHERE col1 ?| array['b', 'c']): json keys any include 1`] = `
+"SELECT * FROM table1 WHERE col1 ?| ARRAY['b', 'c']
+"
+`;
+
+exports[`Format Should parse simple sql json path (SELECT col1#>'{a,b}' FROM table1): json path 1`] = `
+"SELECT col1 #> '{a,b}' FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql json path text (SELECT col1#>>'{a,b}' FROM table1): json path text 1`] = `
+"SELECT col1 #>> '{a,b}' FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql left join (SELECT * FROM jobs LEFT JOIN test1): left join 1`] = `
+"SELECT * FROM jobs LEFT JOIN test1
+"
+`;
+
+exports[`Format Should parse simple sql left outer join (SELECT * FROM jobs LEFT OUTER JOIN test1): left outer join 1`] = `
+"SELECT * FROM jobs LEFT OUTER JOIN test1
+"
+`;
+
+exports[`Format Should parse simple sql limit (SELECT * LIMIT 10): limit 1`] = `
+"SELECT * LIMIT 10
+"
+`;
+
+exports[`Format Should parse simple sql limit all (SELECT * LIMIT ALL): limit all 1`] = `
+"SELECT * LIMIT ALL
+"
+`;
+
+exports[`Format Should parse simple sql limit offset (SELECT * LIMIT 10 OFFSET 10): limit offset 1`] = `
+"SELECT * LIMIT 10 OFFSET 10
+"
+`;
+
+exports[`Format Should parse simple sql limit offset param type (SELECT * FROM table1 LIMIT :param1::int OFFSET :param2::int): limit offset param type 1`] = `
+"SELECT * FROM table1 LIMIT $param1::int OFFSET $param2::int
+"
+`;
+
+exports[`Format Should parse simple sql limit offset params (SELECT * FROM table1 LIMIT :param1 OFFSET :param2): limit offset params 1`] = `
+"SELECT * FROM table1 LIMIT $param1 OFFSET $param2
+"
+`;
+
+exports[`Format Should parse simple sql multiple as columns select (SELECT column1 as "test", table1.column2, "test".column2 as col1): multiple as columns select 1`] = `
+"SELECT column1 AS \\"test\\", table1.column2, \\"test\\".column2 AS col1
+"
+`;
+
+exports[`Format Should parse simple sql multiple columns select (SELECT column1, column2): multiple columns select 1`] = `
+"SELECT column1, column2
+"
+`;
+
+exports[`Format Should parse simple sql multiple ctes (WITH ins AS (VALUES (1::int, 2::int),(3::int, 4::int)), mv AS (DELETE FROM table1 RETURNING *) SELECT * FROM mv UNION ALL SELECT * FROM ins): multiple ctes 1`] = `
+"WITH
+  ins AS (VALUES (1::int, 2::int), (3::int, 4::int)),
+  mv AS (DELETE FROM table1 RETURNING *)
+SELECT * FROM mv  UNION ALL SELECT * FROM ins
+"
+`;
+
+exports[`Format Should parse simple sql multiple from (SELECT * FROM jobs1, jobs AS "test 2"): multiple from 1`] = `
+"SELECT * FROM jobs1, jobs AS \\"test 2\\"
+"
+`;
+
+exports[`Format Should parse simple sql multiple from as (SELECT * FROM jobs1 AS j1, jobs2, jobs3 as j3): multiple from as 1`] = `
+"SELECT * FROM jobs1 AS j1, jobs2, jobs3 AS j3
+"
+`;
+
+exports[`Format Should parse simple sql multiple joins (SELECT * FROM jobs JOIN test1 JOIN test2): multiple joins 1`] = `
+"SELECT * FROM jobs JOIN test1 JOIN test2
+"
+`;
+
+exports[`Format Should parse simple sql nested function (SELECT id FROM table1 WHERE table1.col = ANY(ARRAY_AGG(table1.col2)) GROUP BY table1.col2): nested function 1`] = `
+"SELECT id
+FROM table1
+WHERE table1.col = ANY (ARRAY_AGG(table1.col2))
+GROUP BY table1.col2
+"
+`;
+
+exports[`Format Should parse simple sql nested select (SELECT test, (SELECT id FROM table2 LIMIT 1) FROM table1): nested select 1`] = `
+"SELECT test, (SELECT id FROM table2 LIMIT 1) FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql null (SELECT NULL): null 1`] = `
+"SELECT NULL
+"
+`;
+
+exports[`Format Should parse simple sql null where (SELECT col1 FROM table1 WHERE name IS NULL): null where 1`] = `
+"SELECT col1 FROM table1 WHERE name IS NULL
+"
+`;
+
+exports[`Format Should parse simple sql nullif (SELECT NULLIF(col1, '(none)') FROM table1): nullif 1`] = `
+"SELECT NULLIF(col1, '(none)') FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql offset (SELECT * OFFSET 10): offset 1`] = `
+"SELECT * OFFSET 10
+"
+`;
+
+exports[`Format Should parse simple sql order by (SELECT * FROM table1 ORDER BY col ASC): order by 1`] = `
+"SELECT * FROM table1 ORDER BY col ASC
+"
+`;
+
+exports[`Format Should parse simple sql order by multiple (SELECT * FROM table1 ORDER BY col1 ASC, col2): order by multiple 1`] = `
+"SELECT * FROM table1 ORDER BY col1 ASC, col2
+"
+`;
+
+exports[`Format Should parse simple sql order by qualified (SELECT * FROM table1 mr ORDER BY mr."DateOfReading" ASC): order by qualified 1`] = `
+"SELECT * FROM table1 AS mr ORDER BY mr.\\"DateOfReading\\" ASC
+"
+`;
+
+exports[`Format Should parse simple sql order by with params (SELECT * FROM table1 ORDER BY CASE WHEN $param1 = 'val1' AND $param2 = 'DESC' THEN col2 END DESC): order by with params 1`] = `
+"SELECT *
+FROM table1
+ORDER BY
+  CASE
+    WHEN
+      $param1 = 'val1'
+      AND $param2 = 'DESC'
+      THEN col2
+  END
+  DESC
+"
+`;
+
+exports[`Format Should parse simple sql overlaps with typed constant (SELECT (DATE '2001-02-16', DATE '2001-12-21') OVERLAPS (DATE '2001-10-30', DATE '2002-10-30')): overlaps with typed constant 1`] = `
+"SELECT
+  ROW (DATE '2001-02-16', DATE '2001-12-21')
+  OVERLAPS ROW (DATE '2001-10-30', DATE '2002-10-30')
+"
+`;
+
+exports[`Format Should parse simple sql param specific type (SELECT * FROM table1 WHERE ($active::BOOLEAN IS NULL OR $active::BOOLEAN = (case when table1.url IS NOT NULL then FALSE else TRUE end))): param specific type 1`] = `
+"SELECT *
+FROM table1
+WHERE
+  (
+    $active::BOOLEAN IS NULL
+    OR
+      $active::BOOLEAN
+      = (CASE WHEN table1.url IS NOT NULL THEN FALSE ELSE TRUE END)
+  )
+"
+`;
+
+exports[`Format Should parse simple sql parameter in having (SELECT * HAVING table1.col = $test1): parameter in having 1`] = `
+"SELECT * HAVING table1.col = $test1
+"
+`;
+
+exports[`Format Should parse simple sql parameter in having (SELECT * HAVING table1.col = :test1): parameter in having 1`] = `
+"SELECT * HAVING table1.col = $test1
+"
+`;
+
+exports[`Format Should parse simple sql parameter in having (SELECT * HAVING table1.col = :test1): parameter in having 2`] = `
+"SELECT * HAVING table1.col = $test1
+"
+`;
+
+exports[`Format Should parse simple sql parameter in join with 2 (SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = $test1! WHERE table2.col = $test2): parameter in join with 2 1`] = `
+"SELECT *
+FROM
+  table1
+  JOIN table2
+    ON table1.id = table2.id
+    AND table1.col = $test1!
+WHERE table2.col = $test2
+"
+`;
+
+exports[`Format Should parse simple sql parameter in join with 2 (SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1 WHERE table2.col = :test2): parameter in join with 2 1`] = `
+"SELECT *
+FROM
+  table1
+  JOIN table2
+    ON table1.id = table2.id
+    AND table1.col = $test1
+WHERE table2.col = $test2
+"
+`;
+
+exports[`Format Should parse simple sql parameter in join with 2 (SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1! WHERE table2.col = :test2): parameter in join with 2 1`] = `
+"SELECT *
+FROM
+  table1
+  JOIN table2
+    ON table1.id = table2.id
+    AND table1.col = $test1!
+WHERE table2.col = $test2
+"
+`;
+
+exports[`Format Should parse simple sql parameter in select (SELECT $test1!): parameter in select 1`] = `
+"SELECT $test1!
+"
+`;
+
+exports[`Format Should parse simple sql parameter in select (SELECT :test1!): parameter in select 1`] = `
+"SELECT $test1!
+"
+`;
+
+exports[`Format Should parse simple sql parameter in select (SELECT :test1): parameter in select 1`] = `
+"SELECT $test1
+"
+`;
+
+exports[`Format Should parse simple sql parameter in where (SELECT * FROM table1 WHERE table1.col = $test1!): parameter in where 1`] = `
+"SELECT * FROM table1 WHERE table1.col = $test1!
+"
+`;
+
+exports[`Format Should parse simple sql parameter in where (SELECT * FROM table1 WHERE table1.col = :test1!): parameter in where 1`] = `
+"SELECT * FROM table1 WHERE table1.col = $test1!
+"
+`;
+
+exports[`Format Should parse simple sql parameter in where (SELECT * FROM table1 WHERE table1.col = :test1): parameter in where 1`] = `
+"SELECT * FROM table1 WHERE table1.col = $test1
+"
+`;
+
+exports[`Format Should parse simple sql pg cast column schema type (SELECT test::information_schema.sql_identifier FROM table1): pg cast column schema type 1`] = `
+"SELECT test::information_schema.sql_identifier FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql pg cast column to decimal (SELECT test::decimal(10,2) FROM table1): pg cast column to decimal 1`] = `
+"SELECT test::decimal(10,2) FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql pg cast column to int (SELECT test::int FROM table1): pg cast column to int 1`] = `
+"SELECT test::int FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql pg cast column to varchar (SELECT test::varchar(10) FROM table1): pg cast column to varchar 1`] = `
+"SELECT test::varchar(10) FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql pg cast nested select (SELECT test::date, (SELECT id FROM table2 LIMIT 1)::int FROM table1): pg cast nested select 1`] = `
+"SELECT test::date, (SELECT id FROM table2 LIMIT 1)::int FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql pg cast string to date (SELECT '2016-01-01'::date FROM table1): pg cast string to date 1`] = `
+"SELECT '2016-01-01'::date FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql qualified column select (SELECT table1.column1): qualified column select 1`] = `
+"SELECT table1.column1
+"
+`;
+
+exports[`Format Should parse simple sql qualified function (SELECT information_schema._pg_char_max_length('123')): qualified function 1`] = `
+"SELECT information_schema._pg_char_max_length('123')
+"
+`;
+
+exports[`Format Should parse simple sql qualified star select (SELECT table1.*): qualified star select 1`] = `
+"SELECT table1.*
+"
+`;
+
+exports[`Format Should parse simple sql quoted as select (SELECT table1.column1 as "col 1"): quoted as select 1`] = `
+"SELECT table1.column1 AS \\"col 1\\"
+"
+`;
+
+exports[`Format Should parse simple sql quoted escaped as select (SELECT schema1.table1.column1 as "col ""2"""): quoted escaped as select 1`] = `
+"SELECT schema1.table1.column1 AS \\"col \\"\\"2\\"\\"\\"
+"
+`;
+
+exports[`Format Should parse simple sql quoted identifier (SELECT "test"): quoted identifier 1`] = `
+"SELECT \\"test\\"
+"
+`;
+
+exports[`Format Should parse simple sql quoted identifier escaped (SELECT "test me ""o donald"" true"): quoted identifier escaped 1`] = `
+"SELECT \\"test me \\"\\"o donald\\"\\" true\\"
+"
+`;
+
+exports[`Format Should parse simple sql quoted star select (SELECT "table 2".*): quoted star select 1`] = `
+"SELECT \\"table 2\\".*
+"
+`;
+
+exports[`Format Should parse simple sql restricted (SELECT all_types.id FROM all_types): restricted 1`] = `
+"SELECT all_types.id FROM all_types
+"
+`;
+
+exports[`Format Should parse simple sql right join (SELECT * FROM jobs RIGHT JOIN test1): right join 1`] = `
+"SELECT * FROM jobs RIGHT JOIN test1
+"
+`;
+
+exports[`Format Should parse simple sql right outer join (SELECT * FROM jobs RIGHT OUTER JOIN test1): right outer join 1`] = `
+"SELECT * FROM jobs RIGHT OUTER JOIN test1
+"
+`;
+
+exports[`Format Should parse simple sql rollback (ROLLBACK): rollback 1`] = `
+"ROLLBACK
+"
+`;
+
+exports[`Format Should parse simple sql rollback semicolon (ROLLBACK;): rollback semicolon 1`] = `
+"ROLLBACK
+"
+`;
+
+exports[`Format Should parse simple sql rollback to (ROLLBACK TO my_savepoint): rollback to 1`] = `
+"ROLLBACK TO my_savepoint
+"
+`;
+
+exports[`Format Should parse simple sql rollback to semicolon (ROLLBACK TO my_savepoint;): rollback to semicolon 1`] = `
+"ROLLBACK TO my_savepoint
+"
+`;
+
+exports[`Format Should parse simple sql row (SELECT ROW (1,2,3)): row 1`] = `
+"SELECT ROW (1, 2, 3)
+"
+`;
+
+exports[`Format Should parse simple sql row complex (SELECT (1, 2+2, 3), ROW (123), (1,2,(3))): row complex 1`] = `
+"SELECT ROW (1, 2 + 2, 3), ROW (123), ROW (1, 2, (3))
+"
+`;
+
+exports[`Format Should parse simple sql row shorthand (SELECT (1,2,3)): row shorthand 1`] = `
+"SELECT ROW (1, 2, 3)
+"
+`;
+
+exports[`Format Should parse simple sql savepoint (SAVEPOINT my_savepoint): savepoint 1`] = `
+"SAVEPOINT my_savepoint
+"
+`;
+
+exports[`Format Should parse simple sql savepoint semicolon (SAVEPOINT my_savepoint;): savepoint semicolon 1`] = `
+"SAVEPOINT my_savepoint
+"
+`;
+
+exports[`Format Should parse simple sql select count distinct (SELECT COUNT(DISTINCT accounts.id)::int as total): select count distinct 1`] = `
+"SELECT COUNT(DISTINCT accounts.id)::int AS total
+"
+`;
+
+exports[`Format Should parse simple sql select count filter (SELECT (COUNT(account_levelisations.id) FILTER (WHERE account_levelisations.state = 'Pending'))::int AS "pendingCount" FROM account_levelisations): select count filter 1`] = `
+"SELECT
+  (
+    COUNT(
+      account_levelisations.id
+    )
+    FILTER (WHERE account_levelisations.state = 'Pending')
+  )::int AS \\"pendingCount\\"
+FROM account_levelisations
+"
+`;
+
+exports[`Format Should parse simple sql select exists (SELECT EXISTS(SELECT col2 FROM table2)): select exists 1`] = `
+"SELECT EXISTS (SELECT col2 FROM table2)
+"
+`;
+
+exports[`Format Should parse simple sql select with delete (WITH tmp AS (DELETE FROM table1 RETURNING id) SELECT id FROM table2 WHERE table2.id = tmp.col2): select with delete 1`] = `
+"WITH
+  tmp AS (DELETE FROM table1 RETURNING id)
+SELECT id FROM table2 WHERE table2.id = tmp.col2
+"
+`;
+
+exports[`Format Should parse simple sql select with insert (WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id) SELECT id FROM table2 WHERE table2.id = tmp.col2): select with insert 1`] = `
+"WITH
+  tmp AS (INSERT INTO table1 (id) VALUES (2) RETURNING id)
+SELECT id FROM table2 WHERE table2.id = tmp.col2
+"
+`;
+
+exports[`Format Should parse simple sql select with select (WITH tmp AS (SELECT * FROM table1) SELECT id FROM table2 WHERE table2.id = tmp.col2): select with select 1`] = `
+"WITH
+  tmp AS (SELECT * FROM table1)
+SELECT id FROM table2 WHERE table2.id = tmp.col2
+"
+`;
+
+exports[`Format Should parse simple sql select with update (WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id) SELECT id FROM table2 WHERE table2.id = tmp.col2): select with update 1`] = `
+"WITH
+  tmp AS (UPDATE table1 SET col = 2 RETURNING id)
+SELECT id FROM table2 WHERE table2.id = tmp.col2
+"
+`;
+
+exports[`Format Should parse simple sql spread param in clause (SELECT table_schema FROM information_schema.columns WHERE ((table_schema, table_name)) IN (($tables(schema, table)))): spread param in clause 1`] = `
+"SELECT table_schema
+FROM information_schema.columns
+WHERE (ROW (table_schema, table_name)) IN (($$tables(schema, table)))
+"
+`;
+
+exports[`Format Should parse simple sql star select (SELECT *): star select 1`] = `
+"SELECT *
+"
+`;
+
+exports[`Format Should parse simple sql string (SELECT 'test'): string 1`] = `
+"SELECT 'test'
+"
+`;
+
+exports[`Format Should parse simple sql string concat (SELECT 'test' || 'other'): string concat 1`] = `
+"SELECT 'test' || 'other'
+"
+`;
+
+exports[`Format Should parse simple sql type array (SELECT $test::int[]): type array 1`] = `
+"SELECT $test::int[]
+"
+`;
+
+exports[`Format Should parse simple sql type array nested (SELECT $test::int[][]): type array nested 1`] = `
+"SELECT $test::int[][]
+"
+`;
+
+exports[`Format Should parse simple sql typed constant (SELECT double precision '3.5' * interval '1 hour'): typed constant 1`] = `
+"SELECT DOUBLE PRECISION '3.5' * INTERVAL '1 hour'
+"
+`;
+
+exports[`Format Should parse simple sql unary (SELECT NOT TRUE): unary 1`] = `
+"SELECT NOT TRUE
+"
+`;
+
+exports[`Format Should parse simple sql unary where (SELECT col1 FROM table1 WHERE name IS NOT NULL): unary where 1`] = `
+"SELECT col1 FROM table1 WHERE name IS NOT NULL
+"
+`;
+
+exports[`Format Should parse simple sql union (SELECT * FROM table1 UNION SELECT * FROM table2): union 1`] = `
+"SELECT * FROM table1  UNION SELECT * FROM table2
+"
+`;
+
+exports[`Format Should parse simple sql union all (SELECT * FROM table1 UNION ALL SELECT * FROM table2): union all 1`] = `
+"SELECT * FROM table1  UNION ALL SELECT * FROM table2
+"
+`;
+
+exports[`Format Should parse simple sql union select (SELECT col1, col2 FROM table1 UNION SELECT col1, col2 FROM table2): union select 1`] = `
+"SELECT col1, col2 FROM table1  UNION SELECT col1, col2 FROM table2
+"
+`;
+
+exports[`Format Should parse simple sql update as (UPDATE table1 AS "my1" SET col1 = my2.col2): update as 1`] = `
+"UPDATE table1 AS \\"my1\\" SET col1 = my2.col2
+"
+`;
+
+exports[`Format Should parse simple sql update default (UPDATE table1 SET col1 = DEFAULT): update default 1`] = `
+"UPDATE table1 SET col1 = DEFAULT
+"
+`;
+
+exports[`Format Should parse simple sql update exists (UPDATE table1 SET col1 = EXISTS(SELECT col2 FROM table2)): update exists 1`] = `
+"UPDATE table1 SET col1 = EXISTS (SELECT col2 FROM table2)
+"
+`;
+
+exports[`Format Should parse simple sql update list (UPDATE table1 SET col1 = 10, col2 = "other"): update list 1`] = `
+"UPDATE table1 SET col1 = 10, col2 = \\"other\\"
+"
+`;
+
+exports[`Format Should parse simple sql update map (UPDATE table1 SET (col1, col2) = (DEFAULT, 10)): update map 1`] = `
+"UPDATE table1 SET (col1, col2) = (DEFAULT, 10)
+"
+`;
+
+exports[`Format Should parse simple sql update map row (UPDATE table1 SET (col1, col2) = ROW ("12", FALSE)): update map row 1`] = `
+"UPDATE table1 SET (col1, col2) = (\\"12\\", FALSE)
+"
+`;
+
+exports[`Format Should parse simple sql update map select (UPDATE table1 SET (col1, col2) = (SELECT col3, col4 FROM table2 WHERE table2.id = table1.id)): update map select 1`] = `
+"UPDATE table1
+SET (col1, col2) = (SELECT col3, col4 FROM table2 WHERE table2.id = table1.id)
+"
+`;
+
+exports[`Format Should parse simple sql update multiple as (UPDATE table1 SET col1 = my1.id, col2 = my2.id FROM table2 AS "my1", table3 AS my2): update multiple as 1`] = `
+"UPDATE table1
+SET col1 = my1.id, col2 = my2.id
+FROM table2 AS \\"my1\\", table3 AS my2
+"
+`;
+
+exports[`Format Should parse simple sql update multiple tables (UPDATE table1 SET col1 = table2.id FROM table2): update multiple tables 1`] = `
+"UPDATE table1 SET col1 = table2.id FROM table2
+"
+`;
+
+exports[`Format Should parse simple sql update params (UPDATE table1 SET col1 = :param1, col2 = :param2): update params 1`] = `
+"UPDATE table1 SET col1 = $param1, col2 = $param2
+"
+`;
+
+exports[`Format Should parse simple sql update returning (UPDATE table1 SET col1 = 10 RETURNING id, col1): update returning 1`] = `
+"UPDATE table1 SET col1 = 10 RETURNING id, col1
+"
+`;
+
+exports[`Format Should parse simple sql update returning expression (UPDATE table1 SET col1 = 10 RETURNING id, col1, 123 as col2, '2' as col3, 3+4 as col4): update returning expression 1`] = `
+"UPDATE table1
+SET col1 = 10
+RETURNING id, col1, 123 AS col2, '2' AS col3, 3 + 4 AS col4
+"
+`;
+
+exports[`Format Should parse simple sql update returning star (UPDATE table1 SET col1 = 10 WHERE id = :id RETURNING *): update returning star 1`] = `
+"UPDATE table1 SET col1 = 10 WHERE id = $id RETURNING *
+"
+`;
+
+exports[`Format Should parse simple sql update value (UPDATE table1 SET col1 = 10): update value 1`] = `
+"UPDATE table1 SET col1 = 10
+"
+`;
+
+exports[`Format Should parse simple sql update where (UPDATE table1 SET deleted_at = TRUE WHERE id = :id): update where 1`] = `
+"UPDATE table1 SET deleted_at = TRUE WHERE id = $id
+"
+`;
+
+exports[`Format Should parse simple sql update with delete (WITH tmp AS (DELETE FROM table1 RETURNING id, col2) UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id): update with delete 1`] = `
+"WITH
+  tmp AS (DELETE FROM table1 RETURNING id, col2)
+UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id
+"
+`;
+
+exports[`Format Should parse simple sql update with insert (WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id, col2) UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id): update with insert 1`] = `
+"WITH
+  tmp AS (INSERT INTO table1 (id) VALUES (2) RETURNING id, col2)
+UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id
+"
+`;
+
+exports[`Format Should parse simple sql update with select (WITH tmp AS (SELECT * FROM table1) UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id): update with select 1`] = `
+"WITH
+  tmp AS (SELECT * FROM table1)
+UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id
+"
+`;
+
+exports[`Format Should parse simple sql update with update (WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2) UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id): update with update 1`] = `
+"WITH
+  tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2)
+UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id
+"
+`;
+
+exports[`Format Should parse simple sql where (SELECT * WHERE id = 5): where 1`] = `
+"SELECT * WHERE id = 5
+"
+`;
+
+exports[`Format Should parse simple sql where and (SELECT * WHERE id = 5 AND name = 'test'): where and 1`] = `
+"SELECT *
+WHERE
+  id = 5
+  AND name = 'test'
+"
+`;
+
+exports[`Format Should parse simple sql where boolean (SELECT * WHERE id = 5 AND TRUE): where boolean 1`] = `
+"SELECT *
+WHERE
+  id = 5
+  AND TRUE
+"
+`;
+
+exports[`Format Should parse simple sql where case (SELECT col1 WHERE table2.col2 = CASE table2.col3 WHEN 'test1' THEN 1 WHEN 'test2' THEN 2 END): where case 1`] = `
+"SELECT col1
+WHERE table2.col2 = CASE table2.col3 WHEN 'test1' THEN 1 WHEN 'test2' THEN 2 END
+"
+`;
+
+exports[`Format Should parse simple sql where different from (SELECT * WHERE table1.col <> '23'): where different from 1`] = `
+"SELECT * WHERE table1.col <> '23'
+"
+`;
+
+exports[`Format Should parse simple sql where greater than (SELECT * WHERE table1.col > 2): where greater than 1`] = `
+"SELECT * WHERE table1.col > 2
+"
+`;
+
+exports[`Format Should parse simple sql where greater than or equal (SELECT * WHERE table1.col >= 23): where greater than or equal 1`] = `
+"SELECT * WHERE table1.col >= 23
+"
+`;
+
+exports[`Format Should parse simple sql where ilike string (SELECT * WHERE table1.col ILIKE '23%'): where ilike string 1`] = `
+"SELECT * WHERE table1.col ILIKE '23%'
+"
+`;
+
+exports[`Format Should parse simple sql where in tuples (SELECT col1, col2 WHERE (col1,col2) IN ((1,2),(3,4))): where in tuples 1`] = `
+"SELECT col1, col2 WHERE ROW (col1, col2) IN ROW (ROW (1, 2), ROW (3, 4))
+"
+`;
+
+exports[`Format Should parse simple sql where less than (SELECT * WHERE table1.col < 2): where less than 1`] = `
+"SELECT * WHERE table1.col < 2
+"
+`;
+
+exports[`Format Should parse simple sql where less than or equal (SELECT * WHERE table1.col <= '23'): where less than or equal 1`] = `
+"SELECT * WHERE table1.col <= '23'
+"
+`;
+
+exports[`Format Should parse simple sql where like string (SELECT * WHERE table1.col LIKE '%23%'): where like string 1`] = `
+"SELECT * WHERE table1.col LIKE '%23%'
+"
+`;
+
+exports[`Format Should parse simple sql where not equal to (SELECT * WHERE table1.col != '23'): where not equal to 1`] = `
+"SELECT * WHERE table1.col != '23'
+"
+`;
+
+exports[`Format Should parse simple sql where select (SELECT * WHERE (SELECT id FROM test LIMIT 1) = 5): where select 1`] = `
+"SELECT * WHERE (SELECT id FROM test LIMIT 1) = 5
+"
+`;
+
+exports[`Format Should parse simple sql with comment (SELECT * 
+-- test comment
+FROM table1): with comment 1`] = `
+"SELECT *
+-- test comment
+FROM table1
+"
+`;

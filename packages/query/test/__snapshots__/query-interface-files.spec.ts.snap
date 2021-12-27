@@ -715,8 +715,8 @@ Object {
                                   ],
                                 },
                                 Object {
-                                  "nextPos": 512,
-                                  "pos": 452,
+                                  "end": 512,
+                                  "start": 452,
                                   "tag": "PgCast",
                                   "values": Array [
                                     Object {
@@ -840,39 +840,60 @@ Object {
                     Object {
                       "end": 575,
                       "start": 566,
-                      "tag": "Column",
+                      "tag": "ConflictTargetIndex",
                       "values": Array [
                         Object {
                           "end": 575,
                           "start": 566,
-                          "tag": "UnquotedIdentifier",
-                          "value": "account_id",
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 575,
+                              "start": 566,
+                              "tag": "UnquotedIdentifier",
+                              "value": "account_id",
+                            },
+                          ],
                         },
                       ],
                     },
                     Object {
                       "end": 592,
                       "start": 578,
-                      "tag": "Column",
+                      "tag": "ConflictTargetIndex",
                       "values": Array [
                         Object {
                           "end": 592,
                           "start": 578,
-                          "tag": "UnquotedIdentifier",
-                          "value": "installation_id",
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 592,
+                              "start": 578,
+                              "tag": "UnquotedIdentifier",
+                              "value": "installation_id",
+                            },
+                          ],
                         },
                       ],
                     },
                     Object {
                       "end": 609,
                       "start": 595,
-                      "tag": "Column",
+                      "tag": "ConflictTargetIndex",
                       "values": Array [
                         Object {
                           "end": 609,
                           "start": 595,
-                          "tag": "UnquotedIdentifier",
-                          "value": "levelisation_id",
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 609,
+                              "start": 595,
+                              "tag": "UnquotedIdentifier",
+                              "value": "levelisation_id",
+                            },
+                          ],
                         },
                       ],
                     },
@@ -7842,13 +7863,20 @@ Object {
                         Object {
                           "end": 160,
                           "start": 146,
-                          "tag": "Column",
+                          "tag": "ConflictTargetIndex",
                           "values": Array [
                             Object {
                               "end": 160,
                               "start": 146,
-                              "tag": "UnquotedIdentifier",
-                              "value": "idempotency_key",
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 160,
+                                  "start": 146,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "idempotency_key",
+                                },
+                              ],
                             },
                           ],
                         },
@@ -7882,8 +7910,8 @@ Object {
                                   "value": "IS",
                                 },
                                 Object {
-                                  "nextPos": 196,
-                                  "pos": 188,
+                                  "end": 196,
+                                  "start": 188,
                                   "tag": "UnaryExpression",
                                   "values": Array [
                                     Object {
@@ -8080,13 +8108,20 @@ Object {
                         Object {
                           "end": 160,
                           "start": 146,
-                          "tag": "Column",
+                          "tag": "ConflictTargetIndex",
                           "values": Array [
                             Object {
                               "end": 160,
                               "start": 146,
-                              "tag": "UnquotedIdentifier",
-                              "value": "idempotency_key",
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 160,
+                                  "start": 146,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "idempotency_key",
+                                },
+                              ],
                             },
                           ],
                         },
@@ -8120,8 +8155,8 @@ Object {
                                   "value": "IS",
                                 },
                                 Object {
-                                  "nextPos": 196,
-                                  "pos": 188,
+                                  "end": 196,
+                                  "start": 188,
                                   "tag": "UnaryExpression",
                                   "values": Array [
                                     Object {
@@ -8318,13 +8353,20 @@ Object {
                         Object {
                           "end": 160,
                           "start": 146,
-                          "tag": "Column",
+                          "tag": "ConflictTargetIndex",
                           "values": Array [
                             Object {
                               "end": 160,
                               "start": 146,
-                              "tag": "UnquotedIdentifier",
-                              "value": "idempotency_key",
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 160,
+                                  "start": 146,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "idempotency_key",
+                                },
+                              ],
                             },
                           ],
                         },
@@ -8358,8 +8400,8 @@ Object {
                                   "value": "IS",
                                 },
                                 Object {
-                                  "nextPos": 196,
-                                  "pos": 188,
+                                  "end": 196,
+                                  "start": 188,
                                   "tag": "UnaryExpression",
                                   "values": Array [
                                     Object {
@@ -8556,13 +8598,20 @@ Object {
                         Object {
                           "end": 160,
                           "start": 146,
-                          "tag": "Column",
+                          "tag": "ConflictTargetIndex",
                           "values": Array [
                             Object {
                               "end": 160,
                               "start": 146,
-                              "tag": "UnquotedIdentifier",
-                              "value": "idempotency_key",
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 160,
+                                  "start": 146,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "idempotency_key",
+                                },
+                              ],
                             },
                           ],
                         },
@@ -8596,8 +8645,8 @@ Object {
                                   "value": "IS",
                                 },
                                 Object {
-                                  "nextPos": 196,
-                                  "pos": 188,
+                                  "end": 196,
+                                  "start": 188,
                                   "tag": "UnaryExpression",
                                   "values": Array [
                                     Object {
@@ -11290,8 +11339,8 @@ Object {
                           ],
                         },
                         Object {
-                          "nextPos": 209,
-                          "pos": 198,
+                          "end": 209,
+                          "start": 198,
                           "tag": "PgCast",
                           "values": Array [
                             Object {
@@ -11688,8 +11737,8 @@ Object {
                           ],
                         },
                         Object {
-                          "nextPos": 209,
-                          "pos": 198,
+                          "end": 209,
+                          "start": 198,
                           "tag": "PgCast",
                           "values": Array [
                             Object {
@@ -12086,8 +12135,8 @@ Object {
                           ],
                         },
                         Object {
-                          "nextPos": 209,
-                          "pos": 198,
+                          "end": 209,
+                          "start": 198,
                           "tag": "PgCast",
                           "values": Array [
                             Object {
@@ -12484,8 +12533,8 @@ Object {
                           ],
                         },
                         Object {
-                          "nextPos": 209,
-                          "pos": 198,
+                          "end": 209,
+                          "start": 198,
                           "tag": "PgCast",
                           "values": Array [
                             Object {
@@ -12882,8 +12931,8 @@ Object {
                           ],
                         },
                         Object {
-                          "nextPos": 209,
-                          "pos": 198,
+                          "end": 209,
+                          "start": 198,
                           "tag": "PgCast",
                           "values": Array [
                             Object {

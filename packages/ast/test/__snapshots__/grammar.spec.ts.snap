@@ -1257,20 +1257,15 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 21,
-                "pos": 7,
+                "end": 21,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
                     "end": 12,
                     "start": 7,
                     "tag": "EscapeString",
-                    "value": Object {
-                      "end": 12,
-                      "start": 8,
-                      "tag": "String",
-                      "value": "111",
-                    },
+                    "value": "111",
                   },
                   Object {
                     "end": 20,
@@ -1708,12 +1703,7 @@ Object {
                 "end": 12,
                 "start": 7,
                 "tag": "BitString",
-                "value": Object {
-                  "end": 12,
-                  "start": 8,
-                  "tag": "String",
-                  "value": "111",
-                },
+                "value": "111",
               },
             ],
           },
@@ -2050,8 +2040,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 115,
-                "pos": 7,
+                "end": 115,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -2084,8 +2074,8 @@ Object {
                         "tag": "When",
                         "values": Array [
                           Object {
-                            "nextPos": 38,
-                            "pos": 27,
+                            "end": 38,
+                            "start": 27,
                             "tag": "PgCast",
                             "values": Array [
                               Object {
@@ -2117,8 +2107,8 @@ Object {
                             ],
                           },
                           Object {
-                            "nextPos": 60,
-                            "pos": 44,
+                            "end": 60,
+                            "start": 44,
                             "tag": "PgCast",
                             "values": Array [
                               Object {
@@ -2157,8 +2147,8 @@ Object {
                         "tag": "Else",
                         "values": Array [
                           Object {
-                            "nextPos": 76,
-                            "pos": 66,
+                            "end": 76,
+                            "start": 66,
                             "tag": "PgCast",
                             "values": Array [
                               Object {
@@ -2499,8 +2489,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 77,
-                "pos": 7,
+                "end": 77,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -2684,13 +2674,13 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 64,
-                "pos": 7,
+                "end": 64,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
-                    "nextPos": 29,
-                    "pos": 7,
+                    "end": 29,
+                    "start": 7,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -2837,8 +2827,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 18,
-                "pos": 7,
+                "end": 18,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -2925,7 +2915,12 @@ Object {
                           },
                         ],
                       },
-                      "20",
+                      Object {
+                        "end": 31,
+                        "start": 30,
+                        "tag": "Integer",
+                        "value": "20",
+                      },
                     ],
                   },
                 ],
@@ -3031,8 +3026,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 21,
-                "pos": 7,
+                "end": 21,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -3104,13 +3099,13 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 64,
-                "pos": 7,
+                "end": 64,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
-                    "nextPos": 29,
-                    "pos": 7,
+                    "end": 29,
+                    "start": 7,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -3463,8 +3458,8 @@ Object {
                         ],
                       },
                       Object {
-                        "nextPos": 95,
-                        "pos": 35,
+                        "end": 95,
+                        "start": 35,
                         "tag": "PgCast",
                         "values": Array [
                           Object {
@@ -3762,8 +3757,8 @@ Object {
                 "tag": "CTEValues",
                 "values": Array [
                   Object {
-                    "nextPos": 36,
-                    "pos": 30,
+                    "end": 36,
+                    "start": 30,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -3795,8 +3790,8 @@ Object {
                     ],
                   },
                   Object {
-                    "nextPos": 44,
-                    "pos": 38,
+                    "end": 44,
+                    "start": 38,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -3835,8 +3830,8 @@ Object {
                 "tag": "CTEValues",
                 "values": Array [
                   Object {
-                    "nextPos": 53,
-                    "pos": 47,
+                    "end": 53,
+                    "start": 47,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -3868,8 +3863,8 @@ Object {
                     ],
                   },
                   Object {
-                    "nextPos": 61,
-                    "pos": 55,
+                    "end": 61,
+                    "start": 55,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -4852,8 +4847,8 @@ Object {
                     "value": "IS",
                   },
                   Object {
-                    "nextPos": 92,
-                    "pos": 84,
+                    "end": 92,
+                    "start": 84,
                     "tag": "UnaryExpression",
                     "values": Array [
                       Object {
@@ -5806,20 +5801,15 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 21,
-                "pos": 7,
+                "end": 21,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
                     "end": 12,
                     "start": 7,
                     "tag": "EscapeString",
-                    "value": Object {
-                      "end": 12,
-                      "start": 8,
-                      "tag": "String",
-                      "value": "111",
-                    },
+                    "value": "111",
                   },
                   Object {
                     "end": 20,
@@ -5874,12 +5864,7 @@ Object {
                 "end": 11,
                 "start": 7,
                 "tag": "EscapeString",
-                "value": Object {
-                  "end": 11,
-                  "start": 8,
-                  "tag": "String",
-                  "value": "\\\\o",
-                },
+                "value": "\\\\o",
               },
             ],
           },
@@ -8287,8 +8272,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 23,
-                "pos": 7,
+                "end": 23,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -8610,12 +8595,7 @@ Object {
                 "end": 15,
                 "start": 7,
                 "tag": "HexademicalString",
-                "value": Object {
-                  "end": 15,
-                  "start": 8,
-                  "tag": "String",
-                  "value": "FFFFFF",
-                },
+                "value": "FFFFFF",
               },
             ],
           },
@@ -8896,13 +8876,20 @@ Object {
               Object {
                 "end": 63,
                 "start": 48,
-                "tag": "Column",
+                "tag": "ConflictTargetIndex",
                 "values": Array [
                   Object {
                     "end": 63,
                     "start": 48,
-                    "tag": "UnquotedIdentifier",
-                    "value": "source_system_id",
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 63,
+                        "start": 48,
+                        "tag": "UnquotedIdentifier",
+                        "value": "source_system_id",
+                      },
+                    ],
                   },
                 ],
               },
@@ -8936,8 +8923,8 @@ Object {
                         "value": "IS",
                       },
                       Object {
-                        "nextPos": 100,
-                        "pos": 92,
+                        "end": 100,
+                        "start": 92,
                         "tag": "UnaryExpression",
                         "values": Array [
                           Object {
@@ -9125,26 +9112,40 @@ Object {
               Object {
                 "end": 63,
                 "start": 48,
-                "tag": "Column",
+                "tag": "ConflictTargetIndex",
                 "values": Array [
                   Object {
                     "end": 63,
                     "start": 48,
-                    "tag": "UnquotedIdentifier",
-                    "value": "source_system_id",
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 63,
+                        "start": 48,
+                        "tag": "UnquotedIdentifier",
+                        "value": "source_system_id",
+                      },
+                    ],
                   },
                 ],
               },
               Object {
                 "end": 69,
                 "start": 66,
-                "tag": "Column",
+                "tag": "ConflictTargetIndex",
                 "values": Array [
                   Object {
                     "end": 69,
                     "start": 66,
-                    "tag": "UnquotedIdentifier",
-                    "value": "type",
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 69,
+                        "start": 66,
+                        "tag": "UnquotedIdentifier",
+                        "value": "type",
+                      },
+                    ],
                   },
                 ],
               },
@@ -14204,8 +14205,8 @@ Object {
             "tag": "Count",
             "values": Array [
               Object {
-                "nextPos": 39,
-                "pos": 27,
+                "end": 39,
+                "start": 27,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -14254,8 +14255,8 @@ Object {
             "tag": "Count",
             "values": Array [
               Object {
-                "nextPos": 59,
-                "pos": 47,
+                "end": 59,
+                "start": 47,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -14632,8 +14633,8 @@ Object {
                 "tag": "CTEValues",
                 "values": Array [
                   Object {
-                    "nextPos": 27,
-                    "pos": 21,
+                    "end": 27,
+                    "start": 21,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -14665,8 +14666,8 @@ Object {
                     ],
                   },
                   Object {
-                    "nextPos": 35,
-                    "pos": 29,
+                    "end": 35,
+                    "start": 29,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -14705,8 +14706,8 @@ Object {
                 "tag": "CTEValues",
                 "values": Array [
                   Object {
-                    "nextPos": 44,
-                    "pos": 38,
+                    "end": 44,
+                    "start": 38,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -14738,8 +14739,8 @@ Object {
                     ],
                   },
                   Object {
-                    "nextPos": 52,
-                    "pos": 46,
+                    "end": 52,
+                    "start": 46,
                     "tag": "PgCast",
                     "values": Array [
                       Object {
@@ -16806,8 +16807,8 @@ Object {
                     "tag": "BinaryExpression",
                     "values": Array [
                       Object {
-                        "nextPos": 44,
-                        "pos": 28,
+                        "end": 44,
+                        "start": 28,
                         "tag": "PgCast",
                         "values": Array [
                           Object {
@@ -16866,8 +16867,8 @@ Object {
                     "tag": "BinaryExpression",
                     "values": Array [
                       Object {
-                        "nextPos": 72,
-                        "pos": 56,
+                        "end": 72,
+                        "start": 56,
                         "tag": "PgCast",
                         "values": Array [
                           Object {
@@ -16953,8 +16954,8 @@ Object {
                                         "value": "IS",
                                       },
                                       Object {
-                                        "nextPos": 108,
-                                        "pos": 100,
+                                        "end": 108,
+                                        "start": 100,
                                         "tag": "UnaryExpression",
                                         "values": Array [
                                           Object {
@@ -18559,8 +18560,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 46,
-                "pos": 7,
+                "end": 46,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -18666,8 +18667,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 26,
-                "pos": 7,
+                "end": 26,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -18701,8 +18702,18 @@ Object {
                           },
                         ],
                       },
-                      "10",
-                      "2",
+                      Object {
+                        "end": 22,
+                        "start": 21,
+                        "tag": "Integer",
+                        "value": "10",
+                      },
+                      Object {
+                        "end": 24,
+                        "start": 24,
+                        "tag": "Integer",
+                        "value": "2",
+                      },
                     ],
                   },
                 ],
@@ -18769,8 +18780,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 16,
-                "pos": 7,
+                "end": 16,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -18870,8 +18881,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 24,
-                "pos": 7,
+                "end": 24,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -18905,7 +18916,12 @@ Object {
                           },
                         ],
                       },
-                      "10",
+                      Object {
+                        "end": 22,
+                        "start": 21,
+                        "tag": "Integer",
+                        "value": "10",
+                      },
                     ],
                   },
                 ],
@@ -18972,8 +18988,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 17,
-                "pos": 7,
+                "end": 17,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -19019,8 +19035,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 55,
-                "pos": 19,
+                "end": 55,
+                "start": 19,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -19195,8 +19211,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 25,
-                "pos": 7,
+                "end": 25,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -20314,8 +20330,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 39,
-                "pos": 7,
+                "end": 39,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -20426,8 +20442,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 100,
-                "pos": 7,
+                "end": 100,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -21964,8 +21980,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 19,
-                "pos": 7,
+                "end": 19,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -22039,8 +22055,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 21,
-                "pos": 7,
+                "end": 21,
+                "start": 7,
                 "tag": "PgCast",
                 "values": Array [
                   Object {
@@ -22197,8 +22213,8 @@ Object {
             "tag": "SelectListItem",
             "values": Array [
               Object {
-                "nextPos": 15,
-                "pos": 7,
+                "end": 15,
+                "start": 7,
                 "tag": "UnaryExpression",
                 "values": Array [
                   Object {
@@ -22323,8 +22339,8 @@ Object {
                 "value": "IS",
               },
               Object {
-                "nextPos": 46,
-                "pos": 38,
+                "end": 46,
+                "start": 38,
                 "tag": "UnaryExpression",
                 "values": Array [
                   Object {

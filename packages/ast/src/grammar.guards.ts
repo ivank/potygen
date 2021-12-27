@@ -24,6 +24,7 @@ import {
   CompositeAccessTag,
   ConflictConstraintTag,
   ConflictTag,
+  ConflictTargetIndexTag,
   ConflictTargetTag,
   ConstantTag,
   CountTag,
@@ -110,7 +111,7 @@ export const isCTE = (value: SqlTag): value is CTETag => value.tag === 'CTE';
 export const isCTEName = (value: SqlTag): value is CTENameTag => value.tag === 'CTEName';
 export const isCTEValues = (value: SqlTag): value is CTEValuesTag => value.tag === 'CTEValues';
 export const isCTEValuesList = (value: SqlTag): value is CTEValuesListTag => value.tag === 'CTEValuesList';
-export const isWithTag = (value: SqlTag): value is WithTag => value.tag === 'With';
+export const isWith = (value: SqlTag): value is WithTag => value.tag === 'With';
 export const isNull = (value: SqlTag): value is NullTag => value.tag === 'Null';
 export const isPgCast = (value: SqlTag): value is PgCastTag => value.tag === 'PgCast';
 export const isIdentifier = (value: SqlTag): value is IdentifierTag =>
@@ -181,6 +182,8 @@ export const isExpression = (value: SqlTag): value is ExpressionTag =>
   isSelect(value) ||
   isParameter(value) ||
   isCast(value) ||
+  isCase(value) ||
+  isCaseSimple(value) ||
   isPgCast(value) ||
   isOperatorExpression(value) ||
   isTernaryExpression(value) ||
@@ -229,9 +232,11 @@ export const isUpdate = (value: SqlTag): value is UpdateTag => value.tag === 'Up
 export const isUsing = (value: SqlTag): value is UsingTag => value.tag === 'Using';
 export const isDelete = (value: SqlTag): value is DeleteTag => value.tag === 'Delete';
 export const isValuesList = (value: SqlTag): value is ValuesListTag => value.tag === 'ValuesList';
-export const isInsertTag = (value: SqlTag): value is InsertTag => value.tag === 'Insert';
-export const isCollateTag = (value: SqlTag): value is CollateTag => value.tag === 'Collate';
+export const isInsert = (value: SqlTag): value is InsertTag => value.tag === 'Insert';
+export const isCollate = (value: SqlTag): value is CollateTag => value.tag === 'Collate';
 export const isConflictTarget = (value: SqlTag): value is ConflictTargetTag => value.tag === 'ConflictTarget';
+export const isConflictTargetIndex = (value: SqlTag): value is ConflictTargetIndexTag =>
+  value.tag === 'ConflictTargetIndex';
 export const isConflictConstraint = (value: SqlTag): value is ConflictConstraintTag =>
   value.tag === 'ConflictConstraint';
 export const isDoNothing = (value: SqlTag): value is DoNothingTag => value.tag === 'DoNothing';
@@ -239,7 +244,6 @@ export const isDoUpdate = (value: SqlTag): value is DoUpdateTag => value.tag ===
 export const isConflict = (value: SqlTag): value is ConflictTag => value.tag === 'Conflict';
 export const isArrayConstructor = (value: SqlTag): value is ArrayConstructorTag => value.tag === 'ArrayConstructor';
 export const isRow = (value: SqlTag): value is RowTag => value.tag === 'Row';
-export const isSelectTag = (value: SqlTag): value is SelectTag => value.tag === 'Select';
 export const isFilter = (value: SqlTag): value is FilterTag => value.tag === 'Filter';
 export const isComparationExpression = (value: SqlTag): value is ComparationExpressionTag =>
   value.tag === 'ComparationExpression';

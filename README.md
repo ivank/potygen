@@ -11,6 +11,7 @@ Introspect queiries and generate typescript types for them.
 - [x] load nullability after type cast
 - [x] composite types
 - [x] load comments
+- [ ] split and simplify comparation expression parsing
 - [ ] dogfooding our queries, plus use the generated types instead of the hand crafted ones
 - [ ] Hardcode native functions + operators
 - [x] Standardise tags from grammar
