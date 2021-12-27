@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Sql Files Should parse complex sql account-levelisation.update.query.pgsql: account-levelisation.update.query.pgsql 1`] = `
+"UPDATE account_levelisations
+SET is_accepted = $isAccepted
+WHERE account_levelisations.id = $id
+RETURNING id, is_accepted AS \\"isAccepted\\"
+"
+`;
+
 exports[`Sql Files Should parse complex sql account-levelisation.update.query.sql: account-levelisation.update.query.sql 1`] = `
 "UPDATE account_levelisations
 SET is_accepted = $isAccepted

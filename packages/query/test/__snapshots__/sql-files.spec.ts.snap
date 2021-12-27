@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sql Files Should convert complex sql template tags account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags account-levelisations.query.pgsql: account-levelisations.query.pgsql 1`] = `
 Object {
   "text": "SELECT
   account_levelisations.id AS \\"id\\",
@@ -93,7 +93,7 @@ LIMIT $8::int OFFSET $9::int
 }
 `;
 
-exports[`Sql Files Should convert complex sql template tags account-levelisations-set-bulk-update.query.sql: account-levelisations-set-bulk-update.query.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags account-levelisations-set-bulk-update.query.pgsql: account-levelisations-set-bulk-update.query.pgsql 1`] = `
 Object {
   "text": "UPDATE account_levelisations
 SET
@@ -132,7 +132,7 @@ RETURNING id
 }
 `;
 
-exports[`Sql Files Should convert complex sql template tags accounts.query.sql: accounts.query.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags accounts.query.pgsql: accounts.query.pgsql 1`] = `
 Object {
   "text": "  SELECT DISTINCT ON (accounts.id)
     accounts.id,
@@ -220,7 +220,7 @@ Object {
 }
 `;
 
-exports[`Sql Files Should convert complex sql template tags active-meters-wth-reads.query.sql: active-meters-wth-reads.query.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags active-meters-wth-reads.query.pgsql: active-meters-wth-reads.query.pgsql 1`] = `
 Object {
   "text": "-- active-meters-with-reads.query
 SELECT
@@ -285,7 +285,7 @@ ORDER BY
 }
 `;
 
-exports[`Sql Files Should convert complex sql template tags bacs.query.sql: bacs.query.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags bacs.query.pgsql: bacs.query.pgsql 1`] = `
 Object {
   "text": "SELECT
   p.fit_reference \\"fitId\\",
@@ -314,7 +314,7 @@ LIMIT $2 OFFSET $3
 }
 `;
 
-exports[`Sql Files Should convert complex sql template tags contracts.sql: contracts.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags contracts.pgsql: contracts.pgsql 1`] = `
 Object {
   "text": "INSERT INTO contracts (
   source_system_id,
@@ -414,7 +414,7 @@ DO UPDATE SET
 }
 `;
 
-exports[`Sql Files Should convert complex sql template tags delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags delete-accounts.query.pgsql: delete-accounts.query.pgsql 1`] = `
 Object {
   "text": "DELETE FROM accounts
 WHERE EXISTS
@@ -438,7 +438,7 @@ RETURNING
 }
 `;
 
-exports[`Sql Files Should convert complex sql template tags generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags generation-read-data.query.pgsql: generation-read-data.query.pgsql 1`] = `
 Object {
   "text": "SELECT
   meter_reads.date_on AS \\"dateOn\\",
@@ -461,7 +461,7 @@ LIMIT 1
 }
 `;
 
-exports[`Sql Files Should convert complex sql template tags installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags installation-meter-update.query.pgsql: installation-meter-update.query.pgsql 1`] = `
 Object {
   "text": "UPDATE installation_meters SET end_on = $1
 WHERE end_on IS NULL
@@ -474,7 +474,7 @@ AND meter_id = $2
 }
 `;
 
-exports[`Sql Files Should convert complex sql template tags installations.sql: installations.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags installations.pgsql: installations.pgsql 1`] = `
 Object {
   "text": "INSERT INTO installations (
   source_system_id,
@@ -648,7 +648,7 @@ DO UPDATE SET
 }
 `;
 
-exports[`Sql Files Should convert complex sql template tags meter-reads.sql: meter-reads.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags meter-reads.pgsql: meter-reads.pgsql 1`] = `
 Object {
   "text": "INSERT INTO meter_reads (
   source_system_id,
@@ -710,7 +710,7 @@ DO UPDATE SET
 }
 `;
 
-exports[`Sql Files Should convert complex sql template tags rates-by-tarrif-ids.query.sql: rates-by-tarrif-ids.query.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags rates-by-tarrif-ids.query.pgsql: rates-by-tarrif-ids.query.pgsql 1`] = `
 Object {
   "text": "SELECT
   r.tariff_id as \\"tariffId\\",

@@ -25,7 +25,9 @@ interface RootAstTag extends SqlTag {
   comments: CommentTag[];
 }
 
-export const isRootAstTag = (value: SqlTag): value is RootAstTag => value.tag === 'Ast';
+type Node = RootAstTag | Tag | CommentTag;
+
+const isRootAstTag = (value: SqlTag): value is RootAstTag => value.tag === 'Ast';
 
 const wrapSubquery = (path: AstPath<any>, content: Doc): Doc => {
   const parent = path.getParentNode();
@@ -53,7 +55,7 @@ const tail = (num: number, path: AstPath<any>, print: (path: AstPath<any>) => Do
 const filterIndexes = <T>(items: T[], predicate: (item: T) => boolean): number[] =>
   items.reduce<number[]>((acc, item, index) => (predicate(item) ? [...acc, index] : acc), []);
 
-const plugin: Plugin<RootAstTag | Tag | CommentTag> = {
+const plugin: Plugin<Node> = {
   printers: {
     'pgsql-ast': {
       print: (path, options, recur) => {
@@ -443,4 +445,6 @@ const plugin: Plugin<RootAstTag | Tag | CommentTag> = {
   },
 };
 
-export default plugin;
+export const printers = plugin.printers;
+export const parsers = plugin.parsers;
+export const languages = plugin.languages;

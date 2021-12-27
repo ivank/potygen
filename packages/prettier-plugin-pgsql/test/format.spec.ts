@@ -1,5 +1,5 @@
 import { format } from 'prettier';
-import prettierPluginPgSql from '../src';
+import * as prettierPluginPgSql from '../src';
 import { parser } from '@potygen/ast';
 import { withParserErrors, withoutPos } from './helpers';
 
