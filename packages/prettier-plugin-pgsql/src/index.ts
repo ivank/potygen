@@ -71,7 +71,7 @@ const pgsqlAst: Printer<Node> = {
       case 'CTEValues':
         return group(['(', indent([softline, join([',', line], vals(path, recur))]), ')']);
       case 'CTE':
-        return group([nthVal(0, path, recur), line, 'AS', line, nthVal(1, path, recur)]);
+        return group([group([nthVal(0, path, recur), line, 'AS']), line, nthVal(1, path, recur)]);
       case 'With':
         return group([
           'WITH',
@@ -340,7 +340,7 @@ const pgsqlAst: Printer<Node> = {
       case 'SetItem':
         return [nthVal(0, path, recur), ' ', '=', ' ', nthVal(1, path, recur)];
       case 'SetList':
-        return group(join([',', line], vals(path, recur)));
+        return group(join([',', hardline], vals(path, recur)));
       case 'Columns':
         const parent = path.getParentNode();
         const columnsSeparator = parent && isInsert(parent) ? hardline : line;
@@ -364,11 +364,11 @@ const pgsqlAst: Printer<Node> = {
       case 'ReturningListItem':
         return group(join(' ', vals(path, recur)));
       case 'Returning':
-        return ['RETURNING', indent([line, join([',', line], vals(path, recur))])];
+        return ['RETURNING', indent([line, join([',', hardline], vals(path, recur))])];
       case 'Update':
         return wrapSubquery(path, group(['UPDATE', group([' ', join(line, vals(path, recur))])]));
       case 'Using':
-        return ['USING', group(indent([line, join(line, vals(path, recur))]))];
+        return ['USING', group(indent([line, join(hardline, vals(path, recur))]))];
       case 'Delete':
         return wrapSubquery(path, group(['DELETE FROM', group([' ', join(line, vals(path, recur))])]));
       case 'ValuesList':
@@ -401,7 +401,7 @@ const pgsqlAst: Printer<Node> = {
       case 'DoUpdate':
         return group(['DO UPDATE', group(indent([line, join(line, vals(path, recur))]))]);
       case 'Conflict':
-        return ['ON CONFLICT', group(indent([line, join(line, vals(path, recur))]))];
+        return ['ON CONFLICT', group(indent([line, join(hardline, vals(path, recur))]))];
       case 'Insert':
         return wrapSubquery(path, [
           [group(['INSERT INTO', line, nthVal(0, path, recur)]), ' ', nthVal(1, path, recur)],

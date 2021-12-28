@@ -21,6 +21,8 @@ WHERE
 GROUP BY
   accounts.id,
   installations.id
-ON CONFLICT (account_id, installation_id, levelisation_id) DO UPDATE SET state = EXCLUDED.state
+ON CONFLICT
+  (account_id, installation_id, levelisation_id)
+  DO UPDATE SET state = EXCLUDED.state
 RETURNING
   id

@@ -297,7 +297,10 @@ exports[`Format Should parse simple sql delete param (DELETE FROM table1 WHERE i
 `;
 
 exports[`Format Should parse simple sql delete returning (DELETE FROM table1 RETURNING id, col2): delete returning 1`] = `
-"DELETE FROM table1 RETURNING id, col2
+"DELETE FROM table1
+RETURNING
+  id,
+  col2
 "
 `;
 
@@ -314,14 +317,27 @@ RETURNING
 
 exports[`Format Should parse simple sql delete with delete (WITH tmp AS (DELETE FROM table1 RETURNING id, col2) DELETE FROM table2 WHERE tmp.col2 = table2.id): delete with delete 1`] = `
 "WITH
-  tmp AS (DELETE FROM table1 RETURNING id, col2)
+  tmp AS
+  (
+    DELETE FROM table1
+    RETURNING
+      id,
+      col2
+  )
 DELETE FROM table2 WHERE tmp.col2 = table2.id
 "
 `;
 
 exports[`Format Should parse simple sql delete with insert (WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id, col2) DELETE FROM table2 WHERE tmp.col2 = table2.id): delete with insert 1`] = `
 "WITH
-  tmp AS (INSERT INTO table1 (id) VALUES (2) RETURNING id, col2)
+  tmp AS
+  (
+    INSERT INTO table1 (id)
+    VALUES (2)
+    RETURNING
+      id,
+      col2
+  )
 DELETE FROM table2 WHERE tmp.col2 = table2.id
 "
 `;
@@ -333,7 +349,15 @@ exports[`Format Should parse simple sql delete with select (WITH tmp AS (SELECT 
 
 exports[`Format Should parse simple sql delete with update (WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2) DELETE FROM table2 WHERE tmp.col2 = table2.id): delete with update 1`] = `
 "WITH
-  tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2)
+  tmp AS
+  (
+    UPDATE table1
+    SET
+      col = 2
+    RETURNING
+      id,
+      col2
+  )
 DELETE FROM table2 WHERE tmp.col2 = table2.id
 "
 `;
@@ -439,7 +463,12 @@ exports[`Format Should parse simple sql function (SELECT MY_FUNCTION(id, TRUE) F
 `;
 
 exports[`Format Should parse simple sql function in set (UPDATE table1 SET col1 = MY_FUNCTION(id, TRUE) RETURNING id, col1): function in set 1`] = `
-"UPDATE table1 SET col1 = MY_FUNCTION(id, TRUE) RETURNING id, col1
+"UPDATE table1
+SET
+  col1 = MY_FUNCTION(id, TRUE)
+RETURNING
+  id,
+  col1
 "
 `;
 
@@ -565,14 +594,27 @@ FROM table2
 
 exports[`Format Should parse simple sql insert with delete (WITH tmp AS (DELETE FROM table1 RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp): insert with delete 1`] = `
 "WITH
-  tmp AS (DELETE FROM table1 RETURNING id, col2)
+  tmp AS
+  (
+    DELETE FROM table1
+    RETURNING
+      id,
+      col2
+  )
 INSERT INTO table2 SELECT * FROM tmp
 "
 `;
 
 exports[`Format Should parse simple sql insert with insert (WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp): insert with insert 1`] = `
 "WITH
-  tmp AS (INSERT INTO table1 (id) VALUES (2) RETURNING id, col2)
+  tmp AS
+  (
+    INSERT INTO table1 (id)
+    VALUES (2)
+    RETURNING
+      id,
+      col2
+  )
 INSERT INTO table2 SELECT * FROM tmp
 "
 `;
@@ -584,7 +626,15 @@ exports[`Format Should parse simple sql insert with select (WITH tmp AS (SELECT 
 
 exports[`Format Should parse simple sql insert with update (WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp): insert with update 1`] = `
 "WITH
-  tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2)
+  tmp AS
+  (
+    UPDATE table1
+    SET
+      col = 2
+    RETURNING
+      id,
+      col2
+  )
 INSERT INTO table2 SELECT * FROM tmp
 "
 `;
@@ -1225,7 +1275,10 @@ exports[`Format Should parse simple sql update exists (UPDATE table1 SET col1 = 
 `;
 
 exports[`Format Should parse simple sql update list (UPDATE table1 SET col1 = 10, col2 = "other"): update list 1`] = `
-"UPDATE table1 SET col1 = 10, col2 = \\"other\\"
+"UPDATE table1
+SET
+  col1 = 10,
+  col2 = \\"other\\"
 "
 `;
 
@@ -1259,7 +1312,8 @@ SET
 exports[`Format Should parse simple sql update multiple as (UPDATE table1 SET col1 = my1.id, col2 = my2.id FROM table2 AS "my1", table3 AS my2): update multiple as 1`] = `
 "UPDATE table1
 SET
-  col1 = my1.id, col2 = my2.id
+  col1 = my1.id,
+  col2 = my2.id
 FROM table2 AS \\"my1\\", table3 AS my2
 "
 `;
@@ -1270,12 +1324,20 @@ exports[`Format Should parse simple sql update multiple tables (UPDATE table1 SE
 `;
 
 exports[`Format Should parse simple sql update params (UPDATE table1 SET col1 = :param1, col2 = :param2): update params 1`] = `
-"UPDATE table1 SET col1 = $param1, col2 = $param2
+"UPDATE table1
+SET
+  col1 = $param1,
+  col2 = $param2
 "
 `;
 
 exports[`Format Should parse simple sql update returning (UPDATE table1 SET col1 = 10 RETURNING id, col1): update returning 1`] = `
-"UPDATE table1 SET col1 = 10 RETURNING id, col1
+"UPDATE table1
+SET
+  col1 = 10
+RETURNING
+  id,
+  col1
 "
 `;
 
@@ -1309,14 +1371,27 @@ exports[`Format Should parse simple sql update where (UPDATE table1 SET deleted_
 
 exports[`Format Should parse simple sql update with delete (WITH tmp AS (DELETE FROM table1 RETURNING id, col2) UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id): update with delete 1`] = `
 "WITH
-  tmp AS (DELETE FROM table1 RETURNING id, col2)
+  tmp AS
+  (
+    DELETE FROM table1
+    RETURNING
+      id,
+      col2
+  )
 UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id
 "
 `;
 
 exports[`Format Should parse simple sql update with insert (WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id, col2) UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id): update with insert 1`] = `
 "WITH
-  tmp AS (INSERT INTO table1 (id) VALUES (2) RETURNING id, col2)
+  tmp AS
+  (
+    INSERT INTO table1 (id)
+    VALUES (2)
+    RETURNING
+      id,
+      col2
+  )
 UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id
 "
 `;
@@ -1330,7 +1405,15 @@ UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id
 
 exports[`Format Should parse simple sql update with update (WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2) UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id): update with update 1`] = `
 "WITH
-  tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2)
+  tmp AS
+  (
+    UPDATE table1
+    SET
+      col = 2
+    RETURNING
+      id,
+      col2
+  )
 UPDATE table2 SET col2 = tmp.id WHERE tmp.col2 = table2.id
 "
 `;

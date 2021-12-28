@@ -11,7 +11,9 @@ VALUES
     data,
     accountId
   )
-ON CONFLICT (idempotency_key) WHERE idempotency_key IS NOT NULL DO NOTHING
+ON CONFLICT
+  (idempotency_key) WHERE idempotency_key IS NOT NULL
+  DO NOTHING
 RETURNING
   id,
   data

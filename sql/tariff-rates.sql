@@ -10,4 +10,7 @@ ON CONFLICT
   (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
-      code = EXCLUDED.code, type = EXCLUDED.type, created_at = EXCLUDED.created_at, updated_at = EXCLUDED.updated_at
+      code = EXCLUDED.code,
+      type = EXCLUDED.type,
+      created_at = EXCLUDED.created_at,
+      updated_at = EXCLUDED.updated_at
