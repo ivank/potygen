@@ -110,9 +110,7 @@ exports[`Format Should parse simple sql binary sum, div, mul (SELECT (1 + 2) / (
 `;
 
 exports[`Format Should parse simple sql binary sum, sub (SELECT 1 - 2 + 2): binary sum, sub 1`] = `
-"SELECT
-  1 - 2
-  + 2
+"SELECT 1 - 2 + 2
 "
 `;
 
@@ -303,9 +301,10 @@ exports[`Format Should parse simple sql delete returning (DELETE FROM table1 USI
 "DELETE FROM table1
 USING table2 AS \\"my2\\"
 WHERE
-  table1.id = my2.id
-  AND deleted_at IS NOT NULL
-RETURNING id, col1
+  table1.id = my2.id AND deleted_at IS NOT NULL
+RETURNING
+  id,
+  col1
 "
 `;
 
@@ -438,8 +437,10 @@ exports[`Format Should parse simple sql function in where (SELECT id FROM table1
 exports[`Format Should parse simple sql function with array (SELECT id FROM table1 WHERE table1.col = ANY(ARRAY['opening','Opening']) ORDER BY col ASC LIMIT 1): function with array 1`] = `
 "SELECT id
 FROM table1
-WHERE table1.col = ANY (ARRAY['opening', 'Opening'])
-ORDER BY col ASC
+WHERE
+  table1.col = ANY (ARRAY['opening', 'Opening'])
+ORDER BY
+  col ASC
 LIMIT 1
 "
 `;
@@ -742,8 +743,10 @@ exports[`Format Should parse simple sql multiple joins (SELECT * FROM jobs JOIN 
 exports[`Format Should parse simple sql nested function (SELECT id FROM table1 WHERE table1.col = ANY(ARRAY_AGG(table1.col2)) GROUP BY table1.col2): nested function 1`] = `
 "SELECT id
 FROM table1
-WHERE table1.col = ANY (ARRAY_AGG(table1.col2))
-GROUP BY table1.col2
+WHERE
+  table1.col = ANY (ARRAY_AGG(table1.col2))
+GROUP BY
+  table1.col2
 "
 `;
 
@@ -791,13 +794,7 @@ exports[`Format Should parse simple sql order by with params (SELECT * FROM tabl
 "SELECT *
 FROM table1
 ORDER BY
-  CASE
-    WHEN
-      $param1 = 'val1'
-      AND $param2 = 'DESC'
-      THEN col2
-  END
-  DESC
+  CASE WHEN $param1 = 'val1' AND $param2 = 'DESC' THEN col2 END DESC
 "
 `;
 
@@ -838,34 +835,25 @@ exports[`Format Should parse simple sql parameter in having (SELECT * HAVING tab
 
 exports[`Format Should parse simple sql parameter in join with 2 (SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = $test1! WHERE table2.col = $test2): parameter in join with 2 1`] = `
 "SELECT *
-FROM
-  table1
-  JOIN table2
-    ON table1.id = table2.id
-    AND table1.col = $test1!
-WHERE table2.col = $test2
+FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = $test1!
+WHERE
+  table2.col = $test2
 "
 `;
 
 exports[`Format Should parse simple sql parameter in join with 2 (SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1 WHERE table2.col = :test2): parameter in join with 2 1`] = `
 "SELECT *
-FROM
-  table1
-  JOIN table2
-    ON table1.id = table2.id
-    AND table1.col = $test1
-WHERE table2.col = $test2
+FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = $test1
+WHERE
+  table2.col = $test2
 "
 `;
 
 exports[`Format Should parse simple sql parameter in join with 2 (SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1! WHERE table2.col = :test2): parameter in join with 2 1`] = `
 "SELECT *
-FROM
-  table1
-  JOIN table2
-    ON table1.id = table2.id
-    AND table1.col = $test1!
-WHERE table2.col = $test2
+FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = $test1!
+WHERE
+  table2.col = $test2
 "
 `;
 
@@ -1082,7 +1070,8 @@ SELECT id FROM table2 WHERE table2.id = tmp.col2
 exports[`Format Should parse simple sql spread param in clause (SELECT table_schema FROM information_schema.columns WHERE ((table_schema, table_name)) IN (($tables(schema, table)))): spread param in clause 1`] = `
 "SELECT table_schema
 FROM information_schema.columns
-WHERE (ROW (table_schema, table_name)) IN (($$tables(schema, table)))
+WHERE
+  (ROW (table_schema, table_name)) IN (($$tables(schema, table)))
 "
 `;
 
@@ -1173,13 +1162,15 @@ exports[`Format Should parse simple sql update map row (UPDATE table1 SET (col1,
 
 exports[`Format Should parse simple sql update map select (UPDATE table1 SET (col1, col2) = (SELECT col3, col4 FROM table2 WHERE table2.id = table1.id)): update map select 1`] = `
 "UPDATE table1
-SET (col1, col2) = (SELECT col3, col4 FROM table2 WHERE table2.id = table1.id)
+SET
+  (col1, col2) = (SELECT col3, col4 FROM table2 WHERE table2.id = table1.id)
 "
 `;
 
 exports[`Format Should parse simple sql update multiple as (UPDATE table1 SET col1 = my1.id, col2 = my2.id FROM table2 AS "my1", table3 AS my2): update multiple as 1`] = `
 "UPDATE table1
-SET col1 = my1.id, col2 = my2.id
+SET
+  col1 = my1.id, col2 = my2.id
 FROM table2 AS \\"my1\\", table3 AS my2
 "
 `;
@@ -1201,8 +1192,14 @@ exports[`Format Should parse simple sql update returning (UPDATE table1 SET col1
 
 exports[`Format Should parse simple sql update returning expression (UPDATE table1 SET col1 = 10 RETURNING id, col1, 123 as col2, '2' as col3, 3+4 as col4): update returning expression 1`] = `
 "UPDATE table1
-SET col1 = 10
-RETURNING id, col1, 123 AS col2, '2' AS col3, 3 + 4 AS col4
+SET
+  col1 = 10
+RETURNING
+  id,
+  col1,
+  123 AS col2,
+  '2' AS col3,
+  3 + 4 AS col4
 "
 `;
 
@@ -1255,24 +1252,19 @@ exports[`Format Should parse simple sql where (SELECT * WHERE id = 5): where 1`]
 `;
 
 exports[`Format Should parse simple sql where and (SELECT * WHERE id = 5 AND name = 'test'): where and 1`] = `
-"SELECT *
-WHERE
-  id = 5
-  AND name = 'test'
+"SELECT * WHERE id = 5 AND name = 'test'
 "
 `;
 
 exports[`Format Should parse simple sql where boolean (SELECT * WHERE id = 5 AND TRUE): where boolean 1`] = `
-"SELECT *
-WHERE
-  id = 5
-  AND TRUE
+"SELECT * WHERE id = 5 AND TRUE
 "
 `;
 
 exports[`Format Should parse simple sql where case (SELECT col1 WHERE table2.col2 = CASE table2.col3 WHEN 'test1' THEN 1 WHEN 'test2' THEN 2 END): where case 1`] = `
 "SELECT col1
-WHERE table2.col2 = CASE table2.col3 WHEN 'test1' THEN 1 WHEN 'test2' THEN 2 END
+WHERE
+  table2.col2 = CASE table2.col3 WHEN 'test1' THEN 1 WHEN 'test2' THEN 2 END
 "
 `;
 

@@ -25,36 +25,46 @@ SELECT
   account_levelisations.vat_payment AS "vatPayment",
   account_levelisations.generation_periods AS "generationPeriods",
   account_levelisations.export_periods AS "exportPeriods",
-  issues.payload->>'code' AS "errorCode",
-  issues.payload->'params' AS "errorParams",
+  issues.payload ->> 'code' AS "errorCode",
+  issues.payload -> 'params' AS "errorParams",
   contracts.scheme_account_reference AS "cfrFitId",
-  account_levelisations.resolved_postlev_id as "resolvedPostlevId",
-  account_levelisations.is_bacs_payments_sent as "isBacsPaymentsSent",
-  account_levelisations.is_cheque_payments_sent as "isChequePaymentsSent"
-
-FROM account_levelisations
-LEFT JOIN issues ON issues.reference_id = account_levelisations.id and issues.reference_type = 'Account Levelisation' and issues.type = 'Account Levelisation'
-JOIN contracts ON account_levelisations.installation_id = contracts.installation_id
+  account_levelisations.resolved_postlev_id AS "resolvedPostlevId",
+  account_levelisations.is_bacs_payments_sent AS "isBacsPaymentsSent",
+  account_levelisations.is_cheque_payments_sent AS "isChequePaymentsSent"
+FROM
+  account_levelisations
+  LEFT JOIN issues
+    ON issues.reference_id = account_levelisations.id AND issues.reference_type = 'Account Levelisation'
+    AND issues.type = 'Account Levelisation'
+  JOIN contracts
+    ON account_levelisations.installation_id = contracts.installation_id
 WHERE
   -- Filter
   ($q = '' OR (contracts.scheme_account_reference = $q))
-  AND ($resolvedPostlev = '' OR ($resolvedPostlev::BOOLEAN = TRUE AND account_levelisations.resolved_postlev_id IS NOT NULL))
+  AND
+    (
+      $resolvedPostlev = ''
+      OR ($resolvedPostlev::BOOLEAN = TRUE AND account_levelisations.resolved_postlev_id IS NOT NULL)
+    )
   AND ($state::account_levelisation_state IS NULL OR (account_levelisations.state = $state))
-  AND ($levelisationId::int IS NULL OR account_levelisations.levelisation_id = $levelisationId)
   -- Ids filter, for loading specific ids, skip if empty array
-  AND (cardinality($ids::int[]) = 0 OR (account_levelisations.id = ANY($ids::int[])))
-
+  AND
+    ($levelisationId::int IS NULL OR account_levelisations.levelisation_id = $levelisationId)
+  AND (cardinality($ids::int[]) = 0 OR (account_levelisations.id = ANY ($ids::int[])))
 -- Sort by difference, dateOn, value
 ORDER BY
   CASE WHEN $sortField = 'totalPayment' AND $sortOrder = 'DESC' THEN account_levelisations.total_payment END DESC,
   CASE WHEN $sortField = 'totalPayment' AND $sortOrder = 'ASC' THEN account_levelisations.total_payment END ASC,
   CASE WHEN $sortField = 'vatPayment' AND $sortOrder = 'DESC' THEN account_levelisations.vat_payment END DESC,
   CASE WHEN $sortField = 'vatPayment' AND $sortOrder = 'ASC' THEN account_levelisations.vat_payment END ASC,
-  CASE WHEN $sortField = 'generationPayment' AND $sortOrder = 'DESC' THEN account_levelisations.generation_payment END DESC,
-  CASE WHEN $sortField = 'generationPayment' AND $sortOrder = 'ASC' THEN account_levelisations.generation_payment END ASC,
+  CASE WHEN $sortField = 'generationPayment' AND $sortOrder = 'DESC' THEN account_levelisations.generation_payment END
+  DESC,
+  CASE WHEN $sortField = 'generationPayment' AND $sortOrder = 'ASC' THEN account_levelisations.generation_payment END
+  ASC,
   CASE WHEN $sortField = 'exportPayment' AND $sortOrder = 'DESC' THEN account_levelisations.export_payment END DESC,
   CASE WHEN $sortField = 'exportPayment' AND $sortOrder = 'ASC' THEN account_levelisations.export_payment END ASC,
-  CASE WHEN $sortField = 'generationEnergy' AND $sortOrder = 'DESC' THEN account_levelisations.generation_energy END DESC,
+  CASE WHEN $sortField = 'generationEnergy' AND $sortOrder = 'DESC' THEN account_levelisations.generation_energy END
+  DESC,
   CASE WHEN $sortField = 'generationEnergy' AND $sortOrder = 'ASC' THEN account_levelisations.generation_energy END ASC,
   CASE WHEN $sortField = 'exportEnergy' AND $sortOrder = 'DESC' THEN account_levelisations.export_energy END DESC,
   CASE WHEN $sortField = 'exportEnergy' AND $sortOrder = 'ASC' THEN account_levelisations.export_energy END ASC,
@@ -64,10 +74,10 @@ ORDER BY
   CASE WHEN $sortField = 'state' AND $sortOrder = 'ASC' THEN account_levelisations.state END ASC,
   CASE WHEN $sortField = 'isAccepted' AND $sortOrder = 'DESC' THEN account_levelisations.is_accepted END DESC,
   CASE WHEN $sortField = 'isAccepted' AND $sortOrder = 'ASC' THEN account_levelisations.is_accepted END ASC,
-  CASE WHEN $sortField = 'error' AND $sortOrder = 'DESC' THEN issues.payload->>'code' END DESC,
-  CASE WHEN $sortField = 'error' AND $sortOrder = 'ASC' THEN issues.payload->>'code'END ASC,
+  CASE WHEN $sortField = 'error' AND $sortOrder = 'DESC' THEN issues.payload ->> 'code' END DESC,
+  CASE WHEN $sortField = 'error' AND $sortOrder = 'ASC' THEN issues.payload ->> 'code' END ASC,
   CASE WHEN $sortField = 'exportType' AND $sortOrder = 'DESC' THEN account_levelisations.export_type::text END DESC,
   CASE WHEN $sortField = 'exportType' AND $sortOrder = 'ASC' THEN account_levelisations.export_type::text END ASC
-
 -- Pagination
-LIMIT $limit::int OFFSET $offset::int
+LIMIT $limit::int
+OFFSET $offset::int
