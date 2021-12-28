@@ -474,7 +474,9 @@ RETURNING
 
 exports[`Sql Files Should convert complex sql template tags generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
 Object {
-  "text": "SELECT meter_reads.date_on AS \\"dateOn\\", meter_reads.value
+  "text": "SELECT
+  meter_reads.date_on AS \\"dateOn\\",
+  meter_reads.value
 FROM meter_reads JOIN installation_meters ON meter_reads.meter_id = installation_meters.meter_id
 WHERE
   installation_meters.installation_id = $1 AND installation_meters.meter_type = 'Generation'
