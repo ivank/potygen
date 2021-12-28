@@ -91,6 +91,6 @@ describe('Glob', () => {
 
   it('Should parse route outside of current folder, when provided cwd', () => {
     const expectedFiles = readdirSync(sqlDir).map(sql);
-    expect(Array.from(glob('*.pgsql', sql('.')))).toEqual(expectedFiles);
+    expect(Array.from(glob('*.sql', sql('.')))).toEqual(expectedFiles);
   });
 });

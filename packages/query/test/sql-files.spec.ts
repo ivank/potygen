@@ -3,10 +3,10 @@ import { isNil } from '@potygen/ast';
 import { sqlFiles, withParserErrors } from './helpers';
 
 const values: Record<string, Record<string, unknown>> = {
-  'account-levelisations-set-bulk-update.query.pgsql': {
+  'account-levelisations-set-bulk-update.query.sql': {
     ids: [1, 2],
   },
-  'account-levelisations.query.pgsql': {
+  'account-levelisations.query.sql': {
     q: 'test',
     levelisationId: 1,
     resolvedPostlev: true,
@@ -17,40 +17,40 @@ const values: Record<string, Record<string, unknown>> = {
     limit: 1,
     offset: 10,
   },
-  'accounts.query.pgsql': {
+  'accounts.query.sql': {
     q: 'test',
     ids: [2, 3],
     limit: 1,
     offset: 10,
   },
-  'bacs.query.pgsql': {
+  'bacs.query.sql': {
     quarter: 'FQ1',
     perPage: 1,
     offset: 2,
   },
-  'contracts.pgsql': {},
-  'delete-accounts.query.pgsql': {},
-  'generation-read-data.query.pgsql': {
+  'contracts.sql': {},
+  'delete-accounts.query.sql': {},
+  'generation-read-data.query.sql': {
     installationId: 1,
     exportDateOn: new Date('2020-01-01'),
   },
-  'installation-meter-update.query.pgsql': {
+  'installation-meter-update.query.sql': {
     removalDate: new Date('2020-01-01'),
     meterId: 1,
   },
-  'installations.pgsql': {},
-  'meter-reads.pgsql': {},
-  'rates-by-tarrif-ids.query.pgsql': {
+  'installations.sql': {},
+  'meter-reads.sql': {},
+  'rates-by-tarrif-ids.query.sql': {
     ids: [1, 2, 3],
   },
-  'all.pgsql': {
+  'all.sql': {
     tableNames: [{ name: 'all_types', schema: 'public' }],
     compositeNames: [{ name: 'inventory_item', schema: 'public' }],
     enumNames: [{ name: 'account_payment_plans', schema: 'public' }],
     functionNames: [{ name: 'concat_ws', schema: 'pg_catalog' }],
   },
-  'routines.pgsql': {},
-  'active-meters-wth-reads.query.pgsql': {
+  'routines.sql': {},
+  'active-meters-wth-reads.query.sql': {
     intervalStart: new Date('2021-12-01'),
     intervalEnd: new Date('2021-12-31'),
     accountId: 1,

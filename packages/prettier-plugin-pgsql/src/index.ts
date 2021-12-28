@@ -440,7 +440,7 @@ const pgsqlParse: Parser<Node> = {
 
 const plugin: Plugin<Node> = {
   printers: { 'pgsql-ast': pgsqlAst },
-  languages: [{ extensions: ['.pgsql'], name: 'SQL', parsers: ['pgsql-parse'] }],
+  languages: [{ extensions: ['.sql'], name: 'SQL', parsers: ['pgsql-parse'], vscodeLanguageIds: ['sql'] }],
   parsers: { 'pgsql-parse': pgsqlParse },
 };
 

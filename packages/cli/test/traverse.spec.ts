@@ -16,7 +16,7 @@ describe('Traverse', () => {
 
       const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
       const sqls = new SqlRead({
-        path: '*.pgsql',
+        path: '*.sql',
         root: sqlDir,
         logger,
         watch: false,

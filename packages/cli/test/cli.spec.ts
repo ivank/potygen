@@ -79,7 +79,7 @@ describe('CLI', () => {
       '--root',
       rootDir,
       '--files',
-      'sql/*.pgsql',
+      'sql/*.sql',
       '--template',
       '{{root}}/packages/cli/test/cli/__generated__/{{name}}.queries.ts',
       '--connection',

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sql Files Should parse complex sql account-levelisation.update.query.pgsql: account-levelisation.update.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql account-levelisation.update.query.sql: account-levelisation.update.query.sql 1`] = `
 "UPDATE account_levelisations
 SET
   is_accepted = $isAccepted
@@ -12,7 +12,7 @@ RETURNING
 "
 `;
 
-exports[`Sql Files Should parse complex sql account-levelisation.upsert.query.pgsql: account-levelisation.upsert.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql account-levelisation.upsert.query.sql: account-levelisation.upsert.query.sql 1`] = `
 "INSERT INTO account_levelisations (
   account_id,
   installation_id,
@@ -46,7 +46,7 @@ RETURNING
 "
 `;
 
-exports[`Sql Files Should parse complex sql account-levelisations.query.pgsql: account-levelisations.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
 "SELECT
   account_levelisations.id AS \\"id\\",
   account_levelisations.levelisation_id AS \\"levelisationId\\",
@@ -236,7 +236,7 @@ OFFSET $offset::int
 "
 `;
 
-exports[`Sql Files Should parse complex sql account-levelisations-bulk-close-accounts.query.pgsql: account-levelisations-bulk-close-accounts.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql account-levelisations-bulk-close-accounts.query.sql: account-levelisations-bulk-close-accounts.query.sql 1`] = `
 "UPDATE accounts
 SET
   state = 'Closed'
@@ -256,7 +256,7 @@ RETURNING
 "
 `;
 
-exports[`Sql Files Should parse complex sql account-levelisations-set-bulk-update.query.pgsql: account-levelisations-set-bulk-update.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql account-levelisations-set-bulk-update.query.sql: account-levelisations-set-bulk-update.query.sql 1`] = `
 "UPDATE account_levelisations
 SET
   is_cheque_payments_sent = CASE
@@ -290,7 +290,7 @@ RETURNING
 "
 `;
 
-exports[`Sql Files Should parse complex sql accounts.list.query.pgsql: accounts.list.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
 "SELECT COUNT(DISTINCT accounts.id)::int AS total
 FROM
   accounts
@@ -371,7 +371,111 @@ WHERE
 "
 `;
 
-exports[`Sql Files Should parse complex sql accounts.pgsql: accounts.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql accounts.query.sql: accounts.query.sql 1`] = `
+"SELECT DISTINCT ON (accounts.id)
+  accounts.id,
+  accounts.state,
+  accounts.start_on AS \\"startOn\\",
+  contacts.first_name AS \\"firstName\\",
+  contacts.last_name AS \\"lastName\\",
+  contacts.email,
+  CONCAT_WS(
+    ' ',
+    installation_addresses.address_line_1,
+    installation_addresses.address_line_2,
+    installation_addresses.city,
+    installation_addresses.postcode
+  ) AS \\"address\\",
+  ARRAY_AGG(contracts.scheme_account_reference) AS \\"fitIds\\"
+FROM
+  accounts
+  -- Join all the related tables to do a combined search
+  JOIN customers
+    ON customers.id = accounts.customer_id
+  JOIN contacts
+    ON contacts.id = customers.primary_contact_id
+  JOIN addresses
+    ON addresses.id = contacts.address_id
+  JOIN contracts
+    ON contracts.account_id = accounts.id
+  JOIN installations
+    ON contracts.installation_id = installations.id
+  JOIN addresses AS installation_addresses
+    ON installations.address_id = installation_addresses.id
+WHERE
+  -- Full text search for each relation, match anything found
+  -- Separated into different vectors, so we can take advantage of indexes on each of the tables
+  -- Be sure to update the indexes if you update the queries here
+  (
+    $q = ''
+    OR
+      (
+        to_tsvector('english', accounts.beneficiary_name)
+        @@ plainto_tsquery('english', $q)
+        OR
+          to_tsvector(
+            'english',
+            CONCAT_WS(
+              ' ',
+              contacts.first_name,
+              contacts.last_name,
+              contacts.email,
+              contacts.phone
+            )
+          )
+          @@ plainto_tsquery('english', $q)
+        OR
+          to_tsvector(
+            'english',
+            CONCAT_WS(
+              ' ',
+              addresses.address_line_1,
+              addresses.address_line_2,
+              addresses.city
+            )
+          )
+          @@ plainto_tsquery('english', $q)
+        OR
+          to_tsvector(
+            'english',
+            CONCAT_WS(
+              ' ',
+              installation_addresses.address_line_1,
+              installation_addresses.address_line_2,
+              installation_addresses.city,
+              installation_addresses.postcode
+            )
+          )
+          @@ plainto_tsquery('english', $q)
+        OR accounts.id::varchar = $q
+        OR installations.supply_mpan = $q
+        OR installations.export_mpan = $q
+        -- Search for direct matches for ids
+        OR
+          accounts.beneficiary_account_number = $q
+        OR contracts.scheme_account_reference = $q
+      )
+  )
+  -- Ids filter, for loading specific ids, skip if empty array
+  AND
+    (cardinality($ids::int[]) = 0 OR (accounts.id = ANY ($ids::int[])))
+GROUP BY
+  accounts.id,
+  accounts.start_on,
+  contacts.first_name,
+  contacts.last_name,
+  contacts.email,
+  installation_addresses.address_line_1,
+  installation_addresses.address_line_2,
+  installation_addresses.city,
+  installation_addresses.postcode
+-- Pagination
+LIMIT $limit::int
+OFFSET $offset::int
+"
+`;
+
+exports[`Sql Files Should parse complex sql accounts.sql: accounts.sql 1`] = `
 "INSERT INTO accounts (
   source_system_id,
   customer_id,
@@ -514,111 +618,7 @@ ON CONFLICT
 "
 `;
 
-exports[`Sql Files Should parse complex sql accounts.query.pgsql: accounts.query.pgsql 1`] = `
-"SELECT DISTINCT ON (accounts.id)
-  accounts.id,
-  accounts.state,
-  accounts.start_on AS \\"startOn\\",
-  contacts.first_name AS \\"firstName\\",
-  contacts.last_name AS \\"lastName\\",
-  contacts.email,
-  CONCAT_WS(
-    ' ',
-    installation_addresses.address_line_1,
-    installation_addresses.address_line_2,
-    installation_addresses.city,
-    installation_addresses.postcode
-  ) AS \\"address\\",
-  ARRAY_AGG(contracts.scheme_account_reference) AS \\"fitIds\\"
-FROM
-  accounts
-  -- Join all the related tables to do a combined search
-  JOIN customers
-    ON customers.id = accounts.customer_id
-  JOIN contacts
-    ON contacts.id = customers.primary_contact_id
-  JOIN addresses
-    ON addresses.id = contacts.address_id
-  JOIN contracts
-    ON contracts.account_id = accounts.id
-  JOIN installations
-    ON contracts.installation_id = installations.id
-  JOIN addresses AS installation_addresses
-    ON installations.address_id = installation_addresses.id
-WHERE
-  -- Full text search for each relation, match anything found
-  -- Separated into different vectors, so we can take advantage of indexes on each of the tables
-  -- Be sure to update the indexes if you update the queries here
-  (
-    $q = ''
-    OR
-      (
-        to_tsvector('english', accounts.beneficiary_name)
-        @@ plainto_tsquery('english', $q)
-        OR
-          to_tsvector(
-            'english',
-            CONCAT_WS(
-              ' ',
-              contacts.first_name,
-              contacts.last_name,
-              contacts.email,
-              contacts.phone
-            )
-          )
-          @@ plainto_tsquery('english', $q)
-        OR
-          to_tsvector(
-            'english',
-            CONCAT_WS(
-              ' ',
-              addresses.address_line_1,
-              addresses.address_line_2,
-              addresses.city
-            )
-          )
-          @@ plainto_tsquery('english', $q)
-        OR
-          to_tsvector(
-            'english',
-            CONCAT_WS(
-              ' ',
-              installation_addresses.address_line_1,
-              installation_addresses.address_line_2,
-              installation_addresses.city,
-              installation_addresses.postcode
-            )
-          )
-          @@ plainto_tsquery('english', $q)
-        OR accounts.id::varchar = $q
-        OR installations.supply_mpan = $q
-        OR installations.export_mpan = $q
-        -- Search for direct matches for ids
-        OR
-          accounts.beneficiary_account_number = $q
-        OR contracts.scheme_account_reference = $q
-      )
-  )
-  -- Ids filter, for loading specific ids, skip if empty array
-  AND
-    (cardinality($ids::int[]) = 0 OR (accounts.id = ANY ($ids::int[])))
-GROUP BY
-  accounts.id,
-  accounts.start_on,
-  contacts.first_name,
-  contacts.last_name,
-  contacts.email,
-  installation_addresses.address_line_1,
-  installation_addresses.address_line_2,
-  installation_addresses.city,
-  installation_addresses.postcode
--- Pagination
-LIMIT $limit::int
-OFFSET $offset::int
-"
-`;
-
-exports[`Sql Files Should parse complex sql active-meters-wth-reads.query.pgsql: active-meters-wth-reads.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql active-meters-wth-reads.query.sql: active-meters-wth-reads.query.sql 1`] = `
 "-- active-meters-with-reads.query
 SELECT
   meters.id,
@@ -679,7 +679,7 @@ ORDER BY
 "
 `;
 
-exports[`Sql Files Should parse complex sql bacs.query.pgsql: bacs.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql bacs.query.sql: bacs.query.sql 1`] = `
 "SELECT
   p.fit_reference AS \\"fitId\\",
   a.beneficiary_name AS \\"name\\",
@@ -708,7 +708,7 @@ OFFSET $offset
 "
 `;
 
-exports[`Sql Files Should parse complex sql contracts.pgsql: contracts.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql contracts.sql: contracts.sql 1`] = `
 "INSERT INTO contracts (
   source_system_id,
   account_id,
@@ -850,7 +850,7 @@ ON CONFLICT
 "
 `;
 
-exports[`Sql Files Should parse complex sql delete-accounts.query.pgsql: delete-accounts.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 "DELETE FROM accounts
 WHERE
   EXISTS (
@@ -868,7 +868,7 @@ RETURNING
 "
 `;
 
-exports[`Sql Files Should parse complex sql generation-read-data.query.pgsql: generation-read-data.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
 "SELECT meter_reads.date_on AS \\"dateOn\\", meter_reads.value
 FROM
   meter_reads
@@ -886,7 +886,7 @@ LIMIT 1
 "
 `;
 
-exports[`Sql Files Should parse complex sql insert.process.query.pgsql: insert.process.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql insert.process.query.sql: insert.process.query.sql 1`] = `
 "INSERT INTO process_items (process_id, idempotency_key, data, account_id)
 VALUES $$items(processId, idempotencyKey, data, accountId)
 ON CONFLICT (idempotency_key) WHERE idempotency_key IS NOT NULL DO NOTHING
@@ -896,7 +896,7 @@ RETURNING
 "
 `;
 
-exports[`Sql Files Should parse complex sql installation-meter-update.query.pgsql: installation-meter-update.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
 "UPDATE installation_meters
 SET
   end_on = $removalDate
@@ -905,7 +905,7 @@ WHERE
 "
 `;
 
-exports[`Sql Files Should parse complex sql installations.pgsql: installations.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql installations.sql: installations.sql 1`] = `
 "INSERT INTO installations (
   source_system_id,
   address_id,
@@ -1111,7 +1111,7 @@ ON CONFLICT
 "
 `;
 
-exports[`Sql Files Should parse complex sql levelisations.list.query.pgsql: levelisations.list.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
 "SELECT
   levelisations.id AS \\"id\\",
   levelisations.quarter AS \\"quarter\\",
@@ -1134,7 +1134,7 @@ OFFSET $offset::int
 "
 `;
 
-exports[`Sql Files Should parse complex sql meter-reads.pgsql: meter-reads.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql meter-reads.sql: meter-reads.sql 1`] = `
 "INSERT INTO meter_reads (
   source_system_id,
   meter_id,
@@ -1205,7 +1205,7 @@ ON CONFLICT
 "
 `;
 
-exports[`Sql Files Should parse complex sql process-batch.query.pgsql: process-batch.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql process-batch.query.sql: process-batch.query.sql 1`] = `
 "SELECT
   installations.legacy_fit_db_id AS \\"cfrFiTId\\",
   contacts.email AS \\"email\\",
@@ -1234,7 +1234,7 @@ WHERE
 "
 `;
 
-exports[`Sql Files Should parse complex sql rates-by-tarrif-ids.query.pgsql: rates-by-tarrif-ids.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql rates-by-tarrif-ids.query.sql: rates-by-tarrif-ids.query.sql 1`] = `
 "SELECT
   r.tariff_id AS \\"tariffId\\",
   r.rate,
@@ -1249,7 +1249,7 @@ WHERE
 "
 `;
 
-exports[`Sql Files Should parse complex sql read-create.query.pgsql: read-create.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql read-create.query.sql: read-create.query.sql 1`] = `
 "INSERT INTO meter_reads (
   meter_id,
   reason,
@@ -1274,7 +1274,7 @@ RETURNING
 "
 `;
 
-exports[`Sql Files Should parse complex sql reads-by-account-id.query.pgsql: reads-by-account-id.query.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql reads-by-account-id.query.sql: reads-by-account-id.query.sql 1`] = `
 "SELECT
   mr.id,
   m.serial_number AS \\"msn\\",
@@ -1306,7 +1306,7 @@ LIMIT $perPage
 "
 `;
 
-exports[`Sql Files Should parse complex sql tariff-rates.pgsql: tariff-rates.pgsql 1`] = `
+exports[`Sql Files Should parse complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
 "INSERT INTO tariffs (source_system_id, code, type)
 VALUES
   (100001, 'ALL/EXPORT/01', 'Export'::tariff_types),

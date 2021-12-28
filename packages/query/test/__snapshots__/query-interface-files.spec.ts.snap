@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Query Interface Should convert complex sql account-levelisation.update.query.pgsql: account-levelisation.update.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql account-levelisation.update.query.sql: account-levelisation.update.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -135,7 +135,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql account-levelisation.upsert.query.pgsql: account-levelisation.upsert.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql account-levelisation.upsert.query.sql: account-levelisation.upsert.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -1158,7 +1158,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql account-levelisations.query.pgsql: account-levelisations.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -2676,7 +2676,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql account-levelisations-bulk-close-accounts.query.pgsql: account-levelisations-bulk-close-accounts.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql account-levelisations-bulk-close-accounts.query.sql: account-levelisations-bulk-close-accounts.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -2787,7 +2787,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql account-levelisations-set-bulk-update.query.pgsql: account-levelisations-set-bulk-update.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql account-levelisations-set-bulk-update.query.sql: account-levelisations-set-bulk-update.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -2919,7 +2919,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql accounts.list.query.pgsql: accounts.list.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -3535,576 +3535,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql accounts.pgsql: accounts.pgsql 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [],
-  "sources": Array [
-    Object {
-      "isResult": true,
-      "name": "accounts",
-      "schema": undefined,
-      "sourceTag": Object {
-        "end": 19,
-        "start": 12,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 19,
-            "start": 12,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 19,
-                "start": 12,
-                "tag": "UnquotedIdentifier",
-                "value": "accounts",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "accounts",
-      "type": "Table",
-    },
-    Object {
-      "isResult": true,
-      "name": "customers",
-      "schema": undefined,
-      "sourceTag": Object {
-        "end": 288,
-        "start": 280,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 288,
-            "start": 280,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 288,
-                "start": 280,
-                "tag": "UnquotedIdentifier",
-                "value": "customers",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "customers",
-      "type": "Table",
-    },
-    Object {
-      "isResult": true,
-      "name": "mr",
-      "schema": "fit",
-      "sourceTag": Object {
-        "end": 1208,
-        "start": 1187,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 1202,
-            "start": 1187,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 1189,
-                "start": 1187,
-                "tag": "UnquotedIdentifier",
-                "value": "fit",
-              },
-              Object {
-                "end": 1202,
-                "start": 1191,
-                "tag": "UnquotedIdentifier",
-                "value": "MeterReading",
-              },
-            ],
-          },
-          Object {
-            "end": 1208,
-            "start": 1204,
-            "tag": "As",
-            "values": Array [
-              Object {
-                "end": 1208,
-                "start": 1207,
-                "tag": "UnquotedIdentifier",
-                "value": "mr",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "MeterReading",
-      "type": "Table",
-    },
-    Object {
-      "isResult": true,
-      "name": "mr",
-      "schema": "fit",
-      "sourceTag": Object {
-        "end": 1466,
-        "start": 1445,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 1460,
-            "start": 1445,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 1447,
-                "start": 1445,
-                "tag": "UnquotedIdentifier",
-                "value": "fit",
-              },
-              Object {
-                "end": 1460,
-                "start": 1449,
-                "tag": "UnquotedIdentifier",
-                "value": "MeterReading",
-              },
-            ],
-          },
-          Object {
-            "end": 1466,
-            "start": 1462,
-            "tag": "As",
-            "values": Array [
-              Object {
-                "end": 1466,
-                "start": 1465,
-                "tag": "UnquotedIdentifier",
-                "value": "mr",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "MeterReading",
-      "type": "Table",
-    },
-    Object {
-      "isResult": true,
-      "name": "mr",
-      "schema": "fit",
-      "sourceTag": Object {
-        "end": 1937,
-        "start": 1916,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 1931,
-            "start": 1916,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 1918,
-                "start": 1916,
-                "tag": "UnquotedIdentifier",
-                "value": "fit",
-              },
-              Object {
-                "end": 1931,
-                "start": 1920,
-                "tag": "UnquotedIdentifier",
-                "value": "MeterReading",
-              },
-            ],
-          },
-          Object {
-            "end": 1937,
-            "start": 1933,
-            "tag": "As",
-            "values": Array [
-              Object {
-                "end": 1937,
-                "start": 1936,
-                "tag": "UnquotedIdentifier",
-                "value": "mr",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "MeterReading",
-      "type": "Table",
-    },
-    Object {
-      "isResult": true,
-      "name": "mr",
-      "schema": "fit",
-      "sourceTag": Object {
-        "end": 2289,
-        "start": 2268,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 2283,
-            "start": 2268,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 2270,
-                "start": 2268,
-                "tag": "UnquotedIdentifier",
-                "value": "fit",
-              },
-              Object {
-                "end": 2283,
-                "start": 2272,
-                "tag": "UnquotedIdentifier",
-                "value": "MeterReading",
-              },
-            ],
-          },
-          Object {
-            "end": 2289,
-            "start": 2285,
-            "tag": "As",
-            "values": Array [
-              Object {
-                "end": 2289,
-                "start": 2288,
-                "tag": "UnquotedIdentifier",
-                "value": "mr",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "MeterReading",
-      "type": "Table",
-    },
-    Object {
-      "isResult": true,
-      "name": "ca",
-      "schema": "fit",
-      "sourceTag": Object {
-        "end": 2585,
-        "start": 2561,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 2579,
-            "start": 2561,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 2563,
-                "start": 2561,
-                "tag": "UnquotedIdentifier",
-                "value": "fit",
-              },
-              Object {
-                "end": 2579,
-                "start": 2565,
-                "tag": "UnquotedIdentifier",
-                "value": "CustomerAccount",
-              },
-            ],
-          },
-          Object {
-            "end": 2585,
-            "start": 2581,
-            "tag": "As",
-            "values": Array [
-              Object {
-                "end": 2585,
-                "start": 2584,
-                "tag": "UnquotedIdentifier",
-                "value": "ca",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "CustomerAccount",
-      "type": "Table",
-    },
-    Object {
-      "isResult": true,
-      "name": "c",
-      "schema": "fit",
-      "sourceTag": Object {
-        "end": 2615,
-        "start": 2599,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 2610,
-            "start": 2599,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 2601,
-                "start": 2599,
-                "tag": "UnquotedIdentifier",
-                "value": "fit",
-              },
-              Object {
-                "end": 2610,
-                "start": 2603,
-                "tag": "UnquotedIdentifier",
-                "value": "Customer",
-              },
-            ],
-          },
-          Object {
-            "end": 2615,
-            "start": 2612,
-            "tag": "As",
-            "values": Array [
-              Object {
-                "end": 2615,
-                "start": 2615,
-                "tag": "UnquotedIdentifier",
-                "value": "c",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "Customer",
-      "type": "Table",
-    },
-    Object {
-      "isResult": true,
-      "name": "fa",
-      "schema": "fit",
-      "sourceTag": Object {
-        "end": 2688,
-        "start": 2669,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 2682,
-            "start": 2669,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 2671,
-                "start": 2669,
-                "tag": "UnquotedIdentifier",
-                "value": "fit",
-              },
-              Object {
-                "end": 2682,
-                "start": 2673,
-                "tag": "UnquotedIdentifier",
-                "value": "FiTAccount",
-              },
-            ],
-          },
-          Object {
-            "end": 2688,
-            "start": 2684,
-            "tag": "As",
-            "values": Array [
-              Object {
-                "end": 2688,
-                "start": 2687,
-                "tag": "UnquotedIdentifier",
-                "value": "fa",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "FiTAccount",
-      "type": "Table",
-    },
-    Object {
-      "isResult": true,
-      "name": "ga",
-      "schema": "fit",
-      "sourceTag": Object {
-        "end": 2773,
-        "start": 2747,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 2767,
-            "start": 2747,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 2749,
-                "start": 2747,
-                "tag": "UnquotedIdentifier",
-                "value": "fit",
-              },
-              Object {
-                "end": 2767,
-                "start": 2751,
-                "tag": "UnquotedIdentifier",
-                "value": "GenerationAccount",
-              },
-            ],
-          },
-          Object {
-            "end": 2773,
-            "start": 2769,
-            "tag": "As",
-            "values": Array [
-              Object {
-                "end": 2773,
-                "start": 2772,
-                "tag": "UnquotedIdentifier",
-                "value": "ga",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "GenerationAccount",
-      "type": "Table",
-    },
-    Object {
-      "isResult": true,
-      "name": "gai",
-      "schema": "fit",
-      "sourceTag": Object {
-        "end": 2871,
-        "start": 2832,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 2864,
-            "start": 2832,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 2834,
-                "start": 2832,
-                "tag": "UnquotedIdentifier",
-                "value": "fit",
-              },
-              Object {
-                "end": 2864,
-                "start": 2836,
-                "tag": "UnquotedIdentifier",
-                "value": "GenerationAccountInstallation",
-              },
-            ],
-          },
-          Object {
-            "end": 2871,
-            "start": 2866,
-            "tag": "As",
-            "values": Array [
-              Object {
-                "end": 2871,
-                "start": 2869,
-                "tag": "UnquotedIdentifier",
-                "value": "gai",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "GenerationAccountInstallation",
-      "type": "Table",
-    },
-    Object {
-      "isResult": true,
-      "name": "im",
-      "schema": "fit",
-      "sourceTag": Object {
-        "end": 2971,
-        "start": 2945,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 2965,
-            "start": 2945,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 2947,
-                "start": 2945,
-                "tag": "UnquotedIdentifier",
-                "value": "fit",
-              },
-              Object {
-                "end": 2965,
-                "start": 2949,
-                "tag": "UnquotedIdentifier",
-                "value": "InstallationMeter",
-              },
-            ],
-          },
-          Object {
-            "end": 2971,
-            "start": 2967,
-            "tag": "As",
-            "values": Array [
-              Object {
-                "end": 2971,
-                "start": 2970,
-                "tag": "UnquotedIdentifier",
-                "value": "im",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "InstallationMeter",
-      "type": "Table",
-    },
-    Object {
-      "isResult": true,
-      "name": "ba",
-      "schema": "fit",
-      "sourceTag": Object {
-        "end": 3055,
-        "start": 3035,
-        "tag": "Table",
-        "values": Array [
-          Object {
-            "end": 3049,
-            "start": 3035,
-            "tag": "QualifiedIdentifier",
-            "values": Array [
-              Object {
-                "end": 3037,
-                "start": 3035,
-                "tag": "UnquotedIdentifier",
-                "value": "fit",
-              },
-              Object {
-                "end": 3049,
-                "start": 3039,
-                "tag": "UnquotedIdentifier",
-                "value": "BankAccount",
-              },
-            ],
-          },
-          Object {
-            "end": 3055,
-            "start": 3051,
-            "tag": "As",
-            "values": Array [
-              Object {
-                "end": 3055,
-                "start": 3054,
-                "tag": "UnquotedIdentifier",
-                "value": "ba",
-              },
-            ],
-          },
-        ],
-      },
-      "table": "BankAccount",
-      "type": "Table",
-    },
-  ],
-}
-`;
-
-exports[`Query Interface Should convert complex sql accounts.query.pgsql: accounts.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -5091,7 +4522,576 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql active-meters-wth-reads.query.pgsql: active-meters-wth-reads.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql accounts.sql: accounts.sql 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "accounts",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 19,
+        "start": 12,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 19,
+            "start": 12,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 19,
+                "start": 12,
+                "tag": "UnquotedIdentifier",
+                "value": "accounts",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "accounts",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "customers",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 288,
+        "start": 280,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 288,
+            "start": 280,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 288,
+                "start": 280,
+                "tag": "UnquotedIdentifier",
+                "value": "customers",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "customers",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "mr",
+      "schema": "fit",
+      "sourceTag": Object {
+        "end": 1208,
+        "start": 1187,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 1202,
+            "start": 1187,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 1189,
+                "start": 1187,
+                "tag": "UnquotedIdentifier",
+                "value": "fit",
+              },
+              Object {
+                "end": 1202,
+                "start": 1191,
+                "tag": "UnquotedIdentifier",
+                "value": "MeterReading",
+              },
+            ],
+          },
+          Object {
+            "end": 1208,
+            "start": 1204,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 1208,
+                "start": 1207,
+                "tag": "UnquotedIdentifier",
+                "value": "mr",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "MeterReading",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "mr",
+      "schema": "fit",
+      "sourceTag": Object {
+        "end": 1466,
+        "start": 1445,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 1460,
+            "start": 1445,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 1447,
+                "start": 1445,
+                "tag": "UnquotedIdentifier",
+                "value": "fit",
+              },
+              Object {
+                "end": 1460,
+                "start": 1449,
+                "tag": "UnquotedIdentifier",
+                "value": "MeterReading",
+              },
+            ],
+          },
+          Object {
+            "end": 1466,
+            "start": 1462,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 1466,
+                "start": 1465,
+                "tag": "UnquotedIdentifier",
+                "value": "mr",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "MeterReading",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "mr",
+      "schema": "fit",
+      "sourceTag": Object {
+        "end": 1937,
+        "start": 1916,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 1931,
+            "start": 1916,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 1918,
+                "start": 1916,
+                "tag": "UnquotedIdentifier",
+                "value": "fit",
+              },
+              Object {
+                "end": 1931,
+                "start": 1920,
+                "tag": "UnquotedIdentifier",
+                "value": "MeterReading",
+              },
+            ],
+          },
+          Object {
+            "end": 1937,
+            "start": 1933,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 1937,
+                "start": 1936,
+                "tag": "UnquotedIdentifier",
+                "value": "mr",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "MeterReading",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "mr",
+      "schema": "fit",
+      "sourceTag": Object {
+        "end": 2289,
+        "start": 2268,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 2283,
+            "start": 2268,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 2270,
+                "start": 2268,
+                "tag": "UnquotedIdentifier",
+                "value": "fit",
+              },
+              Object {
+                "end": 2283,
+                "start": 2272,
+                "tag": "UnquotedIdentifier",
+                "value": "MeterReading",
+              },
+            ],
+          },
+          Object {
+            "end": 2289,
+            "start": 2285,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 2289,
+                "start": 2288,
+                "tag": "UnquotedIdentifier",
+                "value": "mr",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "MeterReading",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "ca",
+      "schema": "fit",
+      "sourceTag": Object {
+        "end": 2585,
+        "start": 2561,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 2579,
+            "start": 2561,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 2563,
+                "start": 2561,
+                "tag": "UnquotedIdentifier",
+                "value": "fit",
+              },
+              Object {
+                "end": 2579,
+                "start": 2565,
+                "tag": "UnquotedIdentifier",
+                "value": "CustomerAccount",
+              },
+            ],
+          },
+          Object {
+            "end": 2585,
+            "start": 2581,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 2585,
+                "start": 2584,
+                "tag": "UnquotedIdentifier",
+                "value": "ca",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "CustomerAccount",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "c",
+      "schema": "fit",
+      "sourceTag": Object {
+        "end": 2615,
+        "start": 2599,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 2610,
+            "start": 2599,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 2601,
+                "start": 2599,
+                "tag": "UnquotedIdentifier",
+                "value": "fit",
+              },
+              Object {
+                "end": 2610,
+                "start": 2603,
+                "tag": "UnquotedIdentifier",
+                "value": "Customer",
+              },
+            ],
+          },
+          Object {
+            "end": 2615,
+            "start": 2612,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 2615,
+                "start": 2615,
+                "tag": "UnquotedIdentifier",
+                "value": "c",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "Customer",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "fa",
+      "schema": "fit",
+      "sourceTag": Object {
+        "end": 2688,
+        "start": 2669,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 2682,
+            "start": 2669,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 2671,
+                "start": 2669,
+                "tag": "UnquotedIdentifier",
+                "value": "fit",
+              },
+              Object {
+                "end": 2682,
+                "start": 2673,
+                "tag": "UnquotedIdentifier",
+                "value": "FiTAccount",
+              },
+            ],
+          },
+          Object {
+            "end": 2688,
+            "start": 2684,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 2688,
+                "start": 2687,
+                "tag": "UnquotedIdentifier",
+                "value": "fa",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "FiTAccount",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "ga",
+      "schema": "fit",
+      "sourceTag": Object {
+        "end": 2773,
+        "start": 2747,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 2767,
+            "start": 2747,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 2749,
+                "start": 2747,
+                "tag": "UnquotedIdentifier",
+                "value": "fit",
+              },
+              Object {
+                "end": 2767,
+                "start": 2751,
+                "tag": "UnquotedIdentifier",
+                "value": "GenerationAccount",
+              },
+            ],
+          },
+          Object {
+            "end": 2773,
+            "start": 2769,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 2773,
+                "start": 2772,
+                "tag": "UnquotedIdentifier",
+                "value": "ga",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "GenerationAccount",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "gai",
+      "schema": "fit",
+      "sourceTag": Object {
+        "end": 2871,
+        "start": 2832,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 2864,
+            "start": 2832,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 2834,
+                "start": 2832,
+                "tag": "UnquotedIdentifier",
+                "value": "fit",
+              },
+              Object {
+                "end": 2864,
+                "start": 2836,
+                "tag": "UnquotedIdentifier",
+                "value": "GenerationAccountInstallation",
+              },
+            ],
+          },
+          Object {
+            "end": 2871,
+            "start": 2866,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 2871,
+                "start": 2869,
+                "tag": "UnquotedIdentifier",
+                "value": "gai",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "GenerationAccountInstallation",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "im",
+      "schema": "fit",
+      "sourceTag": Object {
+        "end": 2971,
+        "start": 2945,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 2965,
+            "start": 2945,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 2947,
+                "start": 2945,
+                "tag": "UnquotedIdentifier",
+                "value": "fit",
+              },
+              Object {
+                "end": 2965,
+                "start": 2949,
+                "tag": "UnquotedIdentifier",
+                "value": "InstallationMeter",
+              },
+            ],
+          },
+          Object {
+            "end": 2971,
+            "start": 2967,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 2971,
+                "start": 2970,
+                "tag": "UnquotedIdentifier",
+                "value": "im",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "InstallationMeter",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "ba",
+      "schema": "fit",
+      "sourceTag": Object {
+        "end": 3055,
+        "start": 3035,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 3049,
+            "start": 3035,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 3037,
+                "start": 3035,
+                "tag": "UnquotedIdentifier",
+                "value": "fit",
+              },
+              Object {
+                "end": 3049,
+                "start": 3039,
+                "tag": "UnquotedIdentifier",
+                "value": "BankAccount",
+              },
+            ],
+          },
+          Object {
+            "end": 3055,
+            "start": 3051,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 3055,
+                "start": 3054,
+                "tag": "UnquotedIdentifier",
+                "value": "ba",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "BankAccount",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql active-meters-wth-reads.query.sql: active-meters-wth-reads.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -5971,7 +5971,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql bacs.query.pgsql: bacs.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql bacs.query.sql: bacs.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -6579,7 +6579,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql contracts.pgsql: contracts.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql contracts.sql: contracts.sql 1`] = `
 Object {
   "params": Array [],
   "results": Array [],
@@ -7348,7 +7348,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql delete-accounts.query.pgsql: delete-accounts.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -7572,7 +7572,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql generation-read-data.query.pgsql: generation-read-data.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -7741,7 +7741,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql insert.process.query.pgsql: insert.process.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql insert.process.query.sql: insert.process.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -8815,7 +8815,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql installation-meter-update.query.pgsql: installation-meter-update.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -8899,7 +8899,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql installations.pgsql: installations.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql installations.sql: installations.sql 1`] = `
 Object {
   "params": Array [],
   "results": Array [],
@@ -9698,7 +9698,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql levelisations.list.query.pgsql: levelisations.list.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -9965,7 +9965,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql meter-reads.pgsql: meter-reads.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql meter-reads.sql: meter-reads.sql 1`] = `
 Object {
   "params": Array [],
   "results": Array [],
@@ -10120,7 +10120,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql process-batch.query.pgsql: process-batch.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql process-batch.query.sql: process-batch.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -10809,7 +10809,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql rates-by-tarrif-ids.query.pgsql: rates-by-tarrif-ids.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql rates-by-tarrif-ids.query.sql: rates-by-tarrif-ids.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -11104,7 +11104,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql read-create.query.pgsql: read-create.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql read-create.query.sql: read-create.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -13235,7 +13235,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql reads-by-account-id.query.pgsql: reads-by-account-id.query.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql reads-by-account-id.query.sql: reads-by-account-id.query.sql 1`] = `
 Object {
   "params": Array [
     Object {
@@ -13791,7 +13791,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert complex sql tariff-rates.pgsql: tariff-rates.pgsql 1`] = `
+exports[`Query Interface Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
 Object {
   "params": Array [],
   "results": Array [],
