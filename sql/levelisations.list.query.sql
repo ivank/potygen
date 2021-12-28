@@ -1,4 +1,8 @@
-SELECT levelisations.id AS "id", levelisations.quarter AS "quarter", start_on AS "startOn", end_on AS "endOn"
+SELECT
+  levelisations.id AS "id",
+  levelisations.quarter AS "quarter",
+  start_on AS "startOn",
+  end_on AS "endOn"
 FROM levelisations
 WHERE
   -- Filter

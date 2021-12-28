@@ -263,7 +263,11 @@ exports[`Format Should parse simple sql customdollar quoted string (SELECT $Some
 `;
 
 exports[`Format Should parse simple sql deep multiple columns select (SELECT column1, table1.column2, table1.column3, schema1.table3.colum2): deep multiple columns select 1`] = `
-"SELECT column1, table1.column2, table1.column3, schema1.table3.colum2
+"SELECT
+  column1,
+  table1.column2,
+  table1.column3,
+  schema1.table3.colum2
 "
 `;
 
@@ -360,7 +364,17 @@ exports[`Format Should parse simple sql except all (SELECT * FROM table1 EXCEPT 
 `;
 
 exports[`Format Should parse simple sql except select (SELECT col1, col2 FROM table1 EXCEPT SELECT col1, col2 FROM table2): except select 1`] = `
-"SELECT col1, col2 FROM table1  EXCEPT SELECT col1, col2 FROM table2
+"SELECT
+  col1,
+  col2
+FROM table1
+
+EXCEPT
+
+SELECT
+  col1,
+  col2
+FROM table2
 "
 `;
 
@@ -481,7 +495,13 @@ exports[`Format Should parse simple sql inner join (SELECT * FROM jobs INNER JOI
 `;
 
 exports[`Format Should parse simple sql insert (INSERT INTO table1 (id, col1) VALUES (10,20),(30,40)): insert 1`] = `
-"INSERT INTO table1 (id, col1) VALUES (10, 20), (30, 40)
+"INSERT INTO table1 (
+  id,
+  col1
+)
+VALUES
+  (10, 20),
+  (30, 40)
 "
 `;
 
@@ -513,17 +533,33 @@ ON CONFLICT DO UPDATE SET id = EXCLUDED.id WHERE id > 10
 `;
 
 exports[`Format Should parse simple sql insert multiple param values (INSERT INTO table1 VALUES $rows(name, test)): insert multiple param values 1`] = `
-"INSERT INTO table1 VALUES $$rows(name, test)
+"INSERT INTO table1 VALUES
+  $$rows(
+    name,
+    test
+  )
 "
 `;
 
 exports[`Format Should parse simple sql insert returning (INSERT INTO table1 (id, col1) VALUES (10,20),(30,40) RETURNING id, col1): insert returning 1`] = `
-"INSERT INTO table1 (id, col1) VALUES (10, 20), (30, 40) RETURNING id, col1
+"INSERT INTO table1 (
+  id,
+  col1
+)
+VALUES
+  (10, 20),
+  (30, 40)
+RETURNING
+  id,
+  col1
 "
 `;
 
 exports[`Format Should parse simple sql insert select (INSERT INTO table1 SELECT id, col FROM table2): insert select 1`] = `
-"INSERT INTO table1 SELECT id, col FROM table2
+"INSERT INTO table1 SELECT
+  id,
+  col
+FROM table2
 "
 `;
 
@@ -564,7 +600,17 @@ exports[`Format Should parse simple sql intersect all (SELECT * FROM table1 INTE
 `;
 
 exports[`Format Should parse simple sql intersect select (SELECT col1, col2 FROM table1 INTERSECT SELECT col1, col2 FROM table2): intersect select 1`] = `
-"SELECT col1, col2 FROM table1  INTERSECT SELECT col1, col2 FROM table2
+"SELECT
+  col1,
+  col2
+FROM table1
+
+INTERSECT
+
+SELECT
+  col1,
+  col2
+FROM table2
 "
 `;
 
@@ -708,12 +754,17 @@ exports[`Format Should parse simple sql limit offset params (SELECT * FROM table
 `;
 
 exports[`Format Should parse simple sql multiple as columns select (SELECT column1 as "test", table1.column2, "test".column2 as col1): multiple as columns select 1`] = `
-"SELECT column1 AS \\"test\\", table1.column2, \\"test\\".column2 AS col1
+"SELECT
+  column1 AS \\"test\\",
+  table1.column2,
+  \\"test\\".column2 AS col1
 "
 `;
 
 exports[`Format Should parse simple sql multiple columns select (SELECT column1, column2): multiple columns select 1`] = `
-"SELECT column1, column2
+"SELECT
+  column1,
+  column2
 "
 `;
 
@@ -751,7 +802,10 @@ GROUP BY
 `;
 
 exports[`Format Should parse simple sql nested select (SELECT test, (SELECT id FROM table2 LIMIT 1) FROM table1): nested select 1`] = `
-"SELECT test, (SELECT id FROM table2 LIMIT 1) FROM table1
+"SELECT
+  test,
+  (SELECT id FROM table2 LIMIT 1)
+FROM table1
 "
 `;
 
@@ -908,7 +962,10 @@ exports[`Format Should parse simple sql pg cast column to varchar (SELECT test::
 `;
 
 exports[`Format Should parse simple sql pg cast nested select (SELECT test::date, (SELECT id FROM table2 LIMIT 1)::int FROM table1): pg cast nested select 1`] = `
-"SELECT test::date, (SELECT id FROM table2 LIMIT 1)::int FROM table1
+"SELECT
+  test::date,
+  (SELECT id FROM table2 LIMIT 1)::int
+FROM table1
 "
 `;
 
@@ -998,7 +1055,10 @@ exports[`Format Should parse simple sql row (SELECT ROW (1,2,3)): row 1`] = `
 `;
 
 exports[`Format Should parse simple sql row complex (SELECT (1, 2+2, 3), ROW (123), (1,2,(3))): row complex 1`] = `
-"SELECT ROW (1, 2 + 2, 3), ROW (123), ROW (1, 2, (3))
+"SELECT
+  ROW (1, 2 + 2, 3),
+  ROW (123),
+  ROW (1, 2, (3))
 "
 `;
 
@@ -1071,7 +1131,16 @@ exports[`Format Should parse simple sql spread param in clause (SELECT table_sch
 "SELECT table_schema
 FROM information_schema.columns
 WHERE
-  (ROW (table_schema, table_name)) IN (($$tables(schema, table)))
+  (ROW (table_schema, table_name))
+  IN
+    (
+      (
+        $$tables(
+          schema,
+          table
+        )
+      )
+    )
 "
 `;
 
@@ -1126,7 +1195,17 @@ exports[`Format Should parse simple sql union all (SELECT * FROM table1 UNION AL
 `;
 
 exports[`Format Should parse simple sql union select (SELECT col1, col2 FROM table1 UNION SELECT col1, col2 FROM table2): union select 1`] = `
-"SELECT col1, col2 FROM table1  UNION SELECT col1, col2 FROM table2
+"SELECT
+  col1,
+  col2
+FROM table1
+
+UNION
+
+SELECT
+  col1,
+  col2
+FROM table2
 "
 `;
 
@@ -1163,7 +1242,17 @@ exports[`Format Should parse simple sql update map row (UPDATE table1 SET (col1,
 exports[`Format Should parse simple sql update map select (UPDATE table1 SET (col1, col2) = (SELECT col3, col4 FROM table2 WHERE table2.id = table1.id)): update map select 1`] = `
 "UPDATE table1
 SET
-  (col1, col2) = (SELECT col3, col4 FROM table2 WHERE table2.id = table1.id)
+  (col1, col2)
+  =
+
+    (
+      SELECT
+        col3,
+        col4
+      FROM table2
+      WHERE
+        table2.id = table1.id
+    )
 "
 `;
 
@@ -1289,7 +1378,11 @@ exports[`Format Should parse simple sql where ilike string (SELECT * WHERE table
 `;
 
 exports[`Format Should parse simple sql where in tuples (SELECT col1, col2 WHERE (col1,col2) IN ((1,2),(3,4))): where in tuples 1`] = `
-"SELECT col1, col2 WHERE ROW (col1, col2) IN ROW (ROW (1, 2), ROW (3, 4))
+"SELECT
+  col1,
+  col2
+WHERE
+  ROW (col1, col2) IN ROW (ROW (1, 2), ROW (3, 4))
 "
 `;
 

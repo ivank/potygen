@@ -1,4 +1,11 @@
-INSERT INTO meter_reads (meter_id, reason, "type", date_on, submitted_at, "value")
+INSERT INTO meter_reads (
+  meter_id,
+  reason,
+  "type",
+  date_on,
+  submitted_at,
+  "value"
+)
 VALUES
   (
     $meterId,
@@ -6,7 +13,8 @@ VALUES
     $type,
     COALESCE($dateOn, CURRENT_DATE),
     COALESCE($submittedAt, CURRENT_DATE),
-    COALESCE($value::int, 0))
+    COALESCE($value::int, 0)
+  )
 RETURNING
   id,
   "value",

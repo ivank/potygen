@@ -869,7 +869,9 @@ RETURNING
 `;
 
 exports[`Sql Files Should parse complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
-"SELECT meter_reads.date_on AS \\"dateOn\\", meter_reads.value
+"SELECT
+  meter_reads.date_on AS \\"dateOn\\",
+  meter_reads.value
 FROM
   meter_reads
   JOIN installation_meters
@@ -887,8 +889,19 @@ LIMIT 1
 `;
 
 exports[`Sql Files Should parse complex sql insert.process.query.sql: insert.process.query.sql 1`] = `
-"INSERT INTO process_items (process_id, idempotency_key, data, account_id)
-VALUES $$items(processId, idempotencyKey, data, accountId)
+"INSERT INTO process_items (
+  process_id,
+  idempotency_key,
+  data,
+  account_id
+)
+VALUES
+  $$items(
+    processId,
+    idempotencyKey,
+    data,
+    accountId
+  )
 ON CONFLICT (idempotency_key) WHERE idempotency_key IS NOT NULL DO NOTHING
 RETURNING
   id,
@@ -1265,7 +1278,8 @@ VALUES
     $type,
     COALESCE($dateOn, CURRENT_DATE),
     COALESCE($submittedAt, CURRENT_DATE),
-    COALESCE($value::int, 0))
+    COALESCE($value::int, 0)
+  )
 RETURNING
   id,
   \\"value\\",
@@ -1307,7 +1321,11 @@ LIMIT $perPage
 `;
 
 exports[`Sql Files Should parse complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
-"INSERT INTO tariffs (source_system_id, code, type)
+"INSERT INTO tariffs (
+  source_system_id,
+  code,
+  type
+)
 VALUES
   (100001, 'ALL/EXPORT/01', 'Export'::tariff_types),
   (100002, 'ALL/EXPORT/02', 'Export'::tariff_types)

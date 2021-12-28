@@ -15,4 +15,6 @@ Introspect queiries and generate typescript types for them.
 - [ ] dogfooding our queries, plus use the generated types instead of the hand crafted ones
 - [ ] Hardcode native functions + operators
 - [x] Standardise tags from grammar
-- [ ] Prettier for postgres SQL
+- [x] Prettier for postgres SQL
+- [ ] Prettier binary expression flattening
+- [ ] VSCode plugin

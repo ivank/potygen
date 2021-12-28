@@ -1,4 +1,6 @@
-SELECT meter_reads.date_on AS "dateOn", meter_reads.value
+SELECT
+  meter_reads.date_on AS "dateOn",
+  meter_reads.value
 FROM meter_reads JOIN installation_meters ON meter_reads.meter_id = installation_meters.meter_id
 WHERE
   installation_meters.installation_id = $installationId AND installation_meters.meter_type = 'Generation'

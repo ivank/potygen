@@ -17,7 +17,7 @@ import {
   isConflictTargetIndex,
 } from '@potygen/ast';
 
-const { line, softline, indent, join, group } = doc.builders;
+const { line, softline, indent, join, group, hardline } = doc.builders;
 
 interface RootAstTag extends SqlTag {
   tag: 'Ast';
@@ -90,7 +90,7 @@ const pgsqlAst: Printer<Node> = {
           node.type === 'spread' ? '$$' : '$',
           node.value,
           node.pick.length
-            ? group(['(', indent([softline, join([',', line], path.map(recur, 'pick'))]), softline, ')'])
+            ? group(['(', indent([softline, join([',', hardline], path.map(recur, 'pick'))]), softline, ')'])
             : '',
           node.required ? '!' : '',
         ];
@@ -281,7 +281,7 @@ const pgsqlAst: Printer<Node> = {
       case 'SelectListItem':
         return group(join(' ', vals(path, recur)));
       case 'SelectList':
-        return group(indent([line, join([',', line], vals(path, recur))]));
+        return group(indent([line, join([',', hardline], vals(path, recur))]));
       case 'NamedSelect':
         return group(join(' ', vals(path, recur)));
       case 'JoinType':
@@ -342,9 +342,11 @@ const pgsqlAst: Printer<Node> = {
       case 'SetList':
         return group(join([',', line], vals(path, recur)));
       case 'Columns':
-        return group(['(', indent([softline, join([',', line], vals(path, recur))]), softline, ')']);
+        const parent = path.getParentNode();
+        const columnsSeparator = parent && isInsert(parent) ? hardline : line;
+        return group(['(', indent([softline, join([',', columnsSeparator], vals(path, recur))]), softline, ')']);
       case 'Values':
-        return group(['(', indent([softline, join([',', line], vals(path, recur))]), ')']);
+        return group(['(', indent([softline, join([',', line], vals(path, recur))]), softline, ')']);
       case 'SetMap':
         return group([
           nthVal(0, path, recur),
@@ -370,7 +372,7 @@ const pgsqlAst: Printer<Node> = {
       case 'Delete':
         return wrapSubquery(path, group(['DELETE FROM', group([' ', join(line, vals(path, recur))])]));
       case 'ValuesList':
-        return ['VALUES', group(indent([line, join([',', line], vals(path, recur))]))];
+        return ['VALUES', group(indent([line, join([',', hardline], vals(path, recur))]))];
       case 'Collate':
         return group(['COLLATE', line, node.value]);
       case 'ConflictTargetIndex':
@@ -402,7 +404,7 @@ const pgsqlAst: Printer<Node> = {
         return ['ON CONFLICT', group(indent([line, join(line, vals(path, recur))]))];
       case 'Insert':
         return wrapSubquery(path, [
-          [['INSERT INTO', ' ', nthVal(0, path, recur)], ' ', nthVal(1, path, recur)],
+          [group(['INSERT INTO', line, nthVal(0, path, recur)]), ' ', nthVal(1, path, recur)],
           group([line, join(line, tailVals(2, path, recur))]),
         ]);
       case 'WrappedExpression':

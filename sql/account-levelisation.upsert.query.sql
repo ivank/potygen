@@ -1,5 +1,14 @@
-INSERT INTO account_levelisations (account_id, installation_id, levelisation_id, state)
-SELECT accounts.id AS account_id, installations.id AS installation_id, $levelisationId AS levelisation_id, 'Pending'
+INSERT INTO account_levelisations (
+  account_id,
+  installation_id,
+  levelisation_id,
+  state
+)
+SELECT
+  accounts.id AS account_id,
+  installations.id AS installation_id,
+  $levelisationId AS levelisation_id,
+  'Pending'
 FROM
   accounts
   JOIN contracts
