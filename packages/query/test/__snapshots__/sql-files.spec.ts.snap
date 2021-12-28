@@ -29,36 +29,46 @@ Object {
   account_levelisations.vat_payment AS \\"vatPayment\\",
   account_levelisations.generation_periods AS \\"generationPeriods\\",
   account_levelisations.export_periods AS \\"exportPeriods\\",
-  issues.payload->>'code' AS \\"errorCode\\",
-  issues.payload->'params' AS \\"errorParams\\",
+  issues.payload ->> 'code' AS \\"errorCode\\",
+  issues.payload -> 'params' AS \\"errorParams\\",
   contracts.scheme_account_reference AS \\"cfrFitId\\",
-  account_levelisations.resolved_postlev_id as \\"resolvedPostlevId\\",
-  account_levelisations.is_bacs_payments_sent as \\"isBacsPaymentsSent\\",
-  account_levelisations.is_cheque_payments_sent as \\"isChequePaymentsSent\\"
-
-FROM account_levelisations
-LEFT JOIN issues ON issues.reference_id = account_levelisations.id and issues.reference_type = 'Account Levelisation' and issues.type = 'Account Levelisation'
-JOIN contracts ON account_levelisations.installation_id = contracts.installation_id
+  account_levelisations.resolved_postlev_id AS \\"resolvedPostlevId\\",
+  account_levelisations.is_bacs_payments_sent AS \\"isBacsPaymentsSent\\",
+  account_levelisations.is_cheque_payments_sent AS \\"isChequePaymentsSent\\"
+FROM
+  account_levelisations
+  LEFT JOIN issues
+    ON issues.reference_id = account_levelisations.id AND issues.reference_type = 'Account Levelisation'
+    AND issues.type = 'Account Levelisation'
+  JOIN contracts
+    ON account_levelisations.installation_id = contracts.installation_id
 WHERE
   -- Filter
   ($1 = '' OR (contracts.scheme_account_reference = $1))
-  AND ($2 = '' OR ($2::BOOLEAN = TRUE AND account_levelisations.resolved_postlev_id IS NOT NULL))
+  AND
+    (
+      $2 = ''
+      OR ($2::BOOLEAN = TRUE AND account_levelisations.resolved_postlev_id IS NOT NULL)
+    )
   AND ($3::account_levelisation_state IS NULL OR (account_levelisations.state = $3))
-  AND ($4::int IS NULL OR account_levelisations.levelisation_id = $4)
   -- Ids filter, for loading specific ids, skip if empty array
-  AND (cardinality($5::int[]) = 0 OR (account_levelisations.id = ANY($5::int[])))
-
+  AND
+    ($4::int IS NULL OR account_levelisations.levelisation_id = $4)
+  AND (cardinality($5::int[]) = 0 OR (account_levelisations.id = ANY ($5::int[])))
 -- Sort by difference, dateOn, value
 ORDER BY
   CASE WHEN $6 = 'totalPayment' AND $7 = 'DESC' THEN account_levelisations.total_payment END DESC,
   CASE WHEN $6 = 'totalPayment' AND $7 = 'ASC' THEN account_levelisations.total_payment END ASC,
   CASE WHEN $6 = 'vatPayment' AND $7 = 'DESC' THEN account_levelisations.vat_payment END DESC,
   CASE WHEN $6 = 'vatPayment' AND $7 = 'ASC' THEN account_levelisations.vat_payment END ASC,
-  CASE WHEN $6 = 'generationPayment' AND $7 = 'DESC' THEN account_levelisations.generation_payment END DESC,
-  CASE WHEN $6 = 'generationPayment' AND $7 = 'ASC' THEN account_levelisations.generation_payment END ASC,
+  CASE WHEN $6 = 'generationPayment' AND $7 = 'DESC' THEN account_levelisations.generation_payment END
+  DESC,
+  CASE WHEN $6 = 'generationPayment' AND $7 = 'ASC' THEN account_levelisations.generation_payment END
+  ASC,
   CASE WHEN $6 = 'exportPayment' AND $7 = 'DESC' THEN account_levelisations.export_payment END DESC,
   CASE WHEN $6 = 'exportPayment' AND $7 = 'ASC' THEN account_levelisations.export_payment END ASC,
-  CASE WHEN $6 = 'generationEnergy' AND $7 = 'DESC' THEN account_levelisations.generation_energy END DESC,
+  CASE WHEN $6 = 'generationEnergy' AND $7 = 'DESC' THEN account_levelisations.generation_energy END
+  DESC,
   CASE WHEN $6 = 'generationEnergy' AND $7 = 'ASC' THEN account_levelisations.generation_energy END ASC,
   CASE WHEN $6 = 'exportEnergy' AND $7 = 'DESC' THEN account_levelisations.export_energy END DESC,
   CASE WHEN $6 = 'exportEnergy' AND $7 = 'ASC' THEN account_levelisations.export_energy END ASC,
@@ -68,13 +78,13 @@ ORDER BY
   CASE WHEN $6 = 'state' AND $7 = 'ASC' THEN account_levelisations.state END ASC,
   CASE WHEN $6 = 'isAccepted' AND $7 = 'DESC' THEN account_levelisations.is_accepted END DESC,
   CASE WHEN $6 = 'isAccepted' AND $7 = 'ASC' THEN account_levelisations.is_accepted END ASC,
-  CASE WHEN $6 = 'error' AND $7 = 'DESC' THEN issues.payload->>'code' END DESC,
-  CASE WHEN $6 = 'error' AND $7 = 'ASC' THEN issues.payload->>'code'END ASC,
+  CASE WHEN $6 = 'error' AND $7 = 'DESC' THEN issues.payload ->> 'code' END DESC,
+  CASE WHEN $6 = 'error' AND $7 = 'ASC' THEN issues.payload ->> 'code' END ASC,
   CASE WHEN $6 = 'exportType' AND $7 = 'DESC' THEN account_levelisations.export_type::text END DESC,
   CASE WHEN $6 = 'exportType' AND $7 = 'ASC' THEN account_levelisations.export_type::text END ASC
-
 -- Pagination
-LIMIT $8::int OFFSET $9::int
+LIMIT $8::int
+OFFSET $9::int
 ",
   "values": Array [
     "test",
@@ -98,30 +108,20 @@ Object {
   "text": "UPDATE account_levelisations
 SET
   is_cheque_payments_sent = CASE
-    WHEN EXISTS(
-      SELECT id
-      FROM accounts
-      WHERE
-        accounts.id = account_levelisations.account_id
-        AND payment_plan = 'Cheque'
-      )
-    THEN TRUE
+    WHEN
+      EXISTS (SELECT id FROM accounts WHERE accounts.id = account_levelisations.account_id AND payment_plan = 'Cheque')
+      THEN TRUE
     ELSE NULL
   END,
   is_bacs_payments_sent = CASE
-    WHEN EXISTS(
-      SELECT id
-      FROM accounts
-      WHERE
-        accounts.id = account_levelisations.account_id
-        AND payment_plan = 'BACs'
-      )
-    THEN TRUE
+    WHEN EXISTS (SELECT id FROM accounts WHERE accounts.id = account_levelisations.account_id AND payment_plan = 'BACs')
+      THEN TRUE
     ELSE NULL
   END
-WHERE account_levelisations.id = ANY($1::int[])
-AND is_accepted = true
-RETURNING id
+WHERE
+  account_levelisations.id = ANY ($1::int[]) AND is_accepted = TRUE
+RETURNING
+  id
 ",
   "values": Array [
     Array [
@@ -134,79 +134,91 @@ RETURNING id
 
 exports[`Sql Files Should convert complex sql template tags accounts.query.sql: accounts.query.sql 1`] = `
 Object {
-  "text": "  SELECT DISTINCT ON (accounts.id)
-    accounts.id,
-    accounts.state,
-    accounts.start_on AS \\"startOn\\",
-    contacts.first_name AS \\"firstName\\",
-    contacts.last_name AS \\"lastName\\",
-    contacts.email,
-    CONCAT_WS(
-      ' ',
-      installation_addresses.address_line_1,
-      installation_addresses.address_line_2,
-      installation_addresses.city,
-      installation_addresses.postcode
-    ) AS \\"address\\",
-    ARRAY_AGG(contracts.scheme_account_reference) AS \\"fitIds\\"
-  FROM accounts
-
-  -- Join all the related tables to do a combined search
-  JOIN customers ON customers.id = accounts.customer_id
-  JOIN contacts ON contacts.id = customers.primary_contact_id
-  JOIN addresses ON addresses.id = contacts.address_id
-  JOIN contracts ON contracts.account_id = accounts.id
-  JOIN installations ON contracts.installation_id = installations.id
-  JOIN addresses AS installation_addresses ON installations.address_id = installation_addresses.id
-
-  WHERE
-    -- Full text search for each relation, match anything found
-    -- Separated into different vectors, so we can take advantage of indexes on each of the tables
-    -- Be sure to update the indexes if you update the queries here
-    ($1 = '' OR (
-      to_tsvector(
-        'english',
-        accounts.beneficiary_name
-      ) @@ plainto_tsquery('english', $1)
-
-      OR to_tsvector(
-        'english',
-        CONCAT_WS(' ', contacts.first_name, contacts.last_name, contacts.email, contacts.phone)
-      ) @@ plainto_tsquery('english', $1)
-
-      OR to_tsvector(
-        'english',
-        CONCAT_WS(' ', addresses.address_line_1, addresses.address_line_2, addresses.city)
-      ) @@ plainto_tsquery('english', $1)
-
-      OR to_tsvector(
-        'english',
-        CONCAT_WS(' ', installation_addresses.address_line_1, installation_addresses.address_line_2, installation_addresses.city, installation_addresses.postcode)
-      ) @@ plainto_tsquery('english', $1)
-
-      -- Search for direct matches for ids
-      OR accounts.id::varchar = $1
-      OR installations.supply_mpan = $1
-      OR installations.export_mpan = $1
-      OR accounts.beneficiary_account_number = $1
-      OR contracts.scheme_account_reference = $1
-    ))
-    -- Ids filter, for loading specific ids, skip if empty array
-    AND (cardinality($2::int[]) = 0 OR (accounts.id = ANY($2::int[])))
-
-  GROUP BY (
-    accounts.id,
-    accounts.start_on,
-    contacts.first_name,
-    contacts.last_name,
-    contacts.email,installation_addresses.address_line_1,
+  "text": "SELECT DISTINCT ON (accounts.id)
+  accounts.id,
+  accounts.state,
+  accounts.start_on AS \\"startOn\\",
+  contacts.first_name AS \\"firstName\\",
+  contacts.last_name AS \\"lastName\\",
+  contacts.email,
+  CONCAT_WS(
+    ' ',
+    installation_addresses.address_line_1,
     installation_addresses.address_line_2,
     installation_addresses.city,
     installation_addresses.postcode
+  ) AS \\"address\\",
+  ARRAY_AGG(contracts.scheme_account_reference) AS \\"fitIds\\"
+FROM
+  accounts
+  -- Join all the related tables to do a combined search
+  JOIN customers
+    ON customers.id = accounts.customer_id
+  JOIN contacts
+    ON contacts.id = customers.primary_contact_id
+  JOIN addresses
+    ON addresses.id = contacts.address_id
+  JOIN contracts
+    ON contracts.account_id = accounts.id
+  JOIN installations
+    ON contracts.installation_id = installations.id
+  JOIN addresses AS installation_addresses
+    ON installations.address_id = installation_addresses.id
+WHERE
+  -- Full text search for each relation, match anything found
+  -- Separated into different vectors, so we can take advantage of indexes on each of the tables
+  -- Be sure to update the indexes if you update the queries here
+  (
+    $1 = ''
+    OR
+      (
+        to_tsvector('english', accounts.beneficiary_name) @@ plainto_tsquery('english', $1)
+        OR
+          to_tsvector(
+            'english',
+            CONCAT_WS(' ', contacts.first_name, contacts.last_name, contacts.email, contacts.phone)
+          )
+          @@ plainto_tsquery('english', $1)
+        OR
+          to_tsvector('english', CONCAT_WS(' ', addresses.address_line_1, addresses.address_line_2, addresses.city))
+          @@ plainto_tsquery('english', $1)
+        OR
+          to_tsvector(
+            'english',
+            CONCAT_WS(
+              ' ',
+              installation_addresses.address_line_1,
+              installation_addresses.address_line_2,
+              installation_addresses.city,
+              installation_addresses.postcode
+            )
+          )
+          @@ plainto_tsquery('english', $1)
+        OR accounts.id::varchar = $1
+        OR installations.supply_mpan = $1
+        OR installations.export_mpan = $1
+        -- Search for direct matches for ids
+        OR
+          accounts.beneficiary_account_number = $1
+        OR contracts.scheme_account_reference = $1
+      )
   )
-
-  -- Pagination
-  LIMIT $3::int OFFSET $4::int
+  -- Ids filter, for loading specific ids, skip if empty array
+  AND
+    (cardinality($2::int[]) = 0 OR (accounts.id = ANY ($2::int[])))
+GROUP BY
+  accounts.id,
+  accounts.start_on,
+  contacts.first_name,
+  contacts.last_name,
+  contacts.email,
+  installation_addresses.address_line_1,
+  installation_addresses.address_line_2,
+  installation_addresses.city,
+  installation_addresses.postcode
+-- Pagination
+LIMIT $3::int
+OFFSET $4::int
 ",
   "values": Array [
     "test",
@@ -229,7 +241,7 @@ SELECT
   meters.mpan,
   meters.make,
   meters.model,
-  installation_meters.meter_type as \\"type\\",
+  installation_meters.meter_type AS \\"type\\",
   (
     SELECT
       json_build_object(
@@ -240,13 +252,13 @@ SELECT
         'reason', current_reads.reason,
         'type', current_reads.type
       ) AS \\"read\\"
-      FROM active_reads AS current_reads
-      WHERE
-        current_reads.meter_id = meters.id
-        AND current_reads.type <> 'Meter Verification'
-        AND current_reads.date_on BETWEEN $1 AND $2
-      ORDER BY current_reads.date_on DESC
-      LIMIT 1
+    FROM active_reads AS current_reads
+    WHERE
+      current_reads.meter_id = meters.id AND current_reads.type <> 'Meter Verification'
+      AND current_reads.date_on BETWEEN $1 AND $2
+    ORDER BY
+      current_reads.date_on DESC
+    LIMIT 1
   ) AS \\"currentPeriodRead\\",
   (
     SELECT
@@ -258,23 +270,25 @@ SELECT
         'reason', previous_reads.reason,
         'type', previous_reads.type
       ) AS \\"read\\"
-      FROM active_reads AS previous_reads
-      WHERE
-        previous_reads.meter_id = meters.id
-        AND previous_reads.type <> 'Meter Verification'
-        AND previous_reads.date_on < $1
-      ORDER BY previous_reads.date_on DESC
-      LIMIT 1
+    FROM active_reads AS previous_reads
+    WHERE
+      previous_reads.meter_id = meters.id AND previous_reads.type <> 'Meter Verification'
+      AND previous_reads.date_on < $1
+    ORDER BY
+      previous_reads.date_on DESC
+    LIMIT 1
   ) AS \\"previousPeriodRead\\"
-FROM meters
-JOIN installation_meters ON installation_meters.meter_id = meters.id
-JOIN contracts ON contracts.installation_id = installation_meters.installation_id
-WHERE installation_meters.end_on IS NULL
-  AND contracts.account_id = $3
+FROM
+  meters
+  JOIN installation_meters
+    ON installation_meters.meter_id = meters.id
+  JOIN contracts
+    ON contracts.installation_id = installation_meters.installation_id
+WHERE
+  installation_meters.end_on IS NULL AND contracts.account_id = $3
   AND ($4::int IS NULL OR meters.id = $4)
 ORDER BY
-  meters.id ASC,
-  installation_meters.meter_type ASC
+  meters.id ASC, installation_meters.meter_type ASC
 ",
   "values": Array [
     2021-12-01T00:00:00.000Z,
@@ -288,23 +302,29 @@ ORDER BY
 exports[`Sql Files Should convert complex sql template tags bacs.query.sql: bacs.query.sql 1`] = `
 Object {
   "text": "SELECT
-  p.fit_reference \\"fitId\\",
-  a.beneficiary_name \\"name\\",
-  p.amount \\"amount\\",
-  p.levelisation_reference \\"quarter\\",
-  CONCAT(a.beneficiary_sort_code, a.beneficiary_account_number) as \\"bankDetails\\",
-  a2.address_line_1 \\"addressLine1\\",
-  a2.address_line_2 \\"addressLine2\\",
-  a2.address_line_3 \\"addressLine3\\",
-  a2.postcode \\"postcode\\"
-FROM payments p
-LEFT JOIN accounts a ON a.id = p.account_id
-LEFT JOIN customers c2 ON c2.id = a.customer_id
-LEFT JOIN contacts c3 ON c3.id = c2.primary_contact_id
-LEFT JOIN addresses a2 ON a2.id = c3.address_id
+  p.fit_reference AS \\"fitId\\",
+  a.beneficiary_name AS \\"name\\",
+  p.amount AS \\"amount\\",
+  p.levelisation_reference AS \\"quarter\\",
+  CONCAT(a.beneficiary_sort_code, a.beneficiary_account_number) AS \\"bankDetails\\",
+  a2.address_line_1 AS \\"addressLine1\\",
+  a2.address_line_2 AS \\"addressLine2\\",
+  a2.address_line_3 AS \\"addressLine3\\",
+  a2.postcode AS \\"postcode\\"
+FROM
+  payments AS p
+  LEFT JOIN accounts AS a
+    ON a.id = p.account_id
+  LEFT JOIN customers AS c2
+    ON c2.id = a.customer_id
+  LEFT JOIN contacts AS c3
+    ON c3.id = c2.primary_contact_id
+  LEFT JOIN addresses AS a2
+    ON a2.id = c3.address_id
 WHERE
   a.payment_plan = 'BACs' AND p.levelisation_reference = $1
-LIMIT $2 OFFSET $3
+LIMIT $2
+OFFSET $3
 ",
   "values": Array [
     "FQ1",
@@ -337,78 +357,93 @@ SELECT
   (SELECT accounts.id FROM accounts WHERE accounts.source_system_id = ca.\\"CustomerAccountId\\"),
   (SELECT contacts.id FROM contacts WHERE contacts.source_system_id = ca.\\"CustomerId\\"),
   (SELECT installations.id FROM installations WHERE installations.source_system_id = gai.\\"InstallationId\\"),
+  -- Since tariff information is on the meter, we try to find a meter with type \\"Generation\\", and extract its tariff
   (
-    -- Since tariff information is on the meter, we try to find a meter with type \\"Generation\\", and extract its tariff
     SELECT tariffs.id
-    FROM fit.InstallationMeter im
-    JOIN fit.Meter m ON im.\\"MeterId\\" = m.\\"MeterId\\"
-    JOIN fit.MeterType mt ON m.\\"MeterTypeId\\" = mt.\\"MeterTypeId\\"
-    JOIN tariffs ON tariffs.source_system_id = m.\\"TariffId\\"
-    WHERE i.\\"InstallationId\\" = im.\\"InstallationId\\" AND mt.\\"MeterTypeTitle\\" = 'Generation'
+    FROM
+      fit.InstallationMeter AS im
+      JOIN fit.Meter AS m
+        ON im.\\"MeterId\\" = m.\\"MeterId\\"
+      JOIN fit.MeterType AS mt
+        ON m.\\"MeterTypeId\\" = mt.\\"MeterTypeId\\"
+      JOIN tariffs
+        ON tariffs.source_system_id = m.\\"TariffId\\"
+    WHERE
+      i.\\"InstallationId\\" = im.\\"InstallationId\\" AND mt.\\"MeterTypeTitle\\" = 'Generation'
     LIMIT 1
   ),
   -- Link to the manually created tariffs for export meters in tariffs.sql.ts
   -- The logic for which one to use is taken from Fit_Proc.usp_Export query in sql-fit db.
-  (SELECT tariffs.id FROM tariffs WHERE tariffs.source_system_id = CASE WHEN i.\\"EligibilityDate\\" < '2012-08-01' THEN 100001 ELSE 100002 END),
+  (
+    SELECT tariffs.id
+    FROM tariffs
+    WHERE
+      tariffs.source_system_id = CASE WHEN i.\\"EligibilityDate\\" < '2012-08-01' THEN 100001 ELSE 100002 END
+  ),
   -- Generation Percentage Split.
   -- Since this is a property of the contract, not the meter itself, we move it here from installation meters
   (
     SELECT im.\\"PercentageSplit\\"
-    FROM fit.InstallationMeter im
-    JOIN fit.Meter m ON im.\\"MeterId\\" = m.\\"MeterId\\"
-    JOIN fit.MeterType mt ON m.\\"MeterTypeId\\" = mt.\\"MeterTypeId\\"
+    FROM
+      fit.InstallationMeter AS im
+      JOIN fit.Meter AS m
+        ON im.\\"MeterId\\" = m.\\"MeterId\\"
+      JOIN fit.MeterType AS mt
+        ON m.\\"MeterTypeId\\" = mt.\\"MeterTypeId\\"
     WHERE
-      i.\\"InstallationId\\" = im.\\"InstallationId\\"
-      AND mt.\\"MeterTypeTitle\\" = 'Generation'
+      i.\\"InstallationId\\" = im.\\"InstallationId\\" AND mt.\\"MeterTypeTitle\\" = 'Generation'
       AND im.\\"PercentageSplit\\" IS NOT NULL
       AND im.\\"PercentageSplit\\" <> 100
-      LIMIT 1
+    LIMIT 1
   ),
   -- Export Percentage Split.
   -- Since this is a property of the contract, not the meter itself, we move it here from installation meters
   (
     SELECT im.\\"PercentageSplit\\"
-    FROM fit.InstallationMeter im
-    JOIN fit.Meter m ON im.\\"MeterId\\" = m.\\"MeterId\\"
-    JOIN fit.MeterType mt ON m.\\"MeterTypeId\\" = mt.\\"MeterTypeId\\"
+    FROM
+      fit.InstallationMeter AS im
+      JOIN fit.Meter AS m
+        ON im.\\"MeterId\\" = m.\\"MeterId\\"
+      JOIN fit.MeterType AS mt
+        ON m.\\"MeterTypeId\\" = mt.\\"MeterTypeId\\"
     WHERE
-      i.\\"InstallationId\\" = im.\\"InstallationId\\"
-      AND mt.\\"MeterTypeTitle\\" = 'Export'
-      AND im.\\"PercentageSplit\\" IS NOT NULL
+      i.\\"InstallationId\\" = im.\\"InstallationId\\" AND mt.\\"MeterTypeTitle\\" = 'Export' AND im.\\"PercentageSplit\\" IS NOT NULL
       AND im.\\"PercentageSplit\\" <> 100
-      LIMIT 1
+    LIMIT 1
   ),
   -- If it doesn't have a FIT id, and has a SEG id, it must be SEG
-  (CASE
-    WHEN i.\\"SEGId\\" IS NOT NULL AND i.\\"CFRFiTId\\" IS NULL THEN 'SEG'
-    ELSE 'FIT'
-  END)::contract_scheme_types,
+  (CASE WHEN i.\\"SEGId\\" IS NOT NULL AND i.\\"CFRFiTId\\" IS NULL THEN 'SEG' ELSE 'FIT' END)::contract_scheme_types,
   -- Helper from installations.sql.ts
   COALESCE(SUBSTRING(UPPER(i.\\"CFRFiTId\\"), '(FIT\\\\\\\\d+)'), i.\\"SEGId\\", i.\\"CFRFiTId\\"),
   i.\\"ConfirmationDate\\",
   TRUE,
   gai.\\"DateInserted\\",
   gai.\\"DateUpdated\\"
-FROM fit.GenerationAccountInstallation gai
-JOIN fit.GenerationAccount ga ON gai.\\"GenerationAccountId\\" = ga.\\"GenerationAccountId\\"
-JOIN fit.Installation i ON gai.\\"InstallationId\\" = i.\\"InstallationId\\"
--- Check if the is \\"primary account\\" bit flag is set.
--- Special exception for fit account 422, as it does not have a primary account
-JOIN fit.CustomerAccount ca ON ca.\\"FitAccountId\\" = ga.\\"FitAccountId\\" AND ((ca.\\"CustomerRoleValue\\" & 1) > 0 OR ca.\\"FitAccountId\\" = 422)
-
-ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
-DO UPDATE SET
-  account_id = EXCLUDED.account_id,
-  contact_id = EXCLUDED.contact_id,
-  installation_id = EXCLUDED.installation_id,
-  generation_tariff_id = EXCLUDED.generation_tariff_id,
-  export_tariff_id = EXCLUDED.export_tariff_id,
-  scheme_type = EXCLUDED.scheme_type,
-  scheme_account_reference = EXCLUDED.scheme_account_reference,
-  confirmation_on = EXCLUDED.confirmation_on,
-  terms_and_conditions_agreed = EXCLUDED.terms_and_conditions_agreed,
-  created_at = EXCLUDED.created_at,
-  updated_at = EXCLUDED.updated_at
+FROM
+  fit.GenerationAccountInstallation AS gai
+  JOIN fit.GenerationAccount AS ga
+    ON gai.\\"GenerationAccountId\\" = ga.\\"GenerationAccountId\\"
+  JOIN fit.Installation AS i
+    ON gai.\\"InstallationId\\" = i.\\"InstallationId\\"
+  -- Check if the is \\"primary account\\" bit flag is set.
+  -- Special exception for fit account 422, as it does not have a primary account
+  JOIN fit.CustomerAccount AS ca
+    ON ca.\\"FitAccountId\\" = ga.\\"FitAccountId\\" AND ((ca.\\"CustomerRoleValue\\" & 1) > 0 OR ca.\\"FitAccountId\\" = 422)
+ON CONFLICT
+  (source_system_id) WHERE source_system_id IS NOT NULL
+  DO UPDATE
+    SET
+      account_id = EXCLUDED.account_id,
+      contact_id = EXCLUDED.contact_id,
+      installation_id = EXCLUDED.installation_id,
+      generation_tariff_id = EXCLUDED.generation_tariff_id,
+      export_tariff_id = EXCLUDED.export_tariff_id,
+      scheme_type = EXCLUDED.scheme_type,
+      scheme_account_reference = EXCLUDED.scheme_account_reference,
+      confirmation_on = EXCLUDED.confirmation_on,
+      terms_and_conditions_agreed = EXCLUDED.terms_and_conditions_agreed,
+      created_at = EXCLUDED.created_at,
+      updated_at = EXCLUDED.updated_at
 ",
   "values": Array [],
 }
@@ -417,19 +452,18 @@ DO UPDATE SET
 exports[`Sql Files Should convert complex sql template tags delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 Object {
   "text": "DELETE FROM accounts
-WHERE EXISTS
-  (SELECT tariffs.id
-    FROM contracts
-    JOIN tariffs ON contracts.generation_tariff_id = tariffs.id
-    WHERE contracts.account_id = accounts.id
-    AND tariffs.type = 'Generation'
-    AND contracts.scheme_type = $1
+WHERE
+  EXISTS (
+    SELECT tariffs.id
+    FROM contracts JOIN tariffs ON contracts.generation_tariff_id = tariffs.id
+    WHERE
+      contracts.account_id = accounts.id AND tariffs.type = 'Generation' AND contracts.scheme_type = $1
   )
   AND accounts.state = $2
 RETURNING
   id,
-  source_system_id as \\"sourceSystemId\\",
-  customer_id as \\"customerId\\"
+  source_system_id AS \\"sourceSystemId\\",
+  customer_id AS \\"customerId\\"
 ",
   "values": Array [
     undefined,
@@ -443,15 +477,14 @@ Object {
   "text": "SELECT
   meter_reads.date_on AS \\"dateOn\\",
   meter_reads.value
-FROM meter_reads
-JOIN installation_meters ON meter_reads.meter_id = installation_meters.meter_id
+FROM meter_reads JOIN installation_meters ON meter_reads.meter_id = installation_meters.meter_id
 WHERE
-  installation_meters.installation_id = $1
-  AND installation_meters.meter_type = 'Generation'
+  installation_meters.installation_id = $1 AND installation_meters.meter_type = 'Generation'
   AND meter_reads.deleted_at IS NULL
   AND meter_reads.type <> 'Meter Verification'
-  AND meter_reads.is_accepted = true
-ORDER BY ABS(meter_reads.date_on - $2::date) ASC
+  AND meter_reads.is_accepted = TRUE
+ORDER BY
+  ABS(meter_reads.date_on - $2::date) ASC
 LIMIT 1
 ",
   "values": Array [
@@ -463,9 +496,7 @@ LIMIT 1
 
 exports[`Sql Files Should convert complex sql template tags installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
 Object {
-  "text": "UPDATE installation_meters SET end_on = $1
-WHERE end_on IS NULL
-AND meter_id = $2
+  "text": "UPDATE installation_meters SET end_on = $1 WHERE end_on IS NULL AND meter_id = $2
 ",
   "values": Array [
     2020-01-01T00:00:00.000Z,
@@ -520,32 +551,43 @@ SELECT
   it.\\"InstallationTypeTitle\\"::installation_types,
   gtt.\\"GeneratorTechnologyTypeRef\\"::installation_technology_types,
   pt.\\"PropertyTypeTitle\\"::installation_property_type,
-  (CASE i.\\"ExportType\\"
-    WHEN NULL THEN NULL
-    WHEN 'SEG' THEN NULL
-    WHEN 'Deemed' THEN 'Deemed'
-    WHEN 'Off_Grid' THEN 'Off Grid'
-    WHEN 'PPA_OVO' THEN 'PPA'
-    WHEN 'Metered_Standard_Tariff' THEN 'Metered Export'
-    WHEN 'PPA_Other' THEN 'PPA'
-  END)::installation_export_type,
+  (
+    CASE i.\\"ExportType\\"
+      WHEN NULL THEN NULL
+      WHEN 'SEG' THEN NULL
+      WHEN 'Deemed' THEN 'Deemed'
+      WHEN 'Off_Grid' THEN 'Off Grid'
+      WHEN 'PPA_OVO' THEN 'PPA'
+      WHEN 'Metered_Standard_Tariff' THEN 'Metered Export'
+      WHEN 'PPA_Other' THEN 'PPA'
+    END
+  )::installation_export_type,
   i.\\"TariffDate\\",
   i.\\"DecommisionedDate\\",
   i.\\"EligibilityDate\\",
   i.\\"EligibilityEndDate\\",
   i.\\"DateInstalled\\",
+  -- Get the first verification date
   (
-    -- Get the first verification date
-    SELECT ivi.\\"DateVerified\\" FROM fit.InstallationVerificationInfo ivi WHERE ivi.\\"InstallationId\\" = i.\\"InstallationId\\" ORDER BY ivi.\\"DateVerified\\" ASC LIMIT 1
+    SELECT ivi.\\"DateVerified\\"
+    FROM fit.InstallationVerificationInfo AS ivi
+    WHERE
+      ivi.\\"InstallationId\\" = i.\\"InstallationId\\"
+    ORDER BY
+      ivi.\\"DateVerified\\" ASC
+    LIMIT 1
   ),
+  -- Get the last verification date
+  -- If there are more than 2 verification dates, get the latest one
   (
-    -- Get the last verification date
-    -- If there are more than 2 verification dates, get the latest one
     SELECT (ARRAY_AGG(\\"DateVerified\\" ORDER BY \\"DateVerified\\" DESC))[1]
-    FROM fit.InstallationVerificationInfo ivi
-    WHERE ivi.\\"InstallationId\\" = i.\\"InstallationId\\"
-    GROUP BY \\"InstallationId\\"
-    HAVING COUNT(\\"InstallationId\\") > 1
+    FROM fit.InstallationVerificationInfo AS ivi
+    WHERE
+      ivi.\\"InstallationId\\" = i.\\"InstallationId\\"
+    GROUP BY
+      \\"InstallationId\\"
+    HAVING
+      COUNT(\\"InstallationId\\") > 1
   ),
   i.\\"ConfirmationDate\\",
   i.\\"MCSInstallerCertificateNo\\",
@@ -562,87 +604,104 @@ SELECT
   NULL,
   (
     SELECT m.\\"MPAN\\"
-    FROM fit.InstallationMeter im
-    JOIN fit.Meter m ON m.\\"MeterId\\" = im.\\"MeterId\\"
-    JOIN fit.MeterType mt ON m.\\"MeterTypeId\\" = mt.\\"MeterTypeId\\"
+    FROM
+      fit.InstallationMeter AS im
+      JOIN fit.Meter AS m
+        ON m.\\"MeterId\\" = im.\\"MeterId\\"
+      JOIN fit.MeterType AS mt
+        ON m.\\"MeterTypeId\\" = mt.\\"MeterTypeId\\"
     WHERE
-      mt.\\"MeterTypeTitle\\" = 'Export'
-      AND im.\\"InstallationId\\" = i.\\"InstallationId\\"
+      mt.\\"MeterTypeTitle\\" = 'Export' AND im.\\"InstallationId\\" = i.\\"InstallationId\\"
     LIMIT 1
   ),
   c.\\"SupplyMPAN\\",
   (
     SELECT s.\\"Company\\"
-    FROM fit.Switch s
-    WHERE s.\\"InstallationId\\" = i.\\"InstallationId\\" AND s.\\"IsSwitchIn\\" = TRUE
-    ORDER BY s.\\"DateInserted\\" DESC
+    FROM fit.Switch AS s
+    WHERE
+      s.\\"InstallationId\\" = i.\\"InstallationId\\" AND s.\\"IsSwitchIn\\" = TRUE
+    ORDER BY
+      s.\\"DateInserted\\" DESC
     LIMIT 1
   ),
   (
     SELECT s.\\"Company\\"
-    FROM fit.Switch s
-    WHERE s.\\"InstallationId\\" = i.\\"InstallationId\\" AND s.\\"IsSwitchIn\\" = FALSE
-    ORDER BY s.\\"DateInserted\\" DESC
+    FROM fit.Switch AS s
+    WHERE
+      s.\\"InstallationId\\" = i.\\"InstallationId\\" AND s.\\"IsSwitchIn\\" = FALSE
+    ORDER BY
+      s.\\"DateInserted\\" DESC
     LIMIT 1
   ),
   (
     SELECT s.\\"ActualSwitchDate\\"
-    FROM fit.Switch s
-    WHERE s.\\"InstallationId\\" = i.\\"InstallationId\\"
-    ORDER BY s.\\"DateInserted\\" DESC
+    FROM fit.Switch AS s
+    WHERE
+      s.\\"InstallationId\\" = i.\\"InstallationId\\"
+    ORDER BY
+      s.\\"DateInserted\\" DESC
     LIMIT 1
   ),
   -- Preserve the original CFRFiTId
   i.\\"CFRFiTId\\",
   i.\\"DateInserted\\",
   i.\\"DateUpdated\\"
-FROM fit.Installation i
-JOIN fit.InstallationType it ON it.\\"InstallationTypeId\\" = i.\\"InstallationTypeId\\"
-JOIN fit.GeneratorTechnologyType gtt ON gtt.\\"GeneratorTechnologyTypeId\\" = i.\\"GeneratorTechnologyTypeId\\"
-JOIN fit.PropertyType pt ON pt.\\"PropertyTypeId\\" = i.\\"PropertyTypeId\\"
-JOIN fit.GenerationAccountInstallation gai ON gai.\\"InstallationId\\" = i.\\"InstallationId\\"
-JOIN fit.GenerationAccount ga ON ga.\\"GenerationAccountId\\" = gai.\\"GenerationAccountId\\"
--- Check if the is \\"primary account\\" bit flag is set.
--- Special exception for fit account 422, as it does not have a primary account
-JOIN fit.CustomerAccount ca ON ca.\\"FitAccountId\\" = ga.\\"FitAccountId\\" AND ((ca.\\"CustomerRoleValue\\" & 1) > 0 OR ca.\\"FitAccountId\\" = 422)
-LEFT JOIN fit.Customer c ON c.\\"CustomerId\\" = ca.\\"CustomerId\\"
-
-ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
-DO UPDATE SET
-  address_id = EXCLUDED.address_id,
-  name = EXCLUDED.name,
-  type = EXCLUDED.type,
-  technology_type = EXCLUDED.technology_type,
-  property_type = EXCLUDED.property_type,
-  export_type = EXCLUDED.export_type,
-  commissioned_on = EXCLUDED.commissioned_on,
-  decommissioned_on = EXCLUDED.decommissioned_on,
-  eligibility_start_on = EXCLUDED.eligibility_start_on,
-  eligibility_end_on = EXCLUDED.eligibility_end_on,
-  installed_on = EXCLUDED.installed_on,
-  verified_on = EXCLUDED.verified_on,
-  reverified_on = EXCLUDED.reverified_on,
-  inspected_on = EXCLUDED.inspected_on,
-  mcs_reference = EXCLUDED.mcs_reference,
-  tic_reference = EXCLUDED.tic_reference,
-  dnc_reference = EXCLUDED.dnc_reference,
-  roofit_reference = EXCLUDED.roofit_reference,
-  name_of_grant= EXCLUDED.name_of_grant,
-  value_of_grant= EXCLUDED.value_of_grant,
-  date_grant_repaid= EXCLUDED.date_grant_repaid,
-  epc_rate= EXCLUDED.epc_rate,
-  epc_date= EXCLUDED.epc_date,
-  epc_number= EXCLUDED.epc_number,
-  has_battery_storage = EXCLUDED.has_battery_storage,
-  battery_installation_date_on = EXCLUDED.battery_installation_date_on,
-  export_mpan = EXCLUDED.export_mpan,
-  supply_mpan = EXCLUDED.supply_mpan,
-  switched_from = EXCLUDED.switched_from,
-  switched_to = EXCLUDED.switched_to,
-  switched_on = EXCLUDED.switched_on,
-  legacy_fit_db_id = EXCLUDED.legacy_fit_db_id,
-  created_at = EXCLUDED.created_at,
-  updated_at = EXCLUDED.updated_at
+FROM
+  fit.Installation AS i
+  JOIN fit.InstallationType AS it
+    ON it.\\"InstallationTypeId\\" = i.\\"InstallationTypeId\\"
+  JOIN fit.GeneratorTechnologyType AS gtt
+    ON gtt.\\"GeneratorTechnologyTypeId\\" = i.\\"GeneratorTechnologyTypeId\\"
+  JOIN fit.PropertyType AS pt
+    ON pt.\\"PropertyTypeId\\" = i.\\"PropertyTypeId\\"
+  JOIN fit.GenerationAccountInstallation AS gai
+    ON gai.\\"InstallationId\\" = i.\\"InstallationId\\"
+  JOIN fit.GenerationAccount AS ga
+    ON ga.\\"GenerationAccountId\\" = gai.\\"GenerationAccountId\\"
+  -- Check if the is \\"primary account\\" bit flag is set.
+  -- Special exception for fit account 422, as it does not have a primary account
+  JOIN fit.CustomerAccount AS ca
+    ON ca.\\"FitAccountId\\" = ga.\\"FitAccountId\\" AND ((ca.\\"CustomerRoleValue\\" & 1) > 0 OR ca.\\"FitAccountId\\" = 422)
+  LEFT JOIN fit.Customer AS c
+    ON c.\\"CustomerId\\" = ca.\\"CustomerId\\"
+ON CONFLICT
+  (source_system_id) WHERE source_system_id IS NOT NULL
+  DO UPDATE
+    SET
+      address_id = EXCLUDED.address_id,
+      name = EXCLUDED.name,
+      type = EXCLUDED.type,
+      technology_type = EXCLUDED.technology_type,
+      property_type = EXCLUDED.property_type,
+      export_type = EXCLUDED.export_type,
+      commissioned_on = EXCLUDED.commissioned_on,
+      decommissioned_on = EXCLUDED.decommissioned_on,
+      eligibility_start_on = EXCLUDED.eligibility_start_on,
+      eligibility_end_on = EXCLUDED.eligibility_end_on,
+      installed_on = EXCLUDED.installed_on,
+      verified_on = EXCLUDED.verified_on,
+      reverified_on = EXCLUDED.reverified_on,
+      inspected_on = EXCLUDED.inspected_on,
+      mcs_reference = EXCLUDED.mcs_reference,
+      tic_reference = EXCLUDED.tic_reference,
+      dnc_reference = EXCLUDED.dnc_reference,
+      roofit_reference = EXCLUDED.roofit_reference,
+      name_of_grant = EXCLUDED.name_of_grant,
+      value_of_grant = EXCLUDED.value_of_grant,
+      date_grant_repaid = EXCLUDED.date_grant_repaid,
+      epc_rate = EXCLUDED.epc_rate,
+      epc_date = EXCLUDED.epc_date,
+      epc_number = EXCLUDED.epc_number,
+      has_battery_storage = EXCLUDED.has_battery_storage,
+      battery_installation_date_on = EXCLUDED.battery_installation_date_on,
+      export_mpan = EXCLUDED.export_mpan,
+      supply_mpan = EXCLUDED.supply_mpan,
+      switched_from = EXCLUDED.switched_from,
+      switched_to = EXCLUDED.switched_to,
+      switched_on = EXCLUDED.switched_on,
+      legacy_fit_db_id = EXCLUDED.legacy_fit_db_id,
+      created_at = EXCLUDED.created_at,
+      updated_at = EXCLUDED.updated_at
 ",
   "values": Array [],
 }
@@ -668,43 +727,46 @@ SELECT
   mr.\\"DateOfReading\\",
   mr.\\"MeterReadingValue\\",
   -- TODO: Verify those are actually what we want from meter reading type
-  (CASE mr.\\"ReadType\\"
-    WHEN 'Closure' THEN 'Closing'
-    WHEN 'Closing' THEN 'Closing'
-    WHEN 'Clsoing' THEN 'Closing'
-    WHEN 'Final' THEN 'Closing'
-    WHEN 'opening' THEN 'Opening'
-    WHEN 'Opening' THEN 'Opening'
-    WHEN 'Physical' THEN 'Meter Verification'
-    WHEN 'Customer' THEN 'Quarterly'
-    WHEN 'CUSTOMER' THEN 'Quarterly'
-    WHEN '' THEN 'Quarterly'
-  END)::meter_reads_types,
+  (
+    CASE mr.\\"ReadType\\"
+      WHEN 'Closure' THEN 'Closing'
+      WHEN 'Closing' THEN 'Closing'
+      WHEN 'Clsoing' THEN 'Closing'
+      WHEN 'Final' THEN 'Closing'
+      WHEN 'opening' THEN 'Opening'
+      WHEN 'Opening' THEN 'Opening'
+      WHEN 'Physical' THEN 'Meter Verification'
+      WHEN 'Customer' THEN 'Quarterly'
+      WHEN 'CUSTOMER' THEN 'Quarterly'
+      WHEN '' THEN 'Quarterly'
+    END
+  )::meter_reads_types,
   mr.\\"ReadReason\\",
   -- Reads prior to 2021-03-31 are considered to have all been manually verified, so we can safely assign them to \\"accepted\\"
   CASE WHEN mr.\\"DateOfReading\\" <= '2021-03-31' THEN TRUE ELSE FALSE END,
   CASE WHEN mr.\\"DateOfReading\\" <= '2021-03-31' THEN '{\\"success\\":true}'::jsonb ELSE NULL END,
   mr.\\"DateInserted\\",
   mr.\\"DateUpdated\\"
-FROM fit.MeterReading mr
-JOIN fit.Meter m ON m.\\"MeterId\\" = mr.\\"MeterId\\"
+FROM fit.MeterReading AS mr JOIN fit.Meter AS m ON m.\\"MeterId\\" = mr.\\"MeterId\\"
 -- Exclude \\"Deemed\\" Export meters, since they don't have an MPAN and are not actual meters
 -- TODO: Figure out where to migrate deemed meter reads to.
-WHERE m.\\"MPAN\\" IS NOT NULL
-
-ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
-DO UPDATE SET
-  meter_id = EXCLUDED.meter_id,
-  date_on = EXCLUDED.date_on,
-  value = EXCLUDED.value,
-  type = EXCLUDED.type,
-  reason = EXCLUDED.reason,
-  -- If the meter read has changed
-  -- set the flags to false so we do tolerance checks again
-  is_accepted = CASE WHEN meter_reads.value = EXCLUDED.value THEN meter_reads.is_accepted ELSE FALSE END,
-  tolerance = CASE WHEN meter_reads.value = EXCLUDED.value THEN meter_reads.tolerance ELSE NULL END,
-  created_at = EXCLUDED.created_at,
-  updated_at = EXCLUDED.updated_at
+WHERE
+  m.\\"MPAN\\" IS NOT NULL
+ON CONFLICT
+  (source_system_id) WHERE source_system_id IS NOT NULL
+  DO UPDATE
+    SET
+      meter_id = EXCLUDED.meter_id,
+      date_on = EXCLUDED.date_on,
+      value = EXCLUDED.value,
+      type = EXCLUDED.type,
+      reason = EXCLUDED.reason,
+      -- If the meter read has changed
+      -- set the flags to false so we do tolerance checks again
+      is_accepted = CASE WHEN meter_reads.value = EXCLUDED.value THEN meter_reads.is_accepted ELSE FALSE END,
+      tolerance = CASE WHEN meter_reads.value = EXCLUDED.value THEN meter_reads.tolerance ELSE NULL END,
+      created_at = EXCLUDED.created_at,
+      updated_at = EXCLUDED.updated_at
 ",
   "values": Array [],
 }
@@ -713,15 +775,15 @@ DO UPDATE SET
 exports[`Sql Files Should convert complex sql template tags rates-by-tarrif-ids.query.sql: rates-by-tarrif-ids.query.sql 1`] = `
 Object {
   "text": "SELECT
-  r.tariff_id as \\"tariffId\\",
+  r.tariff_id AS \\"tariffId\\",
   r.rate,
-  r.start_date_on as \\"startOn\\",
-  t.code as \\"tariffCode\\",
-  t.type as \\"tariffType\\",
-  r.end_date_on as \\"endOn\\"
-from tariff_rates r
-LEFT JOIN tariffs t on r.tariff_id = t.id
-where start_date_on < NOW() and (end_date_on::date IS NULL OR end_date_on > NOW()) AND t.id IN ($1,$2,$3)
+  r.start_date_on AS \\"startOn\\",
+  t.code AS \\"tariffCode\\",
+  t.type AS \\"tariffType\\",
+  r.end_date_on AS \\"endOn\\"
+FROM tariff_rates AS r LEFT JOIN tariffs AS t ON r.tariff_id = t.id
+WHERE
+  start_date_on < NOW() AND (end_date_on::date IS NULL OR end_date_on > NOW()) AND t.id IN ($1,$2,$3)
 ",
   "values": Array [
     1,
