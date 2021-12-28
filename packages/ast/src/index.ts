@@ -149,6 +149,7 @@ export {
   isConflict,
   isConflictConstraint,
   isConflictTarget,
+  isConflictTargetIndex,
   isConstant,
   isCount,
   isCTE,

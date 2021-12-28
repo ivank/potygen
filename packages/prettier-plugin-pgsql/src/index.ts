@@ -14,8 +14,8 @@ import {
   isWith,
   isInsert,
   chunk,
+  isConflictTargetIndex,
 } from '@potygen/ast';
-import { isConflictTargetIndex } from '@potygen/ast/dist/grammar.guards';
 
 const { line, softline, indent, join, group } = doc.builders;
 
