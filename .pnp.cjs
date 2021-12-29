@@ -681,13 +681,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@ikerin/rd-parse", [
-        ["npm:3.4.4", {
-          "packageLocation": "./.yarn/cache/@ikerin-rd-parse-npm-3.4.4-f1c5e19481-fdbe4c64d9.zip/node_modules/@ikerin/rd-parse/",
-          "packageDependencies": [
-            ["@ikerin/rd-parse", "npm:3.4.4"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:4.0.1", {
           "packageLocation": "./.yarn/cache/@ikerin-rd-parse-npm-4.0.1-a7eb775516-68c1c041f2.zip/node_modules/@ikerin/rd-parse/",
           "packageDependencies": [
@@ -966,7 +959,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/cli/",
           "packageDependencies": [
             ["@potygen/cli", "workspace:packages/cli"],
-            ["@ikerin/rd-parse", "npm:3.4.4"],
+            ["@ikerin/rd-parse", "npm:4.0.1"],
             ["@potygen/ast", "workspace:packages/ast"],
             ["@potygen/query", "workspace:packages/query"],
             ["@types/jest", "npm:26.0.24"],
@@ -989,7 +982,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/prettier-plugin-pgsql/",
           "packageDependencies": [
             ["@potygen/prettier-plugin-pgsql", "workspace:packages/prettier-plugin-pgsql"],
-            ["@ikerin/rd-parse", "npm:3.4.4"],
+            ["@ikerin/rd-parse", "npm:4.0.1"],
             ["@potygen/ast", "workspace:packages/ast"],
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:14.17.32"],
@@ -1009,7 +1002,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/query/",
           "packageDependencies": [
             ["@potygen/query", "workspace:packages/query"],
-            ["@ikerin/rd-parse", "npm:3.4.4"],
+            ["@ikerin/rd-parse", "npm:4.0.1"],
             ["@potygen/ast", "workspace:packages/ast"],
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:14.17.32"],

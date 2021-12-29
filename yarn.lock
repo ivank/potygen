@@ -435,14 +435,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ikerin/rd-parse@npm:3.4.4":
-  version: 3.4.4
-  resolution: "@ikerin/rd-parse@npm:3.4.4"
-  checksum: fdbe4c64d99f9cf669e9fb1f03412e6766b4f0d20529b32344534e7c1fe53fc6bcdab79900257db9942953c1738c6fe52ba48b63f2f7312a27381d8643b5c8d0
-  languageName: node
-  linkType: hard
-
-"@ikerin/rd-parse@npm:^4.0.1":
+"@ikerin/rd-parse@npm:4.0.1, @ikerin/rd-parse@npm:^4.0.1":
   version: 4.0.1
   resolution: "@ikerin/rd-parse@npm:4.0.1"
   checksum: 68c1c041f230f9b83b8df1f358b782088333a7d5679ab76a42bea94dfbff65ed130fc0c850a6b1eecde6aa6d7d9e0d998891a994bc7fc779f4bc795f567a9bad
@@ -703,7 +696,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@potygen/cli@workspace:packages/cli"
   dependencies:
-    "@ikerin/rd-parse": 3.4.4
+    "@ikerin/rd-parse": 4.0.1
     "@potygen/ast": "workspace:*"
     "@potygen/query": "workspace:*"
     "@types/jest": ^26.0.14
@@ -726,7 +719,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@potygen/prettier-plugin-pgsql@workspace:packages/prettier-plugin-pgsql"
   dependencies:
-    "@ikerin/rd-parse": 3.4.4
+    "@ikerin/rd-parse": 4.0.1
     "@potygen/ast": "workspace:*"
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15
@@ -744,7 +737,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@potygen/query@workspace:packages/query"
   dependencies:
-    "@ikerin/rd-parse": 3.4.4
+    "@ikerin/rd-parse": 4.0.1
     "@potygen/ast": "workspace:*"
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15
