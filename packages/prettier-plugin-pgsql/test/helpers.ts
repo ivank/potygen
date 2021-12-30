@@ -1,5 +1,3 @@
-import { markTextError, ParserError } from '@ikerin/rd-parse';
-import { inspect } from 'util';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { parser } from '@potygen/ast';
@@ -8,10 +6,7 @@ export const withParserErrors = (cb: () => void): void => {
   try {
     cb();
   } catch (e) {
-    if (e instanceof ParserError) {
-      console.log(markTextError(e.parseStack.text, e.message, e.parseStack.lastSeen.pos));
-      console.log(inspect(e.parseStack.stack, { depth: 15, colors: true }));
-    }
+    console.error(String(e));
     throw e;
   }
 };

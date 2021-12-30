@@ -1,16 +1,12 @@
-import { ParserError } from '@ikerin/rd-parse';
-import { inspect } from 'util';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { Client } from 'pg';
 
-export const withParserErrors = (cb: () => void): void => {
+export const withParserErrors = async (cb: () => void | Promise<void>) => {
   try {
-    cb();
+    await cb();
   } catch (e) {
-    if (e instanceof ParserError) {
-      console.log(inspect(e, { depth: 15, colors: true }));
-    }
+    console.error(String(e));
     throw e;
   }
 };

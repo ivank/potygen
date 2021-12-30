@@ -982,7 +982,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/prettier-plugin-pgsql/",
           "packageDependencies": [
             ["@potygen/prettier-plugin-pgsql", "workspace:packages/prettier-plugin-pgsql"],
-            ["@ikerin/rd-parse", "npm:4.0.1"],
             ["@potygen/ast", "workspace:packages/ast"],
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:14.17.32"],
