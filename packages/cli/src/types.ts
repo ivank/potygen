@@ -2,25 +2,30 @@ import { QueryInterface, TypeConstant, TypeUnionConstant } from '@potygen/query'
 import { ClientBase } from 'pg';
 import { SourceFile } from 'typescript';
 
+export interface QualifiedName {
+  schema: string;
+  name: string;
+}
+
 export interface DataTable {
   type: 'Table';
-  name: { schema: string; name: string };
+  name: QualifiedName;
 }
 export interface DataFunction {
   type: 'Function';
-  name: { schema: string; name: string };
+  name: QualifiedName;
 }
 export interface DataEnum {
   type: 'Enum';
-  name: { schema: string; name: string };
+  name: QualifiedName;
 }
 export interface DataView {
   type: 'View';
-  name: { schema: string; name: string };
+  name: QualifiedName;
 }
 export interface DataComposite {
   type: 'Composite';
-  name: { schema: string; name: string };
+  name: QualifiedName;
 }
 export interface LoadedDataTable extends DataTable {
   data: Array<{ name: string; isNullable: string; record: string; type: string; comment?: string }>;

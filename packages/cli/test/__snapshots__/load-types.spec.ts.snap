@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Query Interface Should convert Coalesce binary expression sql (SELECT COALESCE(numeric_col,0) + COALESCE(numeric_col,0) as "totalPaymentWithVat" FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "totalPaymentWithVat",
+      "type": Object {
+        "type": "Number",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert coalesce 1 sql (SELECT COALESCE(id, character_col) FROM all_types) 1`] = `
 Object {
   "params": Array [],

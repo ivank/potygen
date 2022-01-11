@@ -60,7 +60,7 @@ const pgsqlAst: Printer<Node> = {
       case 'Comment':
         return `-- ${node.value}`;
       case 'CTEName':
-        return join(line, vals(path, recur));
+        return group(join(line, vals(path, recur)));
       case 'CTEValuesList':
         return group([
           '(',

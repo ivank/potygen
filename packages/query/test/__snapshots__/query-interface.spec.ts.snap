@@ -1,5 +1,231 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Query Interface Should convert Coalesce binary expression sql (SELECT COALESCE(numeric_col,0) + COALESCE(numeric_col,0) as "totalPaymentWithVat" FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "totalPaymentWithVat",
+      "type": Object {
+        "available": Array [
+          Array [
+            Object {
+              "type": "Number",
+            },
+            Object {
+              "type": "Number",
+            },
+            Object {
+              "type": "Number",
+            },
+          ],
+          Array [
+            Object {
+              "type": "BigInt",
+            },
+            Object {
+              "type": "BigInt",
+            },
+            Object {
+              "type": "Number",
+            },
+          ],
+          Array [
+            Object {
+              "type": "Date",
+            },
+            Object {
+              "type": "String",
+            },
+            Object {
+              "type": "Date",
+            },
+          ],
+        ],
+        "index": 2,
+        "left": Object {
+          "items": Array [
+            Object {
+              "column": "numeric_col",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 26,
+                "start": 16,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 26,
+                    "start": 16,
+                    "tag": "UnquotedIdentifier",
+                    "value": "numeric_col",
+                  },
+                ],
+              },
+              "table": undefined,
+              "type": "LoadColumn",
+            },
+            Object {
+              "literal": 0,
+              "type": "Number",
+            },
+          ],
+          "type": "Coalesce",
+        },
+        "right": Object {
+          "items": Array [
+            Object {
+              "column": "numeric_col",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 52,
+                "start": 42,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 52,
+                    "start": 42,
+                    "tag": "UnquotedIdentifier",
+                    "value": "numeric_col",
+                  },
+                ],
+              },
+              "table": undefined,
+              "type": "LoadColumn",
+            },
+            Object {
+              "literal": 0,
+              "type": "Number",
+            },
+          ],
+          "type": "Coalesce",
+        },
+        "sourceTag": Object {
+          "end": 55,
+          "start": 7,
+          "tag": "BinaryExpression",
+          "values": Array [
+            Object {
+              "end": 29,
+              "start": 7,
+              "tag": "Function",
+              "values": Array [
+                Object {
+                  "end": 14,
+                  "start": 7,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 14,
+                      "start": 7,
+                      "tag": "UnquotedIdentifier",
+                      "value": "COALESCE",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 26,
+                  "start": 16,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 26,
+                      "start": 16,
+                      "tag": "UnquotedIdentifier",
+                      "value": "numeric_col",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 28,
+                  "start": 28,
+                  "tag": "Number",
+                  "value": "0",
+                },
+              ],
+            },
+            Object {
+              "end": 31,
+              "start": 31,
+              "tag": "BinaryOperator",
+              "value": "+",
+            },
+            Object {
+              "end": 55,
+              "start": 33,
+              "tag": "Function",
+              "values": Array [
+                Object {
+                  "end": 40,
+                  "start": 33,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 40,
+                      "start": 33,
+                      "tag": "UnquotedIdentifier",
+                      "value": "COALESCE",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 52,
+                  "start": 42,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 52,
+                      "start": 42,
+                      "tag": "UnquotedIdentifier",
+                      "value": "numeric_col",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 54,
+                  "start": 54,
+                  "tag": "Number",
+                  "value": "0",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadOperator",
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "all_types",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 95,
+        "start": 87,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 95,
+            "start": 87,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 95,
+                "start": 87,
+                "tag": "UnquotedIdentifier",
+                "value": "all_types",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "all_types",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert Extract const sql (SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')) 1`] = `
 Object {
   "params": Array [],
