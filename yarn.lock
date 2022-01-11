@@ -692,7 +692,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@potygen/cli@workspace:*, @potygen/cli@workspace:packages/cli":
+"@potygen/cli@workspace:packages/cli":
   version: 0.0.0-use.local
   resolution: "@potygen/cli@workspace:packages/cli"
   dependencies:
@@ -747,26 +747,6 @@ __metadata:
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
     typescript: ^4.4.3
-  languageName: unknown
-  linkType: soft
-
-"@potygen/typescript-pgsql-plugin@workspace:packages/typescript-pgsql-plugin":
-  version: 0.0.0-use.local
-  resolution: "@potygen/typescript-pgsql-plugin@workspace:packages/typescript-pgsql-plugin"
-  dependencies:
-    "@potygen/ast": "workspace:*"
-    "@potygen/cli": "workspace:*"
-    "@potygen/query": "workspace:*"
-    "@types/jest": ^26.0.14
-    "@types/node": ^14.17.15
-    "@types/pg": ^8.6.1
-    "@types/prettier": ^2.4.2
-    jest: ^26.4.2
-    pg: ^8.6.0
-    ts-jest: ^26.4.0
-    ts-node: ^10.1.0
-    typescript: ^4.4.3
-    typescript-template-language-service-decorator: ^2.2.0
   languageName: unknown
   linkType: soft
 
@@ -5220,13 +5200,6 @@ fsevents@^2.1.2:
   dependencies:
     is-typedarray: ^1.0.0
   checksum: 99c11aaa8f45189fcfba6b8a4825fd684a321caa9bd7a76a27cf0c7732c174d198b99f449c52c3818107430b5f41c0ccbbfb75cb2ee3ca4a9451710986d61a60
-  languageName: node
-  linkType: hard
-
-"typescript-template-language-service-decorator@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "typescript-template-language-service-decorator@npm:2.2.0"
-  checksum: a9781d893b3123050fd3c1efe24ffc5b62c298f07e4b9c17884ebf33cb3f4821f3e12d9f17fe382fc31ccd6599255b1ea36ae602d2b519550241f221a37815d4
   languageName: node
   linkType: hard
 

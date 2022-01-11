@@ -37,10 +37,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "@potygen/query",
         "reference": "workspace:packages/query"
-      },
-      {
-        "name": "@potygen/typescript-pgsql-plugin",
-        "reference": "workspace:packages/typescript-pgsql-plugin"
       }
     ],
     "enableTopLevelFallback": true,
@@ -50,7 +46,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@potygen/cli", ["workspace:packages/cli"]],
       ["@potygen/prettier-plugin-pgsql", ["workspace:packages/prettier-plugin-pgsql"]],
       ["@potygen/query", ["workspace:packages/query"]],
-      ["@potygen/typescript-pgsql-plugin", ["workspace:packages/typescript-pgsql-plugin"]],
       ["potygen", ["workspace:."]]
     ],
     "fallbackPool": [
@@ -1017,28 +1012,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-jest", "virtual:77c252bec73257fbc9f65e3ba14492b9fb5398717306b8d6f4d1b7fdb13b952a0d7dc65ddef925a9e8b98d168d91c2bab7b03d6393dcc724fe4d86686283677a#npm:26.5.6"],
             ["ts-node", "virtual:77c252bec73257fbc9f65e3ba14492b9fb5398717306b8d6f4d1b7fdb13b952a0d7dc65ddef925a9e8b98d168d91c2bab7b03d6393dcc724fe4d86686283677a#npm:10.4.0"],
             ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=32657b"]
-          ],
-          "linkType": "SOFT",
-        }]
-      ]],
-      ["@potygen/typescript-pgsql-plugin", [
-        ["workspace:packages/typescript-pgsql-plugin", {
-          "packageLocation": "./packages/typescript-pgsql-plugin/",
-          "packageDependencies": [
-            ["@potygen/typescript-pgsql-plugin", "workspace:packages/typescript-pgsql-plugin"],
-            ["@potygen/ast", "workspace:packages/ast"],
-            ["@potygen/cli", "workspace:packages/cli"],
-            ["@potygen/query", "workspace:packages/query"],
-            ["@types/jest", "npm:26.0.24"],
-            ["@types/node", "npm:14.17.32"],
-            ["@types/pg", "npm:8.6.1"],
-            ["@types/prettier", "npm:2.4.2"],
-            ["jest", "npm:26.6.3"],
-            ["pg", "virtual:b19b1dfb1f46980a52c955a1b0d68d369d84a16d19206255b2e576fc8d9911f9ca0e7a50774b62899565087615cc656d9f26257a94b7cb6de63950ad466be0a9#npm:8.7.1"],
-            ["ts-jest", "virtual:77c252bec73257fbc9f65e3ba14492b9fb5398717306b8d6f4d1b7fdb13b952a0d7dc65ddef925a9e8b98d168d91c2bab7b03d6393dcc724fe4d86686283677a#npm:26.5.6"],
-            ["ts-node", "virtual:77c252bec73257fbc9f65e3ba14492b9fb5398717306b8d6f4d1b7fdb13b952a0d7dc65ddef925a9e8b98d168d91c2bab7b03d6393dcc724fe4d86686283677a#npm:10.4.0"],
-            ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=32657b"],
-            ["typescript-template-language-service-decorator", "npm:2.2.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -6121,15 +6094,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/typescript-patch-29eb8bf885-c97c33903f.zip/node_modules/typescript/",
           "packageDependencies": [
             ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=32657b"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["typescript-template-language-service-decorator", [
-        ["npm:2.2.0", {
-          "packageLocation": "./.yarn/cache/typescript-template-language-service-decorator-npm-2.2.0-b3ab58d07f-a9781d893b.zip/node_modules/typescript-template-language-service-decorator/",
-          "packageDependencies": [
-            ["typescript-template-language-service-decorator", "npm:2.2.0"]
           ],
           "linkType": "HARD",
         }]
