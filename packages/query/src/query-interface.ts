@@ -59,11 +59,11 @@ import {
   TypeUnknown,
 } from './query-interface.types';
 
-const toSources =
+const toSourcesIterator =
   (sources: Source[] = [], isResult = true) =>
   (sql: Tag): Source[] => {
-    const nestedRecur = toSources(sources, false);
-    const recur = toSources(sources, isResult);
+    const nestedRecur = toSourcesIterator(sources, false);
+    const recur = toSourcesIterator(sources, isResult);
     switch (sql.tag) {
       case 'Table':
         const asTag = sql.values[1];
@@ -568,12 +568,14 @@ export const toParams =
 const isUniqParam = (item: Param, index: number, all: Param[]) =>
   all.findIndex((current) => item.name === current.name && isEqual(item.type, current.type)) === index;
 
+export const toSources = (sql: AstTag): Source[] => toSourcesIterator()(sql).filter(isRedundantSource);
+
 export const toQueryInterface = (sql: AstTag): QueryInterface => {
   const { from, items } = toQueryResults(sql);
   const typeContext = { type: typeUnknown, columns: [], from };
 
   return {
-    sources: toSources()(sql).filter(isRedundantSource),
+    sources: toSources(sql),
     results: items.map(toResult(typeContext)),
     params: toParams(typeContext)(sql).filter(isUniqParam),
   };

@@ -80,6 +80,13 @@ export {
 
 export { SqlInterface, Json } from './sql.types';
 export { one, maybeOne, map } from './helpers';
-export { toParams, toQueryInterface, isTypeEqual, toContantBinaryOperatorVariant, toPgType } from './query-interface';
+export {
+  toParams,
+  toQueryInterface,
+  isTypeEqual,
+  toContantBinaryOperatorVariant,
+  toPgType,
+  toSources,
+} from './query-interface';
 export { Sql, sql, SqlMap } from './sql';
 export { PotygenDatabaseError, PotygenNotFoundError, PotygenError } from './errors';

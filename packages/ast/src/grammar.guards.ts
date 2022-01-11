@@ -41,6 +41,7 @@ import {
   DoNothingTag,
   DoUpdateTag,
   ElseTag,
+  EmptyLeafTag,
   EscapeStringTag,
   ExpressionListTag,
   ExpressionTag,
@@ -60,9 +61,11 @@ import {
   JoinTag,
   JoinTypeTag,
   JoinUsingTag,
+  LeafTag,
   LimitAllTag,
   LimitTag,
   NamedSelectTag,
+  NodeTag,
   NullTag,
   NumberTag,
   OffsetTag,
@@ -90,6 +93,7 @@ import {
   StringTag,
   TableTag,
   TableWithJoinTag,
+  Tag,
   TernaryExpressionTag,
   TypeArrayTag,
   TypeTag,
@@ -250,3 +254,7 @@ export const isComparationExpression = (value: SqlTag): value is ComparationExpr
 export const isWrappedExpression = (value: SqlTag): value is WrappedExpressionTag => value.tag === 'WrappedExpression';
 export const isExpressionList = (value: SqlTag): value is ExpressionListTag => value.tag === 'ExpressionList';
 export const isComment = (value: SqlTag): value is CommentTag => value.tag === 'Comment';
+
+export const isEmptyLeaf = (value: Tag): value is EmptyLeafTag => !('values' in value || 'value' in value);
+export const isLeaf = (value: Tag): value is LeafTag => 'value' in value;
+export const isNode = (value: Tag): value is NodeTag => 'values' in value;

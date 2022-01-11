@@ -5,20 +5,8 @@ import { Client } from 'pg';
 import { inspect, promisify } from 'util';
 import { pipeline } from 'stream';
 import { existsSync, readFileSync } from 'fs';
-import { Record, String, Optional, Boolean, Static } from 'runtypes';
-
-const Config = Record({
-  files: Optional(String),
-  watch: Optional(Boolean),
-  root: Optional(String),
-  connection: Optional(String),
-  template: Optional(String),
-  verbose: Optional(Boolean),
-  silent: Optional(Boolean),
-  typePrefix: Optional(String),
-});
-
-type ConfigType = Static<typeof Config>;
+import { ConfigType } from './config';
+import { toConfig } from '.';
 
 const asyncPipeline = promisify(pipeline);
 
@@ -70,19 +58,11 @@ export const potygen = (overwriteLogger?: Logger): Command =>
       'A template of the path, where to generate the typescript type files. The parameters are the response from node\'s path.parse function (default: "{{dir}}/{{name}}.queries.ts")',
     )
     .action(async (options: ConfigType & { config: string }) => {
-      const config: ConfigType = existsSync(options.config)
-        ? Config.check(JSON.parse(readFileSync(options.config, 'utf-8')))
-        : {};
-
-      const { root, connection, watch, files, template, verbose, silent, typePrefix } = {
-        files: '**/*.sql',
-        root: process.cwd(),
-        template: '{{dir}}/{{name}}.queries.ts',
-        connection: 'postgres://localhost:5432/db',
-        watch: false,
-        ...config,
-        ...options,
-      };
+      const { config, ...rest } = options;
+      const { root, connection, watch, files, template, verbose, silent, typePrefix } = toConfig({
+        ...(existsSync(config) ? JSON.parse(readFileSync(config, 'utf-8')) : {}),
+        ...rest,
+      });
 
       const logger =
         overwriteLogger ?? new LogLevelConsole(verbose ? LogLevel.debug : silent ? LogLevel.error : LogLevel.info);
@@ -102,7 +82,7 @@ export const potygen = (overwriteLogger?: Logger): Command =>
         if (process.env.POTYGEN_DEBUG && error instanceof Error) {
           logger.error(error.stack);
         } else {
-          logger.error(global.String(error));
+          logger.error(String(error));
         }
       } finally {
         await db.end();

@@ -40,6 +40,10 @@ describe('Query Interface', () => {
     ['parameter required', `SELECT character_col FROM all_types WHERE integer_col > $id!`],
     ['parameter coalesce', `SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)`],
     ['sum', `SELECT SUM(integer_col) FROM all_types`],
+    [
+      'Coalesce binary expression',
+      `SELECT COALESCE(numeric_col,0) + COALESCE(numeric_col,0) as "totalPaymentWithVat" FROM all_types`,
+    ],
   ])('Should convert %s sql (%s)', async (_, sql) => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     const queryInterface = toQueryInterface(parser(sql).ast);

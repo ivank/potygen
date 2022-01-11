@@ -44,15 +44,16 @@ import {
   LoadedDataComposite,
   DataViewRaw,
   LoadContext,
+  QualifiedName,
 } from './types';
 import { inspect } from 'util';
 
 interface LoadAllSql {
   params: {
-    tableNames: Array<{ name: string; schema: string }>;
-    compositeNames: Array<{ name: string; schema: string }>;
-    enumNames: Array<{ name: string; schema: string }>;
-    functionNames: Array<{ name: string; schema: string }>;
+    tableNames: QualifiedName[];
+    compositeNames: QualifiedName[];
+    enumNames: QualifiedName[];
+    functionNames: QualifiedName[];
   };
   result: LoadedDataComposite | LoadedDataTable | DataViewRaw | LoadedDataEnum | LoadedDataFunction;
 }
@@ -205,10 +206,10 @@ const allSql = sql<LoadAllSql>`
   )
 `;
 
-const orEmptyNameList = (names: Array<{ schema: string; name: string }>): Array<{ schema: string; name: string }> =>
+const orEmptyNameList = (names: QualifiedName[]): QualifiedName[] =>
   names.length === 0 ? [{ name: '_', schema: '_' }] : names;
 
-const loadData = async (ctx: LoadContext, currentData: LoadedData[], newData: Data[]): Promise<LoadedData[]> => {
+export const loadData = async (ctx: LoadContext, currentData: LoadedData[], newData: Data[]): Promise<LoadedData[]> => {
   const data = newData.filter(notLoaded(currentData)).filter(isUniqueBy());
   const tableNames = data.filter(isDataTable).map(({ name }) => name);
   const functionNames = data.filter(isDataFunction).map(({ name }) => name);
@@ -298,8 +299,10 @@ const extractDataFromType = (type: Type): Data[] => {
   }
 };
 
+export const extractDataSources = (sources: Source[]): DataTable[] => sources.flatMap(toSourceTables);
+
 const extractDataFromQueryInterface = ({ sources, params, results }: QueryInterface): Data[] => [
-  ...sources.flatMap(toSourceTables),
+  ...extractDataSources(sources),
   ...params.flatMap(({ type, pick }) => [
     ...extractDataFromType(type),
     ...pick.flatMap(({ type }) => extractDataFromType(type)),
@@ -389,7 +392,7 @@ const toLoadedEnum = (enums: LoadedDataEnum[]): Record<string, TypeUnionConstant
     {},
   );
 
-const toTableName = (schema: string | undefined, name: string): { name: string; schema: string } => ({
+const toTableName = (schema: string | undefined, name: string): QualifiedName => ({
   name: name.toLowerCase(),
   schema: schema?.toLowerCase() ?? 'public',
 });
@@ -459,7 +462,7 @@ const toLoadedSource = (
   };
 };
 
-const toLoadedContext = (data: LoadedData[], sources: Source[]): LoadedContext => {
+export const toLoadedContext = (data: LoadedData[], sources: Source[]): LoadedContext => {
   const enums = toLoadedEnum(data.filter(isLoadedDataEnum));
   const composites = data.filter(isLoadedDataComposite).map(toLoadedComposite);
   const loadedSources = sources.map(toLoadedSource(data, enums, composites));
@@ -616,14 +619,15 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
           : operatorResult;
       case 'Coalesce':
         const argTypes = type.items.map(recur);
-        return {
-          type: 'UnionConstant',
-          items: argTypes,
-          nullable: argTypes.reduce<boolean>(
-            (isNullable, type) => isNullable && isTypeNullable(type) && Boolean(type.nullable),
-            true,
-          ),
-        };
+        const nullable = argTypes.reduce<boolean>(
+          (isNullable, type) => isNullable && isTypeNullable(type) && Boolean(type.nullable),
+          true,
+        );
+        return argTypes.every((arg) => arg.type === argTypes[0].type)
+          ? isTypeNullable(argTypes[0])
+            ? { ...argTypes[0], nullable }
+            : argTypes[0]
+          : { type: 'UnionConstant', items: argTypes, nullable };
       case 'Named':
         return recur(type.value);
       default:
