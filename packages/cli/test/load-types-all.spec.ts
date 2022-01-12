@@ -1,18 +1,18 @@
 import { parser } from '@potygen/ast';
-import { Client } from 'pg';
 import { toQueryInterface } from '@potygen/query';
-import { LoadedData, loadQueryInterfacesData, toLoadedQueryInterface } from '../src';
+import { loadAllData, LoadedData, toLoadedQueryInterface } from '../src';
 import { testDb } from './helpers';
 
-let db: Client;
+let data: LoadedData[] = [];
 
-describe('Query Interface', () => {
+describe('Load all data at once', () => {
   beforeAll(async () => {
-    db = testDb();
+    const db = testDb();
     await db.connect();
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+    data = await loadAllData({ db, logger }, data);
+    await db.end();
   });
-
-  afterAll(() => db.end());
 
   it.each<[string, string]>([
     ['select where', `SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)`],
@@ -43,43 +43,9 @@ describe('Query Interface', () => {
       'Coalesce binary expression',
       `SELECT COALESCE(numeric_col,0) + COALESCE(numeric_col,0) as "totalPaymentWithVat" FROM all_types`,
     ],
-    [
-      'Aliased CTE select',
-      `WITH nums AS (SELECT id, numeric_col AS "num" FROM all_types)
-      SELECT all_types.id, n.num FROM all_types JOIN nums AS n ON n.id = all_types.id`,
-    ],
-  ])('Should convert %s sql (%s)', async (_, sql) => {
-    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+  ])('Should convert %s sql (%s)', (_, sql) => {
     const queryInterface = toQueryInterface(parser(sql).ast);
-    const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
     const loadedQueryInterface = toLoadedQueryInterface(data)(queryInterface);
-
     expect(loadedQueryInterface).toMatchSnapshot();
-  });
-
-  it('Should load multple queries', async () => {
-    const queryInterfaces = [
-      `SELECT ABS(integer_col) FROM all_types`,
-      `SELECT ABS(ABS(integer_col)) FROM all_types`,
-      `SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id`,
-      `SELECT ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id`,
-      `SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id`,
-      `SELECT character_col + integer_col AS "test1" FROM all_types WHERE character_col = $text`,
-      `SELECT * FROM all_types`,
-      `SELECT 'Pending'::account_levelisation_state`,
-      `SELECT state FROM account_levelisations`,
-      `SELECT id, character_col FROM all_types WHERE id = :id`,
-    ].map((sql) => {
-      return toQueryInterface(parser(sql).ast);
-    });
-    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
-    const data = await loadQueryInterfacesData({ db, logger }, queryInterfaces, []);
-
-    let individuallyLoaded: LoadedData[] = [];
-    for (const query of queryInterfaces) {
-      individuallyLoaded = await loadQueryInterfacesData({ db, logger }, [query], individuallyLoaded);
-    }
-
-    expect(data).toEqual(expect.arrayContaining(individuallyLoaded));
   });
 });

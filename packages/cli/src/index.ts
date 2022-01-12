@@ -48,7 +48,14 @@ export {
   isLoadedDataComposite,
 } from './guards';
 
-export { toLoadedContext, loadQueryInterfacesData, toLoadedQueryInterface, loadData, extractDataSources } from './load';
+export {
+  toLoadedContext,
+  loadQueryInterfacesData,
+  toLoadedQueryInterface,
+  loadData,
+  loadAllData,
+  extractDataSources,
+} from './load';
 
 export { Config, ConfigType, FullConfigType, toConfig } from './config';
 

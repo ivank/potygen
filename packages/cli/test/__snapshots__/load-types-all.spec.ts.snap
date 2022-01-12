@@ -1,30 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Query Interface Should convert Aliased CTE select sql (WITH nums AS (SELECT id, numeric_col AS "num" FROM all_types)
-      SELECT all_types.id, n.num FROM all_types JOIN nums AS n ON n.id = all_types.id) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
-      "name": "id",
-      "type": Object {
-        "comment": null,
-        "type": "Number",
-      },
-    },
-    Object {
-      "name": "num",
-      "type": Object {
-        "comment": null,
-        "nullable": true,
-        "type": "Number",
-      },
-    },
-  ],
-}
-`;
-
-exports[`Query Interface Should convert Coalesce binary expression sql (SELECT COALESCE(numeric_col,0) + COALESCE(numeric_col,0) as "totalPaymentWithVat" FROM all_types) 1`] = `
+exports[`Load all data at once Should convert Coalesce binary expression sql (SELECT COALESCE(numeric_col,0) + COALESCE(numeric_col,0) as "totalPaymentWithVat" FROM all_types) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -38,7 +14,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert coalesce 1 sql (SELECT COALESCE(id, character_col) FROM all_types) 1`] = `
+exports[`Load all data at once Should convert coalesce 1 sql (SELECT COALESCE(id, character_col) FROM all_types) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -64,7 +40,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert coalesce 2 sql (SELECT COALESCE(character_col, id) FROM all_types) 1`] = `
+exports[`Load all data at once Should convert coalesce 2 sql (SELECT COALESCE(character_col, id) FROM all_types) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -90,7 +66,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert coalesce 3 sql (SELECT COALESCE(12, character_col, id) FROM all_types) 1`] = `
+exports[`Load all data at once Should convert coalesce 3 sql (SELECT COALESCE(12, character_col, id) FROM all_types) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -120,7 +96,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert coalesce 4 sql (SELECT COALESCE(integer_col, character_col) FROM all_types) 1`] = `
+exports[`Load all data at once Should convert coalesce 4 sql (SELECT COALESCE(integer_col, character_col) FROM all_types) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -147,7 +123,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert composite type from table sql (SELECT (item).supplier_id FROM all_types) 1`] = `
+exports[`Load all data at once Should convert composite type from table sql (SELECT (item).supplier_id FROM all_types) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -163,7 +139,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert composite type from view sql (SELECT (item).supplier_id FROM all_types_view) 1`] = `
+exports[`Load all data at once Should convert composite type from view sql (SELECT (item).supplier_id FROM all_types_view) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -179,7 +155,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
+exports[`Load all data at once Should convert different result types sql (SELECT * FROM all_types) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -638,11 +614,43 @@ Object {
             "type": "String",
           },
           Object {
+            "literal": "Active",
+            "type": "String",
+          },
+          Object {
+            "literal": "Active",
+            "type": "String",
+          },
+          Object {
+            "literal": "Pending",
+            "type": "String",
+          },
+          Object {
+            "literal": "Pending",
+            "type": "String",
+          },
+          Object {
             "literal": "Pending",
             "type": "String",
           },
           Object {
             "literal": "Dispute",
+            "type": "String",
+          },
+          Object {
+            "literal": "Dispute",
+            "type": "String",
+          },
+          Object {
+            "literal": "Dispute",
+            "type": "String",
+          },
+          Object {
+            "literal": "Closed",
+            "type": "String",
+          },
+          Object {
+            "literal": "Closed",
             "type": "String",
           },
           Object {
@@ -658,7 +666,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert enum column sql (SELECT state FROM account_levelisations) 1`] = `
+exports[`Load all data at once Should convert enum column sql (SELECT state FROM account_levelisations) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -684,7 +692,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert enum sql (SELECT 'Pending'::account_levelisation_state) 1`] = `
+exports[`Load all data at once Should convert enum sql (SELECT 'Pending'::account_levelisation_state) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -708,7 +716,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert function result double sql (SELECT ABS(ABS(integer_col)) FROM all_types) 1`] = `
+exports[`Load all data at once Should convert function result double sql (SELECT ABS(ABS(integer_col)) FROM all_types) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -723,7 +731,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert function result single sql (SELECT ABS(integer_col) FROM all_types) 1`] = `
+exports[`Load all data at once Should convert function result single sql (SELECT ABS(integer_col) FROM all_types) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -738,7 +746,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert nested function explicit type sql (SELECT ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id) 1`] = `
+exports[`Load all data at once Should convert nested function explicit type sql (SELECT ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -755,7 +763,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert nested function guess type sql (SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id) 1`] = `
+exports[`Load all data at once Should convert nested function guess type sql (SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -770,7 +778,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert operators integer sql (SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id) 1`] = `
+exports[`Load all data at once Should convert operators integer sql (SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id) 1`] = `
 Object {
   "params": Array [
     Object {
@@ -797,7 +805,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert operators string sql (SELECT character_col + integer_col AS "test1" FROM all_types WHERE character_col = $text) 1`] = `
+exports[`Load all data at once Should convert operators string sql (SELECT character_col + integer_col AS "test1" FROM all_types WHERE character_col = $text) 1`] = `
 Object {
   "params": Array [
     Object {
@@ -825,7 +833,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert parameter coalesce sql (SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)) 1`] = `
+exports[`Load all data at once Should convert parameter coalesce sql (SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)) 1`] = `
 Object {
   "params": Array [
     Object {
@@ -854,7 +862,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert parameter required sql (SELECT character_col FROM all_types WHERE integer_col > $id!) 1`] = `
+exports[`Load all data at once Should convert parameter required sql (SELECT character_col FROM all_types WHERE integer_col > $id!) 1`] = `
 Object {
   "params": Array [
     Object {
@@ -883,7 +891,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert select where sql (SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)) 1`] = `
+exports[`Load all data at once Should convert select where sql (SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)) 1`] = `
 Object {
   "params": Array [
     Object {
@@ -912,7 +920,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert simple sql (SELECT id, character_col FROM all_types WHERE id = :id) 1`] = `
+exports[`Load all data at once Should convert simple sql (SELECT id, character_col FROM all_types WHERE id = :id) 1`] = `
 Object {
   "params": Array [
     Object {
@@ -947,7 +955,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert sum sql (SELECT SUM(integer_col) FROM all_types) 1`] = `
+exports[`Load all data at once Should convert sum sql (SELECT SUM(integer_col) FROM all_types) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -962,7 +970,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert views types sql (SELECT * FROM all_types_view) 1`] = `
+exports[`Load all data at once Should convert views types sql (SELECT * FROM all_types_view) 1`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -1421,11 +1429,43 @@ Object {
             "type": "String",
           },
           Object {
+            "literal": "Active",
+            "type": "String",
+          },
+          Object {
+            "literal": "Active",
+            "type": "String",
+          },
+          Object {
+            "literal": "Pending",
+            "type": "String",
+          },
+          Object {
+            "literal": "Pending",
+            "type": "String",
+          },
+          Object {
             "literal": "Pending",
             "type": "String",
           },
           Object {
             "literal": "Dispute",
+            "type": "String",
+          },
+          Object {
+            "literal": "Dispute",
+            "type": "String",
+          },
+          Object {
+            "literal": "Dispute",
+            "type": "String",
+          },
+          Object {
+            "literal": "Closed",
+            "type": "String",
+          },
+          Object {
+            "literal": "Closed",
             "type": "String",
           },
           Object {
