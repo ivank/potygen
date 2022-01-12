@@ -28,5 +28,6 @@ Current state brain dump:
 
 - typescript-pgsql-plugin
 - developing the autocomplete columns on "."
-- writing integration test to verify
-- config in service using cli to be able to use database and load data
+- all data loaded successfully
+- source at path found
+- need to convert source to columns and show

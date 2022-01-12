@@ -1,7 +1,9 @@
-import { ConfigType } from '@potygen/cli';
+import { ConfigType, LoadedData, loadAllData } from '@potygen/cli';
+import { Client } from 'pg';
 import { TemplateContext, TemplateLanguageService } from 'typescript-template-language-service-decorator';
 import * as tss from 'typescript/lib/tsserverlibrary';
 import { LanguageServiceLogger } from './logger';
+import { toLoadedSourceAtOffset } from './traverse';
 
 export const removeDotCompletion = (sql: string, position: tss.LineAndCharacter): string =>
   sql
@@ -14,35 +16,39 @@ export const removeDotCompletion = (sql: string, position: tss.LineAndCharacter)
     )
     .join('\n');
 
+export const loadData = async (logger: LanguageServiceLogger, connection?: string): Promise<LoadedData[]> => {
+  const db = new Client(connection);
+  try {
+    await db.connect();
+    return await loadAllData({ db, logger }, []);
+  } finally {
+    await db.end();
+  }
+};
+
 export class PotygenTemplateLanguageService implements TemplateLanguageService {
-  constructor(
-    private readonly ts: typeof tss,
-    private readonly config: ConfigType,
-    private readonly logger: LanguageServiceLogger,
-  ) {}
+  public data: LoadedData[] = [];
 
-  // public getCompletionsAtPosition(context: TemplateContext, position: ts.LineAndCharacter): ts.WithMetadata<ts.CompletionInfo> {}
+  constructor(private readonly ts: typeof tss, readonly config: ConfigType, readonly logger: LanguageServiceLogger) {
+    loadData(logger, config.connection).then((data) => (this.data = data));
+  }
 
-  getCompletionsAtPosition(context: TemplateContext, position: tss.LineAndCharacter): ts.CompletionInfo {
-    this.logger.log(
-      `${this.config.connection}, "${context.text}", "${context.rawText}", offset: ${context.toOffset(position)}`,
+  getCompletionsAtPosition(context: TemplateContext, position: tss.LineAndCharacter): tss.CompletionInfo {
+    const sql = removeDotCompletion(context.text, position);
+    const offset = context.toOffset(position);
+    const source = toLoadedSourceAtOffset(sql, this.data, offset);
+    const entries = source?.items
+      ? Object.keys(source.items).map((name) => ({
+          name,
+          sortText: name,
+          kind: this.ts.ScriptElementKind.memberVariableElement,
+        }))
+      : [];
+    this.logger.debug(
+      `Completion at offset: ${offset} for "${sql}". Found source (${source?.type}) with entries ${entries.length}`,
     );
-    this.logger.log(JSON.stringify(position, null, 2));
 
-    const line = context.text.split(/\n/g)[position.line];
-    return {
-      isGlobalCompletion: false,
-      isMemberCompletion: false,
-      isNewIdentifierLocation: false,
-      entries: [
-        {
-          name: line.slice(0, position.character),
-          kind: this.ts.ScriptElementKind.directory,
-          kindModifiers: 'echo',
-          sortText: 'echo',
-        },
-      ],
-    };
+    return { isGlobalCompletion: false, isMemberCompletion: false, isNewIdentifierLocation: false, entries };
   }
 
   // public getCompletionEntryDetails(context: TemplateContext, position: ts.LineAndCharacter, name: string ): ts.CompletionEntryDetails {}

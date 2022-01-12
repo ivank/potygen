@@ -1,6 +1,6 @@
 import { TemplateContext } from 'typescript-template-language-service-decorator';
 import { parser, AstTag } from '@potygen/ast';
-import { LoadContext, LoadedData } from '@potygen/cli';
+import { LoadContext } from '@potygen/cli';
 import { toSources, Source } from '@potygen/query';
 import { Path, toPath } from './traverse';
 
@@ -15,7 +15,16 @@ export const toDocument = (text: string): Document => {
 };
 
 export class Service {
-  constructor(public ctx: LoadContext, public data: LoadedData[] = []) {}
+  constructor(public ctx: LoadContext) {}
+
+  // async loadData (): Promise<this> {
+  //   db.connect()
+  //     .then(() => loadAllData(this.ctx))
+  //     .then((data) => {
+  //       this.data = data;
+  //       return db.end();
+  //     });
+  // }
 
   doc(template: TemplateContext): Document {
     const { ast } = parser(template.text);

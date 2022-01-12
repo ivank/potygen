@@ -1,4 +1,6 @@
-import { Tag, isNode, isFunction, isColumn, isQualifiedIdentifier, SqlTag } from '@potygen/ast';
+import { Tag, isNode, isFunction, isColumn, isQualifiedIdentifier, SqlTag, parser, AstTag } from '@potygen/ast';
+import { LoadedData, LoadedSource, toLoadedContext } from '@potygen/cli';
+import { toQueryInterface } from '@potygen/query';
 
 export interface PathItem<T extends Tag> {
   index?: number;
@@ -6,15 +8,10 @@ export interface PathItem<T extends Tag> {
 }
 export type Path = PathItem<Tag>[];
 
-export interface SourceItemTable {
-  schema: string;
-  table: string;
-}
-export interface SourceItemNamed {
+export interface SourceItem {
+  schema?: string;
   name: string;
 }
-
-export type SourceItem = SourceItemTable | SourceItemNamed;
 
 const isItem =
   <T extends Tag>(predicate: (tag: SqlTag) => tag is T) =>
@@ -52,14 +49,23 @@ export const getFunctionName = (path: Path) => {
   return undefined;
 };
 
-export const getSourceItem = (path: Path): SourceItem | undefined => {
+const getSourceItem = (path: Path): SourceItem | undefined => {
   const parentColumn = closestParentColumn(path);
   if (parentColumn) {
-    return parentColumn.values.length === 2
-      ? { schema: parentColumn.values[0].value, table: parentColumn.values[1].value }
-      : parentColumn.values.length === 1
+    return parentColumn.values.length === 3
+      ? { schema: parentColumn.values[1].value, name: parentColumn.values[2].value }
+      : parentColumn.values.length === 2
       ? { name: parentColumn.values[0].value }
       : undefined;
   }
   return undefined;
+};
+
+export const toLoadedSourceAtOffset = (sql: string, data: LoadedData[], offset: number): LoadedSource | undefined => {
+  const ast = parser(sql).ast;
+  const path = toPath(ast, offset);
+  const query = toQueryInterface(ast);
+  const loadedSources = toLoadedContext(data, query.sources);
+  const item = getSourceItem(path);
+  return item ? loadedSources.sources.find((source) => source.name === item.name) : undefined;
 };
