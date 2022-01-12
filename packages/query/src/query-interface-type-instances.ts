@@ -188,6 +188,7 @@ export const pgTypes = {
   pg_views: typeString,
   trigger: typeString,
   tsm_handler: typeString,
+  gtsvector: typeString,
   bit: typeString,
   bpchar: typeString,
   cidr: typeString,

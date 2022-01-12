@@ -76,6 +76,9 @@ export {
   isTypeOptional,
   isTypeOptionalConstant,
   isTypeLoadColumnCast,
+  isSourceTable,
+  isSourceQuery,
+  isSourceValues,
 } from './query-interface.guards';
 
 export { SqlInterface, Json } from './sql.types';

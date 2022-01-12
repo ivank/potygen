@@ -51,7 +51,9 @@ export interface LoadedDataEnum extends DataEnum {
 }
 
 export type Data = DataTable | DataFunction | DataEnum;
-export type LoadedData = LoadedDataTable | LoadedDataFunction | LoadedDataEnum | LoadedDataView | LoadedDataComposite;
+export type LoadedDataSimple = LoadedDataTable | LoadedDataFunction | LoadedDataEnum | LoadedDataComposite;
+export type LoadedDataRaw = LoadedDataSimple | DataViewRaw;
+export type LoadedData = LoadedDataSimple | LoadedDataView;
 
 export interface LoadedParam {
   name: string;
