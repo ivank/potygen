@@ -17,6 +17,7 @@ import {
   isTypeCompositeConstant,
   TypeCompositeConstant,
   toQueryInterface,
+  isSourceQuery,
 } from '@potygen/query';
 import {
   isDataTable,
@@ -45,25 +46,116 @@ import {
   DataViewRaw,
   LoadContext,
   QualifiedName,
+  LoadedDataRaw,
+  LoadedDataSimple,
 } from './types';
 import { inspect } from 'util';
 
-interface LoadAllSql {
+interface LoadSql {
   params: {
     tableNames: QualifiedName[];
     compositeNames: QualifiedName[];
     enumNames: QualifiedName[];
     functionNames: QualifiedName[];
   };
-  result: LoadedDataComposite | LoadedDataTable | DataViewRaw | LoadedDataEnum | LoadedDataFunction;
+  result: LoadedDataRaw;
 }
 
-export const isDataViewRaw = (item: LoadAllSql['result']): item is DataViewRaw => item.type === 'View';
-export const isNotDataViewRaw = (
-  item: LoadAllSql['result'],
-): item is LoadedDataComposite | LoadedDataTable | LoadedDataEnum | LoadedDataFunction => item.type !== 'View';
+export const isDataViewRaw = (item: LoadedDataRaw): item is DataViewRaw => item.type === 'View';
+export const isNotDataViewRaw = (item: LoadedDataRaw): item is LoadedDataSimple => item.type !== 'View';
 
-const allSql = sql<LoadAllSql>`
+const allSql = sql<LoadSql>`
+  SELECT
+    'Composite' AS "type",
+    json_build_object('schema', attributes.udt_schema, 'name', attributes.udt_name) AS "name",
+    json_agg(
+      json_build_object(
+        'name', attributes.attribute_name,
+        'isNullable', attributes.is_nullable,
+        'type', attributes.data_type
+      )
+      ORDER BY attributes.ordinal_position ASC
+    ) AS "data"
+  FROM information_schema.attributes
+  LEFT JOIN information_schema.columns
+    ON columns.data_type = 'USER-DEFINED'
+    AND columns.udt_name = attributes.udt_name
+  GROUP BY attributes.udt_schema, attributes.udt_name
+
+  UNION ALL
+
+  SELECT
+    'Table' AS "type",
+    json_build_object('schema', table_schema, 'name', table_name) AS "name",
+    json_agg(
+      json_build_object(
+        'name', column_name,
+        'isNullable', is_nullable,
+        'record', udt_name,
+        'type', data_type,
+        'comment', COL_DESCRIPTION(CONCAT_WS('.', table_schema, table_name)::regclass, columns.ordinal_position)
+      )
+      ORDER BY columns.ordinal_position ASC
+    ) AS "data"
+  FROM information_schema.columns
+  WHERE
+    table_schema != 'information_schema'
+    AND table_schema != 'pg_catalog'
+  GROUP BY columns.table_schema, columns.table_name
+
+  UNION ALL
+
+  SELECT
+    'View' AS "type",
+    json_build_object('schema', views.table_schema, 'name', views.table_name) AS "name",
+    to_json(COALESCE(view_definition, '')) as "data"
+  FROM information_schema.views
+  WHERE
+    view_definition IS NOT NULL
+    AND views.table_schema != 'pg_catalog'
+    AND views.table_schema != 'information_schema'
+
+  UNION ALL
+
+  SELECT
+    'Enum' AS "type",
+    json_build_object('schema', columns.table_schema, 'name', pg_type.typname) AS "name",
+    to_json(JSONB_AGG(pg_enum.enumlabel ORDER BY pg_enum.enumsortorder)) as "data"
+  FROM pg_catalog.pg_type
+  JOIN pg_catalog.pg_enum ON pg_enum.enumtypid = pg_type.oid
+  LEFT JOIN information_schema.columns
+    ON columns.data_type = 'USER-DEFINED'
+    AND columns.udt_name = pg_catalog.pg_type.typname
+  WHERE pg_type.typcategory = 'E'
+  GROUP BY (
+    columns.table_schema,
+    pg_type.typname,
+    pg_type.typcategory,
+    pg_type.oid
+  )
+
+  UNION ALL
+
+  SELECT
+    'Function' AS "type",
+    json_build_object('schema', routines.routine_schema, 'name', routines.routine_name) AS "name",
+    json_build_object(
+      'returnType', routines.data_type,
+      'isAggregate', routines.routine_definition = 'aggregate_dummy',
+      'argTypes', JSONB_AGG(COALESCE(parameters.data_type, 'null') ORDER BY parameters.ordinal_position ASC)
+    ) AS "data"
+  FROM information_schema.routines
+  LEFT JOIN information_schema.parameters ON parameters.specific_name = routines.specific_name
+  GROUP BY (
+    routines.routine_schema,
+    routines.routine_name,
+    routines.data_type,
+    routines.specific_name,
+    routines.routine_definition
+  )
+`;
+
+const selectedSql = sql<LoadSql>`
   WITH
     table_names ("schema", "name") AS (VALUES $$tableNames(schema, name)),
     composite_names ("schema", "name") AS (VALUES $$compositeNames(schema, name)),
@@ -209,6 +301,45 @@ const allSql = sql<LoadAllSql>`
 const orEmptyNameList = (names: QualifiedName[]): QualifiedName[] =>
   names.length === 0 ? [{ name: '_', schema: '_' }] : names;
 
+const toLoadedData = async (
+  ctx: LoadContext,
+  currentData: LoadedData[],
+  loadedDataRaw: LoadedDataRaw[],
+): Promise<LoadedData[]> => {
+  const loadedData = loadedDataRaw.filter(isNotDataViewRaw);
+  const currentLoadedData = [...currentData, ...loadedData];
+
+  const parsedViews = loadedDataRaw
+    .filter(isDataViewRaw)
+    .map((view) => ({ ...view, queryInterface: toQueryInterface(parser(view.data).ast) }));
+
+  if (parsedViews.length) {
+    ctx.logger.debug(`Load views: ${parsedViews.map((item) => formatTableName(item.name)).join(',')}.`);
+  }
+
+  const loadedDataWithViews = parsedViews.length
+    ? await loadData(
+        ctx,
+        currentLoadedData,
+        parsedViews.flatMap(({ queryInterface }) => extractDataFromQueryInterface(queryInterface)),
+      )
+    : [];
+
+  const loadedViews = parsedViews.map((view) => ({
+    ...view,
+    columns: toLoadedQueryInterface(loadedDataWithViews)(view.queryInterface).results,
+  }));
+
+  return [...currentLoadedData, ...loadedViews];
+};
+
+export const loadAllData = async (ctx: LoadContext, currentData: LoadedData[]): Promise<LoadedData[]> => {
+  ctx.logger.debug(`Load all data`);
+  const loaded = await allSql.run(ctx.db);
+  ctx.logger.debug(`Loaded additional data: ${loaded.length}.`);
+  return await toLoadedData(ctx, currentData, loaded);
+};
+
 export const loadData = async (ctx: LoadContext, currentData: LoadedData[], newData: Data[]): Promise<LoadedData[]> => {
   const data = newData.filter(notLoaded(currentData)).filter(isUniqueBy());
   const tableNames = data.filter(isDataTable).map(({ name }) => name);
@@ -230,37 +361,16 @@ export const loadData = async (ctx: LoadContext, currentData: LoadedData[], newD
     })}`,
   );
 
-  const loaded = await allSql.run(ctx.db, {
+  const loaded = await selectedSql.run(ctx.db, {
     tableNames: orEmptyNameList(tableNames),
     functionNames: orEmptyNameList(functionNames),
     enumNames: orEmptyNameList(enumNames),
     compositeNames: orEmptyNameList(compositeNames),
   });
 
-  const loadedData = loaded.filter(isNotDataViewRaw);
+  ctx.logger.debug(`Loaded additional data: ${loaded.length}.`);
 
-  const parsedViews = loaded
-    .filter(isDataViewRaw)
-    .map((view) => ({ ...view, queryInterface: toQueryInterface(parser(view.data).ast) }));
-
-  if (parsedViews.length) {
-    ctx.logger.debug(`Load views: ${parsedViews.map((item) => formatTableName(item.name)).join(',')}.`);
-  }
-
-  const loadedDataWithViews = parsedViews.length
-    ? await loadData(
-        ctx,
-        [...currentData, ...loadedData],
-        parsedViews.flatMap(({ queryInterface }) => extractDataFromQueryInterface(queryInterface)),
-      )
-    : [];
-
-  const loadedViews = parsedViews.map((view) => ({
-    ...view,
-    columns: toLoadedQueryInterface(loadedDataWithViews)(view.queryInterface).results,
-  }));
-
-  return [...currentData, ...loadedData, ...loadedViews];
+  return await toLoadedData(ctx, currentData, loaded);
 };
 
 const toSourceTables = (source: Source): DataTable[] => {
@@ -401,10 +511,12 @@ const toLoadedSource = (
   data: LoadedData[],
   enums: Record<string, TypeUnionConstant>,
   composites: TypeCompositeConstant[],
+  sources: Source[],
 ) => {
   const tables = data.filter(isLoadedDataTable);
   const views = data.filter(isLoadedDataView);
   const loadedQueryInterface = toLoadedQueryInterface(data);
+  const querySources = sources.filter(isSourceQuery);
 
   return (source: Source): LoadedSource => {
     switch (source.type) {
@@ -420,6 +532,17 @@ const toLoadedSource = (
               (acc, column) => ({ ...acc, [column.name]: column.type }),
               {},
             ),
+          };
+        }
+
+        /**
+         * If we've joined a CTE and renmaed it, we need to add another query source with that name
+         */
+        const querySource = querySources.find((item) => item.name === source.table);
+        if (querySource) {
+          return {
+            ...toLoadedSource(data, enums, composites, sources)(querySource),
+            name: source.name,
           };
         }
 
@@ -465,7 +588,7 @@ const toLoadedSource = (
 export const toLoadedContext = (data: LoadedData[], sources: Source[]): LoadedContext => {
   const enums = toLoadedEnum(data.filter(isLoadedDataEnum));
   const composites = data.filter(isLoadedDataComposite).map(toLoadedComposite);
-  const loadedSources = sources.map(toLoadedSource(data, enums, composites));
+  const loadedSources = sources.map(toLoadedSource(data, enums, composites, sources));
   const funcs = data.filter(isLoadedDataFunction).map(toLoadedFunction);
 
   return { sources: loadedSources, funcs, enums, composites };

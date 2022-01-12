@@ -33,6 +33,10 @@ import {
   TypeOptional,
   TypeOptionalConstant,
   TypeLoadColumnCast,
+  SourceValues,
+  Source,
+  SourceQuery,
+  SourceTable,
 } from './query-interface.types';
 
 const typeConstant = [
@@ -70,6 +74,10 @@ const typeLiteral = ['String', 'Number', 'Boolean', 'BigInt'];
 export const isTypeConstant = (item: Type): item is TypeConstant => typeConstant.includes(item.type);
 export const isTypeNullable = (item: Type): item is TypeNullable => typeNullable.includes(item.type);
 export const isTypeLiteral = (item: Type): item is TypeLiteral => typeLiteral.includes(item.type);
+
+export const isSourceTable = (item: Source): item is SourceTable => item.type === 'Table';
+export const isSourceQuery = (item: Source): item is SourceQuery => item.type === 'Query';
+export const isSourceValues = (item: Source): item is SourceValues => item.type === 'Values';
 
 export const isTypeString = (type: Type): type is TypeString => type.type === 'String';
 export const isTypeNumber = (type: Type): type is TypeNumber => type.type === 'Number';
