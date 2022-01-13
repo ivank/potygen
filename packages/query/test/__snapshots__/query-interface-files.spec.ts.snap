@@ -1170,6 +1170,7 @@ Object {
       "start": 2326,
       "type": Object {
         "literal": "",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1215,6 +1216,7 @@ Object {
       "start": 2398,
       "type": Object {
         "literal": "",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1229,6 +1231,7 @@ Object {
         "name": "bool",
         "type": "Named",
         "value": Object {
+          "postgresType": "bool",
           "type": "Boolean",
         },
       },
@@ -1310,6 +1313,7 @@ Object {
         "name": "int4",
         "type": "Named",
         "value": Object {
+          "postgresType": "int4",
           "type": "Number",
         },
       },
@@ -1359,6 +1363,7 @@ Object {
           "name": "int4",
           "type": "Named",
           "value": Object {
+            "postgresType": "int4",
             "type": "Number",
           },
         },
@@ -1374,6 +1379,7 @@ Object {
       "start": 2929,
       "type": Object {
         "literal": "totalPayment",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1386,6 +1392,7 @@ Object {
       "start": 2961,
       "type": Object {
         "literal": "DESC",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1398,6 +1405,7 @@ Object {
       "start": 3076,
       "type": Object {
         "literal": "ASC",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1410,6 +1418,7 @@ Object {
       "start": 3157,
       "type": Object {
         "literal": "vatPayment",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1422,6 +1431,7 @@ Object {
       "start": 3377,
       "type": Object {
         "literal": "generationPayment",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1434,6 +1444,7 @@ Object {
       "start": 3629,
       "type": Object {
         "literal": "exportPayment",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1446,6 +1457,7 @@ Object {
       "start": 3861,
       "type": Object {
         "literal": "generationEnergy",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1458,6 +1470,7 @@ Object {
       "start": 4107,
       "type": Object {
         "literal": "exportEnergy",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1470,6 +1483,7 @@ Object {
       "start": 4335,
       "type": Object {
         "literal": "cfrFitId",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1482,6 +1496,7 @@ Object {
       "start": 4553,
       "type": Object {
         "literal": "state",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1494,6 +1509,7 @@ Object {
       "start": 4751,
       "type": Object {
         "literal": "isAccepted",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1506,6 +1522,7 @@ Object {
       "start": 4971,
       "type": Object {
         "literal": "error",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1518,6 +1535,7 @@ Object {
       "start": 5165,
       "type": Object {
         "literal": "exportType",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -1532,6 +1550,7 @@ Object {
         "name": "int4",
         "type": "Named",
         "value": Object {
+          "postgresType": "int4",
           "type": "Number",
         },
       },
@@ -1547,6 +1566,7 @@ Object {
         "name": "int4",
         "type": "Named",
         "value": Object {
+          "postgresType": "int4",
           "type": "Number",
         },
       },
@@ -2287,23 +2307,29 @@ Object {
         "available": Array [
           Array [
             Object {
+              "postgresType": "json",
               "type": "Json",
             },
             Object {
+              "postgresType": "float4",
               "type": "Number",
             },
             Object {
+              "postgresType": "text",
               "type": "String",
             },
           ],
           Array [
             Object {
+              "postgresType": "json",
               "type": "Json",
             },
             Object {
+              "postgresType": "text",
               "type": "String",
             },
             Object {
+              "postgresType": "text",
               "type": "String",
             },
           ],
@@ -2336,6 +2362,7 @@ Object {
         },
         "right": Object {
           "literal": "code",
+          "postgresType": "text",
           "type": "String",
         },
         "sourceTag": Object {
@@ -2385,23 +2412,29 @@ Object {
         "available": Array [
           Array [
             Object {
+              "postgresType": "json",
               "type": "Json",
             },
             Object {
+              "postgresType": "float4",
               "type": "Number",
             },
             Object {
+              "postgresType": "json",
               "type": "Json",
             },
           ],
           Array [
             Object {
+              "postgresType": "json",
               "type": "Json",
             },
             Object {
+              "postgresType": "text",
               "type": "String",
             },
             Object {
+              "postgresType": "json",
               "type": "Json",
             },
           ],
@@ -2434,6 +2467,7 @@ Object {
         },
         "right": Object {
           "literal": "params",
+          "postgresType": "text",
           "type": "String",
         },
         "sourceTag": Object {
@@ -2691,6 +2725,7 @@ Object {
           "name": "int4",
           "type": "Named",
           "value": Object {
+            "postgresType": "int4",
             "type": "Number",
           },
         },
@@ -2802,6 +2837,7 @@ Object {
           "name": "int4",
           "type": "Named",
           "value": Object {
+            "postgresType": "int4",
             "type": "Number",
           },
         },
@@ -2931,6 +2967,7 @@ Object {
       "start": 781,
       "type": Object {
         "literal": "",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -2945,9 +2982,11 @@ Object {
         "args": Array [
           Object {
             "literal": "english",
+            "postgresType": "text",
             "type": "String",
           },
           Object {
+            "postgresType": "any",
             "type": "Any",
           },
         ],
@@ -2976,9 +3015,11 @@ Object {
         "args": Array [
           Object {
             "literal": "english",
+            "postgresType": "text",
             "type": "String",
           },
           Object {
+            "postgresType": "any",
             "type": "Any",
           },
         ],
@@ -3007,9 +3048,11 @@ Object {
         "args": Array [
           Object {
             "literal": "english",
+            "postgresType": "text",
             "type": "String",
           },
           Object {
+            "postgresType": "any",
             "type": "Any",
           },
         ],
@@ -3038,9 +3081,11 @@ Object {
         "args": Array [
           Object {
             "literal": "english",
+            "postgresType": "text",
             "type": "String",
           },
           Object {
+            "postgresType": "any",
             "type": "Any",
           },
         ],
@@ -3069,9 +3114,11 @@ Object {
         "args": Array [
           Object {
             "literal": "english",
+            "postgresType": "text",
             "type": "String",
           },
           Object {
+            "postgresType": "any",
             "type": "Any",
           },
         ],
@@ -3127,6 +3174,7 @@ Object {
           "name": "varchar",
           "type": "Named",
           "value": Object {
+            "postgresType": "varchar",
             "type": "String",
           },
         },
@@ -3309,6 +3357,7 @@ Object {
           "name": "int4",
           "type": "Named",
           "value": Object {
+            "postgresType": "int4",
             "type": "Number",
           },
         },
@@ -3323,6 +3372,7 @@ Object {
         "name": "int4",
         "type": "Named",
         "value": Object {
+          "postgresType": "int4",
           "type": "Number",
         },
       },
@@ -3547,6 +3597,7 @@ Object {
       "start": 1179,
       "type": Object {
         "literal": "",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -3561,9 +3612,11 @@ Object {
         "args": Array [
           Object {
             "literal": "english",
+            "postgresType": "text",
             "type": "String",
           },
           Object {
+            "postgresType": "any",
             "type": "Any",
           },
         ],
@@ -3592,9 +3645,11 @@ Object {
         "args": Array [
           Object {
             "literal": "english",
+            "postgresType": "text",
             "type": "String",
           },
           Object {
+            "postgresType": "any",
             "type": "Any",
           },
         ],
@@ -3623,9 +3678,11 @@ Object {
         "args": Array [
           Object {
             "literal": "english",
+            "postgresType": "text",
             "type": "String",
           },
           Object {
+            "postgresType": "any",
             "type": "Any",
           },
         ],
@@ -3654,9 +3711,11 @@ Object {
         "args": Array [
           Object {
             "literal": "english",
+            "postgresType": "text",
             "type": "String",
           },
           Object {
+            "postgresType": "any",
             "type": "Any",
           },
         ],
@@ -3712,6 +3771,7 @@ Object {
           "name": "varchar",
           "type": "Named",
           "value": Object {
+            "postgresType": "varchar",
             "type": "String",
           },
         },
@@ -3861,6 +3921,7 @@ Object {
           "name": "int4",
           "type": "Named",
           "value": Object {
+            "postgresType": "int4",
             "type": "Number",
           },
         },
@@ -3878,6 +3939,7 @@ Object {
         "name": "int4",
         "type": "Named",
         "value": Object {
+          "postgresType": "int4",
           "type": "Number",
         },
       },
@@ -3893,6 +3955,7 @@ Object {
         "name": "int4",
         "type": "Named",
         "value": Object {
+          "postgresType": "int4",
           "type": "Number",
         },
       },
@@ -4073,6 +4136,7 @@ Object {
         "args": Array [
           Object {
             "literal": " ",
+            "postgresType": "text",
             "type": "String",
           },
           Object {
@@ -5091,6 +5155,887 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql active-meters-with-last-read.query.sql: active-meters-with-last-read.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "end": 628,
+      "name": "intervalStart",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 615,
+      "type": Object {
+        "column": "date_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 605,
+          "start": 585,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 597,
+              "start": 585,
+              "tag": "UnquotedIdentifier",
+              "value": "current_reads",
+            },
+            Object {
+              "end": 605,
+              "start": 599,
+              "tag": "UnquotedIdentifier",
+              "value": "date_on",
+            },
+          ],
+        },
+        "table": "current_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "end": 645,
+      "name": "intervalEnd",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 634,
+      "type": Object {
+        "column": "date_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 605,
+          "start": 585,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 597,
+              "start": 585,
+              "tag": "UnquotedIdentifier",
+              "value": "current_reads",
+            },
+            Object {
+              "end": 605,
+              "start": 599,
+              "tag": "UnquotedIdentifier",
+              "value": "date_on",
+            },
+          ],
+        },
+        "table": "current_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "end": 1222,
+      "name": "intervalStart",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 1209,
+      "type": Object {
+        "column": "date_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 1205,
+          "start": 1184,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 1197,
+              "start": 1184,
+              "tag": "UnquotedIdentifier",
+              "value": "previous_reads",
+            },
+            Object {
+              "end": 1205,
+              "start": 1199,
+              "tag": "UnquotedIdentifier",
+              "value": "date_on",
+            },
+          ],
+        },
+        "table": "previous_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "end": 1567,
+      "name": "accountId",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 1558,
+      "type": Object {
+        "column": "account_id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 1554,
+          "start": 1535,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 1543,
+              "start": 1535,
+              "tag": "UnquotedIdentifier",
+              "value": "contracts",
+            },
+            Object {
+              "end": 1554,
+              "start": 1545,
+              "tag": "UnquotedIdentifier",
+              "value": "account_id",
+            },
+          ],
+        },
+        "table": "contracts",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "end": 1583,
+      "name": "meterId",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 1576,
+      "type": Object {
+        "name": "int4",
+        "type": "Named",
+        "value": Object {
+          "postgresType": "int4",
+          "type": "Number",
+        },
+      },
+    },
+    Object {
+      "end": 1620,
+      "name": "meterId",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 1613,
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 1609,
+          "start": 1601,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 1606,
+              "start": 1601,
+              "tag": "UnquotedIdentifier",
+              "value": "meters",
+            },
+            Object {
+              "end": 1609,
+              "start": 1608,
+              "tag": "UnquotedIdentifier",
+              "value": "id",
+            },
+          ],
+        },
+        "table": "meters",
+        "type": "LoadColumn",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 17,
+          "start": 9,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 14,
+              "start": 9,
+              "tag": "UnquotedIdentifier",
+              "value": "meters",
+            },
+            Object {
+              "end": 17,
+              "start": 16,
+              "tag": "UnquotedIdentifier",
+              "value": "id",
+            },
+          ],
+        },
+        "table": "meters",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "msn",
+      "type": Object {
+        "column": "serial_number",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 41,
+          "start": 22,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 27,
+              "start": 22,
+              "tag": "UnquotedIdentifier",
+              "value": "meters",
+            },
+            Object {
+              "end": 41,
+              "start": 29,
+              "tag": "UnquotedIdentifier",
+              "value": "serial_number",
+            },
+          ],
+        },
+        "table": "meters",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "mpan",
+      "type": Object {
+        "column": "mpan",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 65,
+          "start": 55,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 60,
+              "start": 55,
+              "tag": "UnquotedIdentifier",
+              "value": "meters",
+            },
+            Object {
+              "end": 65,
+              "start": 62,
+              "tag": "UnquotedIdentifier",
+              "value": "mpan",
+            },
+          ],
+        },
+        "table": "meters",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "make",
+      "type": Object {
+        "column": "make",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 80,
+          "start": 70,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 75,
+              "start": 70,
+              "tag": "UnquotedIdentifier",
+              "value": "meters",
+            },
+            Object {
+              "end": 80,
+              "start": 77,
+              "tag": "UnquotedIdentifier",
+              "value": "make",
+            },
+          ],
+        },
+        "table": "meters",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "model",
+      "type": Object {
+        "column": "model",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 96,
+          "start": 85,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 90,
+              "start": 85,
+              "tag": "UnquotedIdentifier",
+              "value": "meters",
+            },
+            Object {
+              "end": 96,
+              "start": 92,
+              "tag": "UnquotedIdentifier",
+              "value": "model",
+            },
+          ],
+        },
+        "table": "meters",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "type",
+      "type": Object {
+        "column": "meter_type",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 130,
+          "start": 101,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 119,
+              "start": 101,
+              "tag": "UnquotedIdentifier",
+              "value": "installation_meters",
+            },
+            Object {
+              "end": 130,
+              "start": 121,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_type",
+            },
+          ],
+        },
+        "table": "installation_meters",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "currentPeriodRead",
+      "type": Object {
+        "nullable": true,
+        "type": "Optional",
+        "value": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "column": "id",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 212,
+                  "start": 197,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 209,
+                      "start": 197,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "end": 212,
+                      "start": 211,
+                      "tag": "UnquotedIdentifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "value",
+              "type": Object {
+                "column": "value",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 250,
+                  "start": 232,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 244,
+                      "start": 232,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "end": 250,
+                      "start": 246,
+                      "tag": "UnquotedIdentifier",
+                      "value": "value",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "dateOn",
+              "type": Object {
+                "column": "date_on",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 291,
+                  "start": 271,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 283,
+                      "start": 271,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "end": 291,
+                      "start": 285,
+                      "tag": "UnquotedIdentifier",
+                      "value": "date_on",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "submittedAt",
+              "type": Object {
+                "column": "submitted_at",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 342,
+                  "start": 317,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 329,
+                      "start": 317,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "end": 342,
+                      "start": 331,
+                      "tag": "UnquotedIdentifier",
+                      "value": "submitted_at",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "reason",
+              "type": Object {
+                "column": "reason",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 382,
+                  "start": 363,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 375,
+                      "start": 363,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "end": 382,
+                      "start": 377,
+                      "tag": "UnquotedIdentifier",
+                      "value": "reason",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "type",
+              "type": Object {
+                "column": "type",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 418,
+                  "start": 401,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 413,
+                      "start": 401,
+                      "tag": "UnquotedIdentifier",
+                      "value": "current_reads",
+                    },
+                    Object {
+                      "end": 418,
+                      "start": 415,
+                      "tag": "UnquotedIdentifier",
+                      "value": "type",
+                    },
+                  ],
+                },
+                "table": "current_reads",
+                "type": "LoadColumn",
+              },
+            },
+          ],
+          "type": "ObjectLiteral",
+        },
+      },
+    },
+    Object {
+      "name": "previousPeriodRead",
+      "type": Object {
+        "nullable": true,
+        "type": "Optional",
+        "value": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "column": "id",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 803,
+                  "start": 787,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 800,
+                      "start": 787,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "end": 803,
+                      "start": 802,
+                      "tag": "UnquotedIdentifier",
+                      "value": "id",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "value",
+              "type": Object {
+                "column": "value",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 842,
+                  "start": 823,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 836,
+                      "start": 823,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "end": 842,
+                      "start": 838,
+                      "tag": "UnquotedIdentifier",
+                      "value": "value",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "dateOn",
+              "type": Object {
+                "column": "date_on",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 884,
+                  "start": 863,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 876,
+                      "start": 863,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "end": 884,
+                      "start": 878,
+                      "tag": "UnquotedIdentifier",
+                      "value": "date_on",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "submittedAt",
+              "type": Object {
+                "column": "submitted_at",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 936,
+                  "start": 910,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 923,
+                      "start": 910,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "end": 936,
+                      "start": 925,
+                      "tag": "UnquotedIdentifier",
+                      "value": "submitted_at",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "reason",
+              "type": Object {
+                "column": "reason",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 977,
+                  "start": 957,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 970,
+                      "start": 957,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "end": 977,
+                      "start": 972,
+                      "tag": "UnquotedIdentifier",
+                      "value": "reason",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
+              },
+            },
+            Object {
+              "name": "type",
+              "type": Object {
+                "column": "type",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 1014,
+                  "start": 996,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 1009,
+                      "start": 996,
+                      "tag": "UnquotedIdentifier",
+                      "value": "previous_reads",
+                    },
+                    Object {
+                      "end": 1014,
+                      "start": 1011,
+                      "tag": "UnquotedIdentifier",
+                      "value": "type",
+                    },
+                  ],
+                },
+                "table": "previous_reads",
+                "type": "LoadColumn",
+              },
+            },
+          ],
+          "type": "ObjectLiteral",
+        },
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "current_reads",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 475,
+        "start": 447,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 458,
+            "start": 447,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 458,
+                "start": 447,
+                "tag": "UnquotedIdentifier",
+                "value": "active_reads",
+              },
+            ],
+          },
+          Object {
+            "end": 475,
+            "start": 460,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 475,
+                "start": 463,
+                "tag": "UnquotedIdentifier",
+                "value": "current_reads",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "active_reads",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "previous_reads",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 1072,
+        "start": 1043,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 1054,
+            "start": 1043,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 1054,
+                "start": 1043,
+                "tag": "UnquotedIdentifier",
+                "value": "active_reads",
+              },
+            ],
+          },
+          Object {
+            "end": 1072,
+            "start": 1056,
+            "tag": "As",
+            "values": Array [
+              Object {
+                "end": 1072,
+                "start": 1059,
+                "tag": "UnquotedIdentifier",
+                "value": "previous_reads",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "active_reads",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "meters",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 1323,
+        "start": 1318,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 1323,
+            "start": 1318,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 1323,
+                "start": 1318,
+                "tag": "UnquotedIdentifier",
+                "value": "meters",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "meters",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "installation_meters",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 1350,
+        "start": 1332,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 1350,
+            "start": 1332,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 1350,
+                "start": 1332,
+                "tag": "UnquotedIdentifier",
+                "value": "installation_meters",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "installation_meters",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "contracts",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 1415,
+        "start": 1407,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 1415,
+            "start": 1407,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 1415,
+                "start": 1407,
+                "tag": "UnquotedIdentifier",
+                "value": "contracts",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "contracts",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql active-meters-wth-reads.query.sql: active-meters-wth-reads.query.sql 1`] = `
 Object {
   "params": Array [
@@ -5237,6 +6182,7 @@ Object {
         "name": "int4",
         "type": "Named",
         "value": Object {
+          "postgresType": "int4",
           "type": "Number",
         },
       },
@@ -5971,6 +6917,462 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql active-reads.view.sql: active-reads.view.sql 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 22,
+          "start": 9,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 19,
+              "start": 9,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 22,
+              "start": 21,
+              "tag": "UnquotedIdentifier",
+              "value": "id",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "meter_id",
+      "type": Object {
+        "column": "meter_id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 46,
+          "start": 27,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 37,
+              "start": 27,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 46,
+              "start": 39,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_id",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "date_on",
+      "type": Object {
+        "column": "date_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 69,
+          "start": 51,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 61,
+              "start": 51,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 69,
+              "start": 63,
+              "tag": "UnquotedIdentifier",
+              "value": "date_on",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "value",
+      "type": Object {
+        "column": "value",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 90,
+          "start": 74,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 84,
+              "start": 74,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 90,
+              "start": 86,
+              "tag": "UnquotedIdentifier",
+              "value": "value",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "type",
+      "type": Object {
+        "column": "type",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 110,
+          "start": 95,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 105,
+              "start": 95,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 110,
+              "start": 107,
+              "tag": "UnquotedIdentifier",
+              "value": "type",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "reason",
+      "type": Object {
+        "column": "reason",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 132,
+          "start": 115,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 125,
+              "start": 115,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 132,
+              "start": 127,
+              "tag": "UnquotedIdentifier",
+              "value": "reason",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "created_at",
+      "type": Object {
+        "column": "created_at",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 158,
+          "start": 137,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 147,
+              "start": 137,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 158,
+              "start": 149,
+              "tag": "UnquotedIdentifier",
+              "value": "created_at",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "updated_at",
+      "type": Object {
+        "column": "updated_at",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 184,
+          "start": 163,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 173,
+              "start": 163,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 184,
+              "start": 175,
+              "tag": "UnquotedIdentifier",
+              "value": "updated_at",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "source_system_id",
+      "type": Object {
+        "column": "source_system_id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 216,
+          "start": 189,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 199,
+              "start": 189,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 216,
+              "start": 201,
+              "tag": "UnquotedIdentifier",
+              "value": "source_system_id",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "checked",
+      "type": Object {
+        "column": "checked",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 239,
+          "start": 221,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 231,
+              "start": 221,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 239,
+              "start": 233,
+              "tag": "UnquotedIdentifier",
+              "value": "checked",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "deleted_at",
+      "type": Object {
+        "column": "deleted_at",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 265,
+          "start": 244,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 254,
+              "start": 244,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 265,
+              "start": 256,
+              "tag": "UnquotedIdentifier",
+              "value": "deleted_at",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "submitted_at",
+      "type": Object {
+        "column": "submitted_at",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 293,
+          "start": 270,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 280,
+              "start": 270,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 293,
+              "start": 282,
+              "tag": "UnquotedIdentifier",
+              "value": "submitted_at",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "history",
+      "type": Object {
+        "column": "history",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 316,
+          "start": 298,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 308,
+              "start": 298,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 316,
+              "start": 310,
+              "tag": "UnquotedIdentifier",
+              "value": "history",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "overwritten_at",
+      "type": Object {
+        "column": "overwritten_at",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 346,
+          "start": 321,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 331,
+              "start": 321,
+              "tag": "UnquotedIdentifier",
+              "value": "meter_reads",
+            },
+            Object {
+              "end": 346,
+              "start": 333,
+              "tag": "UnquotedIdentifier",
+              "value": "overwritten_at",
+            },
+          ],
+        },
+        "table": "meter_reads",
+        "type": "LoadColumn",
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "meter_reads",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 365,
+        "start": 355,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 365,
+            "start": 355,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 365,
+                "start": 355,
+                "tag": "UnquotedIdentifier",
+                "value": "meter_reads",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "meter_reads",
+      "type": "Table",
+    },
+    Object {
+      "isResult": false,
+      "name": "issues",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 452,
+        "start": 447,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 452,
+            "start": 447,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 452,
+                "start": 447,
+                "tag": "UnquotedIdentifier",
+                "value": "issues",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "issues",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql bacs.query.sql: bacs.query.sql 1`] = `
 Object {
   "params": Array [
@@ -6015,6 +7417,7 @@ Object {
       "spread": false,
       "start": 691,
       "type": Object {
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -6026,6 +7429,7 @@ Object {
       "spread": false,
       "start": 707,
       "type": Object {
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -7619,6 +9023,7 @@ Object {
         "name": "date",
         "type": "Named",
         "value": Object {
+          "postgresType": "date",
           "type": "Date",
         },
       },
@@ -8733,6 +10138,7 @@ Object {
       "spread": true,
       "start": 93,
       "type": Object {
+        "postgresType": "any",
         "type": "Unknown",
       },
     },
@@ -9710,6 +11116,7 @@ Object {
       "start": 221,
       "type": Object {
         "literal": "",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -9758,6 +11165,7 @@ Object {
           "name": "int4",
           "type": "Named",
           "value": Object {
+            "postgresType": "int4",
             "type": "Number",
           },
         },
@@ -9773,6 +11181,7 @@ Object {
       "start": 397,
       "type": Object {
         "literal": "quarter",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -9785,6 +11194,7 @@ Object {
       "start": 424,
       "type": Object {
         "literal": "DESC",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -9797,6 +11207,7 @@ Object {
       "start": 506,
       "type": Object {
         "literal": "ASC",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -9811,6 +11222,7 @@ Object {
         "name": "int4",
         "type": "Named",
         "value": Object {
+          "postgresType": "int4",
           "type": "Number",
         },
       },
@@ -9826,6 +11238,7 @@ Object {
         "name": "int4",
         "type": "Named",
         "value": Object {
+          "postgresType": "int4",
           "type": "Number",
         },
       },
@@ -10248,6 +11661,7 @@ Object {
           },
           Object {
             "literal": " ",
+            "postgresType": "text",
             "type": "String",
           },
           Object {
@@ -10432,6 +11846,7 @@ Object {
           },
           Object {
             "literal": " ",
+            "postgresType": "text",
             "type": "String",
           },
           Object {
@@ -13108,6 +14523,7 @@ Object {
         "name": "int4",
         "type": "Named",
         "value": Object {
+          "postgresType": "int4",
           "type": "Number",
         },
       },
@@ -13279,6 +14695,7 @@ Object {
       "spread": false,
       "start": 573,
       "type": Object {
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -13290,6 +14707,7 @@ Object {
       "spread": false,
       "start": 587,
       "type": Object {
+        "postgresType": "text",
         "type": "String",
       },
     },

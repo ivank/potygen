@@ -5,6 +5,7 @@ import { AstTag, CommentTag } from './grammar.types';
 export {
   AnyCastTag,
   AnyTypeTag,
+  ArrayColumnIndexTag,
   ArrayConstructorTag,
   ArrayIndexRangeTag,
   ArrayIndexTag,
@@ -128,6 +129,7 @@ export {
 export {
   isAnyCast,
   isAnyType,
+  isArrayColumnIndex,
   isArrayConstructor,
   isArrayIndex,
   isArrayIndexRange,

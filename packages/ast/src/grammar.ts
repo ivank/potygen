@@ -360,14 +360,12 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       'ArrayIndexRange',
       All(ChildExpression, ':', ChildExpression),
     );
-    const ArrayIndex = astNode<Tag.ArrayIndexTag>(
-      'ArrayIndex',
-      All(Any(Column, Brackets(ChildExpression)), SquareBrackets(Any(ArrayIndexRange, ChildExpression))),
+    const ArrayColumnIndex = astNode<Tag.ArrayColumnIndexTag>(
+      'ArrayColumnIndex',
+      All(Column, SquareBrackets(Any(ArrayIndexRange, ChildExpression))),
     );
-    const CompositeAccess = astNode<Tag.CompositeAccessTag>(
-      'CompositeAccess',
-      All(Brackets(ChildExpression), '.', Identifier),
-    );
+    const ArrayIndex = astNode<Tag.ArrayIndexTag>('ArrayIndex', SquareBrackets(Any(ArrayIndexRange, ChildExpression)));
+    const CompositeAccess = astNode<Tag.CompositeAccessTag>('CompositeAccess', All('.', Identifier));
 
     const Row = astNode<Tag.RowTag>(
       'Row',
@@ -383,13 +381,18 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       All(/^EXTRACT/i, Brackets(All(ExtractField, /^FROM/i, ChildExpression))),
     );
 
-    const WrappedExpression = astNode<Tag.WrappedExpressionTag>('WrappedExpression', Brackets(ChildExpression));
+    const WrappedExpression = astNode<Tag.WrappedExpressionTag>(
+      'WrappedExpression',
+      All(Brackets(ChildExpression), Optional(Any(ArrayIndex, CompositeAccess))),
+    );
 
     /**
      * PgCast
      * ----------------------------------------------------------------------------------------
      */
     const DataType = Any(
+      ArrayColumnIndex,
+      WrappedExpression,
       OperatorComparation,
       ColumnFullyQualified,
       Constant,
@@ -399,15 +402,12 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       Exists,
       Extract,
       Function,
-      ArrayIndex,
       ColumnQualified,
       Null,
       InclusionComparation,
-      CompositeAccess,
       RowWiseComparation,
       ColumnUnqualified,
       Brackets(SelectExpression),
-      WrappedExpression,
     );
     /**
      * Cast

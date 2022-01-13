@@ -1,6 +1,7 @@
 import {
   AnyCastTag,
   AnyTypeTag,
+  ArrayColumnIndexTag,
   ArrayConstructorTag,
   ArrayIndexRangeTag,
   ArrayIndexTag,
@@ -170,6 +171,7 @@ export const isComparationOperator = (value: SqlTag): value is ComparationOperat
 export const isComparationType = (value: SqlTag): value is ComparationTypeTag => value.tag === 'ComparationType';
 export const isTernaryExpression = (value: SqlTag): value is TernaryExpressionTag => value.tag === 'TernaryExpression';
 export const isArrayIndex = (value: SqlTag): value is ArrayIndexTag => value.tag === 'ArrayIndex';
+export const isArrayColumnIndex = (value: SqlTag): value is ArrayColumnIndexTag => value.tag === 'ArrayColumnIndex';
 export const isFunction = (value: SqlTag): value is FunctionTag => value.tag === 'Function';
 export const isUnaryExpression = (value: SqlTag): value is UnaryExpressionTag => value.tag === 'UnaryExpression';
 export const isBinaryExpression = (value: SqlTag): value is BinaryExpressionTag => value.tag === 'BinaryExpression';
@@ -179,7 +181,7 @@ export const isOperatorExpression = (value: SqlTag): value is OperatorExpression
   isBinaryExpression(value) || isUnaryExpression(value);
 export const isExpression = (value: SqlTag): value is ExpressionTag =>
   isFunction(value) ||
-  isArrayIndex(value) ||
+  isArrayColumnIndex(value) ||
   isCompositeAccess(value) ||
   isConstant(value) ||
   isColumn(value) ||

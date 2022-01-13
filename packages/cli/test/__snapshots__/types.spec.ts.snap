@@ -13,6 +13,7 @@ Object {
     Object {
       "name": "aclitem",
       "type": Object {
+        "postgresType": "aclitem",
         "type": "String",
       },
     },
@@ -33,6 +34,7 @@ Object {
     Object {
       "name": "bit",
       "type": Object {
+        "postgresType": "bit",
         "type": "String",
       },
     },
@@ -53,6 +55,7 @@ Object {
     Object {
       "name": "box",
       "type": Object {
+        "postgresType": "box",
         "type": "String",
       },
     },
@@ -73,6 +76,7 @@ Object {
     Object {
       "name": "bpchar",
       "type": Object {
+        "postgresType": "bpchar",
         "type": "String",
       },
     },
@@ -98,6 +102,7 @@ Object {
     Object {
       "name": "bytea",
       "type": Object {
+        "postgresType": "bytea",
         "type": "Buffer",
       },
     },
@@ -118,6 +123,7 @@ Object {
     Object {
       "name": "cid",
       "type": Object {
+        "postgresType": "cid",
         "type": "String",
       },
     },
@@ -138,6 +144,7 @@ Object {
     Object {
       "name": "cidr",
       "type": Object {
+        "postgresType": "cidr",
         "type": "String",
       },
     },
@@ -166,22 +173,26 @@ Object {
           Object {
             "name": "x",
             "type": Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           },
           Object {
             "name": "y",
             "type": Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           },
           Object {
             "name": "radius",
             "type": Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           },
         ],
+        "postgresType": "circle",
         "type": "ObjectLiteralConstant",
       },
     },
@@ -202,6 +213,7 @@ Object {
     Object {
       "name": "cstring",
       "type": Object {
+        "postgresType": "cstring",
         "type": "String",
       },
     },
@@ -222,6 +234,7 @@ Object {
     Object {
       "name": "daterange",
       "type": Object {
+        "postgresType": "daterange",
         "type": "String",
       },
     },
@@ -242,6 +255,7 @@ Object {
     Object {
       "name": "inet",
       "type": Object {
+        "postgresType": "inet",
         "type": "String",
       },
     },
@@ -262,6 +276,7 @@ Object {
     Object {
       "name": "int2vector",
       "type": Object {
+        "postgresType": "int2vector",
         "type": "String",
       },
     },
@@ -282,6 +297,7 @@ Object {
     Object {
       "name": "int4range",
       "type": Object {
+        "postgresType": "int4range",
         "type": "String",
       },
     },
@@ -302,6 +318,7 @@ Object {
     Object {
       "name": "int8range",
       "type": Object {
+        "postgresType": "int8range",
         "type": "String",
       },
     },
@@ -329,46 +346,54 @@ Object {
           Object {
             "name": "years",
             "type": Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           },
           Object {
             "name": "months",
             "type": Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           },
           Object {
             "name": "days",
             "type": Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           },
           Object {
             "name": "hours",
             "type": Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           },
           Object {
             "name": "minutes",
             "type": Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           },
           Object {
             "name": "seconds",
             "type": Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           },
           Object {
             "name": "milliseconds",
             "type": Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           },
         ],
+        "postgresType": "interval",
         "type": "ObjectLiteralConstant",
       },
     },
@@ -389,6 +414,7 @@ Object {
     Object {
       "name": "line",
       "type": Object {
+        "postgresType": "line",
         "type": "String",
       },
     },
@@ -409,6 +435,7 @@ Object {
     Object {
       "name": "lseg",
       "type": Object {
+        "postgresType": "lseg",
         "type": "String",
       },
     },
@@ -429,6 +456,7 @@ Object {
     Object {
       "name": "macaddr",
       "type": Object {
+        "postgresType": "macaddr",
         "type": "String",
       },
     },
@@ -449,6 +477,7 @@ Object {
     Object {
       "name": "macaddr8",
       "type": Object {
+        "postgresType": "macaddr8",
         "type": "String",
       },
     },
@@ -469,6 +498,7 @@ Object {
     Object {
       "name": "money",
       "type": Object {
+        "postgresType": "money",
         "type": "String",
       },
     },
@@ -489,6 +519,7 @@ Object {
     Object {
       "name": "name",
       "type": Object {
+        "postgresType": "name",
         "type": "String",
       },
     },
@@ -509,6 +540,7 @@ Object {
     Object {
       "name": "decimal",
       "type": Object {
+        "postgresType": "decimal",
         "type": "Number",
       },
     },
@@ -529,6 +561,7 @@ Object {
     Object {
       "name": "numrange",
       "type": Object {
+        "postgresType": "numrange",
         "type": "String",
       },
     },
@@ -549,6 +582,7 @@ Object {
     Object {
       "name": "vector",
       "type": Object {
+        "postgresType": "oid",
         "type": "Number",
       },
     },
@@ -569,6 +603,7 @@ Object {
     Object {
       "name": "path",
       "type": Object {
+        "postgresType": "path",
         "type": "String",
       },
     },
@@ -589,6 +624,7 @@ Object {
     Object {
       "name": "pg_lsn",
       "type": Object {
+        "postgresType": "pg_lsn",
         "type": "String",
       },
     },
@@ -616,16 +652,19 @@ Object {
           Object {
             "name": "x",
             "type": Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           },
           Object {
             "name": "y",
             "type": Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           },
         ],
+        "postgresType": "point",
         "type": "ObjectLiteralConstant",
       },
     },
@@ -646,6 +685,7 @@ Object {
     Object {
       "name": "polygon",
       "type": Object {
+        "postgresType": "polygon",
         "type": "String",
       },
     },
@@ -666,6 +706,7 @@ Object {
     Object {
       "name": "regclass",
       "type": Object {
+        "postgresType": "regclass",
         "type": "String",
       },
     },
@@ -686,6 +727,7 @@ Object {
     Object {
       "name": "regconfig",
       "type": Object {
+        "postgresType": "regconfig",
         "type": "String",
       },
     },
@@ -706,6 +748,7 @@ Object {
     Object {
       "name": "regdictionary",
       "type": Object {
+        "postgresType": "regdictionary",
         "type": "String",
       },
     },
@@ -726,6 +769,7 @@ Object {
     Object {
       "name": "regnamespace",
       "type": Object {
+        "postgresType": "regnamespace",
         "type": "String",
       },
     },
@@ -746,6 +790,7 @@ Object {
     Object {
       "name": "regoper",
       "type": Object {
+        "postgresType": "regoper",
         "type": "String",
       },
     },
@@ -766,6 +811,7 @@ Object {
     Object {
       "name": "regoperator",
       "type": Object {
+        "postgresType": "regoperator",
         "type": "String",
       },
     },
@@ -786,6 +832,7 @@ Object {
     Object {
       "name": "regproc",
       "type": Object {
+        "postgresType": "regproc",
         "type": "String",
       },
     },
@@ -806,6 +853,7 @@ Object {
     Object {
       "name": "regprocedure",
       "type": Object {
+        "postgresType": "regprocedure",
         "type": "String",
       },
     },
@@ -826,6 +874,7 @@ Object {
     Object {
       "name": "regrole",
       "type": Object {
+        "postgresType": "regrole",
         "type": "String",
       },
     },
@@ -846,6 +895,7 @@ Object {
     Object {
       "name": "regtype",
       "type": Object {
+        "postgresType": "regtype",
         "type": "String",
       },
     },
@@ -866,6 +916,7 @@ Object {
     Object {
       "name": "regtype",
       "type": Object {
+        "postgresType": "regtype",
         "type": "String",
       },
     },
@@ -886,6 +937,7 @@ Object {
     Object {
       "name": "reltime",
       "type": Object {
+        "postgresType": "reltime",
         "type": "String",
       },
     },
@@ -906,6 +958,7 @@ Object {
     Object {
       "name": "smgr",
       "type": Object {
+        "postgresType": "smgr",
         "type": "String",
       },
     },
@@ -926,6 +979,7 @@ Object {
     Object {
       "name": "tid",
       "type": Object {
+        "postgresType": "tid",
         "type": "String",
       },
     },
@@ -946,6 +1000,7 @@ Object {
     Object {
       "name": "tsrange",
       "type": Object {
+        "postgresType": "tsrange",
         "type": "String",
       },
     },
@@ -966,6 +1021,7 @@ Object {
     Object {
       "name": "txid_snapshot",
       "type": Object {
+        "postgresType": "txid_snapshot",
         "type": "String",
       },
     },
@@ -986,6 +1042,7 @@ Object {
     Object {
       "name": "uuid",
       "type": Object {
+        "postgresType": "uuid",
         "type": "String",
       },
     },
@@ -1006,6 +1063,7 @@ Object {
     Object {
       "name": "varbit",
       "type": Object {
+        "postgresType": "varbit",
         "type": "String",
       },
     },
@@ -1026,6 +1084,7 @@ Object {
     Object {
       "name": "xid",
       "type": Object {
+        "postgresType": "xid",
         "type": "String",
       },
     },

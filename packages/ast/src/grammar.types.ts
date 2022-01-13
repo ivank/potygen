@@ -501,31 +501,49 @@ export interface ArrayIndexRangeTag extends NodeSqlTag {
  * SELECT  │array_colum│ [ │1:5│ ]  FROM table1
  *         └───────────┘   └───┘
  *        └──────────────────────┘
- *                    └─▶ArrayIndexTag
+ *                    └─▶ArrayColumnIndexTag
+ * ```
+ */
+export interface ArrayColumnIndexTag extends NodeSqlTag {
+  tag: 'ArrayColumnIndex';
+  values: [array: ColumnTag, index: ExpressionTag | ArrayIndexRangeTag];
+}
+
+/**
+ * A tag representing an array index accessing an expression. e.g. `my_array[1:2]`
+ * https://www.postgresql.org/docs/current/arrays.html
+ * ```
+ *                          ┌────index
+ *                          ▼
+ *                        ┌───┐
+ * SELECT  (expression) [ │1:5│ ]  FROM table1
+ *                        └───┘
+ *                     └─────────┘
+ *                          └─▶ArrayIndexTag
  * ```
  */
 export interface ArrayIndexTag extends NodeSqlTag {
   tag: 'ArrayIndex';
-  values: [array: ExpressionTag, index: ExpressionTag | ArrayIndexRangeTag];
+  values: [index: ExpressionTag | ArrayIndexRangeTag];
 }
 
 /**
  * A tag representing an field access to a composite row. e.g. `(item).name`
  * https://www.postgresql.org/docs/9.4/rowtypes.html#ROWTYPES-ACCESSING
  * ```
- *               ┌───composite row
- *               │           ┌────field
- *               ▼           ▼
- *         ┌───────────┐   ┌────┐
- * SELECT  │(composite)│ . │name│ FROM table1
- *         └───────────┘   └────┘
- *        └──────────────────────┘
- *                    └─▶CompositeAccessTag
+ *
+ *                          ┌────field
+ *                          ▼
+ *                        ┌────┐
+ * SELECT  (expression) . │name│ FROM table1
+ *                        └────┘
+ *                     └────────┘
+ *                          └─▶CompositeAccessTag
  * ```
  */
 export interface CompositeAccessTag extends NodeSqlTag {
   tag: 'CompositeAccess';
-  values: [composite: ExpressionTag, field: IdentifierTag];
+  values: [field: IdentifierTag];
 }
 
 /**
@@ -1750,11 +1768,16 @@ export interface InsertTag extends NodeSqlTag {
 }
 
 /**
- * An expression, wrapped in brackets ()
+ * An expression, wrapped in brackets ().
+ * Can have an array index or a composite access tag
+ *
+ * ```
+ * SELECT (record).field, (array)[1]
+ * ```
  */
 export interface WrappedExpressionTag extends NodeSqlTag {
   tag: 'WrappedExpression';
-  values: [ExpressionTag];
+  values: [ExpressionTag] | [ExpressionTag, CompositeAccessTag | ArrayIndexTag];
 }
 
 /**
@@ -1828,8 +1851,7 @@ export type QueryTag = SelectTag | UpdateTag | InsertTag | DeleteTag;
 export type TransactionTag = BeginTag | CommitTag | SavepointTag | RollbackTag;
 
 export type CastableDataTypeTag =
-  | ArrayIndexTag
-  | CompositeAccessTag
+  | ArrayColumnIndexTag
   | ColumnTag
   | ConstantTag
   | FunctionTag
@@ -1917,6 +1939,7 @@ export type NodeTag =
   | AsTag
   | ArrayIndexRangeTag
   | ArrayIndexTag
+  | ArrayColumnIndexTag
   | CompositeAccessTag
   | CountTag
   | TypeArrayTag
