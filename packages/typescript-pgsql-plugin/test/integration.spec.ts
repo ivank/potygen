@@ -1,6 +1,6 @@
 import { loadAllData, LoadedData } from '@potygen/cli';
 import { Source } from '@potygen/query';
-import { toLoadedSourceAtOffset } from '../src/traverse';
+import { toQuickInfo, QuickInfo, toLoadedSourceAtOffset } from '../src/traverse';
 import { testDb } from './helpers';
 
 let data: LoadedData[] = [];
@@ -18,7 +18,7 @@ describe('Test Service', () => {
     [`SELECT all_types.id FROM all_types`, 17, { type: 'Table', table: 'all_types', name: 'all_types' }],
     [
       `SELECT all_types.id, t.id FROM all_types JOIN addresses t ON t.id = all_types.id`,
-      22,
+      23,
       { type: 'Table', name: 't', table: 'addresses' },
     ],
     [
@@ -31,7 +31,7 @@ describe('Test Service', () => {
   WITH nums AS (SELECT id, numeric_col AS "num" FROM all_types)
   SELECT all_types.id, nums.id FROM all_types JOIN nums ON nums.id = all_types.id
 `,
-      90,
+      93,
       { type: 'Query', name: 'nums' },
     ],
     [
@@ -45,6 +45,24 @@ describe('Test Service', () => {
     [`SELECT all_types.id, t.id FROM all_types JOIN addresses t ON t.id = all_types.id`, 50, undefined],
   ])('Should find in "%s" source at position %s', (sql, offset, expected) => {
     const source = toLoadedSourceAtOffset(sql, data, offset);
+    if (expected) {
+      expect(source).toMatchObject(expected);
+    } else {
+      expect(source).toBe(undefined);
+    }
+  });
+
+  it.each<[string, number, Partial<QuickInfo> | undefined]>([
+    [
+      `
+  WITH nums AS (SELECT id, numeric_col AS "num" FROM all_types)
+  SELECT all_types.id, n.id FROM all_types JOIN nums AS n ON n.id = all_types.id
+`,
+      85,
+      { text: 'Column: id Type: Number, Comment: null, Nullable: false' },
+    ],
+  ])('Should get quick info "%s" source at offset %s', (sql, offset, expected) => {
+    const source = toQuickInfo(sql, data, offset);
     if (expected) {
       expect(source).toMatchObject(expected);
     } else {

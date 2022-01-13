@@ -3,7 +3,7 @@ import { Client } from 'pg';
 import { TemplateContext, TemplateLanguageService } from 'typescript-template-language-service-decorator';
 import * as tss from 'typescript/lib/tsserverlibrary';
 import { LanguageServiceLogger } from './logger';
-import { toLoadedSourceAtOffset } from './traverse';
+import { toQuickInfo, toLoadedSourceAtOffset } from './traverse';
 
 export const removeDotCompletion = (sql: string, position: tss.LineAndCharacter): string =>
   sql
@@ -54,16 +54,13 @@ export class PotygenTemplateLanguageService implements TemplateLanguageService {
   // public getCompletionEntryDetails(context: TemplateContext, position: ts.LineAndCharacter, name: string ): ts.CompletionEntryDetails {}
 
   public getQuickInfoAtPosition(context: TemplateContext, position: tss.LineAndCharacter): ts.QuickInfo | undefined {
-    return {
-      kind: this.ts.ScriptElementKind.directory,
-      kindModifiers: '',
-      textSpan: {
-        start: position.character,
-        length: 1,
-      },
-      displayParts: [],
-      documentation: [{ kind: 'unknown', text: 'TEST' }],
-    };
+    const sql = context.text;
+    const offset = context.toOffset(position);
+    const info = toQuickInfo(sql, this.data, offset);
+
+    this.logger.debug(`Completion at offset: ${offset} for "${sql}". Found info (${JSON.stringify(info, null, 2)})`);
+
+    return info ? { kind: this.ts.ScriptElementKind.label, kindModifiers: '', ...info } : undefined;
   }
 
   // public getSemanticDiagnostics(context: TemplateContext): ts.Diagnostic[] {}
