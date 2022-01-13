@@ -20,7 +20,7 @@ Object {
               Object {
                 "end": 14,
                 "start": 7,
-                "tag": "CompositeAccess",
+                "tag": "WrappedExpression",
                 "values": Array [
                   Object {
                     "end": 11,
@@ -43,9 +43,16 @@ Object {
                   },
                   Object {
                     "end": 14,
-                    "start": 14,
-                    "tag": "UnquotedIdentifier",
-                    "value": "n",
+                    "start": 13,
+                    "tag": "CompositeAccess",
+                    "values": Array [
+                      Object {
+                        "end": 14,
+                        "start": 14,
+                        "tag": "UnquotedIdentifier",
+                        "value": "n",
+                      },
+                    ],
                   },
                 ],
               },
@@ -113,7 +120,7 @@ Object {
               Object {
                 "end": 30,
                 "start": 7,
-                "tag": "ArrayIndex",
+                "tag": "ArrayColumnIndex",
                 "values": Array [
                   Object {
                     "end": 20,
@@ -137,7 +144,7 @@ Object {
                   Object {
                     "end": 29,
                     "start": 22,
-                    "tag": "CompositeAccess",
+                    "tag": "WrappedExpression",
                     "values": Array [
                       Object {
                         "end": 26,
@@ -160,9 +167,16 @@ Object {
                       },
                       Object {
                         "end": 29,
-                        "start": 29,
-                        "tag": "UnquotedIdentifier",
-                        "value": "n",
+                        "start": 28,
+                        "tag": "CompositeAccess",
+                        "values": Array [
+                          Object {
+                            "end": 29,
+                            "start": 29,
+                            "tag": "UnquotedIdentifier",
+                            "value": "n",
+                          },
+                        ],
                       },
                     ],
                   },
@@ -352,7 +366,7 @@ Object {
               Object {
                 "end": 13,
                 "start": 7,
-                "tag": "ArrayIndex",
+                "tag": "ArrayColumnIndex",
                 "values": Array [
                   Object {
                     "end": 9,
@@ -405,7 +419,7 @@ Object {
               Object {
                 "end": 15,
                 "start": 7,
-                "tag": "ArrayIndex",
+                "tag": "ArrayColumnIndex",
                 "values": Array [
                   Object {
                     "end": 9,
@@ -477,7 +491,7 @@ Object {
               Object {
                 "end": 22,
                 "start": 7,
-                "tag": "ArrayIndex",
+                "tag": "ArrayColumnIndex",
                 "values": Array [
                   Object {
                     "end": 9,
@@ -596,7 +610,7 @@ Object {
               Object {
                 "end": 27,
                 "start": 7,
-                "tag": "ArrayIndex",
+                "tag": "WrappedExpression",
                 "values": Array [
                   Object {
                     "end": 21,
@@ -630,21 +644,28 @@ Object {
                     ],
                   },
                   Object {
-                    "end": 26,
-                    "start": 24,
-                    "tag": "ArrayIndexRange",
+                    "end": 27,
+                    "start": 23,
+                    "tag": "ArrayIndex",
                     "values": Array [
                       Object {
-                        "end": 24,
-                        "start": 24,
-                        "tag": "Number",
-                        "value": "2",
-                      },
-                      Object {
                         "end": 26,
-                        "start": 26,
-                        "tag": "Number",
-                        "value": "3",
+                        "start": 24,
+                        "tag": "ArrayIndexRange",
+                        "values": Array [
+                          Object {
+                            "end": 24,
+                            "start": 24,
+                            "tag": "Number",
+                            "value": "2",
+                          },
+                          Object {
+                            "end": 26,
+                            "start": 26,
+                            "tag": "Number",
+                            "value": "3",
+                          },
+                        ],
                       },
                     ],
                   },
@@ -27164,5 +27185,189 @@ Object {
       "value": " test comment",
     },
   ],
+}
+`;
+
+exports[`Sql Should parse simple sql wrapped where (SELECT * FROM table1 WHERE (((table1.c1 = table1.c2) OR table1.c3))): wrapped where 1`] = `
+Object {
+  "ast": Object {
+    "end": 66,
+    "start": 0,
+    "tag": "Select",
+    "values": Array [
+      Object {
+        "end": 7,
+        "start": 7,
+        "tag": "SelectList",
+        "values": Array [
+          Object {
+            "end": 7,
+            "start": 7,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 7,
+                "start": 7,
+                "tag": "StarIdentifier",
+                "values": Array [
+                  Object {
+                    "end": 7,
+                    "start": 7,
+                    "tag": "Star",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 19,
+        "start": 9,
+        "tag": "From",
+        "values": Array [
+          Object {
+            "end": 19,
+            "start": 14,
+            "tag": "FromList",
+            "values": Array [
+              Object {
+                "end": 19,
+                "start": 14,
+                "tag": "Table",
+                "values": Array [
+                  Object {
+                    "end": 19,
+                    "start": 14,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 19,
+                        "start": 14,
+                        "tag": "UnquotedIdentifier",
+                        "value": "table1",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 66,
+        "start": 21,
+        "tag": "Where",
+        "values": Array [
+          Object {
+            "end": 66,
+            "start": 27,
+            "tag": "WrappedExpression",
+            "values": Array [
+              Object {
+                "end": 65,
+                "start": 28,
+                "tag": "WrappedExpression",
+                "values": Array [
+                  Object {
+                    "end": 64,
+                    "start": 29,
+                    "tag": "BinaryExpression",
+                    "values": Array [
+                      Object {
+                        "end": 51,
+                        "start": 29,
+                        "tag": "WrappedExpression",
+                        "values": Array [
+                          Object {
+                            "end": 50,
+                            "start": 30,
+                            "tag": "BinaryExpression",
+                            "values": Array [
+                              Object {
+                                "end": 38,
+                                "start": 30,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 35,
+                                    "start": 30,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "table1",
+                                  },
+                                  Object {
+                                    "end": 38,
+                                    "start": 37,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "c1",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 40,
+                                "start": 40,
+                                "tag": "BinaryOperator",
+                                "value": "=",
+                              },
+                              Object {
+                                "end": 50,
+                                "start": 42,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 47,
+                                    "start": 42,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "table1",
+                                  },
+                                  Object {
+                                    "end": 50,
+                                    "start": 49,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "c2",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 54,
+                        "start": 53,
+                        "tag": "BinaryOperator",
+                        "value": "OR",
+                      },
+                      Object {
+                        "end": 64,
+                        "start": 56,
+                        "tag": "Column",
+                        "values": Array [
+                          Object {
+                            "end": 61,
+                            "start": 56,
+                            "tag": "UnquotedIdentifier",
+                            "value": "table1",
+                          },
+                          Object {
+                            "end": 64,
+                            "start": 63,
+                            "tag": "UnquotedIdentifier",
+                            "value": "c3",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
 }
 `;

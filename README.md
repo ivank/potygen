@@ -28,6 +28,4 @@ Introspect queiries and generate typescript types for them.
 Current state brain dump:
 
 - typescript-pgsql-plugin
-- developing the autocomplete columns on "."
-- writing integration test to verify
-- config in service using cli to be able to use database and load data
+- improving quick info functionality

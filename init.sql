@@ -265,14 +265,16 @@ CREATE TABLE meter_reads (
     value integer NOT NULL,
     type meter_reads_types NOT NULL,
     reason character varying,
-    created_at timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone,
     source_system_id integer,
-    tolerance jsonb,
-    is_accepted boolean NOT NULL DEFAULT false,
+    checked boolean NOT NULL DEFAULT false,
     deleted_at date,
-    submitted_at date
+    submitted_at date,
+    history jsonb NOT NULL DEFAULT '[]'::jsonb,
+    overwritten_at timestamp without time zone
 );
+COMMENT ON COLUMN meter_reads.source_system_id IS 'sql-fit: MeterReading.MeterReadingId';
 
 CREATE TYPE meter_types as ENUM('Export', 'Generation');
 
@@ -388,10 +390,33 @@ CREATE TABLE payments (
 );
 
 CREATE VIEW active_reads AS
-    SELECT *
-    FROM meter_reads
-    WHERE deleted_at IS NOT NULL;
-
+  SELECT
+    meter_reads.id,
+    meter_reads.meter_id,
+    meter_reads.date_on,
+    meter_reads.value,
+    meter_reads.type,
+    meter_reads.reason,
+    meter_reads.created_at,
+    meter_reads.updated_at,
+    meter_reads.source_system_id,
+    meter_reads.checked,
+    meter_reads.deleted_at,
+    meter_reads.submitted_at,
+    meter_reads.history,
+    meter_reads.overwritten_at
+  FROM meter_reads
+  WHERE
+    NOT EXISTS (
+      SELECT issues.id
+      FROM issues
+      WHERE
+        issues.reference_type = 'Read'::issue_reference_type AND issues.reference_id = meter_reads.id
+        AND (issues.state IS NULL OR issues.state = 'Resolved'::issue_state)
+    )
+    AND meter_reads.deleted_at IS NULL
+    AND meter_reads.checked IS TRUE
+    AND meter_reads.overwritten_at IS NULL;
 
 CREATE TYPE public.process_item_status AS ENUM (
     'Pending',

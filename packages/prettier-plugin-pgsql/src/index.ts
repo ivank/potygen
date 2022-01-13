@@ -130,15 +130,12 @@ const pgsqlAst: Printer<Node> = {
         ]);
       case 'ArrayIndexRange':
         return group(join(':', vals(path, recur)));
+      case 'ArrayColumnIndex':
+        return group([group([nthVal(0, path, recur), softline]), '[', indent([softline, nthVal(1, path, recur)]), ']']);
       case 'ArrayIndex':
-        return group([
-          group(['(', nthVal(0, path, recur), ')', softline]),
-          '[',
-          indent([softline, nthVal(1, path, recur)]),
-          ']',
-        ]);
+        return group(['[', indent([softline, vals(path, recur)]), ']']);
       case 'CompositeAccess':
-        return group(['(', indent([softline, nthVal(0, path, recur)]), ')', '.', nthVal(1, path, recur)]);
+        return group(['.', vals(path, recur)]);
       case 'Count':
         return vals(path, recur);
       case 'Dimension':
@@ -408,7 +405,13 @@ const pgsqlAst: Printer<Node> = {
           group([line, join(line, tailVals(2, path, recur))]),
         ]);
       case 'WrappedExpression':
-        return group(['(', group(indent([softline, join(line, vals(path, recur))])), softline, ')']);
+        return group([
+          '(',
+          group(indent([softline, nthVal(0, path, recur)])),
+          softline,
+          ')',
+          ...(node.values.length === 2 ? [nthVal(1, path, recur)] : []),
+        ]);
       case 'TableWithJoin':
         return group(['(', indent([softline, join(line, vals(path, recur))]), softline, ')']);
       case 'ExpressionList':

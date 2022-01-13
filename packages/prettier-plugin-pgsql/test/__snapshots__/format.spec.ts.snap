@@ -6,7 +6,7 @@ exports[`Format Should parse simple sql access expression (SELECT (ss.x).n FROM 
 `;
 
 exports[`Format Should parse simple sql access in a range (SELECT ss.proargmodes[(ss.x).n] FROM ss): access in a range 1`] = `
-"SELECT (ss.proargmodes)[(ss.x).n] FROM ss
+"SELECT ss.proargmodes[(ss.x).n] FROM ss
 "
 `;
 
@@ -21,17 +21,17 @@ exports[`Format Should parse simple sql array (SELECT ARRAY[1, 2]): array 1`] = 
 `;
 
 exports[`Format Should parse simple sql array index (SELECT arr[12]): array index 1`] = `
-"SELECT (arr)[12]
+"SELECT arr[12]
 "
 `;
 
 exports[`Format Should parse simple sql array index expression (SELECT arr[12+3]): array index expression 1`] = `
-"SELECT (arr)[12 + 3]
+"SELECT arr[12 + 3]
 "
 `;
 
 exports[`Format Should parse simple sql array index expression col (SELECT arr[table1.id+3] FROM table1): array index expression col 1`] = `
-"SELECT (arr)[table1.id + 3] FROM table1
+"SELECT arr[table1.id + 3] FROM table1
 "
 `;
 

@@ -15803,6 +15803,1722 @@ Object {
 }
 `;
 
+exports[`Sql Files Should parse complex sql active-meters-with-last-read.query.sql: active-meters-with-last-read.query.sql 1`] = `
+Object {
+  "ast": Object {
+    "end": 1682,
+    "start": 0,
+    "tag": "Select",
+    "values": Array [
+      Object {
+        "end": 1309,
+        "start": 9,
+        "tag": "SelectList",
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 9,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 9,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 14,
+                    "start": 9,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meters",
+                  },
+                  Object {
+                    "end": 17,
+                    "start": 16,
+                    "tag": "UnquotedIdentifier",
+                    "value": "id",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 50,
+            "start": 22,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 41,
+                "start": 22,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 27,
+                    "start": 22,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meters",
+                  },
+                  Object {
+                    "end": 41,
+                    "start": 29,
+                    "tag": "UnquotedIdentifier",
+                    "value": "serial_number",
+                  },
+                ],
+              },
+              Object {
+                "end": 50,
+                "start": 43,
+                "tag": "As",
+                "values": Array [
+                  Object {
+                    "end": 50,
+                    "start": 46,
+                    "tag": "QuotedIdentifier",
+                    "value": "msn",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 65,
+            "start": 55,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 65,
+                "start": 55,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 60,
+                    "start": 55,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meters",
+                  },
+                  Object {
+                    "end": 65,
+                    "start": 62,
+                    "tag": "UnquotedIdentifier",
+                    "value": "mpan",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 80,
+            "start": 70,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 80,
+                "start": 70,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 75,
+                    "start": 70,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meters",
+                  },
+                  Object {
+                    "end": 80,
+                    "start": 77,
+                    "tag": "UnquotedIdentifier",
+                    "value": "make",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 96,
+            "start": 85,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 96,
+                "start": 85,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 90,
+                    "start": 85,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meters",
+                  },
+                  Object {
+                    "end": 96,
+                    "start": 92,
+                    "tag": "UnquotedIdentifier",
+                    "value": "model",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 140,
+            "start": 101,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 130,
+                "start": 101,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 119,
+                    "start": 101,
+                    "tag": "UnquotedIdentifier",
+                    "value": "installation_meters",
+                  },
+                  Object {
+                    "end": 130,
+                    "start": 121,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_type",
+                  },
+                ],
+              },
+              Object {
+                "end": 140,
+                "start": 132,
+                "tag": "As",
+                "values": Array [
+                  Object {
+                    "end": 140,
+                    "start": 135,
+                    "tag": "QuotedIdentifier",
+                    "value": "type",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 730,
+            "start": 145,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 703,
+                "start": 151,
+                "tag": "Select",
+                "values": Array [
+                  Object {
+                    "end": 436,
+                    "start": 164,
+                    "tag": "SelectList",
+                    "values": Array [
+                      Object {
+                        "end": 436,
+                        "start": 164,
+                        "tag": "SelectListItem",
+                        "values": Array [
+                          Object {
+                            "end": 426,
+                            "start": 164,
+                            "tag": "Function",
+                            "values": Array [
+                              Object {
+                                "end": 180,
+                                "start": 164,
+                                "tag": "QualifiedIdentifier",
+                                "values": Array [
+                                  Object {
+                                    "end": 180,
+                                    "start": 164,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "json_build_object",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 194,
+                                "start": 191,
+                                "tag": "String",
+                                "value": "id",
+                              },
+                              Object {
+                                "end": 212,
+                                "start": 197,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 209,
+                                    "start": 197,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "current_reads",
+                                  },
+                                  Object {
+                                    "end": 212,
+                                    "start": 211,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "id",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 229,
+                                "start": 223,
+                                "tag": "String",
+                                "value": "value",
+                              },
+                              Object {
+                                "end": 250,
+                                "start": 232,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 244,
+                                    "start": 232,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "current_reads",
+                                  },
+                                  Object {
+                                    "end": 250,
+                                    "start": 246,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "value",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 268,
+                                "start": 261,
+                                "tag": "String",
+                                "value": "dateOn",
+                              },
+                              Object {
+                                "end": 291,
+                                "start": 271,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 283,
+                                    "start": 271,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "current_reads",
+                                  },
+                                  Object {
+                                    "end": 291,
+                                    "start": 285,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "date_on",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 314,
+                                "start": 302,
+                                "tag": "String",
+                                "value": "submittedAt",
+                              },
+                              Object {
+                                "end": 342,
+                                "start": 317,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 329,
+                                    "start": 317,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "current_reads",
+                                  },
+                                  Object {
+                                    "end": 342,
+                                    "start": 331,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "submitted_at",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 360,
+                                "start": 353,
+                                "tag": "String",
+                                "value": "reason",
+                              },
+                              Object {
+                                "end": 382,
+                                "start": 363,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 375,
+                                    "start": 363,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "current_reads",
+                                  },
+                                  Object {
+                                    "end": 382,
+                                    "start": 377,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "reason",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 398,
+                                "start": 393,
+                                "tag": "String",
+                                "value": "type",
+                              },
+                              Object {
+                                "end": 418,
+                                "start": 401,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 413,
+                                    "start": 401,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "current_reads",
+                                  },
+                                  Object {
+                                    "end": 418,
+                                    "start": 415,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "type",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 436,
+                            "start": 428,
+                            "tag": "As",
+                            "values": Array [
+                              Object {
+                                "end": 436,
+                                "start": 431,
+                                "tag": "QuotedIdentifier",
+                                "value": "read",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 475,
+                    "start": 442,
+                    "tag": "From",
+                    "values": Array [
+                      Object {
+                        "end": 475,
+                        "start": 447,
+                        "tag": "FromList",
+                        "values": Array [
+                          Object {
+                            "end": 475,
+                            "start": 447,
+                            "tag": "Table",
+                            "values": Array [
+                              Object {
+                                "end": 458,
+                                "start": 447,
+                                "tag": "QualifiedIdentifier",
+                                "values": Array [
+                                  Object {
+                                    "end": 458,
+                                    "start": 447,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "active_reads",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 475,
+                                "start": 460,
+                                "tag": "As",
+                                "values": Array [
+                                  Object {
+                                    "end": 475,
+                                    "start": 463,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "current_reads",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 645,
+                    "start": 481,
+                    "tag": "Where",
+                    "values": Array [
+                      Object {
+                        "end": 645,
+                        "start": 493,
+                        "tag": "BinaryExpression",
+                        "values": Array [
+                          Object {
+                            "end": 645,
+                            "start": 493,
+                            "tag": "BinaryExpression",
+                            "values": Array [
+                              Object {
+                                "end": 526,
+                                "start": 493,
+                                "tag": "BinaryExpression",
+                                "values": Array [
+                                  Object {
+                                    "end": 514,
+                                    "start": 493,
+                                    "tag": "Column",
+                                    "values": Array [
+                                      Object {
+                                        "end": 505,
+                                        "start": 493,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "current_reads",
+                                      },
+                                      Object {
+                                        "end": 514,
+                                        "start": 507,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "meter_id",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 516,
+                                    "start": 516,
+                                    "tag": "BinaryOperator",
+                                    "value": "=",
+                                  },
+                                  Object {
+                                    "end": 526,
+                                    "start": 518,
+                                    "tag": "Column",
+                                    "values": Array [
+                                      Object {
+                                        "end": 523,
+                                        "start": 518,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "meters",
+                                      },
+                                      Object {
+                                        "end": 526,
+                                        "start": 525,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "id",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 530,
+                                "start": 528,
+                                "tag": "BinaryOperator",
+                                "value": "AND",
+                              },
+                              Object {
+                                "end": 573,
+                                "start": 532,
+                                "tag": "BinaryExpression",
+                                "values": Array [
+                                  Object {
+                                    "end": 549,
+                                    "start": 532,
+                                    "tag": "Column",
+                                    "values": Array [
+                                      Object {
+                                        "end": 544,
+                                        "start": 532,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "current_reads",
+                                      },
+                                      Object {
+                                        "end": 549,
+                                        "start": 546,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "type",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 552,
+                                    "start": 551,
+                                    "tag": "BinaryOperator",
+                                    "value": "<>",
+                                  },
+                                  Object {
+                                    "end": 573,
+                                    "start": 554,
+                                    "tag": "String",
+                                    "value": "Meter Verification",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 583,
+                            "start": 581,
+                            "tag": "BinaryOperator",
+                            "value": "AND",
+                          },
+                          Object {
+                            "end": 645,
+                            "start": 585,
+                            "tag": "TernaryExpression",
+                            "values": Array [
+                              Object {
+                                "end": 605,
+                                "start": 585,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 597,
+                                    "start": 585,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "current_reads",
+                                  },
+                                  Object {
+                                    "end": 605,
+                                    "start": 599,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "date_on",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 613,
+                                "start": 607,
+                                "tag": "TernaryOperator",
+                                "value": "BETWEEN",
+                              },
+                              Object {
+                                "end": 628,
+                                "pick": Array [],
+                                "required": false,
+                                "start": 615,
+                                "tag": "Parameter",
+                                "type": "single",
+                                "value": "intervalStart",
+                              },
+                              Object {
+                                "end": 632,
+                                "start": 630,
+                                "tag": "TernarySeparator",
+                                "value": "AND",
+                              },
+                              Object {
+                                "end": 645,
+                                "pick": Array [],
+                                "required": false,
+                                "start": 634,
+                                "tag": "Parameter",
+                                "type": "single",
+                                "value": "intervalEnd",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 691,
+                    "start": 651,
+                    "tag": "OrderBy",
+                    "values": Array [
+                      Object {
+                        "end": 691,
+                        "start": 666,
+                        "tag": "OrderByItem",
+                        "values": Array [
+                          Object {
+                            "end": 686,
+                            "start": 666,
+                            "tag": "Column",
+                            "values": Array [
+                              Object {
+                                "end": 678,
+                                "start": 666,
+                                "tag": "UnquotedIdentifier",
+                                "value": "current_reads",
+                              },
+                              Object {
+                                "end": 686,
+                                "start": 680,
+                                "tag": "UnquotedIdentifier",
+                                "value": "date_on",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 691,
+                            "start": 688,
+                            "tag": "OrderDirection",
+                            "value": "DESC",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 703,
+                    "start": 697,
+                    "tag": "Limit",
+                    "values": Array [
+                      Object {
+                        "end": 703,
+                        "start": 703,
+                        "tag": "Count",
+                        "values": Array [
+                          Object {
+                            "end": 703,
+                            "start": 703,
+                            "tag": "Integer",
+                            "value": "1",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 730,
+                "start": 709,
+                "tag": "As",
+                "values": Array [
+                  Object {
+                    "end": 730,
+                    "start": 712,
+                    "tag": "QuotedIdentifier",
+                    "value": "currentPeriodRead",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 1309,
+            "start": 735,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 1281,
+                "start": 741,
+                "tag": "Select",
+                "values": Array [
+                  Object {
+                    "end": 1032,
+                    "start": 754,
+                    "tag": "SelectList",
+                    "values": Array [
+                      Object {
+                        "end": 1032,
+                        "start": 754,
+                        "tag": "SelectListItem",
+                        "values": Array [
+                          Object {
+                            "end": 1022,
+                            "start": 754,
+                            "tag": "Function",
+                            "values": Array [
+                              Object {
+                                "end": 770,
+                                "start": 754,
+                                "tag": "QualifiedIdentifier",
+                                "values": Array [
+                                  Object {
+                                    "end": 770,
+                                    "start": 754,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "json_build_object",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 784,
+                                "start": 781,
+                                "tag": "String",
+                                "value": "id",
+                              },
+                              Object {
+                                "end": 803,
+                                "start": 787,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 800,
+                                    "start": 787,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "previous_reads",
+                                  },
+                                  Object {
+                                    "end": 803,
+                                    "start": 802,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "id",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 820,
+                                "start": 814,
+                                "tag": "String",
+                                "value": "value",
+                              },
+                              Object {
+                                "end": 842,
+                                "start": 823,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 836,
+                                    "start": 823,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "previous_reads",
+                                  },
+                                  Object {
+                                    "end": 842,
+                                    "start": 838,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "value",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 860,
+                                "start": 853,
+                                "tag": "String",
+                                "value": "dateOn",
+                              },
+                              Object {
+                                "end": 884,
+                                "start": 863,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 876,
+                                    "start": 863,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "previous_reads",
+                                  },
+                                  Object {
+                                    "end": 884,
+                                    "start": 878,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "date_on",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 907,
+                                "start": 895,
+                                "tag": "String",
+                                "value": "submittedAt",
+                              },
+                              Object {
+                                "end": 936,
+                                "start": 910,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 923,
+                                    "start": 910,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "previous_reads",
+                                  },
+                                  Object {
+                                    "end": 936,
+                                    "start": 925,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "submitted_at",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 954,
+                                "start": 947,
+                                "tag": "String",
+                                "value": "reason",
+                              },
+                              Object {
+                                "end": 977,
+                                "start": 957,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 970,
+                                    "start": 957,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "previous_reads",
+                                  },
+                                  Object {
+                                    "end": 977,
+                                    "start": 972,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "reason",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 993,
+                                "start": 988,
+                                "tag": "String",
+                                "value": "type",
+                              },
+                              Object {
+                                "end": 1014,
+                                "start": 996,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 1009,
+                                    "start": 996,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "previous_reads",
+                                  },
+                                  Object {
+                                    "end": 1014,
+                                    "start": 1011,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "type",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 1032,
+                            "start": 1024,
+                            "tag": "As",
+                            "values": Array [
+                              Object {
+                                "end": 1032,
+                                "start": 1027,
+                                "tag": "QuotedIdentifier",
+                                "value": "read",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 1072,
+                    "start": 1038,
+                    "tag": "From",
+                    "values": Array [
+                      Object {
+                        "end": 1072,
+                        "start": 1043,
+                        "tag": "FromList",
+                        "values": Array [
+                          Object {
+                            "end": 1072,
+                            "start": 1043,
+                            "tag": "Table",
+                            "values": Array [
+                              Object {
+                                "end": 1054,
+                                "start": 1043,
+                                "tag": "QualifiedIdentifier",
+                                "values": Array [
+                                  Object {
+                                    "end": 1054,
+                                    "start": 1043,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "active_reads",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 1072,
+                                "start": 1056,
+                                "tag": "As",
+                                "values": Array [
+                                  Object {
+                                    "end": 1072,
+                                    "start": 1059,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "previous_reads",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 1222,
+                    "start": 1078,
+                    "tag": "Where",
+                    "values": Array [
+                      Object {
+                        "end": 1222,
+                        "start": 1090,
+                        "tag": "BinaryExpression",
+                        "values": Array [
+                          Object {
+                            "end": 1222,
+                            "start": 1090,
+                            "tag": "BinaryExpression",
+                            "values": Array [
+                              Object {
+                                "end": 1124,
+                                "start": 1090,
+                                "tag": "BinaryExpression",
+                                "values": Array [
+                                  Object {
+                                    "end": 1112,
+                                    "start": 1090,
+                                    "tag": "Column",
+                                    "values": Array [
+                                      Object {
+                                        "end": 1103,
+                                        "start": 1090,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "previous_reads",
+                                      },
+                                      Object {
+                                        "end": 1112,
+                                        "start": 1105,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "meter_id",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 1114,
+                                    "start": 1114,
+                                    "tag": "BinaryOperator",
+                                    "value": "=",
+                                  },
+                                  Object {
+                                    "end": 1124,
+                                    "start": 1116,
+                                    "tag": "Column",
+                                    "values": Array [
+                                      Object {
+                                        "end": 1121,
+                                        "start": 1116,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "meters",
+                                      },
+                                      Object {
+                                        "end": 1124,
+                                        "start": 1123,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "id",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 1128,
+                                "start": 1126,
+                                "tag": "BinaryOperator",
+                                "value": "AND",
+                              },
+                              Object {
+                                "end": 1172,
+                                "start": 1130,
+                                "tag": "BinaryExpression",
+                                "values": Array [
+                                  Object {
+                                    "end": 1148,
+                                    "start": 1130,
+                                    "tag": "Column",
+                                    "values": Array [
+                                      Object {
+                                        "end": 1143,
+                                        "start": 1130,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "previous_reads",
+                                      },
+                                      Object {
+                                        "end": 1148,
+                                        "start": 1145,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "type",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 1151,
+                                    "start": 1150,
+                                    "tag": "BinaryOperator",
+                                    "value": "<>",
+                                  },
+                                  Object {
+                                    "end": 1172,
+                                    "start": 1153,
+                                    "tag": "String",
+                                    "value": "Meter Verification",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 1182,
+                            "start": 1180,
+                            "tag": "BinaryOperator",
+                            "value": "AND",
+                          },
+                          Object {
+                            "end": 1222,
+                            "start": 1184,
+                            "tag": "BinaryExpression",
+                            "values": Array [
+                              Object {
+                                "end": 1205,
+                                "start": 1184,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 1197,
+                                    "start": 1184,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "previous_reads",
+                                  },
+                                  Object {
+                                    "end": 1205,
+                                    "start": 1199,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "date_on",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 1207,
+                                "start": 1207,
+                                "tag": "BinaryOperator",
+                                "value": "<",
+                              },
+                              Object {
+                                "end": 1222,
+                                "pick": Array [],
+                                "required": false,
+                                "start": 1209,
+                                "tag": "Parameter",
+                                "type": "single",
+                                "value": "intervalStart",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 1269,
+                    "start": 1228,
+                    "tag": "OrderBy",
+                    "values": Array [
+                      Object {
+                        "end": 1269,
+                        "start": 1243,
+                        "tag": "OrderByItem",
+                        "values": Array [
+                          Object {
+                            "end": 1264,
+                            "start": 1243,
+                            "tag": "Column",
+                            "values": Array [
+                              Object {
+                                "end": 1256,
+                                "start": 1243,
+                                "tag": "UnquotedIdentifier",
+                                "value": "previous_reads",
+                              },
+                              Object {
+                                "end": 1264,
+                                "start": 1258,
+                                "tag": "UnquotedIdentifier",
+                                "value": "date_on",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 1269,
+                            "start": 1266,
+                            "tag": "OrderDirection",
+                            "value": "DESC",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 1281,
+                    "start": 1275,
+                    "tag": "Limit",
+                    "values": Array [
+                      Object {
+                        "end": 1281,
+                        "start": 1281,
+                        "tag": "Count",
+                        "values": Array [
+                          Object {
+                            "end": 1281,
+                            "start": 1281,
+                            "tag": "Integer",
+                            "value": "1",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 1309,
+                "start": 1287,
+                "tag": "As",
+                "values": Array [
+                  Object {
+                    "end": 1309,
+                    "start": 1290,
+                    "tag": "QuotedIdentifier",
+                    "value": "previousPeriodRead",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 1486,
+        "start": 1311,
+        "tag": "From",
+        "values": Array [
+          Object {
+            "end": 1323,
+            "start": 1318,
+            "tag": "FromList",
+            "values": Array [
+              Object {
+                "end": 1323,
+                "start": 1318,
+                "tag": "Table",
+                "values": Array [
+                  Object {
+                    "end": 1323,
+                    "start": 1318,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 1323,
+                        "start": 1318,
+                        "tag": "UnquotedIdentifier",
+                        "value": "meters",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 1398,
+            "start": 1327,
+            "tag": "Join",
+            "values": Array [
+              Object {
+                "end": 1330,
+                "start": 1327,
+                "tag": "JoinType",
+                "value": "JOIN",
+              },
+              Object {
+                "end": 1350,
+                "start": 1332,
+                "tag": "Table",
+                "values": Array [
+                  Object {
+                    "end": 1350,
+                    "start": 1332,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 1350,
+                        "start": 1332,
+                        "tag": "UnquotedIdentifier",
+                        "value": "installation_meters",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 1398,
+                "start": 1356,
+                "tag": "JoinOn",
+                "values": Array [
+                  Object {
+                    "end": 1398,
+                    "start": 1359,
+                    "tag": "BinaryExpression",
+                    "values": Array [
+                      Object {
+                        "end": 1386,
+                        "start": 1359,
+                        "tag": "Column",
+                        "values": Array [
+                          Object {
+                            "end": 1377,
+                            "start": 1359,
+                            "tag": "UnquotedIdentifier",
+                            "value": "installation_meters",
+                          },
+                          Object {
+                            "end": 1386,
+                            "start": 1379,
+                            "tag": "UnquotedIdentifier",
+                            "value": "meter_id",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 1388,
+                        "start": 1388,
+                        "tag": "BinaryOperator",
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 1398,
+                        "start": 1390,
+                        "tag": "Column",
+                        "values": Array [
+                          Object {
+                            "end": 1395,
+                            "start": 1390,
+                            "tag": "UnquotedIdentifier",
+                            "value": "meters",
+                          },
+                          Object {
+                            "end": 1398,
+                            "start": 1397,
+                            "tag": "UnquotedIdentifier",
+                            "value": "id",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 1486,
+            "start": 1402,
+            "tag": "Join",
+            "values": Array [
+              Object {
+                "end": 1405,
+                "start": 1402,
+                "tag": "JoinType",
+                "value": "JOIN",
+              },
+              Object {
+                "end": 1415,
+                "start": 1407,
+                "tag": "Table",
+                "values": Array [
+                  Object {
+                    "end": 1415,
+                    "start": 1407,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 1415,
+                        "start": 1407,
+                        "tag": "UnquotedIdentifier",
+                        "value": "contracts",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 1486,
+                "start": 1421,
+                "tag": "JoinOn",
+                "values": Array [
+                  Object {
+                    "end": 1486,
+                    "start": 1424,
+                    "tag": "BinaryExpression",
+                    "values": Array [
+                      Object {
+                        "end": 1448,
+                        "start": 1424,
+                        "tag": "Column",
+                        "values": Array [
+                          Object {
+                            "end": 1432,
+                            "start": 1424,
+                            "tag": "UnquotedIdentifier",
+                            "value": "contracts",
+                          },
+                          Object {
+                            "end": 1448,
+                            "start": 1434,
+                            "tag": "UnquotedIdentifier",
+                            "value": "installation_id",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 1450,
+                        "start": 1450,
+                        "tag": "BinaryOperator",
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 1486,
+                        "start": 1452,
+                        "tag": "Column",
+                        "values": Array [
+                          Object {
+                            "end": 1470,
+                            "start": 1452,
+                            "tag": "UnquotedIdentifier",
+                            "value": "installation_meters",
+                          },
+                          Object {
+                            "end": 1486,
+                            "start": 1472,
+                            "tag": "UnquotedIdentifier",
+                            "value": "installation_id",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 1621,
+        "start": 1488,
+        "tag": "Where",
+        "values": Array [
+          Object {
+            "end": 1621,
+            "start": 1496,
+            "tag": "BinaryExpression",
+            "values": Array [
+              Object {
+                "end": 1621,
+                "start": 1496,
+                "tag": "BinaryExpression",
+                "values": Array [
+                  Object {
+                    "end": 1529,
+                    "start": 1496,
+                    "tag": "BinaryExpression",
+                    "values": Array [
+                      Object {
+                        "end": 1521,
+                        "start": 1496,
+                        "tag": "Column",
+                        "values": Array [
+                          Object {
+                            "end": 1514,
+                            "start": 1496,
+                            "tag": "UnquotedIdentifier",
+                            "value": "installation_meters",
+                          },
+                          Object {
+                            "end": 1521,
+                            "start": 1516,
+                            "tag": "UnquotedIdentifier",
+                            "value": "end_on",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 1524,
+                        "start": 1523,
+                        "tag": "BinaryOperator",
+                        "value": "IS",
+                      },
+                      Object {
+                        "end": 1529,
+                        "start": 1526,
+                        "tag": "Null",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 1533,
+                    "start": 1531,
+                    "tag": "BinaryOperator",
+                    "value": "AND",
+                  },
+                  Object {
+                    "end": 1567,
+                    "start": 1535,
+                    "tag": "BinaryExpression",
+                    "values": Array [
+                      Object {
+                        "end": 1554,
+                        "start": 1535,
+                        "tag": "Column",
+                        "values": Array [
+                          Object {
+                            "end": 1543,
+                            "start": 1535,
+                            "tag": "UnquotedIdentifier",
+                            "value": "contracts",
+                          },
+                          Object {
+                            "end": 1554,
+                            "start": 1545,
+                            "tag": "UnquotedIdentifier",
+                            "value": "account_id",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 1556,
+                        "start": 1556,
+                        "tag": "BinaryOperator",
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 1567,
+                        "pick": Array [],
+                        "required": false,
+                        "start": 1558,
+                        "tag": "Parameter",
+                        "type": "single",
+                        "value": "accountId",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 1573,
+                "start": 1571,
+                "tag": "BinaryOperator",
+                "value": "AND",
+              },
+              Object {
+                "end": 1621,
+                "start": 1575,
+                "tag": "WrappedExpression",
+                "values": Array [
+                  Object {
+                    "end": 1620,
+                    "start": 1576,
+                    "tag": "BinaryExpression",
+                    "values": Array [
+                      Object {
+                        "end": 1596,
+                        "start": 1576,
+                        "tag": "BinaryExpression",
+                        "values": Array [
+                          Object {
+                            "end": 1589,
+                            "start": 1576,
+                            "tag": "PgCast",
+                            "values": Array [
+                              Object {
+                                "end": 1583,
+                                "pick": Array [],
+                                "required": false,
+                                "start": 1576,
+                                "tag": "Parameter",
+                                "type": "single",
+                                "value": "meterId",
+                              },
+                              Object {
+                                "end": 1588,
+                                "start": 1586,
+                                "tag": "Type",
+                                "values": Array [
+                                  Object {
+                                    "end": 1588,
+                                    "start": 1586,
+                                    "tag": "QualifiedIdentifier",
+                                    "values": Array [
+                                      Object {
+                                        "end": 1588,
+                                        "start": 1586,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "int",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 1591,
+                            "start": 1590,
+                            "tag": "BinaryOperator",
+                            "value": "IS",
+                          },
+                          Object {
+                            "end": 1596,
+                            "start": 1593,
+                            "tag": "Null",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 1599,
+                        "start": 1598,
+                        "tag": "BinaryOperator",
+                        "value": "OR",
+                      },
+                      Object {
+                        "end": 1620,
+                        "start": 1601,
+                        "tag": "BinaryExpression",
+                        "values": Array [
+                          Object {
+                            "end": 1609,
+                            "start": 1601,
+                            "tag": "Column",
+                            "values": Array [
+                              Object {
+                                "end": 1606,
+                                "start": 1601,
+                                "tag": "UnquotedIdentifier",
+                                "value": "meters",
+                              },
+                              Object {
+                                "end": 1609,
+                                "start": 1608,
+                                "tag": "UnquotedIdentifier",
+                                "value": "id",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 1611,
+                            "start": 1611,
+                            "tag": "BinaryOperator",
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 1620,
+                            "pick": Array [],
+                            "required": false,
+                            "start": 1613,
+                            "tag": "Parameter",
+                            "type": "single",
+                            "value": "meterId",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 1682,
+        "start": 1623,
+        "tag": "OrderBy",
+        "values": Array [
+          Object {
+            "end": 1646,
+            "start": 1634,
+            "tag": "OrderByItem",
+            "values": Array [
+              Object {
+                "end": 1642,
+                "start": 1634,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 1639,
+                    "start": 1634,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meters",
+                  },
+                  Object {
+                    "end": 1642,
+                    "start": 1641,
+                    "tag": "UnquotedIdentifier",
+                    "value": "id",
+                  },
+                ],
+              },
+              Object {
+                "end": 1646,
+                "start": 1644,
+                "tag": "OrderDirection",
+                "value": "ASC",
+              },
+            ],
+          },
+          Object {
+            "end": 1682,
+            "start": 1649,
+            "tag": "OrderByItem",
+            "values": Array [
+              Object {
+                "end": 1678,
+                "start": 1649,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 1667,
+                    "start": 1649,
+                    "tag": "UnquotedIdentifier",
+                    "value": "installation_meters",
+                  },
+                  Object {
+                    "end": 1678,
+                    "start": 1669,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_type",
+                  },
+                ],
+              },
+              Object {
+                "end": 1682,
+                "start": 1680,
+                "tag": "OrderDirection",
+                "value": "ASC",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Files Should parse complex sql active-meters-wth-reads.query.sql: active-meters-wth-reads.query.sql 1`] = `
 Object {
   "ast": Object {
@@ -17523,6 +19239,1030 @@ Object {
       "value": " active-meters-with-reads.query",
     },
   ],
+}
+`;
+
+exports[`Sql Files Should parse complex sql active-reads.view.sql: active-reads.view.sql 1`] = `
+Object {
+  "ast": Object {
+    "end": 793,
+    "start": 0,
+    "tag": "Select",
+    "values": Array [
+      Object {
+        "end": 346,
+        "start": 9,
+        "tag": "SelectList",
+        "values": Array [
+          Object {
+            "end": 22,
+            "start": 9,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 22,
+                "start": 9,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 19,
+                    "start": 9,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 22,
+                    "start": 21,
+                    "tag": "UnquotedIdentifier",
+                    "value": "id",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 46,
+            "start": 27,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 46,
+                "start": 27,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 37,
+                    "start": 27,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 46,
+                    "start": 39,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_id",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 69,
+            "start": 51,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 69,
+                "start": 51,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 61,
+                    "start": 51,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 69,
+                    "start": 63,
+                    "tag": "UnquotedIdentifier",
+                    "value": "date_on",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 90,
+            "start": 74,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 90,
+                "start": 74,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 84,
+                    "start": 74,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 90,
+                    "start": 86,
+                    "tag": "UnquotedIdentifier",
+                    "value": "value",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 110,
+            "start": 95,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 110,
+                "start": 95,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 105,
+                    "start": 95,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 110,
+                    "start": 107,
+                    "tag": "UnquotedIdentifier",
+                    "value": "type",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 132,
+            "start": 115,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 132,
+                "start": 115,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 125,
+                    "start": 115,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 132,
+                    "start": 127,
+                    "tag": "UnquotedIdentifier",
+                    "value": "reason",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 158,
+            "start": 137,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 158,
+                "start": 137,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 147,
+                    "start": 137,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 158,
+                    "start": 149,
+                    "tag": "UnquotedIdentifier",
+                    "value": "created_at",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 184,
+            "start": 163,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 184,
+                "start": 163,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 173,
+                    "start": 163,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 184,
+                    "start": 175,
+                    "tag": "UnquotedIdentifier",
+                    "value": "updated_at",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 216,
+            "start": 189,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 216,
+                "start": 189,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 199,
+                    "start": 189,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 216,
+                    "start": 201,
+                    "tag": "UnquotedIdentifier",
+                    "value": "source_system_id",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 239,
+            "start": 221,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 239,
+                "start": 221,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 231,
+                    "start": 221,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 239,
+                    "start": 233,
+                    "tag": "UnquotedIdentifier",
+                    "value": "checked",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 265,
+            "start": 244,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 265,
+                "start": 244,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 254,
+                    "start": 244,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 265,
+                    "start": 256,
+                    "tag": "UnquotedIdentifier",
+                    "value": "deleted_at",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 293,
+            "start": 270,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 293,
+                "start": 270,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 280,
+                    "start": 270,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 293,
+                    "start": 282,
+                    "tag": "UnquotedIdentifier",
+                    "value": "submitted_at",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 316,
+            "start": 298,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 316,
+                "start": 298,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 308,
+                    "start": 298,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 316,
+                    "start": 310,
+                    "tag": "UnquotedIdentifier",
+                    "value": "history",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 346,
+            "start": 321,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 346,
+                "start": 321,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 331,
+                    "start": 321,
+                    "tag": "UnquotedIdentifier",
+                    "value": "meter_reads",
+                  },
+                  Object {
+                    "end": 346,
+                    "start": 333,
+                    "tag": "UnquotedIdentifier",
+                    "value": "overwritten_at",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 365,
+        "start": 348,
+        "tag": "From",
+        "values": Array [
+          Object {
+            "end": 365,
+            "start": 355,
+            "tag": "FromList",
+            "values": Array [
+              Object {
+                "end": 365,
+                "start": 355,
+                "tag": "Table",
+                "values": Array [
+                  Object {
+                    "end": 365,
+                    "start": 355,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 365,
+                        "start": 355,
+                        "tag": "UnquotedIdentifier",
+                        "value": "meter_reads",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 793,
+        "start": 367,
+        "tag": "Where",
+        "values": Array [
+          Object {
+            "end": 793,
+            "start": 373,
+            "tag": "WrappedExpression",
+            "values": Array [
+              Object {
+                "end": 792,
+                "start": 374,
+                "tag": "BinaryExpression",
+                "values": Array [
+                  Object {
+                    "end": 792,
+                    "start": 374,
+                    "tag": "BinaryExpression",
+                    "values": Array [
+                      Object {
+                        "end": 792,
+                        "start": 374,
+                        "tag": "BinaryExpression",
+                        "values": Array [
+                          Object {
+                            "end": 674,
+                            "start": 374,
+                            "tag": "WrappedExpression",
+                            "values": Array [
+                              Object {
+                                "end": 674,
+                                "start": 375,
+                                "tag": "UnaryExpression",
+                                "values": Array [
+                                  Object {
+                                    "end": 377,
+                                    "start": 375,
+                                    "tag": "UnaryOperator",
+                                    "value": "NOT",
+                                  },
+                                  Object {
+                                    "end": 673,
+                                    "start": 379,
+                                    "tag": "WrappedExpression",
+                                    "values": Array [
+                                      Object {
+                                        "end": 672,
+                                        "start": 380,
+                                        "tag": "ComparationExpression",
+                                        "values": Array [
+                                          Object {
+                                            "end": 385,
+                                            "start": 380,
+                                            "tag": "ComparationType",
+                                            "value": "EXISTS",
+                                          },
+                                          Object {
+                                            "end": 671,
+                                            "start": 397,
+                                            "tag": "Select",
+                                            "values": Array [
+                                              Object {
+                                                "end": 422,
+                                                "start": 414,
+                                                "tag": "SelectList",
+                                                "values": Array [
+                                                  Object {
+                                                    "end": 422,
+                                                    "start": 414,
+                                                    "tag": "SelectListItem",
+                                                    "values": Array [
+                                                      Object {
+                                                        "end": 422,
+                                                        "start": 414,
+                                                        "tag": "Column",
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 419,
+                                                            "start": 414,
+                                                            "tag": "UnquotedIdentifier",
+                                                            "value": "issues",
+                                                          },
+                                                          Object {
+                                                            "end": 422,
+                                                            "start": 421,
+                                                            "tag": "UnquotedIdentifier",
+                                                            "value": "id",
+                                                          },
+                                                        ],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                              Object {
+                                                "end": 452,
+                                                "start": 432,
+                                                "tag": "From",
+                                                "values": Array [
+                                                  Object {
+                                                    "end": 452,
+                                                    "start": 447,
+                                                    "tag": "FromList",
+                                                    "values": Array [
+                                                      Object {
+                                                        "end": 452,
+                                                        "start": 447,
+                                                        "tag": "Table",
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 452,
+                                                            "start": 447,
+                                                            "tag": "QualifiedIdentifier",
+                                                            "values": Array [
+                                                              Object {
+                                                                "end": 452,
+                                                                "start": 447,
+                                                                "tag": "UnquotedIdentifier",
+                                                                "value": "issues",
+                                                              },
+                                                            ],
+                                                          },
+                                                        ],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                              Object {
+                                                "end": 671,
+                                                "start": 462,
+                                                "tag": "Where",
+                                                "values": Array [
+                                                  Object {
+                                                    "end": 671,
+                                                    "start": 468,
+                                                    "tag": "WrappedExpression",
+                                                    "values": Array [
+                                                      Object {
+                                                        "end": 670,
+                                                        "start": 469,
+                                                        "tag": "BinaryExpression",
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 670,
+                                                            "start": 469,
+                                                            "tag": "BinaryExpression",
+                                                            "values": Array [
+                                                              Object {
+                                                                "end": 522,
+                                                                "start": 469,
+                                                                "tag": "WrappedExpression",
+                                                                "values": Array [
+                                                                  Object {
+                                                                    "end": 521,
+                                                                    "start": 470,
+                                                                    "tag": "BinaryExpression",
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 490,
+                                                                        "start": 470,
+                                                                        "tag": "Column",
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 475,
+                                                                            "start": 470,
+                                                                            "tag": "UnquotedIdentifier",
+                                                                            "value": "issues",
+                                                                          },
+                                                                          Object {
+                                                                            "end": 490,
+                                                                            "start": 477,
+                                                                            "tag": "UnquotedIdentifier",
+                                                                            "value": "reference_type",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      Object {
+                                                                        "end": 492,
+                                                                        "start": 492,
+                                                                        "tag": "BinaryOperator",
+                                                                        "value": "=",
+                                                                      },
+                                                                      Object {
+                                                                        "end": 522,
+                                                                        "start": 494,
+                                                                        "tag": "PgCast",
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 499,
+                                                                            "start": 494,
+                                                                            "tag": "String",
+                                                                            "value": "Read",
+                                                                          },
+                                                                          Object {
+                                                                            "end": 521,
+                                                                            "start": 502,
+                                                                            "tag": "Type",
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 521,
+                                                                                "start": 502,
+                                                                                "tag": "QualifiedIdentifier",
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 521,
+                                                                                    "start": 502,
+                                                                                    "tag": "UnquotedIdentifier",
+                                                                                    "value": "issue_reference_type",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                ],
+                                                              },
+                                                              Object {
+                                                                "end": 536,
+                                                                "start": 534,
+                                                                "tag": "BinaryOperator",
+                                                                "value": "AND",
+                                                              },
+                                                              Object {
+                                                                "end": 575,
+                                                                "start": 538,
+                                                                "tag": "WrappedExpression",
+                                                                "values": Array [
+                                                                  Object {
+                                                                    "end": 574,
+                                                                    "start": 539,
+                                                                    "tag": "BinaryExpression",
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 557,
+                                                                        "start": 539,
+                                                                        "tag": "Column",
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 544,
+                                                                            "start": 539,
+                                                                            "tag": "UnquotedIdentifier",
+                                                                            "value": "issues",
+                                                                          },
+                                                                          Object {
+                                                                            "end": 557,
+                                                                            "start": 546,
+                                                                            "tag": "UnquotedIdentifier",
+                                                                            "value": "reference_id",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      Object {
+                                                                        "end": 559,
+                                                                        "start": 559,
+                                                                        "tag": "BinaryOperator",
+                                                                        "value": "=",
+                                                                      },
+                                                                      Object {
+                                                                        "end": 574,
+                                                                        "start": 561,
+                                                                        "tag": "Column",
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 571,
+                                                                            "start": 561,
+                                                                            "tag": "UnquotedIdentifier",
+                                                                            "value": "meter_reads",
+                                                                          },
+                                                                          Object {
+                                                                            "end": 574,
+                                                                            "start": 573,
+                                                                            "tag": "UnquotedIdentifier",
+                                                                            "value": "id",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                          Object {
+                                                            "end": 589,
+                                                            "start": 587,
+                                                            "tag": "BinaryOperator",
+                                                            "value": "AND",
+                                                          },
+                                                          Object {
+                                                            "end": 670,
+                                                            "start": 591,
+                                                            "tag": "WrappedExpression",
+                                                            "values": Array [
+                                                              Object {
+                                                                "end": 669,
+                                                                "start": 592,
+                                                                "tag": "BinaryExpression",
+                                                                "values": Array [
+                                                                  Object {
+                                                                    "end": 613,
+                                                                    "start": 592,
+                                                                    "tag": "WrappedExpression",
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 612,
+                                                                        "start": 593,
+                                                                        "tag": "BinaryExpression",
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 604,
+                                                                            "start": 593,
+                                                                            "tag": "Column",
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 598,
+                                                                                "start": 593,
+                                                                                "tag": "UnquotedIdentifier",
+                                                                                "value": "issues",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 604,
+                                                                                "start": 600,
+                                                                                "tag": "UnquotedIdentifier",
+                                                                                "value": "state",
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                          Object {
+                                                                            "end": 607,
+                                                                            "start": 606,
+                                                                            "tag": "BinaryOperator",
+                                                                            "value": "IS",
+                                                                          },
+                                                                          Object {
+                                                                            "end": 612,
+                                                                            "start": 609,
+                                                                            "tag": "Null",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                  Object {
+                                                                    "end": 628,
+                                                                    "start": 627,
+                                                                    "tag": "BinaryOperator",
+                                                                    "value": "OR",
+                                                                  },
+                                                                  Object {
+                                                                    "end": 669,
+                                                                    "start": 630,
+                                                                    "tag": "WrappedExpression",
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 668,
+                                                                        "start": 631,
+                                                                        "tag": "BinaryExpression",
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 642,
+                                                                            "start": 631,
+                                                                            "tag": "Column",
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 636,
+                                                                                "start": 631,
+                                                                                "tag": "UnquotedIdentifier",
+                                                                                "value": "issues",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 642,
+                                                                                "start": 638,
+                                                                                "tag": "UnquotedIdentifier",
+                                                                                "value": "state",
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                          Object {
+                                                                            "end": 644,
+                                                                            "start": 644,
+                                                                            "tag": "BinaryOperator",
+                                                                            "value": "=",
+                                                                          },
+                                                                          Object {
+                                                                            "end": 669,
+                                                                            "start": 646,
+                                                                            "tag": "PgCast",
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 655,
+                                                                                "start": 646,
+                                                                                "tag": "String",
+                                                                                "value": "Resolved",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 668,
+                                                                                "start": 658,
+                                                                                "tag": "Type",
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 668,
+                                                                                    "start": 658,
+                                                                                    "tag": "QualifiedIdentifier",
+                                                                                    "values": Array [
+                                                                                      Object {
+                                                                                        "end": 668,
+                                                                                        "start": 658,
+                                                                                        "tag": "UnquotedIdentifier",
+                                                                                        "value": "issue_state",
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                        ],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 680,
+                            "start": 678,
+                            "tag": "BinaryOperator",
+                            "value": "AND",
+                          },
+                          Object {
+                            "end": 713,
+                            "start": 682,
+                            "tag": "WrappedExpression",
+                            "values": Array [
+                              Object {
+                                "end": 712,
+                                "start": 683,
+                                "tag": "BinaryExpression",
+                                "values": Array [
+                                  Object {
+                                    "end": 704,
+                                    "start": 683,
+                                    "tag": "Column",
+                                    "values": Array [
+                                      Object {
+                                        "end": 693,
+                                        "start": 683,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "meter_reads",
+                                      },
+                                      Object {
+                                        "end": 704,
+                                        "start": 695,
+                                        "tag": "UnquotedIdentifier",
+                                        "value": "deleted_at",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 707,
+                                    "start": 706,
+                                    "tag": "BinaryOperator",
+                                    "value": "IS",
+                                  },
+                                  Object {
+                                    "end": 712,
+                                    "start": 709,
+                                    "tag": "Null",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 719,
+                        "start": 717,
+                        "tag": "BinaryOperator",
+                        "value": "AND",
+                      },
+                      Object {
+                        "end": 749,
+                        "start": 721,
+                        "tag": "WrappedExpression",
+                        "values": Array [
+                          Object {
+                            "end": 748,
+                            "start": 722,
+                            "tag": "BinaryExpression",
+                            "values": Array [
+                              Object {
+                                "end": 740,
+                                "start": 722,
+                                "tag": "Column",
+                                "values": Array [
+                                  Object {
+                                    "end": 732,
+                                    "start": 722,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "meter_reads",
+                                  },
+                                  Object {
+                                    "end": 740,
+                                    "start": 734,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "checked",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 743,
+                                "start": 742,
+                                "tag": "BinaryOperator",
+                                "value": "IS",
+                              },
+                              Object {
+                                "end": 748,
+                                "start": 745,
+                                "tag": "Boolean",
+                                "value": "TRUE",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 755,
+                    "start": 753,
+                    "tag": "BinaryOperator",
+                    "value": "AND",
+                  },
+                  Object {
+                    "end": 792,
+                    "start": 757,
+                    "tag": "WrappedExpression",
+                    "values": Array [
+                      Object {
+                        "end": 791,
+                        "start": 758,
+                        "tag": "BinaryExpression",
+                        "values": Array [
+                          Object {
+                            "end": 783,
+                            "start": 758,
+                            "tag": "Column",
+                            "values": Array [
+                              Object {
+                                "end": 768,
+                                "start": 758,
+                                "tag": "UnquotedIdentifier",
+                                "value": "meter_reads",
+                              },
+                              Object {
+                                "end": 783,
+                                "start": 770,
+                                "tag": "UnquotedIdentifier",
+                                "value": "overwritten_at",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 786,
+                            "start": 785,
+                            "tag": "BinaryOperator",
+                            "value": "IS",
+                          },
+                          Object {
+                            "end": 791,
+                            "start": 788,
+                            "tag": "Null",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
 }
 `;
 
@@ -25105,7 +27845,7 @@ Object {
                               Object {
                                 "end": 1783,
                                 "start": 1725,
-                                "tag": "ArrayIndex",
+                                "tag": "WrappedExpression",
                                 "values": Array [
                                   Object {
                                     "end": 1779,
@@ -25174,10 +27914,17 @@ Object {
                                     ],
                                   },
                                   Object {
-                                    "end": 1782,
-                                    "start": 1782,
-                                    "tag": "Number",
-                                    "value": "1",
+                                    "end": 1783,
+                                    "start": 1781,
+                                    "tag": "ArrayIndex",
+                                    "values": Array [
+                                      Object {
+                                        "end": 1782,
+                                        "start": 1782,
+                                        "tag": "Number",
+                                        "value": "1",
+                                      },
+                                    ],
                                   },
                                 ],
                               },

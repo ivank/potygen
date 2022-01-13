@@ -71,22 +71,33 @@ describe('Query Interface', () => {
   });
 
   it.each<[string, TypeConstant[], TypeConstant[]]>([
-    ['single value literal', [{ type: 'Boolean', literal: true }, { type: 'Boolean' }], [{ type: 'Boolean' }]],
+    [
+      'single value literal',
+      [
+        { type: 'Boolean', literal: true, postgresType: 'boolean' },
+        { type: 'Boolean', postgresType: 'boolean' },
+      ],
+      [{ type: 'Boolean', postgresType: 'boolean' }],
+    ],
     [
       'keep if no need to compact',
       [
-        { type: 'String', literal: 'tmp' },
-        { type: 'String', literal: 'tmp2' },
+        { type: 'String', literal: 'tmp', postgresType: 'text' },
+        { type: 'String', literal: 'tmp2', postgresType: 'text' },
       ],
       [
-        { type: 'String', literal: 'tmp' },
-        { type: 'String', literal: 'tmp2' },
+        { type: 'String', literal: 'tmp', postgresType: 'text' },
+        { type: 'String', literal: 'tmp2', postgresType: 'text' },
       ],
     ],
     [
       'compact if at least one non literal',
-      [{ type: 'String', literal: 'tmp' }, { type: 'String', literal: 'tmp2' }, { type: 'String' }],
-      [{ type: 'String' }],
+      [
+        { type: 'String', literal: 'tmp', postgresType: 'text' },
+        { type: 'String', literal: 'tmp2', postgresType: 'text' },
+        { type: 'String', postgresType: 'text' },
+      ],
+      [{ type: 'String', postgresType: 'text' }],
     ],
   ])('Should compact union types for %s', async (_, types, expected) => {
     expect(compactTypes(types)).toEqual(expected);
