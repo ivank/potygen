@@ -10,7 +10,9 @@ Array [
   "accounts.list.query.queries.ts",
   "accounts.queries.ts",
   "accounts.query.queries.ts",
+  "active-meters-with-last-read.query.queries.ts",
   "active-meters-wth-reads.query.queries.ts",
+  "active-reads.view.queries.ts",
   "bacs.query.queries.ts",
   "contracts.queries.ts",
   "delete-accounts.query.queries.ts",
@@ -192,6 +194,44 @@ export interface Query {
 "
 `;
 
+exports[`CLI Should use cli to run pipeline on sql files: active-meters-with-last-read.query.queries.ts 1`] = `
+"export interface Params {
+    intervalStart?: Date;
+    intervalEnd?: Date;
+    accountId?: number;
+    meterId?: number;
+}
+export interface Result {
+    id: number;
+    msn: string;
+    mpan: string;
+    make: string;
+    model: string;
+    type: \\"Export\\" | \\"Generation\\";
+    currentPeriodRead?: {
+        id: number;
+        value: number;
+        dateOn: Date;
+        submittedAt?: Date;
+        reason?: string;
+        type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    };
+    previousPeriodRead?: {
+        id: number;
+        value: number;
+        dateOn: Date;
+        submittedAt?: Date;
+        reason?: string;
+        type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    };
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`CLI Should use cli to run pipeline on sql files: active-meters-wth-reads.query.queries.ts 1`] = `
 "export interface Params {
     intervalStart: Date;
@@ -226,6 +266,36 @@ export interface Result {
 export interface Query {
     params: Params;
     result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: active-reads.view.queries.ts 1`] = `
+"import { Json } from \\"@potygen/query\\";
+export interface Params {
+}
+export interface Result<THistory = unknown> {
+    id: number;
+    meter_id: number;
+    date_on: Date;
+    value: number;
+    type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    reason?: string;
+    created_at: Date;
+    updated_at?: Date;
+    /**
+     * sql-fit: MeterReading.MeterReadingId
+     */
+    source_system_id?: number;
+    checked: boolean;
+    deleted_at?: Date;
+    submitted_at?: Date;
+    history: Json<THistory>;
+    overwritten_at?: Date;
+}
+export interface Query<THistory = unknown> {
+    params: Params;
+    result: Result<THistory>;
 }
 "
 `;
@@ -460,6 +530,9 @@ export interface Result {
     reason?: string;
     createdAt: Date;
     updatedAt?: Date;
+    /**
+     * sql-fit: MeterReading.MeterReadingId
+     */
     sourceSystemId?: number;
     mpan: string;
 }

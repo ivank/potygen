@@ -434,9 +434,10 @@ const toLoadedParam =
             type: 'ObjectLiteralConstant',
             nullable: !required,
             items: pick.map((item) => ({ name: item.name, type: toType(item.type) })),
+            postgresType: 'json',
           }
-        : { type: 'OptionalConstant', nullable: !required, value: toType(type) };
-    return { name, type: spread ? { type: 'ArrayConstant', items: paramType } : paramType };
+        : { type: 'OptionalConstant', nullable: !required, value: toType(type), postgresType: 'any' };
+    return { name, type: spread ? { type: 'ArrayConstant', items: paramType, postgresType: 'anyarray' } : paramType };
   };
 
 const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
@@ -449,6 +450,7 @@ const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
             type: 'UnionConstant',
             nullable: params.some((param) => 'nullable' in param.type && param.type.nullable),
             items: params.map((param) => param.type),
+            postgresType: 'any',
           },
         },
   );
@@ -458,7 +460,9 @@ const loadTypeConstant = (type: string, nullable?: boolean, comment?: string): T
   if (!sqlType) {
     throw Error(`'${type}' was not part of the known postgres types or aliases`);
   }
-  return nullable && isTypeNullable(sqlType) ? { ...sqlType, nullable, comment } : { ...sqlType, comment };
+  return nullable && isTypeNullable(sqlType)
+    ? { ...sqlType, nullable, comment, postgresType: type }
+    : { ...sqlType, comment, postgresType: type };
 };
 
 const dataColumnToTypeConstant = (
@@ -468,8 +472,13 @@ const dataColumnToTypeConstant = (
 ): TypeConstant =>
   column.type === 'USER-DEFINED'
     ? enums[column.record]
-      ? { ...enums[column.record], nullable: column.isNullable === 'YES', comment: column.comment }
-      : composites.find((item) => column.record === item.name) ?? { type: 'Unknown' }
+      ? {
+          ...enums[column.record],
+          nullable: column.isNullable === 'YES',
+          comment: column.comment,
+          postgresType: column.record,
+        }
+      : composites.find((item) => column.record === item.name) ?? { type: 'Unknown', postgresType: 'any' }
     : loadTypeConstant(column.type, column.isNullable === 'YES', column.comment);
 
 const toLoadedFunction = ({ data, name }: LoadedDataFunction): LoadedFunction => ({
@@ -484,6 +493,7 @@ const toLoadedComposite = ({ data, name }: LoadedDataComposite): TypeCompositeCo
   name: name.name,
   type: 'CompositeConstant',
   schema: name.schema,
+  postgresType: name.name,
   attributes: data.reduce<Record<string, TypeConstant>>(
     (acc, attr) => ({
       ...acc,
@@ -497,7 +507,11 @@ const toLoadedEnum = (enums: LoadedDataEnum[]): Record<string, TypeUnionConstant
   enums.reduce<Record<string, TypeUnionConstant>>(
     (acc, { name, data: items }) => ({
       ...acc,
-      [name.name]: { type: 'UnionConstant', items: items.map((item) => ({ type: 'String', literal: item })) },
+      [name.name]: {
+        type: 'UnionConstant',
+        postgresType: name.name,
+        items: items.map((item) => ({ type: 'String', literal: item, postgresType: 'text' })),
+      },
     }),
     {},
   );
@@ -661,18 +675,24 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
             return {
               type: 'CompositeConstant',
               name: type.name,
+              postgresType: type.name,
               schema: type.schema,
               attributes: composite.attributes,
             };
           } else {
-            return { type: 'Unknown' };
+            return { type: 'Unknown', postgresType: 'any' };
           }
         }
       case 'LoadColumnCast':
         const columnType = recur(type.column);
         const castType = recur(type.value);
         return 'nullable' in columnType
-          ? { type: 'OptionalConstant', value: castType, nullable: columnType.nullable }
+          ? {
+              type: 'OptionalConstant',
+              value: castType,
+              nullable: columnType.nullable,
+              postgresType: columnType.postgresType,
+            }
           : castType;
 
       case 'LoadFunction':
@@ -704,14 +724,23 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
       case 'LoadStar':
         throw new LoadError(type.sourceTag, 'Should never have load star here');
       case 'Optional':
-        return { type: 'OptionalConstant', nullable: type.nullable, value: recur(type.value) };
+        const optionalType = recur(type.value);
+        return {
+          type: 'OptionalConstant',
+          nullable: type.nullable,
+          value: optionalType,
+          postgresType: optionalType.postgresType,
+        };
       case 'ToArray':
         const items = recur(type.items);
-        return isTypeArrayConstant(items) ? items : { type: 'ArrayConstant', items };
+        return isTypeArrayConstant(items)
+          ? items
+          : { type: 'ArrayConstant', items, postgresType: `${items.postgresType}[]` };
       case 'Array':
-        return { type: 'ArrayConstant', items: recur(type.items) };
+        const itemsType = recur(type.items);
+        return { type: 'ArrayConstant', items: itemsType, postgresType: `${itemsType.postgresType}[]` };
       case 'Union':
-        return { type: 'UnionConstant', items: type.items.map(recur) };
+        return { type: 'UnionConstant', items: type.items.map(recur), postgresType: 'any' };
       case 'ArrayItem':
         return recur(type.value);
       case 'CompositeAccess':
@@ -731,6 +760,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
         return {
           type: 'ObjectLiteralConstant',
           items: type.items.map((item) => ({ ...item, type: recur(item.type) })),
+          postgresType: 'json',
         };
       case 'LoadOperator':
         const left = recur(type.left);
@@ -750,7 +780,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
           ? isTypeNullable(argTypes[0])
             ? { ...argTypes[0], nullable }
             : argTypes[0]
-          : { type: 'UnionConstant', items: argTypes, nullable };
+          : { type: 'UnionConstant', items: argTypes, nullable, postgresType: 'any' };
       case 'Named':
         return recur(type.value);
       default:

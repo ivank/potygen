@@ -10,34 +10,43 @@ Object {
         "available": Array [
           Array [
             Object {
+              "postgresType": "float4",
               "type": "Number",
             },
             Object {
+              "postgresType": "float4",
               "type": "Number",
             },
             Object {
-              "type": "Number",
-            },
-          ],
-          Array [
-            Object {
-              "type": "BigInt",
-            },
-            Object {
-              "type": "BigInt",
-            },
-            Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           ],
           Array [
             Object {
+              "postgresType": "int8",
+              "type": "BigInt",
+            },
+            Object {
+              "postgresType": "int8",
+              "type": "BigInt",
+            },
+            Object {
+              "postgresType": "float4",
+              "type": "Number",
+            },
+          ],
+          Array [
+            Object {
+              "postgresType": "date",
               "type": "Date",
             },
             Object {
+              "postgresType": "text",
               "type": "String",
             },
             Object {
+              "postgresType": "date",
               "type": "Date",
             },
           ],
@@ -66,6 +75,7 @@ Object {
             },
             Object {
               "literal": 0,
+              "postgresType": "float4",
               "type": "Number",
             },
           ],
@@ -94,6 +104,7 @@ Object {
             },
             Object {
               "literal": 0,
+              "postgresType": "float4",
               "type": "Number",
             },
           ],
@@ -236,6 +247,7 @@ Object {
         "name": "date_part",
         "type": "Named",
         "value": Object {
+          "postgresType": "float4",
           "type": "Number",
         },
       },
@@ -253,6 +265,7 @@ Object {
       "name": "col1",
       "type": Object {
         "literal": false,
+        "postgresType": "bool",
         "type": "Boolean",
       },
     },
@@ -260,6 +273,7 @@ Object {
       "name": "col2",
       "type": Object {
         "literal": true,
+        "postgresType": "bool",
         "type": "Boolean",
       },
     },
@@ -278,6 +292,7 @@ Object {
         "name": "int8",
         "type": "Named",
         "value": Object {
+          "postgresType": "int8",
           "type": "BigInt",
         },
       },
@@ -297,34 +312,43 @@ Object {
         "available": Array [
           Array [
             Object {
+              "postgresType": "float4",
               "type": "Number",
             },
             Object {
+              "postgresType": "float4",
               "type": "Number",
             },
             Object {
-              "type": "Number",
-            },
-          ],
-          Array [
-            Object {
-              "type": "BigInt",
-            },
-            Object {
-              "type": "BigInt",
-            },
-            Object {
+              "postgresType": "float4",
               "type": "Number",
             },
           ],
           Array [
             Object {
+              "postgresType": "int8",
+              "type": "BigInt",
+            },
+            Object {
+              "postgresType": "int8",
+              "type": "BigInt",
+            },
+            Object {
+              "postgresType": "float4",
+              "type": "Number",
+            },
+          ],
+          Array [
+            Object {
+              "postgresType": "date",
               "type": "Date",
             },
             Object {
+              "postgresType": "text",
               "type": "String",
             },
             Object {
+              "postgresType": "date",
               "type": "Date",
             },
           ],
@@ -450,6 +474,7 @@ Object {
     Object {
       "name": "?column?",
       "type": Object {
+        "postgresType": "float4",
         "type": "Number",
       },
     },
@@ -465,6 +490,7 @@ Object {
     Object {
       "name": "?column?",
       "type": Object {
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -481,6 +507,7 @@ Object {
       "name": "bool",
       "type": Object {
         "literal": false,
+        "postgresType": "bool",
         "type": "Boolean",
       },
     },
@@ -488,6 +515,7 @@ Object {
       "name": "col2",
       "type": Object {
         "literal": true,
+        "postgresType": "bool",
         "type": "Boolean",
       },
     },
@@ -504,6 +532,7 @@ Object {
       "name": "col1",
       "type": Object {
         "literal": false,
+        "postgresType": "bool",
         "type": "Boolean",
       },
     },
@@ -511,6 +540,7 @@ Object {
       "name": "col2",
       "type": Object {
         "literal": true,
+        "postgresType": "bool",
         "type": "Boolean",
       },
     },
@@ -527,6 +557,7 @@ Object {
       "name": "bool",
       "type": Object {
         "literal": false,
+        "postgresType": "bool",
         "type": "Boolean",
       },
     },
@@ -534,6 +565,7 @@ Object {
       "name": "bool",
       "type": Object {
         "literal": true,
+        "postgresType": "bool",
         "type": "Boolean",
       },
     },
@@ -604,6 +636,7 @@ Object {
           },
           Object {
             "literal": "other",
+            "postgresType": "text",
             "type": "String",
           },
         ],
@@ -653,10 +686,12 @@ Object {
         "items": Array [
           Object {
             "literal": true,
+            "postgresType": "bool",
             "type": "Boolean",
           },
           Object {
             "literal": "other",
+            "postgresType": "text",
             "type": "String",
           },
         ],
@@ -999,6 +1034,7 @@ Object {
       "spread": false,
       "start": 16,
       "type": Object {
+        "postgresType": "any",
         "type": "Unknown",
       },
     },
@@ -1010,6 +1046,7 @@ Object {
         "name": "row",
         "type": "Named",
         "value": Object {
+          "postgresType": "row",
           "type": "String",
         },
       },
@@ -1020,6 +1057,7 @@ Object {
         "name": "row",
         "type": "Named",
         "value": Object {
+          "postgresType": "row",
           "type": "String",
         },
       },
@@ -1030,6 +1068,7 @@ Object {
         "name": "row",
         "type": "Named",
         "value": Object {
+          "postgresType": "row",
           "type": "String",
         },
       },
@@ -1050,7 +1089,7 @@ Object {
         "sourceTag": Object {
           "end": 24,
           "start": 7,
-          "tag": "CompositeAccess",
+          "tag": "WrappedExpression",
           "values": Array [
             Object {
               "end": 11,
@@ -1067,9 +1106,16 @@ Object {
             },
             Object {
               "end": 24,
-              "start": 14,
-              "tag": "UnquotedIdentifier",
-              "value": "supplier_id",
+              "start": 13,
+              "tag": "CompositeAccess",
+              "values": Array [
+                Object {
+                  "end": 24,
+                  "start": 14,
+                  "tag": "UnquotedIdentifier",
+                  "value": "supplier_id",
+                },
+              ],
             },
           ],
         },
@@ -1357,6 +1403,7 @@ Object {
             "name": "int4",
             "type": "Named",
             "value": Object {
+              "postgresType": "int4",
               "type": "Number",
             },
           },
@@ -1368,6 +1415,7 @@ Object {
             "name": "int4",
             "type": "Named",
             "value": Object {
+              "postgresType": "int4",
               "type": "Number",
             },
           },
@@ -1533,6 +1581,7 @@ Object {
         "name": "float8",
         "type": "Named",
         "value": Object {
+          "postgresType": "float8",
           "type": "Number",
         },
       },
@@ -1642,6 +1691,7 @@ Object {
       "type": Object {
         "args": Array [
           Object {
+            "postgresType": "any",
             "type": "Any",
           },
         ],
@@ -1666,6 +1716,7 @@ Object {
       "type": Object {
         "args": Array [
           Object {
+            "postgresType": "any",
             "type": "Any",
           },
         ],
@@ -1845,6 +1896,7 @@ Object {
         "args": Array [
           Object {
             "literal": "123",
+            "postgresType": "text",
             "type": "String",
           },
         ],
@@ -2055,12 +2107,14 @@ Object {
         Object {
           "name": "name",
           "type": Object {
+            "postgresType": "any",
             "type": "Unknown",
           },
         },
         Object {
           "name": "test",
           "type": Object {
+            "postgresType": "any",
             "type": "Unknown",
           },
         },
@@ -2069,6 +2123,7 @@ Object {
       "spread": true,
       "start": 26,
       "type": Object {
+        "postgresType": "any",
         "type": "Unknown",
       },
     },
@@ -2605,6 +2660,7 @@ Object {
       "spread": false,
       "start": 28,
       "type": Object {
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -2619,6 +2675,7 @@ Object {
         "name": "int4",
         "type": "Named",
         "value": Object {
+          "postgresType": "int4",
           "type": "Number",
         },
       },
@@ -2724,6 +2781,7 @@ Object {
       "spread": false,
       "start": 50,
       "type": Object {
+        "postgresType": "any",
         "type": "Any",
       },
     },
@@ -2795,6 +2853,7 @@ Object {
       "spread": false,
       "start": 30,
       "type": Object {
+        "postgresType": "any",
         "type": "Any",
       },
     },
@@ -2899,6 +2958,7 @@ Object {
       "spread": false,
       "start": 7,
       "type": Object {
+        "postgresType": "any",
         "type": "Unknown",
       },
     },
@@ -2910,6 +2970,7 @@ Object {
       "spread": false,
       "start": 25,
       "type": Object {
+        "postgresType": "any",
         "type": "Unknown",
       },
     },
@@ -2918,12 +2979,14 @@ Object {
     Object {
       "name": "res1",
       "type": Object {
+        "postgresType": "any",
         "type": "Any",
       },
     },
     Object {
       "name": "?column?",
       "type": Object {
+        "postgresType": "any",
         "type": "Any",
       },
     },
@@ -2966,6 +3029,7 @@ Object {
               },
               Object {
                 "literal": 1,
+                "postgresType": "float4",
                 "type": "Number",
               },
             ],
@@ -3379,6 +3443,7 @@ Object {
               "name": "int4",
               "type": "Named",
               "value": Object {
+                "postgresType": "int4",
                 "type": "Number",
               },
             },
@@ -3400,6 +3465,7 @@ Object {
               "name": "int4",
               "type": "Named",
               "value": Object {
+                "postgresType": "int4",
                 "type": "Number",
               },
             },
@@ -3425,6 +3491,7 @@ Object {
         "name": "decimal",
         "type": "Named",
         "value": Object {
+          "postgresType": "decimal",
           "type": "Number",
         },
       },
@@ -3446,6 +3513,7 @@ Object {
       "start": 40,
       "type": Object {
         "literal": "val1",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -3458,6 +3526,7 @@ Object {
       "start": 61,
       "type": Object {
         "literal": "DESC",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -3527,6 +3596,7 @@ Object {
       "spread": false,
       "start": 24,
       "type": Object {
+        "postgresType": "any",
         "type": "Unknown",
       },
     },
@@ -3541,18 +3611,22 @@ Object {
             "items": Array [
               Object {
                 "literal": 1,
+                "postgresType": "float4",
                 "type": "Number",
               },
               Object {
                 "literal": 2,
+                "postgresType": "float4",
                 "type": "Number",
               },
               Object {
                 "literal": 3,
+                "postgresType": "float4",
                 "type": "Number",
               },
               Object {
                 "literal": 4,
+                "postgresType": "float4",
                 "type": "Number",
               },
             ],
@@ -3614,6 +3688,7 @@ Object {
       "spread": false,
       "start": 7,
       "type": Object {
+        "postgresType": "any",
         "type": "Unknown",
       },
     },
@@ -3622,6 +3697,7 @@ Object {
     Object {
       "name": "res1",
       "type": Object {
+        "postgresType": "any",
         "type": "Any",
       },
     },
@@ -3776,6 +3852,7 @@ Object {
       "name": "?column?",
       "type": Object {
         "literal": "test",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -3783,6 +3860,7 @@ Object {
       "name": "?column?",
       "type": Object {
         "literal": "Dianne's horse",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -3790,6 +3868,7 @@ Object {
       "name": "?column?",
       "type": Object {
         "literal": "Dianne's horse",
+        "postgresType": "text",
         "type": "String",
       },
     },
@@ -3813,6 +3892,7 @@ Object {
           "name": "int4",
           "type": "Named",
           "value": Object {
+            "postgresType": "int4",
             "type": "Number",
           },
         },
@@ -3828,6 +3908,7 @@ Object {
           "name": "int4",
           "type": "Named",
           "value": Object {
+            "postgresType": "int4",
             "type": "Number",
           },
         },
@@ -3853,6 +3934,7 @@ Object {
         "name": "int4",
         "type": "Named",
         "value": Object {
+          "postgresType": "int4",
           "type": "Number",
         },
       },
@@ -3966,6 +4048,7 @@ Object {
       "name": "col2",
       "type": Object {
         "literal": 123,
+        "postgresType": "float4",
         "type": "Number",
       },
     },
@@ -3973,12 +4056,14 @@ Object {
       "name": "col3",
       "type": Object {
         "literal": "2",
+        "postgresType": "text",
         "type": "String",
       },
     },
     Object {
       "name": "col4",
       "type": Object {
+        "postgresType": "float4",
         "type": "Number",
       },
     },

@@ -242,6 +242,7 @@ describe('Sql', () => {
     ${'rollback'}                     | ${'ROLLBACK'}
     ${'rollback to'}                  | ${'ROLLBACK TO my_savepoint'}
     ${'commit'}                       | ${'COMMIT'}
+    ${'wrapped where'}                | ${'SELECT * FROM table1 WHERE (((table1.c1 = table1.c2) OR table1.c3))'}
     ${'with comment'}                 | ${'SELECT * \n-- test comment\nFROM table1'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) =>
     withParserErrors(() => {

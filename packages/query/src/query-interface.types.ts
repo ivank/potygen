@@ -9,51 +9,61 @@ export interface TypeString {
   literal?: string;
   nullable?: boolean;
   comment?: string;
+  postgresType: string;
 }
 export interface TypeBuffer {
   type: 'Buffer';
   nullable?: boolean;
   comment?: string;
+  postgresType: string;
 }
 export interface TypeNumber {
   type: 'Number';
   literal?: number;
   nullable?: boolean;
   comment?: string;
+  postgresType: string;
 }
 export interface TypeBigInt {
   type: 'BigInt';
   literal?: number;
   nullable?: boolean;
   comment?: string;
+  postgresType: string;
 }
 export interface TypeBoolean {
   type: 'Boolean';
   literal?: boolean;
   nullable?: boolean;
   comment?: string;
+  postgresType: string;
 }
 export interface TypeDate {
   type: 'Date';
   nullable?: boolean;
   comment?: string;
+  postgresType: string;
 }
 export interface TypeNull {
   type: 'Null';
   comment?: string;
+  postgresType: string;
 }
 export interface TypeJson {
   type: 'Json';
   nullable?: boolean;
   comment?: string;
+  postgresType: string;
 }
 export interface TypeUnknown {
   type: 'Unknown';
   comment?: string;
+  postgresType: string;
 }
 export interface TypeAny {
   type: 'Any';
   comment?: string;
+  postgresType: string;
 }
 export interface TypeCoalesce {
   type: 'Coalesce';
@@ -131,6 +141,7 @@ export interface TypeCompositeConstant {
   schema?: string;
   attributes: Record<string, TypeConstant>;
   comment?: string;
+  postgresType: string;
 }
 export interface TypeUnion {
   type: 'Union';
@@ -141,12 +152,14 @@ export interface TypeArrayConstant {
   items: TypeConstant;
   nullable?: boolean;
   comment?: string;
+  postgresType: string;
 }
 export interface TypeUnionConstant {
   type: 'UnionConstant';
   items: TypeConstant[];
   nullable?: boolean;
   comment?: string;
+  postgresType: string;
 }
 export interface TypeObjectLiteral {
   type: 'ObjectLiteral';
@@ -158,6 +171,7 @@ export interface TypeObjectLiteralConstant {
   items: Array<{ name: string; type: TypeConstant }>;
   nullable?: boolean;
   comment?: string;
+  postgresType: string;
 }
 export interface TypeOptional {
   type: 'Optional';
@@ -169,6 +183,7 @@ export interface TypeOptionalConstant {
   nullable?: boolean;
   value: TypeConstant;
   comment?: string;
+  postgresType: string;
 }
 
 export type TypeLiteral = TypeString | TypeNumber | TypeBigInt | TypeBoolean;
