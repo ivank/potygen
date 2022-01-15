@@ -32,7 +32,6 @@ import {
   TypeArrayTag,
   TypeTag,
 } from '@potygen/ast';
-
 import {
   typeUnknown,
   binaryOperatorTypes,
@@ -186,10 +185,12 @@ export const toContantBinaryOperatorVariant = (
   return looseAvailableTypes.length === 1 ? looseAvailableTypes[0][index] : { type: 'Unknown', postgresType: `any` };
 };
 
-export const toPgType = (type: string): TypeConstant | undefined => {
+export const toAliasedPgType = (type: string): keyof typeof pgTypes => {
   const trimmedType = type.replace(/^_/, '').replace(/\"/g, '').toLowerCase();
-  return pgTypes[pgTypeAliases[trimmedType] ?? trimmedType];
+  return pgTypeAliases[trimmedType] ?? trimmedType;
 };
+
+export const toPgTypeConstant = (type: string): TypeConstant | undefined => pgTypes[toAliasedPgType(type)];
 
 const toBinaryOperatorVariant = (
   availableTypes: Array<[TypeConstant, TypeConstant, TypeConstant]>,
@@ -350,7 +351,7 @@ const toType =
         const typeParts = first(sql.values).values;
         const typeName = last(typeParts).value.toLowerCase();
         const typeSchema = typeParts.length === 2 ? typeParts[0].value : undefined;
-        const pgType = toPgType(typeName);
+        const pgType = toPgTypeConstant(typeName);
         return pgType
           ? { type: 'Named', name: pgTypeAliases[typeName] ?? typeName, value: pgType }
           : { type: 'LoadRecord', name: typeName, schema: typeSchema, sourceTag: sql };
@@ -364,7 +365,7 @@ const toType =
         return {
           type: 'Named',
           name: pgTypeAliases[typeConstantName] ?? typeConstantName,
-          value: toPgType(typeConstantName) ?? typeUnknown(),
+          value: toPgTypeConstant(typeConstantName) ?? typeUnknown(),
         };
       case 'Extract':
         return { type: 'Named', name: 'date_part', value: typeNumber() };
@@ -412,32 +413,36 @@ const toResult =
     };
   };
 
-const toQueryResults = (sql: AstTag): { from?: TableTag; items: Array<SelectListItemTag | ReturningListItemTag> } => {
+export const toQueryFrom = (sql: AstTag): TableTag | undefined => {
+  switch (sql.tag) {
+    case 'Update':
+      return sql.values.find(isTable);
+    case 'Insert':
+      return sql.values.find(isTable);
+    case 'Delete':
+      return sql.values.find(isTable);
+    case 'With':
+      return toQueryFrom(last(sql.values));
+    default:
+      return undefined;
+  }
+};
+
+export const toQueryResults = (sql: AstTag): Array<SelectListItemTag | ReturningListItemTag> => {
   switch (sql.tag) {
     case 'Begin':
     case 'Savepoint':
     case 'Rollback':
     case 'Commit':
-      return { items: [] };
+      return [];
     case 'Select':
-      return {
-        items: sql.values.filter(isSelectList).flatMap((list) => list.values),
-      };
+      return sql.values.filter(isSelectList).flatMap((list) => list.values);
     case 'Update':
-      return {
-        from: sql.values.find(isTable),
-        items: sql.values.filter(isReturning).flatMap((item) => item.values),
-      };
+      return sql.values.filter(isReturning).flatMap((item) => item.values);
     case 'Insert':
-      return {
-        from: sql.values.find(isTable),
-        items: sql.values.filter(isReturning).flatMap((item) => item.values),
-      };
+      return sql.values.filter(isReturning).flatMap((item) => item.values);
     case 'Delete':
-      return {
-        from: sql.values.find(isTable),
-        items: sql.values.filter(isReturning).flatMap((item) => item.values),
-      };
+      return sql.values.filter(isReturning).flatMap((item) => item.values);
     case 'With': {
       return toQueryResults(last(sql.values));
     }
@@ -585,7 +590,8 @@ const isUniqParam = (item: Param, index: number, all: Param[]) =>
 export const toSources = (sql: AstTag): Source[] => toSourcesIterator()(sql).filter(isRedundantSource);
 
 export const toQueryInterface = (sql: AstTag): QueryInterface => {
-  const { from, items } = toQueryResults(sql);
+  const items = toQueryResults(sql);
+  const from = toQueryFrom(sql);
   const typeContext = { type: typeUnknown(), columns: [], from };
 
   return {

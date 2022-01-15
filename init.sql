@@ -3,8 +3,10 @@ CREATE TYPE inventory_item AS (
     supplier_id     integer,
     price           numeric
 );
+COMMENT ON TYPE inventory_item IS 'Composite inventory data';
 
 CREATE TYPE account_state as ENUM('Active', 'Pending', 'Dispute', 'Closed');
+COMMENT ON TYPE account_state IS 'Lifecycle of account';
 
 CREATE TABLE all_types (
   id SERIAL PRIMARY KEY,
@@ -55,6 +57,7 @@ CREATE TABLE all_types (
   state account_state
 );
 
+COMMENT ON TABLE all_types IS 'All the postgres types';
 COMMENT ON COLUMN all_types.not_null IS 'This column should never be null';
 COMMENT ON COLUMN all_types.state IS 'This column is an enum';
 
@@ -1029,5 +1032,7 @@ CREATE VIEW all_types_view AS
     SELECT *
     FROM all_types
     WHERE boolean_col IS NOT NULL;
+
+COMMENT ON VIEW all_types_view IS 'Summurized view';
 
 INSERT INTO all_types(not_null) VALUES (1), (2);

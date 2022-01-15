@@ -97,8 +97,11 @@ const IdentifierRestricted = Any(UnquotedIdentifierRestricted, QuotedIdentifier)
  */
 const IdentifierLessRestricted = Any(QuotedIdentifierLessRestricted, QuotedIdentifier);
 
-const ColumnFullyQualified = astNode<Tag.ColumnTag>('Column', All(Identifier, '.', Identifier, '.', Identifier));
-const ColumnQualified = astNode<Tag.ColumnTag>('Column', All(IdentifierRestricted, '.', Identifier));
+const ColumnFullyQualified = astNode<Tag.ColumnTag>(
+  'Column',
+  All(Identifier, '.', Identifier, '.', IdentifierRestricted),
+);
+const ColumnQualified = astNode<Tag.ColumnTag>('Column', All(IdentifierRestricted, '.', IdentifierRestricted));
 const ColumnUnqualified = astNode<Tag.ColumnTag>('Column', IdentifierRestricted);
 
 /**

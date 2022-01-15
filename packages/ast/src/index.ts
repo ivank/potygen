@@ -261,3 +261,4 @@ export {
 export { Grammar } from './grammar';
 
 export const parser = Parser<AstTag, CommentTag>(Grammar);
+export const partialParser = Parser<AstTag, CommentTag>(Grammar, undefined, true);

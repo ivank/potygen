@@ -9,6 +9,12 @@ import {
   LoadedDataTable,
   LoadedDataView,
   LoadedDataComposite,
+  LoadedDataRaw,
+  DataViewRaw,
+  LoadedDataSimple,
+  LoadedSource,
+  LoadedSourceWithUnknown,
+  LoadedSourceUnknown,
 } from './types';
 
 export const isDataTable = (item: Data): item is DataTable => item.type === 'Table';
@@ -20,3 +26,10 @@ export const isLoadedDataFunction = (item: LoadedData): item is LoadedDataFuncti
 export const isLoadedDataEnum = (item: LoadedData): item is LoadedDataEnum => item.type === 'Enum';
 export const isLoadedDataView = (item: LoadedData): item is LoadedDataView => item.type === 'View';
 export const isLoadedDataComposite = (item: LoadedData): item is LoadedDataComposite => item.type === 'Composite';
+
+export const isDataViewRaw = (item: LoadedDataRaw): item is DataViewRaw => item.type === 'View';
+export const isNotDataViewRaw = (item: LoadedDataRaw): item is LoadedDataSimple => item.type !== 'View';
+
+export const isLoadedSource = (item: LoadedSourceWithUnknown): item is LoadedSource => item.type !== 'Unknown';
+export const isLoadedSourceUnknown = (item: LoadedSourceWithUnknown): item is LoadedSourceUnknown =>
+  item.type === 'Unknown';

@@ -1,6 +1,8 @@
-import { QueryInterface, TypeConstant, TypeUnionConstant } from '@potygen/query';
+import { AstTag, Tag } from '@potygen/ast';
+import { QueryInterface, Source, TypeConstant, TypeUnionConstant } from '@potygen/query';
 import { ClientBase } from 'pg';
 import { SourceFile } from 'typescript';
+import { Cache } from './cache';
 
 export interface QualifiedName {
   schema: string;
@@ -28,13 +30,16 @@ export interface DataComposite {
   name: QualifiedName;
 }
 export interface LoadedDataTable extends DataTable {
+  comment?: string;
   data: Array<{ name: string; isNullable: string; record: string; type: string; comment?: string }>;
 }
 export interface LoadedDataComposite extends DataComposite {
+  comment?: string;
   data: Array<{ name: string; isNullable: string; type: string }>;
 }
 
 export interface DataViewRaw extends DataView {
+  comment?: string;
   data: string;
 }
 export interface DataViewParsed extends DataViewRaw {
@@ -44,9 +49,11 @@ export interface LoadedDataView extends DataViewParsed {
   columns: LoadedResult[];
 }
 export interface LoadedDataFunction extends DataFunction {
+  comment?: string;
   data: { returnType: string; isAggregate: boolean; argTypes: string[] };
 }
 export interface LoadedDataEnum extends DataEnum {
+  comment?: string;
   data: string[];
 }
 
@@ -107,10 +114,20 @@ export interface LoadedSourceValues {
   name: string;
   items: Record<string, TypeConstant>;
 }
-export type LoadedSource = LoadedSourceTable | LoadedSourceQuery | LoadedSourceView | LoadedSourceValues;
+export interface LoadedSourceUnknown {
+  type: 'Unknown';
+  name: string;
+  source: Source;
+}
 
-export interface LoadedContext {
+export type LoadedSource = LoadedSourceTable | LoadedSourceQuery | LoadedSourceView | LoadedSourceValues;
+export type LoadedSourceWithUnknown = LoadedSource | LoadedSourceUnknown;
+
+export interface LoadedContext extends LoadedContextWithUnknown {
   sources: LoadedSource[];
+}
+export interface LoadedContextWithUnknown {
+  sources: LoadedSourceWithUnknown[];
   funcs: LoadedFunction[];
   enums: Record<string, TypeUnionConstant>;
   composites: LoadedComposite[];
@@ -166,4 +183,40 @@ export interface Logger {
 export interface LoadContext {
   db: ClientBase;
   logger: Logger;
+}
+
+export interface PathItem<T extends Tag> {
+  index?: number;
+  tag: T;
+}
+export type Path = PathItem<Tag>[];
+
+export interface CompletionEntry {
+  name: string;
+  source?: string;
+}
+
+export interface QuickInfo {
+  display: string;
+  description: string;
+  start: number;
+  end: number;
+}
+
+export interface InspectError {
+  message: string;
+  code: number;
+  start: number;
+  end: number;
+}
+
+export interface InfoLoadedQuery {
+  ast: AstTag;
+  query: LoadedContext;
+}
+
+export interface InfoContext {
+  logger: Logger;
+  data: LoadedData[];
+  cache: Cache<string, InfoLoadedQuery>;
 }

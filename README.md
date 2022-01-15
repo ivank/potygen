@@ -19,13 +19,6 @@ Introspect queiries and generate typescript types for them.
 - [x] Prettier for postgres SQL
 - [ ] Alter table & create table parsing
 - [ ] Prettier binary expression flattening
-- [ ] VSCode plugin
+- [x] VSCode plugin
 - [ ] Refactor into core - combine common logic together into a bigger package, that can be used in different contexts
 - [ ] Should be able to use CTE queries as tables in subsequent queries
-
----
-
-Current state brain dump:
-
-- typescript-pgsql-plugin
-- improving quick info functionality
