@@ -1,7 +1,7 @@
 import { isNil, isUnique } from '@potygen/ast';
 import { isTypeNullable, TypeConstant } from '@potygen/query';
-import { LoadedDataComposite } from '.';
-import { LoadedDataTable, LoadedDataView, LoadedSource, LoadedDataEnum } from './types';
+import { LoadedDataComposite } from '..';
+import { LoadedDataTable, LoadedDataView, LoadedSource, LoadedDataEnum } from '../types';
 
 const join = (separator: string, parts: (string | undefined)[]) => parts.filter(isNil).join(separator);
 
