@@ -69,7 +69,12 @@ export interface Result<TJson_col = unknown, TJsonb_col = unknown> {
     xml_col?: string;
     item: string;
     /**
-     * This column is an enum
+     *
+     *   This column is an enum.
+     *   It also contains several lines:
+     *     - line1
+     *     - line2
+     *
      */
     state?: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
 }

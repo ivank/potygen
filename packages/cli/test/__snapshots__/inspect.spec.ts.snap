@@ -202,7 +202,12 @@ Array [
   },
   Object {
     "name": "state",
-    "source": "This column is an enum",
+    "source": "
+  This column is an enum.
+  It also contains several lines:
+    - line1
+    - line2
+",
   },
 ]
 `;
@@ -391,7 +396,12 @@ Array [
   },
   Object {
     "name": "state",
-    "source": "This column is an enum",
+    "source": "
+  This column is an enum.
+  It also contains several lines:
+    - line1
+    - line2
+",
   },
 ]
 `;
@@ -965,7 +975,12 @@ Array [
   },
   Object {
     "name": "state",
-    "source": "This column is an enum",
+    "source": "
+  This column is an enum.
+  It also contains several lines:
+    - line1
+    - line2
+",
   },
 ]
 `;
@@ -1154,7 +1169,12 @@ Array [
   },
   Object {
     "name": "state",
-    "source": "This column is an enum",
+    "source": "
+  This column is an enum.
+  It also contains several lines:
+    - line1
+    - line2
+",
   },
 ]
 `;
@@ -1255,11 +1275,11 @@ Object {
 
 ---
 
-|Name       |Type              |
-|---        |---               |
-|name       |**text** \`NULL\`   |
+|Name|Type|
+|---|---|
+|name|**text** \`NULL\`|
 |supplier_id|**integer** \`NULL\`|
-|price      |**numeric** \`NULL\`|",
+|price|**numeric** \`NULL\`|",
   "display": "item inventory_item NOT NULL",
   "end": 20,
   "start": 17,
@@ -1273,11 +1293,11 @@ Object {
 ---
 
 |Variants|
-|---     |
-|Active  |
-|Pending |
-|Dispute |
-|Closed  |",
+|---|
+|Active|
+|Pending|
+|Dispute|
+|Closed|",
   "display": "Enum",
   "end": 37,
   "start": 30,
@@ -1291,11 +1311,11 @@ Object {
 ---
 
 |Variants|
-|---     |
-|Active  |
-|Pending |
-|Dispute |
-|Closed  |",
+|---|
+|Active|
+|Pending|
+|Dispute|
+|Closed|",
   "display": "Enum",
   "end": 55,
   "start": 48,
@@ -1308,7 +1328,12 @@ Object {
 
 ---
 
-This column is an enum
+
+  This column is an enum.
+  It also contains several lines:
+    - line1
+    - line2
+
 
 ---
 
@@ -1317,11 +1342,11 @@ Lifecycle of account
 ---
 
 |Variants|
-|---     |
-|Active  |
-|Pending |
-|Dispute |
-|Closed  |",
+|---|
+|Active|
+|Pending|
+|Dispute|
+|Closed|",
   "display": "state account_state",
   "end": 21,
   "start": 17,
@@ -1330,54 +1355,59 @@ Lifecycle of account
 
 exports[`Inspect Should load quick info for source: SELECT all_ty‸pes.id FROM all_types: source 1`] = `
 Object {
-  "description": "|Name                        |Type                         |Comment                         |
-|---                         |---                          |---                             |
-|id                          |**integer** \`NOT_NULL\`       |                                |
-|not_null                    |**integer** \`NOT_NULL\`       |This column should never be null|
-|default_not_null            |**integer** \`NOT_NULL\`       |                                |
-|bigint_col                  |**bigint** \`NULL\`            |                                |
-|bigserial_col               |**bigint** \`NOT_NULL\`        |                                |
-|bit_col                     |**bit** \`NULL\`               |                                |
-|bit_varying_col             |**bit varying** \`NULL\`       |                                |
-|boolean_col                 |**boolean** \`NULL\`           |                                |
-|box_col                     |**box** \`NULL\`               |                                |
-|bytea_col                   |**bytea** \`NULL\`             |                                |
-|character_col               |**character** \`NULL\`         |                                |
-|character_varying_col       |**character varying** \`NULL\` |                                |
-|cidr_col                    |**cidr** \`NULL\`              |                                |
-|circle_col                  |**circle** \`NULL\`            |                                |
-|date_col                    |**date** \`NULL\`              |                                |
-|double_col                  |**double precision** \`NULL\`  |                                |
-|inet_col                    |**inet** \`NULL\`              |                                |
-|integer_col                 |**integer** \`NULL\`           |                                |
-|interval_col                |**interval** \`NULL\`          |                                |
-|json_col                    |**json** \`NULL\`              |                                |
-|jsonb_col                   |**jsonb** \`NULL\`             |                                |
-|line_col                    |**line** \`NULL\`              |                                |
-|lseg_col                    |**lseg** \`NULL\`              |                                |
-|macaddr_col                 |**macaddr** \`NULL\`           |                                |
-|money_col                   |**money** \`NULL\`             |                                |
-|numeric_col                 |**numeric** \`NULL\`           |                                |
-|path_col                    |**path** \`NULL\`              |                                |
-|pg_lsn_col                  |**pg_lsn** \`NULL\`            |                                |
-|point_col                   |**point** \`NULL\`             |                                |
-|polygon_col                 |**polygon** \`NULL\`           |                                |
-|real_col                    |**real** \`NULL\`              |                                |
-|smallint_col                |**smallint** \`NULL\`          |                                |
-|smallserial_col             |**smallint** \`NOT_NULL\`      |                                |
-|serial_col                  |**integer** \`NOT_NULL\`       |                                |
-|text_col                    |**text** \`NULL\`              |                                |
-|time_col                    |**time** \`NULL\`              |                                |
-|time_with_time_zone_col     |**timetz** \`NULL\`            |                                |
-|timestamp_col               |**timestamp** \`NULL\`         |                                |
-|timestamp_with_time_zone_col|**timestamptz** \`NULL\`       |                                |
-|tsquery_col                 |**tsquery** \`NULL\`           |                                |
-|tsvector_col                |**tsvector** \`NULL\`          |                                |
-|txid_snapshot_col           |**txid_snapshot** \`NULL\`     |                                |
-|uuid_col                    |**uuid** \`NULL\`              |                                |
-|xml_col                     |**xml** \`NULL\`               |                                |
-|item                        |**inventory_item** \`NOT_NULL\`|                                |
-|state                       |**account_state** \`NULL\`     |This column is an enum          |",
+  "description": "|Name|Type|
+|---|---|
+|id|**integer** \`NOT_NULL\`|
+|not_null|**integer** \`NOT_NULL\`|
+||This column should never be null|
+|default_not_null|**integer** \`NOT_NULL\`|
+|bigint_col|**bigint** \`NULL\`|
+|bigserial_col|**bigint** \`NOT_NULL\`|
+|bit_col|**bit** \`NULL\`|
+|bit_varying_col|**bit varying** \`NULL\`|
+|boolean_col|**boolean** \`NULL\`|
+|box_col|**box** \`NULL\`|
+|bytea_col|**bytea** \`NULL\`|
+|character_col|**character** \`NULL\`|
+|character_varying_col|**character varying** \`NULL\`|
+|cidr_col|**cidr** \`NULL\`|
+|circle_col|**circle** \`NULL\`|
+|date_col|**date** \`NULL\`|
+|double_col|**double precision** \`NULL\`|
+|inet_col|**inet** \`NULL\`|
+|integer_col|**integer** \`NULL\`|
+|interval_col|**interval** \`NULL\`|
+|json_col|**json** \`NULL\`|
+|jsonb_col|**jsonb** \`NULL\`|
+|line_col|**line** \`NULL\`|
+|lseg_col|**lseg** \`NULL\`|
+|macaddr_col|**macaddr** \`NULL\`|
+|money_col|**money** \`NULL\`|
+|numeric_col|**numeric** \`NULL\`|
+|path_col|**path** \`NULL\`|
+|pg_lsn_col|**pg_lsn** \`NULL\`|
+|point_col|**point** \`NULL\`|
+|polygon_col|**polygon** \`NULL\`|
+|real_col|**real** \`NULL\`|
+|smallint_col|**smallint** \`NULL\`|
+|smallserial_col|**smallint** \`NOT_NULL\`|
+|serial_col|**integer** \`NOT_NULL\`|
+|text_col|**text** \`NULL\`|
+|time_col|**time** \`NULL\`|
+|time_with_time_zone_col|**timetz** \`NULL\`|
+|timestamp_col|**timestamp** \`NULL\`|
+|timestamp_with_time_zone_col|**timestamptz** \`NULL\`|
+|tsquery_col|**tsquery** \`NULL\`|
+|tsvector_col|**tsvector** \`NULL\`|
+|txid_snapshot_col|**txid_snapshot** \`NULL\`|
+|uuid_col|**uuid** \`NULL\`|
+|xml_col|**xml** \`NULL\`|
+|item|**inventory_item** \`NOT_NULL\`|
+|state|**account_state** \`NULL\`|
+||This column is an enum.|
+||  It also contains several lines:|
+||    - line1|
+||    - line2|",
   "display": "all_types Table",
   "end": 15,
   "start": 7,
@@ -1390,54 +1420,59 @@ Object {
 
 ---
 
-|Name                        |Type                         |Comment                         |
-|---                         |---                          |---                             |
-|id                          |**integer** \`NOT_NULL\`       |                                |
-|not_null                    |**integer** \`NOT_NULL\`       |This column should never be null|
-|default_not_null            |**integer** \`NOT_NULL\`       |                                |
-|bigint_col                  |**bigint** \`NULL\`            |                                |
-|bigserial_col               |**bigint** \`NOT_NULL\`        |                                |
-|bit_col                     |**bit** \`NULL\`               |                                |
-|bit_varying_col             |**bit varying** \`NULL\`       |                                |
-|boolean_col                 |**boolean** \`NULL\`           |                                |
-|box_col                     |**box** \`NULL\`               |                                |
-|bytea_col                   |**bytea** \`NULL\`             |                                |
-|character_col               |**character** \`NULL\`         |                                |
-|character_varying_col       |**character varying** \`NULL\` |                                |
-|cidr_col                    |**cidr** \`NULL\`              |                                |
-|circle_col                  |**circle** \`NULL\`            |                                |
-|date_col                    |**date** \`NULL\`              |                                |
-|double_col                  |**double precision** \`NULL\`  |                                |
-|inet_col                    |**inet** \`NULL\`              |                                |
-|integer_col                 |**integer** \`NULL\`           |                                |
-|interval_col                |**interval** \`NULL\`          |                                |
-|json_col                    |**json** \`NULL\`              |                                |
-|jsonb_col                   |**jsonb** \`NULL\`             |                                |
-|line_col                    |**line** \`NULL\`              |                                |
-|lseg_col                    |**lseg** \`NULL\`              |                                |
-|macaddr_col                 |**macaddr** \`NULL\`           |                                |
-|money_col                   |**money** \`NULL\`             |                                |
-|numeric_col                 |**numeric** \`NULL\`           |                                |
-|path_col                    |**path** \`NULL\`              |                                |
-|pg_lsn_col                  |**pg_lsn** \`NULL\`            |                                |
-|point_col                   |**point** \`NULL\`             |                                |
-|polygon_col                 |**polygon** \`NULL\`           |                                |
-|real_col                    |**real** \`NULL\`              |                                |
-|smallint_col                |**smallint** \`NULL\`          |                                |
-|smallserial_col             |**smallint** \`NOT_NULL\`      |                                |
-|serial_col                  |**integer** \`NOT_NULL\`       |                                |
-|text_col                    |**text** \`NULL\`              |                                |
-|time_col                    |**time** \`NULL\`              |                                |
-|time_with_time_zone_col     |**timetz** \`NULL\`            |                                |
-|timestamp_col               |**timestamp** \`NULL\`         |                                |
-|timestamp_with_time_zone_col|**timestamptz** \`NULL\`       |                                |
-|tsquery_col                 |**tsquery** \`NULL\`           |                                |
-|tsvector_col                |**tsvector** \`NULL\`          |                                |
-|txid_snapshot_col           |**txid_snapshot** \`NULL\`     |                                |
-|uuid_col                    |**uuid** \`NULL\`              |                                |
-|xml_col                     |**xml** \`NULL\`               |                                |
-|item                        |**inventory_item** \`NOT_NULL\`|                                |
-|state                       |**account_state** \`NULL\`     |This column is an enum          |",
+|Name|Type|
+|---|---|
+|id|**integer** \`NOT_NULL\`|
+|not_null|**integer** \`NOT_NULL\`|
+||This column should never be null|
+|default_not_null|**integer** \`NOT_NULL\`|
+|bigint_col|**bigint** \`NULL\`|
+|bigserial_col|**bigint** \`NOT_NULL\`|
+|bit_col|**bit** \`NULL\`|
+|bit_varying_col|**bit varying** \`NULL\`|
+|boolean_col|**boolean** \`NULL\`|
+|box_col|**box** \`NULL\`|
+|bytea_col|**bytea** \`NULL\`|
+|character_col|**character** \`NULL\`|
+|character_varying_col|**character varying** \`NULL\`|
+|cidr_col|**cidr** \`NULL\`|
+|circle_col|**circle** \`NULL\`|
+|date_col|**date** \`NULL\`|
+|double_col|**double precision** \`NULL\`|
+|inet_col|**inet** \`NULL\`|
+|integer_col|**integer** \`NULL\`|
+|interval_col|**interval** \`NULL\`|
+|json_col|**json** \`NULL\`|
+|jsonb_col|**jsonb** \`NULL\`|
+|line_col|**line** \`NULL\`|
+|lseg_col|**lseg** \`NULL\`|
+|macaddr_col|**macaddr** \`NULL\`|
+|money_col|**money** \`NULL\`|
+|numeric_col|**numeric** \`NULL\`|
+|path_col|**path** \`NULL\`|
+|pg_lsn_col|**pg_lsn** \`NULL\`|
+|point_col|**point** \`NULL\`|
+|polygon_col|**polygon** \`NULL\`|
+|real_col|**real** \`NULL\`|
+|smallint_col|**smallint** \`NULL\`|
+|smallserial_col|**smallint** \`NOT_NULL\`|
+|serial_col|**integer** \`NOT_NULL\`|
+|text_col|**text** \`NULL\`|
+|time_col|**time** \`NULL\`|
+|time_with_time_zone_col|**timetz** \`NULL\`|
+|timestamp_col|**timestamp** \`NULL\`|
+|timestamp_with_time_zone_col|**timestamptz** \`NULL\`|
+|tsquery_col|**tsquery** \`NULL\`|
+|tsvector_col|**tsvector** \`NULL\`|
+|txid_snapshot_col|**txid_snapshot** \`NULL\`|
+|uuid_col|**uuid** \`NULL\`|
+|xml_col|**xml** \`NULL\`|
+|item|**inventory_item** \`NOT_NULL\`|
+|state|**account_state** \`NULL\`|
+||This column is an enum.|
+||  It also contains several lines:|
+||    - line1|
+||    - line2|",
   "display": "all_types Table",
   "end": 33,
   "start": 25,

@@ -59,7 +59,12 @@ CREATE TABLE all_types (
 
 COMMENT ON TABLE all_types IS 'All the postgres types';
 COMMENT ON COLUMN all_types.not_null IS 'This column should never be null';
-COMMENT ON COLUMN all_types.state IS 'This column is an enum';
+COMMENT ON COLUMN all_types.state IS '
+  This column is an enum.
+  It also contains several lines:
+    - line1
+    - line2
+';
 
 CREATE TABLE addresses (
     id SERIAL PRIMARY KEY,

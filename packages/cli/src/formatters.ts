@@ -15,14 +15,7 @@ const bold = wrap('**');
 const tableRow = wrap('|');
 const formatSql = (text: string) => `\`\`\`sql\n${text}\n\`\`\``;
 
-const markdownTable = (rows: string[][]): string => {
-  const columns = rows[0].map((_, index) => rows.map((row) => row[index]));
-  const columnLengths = columns.map((column) => column.reduce((len, item) => Math.max(len, item.length), 0));
-
-  return rows
-    .map((row) => tableRow(row.map((item, index) => item + ' '.repeat(columnLengths[index] - item.length)).join('|')))
-    .join('\n');
-};
+const markdownTable = (rows: string[][]): string => rows.map((row) => tableRow(row.join('|'))).join('\n');
 
 const formatSourceName = (source: LoadedSource): string => {
   switch (source.type) {
@@ -53,14 +46,18 @@ const formatPostgresType = (type: string): string => {
 
 const formatSourceColumns = (source: LoadedSource): string =>
   markdownTable([
-    ['Name', 'Type', 'Comment'],
-    ['---', '---', '---'],
-    ...Object.entries(source.items).map(([name, type]) => {
+    ['Name', 'Type'],
+    ['---', '---'],
+    ...Object.entries(source.items).flatMap(([name, type]) => {
       const isNotNull = type && isTypeNullable(type) && !type.nullable;
       return [
-        name,
-        join(' ', [bold(formatPostgresType(type.postgresType)), code(isNotNull ? 'NOT_NULL' : 'NULL')]),
-        type.comment ?? '',
+        [name, join(' ', [bold(formatPostgresType(type.postgresType)), code(isNotNull ? 'NOT_NULL' : 'NULL')])],
+        ...(type.comment
+          ? type.comment
+              .trim()
+              .split('\n')
+              .map((line) => ['', line])
+          : []),
       ];
     }),
   ]);
