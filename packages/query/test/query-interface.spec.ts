@@ -14,6 +14,7 @@ describe('Query Interface', () => {
     ['composite type from table', `SELECT (item).supplier_id FROM all_types`],
     ['function with schema', `SELECT information_schema._pg_char_max_length('123')`],
     ['binary expression numbers', `SELECT 1+2`],
+    ['from select', `SELECT id FROM all_types`],
     ['binary expression string', `SELECT 'test' || 'other'`],
     ['binary expression column', `SELECT (col1 + col2) AS "res1" FROM table1`],
     ['string fields not named', `SELECT 'test', $$Dianne's horse$$, $SomeTag$Dianne's horse$SomeTag$`],

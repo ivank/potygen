@@ -1026,6 +1026,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/typescript-pgsql-plugin/",
           "packageDependencies": [
             ["@potygen/typescript-pgsql-plugin", "workspace:packages/typescript-pgsql-plugin"],
+            ["@ikerin/rd-parse", "npm:4.0.1"],
             ["@potygen/ast", "workspace:packages/ast"],
             ["@potygen/cli", "workspace:packages/cli"],
             ["@potygen/query", "workspace:packages/query"],

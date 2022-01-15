@@ -88,8 +88,11 @@ export {
   toQueryInterface,
   isTypeEqual,
   toContantBinaryOperatorVariant,
-  toPgType,
+  toAliasedPgType,
+  toPgTypeConstant,
   toSources,
+  toQueryFrom,
+  toQueryResults,
 } from './query-interface';
 export { Sql, sql, SqlMap } from './sql';
 export { PotygenDatabaseError, PotygenNotFoundError, PotygenError } from './errors';

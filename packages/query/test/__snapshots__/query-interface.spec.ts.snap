@@ -1678,6 +1678,65 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert from select sql (SELECT id FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 8,
+          "start": 7,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 8,
+              "start": 7,
+              "tag": "UnquotedIdentifier",
+              "value": "id",
+            },
+          ],
+        },
+        "table": undefined,
+        "type": "LoadColumn",
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "all_types",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 23,
+        "start": 15,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 23,
+            "start": 15,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 23,
+                "start": 15,
+                "tag": "UnquotedIdentifier",
+                "value": "all_types",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "all_types",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert function param sql (SELECT ABS($id) FROM table1) 1`] = `
 Object {
   "params": Array [

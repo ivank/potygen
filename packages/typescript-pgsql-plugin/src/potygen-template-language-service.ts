@@ -1,20 +1,18 @@
-import { ConfigType, LoadedData, loadAllData } from '@potygen/cli';
+import {
+  ConfigType,
+  LoadedData,
+  loadAllData,
+  completionAtOffset,
+  InfoContext,
+  toInfoContext,
+  quickInfoAtOffset,
+} from '@potygen/cli';
+import { inspectError } from '@potygen/cli/dist/inspect';
 import { Client } from 'pg';
 import { TemplateContext, TemplateLanguageService } from 'typescript-template-language-service-decorator';
 import * as tss from 'typescript/lib/tsserverlibrary';
+import { correctEmptyIdentifierAfterDot } from './helpers';
 import { LanguageServiceLogger } from './logger';
-import { toQuickInfo, toLoadedSourceAtOffset } from './traverse';
-
-export const removeDotCompletion = (sql: string, position: tss.LineAndCharacter): string =>
-  sql
-    .split('\n')
-    .map((text, line) =>
-      position.line === line
-        ? text.slice(0, position.character - 1) +
-          text.slice(position.character - 1).replace(/^\.(\.|[A-Z_][A-Z0-9_]*|"((?:""|[^"])*)")?/i, '.id')
-        : text,
-    )
-    .join('\n');
 
 export const loadData = async (logger: LanguageServiceLogger, connection?: string): Promise<LoadedData[]> => {
   const db = new Client(connection);
@@ -28,46 +26,65 @@ export const loadData = async (logger: LanguageServiceLogger, connection?: strin
 
 export class PotygenTemplateLanguageService implements TemplateLanguageService {
   public data: LoadedData[] = [];
+  public ctx: InfoContext;
 
   constructor(private readonly ts: typeof tss, readonly config: ConfigType, readonly logger: LanguageServiceLogger) {
-    loadData(logger, config.connection).then((data) => (this.data = data));
+    this.ctx = toInfoContext([], logger);
+    loadData(logger, config.connection).then((data) => (this.ctx.data = data));
   }
 
   getCompletionsAtPosition(context: TemplateContext, position: tss.LineAndCharacter): tss.CompletionInfo {
-    const sql = removeDotCompletion(context.text, position);
     const offset = context.toOffset(position);
-    const source = toLoadedSourceAtOffset(sql, this.data, offset);
-    const entries = source?.items
-      ? Object.keys(source.items).map((name) => ({
-          name,
-          sortText: name,
+    this.ctx.logger.debug(`CompletionsAtPosition in ${context.text}:${offset}`);
+    const sql = correctEmptyIdentifierAfterDot(context.text, offset);
+    const completions = completionAtOffset(this.ctx, sql, offset);
+    return {
+      isGlobalCompletion: false,
+      isMemberCompletion: false,
+      isNewIdentifierLocation: false,
+      entries:
+        completions?.map((item) => ({
+          name: item.name,
+          sortText: item.name,
           kind: this.ts.ScriptElementKind.memberVariableElement,
-        }))
-      : [];
-    this.logger.debug(
-      `Completion at offset: ${offset} for "${sql}". Found source (${source?.type}) with entries ${entries.length}`,
-    );
-
-    return { isGlobalCompletion: false, isMemberCompletion: false, isNewIdentifierLocation: false, entries };
+          sourceDisplay: item.source ? [{ kind: '', text: item.source }] : undefined,
+        })) ?? [],
+    };
   }
-
-  // public getCompletionEntryDetails(context: TemplateContext, position: ts.LineAndCharacter, name: string ): ts.CompletionEntryDetails {}
 
   public getQuickInfoAtPosition(context: TemplateContext, position: tss.LineAndCharacter): ts.QuickInfo | undefined {
-    const sql = context.text;
     const offset = context.toOffset(position);
-    const info = toQuickInfo(sql, this.data, offset);
-
-    this.logger.debug(`Completion at offset: ${offset} for "${sql}". Found info (${JSON.stringify(info, null, 2)})`);
-
-    return info ? { kind: this.ts.ScriptElementKind.label, kindModifiers: '', ...info } : undefined;
+    this.ctx.logger.debug(`QuickInfoAtPosition in ${context.text}:${offset}`);
+    const info = quickInfoAtOffset(this.ctx, context.text, context.toOffset(position));
+    return info
+      ? {
+          kind: this.ts.ScriptElementKind.typeParameterElement,
+          kindModifiers: '',
+          displayParts: [{ kind: '', text: info.display }],
+          documentation: [{ kind: '', text: info.description }],
+          textSpan: { start: info.start, length: info.end - info.start + 1 },
+        }
+      : undefined;
   }
 
-  // public getSemanticDiagnostics(context: TemplateContext): ts.Diagnostic[] {}
-
-  // public getSupportedCodeFixes(): number[] {}
-
-  // public getCodeFixesAtPosition(context: TemplateContext, start: number, end: number, errorCodes: number[], format: ts.FormatCodeSettings) {}
-
-  // public getOutliningSpans(context: TemplateContext): ts.OutliningSpan[] {}
+  public getSemanticDiagnostics(context: TemplateContext): ts.Diagnostic[] {
+    this.ctx.logger.debug(`SemanticDiagnostics in ${context.text}`);
+    const error = inspectError(this.ctx, context.text);
+    if (error) {
+      this.ctx.logger.debug(`Error (${error.code}): ${error.message} at ${error.start}...${error.end}`);
+    }
+    return error
+      ? [
+          {
+            file: context.node.getSourceFile(),
+            source: 'potygen',
+            messageText: error.message,
+            category: this.ts.DiagnosticCategory.Error,
+            start: error.start,
+            code: error.code,
+            length: error.end - error.start,
+          },
+        ]
+      : [];
+  }
 }

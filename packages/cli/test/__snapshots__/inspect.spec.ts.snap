@@ -1,0 +1,1445 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Inspect Should inspect for errors for no select: SELECT  FROM all_types: no select 1`] = `
+Object {
+  "code": 1,
+  "end": 15,
+  "message": "Unexpected token at 1:14",
+  "start": 13,
+}
+`;
+
+exports[`Inspect Should inspect for errors for wrong order: SELECT * FORM all_types: wrong order 1`] = `
+Object {
+  "code": 1,
+  "end": 11,
+  "message": "Unexpected token at 1:10",
+  "start": 9,
+}
+`;
+
+exports[`Inspect Should load completions for empty_column: SELECT all_types.‸empty_column FROM all_types: empty_column 1`] = `
+Array [
+  Object {
+    "name": "id",
+    "source": null,
+  },
+  Object {
+    "name": "not_null",
+    "source": "This column should never be null",
+  },
+  Object {
+    "name": "default_not_null",
+    "source": null,
+  },
+  Object {
+    "name": "bigint_col",
+    "source": null,
+  },
+  Object {
+    "name": "bigserial_col",
+    "source": null,
+  },
+  Object {
+    "name": "bit_col",
+    "source": null,
+  },
+  Object {
+    "name": "bit_varying_col",
+    "source": null,
+  },
+  Object {
+    "name": "boolean_col",
+    "source": null,
+  },
+  Object {
+    "name": "box_col",
+    "source": null,
+  },
+  Object {
+    "name": "bytea_col",
+    "source": null,
+  },
+  Object {
+    "name": "character_col",
+    "source": null,
+  },
+  Object {
+    "name": "character_varying_col",
+    "source": null,
+  },
+  Object {
+    "name": "cidr_col",
+    "source": null,
+  },
+  Object {
+    "name": "circle_col",
+    "source": null,
+  },
+  Object {
+    "name": "date_col",
+    "source": null,
+  },
+  Object {
+    "name": "double_col",
+    "source": null,
+  },
+  Object {
+    "name": "inet_col",
+    "source": null,
+  },
+  Object {
+    "name": "integer_col",
+    "source": null,
+  },
+  Object {
+    "name": "interval_col",
+    "source": null,
+  },
+  Object {
+    "name": "json_col",
+    "source": null,
+  },
+  Object {
+    "name": "jsonb_col",
+    "source": null,
+  },
+  Object {
+    "name": "line_col",
+    "source": null,
+  },
+  Object {
+    "name": "lseg_col",
+    "source": null,
+  },
+  Object {
+    "name": "macaddr_col",
+    "source": null,
+  },
+  Object {
+    "name": "money_col",
+    "source": null,
+  },
+  Object {
+    "name": "numeric_col",
+    "source": null,
+  },
+  Object {
+    "name": "path_col",
+    "source": null,
+  },
+  Object {
+    "name": "pg_lsn_col",
+    "source": null,
+  },
+  Object {
+    "name": "point_col",
+    "source": null,
+  },
+  Object {
+    "name": "polygon_col",
+    "source": null,
+  },
+  Object {
+    "name": "real_col",
+    "source": null,
+  },
+  Object {
+    "name": "smallint_col",
+    "source": null,
+  },
+  Object {
+    "name": "smallserial_col",
+    "source": null,
+  },
+  Object {
+    "name": "serial_col",
+    "source": null,
+  },
+  Object {
+    "name": "text_col",
+    "source": null,
+  },
+  Object {
+    "name": "time_col",
+    "source": null,
+  },
+  Object {
+    "name": "time_with_time_zone_col",
+    "source": null,
+  },
+  Object {
+    "name": "timestamp_col",
+    "source": null,
+  },
+  Object {
+    "name": "timestamp_with_time_zone_col",
+    "source": null,
+  },
+  Object {
+    "name": "tsquery_col",
+    "source": null,
+  },
+  Object {
+    "name": "tsvector_col",
+    "source": null,
+  },
+  Object {
+    "name": "txid_snapshot_col",
+    "source": null,
+  },
+  Object {
+    "name": "uuid_col",
+    "source": null,
+  },
+  Object {
+    "name": "xml_col",
+    "source": null,
+  },
+  Object {
+    "name": "item",
+    "source": undefined,
+  },
+  Object {
+    "name": "state",
+    "source": "This column is an enum",
+  },
+]
+`;
+
+exports[`Inspect Should load completions for end of column: SELECT all_types.id‸ FROM all_types: end of column 1`] = `
+Array [
+  Object {
+    "name": "id",
+    "source": null,
+  },
+  Object {
+    "name": "not_null",
+    "source": "This column should never be null",
+  },
+  Object {
+    "name": "default_not_null",
+    "source": null,
+  },
+  Object {
+    "name": "bigint_col",
+    "source": null,
+  },
+  Object {
+    "name": "bigserial_col",
+    "source": null,
+  },
+  Object {
+    "name": "bit_col",
+    "source": null,
+  },
+  Object {
+    "name": "bit_varying_col",
+    "source": null,
+  },
+  Object {
+    "name": "boolean_col",
+    "source": null,
+  },
+  Object {
+    "name": "box_col",
+    "source": null,
+  },
+  Object {
+    "name": "bytea_col",
+    "source": null,
+  },
+  Object {
+    "name": "character_col",
+    "source": null,
+  },
+  Object {
+    "name": "character_varying_col",
+    "source": null,
+  },
+  Object {
+    "name": "cidr_col",
+    "source": null,
+  },
+  Object {
+    "name": "circle_col",
+    "source": null,
+  },
+  Object {
+    "name": "date_col",
+    "source": null,
+  },
+  Object {
+    "name": "double_col",
+    "source": null,
+  },
+  Object {
+    "name": "inet_col",
+    "source": null,
+  },
+  Object {
+    "name": "integer_col",
+    "source": null,
+  },
+  Object {
+    "name": "interval_col",
+    "source": null,
+  },
+  Object {
+    "name": "json_col",
+    "source": null,
+  },
+  Object {
+    "name": "jsonb_col",
+    "source": null,
+  },
+  Object {
+    "name": "line_col",
+    "source": null,
+  },
+  Object {
+    "name": "lseg_col",
+    "source": null,
+  },
+  Object {
+    "name": "macaddr_col",
+    "source": null,
+  },
+  Object {
+    "name": "money_col",
+    "source": null,
+  },
+  Object {
+    "name": "numeric_col",
+    "source": null,
+  },
+  Object {
+    "name": "path_col",
+    "source": null,
+  },
+  Object {
+    "name": "pg_lsn_col",
+    "source": null,
+  },
+  Object {
+    "name": "point_col",
+    "source": null,
+  },
+  Object {
+    "name": "polygon_col",
+    "source": null,
+  },
+  Object {
+    "name": "real_col",
+    "source": null,
+  },
+  Object {
+    "name": "smallint_col",
+    "source": null,
+  },
+  Object {
+    "name": "smallserial_col",
+    "source": null,
+  },
+  Object {
+    "name": "serial_col",
+    "source": null,
+  },
+  Object {
+    "name": "text_col",
+    "source": null,
+  },
+  Object {
+    "name": "time_col",
+    "source": null,
+  },
+  Object {
+    "name": "time_with_time_zone_col",
+    "source": null,
+  },
+  Object {
+    "name": "timestamp_col",
+    "source": null,
+  },
+  Object {
+    "name": "timestamp_with_time_zone_col",
+    "source": null,
+  },
+  Object {
+    "name": "tsquery_col",
+    "source": null,
+  },
+  Object {
+    "name": "tsvector_col",
+    "source": null,
+  },
+  Object {
+    "name": "txid_snapshot_col",
+    "source": null,
+  },
+  Object {
+    "name": "uuid_col",
+    "source": null,
+  },
+  Object {
+    "name": "xml_col",
+    "source": null,
+  },
+  Object {
+    "name": "item",
+    "source": undefined,
+  },
+  Object {
+    "name": "state",
+    "source": "This column is an enum",
+  },
+]
+`;
+
+exports[`Inspect Should load completions for enum left: SELECT * FROM all_types WHERE 'A‸ctive' = all_types.state: enum left 1`] = `
+Array [
+  Object {
+    "name": "Active",
+  },
+  Object {
+    "name": "Active",
+  },
+  Object {
+    "name": "Active",
+  },
+  Object {
+    "name": "Pending",
+  },
+  Object {
+    "name": "Pending",
+  },
+  Object {
+    "name": "Pending",
+  },
+  Object {
+    "name": "Dispute",
+  },
+  Object {
+    "name": "Dispute",
+  },
+  Object {
+    "name": "Dispute",
+  },
+  Object {
+    "name": "Closed",
+  },
+  Object {
+    "name": "Closed",
+  },
+  Object {
+    "name": "Closed",
+  },
+]
+`;
+
+exports[`Inspect Should load completions for enum right: SELECT * FROM all_types WHERE all_types.state = 'A‸ctive': enum right 1`] = `
+Array [
+  Object {
+    "name": "Active",
+  },
+  Object {
+    "name": "Active",
+  },
+  Object {
+    "name": "Active",
+  },
+  Object {
+    "name": "Pending",
+  },
+  Object {
+    "name": "Pending",
+  },
+  Object {
+    "name": "Pending",
+  },
+  Object {
+    "name": "Dispute",
+  },
+  Object {
+    "name": "Dispute",
+  },
+  Object {
+    "name": "Dispute",
+  },
+  Object {
+    "name": "Closed",
+  },
+  Object {
+    "name": "Closed",
+  },
+  Object {
+    "name": "Closed",
+  },
+]
+`;
+
+exports[`Inspect Should load completions for partial from: SELECT all_types.id FROM a‸: partial from 1`] = `
+Array [
+  Object {
+    "name": "account_levelisations",
+    "source": undefined,
+  },
+  Object {
+    "name": "accounts",
+    "source": undefined,
+  },
+  Object {
+    "name": "active_reads",
+    "source": undefined,
+  },
+  Object {
+    "name": "addresses",
+    "source": undefined,
+  },
+  Object {
+    "name": "all_types",
+    "source": "All the postgres types",
+  },
+  Object {
+    "name": "all_types_view",
+    "source": "Summurized view",
+  },
+  Object {
+    "name": "contacts",
+    "source": undefined,
+  },
+  Object {
+    "name": "contracts",
+    "source": undefined,
+  },
+  Object {
+    "name": "customers",
+    "source": undefined,
+  },
+  Object {
+    "name": "installation_meters",
+    "source": undefined,
+  },
+  Object {
+    "name": "installations",
+    "source": undefined,
+  },
+  Object {
+    "name": "issues",
+    "source": undefined,
+  },
+  Object {
+    "name": "levelisations",
+    "source": undefined,
+  },
+  Object {
+    "name": "meter_reads",
+    "source": undefined,
+  },
+  Object {
+    "name": "meters",
+    "source": undefined,
+  },
+  Object {
+    "name": "payments",
+    "source": undefined,
+  },
+  Object {
+    "name": "process_items",
+    "source": undefined,
+  },
+  Object {
+    "name": "tariff_rates",
+    "source": undefined,
+  },
+  Object {
+    "name": "tariffs",
+    "source": undefined,
+  },
+]
+`;
+
+exports[`Inspect Should load completions for schema column: SELECT fit‸ FROM fit.FiTAccount: schema column 1`] = `
+Array [
+  Object {
+    "name": "FiTAccountId",
+    "source": null,
+  },
+  Object {
+    "name": "FitAccountReference",
+    "source": null,
+  },
+  Object {
+    "name": "IsAccountInDispute",
+    "source": null,
+  },
+  Object {
+    "name": "IsActive",
+    "source": null,
+  },
+  Object {
+    "name": "DateInserted",
+    "source": null,
+  },
+  Object {
+    "name": "DateUpdated",
+    "source": null,
+  },
+  Object {
+    "name": "WhoInserted",
+    "source": null,
+  },
+  Object {
+    "name": "WhoUpdated",
+    "source": null,
+  },
+  Object {
+    "name": "DateDisputeStart",
+    "source": null,
+  },
+  Object {
+    "name": "DateDisputeEnd",
+    "source": null,
+  },
+]
+`;
+
+exports[`Inspect Should load completions for schema table: SELECT "FiTAccountId" FROM fit.‸FiTAccount: schema table 1`] = `
+Array [
+  Object {
+    "name": "address",
+    "source": undefined,
+  },
+  Object {
+    "name": "addresstype",
+    "source": undefined,
+  },
+  Object {
+    "name": "auditcsa",
+    "source": undefined,
+  },
+  Object {
+    "name": "bankaccount",
+    "source": undefined,
+  },
+  Object {
+    "name": "bankaccountaudit",
+    "source": undefined,
+  },
+  Object {
+    "name": "checklist",
+    "source": undefined,
+  },
+  Object {
+    "name": "configuration",
+    "source": undefined,
+  },
+  Object {
+    "name": "customer",
+    "source": undefined,
+  },
+  Object {
+    "name": "customeraccount",
+    "source": undefined,
+  },
+  Object {
+    "name": "customeraddress",
+    "source": undefined,
+  },
+  Object {
+    "name": "customerrole",
+    "source": undefined,
+  },
+  Object {
+    "name": "customersequence",
+    "source": undefined,
+  },
+  Object {
+    "name": "document",
+    "source": undefined,
+  },
+  Object {
+    "name": "documenttype",
+    "source": undefined,
+  },
+  Object {
+    "name": "failedmeterreading",
+    "source": undefined,
+  },
+  Object {
+    "name": "failedvalidationimport",
+    "source": undefined,
+  },
+  Object {
+    "name": "fitaccount",
+    "source": undefined,
+  },
+  Object {
+    "name": "fitaccountsequence",
+    "source": undefined,
+  },
+  Object {
+    "name": "generationaccount",
+    "source": undefined,
+  },
+  Object {
+    "name": "generationaccountinstallation",
+    "source": undefined,
+  },
+  Object {
+    "name": "generatortechnologytype",
+    "source": undefined,
+  },
+  Object {
+    "name": "gentrackaccount",
+    "source": undefined,
+  },
+  Object {
+    "name": "installation",
+    "source": undefined,
+  },
+  Object {
+    "name": "installationmeter",
+    "source": undefined,
+  },
+  Object {
+    "name": "installationsequence",
+    "source": undefined,
+  },
+  Object {
+    "name": "installationtype",
+    "source": undefined,
+  },
+  Object {
+    "name": "installationverificationinfo",
+    "source": undefined,
+  },
+  Object {
+    "name": "loadfactor",
+    "source": undefined,
+  },
+  Object {
+    "name": "memo",
+    "source": undefined,
+  },
+  Object {
+    "name": "meter",
+    "source": undefined,
+  },
+  Object {
+    "name": "metermodel",
+    "source": undefined,
+  },
+  Object {
+    "name": "meterreading",
+    "source": undefined,
+  },
+  Object {
+    "name": "meterreadinghistory",
+    "source": undefined,
+  },
+  Object {
+    "name": "metertype",
+    "source": undefined,
+  },
+  Object {
+    "name": "payment",
+    "source": undefined,
+  },
+  Object {
+    "name": "propertytype",
+    "source": undefined,
+  },
+  Object {
+    "name": "securityquestion",
+    "source": undefined,
+  },
+  Object {
+    "name": "segaccountsequence",
+    "source": undefined,
+  },
+  Object {
+    "name": "switch",
+    "source": undefined,
+  },
+  Object {
+    "name": "tariff",
+    "source": undefined,
+  },
+  Object {
+    "name": "tariffexportrate",
+    "source": undefined,
+  },
+  Object {
+    "name": "tariffrate",
+    "source": undefined,
+  },
+  Object {
+    "name": "tarifftype",
+    "source": undefined,
+  },
+]
+`;
+
+exports[`Inspect Should load completions for single column 1: SELECT all_types.i‸d FROM all_types: single column 1 1`] = `
+Array [
+  Object {
+    "name": "id",
+    "source": null,
+  },
+  Object {
+    "name": "not_null",
+    "source": "This column should never be null",
+  },
+  Object {
+    "name": "default_not_null",
+    "source": null,
+  },
+  Object {
+    "name": "bigint_col",
+    "source": null,
+  },
+  Object {
+    "name": "bigserial_col",
+    "source": null,
+  },
+  Object {
+    "name": "bit_col",
+    "source": null,
+  },
+  Object {
+    "name": "bit_varying_col",
+    "source": null,
+  },
+  Object {
+    "name": "boolean_col",
+    "source": null,
+  },
+  Object {
+    "name": "box_col",
+    "source": null,
+  },
+  Object {
+    "name": "bytea_col",
+    "source": null,
+  },
+  Object {
+    "name": "character_col",
+    "source": null,
+  },
+  Object {
+    "name": "character_varying_col",
+    "source": null,
+  },
+  Object {
+    "name": "cidr_col",
+    "source": null,
+  },
+  Object {
+    "name": "circle_col",
+    "source": null,
+  },
+  Object {
+    "name": "date_col",
+    "source": null,
+  },
+  Object {
+    "name": "double_col",
+    "source": null,
+  },
+  Object {
+    "name": "inet_col",
+    "source": null,
+  },
+  Object {
+    "name": "integer_col",
+    "source": null,
+  },
+  Object {
+    "name": "interval_col",
+    "source": null,
+  },
+  Object {
+    "name": "json_col",
+    "source": null,
+  },
+  Object {
+    "name": "jsonb_col",
+    "source": null,
+  },
+  Object {
+    "name": "line_col",
+    "source": null,
+  },
+  Object {
+    "name": "lseg_col",
+    "source": null,
+  },
+  Object {
+    "name": "macaddr_col",
+    "source": null,
+  },
+  Object {
+    "name": "money_col",
+    "source": null,
+  },
+  Object {
+    "name": "numeric_col",
+    "source": null,
+  },
+  Object {
+    "name": "path_col",
+    "source": null,
+  },
+  Object {
+    "name": "pg_lsn_col",
+    "source": null,
+  },
+  Object {
+    "name": "point_col",
+    "source": null,
+  },
+  Object {
+    "name": "polygon_col",
+    "source": null,
+  },
+  Object {
+    "name": "real_col",
+    "source": null,
+  },
+  Object {
+    "name": "smallint_col",
+    "source": null,
+  },
+  Object {
+    "name": "smallserial_col",
+    "source": null,
+  },
+  Object {
+    "name": "serial_col",
+    "source": null,
+  },
+  Object {
+    "name": "text_col",
+    "source": null,
+  },
+  Object {
+    "name": "time_col",
+    "source": null,
+  },
+  Object {
+    "name": "time_with_time_zone_col",
+    "source": null,
+  },
+  Object {
+    "name": "timestamp_col",
+    "source": null,
+  },
+  Object {
+    "name": "timestamp_with_time_zone_col",
+    "source": null,
+  },
+  Object {
+    "name": "tsquery_col",
+    "source": null,
+  },
+  Object {
+    "name": "tsvector_col",
+    "source": null,
+  },
+  Object {
+    "name": "txid_snapshot_col",
+    "source": null,
+  },
+  Object {
+    "name": "uuid_col",
+    "source": null,
+  },
+  Object {
+    "name": "xml_col",
+    "source": null,
+  },
+  Object {
+    "name": "item",
+    "source": undefined,
+  },
+  Object {
+    "name": "state",
+    "source": "This column is an enum",
+  },
+]
+`;
+
+exports[`Inspect Should load completions for single column 2: SELECT all_types.‸id FROM all_types: single column 2 1`] = `
+Array [
+  Object {
+    "name": "id",
+    "source": null,
+  },
+  Object {
+    "name": "not_null",
+    "source": "This column should never be null",
+  },
+  Object {
+    "name": "default_not_null",
+    "source": null,
+  },
+  Object {
+    "name": "bigint_col",
+    "source": null,
+  },
+  Object {
+    "name": "bigserial_col",
+    "source": null,
+  },
+  Object {
+    "name": "bit_col",
+    "source": null,
+  },
+  Object {
+    "name": "bit_varying_col",
+    "source": null,
+  },
+  Object {
+    "name": "boolean_col",
+    "source": null,
+  },
+  Object {
+    "name": "box_col",
+    "source": null,
+  },
+  Object {
+    "name": "bytea_col",
+    "source": null,
+  },
+  Object {
+    "name": "character_col",
+    "source": null,
+  },
+  Object {
+    "name": "character_varying_col",
+    "source": null,
+  },
+  Object {
+    "name": "cidr_col",
+    "source": null,
+  },
+  Object {
+    "name": "circle_col",
+    "source": null,
+  },
+  Object {
+    "name": "date_col",
+    "source": null,
+  },
+  Object {
+    "name": "double_col",
+    "source": null,
+  },
+  Object {
+    "name": "inet_col",
+    "source": null,
+  },
+  Object {
+    "name": "integer_col",
+    "source": null,
+  },
+  Object {
+    "name": "interval_col",
+    "source": null,
+  },
+  Object {
+    "name": "json_col",
+    "source": null,
+  },
+  Object {
+    "name": "jsonb_col",
+    "source": null,
+  },
+  Object {
+    "name": "line_col",
+    "source": null,
+  },
+  Object {
+    "name": "lseg_col",
+    "source": null,
+  },
+  Object {
+    "name": "macaddr_col",
+    "source": null,
+  },
+  Object {
+    "name": "money_col",
+    "source": null,
+  },
+  Object {
+    "name": "numeric_col",
+    "source": null,
+  },
+  Object {
+    "name": "path_col",
+    "source": null,
+  },
+  Object {
+    "name": "pg_lsn_col",
+    "source": null,
+  },
+  Object {
+    "name": "point_col",
+    "source": null,
+  },
+  Object {
+    "name": "polygon_col",
+    "source": null,
+  },
+  Object {
+    "name": "real_col",
+    "source": null,
+  },
+  Object {
+    "name": "smallint_col",
+    "source": null,
+  },
+  Object {
+    "name": "smallserial_col",
+    "source": null,
+  },
+  Object {
+    "name": "serial_col",
+    "source": null,
+  },
+  Object {
+    "name": "text_col",
+    "source": null,
+  },
+  Object {
+    "name": "time_col",
+    "source": null,
+  },
+  Object {
+    "name": "time_with_time_zone_col",
+    "source": null,
+  },
+  Object {
+    "name": "timestamp_col",
+    "source": null,
+  },
+  Object {
+    "name": "timestamp_with_time_zone_col",
+    "source": null,
+  },
+  Object {
+    "name": "tsquery_col",
+    "source": null,
+  },
+  Object {
+    "name": "tsvector_col",
+    "source": null,
+  },
+  Object {
+    "name": "txid_snapshot_col",
+    "source": null,
+  },
+  Object {
+    "name": "uuid_col",
+    "source": null,
+  },
+  Object {
+    "name": "xml_col",
+    "source": null,
+  },
+  Object {
+    "name": "item",
+    "source": undefined,
+  },
+  Object {
+    "name": "state",
+    "source": "This column is an enum",
+  },
+]
+`;
+
+exports[`Inspect Should load completions for single table: SELECT all_types.id FROM all_‸types: single table 1`] = `
+Array [
+  Object {
+    "name": "account_levelisations",
+    "source": undefined,
+  },
+  Object {
+    "name": "accounts",
+    "source": undefined,
+  },
+  Object {
+    "name": "active_reads",
+    "source": undefined,
+  },
+  Object {
+    "name": "addresses",
+    "source": undefined,
+  },
+  Object {
+    "name": "all_types",
+    "source": "All the postgres types",
+  },
+  Object {
+    "name": "all_types_view",
+    "source": "Summurized view",
+  },
+  Object {
+    "name": "contacts",
+    "source": undefined,
+  },
+  Object {
+    "name": "contracts",
+    "source": undefined,
+  },
+  Object {
+    "name": "customers",
+    "source": undefined,
+  },
+  Object {
+    "name": "installation_meters",
+    "source": undefined,
+  },
+  Object {
+    "name": "installations",
+    "source": undefined,
+  },
+  Object {
+    "name": "issues",
+    "source": undefined,
+  },
+  Object {
+    "name": "levelisations",
+    "source": undefined,
+  },
+  Object {
+    "name": "meter_reads",
+    "source": undefined,
+  },
+  Object {
+    "name": "meters",
+    "source": undefined,
+  },
+  Object {
+    "name": "payments",
+    "source": undefined,
+  },
+  Object {
+    "name": "process_items",
+    "source": undefined,
+  },
+  Object {
+    "name": "tariff_rates",
+    "source": undefined,
+  },
+  Object {
+    "name": "tariffs",
+    "source": undefined,
+  },
+]
+`;
+
+exports[`Inspect Should load quick info for column: SELECT all_types.i‸d FROM all_types: column 1`] = `
+Object {
+  "description": "From: all_types Table",
+  "display": "id integer NOT NULL",
+  "end": 18,
+  "start": 17,
+}
+`;
+
+exports[`Inspect Should load quick info for composite: SELECT all_types.it‸em FROM all_types: composite 1`] = `
+Object {
+  "description": "From: all_types Table
+
+---
+
+|Name       |Type              |
+|---        |---               |
+|name       |**text** \`NULL\`   |
+|supplier_id|**integer** \`NULL\`|
+|price      |**numeric** \`NULL\`|",
+  "display": "item inventory_item NOT NULL",
+  "end": 20,
+  "start": 17,
+}
+`;
+
+exports[`Inspect Should load quick info for enum left: SELECT * FROM all_types WHERE 'A‸ctive' = all_types.state: enum left 1`] = `
+Object {
+  "description": "Lifecycle of account
+
+---
+
+|Variants|
+|---     |
+|Active  |
+|Pending |
+|Dispute |
+|Closed  |",
+  "display": "Enum",
+  "end": 37,
+  "start": 30,
+}
+`;
+
+exports[`Inspect Should load quick info for enum right: SELECT * FROM all_types WHERE all_types.state = 'A‸ctive': enum right 1`] = `
+Object {
+  "description": "Lifecycle of account
+
+---
+
+|Variants|
+|---     |
+|Active  |
+|Pending |
+|Dispute |
+|Closed  |",
+  "display": "Enum",
+  "end": 55,
+  "start": 48,
+}
+`;
+
+exports[`Inspect Should load quick info for enum: SELECT all_types.sta‸te FROM all_types: enum 1`] = `
+Object {
+  "description": "From: all_types Table
+
+---
+
+This column is an enum
+
+---
+
+Lifecycle of account
+
+---
+
+|Variants|
+|---     |
+|Active  |
+|Pending |
+|Dispute |
+|Closed  |",
+  "display": "state account_state",
+  "end": 21,
+  "start": 17,
+}
+`;
+
+exports[`Inspect Should load quick info for source: SELECT all_ty‸pes.id FROM all_types: source 1`] = `
+Object {
+  "description": "|Name                        |Type                         |Comment                         |
+|---                         |---                          |---                             |
+|id                          |**integer** \`NOT_NULL\`       |                                |
+|not_null                    |**integer** \`NOT_NULL\`       |This column should never be null|
+|default_not_null            |**integer** \`NOT_NULL\`       |                                |
+|bigint_col                  |**bigint** \`NULL\`            |                                |
+|bigserial_col               |**bigint** \`NOT_NULL\`        |                                |
+|bit_col                     |**bit** \`NULL\`               |                                |
+|bit_varying_col             |**bit varying** \`NULL\`       |                                |
+|boolean_col                 |**boolean** \`NULL\`           |                                |
+|box_col                     |**box** \`NULL\`               |                                |
+|bytea_col                   |**bytea** \`NULL\`             |                                |
+|character_col               |**character** \`NULL\`         |                                |
+|character_varying_col       |**character varying** \`NULL\` |                                |
+|cidr_col                    |**cidr** \`NULL\`              |                                |
+|circle_col                  |**circle** \`NULL\`            |                                |
+|date_col                    |**date** \`NULL\`              |                                |
+|double_col                  |**double precision** \`NULL\`  |                                |
+|inet_col                    |**inet** \`NULL\`              |                                |
+|integer_col                 |**integer** \`NULL\`           |                                |
+|interval_col                |**interval** \`NULL\`          |                                |
+|json_col                    |**json** \`NULL\`              |                                |
+|jsonb_col                   |**jsonb** \`NULL\`             |                                |
+|line_col                    |**line** \`NULL\`              |                                |
+|lseg_col                    |**lseg** \`NULL\`              |                                |
+|macaddr_col                 |**macaddr** \`NULL\`           |                                |
+|money_col                   |**money** \`NULL\`             |                                |
+|numeric_col                 |**numeric** \`NULL\`           |                                |
+|path_col                    |**path** \`NULL\`              |                                |
+|pg_lsn_col                  |**pg_lsn** \`NULL\`            |                                |
+|point_col                   |**point** \`NULL\`             |                                |
+|polygon_col                 |**polygon** \`NULL\`           |                                |
+|real_col                    |**real** \`NULL\`              |                                |
+|smallint_col                |**smallint** \`NULL\`          |                                |
+|smallserial_col             |**smallint** \`NOT_NULL\`      |                                |
+|serial_col                  |**integer** \`NOT_NULL\`       |                                |
+|text_col                    |**text** \`NULL\`              |                                |
+|time_col                    |**time** \`NULL\`              |                                |
+|time_with_time_zone_col     |**timetz** \`NULL\`            |                                |
+|timestamp_col               |**timestamp** \`NULL\`         |                                |
+|timestamp_with_time_zone_col|**timestamptz** \`NULL\`       |                                |
+|tsquery_col                 |**tsquery** \`NULL\`           |                                |
+|tsvector_col                |**tsvector** \`NULL\`          |                                |
+|txid_snapshot_col           |**txid_snapshot** \`NULL\`     |                                |
+|uuid_col                    |**uuid** \`NULL\`              |                                |
+|xml_col                     |**xml** \`NULL\`               |                                |
+|item                        |**inventory_item** \`NOT_NULL\`|                                |
+|state                       |**account_state** \`NULL\`     |This column is an enum          |",
+  "display": "all_types Table",
+  "end": 15,
+  "start": 7,
+}
+`;
+
+exports[`Inspect Should load quick info for table: SELECT all_types.id FROM all‸_types: table 1`] = `
+Object {
+  "description": "All the postgres types
+
+---
+
+|Name                        |Type                         |Comment                         |
+|---                         |---                          |---                             |
+|id                          |**integer** \`NOT_NULL\`       |                                |
+|not_null                    |**integer** \`NOT_NULL\`       |This column should never be null|
+|default_not_null            |**integer** \`NOT_NULL\`       |                                |
+|bigint_col                  |**bigint** \`NULL\`            |                                |
+|bigserial_col               |**bigint** \`NOT_NULL\`        |                                |
+|bit_col                     |**bit** \`NULL\`               |                                |
+|bit_varying_col             |**bit varying** \`NULL\`       |                                |
+|boolean_col                 |**boolean** \`NULL\`           |                                |
+|box_col                     |**box** \`NULL\`               |                                |
+|bytea_col                   |**bytea** \`NULL\`             |                                |
+|character_col               |**character** \`NULL\`         |                                |
+|character_varying_col       |**character varying** \`NULL\` |                                |
+|cidr_col                    |**cidr** \`NULL\`              |                                |
+|circle_col                  |**circle** \`NULL\`            |                                |
+|date_col                    |**date** \`NULL\`              |                                |
+|double_col                  |**double precision** \`NULL\`  |                                |
+|inet_col                    |**inet** \`NULL\`              |                                |
+|integer_col                 |**integer** \`NULL\`           |                                |
+|interval_col                |**interval** \`NULL\`          |                                |
+|json_col                    |**json** \`NULL\`              |                                |
+|jsonb_col                   |**jsonb** \`NULL\`             |                                |
+|line_col                    |**line** \`NULL\`              |                                |
+|lseg_col                    |**lseg** \`NULL\`              |                                |
+|macaddr_col                 |**macaddr** \`NULL\`           |                                |
+|money_col                   |**money** \`NULL\`             |                                |
+|numeric_col                 |**numeric** \`NULL\`           |                                |
+|path_col                    |**path** \`NULL\`              |                                |
+|pg_lsn_col                  |**pg_lsn** \`NULL\`            |                                |
+|point_col                   |**point** \`NULL\`             |                                |
+|polygon_col                 |**polygon** \`NULL\`           |                                |
+|real_col                    |**real** \`NULL\`              |                                |
+|smallint_col                |**smallint** \`NULL\`          |                                |
+|smallserial_col             |**smallint** \`NOT_NULL\`      |                                |
+|serial_col                  |**integer** \`NOT_NULL\`       |                                |
+|text_col                    |**text** \`NULL\`              |                                |
+|time_col                    |**time** \`NULL\`              |                                |
+|time_with_time_zone_col     |**timetz** \`NULL\`            |                                |
+|timestamp_col               |**timestamp** \`NULL\`         |                                |
+|timestamp_with_time_zone_col|**timestamptz** \`NULL\`       |                                |
+|tsquery_col                 |**tsquery** \`NULL\`           |                                |
+|tsvector_col                |**tsvector** \`NULL\`          |                                |
+|txid_snapshot_col           |**txid_snapshot** \`NULL\`     |                                |
+|uuid_col                    |**uuid** \`NULL\`              |                                |
+|xml_col                     |**xml** \`NULL\`               |                                |
+|item                        |**inventory_item** \`NOT_NULL\`|                                |
+|state                       |**account_state** \`NULL\`     |This column is an enum          |",
+  "display": "all_types Table",
+  "end": 33,
+  "start": 25,
+}
+`;
