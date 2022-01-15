@@ -1,3 +1,3 @@
-# Postgres sql prettier plugin
+# Typescript template decorator plugin
 
 Pre-Alpha software

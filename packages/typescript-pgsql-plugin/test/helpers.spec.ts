@@ -5,7 +5,7 @@ describe('Inspect', () => {
     sqlWithCaret                             | expected
     ${`SELECT all_types.i‸d FROM all_types`} | ${`SELECT all_types.id FROM all_types`}
     ${`SELECT all_types.id‸ FROM all_types`} | ${`SELECT all_types.id FROM all_types`}
-    ${`SELECT all_types.‸ FROM all_types`}   | ${`SELECT all_types.empty_column FROM all_types`}
+    ${`SELECT all_types.‸ FROM all_types`}   | ${`SELECT all_types.unknown_column FROM all_types`}
     ${`SELECT all_types‸. FROM all_types`}   | ${`SELECT all_types. FROM all_types`}
   `(
     'Should load completions for $sqlWithCaret',
