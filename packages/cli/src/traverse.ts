@@ -14,11 +14,16 @@ import {
   isIdentifier,
 } from 'typescript';
 import { basename, relative } from 'path';
-import { parser } from '@potygen/ast';
-import { QueryInterface, toQueryInterface } from '@potygen/query';
-import { loadQueryInterfacesData, toLoadedQueryInterface } from './load';
-import { ClientBase } from 'pg';
 import {
+  parser,
+  QueryInterface,
+  toQueryInterface,
+  loadQueryInterfacesData,
+  toLoadedQueryInterface,
+  LoadError,
+  ParsedSqlFileLoadError,
+  ParsedTypescriptFileLoadError,
+  ParseError,
   LoadContext,
   LoadedData,
   LoadedFile,
@@ -27,9 +32,9 @@ import {
   ParsedSqlFile,
   ParsedTypescriptFile,
   TemplateTagQuery,
-} from './types';
+} from '@potygen/potygen';
+import { ClientBase } from 'pg';
 import { emitLoadedFile } from './emit';
-import { LoadError, ParsedSqlFileLoadError, ParsedTypescriptFileLoadError, ParseError } from './errors';
 import { inspect } from 'util';
 
 const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {

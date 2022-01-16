@@ -20,5 +20,5 @@ Introspect queiries and generate typescript types for them.
 - [ ] Alter table & create table parsing
 - [ ] Prettier binary expression flattening
 - [x] VSCode plugin
-- [ ] Refactor into core - combine common logic together into a bigger package, that can be used in different contexts
+- [x] Refactor into core - combine common logic together into a bigger package, that can be used in different contexts
 - [ ] Should be able to use CTE queries as tables in subsequent queries

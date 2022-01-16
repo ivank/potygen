@@ -1,3 +1,3 @@
-import { sql } from '@potygen/query';
+import { sql } from '@potygen/potygen';
 
-export const myQuery = sql`SELECT * FROM all_types`;
+export const myQuery = sql`SELECT all_types.state FROM all_types`;

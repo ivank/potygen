@@ -1,6 +1,6 @@
 import { format } from 'prettier';
 import * as prettierPluginPgSql from '../src';
-import { parser } from '@potygen/ast';
+import { parser } from '@potygen/potygen';
 import { withParserErrors, withoutPos, sqlFiles } from './helpers';
 
 describe('Sql Files', () => {

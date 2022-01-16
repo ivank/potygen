@@ -15,7 +15,7 @@ import {
   isInsert,
   chunk,
   isConflictTargetIndex,
-} from '@potygen/ast';
+} from '@potygen/potygen';
 
 const { line, softline, indent, join, group, hardline } = doc.builders;
 
@@ -146,7 +146,7 @@ const pgsqlAst: Printer<Node> = {
           : node.values.length === 2
           ? [nthVal(0, path, recur), '(', nthVal(1, path, recur), ')']
           : [nthVal(0, path, recur), '(', nthVal(1, path, recur), ',', nthVal(2, path, recur), ')'];
-      case 'TypeArray':
+      case 'ArrayType':
         return vals(path, recur);
       case 'Distinct':
         return node.values.length
