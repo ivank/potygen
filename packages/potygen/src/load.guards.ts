@@ -1,4 +1,3 @@
-import { LoadedSourceTable, LoadedSourceValues, LoadedSourceView } from '.';
 import {
   Data,
   DataEnum,
@@ -16,6 +15,9 @@ import {
   LoadedSource,
   LoadedSourceWithUnknown,
   LoadedSourceUnknown,
+  LoadedSourceTable,
+  LoadedSourceValues,
+  LoadedSourceView,
 } from './load.types';
 
 export const isDataTable = (item: Data): item is DataTable => item.type === 'Table';
