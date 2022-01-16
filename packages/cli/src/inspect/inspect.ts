@@ -7,6 +7,7 @@ import {
   isColumns,
   isIdentifier,
   isInsert,
+  isPgCast,
   isQualifiedIdentifier,
   isSetItem,
   isString,
@@ -69,7 +70,11 @@ interface InfoSchema extends InfoBase {
   name: string;
   type: 'Schema';
 }
-type Info = InfoColumn | InfoSource | InfoSchema | InfoTable | InfoEnumVariant;
+interface InfoCast extends InfoBase {
+  name: string;
+  type: 'Cast';
+}
+type Info = InfoColumn | InfoSource | InfoSchema | InfoTable | InfoEnumVariant | InfoCast;
 
 interface LoadedInfo {
   info: Info;
@@ -87,8 +92,11 @@ const closestBinaryExpressionPath = closestParentPath(isBinaryExpression);
 const closestString = closestParent(isString);
 const closestColumns = closestParent(isColumns);
 const closestInsert = closestParent(isInsert);
+const closestPgCastPath = closestParentPath(isPgCast);
 
 const toPos = ({ start, end }: Tag): { start: number; end: number } => ({ start, end });
+
+const commonTypes = ['bool', 'char', 'varchar', 'int', 'decimal', 'float', 'serial', 'timestamp', 'time'];
 
 const pathToInfo = (path: Path): Info | undefined => {
   const identifier = closestIdentifier(path);
@@ -153,6 +161,11 @@ const pathToInfo = (path: Path): Info | undefined => {
       } else if (parts.length === 2 && index === 1) {
         return { type: 'Table', schema: parts[0].value, name: parts[1].value, ...toPos(parts[1]) };
       }
+    }
+
+    const pgCastPath = closestPgCastPath(path);
+    if (pgCastPath && pgCastPath.index === 1) {
+      return { type: 'Cast', name: identifier.value, ...toPos(identifier) };
     }
   }
 
@@ -273,6 +286,12 @@ export const completionAtOffset = (ctx: InfoContext, sql: string, offset: number
         name: table.name.name,
         source: table.comment,
       }));
+    case 'Cast':
+      const userDefinedTypes = [...ctx.data.filter(isLoadedDataEnum), ...ctx.data.filter(isLoadedDataComposite)];
+      return [
+        ...userDefinedTypes.map((item) => ({ name: item.name.name, source: item.comment })),
+        ...commonTypes.map((name) => ({ name, source: 'Native' })),
+      ];
     case 'Schema':
       return [];
   }
@@ -329,6 +348,7 @@ export const quickInfoAtOffset = (ctx: InfoContext, sql: string, offset: number)
             end: info.end,
           }
         : undefined;
+
     case 'Source':
       const source = query.sources.find((item) => item.name === info.name);
       ctx.logger.debug(`Quick Info Source: ${inspect(source)}:`);
@@ -357,7 +377,10 @@ export const quickInfoAtOffset = (ctx: InfoContext, sql: string, offset: number)
           ? { ...quickInfoTable(tableSource, dataTable), start: info.start, end: info.end }
           : undefined;
       }
-    default:
+    case 'Cast':
+      const castType = first(toNamedData(ctx, isLoadedDataEnum, info));
+      return castType ? { ...quickInfoEnum(castType), start: info.start, end: info.end } : undefined;
+    case 'Schema':
       return undefined;
   }
 };

@@ -18,6 +18,94 @@ Object {
 }
 `;
 
+exports[`Inspect Should load completions for complex: 
+      SELECT * FROM accounts
+      JOIN contracts ON contracts.account_id = accounts.id
+      LEFT JOIN installations ON contracts.installation_id = installations.id
+      WHERE
+        (accounts.end_on IS NULL OR accounts.end_on >= $start)
+        AND accounts.state = ANY(ARRAY['Active', 'Pending Loss']::account_state[])
+        AND contracts.exp‸ort_type = ANY(ARRAY['Metered Export','Deemed']::installation_export_type): complex 1`] = `
+Array [
+  Object {
+    "name": "id",
+    "source": null,
+  },
+  Object {
+    "name": "scheme_type",
+    "source": null,
+  },
+  Object {
+    "name": "scheme_account_reference",
+    "source": null,
+  },
+  Object {
+    "name": "confirmation_on",
+    "source": null,
+  },
+  Object {
+    "name": "terms_and_conditions_agreed",
+    "source": null,
+  },
+  Object {
+    "name": "created_at",
+    "source": null,
+  },
+  Object {
+    "name": "updated_at",
+    "source": null,
+  },
+  Object {
+    "name": "installation_id",
+    "source": null,
+  },
+  Object {
+    "name": "generation_tariff_id",
+    "source": null,
+  },
+  Object {
+    "name": "export_tariff_id",
+    "source": null,
+  },
+  Object {
+    "name": "source_system_id",
+    "source": null,
+  },
+  Object {
+    "name": "export_percentage_split",
+    "source": null,
+  },
+  Object {
+    "name": "generation_percentage_split",
+    "source": null,
+  },
+  Object {
+    "name": "contact_id",
+    "source": null,
+  },
+  Object {
+    "name": "account_id",
+    "source": null,
+  },
+  Object {
+    "name": "capacity",
+    "source": null,
+  },
+  Object {
+    "name": "start_on",
+    "source": null,
+  },
+  Object {
+    "name": "end_on",
+    "source": null,
+  },
+  Object {
+    "name": "export_type",
+    "source": null,
+  },
+]
+`;
+
 exports[`Inspect Should load completions for empty_column: SELECT all_types.‸empty_column FROM all_types: empty_column 1`] = `
 Array [
   Object {
@@ -941,6 +1029,119 @@ Array [
 ]
 `;
 
+exports[`Inspect Should load completions for select cast type: SELECT 'Active'::s‸t: select cast type 1`] = `
+Array [
+  Object {
+    "name": "account_levelisation_state",
+    "source": undefined,
+  },
+  Object {
+    "name": "account_payment_plans",
+    "source": undefined,
+  },
+  Object {
+    "name": "account_state",
+    "source": "Lifecycle of account",
+  },
+  Object {
+    "name": "contact_titles",
+    "source": undefined,
+  },
+  Object {
+    "name": "contract_scheme_types",
+    "source": undefined,
+  },
+  Object {
+    "name": "installation_export_type",
+    "source": undefined,
+  },
+  Object {
+    "name": "installation_property_type",
+    "source": undefined,
+  },
+  Object {
+    "name": "installation_technology_types",
+    "source": undefined,
+  },
+  Object {
+    "name": "installation_types",
+    "source": undefined,
+  },
+  Object {
+    "name": "issue_reference_type",
+    "source": undefined,
+  },
+  Object {
+    "name": "issue_state",
+    "source": undefined,
+  },
+  Object {
+    "name": "issue_type",
+    "source": undefined,
+  },
+  Object {
+    "name": "meter_reads_types",
+    "source": undefined,
+  },
+  Object {
+    "name": "meter_types",
+    "source": undefined,
+  },
+  Object {
+    "name": "payments_type",
+    "source": undefined,
+  },
+  Object {
+    "name": "process_item_status",
+    "source": undefined,
+  },
+  Object {
+    "name": "tariff_types",
+    "source": undefined,
+  },
+  Object {
+    "name": "inventory_item",
+    "source": undefined,
+  },
+  Object {
+    "name": "bool",
+    "source": "Native",
+  },
+  Object {
+    "name": "char",
+    "source": "Native",
+  },
+  Object {
+    "name": "varchar",
+    "source": "Native",
+  },
+  Object {
+    "name": "int",
+    "source": "Native",
+  },
+  Object {
+    "name": "decimal",
+    "source": "Native",
+  },
+  Object {
+    "name": "float",
+    "source": "Native",
+  },
+  Object {
+    "name": "serial",
+    "source": "Native",
+  },
+  Object {
+    "name": "timestamp",
+    "source": "Native",
+  },
+  Object {
+    "name": "time",
+    "source": "Native",
+  },
+]
+`;
+
 exports[`Inspect Should load completions for single column 1: SELECT all_types.i‸d FROM all_types: single column 1 1`] = `
 Array [
   Object {
@@ -1795,6 +1996,24 @@ Lifecycle of account
   "display": "state account_state",
   "end": 30,
   "start": 26,
+}
+`;
+
+exports[`Inspect Should load quick info for select cast type: SELECT 'Active'::ac‸count_state: select cast type 1`] = `
+Object {
+  "description": "Lifecycle of account
+
+---
+
+|Variants|
+|---|
+|Active|
+|Pending|
+|Dispute|
+|Closed|",
+  "display": "Enum",
+  "end": 29,
+  "start": 17,
 }
 `;
 

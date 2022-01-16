@@ -26,6 +26,15 @@ describe('Inspect', () => {
     ${`enum right`}         | ${`SELECT * FROM all_types WHERE all_types.state = 'A‸ctive'`}
     ${`enum left`}          | ${`SELECT * FROM all_types WHERE 'A‸ctive' = all_types.state`}
     ${`insert column`}      | ${`INSERT INTO all_types(id, sta‸te) VALUES (1, 'Active')`}
+    ${`select cast type`}   | ${`SELECT 'Active'::s‸t`}
+    ${`complex`} | ${`
+      SELECT * FROM accounts
+      JOIN contracts ON contracts.account_id = accounts.id
+      LEFT JOIN installations ON contracts.installation_id = installations.id
+      WHERE
+        (accounts.end_on IS NULL OR accounts.end_on >= $start)
+        AND accounts.state = ANY(ARRAY['Active', 'Pending Loss']::account_state[])
+        AND contracts.exp‸ort_type = ANY(ARRAY['Metered Export','Deemed']::installation_export_type)`}
   `(
     'Should load completions for $name: $sqlWithCaret',
     ({ name, sqlWithCaret }: { name: string; sqlWithCaret: string }) => {
@@ -48,6 +57,7 @@ describe('Inspect', () => {
     ${`enum left`}                | ${`SELECT * FROM all_types WHERE 'A‸ctive' = all_types.state`}
     ${`insert column`}            | ${`INSERT INTO all_types(id, sta‸te) VALUES (1, 'Active')`}
     ${`binary expression column`} | ${`SELECT * FROM all_types WHERE id = 1 AND stat‸e = 'Active'`}
+    ${`select cast type`}         | ${`SELECT 'Active'::ac‸count_state`}
   `(
     'Should load quick info for $name: $sqlWithCaret',
     ({ name, sqlWithCaret }: { name: string; sqlWithCaret: string }) => {

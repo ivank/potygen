@@ -1,4 +1,4 @@
-import { isDiffBy, identity, isUnique, isUniqueBy, chunk, groupBy, range } from '../src';
+import { isDiffBy, identity, isUnique, isUniqueBy, chunk, groupBy, range, findLastIndex } from '../src';
 
 describe('Util', () => {
   it.each<[string, string[], string[]]>([
@@ -22,6 +22,14 @@ describe('Util', () => {
     ['five starting two', [2, 5], [2, 3, 4]],
   ])('Should generate range for %s', (name, [start, end], expected) => {
     expect(range(start, end)).toEqual(expected);
+  });
+
+  it.each<[element: number, array: number[], expected: number]>([
+    [2, [0, 3], -1],
+    [2, [0, 2, 3], 1],
+    [2, [0, 2, 2, 3], 2],
+  ])('Should find last index of %s in %s as %s', (searchFor, array, expected) => {
+    expect(findLastIndex((item) => item === searchFor, array)).toEqual(expected);
   });
 
   it.each<[string, string[], Record<string, string[]>]>([
