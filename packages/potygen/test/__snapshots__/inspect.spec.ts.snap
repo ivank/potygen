@@ -2003,6 +2003,52 @@ Lifecycle of account
 }
 `;
 
+exports[`Inspect Should load quick info for join alias direct: SELECT * FROM all_types LEFT JOIN accounts AS a‸cc ON all_types.id = acc.id: join alias direct 1`] = `
+Object {
+  "description": "|Name|Type|
+|---|---|
+|id|**integer** \`NOT_NULL\`|
+|customer_id|**integer** \`NOT_NULL\`|
+|state|**account_state** \`NOT_NULL\`|
+|beneficiary_name|**character varying** \`NULL\`|
+|beneficiary_sort_code|**character varying** \`NULL\`|
+|beneficiary_account_number|**character varying** \`NULL\`|
+|payment_plan|**account_payment_plans** \`NULL\`|
+|payment_suspended|**boolean** \`NULL\`|
+|created_at|**timestamp** \`NOT_NULL\`|
+|updated_at|**timestamp** \`NULL\`|
+|source_system_id|**integer** \`NULL\`|
+|start_on|**date** \`NULL\`|
+|end_on|**date** \`NULL\`|",
+  "display": "accounts AS acc Table",
+  "end": 48,
+  "start": 43,
+}
+`;
+
+exports[`Inspect Should load quick info for join alias table: SELECT * FROM all_types JOIN accou‸nts AS acc ON all_types.id = acc.id: join alias table 1`] = `
+Object {
+  "description": "|Name|Type|
+|---|---|
+|id|**integer** \`NOT_NULL\`|
+|customer_id|**integer** \`NOT_NULL\`|
+|state|**account_state** \`NOT_NULL\`|
+|beneficiary_name|**character varying** \`NULL\`|
+|beneficiary_sort_code|**character varying** \`NULL\`|
+|beneficiary_account_number|**character varying** \`NULL\`|
+|payment_plan|**account_payment_plans** \`NULL\`|
+|payment_suspended|**boolean** \`NULL\`|
+|created_at|**timestamp** \`NOT_NULL\`|
+|updated_at|**timestamp** \`NULL\`|
+|source_system_id|**integer** \`NULL\`|
+|start_on|**date** \`NULL\`|
+|end_on|**date** \`NULL\`|",
+  "display": "accounts AS acc Table",
+  "end": 36,
+  "start": 29,
+}
+`;
+
 exports[`Inspect Should load quick info for select cast type: SELECT 'Active'::ac‸count_state: select cast type 1`] = `
 Object {
   "description": "Lifecycle of account
