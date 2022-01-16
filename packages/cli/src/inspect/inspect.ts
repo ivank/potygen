@@ -96,7 +96,7 @@ const closestPgCastPath = closestParentPath(isPgCast);
 
 const toPos = ({ start, end }: Tag): { start: number; end: number } => ({ start, end });
 
-const commonTypes = ['bool', 'char', 'varchar', 'int', 'decimal', 'float', 'serial', 'timestamp', 'time'];
+const commonTypes = ['bool', 'char', 'varchar', 'int', 'decimal', 'float', 'serial', 'date', 'timestamp', 'time'];
 
 const pathToInfo = (path: Path): Info | undefined => {
   const identifier = closestIdentifier(path);
