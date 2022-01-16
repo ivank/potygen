@@ -435,7 +435,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ikerin/rd-parse@npm:4.0.1, @ikerin/rd-parse@npm:^4.0.1":
+"@ikerin/rd-parse@npm:^4.0.1":
   version: 4.0.1
   resolution: "@ikerin/rd-parse@npm:4.0.1"
   checksum: 68c1c041f230f9b83b8df1f358b782088333a7d5679ab76a42bea94dfbff65ed130fc0c850a6b1eecde6aa6d7d9e0d998891a994bc7fc779f4bc795f567a9bad
@@ -677,28 +677,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@potygen/ast@workspace:*, @potygen/ast@workspace:packages/ast":
-  version: 0.0.0-use.local
-  resolution: "@potygen/ast@workspace:packages/ast"
-  dependencies:
-    "@ikerin/rd-parse": ^4.0.1
-    "@types/jest": ^26.0.14
-    "@types/node": ^14.17.15
-    jest: ^26.4.2
-    prettier: ^2.5.1
-    ts-jest: ^26.4.0
-    ts-node: ^10.1.0
-    typescript: ^4.4.3
-  languageName: unknown
-  linkType: soft
-
-"@potygen/cli@workspace:*, @potygen/cli@workspace:packages/cli":
+"@potygen/cli@workspace:packages/cli":
   version: 0.0.0-use.local
   resolution: "@potygen/cli@workspace:packages/cli"
   dependencies:
-    "@ikerin/rd-parse": 4.0.1
-    "@potygen/ast": "workspace:*"
-    "@potygen/query": "workspace:*"
+    "@potygen/potygen": "workspace:*"
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15
     "@types/pg": ^8.6.0
@@ -715,29 +698,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@potygen/prettier-plugin-pgsql@workspace:packages/prettier-plugin-pgsql":
+"@potygen/potygen@workspace:*, @potygen/potygen@workspace:packages/potygen":
   version: 0.0.0-use.local
-  resolution: "@potygen/prettier-plugin-pgsql@workspace:packages/prettier-plugin-pgsql"
+  resolution: "@potygen/potygen@workspace:packages/potygen"
   dependencies:
-    "@potygen/ast": "workspace:*"
-    "@types/jest": ^26.0.14
-    "@types/node": ^14.17.15
-    "@types/pg": ^8.6.1
-    "@types/prettier": ^2.4.2
-    jest: ^26.4.2
-    prettier: ^2.5.1
-    ts-jest: ^26.4.0
-    ts-node: ^10.1.0
-    typescript: ^4.4.3
-  languageName: unknown
-  linkType: soft
-
-"@potygen/query@workspace:*, @potygen/query@workspace:packages/query":
-  version: 0.0.0-use.local
-  resolution: "@potygen/query@workspace:packages/query"
-  dependencies:
-    "@ikerin/rd-parse": 4.0.1
-    "@potygen/ast": "workspace:*"
+    "@ikerin/rd-parse": ^4.0.1
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15
     "@types/pg": ^8.6.1
@@ -750,14 +715,28 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@potygen/prettier-plugin-pgsql@workspace:packages/prettier-plugin-pgsql":
+  version: 0.0.0-use.local
+  resolution: "@potygen/prettier-plugin-pgsql@workspace:packages/prettier-plugin-pgsql"
+  dependencies:
+    "@potygen/potygen": "workspace:*"
+    "@types/jest": ^26.0.14
+    "@types/node": ^14.17.15
+    "@types/pg": ^8.6.1
+    "@types/prettier": ^2.4.2
+    jest: ^26.4.2
+    prettier: ^2.5.1
+    ts-jest: ^26.4.0
+    ts-node: ^10.1.0
+    typescript: ^4.4.3
+  languageName: unknown
+  linkType: soft
+
 "@potygen/typescript-pgsql-plugin@workspace:packages/typescript-pgsql-plugin":
   version: 0.0.0-use.local
   resolution: "@potygen/typescript-pgsql-plugin@workspace:packages/typescript-pgsql-plugin"
   dependencies:
-    "@ikerin/rd-parse": ^4.0.1
-    "@potygen/ast": "workspace:*"
-    "@potygen/cli": "workspace:*"
-    "@potygen/query": "workspace:*"
+    "@potygen/potygen": "workspace:*"
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15
     "@types/pg": ^8.6.1

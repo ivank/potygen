@@ -5,9 +5,9 @@ import { connectionString, rootDir } from './helpers';
 
 describe('CLI', () => {
   beforeEach(() =>
-    readdirSync(join(__dirname, 'cli/__generated__'))
+    readdirSync(join(__dirname, '__generated__'))
       .filter((name) => name.endsWith('.ts'))
-      .forEach((name) => unlinkSync(join(__dirname, 'cli/__generated__', name))),
+      .forEach((name) => unlinkSync(join(__dirname, '__generated__', name))),
   );
 
   it('Should use cli to run pipeline on ts files', async () => {
@@ -21,21 +21,21 @@ describe('CLI', () => {
       '--files',
       'test/dir/**/*.ts',
       '--template',
-      'test/cli/__generated__/{{name}}.queries.ts',
+      'test/__generated__/{{name}}.queries.ts',
       '--connection',
       connectionString,
     ]);
 
     expect(logger.error).not.toHaveBeenCalled();
 
-    const resultQueries = readdirSync(join(__dirname, 'cli/__generated__'))
+    const resultQueries = readdirSync(join(__dirname, '__generated__'))
       .filter((item) => item.endsWith('.ts'))
       .sort();
 
     expect(resultQueries).toMatchSnapshot();
 
     for (const name of resultQueries) {
-      expect(readFileSync(join(__dirname, 'cli/__generated__', name), 'utf-8')).toMatchSnapshot(name);
+      expect(readFileSync(join(__dirname, '__generated__', name), 'utf-8')).toMatchSnapshot(name);
     }
   });
 
@@ -50,7 +50,7 @@ describe('CLI', () => {
       '--files',
       'test/dir/**/*.ts',
       '--template',
-      'test/cli/__generated__/{{name}}.queries.ts',
+      'test/__generated__/{{name}}.queries.ts',
       '--connection',
       connectionString,
       '--typePrefix',
@@ -59,14 +59,14 @@ describe('CLI', () => {
 
     expect(logger.error).not.toHaveBeenCalled();
 
-    const resultQueries = readdirSync(join(__dirname, 'cli/__generated__'))
+    const resultQueries = readdirSync(join(__dirname, '__generated__'))
       .filter((item) => item.endsWith('.ts'))
       .sort();
 
     expect(resultQueries).toMatchSnapshot();
 
     for (const name of resultQueries) {
-      expect(readFileSync(join(__dirname, 'cli/__generated__', name), 'utf-8')).toMatchSnapshot(name);
+      expect(readFileSync(join(__dirname, '__generated__', name), 'utf-8')).toMatchSnapshot(name);
     }
   });
 
@@ -81,21 +81,21 @@ describe('CLI', () => {
       '--files',
       'sql/*.sql',
       '--template',
-      '{{root}}/packages/cli/test/cli/__generated__/{{name}}.queries.ts',
+      '{{root}}/packages/cli/test/__generated__/{{name}}.queries.ts',
       '--connection',
       connectionString,
     ]);
 
     expect(logger.error).not.toHaveBeenCalled();
 
-    const resultQueries = readdirSync(join(__dirname, 'cli/__generated__'))
+    const resultQueries = readdirSync(join(__dirname, '__generated__'))
       .filter((item) => item.endsWith('.ts'))
       .sort();
 
     expect(resultQueries).toMatchSnapshot();
 
     for (const name of resultQueries) {
-      expect(readFileSync(join(__dirname, 'cli/__generated__', name), 'utf-8')).toMatchSnapshot(name);
+      expect(readFileSync(join(__dirname, '__generated__', name), 'utf-8')).toMatchSnapshot(name);
     }
   });
 });

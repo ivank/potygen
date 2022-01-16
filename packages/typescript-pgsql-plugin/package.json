@@ -1,13 +1,12 @@
 {
   "name": "@potygen/typescript-pgsql-plugin",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "homepage": "https://github.com/ivank/potygen/tree/main/packages/typescript-pgsql-plugin",
-  "description": "VSCode plugin for intelisence and code completion for postgres SQL. Uses potygen for AST",
+  "description": "Typescript plugin for intelisence and code completion for postgres SQL in template literals.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@potygen/query": "workspace:*",
     "@types/jest": "^26.0.14",
     "@types/node": "^14.17.15",
     "@types/pg": "^8.6.1",
@@ -17,10 +16,7 @@
     "ts-node": "^10.1.0"
   },
   "dependencies": {
-    "@ikerin/rd-parse": "^4.0.1",
-    "@potygen/ast": "workspace:*",
-    "@potygen/cli": "workspace:*",
-    "@potygen/query": "workspace:*",
+    "@potygen/potygen": "workspace:*",
     "pg": "^8.6.0",
     "typescript": "^4.4.3",
     "typescript-template-language-service-decorator": "^2.2.0"

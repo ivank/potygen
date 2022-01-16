@@ -17,8 +17,9 @@ import {
   TypeLiteralNode,
   addSyntheticLeadingComment,
 } from 'typescript';
-import { LoadedFile, LoadedQueryInterface } from './types';
 import {
+  LoadedFile,
+  LoadedQueryInterface,
   isTypeArrayConstant,
   isTypeUnionConstant,
   TypeConstant,
@@ -26,9 +27,9 @@ import {
   isTypeLiteral,
   isTypeEqual,
   isTypeCompositeConstant,
-} from '@potygen/query';
-import { isUniqueBy } from '@potygen/ast';
-import { isTypeOptionalConstant } from '@potygen/query/dist/query-interface.guards';
+  isUniqueBy,
+  isTypeOptionalConstant,
+} from '@potygen/potygen';
 
 const mkdirAsync = promisify(mkdir);
 const writeFileAsync = promisify(writeFile);

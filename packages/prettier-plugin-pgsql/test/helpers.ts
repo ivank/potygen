@@ -1,6 +1,6 @@
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
-import { parser } from '@potygen/ast';
+import { parser } from '@potygen/potygen';
 
 export const withParserErrors = (cb: () => void): void => {
   try {

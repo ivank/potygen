@@ -1,8 +1,8 @@
 import { Logger } from 'typescript-template-language-service-decorator';
-import { Logger as CliLogger } from '@potygen/cli';
+import { Logger as PotygenLogger } from '@potygen/potygen';
 import { server } from 'typescript/lib/tsserverlibrary';
 
-export class LanguageServiceLogger implements Logger, CliLogger {
+export class LanguageServiceLogger implements Logger, PotygenLogger {
   constructor(private readonly projectInfo: ts.server.PluginCreateInfo) {}
 
   public log(msg: string) {

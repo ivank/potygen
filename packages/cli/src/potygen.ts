@@ -1,12 +1,11 @@
-import { Command, createCommand } from 'commander';
-import { Logger } from './types';
-import { QueryLoader, SqlRead } from './traverse';
-import { Client } from 'pg';
-import { inspect, promisify } from 'util';
-import { pipeline } from 'stream';
+import { Logger } from '@potygen/potygen';
 import { existsSync, readFileSync } from 'fs';
-import { ConfigType } from './config';
-import { toConfig } from '.';
+import { inspect, promisify } from 'util';
+import { Client } from 'pg';
+import { pipeline } from 'stream';
+import { Command, createCommand } from 'commander';
+import { QueryLoader, SqlRead } from './traverse';
+import { ConfigType, toConfig } from './config';
 
 const asyncPipeline = promisify(pipeline);
 

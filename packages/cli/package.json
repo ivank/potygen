@@ -1,6 +1,6 @@
 {
   "name": "@potygen/cli",
-  "version": "0.3.24",
+  "version": "0.4.0",
   "homepage": "https://github.com/ivank/potygen/tree/main/packages/cli",
   "description": "Command line interface for potygen (Postgres Typescript Generator)",
   "main": "dist/index.js",
@@ -19,9 +19,7 @@
     "potygen": "./scripts/potygen"
   },
   "dependencies": {
-    "@ikerin/rd-parse": "4.0.1",
-    "@potygen/ast": "workspace:*",
-    "@potygen/query": "workspace:*",
+    "@potygen/potygen": "workspace:*",
     "@types/pg": "^8.6.0",
     "commander": "^8.3.0",
     "pg": "^8.6.0",

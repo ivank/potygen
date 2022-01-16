@@ -1,5 +1,4 @@
 import {
-  ConfigType,
   LoadedData,
   loadAllData,
   completionAtOffset,
@@ -7,7 +6,7 @@ import {
   toInfoContext,
   quickInfoAtOffset,
   inspectError,
-} from '@potygen/cli';
+} from '@potygen/potygen';
 import { Client } from 'pg';
 import { TemplateContext, TemplateLanguageService } from 'typescript-template-language-service-decorator';
 import * as tss from 'typescript/lib/tsserverlibrary';
@@ -28,9 +27,9 @@ export class PotygenTemplateLanguageService implements TemplateLanguageService {
   public data: LoadedData[] = [];
   public ctx: InfoContext;
 
-  constructor(private readonly ts: typeof tss, readonly config: ConfigType, readonly logger: LanguageServiceLogger) {
+  constructor(private readonly ts: typeof tss, readonly connection: string, readonly logger: LanguageServiceLogger) {
     this.ctx = toInfoContext([], logger);
-    loadData(logger, config.connection).then((data) => (this.ctx.data = data));
+    loadData(logger, connection).then((data) => (this.ctx.data = data));
   }
 
   getCompletionsAtPosition(context: TemplateContext, position: tss.LineAndCharacter): tss.CompletionInfo {
