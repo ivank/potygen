@@ -1,8 +1,8 @@
-import { Cache } from '../src';
+import { LRUCache } from '../src';
 
 describe('Cache', () => {
   it('Should have a last resource utilized cache', () => {
-    const cache = new Cache<string, number>(4);
+    const cache = new LRUCache<string, number>(4);
 
     cache.set('one', 1);
     cache.set('two', 2);
