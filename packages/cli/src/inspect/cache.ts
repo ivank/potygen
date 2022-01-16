@@ -1,3 +1,5 @@
+import { Cache } from '../types';
+
 class Node<TKey, TValue> {
   constructor(
     public key: TKey,
@@ -11,7 +13,7 @@ class Node<TKey, TValue> {
  * A very simple Least Recently Used cache,
  * Inspired by https://medium.com/dsinjs/implementing-lru-cache-in-javascript-94ba6755cda9
  */
-export class Cache<TKey, TValue> {
+export class LRUCache<TKey, TValue> implements Cache<TKey, TValue> {
   private size = 0;
   private head?: Node<TKey, TValue>;
   private tail?: Node<TKey, TValue>;

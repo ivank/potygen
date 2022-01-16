@@ -412,34 +412,10 @@ Array [
     "name": "Active",
   },
   Object {
-    "name": "Active",
-  },
-  Object {
-    "name": "Active",
-  },
-  Object {
-    "name": "Pending",
-  },
-  Object {
-    "name": "Pending",
-  },
-  Object {
     "name": "Pending",
   },
   Object {
     "name": "Dispute",
-  },
-  Object {
-    "name": "Dispute",
-  },
-  Object {
-    "name": "Dispute",
-  },
-  Object {
-    "name": "Closed",
-  },
-  Object {
-    "name": "Closed",
   },
   Object {
     "name": "Closed",
@@ -453,25 +429,7 @@ Array [
     "name": "Active",
   },
   Object {
-    "name": "Active",
-  },
-  Object {
-    "name": "Active",
-  },
-  Object {
     "name": "Pending",
-  },
-  Object {
-    "name": "Pending",
-  },
-  Object {
-    "name": "Pending",
-  },
-  Object {
-    "name": "Dispute",
-  },
-  Object {
-    "name": "Dispute",
   },
   Object {
     "name": "Dispute",
@@ -479,11 +437,199 @@ Array [
   Object {
     "name": "Closed",
   },
+]
+`;
+
+exports[`Inspect Should load completions for insert column: INSERT INTO all_types(id, sta‸te) VALUES (1, 'Active'): insert column 1`] = `
+Array [
   Object {
-    "name": "Closed",
+    "name": "id",
+    "source": null,
   },
   Object {
-    "name": "Closed",
+    "name": "not_null",
+    "source": "This column should never be null",
+  },
+  Object {
+    "name": "default_not_null",
+    "source": null,
+  },
+  Object {
+    "name": "bigint_col",
+    "source": null,
+  },
+  Object {
+    "name": "bigserial_col",
+    "source": null,
+  },
+  Object {
+    "name": "bit_col",
+    "source": null,
+  },
+  Object {
+    "name": "bit_varying_col",
+    "source": null,
+  },
+  Object {
+    "name": "boolean_col",
+    "source": null,
+  },
+  Object {
+    "name": "box_col",
+    "source": null,
+  },
+  Object {
+    "name": "bytea_col",
+    "source": null,
+  },
+  Object {
+    "name": "character_col",
+    "source": null,
+  },
+  Object {
+    "name": "character_varying_col",
+    "source": null,
+  },
+  Object {
+    "name": "cidr_col",
+    "source": null,
+  },
+  Object {
+    "name": "circle_col",
+    "source": null,
+  },
+  Object {
+    "name": "date_col",
+    "source": null,
+  },
+  Object {
+    "name": "double_col",
+    "source": null,
+  },
+  Object {
+    "name": "inet_col",
+    "source": null,
+  },
+  Object {
+    "name": "integer_col",
+    "source": null,
+  },
+  Object {
+    "name": "interval_col",
+    "source": null,
+  },
+  Object {
+    "name": "json_col",
+    "source": null,
+  },
+  Object {
+    "name": "jsonb_col",
+    "source": null,
+  },
+  Object {
+    "name": "line_col",
+    "source": null,
+  },
+  Object {
+    "name": "lseg_col",
+    "source": null,
+  },
+  Object {
+    "name": "macaddr_col",
+    "source": null,
+  },
+  Object {
+    "name": "money_col",
+    "source": null,
+  },
+  Object {
+    "name": "numeric_col",
+    "source": null,
+  },
+  Object {
+    "name": "path_col",
+    "source": null,
+  },
+  Object {
+    "name": "pg_lsn_col",
+    "source": null,
+  },
+  Object {
+    "name": "point_col",
+    "source": null,
+  },
+  Object {
+    "name": "polygon_col",
+    "source": null,
+  },
+  Object {
+    "name": "real_col",
+    "source": null,
+  },
+  Object {
+    "name": "smallint_col",
+    "source": null,
+  },
+  Object {
+    "name": "smallserial_col",
+    "source": null,
+  },
+  Object {
+    "name": "serial_col",
+    "source": null,
+  },
+  Object {
+    "name": "text_col",
+    "source": null,
+  },
+  Object {
+    "name": "time_col",
+    "source": null,
+  },
+  Object {
+    "name": "time_with_time_zone_col",
+    "source": null,
+  },
+  Object {
+    "name": "timestamp_col",
+    "source": null,
+  },
+  Object {
+    "name": "timestamp_with_time_zone_col",
+    "source": null,
+  },
+  Object {
+    "name": "tsquery_col",
+    "source": null,
+  },
+  Object {
+    "name": "tsvector_col",
+    "source": null,
+  },
+  Object {
+    "name": "txid_snapshot_col",
+    "source": null,
+  },
+  Object {
+    "name": "uuid_col",
+    "source": null,
+  },
+  Object {
+    "name": "xml_col",
+    "source": null,
+  },
+  Object {
+    "name": "item",
+    "source": undefined,
+  },
+  Object {
+    "name": "state",
+    "source": "
+  This column is an enum.
+  It also contains several lines:
+    - line1
+    - line2
+",
   },
 ]
 `;
@@ -610,6 +756,10 @@ Array [
   Object {
     "name": "DateDisputeEnd",
     "source": null,
+  },
+  Object {
+    "name": "FiTAccount",
+    "source": "Table",
   },
 ]
 `;
@@ -1260,6 +1410,270 @@ Array [
 ]
 `;
 
+exports[`Inspect Should load completions for tables and columns: SELECT i‸d FROM all_types JOIN accounts ON all_types.id = accounts.id: tables and columns 1`] = `
+Array [
+  Object {
+    "name": "not_null",
+    "source": "This column should never be null",
+  },
+  Object {
+    "name": "default_not_null",
+    "source": null,
+  },
+  Object {
+    "name": "bigint_col",
+    "source": null,
+  },
+  Object {
+    "name": "bigserial_col",
+    "source": null,
+  },
+  Object {
+    "name": "bit_col",
+    "source": null,
+  },
+  Object {
+    "name": "bit_varying_col",
+    "source": null,
+  },
+  Object {
+    "name": "boolean_col",
+    "source": null,
+  },
+  Object {
+    "name": "box_col",
+    "source": null,
+  },
+  Object {
+    "name": "bytea_col",
+    "source": null,
+  },
+  Object {
+    "name": "character_col",
+    "source": null,
+  },
+  Object {
+    "name": "character_varying_col",
+    "source": null,
+  },
+  Object {
+    "name": "cidr_col",
+    "source": null,
+  },
+  Object {
+    "name": "circle_col",
+    "source": null,
+  },
+  Object {
+    "name": "date_col",
+    "source": null,
+  },
+  Object {
+    "name": "double_col",
+    "source": null,
+  },
+  Object {
+    "name": "inet_col",
+    "source": null,
+  },
+  Object {
+    "name": "integer_col",
+    "source": null,
+  },
+  Object {
+    "name": "interval_col",
+    "source": null,
+  },
+  Object {
+    "name": "json_col",
+    "source": null,
+  },
+  Object {
+    "name": "jsonb_col",
+    "source": null,
+  },
+  Object {
+    "name": "line_col",
+    "source": null,
+  },
+  Object {
+    "name": "lseg_col",
+    "source": null,
+  },
+  Object {
+    "name": "macaddr_col",
+    "source": null,
+  },
+  Object {
+    "name": "money_col",
+    "source": null,
+  },
+  Object {
+    "name": "numeric_col",
+    "source": null,
+  },
+  Object {
+    "name": "path_col",
+    "source": null,
+  },
+  Object {
+    "name": "pg_lsn_col",
+    "source": null,
+  },
+  Object {
+    "name": "point_col",
+    "source": null,
+  },
+  Object {
+    "name": "polygon_col",
+    "source": null,
+  },
+  Object {
+    "name": "real_col",
+    "source": null,
+  },
+  Object {
+    "name": "smallint_col",
+    "source": null,
+  },
+  Object {
+    "name": "smallserial_col",
+    "source": null,
+  },
+  Object {
+    "name": "serial_col",
+    "source": null,
+  },
+  Object {
+    "name": "text_col",
+    "source": null,
+  },
+  Object {
+    "name": "time_col",
+    "source": null,
+  },
+  Object {
+    "name": "time_with_time_zone_col",
+    "source": null,
+  },
+  Object {
+    "name": "timestamp_col",
+    "source": null,
+  },
+  Object {
+    "name": "timestamp_with_time_zone_col",
+    "source": null,
+  },
+  Object {
+    "name": "tsquery_col",
+    "source": null,
+  },
+  Object {
+    "name": "tsvector_col",
+    "source": null,
+  },
+  Object {
+    "name": "txid_snapshot_col",
+    "source": null,
+  },
+  Object {
+    "name": "uuid_col",
+    "source": null,
+  },
+  Object {
+    "name": "xml_col",
+    "source": null,
+  },
+  Object {
+    "name": "item",
+    "source": undefined,
+  },
+  Object {
+    "name": "customer_id",
+    "source": null,
+  },
+  Object {
+    "name": "beneficiary_name",
+    "source": null,
+  },
+  Object {
+    "name": "beneficiary_sort_code",
+    "source": null,
+  },
+  Object {
+    "name": "beneficiary_account_number",
+    "source": null,
+  },
+  Object {
+    "name": "payment_plan",
+    "source": null,
+  },
+  Object {
+    "name": "payment_suspended",
+    "source": null,
+  },
+  Object {
+    "name": "created_at",
+    "source": null,
+  },
+  Object {
+    "name": "updated_at",
+    "source": null,
+  },
+  Object {
+    "name": "source_system_id",
+    "source": null,
+  },
+  Object {
+    "name": "start_on",
+    "source": null,
+  },
+  Object {
+    "name": "end_on",
+    "source": null,
+  },
+  Object {
+    "name": "all_types",
+    "source": "Table",
+  },
+  Object {
+    "name": "accounts",
+    "source": "Table",
+  },
+]
+`;
+
+exports[`Inspect Should load quick info for binary expression column: SELECT * FROM all_types WHERE id = 1 AND stat‸e = 'Active': binary expression column 1`] = `
+Object {
+  "description": "From: all_types Table
+
+---
+
+
+  This column is an enum.
+  It also contains several lines:
+    - line1
+    - line2
+
+
+---
+
+Lifecycle of account
+
+---
+
+|Variants|
+|---|
+|Active|
+|Pending|
+|Dispute|
+|Closed|",
+  "display": "state account_state",
+  "end": 45,
+  "start": 41,
+}
+`;
+
 exports[`Inspect Should load quick info for column: SELECT all_types.i‸d FROM all_types: column 1`] = `
 Object {
   "description": "From: all_types Table",
@@ -1350,6 +1764,37 @@ Lifecycle of account
   "display": "state account_state",
   "end": 21,
   "start": 17,
+}
+`;
+
+exports[`Inspect Should load quick info for insert column: INSERT INTO all_types(id, sta‸te) VALUES (1, 'Active'): insert column 1`] = `
+Object {
+  "description": "From: all_types Table
+
+---
+
+
+  This column is an enum.
+  It also contains several lines:
+    - line1
+    - line2
+
+
+---
+
+Lifecycle of account
+
+---
+
+|Variants|
+|---|
+|Active|
+|Pending|
+|Dispute|
+|Closed|",
+  "display": "state account_state",
+  "end": 30,
+  "start": 26,
 }
 `;
 

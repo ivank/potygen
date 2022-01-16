@@ -2,7 +2,6 @@ import { AstTag, Tag } from '@potygen/ast';
 import { QueryInterface, Source, TypeConstant, TypeUnionConstant } from '@potygen/query';
 import { ClientBase } from 'pg';
 import { SourceFile } from 'typescript';
-import { Cache } from './cache';
 
 export interface QualifiedName {
   schema: string;
@@ -213,6 +212,11 @@ export interface InspectError {
 export interface InfoLoadedQuery {
   ast: AstTag;
   query: LoadedContext;
+}
+
+export interface Cache<TKey, TValue> {
+  set(key: TKey, value: TValue): TValue;
+  get(key: TKey): TValue | undefined;
 }
 
 export interface InfoContext {

@@ -1,13 +1,18 @@
 import {
   AstTag,
   first,
+  groupBy,
   isBinaryExpression,
   isColumn,
+  isColumns,
   isIdentifier,
+  isInsert,
   isQualifiedIdentifier,
   isSetItem,
   isString,
   isTable,
+  isUnique,
+  last,
   parser,
   partialParser,
   Tag,
@@ -15,7 +20,7 @@ import {
 import { toQueryInterface } from '@potygen/query';
 import { markTextError, ParserError } from '@ikerin/rd-parse';
 import { closestParent, closestParentPath, toPath } from './path';
-import { Cache } from './cache';
+import { LRUCache } from './cache';
 import {
   LoadedData,
   Logger,
@@ -27,12 +32,12 @@ import {
   QuickInfo,
   InspectError,
   LoadedSource,
-} from './types';
-import { toLoadedContext, filterUnknownLoadedContext, throwOnUnknownLoadedContext } from './load';
-import { isLoadedDataTable, isLoadedDataComposite, isLoadedDataEnum, isLoadedDataView } from './guards';
+} from '../types';
+import { toLoadedContext, filterUnknownLoadedContext, throwOnUnknownLoadedContext } from '../load';
+import { isLoadedDataTable, isLoadedDataComposite, isLoadedDataEnum, isLoadedDataView } from '../guards';
 import { inspect } from 'util';
 import { quickInfoColumn, quickInfoEnum, quickInfoSource, quickInfoTable, quickInfoView } from './formatters';
-import { LoadError } from './errors';
+import { LoadError } from '../errors';
 
 interface InfoBase {
   type: string;
@@ -80,6 +85,8 @@ const closestSetItem = closestParent(isSetItem);
 const closestQualifiedIdentifierPath = closestParentPath(isQualifiedIdentifier);
 const closestBinaryExpressionPath = closestParentPath(isBinaryExpression);
 const closestString = closestParent(isString);
+const closestColumns = closestParent(isColumns);
+const closestInsert = closestParent(isInsert);
 
 const toPos = ({ start, end }: Tag): { start: number; end: number } => ({ start, end });
 
@@ -109,6 +116,21 @@ const pathToInfo = (path: Path): Info | undefined => {
           source: parts[1].value,
           name: parts[2].value,
           ...toPos(parts[2]),
+        };
+      }
+    }
+
+    const columns = closestColumns(path);
+    if (columns) {
+      const insert = closestInsert(path);
+      const table = insert?.values.find(isTable);
+      if (insert && table) {
+        return {
+          type: 'Column',
+          schema: table.values[0].values.length === 2 ? table.values[0].values[0].value : undefined,
+          source: last(table.values[0].values).value,
+          name: identifier.value,
+          ...toPos(identifier),
         };
       }
     }
@@ -184,7 +206,7 @@ const toLoadedInfo = (ctx: InfoContext, sql: string, offset: number): LoadedInfo
 export const toInfoContext = (data: LoadedData[], logger: Logger): InfoContext => ({
   data,
   logger,
-  cache: new Cache<string, InfoLoadedQuery>(),
+  cache: new LRUCache<string, InfoLoadedQuery>(),
 });
 
 const toNamedData = <T extends LoadedData>(
@@ -200,6 +222,11 @@ const toNamedSource = (query: LoadedContext, name: { source?: string; name: stri
   name.source
     ? query.sources.find((source) => source.name === name.source)
     : query.sources.find((source) => name.name in source.items);
+
+const removeAmbiguousColumns = (items: Array<CompletionEntry>): Array<CompletionEntry> =>
+  Object.entries(groupBy(({ name }) => name, items))
+    .filter(([_, items]) => items.length === 1)
+    .map(([_, items]) => items[0]);
 
 export const completionAtOffset = (ctx: InfoContext, sql: string, offset: number): CompletionEntry[] | undefined => {
   const loadedInfo = toLoadedInfo(ctx, sql, offset);
@@ -219,13 +246,20 @@ export const completionAtOffset = (ctx: InfoContext, sql: string, offset: number
       const dataEnum = first(
         toNamedData(ctx, isLoadedDataEnum, { schema: info.column.schema, name: column?.postgresType }),
       );
-      return dataEnum?.data.map((name) => ({ name }));
+      return dataEnum?.data.filter(isUnique()).map((name) => ({ name }));
     case 'Column':
-      return (
-        info.source
-          ? Object.entries(query.sources.find((source) => source.name === info.source)?.items ?? {})
-          : query.sources.flatMap((source) => Object.entries(source.items))
-      ).map(([name, type]) => ({ name, source: type.comment }));
+      return info.source
+        ? Object.entries(query.sources.find((source) => source.name === info.source)?.items ?? {}).map(
+            ([name, type]) => ({ name, source: type.comment }),
+          )
+        : [
+            ...removeAmbiguousColumns(
+              query.sources
+                .flatMap((source) => Object.entries(source.items))
+                .map(([name, type]) => ({ name, source: type.comment })),
+            ),
+            ...query.sources.map(({ name }) => ({ name: name, source: 'Table' })),
+          ];
     case 'Source':
       return query.sources
         .map((source) => ({ name: source.name }))

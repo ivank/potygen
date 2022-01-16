@@ -1,5 +1,5 @@
 import { Tag, isNode, SqlTag } from '@potygen/ast';
-import { PathItem, Path } from './types';
+import { PathItem, Path } from '../types';
 
 const isItem =
   <T extends Tag>(predicate: (tag: SqlTag) => tag is T) =>

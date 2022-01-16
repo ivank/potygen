@@ -6,8 +6,8 @@ import {
   InfoContext,
   toInfoContext,
   quickInfoAtOffset,
+  inspectError,
 } from '@potygen/cli';
-import { inspectError } from '@potygen/cli/dist/inspect';
 import { Client } from 'pg';
 import { TemplateContext, TemplateLanguageService } from 'typescript-template-language-service-decorator';
 import * as tss from 'typescript/lib/tsserverlibrary';
