@@ -256,6 +256,7 @@ export {
   tail,
   toMilliseconds,
   range,
+  findLastIndex,
 } from './util';
 
 export { Grammar } from './grammar';

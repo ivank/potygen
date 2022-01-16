@@ -1,4 +1,4 @@
-import { Tag, isNode, SqlTag } from '@potygen/ast';
+import { Tag, isNode, SqlTag, findLastIndex } from '@potygen/ast';
 import { PathItem, Path } from '../types';
 
 const isItem =
@@ -18,7 +18,7 @@ export const closestParentPath =
 
 export const toPath = (tag: Tag, offset: number, path: Path = []): Path | undefined => {
   if (isNode(tag)) {
-    const index = (tag.values as Tag[]).findIndex((item) => offset >= item.start && offset <= item.end + 1);
+    const index = findLastIndex<Tag>((item) => offset >= item.start && offset <= item.end + 1, tag.values);
 
     if (index !== -1) {
       return toPath(tag.values[index], offset, [{ tag, index }, ...path]);

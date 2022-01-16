@@ -156,3 +156,16 @@ export const isEqual = (a: unknown, b: unknown): boolean => {
   }
   return false;
 };
+
+/**
+ * Reverse of findIndex
+ */
+export const findLastIndex = <T>(predicate: (value: T) => boolean, array: T[]): number => {
+  let index = array.length;
+  while (index--) {
+    if (predicate(array[index])) {
+      return index;
+    }
+  }
+  return -1;
+};
