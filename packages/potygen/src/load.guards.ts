@@ -1,3 +1,4 @@
+import { LoadedSourceTable, LoadedSourceValues, LoadedSourceView } from '.';
 import {
   Data,
   DataEnum,
@@ -30,6 +31,9 @@ export const isLoadedDataComposite = (item: LoadedData): item is LoadedDataCompo
 export const isDataViewRaw = (item: LoadedDataRaw): item is DataViewRaw => item.type === 'View';
 export const isNotDataViewRaw = (item: LoadedDataRaw): item is LoadedDataSimple => item.type !== 'View';
 
+export const isLoadedSourceView = (item: LoadedSource): item is LoadedSourceView => item.type === 'View';
+export const isLoadedSourceTable = (item: LoadedSource): item is LoadedSourceTable => item.type === 'Table';
+export const isLoadedSourceValues = (item: LoadedSource): item is LoadedSourceValues => item.type === 'Values';
 export const isLoadedSource = (item: LoadedSourceWithUnknown): item is LoadedSource => item.type !== 'Unknown';
 export const isLoadedSourceUnknown = (item: LoadedSourceWithUnknown): item is LoadedSourceUnknown =>
   item.type === 'Unknown';

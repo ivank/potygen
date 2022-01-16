@@ -421,6 +421,11 @@ export {
   isLoadedDataEnum,
   isLoadedDataView,
   isLoadedDataComposite,
+  isLoadedSourceView,
+  isLoadedSourceTable,
+  isLoadedSourceValues,
+  isLoadedSource,
+  isLoadedSourceUnknown,
 } from './load.guards';
 
 export {

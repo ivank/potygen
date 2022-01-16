@@ -55,6 +55,8 @@ describe('Inspect', () => {
     ${`composite`}                | ${`SELECT all_types.it‸em FROM all_types`}
     ${`enum right`}               | ${`SELECT * FROM all_types WHERE all_types.state = 'A‸ctive'`}
     ${`enum left`}                | ${`SELECT * FROM all_types WHERE 'A‸ctive' = all_types.state`}
+    ${`join alias table`}         | ${`SELECT * FROM all_types JOIN accou‸nts AS acc ON all_types.id = acc.id`}
+    ${`join alias direct`}        | ${`SELECT * FROM all_types LEFT JOIN accounts AS a‸cc ON all_types.id = acc.id`}
     ${`insert column`}            | ${`INSERT INTO all_types(id, sta‸te) VALUES (1, 'Active')`}
     ${`binary expression column`} | ${`SELECT * FROM all_types WHERE id = 1 AND stat‸e = 'Active'`}
     ${`select cast type`}         | ${`SELECT 'Active'::ac‸count_state`}

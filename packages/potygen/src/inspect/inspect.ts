@@ -1,20 +1,8 @@
 import { parser, partialParser } from '../grammar';
-import {
-  isBinaryExpression,
-  isColumn,
-  isColumns,
-  isIdentifier,
-  isInsert,
-  isPgCast,
-  isQualifiedIdentifier,
-  isSetItem,
-  isString,
-  isTable,
-} from '../grammar.guards';
-import { first, groupBy, isUnique, last } from '../util';
+import { first, groupBy, isUnique } from '../util';
 import { toQueryInterface } from '../query-interface';
 import { markTextError, ParserError } from '@ikerin/rd-parse';
-import { closestParent, closestParentPath, toPath } from './path';
+import { toPath } from './path';
 import { LRUCache } from './cache';
 import {
   LoadedData,
@@ -33,43 +21,9 @@ import { isLoadedDataTable, isLoadedDataComposite, isLoadedDataEnum, isLoadedDat
 import { inspect } from 'util';
 import { quickInfoColumn, quickInfoEnum, quickInfoSource, quickInfoTable, quickInfoView } from './formatters';
 import { LoadError } from '../errors';
-import { AstTag, Tag } from '../grammar.types';
-
-interface InfoBase {
-  type: string;
-  start: number;
-  end: number;
-}
-
-interface InfoColumn extends InfoBase {
-  type: 'Column';
-  name: string;
-  source?: string;
-  schema?: string;
-}
-interface InfoEnumVariant extends InfoBase {
-  type: 'EnumVariant';
-  column: InfoColumn;
-}
-interface InfoSource extends InfoBase {
-  type: 'Source';
-  name: string;
-  schema?: string;
-}
-interface InfoTable extends InfoBase {
-  type: 'Table';
-  name: string;
-  schema?: string;
-}
-interface InfoSchema extends InfoBase {
-  name: string;
-  type: 'Schema';
-}
-interface InfoCast extends InfoBase {
-  name: string;
-  type: 'Cast';
-}
-type Info = InfoColumn | InfoSource | InfoSchema | InfoTable | InfoEnumVariant | InfoCast;
+import { AstTag } from '../grammar.types';
+import { Info, pathToInfo } from './info';
+import { isLoadedSourceTable, isLoadedSourceView } from '..';
 
 interface LoadedInfo {
   info: Info;
@@ -78,112 +32,7 @@ interface LoadedInfo {
   query: LoadedContext;
 }
 
-const closestIdentifier = closestParent(isIdentifier);
-const closestColumnPath = closestParentPath(isColumn);
-const closestTable = closestParent(isTable);
-const closestSetItem = closestParent(isSetItem);
-const closestQualifiedIdentifierPath = closestParentPath(isQualifiedIdentifier);
-const closestBinaryExpressionPath = closestParentPath(isBinaryExpression);
-const closestString = closestParent(isString);
-const closestColumns = closestParent(isColumns);
-const closestInsert = closestParent(isInsert);
-const closestPgCastPath = closestParentPath(isPgCast);
-
-const toPos = ({ start, end }: Tag): { start: number; end: number } => ({ start, end });
-
 const commonTypes = ['bool', 'char', 'varchar', 'int', 'decimal', 'float', 'serial', 'date', 'timestamp', 'time'];
-
-const pathToInfo = (path: Path): Info | undefined => {
-  const identifier = closestIdentifier(path);
-
-  if (identifier) {
-    const parentColumnPath = closestColumnPath(path);
-    if (parentColumnPath) {
-      const index = parentColumnPath.index;
-      const parts = parentColumnPath.tag.values;
-
-      if (parts.length === 1 && index === 0) {
-        return { type: 'Column', name: parts[0].value, ...toPos(parts[0]) };
-      } else if (parts.length === 2 && index === 0) {
-        return { type: 'Source', name: parts[0].value, ...toPos(parts[0]) };
-      } else if (parts.length === 2 && index === 1) {
-        return { type: 'Column', source: parts[0].value, name: parts[1].value, ...toPos(parts[1]) };
-      } else if (parts.length === 3 && index === 0) {
-        return { type: 'Schema', name: parts[0].value, ...toPos(parts[0]) };
-      } else if (parts.length === 3 && index === 1) {
-        return { type: 'Source', schema: parts[0].value, name: parts[1].value, ...toPos(parts[1]) };
-      } else if (parts.length === 3 && index === 2) {
-        return {
-          type: 'Column',
-          schema: parts[0].value,
-          source: parts[1].value,
-          name: parts[2].value,
-          ...toPos(parts[2]),
-        };
-      }
-    }
-
-    const columns = closestColumns(path);
-    if (columns) {
-      const insert = closestInsert(path);
-      const table = insert?.values.find(isTable);
-      if (insert && table) {
-        return {
-          type: 'Column',
-          schema: table.values[0].values.length === 2 ? table.values[0].values[0].value : undefined,
-          source: last(table.values[0].values).value,
-          name: identifier.value,
-          ...toPos(identifier),
-        };
-      }
-    }
-
-    const setItem = closestSetItem(path);
-    if (setItem) {
-      return { type: 'Column', name: setItem.values[0].value, ...toPos(setItem.values[0]) };
-    }
-
-    const tablePath = closestTable(path);
-    const qualifedIdentifier = closestQualifiedIdentifierPath(path);
-    if (tablePath && qualifedIdentifier) {
-      const index = qualifedIdentifier.index;
-      const parts = qualifedIdentifier.tag.values;
-
-      if (parts.length === 1 && index === 0) {
-        return { type: 'Table', name: parts[0].value, ...toPos(parts[0]) };
-      } else if (parts.length === 2 && index === 0) {
-        return { type: 'Schema', name: parts[0].value, ...toPos(parts[0]) };
-      } else if (parts.length === 2 && index === 1) {
-        return { type: 'Table', schema: parts[0].value, name: parts[1].value, ...toPos(parts[1]) };
-      }
-    }
-
-    const pgCastPath = closestPgCastPath(path);
-    if (pgCastPath && pgCastPath.index === 1) {
-      return { type: 'Cast', name: identifier.value, ...toPos(identifier) };
-    }
-  }
-
-  const str = closestString(path);
-  if (str) {
-    const binaryExpressionPath = closestBinaryExpressionPath(path);
-    const oppositeBinaryArgument =
-      binaryExpressionPath?.tag.values[0] === str
-        ? binaryExpressionPath?.tag.values[2]
-        : binaryExpressionPath?.tag.values[0];
-    if (binaryExpressionPath && oppositeBinaryArgument && isColumn(oppositeBinaryArgument)) {
-      const oppositeBinaryArgumentPath = toPath(binaryExpressionPath.tag, oppositeBinaryArgument.end - 1);
-      if (oppositeBinaryArgumentPath) {
-        const otherInfo = pathToInfo(oppositeBinaryArgumentPath);
-        if (otherInfo?.type === 'Column') {
-          return { type: 'EnumVariant', column: otherInfo, ...toPos(str) };
-        }
-      }
-    }
-  }
-
-  return undefined;
-};
 
 const toInfoLoadedContext = (data: LoadedData[], sql: string): InfoLoadedQuery => {
   const { ast } = partialParser(sql);
@@ -357,20 +206,17 @@ export const quickInfoAtOffset = (ctx: InfoContext, sql: string, offset: number)
       return dataEnum ? { ...quickInfoEnum(dataEnum), start: info.start, end: info.end } : undefined;
 
     case 'Table':
-      const tableSource = query.sources.find((item) => item.name === info.name);
-
-      if (tableSource?.type === 'View') {
+      const viewSource = query.sources.filter(isLoadedSourceView).find((item) => item.table === info.name);
+      if (viewSource) {
         const dataView = first(toNamedData(ctx, isLoadedDataView, info));
-        ctx.logger.debug(`Quick Info View: ${inspect(tableSource)}:`);
-        return tableSource && dataView
-          ? { ...quickInfoView(tableSource, dataView), start: info.start, end: info.end }
-          : undefined;
-      } else {
+        ctx.logger.debug(`Quick Info View: ${inspect(viewSource)}:`);
+        return dataView ? { ...quickInfoView(viewSource, dataView), start: info.start, end: info.end } : undefined;
+      }
+      const tableSource = query.sources.filter(isLoadedSourceTable).find((item) => item.table === info.name);
+      if (tableSource) {
         const dataTable = first(toNamedData(ctx, isLoadedDataTable, info));
         ctx.logger.debug(`Quick Info Table: ${inspect(tableSource)}:`);
-        return tableSource && dataTable
-          ? { ...quickInfoTable(tableSource, dataTable), start: info.start, end: info.end }
-          : undefined;
+        return dataTable ? { ...quickInfoTable(tableSource, dataTable), start: info.start, end: info.end } : undefined;
       }
     case 'Cast':
       const castType = first(toNamedData(ctx, isLoadedDataEnum, info));
