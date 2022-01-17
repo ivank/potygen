@@ -62,7 +62,7 @@ export interface Query {
 `;
 
 exports[`CLI Should use cli to run pipeline on sql files: account-levelisations.query.queries.ts 1`] = `
-"import { Json } from \\"@potygen/query\\";
+"import { Json } from \\"@potygen/potygen\\";
 export interface Params {
     q?: string;
     resolvedPostlev?: \\"\\" | boolean;
@@ -271,7 +271,7 @@ export interface Query {
 `;
 
 exports[`CLI Should use cli to run pipeline on sql files: active-reads.view.queries.ts 1`] = `
-"import { Json } from \\"@potygen/query\\";
+"import { Json } from \\"@potygen/potygen\\";
 export interface Params {
 }
 export interface Result<THistory = unknown> {
@@ -370,7 +370,7 @@ export interface Query {
 `;
 
 exports[`CLI Should use cli to run pipeline on sql files: insert.process.query.queries.ts 1`] = `
-"import { Json } from \\"@potygen/query\\";
+"import { Json } from \\"@potygen/potygen\\";
 export interface Params<TParamItemsData = unknown> {
     items: {
         processId: number;

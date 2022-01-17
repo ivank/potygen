@@ -47,7 +47,7 @@ const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
       isStringLiteral(node.moduleSpecifier) &&
       node.importClause?.namedBindings &&
       isNamedImports(node.importClause.namedBindings) &&
-      node.moduleSpecifier.text === '@potygen/query'
+      node.moduleSpecifier.text === '@potygen/potygen'
     ) {
       tagPropertyName =
         node.importClause?.namedBindings.elements.find(

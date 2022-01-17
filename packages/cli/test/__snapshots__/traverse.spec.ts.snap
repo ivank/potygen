@@ -32,7 +32,7 @@ export interface Query {
 `;
 
 exports[`Traverse Should work: __generated__/account-levelisations.query.queries.ts 1`] = `
-"import { Json } from \\"@potygen/query\\";
+"import { Json } from \\"@potygen/potygen\\";
 export interface Params {
     q?: string;
     resolvedPostlev?: \\"\\" | boolean;
@@ -241,7 +241,7 @@ export interface Query {
 `;
 
 exports[`Traverse Should work: __generated__/active-reads.view.queries.ts 1`] = `
-"import { Json } from \\"@potygen/query\\";
+"import { Json } from \\"@potygen/potygen\\";
 export interface Params {
 }
 export interface Result<THistory = unknown> {
@@ -340,7 +340,7 @@ export interface Query {
 `;
 
 exports[`Traverse Should work: __generated__/insert.process.query.queries.ts 1`] = `
-"import { Json } from \\"@potygen/query\\";
+"import { Json } from \\"@potygen/potygen\\";
 export interface Params<TParamItemsData = unknown> {
     items: {
         processId: number;

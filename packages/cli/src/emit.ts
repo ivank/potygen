@@ -162,7 +162,7 @@ const toAstImports = (names: string[]): Statement =>
         names.map((name) => factory.createImportSpecifier(undefined, factory.createIdentifier(name))),
       ),
     ),
-    factory.createStringLiteral('@potygen/query'),
+    factory.createStringLiteral('@potygen/potygen'),
   );
 
 const toLoadedQueryTypeNodes = (

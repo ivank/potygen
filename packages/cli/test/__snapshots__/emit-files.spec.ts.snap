@@ -32,7 +32,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
-"import { Json } from \\"@potygen/query\\";
+"import { Json } from \\"@potygen/potygen\\";
 export interface Params {
     q?: string;
     resolvedPostlev?: \\"\\" | boolean;
@@ -241,7 +241,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql active-reads.view.sql: active-reads.view.sql 1`] = `
-"import { Json } from \\"@potygen/query\\";
+"import { Json } from \\"@potygen/potygen\\";
 export interface Params {
 }
 export interface Result<THistory = unknown> {
@@ -340,7 +340,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql insert.process.query.sql: insert.process.query.sql 1`] = `
-"import { Json } from \\"@potygen/query\\";
+"import { Json } from \\"@potygen/potygen\\";
 export interface Params<TParamItemsData = unknown> {
     items: {
         processId: number;

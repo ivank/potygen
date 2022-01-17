@@ -1,4 +1,4 @@
-import { sql } from '@potygen/query';
+import { sql } from '@potygen/potygen';
 
 export const sql1 = sql`SELECT * FROM all_types`;
 
