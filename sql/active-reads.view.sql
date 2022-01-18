@@ -13,17 +13,23 @@ SELECT
   meter_reads.submitted_at,
   meter_reads.history,
   meter_reads.overwritten_at
-FROM
-  meter_reads
-WHERE ((NOT (EXISTS (
-        SELECT
-          issues.id
-        FROM
-          issues
-        WHERE ((issues.reference_type = 'Read'::issue_reference_type)
-          AND (issues.reference_id = meter_reads.id)
-          AND ((issues.state IS NULL)
-            OR (issues.state = 'Resolved'::issue_state))))))
-  AND (meter_reads.deleted_at IS NULL)
-  AND (meter_reads.checked IS TRUE)
-  AND (meter_reads.overwritten_at IS NULL))
+FROM meter_reads
+WHERE
+  (
+    (
+      NOT (
+        EXISTS (
+          SELECT issues.id
+          FROM issues
+          WHERE
+            (
+              (issues.reference_type = 'Read'::issue_reference_type) AND (issues.reference_id = meter_reads.id)
+              AND ((issues.state IS NULL) OR (issues.state = 'Resolved'::issue_state))
+            )
+        )
+      )
+    )
+    AND (meter_reads.deleted_at IS NULL)
+    AND (meter_reads.checked IS TRUE)
+    AND (meter_reads.overwritten_at IS NULL)
+  )

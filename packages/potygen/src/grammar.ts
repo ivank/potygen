@@ -271,7 +271,7 @@ const BinaryOperator = [
   /^(>>)/,
   /^(@@)/,
   /^(OVERLAPS|IN)/i,
-  /^(LIKE|ILIKE)/i,
+  /^(NOT LIKE|NOT ILIKE|LIKE|ILIKE)/i,
   /^(<=|>=|<|>)/,
   /^(<>|!=|=)/,
   /^(AND)/i,
