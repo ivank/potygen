@@ -6,6 +6,7 @@ Introspect queiries and generate typescript types for them.
 
 - [x] json access
 - [ ] emit files take const variable name as name
+- [ ] Fix "IN" queries
 - [x] Add cte queries as additional tables to be loaded and aliased
 - [x] CLI
 - [x] views type generation
