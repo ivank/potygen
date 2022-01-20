@@ -5,7 +5,7 @@ import { isDatabaseError, PotygenDatabaseError } from './errors';
 import { toParams } from './query-interface';
 import { typeUnknown } from './postgres-types-map';
 import { Param } from './query-interface.types';
-import { SqlDatabase, SqlInterface, SqlQuery } from './sql.types';
+import { Query, QuerySource, SqlDatabase, SqlInterface, QueryConfig } from './sql.types';
 
 const toParamsFromAst = (ast: AstTag): Param[] =>
   toParams({ type: typeUnknown(), columns: [] })(ast).sort(orderBy((p) => p.start));
@@ -94,28 +94,28 @@ const nullToUndefinedInPlace = (row: Record<string, unknown>): Record<string, un
   return row;
 };
 
-export class Sql<TSqlInterface extends SqlInterface = SqlInterface> {
-  public params: Param[];
-  public ast: AstTag;
-  constructor(public text: string) {
-    this.ast = parser(text).ast;
-    this.params = toParamsFromAst(this.ast);
-  }
+export const toQueryConfig = <TSqlInterface extends SqlInterface = SqlInterface>(
+  querySource: QuerySource,
+  params: TSqlInterface['params'],
+): QueryConfig => ({
+  text: convertSql(querySource.params, querySource.sql, params as Record<string, unknown>),
+  values: convertValues(querySource.params, params as Record<string, unknown>),
+});
 
-  toString() {
-    return `[Sql "${this.text}"]`;
-  }
+export const toQuery = <TSqlInterface extends SqlInterface = SqlInterface>(sql: string): Query<TSqlInterface> => {
+  const { ast } = parser(sql);
+  const params = toParamsFromAst(ast);
 
-  toQueryConfig(params: TSqlInterface['params'] = {}): SqlQuery {
-    const text = convertSql(this.params, this.text, params as Record<string, unknown>);
-    const values = convertValues(this.params, params as Record<string, unknown>);
-    return { text, values };
-  }
+  return (...args: [db: SqlDatabase, params: TSqlInterface['params']] | []): any => {
+    const source = { sql, ast, params };
+    if (args.length === 0) {
+      return source;
+    }
 
-  async run(db: SqlDatabase, params: TSqlInterface['params'] = {}): Promise<TSqlInterface['result'][]> {
-    const query = this.toQueryConfig(params);
+    const query = toQueryConfig<TSqlInterface>(source, args[1]);
+
     try {
-      return (await db.query(query)).rows.map(nullToUndefinedInPlace);
+      return args[0].query(query).then(({ rows }) => rows.map(nullToUndefinedInPlace));
     } catch (error) {
       if (error instanceof Error && isDatabaseError(error)) {
         throw new PotygenDatabaseError(error, query);
@@ -123,38 +123,9 @@ export class Sql<TSqlInterface extends SqlInterface = SqlInterface> {
         throw error;
       }
     }
-  }
-}
-
-export class SqlMap<TSqlInterface extends SqlInterface = SqlInterface, TResult = TSqlInterface['result'][]> {
-  constructor(public sql: Sql<TSqlInterface>, public map: (rows: TSqlInterface['result'][]) => TResult) {}
-
-  public get text(): string {
-    return this.sql.text;
-  }
-
-  public get params(): Param[] {
-    return this.sql.params;
-  }
-
-  public get ast(): AstTag {
-    return this.sql.ast;
-  }
-
-  toString() {
-    return this.sql.toString();
-  }
-
-  toQueryConfig(params: TSqlInterface['params'] = {}): SqlQuery {
-    return this.sql.toQueryConfig(params);
-  }
-
-  async run(db: SqlDatabase, params = {}): Promise<TResult> {
-    const rows = await this.sql.run(db, params);
-    return this.map(rows);
-  }
-}
+  };
+};
 
 export const sql = <TSqlInterface extends SqlInterface = SqlInterface>([
   text,
-]: TemplateStringsArray): Sql<TSqlInterface> => new Sql(text);
+]: TemplateStringsArray): Query<TSqlInterface> => toQuery(text);

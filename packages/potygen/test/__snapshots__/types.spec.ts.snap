@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Query Interface Should load type for aclitem sql ([Sql "SELECT 'pg_monitor=r*/pg_read_all_stats'::aclitem"]) 1`] = `
+exports[`Query Interface Should load type for aclitem sql 1`] = `
 Object {
   "aclitem": "pg_monitor=r*/pg_read_all_stats",
 }
 `;
 
-exports[`Query Interface Should load type for aclitem sql ([Sql "SELECT 'pg_monitor=r*/pg_read_all_stats'::aclitem"]) 2`] = `
+exports[`Query Interface Should load type for aclitem sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -21,13 +21,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for bit sql ([Sql "SELECT E'1'::bit"]) 1`] = `
+exports[`Query Interface Should load type for bit sql 1`] = `
 Object {
   "bit": "1",
 }
 `;
 
-exports[`Query Interface Should load type for bit sql ([Sql "SELECT E'1'::bit"]) 2`] = `
+exports[`Query Interface Should load type for bit sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -42,13 +42,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for box sql ([Sql "SELECT '(1,2),(3,4)'::box"]) 1`] = `
+exports[`Query Interface Should load type for box sql 1`] = `
 Object {
   "box": "(3,4),(1,2)",
 }
 `;
 
-exports[`Query Interface Should load type for box sql ([Sql "SELECT '(1,2),(3,4)'::box"]) 2`] = `
+exports[`Query Interface Should load type for box sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -63,13 +63,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for bpchar sql ([Sql "SELECT 'A'::bpchar"]) 1`] = `
+exports[`Query Interface Should load type for bpchar sql 1`] = `
 Object {
   "bpchar": "A",
 }
 `;
 
-exports[`Query Interface Should load type for bpchar sql ([Sql "SELECT 'A'::bpchar"]) 2`] = `
+exports[`Query Interface Should load type for bpchar sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -84,7 +84,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for bytea sql ([Sql "SELECT E'\\\\000'::bytea"]) 1`] = `
+exports[`Query Interface Should load type for bytea sql 1`] = `
 Object {
   "bytea": Object {
     "data": Array [
@@ -95,7 +95,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for bytea sql ([Sql "SELECT E'\\\\000'::bytea"]) 2`] = `
+exports[`Query Interface Should load type for bytea sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -110,13 +110,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for cid sql ([Sql "SELECT '1'::cid"]) 1`] = `
+exports[`Query Interface Should load type for cid sql 1`] = `
 Object {
   "cid": "1",
 }
 `;
 
-exports[`Query Interface Should load type for cid sql ([Sql "SELECT '1'::cid"]) 2`] = `
+exports[`Query Interface Should load type for cid sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -131,13 +131,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for cidr sql ([Sql "SELECT '1.1.1.1/32'::cidr"]) 1`] = `
+exports[`Query Interface Should load type for cidr sql 1`] = `
 Object {
   "cidr": "1.1.1.1/32",
 }
 `;
 
-exports[`Query Interface Should load type for cidr sql ([Sql "SELECT '1.1.1.1/32'::cidr"]) 2`] = `
+exports[`Query Interface Should load type for cidr sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -152,7 +152,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for circle sql ([Sql "SELECT '<(1,2),3>'::circle"]) 1`] = `
+exports[`Query Interface Should load type for circle sql 1`] = `
 Object {
   "circle": Object {
     "radius": 3,
@@ -162,7 +162,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for circle sql ([Sql "SELECT '<(1,2),3>'::circle"]) 2`] = `
+exports[`Query Interface Should load type for circle sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -200,13 +200,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for cstring sql ([Sql "SELECT '1'::cstring"]) 1`] = `
+exports[`Query Interface Should load type for cstring sql 1`] = `
 Object {
   "cstring": "1",
 }
 `;
 
-exports[`Query Interface Should load type for cstring sql ([Sql "SELECT '1'::cstring"]) 2`] = `
+exports[`Query Interface Should load type for cstring sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -221,13 +221,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for daterange sql ([Sql "SELECT '[2010-01-01, 2010-01-02)'::daterange"]) 1`] = `
+exports[`Query Interface Should load type for daterange sql 1`] = `
 Object {
   "daterange": "[2010-01-01,2010-01-02)",
 }
 `;
 
-exports[`Query Interface Should load type for daterange sql ([Sql "SELECT '[2010-01-01, 2010-01-02)'::daterange"]) 2`] = `
+exports[`Query Interface Should load type for daterange sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -242,13 +242,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for inet sql ([Sql "SELECT '::10.2.3.4'::inet"]) 1`] = `
+exports[`Query Interface Should load type for inet sql 1`] = `
 Object {
   "inet": "::10.2.3.4",
 }
 `;
 
-exports[`Query Interface Should load type for inet sql ([Sql "SELECT '::10.2.3.4'::inet"]) 2`] = `
+exports[`Query Interface Should load type for inet sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -263,13 +263,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for int2vector sql ([Sql "SELECT '1'::int2vector"]) 1`] = `
+exports[`Query Interface Should load type for int2vector sql 1`] = `
 Object {
   "int2vector": "1",
 }
 `;
 
-exports[`Query Interface Should load type for int2vector sql ([Sql "SELECT '1'::int2vector"]) 2`] = `
+exports[`Query Interface Should load type for int2vector sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -284,13 +284,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for int4range sql ([Sql "SELECT '[1,2)'::int4range"]) 1`] = `
+exports[`Query Interface Should load type for int4range sql 1`] = `
 Object {
   "int4range": "[1,2)",
 }
 `;
 
-exports[`Query Interface Should load type for int4range sql ([Sql "SELECT '[1,2)'::int4range"]) 2`] = `
+exports[`Query Interface Should load type for int4range sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -305,13 +305,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for int8range sql ([Sql "SELECT '[1,2)'::int8range"]) 1`] = `
+exports[`Query Interface Should load type for int8range sql 1`] = `
 Object {
   "int8range": "[1,2)",
 }
 `;
 
-exports[`Query Interface Should load type for int8range sql ([Sql "SELECT '[1,2)'::int8range"]) 2`] = `
+exports[`Query Interface Should load type for int8range sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -326,7 +326,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for interval sql ([Sql "SELECT '1 day + 1 hour'::interval"]) 1`] = `
+exports[`Query Interface Should load type for interval sql 1`] = `
 Object {
   "interval": PostgresInterval {
     "days": 1,
@@ -335,7 +335,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for interval sql ([Sql "SELECT '1 day + 1 hour'::interval"]) 2`] = `
+exports[`Query Interface Should load type for interval sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -401,13 +401,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for line sql ([Sql "SELECT '{1,-1,1}'::line"]) 1`] = `
+exports[`Query Interface Should load type for line sql 1`] = `
 Object {
   "line": "{1,-1,1}",
 }
 `;
 
-exports[`Query Interface Should load type for line sql ([Sql "SELECT '{1,-1,1}'::line"]) 2`] = `
+exports[`Query Interface Should load type for line sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -422,13 +422,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for lseg sql ([Sql "SELECT '(1,2,3,4)'::lseg"]) 1`] = `
+exports[`Query Interface Should load type for lseg sql 1`] = `
 Object {
   "lseg": "[(1,2),(3,4)]",
 }
 `;
 
-exports[`Query Interface Should load type for lseg sql ([Sql "SELECT '(1,2,3,4)'::lseg"]) 2`] = `
+exports[`Query Interface Should load type for lseg sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -443,13 +443,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for macaddr sql ([Sql "SELECT '08:00:2b:01:02:03'::macaddr"]) 1`] = `
+exports[`Query Interface Should load type for macaddr sql 1`] = `
 Object {
   "macaddr": "08:00:2b:01:02:03",
 }
 `;
 
-exports[`Query Interface Should load type for macaddr sql ([Sql "SELECT '08:00:2b:01:02:03'::macaddr"]) 2`] = `
+exports[`Query Interface Should load type for macaddr sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -464,13 +464,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for macaddr8 sql ([Sql "SELECT '08:00:2b:01:02:03:04:05'::macaddr8"]) 1`] = `
+exports[`Query Interface Should load type for macaddr8 sql 1`] = `
 Object {
   "macaddr8": "08:00:2b:01:02:03:04:05",
 }
 `;
 
-exports[`Query Interface Should load type for macaddr8 sql ([Sql "SELECT '08:00:2b:01:02:03:04:05'::macaddr8"]) 2`] = `
+exports[`Query Interface Should load type for macaddr8 sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -485,13 +485,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for money sql ([Sql "SELECT '$1'::money"]) 1`] = `
+exports[`Query Interface Should load type for money sql 1`] = `
 Object {
   "money": "$1.00",
 }
 `;
 
-exports[`Query Interface Should load type for money sql ([Sql "SELECT '$1'::money"]) 2`] = `
+exports[`Query Interface Should load type for money sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -506,13 +506,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for name sql ([Sql "SELECT 'day'::name"]) 1`] = `
+exports[`Query Interface Should load type for name sql 1`] = `
 Object {
   "name": "day",
 }
 `;
 
-exports[`Query Interface Should load type for name sql ([Sql "SELECT 'day'::name"]) 2`] = `
+exports[`Query Interface Should load type for name sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -527,13 +527,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for numeric sql ([Sql "SELECT '1.2'::numeric"]) 1`] = `
+exports[`Query Interface Should load type for numeric sql 1`] = `
 Object {
   "numeric": "1.2",
 }
 `;
 
-exports[`Query Interface Should load type for numeric sql ([Sql "SELECT '1.2'::numeric"]) 2`] = `
+exports[`Query Interface Should load type for numeric sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -548,13 +548,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for numrange sql ([Sql "SELECT '[1,2)'::numrange"]) 1`] = `
+exports[`Query Interface Should load type for numrange sql 1`] = `
 Object {
   "numrange": "[1,2)",
 }
 `;
 
-exports[`Query Interface Should load type for numrange sql ([Sql "SELECT '[1,2)'::numrange"]) 2`] = `
+exports[`Query Interface Should load type for numrange sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -569,13 +569,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for oidvector sql ([Sql "SELECT '1'::oidvector"]) 1`] = `
+exports[`Query Interface Should load type for oidvector sql 1`] = `
 Object {
   "oidvector": "1",
 }
 `;
 
-exports[`Query Interface Should load type for oidvector sql ([Sql "SELECT '1'::oidvector"]) 2`] = `
+exports[`Query Interface Should load type for oidvector sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -590,13 +590,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for path sql ([Sql "SELECT '[(1,2),(2,3),(3,4)]'::path"]) 1`] = `
+exports[`Query Interface Should load type for path sql 1`] = `
 Object {
   "path": "[(1,2),(2,3),(3,4)]",
 }
 `;
 
-exports[`Query Interface Should load type for path sql ([Sql "SELECT '[(1,2),(2,3),(3,4)]'::path"]) 2`] = `
+exports[`Query Interface Should load type for path sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -611,13 +611,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for pg_lsn sql ([Sql "SELECT '16/B374D848'::pg_lsn"]) 1`] = `
+exports[`Query Interface Should load type for pg_lsn sql 1`] = `
 Object {
   "pg_lsn": "16/B374D848",
 }
 `;
 
-exports[`Query Interface Should load type for pg_lsn sql ([Sql "SELECT '16/B374D848'::pg_lsn"]) 2`] = `
+exports[`Query Interface Should load type for pg_lsn sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -632,7 +632,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for point sql ([Sql "SELECT '(1,2)'::point"]) 1`] = `
+exports[`Query Interface Should load type for point sql 1`] = `
 Object {
   "point": Object {
     "x": 1,
@@ -641,7 +641,7 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for point sql ([Sql "SELECT '(1,2)'::point"]) 2`] = `
+exports[`Query Interface Should load type for point sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -672,13 +672,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for polygon sql ([Sql "SELECT '((1,2),(2,3),(1,2))'::polygon"]) 1`] = `
+exports[`Query Interface Should load type for polygon sql 1`] = `
 Object {
   "polygon": "((1,2),(2,3),(1,2))",
 }
 `;
 
-exports[`Query Interface Should load type for polygon sql ([Sql "SELECT '((1,2),(2,3),(1,2))'::polygon"]) 2`] = `
+exports[`Query Interface Should load type for polygon sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -693,13 +693,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for regclass sql ([Sql "SELECT '1'::regclass"]) 1`] = `
+exports[`Query Interface Should load type for regclass sql 1`] = `
 Object {
   "regclass": "1",
 }
 `;
 
-exports[`Query Interface Should load type for regclass sql ([Sql "SELECT '1'::regclass"]) 2`] = `
+exports[`Query Interface Should load type for regclass sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -714,13 +714,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for regconfig sql ([Sql "SELECT '1'::regconfig"]) 1`] = `
+exports[`Query Interface Should load type for regconfig sql 1`] = `
 Object {
   "regconfig": "1",
 }
 `;
 
-exports[`Query Interface Should load type for regconfig sql ([Sql "SELECT '1'::regconfig"]) 2`] = `
+exports[`Query Interface Should load type for regconfig sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -735,13 +735,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for regdictionary sql ([Sql "SELECT '1'::regdictionary"]) 1`] = `
+exports[`Query Interface Should load type for regdictionary sql 1`] = `
 Object {
   "regdictionary": "1",
 }
 `;
 
-exports[`Query Interface Should load type for regdictionary sql ([Sql "SELECT '1'::regdictionary"]) 2`] = `
+exports[`Query Interface Should load type for regdictionary sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -756,13 +756,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for regnamespace sql ([Sql "SELECT '1'::regnamespace"]) 1`] = `
+exports[`Query Interface Should load type for regnamespace sql 1`] = `
 Object {
   "regnamespace": "1",
 }
 `;
 
-exports[`Query Interface Should load type for regnamespace sql ([Sql "SELECT '1'::regnamespace"]) 2`] = `
+exports[`Query Interface Should load type for regnamespace sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -777,13 +777,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for regoper sql ([Sql "SELECT '1'::regoper"]) 1`] = `
+exports[`Query Interface Should load type for regoper sql 1`] = `
 Object {
   "regoper": "1",
 }
 `;
 
-exports[`Query Interface Should load type for regoper sql ([Sql "SELECT '1'::regoper"]) 2`] = `
+exports[`Query Interface Should load type for regoper sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -798,13 +798,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for regoperator sql ([Sql "SELECT '1'::regoperator"]) 1`] = `
+exports[`Query Interface Should load type for regoperator sql 1`] = `
 Object {
   "regoperator": "1",
 }
 `;
 
-exports[`Query Interface Should load type for regoperator sql ([Sql "SELECT '1'::regoperator"]) 2`] = `
+exports[`Query Interface Should load type for regoperator sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -819,13 +819,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for regproc sql ([Sql "SELECT '1'::regproc"]) 1`] = `
+exports[`Query Interface Should load type for regproc sql 1`] = `
 Object {
   "regproc": "1",
 }
 `;
 
-exports[`Query Interface Should load type for regproc sql ([Sql "SELECT '1'::regproc"]) 2`] = `
+exports[`Query Interface Should load type for regproc sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -840,13 +840,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for regprocedure sql ([Sql "SELECT '1'::regprocedure"]) 1`] = `
+exports[`Query Interface Should load type for regprocedure sql 1`] = `
 Object {
   "regprocedure": "1",
 }
 `;
 
-exports[`Query Interface Should load type for regprocedure sql ([Sql "SELECT '1'::regprocedure"]) 2`] = `
+exports[`Query Interface Should load type for regprocedure sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -861,13 +861,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for regrole sql ([Sql "SELECT '1'::regrole"]) 1`] = `
+exports[`Query Interface Should load type for regrole sql 1`] = `
 Object {
   "regrole": "1",
 }
 `;
 
-exports[`Query Interface Should load type for regrole sql ([Sql "SELECT '1'::regrole"]) 2`] = `
+exports[`Query Interface Should load type for regrole sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -882,13 +882,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for regtype sql ([Sql "SELECT '1'::regtype"]) 1`] = `
+exports[`Query Interface Should load type for regtype sql 1`] = `
 Object {
   "regtype": "1",
 }
 `;
 
-exports[`Query Interface Should load type for regtype sql ([Sql "SELECT '1'::regtype"]) 2`] = `
+exports[`Query Interface Should load type for regtype sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -903,13 +903,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for regtype sql ([Sql "SELECT '1'::regtype"]) 3`] = `
+exports[`Query Interface Should load type for regtype sql 3`] = `
 Object {
   "regtype": "1",
 }
 `;
 
-exports[`Query Interface Should load type for regtype sql ([Sql "SELECT '1'::regtype"]) 4`] = `
+exports[`Query Interface Should load type for regtype sql 4`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -924,13 +924,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for reltime sql ([Sql "SELECT '1 day'::reltime"]) 1`] = `
+exports[`Query Interface Should load type for reltime sql 1`] = `
 Object {
   "reltime": "1 day",
 }
 `;
 
-exports[`Query Interface Should load type for reltime sql ([Sql "SELECT '1 day'::reltime"]) 2`] = `
+exports[`Query Interface Should load type for reltime sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -945,13 +945,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for smgr sql ([Sql "SELECT 'magnetic disk'::smgr"]) 1`] = `
+exports[`Query Interface Should load type for smgr sql 1`] = `
 Object {
   "smgr": "magnetic disk",
 }
 `;
 
-exports[`Query Interface Should load type for smgr sql ([Sql "SELECT 'magnetic disk'::smgr"]) 2`] = `
+exports[`Query Interface Should load type for smgr sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -966,13 +966,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for tid sql ([Sql "SELECT '(42,9)'::tid"]) 1`] = `
+exports[`Query Interface Should load type for tid sql 1`] = `
 Object {
   "tid": "(42,9)",
 }
 `;
 
-exports[`Query Interface Should load type for tid sql ([Sql "SELECT '(42,9)'::tid"]) 2`] = `
+exports[`Query Interface Should load type for tid sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -987,13 +987,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for tsrange sql ([Sql "SELECT '[2010-01-01 14:30, 2010-01-01 15:30)'::tsrange"]) 1`] = `
+exports[`Query Interface Should load type for tsrange sql 1`] = `
 Object {
   "tsrange": "[\\"2010-01-01 14:30:00\\",\\"2010-01-01 15:30:00\\")",
 }
 `;
 
-exports[`Query Interface Should load type for tsrange sql ([Sql "SELECT '[2010-01-01 14:30, 2010-01-01 15:30)'::tsrange"]) 2`] = `
+exports[`Query Interface Should load type for tsrange sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -1008,13 +1008,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for txid_snapshot sql ([Sql "SELECT '10:20:10,14,15'::txid_snapshot"]) 1`] = `
+exports[`Query Interface Should load type for txid_snapshot sql 1`] = `
 Object {
   "txid_snapshot": "10:20:10,14,15",
 }
 `;
 
-exports[`Query Interface Should load type for txid_snapshot sql ([Sql "SELECT '10:20:10,14,15'::txid_snapshot"]) 2`] = `
+exports[`Query Interface Should load type for txid_snapshot sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -1029,13 +1029,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for uuid sql ([Sql "SELECT 'A0EEBC99-9C0B-4EF8-BB6D-6BB9BD380A11'::uuid"]) 1`] = `
+exports[`Query Interface Should load type for uuid sql 1`] = `
 Object {
   "uuid": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
 }
 `;
 
-exports[`Query Interface Should load type for uuid sql ([Sql "SELECT 'A0EEBC99-9C0B-4EF8-BB6D-6BB9BD380A11'::uuid"]) 2`] = `
+exports[`Query Interface Should load type for uuid sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -1050,13 +1050,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for varbit sql ([Sql "SELECT E'111'::varbit"]) 1`] = `
+exports[`Query Interface Should load type for varbit sql 1`] = `
 Object {
   "varbit": "111",
 }
 `;
 
-exports[`Query Interface Should load type for varbit sql ([Sql "SELECT E'111'::varbit"]) 2`] = `
+exports[`Query Interface Should load type for varbit sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [
@@ -1071,13 +1071,13 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for xid sql ([Sql "SELECT '1'::xid"]) 1`] = `
+exports[`Query Interface Should load type for xid sql 1`] = `
 Object {
   "xid": "1",
 }
 `;
 
-exports[`Query Interface Should load type for xid sql ([Sql "SELECT '1'::xid"]) 2`] = `
+exports[`Query Interface Should load type for xid sql 2`] = `
 Object {
   "params": Array [],
   "results": Array [

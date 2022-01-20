@@ -1,6 +1,11 @@
 import { sql } from './sql';
 import { LoadedDataRaw, QualifiedName } from './load.types';
 
+interface LoadAllSql {
+  params: {};
+  result: LoadedDataRaw;
+}
+
 interface LoadSql {
   params: {
     tableNames: QualifiedName[];
@@ -11,7 +16,7 @@ interface LoadSql {
   result: LoadedDataRaw;
 }
 
-export const allSql = sql<LoadSql>`
+export const allSql = sql<LoadAllSql>`
 SELECT
   'Composite' AS "type",
   json_build_object('schema', attributes.udt_schema, 'name', attributes.udt_name) AS "name",

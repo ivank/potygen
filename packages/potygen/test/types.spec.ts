@@ -1,5 +1,5 @@
 import { Client } from 'pg';
-import { toLoadedQueryInterface, Sql, sql, toQueryInterface } from '../src';
+import { toLoadedQueryInterface, Query, sql, toQueryInterface } from '../src';
 import { testDb } from './helpers';
 let db: Client;
 
@@ -13,7 +13,7 @@ describe('Query Interface', () => {
     await db.end();
   });
 
-  it.each<[string, Sql]>([
+  it.each<[string, Query]>([
     ['aclitem', sql`SELECT 'pg_monitor=r*/pg_read_all_stats'::aclitem`],
     ['cid', sql`SELECT '1'::cid`],
     ['macaddr', sql`SELECT '08:00:2b:01:02:03'::macaddr`],
@@ -61,10 +61,10 @@ describe('Query Interface', () => {
     ['oidvector', sql`SELECT '1'::oidvector`],
     ['path', sql`SELECT '[(1,2),(2,3),(3,4)]'::path`],
     ['polygon', sql`SELECT '((1,2),(2,3),(1,2))'::polygon`],
-  ])('Should load type for %s sql (%s)', async (_, sql) => {
-    const queryInterface = toQueryInterface(sql.ast!);
+  ])('Should load type for %s sql', async (_, sql) => {
+    const queryInterface = toQueryInterface(sql().ast);
     const loadedQueryInterface = toLoadedQueryInterface([])(queryInterface);
-    expect((await sql.run(db))[0]).toMatchSnapshot();
+    expect((await sql(db, {}))[0]).toMatchSnapshot();
     expect(loadedQueryInterface).toMatchSnapshot();
   });
 });

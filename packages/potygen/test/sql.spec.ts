@@ -1,8 +1,9 @@
-import { sql, Sql } from '../src';
+import { sql, Query } from '../src';
+import { toQueryConfig } from '../src/sql';
 import { withParserErrors } from './helpers';
 
 describe('Template Tag', () => {
-  it.each<[string, Sql, Record<string, unknown>, { text: string; values: unknown[] }]>([
+  it.each<[string, Query, Record<string, unknown>, { text: string; values: unknown[] }]>([
     [
       'Multiple params',
       sql`SELECT * FROM table1 WHERE id IN $$ids`,
@@ -147,7 +148,7 @@ describe('Template Tag', () => {
     ],
   ])('Should convert to query an sql with %s', (_, query, params, expected) =>
     withParserErrors(() => {
-      expect(query.toQueryConfig(params)).toEqual(expected);
+      expect(toQueryConfig(query(), params)).toEqual(expected);
     }),
   );
 });

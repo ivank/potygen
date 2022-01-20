@@ -1,11 +1,20 @@
+import { AstTag } from './grammar.types';
+import { Param } from './query-interface.types';
+
 export interface SqlInterface {
-  params: unknown;
+  params: object;
   result: unknown;
 }
 
-export interface SqlQuery {
+export interface QueryConfig {
   text: string;
   values?: unknown[];
+}
+
+export interface QuerySource {
+  sql: string;
+  ast: AstTag;
+  params: Param[];
 }
 
 export interface SqlResult<T extends Record<string, unknown>> {
@@ -13,8 +22,18 @@ export interface SqlResult<T extends Record<string, unknown>> {
 }
 
 export interface SqlDatabase {
-  query: <T extends Record<string, unknown>>(value: SqlQuery) => Promise<SqlResult<T>>;
+  query: <T extends Record<string, unknown>>(value: QueryConfig) => Promise<SqlResult<T>>;
 }
+
+export type Query<TSqlInterface extends SqlInterface = SqlInterface> = {
+  (db: SqlDatabase, params: TSqlInterface['params']): Promise<TSqlInterface['result'][]>;
+  (): QuerySource;
+};
+
+export type MapQuery<TSqlInterface extends SqlInterface = SqlInterface, TResult = unknown> = {
+  (db: SqlDatabase, params: TSqlInterface['params']): Promise<TResult>;
+  (): QuerySource;
+};
 
 /**
  * Deeply convert one typescript type to another, following nested objects and arrays

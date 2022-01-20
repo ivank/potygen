@@ -1,4 +1,5 @@
-import { Sql, isNil } from '../src';
+import { toQuery, isNil } from '../src';
+import { toQueryConfig } from '../src/sql';
 import { sqlFiles, withParserErrors } from './helpers';
 
 const values: Record<string, Record<string, unknown>> = {
@@ -64,9 +65,10 @@ describe('Sql Files', () => {
         filename in values ? [filename, text, values[filename]] : undefined,
       )
       .filter(isNil),
-  )('Should convert complex sql template tags %s', (name, text, values) =>
+  )('Should convert complex sql template tags %s', (name, text, params) =>
     withParserErrors(() => {
-      expect(new Sql(text).toQueryConfig(values)).toMatchSnapshot(name);
+      const source = toQuery(text)();
+      expect(toQueryConfig(source, params)).toMatchSnapshot(name);
     }),
   );
 });

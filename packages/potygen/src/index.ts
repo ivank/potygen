@@ -341,7 +341,7 @@ export {
   isTypeEqual,
 } from './query-interface.guards';
 
-export { SqlInterface, Json } from './sql.types';
+export { SqlInterface, Json, Query, QueryConfig, MapQuery } from './sql.types';
 export { one, maybeOne, map } from './sql.helpers';
 export {
   toParams,
@@ -353,7 +353,7 @@ export {
   toQueryFrom,
   toQueryResults,
 } from './query-interface';
-export { Sql, sql, SqlMap } from './sql';
+export { sql, toQuery } from './sql';
 export {
   DatabaseError,
   isDatabaseError,
