@@ -93,7 +93,7 @@ const toLoadedData = async (
 
 export const loadAllData = async (ctx: LoadContext, currentData: LoadedData[]): Promise<LoadedData[]> => {
   ctx.logger.debug(`Load all data`);
-  const loaded = await allSql.run(ctx.db);
+  const loaded = await allSql(ctx.db, {});
   ctx.logger.debug(`Loaded additional data: ${loaded.length}.`);
   return await toLoadedData(ctx, currentData, loaded);
 };
@@ -119,7 +119,7 @@ export const loadData = async (ctx: LoadContext, currentData: LoadedData[], newD
     })}`,
   );
 
-  const loaded = await selectedSql.run(ctx.db, {
+  const loaded = await selectedSql(ctx.db, {
     tableNames: orEmptyNameList(tableNames),
     functionNames: orEmptyNameList(functionNames),
     enumNames: orEmptyNameList(enumNames),

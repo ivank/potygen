@@ -14,14 +14,14 @@ describe('Data', () => {
     try {
       await db.connect();
 
-      await start.run(db);
-      await init.run(db);
-      const data = await retrieve.run(db);
+      await start(db, {});
+      await init(db, {});
+      const data = await retrieve(db, {});
       expect(data).toHaveLength(2);
       expect(data[0].id).toEqual(10);
       expect(data[0].character_col).toBe(undefined);
     } finally {
-      await end.run(db);
+      await end(db, {});
       await db.end();
     }
   });

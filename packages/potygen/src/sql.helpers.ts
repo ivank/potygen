@@ -1,6 +1,6 @@
 import { PotygenNotFoundError } from './errors';
-import { Sql, SqlMap } from './sql';
-import { SqlInterface } from './sql.types';
+import { toQueryConfig } from './sql';
+import { MapQuery, Query, SqlDatabase, SqlInterface } from './sql.types';
 
 /**
  * Return the first element, after the query is run, returns undefined if result is empty
@@ -16,10 +16,8 @@ import { SqlInterface } from './sql.types';
  * const myRowItem = await showQuery(db, { id: 12 });
  * ```
  */
-export const maybeOne = <TQueryInterface extends SqlInterface>(sql: Sql<TQueryInterface>) =>
-  new SqlMap<TQueryInterface, TQueryInterface['result'] | undefined>(sql, (rows) =>
-    rows.length ? rows[0] : undefined,
-  );
+export const maybeOne = <TQueryInterface extends SqlInterface>(query: Query<TQueryInterface>) =>
+  map((rows) => (rows.length ? rows[0] : undefined), query);
 
 /**
  * Return the first element, useful for queries where we always expect at least one result
@@ -39,15 +37,14 @@ export const maybeOne = <TQueryInterface extends SqlInterface>(sql: Sql<TQueryIn
  *
  * ```
  */
-export const one = <TQueryInterface extends SqlInterface>(sql: Sql<TQueryInterface>) =>
-  new SqlMap<TQueryInterface, TQueryInterface['result']>(sql, (rows) => {
+export const one = <TQueryInterface extends SqlInterface>(query: Query<TQueryInterface>) =>
+  map((rows, params) => {
     const result = rows[0];
     if (!result) {
-      throw new PotygenNotFoundError('Must return at least one', sql.toQueryConfig(rows));
+      throw new PotygenNotFoundError(`Must return at least one`, toQueryConfig(query(), params));
     }
     return result;
-  });
-
+  }, query);
 /**
  * Return the first element, useful for queries where we always expect at least one result
  *
@@ -65,7 +62,10 @@ export const one = <TQueryInterface extends SqlInterface>(sql: Sql<TQueryInterfa
  *
  * ```
  */
-export const map = <TQueryInterface extends SqlInterface, TResult>(
-  predicate: (rows: TQueryInterface['result'][]) => TResult,
-  sql: Sql<TQueryInterface>,
-) => new SqlMap<TQueryInterface, TResult>(sql, predicate);
+export const map =
+  <TSqlInterface extends SqlInterface, TResult>(
+    predicate: (rows: TSqlInterface['result'][], params: TSqlInterface['params']) => TResult,
+    query: Query<TSqlInterface>,
+  ): MapQuery<TSqlInterface, TResult> =>
+  (...args: [db: SqlDatabase, params: TSqlInterface['params']] | []): any =>
+    args.length === 0 ? query : query(...args).then((rows) => predicate(rows, args[1]));

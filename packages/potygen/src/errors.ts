@@ -1,6 +1,6 @@
 import { markTextError } from '@ikerin/rd-parse';
 import { ParsedTypescriptFile, ParsedSqlFile, TemplateTagQuery } from './load.types';
-import { SqlQuery } from './sql.types';
+import { QueryConfig } from './sql.types';
 import { Tag } from './grammar.types';
 
 export class DatabaseError extends Error {
@@ -11,7 +11,7 @@ export class DatabaseError extends Error {
 export const isDatabaseError = (error: Error): error is DatabaseError => 'position' in error;
 
 export class PotygenError extends Error {
-  constructor(message: string, public query: SqlQuery) {
+  constructor(message: string, public query: QueryConfig) {
     super(message);
   }
 
@@ -25,7 +25,7 @@ ${this.query.text}`;
 }
 
 export class PotygenDatabaseError extends PotygenError {
-  constructor(public databaseError: DatabaseError, query: SqlQuery) {
+  constructor(public databaseError: DatabaseError, query: QueryConfig) {
     super(databaseError.message, query);
   }
 
