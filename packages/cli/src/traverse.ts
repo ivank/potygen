@@ -12,6 +12,7 @@ import {
   isNamedImports,
   SourceFile,
   isIdentifier,
+  isCallExpression,
 } from 'typescript';
 import { basename, relative } from 'path';
 import {
@@ -37,6 +38,9 @@ import { ClientBase } from 'pg';
 import { emitLoadedFile } from './emit';
 import { inspect } from 'util';
 
+const toTemplateParent = (node: Node): Node =>
+  isCallExpression(node.parent) ? toTemplateParent(node.parent) : node.parent;
+
 const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
   const queries: TemplateTagQuery[] = [];
   let tagPropertyName = 'sql';
@@ -60,7 +64,7 @@ const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
       node.tag.text === tagPropertyName
     ) {
       const tag = {
-        name: node.parent.getChildAt(0).getText(),
+        name: toTemplateParent(node).getChildAt(0).getText(),
         pos: node.template.pos + 1,
         template: node.template.text,
       };

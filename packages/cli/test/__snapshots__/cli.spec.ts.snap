@@ -654,6 +654,17 @@ export interface Sql2Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: Sql2Params<TJson_col, TJsonb_col>;
     result: Sql2Result;
 }
+export interface Sql3Params {
+    id?: number;
+}
+export interface Sql3Result {
+    id: number;
+    character_col?: string;
+}
+export interface Sql3Query {
+    params: Sql3Params;
+    result: Sql3Result;
+}
 "
 `;
 
@@ -769,6 +780,17 @@ export interface TMP2Sql2Result {
 export interface TMP2Sql2Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: TMP2Sql2Params<TJson_col, TJsonb_col>;
     result: TMP2Sql2Result;
+}
+export interface TMP2Sql3Params {
+    id?: number;
+}
+export interface TMP2Sql3Result {
+    id: number;
+    character_col?: string;
+}
+export interface TMP2Sql3Query {
+    params: TMP2Sql3Params;
+    result: TMP2Sql3Result;
 }
 "
 `;
