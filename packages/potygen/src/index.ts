@@ -342,7 +342,7 @@ export {
 } from './query-interface.guards';
 
 export { SqlInterface, QueryConfig, QuerySource, SqlResult, SqlDatabase, Query, MapQuery, Json } from './sql.types';
-export { one, maybeOne, map } from './sql.helpers';
+export { oneResult, maybeOneResult, mapResult } from './sql.helpers';
 export {
   toParams,
   toQueryInterface,

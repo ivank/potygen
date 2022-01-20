@@ -1,5 +1,5 @@
 import { Client } from 'pg';
-import { maybeOne, one, sql, map } from '../src';
+import { maybeOneResult, oneResult, sql, mapResult } from '../src';
 import { testDb } from './helpers';
 
 let db: Client;
@@ -30,24 +30,24 @@ describe('Template Tag', () => {
   });
 
   it('Should select maybe one', async () => {
-    expect(await maybeOne(oneSql)(db, { id: 1 })).toEqual({ id: 1 });
+    expect(await maybeOneResult(oneSql)(db, { id: 1 })).toEqual({ id: 1 });
   });
 
   it('Should select maybe one empty', async () => {
-    expect(await maybeOne(oneSql)(db, { id: 1000 })).toEqual(undefined);
+    expect(await maybeOneResult(oneSql)(db, { id: 1000 })).toEqual(undefined);
   });
 
   it('Should select only one', async () => {
-    expect(await one(oneSql)(db, { id: 1 })).toEqual({ id: 1 });
+    expect(await oneResult(oneSql)(db, { id: 1 })).toEqual({ id: 1 });
   });
 
   it('Should select map', async () => {
-    expect(await map((rows) => rows.map((item) => `!${item.id}`), allSql)(db, {})).toEqual(['!1', '!2']);
+    expect(await mapResult((rows) => rows.map((item) => `!${item.id}`), allSql)(db, {})).toEqual(['!1', '!2']);
   });
 
   it('Should select more', async () => {
     expect(
-      await map(async (rows, db) => await Promise.all(rows.map((item) => otherSql(db, { id: item.id }))), allSql)(
+      await mapResult(async (rows, db) => await Promise.all(rows.map((item) => otherSql(db, { id: item.id }))), allSql)(
         db,
         {},
       ),
@@ -56,7 +56,7 @@ describe('Template Tag', () => {
 
   it('Should select error if one empty', async () => {
     await expect(async () => {
-      await one(oneSql)(db, { id: 1000 });
+      await oneResult(oneSql)(db, { id: 1000 });
     }).rejects.toMatchObject({ message: 'Must return at least one' });
   });
 });
