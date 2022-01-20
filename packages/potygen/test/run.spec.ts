@@ -11,6 +11,7 @@ interface Query {
 
 const allSql = sql<Query>`SELECT id FROM all_types`;
 const oneSql = sql<Query>`SELECT id FROM all_types WHERE id = $id`;
+const otherSql = sql<Query>`SELECT 'TEST' || not_null AS t FROM all_types WHERE id = $id`;
 
 describe('Template Tag', () => {
   beforeAll(async () => {
@@ -42,6 +43,15 @@ describe('Template Tag', () => {
 
   it('Should select map', async () => {
     expect(await map((rows) => rows.map((item) => `!${item.id}`), allSql)(db, {})).toEqual(['!1', '!2']);
+  });
+
+  it('Should select more', async () => {
+    expect(
+      await map(async (rows, db) => await Promise.all(rows.map((item) => otherSql(db, { id: item.id }))), allSql)(
+        db,
+        {},
+      ),
+    ).toEqual([[{ t: 'TEST1' }], [{ t: 'TEST2' }]]);
   });
 
   it('Should select error if one empty', async () => {

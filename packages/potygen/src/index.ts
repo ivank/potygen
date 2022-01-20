@@ -341,7 +341,7 @@ export {
   isTypeEqual,
 } from './query-interface.guards';
 
-export { SqlInterface, Json, Query, QueryConfig, MapQuery } from './sql.types';
+export { SqlInterface, QueryConfig, QuerySource, SqlResult, SqlDatabase, Query, MapQuery, Json } from './sql.types';
 export { one, maybeOne, map } from './sql.helpers';
 export {
   toParams,

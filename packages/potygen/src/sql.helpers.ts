@@ -64,8 +64,8 @@ export const one = <TQueryInterface extends SqlInterface>(query: Query<TQueryInt
  */
 export const map =
   <TSqlInterface extends SqlInterface, TResult>(
-    predicate: (rows: TSqlInterface['result'][], params: TSqlInterface['params']) => TResult,
+    predicate: (rows: TSqlInterface['result'][], db: SqlDatabase, params: TSqlInterface['params']) => TResult,
     query: Query<TSqlInterface>,
   ): MapQuery<TSqlInterface, TResult> =>
   (...args: [db: SqlDatabase, params: TSqlInterface['params']] | []): any =>
-    args.length === 0 ? query : query(...args).then((rows) => predicate(rows, args[1]));
+    args.length === 0 ? query : query(...args).then((rows) => predicate(rows, ...args));
