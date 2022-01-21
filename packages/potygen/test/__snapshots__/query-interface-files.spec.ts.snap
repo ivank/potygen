@@ -669,7 +669,7 @@ Object {
                         Object {
                           "end": 534,
                           "start": 445,
-                          "tag": "BinaryExpression",
+                          "tag": "ComparationArray",
                           "values": Array [
                             Object {
                               "end": 465,
@@ -693,82 +693,68 @@ Object {
                             Object {
                               "end": 467,
                               "start": 467,
-                              "tag": "BinaryOperator",
+                              "tag": "ComparationArrayOperator",
                               "value": "=",
                             },
                             Object {
-                              "end": 534,
+                              "end": 471,
                               "start": 469,
-                              "tag": "Function",
+                              "tag": "ComparationArrayType",
+                              "value": "ANY",
+                            },
+                            Object {
+                              "end": 534,
+                              "start": 473,
+                              "tag": "PgCast",
                               "values": Array [
                                 Object {
-                                  "end": 471,
-                                  "start": 469,
-                                  "tag": "QualifiedIdentifier",
+                                  "end": 505,
+                                  "start": 473,
+                                  "tag": "ArrayConstructor",
                                   "values": Array [
                                     Object {
-                                      "end": 471,
-                                      "start": 469,
-                                      "tag": "UnquotedIdentifier",
-                                      "value": "ANY",
+                                      "end": 494,
+                                      "start": 479,
+                                      "tag": "String",
+                                      "value": "Metered Export",
+                                    },
+                                    Object {
+                                      "end": 504,
+                                      "start": 497,
+                                      "tag": "String",
+                                      "value": "Deemed",
                                     },
                                   ],
                                 },
                                 Object {
-                                  "end": 534,
-                                  "start": 473,
-                                  "tag": "PgCast",
+                                  "end": 533,
+                                  "start": 508,
+                                  "tag": "ArrayType",
                                   "values": Array [
                                     Object {
-                                      "end": 505,
-                                      "start": 473,
-                                      "tag": "ArrayConstructor",
+                                      "end": 531,
+                                      "start": 508,
+                                      "tag": "Type",
                                       "values": Array [
                                         Object {
-                                          "end": 494,
-                                          "start": 479,
-                                          "tag": "String",
-                                          "value": "Metered Export",
-                                        },
-                                        Object {
-                                          "end": 504,
-                                          "start": 497,
-                                          "tag": "String",
-                                          "value": "Deemed",
+                                          "end": 531,
+                                          "start": 508,
+                                          "tag": "QualifiedIdentifier",
+                                          "values": Array [
+                                            Object {
+                                              "end": 531,
+                                              "start": 508,
+                                              "tag": "UnquotedIdentifier",
+                                              "value": "installation_export_type",
+                                            },
+                                          ],
                                         },
                                       ],
                                     },
                                     Object {
                                       "end": 533,
-                                      "start": 508,
-                                      "tag": "ArrayType",
-                                      "values": Array [
-                                        Object {
-                                          "end": 531,
-                                          "start": 508,
-                                          "tag": "Type",
-                                          "values": Array [
-                                            Object {
-                                              "end": 531,
-                                              "start": 508,
-                                              "tag": "QualifiedIdentifier",
-                                              "values": Array [
-                                                Object {
-                                                  "end": 531,
-                                                  "start": 508,
-                                                  "tag": "UnquotedIdentifier",
-                                                  "value": "installation_export_type",
-                                                },
-                                              ],
-                                            },
-                                          ],
-                                        },
-                                        Object {
-                                          "end": 533,
-                                          "start": 532,
-                                          "tag": "Dimension",
-                                        },
-                                      ],
+                                      "start": 532,
+                                      "tag": "Dimension",
                                     },
                                   ],
                                 },
@@ -1371,12 +1357,12 @@ Object {
       },
     },
     Object {
-      "end": 2938,
+      "end": 2937,
       "name": "sortField",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 2929,
+      "start": 2928,
       "type": Object {
         "literal": "totalPayment",
         "postgresType": "text",
@@ -1384,12 +1370,12 @@ Object {
       },
     },
     Object {
-      "end": 2970,
+      "end": 2969,
       "name": "sortOrder",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 2961,
+      "start": 2960,
       "type": Object {
         "literal": "DESC",
         "postgresType": "text",
@@ -1397,12 +1383,12 @@ Object {
       },
     },
     Object {
-      "end": 3085,
+      "end": 3084,
       "name": "sortOrder",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 3076,
+      "start": 3075,
       "type": Object {
         "literal": "ASC",
         "postgresType": "text",
@@ -1410,12 +1396,12 @@ Object {
       },
     },
     Object {
-      "end": 3166,
+      "end": 3165,
       "name": "sortField",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 3157,
+      "start": 3156,
       "type": Object {
         "literal": "vatPayment",
         "postgresType": "text",
@@ -1423,12 +1409,12 @@ Object {
       },
     },
     Object {
-      "end": 3386,
+      "end": 3385,
       "name": "sortField",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 3377,
+      "start": 3376,
       "type": Object {
         "literal": "generationPayment",
         "postgresType": "text",
@@ -1436,12 +1422,12 @@ Object {
       },
     },
     Object {
-      "end": 3638,
+      "end": 3637,
       "name": "sortField",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 3629,
+      "start": 3628,
       "type": Object {
         "literal": "exportPayment",
         "postgresType": "text",
@@ -1449,12 +1435,12 @@ Object {
       },
     },
     Object {
-      "end": 3870,
+      "end": 3869,
       "name": "sortField",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 3861,
+      "start": 3860,
       "type": Object {
         "literal": "generationEnergy",
         "postgresType": "text",
@@ -1462,12 +1448,12 @@ Object {
       },
     },
     Object {
-      "end": 4116,
+      "end": 4115,
       "name": "sortField",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 4107,
+      "start": 4106,
       "type": Object {
         "literal": "exportEnergy",
         "postgresType": "text",
@@ -1475,12 +1461,12 @@ Object {
       },
     },
     Object {
-      "end": 4344,
+      "end": 4343,
       "name": "sortField",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 4335,
+      "start": 4334,
       "type": Object {
         "literal": "cfrFitId",
         "postgresType": "text",
@@ -1488,12 +1474,12 @@ Object {
       },
     },
     Object {
-      "end": 4562,
+      "end": 4561,
       "name": "sortField",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 4553,
+      "start": 4552,
       "type": Object {
         "literal": "state",
         "postgresType": "text",
@@ -1501,12 +1487,12 @@ Object {
       },
     },
     Object {
-      "end": 4760,
+      "end": 4759,
       "name": "sortField",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 4751,
+      "start": 4750,
       "type": Object {
         "literal": "isAccepted",
         "postgresType": "text",
@@ -1514,12 +1500,12 @@ Object {
       },
     },
     Object {
-      "end": 4980,
+      "end": 4979,
       "name": "sortField",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 4971,
+      "start": 4970,
       "type": Object {
         "literal": "error",
         "postgresType": "text",
@@ -1527,12 +1513,12 @@ Object {
       },
     },
     Object {
-      "end": 5174,
+      "end": 5173,
       "name": "sortField",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 5165,
+      "start": 5164,
       "type": Object {
         "literal": "exportType",
         "postgresType": "text",
@@ -1540,12 +1526,12 @@ Object {
       },
     },
     Object {
-      "end": 5409,
+      "end": 5408,
       "name": "limit",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 5404,
+      "start": 5403,
       "type": Object {
         "name": "int4",
         "type": "Named",
@@ -1556,12 +1542,12 @@ Object {
       },
     },
     Object {
-      "end": 5429,
+      "end": 5428,
       "name": "offset",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 5423,
+      "start": 5422,
       "type": Object {
         "name": "int4",
         "type": "Named",
@@ -2714,12 +2700,12 @@ exports[`Query Interface Should convert complex sql account-levelisations-bulk-c
 Object {
   "params": Array [
     Object {
-      "end": 198,
+      "end": 197,
       "name": "ids",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 195,
+      "start": 194,
       "type": Object {
         "items": Object {
           "name": "int4",
@@ -2740,19 +2726,19 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "end": 405,
-          "start": 382,
+          "end": 404,
+          "start": 381,
           "tag": "Column",
           "values": Array [
             Object {
-              "end": 402,
-              "start": 382,
+              "end": 401,
+              "start": 381,
               "tag": "UnquotedIdentifier",
               "value": "account_levelisations",
             },
             Object {
-              "end": 405,
-              "start": 404,
+              "end": 404,
+              "start": 403,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -2826,12 +2812,12 @@ exports[`Query Interface Should convert complex sql account-levelisations-set-bu
 Object {
   "params": Array [
     Object {
-      "end": 463,
+      "end": 462,
       "name": "ids",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 460,
+      "start": 459,
       "type": Object {
         "items": Object {
           "name": "int4",
@@ -2852,13 +2838,13 @@ Object {
         "column": "id",
         "schema": undefined,
         "sourceTag": Object {
-          "end": 509,
-          "start": 508,
+          "end": 508,
+          "start": 507,
           "tag": "Column",
           "values": Array [
             Object {
-              "end": 509,
-              "start": 508,
+              "end": 508,
+              "start": 507,
               "tag": "UnquotedIdentifier",
               "value": "id",
             },
@@ -3929,12 +3915,12 @@ Object {
       },
     },
     Object {
-      "end": 2755,
+      "end": 2754,
       "name": "limit",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 2750,
+      "start": 2749,
       "type": Object {
         "name": "int4",
         "type": "Named",
@@ -3945,12 +3931,12 @@ Object {
       },
     },
     Object {
-      "end": 2775,
+      "end": 2774,
       "name": "offset",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 2769,
+      "start": 2768,
       "type": Object {
         "name": "int4",
         "type": "Named",
@@ -4696,37 +4682,37 @@ Object {
       "name": "mr",
       "schema": "fit",
       "sourceTag": Object {
-        "end": 1466,
-        "start": 1445,
+        "end": 1464,
+        "start": 1443,
         "tag": "Table",
         "values": Array [
           Object {
-            "end": 1460,
-            "start": 1445,
+            "end": 1458,
+            "start": 1443,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "end": 1447,
-                "start": 1445,
+                "end": 1445,
+                "start": 1443,
                 "tag": "UnquotedIdentifier",
                 "value": "fit",
               },
               Object {
-                "end": 1460,
-                "start": 1449,
+                "end": 1458,
+                "start": 1447,
                 "tag": "UnquotedIdentifier",
                 "value": "MeterReading",
               },
             ],
           },
           Object {
-            "end": 1466,
-            "start": 1462,
+            "end": 1464,
+            "start": 1460,
             "tag": "As",
             "values": Array [
               Object {
-                "end": 1466,
-                "start": 1465,
+                "end": 1464,
+                "start": 1463,
                 "tag": "UnquotedIdentifier",
                 "value": "mr",
               },
@@ -4742,37 +4728,37 @@ Object {
       "name": "mr",
       "schema": "fit",
       "sourceTag": Object {
-        "end": 1937,
-        "start": 1916,
+        "end": 1934,
+        "start": 1913,
         "tag": "Table",
         "values": Array [
           Object {
-            "end": 1931,
-            "start": 1916,
+            "end": 1928,
+            "start": 1913,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "end": 1918,
-                "start": 1916,
+                "end": 1915,
+                "start": 1913,
                 "tag": "UnquotedIdentifier",
                 "value": "fit",
               },
               Object {
-                "end": 1931,
-                "start": 1920,
+                "end": 1928,
+                "start": 1917,
                 "tag": "UnquotedIdentifier",
                 "value": "MeterReading",
               },
             ],
           },
           Object {
-            "end": 1937,
-            "start": 1933,
+            "end": 1934,
+            "start": 1930,
             "tag": "As",
             "values": Array [
               Object {
-                "end": 1937,
-                "start": 1936,
+                "end": 1934,
+                "start": 1933,
                 "tag": "UnquotedIdentifier",
                 "value": "mr",
               },
@@ -4788,37 +4774,37 @@ Object {
       "name": "mr",
       "schema": "fit",
       "sourceTag": Object {
-        "end": 2289,
-        "start": 2268,
+        "end": 2284,
+        "start": 2263,
         "tag": "Table",
         "values": Array [
           Object {
-            "end": 2283,
-            "start": 2268,
+            "end": 2278,
+            "start": 2263,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "end": 2270,
-                "start": 2268,
+                "end": 2265,
+                "start": 2263,
                 "tag": "UnquotedIdentifier",
                 "value": "fit",
               },
               Object {
-                "end": 2283,
-                "start": 2272,
+                "end": 2278,
+                "start": 2267,
                 "tag": "UnquotedIdentifier",
                 "value": "MeterReading",
               },
             ],
           },
           Object {
-            "end": 2289,
-            "start": 2285,
+            "end": 2284,
+            "start": 2280,
             "tag": "As",
             "values": Array [
               Object {
-                "end": 2289,
-                "start": 2288,
+                "end": 2284,
+                "start": 2283,
                 "tag": "UnquotedIdentifier",
                 "value": "mr",
               },
@@ -4834,37 +4820,37 @@ Object {
       "name": "ca",
       "schema": "fit",
       "sourceTag": Object {
-        "end": 2585,
-        "start": 2561,
+        "end": 2579,
+        "start": 2555,
         "tag": "Table",
         "values": Array [
           Object {
-            "end": 2579,
-            "start": 2561,
+            "end": 2573,
+            "start": 2555,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "end": 2563,
-                "start": 2561,
+                "end": 2557,
+                "start": 2555,
                 "tag": "UnquotedIdentifier",
                 "value": "fit",
               },
               Object {
-                "end": 2579,
-                "start": 2565,
+                "end": 2573,
+                "start": 2559,
                 "tag": "UnquotedIdentifier",
                 "value": "CustomerAccount",
               },
             ],
           },
           Object {
-            "end": 2585,
-            "start": 2581,
+            "end": 2579,
+            "start": 2575,
             "tag": "As",
             "values": Array [
               Object {
-                "end": 2585,
-                "start": 2584,
+                "end": 2579,
+                "start": 2578,
                 "tag": "UnquotedIdentifier",
                 "value": "ca",
               },
@@ -4880,37 +4866,37 @@ Object {
       "name": "c",
       "schema": "fit",
       "sourceTag": Object {
-        "end": 2615,
-        "start": 2599,
+        "end": 2609,
+        "start": 2593,
         "tag": "Table",
         "values": Array [
           Object {
-            "end": 2610,
-            "start": 2599,
+            "end": 2604,
+            "start": 2593,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "end": 2601,
-                "start": 2599,
+                "end": 2595,
+                "start": 2593,
                 "tag": "UnquotedIdentifier",
                 "value": "fit",
               },
               Object {
-                "end": 2610,
-                "start": 2603,
+                "end": 2604,
+                "start": 2597,
                 "tag": "UnquotedIdentifier",
                 "value": "Customer",
               },
             ],
           },
           Object {
-            "end": 2615,
-            "start": 2612,
+            "end": 2609,
+            "start": 2606,
             "tag": "As",
             "values": Array [
               Object {
-                "end": 2615,
-                "start": 2615,
+                "end": 2609,
+                "start": 2609,
                 "tag": "UnquotedIdentifier",
                 "value": "c",
               },
@@ -4926,37 +4912,37 @@ Object {
       "name": "fa",
       "schema": "fit",
       "sourceTag": Object {
-        "end": 2688,
-        "start": 2669,
+        "end": 2682,
+        "start": 2663,
         "tag": "Table",
         "values": Array [
           Object {
-            "end": 2682,
-            "start": 2669,
+            "end": 2676,
+            "start": 2663,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "end": 2671,
-                "start": 2669,
+                "end": 2665,
+                "start": 2663,
                 "tag": "UnquotedIdentifier",
                 "value": "fit",
               },
               Object {
-                "end": 2682,
-                "start": 2673,
+                "end": 2676,
+                "start": 2667,
                 "tag": "UnquotedIdentifier",
                 "value": "FiTAccount",
               },
             ],
           },
           Object {
-            "end": 2688,
-            "start": 2684,
+            "end": 2682,
+            "start": 2678,
             "tag": "As",
             "values": Array [
               Object {
-                "end": 2688,
-                "start": 2687,
+                "end": 2682,
+                "start": 2681,
                 "tag": "UnquotedIdentifier",
                 "value": "fa",
               },
@@ -4972,37 +4958,37 @@ Object {
       "name": "ga",
       "schema": "fit",
       "sourceTag": Object {
-        "end": 2773,
-        "start": 2747,
+        "end": 2767,
+        "start": 2741,
         "tag": "Table",
         "values": Array [
           Object {
-            "end": 2767,
-            "start": 2747,
+            "end": 2761,
+            "start": 2741,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "end": 2749,
-                "start": 2747,
+                "end": 2743,
+                "start": 2741,
                 "tag": "UnquotedIdentifier",
                 "value": "fit",
               },
               Object {
-                "end": 2767,
-                "start": 2751,
+                "end": 2761,
+                "start": 2745,
                 "tag": "UnquotedIdentifier",
                 "value": "GenerationAccount",
               },
             ],
           },
           Object {
-            "end": 2773,
-            "start": 2769,
+            "end": 2767,
+            "start": 2763,
             "tag": "As",
             "values": Array [
               Object {
-                "end": 2773,
-                "start": 2772,
+                "end": 2767,
+                "start": 2766,
                 "tag": "UnquotedIdentifier",
                 "value": "ga",
               },
@@ -5018,37 +5004,37 @@ Object {
       "name": "gai",
       "schema": "fit",
       "sourceTag": Object {
-        "end": 2871,
-        "start": 2832,
+        "end": 2865,
+        "start": 2826,
         "tag": "Table",
         "values": Array [
           Object {
-            "end": 2864,
-            "start": 2832,
+            "end": 2858,
+            "start": 2826,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "end": 2834,
-                "start": 2832,
+                "end": 2828,
+                "start": 2826,
                 "tag": "UnquotedIdentifier",
                 "value": "fit",
               },
               Object {
-                "end": 2864,
-                "start": 2836,
+                "end": 2858,
+                "start": 2830,
                 "tag": "UnquotedIdentifier",
                 "value": "GenerationAccountInstallation",
               },
             ],
           },
           Object {
-            "end": 2871,
-            "start": 2866,
+            "end": 2865,
+            "start": 2860,
             "tag": "As",
             "values": Array [
               Object {
-                "end": 2871,
-                "start": 2869,
+                "end": 2865,
+                "start": 2863,
                 "tag": "UnquotedIdentifier",
                 "value": "gai",
               },
@@ -5064,37 +5050,37 @@ Object {
       "name": "im",
       "schema": "fit",
       "sourceTag": Object {
-        "end": 2971,
-        "start": 2945,
+        "end": 2965,
+        "start": 2939,
         "tag": "Table",
         "values": Array [
           Object {
-            "end": 2965,
-            "start": 2945,
+            "end": 2959,
+            "start": 2939,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "end": 2947,
-                "start": 2945,
+                "end": 2941,
+                "start": 2939,
                 "tag": "UnquotedIdentifier",
                 "value": "fit",
               },
               Object {
-                "end": 2965,
-                "start": 2949,
+                "end": 2959,
+                "start": 2943,
                 "tag": "UnquotedIdentifier",
                 "value": "InstallationMeter",
               },
             ],
           },
           Object {
-            "end": 2971,
-            "start": 2967,
+            "end": 2965,
+            "start": 2961,
             "tag": "As",
             "values": Array [
               Object {
-                "end": 2971,
-                "start": 2970,
+                "end": 2965,
+                "start": 2964,
                 "tag": "UnquotedIdentifier",
                 "value": "im",
               },
@@ -5110,37 +5096,37 @@ Object {
       "name": "ba",
       "schema": "fit",
       "sourceTag": Object {
-        "end": 3055,
-        "start": 3035,
+        "end": 3049,
+        "start": 3029,
         "tag": "Table",
         "values": Array [
           Object {
-            "end": 3049,
-            "start": 3035,
+            "end": 3043,
+            "start": 3029,
             "tag": "QualifiedIdentifier",
             "values": Array [
               Object {
-                "end": 3037,
-                "start": 3035,
+                "end": 3031,
+                "start": 3029,
                 "tag": "UnquotedIdentifier",
                 "value": "fit",
               },
               Object {
-                "end": 3049,
-                "start": 3039,
+                "end": 3043,
+                "start": 3033,
                 "tag": "UnquotedIdentifier",
                 "value": "BankAccount",
               },
             ],
           },
           Object {
-            "end": 3055,
-            "start": 3051,
+            "end": 3049,
+            "start": 3045,
             "tag": "As",
             "values": Array [
               Object {
-                "end": 3055,
-                "start": 3054,
+                "end": 3049,
+                "start": 3048,
                 "tag": "UnquotedIdentifier",
                 "value": "ba",
               },
@@ -11173,12 +11159,12 @@ Object {
       },
     },
     Object {
-      "end": 406,
+      "end": 405,
       "name": "sortField",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 397,
+      "start": 396,
       "type": Object {
         "literal": "quarter",
         "postgresType": "text",
@@ -11186,12 +11172,12 @@ Object {
       },
     },
     Object {
-      "end": 433,
+      "end": 432,
       "name": "sortOrder",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 424,
+      "start": 423,
       "type": Object {
         "literal": "DESC",
         "postgresType": "text",
@@ -11199,12 +11185,12 @@ Object {
       },
     },
     Object {
-      "end": 515,
+      "end": 514,
       "name": "sortOrder",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 506,
+      "start": 505,
       "type": Object {
         "literal": "ASC",
         "postgresType": "text",
@@ -11212,12 +11198,12 @@ Object {
       },
     },
     Object {
-      "end": 571,
+      "end": 570,
       "name": "limit",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 566,
+      "start": 565,
       "type": Object {
         "name": "int4",
         "type": "Named",
@@ -11228,12 +11214,12 @@ Object {
       },
     },
     Object {
-      "end": 591,
+      "end": 590,
       "name": "offset",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 585,
+      "start": 584,
       "type": Object {
         "name": "int4",
         "type": "Named",
@@ -11537,12 +11523,12 @@ exports[`Query Interface Should convert complex sql process-batch.query.sql: pro
 Object {
   "params": Array [
     Object {
-      "end": 832,
+      "end": 831,
       "name": "fitIds",
       "pick": Array [],
       "required": false,
       "spread": false,
-      "start": 826,
+      "start": 825,
       "type": Object {
         "items": Object {
           "column": "legacy_fit_db_id",

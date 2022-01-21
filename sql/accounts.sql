@@ -39,7 +39,7 @@ SELECT
       SELECT mr."DateOfReading"
       FROM fit.MeterReading AS mr
       WHERE
-        mr."MeterId" = ANY (ARRAY_AGG(im."MeterId")) AND mr."ReadType" = ANY (ARRAY['opening', 'Opening'])
+        mr."MeterId" = ANY(ARRAY_AGG(im."MeterId")) AND mr."ReadType" = ANY(ARRAY['opening', 'Opening'])
       ORDER BY
         mr."DateOfReading" ASC
       LIMIT 1
@@ -48,7 +48,7 @@ SELECT
       SELECT mr."DateOfReading"
       FROM fit.MeterReading AS mr
       WHERE
-        mr."MeterId" = ANY (ARRAY_AGG(im."MeterId"))
+        mr."MeterId" = ANY(ARRAY_AGG(im."MeterId"))
       ORDER BY
         mr."DateOfReading" ASC
       LIMIT 1
@@ -62,8 +62,8 @@ SELECT
       SELECT mr."DateOfReading"
       FROM fit.MeterReading AS mr
       WHERE
-        mr."MeterId" = ANY (ARRAY_AGG(im."MeterId"))
-        AND mr."ReadType" = ANY (ARRAY['Closure', 'Closing', 'Clsoing', 'Final'])
+        mr."MeterId" = ANY(ARRAY_AGG(im."MeterId"))
+        AND mr."ReadType" = ANY(ARRAY['Closure', 'Closing', 'Clsoing', 'Final'])
       ORDER BY
         mr."DateOfReading" DESC
       LIMIT 1
@@ -75,7 +75,7 @@ SELECT
           SELECT mr."DateOfReading"
           FROM fit.MeterReading AS mr
           WHERE
-            mr."MeterId" = ANY (ARRAY_AGG(im."MeterId"))
+            mr."MeterId" = ANY(ARRAY_AGG(im."MeterId"))
           ORDER BY
             mr."DateOfReading" DESC
           LIMIT 1

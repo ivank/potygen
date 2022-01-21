@@ -33,8 +33,10 @@ FROM
 WHERE
   (accounts.end_on IS NULL OR accounts.end_on >= $start)
   AND
-    contracts.export_type
-    = ANY(ARRAY['Metered Export', 'Deemed']::installation_export_type[])
+    contracts.export_type = ANY(ARRAY[
+      'Metered Export',
+      'Deemed'
+    ]::installation_export_type[])
 GROUP BY
   accounts.id,
   installations.id
@@ -116,7 +118,7 @@ WHERE
   AND
     (
       cardinality($ids::int[]) = 0
-      OR (account_levelisations.id = ANY ($ids::int[]))
+      OR (account_levelisations.id = ANY($ids::int[]))
     )
 -- Sort by difference, dateOn, value
 ORDER BY
@@ -244,7 +246,7 @@ FROM account_levelisations
 WHERE
   accounts.id = account_levelisations.account_id
   AND accounts.state = 'Pending Loss'
-  AND account_levelisations.id = ANY ($ids::int[])
+  AND account_levelisations.id = ANY($ids::int[])
   AND account_levelisations.is_accepted = TRUE
   AND
     (
@@ -284,7 +286,7 @@ SET
     ELSE NULL
   END
 WHERE
-  account_levelisations.id = ANY ($ids::int[]) AND is_accepted = TRUE
+  account_levelisations.id = ANY($ids::int[]) AND is_accepted = TRUE
 RETURNING
   id
 "
@@ -367,7 +369,7 @@ WHERE
   )
   -- Ids filter, for loading specific ids, skip if empty array
   AND
-    (cardinality($ids::int[]) = 0 OR (accounts.id = ANY ($ids::int[])))
+    (cardinality($ids::int[]) = 0 OR (accounts.id = ANY($ids::int[])))
 "
 `;
 
@@ -458,7 +460,7 @@ WHERE
   )
   -- Ids filter, for loading specific ids, skip if empty array
   AND
-    (cardinality($ids::int[]) = 0 OR (accounts.id = ANY ($ids::int[])))
+    (cardinality($ids::int[]) = 0 OR (accounts.id = ANY($ids::int[])))
 GROUP BY
   accounts.id,
   accounts.start_on,
@@ -521,8 +523,8 @@ SELECT
       SELECT mr.\\"DateOfReading\\"
       FROM fit.MeterReading AS mr
       WHERE
-        mr.\\"MeterId\\" = ANY (ARRAY_AGG(im.\\"MeterId\\"))
-        AND mr.\\"ReadType\\" = ANY (ARRAY['opening', 'Opening'])
+        mr.\\"MeterId\\" = ANY(ARRAY_AGG(im.\\"MeterId\\"))
+        AND mr.\\"ReadType\\" = ANY(ARRAY['opening', 'Opening'])
       ORDER BY
         mr.\\"DateOfReading\\" ASC
       LIMIT 1
@@ -531,7 +533,7 @@ SELECT
       SELECT mr.\\"DateOfReading\\"
       FROM fit.MeterReading AS mr
       WHERE
-        mr.\\"MeterId\\" = ANY (ARRAY_AGG(im.\\"MeterId\\"))
+        mr.\\"MeterId\\" = ANY(ARRAY_AGG(im.\\"MeterId\\"))
       ORDER BY
         mr.\\"DateOfReading\\" ASC
       LIMIT 1
@@ -545,9 +547,8 @@ SELECT
       SELECT mr.\\"DateOfReading\\"
       FROM fit.MeterReading AS mr
       WHERE
-        mr.\\"MeterId\\" = ANY (ARRAY_AGG(im.\\"MeterId\\"))
-        AND
-          mr.\\"ReadType\\" = ANY (ARRAY['Closure', 'Closing', 'Clsoing', 'Final'])
+        mr.\\"MeterId\\" = ANY(ARRAY_AGG(im.\\"MeterId\\"))
+        AND mr.\\"ReadType\\" = ANY(ARRAY['Closure', 'Closing', 'Clsoing', 'Final'])
       ORDER BY
         mr.\\"DateOfReading\\" DESC
       LIMIT 1
@@ -559,7 +560,7 @@ SELECT
           SELECT mr.\\"DateOfReading\\"
           FROM fit.MeterReading AS mr
           WHERE
-            mr.\\"MeterId\\" = ANY (ARRAY_AGG(im.\\"MeterId\\"))
+            mr.\\"MeterId\\" = ANY(ARRAY_AGG(im.\\"MeterId\\"))
           ORDER BY
             mr.\\"DateOfReading\\" DESC
           LIMIT 1
@@ -1241,7 +1242,7 @@ WHERE
   -- Filter
   -- Ids filter, for loading specific ids, skip if empty array
   ($q = '' OR (levelisations.quarter = $q))
-  AND (cardinality($ids::int[]) = 0 OR (levelisations.id = ANY ($ids::int[])))
+  AND (cardinality($ids::int[]) = 0 OR (levelisations.id = ANY($ids::int[])))
 -- Sort by difference, dateOn, value
 ORDER BY
   CASE WHEN $sortField = 'quarter' AND $sortOrder = 'DESC' THEN quarter END
@@ -1349,7 +1350,7 @@ FROM
   LEFT JOIN addresses
     ON contacts.address_id = addresses.id
 WHERE
-  installations.legacy_fit_db_id = ANY ($fitIds)
+  installations.legacy_fit_db_id = ANY($fitIds)
 "
 `;
 

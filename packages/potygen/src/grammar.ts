@@ -40,6 +40,24 @@ const astUpperLeaf = <T extends Tag.LeafTag>(tag: T['tag'], rule: Rule) =>
   Node(rule, ([value], $, $next) => ({ tag, value: value.toUpperCase(), start: $.pos, end: $next.pos - 1 }));
 
 /**
+ * A helper function that creates a {@link NodeTag}
+ * If we match any of the additional cases, return the additional node, with the first node as the first of its children.
+ * This allows us to efficiently cover cases like this, as "expression" would be parsed only once
+ *
+ * ```
+ * expression
+ * expression = other thing
+ * ...
+ * ```
+ */
+const astNodeOrSwitch = (rule: Rule, cases: Array<Rule>) =>
+  Node(All(rule, Optional(Any(...cases))), (values, $, $next) =>
+    values.length === 1
+      ? values[0]
+      : { ...values[1], values: [values[0], ...values[1].values], start: $.pos, end: $next.pos - 1 },
+  );
+
+/**
  * Comma separated list
  */
 const List = (item: Rule) => All(item, Star(All(',', item)));
@@ -296,45 +314,6 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       'ArrayConstructor',
       All(/^ARRAY/i, SquareBrackets(List(ChildExpression))),
     );
-    const ExpressionList = astNode<Tag.ExpressionListTag>('ExpressionList', List(ChildExpression));
-
-    /**
-     * Comparation Expression
-     * ----------------------------------------------------------------------------------------
-     */
-
-    const ComparationTypeExists = astUpperLeaf<Tag.ComparationTypeTag>('ComparationType', /^(EXISTS)/i);
-    const ComparationTypeInclusion = astUpperLeaf<Tag.ComparationTypeTag>('ComparationType', /^(IN|NOT IN)/i);
-    const ComparationTypeOperator = astUpperLeaf<Tag.ComparationTypeTag>('ComparationType', /^(ANY|SOME|ALL)/i);
-
-    const Exists = astNode<Tag.ComparationExpressionTag>(
-      'ComparationExpression',
-      All(ComparationTypeExists, Brackets(SelectExpression)),
-    );
-    const InclusionComparation = astNode<Tag.ComparationExpressionTag>(
-      'ComparationExpression',
-      All(Column, ComparationTypeInclusion, Brackets(SelectExpression)),
-    );
-
-    const ComparationOperator = astUpperLeaf<Tag.ComparationOperatorTag>(
-      'ComparationOperator',
-      /^(<=|>=|<|>|<>|!=|=|AND|OR)/,
-    );
-
-    const OperatorComparation = astNode<Tag.ComparationExpressionTag>(
-      'ComparationExpression',
-      All(
-        Column,
-        ComparationOperator,
-        ComparationTypeOperator,
-        Brackets(Any(ArrayConstructor, SelectExpression, ExpressionList)),
-      ),
-    );
-
-    const RowWiseComparation = astNode<Tag.ComparationExpressionTag>(
-      'ComparationExpression',
-      All(Column, ComparationOperator, Brackets(SelectExpression)),
-    );
 
     /**
      * Function
@@ -344,7 +323,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const FunctionFilter = astNode<Tag.FilterTag>('Filter', All(/^FILTER/i, Brackets(WhereRule(ChildExpression))));
     const FunctionIdentifier = astNode<Tag.QualifiedIdentifierTag>(
       'QualifiedIdentifier',
-      Any(All(Identifier, '.', Identifier), Identifier),
+      Any(All(Identifier, '.', Identifier), IdentifierRestricted),
     );
     const Function = astNode<Tag.FunctionTag>(
       'Function',
@@ -383,10 +362,8 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const ArrayIndex = astNode<Tag.ArrayIndexTag>('ArrayIndex', SquareBrackets(Any(ArrayIndexRange, ChildExpression)));
     const CompositeAccess = astNode<Tag.CompositeAccessTag>('CompositeAccess', All('.', Identifier));
 
-    const Row = astNode<Tag.RowTag>(
-      'Row',
-      Any(All(/^ROW/i, Brackets(List(ChildExpression))), Brackets(MultiList(ChildExpression))),
-    );
+    const RowKeyward = astNode<Tag.RowKeywardTag>('RowKeyward', All(/^ROW/i, Brackets(List(ChildExpression))));
+    const Row = astNode<Tag.RowTag>('Row', Brackets(MultiList(ChildExpression)));
 
     const ExtractField = astLeaf<Tag.ExtractFieldTag>(
       'ExtractField',
@@ -402,6 +379,8 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       All(Brackets(ChildExpression), Optional(Any(ArrayIndex, CompositeAccess))),
     );
 
+    const Exists = astNode<Tag.ExistsTag>('Exists', All(/^EXISTS/i, Brackets(SelectExpression)));
+
     /**
      * PgCast
      * ----------------------------------------------------------------------------------------
@@ -409,19 +388,17 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const DataType = Any(
       ArrayColumnIndex,
       WrappedExpression,
-      OperatorComparation,
       ColumnFullyQualified,
       Constant,
       Parameter,
       ArrayConstructor,
       Row,
+      RowKeyward,
       Exists,
       Extract,
       Function,
       ColumnQualified,
       Null,
-      InclusionComparation,
-      RowWiseComparation,
       ColumnUnqualified,
       Brackets(SelectExpression),
     );
@@ -447,6 +424,32 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const DataExpression = CastableRule(Any(CaseNormal, CaseSimple, CastableDataType));
 
     /**
+     * Comparation Expression
+     * ----------------------------------------------------------------------------------------
+     */
+    const ComparationArrayInclusionType = astUpperLeaf<Tag.ComparationArrayInclusionTypeTag>(
+      'ComparationArrayInclusionType',
+      /^(IN|NOT IN)/i,
+    );
+    const ComparationArrayType = astUpperLeaf<Tag.ComparationArrayTypeTag>('ComparationArrayType', /^(ANY|SOME|ALL)/i);
+    const ComparationArrayOperator = astUpperLeaf<Tag.ComparationArrayOperatorTag>(
+      'ComparationArrayOperator',
+      /^(<=|>=|<|>|<>|!=|=|AND|OR)/,
+    );
+    const ComparationArraySubject = Brackets(Any(DataExpression, SelectExpression));
+    const ExpressionList = astNode<Tag.ExpressionListTag>('ExpressionList', List(ChildExpression));
+    const ComparationArrayInclusion = astNode<Tag.ComparationArrayInclusionTag>(
+      'ComparationArrayInclusion',
+      All(ComparationArrayInclusionType, Any(Brackets(ExpressionList), Parameter)),
+    );
+    const ComparationArray = astNode<Tag.ComparationArrayTag>(
+      'ComparationArray',
+      All(ComparationArrayOperator, ComparationArrayType, ComparationArraySubject),
+    );
+
+    const CombinedExpession = astNodeOrSwitch(DataExpression, [ComparationArrayInclusion, ComparationArray]);
+
+    /**
      * Ternary Operator
      * ----------------------------------------------------------------------------------------
      */
@@ -457,9 +460,9 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
         'TernaryExpression',
         All(Current, OperatorNode, Current, SeparatorNode, Current),
       );
-    }, DataExpression);
+    }, CombinedExpession);
 
-    const DataOrTernaryExpression = Any(TernaryExpression, DataExpression);
+    const DataOrTernaryExpression = Any(TernaryExpression, CombinedExpession);
 
     /**
      * Unary Operator

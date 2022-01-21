@@ -54,7 +54,7 @@ WHERE
   -- Ids filter, for loading specific ids, skip if empty array
   AND
     ($4::int IS NULL OR account_levelisations.levelisation_id = $4)
-  AND (cardinality($5::int[]) = 0 OR (account_levelisations.id = ANY ($5::int[])))
+  AND (cardinality($5::int[]) = 0 OR (account_levelisations.id = ANY($5::int[])))
 -- Sort by difference, dateOn, value
 ORDER BY
   CASE WHEN $6 = 'totalPayment' AND $7 = 'DESC' THEN account_levelisations.total_payment END DESC,
@@ -119,7 +119,7 @@ SET
     ELSE NULL
   END
 WHERE
-  account_levelisations.id = ANY ($1::int[]) AND is_accepted = TRUE
+  account_levelisations.id = ANY($1::int[]) AND is_accepted = TRUE
 RETURNING
   id
 ",
@@ -205,7 +205,7 @@ WHERE
   )
   -- Ids filter, for loading specific ids, skip if empty array
   AND
-    (cardinality($2::int[]) = 0 OR (accounts.id = ANY ($2::int[])))
+    (cardinality($2::int[]) = 0 OR (accounts.id = ANY($2::int[])))
 GROUP BY
   accounts.id,
   accounts.start_on,

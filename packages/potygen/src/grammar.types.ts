@@ -667,7 +667,25 @@ export interface StarIdentifierTag extends NodeSqlTag {
 }
 
 /**
- * A tag representing a row constructor
+ * A tag representing a row constructor with omitted ROW keyword
+ * https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-ROW-CONSTRUCTORS
+ * ```
+ *            ┌─expression
+ *            ▼
+ *         ┌ ┬─┬ ┬───┬ ┬──────┬ ┐
+ *  SELECT  (│1│,│2.5│,│'test'│)
+ *         └ ┴─┴ ┴───┴ ┴──────┴ ┘
+ *        └──────────────────────┘
+ *                 └─▶RowTag
+ * ```
+ */
+export interface RowTag extends NodeSqlTag {
+  tag: 'Row';
+  values: ExpressionTag[];
+}
+
+/**
+ * A tag representing a row constructor with explicit ROW keyword
  * https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-ROW-CONSTRUCTORS
  * ```
  *                ┌─expression
@@ -679,8 +697,8 @@ export interface StarIdentifierTag extends NodeSqlTag {
  *                     └─▶RowTag
  * ```
  */
-export interface RowTag extends NodeSqlTag {
-  tag: 'Row';
+export interface RowKeywardTag extends NodeSqlTag {
+  tag: 'RowKeyward';
   values: ExpressionTag[];
 }
 
@@ -811,24 +829,6 @@ export interface BinaryOperatorTag extends LeafSqlTag {
 export interface UnaryOperatorTag extends LeafSqlTag {
   tag: 'UnaryOperator';
   value: '+' | '-' | 'NOT' | 'ISNULL' | 'NOTNULL';
-}
-
-/**
- * THe operator of a row and array comparations
- * https://www.postgresql.org/docs/current/functions-comparisons.html
- */
-export interface ComparationOperatorTag extends LeafSqlTag {
-  tag: 'ComparationOperator';
-  value: '<=' | '>=' | '<' | '>' | '<>' | '!=' | '=' | 'AND' | 'OR';
-}
-
-/**
- * The type of a row and array comparation
- * https://www.postgresql.org/docs/current/functions-comparisons.html
- */
-export interface ComparationTypeTag extends LeafSqlTag {
-  tag: 'ComparationType';
-  value: 'IN' | 'NOT IN' | 'ANY' | 'SOME' | 'ALL' | 'EXISTS';
 }
 
 /**
@@ -991,23 +991,91 @@ export interface FunctionTag extends NodeSqlTag {
 }
 
 /**
- * Comparation expression, capturing all the possible types.
+ * The type of a row and array comparation
  * https://www.postgresql.org/docs/current/functions-comparisons.html
- *
- * TODO: Split this into more managable tags
  */
-export interface ComparationExpressionTag extends NodeSqlTag {
-  tag: 'ComparationExpression';
-  values:
-    | [type: ComparationTypeTag, subject: SelectTag]
-    | [column: ColumnTag, type: ComparationTypeTag, subject: SelectTag]
-    | [
-        column: ColumnTag,
-        operator: ComparationOperatorTag,
-        type: ComparationTypeTag,
-        subject: SelectTag | ArrayConstructorTag | ExpressionListTag,
-      ]
-    | [column: ColumnTag, operator: ComparationOperatorTag, subject: SelectTag];
+export interface ComparationArrayInclusionTypeTag extends LeafSqlTag {
+  tag: 'ComparationArrayInclusionType';
+  value: 'IN' | 'NOT IN';
+}
+
+/**
+ * THe operator of a row and array comparations
+ * https://www.postgresql.org/docs/current/functions-comparisons.html
+ */
+export interface ComparationArrayOperatorTag extends LeafSqlTag {
+  tag: 'ComparationArrayOperator';
+  value: '<=' | '>=' | '<' | '>' | '<>' | '!=' | '=' | 'AND' | 'OR';
+}
+
+/**
+ * The type of a row and array comparation
+ * https://www.postgresql.org/docs/current/functions-comparisons.html
+ */
+export interface ComparationArrayTypeTag extends LeafSqlTag {
+  tag: 'ComparationArrayType';
+  value: 'ANY' | 'SOME' | 'ALL';
+}
+
+/**
+ * Comparation with array expresison
+ * https://www.postgresql.org/docs/current/functions-comparisons.html
+ * ```
+ *   value─┐  ┌─type
+ *         │  │   ┌─subject
+ *         ▼  ▼   ▼
+ *       ┌───┬──┬─────────┐
+ * SELECT│113│IN│(1, 2, 3)│
+ *       └───┴──┴─────────┘
+ *      └─────────────────┘
+ *             └▶ComparationArrayInclusionTag
+ * ```
+ */
+export interface ComparationArrayInclusionTag extends NodeSqlTag {
+  tag: 'ComparationArrayInclusion';
+  values: [value: ExpressionTag, type: ComparationArrayInclusionTypeTag, subject: CastableDataTypeTag];
+}
+
+/**
+ * Comparation with array expresison
+ * https://www.postgresql.org/docs/current/functions-comparisons.html
+ * ```
+ *   value─┐  ┌─operator
+ *         │  │  ┌─type   ┌─subject
+ *         ▼  ▼  ▼        ▼
+ *       ┌───┬─┬───┬────────────┐
+ * SELECT│113│=│ANY│(ARRAY[1,2])│
+ *       └───┴─┴───┴────────────┘
+ *      └────────────────────────┘
+ *                  └▶ComparationArrayInclusionTag
+ * ```
+ */
+export interface ComparationArrayTag extends NodeSqlTag {
+  tag: 'ComparationArray';
+  values: [
+    value: ExpressionTag,
+    operator: ComparationArrayOperatorTag,
+    type: ComparationArrayTypeTag,
+    subject: CastableDataTypeTag,
+  ];
+}
+
+/**
+ * Exists expression
+ * https://www.postgresql.org/docs/8.1/functions-subquery.html#AEN13171
+ * ```
+ *                                           ┌─subject
+ *                                           ▼
+ *                              ┌ ─ ─ ─┌─────────────┐
+ * SELECT col1 FROM table1 WHERE EXISTS│(SELECT TRUE)│
+ *                              └ ─ ─ ─└─────────────┘
+ *                             └──────────────────────┘
+ *                                       └▶ComparationArrayInclusionTag
+ * ```
+ */
+export interface ExistsTag extends NodeSqlTag {
+  tag: 'Exists';
+  values: [subject: SelectTag];
 }
 
 /**
@@ -1863,12 +1931,15 @@ export type ExpressionTag =
   | AnyCastTag
   | ExtractTag
   | TernaryExpressionTag
-  | ComparationExpressionTag
+  | ComparationArrayTag
+  | ComparationArrayInclusionTag
+  | ExistsTag
   | CaseTag
   | CaseSimpleTag
   | DataTypeTag
   | OperatorExpressionTag
   | RowTag
+  | RowKeywardTag
   | WrappedExpressionTag;
 
 export type FunctionArgTag = ExpressionTag | StarIdentifierTag;
@@ -1910,8 +1981,9 @@ export type LeafTag =
   | BooleanTag
   | BinaryOperatorTag
   | UnaryOperatorTag
-  | ComparationOperatorTag
-  | ComparationTypeTag
+  | ComparationArrayInclusionTypeTag
+  | ComparationArrayOperatorTag
+  | ComparationArrayTypeTag
   | JoinTypeTag
   | OrderDirectionTag
   | CollateTag
@@ -1947,6 +2019,7 @@ export type NodeTag =
   | FilterTag
   | StarIdentifierTag
   | RowTag
+  | RowKeywardTag
   | WhenTag
   | ElseTag
   | CaseSimpleTag
@@ -1958,7 +2031,9 @@ export type NodeTag =
   | PgCastTag
   | ArrayConstructorTag
   | FunctionTag
-  | ComparationExpressionTag
+  | ComparationArrayTag
+  | ComparationArrayInclusionTag
+  | ExistsTag
   | SelectListItemTag
   | SelectListTag
   | NamedSelectTag

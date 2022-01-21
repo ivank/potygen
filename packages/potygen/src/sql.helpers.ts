@@ -41,7 +41,7 @@ export const oneResult = <TQueryInterface extends SqlInterface>(query: Query<TQu
   mapResult((rows, params) => {
     const result = rows[0];
     if (!result) {
-      throw new PotygenNotFoundError(`Must return at least one`, toQueryConfig(query(), params));
+      throw new PotygenNotFoundError(`Must return at least one`, toQueryConfig(query, params));
     }
     return result;
   }, query);

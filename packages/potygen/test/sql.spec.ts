@@ -148,7 +148,7 @@ describe('Template Tag', () => {
     ],
   ])('Should convert to query an sql with %s', (_, query, params, expected) =>
     withParserErrors(() => {
-      expect(toQueryConfig(query(), params)).toEqual(expected);
+      expect(toQueryConfig(query, params)).toEqual(expected);
     }),
   );
 });

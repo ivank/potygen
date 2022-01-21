@@ -3,6 +3,7 @@ import { withParserErrors } from './helpers';
 
 describe('Query Interface', () => {
   it.each<[string, string]>([
+    ['where pick spread', `SELECT * FROM all_types WHERE id IN $$ids(id)`],
     ['cte with values', `WITH ins(id, val) AS (VALUES (1::int, 2::int),(3::int, 4::int)) SELECT * FROM ins`],
     ['between fields not named', `SELECT FALSE as "col1", TRUE as "col2"`],
     ['boolean fields named', `SELECT FALSE as "col1", TRUE as "col2"`],

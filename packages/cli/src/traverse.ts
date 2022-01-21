@@ -211,7 +211,7 @@ export class QueryLoader extends Writable {
           .map(emitLoadedFile(this.options.root, this.options.template, this.options.typePrefix)),
       );
     } catch (error) {
-      callback(error instanceof Error ? error : new Error(String(error)));
+      this.options.logger.error(error instanceof Error ? String(error) : new Error(String(error)));
     }
     callback();
   }
@@ -230,7 +230,7 @@ export class QueryLoader extends Writable {
         this.options.typePrefix,
       )(loadFile(this.data)(file));
     } catch (error) {
-      callback(error instanceof Error ? error : new Error(String(error)));
+      this.options.logger.error(error instanceof Error ? String(error) : new Error(String(error)));
     }
     callback();
   }

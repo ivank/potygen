@@ -87,7 +87,9 @@ const toSourcesIterator =
             value: toQueryInterface(first(sql.values)),
           },
         ]);
-      case 'ComparationExpression':
+      case 'Exists':
+      case 'ComparationArray':
+      case 'ComparationArrayInclusion':
         return sources.concat(nestedRecur(last(sql.values)));
       case 'CTE':
         const cteQuery = last(sql.values);
@@ -291,6 +293,7 @@ const toType =
       case 'Parameter':
         return typeAny();
       case 'Row':
+      case 'RowKeyward':
         return { type: 'Named', value: typeString('row'), name: 'row' };
       case 'Select':
         return {
@@ -314,7 +317,9 @@ const toType =
       case 'HexademicalString':
       case 'CustomQuotedString':
         return { type: 'String', literal: sql.value, postgresType: 'text' };
-      case 'ComparationExpression':
+      case 'Exists':
+      case 'ComparationArray':
+      case 'ComparationArrayInclusion':
         return typeBoolean();
       case 'Type':
         const typeParts = first(sql.values).values;
@@ -523,7 +528,8 @@ export const toParams =
             pick: sql.pick.map((name, index) => ({ name: name.value, type: context.columns[index] ?? typeUnknown() })),
           },
         ];
-      case 'ComparationExpression':
+      case 'ComparationArrayInclusion':
+      case 'ComparationArray':
         const column = first(sql.values);
         return column && isColumn(column)
           ? [

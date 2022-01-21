@@ -94,13 +94,18 @@ const nullToUndefinedInPlace = (row: Record<string, unknown>): Record<string, un
   return row;
 };
 
-export const toQueryConfig = <TSqlInterface extends SqlInterface = SqlInterface>(
+const toQueryConfigFromSource = <TSqlInterface extends SqlInterface = SqlInterface>(
   querySource: QuerySource,
   params: TSqlInterface['params'],
 ): QueryConfig => ({
   text: convertSql(querySource.params, querySource.sql, params as Record<string, unknown>),
   values: convertValues(querySource.params, params as Record<string, unknown>),
 });
+
+export const toQueryConfig = <TSqlInterface extends SqlInterface = SqlInterface>(
+  query: Query<TSqlInterface>,
+  params: TSqlInterface['params'],
+): QueryConfig => toQueryConfigFromSource(query(), params);
 
 export const toQuery = <TSqlInterface extends SqlInterface = SqlInterface>(sql: string): Query<TSqlInterface> => {
   const { ast } = parser(sql);
@@ -112,7 +117,7 @@ export const toQuery = <TSqlInterface extends SqlInterface = SqlInterface>(sql: 
       return source;
     }
 
-    const query = toQueryConfig<TSqlInterface>(source, args[1]);
+    const query = toQueryConfigFromSource<TSqlInterface>(source, args[1]);
 
     try {
       return args[0].query(query).then(({ rows }) => rows.map(nullToUndefinedInPlace));

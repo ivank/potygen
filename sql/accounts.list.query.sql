@@ -57,4 +57,4 @@ WHERE
   )
   -- Ids filter, for loading specific ids, skip if empty array
   AND
-    (cardinality($ids::int[]) = 0 OR (accounts.id = ANY ($ids::int[])))
+    (cardinality($ids::int[]) = 0 OR (accounts.id = ANY($ids::int[])))
