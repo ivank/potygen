@@ -229,7 +229,7 @@ exports[`Format Should parse simple sql commit semicolon (COMMIT;): commit semic
 
 exports[`Format Should parse simple sql complex dimensions (SELECT contracts.export_type = ANY(ARRAY['Metered Export','Deemed']::installation_export_type[]) FROM contracts): complex dimensions 1`] = `
 "SELECT
-  contracts.export_type = ANY (ARRAY[
+  contracts.export_type = ANY(ARRAY[
     'Metered Export',
     'Deemed'
   ]::installation_export_type[])
@@ -475,7 +475,7 @@ RETURNING
 `;
 
 exports[`Format Should parse simple sql function in where (SELECT id FROM table1 WHERE table1.col = ANY(table1.test) ): function in where 1`] = `
-"SELECT id FROM table1 WHERE table1.col = ANY (table1.test)
+"SELECT id FROM table1 WHERE table1.col = ANY(table1.test)
 "
 `;
 
@@ -483,7 +483,7 @@ exports[`Format Should parse simple sql function with array (SELECT id FROM tabl
 "SELECT id
 FROM table1
 WHERE
-  table1.col = ANY (ARRAY['opening', 'Opening'])
+  table1.col = ANY(ARRAY['opening', 'Opening'])
 ORDER BY
   col ASC
 LIMIT 1
@@ -847,7 +847,7 @@ exports[`Format Should parse simple sql nested function (SELECT id FROM table1 W
 "SELECT id
 FROM table1
 WHERE
-  table1.col = ANY (ARRAY_AGG(table1.col2))
+  table1.col = ANY(ARRAY_AGG(table1.col2))
 GROUP BY
   table1.col2
 "
