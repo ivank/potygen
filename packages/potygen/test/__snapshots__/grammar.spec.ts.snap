@@ -9079,6 +9079,121 @@ Object {
 }
 `;
 
+exports[`Sql Should parse queries with parameter in where spread (SELECT * FROM all_types WHERE id IN $ids): in where spread 1`] = `
+Object {
+  "ast": Object {
+    "end": 40,
+    "start": 0,
+    "tag": "Select",
+    "values": Array [
+      Object {
+        "end": 7,
+        "start": 7,
+        "tag": "SelectList",
+        "values": Array [
+          Object {
+            "end": 7,
+            "start": 7,
+            "tag": "SelectListItem",
+            "values": Array [
+              Object {
+                "end": 7,
+                "start": 7,
+                "tag": "StarIdentifier",
+                "values": Array [
+                  Object {
+                    "end": 7,
+                    "start": 7,
+                    "tag": "Star",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 22,
+        "start": 9,
+        "tag": "From",
+        "values": Array [
+          Object {
+            "end": 22,
+            "start": 14,
+            "tag": "FromList",
+            "values": Array [
+              Object {
+                "end": 22,
+                "start": 14,
+                "tag": "Table",
+                "values": Array [
+                  Object {
+                    "end": 22,
+                    "start": 14,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 22,
+                        "start": 14,
+                        "tag": "UnquotedIdentifier",
+                        "value": "all_types",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 40,
+        "start": 24,
+        "tag": "Where",
+        "values": Array [
+          Object {
+            "end": 40,
+            "start": 30,
+            "tag": "ComparationArrayInclusion",
+            "values": Array [
+              Object {
+                "end": 31,
+                "start": 30,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 31,
+                    "start": 30,
+                    "tag": "UnquotedIdentifier",
+                    "value": "id",
+                  },
+                ],
+              },
+              Object {
+                "end": 34,
+                "start": 33,
+                "tag": "ComparationArrayInclusionType",
+                "value": "IN",
+              },
+              Object {
+                "end": 40,
+                "pick": Array [],
+                "required": false,
+                "start": 36,
+                "tag": "Parameter",
+                "type": "spread",
+                "value": "ids",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse queries with parameter type array (SELECT $test::int[]): type array 1`] = `
 Object {
   "ast": Object {
@@ -9609,7 +9724,7 @@ Object {
           Object {
             "end": 116,
             "start": 58,
-            "tag": "BinaryExpression",
+            "tag": "ComparationArrayInclusion",
             "values": Array [
               Object {
                 "end": 85,
@@ -9654,13 +9769,13 @@ Object {
               Object {
                 "end": 88,
                 "start": 87,
-                "tag": "BinaryOperator",
+                "tag": "ComparationArrayInclusionType",
                 "value": "IN",
               },
               Object {
-                "end": 116,
-                "start": 90,
-                "tag": "WrappedExpression",
+                "end": 115,
+                "start": 91,
+                "tag": "ExpressionList",
                 "values": Array [
                   Object {
                     "end": 115,
@@ -10455,7 +10570,7 @@ Object {
               Object {
                 "end": 17,
                 "start": 7,
-                "tag": "Row",
+                "tag": "RowKeyward",
                 "values": Array [
                   Object {
                     "end": 12,
@@ -10558,7 +10673,7 @@ Object {
               Object {
                 "end": 28,
                 "start": 20,
-                "tag": "Row",
+                "tag": "RowKeyward",
                 "values": Array [
                   Object {
                     "end": 27,
@@ -11487,7 +11602,7 @@ Object {
 }
 `;
 
-exports[`Sql Should parse simple sql between (SELECT * WHERE table1.col BETWEEN '2006-01-01' AND '2007-01-01'): between 1`] = `
+exports[`Sql Should parse simple sql between dates (SELECT * WHERE table1.col BETWEEN '2006-01-01' AND '2007-01-01'): between dates 1`] = `
 Object {
   "ast": Object {
     "end": 62,
@@ -13151,7 +13266,7 @@ Object {
               Object {
                 "end": 95,
                 "start": 7,
-                "tag": "BinaryExpression",
+                "tag": "ComparationArray",
                 "values": Array [
                   Object {
                     "end": 27,
@@ -13175,82 +13290,68 @@ Object {
                   Object {
                     "end": 29,
                     "start": 29,
-                    "tag": "BinaryOperator",
+                    "tag": "ComparationArrayOperator",
                     "value": "=",
                   },
                   Object {
-                    "end": 95,
+                    "end": 33,
                     "start": 31,
-                    "tag": "Function",
+                    "tag": "ComparationArrayType",
+                    "value": "ANY",
+                  },
+                  Object {
+                    "end": 95,
+                    "start": 35,
+                    "tag": "PgCast",
                     "values": Array [
                       Object {
-                        "end": 33,
-                        "start": 31,
-                        "tag": "QualifiedIdentifier",
+                        "end": 66,
+                        "start": 35,
+                        "tag": "ArrayConstructor",
                         "values": Array [
                           Object {
-                            "end": 33,
-                            "start": 31,
-                            "tag": "UnquotedIdentifier",
-                            "value": "ANY",
+                            "end": 56,
+                            "start": 41,
+                            "tag": "String",
+                            "value": "Metered Export",
+                          },
+                          Object {
+                            "end": 65,
+                            "start": 58,
+                            "tag": "String",
+                            "value": "Deemed",
                           },
                         ],
                       },
                       Object {
-                        "end": 95,
-                        "start": 35,
-                        "tag": "PgCast",
+                        "end": 94,
+                        "start": 69,
+                        "tag": "ArrayType",
                         "values": Array [
                           Object {
-                            "end": 66,
-                            "start": 35,
-                            "tag": "ArrayConstructor",
+                            "end": 92,
+                            "start": 69,
+                            "tag": "Type",
                             "values": Array [
                               Object {
-                                "end": 56,
-                                "start": 41,
-                                "tag": "String",
-                                "value": "Metered Export",
-                              },
-                              Object {
-                                "end": 65,
-                                "start": 58,
-                                "tag": "String",
-                                "value": "Deemed",
+                                "end": 92,
+                                "start": 69,
+                                "tag": "QualifiedIdentifier",
+                                "values": Array [
+                                  Object {
+                                    "end": 92,
+                                    "start": 69,
+                                    "tag": "UnquotedIdentifier",
+                                    "value": "installation_export_type",
+                                  },
+                                ],
                               },
                             ],
                           },
                           Object {
                             "end": 94,
-                            "start": 69,
-                            "tag": "ArrayType",
-                            "values": Array [
-                              Object {
-                                "end": 92,
-                                "start": 69,
-                                "tag": "Type",
-                                "values": Array [
-                                  Object {
-                                    "end": 92,
-                                    "start": 69,
-                                    "tag": "QualifiedIdentifier",
-                                    "values": Array [
-                                      Object {
-                                        "end": 92,
-                                        "start": 69,
-                                        "tag": "UnquotedIdentifier",
-                                        "value": "installation_export_type",
-                                      },
-                                    ],
-                                  },
-                                ],
-                              },
-                              Object {
-                                "end": 94,
-                                "start": 93,
-                                "tag": "Dimension",
-                              },
-                            ],
+                            "start": 93,
+                            "tag": "Dimension",
                           },
                         ],
                       },
@@ -15528,7 +15629,7 @@ Object {
           Object {
             "end": 56,
             "start": 28,
-            "tag": "ComparationExpression",
+            "tag": "ComparationArray",
             "values": Array [
               Object {
                 "end": 37,
@@ -15552,38 +15653,31 @@ Object {
               Object {
                 "end": 39,
                 "start": 39,
-                "tag": "ComparationOperator",
+                "tag": "ComparationArrayOperator",
                 "value": "=",
               },
               Object {
                 "end": 43,
                 "start": 41,
-                "tag": "ComparationType",
+                "tag": "ComparationArrayType",
                 "value": "ANY",
               },
               Object {
                 "end": 55,
                 "start": 45,
-                "tag": "ExpressionList",
+                "tag": "Column",
                 "values": Array [
                   Object {
-                    "end": 55,
+                    "end": 50,
                     "start": 45,
-                    "tag": "Column",
-                    "values": Array [
-                      Object {
-                        "end": 50,
-                        "start": 45,
-                        "tag": "UnquotedIdentifier",
-                        "value": "table1",
-                      },
-                      Object {
-                        "end": 55,
-                        "start": 52,
-                        "tag": "UnquotedIdentifier",
-                        "value": "test",
-                      },
-                    ],
+                    "tag": "UnquotedIdentifier",
+                    "value": "table1",
+                  },
+                  Object {
+                    "end": 55,
+                    "start": 52,
+                    "tag": "UnquotedIdentifier",
+                    "value": "test",
                   },
                 ],
               },
@@ -15673,7 +15767,7 @@ Object {
           Object {
             "end": 71,
             "start": 28,
-            "tag": "ComparationExpression",
+            "tag": "ComparationArray",
             "values": Array [
               Object {
                 "end": 37,
@@ -15697,13 +15791,13 @@ Object {
               Object {
                 "end": 39,
                 "start": 39,
-                "tag": "ComparationOperator",
+                "tag": "ComparationArrayOperator",
                 "value": "=",
               },
               Object {
                 "end": 43,
                 "start": 41,
-                "tag": "ComparationType",
+                "tag": "ComparationArrayType",
                 "value": "ANY",
               },
               Object {
@@ -20877,7 +20971,7 @@ Object {
           Object {
             "end": 67,
             "start": 28,
-            "tag": "ComparationExpression",
+            "tag": "ComparationArray",
             "values": Array [
               Object {
                 "end": 37,
@@ -20901,56 +20995,49 @@ Object {
               Object {
                 "end": 39,
                 "start": 39,
-                "tag": "ComparationOperator",
+                "tag": "ComparationArrayOperator",
                 "value": "=",
               },
               Object {
                 "end": 43,
                 "start": 41,
-                "tag": "ComparationType",
+                "tag": "ComparationArrayType",
                 "value": "ANY",
               },
               Object {
                 "end": 66,
                 "start": 45,
-                "tag": "ExpressionList",
+                "tag": "Function",
                 "values": Array [
                   Object {
-                    "end": 66,
+                    "end": 53,
                     "start": 45,
-                    "tag": "Function",
+                    "tag": "QualifiedIdentifier",
                     "values": Array [
                       Object {
                         "end": 53,
                         "start": 45,
-                        "tag": "QualifiedIdentifier",
-                        "values": Array [
-                          Object {
-                            "end": 53,
-                            "start": 45,
-                            "tag": "UnquotedIdentifier",
-                            "value": "ARRAY_AGG",
-                          },
-                        ],
+                        "tag": "UnquotedIdentifier",
+                        "value": "ARRAY_AGG",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 65,
+                    "start": 55,
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 60,
+                        "start": 55,
+                        "tag": "UnquotedIdentifier",
+                        "value": "table1",
                       },
                       Object {
                         "end": 65,
-                        "start": 55,
-                        "tag": "Column",
-                        "values": Array [
-                          Object {
-                            "end": 60,
-                            "start": 55,
-                            "tag": "UnquotedIdentifier",
-                            "value": "table1",
-                          },
-                          Object {
-                            "end": 65,
-                            "start": 62,
-                            "tag": "UnquotedIdentifier",
-                            "value": "col2",
-                          },
-                        ],
+                        "start": 62,
+                        "tag": "UnquotedIdentifier",
+                        "value": "col2",
                       },
                     ],
                   },
@@ -23130,14 +23217,8 @@ Object {
               Object {
                 "end": 37,
                 "start": 7,
-                "tag": "ComparationExpression",
+                "tag": "Exists",
                 "values": Array [
-                  Object {
-                    "end": 12,
-                    "start": 7,
-                    "tag": "ComparationType",
-                    "value": "EXISTS",
-                  },
                   Object {
                     "end": 36,
                     "start": 14,
@@ -24799,7 +24880,7 @@ Object {
           Object {
             "end": 51,
             "start": 24,
-            "tag": "BinaryExpression",
+            "tag": "ComparationArrayInclusion",
             "values": Array [
               Object {
                 "end": 34,
@@ -24837,13 +24918,13 @@ Object {
               Object {
                 "end": 37,
                 "start": 36,
-                "tag": "BinaryOperator",
+                "tag": "ComparationArrayInclusionType",
                 "value": "IN",
               },
               Object {
-                "end": 51,
-                "start": 39,
-                "tag": "Row",
+                "end": 50,
+                "start": 40,
+                "tag": "ExpressionList",
                 "values": Array [
                   Object {
                     "end": 44,
@@ -25776,14 +25857,8 @@ Object {
                   Object {
                     "end": 55,
                     "start": 25,
-                    "tag": "ComparationExpression",
+                    "tag": "Exists",
                     "values": Array [
-                      Object {
-                        "end": 30,
-                        "start": 25,
-                        "tag": "ComparationType",
-                        "value": "EXISTS",
-                      },
                       Object {
                         "end": 54,
                         "start": 32,

@@ -22,4 +22,4 @@ FROM
   LEFT JOIN addresses
     ON contacts.address_id = addresses.id
 WHERE
-  installations.legacy_fit_db_id = ANY ($fitIds)
+  installations.legacy_fit_db_id = ANY($fitIds)

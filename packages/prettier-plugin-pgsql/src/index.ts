@@ -14,6 +14,8 @@ import {
   isWith,
   isInsert,
   chunk,
+  last,
+  isParameter,
   isConflictTargetIndex,
 } from '@potygen/potygen';
 
@@ -158,11 +160,13 @@ const pgsqlAst: Printer<Node> = {
         return '*';
       case 'StarIdentifier':
         return group(join('.', vals(path, recur)));
-      case 'Row':
+      case 'RowKeyward':
         return [
           group(['ROW', line]),
           group(['(', indent([softline, join([',', line], vals(path, recur))]), softline, ')']),
         ];
+      case 'Row':
+        return group(['(', indent([softline, join([',', line], vals(path, recur))]), softline, ')']);
       case 'When':
         return [
           group([
@@ -185,9 +189,11 @@ const pgsqlAst: Printer<Node> = {
         return node.value;
       case 'UnaryOperator':
         return node.value;
-      case 'ComparationOperator':
+      case 'ComparationArrayOperator':
         return node.value;
-      case 'ComparationType':
+      case 'ComparationArrayType':
+        return node.value;
+      case 'ComparationArrayInclusionType':
         return node.value;
       case 'UnaryExpression':
         return join(['+', '-'].includes(node.values[0].value) ? '' : ' ', vals(path, recur));
@@ -261,20 +267,27 @@ const pgsqlAst: Printer<Node> = {
           isNoBrackets ? '' : ')',
           filter !== -1 ? [line, nthVal(filter, path, recur)] : [],
         ]);
-      case 'ComparationExpression':
-        return node.values.length === 4
-          ? [
-              nthVal(0, path, recur),
-              ' ',
-              nthVal(1, path, recur),
-              ' ',
-              nthVal(2, path, recur),
-              ' ',
-              '(',
-              nthVal(3, path, recur),
-              ')',
-            ]
-          : join(' ', vals(path, recur));
+      case 'ComparationArray':
+        return [
+          nthVal(0, path, recur),
+          ' ',
+          nthVal(1, path, recur),
+          ' ',
+          nthVal(2, path, recur),
+          '(',
+          nthVal(3, path, recur),
+          ')',
+        ];
+      case 'ComparationArrayInclusion':
+        return [
+          nthVal(0, path, recur),
+          ' ',
+          nthVal(1, path, recur),
+          ' ',
+          isParameter(last(node.values)) ? nthVal(2, path, recur) : group(['(', nthVal(2, path, recur), ')']),
+        ];
+      case 'Exists':
+        return group(['EXISTS', ' ', join(' ', vals(path, recur))]);
       case 'SelectListItem':
         return group(join(' ', vals(path, recur)));
       case 'SelectList':
@@ -415,7 +428,7 @@ const pgsqlAst: Printer<Node> = {
       case 'TableWithJoin':
         return group(['(', indent([softline, join(line, vals(path, recur))]), softline, ')']);
       case 'ExpressionList':
-        return join([',', line], vals(path, recur));
+        return group(join([',', line], vals(path, recur)));
       case 'Begin':
         return 'BEGIN';
       case 'Commit':

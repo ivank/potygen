@@ -19,9 +19,12 @@ import {
   ColumnTag,
   CombinationTag,
   CommentTag,
-  ComparationExpressionTag,
-  ComparationOperatorTag,
-  ComparationTypeTag,
+  ComparationArrayInclusionTypeTag,
+  ComparationArrayOperatorTag,
+  ComparationArrayTypeTag,
+  ComparationArrayInclusionTag,
+  ComparationArrayTag,
+  ExistsTag,
   CompositeAccessTag,
   ConflictConstraintTag,
   ConflictTag,
@@ -81,6 +84,7 @@ import {
   ReturningListItemTag,
   ReturningTag,
   RowTag,
+  RowKeywardTag,
   SelectListItemTag,
   SelectListTag,
   SelectTag,
@@ -166,9 +170,6 @@ export const isCaseSimple = (value: SqlTag): value is CaseSimpleTag => value.tag
 export const isDataType = (value: SqlTag): value is DataTypeTag => value.tag === 'DataType';
 export const isBinaryOperator = (value: SqlTag): value is BinaryOperatorTag => value.tag === 'BinaryOperator';
 export const isUnaryOperator = (value: SqlTag): value is UnaryOperatorTag => value.tag === 'UnaryOperator';
-export const isComparationOperator = (value: SqlTag): value is ComparationOperatorTag =>
-  value.tag === 'ComparationOperator';
-export const isComparationType = (value: SqlTag): value is ComparationTypeTag => value.tag === 'ComparationType';
 export const isTernaryExpression = (value: SqlTag): value is TernaryExpressionTag => value.tag === 'TernaryExpression';
 export const isArrayIndex = (value: SqlTag): value is ArrayIndexTag => value.tag === 'ArrayIndex';
 export const isArrayColumnIndex = (value: SqlTag): value is ArrayColumnIndexTag => value.tag === 'ArrayColumnIndex';
@@ -197,7 +198,10 @@ export const isExpression = (value: SqlTag): value is ExpressionTag =>
   isFunction(value) ||
   isArrayIndex(value) ||
   isRow(value) ||
-  isComparationExpression(value) ||
+  isRowKeyward(value) ||
+  isComparationArray(value) ||
+  isComparationArrayInclusion(value) ||
+  isExists(value) ||
   isWrappedExpression(value);
 export const isFunctionArg = (value: SqlTag): value is FunctionArgTag => isExpression(value) || isStarIdentifier(value);
 export const isCompositeAccess = (value: SqlTag): value is CompositeAccessTag => value.tag === 'CompositeAccess';
@@ -250,12 +254,21 @@ export const isDoUpdate = (value: SqlTag): value is DoUpdateTag => value.tag ===
 export const isConflict = (value: SqlTag): value is ConflictTag => value.tag === 'Conflict';
 export const isArrayConstructor = (value: SqlTag): value is ArrayConstructorTag => value.tag === 'ArrayConstructor';
 export const isRow = (value: SqlTag): value is RowTag => value.tag === 'Row';
+export const isRowKeyward = (value: SqlTag): value is RowKeywardTag => value.tag === 'RowKeyward';
 export const isFilter = (value: SqlTag): value is FilterTag => value.tag === 'Filter';
-export const isComparationExpression = (value: SqlTag): value is ComparationExpressionTag =>
-  value.tag === 'ComparationExpression';
 export const isWrappedExpression = (value: SqlTag): value is WrappedExpressionTag => value.tag === 'WrappedExpression';
 export const isExpressionList = (value: SqlTag): value is ExpressionListTag => value.tag === 'ExpressionList';
 export const isComment = (value: SqlTag): value is CommentTag => value.tag === 'Comment';
+export const isComparationArrayInclusionType = (value: SqlTag): value is ComparationArrayInclusionTypeTag =>
+  value.tag === 'ComparationArrayInclusionType';
+export const isComparationArrayOperator = (value: SqlTag): value is ComparationArrayOperatorTag =>
+  value.tag === 'ComparationArrayOperator';
+export const isComparationArrayType = (value: SqlTag): value is ComparationArrayTypeTag =>
+  value.tag === 'ComparationArrayType';
+export const isComparationArrayInclusion = (value: SqlTag): value is ComparationArrayInclusionTag =>
+  value.tag === 'ComparationArrayInclusion';
+export const isComparationArray = (value: SqlTag): value is ComparationArrayTag => value.tag === 'ComparationArray';
+export const isExists = (value: SqlTag): value is ExistsTag => value.tag === 'Exists';
 
 export const isEmptyLeaf = (value: Tag): value is EmptyLeafTag => !('values' in value || 'value' in value);
 export const isLeaf = (value: Tag): value is LeafTag => 'value' in value;

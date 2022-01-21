@@ -21,6 +21,11 @@ describe('Template Tag', () => {
 
   afterAll(() => db.end());
 
+  it('Should use parameter with spread without pick', async () => {
+    const query = sql`SELECT not_null FROM all_types WHERE id IN $$ids`;
+    expect(await query(db, { ids: [1, 2] })).toEqual([{ not_null: 1 }, { not_null: 2 }]);
+  });
+
   it('Should select all', async () => {
     expect(await allSql(db, {})).toEqual([{ id: 1 }, { id: 2 }]);
   });

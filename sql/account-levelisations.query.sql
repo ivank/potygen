@@ -50,7 +50,7 @@ WHERE
   -- Ids filter, for loading specific ids, skip if empty array
   AND
     ($levelisationId::int IS NULL OR account_levelisations.levelisation_id = $levelisationId)
-  AND (cardinality($ids::int[]) = 0 OR (account_levelisations.id = ANY ($ids::int[])))
+  AND (cardinality($ids::int[]) = 0 OR (account_levelisations.id = ANY($ids::int[])))
 -- Sort by difference, dateOn, value
 ORDER BY
   CASE WHEN $sortField = 'totalPayment' AND $sortOrder = 'DESC' THEN account_levelisations.total_payment END DESC,

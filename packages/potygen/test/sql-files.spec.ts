@@ -67,8 +67,7 @@ describe('Sql Files', () => {
       .filter(isNil),
   )('Should convert complex sql template tags %s', (name, text, params) =>
     withParserErrors(() => {
-      const source = toQuery(text)();
-      expect(toQueryConfig(source, params)).toMatchSnapshot(name);
+      expect(toQueryConfig(toQuery(text), params)).toMatchSnapshot(name);
     }),
   );
 });

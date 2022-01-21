@@ -285,5 +285,6 @@ export interface QueryInterface {
 export interface TypeContext {
   type: Type;
   columns: TypeLoadColumn[];
+  inComparationInclusion?: boolean;
   from?: TableTag;
 }

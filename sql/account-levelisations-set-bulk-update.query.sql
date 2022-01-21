@@ -12,6 +12,6 @@ SET
     ELSE NULL
   END
 WHERE
-  account_levelisations.id = ANY ($ids::int[]) AND is_accepted = TRUE
+  account_levelisations.id = ANY($ids::int[]) AND is_accepted = TRUE
 RETURNING
   id

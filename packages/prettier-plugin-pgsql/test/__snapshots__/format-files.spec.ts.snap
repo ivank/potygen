@@ -33,8 +33,10 @@ FROM
 WHERE
   (accounts.end_on IS NULL OR accounts.end_on >= $start)
   AND
-    contracts.export_type
-    = ANY(ARRAY['Metered Export', 'Deemed']::installation_export_type[])
+    contracts.export_type = ANY (ARRAY[
+      'Metered Export',
+      'Deemed'
+    ]::installation_export_type[])
 GROUP BY
   accounts.id,
   installations.id

@@ -4472,3 +4472,99 @@ Object {
   ],
 }
 `;
+
+exports[`Query Interface Should convert where pick spread sql (SELECT * FROM all_types WHERE id IN $$ids(id)) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "end": 44,
+      "name": "ids",
+      "pick": Array [
+        Object {
+          "name": "id",
+          "type": Object {
+            "postgresType": "any",
+            "type": "Unknown",
+          },
+        },
+      ],
+      "required": true,
+      "spread": true,
+      "start": 36,
+      "type": Object {
+        "items": Object {
+          "column": "id",
+          "schema": undefined,
+          "sourceTag": Object {
+            "end": 31,
+            "start": 30,
+            "tag": "Column",
+            "values": Array [
+              Object {
+                "end": 31,
+                "start": 30,
+                "tag": "UnquotedIdentifier",
+                "value": "id",
+              },
+            ],
+          },
+          "table": undefined,
+          "type": "LoadColumn",
+        },
+        "type": "Array",
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "?column?",
+      "type": Object {
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 7,
+          "start": 7,
+          "tag": "StarIdentifier",
+          "values": Array [
+            Object {
+              "end": 7,
+              "start": 7,
+              "tag": "Star",
+            },
+          ],
+        },
+        "table": undefined,
+        "type": "LoadStar",
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "all_types",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 22,
+        "start": 14,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 22,
+            "start": 14,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 22,
+                "start": 14,
+                "tag": "UnquotedIdentifier",
+                "value": "all_types",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "all_types",
+      "type": "Table",
+    },
+  ],
+}
+`;
