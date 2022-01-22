@@ -15,6 +15,7 @@ Array [
   "active-reads.view.queries.ts",
   "bacs.query.queries.ts",
   "contracts.queries.ts",
+  "cte.query.queries.ts",
   "delete-accounts.query.queries.ts",
   "generation-read-data.query.queries.ts",
   "insert.process.query.queries.ts",
@@ -328,6 +329,22 @@ exports[`CLI Should use cli to run pipeline on sql files: contracts.queries.ts 1
 "export interface Params {
 }
 export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: cte.query.queries.ts 1`] = `
+"export interface Params {
+}
+export interface Result {
+    region: string;
+    product: string;
+    product_units: number;
+    product_sales: number;
 }
 export interface Query {
     params: Params;

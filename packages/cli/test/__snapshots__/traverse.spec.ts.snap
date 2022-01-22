@@ -306,6 +306,22 @@ export interface Query {
 "
 `;
 
+exports[`Traverse Should work: __generated__/cte.query.queries.ts 1`] = `
+"export interface Params {
+}
+export interface Result {
+    region: string;
+    product: string;
+    product_units: number;
+    product_sales: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Traverse Should work: __generated__/delete-accounts.query.queries.ts 1`] = `
 "export interface Params {
     type?: \\"FIT\\" | \\"SEG\\";

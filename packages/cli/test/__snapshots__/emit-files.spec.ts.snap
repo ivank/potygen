@@ -306,6 +306,22 @@ export interface Query {
 "
 `;
 
+exports[`Load Files Should convert complex sql cte.query.sql: cte.query.sql 1`] = `
+"export interface Params {
+}
+export interface Result {
+    region: string;
+    product: string;
+    product_units: number;
+    product_sales: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Load Files Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 "export interface Params {
     type?: \\"FIT\\" | \\"SEG\\";
