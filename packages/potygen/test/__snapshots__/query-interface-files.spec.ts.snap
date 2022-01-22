@@ -8738,6 +8738,1050 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql cte.query.sql: cte.query.sql 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "region",
+      "type": Object {
+        "column": "region",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 281,
+          "start": 269,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 274,
+              "start": 269,
+              "tag": "UnquotedIdentifier",
+              "value": "orders",
+            },
+            Object {
+              "end": 281,
+              "start": 276,
+              "tag": "UnquotedIdentifier",
+              "value": "region",
+            },
+          ],
+        },
+        "table": "orders",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "product",
+      "type": Object {
+        "column": "product",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 299,
+          "start": 286,
+          "tag": "Column",
+          "values": Array [
+            Object {
+              "end": 291,
+              "start": 286,
+              "tag": "UnquotedIdentifier",
+              "value": "orders",
+            },
+            Object {
+              "end": 299,
+              "start": 293,
+              "tag": "UnquotedIdentifier",
+              "value": "product",
+            },
+          ],
+        },
+        "table": "orders",
+        "type": "LoadColumn",
+      },
+    },
+    Object {
+      "name": "product_units",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "quantity",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 315,
+              "start": 308,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "end": 315,
+                  "start": 308,
+                  "tag": "UnquotedIdentifier",
+                  "value": "quantity",
+                },
+              ],
+            },
+            "table": undefined,
+            "type": "LoadColumn",
+          },
+        ],
+        "name": "sum",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 316,
+          "start": 304,
+          "tag": "Function",
+          "values": Array [
+            Object {
+              "end": 306,
+              "start": 304,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "end": 306,
+                  "start": 304,
+                  "tag": "UnquotedIdentifier",
+                  "value": "SUM",
+                },
+              ],
+            },
+            Object {
+              "end": 315,
+              "start": 308,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "end": 315,
+                  "start": 308,
+                  "tag": "UnquotedIdentifier",
+                  "value": "quantity",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadFunction",
+      },
+    },
+    Object {
+      "name": "product_sales",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "amount",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 347,
+              "start": 342,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "end": 347,
+                  "start": 342,
+                  "tag": "UnquotedIdentifier",
+                  "value": "amount",
+                },
+              ],
+            },
+            "table": undefined,
+            "type": "LoadColumn",
+          },
+        ],
+        "name": "sum",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 348,
+          "start": 338,
+          "tag": "Function",
+          "values": Array [
+            Object {
+              "end": 340,
+              "start": 338,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "end": 340,
+                  "start": 338,
+                  "tag": "UnquotedIdentifier",
+                  "value": "SUM",
+                },
+              ],
+            },
+            Object {
+              "end": 347,
+              "start": 342,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "end": 347,
+                  "start": 342,
+                  "tag": "UnquotedIdentifier",
+                  "value": "amount",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadFunction",
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "name": "regional_sales",
+      "sourceTag": Object {
+        "end": 131,
+        "start": 7,
+        "tag": "CTE",
+        "values": Array [
+          Object {
+            "end": 20,
+            "start": 7,
+            "tag": "CTEName",
+            "values": Array [
+              Object {
+                "end": 20,
+                "start": 7,
+                "tag": "UnquotedIdentifier",
+                "value": "regional_sales",
+              },
+            ],
+          },
+          Object {
+            "end": 127,
+            "start": 33,
+            "tag": "Select",
+            "values": Array [
+              Object {
+                "end": 85,
+                "start": 46,
+                "tag": "SelectList",
+                "values": Array [
+                  Object {
+                    "end": 51,
+                    "start": 46,
+                    "tag": "SelectListItem",
+                    "values": Array [
+                      Object {
+                        "end": 51,
+                        "start": 46,
+                        "tag": "Column",
+                        "values": Array [
+                          Object {
+                            "end": 51,
+                            "start": 46,
+                            "tag": "UnquotedIdentifier",
+                            "value": "region",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 85,
+                    "start": 60,
+                    "tag": "SelectListItem",
+                    "values": Array [
+                      Object {
+                        "end": 70,
+                        "start": 60,
+                        "tag": "Function",
+                        "values": Array [
+                          Object {
+                            "end": 62,
+                            "start": 60,
+                            "tag": "QualifiedIdentifier",
+                            "values": Array [
+                              Object {
+                                "end": 62,
+                                "start": 60,
+                                "tag": "UnquotedIdentifier",
+                                "value": "SUM",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 69,
+                            "start": 64,
+                            "tag": "Column",
+                            "values": Array [
+                              Object {
+                                "end": 69,
+                                "start": 64,
+                                "tag": "UnquotedIdentifier",
+                                "value": "amount",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 85,
+                        "start": 72,
+                        "tag": "As",
+                        "values": Array [
+                          Object {
+                            "end": 85,
+                            "start": 75,
+                            "tag": "UnquotedIdentifier",
+                            "value": "total_sales",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 101,
+                "start": 91,
+                "tag": "From",
+                "values": Array [
+                  Object {
+                    "end": 101,
+                    "start": 96,
+                    "tag": "FromList",
+                    "values": Array [
+                      Object {
+                        "end": 101,
+                        "start": 96,
+                        "tag": "Table",
+                        "values": Array [
+                          Object {
+                            "end": 101,
+                            "start": 96,
+                            "tag": "QualifiedIdentifier",
+                            "values": Array [
+                              Object {
+                                "end": 101,
+                                "start": 96,
+                                "tag": "UnquotedIdentifier",
+                                "value": "orders",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 127,
+                "start": 107,
+                "tag": "GroupBy",
+                "values": Array [
+                  Object {
+                    "end": 127,
+                    "start": 122,
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 127,
+                        "start": 122,
+                        "tag": "UnquotedIdentifier",
+                        "value": "region",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "type": "Query",
+      "value": Object {
+        "params": Array [],
+        "results": Array [
+          Object {
+            "name": "region",
+            "type": Object {
+              "column": "region",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 51,
+                "start": 46,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 51,
+                    "start": 46,
+                    "tag": "UnquotedIdentifier",
+                    "value": "region",
+                  },
+                ],
+              },
+              "table": undefined,
+              "type": "LoadColumn",
+            },
+          },
+          Object {
+            "name": "total_sales",
+            "type": Object {
+              "args": Array [
+                Object {
+                  "column": "amount",
+                  "schema": undefined,
+                  "sourceTag": Object {
+                    "end": 69,
+                    "start": 64,
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 69,
+                        "start": 64,
+                        "tag": "UnquotedIdentifier",
+                        "value": "amount",
+                      },
+                    ],
+                  },
+                  "table": undefined,
+                  "type": "LoadColumn",
+                },
+              ],
+              "name": "sum",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 70,
+                "start": 60,
+                "tag": "Function",
+                "values": Array [
+                  Object {
+                    "end": 62,
+                    "start": 60,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 62,
+                        "start": 60,
+                        "tag": "UnquotedIdentifier",
+                        "value": "SUM",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 69,
+                    "start": 64,
+                    "tag": "Column",
+                    "values": Array [
+                      Object {
+                        "end": 69,
+                        "start": 64,
+                        "tag": "UnquotedIdentifier",
+                        "value": "amount",
+                      },
+                    ],
+                  },
+                ],
+              },
+              "type": "LoadFunction",
+            },
+          },
+        ],
+        "sources": Array [
+          Object {
+            "isResult": true,
+            "name": "orders",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 101,
+              "start": 96,
+              "tag": "Table",
+              "values": Array [
+                Object {
+                  "end": 101,
+                  "start": 96,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 101,
+                      "start": 96,
+                      "tag": "UnquotedIdentifier",
+                      "value": "orders",
+                    },
+                  ],
+                },
+              ],
+            },
+            "table": "orders",
+            "type": "Table",
+          },
+        ],
+      },
+    },
+    Object {
+      "name": "top_regions",
+      "sourceTag": Object {
+        "end": 258,
+        "start": 136,
+        "tag": "CTE",
+        "values": Array [
+          Object {
+            "end": 146,
+            "start": 136,
+            "tag": "CTEName",
+            "values": Array [
+              Object {
+                "end": 146,
+                "start": 136,
+                "tag": "UnquotedIdentifier",
+                "value": "top_regions",
+              },
+            ],
+          },
+          Object {
+            "end": 257,
+            "start": 154,
+            "tag": "Select",
+            "values": Array [
+              Object {
+                "end": 166,
+                "start": 161,
+                "tag": "SelectList",
+                "values": Array [
+                  Object {
+                    "end": 166,
+                    "start": 161,
+                    "tag": "SelectListItem",
+                    "values": Array [
+                      Object {
+                        "end": 166,
+                        "start": 161,
+                        "tag": "Column",
+                        "values": Array [
+                          Object {
+                            "end": 166,
+                            "start": 161,
+                            "tag": "UnquotedIdentifier",
+                            "value": "region",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 186,
+                "start": 168,
+                "tag": "From",
+                "values": Array [
+                  Object {
+                    "end": 186,
+                    "start": 173,
+                    "tag": "FromList",
+                    "values": Array [
+                      Object {
+                        "end": 186,
+                        "start": 173,
+                        "tag": "Table",
+                        "values": Array [
+                          Object {
+                            "end": 186,
+                            "start": 173,
+                            "tag": "QualifiedIdentifier",
+                            "values": Array [
+                              Object {
+                                "end": 186,
+                                "start": 173,
+                                "tag": "UnquotedIdentifier",
+                                "value": "regional_sales",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 257,
+                "start": 188,
+                "tag": "Where",
+                "values": Array [
+                  Object {
+                    "end": 257,
+                    "start": 194,
+                    "tag": "BinaryExpression",
+                    "values": Array [
+                      Object {
+                        "end": 204,
+                        "start": 194,
+                        "tag": "Column",
+                        "values": Array [
+                          Object {
+                            "end": 204,
+                            "start": 194,
+                            "tag": "UnquotedIdentifier",
+                            "value": "total_sales",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 206,
+                        "start": 206,
+                        "tag": "BinaryOperator",
+                        "value": ">",
+                      },
+                      Object {
+                        "end": 256,
+                        "start": 209,
+                        "tag": "Select",
+                        "values": Array [
+                          Object {
+                            "end": 236,
+                            "start": 216,
+                            "tag": "SelectList",
+                            "values": Array [
+                              Object {
+                                "end": 236,
+                                "start": 216,
+                                "tag": "SelectListItem",
+                                "values": Array [
+                                  Object {
+                                    "end": 236,
+                                    "start": 216,
+                                    "tag": "BinaryExpression",
+                                    "values": Array [
+                                      Object {
+                                        "end": 231,
+                                        "start": 216,
+                                        "tag": "Function",
+                                        "values": Array [
+                                          Object {
+                                            "end": 218,
+                                            "start": 216,
+                                            "tag": "QualifiedIdentifier",
+                                            "values": Array [
+                                              Object {
+                                                "end": 218,
+                                                "start": 216,
+                                                "tag": "UnquotedIdentifier",
+                                                "value": "SUM",
+                                              },
+                                            ],
+                                          },
+                                          Object {
+                                            "end": 230,
+                                            "start": 220,
+                                            "tag": "Column",
+                                            "values": Array [
+                                              Object {
+                                                "end": 230,
+                                                "start": 220,
+                                                "tag": "UnquotedIdentifier",
+                                                "value": "total_sales",
+                                              },
+                                            ],
+                                          },
+                                        ],
+                                      },
+                                      Object {
+                                        "end": 233,
+                                        "start": 233,
+                                        "tag": "BinaryOperator",
+                                        "value": "/",
+                                      },
+                                      Object {
+                                        "end": 236,
+                                        "start": 235,
+                                        "tag": "Number",
+                                        "value": "10",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 256,
+                            "start": 238,
+                            "tag": "From",
+                            "values": Array [
+                              Object {
+                                "end": 256,
+                                "start": 243,
+                                "tag": "FromList",
+                                "values": Array [
+                                  Object {
+                                    "end": 256,
+                                    "start": 243,
+                                    "tag": "Table",
+                                    "values": Array [
+                                      Object {
+                                        "end": 256,
+                                        "start": 243,
+                                        "tag": "QualifiedIdentifier",
+                                        "values": Array [
+                                          Object {
+                                            "end": 256,
+                                            "start": 243,
+                                            "tag": "UnquotedIdentifier",
+                                            "value": "regional_sales",
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "type": "Query",
+      "value": Object {
+        "params": Array [],
+        "results": Array [
+          Object {
+            "name": "region",
+            "type": Object {
+              "column": "region",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 166,
+                "start": 161,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 166,
+                    "start": 161,
+                    "tag": "UnquotedIdentifier",
+                    "value": "region",
+                  },
+                ],
+              },
+              "table": undefined,
+              "type": "LoadColumn",
+            },
+          },
+        ],
+        "sources": Array [
+          Object {
+            "name": "regional_sales",
+            "sourceTag": Object {
+              "end": 131,
+              "start": 7,
+              "tag": "CTE",
+              "values": Array [
+                Object {
+                  "end": 20,
+                  "start": 7,
+                  "tag": "CTEName",
+                  "values": Array [
+                    Object {
+                      "end": 20,
+                      "start": 7,
+                      "tag": "UnquotedIdentifier",
+                      "value": "regional_sales",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 127,
+                  "start": 33,
+                  "tag": "Select",
+                  "values": Array [
+                    Object {
+                      "end": 85,
+                      "start": 46,
+                      "tag": "SelectList",
+                      "values": Array [
+                        Object {
+                          "end": 51,
+                          "start": 46,
+                          "tag": "SelectListItem",
+                          "values": Array [
+                            Object {
+                              "end": 51,
+                              "start": 46,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 51,
+                                  "start": 46,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "region",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 85,
+                          "start": 60,
+                          "tag": "SelectListItem",
+                          "values": Array [
+                            Object {
+                              "end": 70,
+                              "start": 60,
+                              "tag": "Function",
+                              "values": Array [
+                                Object {
+                                  "end": 62,
+                                  "start": 60,
+                                  "tag": "QualifiedIdentifier",
+                                  "values": Array [
+                                    Object {
+                                      "end": 62,
+                                      "start": 60,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "SUM",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 69,
+                                  "start": 64,
+                                  "tag": "Column",
+                                  "values": Array [
+                                    Object {
+                                      "end": 69,
+                                      "start": 64,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "amount",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 85,
+                              "start": 72,
+                              "tag": "As",
+                              "values": Array [
+                                Object {
+                                  "end": 85,
+                                  "start": 75,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "total_sales",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 101,
+                      "start": 91,
+                      "tag": "From",
+                      "values": Array [
+                        Object {
+                          "end": 101,
+                          "start": 96,
+                          "tag": "FromList",
+                          "values": Array [
+                            Object {
+                              "end": 101,
+                              "start": 96,
+                              "tag": "Table",
+                              "values": Array [
+                                Object {
+                                  "end": 101,
+                                  "start": 96,
+                                  "tag": "QualifiedIdentifier",
+                                  "values": Array [
+                                    Object {
+                                      "end": 101,
+                                      "start": 96,
+                                      "tag": "UnquotedIdentifier",
+                                      "value": "orders",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 127,
+                      "start": 107,
+                      "tag": "GroupBy",
+                      "values": Array [
+                        Object {
+                          "end": 127,
+                          "start": 122,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 127,
+                              "start": 122,
+                              "tag": "UnquotedIdentifier",
+                              "value": "region",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": "Query",
+            "value": Object {
+              "params": Array [],
+              "results": Array [
+                Object {
+                  "name": "region",
+                  "type": Object {
+                    "column": "region",
+                    "schema": undefined,
+                    "sourceTag": Object {
+                      "end": 51,
+                      "start": 46,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "end": 51,
+                          "start": 46,
+                          "tag": "UnquotedIdentifier",
+                          "value": "region",
+                        },
+                      ],
+                    },
+                    "table": undefined,
+                    "type": "LoadColumn",
+                  },
+                },
+                Object {
+                  "name": "total_sales",
+                  "type": Object {
+                    "args": Array [
+                      Object {
+                        "column": "amount",
+                        "schema": undefined,
+                        "sourceTag": Object {
+                          "end": 69,
+                          "start": 64,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 69,
+                              "start": 64,
+                              "tag": "UnquotedIdentifier",
+                              "value": "amount",
+                            },
+                          ],
+                        },
+                        "table": undefined,
+                        "type": "LoadColumn",
+                      },
+                    ],
+                    "name": "sum",
+                    "schema": undefined,
+                    "sourceTag": Object {
+                      "end": 70,
+                      "start": 60,
+                      "tag": "Function",
+                      "values": Array [
+                        Object {
+                          "end": 62,
+                          "start": 60,
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "end": 62,
+                              "start": 60,
+                              "tag": "UnquotedIdentifier",
+                              "value": "SUM",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 69,
+                          "start": 64,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 69,
+                              "start": 64,
+                              "tag": "UnquotedIdentifier",
+                              "value": "amount",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    "type": "LoadFunction",
+                  },
+                },
+              ],
+              "sources": Array [
+                Object {
+                  "isResult": true,
+                  "name": "orders",
+                  "schema": undefined,
+                  "sourceTag": Object {
+                    "end": 101,
+                    "start": 96,
+                    "tag": "Table",
+                    "values": Array [
+                      Object {
+                        "end": 101,
+                        "start": 96,
+                        "tag": "QualifiedIdentifier",
+                        "values": Array [
+                          Object {
+                            "end": 101,
+                            "start": 96,
+                            "tag": "UnquotedIdentifier",
+                            "value": "orders",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  "table": "orders",
+                  "type": "Table",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    Object {
+      "isResult": true,
+      "name": "orders",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 377,
+        "start": 372,
+        "tag": "Table",
+        "values": Array [
+          Object {
+            "end": 377,
+            "start": 372,
+            "tag": "QualifiedIdentifier",
+            "values": Array [
+              Object {
+                "end": 377,
+                "start": 372,
+                "tag": "UnquotedIdentifier",
+                "value": "orders",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "orders",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 Object {
   "params": Array [

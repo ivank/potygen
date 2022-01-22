@@ -2227,6 +2227,46 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql cte.query.sql: cte.query.sql 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "region",
+      "type": Object {
+        "comment": null,
+        "postgresType": "character varying",
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "product",
+      "type": Object {
+        "comment": null,
+        "postgresType": "character varying",
+        "type": "String",
+      },
+    },
+    Object {
+      "name": "product_units",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "bigint",
+        "type": "BigInt",
+      },
+    },
+    Object {
+      "name": "product_sales",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "bigint",
+        "type": "BigInt",
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 Object {
   "params": Array [

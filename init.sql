@@ -1041,3 +1041,17 @@ CREATE VIEW all_types_view AS
 COMMENT ON VIEW all_types_view IS 'Summurized view';
 
 INSERT INTO all_types(not_null) VALUES (1), (2);
+
+CREATE TABLE orders (
+  region VARCHAR NOT NULL,
+  product VARCHAR NOT NULL,
+  quantity INT NOT NULL,
+  amount INT NOT NULL
+);
+
+INSERT INTO orders VALUES
+  ('Sofia', 'Sofa', 2, 50),
+  ('Sofia', 'Chair', 5, 10),
+  ('Sofia', 'Table', 1, 30),
+  ('Plovdiv', 'Table', 2, 30),
+  ('Plovdiv', 'Chair', 5, 20);

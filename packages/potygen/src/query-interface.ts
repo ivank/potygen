@@ -84,7 +84,7 @@ const toSourcesIterator =
             type: 'Query',
             sourceTag: sql,
             name: first(last(sql.values).values).value,
-            value: toQueryInterface(first(sql.values)),
+            value: toQueryInterface(first(sql.values), sources),
           },
         ]);
       case 'Exists':
@@ -111,15 +111,19 @@ const toSourcesIterator =
             })),
           });
         } else {
+          const queryValue = toQueryInterface(cteQuery, sources);
           return sources.concat({
             type: 'Query',
             sourceTag: sql,
             name: first(first(sql.values).values).value,
-            value: toQueryInterface(cteQuery),
+            value: queryValue,
           });
         }
       case 'With':
-        return sources.concat(initial(sql.values).flatMap(nestedRecur), recur(last(sql.values)));
+        return sources.concat(
+          initial(sql.values).reduce((acc, item) => toSourcesIterator(acc, false)(item), sources),
+          recur(last(sql.values)),
+        );
       default:
         return 'values' in sql ? sources.concat(sql.values.flatMap(recur)) : sources;
     }
@@ -564,13 +568,13 @@ const isUniqParam = (item: Param, index: number, all: Param[]) =>
 
 export const toSources = (sql: AstTag): Source[] => toSourcesIterator()(sql).filter(isRedundantSource);
 
-export const toQueryInterface = (sql: AstTag): QueryInterface => {
+export const toQueryInterface = (sql: AstTag, parentSources: Source[] = []): QueryInterface => {
   const items = toQueryResults(sql);
   const from = toQueryFrom(sql);
   const typeContext = { type: typeUnknown(), columns: [], from };
 
   return {
-    sources: toSources(sql),
+    sources: toSources(sql).concat(parentSources).filter(isRedundantSource),
     results: items.map(toResult(typeContext)),
     params: toParams(typeContext)(sql).filter(isUniqParam),
   };
