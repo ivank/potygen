@@ -42,7 +42,7 @@ import {
   pgTypeAliases,
   pgTypes,
 } from './postgres-types-map';
-import { isTypeConstant, isTypeEqual, isTypeString } from './query-interface.guards';
+import { isTypeConstant, isTypeEqual, isTypeString, isTypeUnknown } from './query-interface.guards';
 import {
   Type,
   Param,
@@ -56,10 +56,10 @@ import {
   TypeUnknown,
   OperatorVariantPart,
   OperatorVariant,
+  TypeLoadNamed,
   LoadName,
   TypeName,
 } from './query-interface.types';
-import { TypeLoadNamed } from '.';
 
 /**
  * Initial context for the toSourcesIterator.
@@ -180,7 +180,7 @@ const isRedundantSource = (source: Source, index: number, all: Source[]): boolea
     ? !all.some((item) => (item.type === 'Query' || item.type == 'Values') && item.name === source.name)
     : true;
 
-const firstKnownType = (...types: Type[]): Type => types.find((item) => item.type !== 'Unknown') ?? typeUnknown;
+const firstKnownType = (...types: Type[]): Type => types.find((item) => !isTypeUnknown(item)) ?? typeUnknown;
 
 /**
  * Get the type from a part of a binary operator expression {@link BinaryExpressionTag}
@@ -433,27 +433,27 @@ const toType =
 
 const toResultName = (type: Type): string => {
   switch (type.type) {
-    case 'LoadCoalesce':
+    case LoadName.LoadCoalesce:
       return 'coalesce';
-    case 'LoadNamed':
+    case LoadName.LoadNamed:
       return type.name;
-    case 'LoadArrayItem':
-    case 'LoadOptional':
+    case LoadName.LoadArrayItem:
+    case LoadName.LoadOptional:
       return toResultName(type.value);
-    case 'LoadArray':
-    case 'Array':
+    case LoadName.LoadArray:
+    case TypeName.Array:
       return 'array';
-    case 'Boolean':
+    case TypeName.Boolean:
       return 'bool';
-    case 'LoadColumn':
+    case LoadName.LoadColumn:
       return type.column;
-    case 'LoadColumnCast':
+    case LoadName.LoadColumnCast:
       return toResultName(type.column);
-    case 'LoadFunction':
+    case LoadName.LoadFunction:
       return type.name;
-    case 'LoadRecord':
+    case LoadName.LoadRecord:
       return 'row';
-    case 'LoadCompositeAccess':
+    case LoadName.LoadCompositeAccess:
       return type.name;
     default:
       return '?column?';

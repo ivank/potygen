@@ -146,23 +146,23 @@ const toSourceTables = (source: Source): DataTable[] => {
 
 const extractDataFromType = (type: Type): Data[] => {
   switch (type.type) {
-    case 'LoadRecord':
+    case LoadName.LoadRecord:
       return [{ type: 'Enum', name: { name: type.name, schema: type.schema ?? '_' } }];
-    case 'LoadFunction':
-    case 'LoadFunctionArgument':
+    case LoadName.LoadFunction:
+    case LoadName.LoadFunctionArgument:
       return [
         { type: 'Function', name: { name: type.name, schema: type.schema ?? '_' } },
         ...type.args.flatMap(extractDataFromType),
       ];
-    case 'LoadNamed':
+    case LoadName.LoadNamed:
       return extractDataFromType(type.value);
-    case 'LoadArray':
+    case LoadName.LoadArray:
       return extractDataFromType(type.items);
-    case 'LoadCoalesce':
+    case LoadName.LoadCoalesce:
       return type.items.flatMap(extractDataFromType);
-    case 'LoadFunction':
+    case LoadName.LoadFunction:
       return type.args.flatMap(extractDataFromType);
-    case 'LoadOperator':
+    case LoadName.LoadOperator:
       return extractDataFromType(type.left).concat(extractDataFromType(type.right));
     default:
       return [];

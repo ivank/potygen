@@ -66,7 +66,7 @@ export const pgTypes = {
   uuid: { ...typeString, postgresType: 'uuid' },
   xid: { ...typeString, postgresType: 'xid' },
   interval: {
-    type: 'ObjectLiteral',
+    type: String(TypeName.ObjectLiteral),
     postgresType: 'interval',
     items: [
       { name: 'years', type: typeNumber },
@@ -226,7 +226,7 @@ export const pgTypes = {
   path: { ...typeString, postgresType: 'path' },
   polygon: { ...typeString, postgresType: 'polygon' },
   circle: {
-    type: 'ObjectLiteral',
+    type: TypeName.ObjectLiteral,
     postgresType: 'circle',
     items: [
       { name: 'x', type: typeNumber },
@@ -237,7 +237,7 @@ export const pgTypes = {
   line: { ...typeString, postgresType: 'line' },
   lseg: { ...typeString, postgresType: 'lseg' },
   point: {
-    type: 'ObjectLiteral',
+    type: TypeName.ObjectLiteral,
     postgresType: 'point',
     items: [
       { name: 'x', type: typeNumber },
