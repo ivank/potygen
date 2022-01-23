@@ -347,10 +347,11 @@ const toType =
           case 'json_build_object':
           case 'jsonb_build_object':
             return {
-              type: 'ObjectLiteral',
+              type: 'LoadObjectLiteral',
               items: chunk(2, args).flatMap(([name, type]) =>
                 isTypeString(name) && name.literal ? { name: name.literal, type } : [],
               ),
+              sourceTag: sql,
             };
           default:
             return { type: 'LoadFunction', schema, name: functionName, args, sourceTag: sql };

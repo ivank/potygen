@@ -23,7 +23,7 @@ import {
   isTypeArray,
   isTypeUnion,
   TypeConstant,
-  isTypeObjectLiteralConstant,
+  isTypeObjectLiteral,
   isTypeLiteral,
   isTypeEqual,
   isTypeComposite,
@@ -74,7 +74,7 @@ const toPropertyType =
   (type: TypeConstant): TypeContext & { type: TypeNode } => {
     if (isTypeComposite(type)) {
       return { ...context, type: factory.createToken(SyntaxKind.StringKeyword) };
-    } else if (isTypeObjectLiteralConstant(type)) {
+    } else if (isTypeObjectLiteral(type)) {
       return type.items.reduce<TypeContext & { type: TypeLiteralNode }>(
         (acc, item) => {
           const itemType = toPropertyType({ ...acc, name: context.name + toClassCase(item.name) })(item.type);

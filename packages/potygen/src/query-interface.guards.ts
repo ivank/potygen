@@ -24,8 +24,8 @@ import {
   TypeLoadArrayItem,
   TypeNullable,
   TypeUnion,
-  TypeObjectLiteralConstant,
   TypeObjectLiteral,
+  TypeLoadObjectLiteral,
   TypeLiteral,
   TypeLoadAsArray,
   TypeComposite,
@@ -99,12 +99,11 @@ export const isTypeLoadOperator = (type: Type): type is TypeLoadOperator => type
 export const isTypeLoadNamed = (type: Type): type is TypeLoadNamed => type.type === 'LoadNamed';
 export const isTypeLoadArray = (type: Type): type is TypeLoadArray => type.type === 'LoadArray';
 export const isTypeLoadAsArray = (type: Type): type is TypeLoadAsArray => type.type === 'LoadAsArray';
-export const isTypeObjectLiteral = (type: Type): type is TypeObjectLiteral => type.type === 'ObjectLiteral';
+export const isTypeLoadObjectLiteral = (type: Type): type is TypeLoadObjectLiteral => type.type === 'LoadObjectLiteral';
 export const isTypeLoadUnion = (type: Type): type is TypeLoadUnion => type.type === 'LoadUnion';
 export const isTypeArray = (type: Type): type is TypeArray => type.type === 'Array';
 export const isTypeUnion = (type: Type): type is TypeUnion => type.type === 'Union';
-export const isTypeObjectLiteralConstant = (type: Type): type is TypeObjectLiteralConstant =>
-  type.type === 'ObjectLiteralConstant';
+export const isTypeObjectLiteral = (type: Type): type is TypeObjectLiteral => type.type === 'ObjectLiteral';
 export const isTypeLoadArrayItem = (type: Type): type is TypeLoadArrayItem => type.type === 'LoadArrayItem';
 export const isTypeComposite = (type: Type): type is TypeComposite => type.type === 'Composite';
 export const isTypeLoadCompositeAccess = (type: Type): type is TypeLoadCompositeAccess =>
@@ -123,8 +122,8 @@ export const isTypeEqual = (a: Type, b: Type): boolean => {
   } else if ((a.type === 'LoadUnion' && b.type === 'LoadUnion') || (a.type === 'Union' && b.type === 'Union')) {
     return a.items.every((aItem) => b.items.some((bItem) => isTypeEqual(aItem, bItem)));
   } else if (
-    (a.type === 'ObjectLiteral' && b.type === 'ObjectLiteral') ||
-    (a.type === 'ObjectLiteralConstant' && b.type === 'ObjectLiteralConstant')
+    (a.type === 'LoadObjectLiteral' && b.type === 'LoadObjectLiteral') ||
+    (a.type === 'ObjectLiteral' && b.type === 'ObjectLiteral')
   ) {
     return a.items.every((aItem) =>
       b.items.some((bItem) => aItem.name === bItem.name && isTypeEqual(aItem.type, bItem.type)),

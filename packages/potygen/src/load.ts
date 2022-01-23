@@ -189,7 +189,7 @@ const toLoadedParam =
     const paramType: TypeConstant =
       pick.length > 0
         ? {
-            type: 'ObjectLiteralConstant',
+            type: 'ObjectLiteral',
             nullable: !required,
             items: pick.map((item) => ({ name: item.name, type: toType(item.type) })),
             postgresType: 'json',
@@ -535,9 +535,9 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
           );
         }
         return compositeFieldType;
-      case 'ObjectLiteral':
+      case 'LoadObjectLiteral':
         return {
-          type: 'ObjectLiteralConstant',
+          type: 'ObjectLiteral',
           items: type.items.map((item) => ({ ...item, type: recur(item.type) })),
           postgresType: 'json',
         };

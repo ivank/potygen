@@ -12,7 +12,7 @@ import {
   TypeConstant,
   TypeAny,
   TypeBuffer,
-  TypeObjectLiteralConstant,
+  TypeObjectLiteral,
   OperatorVariant,
 } from './query-interface.types';
 
@@ -61,7 +61,7 @@ export const pgTypes = {
   uuid: { ...typeString, postgresType: 'uuid' },
   xid: { ...typeString, postgresType: 'xid' },
   interval: {
-    type: 'ObjectLiteralConstant',
+    type: 'ObjectLiteral',
     postgresType: 'interval',
     items: [
       { name: 'years', type: typeNumber },
@@ -72,7 +72,7 @@ export const pgTypes = {
       { name: 'seconds', type: typeNumber },
       { name: 'milliseconds', type: typeNumber },
     ],
-  } as TypeObjectLiteralConstant,
+  } as TypeObjectLiteral,
   bytea: typeBuffer,
   reltime: { ...typeString, postgresType: 'reltime' },
   tinterval: { ...typeString, postgresType: 'tinterval' },
@@ -221,24 +221,24 @@ export const pgTypes = {
   path: { ...typeString, postgresType: 'path' },
   polygon: { ...typeString, postgresType: 'polygon' },
   circle: {
-    type: 'ObjectLiteralConstant',
+    type: 'ObjectLiteral',
     postgresType: 'circle',
     items: [
       { name: 'x', type: typeNumber },
       { name: 'y', type: typeNumber },
       { name: 'radius', type: typeNumber },
     ],
-  } as TypeObjectLiteralConstant,
+  } as TypeObjectLiteral,
   line: { ...typeString, postgresType: 'line' },
   lseg: { ...typeString, postgresType: 'lseg' },
   point: {
-    type: 'ObjectLiteralConstant',
+    type: 'ObjectLiteral',
     postgresType: 'point',
     items: [
       { name: 'x', type: typeNumber },
       { name: 'y', type: typeNumber },
     ],
-  } as TypeObjectLiteralConstant,
+  } as TypeObjectLiteral,
   abstime: { ...typeString, postgresType: 'abstime' },
   date: { ...typeDate, postgresType: 'date' },
   time: { ...typeString, postgresType: 'time' },

@@ -162,13 +162,13 @@ export interface TypeUnion extends BaseTypeLoaded {
   type: 'Union';
   items: TypeConstant[];
 }
-export interface TypeObjectLiteral {
-  type: 'ObjectLiteral';
+export interface TypeLoadObjectLiteral extends BaseTypeLoad {
+  type: 'LoadObjectLiteral';
   items: Array<{ name: string; type: Type }>;
   nullable?: boolean;
 }
-export interface TypeObjectLiteralConstant extends BaseTypeLoaded {
-  type: 'ObjectLiteralConstant';
+export interface TypeObjectLiteral extends BaseTypeLoaded {
+  type: 'ObjectLiteral';
   items: Array<{ name: string; type: TypeConstant }>;
 }
 export interface TypeOptional {
@@ -209,7 +209,7 @@ export type TypeConstant =
   | TypeComposite
   | TypeArray
   | TypeUnion
-  | TypeObjectLiteralConstant
+  | TypeObjectLiteral
   | TypeOptionalConstant;
 
 export type Type =
@@ -229,7 +229,7 @@ export type Type =
   | TypeLoadCompositeAccess
   | TypeLoadUnion
   | TypeLoadColumnCast
-  | TypeObjectLiteral;
+  | TypeLoadObjectLiteral;
 
 /**
  * Which part of the operator variant to use in {@link OperatorVariant}
