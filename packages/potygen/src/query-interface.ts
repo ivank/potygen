@@ -89,6 +89,11 @@ type QueryInterfaceSqlTag =
   | ExpressionListTag
   | ArrayConstructorTag;
 
+/**
+ * A {@link Tag} used to determine results of {@link QueryInterface}
+ */
+type ResultTag = SelectListItemTag | ReturningListItemTag;
+
 const toSourcesIterator =
   ({ sources = [], isResult = true }: SourcesIteratorContext = {}) =>
   (sql: Tag): Source[] => {
@@ -432,6 +437,9 @@ const toType =
     }
   };
 
+/**
+ * Determine the column name based on the result type
+ */
 const toResultName = (type: TypeOrLoad): string => {
   switch (type.type) {
     case TypeName.LoadCoalesce:
@@ -461,9 +469,14 @@ const toResultName = (type: TypeOrLoad): string => {
   }
 };
 
+/**
+ * Convert an {@link }
+ * @param context
+ * @returns
+ */
 const toResult =
   (context: TypeContext) =>
-  (sql: SelectListItemTag | ReturningListItemTag): Result => {
+  (sql: ResultTag): Result => {
     const type = toType(context)(first(sql.values));
     return {
       name: sql.values.length === 2 ? first(last(sql.values).values).value : toResultName(type),
@@ -471,6 +484,9 @@ const toResult =
     };
   };
 
+/**
+ * Get the "from" table of a query
+ */
 export const toQueryFrom = (sql: AstTag): TableTag | undefined => {
   switch (sql.tag) {
     case SqlName.Update:
@@ -486,7 +502,10 @@ export const toQueryFrom = (sql: AstTag): TableTag | undefined => {
   }
 };
 
-export const toQueryResults = (sql: AstTag): Array<SelectListItemTag | ReturningListItemTag> => {
+/**
+ * Get the {@link ResultTag} for for {@link QueryInterface} from {@link AstTag}
+ */
+export const toQueryResults = (sql: AstTag): Array<ResultTag> => {
   switch (sql.tag) {
     case SqlName.Begin:
     case SqlName.Savepoint:
@@ -507,6 +526,9 @@ export const toQueryResults = (sql: AstTag): Array<SelectListItemTag | Returning
   }
 };
 
+/**
+ * Get all {@link Param} of an sql query or any sql tag. Works recursively
+ */
 export const toParams =
   (context: TypeContext) =>
   (sql: Tag): Param[] => {
@@ -642,11 +664,23 @@ export const toParams =
     }
   };
 
+/**
+ * Filter out params with the same name and type
+ * Different types are kept, as they will be used as union types.
+ */
 const isUniqParam = (item: Param, index: number, all: Param[]) =>
   all.findIndex((current) => item.name === current.name && isEqual(item.type, current.type)) === index;
 
+/**
+ * Get all the {@link Source} of a SQL query.
+ */
 export const toSources = (sql: AstTag): Source[] => toSourcesIterator()(sql).filter(isRedundantSource);
 
+/**
+ * Get the {@link QueryInterface} of an sql query.
+ *
+ * Nested sub-queries have access to more sources than just what's available inside it.
+ */
 export const toQueryInterface = (sql: AstTag, parentSources: Source[] = []): QueryInterface => {
   const items = toQueryResults(sql);
   const from = toQueryFrom(sql);

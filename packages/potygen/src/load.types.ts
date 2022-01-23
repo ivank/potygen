@@ -8,73 +8,153 @@ export interface QualifiedName {
   name: string;
 }
 
+/**
+ * A table that must be loaded from the database.
+ * Resulsts in {@link LoadedDataTable}
+ */
 export interface DataTable {
   type: 'Table';
   name: QualifiedName;
 }
+
+/**
+ * An sql function that must be loaded from the database.
+ * Resulsts in {@link LoadedDataFunction}
+ */
 export interface DataFunction {
   type: 'Function';
   name: QualifiedName;
 }
+
+/**
+ * A [postgres enum](https://www.postgresql.org/docs/current/datatype-enum.html) that must be loaded from the database.
+ * Resulsts in {@link LoadedDataEnum}
+ */
 export interface DataEnum {
   type: 'Enum';
   name: QualifiedName;
 }
+
+/**
+ * An [sql view](https://www.postgresql.org/docs/14/sql-createview.html) that must be loaded from the database.
+ * Resulsts in {@link LoadedDataView}
+ */
 export interface DataView {
   type: 'View';
   name: QualifiedName;
 }
+
+/**
+ * A [composite type](https://www.postgresql.org/docs/14/rowtypes.html) that must be loaded from the database.
+ */
 export interface DataComposite {
   type: 'Composite';
   name: QualifiedName;
 }
+
+/**
+ * Postgres table with data on types and comments of all of its columns.
+ */
 export interface LoadedDataTable extends DataTable {
   comment?: string;
   data: Array<{ name: string; isNullable: string; record: string; type: string; comment?: string }>;
 }
+
+/**
+ * A [composite type](https://www.postgresql.org/docs/14/rowtypes.html) with data on all of its parts.
+ */
 export interface LoadedDataComposite extends DataComposite {
   comment?: string;
   data: Array<{ name: string; isNullable: string; type: string }>;
 }
 
+/**
+ * An intermediary [sql view](https://www.postgresql.org/docs/14/sql-createview.html) representation.
+ * Contains the raw SQL of the view, to be parsed and loded
+ */
 export interface DataViewRaw extends DataView {
   comment?: string;
   data: string;
 }
+
+/**
+ * An intermediary [sql view](https://www.postgresql.org/docs/14/sql-createview.html) representation.
+ * Contains the raw SQL of the view, As well as the parsed {@link QueryInterface}
+ */
 export interface DataViewParsed extends DataViewRaw {
   queryInterface: QueryInterface;
 }
+
+/**
+ * An loaded [sql view](https://www.postgresql.org/docs/14/sql-createview.html) representation.
+ * Contains the raw SQL of the view, parsed {@link QueryInterface} as well as all the loaded column's data
+ */
 export interface LoadedDataView extends DataViewParsed {
   columns: LoadedResult[];
 }
+
+/**
+ * An sql function with the loaded and argment types
+ */
 export interface LoadedDataFunction extends DataFunction {
   comment?: string;
   data: { returnType: string; isAggregate: boolean; argTypes: string[] };
 }
+
+/**
+ * An enum with all of its variants loaded from the database schema
+ */
 export interface LoadedDataEnum extends DataEnum {
   comment?: string;
   data: string[];
 }
 
+/**
+ * Data to be loaded from the database
+ */
 export type Data = DataTable | DataFunction | DataEnum;
+
+/**
+ * First pass on loded data, without views
+ */
 export type LoadedDataSimple = LoadedDataTable | LoadedDataFunction | LoadedDataEnum | LoadedDataComposite;
+/**
+ * First pass on loded data
+ */
 export type LoadedDataRaw = LoadedDataSimple | DataViewRaw;
+
+/**
+ * All the loded data, specified by {@link Data}
+ */
 export type LoadedData = LoadedDataSimple | LoadedDataView;
 
+/**
+ * A {@link Param} Where the type has been resolved to a static {@link Type}
+ */
 export interface LoadedParam {
   name: string;
   type: Type;
 }
+
+/**
+ * A {@link Result} Where the type has been resolved to a static {@link Type}
+ */
 export interface LoadedResult {
   name: string;
   type: Type;
 }
 
+/**
+ * {@link QueryInterface} where all the types have been resolved
+ */
 export interface LoadedQueryInterface {
   params: LoadedParam[];
   results: LoadedResult[];
 }
 
+/**
+ * An sql function {@link LoadedDataFunction} Where all the types have been converted to {@link Type}
+ */
 export interface LoadedFunction {
   name: string;
   schema: string;
@@ -82,12 +162,19 @@ export interface LoadedFunction {
   argTypes: Type[];
   isAggregate: boolean;
 }
+
+/**
+ * An composite type {@link LoadedDataComposite} Where all the types have been converted to {@link Type}
+ */
 export interface LoadedComposite {
   name: string;
   schema?: string;
   attributes: Record<string, Type>;
 }
 
+/**
+ * An sql table {@link LoadedDataTable} Where all the types have been converted to {@link Type}
+ */
 export interface LoadedSourceTable {
   type: 'Table';
   isResult?: boolean;
@@ -96,11 +183,19 @@ export interface LoadedSourceTable {
   schema: string;
   items: Record<string, Type>;
 }
+
+/**
+ * An subquery Where all the types have been converted to {@link Type}
+ */
 export interface LoadedSourceQuery {
   type: 'Query';
   name: string;
   items: Record<string, Type>;
 }
+
+/**
+ * An sql view {@link LoadedDataView} Where all the types have been converted to {@link Type}
+ */
 export interface LoadedSourceView {
   type: 'View';
   name: string;
@@ -108,11 +203,20 @@ export interface LoadedSourceView {
   schema: string;
   items: Record<string, Type>;
 }
+
+/**
+ * A source of VALUES objects
+ */
 export interface LoadedSourceValues {
   type: 'Values';
   name: string;
   items: Record<string, Type>;
 }
+
+/**
+ * A source that couldn't be found as subquery or in the database.
+ * This would result in an error, but inspection pipeline needs it to be just a type.
+ */
 export interface LoadedSourceUnknown {
   type: 'Unknown';
   name: string;

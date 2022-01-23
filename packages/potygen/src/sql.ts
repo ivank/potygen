@@ -10,6 +10,11 @@ import { Query, QuerySource, SqlDatabase, SqlInterface, QueryConfig } from './sq
 const toParamsFromAst = (ast: AstTag): Param[] =>
   toParams({ type: typeUnknown, columns: [] })(ast).sort(orderBy((p) => p.start));
 
+/**
+ * Convert a "spread" {@link Param} into params that pg node package will accept
+ *
+ * $$param -> ($1,$2,$3), ($4,$5,$6)
+ */
 const toSpreadIndexParam = (param: Param, index: number, values: unknown): string =>
   Array.isArray(values)
     ? values.every(Array.isArray)
@@ -29,6 +34,9 @@ const toSpreadIndexParam = (param: Param, index: number, values: unknown): strin
       : '(' + values.map((_, itemIndex) => '$' + (index + itemIndex)).join(',') + ')'
     : '()';
 
+/**
+ * Figure out what the index will be after a spread
+ */
 const toSpreadIndex = (values: unknown): number =>
   Array.isArray(values)
     ? values.reduce(
@@ -37,6 +45,19 @@ const toSpreadIndex = (values: unknown): number =>
       )
     : 0;
 
+/**
+ * Convert sql string by "spreading" the parameters into a flat list that pg package can interpret.
+ * Requies the query to be parsed first and to get params from {@link QueryInterface}
+ *
+ * ```sql
+ * SELECT * FROM id = $param AND age > $age
+ * ```
+ * Is converted into:
+ * ```sql
+ * SELECT * FROM id = $1 AND age > $2
+ * ```
+ *
+ */
 const convertSql = (params: Param[], sql: string, values: Record<string, unknown>): string =>
   params.reduce<{
     sql: string;
@@ -63,6 +84,9 @@ const convertSql = (params: Param[], sql: string, values: Record<string, unknown
     { sql, index: 0, offset: 0, indexes: {} },
   ).sql;
 
+/**
+ * Convert recieved params objects into the flat array of values that pg package requires
+ */
 const convertValues = (params: Param[], values: Record<string, unknown>): unknown[] =>
   params.reduce<{ values: unknown[]; indexes: Record<string, boolean> }>(
     (current, param) => {
@@ -85,6 +109,9 @@ const convertValues = (params: Param[], values: Record<string, unknown>): unknow
     { values: [], indexes: {} },
   ).values;
 
+/**
+ * PG package returns "null" values, this efficiently converts all `null`s into `undefined`s
+ */
 const nullToUndefinedInPlace = (row: Record<string, unknown>): Record<string, unknown> => {
   for (const key in row) {
     if (row[key] === null) {
@@ -94,6 +121,10 @@ const nullToUndefinedInPlace = (row: Record<string, unknown>): Record<string, un
   return row;
 };
 
+/**
+ * Use the intermediary parsing result {@link QuerySource} to compute a {@link QueryConfig}
+ * that can be passed to {@link SqlDatabase}'s query function
+ */
 const toQueryConfigFromSource = <TSqlInterface extends SqlInterface = SqlInterface>(
   querySource: QuerySource,
   params: TSqlInterface['params'],
@@ -102,6 +133,9 @@ const toQueryConfigFromSource = <TSqlInterface extends SqlInterface = SqlInterfa
   values: convertValues(querySource.params, params as Record<string, unknown>),
 });
 
+/**
+ * Compute a {@link QueryConfig} from an sql template that can be passed to {@link SqlDatabase}'s query function
+ */
 export const toQueryConfig = <TSqlInterface extends SqlInterface = SqlInterface>(
   query: Query<TSqlInterface>,
   params: TSqlInterface['params'],
@@ -131,6 +165,9 @@ export const toQuery = <TSqlInterface extends SqlInterface = SqlInterface>(sql: 
   };
 };
 
+/**
+ * Sql Query. Pass it the {@link SqlInterface} generated with [@potygen/cli](https://github.com/ivank/potygen/tree/main/packages/cli)
+ */
 export const sql = <TSqlInterface extends SqlInterface = SqlInterface>([
   text,
 ]: TemplateStringsArray): Query<TSqlInterface> => toQuery(text);

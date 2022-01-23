@@ -1,116 +1,455 @@
 export const enum SqlName {
+  /**
+   * Reserved for other integrations
+   */
   Root,
+  /**
+   * {@link CommentTag}
+   */
   Comment,
+  /**
+   * {@link CTENameTag}
+   */
   CTEName,
+  /**
+   * {@link CTEValuesListTag}
+   */
   CTEValuesList,
+  /**
+   * {@link CTEValuesTag}
+   */
   CTEValues,
+  /**
+   * {@link CTETag}
+   */
   CTE,
+  /**
+   * {@link WithTag}
+   */
   With,
+  /**
+   * {@link NullTag}
+   */
   Null,
+  /**
+   * {@link UnquotedIdentifierTag}
+   */
   UnquotedIdentifier,
+  /**
+   * {@link QuotedIdentifierTag}
+   */
   QuotedIdentifier,
+  /**
+   * {@link ParameterTag}
+   */
   Parameter,
+  /**
+   * {@link ColumnTag}
+   */
   Column,
+  /**
+   * {@link AsTag}
+   */
   As,
+  /**
+   * {@link StringTag}
+   */
   String,
+  /**
+   * {@link DollarQuotedStringTag}
+   */
   DollarQuotedString,
+  /**
+   * {@link CustomQuotedStringTag}
+   */
   CustomQuotedString,
+  /**
+   * {@link BitStringTag}
+   */
   BitString,
+  /**
+   * {@link HexademicalStringTag}
+   */
   HexademicalString,
+  /**
+   * {@link EscapeStringTag}
+   */
   EscapeString,
+  /**
+   * {@link NumberTag}
+   */
   Number,
+  /**
+   * {@link IntegerTag}
+   */
   Integer,
+  /**
+   * {@link BooleanTag}
+   */
   Boolean,
+  /**
+   * {@link ConstantTypeTag}
+   */
   ConstantType,
+  /**
+   * {@link TypedConstantTag}
+   */
   TypedConstant,
+  /**
+   * {@link ExtractFieldTag}
+   */
   ExtractField,
+  /**
+   * {@link ExtractTag}
+   */
   Extract,
+  /**
+   * {@link ArrayIndexRangeTag}
+   */
   ArrayIndexRange,
+  /**
+   * {@link ArrayColumnIndexTag}
+   */
   ArrayColumnIndex,
+  /**
+   * {@link ArrayIndexTag}
+   */
   ArrayIndex,
+  /**
+   * {@link CompositeAccessTag}
+   */
   CompositeAccess,
+  /**
+   * {@link CountTag}
+   */
   Count,
+  /**
+   * {@link DimensionTag}
+   */
   Dimension,
+  /**
+   * {@link TypeTag}
+   */
   Type,
+  /**
+   * {@link ArrayTypeTag}
+   */
   ArrayType,
+  /**
+   * {@link DistinctTag}
+   */
   Distinct,
+  /**
+   * {@link FilterTag}
+   */
   Filter,
+  /**
+   * {@link StarTag}
+   */
   Star,
+  /**
+   * {@link StarIdentifierTag}
+   */
   StarIdentifier,
+  /**
+   * {@link RowTag}
+   */
   Row,
+  /**
+   * {@link RowKeywardTag}
+   */
   RowKeyward,
+  /**
+   * {@link WhenTag}
+   */
   When,
+  /**
+   * {@link ElseTag}
+   */
   Else,
+  /**
+   * {@link CaseSimpleTag}
+   */
   CaseSimple,
+  /**
+   * {@link CaseTag}
+   */
   Case,
+  /**
+   * {@link BinaryOperatorTag}
+   */
   BinaryOperator,
+  /**
+   * {@link UnaryOperatorTag}
+   */
   UnaryOperator,
+  /**
+   * {@link BinaryExpressionTag}
+   */
   BinaryExpression,
+  /**
+   * {@link UnaryExpressionTag}
+   */
   UnaryExpression,
+  /**
+   * {@link TernaryOperatorTag}
+   */
   TernaryOperator,
+  /**
+   * {@link TernarySeparatorTag}
+   */
   TernarySeparator,
+  /**
+   * {@link TernaryExpressionTag}
+   */
   TernaryExpression,
+  /**
+   * {@link CastTag}
+   */
   Cast,
+  /**
+   * {@link PgCastTag}
+   */
   PgCast,
+  /**
+   * {@link ArrayConstructorTag}
+   */
   ArrayConstructor,
+  /**
+   * {@link FunctionTag}
+   */
   Function,
+  /**
+   * {@link ComparationArrayInclusionTypeTag}
+   */
   ComparationArrayInclusionType,
+  /**
+   * {@link ComparationArrayOperatorTag}
+   */
   ComparationArrayOperator,
+  /**
+   * {@link ComparationArrayTypeTag}
+   */
   ComparationArrayType,
+  /**
+   * {@link ComparationArrayInclusionTag}
+   */
   ComparationArrayInclusion,
+  /**
+   * {@link ComparationArrayTag}
+   */
   ComparationArray,
+  /**
+   * {@link ExistsTag}
+   */
   Exists,
+  /**
+   * {@link SelectListItemTag}
+   */
   SelectListItem,
+  /**
+   * {@link SelectListTag}
+   */
   SelectList,
+  /**
+   * {@link NamedSelectTag}
+   */
   NamedSelect,
+  /**
+   * {@link JoinTypeTag}
+   */
   JoinType,
+  /**
+   * {@link JoinOnTag}
+   */
   JoinOn,
+  /**
+   * {@link JoinUsingTag}
+   */
   JoinUsing,
+  /**
+   * {@link JoinTag}
+   */
   Join,
+  /**
+   * {@link FromListTag}
+   */
   FromList,
+  /**
+   * {@link FromTag}
+   */
   From,
+  /**
+   * {@link WhereTag}
+   */
   Where,
+  /**
+   * {@link GroupByTag}
+   */
   GroupBy,
+  /**
+   * {@link HavingTag}
+   */
   Having,
+  /**
+   * {@link CombinationTypeTag}
+   */
   CombinationType,
+  /**
+   * {@link CombinationTag}
+   */
   Combination,
+  /**
+   * {@link OrderDirectionTag}
+   */
   OrderDirection,
+  /**
+   * {@link OrderByItemTag}
+   */
   OrderByItem,
+  /**
+   * {@link OrderByTag}
+   */
   OrderBy,
+  /**
+   * {@link LimitTag}
+   */
   Limit,
+  /**
+   * {@link LimitAllTag}
+   */
   LimitAll,
+  /**
+   * {@link OffsetTag}
+   */
   Offset,
+  /**
+   * {@link SelectTag}
+   */
   Select,
+  /**
+   * {@link DefaultTag}
+   */
   Default,
+  /**
+   * {@link SetItemTag}
+   */
   SetItem,
+  /**
+   * {@link SetListTag}
+   */
   SetList,
+  /**
+   * {@link ColumnsTag}
+   */
   Columns,
+  /**
+   * {@link ValuesTag}
+   */
   Values,
+  /**
+   * {@link SetMapTag}
+   */
   SetMap,
+  /**
+   * {@link SetTag}
+   */
   Set,
+  /**
+   * {@link QualifiedIdentifierTag}
+   */
   QualifiedIdentifier,
+  /**
+   * {@link TableTag}
+   */
   Table,
+  /**
+   * {@link UpdateFromTag}
+   */
   UpdateFrom,
+  /**
+   * {@link ReturningListItemTag}
+   */
   ReturningListItem,
+  /**
+   * {@link ReturningTag}
+   */
   Returning,
+  /**
+   * {@link UpdateTag}
+   */
   Update,
+  /**
+   * {@link UsingTag}
+   */
   Using,
+  /**
+   * {@link DeleteTag}
+   */
   Delete,
+  /**
+   * {@link ValuesListTag}
+   */
   ValuesList,
+  /**
+   * {@link CollateTag}
+   */
   Collate,
+  /**
+   * {@link ConflictTargetIndexTag}
+   */
   ConflictTargetIndex,
+  /**
+   * {@link ConflictTargetTag}
+   */
   ConflictTarget,
+  /**
+   * {@link ConflictConstraintTag}
+   */
   ConflictConstraint,
+  /**
+   * {@link DoNothingTag}
+   */
   DoNothing,
+  /**
+   * {@link DoUpdateTag}
+   */
   DoUpdate,
+  /**
+   * {@link ConflictTag}
+   */
   Conflict,
+  /**
+   * {@link InsertTag}
+   */
   Insert,
+  /**
+   * {@link WrappedExpressionTag}
+   */
   WrappedExpression,
+  /**
+   * {@link TableWithJoinTag}
+   */
   TableWithJoin,
+  /**
+   * {@link ExpressionListTag}
+   */
   ExpressionList,
+  /**
+   * {@link BeginTag}
+   */
   Begin,
+  /**
+   * {@link CommitTag}
+   */
   Commit,
+  /**
+   * {@link SavepointTag}
+   */
   Savepoint,
+  /**
+   * {@link RollbackTag}
+   */
   Rollback,
 }
 
@@ -2189,6 +2528,12 @@ export type NodeTag =
   | WrappedExpressionTag
   | ExpressionListTag;
 
+/**
+ * All the SQL Tags
+ */
 export type Tag = EmptyLeafTag | LeafTag | NodeTag;
 
+/**
+ * The SQL tags that represent full queries - SELECT, UPDATE, WITH, etc.
+ */
 export type AstTag = QueryTag | WithTag | TransactionTag;

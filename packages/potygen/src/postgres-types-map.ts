@@ -33,6 +33,9 @@ const arr = (items: Type): TypeArray => ({
   postgresType: `${items.postgresType}[]`,
 });
 
+/**
+ * Aliases for postgres data types
+ */
 export const pgTypeAliases: Record<string, keyof typeof pgTypes> = {
   bigint: 'int8',
   bigserial: 'serial8',
@@ -56,6 +59,9 @@ export const pgTypeAliases: Record<string, keyof typeof pgTypes> = {
   array: 'anyarray',
 };
 
+/**
+ * _all_ the postgres data types, with their corresponding {@link Type} objects
+ */
 export const pgTypes = {
   aclitem: { ...typeString, postgresType: 'aclitem' },
   cid: { ...typeString, postgresType: 'cid' },
@@ -412,8 +418,3 @@ export const binaryOperatorTypes: {
   'IS DISTINCT FROM': [[typeAny, typeAny, typeBoolean]],
   'IS NOT DISTINCT FROM': [[typeAny, typeAny, typeBoolean]],
 };
-
-export interface TypeSpreadConstant {
-  type: 'SpreadConstant';
-  items: Type;
-}

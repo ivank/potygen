@@ -35,6 +35,11 @@ export const enum TypeName {
 }
 
 /**
+ * Types
+ * =========================
+ */
+
+/**
  * Types that can be loaded from the database.
  */
 export interface BaseType {
@@ -98,6 +103,38 @@ export interface TypeAny extends BaseType {
   type: TypeName.Any;
 }
 
+export interface TypeArray extends BaseType {
+  type: TypeName.Array;
+  items: Type;
+}
+
+export interface TypeUnion extends BaseType {
+  type: TypeName.Union;
+  items: Type[];
+}
+
+export interface TypeObjectLiteral extends BaseType {
+  type: TypeName.ObjectLiteral;
+  items: Array<{ name: string; type: Type }>;
+}
+
+export interface TypeOptional extends BaseType {
+  type: TypeName.Optional;
+  value: Type;
+}
+
+export interface TypeComposite extends BaseType {
+  type: TypeName.Composite;
+  name: string;
+  schema?: string;
+  attributes: Record<string, Type>;
+}
+
+/**
+ * Types to Load
+ * =========================
+ */
+
 /**
  * Types that need to pass "Load" step.
  */
@@ -109,27 +146,49 @@ export interface BaseTypeLoad {
   sourceTag: Tag;
 }
 
+/**
+ * A "COALESCE conditional" to be loaded.
+ * https://www.postgresql.org/docs/8.1/functions-conditional.html#AEN12663
+ */
 export interface TypeLoadCoalesce extends BaseTypeLoad {
   type: TypeName.LoadCoalesce;
   items: TypeOrLoad[];
   comment?: string;
 }
+
+/**
+ * A cast type, but nullability is determined by the database column
+ */
 export interface TypeLoadColumnCast extends BaseTypeLoad {
   type: TypeName.LoadColumnCast;
   column: TypeOrLoad;
   value: TypeOrLoad;
 }
+/**
+ * Load enum record
+ * https://www.postgresql.org/docs/current/datatype-enum.html
+ */
 export interface TypeLoadRecord extends BaseTypeLoad {
   type: TypeName.LoadRecord;
   name: string;
   schema?: string;
 }
+
+/**
+ * Load function type.
+ * Since function return types are determined by its arguments, in case of overloaded functions
+ * We need to load all the args too.
+ */
 export interface TypeLoadFunction extends BaseTypeLoad {
   type: TypeName.LoadFunction;
   name: string;
   schema?: string;
   args: TypeOrLoad[];
 }
+
+/**
+ * Load column type from the database schema
+ */
 export interface TypeLoadColumn extends BaseTypeLoad {
   type: TypeName.LoadColumn;
   column: string;
@@ -137,11 +196,20 @@ export interface TypeLoadColumn extends BaseTypeLoad {
   schema?: string;
 }
 
+/**
+ * Load all the columns from a given source (table, subquery, etc.)
+ */
 export interface TypeLoadStar extends BaseTypeLoad {
   type: TypeName.LoadStar;
   table?: string;
   schema?: string;
 }
+
+/**
+ * Load the type of a function argument.
+ * Since which variant of an overloaded function is determined by the types of the args
+ * We need to load all of them.
+ */
 export interface TypeLoadFunctionArgument extends BaseTypeLoad {
   type: TypeName.LoadFunctionArgument;
   index: number;
@@ -150,6 +218,10 @@ export interface TypeLoadFunctionArgument extends BaseTypeLoad {
   args: TypeOrLoad[];
 }
 
+/**
+ * Load the type of a binary operator.
+ * We need to load all the different variants as some operators have different result types based on parameters
+ */
 export interface TypeLoadOperator extends BaseTypeLoad {
   type: TypeName.LoadOperator;
   part: OperatorVariantPart;
@@ -157,11 +229,19 @@ export interface TypeLoadOperator extends BaseTypeLoad {
   right: TypeOrLoad;
   available: OperatorVariant[];
 }
+
+/**
+ * A type to load, but with a custom name in the result
+ */
 export interface TypeLoadNamed extends BaseTypeLoad {
   type: TypeName.LoadNamed;
   name: string;
   value: TypeOrLoad;
 }
+
+/**
+ * Load the type of an array
+ */
 export interface TypeLoadArray extends BaseTypeLoad {
   type: TypeName.LoadArray;
   items: TypeOrLoad;
@@ -174,51 +254,56 @@ export interface TypeLoadAsArray extends BaseTypeLoad {
   type: TypeName.LoadAsArray;
   items: TypeOrLoad;
 }
+/**
+ * Load a type that is an item of an array
+ */
 export interface TypeLoadArrayItem extends BaseTypeLoad {
   type: TypeName.LoadArrayItem;
   value: TypeOrLoad;
 }
+
+/**
+ * Composite record access
+ * https://www.postgresql.org/docs/current/rowtypes.html
+ *
+ * (value).name
+ */
 export interface TypeLoadCompositeAccess extends BaseTypeLoad {
   type: TypeName.LoadCompositeAccess;
   value: TypeOrLoad;
   name: string;
 }
-export interface TypeComposite extends BaseType {
-  type: TypeName.Composite;
-  name: string;
-  schema?: string;
-  attributes: Record<string, Type>;
-}
+
+/**
+ * A union of types to be loaded
+ */
 export interface TypeLoadUnion extends BaseTypeLoad {
   type: TypeName.LoadUnion;
   items: TypeOrLoad[];
 }
-export interface TypeArray extends BaseType {
-  type: TypeName.Array;
-  items: Type;
-}
-export interface TypeUnion extends BaseType {
-  type: TypeName.Union;
-  items: Type[];
-}
+
+/**
+ * A type that will be returned as an object literal
+ */
 export interface TypeLoadObjectLiteral extends BaseTypeLoad {
   type: TypeName.LoadObjectLiteral;
   items: Array<{ name: string; type: TypeOrLoad }>;
   nullable?: boolean;
 }
-export interface TypeObjectLiteral extends BaseType {
-  type: TypeName.ObjectLiteral;
-  items: Array<{ name: string; type: Type }>;
-}
+
+/**
+ * Adds nullability to any type
+ */
 export interface TypeLoadOptional extends BaseTypeLoad {
   type: TypeName.LoadOptional;
   nullable?: boolean;
   value: TypeOrLoad;
 }
-export interface TypeOptional extends BaseType {
-  type: TypeName.Optional;
-  value: Type;
-}
+
+/**
+ * Combined Types
+ * =========================
+ */
 
 export type TypeLiteral = TypeString | TypeNumber | TypeBigInt | TypeBoolean;
 
@@ -311,11 +396,24 @@ export const enum OperatorVariantPart {
  */
 export type OperatorVariant = [left: Type, right: Type, result: Type];
 
+/**
+ * Query result field
+ */
 export interface Result {
   name: string;
   type: TypeOrLoad | TypeLoadStar;
 }
 
+/**
+ * Query parameter field
+ *
+ * Variants:
+ *   - `$myParam`: Normal parameter
+ *   - `$$myParam`: "spread" - for inlining arrays
+ *   - `$myParam(value2, value1)`: "pick" - for picking just particular fields from an object
+ *   - `$$myParam(value1, value2)`: "pick spread" for inlining an array of objects, where we pick which fields to be inlined
+ *   - `$myParam!`: "required" - for making the parameter not optional
+ */
 export interface Param {
   name: string;
   type: TypeOrLoad;
@@ -326,6 +424,9 @@ export interface Param {
   spread: boolean;
 }
 
+/**
+ * Source of data inside the query. Can be tables, other queries / subqueries or value lists.
+ */
 export type Source = SourceTable | SourceQuery | SourceValues;
 
 export interface SourceTable {

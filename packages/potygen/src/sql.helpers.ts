@@ -45,6 +45,7 @@ export const oneResult = <TQueryInterface extends SqlInterface>(query: Query<TQu
     }
     return result;
   }, query);
+
 /**
  * Return the first element, useful for queries where we always expect at least one result
  *
