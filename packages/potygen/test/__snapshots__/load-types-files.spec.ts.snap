@@ -8,11 +8,11 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "postgresType": "boolean",
-          "type": "Boolean",
+          "type": 5,
         },
       },
     },
@@ -21,11 +21,11 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "postgresType": "integer",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -36,7 +36,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -44,7 +44,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "boolean",
-        "type": "Boolean",
+        "type": 5,
       },
     },
   ],
@@ -59,11 +59,11 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "postgresType": "integer",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -72,12 +72,12 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "nullable": true,
           "postgresType": "date",
-          "type": "Date",
+          "type": 6,
         },
       },
     },
@@ -88,7 +88,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
   ],
@@ -105,27 +105,27 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "postgresType": "character varying",
-              "type": "String",
+              "type": 2,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -135,26 +135,26 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "postgresType": "bool",
-              "type": "Boolean",
+              "type": 5,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -164,51 +164,51 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "items": Array [
                 Object {
                   "literal": "Pending",
                   "postgresType": "text",
-                  "type": "String",
+                  "type": 2,
                 },
                 Object {
                   "literal": "Done",
                   "postgresType": "text",
-                  "type": "String",
+                  "type": 2,
                 },
               ],
               "postgresType": "account_levelisation_state",
-              "type": "UnionConstant",
+              "type": 12,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "items": Array [
                 Object {
                   "literal": "Pending",
                   "postgresType": "text",
-                  "type": "String",
+                  "type": 2,
                 },
                 Object {
                   "literal": "Done",
                   "postgresType": "text",
-                  "type": "String",
+                  "type": 2,
                 },
               ],
               "nullable": false,
               "postgresType": "account_levelisation_state",
-              "type": "UnionConstant",
+              "type": 12,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -218,42 +218,62 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "postgresType": "int4",
-              "type": "Number",
+              "type": 3,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "postgresType": "integer",
-              "type": "Number",
+              "type": 3,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
       "name": "ids",
       "type": Object {
+        "items": Array [
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": 3,
+              },
+              "postgresType": "int4[]",
+              "type": 11,
+            },
+          },
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": 3,
+              },
+              "postgresType": "int4[]",
+              "type": 11,
+            },
+          },
+        ],
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
-        "value": Object {
-          "items": Object {
-            "postgresType": "int4",
-            "type": "Number",
-          },
-          "postgresType": "int4[]",
-          "type": "ArrayConstant",
-        },
+        "type": 12,
       },
     },
     Object {
@@ -263,117 +283,117 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "totalPayment",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "vatPayment",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "generationPayment",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "exportPayment",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "generationEnergy",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "exportEnergy",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "cfrFitId",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "state",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "isAccepted",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "error",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "exportType",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -383,27 +403,27 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "DESC",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "ASC",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -411,10 +431,10 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -423,10 +443,10 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -437,7 +457,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -445,7 +465,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -453,7 +473,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -461,7 +481,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -472,17 +492,17 @@ Object {
           Object {
             "literal": "Pending",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Done",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
         ],
         "nullable": false,
         "postgresType": "account_levelisation_state",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -490,7 +510,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "boolean",
-        "type": "Boolean",
+        "type": 5,
       },
     },
     Object {
@@ -499,7 +519,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -508,7 +528,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -517,7 +537,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -526,7 +546,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -535,7 +555,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -544,7 +564,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -553,7 +573,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -562,7 +582,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -571,7 +591,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -580,7 +600,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -589,7 +609,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -598,7 +618,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -607,7 +627,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -616,7 +636,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -627,47 +647,47 @@ Object {
           Object {
             "literal": "Deemed",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Deemed",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Metered Export",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Metered Export",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Off Grid",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Off Grid",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "PPA",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "PPA",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
         ],
         "nullable": true,
         "postgresType": "installation_export_type",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -678,32 +698,32 @@ Object {
           Object {
             "literal": "PV",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "H",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "W",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "AD",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "CHP",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
         ],
         "nullable": true,
         "postgresType": "installation_technology_types",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -712,7 +732,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -721,7 +741,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -730,7 +750,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "jsonb",
-        "type": "Json",
+        "type": 8,
       },
     },
     Object {
@@ -739,7 +759,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "jsonb",
-        "type": "Json",
+        "type": 8,
       },
     },
     Object {
@@ -747,7 +767,7 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -755,7 +775,7 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "json",
-        "type": "Json",
+        "type": 8,
       },
     },
     Object {
@@ -763,7 +783,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -772,7 +792,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -781,7 +801,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "boolean",
-        "type": "Boolean",
+        "type": 5,
       },
     },
     Object {
@@ -790,7 +810,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "boolean",
-        "type": "Boolean",
+        "type": 5,
       },
     },
   ],
@@ -805,14 +825,14 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "items": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
           "postgresType": "int4[]",
-          "type": "ArrayConstant",
+          "type": 11,
         },
       },
     },
@@ -823,7 +843,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
   ],
@@ -838,14 +858,14 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "items": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
           "postgresType": "int4[]",
-          "type": "ArrayConstant",
+          "type": 11,
         },
       },
     },
@@ -856,7 +876,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
   ],
@@ -873,146 +893,166 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": undefined,
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": undefined,
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": undefined,
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": undefined,
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": undefined,
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "postgresType": "varchar",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "nullable": true,
               "postgresType": "character varying",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "nullable": true,
               "postgresType": "character varying",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "nullable": true,
               "postgresType": "character varying",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "nullable": true,
               "postgresType": "character varying",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "postgresType": "character varying",
-              "type": "String",
+              "type": 2,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
       "name": "ids",
       "type": Object {
+        "items": Array [
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": 3,
+              },
+              "postgresType": "int4[]",
+              "type": 11,
+            },
+          },
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": 3,
+              },
+              "postgresType": "int4[]",
+              "type": 11,
+            },
+          },
+        ],
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
-        "value": Object {
-          "items": Object {
-            "postgresType": "int4",
-            "type": "Number",
-          },
-          "postgresType": "int4[]",
-          "type": "ArrayConstant",
-        },
+        "type": 12,
       },
     },
   ],
@@ -1021,7 +1061,7 @@ Object {
       "name": "total",
       "type": Object {
         "postgresType": "int4",
-        "type": "Number",
+        "type": 3,
       },
     },
   ],
@@ -1038,125 +1078,145 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": undefined,
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": undefined,
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": undefined,
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": undefined,
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "postgresType": "varchar",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "nullable": true,
               "postgresType": "character varying",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "nullable": true,
               "postgresType": "character varying",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "nullable": true,
               "postgresType": "character varying",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "postgresType": "character varying",
-              "type": "String",
+              "type": 2,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
       "name": "ids",
       "type": Object {
+        "items": Array [
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": 3,
+              },
+              "postgresType": "int4[]",
+              "type": 11,
+            },
+          },
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": 3,
+              },
+              "postgresType": "int4[]",
+              "type": 11,
+            },
+          },
+        ],
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
-        "value": Object {
-          "items": Object {
-            "postgresType": "int4",
-            "type": "Number",
-          },
-          "postgresType": "int4[]",
-          "type": "ArrayConstant",
-        },
+        "type": 12,
       },
     },
     Object {
@@ -1164,10 +1224,10 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -1176,10 +1236,10 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -1190,7 +1250,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -1201,27 +1261,27 @@ Object {
           Object {
             "literal": "Active",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Pending",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Dispute",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Closed",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
         ],
         "nullable": false,
         "postgresType": "account_state",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -1230,7 +1290,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -1238,7 +1298,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1246,7 +1306,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1255,7 +1315,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1263,7 +1323,7 @@ Object {
       "type": Object {
         "comment": undefined,
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1272,10 +1332,10 @@ Object {
         "items": Object {
           "comment": null,
           "postgresType": "character varying",
-          "type": "String",
+          "type": 2,
         },
         "postgresType": "character varying[]",
-        "type": "ArrayConstant",
+        "type": 11,
       },
     },
   ],
@@ -1299,27 +1359,27 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "postgresType": "date",
-              "type": "Date",
+              "type": 6,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "postgresType": "date",
-              "type": "Date",
+              "type": 6,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -1327,11 +1387,11 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "postgresType": "date",
-          "type": "Date",
+          "type": 6,
         },
       },
     },
@@ -1340,11 +1400,11 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "postgresType": "integer",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -1355,26 +1415,26 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "postgresType": "int4",
-              "type": "Number",
+              "type": 3,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "postgresType": "integer",
-              "type": "Number",
+              "type": 3,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
   ],
@@ -1384,7 +1444,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -1392,7 +1452,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1400,7 +1460,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1408,7 +1468,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1416,7 +1476,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1427,17 +1487,17 @@ Object {
           Object {
             "literal": "Export",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Generation",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
         ],
         "nullable": false,
         "postgresType": "meter_types",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -1445,7 +1505,7 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "json",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "items": Array [
             Object {
@@ -1453,7 +1513,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "integer",
-                "type": "Number",
+                "type": 3,
               },
             },
             Object {
@@ -1461,7 +1521,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "integer",
-                "type": "Number",
+                "type": 3,
               },
             },
             Object {
@@ -1469,7 +1529,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "date",
-                "type": "Date",
+                "type": 6,
               },
             },
             Object {
@@ -1478,7 +1538,7 @@ Object {
                 "comment": null,
                 "nullable": true,
                 "postgresType": "date",
-                "type": "Date",
+                "type": 6,
               },
             },
             Object {
@@ -1487,7 +1547,7 @@ Object {
                 "comment": null,
                 "nullable": true,
                 "postgresType": "character varying",
-                "type": "String",
+                "type": 2,
               },
             },
             Object {
@@ -1498,32 +1558,32 @@ Object {
                   Object {
                     "literal": "Opening",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                   Object {
                     "literal": "Closing",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                   Object {
                     "literal": "Quarterly",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                   Object {
                     "literal": "Meter Verification",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                 ],
                 "nullable": false,
                 "postgresType": "meter_reads_types",
-                "type": "UnionConstant",
+                "type": 12,
               },
             },
           ],
           "postgresType": "json",
-          "type": "ObjectLiteralConstant",
+          "type": 13,
         },
       },
     },
@@ -1532,7 +1592,7 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "json",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "items": Array [
             Object {
@@ -1540,7 +1600,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "integer",
-                "type": "Number",
+                "type": 3,
               },
             },
             Object {
@@ -1548,7 +1608,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "integer",
-                "type": "Number",
+                "type": 3,
               },
             },
             Object {
@@ -1556,7 +1616,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "date",
-                "type": "Date",
+                "type": 6,
               },
             },
             Object {
@@ -1565,7 +1625,7 @@ Object {
                 "comment": null,
                 "nullable": true,
                 "postgresType": "date",
-                "type": "Date",
+                "type": 6,
               },
             },
             Object {
@@ -1574,7 +1634,7 @@ Object {
                 "comment": null,
                 "nullable": true,
                 "postgresType": "character varying",
-                "type": "String",
+                "type": 2,
               },
             },
             Object {
@@ -1585,32 +1645,32 @@ Object {
                   Object {
                     "literal": "Opening",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                   Object {
                     "literal": "Closing",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                   Object {
                     "literal": "Quarterly",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                   Object {
                     "literal": "Meter Verification",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                 ],
                 "nullable": false,
                 "postgresType": "meter_reads_types",
-                "type": "UnionConstant",
+                "type": 12,
               },
             },
           ],
           "postgresType": "json",
-          "type": "ObjectLiteralConstant",
+          "type": 13,
         },
       },
     },
@@ -1628,27 +1688,27 @@ Object {
           Object {
             "nullable": false,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "postgresType": "date",
-              "type": "Date",
+              "type": 6,
             },
           },
           Object {
             "nullable": false,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "postgresType": "date",
-              "type": "Date",
+              "type": 6,
             },
           },
         ],
         "nullable": false,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -1656,11 +1716,11 @@ Object {
       "type": Object {
         "nullable": false,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "postgresType": "date",
-          "type": "Date",
+          "type": 6,
         },
       },
     },
@@ -1669,11 +1729,11 @@ Object {
       "type": Object {
         "nullable": false,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "postgresType": "integer",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -1684,26 +1744,26 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "postgresType": "int4",
-              "type": "Number",
+              "type": 3,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "postgresType": "integer",
-              "type": "Number",
+              "type": 3,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
   ],
@@ -1713,7 +1773,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -1721,7 +1781,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1729,7 +1789,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1737,7 +1797,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1745,7 +1805,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1756,17 +1816,17 @@ Object {
           Object {
             "literal": "Export",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Generation",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
         ],
         "nullable": false,
         "postgresType": "meter_types",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -1774,7 +1834,7 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "json",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "items": Array [
             Object {
@@ -1782,7 +1842,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "integer",
-                "type": "Number",
+                "type": 3,
               },
             },
             Object {
@@ -1790,7 +1850,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "integer",
-                "type": "Number",
+                "type": 3,
               },
             },
             Object {
@@ -1798,7 +1858,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "date",
-                "type": "Date",
+                "type": 6,
               },
             },
             Object {
@@ -1807,7 +1867,7 @@ Object {
                 "comment": null,
                 "nullable": true,
                 "postgresType": "date",
-                "type": "Date",
+                "type": 6,
               },
             },
             Object {
@@ -1816,7 +1876,7 @@ Object {
                 "comment": null,
                 "nullable": true,
                 "postgresType": "character varying",
-                "type": "String",
+                "type": 2,
               },
             },
             Object {
@@ -1827,32 +1887,32 @@ Object {
                   Object {
                     "literal": "Opening",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                   Object {
                     "literal": "Closing",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                   Object {
                     "literal": "Quarterly",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                   Object {
                     "literal": "Meter Verification",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                 ],
                 "nullable": false,
                 "postgresType": "meter_reads_types",
-                "type": "UnionConstant",
+                "type": 12,
               },
             },
           ],
           "postgresType": "json",
-          "type": "ObjectLiteralConstant",
+          "type": 13,
         },
       },
     },
@@ -1861,7 +1921,7 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "json",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "items": Array [
             Object {
@@ -1869,7 +1929,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "integer",
-                "type": "Number",
+                "type": 3,
               },
             },
             Object {
@@ -1877,7 +1937,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "integer",
-                "type": "Number",
+                "type": 3,
               },
             },
             Object {
@@ -1885,7 +1945,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "date",
-                "type": "Date",
+                "type": 6,
               },
             },
             Object {
@@ -1894,7 +1954,7 @@ Object {
                 "comment": null,
                 "nullable": true,
                 "postgresType": "date",
-                "type": "Date",
+                "type": 6,
               },
             },
             Object {
@@ -1903,7 +1963,7 @@ Object {
                 "comment": null,
                 "nullable": true,
                 "postgresType": "character varying",
-                "type": "String",
+                "type": 2,
               },
             },
             Object {
@@ -1914,32 +1974,32 @@ Object {
                   Object {
                     "literal": "Opening",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                   Object {
                     "literal": "Closing",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                   Object {
                     "literal": "Quarterly",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                   Object {
                     "literal": "Meter Verification",
                     "postgresType": "text",
-                    "type": "String",
+                    "type": 2,
                   },
                 ],
                 "nullable": false,
                 "postgresType": "meter_reads_types",
-                "type": "UnionConstant",
+                "type": 12,
               },
             },
           ],
           "postgresType": "json",
-          "type": "ObjectLiteralConstant",
+          "type": 13,
         },
       },
     },
@@ -1956,7 +2016,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -1964,7 +2024,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -1972,7 +2032,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -1980,7 +2040,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -1991,27 +2051,27 @@ Object {
           Object {
             "literal": "Opening",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Closing",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Quarterly",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Meter Verification",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
         ],
         "nullable": false,
         "postgresType": "meter_reads_types",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -2020,7 +2080,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2028,7 +2088,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "timestamp without time zone",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -2037,7 +2097,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "timestamp without time zone",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -2046,7 +2106,7 @@ Object {
         "comment": "sql-fit: MeterReading.MeterReadingId",
         "nullable": true,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -2054,7 +2114,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "boolean",
-        "type": "Boolean",
+        "type": 5,
       },
     },
     Object {
@@ -2063,7 +2123,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -2072,7 +2132,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -2080,7 +2140,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "jsonb",
-        "type": "Json",
+        "type": 8,
       },
     },
     Object {
@@ -2089,7 +2149,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "timestamp without time zone",
-        "type": "Date",
+        "type": 6,
       },
     },
   ],
@@ -2104,12 +2164,12 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "nullable": true,
           "postgresType": "character varying",
-          "type": "String",
+          "type": 2,
         },
       },
     },
@@ -2118,10 +2178,10 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "postgresType": "text",
-          "type": "String",
+          "type": 2,
         },
       },
     },
@@ -2130,10 +2190,10 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "postgresType": "text",
-          "type": "String",
+          "type": 2,
         },
       },
     },
@@ -2144,7 +2204,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2153,7 +2213,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2161,7 +2221,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -2170,7 +2230,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2178,7 +2238,7 @@ Object {
       "type": Object {
         "comment": undefined,
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2187,7 +2247,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2196,7 +2256,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2205,7 +2265,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2213,7 +2273,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
   ],
@@ -2236,7 +2296,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2244,7 +2304,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2252,7 +2312,7 @@ Object {
       "type": Object {
         "comment": undefined,
         "postgresType": "bigint",
-        "type": "BigInt",
+        "type": 4,
       },
     },
     Object {
@@ -2260,7 +2320,7 @@ Object {
       "type": Object {
         "comment": undefined,
         "postgresType": "bigint",
-        "type": "BigInt",
+        "type": 4,
       },
     },
   ],
@@ -2275,24 +2335,24 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "items": Array [
             Object {
               "literal": "FIT",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
             Object {
               "literal": "SEG",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           ],
           "nullable": false,
           "postgresType": "contract_scheme_types",
-          "type": "UnionConstant",
+          "type": 12,
         },
       },
     },
@@ -2301,34 +2361,34 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "items": Array [
             Object {
               "literal": "Active",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
             Object {
               "literal": "Pending",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
             Object {
               "literal": "Dispute",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
             Object {
               "literal": "Closed",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           ],
           "nullable": false,
           "postgresType": "account_state",
-          "type": "UnionConstant",
+          "type": 12,
         },
       },
     },
@@ -2339,7 +2399,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -2348,7 +2408,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -2356,7 +2416,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
   ],
@@ -2371,11 +2431,11 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "postgresType": "integer",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -2384,10 +2444,10 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "postgresType": "date",
-          "type": "Date",
+          "type": 6,
         },
       },
     },
@@ -2398,7 +2458,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -2406,7 +2466,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
   ],
@@ -2426,7 +2486,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "integer",
-                "type": "Number",
+                "type": 3,
               },
             },
             Object {
@@ -2435,7 +2495,7 @@ Object {
                 "comment": null,
                 "nullable": true,
                 "postgresType": "character varying",
-                "type": "String",
+                "type": 2,
               },
             },
             Object {
@@ -2443,7 +2503,7 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "jsonb",
-                "type": "Json",
+                "type": 8,
               },
             },
             Object {
@@ -2451,16 +2511,16 @@ Object {
               "type": Object {
                 "comment": null,
                 "postgresType": "integer",
-                "type": "Number",
+                "type": 3,
               },
             },
           ],
           "nullable": false,
           "postgresType": "json",
-          "type": "ObjectLiteralConstant",
+          "type": 13,
         },
         "postgresType": "anyarray",
-        "type": "ArrayConstant",
+        "type": 11,
       },
     },
   ],
@@ -2470,7 +2530,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -2478,7 +2538,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "jsonb",
-        "type": "Json",
+        "type": 8,
       },
     },
   ],
@@ -2493,12 +2553,12 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "nullable": true,
           "postgresType": "date",
-          "type": "Date",
+          "type": 6,
         },
       },
     },
@@ -2507,11 +2567,11 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "postgresType": "integer",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -2537,43 +2597,63 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "comment": null,
               "postgresType": "character varying",
-              "type": "String",
+              "type": 2,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
       "name": "ids",
       "type": Object {
+        "items": Array [
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": 3,
+              },
+              "postgresType": "int4[]",
+              "type": 11,
+            },
+          },
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": 3,
+              },
+              "postgresType": "int4[]",
+              "type": 11,
+            },
+          },
+        ],
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
-        "value": Object {
-          "items": Object {
-            "postgresType": "int4",
-            "type": "Number",
-          },
-          "postgresType": "int4[]",
-          "type": "ArrayConstant",
-        },
+        "type": 12,
       },
     },
     Object {
@@ -2581,11 +2661,11 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "literal": "quarter",
           "postgresType": "text",
-          "type": "String",
+          "type": 2,
         },
       },
     },
@@ -2596,27 +2676,27 @@ Object {
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "DESC",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
           Object {
             "nullable": true,
             "postgresType": "any",
-            "type": "OptionalConstant",
+            "type": 14,
             "value": Object {
               "literal": "ASC",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           },
         ],
         "nullable": true,
         "postgresType": "any",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -2624,10 +2704,10 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -2636,10 +2716,10 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -2650,7 +2730,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -2658,7 +2738,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2666,7 +2746,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -2674,7 +2754,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
   ],
@@ -2696,16 +2776,16 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "items": Object {
             "comment": null,
             "nullable": true,
             "postgresType": "character varying",
-            "type": "String",
+            "type": 2,
           },
           "postgresType": "character varying[]",
-          "type": "ArrayConstant",
+          "type": 11,
         },
       },
     },
@@ -2717,7 +2797,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2726,7 +2806,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2734,7 +2814,7 @@ Object {
       "type": Object {
         "comment": undefined,
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2743,7 +2823,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2752,7 +2832,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2760,7 +2840,7 @@ Object {
       "type": Object {
         "comment": undefined,
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2769,7 +2849,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2777,7 +2857,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2786,7 +2866,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2794,7 +2874,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
   ],
@@ -2810,19 +2890,19 @@ Object {
         "items": Object {
           "nullable": true,
           "postgresType": "any",
-          "type": "OptionalConstant",
+          "type": 14,
           "value": Object {
             "items": Object {
               "comment": null,
               "postgresType": "integer",
-              "type": "Number",
+              "type": 3,
             },
             "postgresType": "integer[]",
-            "type": "ArrayConstant",
+            "type": 11,
           },
         },
         "postgresType": "anyarray",
-        "type": "ArrayConstant",
+        "type": 11,
       },
     },
   ],
@@ -2832,7 +2912,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -2840,7 +2920,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "numeric",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -2848,7 +2928,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -2856,7 +2936,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2867,22 +2947,22 @@ Object {
           Object {
             "literal": "Export",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Generation",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "SEG",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
         ],
         "nullable": false,
         "postgresType": "tariff_types",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -2891,7 +2971,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
   ],
@@ -2906,11 +2986,11 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "postgresType": "integer",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -2919,12 +2999,12 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "nullable": true,
           "postgresType": "character varying",
-          "type": "String",
+          "type": 2,
         },
       },
     },
@@ -2933,34 +3013,34 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "items": Array [
             Object {
               "literal": "Opening",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
             Object {
               "literal": "Closing",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
             Object {
               "literal": "Quarterly",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
             Object {
               "literal": "Meter Verification",
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           ],
           "nullable": false,
           "postgresType": "meter_reads_types",
-          "type": "UnionConstant",
+          "type": 12,
         },
       },
     },
@@ -2969,11 +3049,11 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "postgresType": "date",
-          "type": "Date",
+          "type": 6,
         },
       },
     },
@@ -2982,12 +3062,12 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "nullable": true,
           "postgresType": "date",
-          "type": "Date",
+          "type": 6,
         },
       },
     },
@@ -2996,10 +3076,10 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -3010,7 +3090,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -3018,7 +3098,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -3026,7 +3106,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -3035,7 +3115,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
   ],
@@ -3050,11 +3130,11 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "comment": null,
           "postgresType": "integer",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -3063,10 +3143,10 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "postgresType": "text",
-          "type": "String",
+          "type": 2,
         },
       },
     },
@@ -3075,10 +3155,10 @@ Object {
       "type": Object {
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
+        "type": 14,
         "value": Object {
           "postgresType": "text",
-          "type": "String",
+          "type": 2,
         },
       },
     },
@@ -3089,7 +3169,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -3097,7 +3177,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -3105,7 +3185,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -3113,7 +3193,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "date",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -3121,7 +3201,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -3132,27 +3212,27 @@ Object {
           Object {
             "literal": "Opening",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Closing",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Quarterly",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "literal": "Meter Verification",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
         ],
         "nullable": false,
         "postgresType": "meter_reads_types",
-        "type": "UnionConstant",
+        "type": 12,
       },
     },
     Object {
@@ -3161,7 +3241,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -3169,7 +3249,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "timestamp without time zone",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -3178,7 +3258,7 @@ Object {
         "comment": null,
         "nullable": true,
         "postgresType": "timestamp without time zone",
-        "type": "Date",
+        "type": 6,
       },
     },
     Object {
@@ -3187,7 +3267,7 @@ Object {
         "comment": "sql-fit: MeterReading.MeterReadingId",
         "nullable": true,
         "postgresType": "integer",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -3195,7 +3275,7 @@ Object {
       "type": Object {
         "comment": null,
         "postgresType": "character varying",
-        "type": "String",
+        "type": 2,
       },
     },
   ],

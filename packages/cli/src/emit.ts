@@ -20,15 +20,16 @@ import {
 import {
   LoadedFile,
   LoadedQueryInterface,
-  isTypeArrayConstant,
-  isTypeUnionConstant,
+  isTypeArray,
+  isTypeUnion,
   TypeConstant,
-  isTypeObjectLiteralConstant,
+  isTypeObjectLiteral,
   isTypeLiteral,
   isTypeEqual,
-  isTypeCompositeConstant,
+  isTypeComposite,
   isUniqueBy,
-  isTypeOptionalConstant,
+  isTypeOptional,
+  TypeName,
 } from '@potygen/potygen';
 
 const mkdirAsync = promisify(mkdir);
@@ -59,7 +60,7 @@ const withJSDoc = <T extends Node>(doc: string | undefined, node: T): T =>
 
 export const compactTypes = (types: TypeConstant[]): TypeConstant[] =>
   types
-    .map((type) => (isTypeOptionalConstant(type) ? { ...type.value, nullable: type.nullable } : type))
+    .map((type) => (isTypeOptional(type) ? { ...type.value, nullable: type.nullable } : type))
     .filter((item, index, all) =>
       isTypeLiteral(item) && item.literal !== undefined
         ? !all.some(
@@ -72,9 +73,9 @@ export const compactTypes = (types: TypeConstant[]): TypeConstant[] =>
 const toPropertyType =
   (context: TypeContext) =>
   (type: TypeConstant): TypeContext & { type: TypeNode } => {
-    if (isTypeCompositeConstant(type)) {
+    if (isTypeComposite(type)) {
       return { ...context, type: factory.createToken(SyntaxKind.StringKeyword) };
-    } else if (isTypeObjectLiteralConstant(type)) {
+    } else if (isTypeObjectLiteral(type)) {
       return type.items.reduce<TypeContext & { type: TypeLiteralNode }>(
         (acc, item) => {
           const itemType = toPropertyType({ ...acc, name: context.name + toClassCase(item.name) })(item.type);
@@ -88,10 +89,10 @@ const toPropertyType =
         },
         { ...context, type: factory.createTypeLiteralNode([]) },
       );
-    } else if (isTypeArrayConstant(type)) {
+    } else if (isTypeArray(type)) {
       const itemsType = toPropertyType(context)(type.items);
       return { ...itemsType, type: factory.createArrayTypeNode(itemsType.type) };
-    } else if (isTypeUnionConstant(type)) {
+    } else if (isTypeUnion(type)) {
       return compactTypes(type.items).reduce<TypeContext & { type: UnionTypeNode }>(
         (acc, item, index) => {
           const itemType = toPropertyType({ ...acc, name: context.name + index })(item);
@@ -99,14 +100,15 @@ const toPropertyType =
         },
         { ...context, type: factory.createUnionTypeNode([]) },
       );
-    } else if (isTypeOptionalConstant(type)) {
+    } else if (isTypeOptional(type)) {
       return toPropertyType(context)(type.value);
     } else {
       switch (type.type) {
-        case 'Date':
-        case 'Buffer':
-          return { ...context, type: factory.createTypeReferenceNode(type.type) };
-        case 'Boolean':
+        case TypeName.Date:
+          return { ...context, type: factory.createTypeReferenceNode('Date') };
+        case TypeName.Buffer:
+          return { ...context, type: factory.createTypeReferenceNode('Buffer') };
+        case TypeName.Boolean:
           return {
             ...context,
             type:
@@ -114,7 +116,7 @@ const toPropertyType =
                 ? factory.createLiteralTypeNode(type.literal ? factory.createTrue() : factory.createFalse())
                 : factory.createToken(SyntaxKind.BooleanKeyword),
           };
-        case 'Json':
+        case TypeName.Json:
           return {
             ...context,
             refs: context.refs.concat(context.name),
@@ -122,10 +124,10 @@ const toPropertyType =
               ? factory.createTypeReferenceNode('Json', [factory.createTypeReferenceNode(context.name)])
               : factory.createTypeReferenceNode(context.name),
           };
-        case 'Null':
+        case TypeName.Null:
           return { ...context, type: factory.createLiteralTypeNode(factory.createToken(SyntaxKind.NullKeyword)) };
-        case 'Number':
-        case 'BigInt':
+        case TypeName.Number:
+        case TypeName.BigInt:
           return {
             ...context,
             type:
@@ -133,7 +135,7 @@ const toPropertyType =
                 ? factory.createLiteralTypeNode(factory.createStringLiteral(String(type.literal)))
                 : factory.createToken(SyntaxKind.NumberKeyword),
           };
-        case 'String':
+        case TypeName.String:
           return {
             ...context,
             type:
@@ -141,9 +143,9 @@ const toPropertyType =
                 ? factory.createLiteralTypeNode(factory.createStringLiteral(type.literal))
                 : factory.createToken(SyntaxKind.StringKeyword),
           };
-        case 'Unknown':
+        case TypeName.Unknown:
           return { ...context, type: factory.createToken(SyntaxKind.UnknownKeyword) };
-        case 'Any':
+        case TypeName.Any:
           return { ...context, type: factory.createToken(SyntaxKind.AnyKeyword) };
       }
     }

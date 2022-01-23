@@ -1,11 +1,17 @@
 import { sql } from './sql';
 import { LoadedDataRaw, QualifiedName } from './load.types';
 
+/**
+ * We construct the data by hand as potygen can't effecitvly load types from information_schema views
+ */
 interface LoadAllSql {
   params: {};
   result: LoadedDataRaw;
 }
 
+/**
+ * We construct the data by hand as potygen can't effecitvly load types from information_schema views
+ */
 interface LoadSql {
   params: {
     tableNames: QualifiedName[];
@@ -16,6 +22,14 @@ interface LoadSql {
   result: LoadedDataRaw;
 }
 
+/**
+ * A query to load {@link LoadedDataRaw} data for all the possible data points in the database.
+ *
+ * - Functions
+ * - Enums
+ * - Composites
+ * - Tables
+ */
 export const allSql = sql<LoadAllSql>`
 SELECT
   'Composite' AS "type",
@@ -112,6 +126,14 @@ GROUP BY (
 )
 `;
 
+/**
+ * A query to load {@link LoadedDataRaw} data onlfy for specifc {@link Data}
+ *
+ * - Functions
+ * - Enums
+ * - Composites
+ * - Tables
+ */
 export const selectedSql = sql<LoadSql>`
 WITH
   table_names ("schema", "name") AS (VALUES $$tableNames(schema, name)),

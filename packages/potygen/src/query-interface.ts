@@ -12,6 +12,7 @@ import {
   Tag,
   ArrayTypeTag,
   TypeTag,
+  SqlName,
 } from './grammar.types';
 import {
   isColumn,
@@ -42,27 +43,67 @@ import {
   pgTypeAliases,
   pgTypes,
 } from './postgres-types-map';
-import { isTypeConstant, isTypeEqual, isTypeString } from './query-interface.guards';
+import { isType, isTypeEqual, isTypeString, isTypeUnknown } from './query-interface.guards';
 import {
-  Type,
+  TypeOrLoad,
   Param,
   Source,
   QueryInterface,
-  TypeConstant,
+  Type,
   TypeLoadOperator,
   Result,
   TypeContext,
   TypeLoadColumn,
   TypeUnknown,
+  OperatorVariantPart,
+  OperatorVariant,
+  TypeLoadNamed,
+  TypeName,
 } from './query-interface.types';
 
+/**
+ * Initial context for the toSourcesIterator.
+ * Used to allow nesting and recusion
+ */
+interface SourcesIteratorContext {
+  /**
+   * Previous sources to add to.
+   */
+  sources?: Source[];
+  /**
+   * Is the source part of "result" calculation or not.
+   * If a source is only involved in "params" it wouldn't be used in result calculations
+   */
+  isResult?: boolean;
+}
+
+/**
+ * A {@link Tag} that can determine return or parameter types of {@link QueryInterface}
+ */
+type QueryInterfaceSqlTag =
+  | ExpressionTag
+  | StarIdentifierTag
+  | ArrayTypeTag
+  | TypeTag
+  | SelectTag
+  | ExpressionListTag
+  | ArrayConstructorTag;
+
+/**
+ * A {@link Tag} used to determine results of {@link QueryInterface}
+ */
+type ResultTag = SelectListItemTag | ReturningListItemTag;
+
 const toSourcesIterator =
-  (sources: Source[] = [], isResult = true) =>
+  ({ sources = [], isResult = true }: SourcesIteratorContext = {}) =>
   (sql: Tag): Source[] => {
-    const nestedRecur = toSourcesIterator(sources, false);
-    const recur = toSourcesIterator(sources, isResult);
+    /**
+     * Nested sources would not be involved in results, only params
+     */
+    const nestedRecur = toSourcesIterator({ sources, isResult: false });
+    const recur = toSourcesIterator({ sources, isResult });
     switch (sql.tag) {
-      case 'Table':
+      case SqlName.Table:
         const asTag = sql.values[1];
         const tableTags = first(sql.values).values;
         const table = last(tableTags);
@@ -77,7 +118,7 @@ const toSourcesIterator =
           schema: schema?.value,
           table: table.value,
         });
-      case 'NamedSelect':
+      case SqlName.NamedSelect:
         return sources.concat([
           ...recur(first(sql.values)),
           {
@@ -87,16 +128,16 @@ const toSourcesIterator =
             value: toQueryInterface(first(sql.values), sources),
           },
         ]);
-      case 'Exists':
-      case 'ComparationArray':
-      case 'ComparationArrayInclusion':
+      case SqlName.Exists:
+      case SqlName.ComparationArray:
+      case SqlName.ComparationArrayInclusion:
         return sources.concat(nestedRecur(last(sql.values)));
-      case 'CTE':
+      case SqlName.CTE:
         const cteQuery = last(sql.values);
         if (isCTEValuesList(cteQuery)) {
           const cteNameParts = first(sql.values).values;
           const cteValuesItem = first(cteQuery.values.filter(isCTEValues));
-          const valuesType = toType({ type: typeUnknown(), columns: [] });
+          const valuesType = toType({ type: typeUnknown, columns: [] });
           const columnNames =
             cteNameParts.length === 2 ? last(cteNameParts).values.map((column) => column.value) : undefined;
 
@@ -104,10 +145,11 @@ const toSourcesIterator =
             type: 'Values',
             sourceTag: sql,
             name: first(first(sql.values).values).value,
-            types: cteValuesItem?.values.map((item, index) => ({
-              type: 'Named' as const,
+            types: cteValuesItem?.values.map<TypeLoadNamed>((item, index) => ({
+              type: TypeName.LoadNamed,
               name: columnNames?.[index] ?? `column${index}`,
               value: valuesType(item),
+              sourceTag: item,
             })),
           });
         } else {
@@ -119,9 +161,15 @@ const toSourcesIterator =
             value: queryValue,
           });
         }
-      case 'With':
+      case SqlName.With:
         return sources.concat(
-          initial(sql.values).reduce((acc, item) => toSourcesIterator(acc, false)(item), sources),
+          /**
+           * Each subsequent CTE query will have access to the results of the previous ones.
+           */
+          initial(sql.values).reduce(
+            (acc, item) => toSourcesIterator({ sources: acc, isResult: false })(item),
+            sources,
+          ),
           recur(last(sql.values)),
         );
       default:
@@ -137,27 +185,39 @@ const isRedundantSource = (source: Source, index: number, all: Source[]): boolea
     ? !all.some((item) => (item.type === 'Query' || item.type == 'Values') && item.name === source.name)
     : true;
 
-const coalesce = (...types: Type[]): Type => types.find((item) => item.type !== 'Unknown') ?? typeUnknown();
+const firstKnownType = (...types: TypeOrLoad[]): TypeOrLoad =>
+  types.find((item) => !isTypeUnknown(item)) ?? typeUnknown;
 
-export const toContantBinaryOperatorVariant = (
-  availableTypes: Array<[left: TypeConstant, rigth: TypeConstant, result: TypeConstant]>,
-  left: TypeConstant,
-  right: TypeConstant,
-  index: 0 | 1 | 2,
-): TypeConstant => {
-  const matchedAvailableTypes = availableTypes.filter(
-    (type) => isTypeEqual(type[0], left) && isTypeEqual(type[1], right),
+/**
+ * Get the type from a part of a binary operator expression {@link BinaryExpressionTag}
+ * First attempt to get an exact match
+ * Otherwise check variants if at least one part matches.
+ *
+ * If there are multiple variants that match, return "unknown"
+ */
+export const toConstantBinaryOperatorVariant = (
+  variants: OperatorVariant[],
+  left: Type,
+  right: Type,
+  part: OperatorVariantPart,
+): Type => {
+  const matchedVariants = variants.filter(
+    (variant) =>
+      isTypeEqual(variant[OperatorVariantPart.Left], left) && isTypeEqual(variant[OperatorVariantPart.Right], right),
   );
 
-  if (matchedAvailableTypes.length === 1) {
-    return matchedAvailableTypes[0][index];
+  if (matchedVariants.length === 1) {
+    return matchedVariants[0][part];
   }
 
-  const looseAvailableTypes = availableTypes.filter(
-    (type) => isTypeEqual(type[0], left) || isTypeEqual(type[1], right),
+  const looseAvailableVariants = variants.filter(
+    (variant) =>
+      isTypeEqual(variant[OperatorVariantPart.Left], left) || isTypeEqual(variant[OperatorVariantPart.Right], right),
   );
 
-  return looseAvailableTypes.length === 1 ? looseAvailableTypes[0][index] : { type: 'Unknown', postgresType: `any` };
+  return looseAvailableVariants.length === 1
+    ? looseAvailableVariants[0][part]
+    : { ...typeUnknown, postgresType: `any` };
 };
 
 export const toAliasedPgType = (type: string): keyof typeof pgTypes => {
@@ -165,46 +225,53 @@ export const toAliasedPgType = (type: string): keyof typeof pgTypes => {
   return pgTypeAliases[trimmedType] ?? trimmedType;
 };
 
-export const toPgTypeConstant = (type: string): TypeConstant | undefined => pgTypes[toAliasedPgType(type)];
+/**
+ * Convert postgres type into a potygen {@link TypeConstant}
+ */
+export const toPgTypeConstant = (type: string): Type | undefined => pgTypes[toAliasedPgType(type)];
 
+/**
+ * Get the type from a part of a binary operator expression {@link BinaryExpressionTag}
+ *
+ * If all of the types are known ({@link TypeConstant}) perform {@link toConstantBinaryOperatorVariant}
+ * Otherwise return {@link TypeLoadOperator} type that will load the required types from the schema and attempt to match variants then.
+ */
 const toBinaryOperatorVariant = (
-  availableTypes: Array<[TypeConstant, TypeConstant, TypeConstant]>,
-  left: Type,
-  right: Type,
+  availableTypes: OperatorVariant[],
+  left: TypeOrLoad,
+  right: TypeOrLoad,
   sourceTag: BinaryExpressionTag,
-  index: 0 | 1 | 2,
-): TypeConstant | TypeLoadOperator =>
-  isTypeConstant(left) && isTypeConstant(right)
-    ? toContantBinaryOperatorVariant(availableTypes, left, right, index)
-    : { type: 'LoadOperator', available: availableTypes, index, left, right, sourceTag };
+  part: OperatorVariantPart,
+): Type | TypeLoadOperator =>
+  isType(left) && isType(right)
+    ? toConstantBinaryOperatorVariant(availableTypes, left, right, part)
+    : { type: TypeName.LoadOperator, available: availableTypes, part, left, right, sourceTag };
 
+/**
+ * Determine which {@link Type} is a {@link QueryInterfaceSqlTag}.
+ */
 const toType =
   (context: TypeContext) =>
-  (
-    sql:
-      | ExpressionTag
-      | StarIdentifierTag
-      | ArrayTypeTag
-      | TypeTag
-      | SelectTag
-      | ExpressionListTag
-      | ArrayConstructorTag,
-  ): Type => {
+  (sql: QueryInterfaceSqlTag): TypeOrLoad => {
     const recur = toType(context);
     switch (sql.tag) {
-      case 'ArrayConstructor':
-      case 'ExpressionList':
-        return { type: 'Array', items: { type: 'Union', items: sql.values.map(recur) } };
-      case 'ArrayColumnIndex':
-        return { type: 'ArrayItem', value: recur(first(sql.values)) };
-      case 'WrappedExpression':
+      case SqlName.ArrayConstructor:
+      case SqlName.ExpressionList:
+        return {
+          type: TypeName.LoadArray,
+          items: { type: TypeName.LoadUnion, items: sql.values.map(recur), sourceTag: sql },
+          sourceTag: sql,
+        };
+      case SqlName.ArrayColumnIndex:
+        return { type: TypeName.LoadArrayItem, value: recur(first(sql.values)), sourceTag: sql };
+      case SqlName.WrappedExpression:
         if (sql.values.length === 2) {
           switch (sql.values[1].tag) {
-            case 'ArrayIndex':
-              return { type: 'ArrayItem', value: recur(first(sql.values)) };
-            case 'CompositeAccess':
+            case SqlName.ArrayIndex:
+              return { type: TypeName.LoadArrayItem, value: recur(first(sql.values)), sourceTag: sql };
+            case SqlName.CompositeAccess:
               return {
-                type: 'CompositeAccess',
+                type: TypeName.LoadCompositeAccess,
                 value: recur(first(sql.values)),
                 name: sql.values[1].values[0].value,
                 sourceTag: sql,
@@ -213,31 +280,41 @@ const toType =
         } else {
           return recur(first(sql.values));
         }
-      case 'TernaryExpression':
-        return { type: 'Boolean', postgresType: 'bool' };
-      case 'BinaryExpression':
+      case SqlName.TernaryExpression:
+        return { type: TypeName.Boolean, postgresType: 'bool' };
+      case SqlName.BinaryExpression:
         return toBinaryOperatorVariant(
           binaryOperatorTypes[sql.values[1].value],
           recur(sql.values[0]),
           recur(sql.values[2]),
           sql,
-          2,
+          OperatorVariantPart.Result,
         );
-      case 'Boolean':
-        return { type: 'Boolean', literal: sql.value.toLowerCase() === 'true' ? true : false, postgresType: 'bool' };
-      case 'Case':
-        return { type: 'Union', items: sql.values.map((item) => recur(last(item.values))) };
-      case 'CaseSimple':
-        return { type: 'Union', items: tail(sql.values).map((item) => recur(last(item.values))) };
-      case 'Cast':
-      case 'PgCast':
+      case SqlName.Boolean:
+        return {
+          type: TypeName.Boolean,
+          literal: sql.value.toLowerCase() === 'true' ? true : false,
+          postgresType: 'bool',
+        };
+      case SqlName.Case:
+        return { type: TypeName.LoadUnion, items: sql.values.map((item) => recur(last(item.values))), sourceTag: sql };
+      case SqlName.CaseSimple:
+        return {
+          type: TypeName.LoadUnion,
+          items: tail(sql.values).map((item) => recur(last(item.values))),
+          sourceTag: sql,
+        };
+      case SqlName.Cast:
+      case SqlName.PgCast:
         const castData = first(sql.values);
         const castType = recur(last(sql.values));
-        return isColumn(castData) ? { type: 'LoadColumnCast', column: recur(castData), value: castType } : castType;
-      case 'Column':
+        return isColumn(castData)
+          ? { type: TypeName.LoadColumnCast, column: recur(castData), value: castType, sourceTag: sql }
+          : castType;
+      case SqlName.Column:
         const contextFromTable = context.from ? first(context.from.values) : undefined;
         return {
-          type: 'LoadColumn',
+          type: TypeName.LoadColumn,
           column: last(sql.values).value,
           table:
             sql.values.length === 3
@@ -255,135 +332,151 @@ const toType =
               : undefined,
           sourceTag: sql,
         };
-      case 'Function':
+      case SqlName.Function:
         const functionNameParts = first(sql.values).values;
         const functionName = last(functionNameParts).value.toLowerCase();
         const schema = functionNameParts.length === 2 ? functionNameParts[0].value.toLowerCase() : undefined;
         const args = sql.values.filter(isFunctionArg).map(recur);
         switch (functionName) {
           case 'coalesce':
-            return { type: 'Coalesce', items: args };
+            return { type: TypeName.LoadCoalesce, items: args, sourceTag: sql };
           case 'greatest':
           case 'least':
-            return { type: 'Named', name: functionName, value: args.find(isTypeConstant) ?? args[0] };
+            return {
+              type: TypeName.LoadNamed,
+              name: functionName,
+              value: args.find(isType) ?? args[0],
+              sourceTag: sql,
+            };
           case 'nullif':
-            return { type: 'Union', items: [typeNull(), args[0]] };
+            return { type: TypeName.LoadUnion, items: [typeNull, args[0]], sourceTag: sql };
           case 'array_agg':
-            return { type: 'ToArray', items: args[0] ?? typeUnknown };
+            return { type: TypeName.LoadAsArray, items: args[0] ?? typeUnknown, sourceTag: sql };
           case 'json_agg':
           case 'jsonb_agg':
-            return { type: 'Array', items: args[0] ?? typeUnknown };
+            return { type: TypeName.LoadArray, items: args[0] ?? typeUnknown, sourceTag: sql };
           case 'current_date':
-            return typeDate('date');
+            return { ...typeDate, postgresType: 'date' };
           case 'current_timestamp':
-            return typeDate('timestamp');
+            return { ...typeDate, postgresType: 'timestamp' };
           case 'curtent_time':
-            return typeString('time');
+            return { ...typeString, postgresType: 'time' };
           case 'json_build_object':
           case 'jsonb_build_object':
             return {
-              type: 'ObjectLiteral',
+              type: TypeName.LoadObjectLiteral,
               items: chunk(2, args).flatMap(([name, type]) =>
                 isTypeString(name) && name.literal ? { name: name.literal, type } : [],
               ),
+              sourceTag: sql,
             };
           default:
-            return { type: 'LoadFunction', schema, name: functionName, args, sourceTag: sql };
+            return { type: TypeName.LoadFunction, schema, name: functionName, args, sourceTag: sql };
         }
-      case 'Null':
-        return typeNull();
-      case 'Number':
-        return { type: 'Number', literal: Number(sql.value), postgresType: 'float4' };
-      case 'Parameter':
-        return typeAny();
-      case 'Row':
-      case 'RowKeyward':
-        return { type: 'Named', value: typeString('row'), name: 'row' };
-      case 'Select':
+      case SqlName.Null:
+        return typeNull;
+      case SqlName.Number:
+        return { type: TypeName.Number, literal: Number(sql.value), postgresType: 'float4' };
+      case SqlName.Parameter:
+        return typeAny;
+      case SqlName.Row:
+      case SqlName.RowKeyward:
+        return { type: TypeName.LoadNamed, value: { ...typeString, postgresType: 'row' }, name: 'row', sourceTag: sql };
+      case SqlName.Select:
         return {
-          type: 'Optional',
+          type: TypeName.LoadOptional,
           nullable: true,
           value: recur(sql.values.filter(isSelectList)[0].values[0].values[0]),
+          sourceTag: sql,
         };
-      case 'StarIdentifier':
+      case SqlName.StarIdentifier:
         return {
-          type: 'LoadStar',
+          type: TypeName.LoadStar,
           table:
             sql.values.length === 3 ? sql.values[1].value : sql.values.length === 2 ? sql.values[0].value : undefined,
           schema: sql.values.length === 3 ? sql.values[0].value : undefined,
           sourceTag: sql,
         };
-      case 'String':
-      case 'DollarQuotedString':
-      case 'CustomQuotedString':
-      case 'BitString':
-      case 'EscapeString':
-      case 'HexademicalString':
-      case 'CustomQuotedString':
-        return { type: 'String', literal: sql.value, postgresType: 'text' };
-      case 'Exists':
-      case 'ComparationArray':
-      case 'ComparationArrayInclusion':
-        return typeBoolean();
-      case 'Type':
+      case SqlName.String:
+      case SqlName.DollarQuotedString:
+      case SqlName.CustomQuotedString:
+      case SqlName.BitString:
+      case SqlName.EscapeString:
+      case SqlName.HexademicalString:
+      case SqlName.CustomQuotedString:
+        return { type: TypeName.String, literal: sql.value, postgresType: 'text' };
+      case SqlName.Exists:
+      case SqlName.ComparationArray:
+      case SqlName.ComparationArrayInclusion:
+        return typeBoolean;
+      case SqlName.Type:
         const typeParts = first(sql.values).values;
         const typeName = last(typeParts).value.toLowerCase();
         const typeSchema = typeParts.length === 2 ? typeParts[0].value : undefined;
         const pgType = toPgTypeConstant(typeName);
         return pgType
-          ? { type: 'Named', name: pgTypeAliases[typeName] ?? typeName, value: pgType }
-          : { type: 'LoadRecord', name: typeName, schema: typeSchema, sourceTag: sql };
-      case 'ArrayType':
-        return Array.from({ length: tail(sql.values).length }).reduce<Type>(
-          (items) => ({ type: 'Array', items }),
+          ? { type: TypeName.LoadNamed, name: pgTypeAliases[typeName] ?? typeName, value: pgType, sourceTag: sql }
+          : { type: TypeName.LoadRecord, name: typeName, schema: typeSchema, sourceTag: sql };
+      case SqlName.ArrayType:
+        return Array.from({ length: tail(sql.values).length }).reduce<TypeOrLoad>(
+          (items) => ({ type: TypeName.LoadArray, items, sourceTag: sql }),
           recur(first(sql.values)),
         );
-      case 'TypedConstant':
+      case SqlName.TypedConstant:
         const typeConstantName = first(sql.values).value.toLowerCase();
         return {
-          type: 'Named',
+          type: TypeName.LoadNamed,
           name: pgTypeAliases[typeConstantName] ?? typeConstantName,
-          value: toPgTypeConstant(typeConstantName) ?? typeUnknown(),
+          value: toPgTypeConstant(typeConstantName) ?? typeUnknown,
+          sourceTag: sql,
         };
-      case 'Extract':
-        return { type: 'Named', name: 'date_part', value: typeNumber() };
-      case 'UnaryExpression':
+      case SqlName.Extract:
+        return { type: TypeName.LoadNamed, name: 'date_part', value: typeNumber, sourceTag: sql };
+      case SqlName.UnaryExpression:
         return unaryOperatorTypes[sql.values[0].value] ?? recur(sql.values[1]);
     }
   };
 
-const toResultName = (type: Type): string => {
+/**
+ * Determine the column name based on the result type
+ */
+const toResultName = (type: TypeOrLoad): string => {
   switch (type.type) {
-    case 'Coalesce':
+    case TypeName.LoadCoalesce:
       return 'coalesce';
-    case 'Named':
+    case TypeName.LoadNamed:
       return type.name;
-    case 'ArrayItem':
-    case 'Optional':
+    case TypeName.LoadArrayItem:
+    case TypeName.LoadOptional:
       return toResultName(type.value);
-    case 'Array':
-    case 'ArrayConstant':
+    case TypeName.LoadArray:
+    case TypeName.Array:
       return 'array';
-    case 'Boolean':
+    case TypeName.Boolean:
       return 'bool';
-    case 'LoadColumn':
+    case TypeName.LoadColumn:
       return type.column;
-    case 'LoadColumnCast':
+    case TypeName.LoadColumnCast:
       return toResultName(type.column);
-    case 'LoadFunction':
+    case TypeName.LoadFunction:
       return type.name;
-    case 'LoadRecord':
+    case TypeName.LoadRecord:
       return 'row';
-    case 'CompositeAccess':
+    case TypeName.LoadCompositeAccess:
       return type.name;
     default:
       return '?column?';
   }
 };
 
+/**
+ * Convert an {@link }
+ * @param context
+ * @returns
+ */
 const toResult =
   (context: TypeContext) =>
-  (sql: SelectListItemTag | ReturningListItemTag): Result => {
+  (sql: ResultTag): Result => {
     const type = toType(context)(first(sql.values));
     return {
       name: sql.values.length === 2 ? first(last(sql.values).values).value : toResultName(type),
@@ -391,100 +484,101 @@ const toResult =
     };
   };
 
+/**
+ * Get the "from" table of a query
+ */
 export const toQueryFrom = (sql: AstTag): TableTag | undefined => {
   switch (sql.tag) {
-    case 'Update':
+    case SqlName.Update:
       return sql.values.find(isTable);
-    case 'Insert':
+    case SqlName.Insert:
       return sql.values.find(isTable);
-    case 'Delete':
+    case SqlName.Delete:
       return sql.values.find(isTable);
-    case 'With':
+    case SqlName.With:
       return toQueryFrom(last(sql.values));
     default:
       return undefined;
   }
 };
 
-export const toQueryResults = (sql: AstTag): Array<SelectListItemTag | ReturningListItemTag> => {
+/**
+ * Get the {@link ResultTag} for for {@link QueryInterface} from {@link AstTag}
+ */
+export const toQueryResults = (sql: AstTag): Array<ResultTag> => {
   switch (sql.tag) {
-    case 'Begin':
-    case 'Savepoint':
-    case 'Rollback':
-    case 'Commit':
+    case SqlName.Begin:
+    case SqlName.Savepoint:
+    case SqlName.Rollback:
+    case SqlName.Commit:
       return [];
-    case 'Select':
+    case SqlName.Select:
       return sql.values.filter(isSelectList).flatMap((list) => list.values);
-    case 'Update':
+    case SqlName.Update:
       return sql.values.filter(isReturning).flatMap((item) => item.values);
-    case 'Insert':
+    case SqlName.Insert:
       return sql.values.filter(isReturning).flatMap((item) => item.values);
-    case 'Delete':
+    case SqlName.Delete:
       return sql.values.filter(isReturning).flatMap((item) => item.values);
-    case 'With': {
+    case SqlName.With: {
       return toQueryResults(last(sql.values));
     }
   }
 };
 
+/**
+ * Get all {@link Param} of an sql query or any sql tag. Works recursively
+ */
 export const toParams =
   (context: TypeContext) =>
   (sql: Tag): Param[] => {
     const recur = toParams(context);
     const toTypeRecur = toType(context);
     switch (sql.tag) {
-      case 'TernaryExpression':
+      case SqlName.TernaryExpression:
         const arg1Type = toTypeRecur(sql.values[2]);
         const arg2Type = toTypeRecur(sql.values[4]);
         const valueType = toTypeRecur(sql.values[0]);
         return [
-          ...toParams({ ...context, type: coalesce(arg1Type, arg2Type) })(sql.values[0]),
-          ...toParams({ ...context, type: coalesce(valueType, arg2Type) })(sql.values[2]),
-          ...toParams({ ...context, type: coalesce(valueType, arg1Type) })(sql.values[4]),
+          ...toParams({ ...context, type: firstKnownType(arg1Type, arg2Type) })(sql.values[0]),
+          ...toParams({ ...context, type: firstKnownType(valueType, arg2Type) })(sql.values[2]),
+          ...toParams({ ...context, type: firstKnownType(valueType, arg1Type) })(sql.values[4]),
         ];
 
-      case 'SelectList':
+      case SqlName.SelectList:
         return context.columns.length
           ? sql.values.flatMap((item, index) =>
               toParams({ ...context, columns: [], type: context.columns[index] })(item),
             )
           : sql.values.flatMap(recur);
 
-      case 'SetItem':
+      case SqlName.SetItem:
         const from = first(context.from?.values);
         const setType: TypeLoadColumn | TypeUnknown = from
           ? {
-              type: 'LoadColumn',
+              type: TypeName.LoadColumn,
               column: first(sql.values).value,
               table: from.values.length === 2 ? from.values[1].value : from.values[0].value,
               schema: from.values.length === 2 ? from.values[0].value : undefined,
               sourceTag: first(sql.values),
             }
-          : typeUnknown();
+          : typeUnknown;
         return toParams({ ...context, type: setType })(last(sql.values));
 
-      case 'BinaryExpression': {
-        switch (sql.values[1].value) {
-          case 'IN':
-            return [
-              ...toParams({ ...context, type: { type: 'ArrayItem', value: toTypeRecur(sql.values[2]) } })(
-                sql.values[0],
-              ),
-              ...toParams({ ...context, type: { type: 'Array', items: toTypeRecur(sql.values[0]) } })(sql.values[2]),
-            ];
-          default:
-            const operator = binaryOperatorTypes[sql.values[1].value];
-            return [
-              ...toParams({ ...context, type: operator.length === 1 ? operator[0][0] : toTypeRecur(sql.values[2]) })(
-                sql.values[0],
-              ),
-              ...toParams({ ...context, type: operator.length === 1 ? operator[0][1] : toTypeRecur(sql.values[0]) })(
-                sql.values[2],
-              ),
-            ];
-        }
+      case SqlName.BinaryExpression: {
+        const operator = binaryOperatorTypes[sql.values[1].value];
+        return [
+          ...toParams({
+            ...context,
+            type: operator.length === 1 ? operator[0][OperatorVariantPart.Left] : toTypeRecur(sql.values[2]),
+          })(sql.values[0]),
+          ...toParams({
+            ...context,
+            type: operator.length === 1 ? operator[0][OperatorVariantPart.Right] : toTypeRecur(sql.values[0]),
+          })(sql.values[2]),
+        ];
       }
-      case 'Insert':
+      case SqlName.Insert:
         const table = sql.values.filter(isTable)[0];
         const tableName = first(table.values);
         return sql.values.flatMap(
@@ -492,7 +586,7 @@ export const toParams =
             ...context,
             columns: sql.values.filter(isColumns).flatMap((columns) =>
               columns.values.map((column) => ({
-                type: 'LoadColumn',
+                type: TypeName.LoadColumn,
                 column: column.value,
                 table: last(tableName.values).value,
                 schema: tableName.values.length === 2 ? tableName.values[0].value : undefined,
@@ -501,7 +595,7 @@ export const toParams =
             ),
           }),
         );
-      case 'Function':
+      case SqlName.Function:
         const functionName = last(first(sql.values).values).value.toLowerCase();
         switch (functionName) {
           case 'coalesce':
@@ -514,13 +608,14 @@ export const toParams =
 
             return args
               .flatMap((arg, index) =>
-                toParams({ ...context, type: { type: 'LoadFunctionArgument', ...argType, index, sourceTag: arg } })(
-                  arg,
-                ),
+                toParams({
+                  ...context,
+                  type: { type: TypeName.LoadFunctionArgument, ...argType, index, sourceTag: arg },
+                })(arg),
               )
               .concat(sql.values.filter(isOrderBy).flatMap(recur), sql.values.filter(isFilter).flatMap(recur));
         }
-      case 'Parameter':
+      case SqlName.Parameter:
         return [
           {
             name: sql.value,
@@ -529,21 +624,27 @@ export const toParams =
             spread: sql.type === 'spread',
             required: sql.required || sql.pick.length > 0,
             type: context.type,
-            pick: sql.pick.map((name, index) => ({ name: name.value, type: context.columns[index] ?? typeUnknown() })),
+            pick: sql.pick.map((name, index) => ({ name: name.value, type: context.columns[index] ?? typeUnknown })),
           },
         ];
-      case 'ComparationArrayInclusion':
-      case 'ComparationArray':
+      case SqlName.ComparationArrayInclusion:
+      case SqlName.ComparationArray:
         const column = first(sql.values);
         return column && isColumn(column)
           ? [
-              ...toParams({ ...context, type: { type: 'ArrayItem', value: toTypeRecur(last(sql.values)) } })(column),
-              ...toParams({ ...context, type: { type: 'Array', items: toTypeRecur(column) } })(last(sql.values)),
+              ...toParams({
+                ...context,
+                type: { type: TypeName.LoadArrayItem, sourceTag: sql, value: toTypeRecur(last(sql.values)) },
+              })(column),
+              ...toParams({
+                ...context,
+                type: { type: TypeName.LoadArray, items: toTypeRecur(column), sourceTag: sql },
+              })(last(sql.values)),
             ]
           : sql.values.flatMap(recur);
-      case 'UnaryExpression':
+      case SqlName.UnaryExpression:
         return toParams({ ...context, type: unaryOperatorTypes[sql.values[0].value] })(sql.values[1]);
-      case 'ValuesList':
+      case SqlName.ValuesList:
         return sql.values
           .filter(isValues)
           .flatMap((item) =>
@@ -552,26 +653,38 @@ export const toParams =
             ),
           )
           .concat(sql.values.filter(isParameter).flatMap(recur));
-      case 'PgCast':
-      case 'Cast':
+      case SqlName.PgCast:
+      case SqlName.Cast:
         return toParams({ ...context, type: toTypeRecur(last(sql.values)) })(first(sql.values));
-      case 'Limit':
-      case 'Offset':
-        return toParams({ ...context, type: typeString() })(first(sql.values));
+      case SqlName.Limit:
+      case SqlName.Offset:
+        return toParams({ ...context, type: typeString })(first(sql.values));
       default:
         return 'values' in sql ? sql.values.flatMap(recur) : [];
     }
   };
 
+/**
+ * Filter out params with the same name and type
+ * Different types are kept, as they will be used as union types.
+ */
 const isUniqParam = (item: Param, index: number, all: Param[]) =>
   all.findIndex((current) => item.name === current.name && isEqual(item.type, current.type)) === index;
 
+/**
+ * Get all the {@link Source} of a SQL query.
+ */
 export const toSources = (sql: AstTag): Source[] => toSourcesIterator()(sql).filter(isRedundantSource);
 
+/**
+ * Get the {@link QueryInterface} of an sql query.
+ *
+ * Nested sub-queries have access to more sources than just what's available inside it.
+ */
 export const toQueryInterface = (sql: AstTag, parentSources: Source[] = []): QueryInterface => {
   const items = toQueryResults(sql);
   const from = toQueryFrom(sql);
-  const typeContext = { type: typeUnknown(), columns: [], from };
+  const typeContext = { type: typeUnknown, columns: [], from };
 
   return {
     sources: toSources(sql).concat(parentSources).filter(isRedundantSource),

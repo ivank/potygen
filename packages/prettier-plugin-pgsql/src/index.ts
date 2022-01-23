@@ -17,19 +17,23 @@ import {
   last,
   isParameter,
   isConflictTargetIndex,
+  SqlName,
+  isComment,
 } from '@potygen/potygen';
 
 const { line, softline, indent, join, group, hardline } = doc.builders;
 
-interface RootAstTag extends SqlTag {
-  tag: 'Ast';
+interface RootTag extends SqlTag {
+  tag: SqlName.Root;
   value: AstTag;
   comments: CommentTag[];
+  start: number;
+  end: number;
 }
 
-type Node = RootAstTag | Tag | CommentTag;
+type Node = RootTag | Tag | CommentTag;
 
-const isRootAstTag = (value: SqlTag): value is RootAstTag => value.tag === 'Ast';
+const isRootAstTag = (value: SqlTag): value is RootTag => value.tag === SqlName.Root;
 
 const wrapSubquery = (path: AstPath<any>, content: Doc): Doc => {
   const parent = path.getParentNode();
@@ -56,38 +60,40 @@ const pgsqlAst: Printer<Node> = {
   print: (path, options, recur) => {
     const node = path.getValue();
 
+    if (isRootAstTag(node)) {
+      return [path.call(recur, 'value'), softline];
+    }
+
     switch (node.tag) {
-      case 'Ast':
-        return [path.call(recur, 'value'), softline];
-      case 'Comment':
+      case SqlName.Comment:
         return `-- ${node.value}`;
-      case 'CTEName':
+      case SqlName.CTEName:
         return group(join(line, vals(path, recur)));
-      case 'CTEValuesList':
+      case SqlName.CTEValuesList:
         return group([
           '(',
           indent([softline, 'VALUES', group(indent([line, join([',', line], vals(path, recur))]))]),
           softline,
           ')',
         ]);
-      case 'CTEValues':
+      case SqlName.CTEValues:
         return group(['(', indent([softline, join([',', line], vals(path, recur))]), ')']);
-      case 'CTE':
+      case SqlName.CTE:
         return group([group([nthVal(0, path, recur), line, 'AS']), line, nthVal(1, path, recur)]);
-      case 'With':
+      case SqlName.With:
         return group([
           'WITH',
           indent([line, join([',', line], initialVals(1, path, recur))]),
           line,
           nthVal(-1, path, recur),
         ]);
-      case 'Null':
+      case SqlName.Null:
         return 'NULL';
-      case 'UnquotedIdentifier':
+      case SqlName.UnquotedIdentifier:
         return node.value;
-      case 'QuotedIdentifier':
+      case SqlName.QuotedIdentifier:
         return `"${node.value}"`;
-      case 'Parameter':
+      case SqlName.Parameter:
         return [
           node.type === 'spread' ? '$$' : '$',
           node.value,
@@ -96,118 +102,118 @@ const pgsqlAst: Printer<Node> = {
             : '',
           node.required ? '!' : '',
         ];
-      case 'Column':
+      case SqlName.Column:
         return group(join('.', vals(path, recur)));
-      case 'As':
+      case SqlName.As:
         return group(['AS', line, join(line, vals(path, recur))]);
-      case 'String':
+      case SqlName.String:
         return `'${node.value}'`;
-      case 'DollarQuotedString':
+      case SqlName.DollarQuotedString:
         return `\$\$${node.value}\$\$`;
-      case 'CustomQuotedString':
+      case SqlName.CustomQuotedString:
         return `\$${node.delimiter}\$${node.value}\$${node.delimiter}\$`;
-      case 'BitString':
+      case SqlName.BitString:
         return `B'${node.value}'`;
-      case 'HexademicalString':
+      case SqlName.HexademicalString:
         return `X'${node.value}'`;
-      case 'EscapeString':
+      case SqlName.EscapeString:
         return `E'${node.value}'`;
-      case 'Number':
+      case SqlName.Number:
         return node.value;
-      case 'Integer':
+      case SqlName.Integer:
         return node.value;
-      case 'Boolean':
+      case SqlName.Boolean:
         return node.value;
-      case 'ConstantType':
+      case SqlName.ConstantType:
         return node.value;
-      case 'TypedConstant':
+      case SqlName.TypedConstant:
         return join(' ', vals(path, recur));
-      case 'ExtractField':
+      case SqlName.ExtractField:
         return node.value;
-      case 'Extract':
+      case SqlName.Extract:
         return group([
           'EXTRACT',
           indent([line, '(', group([nthVal(0, path, recur), line, 'FROM']), line, nthVal(1, path, recur)]),
           ')',
         ]);
-      case 'ArrayIndexRange':
+      case SqlName.ArrayIndexRange:
         return group(join(':', vals(path, recur)));
-      case 'ArrayColumnIndex':
+      case SqlName.ArrayColumnIndex:
         return group([group([nthVal(0, path, recur), softline]), '[', indent([softline, nthVal(1, path, recur)]), ']']);
-      case 'ArrayIndex':
+      case SqlName.ArrayIndex:
         return group(['[', indent([softline, vals(path, recur)]), ']']);
-      case 'CompositeAccess':
+      case SqlName.CompositeAccess:
         return group(['.', vals(path, recur)]);
-      case 'Count':
+      case SqlName.Count:
         return vals(path, recur);
-      case 'Dimension':
+      case SqlName.Dimension:
         return '[]';
-      case 'Type':
+      case SqlName.Type:
         return node.values.length === 1
           ? nthVal(0, path, recur)
           : node.values.length === 2
           ? [nthVal(0, path, recur), '(', nthVal(1, path, recur), ')']
           : [nthVal(0, path, recur), '(', nthVal(1, path, recur), ',', nthVal(2, path, recur), ')'];
-      case 'ArrayType':
+      case SqlName.ArrayType:
         return vals(path, recur);
-      case 'Distinct':
+      case SqlName.Distinct:
         return node.values.length
           ? ['DISTINCT ON (', group([indent([softline, join([',', line], vals(path, recur))]), softline]), ')']
           : ['DISTINCT'];
-      case 'Filter':
+      case SqlName.Filter:
         return [group(['FILTER', line]), group(['(', indent([softline, nthVal(0, path, recur)]), ')'])];
-      case 'Star':
+      case SqlName.Star:
         return '*';
-      case 'StarIdentifier':
+      case SqlName.StarIdentifier:
         return group(join('.', vals(path, recur)));
-      case 'RowKeyward':
+      case SqlName.RowKeyward:
         return [
           group(['ROW', line]),
           group(['(', indent([softline, join([',', line], vals(path, recur))]), softline, ')']),
         ];
-      case 'Row':
+      case SqlName.Row:
         return group(['(', indent([softline, join([',', line], vals(path, recur))]), softline, ')']);
-      case 'When':
+      case SqlName.When:
         return [
           group([
             group(['WHEN', indent([line, nthVal(0, path, recur)])]),
             indent([line, group(['THEN', line, nthVal(1, path, recur)])]),
           ]),
         ];
-      case 'Else':
+      case SqlName.Else:
         return group(['ELSE', line, nthVal(0, path, recur)]);
-      case 'CaseSimple':
+      case SqlName.CaseSimple:
         return group([
           group(['CASE', line, nthVal(0, path, recur)]),
           indent([line, join(line, tailVals(1, path, recur))]),
           line,
           'END',
         ]);
-      case 'Case':
+      case SqlName.Case:
         return group(['CASE', indent([line, join(line, vals(path, recur))]), line, 'END']);
-      case 'BinaryOperator':
+      case SqlName.BinaryOperator:
         return node.value;
-      case 'UnaryOperator':
+      case SqlName.UnaryOperator:
         return node.value;
-      case 'ComparationArrayOperator':
+      case SqlName.ComparationArrayOperator:
         return node.value;
-      case 'ComparationArrayType':
+      case SqlName.ComparationArrayType:
         return node.value;
-      case 'ComparationArrayInclusionType':
+      case SqlName.ComparationArrayInclusionType:
         return node.value;
-      case 'UnaryExpression':
+      case SqlName.UnaryExpression:
         return join(['+', '-'].includes(node.values[0].value) ? '' : ' ', vals(path, recur));
-      case 'BinaryExpression':
+      case SqlName.BinaryExpression:
         return group([
           nthVal(0, path, recur),
           line,
           group([nthVal(1, path, recur), indent([line, nthVal(2, path, recur)])]),
         ]);
-      case 'TernaryOperator':
+      case SqlName.TernaryOperator:
         return node.value;
-      case 'TernarySeparator':
+      case SqlName.TernarySeparator:
         return node.value;
-      case 'TernaryExpression':
+      case SqlName.TernaryExpression:
         return group([
           nthVal(0, path, recur),
           indent([
@@ -217,7 +223,7 @@ const pgsqlAst: Printer<Node> = {
             group([nthVal(3, path, recur), line, nthVal(4, path, recur)]),
           ]),
         ]);
-      case 'Cast':
+      case SqlName.Cast:
         return group([
           group(['CAST', line]),
           '(',
@@ -225,16 +231,16 @@ const pgsqlAst: Printer<Node> = {
           line,
           ')',
         ]);
-      case 'PgCast':
+      case SqlName.PgCast:
         return group(join('::', vals(path, recur)));
-      case 'ArrayConstructor':
+      case SqlName.ArrayConstructor:
         return group([
           group(['ARRAY', softline, '[']),
           indent([softline, join([',', line], vals(path, recur))]),
           softline,
           ']',
         ]);
-      case 'Function':
+      case SqlName.Function:
         const args = filterIndexes(node.values, isFunctionArg);
         const distinct = node.values.findIndex(isDistinct);
         const order = node.values.findIndex(isOrderBy);
@@ -267,7 +273,7 @@ const pgsqlAst: Printer<Node> = {
           isNoBrackets ? '' : ')',
           filter !== -1 ? [line, nthVal(filter, path, recur)] : [],
         ]);
-      case 'ComparationArray':
+      case SqlName.ComparationArray:
         return [
           nthVal(0, path, recur),
           ' ',
@@ -278,7 +284,7 @@ const pgsqlAst: Printer<Node> = {
           nthVal(3, path, recur),
           ')',
         ];
-      case 'ComparationArrayInclusion':
+      case SqlName.ComparationArrayInclusion:
         return [
           nthVal(0, path, recur),
           ' ',
@@ -286,37 +292,37 @@ const pgsqlAst: Printer<Node> = {
           ' ',
           isParameter(last(node.values)) ? nthVal(2, path, recur) : group(['(', nthVal(2, path, recur), ')']),
         ];
-      case 'Exists':
+      case SqlName.Exists:
         return group(['EXISTS', ' ', join(' ', vals(path, recur))]);
-      case 'SelectListItem':
+      case SqlName.SelectListItem:
         return group(join(' ', vals(path, recur)));
-      case 'SelectList':
+      case SqlName.SelectList:
         return group(indent([line, join([',', hardline], vals(path, recur))]));
-      case 'NamedSelect':
+      case SqlName.NamedSelect:
         return group(join(' ', vals(path, recur)));
-      case 'JoinType':
+      case SqlName.JoinType:
         return node.value;
-      case 'JoinOn':
+      case SqlName.JoinOn:
         return ['ON', ' ', join(line, vals(path, recur))];
-      case 'JoinUsing':
+      case SqlName.JoinUsing:
         return ['USING', ' ', join(line, vals(path, recur))];
-      case 'Join':
+      case SqlName.Join:
         return node.values.length === 3
           ? [nthVal(0, path, recur), ' ', nthVal(1, path, recur), indent([line, nthVal(2, path, recur)])]
           : [nthVal(0, path, recur), indent([line, nthVal(1, path, recur)])];
-      case 'FromList':
+      case SqlName.FromList:
         return group(join([',', line], vals(path, recur)));
-      case 'From':
+      case SqlName.From:
         return ['FROM', group(indent([line, join(line, vals(path, recur))]))];
-      case 'Where':
+      case SqlName.Where:
         return ['WHERE', indent([line, join(line, vals(path, recur))])];
-      case 'GroupBy':
+      case SqlName.GroupBy:
         return ['GROUP BY', indent([line, join([',', line], vals(path, recur))])];
-      case 'Having':
+      case SqlName.Having:
         return ['HAVING', indent([line, join(line, vals(path, recur))])];
-      case 'CombinationType':
+      case SqlName.CombinationType:
         return node.value;
-      case 'Combination':
+      case SqlName.Combination:
         return [
           line,
           nthVal(0, path, recur),
@@ -326,68 +332,68 @@ const pgsqlAst: Printer<Node> = {
             ? [group(['SELECT', line, nthVal(1, path, recur)]), group([join(line, tailVals(2, path, recur))])]
             : ['SELECT', group(join(line, tailVals(1, path, recur)))]),
         ];
-      case 'OrderDirection':
+      case SqlName.OrderDirection:
         return node.value;
-      case 'OrderByItem':
+      case SqlName.OrderByItem:
         return group(join(line, vals(path, recur)));
-      case 'OrderBy':
+      case SqlName.OrderBy:
         return ['ORDER BY', indent([line, group(join([',', line], vals(path, recur)))])];
-      case 'Limit':
+      case SqlName.Limit:
         return group(['LIMIT', line, nthVal(0, path, recur)]);
-      case 'LimitAll':
+      case SqlName.LimitAll:
         return 'ALL';
-      case 'Offset':
+      case SqlName.Offset:
         return group(['OFFSET', line, nthVal(0, path, recur)]);
-      case 'Select':
+      case SqlName.Select:
         return wrapSubquery(
           path,
           isDistinct(node.values[0])
             ? group([group(['SELECT', line, nthVal(0, path, recur)]), group(join(line, tailVals(1, path, recur)))])
             : group(['SELECT', group(join(line, vals(path, recur)))]),
         );
-      case 'Default':
+      case SqlName.Default:
         return 'DEFAULT';
-      case 'SetItem':
+      case SqlName.SetItem:
         return [nthVal(0, path, recur), ' ', '=', ' ', nthVal(1, path, recur)];
-      case 'SetList':
+      case SqlName.SetList:
         return group(join([',', hardline], vals(path, recur)));
-      case 'Columns':
+      case SqlName.Columns:
         const parent = path.getParentNode();
         const columnsSeparator = parent && isInsert(parent) ? hardline : line;
         return group(['(', indent([softline, join([',', columnsSeparator], vals(path, recur))]), softline, ')']);
-      case 'Values':
+      case SqlName.Values:
         return group(['(', indent([softline, join([',', line], vals(path, recur))]), softline, ')']);
-      case 'SetMap':
+      case SqlName.SetMap:
         return group([
           nthVal(0, path, recur),
           line,
           group(['=', line, indent(group([softline, nthVal(1, path, recur)]))]),
         ]);
-      case 'Set':
+      case SqlName.Set:
         return ['SET', indent([line, join(line, vals(path, recur))])];
-      case 'QualifiedIdentifier':
+      case SqlName.QualifiedIdentifier:
         return group(join('.', vals(path, recur)));
-      case 'Table':
+      case SqlName.Table:
         return group(join(line, vals(path, recur)));
-      case 'UpdateFrom':
+      case SqlName.UpdateFrom:
         return ['FROM', group(indent([line, join(line, vals(path, recur))]))];
-      case 'ReturningListItem':
+      case SqlName.ReturningListItem:
         return group(join(' ', vals(path, recur)));
-      case 'Returning':
+      case SqlName.Returning:
         return ['RETURNING', indent([line, join([',', hardline], vals(path, recur))])];
-      case 'Update':
+      case SqlName.Update:
         return wrapSubquery(path, group(['UPDATE', group([' ', join(line, vals(path, recur))])]));
-      case 'Using':
+      case SqlName.Using:
         return ['USING', group(indent([line, join(hardline, vals(path, recur))]))];
-      case 'Delete':
+      case SqlName.Delete:
         return wrapSubquery(path, group(['DELETE FROM', group([' ', join(line, vals(path, recur))])]));
-      case 'ValuesList':
+      case SqlName.ValuesList:
         return ['VALUES', group(indent([line, join([',', hardline], vals(path, recur))]))];
-      case 'Collate':
+      case SqlName.Collate:
         return group(['COLLATE', line, node.value]);
-      case 'ConflictTargetIndex':
+      case SqlName.ConflictTargetIndex:
         return group(join(line, vals(path, recur)));
-      case 'ConflictTarget':
+      case SqlName.ConflictTarget:
         const indexes = filterIndexes(node.values, isConflictTargetIndex);
         const where = node.values.findIndex(isWhere);
         return group([
@@ -404,20 +410,20 @@ const pgsqlAst: Printer<Node> = {
           ')',
           where !== -1 ? [line, nthVal(where, path, recur)] : [],
         ]);
-      case 'ConflictConstraint':
+      case SqlName.ConflictConstraint:
         return group(['ON CONSTRAINT', line, node.value]);
-      case 'DoNothing':
+      case SqlName.DoNothing:
         return 'DO NOTHING';
-      case 'DoUpdate':
+      case SqlName.DoUpdate:
         return group(['DO UPDATE', group(indent([line, join(line, vals(path, recur))]))]);
-      case 'Conflict':
+      case SqlName.Conflict:
         return ['ON CONFLICT', group(indent([line, join(hardline, vals(path, recur))]))];
-      case 'Insert':
+      case SqlName.Insert:
         return wrapSubquery(path, [
           [group(['INSERT INTO', line, nthVal(0, path, recur)]), ' ', nthVal(1, path, recur)],
           group([line, join(line, tailVals(2, path, recur))]),
         ]);
-      case 'WrappedExpression':
+      case SqlName.WrappedExpression:
         return group([
           '(',
           group(indent([softline, nthVal(0, path, recur)])),
@@ -425,31 +431,31 @@ const pgsqlAst: Printer<Node> = {
           ')',
           ...(node.values.length === 2 ? [nthVal(1, path, recur)] : []),
         ]);
-      case 'TableWithJoin':
+      case SqlName.TableWithJoin:
         return group(['(', indent([softline, join(line, vals(path, recur))]), softline, ')']);
-      case 'ExpressionList':
+      case SqlName.ExpressionList:
         return group(join([',', line], vals(path, recur)));
-      case 'Begin':
+      case SqlName.Begin:
         return 'BEGIN';
-      case 'Commit':
+      case SqlName.Commit:
         return 'COMMIT';
-      case 'Savepoint':
+      case SqlName.Savepoint:
         return group(['SAVEPOINT', line, nthVal(0, path, recur)]);
-      case 'Rollback':
+      case SqlName.Rollback:
         return node.values.length ? group(['ROLLBACK TO', line, nthVal(0, path, recur)]) : 'ROLLBACK';
     }
   },
   printComment: (path) => {
     const node = path.getValue();
-    return node.tag === 'Comment' ? `--${node.value}` : '';
+    return isComment(node) ? `--${node.value}` : '';
   },
-  canAttachComment: (node) => node.tag && node.tag !== 'Comment',
+  canAttachComment: (node) => Boolean(node.tag && !isComment(node)),
 };
 
 const pgsqlParse: Parser<Node> = {
   parse: (text) => {
     const { ast, comments } = parser(text);
-    return { value: ast, tag: 'Ast', comments, start: 0, end: text.length };
+    return { value: ast, tag: SqlName.Root, comments, start: 0, end: text.length };
   },
   astFormat: 'pgsql-ast',
   locStart: (node) => node?.start,

@@ -11,47 +11,46 @@ Object {
           Array [
             Object {
               "postgresType": "float4",
-              "type": "Number",
+              "type": 3,
             },
             Object {
               "postgresType": "float4",
-              "type": "Number",
+              "type": 3,
             },
             Object {
               "postgresType": "float4",
-              "type": "Number",
+              "type": 3,
             },
           ],
           Array [
             Object {
               "postgresType": "int8",
-              "type": "BigInt",
+              "type": 4,
             },
             Object {
               "postgresType": "int8",
-              "type": "BigInt",
+              "type": 4,
             },
             Object {
               "postgresType": "float4",
-              "type": "Number",
+              "type": 3,
             },
           ],
           Array [
             Object {
               "postgresType": "date",
-              "type": "Date",
+              "type": 6,
             },
             Object {
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
             Object {
               "postgresType": "date",
-              "type": "Date",
+              "type": 6,
             },
           ],
         ],
-        "index": 2,
         "left": Object {
           "items": Array [
             Object {
@@ -60,27 +59,67 @@ Object {
               "sourceTag": Object {
                 "end": 26,
                 "start": 16,
-                "tag": "Column",
+                "tag": 11,
                 "values": Array [
                   Object {
                     "end": 26,
                     "start": 16,
-                    "tag": "UnquotedIdentifier",
+                    "tag": 8,
                     "value": "numeric_col",
                   },
                 ],
               },
               "table": undefined,
-              "type": "LoadColumn",
+              "type": 19,
             },
             Object {
               "literal": 0,
               "postgresType": "float4",
-              "type": "Number",
+              "type": 3,
             },
           ],
-          "type": "Coalesce",
+          "sourceTag": Object {
+            "end": 29,
+            "start": 7,
+            "tag": 54,
+            "values": Array [
+              Object {
+                "end": 14,
+                "start": 7,
+                "tag": 89,
+                "values": Array [
+                  Object {
+                    "end": 14,
+                    "start": 7,
+                    "tag": 8,
+                    "value": "COALESCE",
+                  },
+                ],
+              },
+              Object {
+                "end": 26,
+                "start": 16,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 26,
+                    "start": 16,
+                    "tag": 8,
+                    "value": "numeric_col",
+                  },
+                ],
+              },
+              Object {
+                "end": 28,
+                "start": 28,
+                "tag": 19,
+                "value": "0",
+              },
+            ],
+          },
+          "type": 15,
         },
+        "part": 2,
         "right": Object {
           "items": Array [
             Object {
@@ -89,46 +128,85 @@ Object {
               "sourceTag": Object {
                 "end": 52,
                 "start": 42,
-                "tag": "Column",
+                "tag": 11,
                 "values": Array [
                   Object {
                     "end": 52,
                     "start": 42,
-                    "tag": "UnquotedIdentifier",
+                    "tag": 8,
                     "value": "numeric_col",
                   },
                 ],
               },
               "table": undefined,
-              "type": "LoadColumn",
+              "type": 19,
             },
             Object {
               "literal": 0,
               "postgresType": "float4",
-              "type": "Number",
+              "type": 3,
             },
           ],
-          "type": "Coalesce",
+          "sourceTag": Object {
+            "end": 55,
+            "start": 33,
+            "tag": 54,
+            "values": Array [
+              Object {
+                "end": 40,
+                "start": 33,
+                "tag": 89,
+                "values": Array [
+                  Object {
+                    "end": 40,
+                    "start": 33,
+                    "tag": 8,
+                    "value": "COALESCE",
+                  },
+                ],
+              },
+              Object {
+                "end": 52,
+                "start": 42,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 52,
+                    "start": 42,
+                    "tag": 8,
+                    "value": "numeric_col",
+                  },
+                ],
+              },
+              Object {
+                "end": 54,
+                "start": 54,
+                "tag": 19,
+                "value": "0",
+              },
+            ],
+          },
+          "type": 15,
         },
         "sourceTag": Object {
           "end": 55,
           "start": 7,
-          "tag": "BinaryExpression",
+          "tag": 46,
           "values": Array [
             Object {
               "end": 29,
               "start": 7,
-              "tag": "Function",
+              "tag": 54,
               "values": Array [
                 Object {
                   "end": 14,
                   "start": 7,
-                  "tag": "QualifiedIdentifier",
+                  "tag": 89,
                   "values": Array [
                     Object {
                       "end": 14,
                       "start": 7,
-                      "tag": "UnquotedIdentifier",
+                      "tag": 8,
                       "value": "COALESCE",
                     },
                   ],
@@ -136,12 +214,12 @@ Object {
                 Object {
                   "end": 26,
                   "start": 16,
-                  "tag": "Column",
+                  "tag": 11,
                   "values": Array [
                     Object {
                       "end": 26,
                       "start": 16,
-                      "tag": "UnquotedIdentifier",
+                      "tag": 8,
                       "value": "numeric_col",
                     },
                   ],
@@ -149,7 +227,7 @@ Object {
                 Object {
                   "end": 28,
                   "start": 28,
-                  "tag": "Number",
+                  "tag": 19,
                   "value": "0",
                 },
               ],
@@ -157,23 +235,23 @@ Object {
             Object {
               "end": 31,
               "start": 31,
-              "tag": "BinaryOperator",
+              "tag": 44,
               "value": "+",
             },
             Object {
               "end": 55,
               "start": 33,
-              "tag": "Function",
+              "tag": 54,
               "values": Array [
                 Object {
                   "end": 40,
                   "start": 33,
-                  "tag": "QualifiedIdentifier",
+                  "tag": 89,
                   "values": Array [
                     Object {
                       "end": 40,
                       "start": 33,
-                      "tag": "UnquotedIdentifier",
+                      "tag": 8,
                       "value": "COALESCE",
                     },
                   ],
@@ -181,12 +259,12 @@ Object {
                 Object {
                   "end": 52,
                   "start": 42,
-                  "tag": "Column",
+                  "tag": 11,
                   "values": Array [
                     Object {
                       "end": 52,
                       "start": 42,
-                      "tag": "UnquotedIdentifier",
+                      "tag": 8,
                       "value": "numeric_col",
                     },
                   ],
@@ -194,14 +272,14 @@ Object {
                 Object {
                   "end": 54,
                   "start": 54,
-                  "tag": "Number",
+                  "tag": 19,
                   "value": "0",
                 },
               ],
             },
           ],
         },
-        "type": "LoadOperator",
+        "type": 22,
       },
     },
   ],
@@ -213,17 +291,17 @@ Object {
       "sourceTag": Object {
         "end": 95,
         "start": 87,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 95,
             "start": 87,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 95,
                 "start": 87,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "all_types",
               },
             ],
@@ -245,10 +323,42 @@ Object {
       "name": "date_part",
       "type": Object {
         "name": "date_part",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 59,
+          "start": 7,
+          "tag": 25,
+          "values": Array [
+            Object {
+              "end": 21,
+              "start": 15,
+              "tag": 24,
+              "value": "CENTURY",
+            },
+            Object {
+              "end": 58,
+              "start": 28,
+              "tag": 23,
+              "values": Array [
+                Object {
+                  "end": 36,
+                  "start": 28,
+                  "tag": 22,
+                  "value": "TIMESTAMP",
+                },
+                Object {
+                  "end": 58,
+                  "start": 38,
+                  "tag": 13,
+                  "value": "2000-12-16 12:21:13",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
         "value": Object {
           "postgresType": "float4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -266,7 +376,7 @@ Object {
       "type": Object {
         "literal": false,
         "postgresType": "bool",
-        "type": "Boolean",
+        "type": 5,
       },
     },
     Object {
@@ -274,7 +384,7 @@ Object {
       "type": Object {
         "literal": true,
         "postgresType": "bool",
-        "type": "Boolean",
+        "type": 5,
       },
     },
   ],
@@ -290,10 +400,30 @@ Object {
       "name": "int8",
       "type": Object {
         "name": "int8",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 17,
+          "start": 14,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 17,
+              "start": 14,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 14,
+                  "tag": 8,
+                  "value": "int8",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
         "value": Object {
           "postgresType": "int8",
-          "type": "BigInt",
+          "type": 4,
         },
       },
     },
@@ -313,99 +443,99 @@ Object {
           Array [
             Object {
               "postgresType": "float4",
-              "type": "Number",
+              "type": 3,
             },
             Object {
               "postgresType": "float4",
-              "type": "Number",
+              "type": 3,
             },
             Object {
               "postgresType": "float4",
-              "type": "Number",
+              "type": 3,
             },
           ],
           Array [
             Object {
               "postgresType": "int8",
-              "type": "BigInt",
+              "type": 4,
             },
             Object {
               "postgresType": "int8",
-              "type": "BigInt",
+              "type": 4,
             },
             Object {
               "postgresType": "float4",
-              "type": "Number",
+              "type": 3,
             },
           ],
           Array [
             Object {
               "postgresType": "date",
-              "type": "Date",
+              "type": 6,
             },
             Object {
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
             Object {
               "postgresType": "date",
-              "type": "Date",
+              "type": 6,
             },
           ],
         ],
-        "index": 2,
         "left": Object {
           "column": "col1",
           "schema": undefined,
           "sourceTag": Object {
             "end": 11,
             "start": 8,
-            "tag": "Column",
+            "tag": 11,
             "values": Array [
               Object {
                 "end": 11,
                 "start": 8,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "col1",
               },
             ],
           },
           "table": undefined,
-          "type": "LoadColumn",
+          "type": 19,
         },
+        "part": 2,
         "right": Object {
           "column": "col2",
           "schema": undefined,
           "sourceTag": Object {
             "end": 18,
             "start": 15,
-            "tag": "Column",
+            "tag": 11,
             "values": Array [
               Object {
                 "end": 18,
                 "start": 15,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "col2",
               },
             ],
           },
           "table": undefined,
-          "type": "LoadColumn",
+          "type": 19,
         },
         "sourceTag": Object {
           "end": 18,
           "start": 8,
-          "tag": "BinaryExpression",
+          "tag": 46,
           "values": Array [
             Object {
               "end": 11,
               "start": 8,
-              "tag": "Column",
+              "tag": 11,
               "values": Array [
                 Object {
                   "end": 11,
                   "start": 8,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "col1",
                 },
               ],
@@ -413,25 +543,25 @@ Object {
             Object {
               "end": 13,
               "start": 13,
-              "tag": "BinaryOperator",
+              "tag": 44,
               "value": "+",
             },
             Object {
               "end": 18,
               "start": 15,
-              "tag": "Column",
+              "tag": 11,
               "values": Array [
                 Object {
                   "end": 18,
                   "start": 15,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "col2",
                 },
               ],
             },
           ],
         },
-        "type": "LoadOperator",
+        "type": 22,
       },
     },
   ],
@@ -443,17 +573,17 @@ Object {
       "sourceTag": Object {
         "end": 41,
         "start": 36,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 41,
             "start": 36,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 41,
                 "start": 36,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -475,7 +605,7 @@ Object {
       "name": "?column?",
       "type": Object {
         "postgresType": "float4",
-        "type": "Number",
+        "type": 3,
       },
     },
   ],
@@ -491,7 +621,7 @@ Object {
       "name": "?column?",
       "type": Object {
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
   ],
@@ -508,7 +638,7 @@ Object {
       "type": Object {
         "literal": false,
         "postgresType": "bool",
-        "type": "Boolean",
+        "type": 5,
       },
     },
     Object {
@@ -516,7 +646,7 @@ Object {
       "type": Object {
         "literal": true,
         "postgresType": "bool",
-        "type": "Boolean",
+        "type": 5,
       },
     },
   ],
@@ -533,7 +663,7 @@ Object {
       "type": Object {
         "literal": false,
         "postgresType": "bool",
-        "type": "Boolean",
+        "type": 5,
       },
     },
     Object {
@@ -541,7 +671,7 @@ Object {
       "type": Object {
         "literal": true,
         "postgresType": "bool",
-        "type": "Boolean",
+        "type": 5,
       },
     },
   ],
@@ -558,7 +688,7 @@ Object {
       "type": Object {
         "literal": false,
         "postgresType": "bool",
-        "type": "Boolean",
+        "type": 5,
       },
     },
     Object {
@@ -566,7 +696,7 @@ Object {
       "type": Object {
         "literal": true,
         "postgresType": "bool",
-        "type": "Boolean",
+        "type": 5,
       },
     },
   ],
@@ -596,24 +726,24 @@ Object {
             "sourceTag": Object {
               "end": 71,
               "start": 61,
-              "tag": "Column",
+              "tag": 11,
               "values": Array [
                 Object {
                   "end": 66,
                   "start": 61,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "table1",
                 },
                 Object {
                   "end": 71,
                   "start": 68,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "col1",
                 },
               ],
             },
             "table": "table1",
-            "type": "LoadColumn",
+            "type": 19,
           },
           Object {
             "column": "col2",
@@ -621,26 +751,117 @@ Object {
             "sourceTag": Object {
               "end": 101,
               "start": 98,
-              "tag": "Column",
+              "tag": 11,
               "values": Array [
                 Object {
                   "end": 101,
                   "start": 98,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "col2",
                 },
               ],
             },
             "table": undefined,
-            "type": "LoadColumn",
+            "type": 19,
           },
           Object {
             "literal": "other",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
         ],
-        "type": "Union",
+        "sourceTag": Object {
+          "end": 140,
+          "start": 26,
+          "tag": 42,
+          "values": Array [
+            Object {
+              "end": 34,
+              "start": 31,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 34,
+                  "start": 31,
+                  "tag": 8,
+                  "value": "col1",
+                },
+              ],
+            },
+            Object {
+              "end": 71,
+              "start": 48,
+              "tag": 40,
+              "values": Array [
+                Object {
+                  "end": 54,
+                  "start": 53,
+                  "tag": 19,
+                  "value": "12",
+                },
+                Object {
+                  "end": 71,
+                  "start": 61,
+                  "tag": 11,
+                  "values": Array [
+                    Object {
+                      "end": 66,
+                      "start": 61,
+                      "tag": 8,
+                      "value": "table1",
+                    },
+                    Object {
+                      "end": 71,
+                      "start": 68,
+                      "tag": 8,
+                      "value": "col1",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 101,
+              "start": 85,
+              "tag": 40,
+              "values": Array [
+                Object {
+                  "end": 91,
+                  "start": 90,
+                  "tag": 19,
+                  "value": "20",
+                },
+                Object {
+                  "end": 101,
+                  "start": 98,
+                  "tag": 11,
+                  "values": Array [
+                    Object {
+                      "end": 101,
+                      "start": 98,
+                      "tag": 8,
+                      "value": "col2",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 126,
+              "start": 115,
+              "tag": 41,
+              "values": Array [
+                Object {
+                  "end": 126,
+                  "start": 120,
+                  "tag": 13,
+                  "value": "other",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 28,
       },
     },
   ],
@@ -652,17 +873,17 @@ Object {
       "sourceTag": Object {
         "end": 170,
         "start": 165,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 170,
             "start": 165,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 170,
                 "start": 165,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -687,15 +908,54 @@ Object {
           Object {
             "literal": true,
             "postgresType": "bool",
-            "type": "Boolean",
+            "type": 5,
           },
           Object {
             "literal": "other",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
         ],
-        "type": "Union",
+        "sourceTag": Object {
+          "end": 47,
+          "start": 7,
+          "tag": 43,
+          "values": Array [
+            Object {
+              "end": 30,
+              "start": 12,
+              "tag": 40,
+              "values": Array [
+                Object {
+                  "end": 20,
+                  "start": 17,
+                  "tag": 21,
+                  "value": "TRUE",
+                },
+                Object {
+                  "end": 30,
+                  "start": 27,
+                  "tag": 21,
+                  "value": "TRUE",
+                },
+              ],
+            },
+            Object {
+              "end": 43,
+              "start": 32,
+              "tag": 41,
+              "values": Array [
+                Object {
+                  "end": 43,
+                  "start": 37,
+                  "tag": 13,
+                  "value": "other",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 28,
       },
     },
   ],
@@ -715,30 +975,30 @@ Object {
         "sourceTag": Object {
           "end": 47,
           "start": 15,
-          "tag": "Type",
+          "tag": 32,
           "values": Array [
             Object {
               "end": 47,
               "start": 15,
-              "tag": "QualifiedIdentifier",
+              "tag": 89,
               "values": Array [
                 Object {
                   "end": 32,
                   "start": 15,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "information_schema",
                 },
                 Object {
                   "end": 47,
                   "start": 34,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "sql_identifier",
                 },
               ],
             },
           ],
         },
-        "type": "LoadRecord",
+        "type": 17,
       },
     },
   ],
@@ -773,24 +1033,24 @@ Object {
         "sourceTag": Object {
           "end": 125,
           "start": 116,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 121,
               "start": 116,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "table3",
             },
             Object {
               "end": 125,
               "start": 123,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "val",
             },
           ],
         },
         "table": "table3",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -806,24 +1066,24 @@ Object {
         "sourceTag": Object {
           "end": 292,
           "start": 284,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 289,
               "start": 284,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "table1",
             },
             Object {
               "end": 292,
               "start": 291,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -839,24 +1099,24 @@ Object {
         "sourceTag": Object {
           "end": 306,
           "start": 298,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 303,
               "start": 298,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "table4",
             },
             Object {
               "end": 306,
               "start": 305,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": "table4",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -869,43 +1129,276 @@ Object {
         "sourceTag": Object {
           "end": 29,
           "start": 26,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 29,
               "start": 26,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col1",
             },
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
       "name": "id",
       "type": Object {
         "nullable": true,
-        "type": "Optional",
+        "sourceTag": Object {
+          "end": 144,
+          "start": 53,
+          "tag": 81,
+          "values": Array [
+            Object {
+              "end": 61,
+              "start": 60,
+              "tag": 62,
+              "values": Array [
+                Object {
+                  "end": 61,
+                  "start": 60,
+                  "tag": 61,
+                  "values": Array [
+                    Object {
+                      "end": 61,
+                      "start": 60,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 61,
+                          "start": 60,
+                          "tag": 8,
+                          "value": "id",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 136,
+              "start": 63,
+              "tag": 69,
+              "values": Array [
+                Object {
+                  "end": 73,
+                  "start": 68,
+                  "tag": 68,
+                  "values": Array [
+                    Object {
+                      "end": 73,
+                      "start": 68,
+                      "tag": 90,
+                      "values": Array [
+                        Object {
+                          "end": 73,
+                          "start": 68,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 73,
+                              "start": 68,
+                              "tag": 8,
+                              "value": "table2",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "end": 136,
+                  "start": 75,
+                  "tag": 67,
+                  "values": Array [
+                    Object {
+                      "end": 78,
+                      "start": 75,
+                      "tag": 64,
+                      "value": "JOIN",
+                    },
+                    Object {
+                      "end": 85,
+                      "start": 80,
+                      "tag": 90,
+                      "values": Array [
+                        Object {
+                          "end": 85,
+                          "start": 80,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 85,
+                              "start": 80,
+                              "tag": 8,
+                              "value": "table3",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 136,
+                      "start": 87,
+                      "tag": 65,
+                      "values": Array [
+                        Object {
+                          "end": 136,
+                          "start": 90,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 110,
+                              "start": 90,
+                              "tag": 46,
+                              "values": Array [
+                                Object {
+                                  "end": 98,
+                                  "start": 90,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 95,
+                                      "start": 90,
+                                      "tag": 8,
+                                      "value": "table3",
+                                    },
+                                    Object {
+                                      "end": 98,
+                                      "start": 97,
+                                      "tag": 8,
+                                      "value": "id",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 100,
+                                  "start": 100,
+                                  "tag": 44,
+                                  "value": "=",
+                                },
+                                Object {
+                                  "end": 110,
+                                  "start": 102,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 107,
+                                      "start": 102,
+                                      "tag": 8,
+                                      "value": "table2",
+                                    },
+                                    Object {
+                                      "end": 110,
+                                      "start": 109,
+                                      "tag": 8,
+                                      "value": "id",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 114,
+                              "start": 112,
+                              "tag": 44,
+                              "value": "AND",
+                            },
+                            Object {
+                              "end": 136,
+                              "start": 116,
+                              "tag": 46,
+                              "values": Array [
+                                Object {
+                                  "end": 125,
+                                  "start": 116,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 121,
+                                      "start": 116,
+                                      "tag": 8,
+                                      "value": "table3",
+                                    },
+                                    Object {
+                                      "end": 125,
+                                      "start": 123,
+                                      "tag": 8,
+                                      "value": "val",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 127,
+                                  "start": 127,
+                                  "tag": 44,
+                                  "value": ">",
+                                },
+                                Object {
+                                  "end": 136,
+                                  "pick": Array [],
+                                  "required": false,
+                                  "start": 129,
+                                  "tag": 10,
+                                  "type": "single",
+                                  "value": "joinVal",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 144,
+              "start": 138,
+              "tag": 78,
+              "values": Array [
+                Object {
+                  "end": 144,
+                  "start": 144,
+                  "tag": 30,
+                  "values": Array [
+                    Object {
+                      "end": 144,
+                      "start": 144,
+                      "tag": 20,
+                      "value": "1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 30,
         "value": Object {
           "column": "id",
           "schema": undefined,
           "sourceTag": Object {
             "end": 61,
             "start": 60,
-            "tag": "Column",
+            "tag": 11,
             "values": Array [
               Object {
                 "end": 61,
                 "start": 60,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "id",
               },
             ],
           },
           "table": undefined,
-          "type": "LoadColumn",
+          "type": 19,
         },
       },
     },
@@ -918,17 +1411,17 @@ Object {
       "sourceTag": Object {
         "end": 73,
         "start": 68,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 73,
             "start": 68,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 73,
                 "start": 68,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table2",
               },
             ],
@@ -945,17 +1438,17 @@ Object {
       "sourceTag": Object {
         "end": 85,
         "start": 80,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 85,
             "start": 80,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 85,
                 "start": 80,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table3",
               },
             ],
@@ -972,17 +1465,17 @@ Object {
       "sourceTag": Object {
         "end": 165,
         "start": 160,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 165,
             "start": 160,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 165,
                 "start": 160,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -999,17 +1492,17 @@ Object {
       "sourceTag": Object {
         "end": 262,
         "start": 257,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 262,
             "start": 257,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 262,
                 "start": 257,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table4",
               },
             ],
@@ -1035,7 +1528,7 @@ Object {
       "start": 16,
       "type": Object {
         "postgresType": "any",
-        "type": "Unknown",
+        "type": 9,
       },
     },
   ],
@@ -1044,10 +1537,57 @@ Object {
       "name": "row",
       "type": Object {
         "name": "row",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 23,
+          "start": 7,
+          "tag": 38,
+          "values": Array [
+            Object {
+              "end": 8,
+              "start": 8,
+              "tag": 19,
+              "value": "1",
+            },
+            Object {
+              "end": 13,
+              "start": 11,
+              "tag": 46,
+              "values": Array [
+                Object {
+                  "end": 11,
+                  "start": 11,
+                  "tag": 19,
+                  "value": "2",
+                },
+                Object {
+                  "end": 12,
+                  "start": 12,
+                  "tag": 44,
+                  "value": "+",
+                },
+                Object {
+                  "end": 13,
+                  "start": 13,
+                  "tag": 19,
+                  "value": "2",
+                },
+              ],
+            },
+            Object {
+              "end": 22,
+              "pick": Array [],
+              "required": false,
+              "start": 16,
+              "tag": 10,
+              "type": "single",
+              "value": "param1",
+            },
+          ],
+        },
+        "type": 23,
         "value": Object {
           "postgresType": "row",
-          "type": "String",
+          "type": 2,
         },
       },
     },
@@ -1055,10 +1595,23 @@ Object {
       "name": "row",
       "type": Object {
         "name": "row",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 34,
+          "start": 26,
+          "tag": 39,
+          "values": Array [
+            Object {
+              "end": 33,
+              "start": 31,
+              "tag": 19,
+              "value": "123",
+            },
+          ],
+        },
+        "type": 23,
         "value": Object {
           "postgresType": "row",
-          "type": "String",
+          "type": 2,
         },
       },
     },
@@ -1066,10 +1619,42 @@ Object {
       "name": "row",
       "type": Object {
         "name": "row",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 45,
+          "start": 37,
+          "tag": 38,
+          "values": Array [
+            Object {
+              "end": 38,
+              "start": 38,
+              "tag": 19,
+              "value": "1",
+            },
+            Object {
+              "end": 40,
+              "start": 40,
+              "tag": 19,
+              "value": "2",
+            },
+            Object {
+              "end": 44,
+              "start": 42,
+              "tag": 106,
+              "values": Array [
+                Object {
+                  "end": 43,
+                  "start": 43,
+                  "tag": 19,
+                  "value": "3",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
         "value": Object {
           "postgresType": "row",
-          "type": "String",
+          "type": 2,
         },
       },
     },
@@ -1089,17 +1674,17 @@ Object {
         "sourceTag": Object {
           "end": 24,
           "start": 7,
-          "tag": "WrappedExpression",
+          "tag": 106,
           "values": Array [
             Object {
               "end": 11,
               "start": 8,
-              "tag": "Column",
+              "tag": 11,
               "values": Array [
                 Object {
                   "end": 11,
                   "start": 8,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "item",
                 },
               ],
@@ -1107,37 +1692,37 @@ Object {
             Object {
               "end": 24,
               "start": 13,
-              "tag": "CompositeAccess",
+              "tag": 29,
               "values": Array [
                 Object {
                   "end": 24,
                   "start": 14,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "supplier_id",
                 },
               ],
             },
           ],
         },
-        "type": "CompositeAccess",
+        "type": 27,
         "value": Object {
           "column": "item",
           "schema": undefined,
           "sourceTag": Object {
             "end": 11,
             "start": 8,
-            "tag": "Column",
+            "tag": 11,
             "values": Array [
               Object {
                 "end": 11,
                 "start": 8,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "item",
               },
             ],
           },
           "table": undefined,
-          "type": "LoadColumn",
+          "type": 19,
         },
       },
     },
@@ -1150,17 +1735,17 @@ Object {
       "sourceTag": Object {
         "end": 39,
         "start": 31,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 39,
             "start": 31,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 39,
                 "start": 31,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "all_types",
               },
             ],
@@ -1185,17 +1770,17 @@ Object {
         "sourceTag": Object {
           "end": 71,
           "start": 71,
-          "tag": "StarIdentifier",
+          "tag": 37,
           "values": Array [
             Object {
               "end": 71,
               "start": 71,
-              "tag": "Star",
+              "tag": 36,
             },
           ],
         },
         "table": undefined,
-        "type": "LoadStar",
+        "type": 20,
       },
     },
   ],
@@ -1205,34 +1790,34 @@ Object {
       "sourceTag": Object {
         "end": 62,
         "start": 5,
-        "tag": "CTE",
+        "tag": 5,
         "values": Array [
           Object {
             "end": 16,
             "start": 5,
-            "tag": "CTEName",
+            "tag": 2,
             "values": Array [
               Object {
                 "end": 7,
                 "start": 5,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "ins",
               },
               Object {
                 "end": 16,
                 "start": 8,
-                "tag": "Columns",
+                "tag": 85,
                 "values": Array [
                   Object {
                     "end": 10,
                     "start": 9,
-                    "tag": "UnquotedIdentifier",
+                    "tag": 8,
                     "value": "id",
                   },
                   Object {
                     "end": 15,
                     "start": 13,
-                    "tag": "UnquotedIdentifier",
+                    "tag": 8,
                     "value": "val",
                   },
                 ],
@@ -1242,38 +1827,38 @@ Object {
           Object {
             "end": 61,
             "start": 22,
-            "tag": "CTEValuesList",
+            "tag": 3,
             "values": Array [
               Object {
                 "end": 44,
                 "start": 29,
-                "tag": "CTEValues",
+                "tag": 4,
                 "values": Array [
                   Object {
                     "end": 36,
                     "start": 30,
-                    "tag": "PgCast",
+                    "tag": 52,
                     "values": Array [
                       Object {
                         "end": 30,
                         "start": 30,
-                        "tag": "Number",
+                        "tag": 19,
                         "value": "1",
                       },
                       Object {
                         "end": 35,
                         "start": 33,
-                        "tag": "Type",
+                        "tag": 32,
                         "values": Array [
                           Object {
                             "end": 35,
                             "start": 33,
-                            "tag": "QualifiedIdentifier",
+                            "tag": 89,
                             "values": Array [
                               Object {
                                 "end": 35,
                                 "start": 33,
-                                "tag": "UnquotedIdentifier",
+                                "tag": 8,
                                 "value": "int",
                               },
                             ],
@@ -1285,28 +1870,28 @@ Object {
                   Object {
                     "end": 44,
                     "start": 38,
-                    "tag": "PgCast",
+                    "tag": 52,
                     "values": Array [
                       Object {
                         "end": 38,
                         "start": 38,
-                        "tag": "Number",
+                        "tag": 19,
                         "value": "2",
                       },
                       Object {
                         "end": 43,
                         "start": 41,
-                        "tag": "Type",
+                        "tag": 32,
                         "values": Array [
                           Object {
                             "end": 43,
                             "start": 41,
-                            "tag": "QualifiedIdentifier",
+                            "tag": 89,
                             "values": Array [
                               Object {
                                 "end": 43,
                                 "start": 41,
-                                "tag": "UnquotedIdentifier",
+                                "tag": 8,
                                 "value": "int",
                               },
                             ],
@@ -1320,33 +1905,33 @@ Object {
               Object {
                 "end": 61,
                 "start": 46,
-                "tag": "CTEValues",
+                "tag": 4,
                 "values": Array [
                   Object {
                     "end": 53,
                     "start": 47,
-                    "tag": "PgCast",
+                    "tag": 52,
                     "values": Array [
                       Object {
                         "end": 47,
                         "start": 47,
-                        "tag": "Number",
+                        "tag": 19,
                         "value": "3",
                       },
                       Object {
                         "end": 52,
                         "start": 50,
-                        "tag": "Type",
+                        "tag": 32,
                         "values": Array [
                           Object {
                             "end": 52,
                             "start": 50,
-                            "tag": "QualifiedIdentifier",
+                            "tag": 89,
                             "values": Array [
                               Object {
                                 "end": 52,
                                 "start": 50,
-                                "tag": "UnquotedIdentifier",
+                                "tag": 8,
                                 "value": "int",
                               },
                             ],
@@ -1358,28 +1943,28 @@ Object {
                   Object {
                     "end": 61,
                     "start": 55,
-                    "tag": "PgCast",
+                    "tag": 52,
                     "values": Array [
                       Object {
                         "end": 55,
                         "start": 55,
-                        "tag": "Number",
+                        "tag": 19,
                         "value": "4",
                       },
                       Object {
                         "end": 60,
                         "start": 58,
-                        "tag": "Type",
+                        "tag": 32,
                         "values": Array [
                           Object {
                             "end": 60,
                             "start": 58,
-                            "tag": "QualifiedIdentifier",
+                            "tag": 89,
                             "values": Array [
                               Object {
                                 "end": 60,
                                 "start": 58,
-                                "tag": "UnquotedIdentifier",
+                                "tag": 8,
                                 "value": "int",
                               },
                             ],
@@ -1398,25 +1983,131 @@ Object {
       "types": Array [
         Object {
           "name": "id",
-          "type": "Named",
+          "sourceTag": Object {
+            "end": 36,
+            "start": 30,
+            "tag": 52,
+            "values": Array [
+              Object {
+                "end": 30,
+                "start": 30,
+                "tag": 19,
+                "value": "1",
+              },
+              Object {
+                "end": 35,
+                "start": 33,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 35,
+                    "start": 33,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 35,
+                        "start": 33,
+                        "tag": 8,
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 23,
           "value": Object {
             "name": "int4",
-            "type": "Named",
+            "sourceTag": Object {
+              "end": 35,
+              "start": 33,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 35,
+                  "start": 33,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 35,
+                      "start": 33,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
             "value": Object {
               "postgresType": "int4",
-              "type": "Number",
+              "type": 3,
             },
           },
         },
         Object {
           "name": "val",
-          "type": "Named",
+          "sourceTag": Object {
+            "end": 44,
+            "start": 38,
+            "tag": 52,
+            "values": Array [
+              Object {
+                "end": 38,
+                "start": 38,
+                "tag": 19,
+                "value": "2",
+              },
+              Object {
+                "end": 43,
+                "start": 41,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 43,
+                    "start": 41,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 43,
+                        "start": 41,
+                        "tag": 8,
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 23,
           "value": Object {
             "name": "int4",
-            "type": "Named",
+            "sourceTag": Object {
+              "end": 43,
+              "start": 41,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 43,
+                  "start": 41,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 43,
+                      "start": 41,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
             "value": Object {
               "postgresType": "int4",
-              "type": "Number",
+              "type": 3,
             },
           },
         },
@@ -1442,18 +2133,18 @@ Object {
         "sourceTag": Object {
           "end": 26,
           "start": 25,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 26,
               "start": 25,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -1466,17 +2157,17 @@ Object {
       "sourceTag": Object {
         "end": 17,
         "start": 12,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 17,
             "start": 12,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 17,
                 "start": 12,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -1502,18 +2193,18 @@ Object {
         "sourceTag": Object {
           "end": 30,
           "start": 29,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 30,
               "start": 29,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -1524,18 +2215,18 @@ Object {
         "sourceTag": Object {
           "end": 36,
           "start": 33,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 36,
               "start": 33,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col2",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -1547,17 +2238,17 @@ Object {
       "sourceTag": Object {
         "end": 17,
         "start": 12,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 17,
             "start": 12,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 17,
                 "start": 12,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -1579,10 +2270,30 @@ Object {
       "name": "float8",
       "type": Object {
         "name": "float8",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 29,
+          "start": 14,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 29,
+              "start": 14,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 29,
+                  "start": 14,
+                  "tag": 8,
+                  "value": "double precision",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
         "value": Object {
           "postgresType": "float8",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -1604,44 +2315,84 @@ Object {
           "sourceTag": Object {
             "end": 8,
             "start": 7,
-            "tag": "Column",
+            "tag": 11,
             "values": Array [
               Object {
                 "end": 8,
                 "start": 7,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "id",
               },
             ],
           },
           "table": undefined,
-          "type": "LoadColumn",
+          "type": 19,
         },
-        "type": "LoadColumnCast",
+        "sourceTag": Object {
+          "end": 22,
+          "start": 7,
+          "tag": 52,
+          "values": Array [
+            Object {
+              "end": 8,
+              "start": 7,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 8,
+                  "start": 7,
+                  "tag": 8,
+                  "value": "id",
+                },
+              ],
+            },
+            Object {
+              "end": 21,
+              "start": 11,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 21,
+                  "start": 11,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 21,
+                      "start": 11,
+                      "tag": 8,
+                      "value": "custom_type",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 16,
         "value": Object {
           "name": "custom_type",
           "schema": undefined,
           "sourceTag": Object {
             "end": 21,
             "start": 11,
-            "tag": "Type",
+            "tag": 32,
             "values": Array [
               Object {
                 "end": 21,
                 "start": 11,
-                "tag": "QualifiedIdentifier",
+                "tag": 89,
                 "values": Array [
                   Object {
                     "end": 21,
                     "start": 11,
-                    "tag": "UnquotedIdentifier",
+                    "tag": 8,
                     "value": "custom_type",
                   },
                 ],
               },
             ],
           },
-          "type": "LoadRecord",
+          "type": 17,
         },
       },
     },
@@ -1654,17 +2405,17 @@ Object {
       "sourceTag": Object {
         "end": 33,
         "start": 28,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 33,
             "start": 28,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 33,
                 "start": 28,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -1690,18 +2441,18 @@ Object {
         "sourceTag": Object {
           "end": 8,
           "start": 7,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 8,
               "start": 7,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -1713,17 +2464,17 @@ Object {
       "sourceTag": Object {
         "end": 23,
         "start": 15,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 23,
             "start": 15,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 23,
                 "start": 15,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "all_types",
               },
             ],
@@ -1751,7 +2502,7 @@ Object {
         "args": Array [
           Object {
             "postgresType": "any",
-            "type": "Any",
+            "type": 1,
           },
         ],
         "index": 0,
@@ -1761,11 +2512,11 @@ Object {
           "pick": Array [],
           "required": false,
           "start": 11,
-          "tag": "Parameter",
+          "tag": 10,
           "type": "single",
           "value": "id",
         },
-        "type": "LoadFunctionArgument",
+        "type": 21,
       },
     },
   ],
@@ -1776,7 +2527,7 @@ Object {
         "args": Array [
           Object {
             "postgresType": "any",
-            "type": "Any",
+            "type": 1,
           },
         ],
         "name": "abs",
@@ -1784,17 +2535,17 @@ Object {
         "sourceTag": Object {
           "end": 14,
           "start": 7,
-          "tag": "Function",
+          "tag": 54,
           "values": Array [
             Object {
               "end": 9,
               "start": 7,
-              "tag": "QualifiedIdentifier",
+              "tag": 89,
               "values": Array [
                 Object {
                   "end": 9,
                   "start": 7,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "ABS",
                 },
               ],
@@ -1804,13 +2555,13 @@ Object {
               "pick": Array [],
               "required": false,
               "start": 11,
-              "tag": "Parameter",
+              "tag": 10,
               "type": "single",
               "value": "id",
             },
           ],
         },
-        "type": "LoadFunction",
+        "type": 18,
       },
     },
   ],
@@ -1822,17 +2573,17 @@ Object {
       "sourceTag": Object {
         "end": 26,
         "start": 21,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 26,
             "start": 21,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 26,
                 "start": 21,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -1860,18 +2611,18 @@ Object {
             "sourceTag": Object {
               "end": 12,
               "start": 11,
-              "tag": "Column",
+              "tag": 11,
               "values": Array [
                 Object {
                   "end": 12,
                   "start": 11,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "id",
                 },
               ],
             },
             "table": undefined,
-            "type": "LoadColumn",
+            "type": 19,
           },
         ],
         "name": "abs",
@@ -1879,17 +2630,17 @@ Object {
         "sourceTag": Object {
           "end": 13,
           "start": 7,
-          "tag": "Function",
+          "tag": 54,
           "values": Array [
             Object {
               "end": 9,
               "start": 7,
-              "tag": "QualifiedIdentifier",
+              "tag": 89,
               "values": Array [
                 Object {
                   "end": 9,
                   "start": 7,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "ABS",
                 },
               ],
@@ -1897,19 +2648,19 @@ Object {
             Object {
               "end": 12,
               "start": 11,
-              "tag": "Column",
+              "tag": 11,
               "values": Array [
                 Object {
                   "end": 12,
                   "start": 11,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "id",
                 },
               ],
             },
           ],
         },
-        "type": "LoadFunction",
+        "type": 18,
       },
     },
   ],
@@ -1921,17 +2672,17 @@ Object {
       "sourceTag": Object {
         "end": 25,
         "start": 20,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 25,
             "start": 20,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 25,
                 "start": 20,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -1956,7 +2707,7 @@ Object {
           Object {
             "literal": "123",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
         ],
         "name": "_pg_char_max_length",
@@ -1964,23 +2715,23 @@ Object {
         "sourceTag": Object {
           "end": 51,
           "start": 7,
-          "tag": "Function",
+          "tag": 54,
           "values": Array [
             Object {
               "end": 44,
               "start": 7,
-              "tag": "QualifiedIdentifier",
+              "tag": 89,
               "values": Array [
                 Object {
                   "end": 24,
                   "start": 7,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "information_schema",
                 },
                 Object {
                   "end": 44,
                   "start": 26,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "_pg_char_max_length",
                 },
               ],
@@ -1988,12 +2739,12 @@ Object {
             Object {
               "end": 50,
               "start": 46,
-              "tag": "String",
+              "tag": 13,
               "value": "123",
             },
           ],
         },
-        "type": "LoadFunction",
+        "type": 18,
       },
     },
   ],
@@ -2014,46 +2765,46 @@ Object {
             "sourceTag": Object {
               "end": 43,
               "start": 41,
-              "tag": "StarIdentifier",
+              "tag": 37,
               "values": Array [
                 Object {
                   "end": 41,
                   "start": 41,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "a",
                 },
                 Object {
                   "end": 43,
                   "start": 43,
-                  "tag": "Star",
+                  "tag": 36,
                 },
               ],
             },
             "table": "a",
-            "type": "LoadStar",
+            "type": 20,
           },
           Object {
             "schema": undefined,
             "sourceTag": Object {
               "end": 48,
               "start": 46,
-              "tag": "StarIdentifier",
+              "tag": 37,
               "values": Array [
                 Object {
                   "end": 46,
                   "start": 46,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "t",
                 },
                 Object {
                   "end": 48,
                   "start": 48,
-                  "tag": "Star",
+                  "tag": 36,
                 },
               ],
             },
             "table": "t",
-            "type": "LoadStar",
+            "type": 20,
           },
         ],
         "name": "_pg_truetypmod",
@@ -2061,23 +2812,23 @@ Object {
         "sourceTag": Object {
           "end": 49,
           "start": 7,
-          "tag": "Function",
+          "tag": 54,
           "values": Array [
             Object {
               "end": 39,
               "start": 7,
-              "tag": "QualifiedIdentifier",
+              "tag": 89,
               "values": Array [
                 Object {
                   "end": 24,
                   "start": 7,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "information_schema",
                 },
                 Object {
                   "end": 39,
                   "start": 26,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "_pg_truetypmod",
                 },
               ],
@@ -2085,42 +2836,42 @@ Object {
             Object {
               "end": 43,
               "start": 41,
-              "tag": "StarIdentifier",
+              "tag": 37,
               "values": Array [
                 Object {
                   "end": 41,
                   "start": 41,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "a",
                 },
                 Object {
                   "end": 43,
                   "start": 43,
-                  "tag": "Star",
+                  "tag": 36,
                 },
               ],
             },
             Object {
               "end": 48,
               "start": 46,
-              "tag": "StarIdentifier",
+              "tag": 37,
               "values": Array [
                 Object {
                   "end": 46,
                   "start": 46,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "t",
                 },
                 Object {
                   "end": 48,
                   "start": 48,
-                  "tag": "Star",
+                  "tag": 36,
                 },
               ],
             },
           ],
         },
-        "type": "LoadFunction",
+        "type": 18,
       },
     },
   ],
@@ -2132,17 +2883,17 @@ Object {
       "sourceTag": Object {
         "end": 61,
         "start": 56,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 61,
             "start": 56,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 61,
                 "start": 56,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -2167,14 +2918,14 @@ Object {
           "name": "name",
           "type": Object {
             "postgresType": "any",
-            "type": "Unknown",
+            "type": 9,
           },
         },
         Object {
           "name": "test",
           "type": Object {
             "postgresType": "any",
-            "type": "Unknown",
+            "type": 9,
           },
         },
       ],
@@ -2183,7 +2934,7 @@ Object {
       "start": 26,
       "type": Object {
         "postgresType": "any",
-        "type": "Unknown",
+        "type": 9,
       },
     },
   ],
@@ -2196,17 +2947,17 @@ Object {
       "sourceTag": Object {
         "end": 17,
         "start": 12,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 17,
             "start": 12,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 17,
                 "start": 12,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -2231,17 +2982,17 @@ Object {
         "sourceTag": Object {
           "end": 49,
           "start": 49,
-          "tag": "StarIdentifier",
+          "tag": 37,
           "values": Array [
             Object {
               "end": 49,
               "start": 49,
-              "tag": "Star",
+              "tag": 36,
             },
           ],
         },
         "table": undefined,
-        "type": "LoadStar",
+        "type": 20,
       },
     },
   ],
@@ -2253,17 +3004,17 @@ Object {
       "sourceTag": Object {
         "end": 17,
         "start": 12,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 17,
             "start": 12,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 17,
                 "start": 12,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -2296,24 +3047,24 @@ Object {
         "sourceTag": Object {
           "end": 32,
           "start": 26,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 27,
               "start": 26,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "t1",
             },
             Object {
               "end": 32,
               "start": 29,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col1",
             },
           ],
         },
         "table": "t1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2324,24 +3075,24 @@ Object {
         "sourceTag": Object {
           "end": 61,
           "start": 55,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 56,
               "start": 55,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "t1",
             },
             Object {
               "end": 61,
               "start": 58,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col2",
             },
           ],
         },
         "table": "t1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2352,24 +3103,24 @@ Object {
         "sourceTag": Object {
           "end": 96,
           "start": 86,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 91,
               "start": 86,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "table2",
             },
             Object {
               "end": 96,
               "start": 93,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col2",
             },
           ],
         },
         "table": "table2",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -2381,17 +3132,17 @@ Object {
       "sourceTag": Object {
         "end": 133,
         "start": 122,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 127,
             "start": 122,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 127,
                 "start": 122,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -2399,12 +3150,12 @@ Object {
           Object {
             "end": 133,
             "start": 129,
-            "tag": "As",
+            "tag": 12,
             "values": Array [
               Object {
                 "end": 133,
                 "start": 132,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "t1",
               },
             ],
@@ -2421,17 +3172,17 @@ Object {
       "sourceTag": Object {
         "end": 153,
         "start": 148,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 153,
             "start": 148,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 153,
                 "start": 148,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table2",
               },
             ],
@@ -2466,24 +3217,24 @@ Object {
         "sourceTag": Object {
           "end": 32,
           "start": 26,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 27,
               "start": 26,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "t1",
             },
             Object {
               "end": 32,
               "start": 29,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col1",
             },
           ],
         },
         "table": "t1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2494,24 +3245,24 @@ Object {
         "sourceTag": Object {
           "end": 61,
           "start": 55,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 56,
               "start": 55,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "t1",
             },
             Object {
               "end": 61,
               "start": 58,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col2",
             },
           ],
         },
         "table": "t1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2522,24 +3273,24 @@ Object {
         "sourceTag": Object {
           "end": 94,
           "start": 86,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 89,
               "start": 86,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "myT2",
             },
             Object {
               "end": 94,
               "start": 91,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col2",
             },
           ],
         },
         "table": "myT2",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2550,24 +3301,24 @@ Object {
         "sourceTag": Object {
           "end": 127,
           "start": 118,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 121,
               "start": 118,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "myT4",
             },
             Object {
               "end": 127,
               "start": 123,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col_9",
             },
           ],
         },
         "table": "myT4",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -2579,23 +3330,23 @@ Object {
       "sourceTag": Object {
         "end": 167,
         "start": 152,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 161,
             "start": 152,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 154,
                 "start": 152,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "fit",
               },
               Object {
                 "end": 161,
                 "start": 156,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -2603,12 +3354,12 @@ Object {
           Object {
             "end": 167,
             "start": 163,
-            "tag": "As",
+            "tag": 12,
             "values": Array [
               Object {
                 "end": 167,
                 "start": 166,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "t1",
               },
             ],
@@ -2625,23 +3376,23 @@ Object {
       "sourceTag": Object {
         "end": 201,
         "start": 182,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 191,
             "start": 182,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 184,
                 "start": 182,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "fit",
               },
               Object {
                 "end": 191,
                 "start": 186,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table2",
               },
             ],
@@ -2649,12 +3400,12 @@ Object {
           Object {
             "end": 201,
             "start": 193,
-            "tag": "As",
+            "tag": 12,
             "values": Array [
               Object {
                 "end": 201,
                 "start": 196,
-                "tag": "QuotedIdentifier",
+                "tag": 9,
                 "value": "myT2",
               },
             ],
@@ -2671,17 +3422,17 @@ Object {
       "sourceTag": Object {
         "end": 256,
         "start": 241,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 246,
             "start": 241,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 246,
                 "start": 241,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table3",
               },
             ],
@@ -2689,12 +3440,12 @@ Object {
           Object {
             "end": 256,
             "start": 248,
-            "tag": "As",
+            "tag": 12,
             "values": Array [
               Object {
                 "end": 256,
                 "start": 251,
-                "tag": "QuotedIdentifier",
+                "tag": 9,
                 "value": "myT4",
               },
             ],
@@ -2720,7 +3471,7 @@ Object {
       "start": 28,
       "type": Object {
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -2732,10 +3483,30 @@ Object {
       "start": 42,
       "type": Object {
         "name": "int4",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 53,
+          "start": 51,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 53,
+              "start": 51,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 53,
+                  "start": 51,
+                  "tag": 8,
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -2749,18 +3520,18 @@ Object {
         "sourceTag": Object {
           "end": 8,
           "start": 7,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 8,
               "start": 7,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -2772,17 +3543,17 @@ Object {
       "sourceTag": Object {
         "end": 20,
         "start": 15,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 20,
             "start": 15,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 20,
                 "start": 15,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -2812,24 +3583,24 @@ Object {
         "sourceTag": Object {
           "end": 44,
           "start": 36,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 41,
               "start": 36,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "table1",
             },
             Object {
               "end": 44,
               "start": 43,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2841,7 +3612,7 @@ Object {
       "start": 50,
       "type": Object {
         "postgresType": "any",
-        "type": "Any",
+        "type": 1,
       },
     },
   ],
@@ -2854,18 +3625,18 @@ Object {
         "sourceTag": Object {
           "end": 10,
           "start": 7,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 10,
               "start": 7,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col1",
             },
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -2877,17 +3648,17 @@ Object {
       "sourceTag": Object {
         "end": 22,
         "start": 17,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 22,
             "start": 17,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 22,
                 "start": 17,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -2913,7 +3684,7 @@ Object {
       "start": 30,
       "type": Object {
         "postgresType": "any",
-        "type": "Any",
+        "type": 1,
       },
     },
     Object {
@@ -2929,24 +3700,24 @@ Object {
         "sourceTag": Object {
           "end": 63,
           "start": 55,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 60,
               "start": 55,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "table1",
             },
             Object {
               "end": 63,
               "start": 62,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -2959,18 +3730,18 @@ Object {
         "sourceTag": Object {
           "end": 10,
           "start": 7,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 10,
               "start": 7,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col1",
             },
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -2982,17 +3753,17 @@ Object {
       "sourceTag": Object {
         "end": 22,
         "start": 17,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 22,
             "start": 17,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 22,
                 "start": 17,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -3018,7 +3789,7 @@ Object {
       "start": 7,
       "type": Object {
         "postgresType": "any",
-        "type": "Unknown",
+        "type": 9,
       },
     },
     Object {
@@ -3030,7 +3801,7 @@ Object {
       "start": 25,
       "type": Object {
         "postgresType": "any",
-        "type": "Unknown",
+        "type": 9,
       },
     },
   ],
@@ -3039,14 +3810,14 @@ Object {
       "name": "res1",
       "type": Object {
         "postgresType": "any",
-        "type": "Any",
+        "type": 1,
       },
     },
     Object {
       "name": "?column?",
       "type": Object {
         "postgresType": "any",
-        "type": "Any",
+        "type": 1,
       },
     },
   ],
@@ -3071,25 +3842,58 @@ Object {
                   "sourceTag": Object {
                     "end": 44,
                     "start": 34,
-                    "tag": "Column",
+                    "tag": 11,
                     "values": Array [
                       Object {
                         "end": 44,
                         "start": 34,
-                        "tag": "UnquotedIdentifier",
+                        "tag": 8,
                         "value": "integer_col",
                       },
                     ],
                   },
                   "table": undefined,
-                  "type": "LoadColumn",
+                  "type": 19,
                 },
-                "type": "ToArray",
+                "sourceTag": Object {
+                  "end": 45,
+                  "start": 24,
+                  "tag": 54,
+                  "values": Array [
+                    Object {
+                      "end": 32,
+                      "start": 24,
+                      "tag": 89,
+                      "values": Array [
+                        Object {
+                          "end": 32,
+                          "start": 24,
+                          "tag": 8,
+                          "value": "ARRAY_AGG",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 44,
+                      "start": 34,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 44,
+                          "start": 34,
+                          "tag": 8,
+                          "value": "integer_col",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "type": 25,
               },
               Object {
                 "literal": 1,
                 "postgresType": "float4",
-                "type": "Number",
+                "type": 3,
               },
             ],
             "name": "array_length",
@@ -3097,17 +3901,17 @@ Object {
             "sourceTag": Object {
               "end": 49,
               "start": 11,
-              "tag": "Function",
+              "tag": 54,
               "values": Array [
                 Object {
                   "end": 22,
                   "start": 11,
-                  "tag": "QualifiedIdentifier",
+                  "tag": 89,
                   "values": Array [
                     Object {
                       "end": 22,
                       "start": 11,
-                      "tag": "UnquotedIdentifier",
+                      "tag": 8,
                       "value": "ARRAY_LENGTH",
                     },
                   ],
@@ -3115,17 +3919,17 @@ Object {
                 Object {
                   "end": 45,
                   "start": 24,
-                  "tag": "Function",
+                  "tag": 54,
                   "values": Array [
                     Object {
                       "end": 32,
                       "start": 24,
-                      "tag": "QualifiedIdentifier",
+                      "tag": 89,
                       "values": Array [
                         Object {
                           "end": 32,
                           "start": 24,
-                          "tag": "UnquotedIdentifier",
+                          "tag": 8,
                           "value": "ARRAY_AGG",
                         },
                       ],
@@ -3133,12 +3937,12 @@ Object {
                     Object {
                       "end": 44,
                       "start": 34,
-                      "tag": "Column",
+                      "tag": 11,
                       "values": Array [
                         Object {
                           "end": 44,
                           "start": 34,
-                          "tag": "UnquotedIdentifier",
+                          "tag": 8,
                           "value": "integer_col",
                         },
                       ],
@@ -3148,12 +3952,12 @@ Object {
                 Object {
                   "end": 48,
                   "start": 48,
-                  "tag": "Number",
+                  "tag": 19,
                   "value": "1",
                 },
               ],
             },
-            "type": "LoadFunction",
+            "type": 18,
           },
         ],
         "name": "abs",
@@ -3161,17 +3965,17 @@ Object {
         "sourceTag": Object {
           "end": 50,
           "start": 7,
-          "tag": "Function",
+          "tag": 54,
           "values": Array [
             Object {
               "end": 9,
               "start": 7,
-              "tag": "QualifiedIdentifier",
+              "tag": 89,
               "values": Array [
                 Object {
                   "end": 9,
                   "start": 7,
-                  "tag": "UnquotedIdentifier",
+                  "tag": 8,
                   "value": "ABS",
                 },
               ],
@@ -3179,17 +3983,17 @@ Object {
             Object {
               "end": 49,
               "start": 11,
-              "tag": "Function",
+              "tag": 54,
               "values": Array [
                 Object {
                   "end": 22,
                   "start": 11,
-                  "tag": "QualifiedIdentifier",
+                  "tag": 89,
                   "values": Array [
                     Object {
                       "end": 22,
                       "start": 11,
-                      "tag": "UnquotedIdentifier",
+                      "tag": 8,
                       "value": "ARRAY_LENGTH",
                     },
                   ],
@@ -3197,17 +4001,17 @@ Object {
                 Object {
                   "end": 45,
                   "start": 24,
-                  "tag": "Function",
+                  "tag": 54,
                   "values": Array [
                     Object {
                       "end": 32,
                       "start": 24,
-                      "tag": "QualifiedIdentifier",
+                      "tag": 89,
                       "values": Array [
                         Object {
                           "end": 32,
                           "start": 24,
-                          "tag": "UnquotedIdentifier",
+                          "tag": 8,
                           "value": "ARRAY_AGG",
                         },
                       ],
@@ -3215,12 +4019,12 @@ Object {
                     Object {
                       "end": 44,
                       "start": 34,
-                      "tag": "Column",
+                      "tag": 11,
                       "values": Array [
                         Object {
                           "end": 44,
                           "start": 34,
-                          "tag": "UnquotedIdentifier",
+                          "tag": 8,
                           "value": "integer_col",
                         },
                       ],
@@ -3230,14 +4034,14 @@ Object {
                 Object {
                   "end": 48,
                   "start": 48,
-                  "tag": "Number",
+                  "tag": 19,
                   "value": "1",
                 },
               ],
             },
           ],
         },
-        "type": "LoadFunction",
+        "type": 18,
       },
     },
   ],
@@ -3249,17 +4053,17 @@ Object {
       "sourceTag": Object {
         "end": 65,
         "start": 57,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 65,
             "start": 57,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 65,
                 "start": 57,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "all_types",
               },
             ],
@@ -3295,24 +4099,24 @@ Object {
         "sourceTag": Object {
           "end": 125,
           "start": 116,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 121,
               "start": 116,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "table3",
             },
             Object {
               "end": 125,
               "start": 123,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "val",
             },
           ],
         },
         "table": "table3",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -3328,24 +4132,24 @@ Object {
         "sourceTag": Object {
           "end": 195,
           "start": 187,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 192,
               "start": 187,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "table1",
             },
             Object {
               "end": 195,
               "start": 194,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -3358,43 +4162,276 @@ Object {
         "sourceTag": Object {
           "end": 29,
           "start": 26,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 29,
               "start": 26,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col1",
             },
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
       "name": "id",
       "type": Object {
         "nullable": true,
-        "type": "Optional",
+        "sourceTag": Object {
+          "end": 144,
+          "start": 53,
+          "tag": 81,
+          "values": Array [
+            Object {
+              "end": 61,
+              "start": 60,
+              "tag": 62,
+              "values": Array [
+                Object {
+                  "end": 61,
+                  "start": 60,
+                  "tag": 61,
+                  "values": Array [
+                    Object {
+                      "end": 61,
+                      "start": 60,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 61,
+                          "start": 60,
+                          "tag": 8,
+                          "value": "id",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 136,
+              "start": 63,
+              "tag": 69,
+              "values": Array [
+                Object {
+                  "end": 73,
+                  "start": 68,
+                  "tag": 68,
+                  "values": Array [
+                    Object {
+                      "end": 73,
+                      "start": 68,
+                      "tag": 90,
+                      "values": Array [
+                        Object {
+                          "end": 73,
+                          "start": 68,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 73,
+                              "start": 68,
+                              "tag": 8,
+                              "value": "table2",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "end": 136,
+                  "start": 75,
+                  "tag": 67,
+                  "values": Array [
+                    Object {
+                      "end": 78,
+                      "start": 75,
+                      "tag": 64,
+                      "value": "JOIN",
+                    },
+                    Object {
+                      "end": 85,
+                      "start": 80,
+                      "tag": 90,
+                      "values": Array [
+                        Object {
+                          "end": 85,
+                          "start": 80,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 85,
+                              "start": 80,
+                              "tag": 8,
+                              "value": "table3",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 136,
+                      "start": 87,
+                      "tag": 65,
+                      "values": Array [
+                        Object {
+                          "end": 136,
+                          "start": 90,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 110,
+                              "start": 90,
+                              "tag": 46,
+                              "values": Array [
+                                Object {
+                                  "end": 98,
+                                  "start": 90,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 95,
+                                      "start": 90,
+                                      "tag": 8,
+                                      "value": "table3",
+                                    },
+                                    Object {
+                                      "end": 98,
+                                      "start": 97,
+                                      "tag": 8,
+                                      "value": "id",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 100,
+                                  "start": 100,
+                                  "tag": 44,
+                                  "value": "=",
+                                },
+                                Object {
+                                  "end": 110,
+                                  "start": 102,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 107,
+                                      "start": 102,
+                                      "tag": 8,
+                                      "value": "table2",
+                                    },
+                                    Object {
+                                      "end": 110,
+                                      "start": 109,
+                                      "tag": 8,
+                                      "value": "id",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 114,
+                              "start": 112,
+                              "tag": 44,
+                              "value": "AND",
+                            },
+                            Object {
+                              "end": 136,
+                              "start": 116,
+                              "tag": 46,
+                              "values": Array [
+                                Object {
+                                  "end": 125,
+                                  "start": 116,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 121,
+                                      "start": 116,
+                                      "tag": 8,
+                                      "value": "table3",
+                                    },
+                                    Object {
+                                      "end": 125,
+                                      "start": 123,
+                                      "tag": 8,
+                                      "value": "val",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 127,
+                                  "start": 127,
+                                  "tag": 44,
+                                  "value": ">",
+                                },
+                                Object {
+                                  "end": 136,
+                                  "pick": Array [],
+                                  "required": false,
+                                  "start": 129,
+                                  "tag": 10,
+                                  "type": "single",
+                                  "value": "joinVal",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 144,
+              "start": 138,
+              "tag": 78,
+              "values": Array [
+                Object {
+                  "end": 144,
+                  "start": 144,
+                  "tag": 30,
+                  "values": Array [
+                    Object {
+                      "end": 144,
+                      "start": 144,
+                      "tag": 20,
+                      "value": "1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 30,
         "value": Object {
           "column": "id",
           "schema": undefined,
           "sourceTag": Object {
             "end": 61,
             "start": 60,
-            "tag": "Column",
+            "tag": 11,
             "values": Array [
               Object {
                 "end": 61,
                 "start": 60,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "id",
               },
             ],
           },
           "table": undefined,
-          "type": "LoadColumn",
+          "type": 19,
         },
       },
     },
@@ -3407,17 +4444,17 @@ Object {
       "sourceTag": Object {
         "end": 73,
         "start": 68,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 73,
             "start": 68,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 73,
                 "start": 68,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table2",
               },
             ],
@@ -3434,17 +4471,17 @@ Object {
       "sourceTag": Object {
         "end": 85,
         "start": 80,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 85,
             "start": 80,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 85,
                 "start": 80,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table3",
               },
             ],
@@ -3461,17 +4498,17 @@ Object {
       "sourceTag": Object {
         "end": 165,
         "start": 160,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 165,
             "start": 160,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 165,
                 "start": 160,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -3500,17 +4537,163 @@ Object {
           "items": Object {
             "items": Object {
               "name": "int4",
-              "type": "Named",
+              "sourceTag": Object {
+                "end": 17,
+                "start": 15,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 17,
+                    "start": 15,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 17,
+                        "start": 15,
+                        "tag": 8,
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+              "type": 23,
               "value": Object {
                 "postgresType": "int4",
-                "type": "Number",
+                "type": 3,
               },
             },
-            "type": "Array",
+            "sourceTag": Object {
+              "end": 23,
+              "start": 15,
+              "tag": 33,
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 15,
+                  "tag": 32,
+                  "values": Array [
+                    Object {
+                      "end": 17,
+                      "start": 15,
+                      "tag": 89,
+                      "values": Array [
+                        Object {
+                          "end": 17,
+                          "start": 15,
+                          "tag": 8,
+                          "value": "int",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "end": 19,
+                  "start": 18,
+                  "tag": 31,
+                },
+                Object {
+                  "end": 21,
+                  "start": 20,
+                  "tag": 31,
+                },
+                Object {
+                  "end": 23,
+                  "start": 22,
+                  "tag": 31,
+                },
+              ],
+            },
+            "type": 24,
           },
-          "type": "Array",
+          "sourceTag": Object {
+            "end": 23,
+            "start": 15,
+            "tag": 33,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 15,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 17,
+                    "start": 15,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 17,
+                        "start": 15,
+                        "tag": 8,
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 19,
+                "start": 18,
+                "tag": 31,
+              },
+              Object {
+                "end": 21,
+                "start": 20,
+                "tag": 31,
+              },
+              Object {
+                "end": 23,
+                "start": 22,
+                "tag": 31,
+              },
+            ],
+          },
+          "type": 24,
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 23,
+          "start": 15,
+          "tag": 33,
+          "values": Array [
+            Object {
+              "end": 17,
+              "start": 15,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 15,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 17,
+                      "start": 15,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 19,
+              "start": 18,
+              "tag": 31,
+            },
+            Object {
+              "end": 21,
+              "start": 20,
+              "tag": 31,
+            },
+            Object {
+              "end": 23,
+              "start": 22,
+              "tag": 31,
+            },
+          ],
+        },
+        "type": 24,
       },
     },
   ],
@@ -3522,17 +4705,163 @@ Object {
           "items": Object {
             "items": Object {
               "name": "int4",
-              "type": "Named",
+              "sourceTag": Object {
+                "end": 17,
+                "start": 15,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 17,
+                    "start": 15,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 17,
+                        "start": 15,
+                        "tag": 8,
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+              "type": 23,
               "value": Object {
                 "postgresType": "int4",
-                "type": "Number",
+                "type": 3,
               },
             },
-            "type": "Array",
+            "sourceTag": Object {
+              "end": 23,
+              "start": 15,
+              "tag": 33,
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 15,
+                  "tag": 32,
+                  "values": Array [
+                    Object {
+                      "end": 17,
+                      "start": 15,
+                      "tag": 89,
+                      "values": Array [
+                        Object {
+                          "end": 17,
+                          "start": 15,
+                          "tag": 8,
+                          "value": "int",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "end": 19,
+                  "start": 18,
+                  "tag": 31,
+                },
+                Object {
+                  "end": 21,
+                  "start": 20,
+                  "tag": 31,
+                },
+                Object {
+                  "end": 23,
+                  "start": 22,
+                  "tag": 31,
+                },
+              ],
+            },
+            "type": 24,
           },
-          "type": "Array",
+          "sourceTag": Object {
+            "end": 23,
+            "start": 15,
+            "tag": 33,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 15,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 17,
+                    "start": 15,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 17,
+                        "start": 15,
+                        "tag": 8,
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 19,
+                "start": 18,
+                "tag": 31,
+              },
+              Object {
+                "end": 21,
+                "start": 20,
+                "tag": 31,
+              },
+              Object {
+                "end": 23,
+                "start": 22,
+                "tag": 31,
+              },
+            ],
+          },
+          "type": 24,
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 23,
+          "start": 15,
+          "tag": 33,
+          "values": Array [
+            Object {
+              "end": 17,
+              "start": 15,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 15,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 17,
+                      "start": 15,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 19,
+              "start": 18,
+              "tag": 31,
+            },
+            Object {
+              "end": 21,
+              "start": 20,
+              "tag": 31,
+            },
+            Object {
+              "end": 23,
+              "start": 22,
+              "tag": 31,
+            },
+          ],
+        },
+        "type": 24,
       },
     },
   ],
@@ -3548,10 +4877,30 @@ Object {
       "name": "decimal",
       "type": Object {
         "name": "decimal",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 20,
+          "start": 14,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 20,
+              "start": 14,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 20,
+                  "start": 14,
+                  "tag": 8,
+                  "value": "numeric",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
         "value": Object {
           "postgresType": "decimal",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -3573,7 +4922,7 @@ Object {
       "type": Object {
         "literal": "val1",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -3586,7 +4935,7 @@ Object {
       "type": Object {
         "literal": "DESC",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
   ],
@@ -3598,17 +4947,17 @@ Object {
         "sourceTag": Object {
           "end": 7,
           "start": 7,
-          "tag": "StarIdentifier",
+          "tag": 37,
           "values": Array [
             Object {
               "end": 7,
               "start": 7,
-              "tag": "Star",
+              "tag": 36,
             },
           ],
         },
         "table": undefined,
-        "type": "LoadStar",
+        "type": 20,
       },
     },
   ],
@@ -3620,17 +4969,17 @@ Object {
       "sourceTag": Object {
         "end": 19,
         "start": 14,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 19,
             "start": 14,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 19,
                 "start": 14,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -3656,7 +5005,7 @@ Object {
       "start": 24,
       "type": Object {
         "postgresType": "any",
-        "type": "Unknown",
+        "type": 9,
       },
     },
   ],
@@ -3664,34 +5013,163 @@ Object {
     Object {
       "name": "array",
       "type": Object {
-        "type": "ArrayItem",
+        "sourceTag": Object {
+          "end": 31,
+          "start": 7,
+          "tag": 106,
+          "values": Array [
+            Object {
+              "end": 21,
+              "start": 8,
+              "tag": 53,
+              "values": Array [
+                Object {
+                  "end": 14,
+                  "start": 14,
+                  "tag": 19,
+                  "value": "1",
+                },
+                Object {
+                  "end": 16,
+                  "start": 16,
+                  "tag": 19,
+                  "value": "2",
+                },
+                Object {
+                  "end": 18,
+                  "start": 18,
+                  "tag": 19,
+                  "value": "3",
+                },
+                Object {
+                  "end": 20,
+                  "start": 20,
+                  "tag": 19,
+                  "value": "4",
+                },
+              ],
+            },
+            Object {
+              "end": 31,
+              "start": 23,
+              "tag": 28,
+              "values": Array [
+                Object {
+                  "end": 30,
+                  "start": 24,
+                  "tag": 26,
+                  "values": Array [
+                    Object {
+                      "end": 28,
+                      "pick": Array [],
+                      "required": false,
+                      "start": 24,
+                      "tag": 10,
+                      "type": "single",
+                      "value": "from",
+                    },
+                    Object {
+                      "end": 30,
+                      "start": 30,
+                      "tag": 19,
+                      "value": "3",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 26,
         "value": Object {
           "items": Object {
             "items": Array [
               Object {
                 "literal": 1,
                 "postgresType": "float4",
-                "type": "Number",
+                "type": 3,
               },
               Object {
                 "literal": 2,
                 "postgresType": "float4",
-                "type": "Number",
+                "type": 3,
               },
               Object {
                 "literal": 3,
                 "postgresType": "float4",
-                "type": "Number",
+                "type": 3,
               },
               Object {
                 "literal": 4,
                 "postgresType": "float4",
-                "type": "Number",
+                "type": 3,
               },
             ],
-            "type": "Union",
+            "sourceTag": Object {
+              "end": 21,
+              "start": 8,
+              "tag": 53,
+              "values": Array [
+                Object {
+                  "end": 14,
+                  "start": 14,
+                  "tag": 19,
+                  "value": "1",
+                },
+                Object {
+                  "end": 16,
+                  "start": 16,
+                  "tag": 19,
+                  "value": "2",
+                },
+                Object {
+                  "end": 18,
+                  "start": 18,
+                  "tag": 19,
+                  "value": "3",
+                },
+                Object {
+                  "end": 20,
+                  "start": 20,
+                  "tag": 19,
+                  "value": "4",
+                },
+              ],
+            },
+            "type": 28,
           },
-          "type": "Array",
+          "sourceTag": Object {
+            "end": 21,
+            "start": 8,
+            "tag": 53,
+            "values": Array [
+              Object {
+                "end": 14,
+                "start": 14,
+                "tag": 19,
+                "value": "1",
+              },
+              Object {
+                "end": 16,
+                "start": 16,
+                "tag": 19,
+                "value": "2",
+              },
+              Object {
+                "end": 18,
+                "start": 18,
+                "tag": 19,
+                "value": "3",
+              },
+              Object {
+                "end": 20,
+                "start": 20,
+                "tag": 19,
+                "value": "4",
+              },
+            ],
+          },
+          "type": 24,
         },
       },
     },
@@ -3712,17 +5190,17 @@ Object {
       "sourceTag": Object {
         "end": 17,
         "start": 12,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 17,
             "start": 12,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 17,
                 "start": 12,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -3748,7 +5226,7 @@ Object {
       "start": 7,
       "type": Object {
         "postgresType": "any",
-        "type": "Unknown",
+        "type": 9,
       },
     },
   ],
@@ -3757,7 +5235,7 @@ Object {
       "name": "res1",
       "type": Object {
         "postgresType": "any",
-        "type": "Any",
+        "type": 1,
       },
     },
   ],
@@ -3776,17 +5254,17 @@ Object {
         "sourceTag": Object {
           "end": 7,
           "start": 7,
-          "tag": "StarIdentifier",
+          "tag": 37,
           "values": Array [
             Object {
               "end": 7,
               "start": 7,
-              "tag": "Star",
+              "tag": 36,
             },
           ],
         },
         "table": undefined,
-        "type": "LoadStar",
+        "type": 20,
       },
     },
   ],
@@ -3798,17 +5276,17 @@ Object {
       "sourceTag": Object {
         "end": 19,
         "start": 14,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 19,
             "start": 14,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 19,
                 "start": 14,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -3834,18 +5312,18 @@ Object {
         "sourceTag": Object {
           "end": 10,
           "start": 7,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 10,
               "start": 7,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col1",
             },
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -3856,18 +5334,18 @@ Object {
         "sourceTag": Object {
           "end": 26,
           "start": 23,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 26,
               "start": 23,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col2",
             },
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -3879,17 +5357,17 @@ Object {
       "sourceTag": Object {
         "end": 50,
         "start": 45,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 50,
             "start": 45,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 50,
                 "start": 45,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -3912,7 +5390,7 @@ Object {
       "type": Object {
         "literal": "test",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -3920,7 +5398,7 @@ Object {
       "type": Object {
         "literal": "Dianne's horse",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -3928,7 +5406,7 @@ Object {
       "type": Object {
         "literal": "Dianne's horse",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
   ],
@@ -3949,13 +5427,65 @@ Object {
       "type": Object {
         "items": Object {
           "name": "int4",
-          "type": "Named",
+          "sourceTag": Object {
+            "end": 17,
+            "start": 15,
+            "tag": 32,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 15,
+                "tag": 89,
+                "values": Array [
+                  Object {
+                    "end": 17,
+                    "start": 15,
+                    "tag": 8,
+                    "value": "int",
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 23,
           "value": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 19,
+          "start": 15,
+          "tag": 33,
+          "values": Array [
+            Object {
+              "end": 17,
+              "start": 15,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 15,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 17,
+                      "start": 15,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 19,
+              "start": 18,
+              "tag": 31,
+            },
+          ],
+        },
+        "type": 24,
       },
     },
   ],
@@ -3965,13 +5495,65 @@ Object {
       "type": Object {
         "items": Object {
           "name": "int4",
-          "type": "Named",
+          "sourceTag": Object {
+            "end": 17,
+            "start": 15,
+            "tag": 32,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 15,
+                "tag": 89,
+                "values": Array [
+                  Object {
+                    "end": 17,
+                    "start": 15,
+                    "tag": 8,
+                    "value": "int",
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 23,
           "value": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 19,
+          "start": 15,
+          "tag": 33,
+          "values": Array [
+            Object {
+              "end": 17,
+              "start": 15,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 15,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 17,
+                      "start": 15,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 19,
+              "start": 18,
+              "tag": 31,
+            },
+          ],
+        },
+        "type": 24,
       },
     },
   ],
@@ -3991,10 +5573,30 @@ Object {
       "start": 30,
       "type": Object {
         "name": "int4",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 37,
+          "start": 35,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 37,
+              "start": 35,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 37,
+                  "start": 35,
+                  "tag": 8,
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -4008,18 +5610,18 @@ Object {
         "sourceTag": Object {
           "end": 10,
           "start": 7,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 10,
               "start": 7,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col1",
             },
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -4031,17 +5633,17 @@ Object {
       "sourceTag": Object {
         "end": 22,
         "start": 17,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 22,
             "start": 17,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 22,
                 "start": 17,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -4067,18 +5669,18 @@ Object {
         "sourceTag": Object {
           "end": 39,
           "start": 38,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 39,
               "start": 38,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4089,18 +5691,18 @@ Object {
         "sourceTag": Object {
           "end": 45,
           "start": 42,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 45,
               "start": 42,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col1",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4108,7 +5710,7 @@ Object {
       "type": Object {
         "literal": 123,
         "postgresType": "float4",
-        "type": "Number",
+        "type": 3,
       },
     },
     Object {
@@ -4116,14 +5718,14 @@ Object {
       "type": Object {
         "literal": "2",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
       "name": "col4",
       "type": Object {
         "postgresType": "float4",
-        "type": "Number",
+        "type": 3,
       },
     },
   ],
@@ -4135,17 +5737,17 @@ Object {
       "sourceTag": Object {
         "end": 12,
         "start": 7,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 12,
             "start": 7,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 12,
                 "start": 7,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -4171,18 +5773,18 @@ Object {
         "sourceTag": Object {
           "end": 39,
           "start": 38,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 39,
               "start": 38,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4193,18 +5795,18 @@ Object {
         "sourceTag": Object {
           "end": 45,
           "start": 42,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 45,
               "start": 42,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col1",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -4216,17 +5818,17 @@ Object {
       "sourceTag": Object {
         "end": 12,
         "start": 7,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 12,
             "start": 7,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 12,
                 "start": 7,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -4256,18 +5858,18 @@ Object {
         "sourceTag": Object {
           "end": 35,
           "start": 34,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 35,
               "start": 34,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -4279,17 +5881,17 @@ Object {
         "sourceTag": Object {
           "end": 53,
           "start": 53,
-          "tag": "StarIdentifier",
+          "tag": 37,
           "values": Array [
             Object {
               "end": 53,
               "start": 53,
-              "tag": "Star",
+              "tag": 36,
             },
           ],
         },
         "table": undefined,
-        "type": "LoadStar",
+        "type": 20,
       },
     },
   ],
@@ -4301,17 +5903,17 @@ Object {
       "sourceTag": Object {
         "end": 12,
         "start": 7,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 12,
             "start": 7,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 12,
                 "start": 7,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -4347,24 +5949,24 @@ Object {
         "sourceTag": Object {
           "end": 79,
           "start": 71,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 76,
               "start": 71,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "table1",
             },
             Object {
               "end": 79,
               "start": 78,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "id",
             },
           ],
         },
         "table": "table1",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4380,18 +5982,18 @@ Object {
         "sourceTag": Object {
           "end": 104,
           "start": 101,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 104,
               "start": 101,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col1",
             },
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -4404,18 +6006,18 @@ Object {
         "sourceTag": Object {
           "end": 19,
           "start": 16,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 19,
               "start": 16,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col1",
             },
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4426,18 +6028,18 @@ Object {
         "sourceTag": Object {
           "end": 25,
           "start": 22,
-          "tag": "Column",
+          "tag": 11,
           "values": Array [
             Object {
               "end": 25,
               "start": 22,
-              "tag": "UnquotedIdentifier",
+              "tag": 8,
               "value": "col2",
             },
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -4449,17 +6051,17 @@ Object {
       "sourceTag": Object {
         "end": 45,
         "start": 40,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 45,
             "start": 40,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 45,
                 "start": 40,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "table1",
               },
             ],
@@ -4484,7 +6086,7 @@ Object {
           "name": "id",
           "type": Object {
             "postgresType": "any",
-            "type": "Unknown",
+            "type": 9,
           },
         },
       ],
@@ -4498,20 +6100,62 @@ Object {
           "sourceTag": Object {
             "end": 31,
             "start": 30,
-            "tag": "Column",
+            "tag": 11,
             "values": Array [
               Object {
                 "end": 31,
                 "start": 30,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "id",
               },
             ],
           },
           "table": undefined,
-          "type": "LoadColumn",
+          "type": 19,
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 44,
+          "start": 30,
+          "tag": 58,
+          "values": Array [
+            Object {
+              "end": 31,
+              "start": 30,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 31,
+                  "start": 30,
+                  "tag": 8,
+                  "value": "id",
+                },
+              ],
+            },
+            Object {
+              "end": 34,
+              "start": 33,
+              "tag": 55,
+              "value": "IN",
+            },
+            Object {
+              "end": 44,
+              "pick": Array [
+                Object {
+                  "end": 43,
+                  "start": 42,
+                  "tag": 8,
+                  "value": "id",
+                },
+              ],
+              "required": false,
+              "start": 36,
+              "tag": 10,
+              "type": "spread",
+              "value": "ids",
+            },
+          ],
+        },
+        "type": 24,
       },
     },
   ],
@@ -4523,17 +6167,17 @@ Object {
         "sourceTag": Object {
           "end": 7,
           "start": 7,
-          "tag": "StarIdentifier",
+          "tag": 37,
           "values": Array [
             Object {
               "end": 7,
               "start": 7,
-              "tag": "Star",
+              "tag": 36,
             },
           ],
         },
         "table": undefined,
-        "type": "LoadStar",
+        "type": 20,
       },
     },
   ],
@@ -4545,17 +6189,17 @@ Object {
       "sourceTag": Object {
         "end": 22,
         "start": 14,
-        "tag": "Table",
+        "tag": 90,
         "values": Array [
           Object {
             "end": 22,
             "start": 14,
-            "tag": "QualifiedIdentifier",
+            "tag": 89,
             "values": Array [
               Object {
                 "end": 22,
                 "start": 14,
-                "tag": "UnquotedIdentifier",
+                "tag": 8,
                 "value": "all_types",
               },
             ],
