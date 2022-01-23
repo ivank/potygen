@@ -1,10 +1,126 @@
+export const enum SqlName {
+  Root,
+  Comment,
+  CTEName,
+  CTEValuesList,
+  CTEValues,
+  CTE,
+  With,
+  Null,
+  UnquotedIdentifier,
+  QuotedIdentifier,
+  Parameter,
+  Column,
+  As,
+  String,
+  DollarQuotedString,
+  CustomQuotedString,
+  BitString,
+  HexademicalString,
+  EscapeString,
+  Number,
+  Integer,
+  Boolean,
+  ConstantType,
+  TypedConstant,
+  ExtractField,
+  Extract,
+  ArrayIndexRange,
+  ArrayColumnIndex,
+  ArrayIndex,
+  CompositeAccess,
+  Count,
+  Dimension,
+  Type,
+  ArrayType,
+  Distinct,
+  Filter,
+  Star,
+  StarIdentifier,
+  Row,
+  RowKeyward,
+  When,
+  Else,
+  CaseSimple,
+  Case,
+  BinaryOperator,
+  UnaryOperator,
+  BinaryExpression,
+  UnaryExpression,
+  TernaryOperator,
+  TernarySeparator,
+  TernaryExpression,
+  Cast,
+  PgCast,
+  ArrayConstructor,
+  Function,
+  ComparationArrayInclusionType,
+  ComparationArrayOperator,
+  ComparationArrayType,
+  ComparationArrayInclusion,
+  ComparationArray,
+  Exists,
+  SelectListItem,
+  SelectList,
+  NamedSelect,
+  JoinType,
+  JoinOn,
+  JoinUsing,
+  Join,
+  FromList,
+  From,
+  Where,
+  GroupBy,
+  Having,
+  CombinationType,
+  Combination,
+  OrderDirection,
+  OrderByItem,
+  OrderBy,
+  Limit,
+  LimitAll,
+  Offset,
+  Select,
+  Default,
+  SetItem,
+  SetList,
+  Columns,
+  Values,
+  SetMap,
+  Set,
+  QualifiedIdentifier,
+  Table,
+  UpdateFrom,
+  ReturningListItem,
+  Returning,
+  Update,
+  Using,
+  Delete,
+  ValuesList,
+  Collate,
+  ConflictTargetIndex,
+  ConflictTarget,
+  ConflictConstraint,
+  DoNothing,
+  DoUpdate,
+  Conflict,
+  Insert,
+  WrappedExpression,
+  TableWithJoin,
+  ExpressionList,
+  Begin,
+  Commit,
+  Savepoint,
+  Rollback,
+}
+
 /**
  * Base Sql tag, holding state of the tag poistion in the text
  */
 export interface SqlTag {
   start: number;
   end: number;
-  tag: string;
+  tag: SqlName;
 }
 
 /**
@@ -30,7 +146,7 @@ export interface NodeSqlTag extends SqlTag {
  * A comment (`-- my comment`) sql tag. Sits outside of the AST.
  */
 export interface CommentTag extends LeafSqlTag {
-  tag: 'Comment';
+  tag: SqlName.Comment;
 }
 
 /**
@@ -47,7 +163,7 @@ export interface CommentTag extends LeafSqlTag {
  * ```
  */
 export interface CTENameTag extends NodeSqlTag {
-  tag: 'CTEName';
+  tag: SqlName.CTEName;
   values: [name: IdentifierTag] | [name: IdentifierTag, columns: ColumnsTag];
 }
 
@@ -65,7 +181,7 @@ export interface CTENameTag extends NodeSqlTag {
  * ```
  */
 export interface CTEValuesListTag extends NodeSqlTag {
-  tag: 'CTEValuesList';
+  tag: SqlName.CTEValuesList;
   values: (ParameterTag | CTEValuesTag)[];
 }
 
@@ -83,7 +199,7 @@ export interface CTEValuesListTag extends NodeSqlTag {
  * ```
  */
 export interface CTEValuesTag extends NodeSqlTag {
-  tag: 'CTEValues';
+  tag: SqlName.CTEValues;
   values: ExpressionTag[];
 }
 
@@ -104,7 +220,7 @@ export interface CTEValuesTag extends NodeSqlTag {
  * ```
  */
 export interface CTETag extends NodeSqlTag {
-  tag: 'CTE';
+  tag: SqlName.CTE;
   values: [name: CTENameTag, query: QueryTag | CTEValuesListTag];
 }
 
@@ -125,7 +241,7 @@ export interface CTETag extends NodeSqlTag {
  * ```
  */
 export interface WithTag extends NodeSqlTag {
-  tag: 'With';
+  tag: SqlName.With;
   values: [...cte: CTETag[], query: QueryTag];
 }
 
@@ -133,7 +249,7 @@ export interface WithTag extends NodeSqlTag {
  * Representing the token "NULL"
  */
 export interface NullTag extends EmptyLeafSqlTag {
-  tag: 'Null';
+  tag: SqlName.Null;
 }
 
 /**
@@ -141,7 +257,7 @@ export interface NullTag extends EmptyLeafSqlTag {
  * https://www.postgresql.org/docs/current/sql-syntax-lexical.html
  */
 export interface UnquotedIdentifierTag extends LeafSqlTag {
-  tag: 'UnquotedIdentifier';
+  tag: SqlName.UnquotedIdentifier;
   value: string;
 }
 
@@ -150,7 +266,7 @@ export interface UnquotedIdentifierTag extends LeafSqlTag {
  * https://www.postgresql.org/docs/current/sql-syntax-lexical.html
  */
 export interface QuotedIdentifierTag extends LeafSqlTag {
-  tag: 'QuotedIdentifier';
+  tag: SqlName.QuotedIdentifier;
   value: string;
 }
 
@@ -164,7 +280,7 @@ export interface QuotedIdentifierTag extends LeafSqlTag {
  * Spread Pick   $$my_values(val1, val2)
  */
 export interface ParameterTag extends LeafSqlTag {
-  tag: 'Parameter';
+  tag: SqlName.Parameter;
   type: 'spread' | 'single';
   value: string;
   required: boolean;
@@ -185,7 +301,7 @@ export interface ParameterTag extends LeafSqlTag {
  * ```
  */
 export interface ColumnTag extends NodeSqlTag {
-  tag: 'Column';
+  tag: SqlName.Column;
   values:
     | [schema: IdentifierTag, table: IdentifierTag, name: IdentifierTag]
     | [table: IdentifierTag, name: IdentifierTag]
@@ -205,7 +321,7 @@ export interface ColumnTag extends NodeSqlTag {
  * ```
  */
 export interface AsTag extends NodeSqlTag {
-  tag: 'As';
+  tag: SqlName.As;
   values: [IdentifierTag];
 }
 
@@ -214,7 +330,7 @@ export interface AsTag extends NodeSqlTag {
  * https://www.postgresql.org/docs/14/sql-syntax-lexical.html
  */
 export interface StringTag extends LeafSqlTag {
-  tag: 'String';
+  tag: SqlName.String;
   value: string;
 }
 
@@ -223,7 +339,7 @@ export interface StringTag extends LeafSqlTag {
  * https://www.postgresql.org/docs/14/sql-syntax-lexical.html
  */
 export interface DollarQuotedStringTag extends LeafSqlTag {
-  tag: 'DollarQuotedString';
+  tag: SqlName.DollarQuotedString;
   value: string;
 }
 
@@ -232,7 +348,7 @@ export interface DollarQuotedStringTag extends LeafSqlTag {
  * https://www.postgresql.org/docs/14/sql-syntax-lexical.html
  */
 export interface CustomQuotedStringTag extends LeafSqlTag {
-  tag: 'CustomQuotedString';
+  tag: SqlName.CustomQuotedString;
   delimiter: string;
   value: string;
 }
@@ -242,7 +358,7 @@ export interface CustomQuotedStringTag extends LeafSqlTag {
  * https://www.postgresql.org/docs/14/sql-syntax-lexical.html
  */
 export interface BitStringTag extends LeafSqlTag {
-  tag: 'BitString';
+  tag: SqlName.BitString;
   value: string;
 }
 
@@ -251,7 +367,7 @@ export interface BitStringTag extends LeafSqlTag {
  * https://www.postgresql.org/docs/14/sql-syntax-lexical.html
  */
 export interface HexademicalStringTag extends LeafSqlTag {
-  tag: 'HexademicalString';
+  tag: SqlName.HexademicalString;
   value: string;
 }
 
@@ -260,7 +376,7 @@ export interface HexademicalStringTag extends LeafSqlTag {
  * https://www.postgresql.org/docs/14/sql-syntax-lexical.html
  */
 export interface EscapeStringTag extends LeafSqlTag {
-  tag: 'EscapeString';
+  tag: SqlName.EscapeString;
   value: string;
 }
 
@@ -277,7 +393,7 @@ export interface EscapeStringTag extends LeafSqlTag {
  * https://www.postgresql.org/docs/14/sql-syntax-lexical.html
  */
 export interface NumberTag extends LeafSqlTag {
-  tag: 'Number';
+  tag: SqlName.Number;
   value: string;
 }
 
@@ -285,7 +401,7 @@ export interface NumberTag extends LeafSqlTag {
  * A tag representing an integer number, e.g. 12
  */
 export interface IntegerTag extends LeafSqlTag {
-  tag: 'Integer';
+  tag: SqlName.Integer;
   value: string;
 }
 
@@ -293,7 +409,7 @@ export interface IntegerTag extends LeafSqlTag {
  * A tag representing a boolean constant, e.g. TRUE
  */
 export interface BooleanTag extends LeafSqlTag {
-  tag: 'Boolean';
+  tag: SqlName.Boolean;
   value: 'TRUE' | 'FALSE';
 }
 
@@ -303,7 +419,7 @@ export interface BooleanTag extends LeafSqlTag {
  * https://www.postgresql.org/docs/14/sql-syntax-lexical.html
  */
 export interface ConstantTypeTag extends LeafSqlTag {
-  tag: 'ConstantType';
+  tag: SqlName.ConstantType;
   value:
     | 'XML'
     | 'XID'
@@ -419,7 +535,7 @@ export interface ConstantTypeTag extends LeafSqlTag {
  * ```
  */
 export interface TypedConstantTag extends NodeSqlTag {
-  tag: 'TypedConstant';
+  tag: SqlName.TypedConstant;
   values: [type: ConstantTypeTag, value: StringTag];
 }
 
@@ -428,7 +544,7 @@ export interface TypedConstantTag extends NodeSqlTag {
  * https://www.postgresql.org/docs/8.3/functions-datetime.html
  */
 export interface ExtractFieldTag extends LeafSqlTag {
-  tag: 'ExtractField';
+  tag: SqlName.ExtractField;
   value:
     | 'CENTURY'
     | 'DAY'
@@ -467,7 +583,7 @@ export interface ExtractFieldTag extends LeafSqlTag {
  * ```
  */
 export interface ExtractTag extends NodeSqlTag {
-  tag: 'Extract';
+  tag: SqlName.Extract;
   values: [field: ExtractFieldTag, value: ExpressionTag];
 }
 
@@ -486,7 +602,7 @@ export interface ExtractTag extends NodeSqlTag {
  * ```
  */
 export interface ArrayIndexRangeTag extends NodeSqlTag {
-  tag: 'ArrayIndexRange';
+  tag: SqlName.ArrayIndexRange;
   values: [from: ExpressionTag, to: ExpressionTag];
 }
 
@@ -505,7 +621,7 @@ export interface ArrayIndexRangeTag extends NodeSqlTag {
  * ```
  */
 export interface ArrayColumnIndexTag extends NodeSqlTag {
-  tag: 'ArrayColumnIndex';
+  tag: SqlName.ArrayColumnIndex;
   values: [array: ColumnTag, index: ExpressionTag | ArrayIndexRangeTag];
 }
 
@@ -523,7 +639,7 @@ export interface ArrayColumnIndexTag extends NodeSqlTag {
  * ```
  */
 export interface ArrayIndexTag extends NodeSqlTag {
-  tag: 'ArrayIndex';
+  tag: SqlName.ArrayIndex;
   values: [index: ExpressionTag | ArrayIndexRangeTag];
 }
 
@@ -542,7 +658,7 @@ export interface ArrayIndexTag extends NodeSqlTag {
  * ```
  */
 export interface CompositeAccessTag extends NodeSqlTag {
-  tag: 'CompositeAccess';
+  tag: SqlName.CompositeAccess;
   values: [field: IdentifierTag];
 }
 
@@ -551,7 +667,7 @@ export interface CompositeAccessTag extends NodeSqlTag {
  * https://www.postgresql.org/docs/current/queries-limit.html
  */
 export interface CountTag extends NodeSqlTag {
-  tag: 'Count';
+  tag: SqlName.Count;
   values: [ParameterTag | IntegerTag];
 }
 
@@ -560,7 +676,7 @@ export interface CountTag extends NodeSqlTag {
  * https://www.postgresql.org/docs/current/arrays.html
  */
 export interface DimensionTag extends EmptyLeafSqlTag {
-  tag: 'Dimension';
+  tag: SqlName.Dimension;
 }
 
 /**
@@ -577,7 +693,7 @@ export interface DimensionTag extends EmptyLeafSqlTag {
  * ```
  */
 export interface TypeTag extends NodeSqlTag {
-  tag: 'Type';
+  tag: SqlName.Type;
   values:
     | [identifier: QualifiedIdentifierTag]
     | [name: QualifiedIdentifierTag, parameter: IntegerTag]
@@ -598,7 +714,7 @@ export interface TypeTag extends NodeSqlTag {
  * ```
  */
 export interface ArrayTypeTag extends NodeSqlTag {
-  tag: 'ArrayType';
+  tag: SqlName.ArrayType;
   values: [type: TypeTag, ...dimension: DimensionTag[]];
 }
 
@@ -616,7 +732,7 @@ export interface ArrayTypeTag extends NodeSqlTag {
  * ```
  */
 export interface DistinctTag extends NodeSqlTag {
-  tag: 'Distinct';
+  tag: SqlName.Distinct;
   values: ColumnTag[];
 }
 
@@ -634,7 +750,7 @@ export interface DistinctTag extends NodeSqlTag {
  * ```
  */
 export interface FilterTag extends NodeSqlTag {
-  tag: 'Filter';
+  tag: SqlName.Filter;
   values: [condition: WhereTag];
 }
 
@@ -642,7 +758,7 @@ export interface FilterTag extends NodeSqlTag {
  * A tag representing "*", e.g.  SELECT * FROM table1
  */
 export interface StarTag extends EmptyLeafSqlTag {
-  tag: 'Star';
+  tag: SqlName.Star;
 }
 
 /**
@@ -659,7 +775,7 @@ export interface StarTag extends EmptyLeafSqlTag {
  * ```
  */
 export interface StarIdentifierTag extends NodeSqlTag {
-  tag: 'StarIdentifier';
+  tag: SqlName.StarIdentifier;
   values:
     | [schema: IdentifierTag, table: IdentifierTag, star: StarTag]
     | [table: IdentifierTag, star: StarTag]
@@ -680,7 +796,7 @@ export interface StarIdentifierTag extends NodeSqlTag {
  * ```
  */
 export interface RowTag extends NodeSqlTag {
-  tag: 'Row';
+  tag: SqlName.Row;
   values: ExpressionTag[];
 }
 
@@ -698,7 +814,7 @@ export interface RowTag extends NodeSqlTag {
  * ```
  */
 export interface RowKeywardTag extends NodeSqlTag {
-  tag: 'RowKeyward';
+  tag: SqlName.RowKeyward;
   values: ExpressionTag[];
 }
 
@@ -716,7 +832,7 @@ export interface RowKeywardTag extends NodeSqlTag {
  * ```
  */
 export interface WhenTag extends NodeSqlTag {
-  tag: 'When';
+  tag: SqlName.When;
   values: [when: ExpressionTag, then: ExpressionTag];
 }
 
@@ -732,7 +848,7 @@ export interface WhenTag extends NodeSqlTag {
  * ```
  */
 export interface ElseTag extends NodeSqlTag {
-  tag: 'Else';
+  tag: SqlName.Else;
   values: [ExpressionTag];
 }
 
@@ -749,7 +865,7 @@ export interface ElseTag extends NodeSqlTag {
  * ```
  */
 export interface CaseSimpleTag extends NodeSqlTag {
-  tag: 'CaseSimple';
+  tag: SqlName.CaseSimple;
   values: [value: CastableDataTypeTag, ...options: (WhenTag | ElseTag)[]];
 }
 
@@ -766,7 +882,7 @@ export interface CaseSimpleTag extends NodeSqlTag {
  * ```
  */
 export interface CaseTag extends NodeSqlTag {
-  tag: 'Case';
+  tag: SqlName.Case;
   values: (WhenTag | ElseTag)[];
 }
 
@@ -774,7 +890,7 @@ export interface CaseTag extends NodeSqlTag {
  * The operator of a binary expression, e.g. 1 + 2
  */
 export interface BinaryOperatorTag extends LeafSqlTag {
-  tag: 'BinaryOperator';
+  tag: SqlName.BinaryOperator;
   value:
     | '^'
     | '*'
@@ -827,7 +943,7 @@ export interface BinaryOperatorTag extends LeafSqlTag {
  * The operator of a unary expression, e.g. -2
  */
 export interface UnaryOperatorTag extends LeafSqlTag {
-  tag: 'UnaryOperator';
+  tag: SqlName.UnaryOperator;
   value: '+' | '-' | 'NOT' | 'ISNULL' | 'NOTNULL';
 }
 
@@ -848,7 +964,7 @@ export interface UnaryOperatorTag extends LeafSqlTag {
  * ```
  */
 export interface BinaryExpressionTag extends NodeSqlTag {
-  tag: 'BinaryExpression';
+  tag: SqlName.BinaryExpression;
   values: [
     left: DataTypeTag | OperatorExpressionTag,
     operator: BinaryOperatorTag,
@@ -871,7 +987,7 @@ export interface BinaryExpressionTag extends NodeSqlTag {
  * ```
  */
 export interface UnaryExpressionTag extends NodeSqlTag {
-  tag: 'UnaryExpression';
+  tag: SqlName.UnaryExpression;
   values: [operator: UnaryOperatorTag, value: DataTypeTag | OperatorExpressionTag];
 }
 
@@ -879,7 +995,7 @@ export interface UnaryExpressionTag extends NodeSqlTag {
  * Ternary operators (operators with 3 arguments). e.g. a BETWEEN 2 AND 3
  */
 export interface TernaryOperatorTag extends LeafSqlTag {
-  tag: 'TernaryOperator';
+  tag: SqlName.TernaryOperator;
   value: 'BETWEEN' | 'NOT BETWEEN' | 'BETWEEN SYMMETRIC' | 'NOT BETWEEN SYMMETRIC';
 }
 
@@ -887,7 +1003,7 @@ export interface TernaryOperatorTag extends LeafSqlTag {
  * Ternary operators (operators with 3 arguments) separator. e.g. the second operator of a ternary.
  */
 export interface TernarySeparatorTag extends LeafSqlTag {
-  tag: 'TernarySeparator';
+  tag: SqlName.TernarySeparator;
   value: 'AND';
 }
 
@@ -907,7 +1023,7 @@ export interface TernarySeparatorTag extends LeafSqlTag {
  * ```
  */
 export interface TernaryExpressionTag extends NodeSqlTag {
-  tag: 'TernaryExpression';
+  tag: SqlName.TernaryExpression;
   values: [
     value: DataTypeTag,
     operator: TernarySeparatorTag,
@@ -931,7 +1047,7 @@ export interface TernaryExpressionTag extends NodeSqlTag {
  * ```
  */
 export interface CastTag extends NodeSqlTag {
-  tag: 'Cast';
+  tag: SqlName.Cast;
   values: [data: DataTypeTag, type: AnyTypeTag];
 }
 
@@ -949,7 +1065,7 @@ export interface CastTag extends NodeSqlTag {
  * ```
  */
 export interface PgCastTag extends NodeSqlTag {
-  tag: 'PgCast';
+  tag: SqlName.PgCast;
   values: [data: DataTypeTag, type: AnyTypeTag];
 }
 
@@ -967,7 +1083,7 @@ export interface PgCastTag extends NodeSqlTag {
  * ```
  */
 export interface ArrayConstructorTag extends NodeSqlTag {
-  tag: 'ArrayConstructor';
+  tag: SqlName.ArrayConstructor;
   values: ExpressionTag[];
 }
 
@@ -986,7 +1102,7 @@ export interface ArrayConstructorTag extends NodeSqlTag {
  * ```
  */
 export interface FunctionTag extends NodeSqlTag {
-  tag: 'Function';
+  tag: SqlName.Function;
   values: [name: QualifiedIdentifierTag, ...args: (FunctionArgTag | OrderByTag | DistinctTag | FilterTag)[]];
 }
 
@@ -995,7 +1111,7 @@ export interface FunctionTag extends NodeSqlTag {
  * https://www.postgresql.org/docs/current/functions-comparisons.html
  */
 export interface ComparationArrayInclusionTypeTag extends LeafSqlTag {
-  tag: 'ComparationArrayInclusionType';
+  tag: SqlName.ComparationArrayInclusionType;
   value: 'IN' | 'NOT IN';
 }
 
@@ -1004,7 +1120,7 @@ export interface ComparationArrayInclusionTypeTag extends LeafSqlTag {
  * https://www.postgresql.org/docs/current/functions-comparisons.html
  */
 export interface ComparationArrayOperatorTag extends LeafSqlTag {
-  tag: 'ComparationArrayOperator';
+  tag: SqlName.ComparationArrayOperator;
   value: '<=' | '>=' | '<' | '>' | '<>' | '!=' | '=' | 'AND' | 'OR';
 }
 
@@ -1013,7 +1129,7 @@ export interface ComparationArrayOperatorTag extends LeafSqlTag {
  * https://www.postgresql.org/docs/current/functions-comparisons.html
  */
 export interface ComparationArrayTypeTag extends LeafSqlTag {
-  tag: 'ComparationArrayType';
+  tag: SqlName.ComparationArrayType;
   value: 'ANY' | 'SOME' | 'ALL';
 }
 
@@ -1032,7 +1148,7 @@ export interface ComparationArrayTypeTag extends LeafSqlTag {
  * ```
  */
 export interface ComparationArrayInclusionTag extends NodeSqlTag {
-  tag: 'ComparationArrayInclusion';
+  tag: SqlName.ComparationArrayInclusion;
   values: [value: ExpressionTag, type: ComparationArrayInclusionTypeTag, subject: CastableDataTypeTag];
 }
 
@@ -1051,7 +1167,7 @@ export interface ComparationArrayInclusionTag extends NodeSqlTag {
  * ```
  */
 export interface ComparationArrayTag extends NodeSqlTag {
-  tag: 'ComparationArray';
+  tag: SqlName.ComparationArray;
   values: [
     value: ExpressionTag,
     operator: ComparationArrayOperatorTag,
@@ -1074,7 +1190,7 @@ export interface ComparationArrayTag extends NodeSqlTag {
  * ```
  */
 export interface ExistsTag extends NodeSqlTag {
-  tag: 'Exists';
+  tag: SqlName.Exists;
   values: [subject: SelectTag];
 }
 
@@ -1092,7 +1208,7 @@ export interface ExistsTag extends NodeSqlTag {
  * ```
  */
 export interface SelectListItemTag extends NodeSqlTag {
-  tag: 'SelectListItem';
+  tag: SqlName.SelectListItem;
   values: [value: StarIdentifierTag | ExpressionTag] | [value: ExpressionTag, as: AsTag];
 }
 
@@ -1110,7 +1226,7 @@ export interface SelectListItemTag extends NodeSqlTag {
  * ```
  */
 export interface SelectListTag extends NodeSqlTag {
-  tag: 'SelectList';
+  tag: SqlName.SelectList;
   values: SelectListItemTag[];
 }
 
@@ -1128,7 +1244,7 @@ export interface SelectListTag extends NodeSqlTag {
  * ```
  */
 export interface NamedSelectTag extends NodeSqlTag {
-  tag: 'NamedSelect';
+  tag: SqlName.NamedSelect;
   values: [select: SelectTag, as: AsTag];
 }
 
@@ -1137,7 +1253,7 @@ export interface NamedSelectTag extends NodeSqlTag {
  * https://www.postgresql.org/docs/current/sql-select.html#SQL-FROM
  */
 export interface JoinTypeTag extends LeafSqlTag {
-  tag: 'JoinType';
+  tag: SqlName.JoinType;
   value:
     | 'JOIN'
     | 'INNER JOIN'
@@ -1164,7 +1280,7 @@ export interface JoinTypeTag extends LeafSqlTag {
  * ```
  */
 export interface JoinOnTag extends NodeSqlTag {
-  tag: 'JoinOn';
+  tag: SqlName.JoinOn;
   values: [value: ExpressionTag];
 }
 
@@ -1182,7 +1298,7 @@ export interface JoinOnTag extends NodeSqlTag {
  * ```
  */
 export interface JoinUsingTag extends NodeSqlTag {
-  tag: 'JoinUsing';
+  tag: SqlName.JoinUsing;
   values: ColumnTag[];
 }
 
@@ -1200,7 +1316,7 @@ export interface JoinUsingTag extends NodeSqlTag {
  * ```
  */
 export interface JoinTag extends NodeSqlTag {
-  tag: 'Join';
+  tag: SqlName.Join;
   values:
     | [type: JoinTypeTag, table: TableTag]
     | [type: JoinTypeTag, table: TableWithJoinTag]
@@ -1222,7 +1338,7 @@ export interface JoinTag extends NodeSqlTag {
  * ```
  */
 export interface FromListTag extends NodeSqlTag {
-  tag: 'FromList';
+  tag: SqlName.FromList;
   values: FromListItemTag[];
 }
 
@@ -1240,7 +1356,7 @@ export interface FromListTag extends NodeSqlTag {
  * ```
  */
 export interface FromTag extends NodeSqlTag {
-  tag: 'From';
+  tag: SqlName.From;
   values: [list: FromListTag, ...join: JoinTag[]];
 }
 
@@ -1258,7 +1374,7 @@ export interface FromTag extends NodeSqlTag {
  * ```
  */
 export interface WhereTag extends NodeSqlTag {
-  tag: 'Where';
+  tag: SqlName.Where;
   values: [condition: ExpressionTag];
 }
 
@@ -1276,7 +1392,7 @@ export interface WhereTag extends NodeSqlTag {
  * ```
  */
 export interface GroupByTag extends NodeSqlTag {
-  tag: 'GroupBy';
+  tag: SqlName.GroupBy;
   values: ColumnTag[];
 }
 
@@ -1294,7 +1410,7 @@ export interface GroupByTag extends NodeSqlTag {
  * ```
  */
 export interface HavingTag extends NodeSqlTag {
-  tag: 'Having';
+  tag: SqlName.Having;
   values: [condtion: ExpressionTag];
 }
 
@@ -1303,7 +1419,7 @@ export interface HavingTag extends NodeSqlTag {
  * https://www.postgresql.org/docs/current/sql-select.html#SQL-UNION
  */
 export interface CombinationTypeTag extends LeafSqlTag {
-  tag: 'CombinationType';
+  tag: SqlName.CombinationType;
   value: 'UNION' | 'INTERSECT' | 'EXCEPT' | 'UNION ALL' | 'INTERSECT ALL' | 'EXCEPT ALL';
 }
 
@@ -1321,7 +1437,7 @@ export interface CombinationTypeTag extends LeafSqlTag {
  * ```
  */
 export interface CombinationTag extends NodeSqlTag {
-  tag: 'Combination';
+  tag: SqlName.Combination;
   values: [type: CombinationTypeTag, ...parts: SelectParts[]];
 }
 
@@ -1330,7 +1446,7 @@ export interface CombinationTag extends NodeSqlTag {
  * https://www.postgresql.org/docs/current/sql-select.html#SQL-ORDERBY
  */
 export interface OrderDirectionTag extends LeafSqlTag {
-  tag: 'OrderDirection';
+  tag: SqlName.OrderDirection;
   value: 'ASC' | 'DESC' | 'USNIG >' | 'USING <';
 }
 
@@ -1348,7 +1464,7 @@ export interface OrderDirectionTag extends LeafSqlTag {
  * ```
  */
 export interface OrderByItemTag extends NodeSqlTag {
-  tag: 'OrderByItem';
+  tag: SqlName.OrderByItem;
   values: [order: ExpressionTag] | [order: ExpressionTag, direction: OrderDirectionTag];
 }
 /**
@@ -1365,7 +1481,7 @@ export interface OrderByItemTag extends NodeSqlTag {
  * ```
  */
 export interface OrderByTag extends NodeSqlTag {
-  tag: 'OrderBy';
+  tag: SqlName.OrderBy;
   values: OrderByItemTag[];
 }
 /**
@@ -1382,7 +1498,7 @@ export interface OrderByTag extends NodeSqlTag {
  * ```
  */
 export interface LimitTag extends NodeSqlTag {
-  tag: 'Limit';
+  tag: SqlName.Limit;
   values: [CountTag | LimitAllTag];
 }
 
@@ -1391,7 +1507,7 @@ export interface LimitTag extends NodeSqlTag {
  * https://www.postgresql.org/docs/current/sql-select.html#SQL-LIMIT
  */
 export interface LimitAllTag extends EmptyLeafSqlTag {
-  tag: 'LimitAll';
+  tag: SqlName.LimitAll;
 }
 
 /**
@@ -1408,7 +1524,7 @@ export interface LimitAllTag extends EmptyLeafSqlTag {
  * ```
  */
 export interface OffsetTag extends NodeSqlTag {
-  tag: 'Offset';
+  tag: SqlName.Offset;
   values: [CountTag];
 }
 
@@ -1426,7 +1542,7 @@ export interface OffsetTag extends NodeSqlTag {
  * ```
  */
 export interface SelectTag extends NodeSqlTag {
-  tag: 'Select';
+  tag: SqlName.Select;
   values: (SelectParts | OrderByTag | CombinationTag | LimitTag | OffsetTag)[];
 }
 
@@ -1435,7 +1551,7 @@ export interface SelectTag extends NodeSqlTag {
  * ```
  */
 export interface DefaultTag extends EmptyLeafSqlTag {
-  tag: 'Default';
+  tag: SqlName.Default;
 }
 
 /**
@@ -1452,7 +1568,7 @@ export interface DefaultTag extends EmptyLeafSqlTag {
  * ```
  */
 export interface SetItemTag extends NodeSqlTag {
-  tag: 'SetItem';
+  tag: SqlName.SetItem;
   values: [column: IdentifierTag, value: ExpressionTag | DefaultTag];
 }
 
@@ -1470,7 +1586,7 @@ export interface SetItemTag extends NodeSqlTag {
  * ```
  */
 export interface SetListTag extends NodeSqlTag {
-  tag: 'SetList';
+  tag: SqlName.SetList;
   values: SetItemTag[];
 }
 
@@ -1488,7 +1604,7 @@ export interface SetListTag extends NodeSqlTag {
  * ```
  */
 export interface ColumnsTag extends NodeSqlTag {
-  tag: 'Columns';
+  tag: SqlName.Columns;
   values: IdentifierTag[];
 }
 
@@ -1506,7 +1622,7 @@ export interface ColumnsTag extends NodeSqlTag {
  * ```
  */
 export interface ValuesTag extends NodeSqlTag {
-  tag: 'Values';
+  tag: SqlName.Values;
   values: (ExpressionTag | DefaultTag)[];
 }
 
@@ -1524,7 +1640,7 @@ export interface ValuesTag extends NodeSqlTag {
  * ```
  */
 export interface SetMapTag extends NodeSqlTag {
-  tag: 'SetMap';
+  tag: SqlName.SetMap;
   values: [columns: ColumnsTag, values: ValuesTag | SelectTag];
 }
 
@@ -1542,7 +1658,7 @@ export interface SetMapTag extends NodeSqlTag {
  * ```
  */
 export interface SetTag extends NodeSqlTag {
-  tag: 'Set';
+  tag: SqlName.Set;
   values: [SetListTag | SetMapTag];
 }
 
@@ -1550,7 +1666,7 @@ export interface SetTag extends NodeSqlTag {
  * An identifier that can be fully qualified with a schema.
  */
 export interface QualifiedIdentifierTag extends NodeSqlTag {
-  tag: 'QualifiedIdentifier';
+  tag: SqlName.QualifiedIdentifier;
   values: [schema: IdentifierTag, table: IdentifierTag] | [table: IdentifierTag];
 }
 
@@ -1567,7 +1683,7 @@ export interface QualifiedIdentifierTag extends NodeSqlTag {
  * ```
  */
 export interface TableTag extends NodeSqlTag {
-  tag: 'Table';
+  tag: SqlName.Table;
   values: [table: QualifiedIdentifierTag] | [table: QualifiedIdentifierTag, as: AsTag];
 }
 
@@ -1585,7 +1701,7 @@ export interface TableTag extends NodeSqlTag {
  * ```
  */
 export interface UpdateFromTag extends NodeSqlTag {
-  tag: 'UpdateFrom';
+  tag: SqlName.UpdateFrom;
   values: FromListItemTag[];
 }
 
@@ -1603,7 +1719,7 @@ export interface UpdateFromTag extends NodeSqlTag {
  * ```
  */
 export interface ReturningListItemTag extends NodeSqlTag {
-  tag: 'ReturningListItem';
+  tag: SqlName.ReturningListItem;
   values: [value: StarIdentifierTag | ExpressionTag] | [value: ExpressionTag, as: AsTag];
 }
 
@@ -1620,7 +1736,7 @@ export interface ReturningListItemTag extends NodeSqlTag {
  * ```
  */
 export interface ReturningTag extends NodeSqlTag {
-  tag: 'Returning';
+  tag: SqlName.Returning;
   values: ReturningListItemTag[];
 }
 
@@ -1638,7 +1754,7 @@ export interface ReturningTag extends NodeSqlTag {
  * ```
  */
 export interface UpdateTag extends NodeSqlTag {
-  tag: 'Update';
+  tag: SqlName.Update;
   values: (SetTag | TableTag | UpdateFromTag | WhereTag | ReturningTag)[];
 }
 
@@ -1656,7 +1772,7 @@ export interface UpdateTag extends NodeSqlTag {
  * ```
  */
 export interface UsingTag extends NodeSqlTag {
-  tag: 'Using';
+  tag: SqlName.Using;
   values: FromListItemTag[];
 }
 
@@ -1674,7 +1790,7 @@ export interface UsingTag extends NodeSqlTag {
  * ```
  */
 export interface DeleteTag extends NodeSqlTag {
-  tag: 'Delete';
+  tag: SqlName.Delete;
   values: (TableTag | UsingTag | WhereTag | ReturningTag)[];
 }
 
@@ -1692,7 +1808,7 @@ export interface DeleteTag extends NodeSqlTag {
  * ```
  */
 export interface ValuesListTag extends NodeSqlTag {
-  tag: 'ValuesList';
+  tag: SqlName.ValuesList;
   values: (ParameterTag | ValuesTag)[];
 }
 
@@ -1701,7 +1817,7 @@ export interface ValuesListTag extends NodeSqlTag {
  * https://www.postgresql.org/docs/current/sql-insert.html
  */
 export interface CollateTag extends LeafSqlTag {
-  tag: 'Collate';
+  tag: SqlName.Collate;
   value: string;
 }
 
@@ -1722,7 +1838,7 @@ export interface CollateTag extends LeafSqlTag {
  * ```
  */
 export interface ConflictTargetIndexTag extends NodeSqlTag {
-  tag: 'ConflictTargetIndex';
+  tag: SqlName.ConflictTargetIndex;
   values: [index: ColumnTag | WrappedExpressionTag] | [index: ColumnTag | WrappedExpressionTag, collate: CollateTag];
 }
 
@@ -1743,7 +1859,7 @@ export interface ConflictTargetIndexTag extends NodeSqlTag {
  * ```
  */
 export interface ConflictTargetTag extends NodeSqlTag {
-  tag: 'ConflictTarget';
+  tag: SqlName.ConflictTarget;
   values: ConflictTargetIndexTag[] | [...indexes: ConflictTargetIndexTag[], where: WhereTag];
 }
 
@@ -1762,7 +1878,7 @@ export interface ConflictTargetTag extends NodeSqlTag {
  * ```
  */
 export interface ConflictConstraintTag extends LeafSqlTag {
-  tag: 'ConflictConstraint';
+  tag: SqlName.ConflictConstraint;
   value: string;
 }
 
@@ -1779,7 +1895,7 @@ export interface ConflictConstraintTag extends LeafSqlTag {
  * ```
  */
 export interface DoNothingTag extends LeafSqlTag {
-  tag: 'DoNothing';
+  tag: SqlName.DoNothing;
 }
 
 /**
@@ -1798,7 +1914,7 @@ export interface DoNothingTag extends LeafSqlTag {
  * ```
  */
 export interface DoUpdateTag extends NodeSqlTag {
-  tag: 'DoUpdate';
+  tag: SqlName.DoUpdate;
   values: [set: SetTag] | [set: SetTag, where: WhereTag];
 }
 
@@ -1815,7 +1931,7 @@ export interface DoUpdateTag extends NodeSqlTag {
  * ```
  */
 export interface ConflictTag extends NodeSqlTag {
-  tag: 'Conflict';
+  tag: SqlName.Conflict;
   values: (ConflictTargetTag | ConflictConstraintTag | DoNothingTag | DoUpdateTag)[];
 }
 
@@ -1831,7 +1947,7 @@ export interface ConflictTag extends NodeSqlTag {
  * ```
  */
 export interface InsertTag extends NodeSqlTag {
-  tag: 'Insert';
+  tag: SqlName.Insert;
   values: (TableTag | SelectTag | ValuesListTag | ConflictTag | ColumnsTag | ReturningTag)[];
 }
 
@@ -1844,7 +1960,7 @@ export interface InsertTag extends NodeSqlTag {
  * ```
  */
 export interface WrappedExpressionTag extends NodeSqlTag {
-  tag: 'WrappedExpression';
+  tag: SqlName.WrappedExpression;
   values: [ExpressionTag] | [ExpressionTag, CompositeAccessTag | ArrayIndexTag];
 }
 
@@ -1852,7 +1968,7 @@ export interface WrappedExpressionTag extends NodeSqlTag {
  * A join expression, wrapped in brackets ()
  */
 export interface TableWithJoinTag extends NodeSqlTag {
-  tag: 'TableWithJoin';
+  tag: SqlName.TableWithJoin;
   values: [table: TableTag, ...joins: JoinTag[]];
 }
 
@@ -1860,7 +1976,7 @@ export interface TableWithJoinTag extends NodeSqlTag {
  * A list of expressions, separated by comma (,)
  */
 export interface ExpressionListTag extends NodeSqlTag {
-  tag: 'ExpressionList';
+  tag: SqlName.ExpressionList;
   values: ExpressionTag[];
 }
 
@@ -1869,7 +1985,7 @@ export interface ExpressionListTag extends NodeSqlTag {
  * https://www.postgresql.org/docs/current/tutorial-transactions.html
  */
 export interface BeginTag extends EmptyLeafSqlTag {
-  tag: 'Begin';
+  tag: SqlName.Begin;
 }
 
 /**
@@ -1877,7 +1993,7 @@ export interface BeginTag extends EmptyLeafSqlTag {
  * https://www.postgresql.org/docs/current/tutorial-transactions.html
  */
 export interface CommitTag extends EmptyLeafSqlTag {
-  tag: 'Commit';
+  tag: SqlName.Commit;
 }
 
 /**
@@ -1885,7 +2001,7 @@ export interface CommitTag extends EmptyLeafSqlTag {
  * https://www.postgresql.org/docs/current/tutorial-transactions.html
  */
 export interface SavepointTag extends NodeSqlTag {
-  tag: 'Savepoint';
+  tag: SqlName.Savepoint;
   values: [IdentifierTag];
 }
 
@@ -1894,7 +2010,7 @@ export interface SavepointTag extends NodeSqlTag {
  * https://www.postgresql.org/docs/current/tutorial-transactions.html
  */
 export interface RollbackTag extends NodeSqlTag {
-  tag: 'Rollback';
+  tag: SqlName.Rollback;
   values: [] | [IdentifierTag];
 }
 

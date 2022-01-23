@@ -5,6 +5,7 @@ import {
   loadQueryInterfacesData,
   toLoadedQueryInterface,
   TypeConstant,
+  TypeName,
 } from '@potygen/potygen';
 import { createPrinter, NewLineKind } from 'typescript';
 import { toTypeSource, compactTypes } from '../src';
@@ -57,30 +58,30 @@ describe('Query Interface', () => {
     [
       'single value literal',
       [
-        { type: 'Boolean', literal: true, postgresType: 'boolean' },
-        { type: 'Boolean', postgresType: 'boolean' },
+        { type: TypeName.Boolean, literal: true, postgresType: 'boolean' },
+        { type: TypeName.Boolean, postgresType: 'boolean' },
       ],
-      [{ type: 'Boolean', postgresType: 'boolean' }],
+      [{ type: TypeName.Boolean, postgresType: 'boolean' }],
     ],
     [
       'keep if no need to compact',
       [
-        { type: 'String', literal: 'tmp', postgresType: 'text' },
-        { type: 'String', literal: 'tmp2', postgresType: 'text' },
+        { type: TypeName.String, literal: 'tmp', postgresType: 'text' },
+        { type: TypeName.String, literal: 'tmp2', postgresType: 'text' },
       ],
       [
-        { type: 'String', literal: 'tmp', postgresType: 'text' },
-        { type: 'String', literal: 'tmp2', postgresType: 'text' },
+        { type: TypeName.String, literal: 'tmp', postgresType: 'text' },
+        { type: TypeName.String, literal: 'tmp2', postgresType: 'text' },
       ],
     ],
     [
       'compact if at least one non literal',
       [
-        { type: 'String', literal: 'tmp', postgresType: 'text' },
-        { type: 'String', literal: 'tmp2', postgresType: 'text' },
-        { type: 'String', postgresType: 'text' },
+        { type: TypeName.String, literal: 'tmp', postgresType: 'text' },
+        { type: TypeName.String, literal: 'tmp2', postgresType: 'text' },
+        { type: TypeName.String, postgresType: 'text' },
       ],
-      [{ type: 'String', postgresType: 'text' }],
+      [{ type: TypeName.String, postgresType: 'text' }],
     ],
   ])('Should compact union types for %s', async (_, types, expected) => {
     expect(compactTypes(types)).toEqual(expected);

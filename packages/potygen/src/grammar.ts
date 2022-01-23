@@ -95,21 +95,21 @@ const RestrictedReservedKeywords =
 const ReservedKeywords =
   /^(?:ALL|ANALYSE|ANALYZE|AND|ANY|ARRAY|AS|ASC|ASYMMETRIC|BOTH|CASE|CAST|CHECK|COLLATE|COLUMN|CONSTRAINT|CREATE|CURRENT_DATE|CURRENT_ROLE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|DEFAULT|DEFERRABLE|DESC|DISTINCT|DO|ELSE|END|EXCEPT|FALSE|FOR|FOREIGN|FROM|GRANT|GROUP|HAVING|IN|INITIALLY|INTERSECT|INTO|LEADING|LIMIT|LOCALTIME|LOCALTIMESTAMP|NEW|NOT|NULL|OFF|OFFSET|OLD|ON|ONLY|OR|ORDER|PLACING|PRIMARY|REFERENCES|SELECT|SESSION_USER|SOME|SYMMETRIC|TABLE|THEN|TO|TRAILING|TRUE|UNION|UNIQUE|USER|USING|WHEN|WHERE|DER|RETURNING)$/i;
 
-const QuotedIdentifier = astLeaf<Tag.QuotedIdentifierTag>('QuotedIdentifier', QuotedIdentifierRule);
+const QuotedIdentifier = astLeaf<Tag.QuotedIdentifierTag>(Tag.SqlName.QuotedIdentifier, QuotedIdentifierRule);
 const UnquotedIdentifierRestricted = astLeaf<Tag.UnquotedIdentifierTag>(
-  'UnquotedIdentifier',
+  Tag.SqlName.UnquotedIdentifier,
   IfNot(ReservedKeywords, IdentifierRule),
 );
 const QuotedIdentifierLessRestricted = astLeaf<Tag.UnquotedIdentifierTag>(
-  'UnquotedIdentifier',
+  Tag.SqlName.UnquotedIdentifier,
   IfNot(RestrictedReservedKeywords, IdentifierRule),
 );
-const UnquotedIdentifier = astLeaf<Tag.UnquotedIdentifierTag>('UnquotedIdentifier', IdentifierRule);
+const UnquotedIdentifier = astLeaf<Tag.UnquotedIdentifierTag>(Tag.SqlName.UnquotedIdentifier, IdentifierRule);
 
 /**
  * An identifier, but only allows specific names
  */
-const SpecificIdentifier = (rule: RegExp) => astLeaf<Tag.UnquotedIdentifierTag>('UnquotedIdentifier', rule);
+const SpecificIdentifier = (rule: RegExp) => astLeaf<Tag.UnquotedIdentifierTag>(Tag.SqlName.UnquotedIdentifier, rule);
 
 /**
  * Identifier
@@ -129,11 +129,14 @@ const IdentifierRestricted = Any(UnquotedIdentifierRestricted, QuotedIdentifier)
 const IdentifierLessRestricted = Any(QuotedIdentifierLessRestricted, QuotedIdentifier);
 
 const ColumnFullyQualified = astNode<Tag.ColumnTag>(
-  'Column',
+  Tag.SqlName.Column,
   All(Identifier, '.', Identifier, '.', IdentifierRestricted),
 );
-const ColumnQualified = astNode<Tag.ColumnTag>('Column', All(IdentifierRestricted, '.', IdentifierRestricted));
-const ColumnUnqualified = astNode<Tag.ColumnTag>('Column', IdentifierRestricted);
+const ColumnQualified = astNode<Tag.ColumnTag>(
+  Tag.SqlName.Column,
+  All(IdentifierRestricted, '.', IdentifierRestricted),
+);
+const ColumnUnqualified = astNode<Tag.ColumnTag>(Tag.SqlName.Column, IdentifierRestricted);
 
 /**
  * Columns with qualifiers
@@ -146,7 +149,7 @@ const Column = Any(ColumnFullyQualified, ColumnQualified, ColumnUnqualified);
 const Parameter = Node<Tag.ParameterTag>(
   All(/^(\$\$|\$|\:)/, IdentifierRule, Optional(Any(/^(\!)/, Brackets(List(UnquotedIdentifier))))),
   ([type, value, ...rest], $, $next) => ({
-    tag: 'Parameter',
+    tag: Tag.SqlName.Parameter,
     value,
     type: type === '$$' ? 'spread' : 'single',
     required: rest.includes('!'),
@@ -159,12 +162,12 @@ const Parameter = Node<Tag.ParameterTag>(
 /**
  * AS Clause
  */
-const As = astNode<Tag.AsTag>('As', Any(All(/^AS/i, Identifier), IdentifierLessRestricted));
+const As = astNode<Tag.AsTag>(Tag.SqlName.As, Any(All(/^AS/i, Identifier), IdentifierLessRestricted));
 
 /**
  * Constant
  */
-const Null = astEmptyLeaf<Tag.NullTag>('Null', /^NULL/i);
+const Null = astEmptyLeaf<Tag.NullTag>(Tag.SqlName.Null, /^NULL/i);
 const IntegerRule = /^([0-9]+)/;
 const NumberRule = Any(
   IntegerRule,
@@ -173,26 +176,32 @@ const NumberRule = Any(
   /^([0-9]+e([+-]?[0-9]+))'/,
 );
 const StringRule = /^'((?:''|[^'])*)'/;
-const String = astLeaf<Tag.StringTag>('String', /^'((?:''|[^'])*)'/);
-const EscapeString = astLeaf<Tag.EscapeStringTag>('EscapeString', All(/^E/i, StringRule));
-const HexademicalString = astLeaf<Tag.HexademicalStringTag>('HexademicalString', All(/^X/i, StringRule));
-const BitString = astLeaf<Tag.BitStringTag>('BitString', All(/^B/i, StringRule));
-const DollarQuatedString = astLeaf<Tag.DollarQuotedStringTag>('DollarQuotedString', /^\$\$((?:\$\$|.)*)\$\$/);
+const String = astLeaf<Tag.StringTag>(Tag.SqlName.String, /^'((?:''|[^'])*)'/);
+const EscapeString = astLeaf<Tag.EscapeStringTag>(Tag.SqlName.EscapeString, All(/^E/i, StringRule));
+const HexademicalString = astLeaf<Tag.HexademicalStringTag>(Tag.SqlName.HexademicalString, All(/^X/i, StringRule));
+const BitString = astLeaf<Tag.BitStringTag>(Tag.SqlName.BitString, All(/^B/i, StringRule));
+const DollarQuatedString = astLeaf<Tag.DollarQuotedStringTag>(Tag.SqlName.DollarQuotedString, /^\$\$((?:\$\$|.)*)\$\$/);
 const CustomDollarQuatedString = Node<Tag.CustomQuotedStringTag>(
   /^\$(?<delimiter>[A-Z_][A-Z0-9_]*)\$((?:\$\$|.)*)\$\k<delimiter>\$/i,
-  ([delimiter, value], $, $next) => ({ tag: 'CustomQuotedString', value, delimiter, start: $.pos, end: $next.pos - 1 }),
+  ([delimiter, value], $, $next) => ({
+    tag: Tag.SqlName.CustomQuotedString,
+    value,
+    delimiter,
+    start: $.pos,
+    end: $next.pos - 1,
+  }),
 );
-const Integer = astLeaf<Tag.IntegerTag>('Integer', IntegerRule);
-const Number = astLeaf<Tag.NumberTag>('Number', NumberRule);
-const Boolean = astUpperLeaf<Tag.BooleanTag>('Boolean', /^(TRUE|FALSE)/i);
+const Integer = astLeaf<Tag.IntegerTag>(Tag.SqlName.Integer, IntegerRule);
+const Number = astLeaf<Tag.NumberTag>(Tag.SqlName.Number, NumberRule);
+const Boolean = astUpperLeaf<Tag.BooleanTag>(Tag.SqlName.Boolean, /^(TRUE|FALSE)/i);
 
 const AllTypesRule =
   /^(xml|xid|void|varchar|varbit|uuid|unknown|txid_snapshot|tsvector|tstzrange|tsrange|tsm_handler|trigger|tinterval|timetz|timestamptz|timestamp without time zone|timestamp with time zone|timestamp|time without time zone|time with time zone|time|tid|text|smgr|smallserial|smallint|serial|reltime|regtype|regrole|regprocedure|regproc|regoperator|regoper|regnamespace|regdictionary|regconfig|regclass|refcursor|record|real|query|polygon|point|pg_lsn|pg_ddl_command|path|opaque|oid|numeric|name|mrange|money|macaddr8|macaddr|lseg|line|language_handler|jsonb|json|interval|internal|integer|int8range|int8|int4range|int4|int2vector|int2|int|inet|index_am_handler|float8|float4|fdw_handler|event_trigger|double precision|daterange|date|cstring|circle|cidr|cid|character varying|character|char|bytea|bpchar|box|boolean|bool|bit varying|bit|bigserial|bigint|aclitem|abstime)/i;
 
-const ConstantType = astUpperLeaf<Tag.ConstantTypeTag>('ConstantType', AllTypesRule);
+const ConstantType = astUpperLeaf<Tag.ConstantTypeTag>(Tag.SqlName.ConstantType, AllTypesRule);
 
 const TypedConstant = astNode<Tag.TypedConstantTag>(
-  'TypedConstant',
+  Tag.SqlName.TypedConstant,
   All(ConstantType, Any(String, EscapeString, HexademicalString, BitString)),
 );
 const Constant = Any(
@@ -215,18 +224,18 @@ const SingleParamTypeRule =
 const DoubleParamTypeRule = /^(numeric|decimal)/i;
 
 const TypeIdentifier = (rule: RegExp) =>
-  astNode<Tag.QualifiedIdentifierTag>('QualifiedIdentifier', Any(SpecificIdentifier(rule), QuotedIdentifier));
+  astNode<Tag.QualifiedIdentifierTag>(Tag.SqlName.QualifiedIdentifier, Any(SpecificIdentifier(rule), QuotedIdentifier));
 
 const TypeQualifiedIdentifier = (rule: RegExp) => {
   const IdentifierNode = Any(SpecificIdentifier(rule), QuotedIdentifier);
   return astNode<Tag.QualifiedIdentifierTag>(
-    'QualifiedIdentifier',
+    Tag.SqlName.QualifiedIdentifier,
     Any(All(SpecificIdentifier(IdentifierRule), '.', IdentifierNode), IdentifierNode),
   );
 };
 
 const Type = astNode<Tag.TypeTag>(
-  'Type',
+  Tag.SqlName.Type,
   Any(
     All(TypeIdentifier(DoubleParamTypeRule), Brackets(Any(All(Integer, ',', Integer), Integer))),
     All(TypeIdentifier(SingleParamTypeRule), Brackets(Integer)),
@@ -234,8 +243,8 @@ const Type = astNode<Tag.TypeTag>(
     TypeQualifiedIdentifier(IdentifierRule),
   ),
 );
-const Dimension = astEmptyLeaf<Tag.DimensionTag>('Dimension', SquareBrackets());
-const TypeArray = astNode<Tag.ArrayTypeTag>('ArrayType', All(Type, Plus(Dimension)));
+const Dimension = astEmptyLeaf<Tag.DimensionTag>(Tag.SqlName.Dimension, SquareBrackets());
+const TypeArray = astNode<Tag.ArrayTypeTag>(Tag.SqlName.ArrayType, All(Type, Plus(Dimension)));
 const AnyType = Any(TypeArray, Type);
 
 /**
@@ -243,19 +252,19 @@ const AnyType = Any(TypeArray, Type);
  */
 const CastableRule = (DataType: Rule) =>
   Node<Tag.CastableDataTypeTag>(All(DataType, Optional(All('::', AnyType))), ([value, type], $, $next) => {
-    return type ? { tag: 'PgCast', values: [value, type], start: $.pos, end: $next.pos } : value;
+    return type ? { tag: Tag.SqlName.PgCast, values: [value, type], start: $.pos, end: $next.pos } : value;
   });
 
-const Count = astNode<Tag.CountTag>('Count', CastableRule(Any(Integer, Parameter)));
+const Count = astNode<Tag.CountTag>(Tag.SqlName.Count, CastableRule(Any(Integer, Parameter)));
 
 /**
  * Table
  */
 const QualifiedIdentifier = astNode<Tag.QualifiedIdentifierTag>(
-  'QualifiedIdentifier',
+  Tag.SqlName.QualifiedIdentifier,
   Any(All(Identifier, '.', Identifier), IdentifierRestricted),
 );
-const Table = astNode<Tag.TableTag>('Table', All(QualifiedIdentifier, Optional(As)));
+const Table = astNode<Tag.TableTag>(Tag.SqlName.Table, All(QualifiedIdentifier, Optional(As)));
 
 /**
  * SELECT
@@ -263,13 +272,13 @@ const Table = astNode<Tag.TableTag>('Table', All(QualifiedIdentifier, Optional(A
  */
 
 const DistinctOnList = All(/^ON/i, Brackets(List(Column)));
-const Distinct = astNode<Tag.DistinctTag>('Distinct', All(/^DISTINCT/i, Optional(DistinctOnList)));
+const Distinct = astNode<Tag.DistinctTag>(Tag.SqlName.Distinct, All(/^DISTINCT/i, Optional(DistinctOnList)));
 
-const StarSql = astEmptyLeaf<Tag.StarTag>('Star', '*');
+const StarSql = astEmptyLeaf<Tag.StarTag>(Tag.SqlName.Star, '*');
 const StarIdentifier = Any(
-  astNode<Tag.StarIdentifierTag>('StarIdentifier', All(Identifier, '.', Identifier, '.', StarSql)),
-  astNode<Tag.StarIdentifierTag>('StarIdentifier', All(Identifier, '.', StarSql)),
-  astNode<Tag.StarIdentifierTag>('StarIdentifier', StarSql),
+  astNode<Tag.StarIdentifierTag>(Tag.SqlName.StarIdentifier, All(Identifier, '.', Identifier, '.', StarSql)),
+  astNode<Tag.StarIdentifierTag>(Tag.SqlName.StarIdentifier, All(Identifier, '.', StarSql)),
+  astNode<Tag.StarIdentifierTag>(Tag.SqlName.StarIdentifier, StarSql),
 );
 
 const UnaryOperator = /^(\+|\-|NOT|ISNULL|NOTNULL)/i;
@@ -303,15 +312,15 @@ const TernaryOperator = [[/^(BETWEEN|NOT BETWEEN|BETWEEN SYMMETRIC|NOT BETWEEN S
  * ----------------------------------------------------------------------------------------
  */
 const OrderRule = (Expression: Rule): Rule => {
-  const OrderDirection = astLeaf<Tag.OrderDirectionTag>('OrderDirection', /^(ASC|DESC|USNIG >|USING <)/i);
-  const OrderByItem = astNode<Tag.OrderByItemTag>('OrderByItem', All(Expression, Optional(OrderDirection)));
-  return astNode<Tag.OrderByTag>('OrderBy', All(/^ORDER BY/i, List(OrderByItem)));
+  const OrderDirection = astLeaf<Tag.OrderDirectionTag>(Tag.SqlName.OrderDirection, /^(ASC|DESC|USNIG >|USING <)/i);
+  const OrderByItem = astNode<Tag.OrderByItemTag>(Tag.SqlName.OrderByItem, All(Expression, Optional(OrderDirection)));
+  return astNode<Tag.OrderByTag>(Tag.SqlName.OrderBy, All(/^ORDER BY/i, List(OrderByItem)));
 };
 
 const ExpressionRule = (SelectExpression: Rule): Rule =>
   Y((ChildExpression) => {
     const ArrayConstructor = astNode<Tag.ArrayConstructorTag>(
-      'ArrayConstructor',
+      Tag.SqlName.ArrayConstructor,
       All(/^ARRAY/i, SquareBrackets(List(ChildExpression))),
     );
 
@@ -319,17 +328,20 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * Function
      * ----------------------------------------------------------------------------------------
      */
-    const FunctionDistinct = astNode<Tag.DistinctTag>('Distinct', /^DISTINCT/i);
-    const FunctionFilter = astNode<Tag.FilterTag>('Filter', All(/^FILTER/i, Brackets(WhereRule(ChildExpression))));
+    const FunctionDistinct = astNode<Tag.DistinctTag>(Tag.SqlName.Distinct, /^DISTINCT/i);
+    const FunctionFilter = astNode<Tag.FilterTag>(
+      Tag.SqlName.Filter,
+      All(/^FILTER/i, Brackets(WhereRule(ChildExpression))),
+    );
     const FunctionIdentifier = astNode<Tag.QualifiedIdentifierTag>(
-      'QualifiedIdentifier',
+      Tag.SqlName.QualifiedIdentifier,
       Any(All(Identifier, '.', Identifier), IdentifierRestricted),
     );
     const Function = astNode<Tag.FunctionTag>(
-      'Function',
+      Tag.SqlName.Function,
       Any(
         astNode<Tag.QualifiedIdentifierTag>(
-          'QualifiedIdentifier',
+          Tag.SqlName.QualifiedIdentifier,
           SpecificIdentifier(/^(CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP)/i),
         ),
         All(
@@ -352,34 +364,40 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     );
 
     const ArrayIndexRange = astNode<Tag.ArrayIndexRangeTag>(
-      'ArrayIndexRange',
+      Tag.SqlName.ArrayIndexRange,
       All(ChildExpression, ':', ChildExpression),
     );
     const ArrayColumnIndex = astNode<Tag.ArrayColumnIndexTag>(
-      'ArrayColumnIndex',
+      Tag.SqlName.ArrayColumnIndex,
       All(Column, SquareBrackets(Any(ArrayIndexRange, ChildExpression))),
     );
-    const ArrayIndex = astNode<Tag.ArrayIndexTag>('ArrayIndex', SquareBrackets(Any(ArrayIndexRange, ChildExpression)));
-    const CompositeAccess = astNode<Tag.CompositeAccessTag>('CompositeAccess', All('.', Identifier));
+    const ArrayIndex = astNode<Tag.ArrayIndexTag>(
+      Tag.SqlName.ArrayIndex,
+      SquareBrackets(Any(ArrayIndexRange, ChildExpression)),
+    );
+    const CompositeAccess = astNode<Tag.CompositeAccessTag>(Tag.SqlName.CompositeAccess, All('.', Identifier));
 
-    const RowKeyward = astNode<Tag.RowKeywardTag>('RowKeyward', All(/^ROW/i, Brackets(List(ChildExpression))));
-    const Row = astNode<Tag.RowTag>('Row', Brackets(MultiList(ChildExpression)));
+    const RowKeyward = astNode<Tag.RowKeywardTag>(
+      Tag.SqlName.RowKeyward,
+      All(/^ROW/i, Brackets(List(ChildExpression))),
+    );
+    const Row = astNode<Tag.RowTag>(Tag.SqlName.Row, Brackets(MultiList(ChildExpression)));
 
     const ExtractField = astLeaf<Tag.ExtractFieldTag>(
-      'ExtractField',
+      Tag.SqlName.ExtractField,
       /^(century|day|decade|dow|doy|epoch|hour|isodow|isoyear|julian|microseconds|millennium|milliseconds|minute|month|quarter|second|timezone|timezone_hour|timezone_minute|week|year)/i,
     );
     const Extract = astNode<Tag.ExtractTag>(
-      'Extract',
+      Tag.SqlName.Extract,
       All(/^EXTRACT/i, Brackets(All(ExtractField, /^FROM/i, ChildExpression))),
     );
 
     const WrappedExpression = astNode<Tag.WrappedExpressionTag>(
-      'WrappedExpression',
+      Tag.SqlName.WrappedExpression,
       All(Brackets(ChildExpression), Optional(Any(ArrayIndex, CompositeAccess))),
     );
 
-    const Exists = astNode<Tag.ExistsTag>('Exists', All(/^EXISTS/i, Brackets(SelectExpression)));
+    const Exists = astNode<Tag.ExistsTag>(Tag.SqlName.Exists, All(/^EXISTS/i, Brackets(SelectExpression)));
 
     /**
      * PgCast
@@ -406,20 +424,20 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * Cast
      * ----------------------------------------------------------------------------------------
      */
-    const Cast = astNode<Tag.CastTag>('Cast', All(/^CAST/i, Brackets(All(DataType, /^AS/i, AnyType))));
+    const Cast = astNode<Tag.CastTag>(Tag.SqlName.Cast, All(/^CAST/i, Brackets(All(DataType, /^AS/i, AnyType))));
     const CastableDataType = CastableRule(DataType);
 
     /**
      * Case
      * ----------------------------------------------------------------------------------------
      */
-    const When = astNode<Tag.WhenTag>('When', All(/^WHEN/i, ChildExpression, /^THEN/i, ChildExpression));
-    const Else = astNode<Tag.ElseTag>('Else', All(/^ELSE/i, ChildExpression));
+    const When = astNode<Tag.WhenTag>(Tag.SqlName.When, All(/^WHEN/i, ChildExpression, /^THEN/i, ChildExpression));
+    const Else = astNode<Tag.ElseTag>(Tag.SqlName.Else, All(/^ELSE/i, ChildExpression));
     const CaseSimple = astNode<Tag.CaseSimpleTag>(
-      'CaseSimple',
+      Tag.SqlName.CaseSimple,
       All(/^CASE/i, CastableDataType, Plus(When), Optional(Else), /^END/i),
     );
-    const CaseNormal = astNode<Tag.CaseTag>('Case', All(/^CASE/i, Plus(When), Optional(Else), /^END/i));
+    const CaseNormal = astNode<Tag.CaseTag>(Tag.SqlName.Case, All(/^CASE/i, Plus(When), Optional(Else), /^END/i));
 
     const DataExpression = CastableRule(Any(CaseNormal, CaseSimple, CastableDataType));
 
@@ -428,22 +446,25 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * ----------------------------------------------------------------------------------------
      */
     const ComparationArrayInclusionType = astUpperLeaf<Tag.ComparationArrayInclusionTypeTag>(
-      'ComparationArrayInclusionType',
+      Tag.SqlName.ComparationArrayInclusionType,
       /^(IN|NOT IN)/i,
     );
-    const ComparationArrayType = astUpperLeaf<Tag.ComparationArrayTypeTag>('ComparationArrayType', /^(ANY|SOME|ALL)/i);
+    const ComparationArrayType = astUpperLeaf<Tag.ComparationArrayTypeTag>(
+      Tag.SqlName.ComparationArrayType,
+      /^(ANY|SOME|ALL)/i,
+    );
     const ComparationArrayOperator = astUpperLeaf<Tag.ComparationArrayOperatorTag>(
-      'ComparationArrayOperator',
+      Tag.SqlName.ComparationArrayOperator,
       /^(<=|>=|<|>|<>|!=|=|AND|OR)/,
     );
     const ComparationArraySubject = Brackets(Any(DataExpression, SelectExpression));
-    const ExpressionList = astNode<Tag.ExpressionListTag>('ExpressionList', List(ChildExpression));
+    const ExpressionList = astNode<Tag.ExpressionListTag>(Tag.SqlName.ExpressionList, List(ChildExpression));
     const ComparationArrayInclusion = astNode<Tag.ComparationArrayInclusionTag>(
-      'ComparationArrayInclusion',
+      Tag.SqlName.ComparationArrayInclusion,
       All(ComparationArrayInclusionType, Any(Brackets(ExpressionList), Parameter)),
     );
     const ComparationArray = astNode<Tag.ComparationArrayTag>(
-      'ComparationArray',
+      Tag.SqlName.ComparationArray,
       All(ComparationArrayOperator, ComparationArrayType, ComparationArraySubject),
     );
 
@@ -454,10 +475,10 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * ----------------------------------------------------------------------------------------
      */
     const TernaryExpression = TernaryOperator.reduce((Current, [Operator, Separator]) => {
-      const OperatorNode = astUpperLeaf<Tag.TernaryOperatorTag>('TernaryOperator', Operator);
-      const SeparatorNode = astUpperLeaf<Tag.TernarySeparatorTag>('TernarySeparator', Separator);
+      const OperatorNode = astUpperLeaf<Tag.TernaryOperatorTag>(Tag.SqlName.TernaryOperator, Operator);
+      const SeparatorNode = astUpperLeaf<Tag.TernarySeparatorTag>(Tag.SqlName.TernarySeparator, Separator);
       return astNode<Tag.TernaryExpressionTag>(
-        'TernaryExpression',
+        Tag.SqlName.TernaryExpression,
         All(Current, OperatorNode, Current, SeparatorNode, Current),
       );
     }, CombinedExpession);
@@ -468,12 +489,12 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * Unary Operator
      * ----------------------------------------------------------------------------------------
      */
-    const UnaryOperatorNode = astUpperLeaf<Tag.UnaryOperatorTag>('UnaryOperator', UnaryOperator);
+    const UnaryOperatorNode = astUpperLeaf<Tag.UnaryOperatorTag>(Tag.SqlName.UnaryOperator, UnaryOperator);
     const UnaryExpression = Node<Tag.UnaryExpressionTag>(
       All(Star(UnaryOperatorNode), DataOrTernaryExpression),
       (parts, $, $next) =>
         parts.reduceRight((value, operator) => {
-          return { tag: 'UnaryExpression', values: [operator, value], start: $.pos, end: $next.pos };
+          return { tag: Tag.SqlName.UnaryExpression, values: [operator, value], start: $.pos, end: $next.pos };
         }),
     );
 
@@ -482,11 +503,11 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
      * ----------------------------------------------------------------------------------------
      */
     const BinaryExpression = BinaryOperator.reduce((Current, Operator) => {
-      const OperatorNode = astUpperLeaf<Tag.BinaryOperatorTag>('BinaryOperator', Operator);
+      const OperatorNode = astUpperLeaf<Tag.BinaryOperatorTag>(Tag.SqlName.BinaryOperator, Operator);
       return Node<Tag.BinaryExpressionTag, any>(
         All(Current, Star(All(OperatorNode, Current))),
         LeftBinaryOperator((values, $, $next) => ({
-          tag: 'BinaryExpression',
+          tag: Tag.SqlName.BinaryExpression,
           values,
           start: $.pos,
           end: $next.pos - 1,
@@ -498,20 +519,20 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
   });
 
 const FromListRule = (Select: Rule): Rule => {
-  const NamedSelect = astNode<Tag.NamedSelectTag>('NamedSelect', All(Brackets(Select), As));
-  return astNode<Tag.FromListTag>('FromList', List(Any(Table, NamedSelect)));
+  const NamedSelect = astNode<Tag.NamedSelectTag>(Tag.SqlName.NamedSelect, All(Brackets(Select), As));
+  return astNode<Tag.FromListTag>(Tag.SqlName.FromList, List(Any(Table, NamedSelect)));
 };
 
-const WhereRule = (Expression: Rule): Rule => astNode<Tag.WhereTag>('Where', All(/^WHERE/i, Expression));
+const WhereRule = (Expression: Rule): Rule => astNode<Tag.WhereTag>(Tag.SqlName.Where, All(/^WHERE/i, Expression));
 
 const Select = Y((SelectExpression) => {
   const Expression = ExpressionRule(SelectExpression);
 
   const SelectListItem = astNode<Tag.SelectListItemTag>(
-    'SelectListItem',
+    Tag.SqlName.SelectListItem,
     Any(StarIdentifier, All(Any(Expression), Optional(As))),
   );
-  const SelectList = astNode<Tag.SelectListTag>('SelectList', List(SelectListItem));
+  const SelectList = astNode<Tag.SelectListTag>(Tag.SqlName.SelectList, List(SelectListItem));
 
   /**
    * From
@@ -520,24 +541,27 @@ const Select = Y((SelectExpression) => {
   const FromList = FromListRule(SelectExpression);
 
   const JoinType = astUpperLeaf(
-    'JoinType',
+    Tag.SqlName.JoinType,
     /^(JOIN|INNER JOIN|LEFT JOIN|LEFT OUTER JOIN|RIGHT JOIN|RIGHT OUTER JOIN|FULL JOIN|FULL OUTER JOIN|CROSS JOIN)/i,
   );
-  const JoinOn = astNode<Tag.JoinOnTag>('JoinOn', All(/^ON/i, Expression));
-  const JoinUsing = astNode<Tag.JoinUsingTag>('JoinUsing', All(/^USING/i, List(Column)));
+  const JoinOn = astNode<Tag.JoinOnTag>(Tag.SqlName.JoinOn, All(/^ON/i, Expression));
+  const JoinUsing = astNode<Tag.JoinUsingTag>(Tag.SqlName.JoinUsing, All(/^USING/i, List(Column)));
 
   const Join = Y((ChildJoin) => {
-    const InnerTableWithJoin = astNode<Tag.TableWithJoinTag>('TableWithJoin', Brackets(All(Table, Star(ChildJoin))));
+    const InnerTableWithJoin = astNode<Tag.TableWithJoinTag>(
+      Tag.SqlName.TableWithJoin,
+      Brackets(All(Table, Star(ChildJoin))),
+    );
     return astNode<Tag.JoinTag>(
-      'Join',
+      Tag.SqlName.Join,
       All(JoinType, Any(Table, InnerTableWithJoin), Optional(Any(JoinOn, JoinUsing))),
     );
   });
   const TableWithJoin = Y((Child) =>
-    astNode<Tag.TableWithJoinTag>('TableWithJoin', Brackets(All(Any(Table, Child), Star(Join)))),
+    astNode<Tag.TableWithJoinTag>(Tag.SqlName.TableWithJoin, Brackets(All(Any(Table, Child), Star(Join)))),
   );
 
-  const From = astNode<Tag.FromTag>('From', All(/^FROM/i, Any(All(FromList, Star(Join)), TableWithJoin)));
+  const From = astNode<Tag.FromTag>(Tag.SqlName.From, All(/^FROM/i, Any(All(FromList, Star(Join)), TableWithJoin)));
 
   /**
    * Where
@@ -549,13 +573,13 @@ const Select = Y((SelectExpression) => {
    * Group By
    * ----------------------------------------------------------------------------------------
    */
-  const GroupBy = astNode<Tag.GroupByTag>('GroupBy', All(/^GROUP BY/i, OptionalBrackets(List(Column))));
+  const GroupBy = astNode<Tag.GroupByTag>(Tag.SqlName.GroupBy, All(/^GROUP BY/i, OptionalBrackets(List(Column))));
 
   /**
    * Having
    * ----------------------------------------------------------------------------------------
    */
-  const Having = astNode<Tag.HavingTag>('Having', All(/^HAVING/i, Expression));
+  const Having = astNode<Tag.HavingTag>(Tag.SqlName.Having, All(/^HAVING/i, Expression));
 
   /**
    * Select Parts
@@ -575,10 +599,13 @@ const Select = Y((SelectExpression) => {
    * ----------------------------------------------------------------------------------------
    */
   const CombinationType = astUpperLeaf<Tag.CombinationTypeTag>(
-    'CombinationType',
+    Tag.SqlName.CombinationType,
     /^(UNION ALL|INTERSECT ALL|EXCEPT ALL|UNION|INTERSECT|EXCEPT)/i,
   );
-  const Combination = astNode<Tag.CombinationTag>('Combination', All(CombinationType, /^SELECT/i, ...SelectParts));
+  const Combination = astNode<Tag.CombinationTag>(
+    Tag.SqlName.Combination,
+    All(CombinationType, /^SELECT/i, ...SelectParts),
+  );
 
   /**
    * Order
@@ -590,12 +617,12 @@ const Select = Y((SelectExpression) => {
    * Limit
    * ----------------------------------------------------------------------------------------
    */
-  const LimitAll = astEmptyLeaf<Tag.LimitAllTag>('LimitAll', /^ALL/i);
-  const Limit = astNode<Tag.LimitTag>('Limit', All(/^LIMIT/i, Any(Count, LimitAll)));
-  const Offset = astNode<Tag.OffsetTag>('Offset', All(/^OFFSET/i, Count));
+  const LimitAll = astEmptyLeaf<Tag.LimitAllTag>(Tag.SqlName.LimitAll, /^ALL/i);
+  const Limit = astNode<Tag.LimitTag>(Tag.SqlName.Limit, All(/^LIMIT/i, Any(Count, LimitAll)));
+  const Offset = astNode<Tag.OffsetTag>(Tag.SqlName.Offset, All(/^OFFSET/i, Count));
 
   return astNode<Tag.SelectTag>(
-    'Select',
+    Tag.SqlName.Select,
     All(
       /^SELECT/i,
       ...SelectParts,
@@ -614,31 +641,31 @@ const Select = Y((SelectExpression) => {
 const Expression = ExpressionRule(Select);
 const FromList = FromListRule(Select);
 const Where = WhereRule(Expression);
-const Columns = astNode<Tag.ColumnsTag>('Columns', Brackets(List(IdentifierRestricted)));
-const Default = astEmptyLeaf<Tag.DefaultTag>('Default', /^DEFAULT/i);
+const Columns = astNode<Tag.ColumnsTag>(Tag.SqlName.Columns, Brackets(List(IdentifierRestricted)));
+const Default = astEmptyLeaf<Tag.DefaultTag>(Tag.SqlName.Default, /^DEFAULT/i);
 
 /**
  * Update
  * ----------------------------------------------------------------------------------------
  */
 
-const SetItem = astNode<Tag.SetItemTag>('SetItem', All(Identifier, '=', Any(Default, Expression)));
-const Values = astNode<Tag.ValuesTag>('Values', Brackets(List(Any(Default, Expression))));
-const SetList = astNode<Tag.SetListTag>('SetList', List(SetItem));
+const SetItem = astNode<Tag.SetItemTag>(Tag.SqlName.SetItem, All(Identifier, '=', Any(Default, Expression)));
+const Values = astNode<Tag.ValuesTag>(Tag.SqlName.Values, Brackets(List(Any(Default, Expression))));
+const SetList = astNode<Tag.SetListTag>(Tag.SqlName.SetList, List(SetItem));
 const SetMap = astNode<Tag.SetMapTag>(
-  'SetMap',
+  Tag.SqlName.SetMap,
   All(Columns, '=', Any(All(Optional(/^ROW/i), Values), Brackets(Select))),
 );
-const Set = astNode<Tag.SetTag>('Set', All(/^SET/i, Any(SetList, SetMap)));
+const Set = astNode<Tag.SetTag>(Tag.SqlName.Set, All(/^SET/i, Any(SetList, SetMap)));
 
-const UpdateFrom = astNode<Tag.UpdateFromTag>('UpdateFrom', All(/^FROM/i, List(FromList)));
+const UpdateFrom = astNode<Tag.UpdateFromTag>(Tag.SqlName.UpdateFrom, All(/^FROM/i, List(FromList)));
 const ReturningListItem = astNode<Tag.ReturningListItemTag>(
-  'ReturningListItem',
+  Tag.SqlName.ReturningListItem,
   Any(StarIdentifier, All(Any(Expression), Optional(As))),
 );
-const Returning = astNode<Tag.ReturningTag>('Returning', All(/^RETURNING/i, List(ReturningListItem)));
+const Returning = astNode<Tag.ReturningTag>(Tag.SqlName.Returning, All(/^RETURNING/i, List(ReturningListItem)));
 const Update = astNode<Tag.UpdateTag>(
-  'Update',
+  Tag.SqlName.Update,
   All(
     /^UPDATE/i,
     Optional(/^ONLY/i),
@@ -655,9 +682,9 @@ const Update = astNode<Tag.UpdateTag>(
  * Delete
  * ----------------------------------------------------------------------------------------
  */
-const Using = astNode<Tag.UsingTag>('Using', All(/^USING/i, List(FromList)));
+const Using = astNode<Tag.UsingTag>(Tag.SqlName.Using, All(/^USING/i, List(FromList)));
 const Delete = astNode<Tag.DeleteTag>(
-  'Delete',
+  Tag.SqlName.Delete,
   All(/^DELETE FROM/i, Table, Optional(Using), Optional(Where), Optional(Returning), Optional(';')),
 );
 
@@ -665,32 +692,35 @@ const Delete = astNode<Tag.DeleteTag>(
  * Insert
  * ----------------------------------------------------------------------------------------
  */
-const Collate = astLeaf<Tag.CollateTag>('Collate', All(/^COLLATE/i, QuotedIdentifierRule));
-const WrappedExpression = astNode<Tag.WrappedExpressionTag>('WrappedExpression', Brackets(Expression));
+const Collate = astLeaf<Tag.CollateTag>(Tag.SqlName.Collate, All(/^COLLATE/i, QuotedIdentifierRule));
+const WrappedExpression = astNode<Tag.WrappedExpressionTag>(Tag.SqlName.WrappedExpression, Brackets(Expression));
 
 const ConflictTargetIndex = astNode<Tag.ConflictTargetIndexTag>(
-  'ConflictTargetIndex',
+  Tag.SqlName.ConflictTargetIndex,
   All(Any(Column, WrappedExpression), Optional(Collate)),
 );
 const ConflictTarget = astNode<Tag.ConflictTargetTag>(
-  'ConflictTarget',
+  Tag.SqlName.ConflictTarget,
   All(Brackets(List(ConflictTargetIndex)), Optional(Where)),
 );
-const ConflictConstraint = astLeaf<Tag.ConflictConstraintTag>('ConflictConstraint', All(/^ON CONSTRAINT/i, Identifier));
+const ConflictConstraint = astLeaf<Tag.ConflictConstraintTag>(
+  Tag.SqlName.ConflictConstraint,
+  All(/^ON CONSTRAINT/i, Identifier),
+);
 
-const DoNothing = astEmptyLeaf<Tag.DoNothingTag>('DoNothing', /^DO NOTHING/i);
-const DoUpdate = astNode<Tag.DoUpdateTag>('DoUpdate', All(/^DO UPDATE/i, Set, Optional(Where)));
+const DoNothing = astEmptyLeaf<Tag.DoNothingTag>(Tag.SqlName.DoNothing, /^DO NOTHING/i);
+const DoUpdate = astNode<Tag.DoUpdateTag>(Tag.SqlName.DoUpdate, All(/^DO UPDATE/i, Set, Optional(Where)));
 const Conflict = astNode<Tag.ConflictTag>(
-  'Conflict',
+  Tag.SqlName.Conflict,
   All(
     /^ON CONFLICT/i,
     Any(Any(DoNothing, DoUpdate), All(Any(ConflictTarget, ConflictConstraint), Any(DoNothing, DoUpdate))),
   ),
 );
 
-const ValuesList = astNode<Tag.ValuesListTag>('ValuesList', All(/^VALUES/i, Any(List(Values), Parameter)));
+const ValuesList = astNode<Tag.ValuesListTag>(Tag.SqlName.ValuesList, All(/^VALUES/i, Any(List(Values), Parameter)));
 const Insert = astNode<Tag.InsertTag>(
-  'Insert',
+  Tag.SqlName.Insert,
   All(
     /^INSERT INTO/i,
     Table,
@@ -708,26 +738,29 @@ const Insert = astNode<Tag.InsertTag>(
  */
 
 const Query = Any(Select, Update, Delete, Insert);
-const CTEName = astNode<Tag.CTENameTag>('CTEName', All(Identifier, Optional(Columns)));
-const CTEValues = astNode<Tag.CTEValuesTag>('CTEValues', Brackets(List(Expression)));
-const CTEValuesList = astNode<Tag.CTEValuesListTag>('CTEValuesList', All(/^VALUES/i, Any(List(CTEValues), Parameter)));
-const CTE = astNode<Tag.CTETag>('CTE', All(CTEName, /^AS/, Brackets(Any(Query, CTEValuesList))));
-const With = astNode<Tag.WithTag>('With', All(/^WITH/i, List(CTE), Query));
+const CTEName = astNode<Tag.CTENameTag>(Tag.SqlName.CTEName, All(Identifier, Optional(Columns)));
+const CTEValues = astNode<Tag.CTEValuesTag>(Tag.SqlName.CTEValues, Brackets(List(Expression)));
+const CTEValuesList = astNode<Tag.CTEValuesListTag>(
+  Tag.SqlName.CTEValuesList,
+  All(/^VALUES/i, Any(List(CTEValues), Parameter)),
+);
+const CTE = astNode<Tag.CTETag>(Tag.SqlName.CTE, All(CTEName, /^AS/, Brackets(Any(Query, CTEValuesList))));
+const With = astNode<Tag.WithTag>(Tag.SqlName.With, All(/^WITH/i, List(CTE), Query));
 
 /**
  * Transaction
  * ----------------------------------------------------------------------------------------
  */
 
-const Begin = astEmptyLeaf<Tag.BeginTag>('Begin', All(/^BEGIN/i, Optional(';')));
-const Savepoint = astNode<Tag.SavepointTag>('Savepoint', All(/^SAVEPOINT/i, Identifier, Optional(';')));
-const Commit = astEmptyLeaf<Tag.CommitTag>('Commit', All(/^COMMIT/i, Optional(';')));
+const Begin = astEmptyLeaf<Tag.BeginTag>(Tag.SqlName.Begin, All(/^BEGIN/i, Optional(';')));
+const Savepoint = astNode<Tag.SavepointTag>(Tag.SqlName.Savepoint, All(/^SAVEPOINT/i, Identifier, Optional(';')));
+const Commit = astEmptyLeaf<Tag.CommitTag>(Tag.SqlName.Commit, All(/^COMMIT/i, Optional(';')));
 const Rollback = astNode<Tag.RollbackTag>(
-  'Rollback',
+  Tag.SqlName.Rollback,
   All(/^ROLLBACK/i, Optional(All(/^TO/i, Identifier)), Optional(';')),
 );
 
-const Comment = astLeaf<Tag.CommentTag>('Comment', /^--([^\r\n]*)\n/);
+const Comment = astLeaf<Tag.CommentTag>(Tag.SqlName.Comment, /^--([^\r\n]*)\n/);
 
 const Grammar = Ignore(
   // Ignore line comments and all whitespace

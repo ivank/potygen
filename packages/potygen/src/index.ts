@@ -124,6 +124,7 @@ export {
   WhereTag,
   WithTag,
   WrappedExpressionTag,
+  SqlName,
 } from './grammar.types';
 
 export {

@@ -105,8 +105,9 @@ const toPropertyType =
     } else {
       switch (type.type) {
         case TypeName.Date:
+          return { ...context, type: factory.createTypeReferenceNode('Date') };
         case TypeName.Buffer:
-          return { ...context, type: factory.createTypeReferenceNode(type.type) };
+          return { ...context, type: factory.createTypeReferenceNode('Buffer') };
         case TypeName.Boolean:
           return {
             ...context,
