@@ -38,7 +38,6 @@ import {
   SourceQuery,
   SourceTable,
   TypeName,
-  LoadName,
 } from './query-interface.types';
 
 const typeConstant = [
@@ -87,30 +86,30 @@ export const isTypeNull = (type: Type): type is TypeNull => type.type === TypeNa
 export const isTypeJson = (type: Type): type is TypeJson => type.type === TypeName.Json;
 export const isTypeUnknown = (type: Type): type is TypeUnknown => type.type === TypeName.Unknown;
 export const isTypeAny = (type: Type): type is TypeAny => type.type === TypeName.Any;
-export const isTypeCoalesce = (type: Type): type is TypeLoadCoalesce => type.type === LoadName.LoadCoalesce;
-export const isTypeLoadRecord = (type: Type): type is TypeLoadRecord => type.type === LoadName.LoadRecord;
-export const isTypeLoadFunction = (type: Type): type is TypeLoadFunction => type.type === LoadName.LoadFunction;
-export const isTypeLoadColumn = (type: Type): type is TypeLoadColumn => type.type === LoadName.LoadColumn;
-export const isTypeLoadStar = (type: Type): type is TypeLoadStar => type.type === LoadName.LoadStar;
+export const isTypeCoalesce = (type: Type): type is TypeLoadCoalesce => type.type === TypeName.LoadCoalesce;
+export const isTypeLoadRecord = (type: Type): type is TypeLoadRecord => type.type === TypeName.LoadRecord;
+export const isTypeLoadFunction = (type: Type): type is TypeLoadFunction => type.type === TypeName.LoadFunction;
+export const isTypeLoadColumn = (type: Type): type is TypeLoadColumn => type.type === TypeName.LoadColumn;
+export const isTypeLoadStar = (type: Type): type is TypeLoadStar => type.type === TypeName.LoadStar;
 export const isTypeLoadFunctionArgument = (type: Type): type is TypeLoadFunctionArgument =>
-  type.type === LoadName.LoadFunctionArgument;
-export const isTypeLoadOperator = (type: Type): type is TypeLoadOperator => type.type === LoadName.LoadOperator;
-export const isTypeLoadNamed = (type: Type): type is TypeLoadNamed => type.type === LoadName.LoadNamed;
-export const isTypeLoadArray = (type: Type): type is TypeLoadArray => type.type === LoadName.LoadArray;
-export const isTypeLoadAsArray = (type: Type): type is TypeLoadAsArray => type.type === LoadName.LoadAsArray;
+  type.type === TypeName.LoadFunctionArgument;
+export const isTypeLoadOperator = (type: Type): type is TypeLoadOperator => type.type === TypeName.LoadOperator;
+export const isTypeLoadNamed = (type: Type): type is TypeLoadNamed => type.type === TypeName.LoadNamed;
+export const isTypeLoadArray = (type: Type): type is TypeLoadArray => type.type === TypeName.LoadArray;
+export const isTypeLoadAsArray = (type: Type): type is TypeLoadAsArray => type.type === TypeName.LoadAsArray;
 export const isTypeLoadObjectLiteral = (type: Type): type is TypeLoadObjectLiteral =>
-  type.type === LoadName.LoadObjectLiteral;
-export const isTypeLoadUnion = (type: Type): type is TypeLoadUnion => type.type === LoadName.LoadUnion;
+  type.type === TypeName.LoadObjectLiteral;
+export const isTypeLoadUnion = (type: Type): type is TypeLoadUnion => type.type === TypeName.LoadUnion;
 export const isTypeArray = (type: Type): type is TypeArray => type.type === TypeName.Array;
 export const isTypeUnion = (type: Type): type is TypeUnion => type.type === TypeName.Union;
 export const isTypeObjectLiteral = (type: Type): type is TypeObjectLiteral => type.type === TypeName.ObjectLiteral;
-export const isTypeLoadArrayItem = (type: Type): type is TypeLoadArrayItem => type.type === LoadName.LoadArrayItem;
+export const isTypeLoadArrayItem = (type: Type): type is TypeLoadArrayItem => type.type === TypeName.LoadArrayItem;
 export const isTypeComposite = (type: Type): type is TypeComposite => type.type === TypeName.Composite;
 export const isTypeLoadCompositeAccess = (type: Type): type is TypeLoadCompositeAccess =>
-  type.type === LoadName.LoadCompositeAccess;
-export const isTypeLoadOptional = (type: Type): type is TypeLoadOptional => type.type === LoadName.LoadOptional;
+  type.type === TypeName.LoadCompositeAccess;
+export const isTypeLoadOptional = (type: Type): type is TypeLoadOptional => type.type === TypeName.LoadOptional;
 export const isTypeOptional = (type: Type): type is TypeOptional => type.type === TypeName.Optional;
-export const isTypeLoadColumnCast = (type: Type): type is TypeLoadColumnCast => type.type === LoadName.LoadColumnCast;
+export const isTypeLoadColumnCast = (type: Type): type is TypeLoadColumnCast => type.type === TypeName.LoadColumnCast;
 
 export const isTypeEqual = (a: Type, b: Type): boolean => {
   if (isTypeAny(a) || isTypeAny(b)) {

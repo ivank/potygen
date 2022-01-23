@@ -16,9 +16,7 @@ export const enum TypeName {
   Union = 'Union',
   ObjectLiteral = 'ObjectLiteral',
   Optional = 'Optional',
-}
 
-export const enum LoadName {
   LoadCoalesce = 'LoadCoalesce',
   LoadColumnCast = 'LoadColumnCast',
   LoadRecord = 'LoadRecord',
@@ -41,7 +39,7 @@ export const enum LoadName {
  * Types that need to pass "Load" step.
  */
 export interface BaseTypeLoad {
-  type: LoadName;
+  type: TypeName;
   /**
    * The original sql tag that was used to load the type
    */
@@ -110,40 +108,40 @@ export interface TypeAny extends BaseTypeLoaded {
   type: TypeName.Any;
 }
 export interface TypeLoadCoalesce extends BaseTypeLoad {
-  type: LoadName.LoadCoalesce;
+  type: TypeName.LoadCoalesce;
   items: Type[];
   comment?: string;
 }
 export interface TypeLoadColumnCast extends BaseTypeLoad {
-  type: LoadName.LoadColumnCast;
+  type: TypeName.LoadColumnCast;
   column: Type;
   value: Type;
 }
 export interface TypeLoadRecord extends BaseTypeLoad {
-  type: LoadName.LoadRecord;
+  type: TypeName.LoadRecord;
   name: string;
   schema?: string;
 }
 export interface TypeLoadFunction extends BaseTypeLoad {
-  type: LoadName.LoadFunction;
+  type: TypeName.LoadFunction;
   name: string;
   schema?: string;
   args: Type[];
 }
 export interface TypeLoadColumn extends BaseTypeLoad {
-  type: LoadName.LoadColumn;
+  type: TypeName.LoadColumn;
   column: string;
   table?: string;
   schema?: string;
 }
 
 export interface TypeLoadStar extends BaseTypeLoad {
-  type: LoadName.LoadStar;
+  type: TypeName.LoadStar;
   table?: string;
   schema?: string;
 }
 export interface TypeLoadFunctionArgument extends BaseTypeLoad {
-  type: LoadName.LoadFunctionArgument;
+  type: TypeName.LoadFunctionArgument;
   index: number;
   name: string;
   schema?: string;
@@ -151,19 +149,19 @@ export interface TypeLoadFunctionArgument extends BaseTypeLoad {
 }
 
 export interface TypeLoadOperator extends BaseTypeLoad {
-  type: LoadName.LoadOperator;
+  type: TypeName.LoadOperator;
   part: OperatorVariantPart;
   left: Type;
   right: Type;
   available: OperatorVariant[];
 }
 export interface TypeLoadNamed extends BaseTypeLoad {
-  type: LoadName.LoadNamed;
+  type: TypeName.LoadNamed;
   name: string;
   value: Type;
 }
 export interface TypeLoadArray extends BaseTypeLoad {
-  type: LoadName.LoadArray;
+  type: TypeName.LoadArray;
   items: Type;
 }
 /**
@@ -171,15 +169,15 @@ export interface TypeLoadArray extends BaseTypeLoad {
  * Functions like ARRAY_AGG will do that for the result.
  */
 export interface TypeLoadAsArray extends BaseTypeLoad {
-  type: LoadName.LoadAsArray;
+  type: TypeName.LoadAsArray;
   items: Type;
 }
 export interface TypeLoadArrayItem extends BaseTypeLoad {
-  type: LoadName.LoadArrayItem;
+  type: TypeName.LoadArrayItem;
   value: Type;
 }
 export interface TypeLoadCompositeAccess extends BaseTypeLoad {
-  type: LoadName.LoadCompositeAccess;
+  type: TypeName.LoadCompositeAccess;
   value: Type;
   name: string;
 }
@@ -190,7 +188,7 @@ export interface TypeComposite extends BaseTypeLoaded {
   attributes: Record<string, TypeConstant>;
 }
 export interface TypeLoadUnion extends BaseTypeLoad {
-  type: LoadName.LoadUnion;
+  type: TypeName.LoadUnion;
   items: Type[];
 }
 export interface TypeArray extends BaseTypeLoaded {
@@ -202,7 +200,7 @@ export interface TypeUnion extends BaseTypeLoaded {
   items: TypeConstant[];
 }
 export interface TypeLoadObjectLiteral extends BaseTypeLoad {
-  type: LoadName.LoadObjectLiteral;
+  type: TypeName.LoadObjectLiteral;
   items: Array<{ name: string; type: Type }>;
   nullable?: boolean;
 }
@@ -211,7 +209,7 @@ export interface TypeObjectLiteral extends BaseTypeLoaded {
   items: Array<{ name: string; type: TypeConstant }>;
 }
 export interface TypeLoadOptional extends BaseTypeLoad {
-  type: LoadName.LoadOptional;
+  type: TypeName.LoadOptional;
   nullable?: boolean;
   value: Type;
 }

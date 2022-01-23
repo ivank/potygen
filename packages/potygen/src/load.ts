@@ -10,7 +10,6 @@ import {
   Param,
   TypeComposite,
   TypeName,
-  LoadName,
 } from './query-interface.types';
 import {
   isTypeNullable,
@@ -146,23 +145,23 @@ const toSourceTables = (source: Source): DataTable[] => {
 
 const extractDataFromType = (type: Type): Data[] => {
   switch (type.type) {
-    case LoadName.LoadRecord:
+    case TypeName.LoadRecord:
       return [{ type: 'Enum', name: { name: type.name, schema: type.schema ?? '_' } }];
-    case LoadName.LoadFunction:
-    case LoadName.LoadFunctionArgument:
+    case TypeName.LoadFunction:
+    case TypeName.LoadFunctionArgument:
       return [
         { type: 'Function', name: { name: type.name, schema: type.schema ?? '_' } },
         ...type.args.flatMap(extractDataFromType),
       ];
-    case LoadName.LoadNamed:
+    case TypeName.LoadNamed:
       return extractDataFromType(type.value);
-    case LoadName.LoadArray:
+    case TypeName.LoadArray:
       return extractDataFromType(type.items);
-    case LoadName.LoadCoalesce:
+    case TypeName.LoadCoalesce:
       return type.items.flatMap(extractDataFromType);
-    case LoadName.LoadFunction:
+    case TypeName.LoadFunction:
       return type.args.flatMap(extractDataFromType);
-    case LoadName.LoadOperator:
+    case TypeName.LoadOperator:
       return extractDataFromType(type.left).concat(extractDataFromType(type.right));
     default:
       return [];
@@ -423,7 +422,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
   return (type: Type): TypeConstant => {
     const recur = toTypeConstant(context, isResult);
     switch (type.type) {
-      case LoadName.LoadColumn:
+      case TypeName.LoadColumn:
         const relevantSources = context.sources.filter(matchTypeSource(type)).filter(isResultSource(isResult));
         const columns = relevantSources.flatMap((source) => source.items[type.column.toLowerCase()] ?? []);
 
@@ -447,7 +446,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
         } else {
           return columns[0];
         }
-      case LoadName.LoadRecord:
+      case TypeName.LoadRecord:
         if (context.enums[type.name]) {
           return context.enums[type.name];
         } else {
@@ -466,7 +465,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
             return { type: TypeName.Unknown, postgresType: 'any' };
           }
         }
-      case LoadName.LoadColumnCast:
+      case TypeName.LoadColumnCast:
         const columnType = recur(type.column);
         const castType = recur(type.value);
         return 'nullable' in columnType
@@ -478,8 +477,8 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
             }
           : castType;
 
-      case LoadName.LoadFunction:
-      case LoadName.LoadFunctionArgument:
+      case TypeName.LoadFunction:
+      case TypeName.LoadFunctionArgument:
         const args = type.args.map(recur);
         const variants = context.funcs.filter((func) => func.name === type.name);
         const funcVariant = variants.find(matchFuncVariant(args));
@@ -496,17 +495,17 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
           );
         } else {
           switch (type.type) {
-            case LoadName.LoadFunction:
+            case TypeName.LoadFunction:
               return funcVariant.isAggregate && isTypeArray(funcVariant.returnType)
                 ? funcVariant.returnType.items
                 : funcVariant.returnType;
-            case LoadName.LoadFunctionArgument:
+            case TypeName.LoadFunctionArgument:
               return funcVariant.argTypes[type.index];
           }
         }
-      case LoadName.LoadStar:
+      case TypeName.LoadStar:
         throw new LoadError(type.sourceTag, 'Should never have load star here');
-      case LoadName.LoadOptional:
+      case TypeName.LoadOptional:
         const optionalType = recur(type.value);
         return {
           type: TypeName.Optional,
@@ -514,17 +513,17 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
           value: optionalType,
           postgresType: optionalType.postgresType,
         };
-      case LoadName.LoadAsArray:
+      case TypeName.LoadAsArray:
         const items = recur(type.items);
         return isTypeArray(items) ? items : { type: TypeName.Array, items, postgresType: `${items.postgresType}[]` };
-      case LoadName.LoadArray:
+      case TypeName.LoadArray:
         const itemsType = recur(type.items);
         return { type: TypeName.Array, items: itemsType, postgresType: `${itemsType.postgresType}[]` };
-      case LoadName.LoadUnion:
+      case TypeName.LoadUnion:
         return { type: TypeName.Union, items: type.items.map(recur), postgresType: 'any' };
-      case LoadName.LoadArrayItem:
+      case TypeName.LoadArrayItem:
         return recur(type.value);
-      case LoadName.LoadCompositeAccess:
+      case TypeName.LoadCompositeAccess:
         const composite = recur(type.value);
         if (!isTypeComposite(composite)) {
           throw new LoadError(type.sourceTag, 'Composite type access can be performed only on composite types');
@@ -537,13 +536,13 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
           );
         }
         return compositeFieldType;
-      case LoadName.LoadObjectLiteral:
+      case TypeName.LoadObjectLiteral:
         return {
           type: TypeName.ObjectLiteral,
           items: type.items.map((item) => ({ ...item, type: recur(item.type) })),
           postgresType: 'json',
         };
-      case LoadName.LoadOperator:
+      case TypeName.LoadOperator:
         const left = recur(type.left);
         const right = recur(type.right);
         const operatorResult = toConstantBinaryOperatorVariant(type.available, left, right, type.part);
@@ -551,7 +550,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
           ((isTypeNullable(left) && left.nullable) || (isTypeNullable(right) && right.nullable))
           ? { ...operatorResult, nullable: true }
           : operatorResult;
-      case LoadName.LoadCoalesce:
+      case TypeName.LoadCoalesce:
         const argTypes = type.items.map(recur);
         const nullable = argTypes.reduce<boolean>(
           (isNullable, type) => isNullable && isTypeNullable(type) && Boolean(type.nullable),
@@ -562,7 +561,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
             ? { ...argTypes[0], nullable }
             : argTypes[0]
           : { type: TypeName.Union, items: argTypes, nullable, postgresType: 'any' };
-      case LoadName.LoadNamed:
+      case TypeName.LoadNamed:
         return recur(type.value);
       default:
         return type;
