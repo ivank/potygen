@@ -8,13 +8,13 @@ import {
   TypeUnion,
   TypeLoadColumn,
   Param,
-  TypeCompositeConstant,
+  TypeComposite,
 } from './query-interface.types';
 import {
   isTypeNullable,
   isTypeArray,
   isTypeLoadStar,
-  isTypeCompositeConstant,
+  isTypeComposite,
   isSourceQuery,
   isTypeEqual,
 } from './query-interface.guards';
@@ -224,7 +224,7 @@ const loadTypeConstant = (type: string, nullable?: boolean, comment?: string): T
 };
 
 const dataColumnToTypeConstant = (
-  composites: TypeCompositeConstant[],
+  composites: TypeComposite[],
   enums: Record<string, TypeUnion>,
   column: LoadedDataTable['data'][0],
 ): TypeConstant =>
@@ -247,9 +247,9 @@ const toLoadedFunction = ({ data, name }: LoadedDataFunction): LoadedFunction =>
   argTypes: data.argTypes.map((arg) => loadTypeConstant(arg)),
 });
 
-const toLoadedComposite = ({ data, name }: LoadedDataComposite): TypeCompositeConstant => ({
+const toLoadedComposite = ({ data, name }: LoadedDataComposite): TypeComposite => ({
   name: name.name,
-  type: 'CompositeConstant',
+  type: 'Composite',
   schema: name.schema,
   postgresType: name.name,
   attributes: data.reduce<Record<string, TypeConstant>>(
@@ -287,7 +287,7 @@ const toLoadedSource = ({
 }: {
   data: LoadedData[];
   enums: Record<string, TypeUnion>;
-  composites: TypeCompositeConstant[];
+  composites: TypeComposite[];
   sources: Source[];
 }) => {
   const tables = data.filter(isLoadedDataTable);
@@ -454,7 +454,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
           );
           if (composite) {
             return {
-              type: 'CompositeConstant',
+              type: 'Composite',
               name: type.name,
               postgresType: type.name,
               schema: type.schema,
@@ -524,7 +524,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
         return recur(type.value);
       case 'LoadCompositeAccess':
         const composite = recur(type.value);
-        if (!isTypeCompositeConstant(composite)) {
+        if (!isTypeComposite(composite)) {
           throw new LoadError(type.sourceTag, 'Composite type access can be performed only on composite types');
         }
         const compositeFieldType = composite.attributes[type.name];

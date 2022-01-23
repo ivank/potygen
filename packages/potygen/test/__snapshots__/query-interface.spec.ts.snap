@@ -323,7 +323,39 @@ Object {
       "name": "date_part",
       "type": Object {
         "name": "date_part",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 59,
+          "start": 7,
+          "tag": "Extract",
+          "values": Array [
+            Object {
+              "end": 21,
+              "start": 15,
+              "tag": "ExtractField",
+              "value": "CENTURY",
+            },
+            Object {
+              "end": 58,
+              "start": 28,
+              "tag": "TypedConstant",
+              "values": Array [
+                Object {
+                  "end": 36,
+                  "start": 28,
+                  "tag": "ConstantType",
+                  "value": "TIMESTAMP",
+                },
+                Object {
+                  "end": 58,
+                  "start": 38,
+                  "tag": "String",
+                  "value": "2000-12-16 12:21:13",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadNamed",
         "value": Object {
           "postgresType": "float4",
           "type": "Number",
@@ -368,7 +400,27 @@ Object {
       "name": "int8",
       "type": Object {
         "name": "int8",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 17,
+          "start": 14,
+          "tag": "Type",
+          "values": Array [
+            Object {
+              "end": 17,
+              "start": 14,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 14,
+                  "tag": "UnquotedIdentifier",
+                  "value": "int8",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadNamed",
         "value": Object {
           "postgresType": "int8",
           "type": "BigInt",
@@ -1252,7 +1304,54 @@ Object {
       "name": "row",
       "type": Object {
         "name": "row",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 23,
+          "start": 7,
+          "tag": "Row",
+          "values": Array [
+            Object {
+              "end": 8,
+              "start": 8,
+              "tag": "Number",
+              "value": "1",
+            },
+            Object {
+              "end": 13,
+              "start": 11,
+              "tag": "BinaryExpression",
+              "values": Array [
+                Object {
+                  "end": 11,
+                  "start": 11,
+                  "tag": "Number",
+                  "value": "2",
+                },
+                Object {
+                  "end": 12,
+                  "start": 12,
+                  "tag": "BinaryOperator",
+                  "value": "+",
+                },
+                Object {
+                  "end": 13,
+                  "start": 13,
+                  "tag": "Number",
+                  "value": "2",
+                },
+              ],
+            },
+            Object {
+              "end": 22,
+              "pick": Array [],
+              "required": false,
+              "start": 16,
+              "tag": "Parameter",
+              "type": "single",
+              "value": "param1",
+            },
+          ],
+        },
+        "type": "LoadNamed",
         "value": Object {
           "postgresType": "row",
           "type": "String",
@@ -1263,7 +1362,20 @@ Object {
       "name": "row",
       "type": Object {
         "name": "row",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 34,
+          "start": 26,
+          "tag": "RowKeyward",
+          "values": Array [
+            Object {
+              "end": 33,
+              "start": 31,
+              "tag": "Number",
+              "value": "123",
+            },
+          ],
+        },
+        "type": "LoadNamed",
         "value": Object {
           "postgresType": "row",
           "type": "String",
@@ -1274,7 +1386,39 @@ Object {
       "name": "row",
       "type": Object {
         "name": "row",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 45,
+          "start": 37,
+          "tag": "Row",
+          "values": Array [
+            Object {
+              "end": 38,
+              "start": 38,
+              "tag": "Number",
+              "value": "1",
+            },
+            Object {
+              "end": 40,
+              "start": 40,
+              "tag": "Number",
+              "value": "2",
+            },
+            Object {
+              "end": 44,
+              "start": 42,
+              "tag": "WrappedExpression",
+              "values": Array [
+                Object {
+                  "end": 43,
+                  "start": 43,
+                  "tag": "Number",
+                  "value": "3",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadNamed",
         "value": Object {
           "postgresType": "row",
           "type": "String",
@@ -1606,10 +1750,63 @@ Object {
       "types": Array [
         Object {
           "name": "id",
-          "type": "Named",
+          "sourceTag": Object {
+            "end": 36,
+            "start": 30,
+            "tag": "PgCast",
+            "values": Array [
+              Object {
+                "end": 30,
+                "start": 30,
+                "tag": "Number",
+                "value": "1",
+              },
+              Object {
+                "end": 35,
+                "start": 33,
+                "tag": "Type",
+                "values": Array [
+                  Object {
+                    "end": 35,
+                    "start": 33,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 35,
+                        "start": 33,
+                        "tag": "UnquotedIdentifier",
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": "LoadNamed",
           "value": Object {
             "name": "int4",
-            "type": "Named",
+            "sourceTag": Object {
+              "end": 35,
+              "start": 33,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 35,
+                  "start": 33,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 35,
+                      "start": 33,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": "LoadNamed",
             "value": Object {
               "postgresType": "int4",
               "type": "Number",
@@ -1618,10 +1815,63 @@ Object {
         },
         Object {
           "name": "val",
-          "type": "Named",
+          "sourceTag": Object {
+            "end": 44,
+            "start": 38,
+            "tag": "PgCast",
+            "values": Array [
+              Object {
+                "end": 38,
+                "start": 38,
+                "tag": "Number",
+                "value": "2",
+              },
+              Object {
+                "end": 43,
+                "start": 41,
+                "tag": "Type",
+                "values": Array [
+                  Object {
+                    "end": 43,
+                    "start": 41,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 43,
+                        "start": 41,
+                        "tag": "UnquotedIdentifier",
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": "LoadNamed",
           "value": Object {
             "name": "int4",
-            "type": "Named",
+            "sourceTag": Object {
+              "end": 43,
+              "start": 41,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 43,
+                  "start": 41,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 43,
+                      "start": 41,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": "LoadNamed",
             "value": Object {
               "postgresType": "int4",
               "type": "Number",
@@ -1787,7 +2037,27 @@ Object {
       "name": "float8",
       "type": Object {
         "name": "float8",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 29,
+          "start": 14,
+          "tag": "Type",
+          "values": Array [
+            Object {
+              "end": 29,
+              "start": 14,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "end": 29,
+                  "start": 14,
+                  "tag": "UnquotedIdentifier",
+                  "value": "double precision",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadNamed",
         "value": Object {
           "postgresType": "float8",
           "type": "Number",
@@ -2980,7 +3250,27 @@ Object {
       "start": 42,
       "type": Object {
         "name": "int4",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 53,
+          "start": 51,
+          "tag": "Type",
+          "values": Array [
+            Object {
+              "end": 53,
+              "start": 51,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "end": 53,
+                  "start": 51,
+                  "tag": "UnquotedIdentifier",
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadNamed",
         "value": Object {
           "postgresType": "int4",
           "type": "Number",
@@ -3781,7 +4071,27 @@ Object {
           "items": Object {
             "items": Object {
               "name": "int4",
-              "type": "Named",
+              "sourceTag": Object {
+                "end": 17,
+                "start": 15,
+                "tag": "Type",
+                "values": Array [
+                  Object {
+                    "end": 17,
+                    "start": 15,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 17,
+                        "start": 15,
+                        "tag": "UnquotedIdentifier",
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+              "type": "LoadNamed",
               "value": Object {
                 "postgresType": "int4",
                 "type": "Number",
@@ -3929,7 +4239,27 @@ Object {
           "items": Object {
             "items": Object {
               "name": "int4",
-              "type": "Named",
+              "sourceTag": Object {
+                "end": 17,
+                "start": 15,
+                "tag": "Type",
+                "values": Array [
+                  Object {
+                    "end": 17,
+                    "start": 15,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 17,
+                        "start": 15,
+                        "tag": "UnquotedIdentifier",
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+              "type": "LoadNamed",
               "value": Object {
                 "postgresType": "int4",
                 "type": "Number",
@@ -4081,7 +4411,27 @@ Object {
       "name": "decimal",
       "type": Object {
         "name": "decimal",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 20,
+          "start": 14,
+          "tag": "Type",
+          "values": Array [
+            Object {
+              "end": 20,
+              "start": 14,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "end": 20,
+                  "start": 14,
+                  "tag": "UnquotedIdentifier",
+                  "value": "numeric",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadNamed",
         "value": Object {
           "postgresType": "decimal",
           "type": "Number",
@@ -4611,7 +4961,27 @@ Object {
       "type": Object {
         "items": Object {
           "name": "int4",
-          "type": "Named",
+          "sourceTag": Object {
+            "end": 17,
+            "start": 15,
+            "tag": "Type",
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 15,
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "end": 17,
+                    "start": 15,
+                    "tag": "UnquotedIdentifier",
+                    "value": "int",
+                  },
+                ],
+              },
+            ],
+          },
+          "type": "LoadNamed",
           "value": Object {
             "postgresType": "int4",
             "type": "Number",
@@ -4659,7 +5029,27 @@ Object {
       "type": Object {
         "items": Object {
           "name": "int4",
-          "type": "Named",
+          "sourceTag": Object {
+            "end": 17,
+            "start": 15,
+            "tag": "Type",
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 15,
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "end": 17,
+                    "start": 15,
+                    "tag": "UnquotedIdentifier",
+                    "value": "int",
+                  },
+                ],
+              },
+            ],
+          },
+          "type": "LoadNamed",
           "value": Object {
             "postgresType": "int4",
             "type": "Number",
@@ -4717,7 +5107,27 @@ Object {
       "start": 30,
       "type": Object {
         "name": "int4",
-        "type": "Named",
+        "sourceTag": Object {
+          "end": 37,
+          "start": 35,
+          "tag": "Type",
+          "values": Array [
+            Object {
+              "end": 37,
+              "start": 35,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "end": 37,
+                  "start": 35,
+                  "tag": "UnquotedIdentifier",
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadNamed",
         "value": Object {
           "postgresType": "int4",
           "type": "Number",

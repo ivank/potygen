@@ -144,8 +144,8 @@ export interface TypeLoadCompositeAccess extends BaseTypeLoad {
   value: Type;
   name: string;
 }
-export interface TypeCompositeConstant extends BaseTypeLoaded {
-  type: 'CompositeConstant';
+export interface TypeComposite extends BaseTypeLoaded {
+  type: 'Composite';
   name: string;
   schema?: string;
   attributes: Record<string, TypeConstant>;
@@ -206,7 +206,7 @@ export type TypeConstant =
   | TypeNull
   | TypeJson
   | TypeUnknown
-  | TypeCompositeConstant
+  | TypeComposite
   | TypeArray
   | TypeUnion
   | TypeObjectLiteralConstant

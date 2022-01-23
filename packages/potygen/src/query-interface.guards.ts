@@ -28,7 +28,7 @@ import {
   TypeObjectLiteral,
   TypeLiteral,
   TypeLoadAsArray,
-  TypeCompositeConstant,
+  TypeComposite,
   TypeLoadCompositeAccess,
   TypeOptional,
   TypeOptionalConstant,
@@ -54,7 +54,7 @@ const typeConstant = [
   'LiteralNumber',
   'LiteralString',
   'LiteralBoolean',
-  'CompositeConstant',
+  'Composite',
   'OptionalConstant',
 ];
 const typeNullable = [
@@ -66,7 +66,7 @@ const typeNullable = [
   'Json',
   'Array',
   'Union',
-  'CompositeConstant',
+  'Composite',
   'OptionalConstant',
 ];
 const typeLiteral = ['String', 'Number', 'Boolean', 'BigInt'];
@@ -106,7 +106,7 @@ export const isTypeUnion = (type: Type): type is TypeUnion => type.type === 'Uni
 export const isTypeObjectLiteralConstant = (type: Type): type is TypeObjectLiteralConstant =>
   type.type === 'ObjectLiteralConstant';
 export const isTypeLoadArrayItem = (type: Type): type is TypeLoadArrayItem => type.type === 'LoadArrayItem';
-export const isTypeCompositeConstant = (type: Type): type is TypeCompositeConstant => type.type === 'CompositeConstant';
+export const isTypeComposite = (type: Type): type is TypeComposite => type.type === 'Composite';
 export const isTypeLoadCompositeAccess = (type: Type): type is TypeLoadCompositeAccess =>
   type.type === 'LoadCompositeAccess';
 export const isTypeOptional = (type: Type): type is TypeOptional => type.type === 'Optional';

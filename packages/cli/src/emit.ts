@@ -20,13 +20,13 @@ import {
 import {
   LoadedFile,
   LoadedQueryInterface,
-  isTypeArrayConstant,
-  isTypeUnionConstant,
+  isTypeArray,
+  isTypeUnion,
   TypeConstant,
   isTypeObjectLiteralConstant,
   isTypeLiteral,
   isTypeEqual,
-  isTypeCompositeConstant,
+  isTypeComposite,
   isUniqueBy,
   isTypeOptionalConstant,
 } from '@potygen/potygen';
@@ -72,7 +72,7 @@ export const compactTypes = (types: TypeConstant[]): TypeConstant[] =>
 const toPropertyType =
   (context: TypeContext) =>
   (type: TypeConstant): TypeContext & { type: TypeNode } => {
-    if (isTypeCompositeConstant(type)) {
+    if (isTypeComposite(type)) {
       return { ...context, type: factory.createToken(SyntaxKind.StringKeyword) };
     } else if (isTypeObjectLiteralConstant(type)) {
       return type.items.reduce<TypeContext & { type: TypeLiteralNode }>(
@@ -88,10 +88,10 @@ const toPropertyType =
         },
         { ...context, type: factory.createTypeLiteralNode([]) },
       );
-    } else if (isTypeArrayConstant(type)) {
+    } else if (isTypeArray(type)) {
       const itemsType = toPropertyType(context)(type.items);
       return { ...itemsType, type: factory.createArrayTypeNode(itemsType.type) };
-    } else if (isTypeUnionConstant(type)) {
+    } else if (isTypeUnion(type)) {
       return compactTypes(type.items).reduce<TypeContext & { type: UnionTypeNode }>(
         (acc, item, index) => {
           const itemType = toPropertyType({ ...acc, name: context.name + index })(item);
