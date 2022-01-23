@@ -288,14 +288,14 @@ export {
   TypeContext,
   TypeLiteral,
   BaseTypeLoad,
-  BaseTypeLoaded,
+  BaseType,
   TypeNullable,
   TypeLoadUnion,
   TypeBuffer,
   TypeUnion,
   TypeArray,
-  TypeConstant,
-  Type,
+  Type as TypeConstant,
+  TypeOrLoad as Type,
   Result,
   Param,
   Source,
@@ -315,7 +315,7 @@ export {
 } from './query-interface.types';
 
 export {
-  isTypeConstant,
+  isType as isTypeConstant,
   isTypeString,
   isTypeNumber,
   isTypeBoolean,

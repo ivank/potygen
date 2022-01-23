@@ -3,8 +3,8 @@ import { parser } from './grammar';
 import {
   QueryInterface,
   Source,
+  TypeOrLoad,
   Type,
-  TypeConstant,
   TypeUnion,
   TypeLoadColumn,
   Param,
@@ -143,7 +143,7 @@ const toSourceTables = (source: Source): DataTable[] => {
   }
 };
 
-const extractDataFromType = (type: Type): Data[] => {
+const extractDataFromType = (type: TypeOrLoad): Data[] => {
   switch (type.type) {
     case TypeName.LoadRecord:
       return [{ type: 'Enum', name: { name: type.name, schema: type.schema ?? '_' } }];
@@ -185,9 +185,9 @@ const notLoaded =
     !data.some((item) => type === item.type && isEqual(name, item.name));
 
 const toLoadedParam =
-  (toType: (type: Type) => TypeConstant) =>
+  (toType: (type: TypeOrLoad) => Type) =>
   ({ name, type, pick, spread, required }: Param): LoadedParam => {
-    const paramType: TypeConstant =
+    const paramType: Type =
       pick.length > 0
         ? {
             type: TypeName.ObjectLiteral,
@@ -214,7 +214,7 @@ const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
         },
   );
 
-const loadTypeConstant = (type: string, nullable?: boolean, comment?: string): TypeConstant => {
+const loadPgType = (type: string, nullable?: boolean, comment?: string): Type => {
   const sqlType = toPgTypeConstant(type);
   if (!sqlType) {
     throw Error(`'${type}' was not part of the known postgres types or aliases`);
@@ -228,7 +228,7 @@ const dataColumnToTypeConstant = (
   composites: TypeComposite[],
   enums: Record<string, TypeUnion>,
   column: LoadedDataTable['data'][0],
-): TypeConstant =>
+): Type =>
   column.type === 'USER-DEFINED'
     ? enums[column.record]
       ? {
@@ -238,14 +238,14 @@ const dataColumnToTypeConstant = (
           postgresType: column.record,
         }
       : composites.find((item) => column.record === item.name) ?? { type: TypeName.Unknown, postgresType: 'any' }
-    : loadTypeConstant(column.type, column.isNullable === 'YES', column.comment);
+    : loadPgType(column.type, column.isNullable === 'YES', column.comment);
 
 const toLoadedFunction = ({ data, name }: LoadedDataFunction): LoadedFunction => ({
   name: name.name,
   schema: name.schema,
   isAggregate: data.isAggregate,
-  returnType: loadTypeConstant(data.returnType),
-  argTypes: data.argTypes.map((arg) => loadTypeConstant(arg)),
+  returnType: loadPgType(data.returnType),
+  argTypes: data.argTypes.map((arg) => loadPgType(arg)),
 });
 
 const toLoadedComposite = ({ data, name }: LoadedDataComposite): TypeComposite => ({
@@ -253,10 +253,10 @@ const toLoadedComposite = ({ data, name }: LoadedDataComposite): TypeComposite =
   type: TypeName.Composite,
   schema: name.schema,
   postgresType: name.name,
-  attributes: data.reduce<Record<string, TypeConstant>>(
+  attributes: data.reduce<Record<string, Type>>(
     (acc, attr) => ({
       ...acc,
-      [attr.name]: loadTypeConstant(attr.type, attr.isNullable === 'YES'),
+      [attr.name]: loadPgType(attr.type, attr.isNullable === 'YES'),
     }),
     {},
   ),
@@ -306,7 +306,7 @@ const toLoadedSource = ({
             name: source.name,
             table: view.name.name,
             schema: view.name.schema,
-            items: view.columns.reduce<Record<string, TypeConstant>>(
+            items: view.columns.reduce<Record<string, Type>>(
               (acc, column) => ({ ...acc, [column.name]: column.type }),
               {},
             ),
@@ -334,18 +334,18 @@ const toLoadedSource = ({
           table: table.name.name,
           schema: table.name.schema,
           isResult: source.isResult,
-          items: table.data.reduce<Record<string, TypeConstant>>(
+          items: table.data.reduce<Record<string, Type>>(
             (acc, column) => ({ ...acc, [column.name]: dataColumnToTypeConstant(composites, enums, column) }),
             {},
           ),
         };
       case 'Values':
-        const toValuesType = toTypeConstant(throwOnUnknownLoadedContext(toLoadedContext({ data, sources: [] })), true);
+        const toValuesType = toType(throwOnUnknownLoadedContext(toLoadedContext({ data, sources: [] })), true);
         return {
           type: 'Values',
           name: source.name,
           items:
-            source.types?.reduce<Record<string, TypeConstant>>(
+            source.types?.reduce<Record<string, Type>>(
               (acc, column) => ({ ...acc, [column.name]: toValuesType(column) }),
               {},
             ) ?? {},
@@ -354,7 +354,7 @@ const toLoadedSource = ({
         return {
           type: 'Query',
           name: source.name,
-          items: loadedQueryInterface(source.value).results.reduce<Record<string, TypeConstant>>(
+          items: loadedQueryInterface(source.value).results.reduce<Record<string, Type>>(
             (acc, result) => ({ ...acc, [result.name]: result.type }),
             {},
           ),
@@ -391,7 +391,7 @@ export const throwOnUnknownLoadedContext = (context: LoadedContextWithUnknown): 
 };
 
 const matchFuncVariant =
-  (args: TypeConstant[]) =>
+  (args: Type[]) =>
   (func: LoadedFunction): boolean =>
     func.argTypes.every((argType, index) => isTypeEqual(argType, args[index] ?? { type: 'Unknown' }));
 
@@ -413,14 +413,14 @@ const formatTableName = ({ table, name, schema }: { table?: string; name: string
   return [schema, tableName].filter(isNil).join('.');
 };
 
-const formatArgumentType = ({ type }: Type): string => `type: ${type}`;
+const formatArgumentType = ({ type }: TypeOrLoad): string => `type: ${type}`;
 
 const formatLoadColumn = ({ schema, table, column }: TypeLoadColumn): string =>
   [schema, table, column].filter(isNil).join('.');
 
-const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
-  return (type: Type): TypeConstant => {
-    const recur = toTypeConstant(context, isResult);
+const toType = (context: LoadedContext, isResult: boolean) => {
+  return (type: TypeOrLoad): Type => {
+    const recur = toType(context, isResult);
     switch (type.type) {
       case TypeName.LoadColumn:
         const relevantSources = context.sources.filter(matchTypeSource(type)).filter(isResultSource(isResult));
@@ -579,8 +579,8 @@ export const toLoadedQueryInterface =
   (data: LoadedData[]) =>
   ({ sources, params, results }: QueryInterface): LoadedQueryInterface => {
     const context = throwOnUnknownLoadedContext(toLoadedContext({ data, sources }));
-    const toTypeParam = toTypeConstant(context, false);
-    const toTypeResult = toTypeConstant(context, true);
+    const toTypeParam = toType(context, false);
+    const toTypeResult = toType(context, true);
 
     return {
       params: groupLoadedParams(params.map(toLoadedParam(toTypeParam))),

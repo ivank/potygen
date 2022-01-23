@@ -42,13 +42,13 @@ import {
   pgTypeAliases,
   pgTypes,
 } from './postgres-types-map';
-import { isTypeConstant, isTypeEqual, isTypeString, isTypeUnknown } from './query-interface.guards';
+import { isType, isTypeEqual, isTypeString, isTypeUnknown } from './query-interface.guards';
 import {
-  Type,
+  TypeOrLoad,
   Param,
   Source,
   QueryInterface,
-  TypeConstant,
+  Type,
   TypeLoadOperator,
   Result,
   TypeContext,
@@ -179,7 +179,8 @@ const isRedundantSource = (source: Source, index: number, all: Source[]): boolea
     ? !all.some((item) => (item.type === 'Query' || item.type == 'Values') && item.name === source.name)
     : true;
 
-const firstKnownType = (...types: Type[]): Type => types.find((item) => !isTypeUnknown(item)) ?? typeUnknown;
+const firstKnownType = (...types: TypeOrLoad[]): TypeOrLoad =>
+  types.find((item) => !isTypeUnknown(item)) ?? typeUnknown;
 
 /**
  * Get the type from a part of a binary operator expression {@link BinaryExpressionTag}
@@ -190,10 +191,10 @@ const firstKnownType = (...types: Type[]): Type => types.find((item) => !isTypeU
  */
 export const toConstantBinaryOperatorVariant = (
   variants: OperatorVariant[],
-  left: TypeConstant,
-  right: TypeConstant,
+  left: Type,
+  right: Type,
   part: OperatorVariantPart,
-): TypeConstant => {
+): Type => {
   const matchedVariants = variants.filter(
     (variant) =>
       isTypeEqual(variant[OperatorVariantPart.Left], left) && isTypeEqual(variant[OperatorVariantPart.Right], right),
@@ -221,7 +222,7 @@ export const toAliasedPgType = (type: string): keyof typeof pgTypes => {
 /**
  * Convert postgres type into a potygen {@link TypeConstant}
  */
-export const toPgTypeConstant = (type: string): TypeConstant | undefined => pgTypes[toAliasedPgType(type)];
+export const toPgTypeConstant = (type: string): Type | undefined => pgTypes[toAliasedPgType(type)];
 
 /**
  * Get the type from a part of a binary operator expression {@link BinaryExpressionTag}
@@ -231,12 +232,12 @@ export const toPgTypeConstant = (type: string): TypeConstant | undefined => pgTy
  */
 const toBinaryOperatorVariant = (
   availableTypes: OperatorVariant[],
-  left: Type,
-  right: Type,
+  left: TypeOrLoad,
+  right: TypeOrLoad,
   sourceTag: BinaryExpressionTag,
   part: OperatorVariantPart,
-): TypeConstant | TypeLoadOperator =>
-  isTypeConstant(left) && isTypeConstant(right)
+): Type | TypeLoadOperator =>
+  isType(left) && isType(right)
     ? toConstantBinaryOperatorVariant(availableTypes, left, right, part)
     : { type: TypeName.LoadOperator, available: availableTypes, part, left, right, sourceTag };
 
@@ -245,7 +246,7 @@ const toBinaryOperatorVariant = (
  */
 const toType =
   (context: TypeContext) =>
-  (sql: QueryInterfaceSqlTag): Type => {
+  (sql: QueryInterfaceSqlTag): TypeOrLoad => {
     const recur = toType(context);
     switch (sql.tag) {
       case 'ArrayConstructor':
@@ -338,7 +339,7 @@ const toType =
             return {
               type: TypeName.LoadNamed,
               name: functionName,
-              value: args.find(isTypeConstant) ?? args[0],
+              value: args.find(isType) ?? args[0],
               sourceTag: sql,
             };
           case 'nullif':
@@ -411,7 +412,7 @@ const toType =
           ? { type: TypeName.LoadNamed, name: pgTypeAliases[typeName] ?? typeName, value: pgType, sourceTag: sql }
           : { type: TypeName.LoadRecord, name: typeName, schema: typeSchema, sourceTag: sql };
       case 'ArrayType':
-        return Array.from({ length: tail(sql.values).length }).reduce<Type>(
+        return Array.from({ length: tail(sql.values).length }).reduce<TypeOrLoad>(
           (items) => ({ type: TypeName.LoadArray, items, sourceTag: sql }),
           recur(first(sql.values)),
         );
@@ -430,7 +431,7 @@ const toType =
     }
   };
 
-const toResultName = (type: Type): string => {
+const toResultName = (type: TypeOrLoad): string => {
   switch (type.type) {
     case TypeName.LoadCoalesce:
       return 'coalesce';

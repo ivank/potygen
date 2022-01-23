@@ -1,6 +1,6 @@
 import {
-  TypeConstant,
   Type,
+  TypeOrLoad,
   TypeLoadArray,
   TypeArray,
   TypeBoolean,
@@ -40,7 +40,7 @@ import {
   TypeName,
 } from './query-interface.types';
 
-export const isTypeConstant = (item: Type): item is TypeConstant =>
+export const isType = (item: TypeOrLoad): item is Type =>
   item.type === TypeName.String ||
   item.type === TypeName.Number ||
   item.type === TypeName.BigInt ||
@@ -55,7 +55,7 @@ export const isTypeConstant = (item: Type): item is TypeConstant =>
   item.type === TypeName.Composite ||
   item.type === TypeName.Optional;
 
-export const isTypeNullable = (item: Type): item is TypeNullable =>
+export const isTypeNullable = (item: TypeOrLoad): item is TypeNullable =>
   item.type === TypeName.String ||
   item.type === TypeName.Number ||
   item.type === TypeName.BigInt ||
@@ -67,7 +67,7 @@ export const isTypeNullable = (item: Type): item is TypeNullable =>
   item.type === TypeName.Composite ||
   item.type === TypeName.Optional;
 
-export const isTypeLiteral = (item: Type): item is TypeLiteral =>
+export const isTypeLiteral = (item: TypeOrLoad): item is TypeLiteral =>
   item.type === TypeName.String ||
   item.type === TypeName.Number ||
   item.type === TypeName.Boolean ||
@@ -77,41 +77,44 @@ export const isSourceTable = (item: Source): item is SourceTable => item.type ==
 export const isSourceQuery = (item: Source): item is SourceQuery => item.type === 'Query';
 export const isSourceValues = (item: Source): item is SourceValues => item.type === 'Values';
 
-export const isTypeString = (type: Type): type is TypeString => type.type === TypeName.String;
-export const isTypeNumber = (type: Type): type is TypeNumber => type.type === TypeName.Number;
-export const isTypeBigInt = (type: Type): type is TypeBigInt => type.type === TypeName.BigInt;
-export const isTypeBoolean = (type: Type): type is TypeBoolean => type.type === TypeName.Boolean;
-export const isTypeDate = (type: Type): type is TypeDate => type.type === TypeName.Date;
-export const isTypeNull = (type: Type): type is TypeNull => type.type === TypeName.Null;
-export const isTypeJson = (type: Type): type is TypeJson => type.type === TypeName.Json;
-export const isTypeUnknown = (type: Type): type is TypeUnknown => type.type === TypeName.Unknown;
-export const isTypeAny = (type: Type): type is TypeAny => type.type === TypeName.Any;
-export const isTypeCoalesce = (type: Type): type is TypeLoadCoalesce => type.type === TypeName.LoadCoalesce;
-export const isTypeLoadRecord = (type: Type): type is TypeLoadRecord => type.type === TypeName.LoadRecord;
-export const isTypeLoadFunction = (type: Type): type is TypeLoadFunction => type.type === TypeName.LoadFunction;
-export const isTypeLoadColumn = (type: Type): type is TypeLoadColumn => type.type === TypeName.LoadColumn;
-export const isTypeLoadStar = (type: Type): type is TypeLoadStar => type.type === TypeName.LoadStar;
-export const isTypeLoadFunctionArgument = (type: Type): type is TypeLoadFunctionArgument =>
+export const isTypeString = (type: TypeOrLoad): type is TypeString => type.type === TypeName.String;
+export const isTypeNumber = (type: TypeOrLoad): type is TypeNumber => type.type === TypeName.Number;
+export const isTypeBigInt = (type: TypeOrLoad): type is TypeBigInt => type.type === TypeName.BigInt;
+export const isTypeBoolean = (type: TypeOrLoad): type is TypeBoolean => type.type === TypeName.Boolean;
+export const isTypeDate = (type: TypeOrLoad): type is TypeDate => type.type === TypeName.Date;
+export const isTypeNull = (type: TypeOrLoad): type is TypeNull => type.type === TypeName.Null;
+export const isTypeJson = (type: TypeOrLoad): type is TypeJson => type.type === TypeName.Json;
+export const isTypeUnknown = (type: TypeOrLoad): type is TypeUnknown => type.type === TypeName.Unknown;
+export const isTypeAny = (type: TypeOrLoad): type is TypeAny => type.type === TypeName.Any;
+export const isTypeCoalesce = (type: TypeOrLoad): type is TypeLoadCoalesce => type.type === TypeName.LoadCoalesce;
+export const isTypeLoadRecord = (type: TypeOrLoad): type is TypeLoadRecord => type.type === TypeName.LoadRecord;
+export const isTypeLoadFunction = (type: TypeOrLoad): type is TypeLoadFunction => type.type === TypeName.LoadFunction;
+export const isTypeLoadColumn = (type: TypeOrLoad): type is TypeLoadColumn => type.type === TypeName.LoadColumn;
+export const isTypeLoadStar = (type: TypeOrLoad): type is TypeLoadStar => type.type === TypeName.LoadStar;
+export const isTypeLoadFunctionArgument = (type: TypeOrLoad): type is TypeLoadFunctionArgument =>
   type.type === TypeName.LoadFunctionArgument;
-export const isTypeLoadOperator = (type: Type): type is TypeLoadOperator => type.type === TypeName.LoadOperator;
-export const isTypeLoadNamed = (type: Type): type is TypeLoadNamed => type.type === TypeName.LoadNamed;
-export const isTypeLoadArray = (type: Type): type is TypeLoadArray => type.type === TypeName.LoadArray;
-export const isTypeLoadAsArray = (type: Type): type is TypeLoadAsArray => type.type === TypeName.LoadAsArray;
-export const isTypeLoadObjectLiteral = (type: Type): type is TypeLoadObjectLiteral =>
+export const isTypeLoadOperator = (type: TypeOrLoad): type is TypeLoadOperator => type.type === TypeName.LoadOperator;
+export const isTypeLoadNamed = (type: TypeOrLoad): type is TypeLoadNamed => type.type === TypeName.LoadNamed;
+export const isTypeLoadArray = (type: TypeOrLoad): type is TypeLoadArray => type.type === TypeName.LoadArray;
+export const isTypeLoadAsArray = (type: TypeOrLoad): type is TypeLoadAsArray => type.type === TypeName.LoadAsArray;
+export const isTypeLoadObjectLiteral = (type: TypeOrLoad): type is TypeLoadObjectLiteral =>
   type.type === TypeName.LoadObjectLiteral;
-export const isTypeLoadUnion = (type: Type): type is TypeLoadUnion => type.type === TypeName.LoadUnion;
-export const isTypeArray = (type: Type): type is TypeArray => type.type === TypeName.Array;
-export const isTypeUnion = (type: Type): type is TypeUnion => type.type === TypeName.Union;
-export const isTypeObjectLiteral = (type: Type): type is TypeObjectLiteral => type.type === TypeName.ObjectLiteral;
-export const isTypeLoadArrayItem = (type: Type): type is TypeLoadArrayItem => type.type === TypeName.LoadArrayItem;
-export const isTypeComposite = (type: Type): type is TypeComposite => type.type === TypeName.Composite;
-export const isTypeLoadCompositeAccess = (type: Type): type is TypeLoadCompositeAccess =>
+export const isTypeLoadUnion = (type: TypeOrLoad): type is TypeLoadUnion => type.type === TypeName.LoadUnion;
+export const isTypeArray = (type: TypeOrLoad): type is TypeArray => type.type === TypeName.Array;
+export const isTypeUnion = (type: TypeOrLoad): type is TypeUnion => type.type === TypeName.Union;
+export const isTypeObjectLiteral = (type: TypeOrLoad): type is TypeObjectLiteral =>
+  type.type === TypeName.ObjectLiteral;
+export const isTypeLoadArrayItem = (type: TypeOrLoad): type is TypeLoadArrayItem =>
+  type.type === TypeName.LoadArrayItem;
+export const isTypeComposite = (type: TypeOrLoad): type is TypeComposite => type.type === TypeName.Composite;
+export const isTypeLoadCompositeAccess = (type: TypeOrLoad): type is TypeLoadCompositeAccess =>
   type.type === TypeName.LoadCompositeAccess;
-export const isTypeLoadOptional = (type: Type): type is TypeLoadOptional => type.type === TypeName.LoadOptional;
-export const isTypeOptional = (type: Type): type is TypeOptional => type.type === TypeName.Optional;
-export const isTypeLoadColumnCast = (type: Type): type is TypeLoadColumnCast => type.type === TypeName.LoadColumnCast;
+export const isTypeLoadOptional = (type: TypeOrLoad): type is TypeLoadOptional => type.type === TypeName.LoadOptional;
+export const isTypeOptional = (type: TypeOrLoad): type is TypeOptional => type.type === TypeName.Optional;
+export const isTypeLoadColumnCast = (type: TypeOrLoad): type is TypeLoadColumnCast =>
+  type.type === TypeName.LoadColumnCast;
 
-export const isTypeEqual = (a: Type, b: Type): boolean => {
+export const isTypeEqual = (a: TypeOrLoad, b: TypeOrLoad): boolean => {
   if (isTypeAny(a) || isTypeAny(b)) {
     return true;
   } else if (isTypeUnknown(a) || isTypeUnknown(b)) {

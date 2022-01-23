@@ -9,7 +9,7 @@ import {
   TypeBigInt,
   TypeDate,
   TypeArray,
-  TypeConstant,
+  Type,
   TypeAny,
   TypeBuffer,
   TypeObjectLiteral,
@@ -27,7 +27,7 @@ export const typeBoolean: TypeBoolean = { type: TypeName.Boolean, postgresType: 
 export const typeNumber: TypeNumber = { type: TypeName.Number, postgresType: 'float4' };
 export const typeBigInt: TypeBigInt = { type: TypeName.BigInt, postgresType: 'int8' };
 export const typeDate: TypeDate = { type: TypeName.Date, postgresType: 'date' };
-const arr = (items: TypeConstant): TypeArray => ({
+const arr = (items: Type): TypeArray => ({
   type: TypeName.Array,
   items,
   postgresType: `${items.postgresType}[]`,
@@ -271,7 +271,7 @@ export const pgTypes = {
   null: typeNull,
 };
 
-export const unaryOperatorTypes: { [type in UnaryOperatorTag['value']]: TypeConstant } = {
+export const unaryOperatorTypes: { [type in UnaryOperatorTag['value']]: Type } = {
   '+': typeNumber,
   '-': typeNumber,
   NOT: typeBoolean,
@@ -415,5 +415,5 @@ export const binaryOperatorTypes: {
 
 export interface TypeSpreadConstant {
   type: 'SpreadConstant';
-  items: TypeConstant;
+  items: Type;
 }

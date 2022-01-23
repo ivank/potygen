@@ -1,6 +1,6 @@
 import { isNil, isUnique } from '../util';
 import { isTypeNullable } from '../query-interface.guards';
-import { TypeConstant } from '../query-interface.types';
+import { Type } from '../query-interface.types';
 import { LoadedDataTable, LoadedDataView, LoadedSource, LoadedDataEnum, LoadedDataComposite } from '../load.types';
 
 const join = (separator: string, parts: (string | undefined)[]) => parts.filter(isNil).join(separator);
@@ -83,7 +83,7 @@ const formatEnum = (dataEnum: LoadedDataEnum): string =>
 export const quickInfoColumn = (
   source: LoadedSource,
   name: string,
-  type: TypeConstant,
+  type: Type,
   details?: LoadedDataEnum | LoadedDataComposite,
 ): { display: string; description: string } => {
   const isNotNull = type && isTypeNullable(type) && !type.nullable;

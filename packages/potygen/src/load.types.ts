@@ -1,5 +1,5 @@
 import { AstTag, Tag } from './grammar.types';
-import { QueryInterface, Source, TypeConstant, TypeUnion } from './query-interface.types';
+import { QueryInterface, Source, Type, TypeUnion } from './query-interface.types';
 import { SourceFile } from 'typescript';
 import { SqlDatabase } from './sql.types';
 
@@ -63,11 +63,11 @@ export type LoadedData = LoadedDataSimple | LoadedDataView;
 
 export interface LoadedParam {
   name: string;
-  type: TypeConstant;
+  type: Type;
 }
 export interface LoadedResult {
   name: string;
-  type: TypeConstant;
+  type: Type;
 }
 
 export interface LoadedQueryInterface {
@@ -78,14 +78,14 @@ export interface LoadedQueryInterface {
 export interface LoadedFunction {
   name: string;
   schema: string;
-  returnType: TypeConstant;
-  argTypes: TypeConstant[];
+  returnType: Type;
+  argTypes: Type[];
   isAggregate: boolean;
 }
 export interface LoadedComposite {
   name: string;
   schema?: string;
-  attributes: Record<string, TypeConstant>;
+  attributes: Record<string, Type>;
 }
 
 export interface LoadedSourceTable {
@@ -94,24 +94,24 @@ export interface LoadedSourceTable {
   name: string;
   table: string;
   schema: string;
-  items: Record<string, TypeConstant>;
+  items: Record<string, Type>;
 }
 export interface LoadedSourceQuery {
   type: 'Query';
   name: string;
-  items: Record<string, TypeConstant>;
+  items: Record<string, Type>;
 }
 export interface LoadedSourceView {
   type: 'View';
   name: string;
   table: string;
   schema: string;
-  items: Record<string, TypeConstant>;
+  items: Record<string, Type>;
 }
 export interface LoadedSourceValues {
   type: 'Values';
   name: string;
-  items: Record<string, TypeConstant>;
+  items: Record<string, Type>;
 }
 export interface LoadedSourceUnknown {
   type: 'Unknown';
