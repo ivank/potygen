@@ -1,9 +1,47 @@
 import { TableTag, Tag } from './grammar.types';
 
+export const enum TypeName {
+  Buffer = 'Buffer',
+  Any = 'Any',
+  String = 'String',
+  Number = 'Number',
+  BigInt = 'BigInt',
+  Boolean = 'Boolean',
+  Date = 'Date',
+  Null = 'Null',
+  Json = 'Json',
+  Unknown = 'Unknown',
+  Composite = 'Composite',
+  Array = 'Array',
+  Union = 'Union',
+  ObjectLiteral = 'ObjectLiteral',
+  Optional = 'Optional',
+}
+
+export const enum LoadName {
+  LoadCoalesce = 'LoadCoalesce',
+  LoadColumnCast = 'LoadColumnCast',
+  LoadRecord = 'LoadRecord',
+  LoadFunction = 'LoadFunction',
+  LoadColumn = 'LoadColumn',
+  LoadStar = 'LoadStar',
+  LoadFunctionArgument = 'LoadFunctionArgument',
+  LoadOperator = 'LoadOperator',
+  LoadNamed = 'LoadNamed',
+  LoadArray = 'LoadArray',
+  LoadAsArray = 'LoadAsArray',
+  LoadArrayItem = 'LoadArrayItem',
+  LoadCompositeAccess = 'LoadCompositeAccess',
+  LoadUnion = 'LoadUnion',
+  LoadObjectLiteral = 'LoadObjectLiteral',
+  LoadOptional = 'LoadOptional',
+}
+
 /**
  * Types that need to pass "Load" step.
  */
 export interface BaseTypeLoad {
+  type: LoadName;
   /**
    * The original sql tag that was used to load the type
    */
@@ -14,6 +52,7 @@ export interface BaseTypeLoad {
  * Types that can be loaded from the database.
  */
 export interface BaseTypeLoaded {
+  type: TypeName;
   /**
    * Comment originating from postgres
    * https://www.postgresql.org/docs/current/sql-comment.html
@@ -30,81 +69,81 @@ export interface BaseTypeLoaded {
 }
 
 export interface TypeString extends BaseTypeLoaded {
-  type: 'String';
+  type: TypeName.String;
   literal?: string;
 }
 
 export interface TypeBuffer extends BaseTypeLoaded {
-  type: 'Buffer';
+  type: TypeName.Buffer;
 }
 
 export interface TypeNumber extends BaseTypeLoaded {
-  type: 'Number';
+  type: TypeName.Number;
   literal?: number;
 }
 
 export interface TypeBigInt extends BaseTypeLoaded {
-  type: 'BigInt';
+  type: TypeName.BigInt;
   literal?: number;
 }
 
 export interface TypeBoolean extends BaseTypeLoaded {
-  type: 'Boolean';
+  type: TypeName.Boolean;
   literal?: boolean;
 }
 
 export interface TypeDate extends BaseTypeLoaded {
-  type: 'Date';
+  type: TypeName.Date;
 }
 
 export interface TypeNull extends BaseTypeLoaded {
-  type: 'Null';
+  type: TypeName.Null;
 }
 
 export interface TypeJson extends BaseTypeLoaded {
-  type: 'Json';
+  type: TypeName.Json;
 }
 export interface TypeUnknown extends BaseTypeLoaded {
-  type: 'Unknown';
+  type: TypeName.Unknown;
 }
 export interface TypeAny extends BaseTypeLoaded {
-  type: 'Any';
+  type: TypeName.Any;
 }
 export interface TypeLoadCoalesce extends BaseTypeLoad {
-  type: 'LoadCoalesce';
+  type: LoadName.LoadCoalesce;
   items: Type[];
   comment?: string;
 }
 export interface TypeLoadColumnCast extends BaseTypeLoad {
-  type: 'LoadColumnCast';
+  type: LoadName.LoadColumnCast;
   column: Type;
   value: Type;
 }
 export interface TypeLoadRecord extends BaseTypeLoad {
-  type: 'LoadRecord';
+  type: LoadName.LoadRecord;
   name: string;
   schema?: string;
 }
 export interface TypeLoadFunction extends BaseTypeLoad {
-  type: 'LoadFunction';
+  type: LoadName.LoadFunction;
   name: string;
   schema?: string;
   args: Type[];
 }
 export interface TypeLoadColumn extends BaseTypeLoad {
-  type: 'LoadColumn';
+  type: LoadName.LoadColumn;
   column: string;
   table?: string;
   schema?: string;
 }
 
 export interface TypeLoadStar extends BaseTypeLoad {
-  type: 'LoadStar';
+  type: LoadName.LoadStar;
   table?: string;
   schema?: string;
 }
 export interface TypeLoadFunctionArgument extends BaseTypeLoad {
-  type: 'LoadFunctionArgument';
+  type: LoadName.LoadFunctionArgument;
   index: number;
   name: string;
   schema?: string;
@@ -112,19 +151,19 @@ export interface TypeLoadFunctionArgument extends BaseTypeLoad {
 }
 
 export interface TypeLoadOperator extends BaseTypeLoad {
-  type: 'LoadOperator';
+  type: LoadName.LoadOperator;
   part: OperatorVariantPart;
   left: Type;
   right: Type;
   available: OperatorVariant[];
 }
 export interface TypeLoadNamed extends BaseTypeLoad {
-  type: 'LoadNamed';
+  type: LoadName.LoadNamed;
   name: string;
   value: Type;
 }
 export interface TypeLoadArray extends BaseTypeLoad {
-  type: 'LoadArray';
+  type: LoadName.LoadArray;
   items: Type;
 }
 /**
@@ -132,52 +171,52 @@ export interface TypeLoadArray extends BaseTypeLoad {
  * Functions like ARRAY_AGG will do that for the result.
  */
 export interface TypeLoadAsArray extends BaseTypeLoad {
-  type: 'LoadAsArray';
+  type: LoadName.LoadAsArray;
   items: Type;
 }
 export interface TypeLoadArrayItem extends BaseTypeLoad {
-  type: 'LoadArrayItem';
+  type: LoadName.LoadArrayItem;
   value: Type;
 }
 export interface TypeLoadCompositeAccess extends BaseTypeLoad {
-  type: 'LoadCompositeAccess';
+  type: LoadName.LoadCompositeAccess;
   value: Type;
   name: string;
 }
 export interface TypeComposite extends BaseTypeLoaded {
-  type: 'Composite';
+  type: TypeName.Composite;
   name: string;
   schema?: string;
   attributes: Record<string, TypeConstant>;
 }
 export interface TypeLoadUnion extends BaseTypeLoad {
-  type: 'LoadUnion';
+  type: LoadName.LoadUnion;
   items: Type[];
 }
 export interface TypeArray extends BaseTypeLoaded {
-  type: 'Array';
+  type: TypeName.Array;
   items: TypeConstant;
 }
 export interface TypeUnion extends BaseTypeLoaded {
-  type: 'Union';
+  type: TypeName.Union;
   items: TypeConstant[];
 }
 export interface TypeLoadObjectLiteral extends BaseTypeLoad {
-  type: 'LoadObjectLiteral';
+  type: LoadName.LoadObjectLiteral;
   items: Array<{ name: string; type: Type }>;
   nullable?: boolean;
 }
 export interface TypeObjectLiteral extends BaseTypeLoaded {
-  type: 'ObjectLiteral';
+  type: TypeName.ObjectLiteral;
   items: Array<{ name: string; type: TypeConstant }>;
 }
 export interface TypeLoadOptional extends BaseTypeLoad {
-  type: 'LoadOptional';
+  type: LoadName.LoadOptional;
   nullable?: boolean;
   value: Type;
 }
 export interface TypeOptional extends BaseTypeLoaded {
-  type: 'Optional';
+  type: TypeName.Optional;
   value: TypeConstant;
 }
 

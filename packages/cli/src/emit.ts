@@ -29,6 +29,7 @@ import {
   isTypeComposite,
   isUniqueBy,
   isTypeOptional,
+  TypeName,
 } from '@potygen/potygen';
 
 const mkdirAsync = promisify(mkdir);
@@ -103,10 +104,10 @@ const toPropertyType =
       return toPropertyType(context)(type.value);
     } else {
       switch (type.type) {
-        case 'Date':
-        case 'Buffer':
+        case TypeName.Date:
+        case TypeName.Buffer:
           return { ...context, type: factory.createTypeReferenceNode(type.type) };
-        case 'Boolean':
+        case TypeName.Boolean:
           return {
             ...context,
             type:
@@ -114,7 +115,7 @@ const toPropertyType =
                 ? factory.createLiteralTypeNode(type.literal ? factory.createTrue() : factory.createFalse())
                 : factory.createToken(SyntaxKind.BooleanKeyword),
           };
-        case 'Json':
+        case TypeName.Json:
           return {
             ...context,
             refs: context.refs.concat(context.name),
@@ -122,10 +123,10 @@ const toPropertyType =
               ? factory.createTypeReferenceNode('Json', [factory.createTypeReferenceNode(context.name)])
               : factory.createTypeReferenceNode(context.name),
           };
-        case 'Null':
+        case TypeName.Null:
           return { ...context, type: factory.createLiteralTypeNode(factory.createToken(SyntaxKind.NullKeyword)) };
-        case 'Number':
-        case 'BigInt':
+        case TypeName.Number:
+        case TypeName.BigInt:
           return {
             ...context,
             type:
@@ -133,7 +134,7 @@ const toPropertyType =
                 ? factory.createLiteralTypeNode(factory.createStringLiteral(String(type.literal)))
                 : factory.createToken(SyntaxKind.NumberKeyword),
           };
-        case 'String':
+        case TypeName.String:
           return {
             ...context,
             type:
@@ -141,9 +142,9 @@ const toPropertyType =
                 ? factory.createLiteralTypeNode(factory.createStringLiteral(type.literal))
                 : factory.createToken(SyntaxKind.StringKeyword),
           };
-        case 'Unknown':
+        case TypeName.Unknown:
           return { ...context, type: factory.createToken(SyntaxKind.UnknownKeyword) };
-        case 'Any':
+        case TypeName.Any:
           return { ...context, type: factory.createToken(SyntaxKind.AnyKeyword) };
       }
     }

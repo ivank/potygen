@@ -14,19 +14,24 @@ import {
   TypeBuffer,
   TypeObjectLiteral,
   OperatorVariant,
+  TypeName,
 } from './query-interface.types';
 
-export const typeJson: TypeJson = { type: 'Json', postgresType: 'json' };
-export const typeNull: TypeNull = { type: 'Null', postgresType: 'null' };
-export const typeUnknown: TypeUnknown = { type: 'Unknown', postgresType: 'any' };
-export const typeAny: TypeAny = { type: 'Any', postgresType: 'any' };
-export const typeString: TypeString = { type: 'String', postgresType: 'text' };
-export const typeBuffer: TypeBuffer = { type: 'Buffer', postgresType: 'bytea' };
-export const typeBoolean: TypeBoolean = { type: 'Boolean', postgresType: 'bool' };
-export const typeNumber: TypeNumber = { type: 'Number', postgresType: 'float4' };
-export const typeBigInt: TypeBigInt = { type: 'BigInt', postgresType: 'int8' };
-export const typeDate: TypeDate = { type: 'Date', postgresType: 'date' };
-const arr = (items: TypeConstant): TypeArray => ({ type: 'Array', items, postgresType: `${items.postgresType}[]` });
+export const typeJson: TypeJson = { type: TypeName.Json, postgresType: 'json' };
+export const typeNull: TypeNull = { type: TypeName.Null, postgresType: 'null' };
+export const typeUnknown: TypeUnknown = { type: TypeName.Unknown, postgresType: 'any' };
+export const typeAny: TypeAny = { type: TypeName.Any, postgresType: 'any' };
+export const typeString: TypeString = { type: TypeName.String, postgresType: 'text' };
+export const typeBuffer: TypeBuffer = { type: TypeName.Buffer, postgresType: 'bytea' };
+export const typeBoolean: TypeBoolean = { type: TypeName.Boolean, postgresType: 'bool' };
+export const typeNumber: TypeNumber = { type: TypeName.Number, postgresType: 'float4' };
+export const typeBigInt: TypeBigInt = { type: TypeName.BigInt, postgresType: 'int8' };
+export const typeDate: TypeDate = { type: TypeName.Date, postgresType: 'date' };
+const arr = (items: TypeConstant): TypeArray => ({
+  type: TypeName.Array,
+  items,
+  postgresType: `${items.postgresType}[]`,
+});
 
 export const pgTypeAliases: Record<string, keyof typeof pgTypes> = {
   bigint: 'int8',

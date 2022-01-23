@@ -1,4 +1,5 @@
 export {
+  AstTag,
   AnyCastTag,
   AnyTypeTag,
   ArrayColumnIndexTag,
@@ -310,6 +311,8 @@ export {
   TypeLoadColumnCast,
   OperatorVariantPart,
   OperatorVariant,
+  LoadName,
+  TypeName,
 } from './query-interface.types';
 
 export {

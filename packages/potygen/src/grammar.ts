@@ -360,7 +360,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       All(Column, SquareBrackets(Any(ArrayIndexRange, ChildExpression))),
     );
     const ArrayIndex = astNode<Tag.ArrayIndexTag>('ArrayIndex', SquareBrackets(Any(ArrayIndexRange, ChildExpression)));
-    const CompositeAccess = astNode<Tag.CompositeAccessTag>('LoadCompositeAccess', All('.', Identifier));
+    const CompositeAccess = astNode<Tag.CompositeAccessTag>('CompositeAccess', All('.', Identifier));
 
     const RowKeyward = astNode<Tag.RowKeywardTag>('RowKeyward', All(/^ROW/i, Brackets(List(ChildExpression))));
     const Row = astNode<Tag.RowTag>('Row', Brackets(MultiList(ChildExpression)));
