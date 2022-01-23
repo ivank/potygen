@@ -57,9 +57,16 @@ import { inspect } from 'util';
 import { allSql, selectedSql } from './load.queries';
 import { toConstantBinaryOperatorVariant, toPgTypeConstant, toQueryInterface } from './query-interface';
 
+/**
+ * If a list of names is empty construct a list that delibertly wouldn't match anything.
+ * This is because sql cannot search for empty lists.
+ */
 const orEmptyNameList = (names: QualifiedName[]): QualifiedName[] =>
   names.length === 0 ? [{ name: '_', schema: '_' }] : names;
 
+/**
+ * Convert {@link LoadedDataRaw} into {@link LoadedData} by loading and parsing all the views
+ */
 const toLoadedData = async (
   ctx: LoadContext,
   currentData: LoadedData[],
@@ -99,6 +106,10 @@ export const loadAllData = async (ctx: LoadContext, currentData: LoadedData[]): 
   return await toLoadedData(ctx, currentData, loaded);
 };
 
+/**
+ * Convert {@link Data} object into their {@link LoadedData} counterparts.
+ * If any of them already exist in the `currentData` array, skip.
+ */
 export const loadData = async (ctx: LoadContext, currentData: LoadedData[], newData: Data[]): Promise<LoadedData[]> => {
   const data = newData.filter(notLoaded(currentData)).filter(isUniqueBy());
   const tableNames = data.filter(isDataTable).map(({ name }) => name);
@@ -132,6 +143,9 @@ export const loadData = async (ctx: LoadContext, currentData: LoadedData[], newD
   return await toLoadedData(ctx, currentData, loaded);
 };
 
+/**
+ * Find which {@link DataTable} to load from {@link Source} array
+ */
 const toSourceTables = (source: Source): DataTable[] => {
   switch (source.type) {
     case 'Table':
@@ -143,6 +157,9 @@ const toSourceTables = (source: Source): DataTable[] => {
   }
 };
 
+/**
+ * Find which additional data needs to be loaded for {@link TypeOrLoad} to be converted to {@link Type}
+ */
 const extractDataFromType = (type: TypeOrLoad): Data[] => {
   switch (type.type) {
     case TypeName.LoadRecord:
@@ -168,8 +185,14 @@ const extractDataFromType = (type: TypeOrLoad): Data[] => {
   }
 };
 
+/**
+ * Get all {@link DataTable} to be loaded for the given {@link Source} array
+ */
 export const extractDataSources = (sources: Source[]): DataTable[] => sources.flatMap(toSourceTables);
 
+/**
+ * Get all the {@link Data} needed to load a {@link QueryInterface} and convert it to {@link LoadedQueryInterface}
+ */
 const extractDataFromQueryInterface = ({ sources, params, results }: QueryInterface): Data[] => [
   ...extractDataSources(sources),
   ...params.flatMap(({ type, pick }) => [
@@ -179,11 +202,17 @@ const extractDataFromQueryInterface = ({ sources, params, results }: QueryInterf
   ...results.flatMap(({ type }) => extractDataFromType(type)),
 ];
 
+/**
+ * Has a {@link Data} object already been loaded
+ */
 const notLoaded =
   (data: LoadedData[]) =>
   ({ type, name }: Data) =>
     !data.some((item) => type === item.type && isEqual(name, item.name));
 
+/**
+ * Convert a {@link Param} to a {@link LoadedParam} by loading the underlying {@link TypeOrLoad} and converting it to {@link Type}
+ */
 const toLoadedParam =
   (toType: (type: TypeOrLoad) => Type) =>
   ({ name, type, pick, spread, required }: Param): LoadedParam => {
@@ -199,6 +228,9 @@ const toLoadedParam =
     return { name, type: spread ? { type: TypeName.Array, items: paramType, postgresType: 'anyarray' } : paramType };
   };
 
+/**
+ * Group {@link LoadedParam} with the same name into a union of their types.
+ */
 const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
   Object.entries(groupBy((param) => param.name, params)).map(([name, params]) =>
     params.length === 1
@@ -214,6 +246,9 @@ const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
         },
   );
 
+/**
+ * Determine the {@link Type} for a postgres data type
+ */
 const loadPgType = (type: string, nullable?: boolean, comment?: string): Type => {
   const sqlType = toPgTypeConstant(type);
   if (!sqlType) {
@@ -224,7 +259,10 @@ const loadPgType = (type: string, nullable?: boolean, comment?: string): Type =>
     : { ...sqlType, comment, postgresType: type };
 };
 
-const dataColumnToTypeConstant = (
+/**
+ * Determine the {@link Type} of a column. Load the user defined types like enums and composites.
+ */
+const dataColumnToType = (
   composites: TypeComposite[],
   enums: Record<string, TypeUnion>,
   column: LoadedDataTable['data'][0],
@@ -335,7 +373,7 @@ const toLoadedSource = ({
           schema: table.name.schema,
           isResult: source.isResult,
           items: table.data.reduce<Record<string, Type>>(
-            (acc, column) => ({ ...acc, [column.name]: dataColumnToTypeConstant(composites, enums, column) }),
+            (acc, column) => ({ ...acc, [column.name]: dataColumnToType(composites, enums, column) }),
             {},
           ),
         };

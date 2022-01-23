@@ -17,14 +17,23 @@ import {
   LoadedSource,
 } from '../load.types';
 import { toLoadedContext, filterUnknownLoadedContext, throwOnUnknownLoadedContext } from '../load';
-import { isLoadedDataTable, isLoadedDataComposite, isLoadedDataEnum, isLoadedDataView } from '../load.guards';
+import {
+  isLoadedDataTable,
+  isLoadedDataComposite,
+  isLoadedDataEnum,
+  isLoadedDataView,
+  isLoadedSourceTable,
+  isLoadedSourceView,
+} from '../load.guards';
 import { inspect } from 'util';
 import { quickInfoColumn, quickInfoEnum, quickInfoSource, quickInfoTable, quickInfoView } from './formatters';
 import { LoadError } from '../errors';
 import { AstTag } from '../grammar.types';
 import { Info, pathToInfo } from './info';
-import { isLoadedSourceTable, isLoadedSourceView } from '..';
 
+/**
+ * A point of interest ({@link Info}) alongiside its context - AST, path and the query context
+ */
 interface LoadedInfo {
   info: Info;
   ast: AstTag;
@@ -32,6 +41,9 @@ interface LoadedInfo {
   query: LoadedContext;
 }
 
+/**
+ * Some common types to return in completions of types, alongside user defined ones.
+ */
 const commonTypes = ['bool', 'char', 'varchar', 'int', 'decimal', 'float', 'serial', 'date', 'timestamp', 'time'];
 
 const toInfoLoadedContext = (data: LoadedData[], sql: string): InfoLoadedQuery => {
@@ -40,6 +52,9 @@ const toInfoLoadedContext = (data: LoadedData[], sql: string): InfoLoadedQuery =
   return { ast, query: filterUnknownLoadedContext(toLoadedContext({ data, sources })) };
 };
 
+/**
+ * Get the {@link LoadedInfo} at a certain position
+ */
 const toLoadedInfo = (ctx: InfoContext, sql: string, offset: number): LoadedInfo | undefined => {
   const { ast, query } = ctx.cache.get(sql) ?? ctx.cache.set(sql, toInfoLoadedContext(ctx.data, sql));
 
@@ -60,12 +75,18 @@ const toLoadedInfo = (ctx: InfoContext, sql: string, offset: number): LoadedInfo
   return { ast, path, info, query };
 };
 
+/**
+ * Initialize the {@link InfoContext} with a cache
+ */
 export const toInfoContext = (data: LoadedData[], logger: Logger): InfoContext => ({
   data,
   logger,
   cache: new LRUCache<string, InfoLoadedQuery>(),
 });
 
+/**
+ * Find the {@link LoadedData} of a certain type and a name
+ */
 const toNamedData = <T extends LoadedData>(
   ctx: InfoContext,
   predicate: (item: LoadedData) => item is T,
@@ -75,6 +96,9 @@ const toNamedData = <T extends LoadedData>(
     .filter(predicate)
     .filter((table) => table.name.schema === (schema ?? 'public') && table.name.name === (name ?? table.name.name));
 
+/**
+ * Find the {@link LoadedSource} of a certain name
+ */
 const toNamedSource = (query: LoadedContext, name: { source?: string; name: string }): LoadedSource | undefined =>
   name.source
     ? query.sources.find((source) => source.name === name.source)

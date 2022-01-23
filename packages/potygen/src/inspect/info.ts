@@ -49,6 +49,10 @@ interface InfoCast extends InfoBase {
   name: string;
   type: 'Cast';
 }
+
+/**
+ * The closest point of interest at a given position
+ */
 export type Info = InfoColumn | InfoSource | InfoSchema | InfoTable | InfoEnumVariant | InfoCast;
 
 const closestIdentifier = closestParent(isIdentifier);
@@ -64,6 +68,9 @@ const closestPgCastPath = closestParentPath(isPgCast);
 
 const toPos = ({ start, end }: Tag): { start: number; end: number } => ({ start, end });
 
+/**
+ * Determine the closest point of interest ({@link Info}) from a path to a given position in the sql AST
+ */
 export const pathToInfo = (path: Path): Info | undefined => {
   const identifier = closestIdentifier(path);
 
