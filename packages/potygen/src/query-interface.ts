@@ -367,9 +367,10 @@ const toType =
         return { type: 'LoadNamed', value: { ...typeString, postgresType: 'row' }, name: 'row', sourceTag: sql };
       case 'Select':
         return {
-          type: 'Optional',
+          type: 'LoadOptional',
           nullable: true,
           value: recur(sql.values.filter(isSelectList)[0].values[0].values[0]),
+          sourceTag: sql,
         };
       case 'StarIdentifier':
         return {
@@ -426,7 +427,7 @@ const toResultName = (type: Type): string => {
     case 'LoadNamed':
       return type.name;
     case 'LoadArrayItem':
-    case 'Optional':
+    case 'LoadOptional':
       return toResultName(type.value);
     case 'LoadArray':
     case 'Array':

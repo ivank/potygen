@@ -194,7 +194,7 @@ const toLoadedParam =
             items: pick.map((item) => ({ name: item.name, type: toType(item.type) })),
             postgresType: 'json',
           }
-        : { type: 'OptionalConstant', nullable: !required, value: toType(type), postgresType: 'any' };
+        : { type: 'Optional', nullable: !required, value: toType(type), postgresType: 'any' };
     return { name, type: spread ? { type: 'Array', items: paramType, postgresType: 'anyarray' } : paramType };
   };
 
@@ -469,7 +469,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
         const castType = recur(type.value);
         return 'nullable' in columnType
           ? {
-              type: 'OptionalConstant',
+              type: 'Optional',
               value: castType,
               nullable: columnType.nullable,
               postgresType: columnType.postgresType,
@@ -504,10 +504,10 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
         }
       case 'LoadStar':
         throw new LoadError(type.sourceTag, 'Should never have load star here');
-      case 'Optional':
+      case 'LoadOptional':
         const optionalType = recur(type.value);
         return {
-          type: 'OptionalConstant',
+          type: 'Optional',
           nullable: type.nullable,
           value: optionalType,
           postgresType: optionalType.postgresType,

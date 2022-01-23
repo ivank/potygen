@@ -30,8 +30,8 @@ import {
   TypeLoadAsArray,
   TypeComposite,
   TypeLoadCompositeAccess,
+  TypeLoadOptional,
   TypeOptional,
-  TypeOptionalConstant,
   TypeLoadColumnCast,
   SourceValues,
   Source,
@@ -55,7 +55,7 @@ const typeConstant = [
   'LiteralString',
   'LiteralBoolean',
   'Composite',
-  'OptionalConstant',
+  'Optional',
 ];
 const typeNullable = [
   'String',
@@ -67,7 +67,7 @@ const typeNullable = [
   'Array',
   'Union',
   'Composite',
-  'OptionalConstant',
+  'Optional',
 ];
 const typeLiteral = ['String', 'Number', 'Boolean', 'BigInt'];
 
@@ -108,8 +108,8 @@ export const isTypeLoadArrayItem = (type: Type): type is TypeLoadArrayItem => ty
 export const isTypeComposite = (type: Type): type is TypeComposite => type.type === 'Composite';
 export const isTypeLoadCompositeAccess = (type: Type): type is TypeLoadCompositeAccess =>
   type.type === 'LoadCompositeAccess';
+export const isTypeLoadOptional = (type: Type): type is TypeLoadOptional => type.type === 'LoadOptional';
 export const isTypeOptional = (type: Type): type is TypeOptional => type.type === 'Optional';
-export const isTypeOptionalConstant = (type: Type): type is TypeOptionalConstant => type.type === 'OptionalConstant';
 export const isTypeLoadColumnCast = (type: Type): type is TypeLoadColumnCast => type.type === 'LoadColumnCast';
 
 export const isTypeEqual = (a: Type, b: Type): boolean => {
@@ -131,8 +131,8 @@ export const isTypeEqual = (a: Type, b: Type): boolean => {
   } else if ('literal' in a && 'literal' in b) {
     return a.type === b.type && a.literal === b.literal;
   } else if (
-    (a.type === 'Optional' && b.type === 'Optional') ||
-    (a.type === 'OptionalConstant' && b.type === 'OptionalConstant')
+    (a.type === 'LoadOptional' && b.type === 'LoadOptional') ||
+    (a.type === 'Optional' && b.type === 'Optional')
   ) {
     return isTypeEqual(a.value, b.value);
   } else {

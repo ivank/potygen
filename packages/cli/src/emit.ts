@@ -28,7 +28,7 @@ import {
   isTypeEqual,
   isTypeComposite,
   isUniqueBy,
-  isTypeOptionalConstant,
+  isTypeOptional,
 } from '@potygen/potygen';
 
 const mkdirAsync = promisify(mkdir);
@@ -59,7 +59,7 @@ const withJSDoc = <T extends Node>(doc: string | undefined, node: T): T =>
 
 export const compactTypes = (types: TypeConstant[]): TypeConstant[] =>
   types
-    .map((type) => (isTypeOptionalConstant(type) ? { ...type.value, nullable: type.nullable } : type))
+    .map((type) => (isTypeOptional(type) ? { ...type.value, nullable: type.nullable } : type))
     .filter((item, index, all) =>
       isTypeLiteral(item) && item.literal !== undefined
         ? !all.some(
@@ -99,7 +99,7 @@ const toPropertyType =
         },
         { ...context, type: factory.createUnionTypeNode([]) },
       );
-    } else if (isTypeOptionalConstant(type)) {
+    } else if (isTypeOptional(type)) {
       return toPropertyType(context)(type.value);
     } else {
       switch (type.type) {

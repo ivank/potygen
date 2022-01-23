@@ -171,13 +171,13 @@ export interface TypeObjectLiteral extends BaseTypeLoaded {
   type: 'ObjectLiteral';
   items: Array<{ name: string; type: TypeConstant }>;
 }
-export interface TypeOptional {
-  type: 'Optional';
+export interface TypeLoadOptional extends BaseTypeLoad {
+  type: 'LoadOptional';
   nullable?: boolean;
   value: Type;
 }
-export interface TypeOptionalConstant extends BaseTypeLoaded {
-  type: 'OptionalConstant';
+export interface TypeOptional extends BaseTypeLoaded {
+  type: 'Optional';
   value: TypeConstant;
 }
 
@@ -193,7 +193,7 @@ export type TypeNullable =
   | TypeJson
   | TypeArray
   | TypeUnion
-  | TypeOptional;
+  | TypeLoadOptional;
 
 export type TypeConstant =
   | TypeBuffer
@@ -210,10 +210,10 @@ export type TypeConstant =
   | TypeArray
   | TypeUnion
   | TypeObjectLiteral
-  | TypeOptionalConstant;
+  | TypeOptional;
 
 export type Type =
-  | TypeOptional
+  | TypeLoadOptional
   | TypeConstant
   | TypeLoadColumn
   | TypeLoadFunction

@@ -6303,7 +6303,495 @@ Object {
       "name": "currentPeriodRead",
       "type": Object {
         "nullable": true,
-        "type": "Optional",
+        "sourceTag": Object {
+          "end": 703,
+          "start": 151,
+          "tag": "Select",
+          "values": Array [
+            Object {
+              "end": 436,
+              "start": 164,
+              "tag": "SelectList",
+              "values": Array [
+                Object {
+                  "end": 436,
+                  "start": 164,
+                  "tag": "SelectListItem",
+                  "values": Array [
+                    Object {
+                      "end": 426,
+                      "start": 164,
+                      "tag": "Function",
+                      "values": Array [
+                        Object {
+                          "end": 180,
+                          "start": 164,
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "end": 180,
+                              "start": 164,
+                              "tag": "UnquotedIdentifier",
+                              "value": "json_build_object",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 194,
+                          "start": 191,
+                          "tag": "String",
+                          "value": "id",
+                        },
+                        Object {
+                          "end": 212,
+                          "start": 197,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 209,
+                              "start": 197,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 212,
+                              "start": 211,
+                              "tag": "UnquotedIdentifier",
+                              "value": "id",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 229,
+                          "start": 223,
+                          "tag": "String",
+                          "value": "value",
+                        },
+                        Object {
+                          "end": 250,
+                          "start": 232,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 244,
+                              "start": 232,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 250,
+                              "start": 246,
+                              "tag": "UnquotedIdentifier",
+                              "value": "value",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 268,
+                          "start": 261,
+                          "tag": "String",
+                          "value": "dateOn",
+                        },
+                        Object {
+                          "end": 291,
+                          "start": 271,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 283,
+                              "start": 271,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 291,
+                              "start": 285,
+                              "tag": "UnquotedIdentifier",
+                              "value": "date_on",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 314,
+                          "start": 302,
+                          "tag": "String",
+                          "value": "submittedAt",
+                        },
+                        Object {
+                          "end": 342,
+                          "start": 317,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 329,
+                              "start": 317,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 342,
+                              "start": 331,
+                              "tag": "UnquotedIdentifier",
+                              "value": "submitted_at",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 360,
+                          "start": 353,
+                          "tag": "String",
+                          "value": "reason",
+                        },
+                        Object {
+                          "end": 382,
+                          "start": 363,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 375,
+                              "start": 363,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 382,
+                              "start": 377,
+                              "tag": "UnquotedIdentifier",
+                              "value": "reason",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 398,
+                          "start": 393,
+                          "tag": "String",
+                          "value": "type",
+                        },
+                        Object {
+                          "end": 418,
+                          "start": 401,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 413,
+                              "start": 401,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 418,
+                              "start": 415,
+                              "tag": "UnquotedIdentifier",
+                              "value": "type",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 436,
+                      "start": 428,
+                      "tag": "As",
+                      "values": Array [
+                        Object {
+                          "end": 436,
+                          "start": 431,
+                          "tag": "QuotedIdentifier",
+                          "value": "read",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 475,
+              "start": 442,
+              "tag": "From",
+              "values": Array [
+                Object {
+                  "end": 475,
+                  "start": 447,
+                  "tag": "FromList",
+                  "values": Array [
+                    Object {
+                      "end": 475,
+                      "start": 447,
+                      "tag": "Table",
+                      "values": Array [
+                        Object {
+                          "end": 458,
+                          "start": 447,
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "end": 458,
+                              "start": 447,
+                              "tag": "UnquotedIdentifier",
+                              "value": "active_reads",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 475,
+                          "start": 460,
+                          "tag": "As",
+                          "values": Array [
+                            Object {
+                              "end": 475,
+                              "start": 463,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 645,
+              "start": 481,
+              "tag": "Where",
+              "values": Array [
+                Object {
+                  "end": 645,
+                  "start": 493,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "end": 645,
+                      "start": 493,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "end": 526,
+                          "start": 493,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "end": 514,
+                              "start": 493,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 505,
+                                  "start": 493,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "current_reads",
+                                },
+                                Object {
+                                  "end": 514,
+                                  "start": 507,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "meter_id",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 516,
+                              "start": 516,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 526,
+                              "start": 518,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 523,
+                                  "start": 518,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "meters",
+                                },
+                                Object {
+                                  "end": 526,
+                                  "start": 525,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "id",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 530,
+                          "start": 528,
+                          "tag": "BinaryOperator",
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 573,
+                          "start": 532,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "end": 549,
+                              "start": 532,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 544,
+                                  "start": 532,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "current_reads",
+                                },
+                                Object {
+                                  "end": 549,
+                                  "start": 546,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "type",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 552,
+                              "start": 551,
+                              "tag": "BinaryOperator",
+                              "value": "<>",
+                            },
+                            Object {
+                              "end": 573,
+                              "start": 554,
+                              "tag": "String",
+                              "value": "Meter Verification",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 583,
+                      "start": 581,
+                      "tag": "BinaryOperator",
+                      "value": "AND",
+                    },
+                    Object {
+                      "end": 645,
+                      "start": 585,
+                      "tag": "TernaryExpression",
+                      "values": Array [
+                        Object {
+                          "end": 605,
+                          "start": 585,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 597,
+                              "start": 585,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 605,
+                              "start": 599,
+                              "tag": "UnquotedIdentifier",
+                              "value": "date_on",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 613,
+                          "start": 607,
+                          "tag": "TernaryOperator",
+                          "value": "BETWEEN",
+                        },
+                        Object {
+                          "end": 628,
+                          "pick": Array [],
+                          "required": false,
+                          "start": 615,
+                          "tag": "Parameter",
+                          "type": "single",
+                          "value": "intervalStart",
+                        },
+                        Object {
+                          "end": 632,
+                          "start": 630,
+                          "tag": "TernarySeparator",
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 645,
+                          "pick": Array [],
+                          "required": false,
+                          "start": 634,
+                          "tag": "Parameter",
+                          "type": "single",
+                          "value": "intervalEnd",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 691,
+              "start": 651,
+              "tag": "OrderBy",
+              "values": Array [
+                Object {
+                  "end": 691,
+                  "start": 666,
+                  "tag": "OrderByItem",
+                  "values": Array [
+                    Object {
+                      "end": 686,
+                      "start": 666,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "end": 678,
+                          "start": 666,
+                          "tag": "UnquotedIdentifier",
+                          "value": "current_reads",
+                        },
+                        Object {
+                          "end": 686,
+                          "start": 680,
+                          "tag": "UnquotedIdentifier",
+                          "value": "date_on",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 691,
+                      "start": 688,
+                      "tag": "OrderDirection",
+                      "value": "DESC",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 703,
+              "start": 697,
+              "tag": "Limit",
+              "values": Array [
+                Object {
+                  "end": 703,
+                  "start": 703,
+                  "tag": "Count",
+                  "values": Array [
+                    Object {
+                      "end": 703,
+                      "start": 703,
+                      "tag": "Integer",
+                      "value": "1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadOptional",
         "value": Object {
           "items": Array [
             Object {
@@ -6653,7 +7141,480 @@ Object {
       "name": "previousPeriodRead",
       "type": Object {
         "nullable": true,
-        "type": "Optional",
+        "sourceTag": Object {
+          "end": 1281,
+          "start": 741,
+          "tag": "Select",
+          "values": Array [
+            Object {
+              "end": 1032,
+              "start": 754,
+              "tag": "SelectList",
+              "values": Array [
+                Object {
+                  "end": 1032,
+                  "start": 754,
+                  "tag": "SelectListItem",
+                  "values": Array [
+                    Object {
+                      "end": 1022,
+                      "start": 754,
+                      "tag": "Function",
+                      "values": Array [
+                        Object {
+                          "end": 770,
+                          "start": 754,
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "end": 770,
+                              "start": 754,
+                              "tag": "UnquotedIdentifier",
+                              "value": "json_build_object",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 784,
+                          "start": 781,
+                          "tag": "String",
+                          "value": "id",
+                        },
+                        Object {
+                          "end": 803,
+                          "start": 787,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 800,
+                              "start": 787,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 803,
+                              "start": 802,
+                              "tag": "UnquotedIdentifier",
+                              "value": "id",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 820,
+                          "start": 814,
+                          "tag": "String",
+                          "value": "value",
+                        },
+                        Object {
+                          "end": 842,
+                          "start": 823,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 836,
+                              "start": 823,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 842,
+                              "start": 838,
+                              "tag": "UnquotedIdentifier",
+                              "value": "value",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 860,
+                          "start": 853,
+                          "tag": "String",
+                          "value": "dateOn",
+                        },
+                        Object {
+                          "end": 884,
+                          "start": 863,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 876,
+                              "start": 863,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 884,
+                              "start": 878,
+                              "tag": "UnquotedIdentifier",
+                              "value": "date_on",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 907,
+                          "start": 895,
+                          "tag": "String",
+                          "value": "submittedAt",
+                        },
+                        Object {
+                          "end": 936,
+                          "start": 910,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 923,
+                              "start": 910,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 936,
+                              "start": 925,
+                              "tag": "UnquotedIdentifier",
+                              "value": "submitted_at",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 954,
+                          "start": 947,
+                          "tag": "String",
+                          "value": "reason",
+                        },
+                        Object {
+                          "end": 977,
+                          "start": 957,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 970,
+                              "start": 957,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 977,
+                              "start": 972,
+                              "tag": "UnquotedIdentifier",
+                              "value": "reason",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 993,
+                          "start": 988,
+                          "tag": "String",
+                          "value": "type",
+                        },
+                        Object {
+                          "end": 1014,
+                          "start": 996,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 1009,
+                              "start": 996,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 1014,
+                              "start": 1011,
+                              "tag": "UnquotedIdentifier",
+                              "value": "type",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 1032,
+                      "start": 1024,
+                      "tag": "As",
+                      "values": Array [
+                        Object {
+                          "end": 1032,
+                          "start": 1027,
+                          "tag": "QuotedIdentifier",
+                          "value": "read",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 1072,
+              "start": 1038,
+              "tag": "From",
+              "values": Array [
+                Object {
+                  "end": 1072,
+                  "start": 1043,
+                  "tag": "FromList",
+                  "values": Array [
+                    Object {
+                      "end": 1072,
+                      "start": 1043,
+                      "tag": "Table",
+                      "values": Array [
+                        Object {
+                          "end": 1054,
+                          "start": 1043,
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "end": 1054,
+                              "start": 1043,
+                              "tag": "UnquotedIdentifier",
+                              "value": "active_reads",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 1072,
+                          "start": 1056,
+                          "tag": "As",
+                          "values": Array [
+                            Object {
+                              "end": 1072,
+                              "start": 1059,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 1222,
+              "start": 1078,
+              "tag": "Where",
+              "values": Array [
+                Object {
+                  "end": 1222,
+                  "start": 1090,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "end": 1222,
+                      "start": 1090,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "end": 1124,
+                          "start": 1090,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "end": 1112,
+                              "start": 1090,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 1103,
+                                  "start": 1090,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "previous_reads",
+                                },
+                                Object {
+                                  "end": 1112,
+                                  "start": 1105,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "meter_id",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1114,
+                              "start": 1114,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 1124,
+                              "start": 1116,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 1121,
+                                  "start": 1116,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "meters",
+                                },
+                                Object {
+                                  "end": 1124,
+                                  "start": 1123,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "id",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 1128,
+                          "start": 1126,
+                          "tag": "BinaryOperator",
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 1172,
+                          "start": 1130,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "end": 1148,
+                              "start": 1130,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 1143,
+                                  "start": 1130,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "previous_reads",
+                                },
+                                Object {
+                                  "end": 1148,
+                                  "start": 1145,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "type",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1151,
+                              "start": 1150,
+                              "tag": "BinaryOperator",
+                              "value": "<>",
+                            },
+                            Object {
+                              "end": 1172,
+                              "start": 1153,
+                              "tag": "String",
+                              "value": "Meter Verification",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 1182,
+                      "start": 1180,
+                      "tag": "BinaryOperator",
+                      "value": "AND",
+                    },
+                    Object {
+                      "end": 1222,
+                      "start": 1184,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "end": 1205,
+                          "start": 1184,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 1197,
+                              "start": 1184,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 1205,
+                              "start": 1199,
+                              "tag": "UnquotedIdentifier",
+                              "value": "date_on",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 1207,
+                          "start": 1207,
+                          "tag": "BinaryOperator",
+                          "value": "<",
+                        },
+                        Object {
+                          "end": 1222,
+                          "pick": Array [],
+                          "required": false,
+                          "start": 1209,
+                          "tag": "Parameter",
+                          "type": "single",
+                          "value": "intervalStart",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 1269,
+              "start": 1228,
+              "tag": "OrderBy",
+              "values": Array [
+                Object {
+                  "end": 1269,
+                  "start": 1243,
+                  "tag": "OrderByItem",
+                  "values": Array [
+                    Object {
+                      "end": 1264,
+                      "start": 1243,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "end": 1256,
+                          "start": 1243,
+                          "tag": "UnquotedIdentifier",
+                          "value": "previous_reads",
+                        },
+                        Object {
+                          "end": 1264,
+                          "start": 1258,
+                          "tag": "UnquotedIdentifier",
+                          "value": "date_on",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 1269,
+                      "start": 1266,
+                      "tag": "OrderDirection",
+                      "value": "DESC",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 1281,
+              "start": 1275,
+              "tag": "Limit",
+              "values": Array [
+                Object {
+                  "end": 1281,
+                  "start": 1281,
+                  "tag": "Count",
+                  "values": Array [
+                    Object {
+                      "end": 1281,
+                      "start": 1281,
+                      "tag": "Integer",
+                      "value": "1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadOptional",
         "value": Object {
           "items": Array [
             Object {
@@ -7544,7 +8505,495 @@ Object {
       "name": "currentPeriodRead",
       "type": Object {
         "nullable": true,
-        "type": "Optional",
+        "sourceTag": Object {
+          "end": 739,
+          "start": 185,
+          "tag": "Select",
+          "values": Array [
+            Object {
+              "end": 470,
+              "start": 198,
+              "tag": "SelectList",
+              "values": Array [
+                Object {
+                  "end": 470,
+                  "start": 198,
+                  "tag": "SelectListItem",
+                  "values": Array [
+                    Object {
+                      "end": 460,
+                      "start": 198,
+                      "tag": "Function",
+                      "values": Array [
+                        Object {
+                          "end": 214,
+                          "start": 198,
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "end": 214,
+                              "start": 198,
+                              "tag": "UnquotedIdentifier",
+                              "value": "json_build_object",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 228,
+                          "start": 225,
+                          "tag": "String",
+                          "value": "id",
+                        },
+                        Object {
+                          "end": 246,
+                          "start": 231,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 243,
+                              "start": 231,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 246,
+                              "start": 245,
+                              "tag": "UnquotedIdentifier",
+                              "value": "id",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 263,
+                          "start": 257,
+                          "tag": "String",
+                          "value": "value",
+                        },
+                        Object {
+                          "end": 284,
+                          "start": 266,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 278,
+                              "start": 266,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 284,
+                              "start": 280,
+                              "tag": "UnquotedIdentifier",
+                              "value": "value",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 302,
+                          "start": 295,
+                          "tag": "String",
+                          "value": "dateOn",
+                        },
+                        Object {
+                          "end": 325,
+                          "start": 305,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 317,
+                              "start": 305,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 325,
+                              "start": 319,
+                              "tag": "UnquotedIdentifier",
+                              "value": "date_on",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 348,
+                          "start": 336,
+                          "tag": "String",
+                          "value": "submittedAt",
+                        },
+                        Object {
+                          "end": 376,
+                          "start": 351,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 363,
+                              "start": 351,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 376,
+                              "start": 365,
+                              "tag": "UnquotedIdentifier",
+                              "value": "submitted_at",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 394,
+                          "start": 387,
+                          "tag": "String",
+                          "value": "reason",
+                        },
+                        Object {
+                          "end": 416,
+                          "start": 397,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 409,
+                              "start": 397,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 416,
+                              "start": 411,
+                              "tag": "UnquotedIdentifier",
+                              "value": "reason",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 432,
+                          "start": 427,
+                          "tag": "String",
+                          "value": "type",
+                        },
+                        Object {
+                          "end": 452,
+                          "start": 435,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 447,
+                              "start": 435,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 452,
+                              "start": 449,
+                              "tag": "UnquotedIdentifier",
+                              "value": "type",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 470,
+                      "start": 462,
+                      "tag": "As",
+                      "values": Array [
+                        Object {
+                          "end": 470,
+                          "start": 465,
+                          "tag": "QuotedIdentifier",
+                          "value": "read",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 509,
+              "start": 476,
+              "tag": "From",
+              "values": Array [
+                Object {
+                  "end": 509,
+                  "start": 481,
+                  "tag": "FromList",
+                  "values": Array [
+                    Object {
+                      "end": 509,
+                      "start": 481,
+                      "tag": "Table",
+                      "values": Array [
+                        Object {
+                          "end": 492,
+                          "start": 481,
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "end": 492,
+                              "start": 481,
+                              "tag": "UnquotedIdentifier",
+                              "value": "active_reads",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 509,
+                          "start": 494,
+                          "tag": "As",
+                          "values": Array [
+                            Object {
+                              "end": 509,
+                              "start": 497,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 681,
+              "start": 515,
+              "tag": "Where",
+              "values": Array [
+                Object {
+                  "end": 681,
+                  "start": 527,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "end": 681,
+                      "start": 527,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "end": 560,
+                          "start": 527,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "end": 548,
+                              "start": 527,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 539,
+                                  "start": 527,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "current_reads",
+                                },
+                                Object {
+                                  "end": 548,
+                                  "start": 541,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "meter_id",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 550,
+                              "start": 550,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 560,
+                              "start": 552,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 557,
+                                  "start": 552,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "meters",
+                                },
+                                Object {
+                                  "end": 560,
+                                  "start": 559,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "id",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 564,
+                          "start": 562,
+                          "tag": "BinaryOperator",
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 607,
+                          "start": 566,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "end": 583,
+                              "start": 566,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 578,
+                                  "start": 566,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "current_reads",
+                                },
+                                Object {
+                                  "end": 583,
+                                  "start": 580,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "type",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 586,
+                              "start": 585,
+                              "tag": "BinaryOperator",
+                              "value": "<>",
+                            },
+                            Object {
+                              "end": 607,
+                              "start": 588,
+                              "tag": "String",
+                              "value": "Meter Verification",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 617,
+                      "start": 615,
+                      "tag": "BinaryOperator",
+                      "value": "AND",
+                    },
+                    Object {
+                      "end": 681,
+                      "start": 619,
+                      "tag": "TernaryExpression",
+                      "values": Array [
+                        Object {
+                          "end": 639,
+                          "start": 619,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 631,
+                              "start": 619,
+                              "tag": "UnquotedIdentifier",
+                              "value": "current_reads",
+                            },
+                            Object {
+                              "end": 639,
+                              "start": 633,
+                              "tag": "UnquotedIdentifier",
+                              "value": "date_on",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 647,
+                          "start": 641,
+                          "tag": "TernaryOperator",
+                          "value": "BETWEEN",
+                        },
+                        Object {
+                          "end": 663,
+                          "pick": Array [],
+                          "required": true,
+                          "start": 649,
+                          "tag": "Parameter",
+                          "type": "single",
+                          "value": "intervalStart",
+                        },
+                        Object {
+                          "end": 667,
+                          "start": 665,
+                          "tag": "TernarySeparator",
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 681,
+                          "pick": Array [],
+                          "required": true,
+                          "start": 669,
+                          "tag": "Parameter",
+                          "type": "single",
+                          "value": "intervalEnd",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 727,
+              "start": 687,
+              "tag": "OrderBy",
+              "values": Array [
+                Object {
+                  "end": 727,
+                  "start": 702,
+                  "tag": "OrderByItem",
+                  "values": Array [
+                    Object {
+                      "end": 722,
+                      "start": 702,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "end": 714,
+                          "start": 702,
+                          "tag": "UnquotedIdentifier",
+                          "value": "current_reads",
+                        },
+                        Object {
+                          "end": 722,
+                          "start": 716,
+                          "tag": "UnquotedIdentifier",
+                          "value": "date_on",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 727,
+                      "start": 724,
+                      "tag": "OrderDirection",
+                      "value": "DESC",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 739,
+              "start": 733,
+              "tag": "Limit",
+              "values": Array [
+                Object {
+                  "end": 739,
+                  "start": 739,
+                  "tag": "Count",
+                  "values": Array [
+                    Object {
+                      "end": 739,
+                      "start": 739,
+                      "tag": "Integer",
+                      "value": "1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadOptional",
         "value": Object {
           "items": Array [
             Object {
@@ -7894,7 +9343,480 @@ Object {
       "name": "previousPeriodRead",
       "type": Object {
         "nullable": true,
-        "type": "Optional",
+        "sourceTag": Object {
+          "end": 1318,
+          "start": 777,
+          "tag": "Select",
+          "values": Array [
+            Object {
+              "end": 1068,
+              "start": 790,
+              "tag": "SelectList",
+              "values": Array [
+                Object {
+                  "end": 1068,
+                  "start": 790,
+                  "tag": "SelectListItem",
+                  "values": Array [
+                    Object {
+                      "end": 1058,
+                      "start": 790,
+                      "tag": "Function",
+                      "values": Array [
+                        Object {
+                          "end": 806,
+                          "start": 790,
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "end": 806,
+                              "start": 790,
+                              "tag": "UnquotedIdentifier",
+                              "value": "json_build_object",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 820,
+                          "start": 817,
+                          "tag": "String",
+                          "value": "id",
+                        },
+                        Object {
+                          "end": 839,
+                          "start": 823,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 836,
+                              "start": 823,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 839,
+                              "start": 838,
+                              "tag": "UnquotedIdentifier",
+                              "value": "id",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 856,
+                          "start": 850,
+                          "tag": "String",
+                          "value": "value",
+                        },
+                        Object {
+                          "end": 878,
+                          "start": 859,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 872,
+                              "start": 859,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 878,
+                              "start": 874,
+                              "tag": "UnquotedIdentifier",
+                              "value": "value",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 896,
+                          "start": 889,
+                          "tag": "String",
+                          "value": "dateOn",
+                        },
+                        Object {
+                          "end": 920,
+                          "start": 899,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 912,
+                              "start": 899,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 920,
+                              "start": 914,
+                              "tag": "UnquotedIdentifier",
+                              "value": "date_on",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 943,
+                          "start": 931,
+                          "tag": "String",
+                          "value": "submittedAt",
+                        },
+                        Object {
+                          "end": 972,
+                          "start": 946,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 959,
+                              "start": 946,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 972,
+                              "start": 961,
+                              "tag": "UnquotedIdentifier",
+                              "value": "submitted_at",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 990,
+                          "start": 983,
+                          "tag": "String",
+                          "value": "reason",
+                        },
+                        Object {
+                          "end": 1013,
+                          "start": 993,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 1006,
+                              "start": 993,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 1013,
+                              "start": 1008,
+                              "tag": "UnquotedIdentifier",
+                              "value": "reason",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 1029,
+                          "start": 1024,
+                          "tag": "String",
+                          "value": "type",
+                        },
+                        Object {
+                          "end": 1050,
+                          "start": 1032,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 1045,
+                              "start": 1032,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 1050,
+                              "start": 1047,
+                              "tag": "UnquotedIdentifier",
+                              "value": "type",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 1068,
+                      "start": 1060,
+                      "tag": "As",
+                      "values": Array [
+                        Object {
+                          "end": 1068,
+                          "start": 1063,
+                          "tag": "QuotedIdentifier",
+                          "value": "read",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 1108,
+              "start": 1074,
+              "tag": "From",
+              "values": Array [
+                Object {
+                  "end": 1108,
+                  "start": 1079,
+                  "tag": "FromList",
+                  "values": Array [
+                    Object {
+                      "end": 1108,
+                      "start": 1079,
+                      "tag": "Table",
+                      "values": Array [
+                        Object {
+                          "end": 1090,
+                          "start": 1079,
+                          "tag": "QualifiedIdentifier",
+                          "values": Array [
+                            Object {
+                              "end": 1090,
+                              "start": 1079,
+                              "tag": "UnquotedIdentifier",
+                              "value": "active_reads",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 1108,
+                          "start": 1092,
+                          "tag": "As",
+                          "values": Array [
+                            Object {
+                              "end": 1108,
+                              "start": 1095,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 1259,
+              "start": 1114,
+              "tag": "Where",
+              "values": Array [
+                Object {
+                  "end": 1259,
+                  "start": 1126,
+                  "tag": "BinaryExpression",
+                  "values": Array [
+                    Object {
+                      "end": 1259,
+                      "start": 1126,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "end": 1160,
+                          "start": 1126,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "end": 1148,
+                              "start": 1126,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 1139,
+                                  "start": 1126,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "previous_reads",
+                                },
+                                Object {
+                                  "end": 1148,
+                                  "start": 1141,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "meter_id",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1150,
+                              "start": 1150,
+                              "tag": "BinaryOperator",
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 1160,
+                              "start": 1152,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 1157,
+                                  "start": 1152,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "meters",
+                                },
+                                Object {
+                                  "end": 1160,
+                                  "start": 1159,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "id",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 1164,
+                          "start": 1162,
+                          "tag": "BinaryOperator",
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 1208,
+                          "start": 1166,
+                          "tag": "BinaryExpression",
+                          "values": Array [
+                            Object {
+                              "end": 1184,
+                              "start": 1166,
+                              "tag": "Column",
+                              "values": Array [
+                                Object {
+                                  "end": 1179,
+                                  "start": 1166,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "previous_reads",
+                                },
+                                Object {
+                                  "end": 1184,
+                                  "start": 1181,
+                                  "tag": "UnquotedIdentifier",
+                                  "value": "type",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1187,
+                              "start": 1186,
+                              "tag": "BinaryOperator",
+                              "value": "<>",
+                            },
+                            Object {
+                              "end": 1208,
+                              "start": 1189,
+                              "tag": "String",
+                              "value": "Meter Verification",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 1218,
+                      "start": 1216,
+                      "tag": "BinaryOperator",
+                      "value": "AND",
+                    },
+                    Object {
+                      "end": 1259,
+                      "start": 1220,
+                      "tag": "BinaryExpression",
+                      "values": Array [
+                        Object {
+                          "end": 1241,
+                          "start": 1220,
+                          "tag": "Column",
+                          "values": Array [
+                            Object {
+                              "end": 1233,
+                              "start": 1220,
+                              "tag": "UnquotedIdentifier",
+                              "value": "previous_reads",
+                            },
+                            Object {
+                              "end": 1241,
+                              "start": 1235,
+                              "tag": "UnquotedIdentifier",
+                              "value": "date_on",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 1243,
+                          "start": 1243,
+                          "tag": "BinaryOperator",
+                          "value": "<",
+                        },
+                        Object {
+                          "end": 1259,
+                          "pick": Array [],
+                          "required": true,
+                          "start": 1245,
+                          "tag": "Parameter",
+                          "type": "single",
+                          "value": "intervalStart",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 1306,
+              "start": 1265,
+              "tag": "OrderBy",
+              "values": Array [
+                Object {
+                  "end": 1306,
+                  "start": 1280,
+                  "tag": "OrderByItem",
+                  "values": Array [
+                    Object {
+                      "end": 1301,
+                      "start": 1280,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "end": 1293,
+                          "start": 1280,
+                          "tag": "UnquotedIdentifier",
+                          "value": "previous_reads",
+                        },
+                        Object {
+                          "end": 1301,
+                          "start": 1295,
+                          "tag": "UnquotedIdentifier",
+                          "value": "date_on",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 1306,
+                      "start": 1303,
+                      "tag": "OrderDirection",
+                      "value": "DESC",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 1318,
+              "start": 1312,
+              "tag": "Limit",
+              "values": Array [
+                Object {
+                  "end": 1318,
+                  "start": 1318,
+                  "tag": "Count",
+                  "values": Array [
+                    Object {
+                      "end": 1318,
+                      "start": 1318,
+                      "tag": "Integer",
+                      "value": "1",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadOptional",
         "value": Object {
           "items": Array [
             Object {
