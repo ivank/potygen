@@ -542,7 +542,7 @@ export interface ArrayIndexTag extends NodeSqlTag {
  * ```
  */
 export interface CompositeAccessTag extends NodeSqlTag {
-  tag: 'CompositeAccess';
+  tag: 'LoadCompositeAccess';
   values: [field: IdentifierTag];
 }
 

@@ -51,7 +51,6 @@ Object {
             },
           ],
         ],
-        "index": 2,
         "left": Object {
           "items": Array [
             Object {
@@ -79,8 +78,48 @@ Object {
               "type": "Number",
             },
           ],
-          "type": "Coalesce",
+          "sourceTag": Object {
+            "end": 29,
+            "start": 7,
+            "tag": "Function",
+            "values": Array [
+              Object {
+                "end": 14,
+                "start": 7,
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "end": 14,
+                    "start": 7,
+                    "tag": "UnquotedIdentifier",
+                    "value": "COALESCE",
+                  },
+                ],
+              },
+              Object {
+                "end": 26,
+                "start": 16,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 26,
+                    "start": 16,
+                    "tag": "UnquotedIdentifier",
+                    "value": "numeric_col",
+                  },
+                ],
+              },
+              Object {
+                "end": 28,
+                "start": 28,
+                "tag": "Number",
+                "value": "0",
+              },
+            ],
+          },
+          "type": "LoadCoalesce",
         },
+        "part": 2,
         "right": Object {
           "items": Array [
             Object {
@@ -108,7 +147,46 @@ Object {
               "type": "Number",
             },
           ],
-          "type": "Coalesce",
+          "sourceTag": Object {
+            "end": 55,
+            "start": 33,
+            "tag": "Function",
+            "values": Array [
+              Object {
+                "end": 40,
+                "start": 33,
+                "tag": "QualifiedIdentifier",
+                "values": Array [
+                  Object {
+                    "end": 40,
+                    "start": 33,
+                    "tag": "UnquotedIdentifier",
+                    "value": "COALESCE",
+                  },
+                ],
+              },
+              Object {
+                "end": 52,
+                "start": 42,
+                "tag": "Column",
+                "values": Array [
+                  Object {
+                    "end": 52,
+                    "start": 42,
+                    "tag": "UnquotedIdentifier",
+                    "value": "numeric_col",
+                  },
+                ],
+              },
+              Object {
+                "end": 54,
+                "start": 54,
+                "tag": "Number",
+                "value": "0",
+              },
+            ],
+          },
+          "type": "LoadCoalesce",
         },
         "sourceTag": Object {
           "end": 55,
@@ -353,7 +431,6 @@ Object {
             },
           ],
         ],
-        "index": 2,
         "left": Object {
           "column": "col1",
           "schema": undefined,
@@ -373,6 +450,7 @@ Object {
           "table": undefined,
           "type": "LoadColumn",
         },
+        "part": 2,
         "right": Object {
           "column": "col2",
           "schema": undefined,
@@ -640,7 +718,98 @@ Object {
             "type": "String",
           },
         ],
-        "type": "Union",
+        "sourceTag": Object {
+          "end": 140,
+          "start": 26,
+          "tag": "CaseSimple",
+          "values": Array [
+            Object {
+              "end": 34,
+              "start": 31,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "end": 34,
+                  "start": 31,
+                  "tag": "UnquotedIdentifier",
+                  "value": "col1",
+                },
+              ],
+            },
+            Object {
+              "end": 71,
+              "start": 48,
+              "tag": "When",
+              "values": Array [
+                Object {
+                  "end": 54,
+                  "start": 53,
+                  "tag": "Number",
+                  "value": "12",
+                },
+                Object {
+                  "end": 71,
+                  "start": 61,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 66,
+                      "start": 61,
+                      "tag": "UnquotedIdentifier",
+                      "value": "table1",
+                    },
+                    Object {
+                      "end": 71,
+                      "start": 68,
+                      "tag": "UnquotedIdentifier",
+                      "value": "col1",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 101,
+              "start": 85,
+              "tag": "When",
+              "values": Array [
+                Object {
+                  "end": 91,
+                  "start": 90,
+                  "tag": "Number",
+                  "value": "20",
+                },
+                Object {
+                  "end": 101,
+                  "start": 98,
+                  "tag": "Column",
+                  "values": Array [
+                    Object {
+                      "end": 101,
+                      "start": 98,
+                      "tag": "UnquotedIdentifier",
+                      "value": "col2",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 126,
+              "start": 115,
+              "tag": "Else",
+              "values": Array [
+                Object {
+                  "end": 126,
+                  "start": 120,
+                  "tag": "String",
+                  "value": "other",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadUnion",
       },
     },
   ],
@@ -695,7 +864,46 @@ Object {
             "type": "String",
           },
         ],
-        "type": "Union",
+        "sourceTag": Object {
+          "end": 47,
+          "start": 7,
+          "tag": "Case",
+          "values": Array [
+            Object {
+              "end": 30,
+              "start": 12,
+              "tag": "When",
+              "values": Array [
+                Object {
+                  "end": 20,
+                  "start": 17,
+                  "tag": "Boolean",
+                  "value": "TRUE",
+                },
+                Object {
+                  "end": 30,
+                  "start": 27,
+                  "tag": "Boolean",
+                  "value": "TRUE",
+                },
+              ],
+            },
+            Object {
+              "end": 43,
+              "start": 32,
+              "tag": "Else",
+              "values": Array [
+                Object {
+                  "end": 43,
+                  "start": 37,
+                  "tag": "String",
+                  "value": "other",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadUnion",
       },
     },
   ],
@@ -1107,7 +1315,7 @@ Object {
             Object {
               "end": 24,
               "start": 13,
-              "tag": "CompositeAccess",
+              "tag": "LoadCompositeAccess",
               "values": Array [
                 Object {
                   "end": 24,
@@ -1119,7 +1327,7 @@ Object {
             },
           ],
         },
-        "type": "CompositeAccess",
+        "type": "LoadCompositeAccess",
         "value": Object {
           "column": "item",
           "schema": undefined,
@@ -1616,6 +1824,46 @@ Object {
           },
           "table": undefined,
           "type": "LoadColumn",
+        },
+        "sourceTag": Object {
+          "end": 22,
+          "start": 7,
+          "tag": "PgCast",
+          "values": Array [
+            Object {
+              "end": 8,
+              "start": 7,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "end": 8,
+                  "start": 7,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+            Object {
+              "end": 21,
+              "start": 11,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 21,
+                  "start": 11,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 21,
+                      "start": 11,
+                      "tag": "UnquotedIdentifier",
+                      "value": "custom_type",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
         },
         "type": "LoadColumnCast",
         "value": Object {
@@ -3084,7 +3332,40 @@ Object {
                   "table": undefined,
                   "type": "LoadColumn",
                 },
-                "type": "ToArray",
+                "sourceTag": Object {
+                  "end": 45,
+                  "start": 24,
+                  "tag": "Function",
+                  "values": Array [
+                    Object {
+                      "end": 32,
+                      "start": 24,
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "end": 32,
+                          "start": 24,
+                          "tag": "UnquotedIdentifier",
+                          "value": "ARRAY_AGG",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 44,
+                      "start": 34,
+                      "tag": "Column",
+                      "values": Array [
+                        Object {
+                          "end": 44,
+                          "start": 34,
+                          "tag": "UnquotedIdentifier",
+                          "value": "integer_col",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "type": "LoadAsArray",
               },
               Object {
                 "literal": 1,
@@ -3506,11 +3787,137 @@ Object {
                 "type": "Number",
               },
             },
-            "type": "Array",
+            "sourceTag": Object {
+              "end": 23,
+              "start": 15,
+              "tag": "ArrayType",
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 15,
+                  "tag": "Type",
+                  "values": Array [
+                    Object {
+                      "end": 17,
+                      "start": 15,
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "end": 17,
+                          "start": 15,
+                          "tag": "UnquotedIdentifier",
+                          "value": "int",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "end": 19,
+                  "start": 18,
+                  "tag": "Dimension",
+                },
+                Object {
+                  "end": 21,
+                  "start": 20,
+                  "tag": "Dimension",
+                },
+                Object {
+                  "end": 23,
+                  "start": 22,
+                  "tag": "Dimension",
+                },
+              ],
+            },
+            "type": "LoadArray",
           },
-          "type": "Array",
+          "sourceTag": Object {
+            "end": 23,
+            "start": 15,
+            "tag": "ArrayType",
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 15,
+                "tag": "Type",
+                "values": Array [
+                  Object {
+                    "end": 17,
+                    "start": 15,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 17,
+                        "start": 15,
+                        "tag": "UnquotedIdentifier",
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 19,
+                "start": 18,
+                "tag": "Dimension",
+              },
+              Object {
+                "end": 21,
+                "start": 20,
+                "tag": "Dimension",
+              },
+              Object {
+                "end": 23,
+                "start": 22,
+                "tag": "Dimension",
+              },
+            ],
+          },
+          "type": "LoadArray",
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 23,
+          "start": 15,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 17,
+              "start": 15,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 15,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 17,
+                      "start": 15,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 19,
+              "start": 18,
+              "tag": "Dimension",
+            },
+            Object {
+              "end": 21,
+              "start": 20,
+              "tag": "Dimension",
+            },
+            Object {
+              "end": 23,
+              "start": 22,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
   ],
@@ -3528,11 +3935,137 @@ Object {
                 "type": "Number",
               },
             },
-            "type": "Array",
+            "sourceTag": Object {
+              "end": 23,
+              "start": 15,
+              "tag": "ArrayType",
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 15,
+                  "tag": "Type",
+                  "values": Array [
+                    Object {
+                      "end": 17,
+                      "start": 15,
+                      "tag": "QualifiedIdentifier",
+                      "values": Array [
+                        Object {
+                          "end": 17,
+                          "start": 15,
+                          "tag": "UnquotedIdentifier",
+                          "value": "int",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "end": 19,
+                  "start": 18,
+                  "tag": "Dimension",
+                },
+                Object {
+                  "end": 21,
+                  "start": 20,
+                  "tag": "Dimension",
+                },
+                Object {
+                  "end": 23,
+                  "start": 22,
+                  "tag": "Dimension",
+                },
+              ],
+            },
+            "type": "LoadArray",
           },
-          "type": "Array",
+          "sourceTag": Object {
+            "end": 23,
+            "start": 15,
+            "tag": "ArrayType",
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 15,
+                "tag": "Type",
+                "values": Array [
+                  Object {
+                    "end": 17,
+                    "start": 15,
+                    "tag": "QualifiedIdentifier",
+                    "values": Array [
+                      Object {
+                        "end": 17,
+                        "start": 15,
+                        "tag": "UnquotedIdentifier",
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 19,
+                "start": 18,
+                "tag": "Dimension",
+              },
+              Object {
+                "end": 21,
+                "start": 20,
+                "tag": "Dimension",
+              },
+              Object {
+                "end": 23,
+                "start": 22,
+                "tag": "Dimension",
+              },
+            ],
+          },
+          "type": "LoadArray",
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 23,
+          "start": 15,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 17,
+              "start": 15,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 15,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 17,
+                      "start": 15,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 19,
+              "start": 18,
+              "tag": "Dimension",
+            },
+            Object {
+              "end": 21,
+              "start": 20,
+              "tag": "Dimension",
+            },
+            Object {
+              "end": 23,
+              "start": 22,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
   ],
@@ -3664,7 +4197,74 @@ Object {
     Object {
       "name": "array",
       "type": Object {
-        "type": "ArrayItem",
+        "sourceTag": Object {
+          "end": 31,
+          "start": 7,
+          "tag": "WrappedExpression",
+          "values": Array [
+            Object {
+              "end": 21,
+              "start": 8,
+              "tag": "ArrayConstructor",
+              "values": Array [
+                Object {
+                  "end": 14,
+                  "start": 14,
+                  "tag": "Number",
+                  "value": "1",
+                },
+                Object {
+                  "end": 16,
+                  "start": 16,
+                  "tag": "Number",
+                  "value": "2",
+                },
+                Object {
+                  "end": 18,
+                  "start": 18,
+                  "tag": "Number",
+                  "value": "3",
+                },
+                Object {
+                  "end": 20,
+                  "start": 20,
+                  "tag": "Number",
+                  "value": "4",
+                },
+              ],
+            },
+            Object {
+              "end": 31,
+              "start": 23,
+              "tag": "ArrayIndex",
+              "values": Array [
+                Object {
+                  "end": 30,
+                  "start": 24,
+                  "tag": "ArrayIndexRange",
+                  "values": Array [
+                    Object {
+                      "end": 28,
+                      "pick": Array [],
+                      "required": false,
+                      "start": 24,
+                      "tag": "Parameter",
+                      "type": "single",
+                      "value": "from",
+                    },
+                    Object {
+                      "end": 30,
+                      "start": 30,
+                      "tag": "Number",
+                      "value": "3",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadArrayItem",
         "value": Object {
           "items": Object {
             "items": Array [
@@ -3689,9 +4289,71 @@ Object {
                 "type": "Number",
               },
             ],
-            "type": "Union",
+            "sourceTag": Object {
+              "end": 21,
+              "start": 8,
+              "tag": "ArrayConstructor",
+              "values": Array [
+                Object {
+                  "end": 14,
+                  "start": 14,
+                  "tag": "Number",
+                  "value": "1",
+                },
+                Object {
+                  "end": 16,
+                  "start": 16,
+                  "tag": "Number",
+                  "value": "2",
+                },
+                Object {
+                  "end": 18,
+                  "start": 18,
+                  "tag": "Number",
+                  "value": "3",
+                },
+                Object {
+                  "end": 20,
+                  "start": 20,
+                  "tag": "Number",
+                  "value": "4",
+                },
+              ],
+            },
+            "type": "LoadUnion",
           },
-          "type": "Array",
+          "sourceTag": Object {
+            "end": 21,
+            "start": 8,
+            "tag": "ArrayConstructor",
+            "values": Array [
+              Object {
+                "end": 14,
+                "start": 14,
+                "tag": "Number",
+                "value": "1",
+              },
+              Object {
+                "end": 16,
+                "start": 16,
+                "tag": "Number",
+                "value": "2",
+              },
+              Object {
+                "end": 18,
+                "start": 18,
+                "tag": "Number",
+                "value": "3",
+              },
+              Object {
+                "end": 20,
+                "start": 20,
+                "tag": "Number",
+                "value": "4",
+              },
+            ],
+          },
+          "type": "LoadArray",
         },
       },
     },
@@ -3955,7 +4617,39 @@ Object {
             "type": "Number",
           },
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 19,
+          "start": 15,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 17,
+              "start": 15,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 15,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 17,
+                      "start": 15,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 19,
+              "start": 18,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
   ],
@@ -3971,7 +4665,39 @@ Object {
             "type": "Number",
           },
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 19,
+          "start": 15,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 17,
+              "start": 15,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 17,
+                  "start": 15,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 17,
+                      "start": 15,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 19,
+              "start": 18,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
   ],
@@ -4511,7 +5237,49 @@ Object {
           "table": undefined,
           "type": "LoadColumn",
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 44,
+          "start": 30,
+          "tag": "ComparationArrayInclusion",
+          "values": Array [
+            Object {
+              "end": 31,
+              "start": 30,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "end": 31,
+                  "start": 30,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+            Object {
+              "end": 34,
+              "start": 33,
+              "tag": "ComparationArrayInclusionType",
+              "value": "IN",
+            },
+            Object {
+              "end": 44,
+              "pick": Array [
+                Object {
+                  "end": 43,
+                  "start": 42,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+              "required": false,
+              "start": 36,
+              "tag": "Parameter",
+              "type": "spread",
+              "value": "ids",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
   ],

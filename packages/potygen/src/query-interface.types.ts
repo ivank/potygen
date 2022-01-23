@@ -1,189 +1,184 @@
 import { TableTag, Tag } from './grammar.types';
 
-export interface TypeLoad {
+/**
+ * Types that need to pass "Load" step.
+ */
+export interface BaseTypeLoad {
+  /**
+   * The original sql tag that was used to load the type
+   */
   sourceTag: Tag;
 }
 
-export interface TypeString {
+/**
+ * Types that can be loaded from the database.
+ */
+export interface BaseTypeLoaded {
+  /**
+   * Comment originating from postgres
+   * https://www.postgresql.org/docs/current/sql-comment.html
+   */
+  comment?: string;
+  /**
+   * A string representing raw postgres type as string, loaded from the database
+   */
+  postgresType: string;
+  /**
+   * If the type originated from a column / field in the database that could be null.
+   */
+  nullable?: boolean;
+}
+
+export interface TypeString extends BaseTypeLoaded {
   type: 'String';
   literal?: string;
-  nullable?: boolean;
-  comment?: string;
-  postgresType: string;
 }
-export interface TypeBuffer {
+
+export interface TypeBuffer extends BaseTypeLoaded {
   type: 'Buffer';
-  nullable?: boolean;
-  comment?: string;
-  postgresType: string;
 }
-export interface TypeNumber {
+
+export interface TypeNumber extends BaseTypeLoaded {
   type: 'Number';
   literal?: number;
-  nullable?: boolean;
-  comment?: string;
-  postgresType: string;
 }
-export interface TypeBigInt {
+
+export interface TypeBigInt extends BaseTypeLoaded {
   type: 'BigInt';
   literal?: number;
-  nullable?: boolean;
-  comment?: string;
-  postgresType: string;
 }
-export interface TypeBoolean {
+
+export interface TypeBoolean extends BaseTypeLoaded {
   type: 'Boolean';
   literal?: boolean;
-  nullable?: boolean;
-  comment?: string;
-  postgresType: string;
 }
-export interface TypeDate {
+
+export interface TypeDate extends BaseTypeLoaded {
   type: 'Date';
-  nullable?: boolean;
-  comment?: string;
-  postgresType: string;
 }
-export interface TypeNull {
+
+export interface TypeNull extends BaseTypeLoaded {
   type: 'Null';
-  comment?: string;
-  postgresType: string;
 }
-export interface TypeJson {
+
+export interface TypeJson extends BaseTypeLoaded {
   type: 'Json';
-  nullable?: boolean;
-  comment?: string;
-  postgresType: string;
 }
-export interface TypeUnknown {
+export interface TypeUnknown extends BaseTypeLoaded {
   type: 'Unknown';
-  comment?: string;
-  postgresType: string;
 }
-export interface TypeAny {
+export interface TypeAny extends BaseTypeLoaded {
   type: 'Any';
-  comment?: string;
-  postgresType: string;
 }
-export interface TypeCoalesce {
-  type: 'Coalesce';
+export interface TypeLoadCoalesce extends BaseTypeLoad {
+  type: 'LoadCoalesce';
   items: Type[];
   comment?: string;
 }
-export interface TypeLoadColumnCast {
+export interface TypeLoadColumnCast extends BaseTypeLoad {
   type: 'LoadColumnCast';
   column: Type;
   value: Type;
 }
-export interface TypeLoadRecord extends TypeLoad {
+export interface TypeLoadRecord extends BaseTypeLoad {
   type: 'LoadRecord';
   name: string;
   schema?: string;
 }
-export interface TypeLoadFunction extends TypeLoad {
+export interface TypeLoadFunction extends BaseTypeLoad {
   type: 'LoadFunction';
   name: string;
   schema?: string;
   args: Type[];
 }
-export interface TypeLoadColumn extends TypeLoad {
+export interface TypeLoadColumn extends BaseTypeLoad {
   type: 'LoadColumn';
   column: string;
   table?: string;
   schema?: string;
 }
 
-export interface TypeLoadStar extends TypeLoad {
+export interface TypeLoadStar extends BaseTypeLoad {
   type: 'LoadStar';
   table?: string;
   schema?: string;
 }
-export interface TypeLoadFunctionArgument extends TypeLoad {
+export interface TypeLoadFunctionArgument extends BaseTypeLoad {
   type: 'LoadFunctionArgument';
   index: number;
   name: string;
   schema?: string;
   args: Type[];
 }
-export interface TypeLoadOperator extends TypeLoad {
+
+export interface TypeLoadOperator extends BaseTypeLoad {
   type: 'LoadOperator';
-  index: 0 | 1 | 2;
+  part: OperatorVariantPart;
   left: Type;
   right: Type;
-  available: Array<[TypeConstant, TypeConstant, TypeConstant]>;
+  available: OperatorVariant[];
 }
 export interface TypeNamed {
   type: 'Named';
   name: string;
   value: Type;
 }
-export interface TypeArray {
-  type: 'Array';
+export interface TypeLoadArray extends BaseTypeLoad {
+  type: 'LoadArray';
   items: Type;
 }
-export interface TypeToArray {
-  type: 'ToArray';
+/**
+ * Load the type and convert it to Array type if its not already an array
+ * Functions like ARRAY_AGG will do that for the result.
+ */
+export interface TypeLoadAsArray extends BaseTypeLoad {
+  type: 'LoadAsArray';
   items: Type;
 }
-export interface TypeArrayItem {
-  type: 'ArrayItem';
+export interface TypeLoadArrayItem extends BaseTypeLoad {
+  type: 'LoadArrayItem';
   value: Type;
 }
-export interface TypeCompositeAccess {
-  type: 'CompositeAccess';
+export interface TypeLoadCompositeAccess extends BaseTypeLoad {
+  type: 'LoadCompositeAccess';
   value: Type;
   name: string;
-  sourceTag: Tag;
 }
-export interface TypeCompositeConstant {
+export interface TypeCompositeConstant extends BaseTypeLoaded {
   type: 'CompositeConstant';
   name: string;
   schema?: string;
   attributes: Record<string, TypeConstant>;
-  comment?: string;
-  postgresType: string;
 }
-export interface TypeUnion {
-  type: 'Union';
+export interface TypeLoadUnion extends BaseTypeLoad {
+  type: 'LoadUnion';
   items: Type[];
 }
-export interface TypeArrayConstant {
-  type: 'ArrayConstant';
+export interface TypeArray extends BaseTypeLoaded {
+  type: 'Array';
   items: TypeConstant;
-  nullable?: boolean;
-  comment?: string;
-  postgresType: string;
 }
-export interface TypeUnionConstant {
+export interface TypeUnionConstant extends BaseTypeLoaded {
   type: 'UnionConstant';
   items: TypeConstant[];
-  nullable?: boolean;
-  comment?: string;
-  postgresType: string;
 }
 export interface TypeObjectLiteral {
   type: 'ObjectLiteral';
   items: Array<{ name: string; type: Type }>;
   nullable?: boolean;
 }
-export interface TypeObjectLiteralConstant {
+export interface TypeObjectLiteralConstant extends BaseTypeLoaded {
   type: 'ObjectLiteralConstant';
   items: Array<{ name: string; type: TypeConstant }>;
-  nullable?: boolean;
-  comment?: string;
-  postgresType: string;
 }
 export interface TypeOptional {
   type: 'Optional';
   nullable?: boolean;
   value: Type;
 }
-export interface TypeOptionalConstant {
+export interface TypeOptionalConstant extends BaseTypeLoaded {
   type: 'OptionalConstant';
-  nullable?: boolean;
   value: TypeConstant;
-  comment?: string;
-  postgresType: string;
 }
 
 export type TypeLiteral = TypeString | TypeNumber | TypeBigInt | TypeBoolean;
@@ -196,7 +191,7 @@ export type TypeNullable =
   | TypeBoolean
   | TypeDate
   | TypeJson
-  | TypeArrayConstant
+  | TypeArray
   | TypeUnionConstant
   | TypeOptional;
 
@@ -212,7 +207,7 @@ export type TypeConstant =
   | TypeJson
   | TypeUnknown
   | TypeCompositeConstant
-  | TypeArrayConstant
+  | TypeArray
   | TypeUnionConstant
   | TypeObjectLiteralConstant
   | TypeOptionalConstant;
@@ -227,14 +222,54 @@ export type Type =
   | TypeLoadStar
   | TypeLoadOperator
   | TypeNamed
-  | TypeCoalesce
-  | TypeArray
-  | TypeToArray
-  | TypeArrayItem
-  | TypeCompositeAccess
-  | TypeUnion
+  | TypeLoadCoalesce
+  | TypeLoadArray
+  | TypeLoadAsArray
+  | TypeLoadArrayItem
+  | TypeLoadCompositeAccess
+  | TypeLoadUnion
   | TypeLoadColumnCast
   | TypeObjectLiteral;
+
+/**
+ * Which part of the operator variant to use in {@link OperatorVariant}
+ * ```
+ * Left(0)─┐     ┌─Right(1)
+ *         ▼     ▼
+ *        113 + 423
+ *       └─────────┘
+ *            └▶Result(2)
+ * ```
+ */
+export const enum OperatorVariantPart {
+  Left = 0,
+  Right = 1,
+  Result = 2,
+}
+
+/**
+ * Tuple describing a variant of a binary operator expression.
+ * Exmaples of variants of "+":
+ *
+ * ```sql
+ * SELECT count + 321
+ * ```
+ * (number) + (number) -> (string)
+ *
+ * ```sql
+ * SELECT created_at + '1 DAY'
+ * ```
+ * (date) + (string) -> (date)
+ *
+ * ```
+ * Left(0)─┐     ┌─Right(1)
+ *         ▼     ▼
+ *        113 + 423
+ *       └─────────┘
+ *            └▶Result(2)
+ * ```
+ */
+export type OperatorVariant = [left: TypeConstant, right: TypeConstant, result: TypeConstant];
 
 export interface Result {
   name: string;
@@ -276,9 +311,21 @@ export interface SourceQuery {
   value: QueryInterface;
 }
 
+/**
+ * The "intput and output" of a query.
+ */
 export interface QueryInterface {
+  /**
+   * Input of the query. All the parameters
+   */
   params: Param[];
+  /**
+   * All the columns this query will return
+   */
   results: Result[];
+  /**
+   * The data sources that would be needed to fullfill the request.
+   */
   sources: Source[];
 }
 

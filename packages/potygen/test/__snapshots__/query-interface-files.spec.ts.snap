@@ -1353,7 +1353,90 @@ Object {
             "type": "Number",
           },
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 2813,
+          "start": 2809,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 2811,
+              "start": 2809,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 2811,
+                  "start": 2809,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 2811,
+                      "start": 2809,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 2813,
+              "start": 2812,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
+      },
+    },
+    Object {
+      "end": 2858,
+      "name": "ids",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 2855,
+      "type": Object {
+        "items": Object {
+          "name": "int4",
+          "type": "Named",
+          "value": Object {
+            "postgresType": "int4",
+            "type": "Number",
+          },
+        },
+        "sourceTag": Object {
+          "end": 2865,
+          "start": 2861,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 2863,
+              "start": 2861,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 2863,
+                  "start": 2861,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 2863,
+                      "start": 2861,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 2865,
+              "start": 2864,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
     Object {
@@ -2320,7 +2403,6 @@ Object {
             },
           ],
         ],
-        "index": 2,
         "left": Object {
           "column": "payload",
           "schema": undefined,
@@ -2346,6 +2428,7 @@ Object {
           "table": "issues",
           "type": "LoadColumn",
         },
+        "part": 2,
         "right": Object {
           "literal": "code",
           "postgresType": "text",
@@ -2425,7 +2508,6 @@ Object {
             },
           ],
         ],
-        "index": 2,
         "left": Object {
           "column": "payload",
           "schema": undefined,
@@ -2451,6 +2533,7 @@ Object {
           "table": "issues",
           "type": "LoadColumn",
         },
+        "part": 2,
         "right": Object {
           "literal": "params",
           "postgresType": "text",
@@ -2715,7 +2798,39 @@ Object {
             "type": "Number",
           },
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 204,
+          "start": 200,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 202,
+              "start": 200,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 202,
+                  "start": 200,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 202,
+                      "start": 200,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 204,
+              "start": 203,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
   ],
@@ -2827,7 +2942,39 @@ Object {
             "type": "Number",
           },
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 469,
+          "start": 465,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 467,
+              "start": 465,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 467,
+                  "start": 465,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 467,
+                      "start": 465,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 469,
+              "start": 468,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
   ],
@@ -3155,6 +3302,52 @@ Object {
           "table": "accounts",
           "type": "LoadColumn",
         },
+        "sourceTag": Object {
+          "end": 1768,
+          "start": 1748,
+          "tag": "PgCast",
+          "values": Array [
+            Object {
+              "end": 1758,
+              "start": 1748,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "end": 1755,
+                  "start": 1748,
+                  "tag": "UnquotedIdentifier",
+                  "value": "accounts",
+                },
+                Object {
+                  "end": 1758,
+                  "start": 1757,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+            Object {
+              "end": 1767,
+              "start": 1761,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 1767,
+                  "start": 1761,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 1767,
+                      "start": 1761,
+                      "tag": "UnquotedIdentifier",
+                      "value": "varchar",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
         "type": "LoadColumnCast",
         "value": Object {
           "name": "varchar",
@@ -3347,7 +3540,90 @@ Object {
             "type": "Number",
           },
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 2163,
+          "start": 2159,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 2161,
+              "start": 2159,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 2161,
+                  "start": 2159,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 2161,
+                      "start": 2159,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 2163,
+              "start": 2162,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
+      },
+    },
+    Object {
+      "end": 2195,
+      "name": "ids",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 2192,
+      "type": Object {
+        "items": Object {
+          "name": "int4",
+          "type": "Named",
+          "value": Object {
+            "postgresType": "int4",
+            "type": "Number",
+          },
+        },
+        "sourceTag": Object {
+          "end": 2202,
+          "start": 2198,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 2200,
+              "start": 2198,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 2200,
+                  "start": 2198,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 2200,
+                      "start": 2198,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 2202,
+              "start": 2201,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
   ],
@@ -3752,6 +4028,52 @@ Object {
           "table": "accounts",
           "type": "LoadColumn",
         },
+        "sourceTag": Object {
+          "end": 2074,
+          "start": 2054,
+          "tag": "PgCast",
+          "values": Array [
+            Object {
+              "end": 2064,
+              "start": 2054,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "end": 2061,
+                  "start": 2054,
+                  "tag": "UnquotedIdentifier",
+                  "value": "accounts",
+                },
+                Object {
+                  "end": 2064,
+                  "start": 2063,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+            Object {
+              "end": 2073,
+              "start": 2067,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 2073,
+                  "start": 2067,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 2073,
+                      "start": 2067,
+                      "tag": "UnquotedIdentifier",
+                      "value": "varchar",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
         "type": "LoadColumnCast",
         "value": Object {
           "name": "varchar",
@@ -3911,7 +4233,90 @@ Object {
             "type": "Number",
           },
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 2430,
+          "start": 2426,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 2428,
+              "start": 2426,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 2428,
+                  "start": 2426,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 2428,
+                      "start": 2426,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 2430,
+              "start": 2429,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
+      },
+    },
+    Object {
+      "end": 2462,
+      "name": "ids",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 2459,
+      "type": Object {
+        "items": Object {
+          "name": "int4",
+          "type": "Named",
+          "value": Object {
+            "postgresType": "int4",
+            "type": "Number",
+          },
+        },
+        "sourceTag": Object {
+          "end": 2469,
+          "start": 2465,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 2467,
+              "start": 2465,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 2467,
+                  "start": 2465,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 2467,
+                      "start": 2465,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 2469,
+              "start": 2468,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
     Object {
@@ -4361,7 +4766,46 @@ Object {
           "table": "contracts",
           "type": "LoadColumn",
         },
-        "type": "ToArray",
+        "sourceTag": Object {
+          "end": 433,
+          "start": 389,
+          "tag": "Function",
+          "values": Array [
+            Object {
+              "end": 397,
+              "start": 389,
+              "tag": "QualifiedIdentifier",
+              "values": Array [
+                Object {
+                  "end": 397,
+                  "start": 389,
+                  "tag": "UnquotedIdentifier",
+                  "value": "ARRAY_AGG",
+                },
+              ],
+            },
+            Object {
+              "end": 432,
+              "start": 399,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "end": 407,
+                  "start": 399,
+                  "tag": "UnquotedIdentifier",
+                  "value": "contracts",
+                },
+                Object {
+                  "end": 432,
+                  "start": 409,
+                  "tag": "UnquotedIdentifier",
+                  "value": "scheme_account_reference",
+                },
+              ],
+            },
+          ],
+        },
+        "type": "LoadAsArray",
       },
     },
   ],
@@ -12199,7 +12643,90 @@ Object {
             "type": "Number",
           },
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 289,
+          "start": 285,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 287,
+              "start": 285,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 287,
+                  "start": 285,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 287,
+                      "start": 285,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 289,
+              "start": 288,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
+      },
+    },
+    Object {
+      "end": 326,
+      "name": "ids",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 323,
+      "type": Object {
+        "items": Object {
+          "name": "int4",
+          "type": "Named",
+          "value": Object {
+            "postgresType": "int4",
+            "type": "Number",
+          },
+        },
+        "sourceTag": Object {
+          "end": 333,
+          "start": 329,
+          "tag": "ArrayType",
+          "values": Array [
+            Object {
+              "end": 331,
+              "start": 329,
+              "tag": "Type",
+              "values": Array [
+                Object {
+                  "end": 331,
+                  "start": 329,
+                  "tag": "QualifiedIdentifier",
+                  "values": Array [
+                    Object {
+                      "end": 331,
+                      "start": 329,
+                      "tag": "UnquotedIdentifier",
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 333,
+              "start": 332,
+              "tag": "Dimension",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
     Object {
@@ -12599,7 +13126,54 @@ Object {
           "table": "installations",
           "type": "LoadColumn",
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 832,
+          "start": 788,
+          "tag": "ComparationArray",
+          "values": Array [
+            Object {
+              "end": 817,
+              "start": 788,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "end": 800,
+                  "start": 788,
+                  "tag": "UnquotedIdentifier",
+                  "value": "installations",
+                },
+                Object {
+                  "end": 817,
+                  "start": 802,
+                  "tag": "UnquotedIdentifier",
+                  "value": "legacy_fit_db_id",
+                },
+              ],
+            },
+            Object {
+              "end": 819,
+              "start": 819,
+              "tag": "ComparationArrayOperator",
+              "value": "=",
+            },
+            Object {
+              "end": 823,
+              "start": 821,
+              "tag": "ComparationArrayType",
+              "value": "ANY",
+            },
+            Object {
+              "end": 831,
+              "pick": Array [],
+              "required": false,
+              "start": 825,
+              "tag": "Parameter",
+              "type": "single",
+              "value": "fitIds",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
   ],
@@ -13290,7 +13864,48 @@ Object {
           "table": "t",
           "type": "LoadColumn",
         },
-        "type": "Array",
+        "sourceTag": Object {
+          "end": 326,
+          "start": 314,
+          "tag": "ComparationArrayInclusion",
+          "values": Array [
+            Object {
+              "end": 317,
+              "start": 314,
+              "tag": "Column",
+              "values": Array [
+                Object {
+                  "end": 314,
+                  "start": 314,
+                  "tag": "UnquotedIdentifier",
+                  "value": "t",
+                },
+                Object {
+                  "end": 317,
+                  "start": 316,
+                  "tag": "UnquotedIdentifier",
+                  "value": "id",
+                },
+              ],
+            },
+            Object {
+              "end": 320,
+              "start": 319,
+              "tag": "ComparationArrayInclusionType",
+              "value": "IN",
+            },
+            Object {
+              "end": 326,
+              "pick": Array [],
+              "required": false,
+              "start": 322,
+              "tag": "Parameter",
+              "type": "spread",
+              "value": "ids",
+            },
+          ],
+        },
+        "type": "LoadArray",
       },
     },
   ],

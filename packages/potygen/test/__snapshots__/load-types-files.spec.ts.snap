@@ -243,17 +243,37 @@ Object {
     Object {
       "name": "ids",
       "type": Object {
+        "items": Array [
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": "OptionalConstant",
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": "Number",
+              },
+              "postgresType": "int4[]",
+              "type": "Array",
+            },
+          },
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": "OptionalConstant",
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": "Number",
+              },
+              "postgresType": "int4[]",
+              "type": "Array",
+            },
+          },
+        ],
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
-        "value": Object {
-          "items": Object {
-            "postgresType": "int4",
-            "type": "Number",
-          },
-          "postgresType": "int4[]",
-          "type": "ArrayConstant",
-        },
+        "type": "UnionConstant",
       },
     },
     Object {
@@ -812,7 +832,7 @@ Object {
             "type": "Number",
           },
           "postgresType": "int4[]",
-          "type": "ArrayConstant",
+          "type": "Array",
         },
       },
     },
@@ -845,7 +865,7 @@ Object {
             "type": "Number",
           },
           "postgresType": "int4[]",
-          "type": "ArrayConstant",
+          "type": "Array",
         },
       },
     },
@@ -1002,17 +1022,37 @@ Object {
     Object {
       "name": "ids",
       "type": Object {
+        "items": Array [
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": "OptionalConstant",
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": "Number",
+              },
+              "postgresType": "int4[]",
+              "type": "Array",
+            },
+          },
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": "OptionalConstant",
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": "Number",
+              },
+              "postgresType": "int4[]",
+              "type": "Array",
+            },
+          },
+        ],
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
-        "value": Object {
-          "items": Object {
-            "postgresType": "int4",
-            "type": "Number",
-          },
-          "postgresType": "int4[]",
-          "type": "ArrayConstant",
-        },
+        "type": "UnionConstant",
       },
     },
   ],
@@ -1146,17 +1186,37 @@ Object {
     Object {
       "name": "ids",
       "type": Object {
+        "items": Array [
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": "OptionalConstant",
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": "Number",
+              },
+              "postgresType": "int4[]",
+              "type": "Array",
+            },
+          },
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": "OptionalConstant",
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": "Number",
+              },
+              "postgresType": "int4[]",
+              "type": "Array",
+            },
+          },
+        ],
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
-        "value": Object {
-          "items": Object {
-            "postgresType": "int4",
-            "type": "Number",
-          },
-          "postgresType": "int4[]",
-          "type": "ArrayConstant",
-        },
+        "type": "UnionConstant",
       },
     },
     Object {
@@ -1275,7 +1335,7 @@ Object {
           "type": "String",
         },
         "postgresType": "character varying[]",
-        "type": "ArrayConstant",
+        "type": "Array",
       },
     },
   ],
@@ -2460,7 +2520,7 @@ Object {
           "type": "ObjectLiteralConstant",
         },
         "postgresType": "anyarray",
-        "type": "ArrayConstant",
+        "type": "Array",
       },
     },
   ],
@@ -2563,17 +2623,37 @@ Object {
     Object {
       "name": "ids",
       "type": Object {
+        "items": Array [
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": "OptionalConstant",
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": "Number",
+              },
+              "postgresType": "int4[]",
+              "type": "Array",
+            },
+          },
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": "OptionalConstant",
+            "value": Object {
+              "items": Object {
+                "postgresType": "int4",
+                "type": "Number",
+              },
+              "postgresType": "int4[]",
+              "type": "Array",
+            },
+          },
+        ],
         "nullable": true,
         "postgresType": "any",
-        "type": "OptionalConstant",
-        "value": Object {
-          "items": Object {
-            "postgresType": "int4",
-            "type": "Number",
-          },
-          "postgresType": "int4[]",
-          "type": "ArrayConstant",
-        },
+        "type": "UnionConstant",
       },
     },
     Object {
@@ -2705,7 +2785,7 @@ Object {
             "type": "String",
           },
           "postgresType": "character varying[]",
-          "type": "ArrayConstant",
+          "type": "Array",
         },
       },
     },
@@ -2818,11 +2898,11 @@ Object {
               "type": "Number",
             },
             "postgresType": "integer[]",
-            "type": "ArrayConstant",
+            "type": "Array",
           },
         },
         "postgresType": "anyarray",
-        "type": "ArrayConstant",
+        "type": "Array",
       },
     },
   ],

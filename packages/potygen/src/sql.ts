@@ -8,7 +8,7 @@ import { Param } from './query-interface.types';
 import { Query, QuerySource, SqlDatabase, SqlInterface, QueryConfig } from './sql.types';
 
 const toParamsFromAst = (ast: AstTag): Param[] =>
-  toParams({ type: typeUnknown(), columns: [] })(ast).sort(orderBy((p) => p.start));
+  toParams({ type: typeUnknown, columns: [] })(ast).sort(orderBy((p) => p.start));
 
 const toSpreadIndexParam = (param: Param, index: number, values: unknown): string =>
   Array.isArray(values)

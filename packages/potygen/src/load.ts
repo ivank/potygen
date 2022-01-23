@@ -12,7 +12,7 @@ import {
 } from './query-interface.types';
 import {
   isTypeNullable,
-  isTypeArrayConstant,
+  isTypeArray,
   isTypeLoadStar,
   isTypeCompositeConstant,
   isSourceQuery,
@@ -54,7 +54,7 @@ import {
 } from './load.types';
 import { inspect } from 'util';
 import { allSql, selectedSql } from './load.queries';
-import { toContantBinaryOperatorVariant, toPgTypeConstant, toQueryInterface } from './query-interface';
+import { toConstantBinaryOperatorVariant, toPgTypeConstant, toQueryInterface } from './query-interface';
 
 const orEmptyNameList = (names: QualifiedName[]): QualifiedName[] =>
   names.length === 0 ? [{ name: '_', schema: '_' }] : names;
@@ -154,9 +154,9 @@ const extractDataFromType = (type: Type): Data[] => {
       ];
     case 'Named':
       return extractDataFromType(type.value);
-    case 'Array':
+    case 'LoadArray':
       return extractDataFromType(type.items);
-    case 'Coalesce':
+    case 'LoadCoalesce':
       return type.items.flatMap(extractDataFromType);
     case 'LoadFunction':
       return type.args.flatMap(extractDataFromType);
@@ -195,7 +195,7 @@ const toLoadedParam =
             postgresType: 'json',
           }
         : { type: 'OptionalConstant', nullable: !required, value: toType(type), postgresType: 'any' };
-    return { name, type: spread ? { type: 'ArrayConstant', items: paramType, postgresType: 'anyarray' } : paramType };
+    return { name, type: spread ? { type: 'Array', items: paramType, postgresType: 'anyarray' } : paramType };
   };
 
 const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
@@ -495,7 +495,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
         } else {
           switch (type.type) {
             case 'LoadFunction':
-              return funcVariant.isAggregate && isTypeArrayConstant(funcVariant.returnType)
+              return funcVariant.isAggregate && isTypeArray(funcVariant.returnType)
                 ? funcVariant.returnType.items
                 : funcVariant.returnType;
             case 'LoadFunctionArgument':
@@ -512,19 +512,17 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
           value: optionalType,
           postgresType: optionalType.postgresType,
         };
-      case 'ToArray':
+      case 'LoadAsArray':
         const items = recur(type.items);
-        return isTypeArrayConstant(items)
-          ? items
-          : { type: 'ArrayConstant', items, postgresType: `${items.postgresType}[]` };
-      case 'Array':
+        return isTypeArray(items) ? items : { type: 'Array', items, postgresType: `${items.postgresType}[]` };
+      case 'LoadArray':
         const itemsType = recur(type.items);
-        return { type: 'ArrayConstant', items: itemsType, postgresType: `${itemsType.postgresType}[]` };
-      case 'Union':
+        return { type: 'Array', items: itemsType, postgresType: `${itemsType.postgresType}[]` };
+      case 'LoadUnion':
         return { type: 'UnionConstant', items: type.items.map(recur), postgresType: 'any' };
-      case 'ArrayItem':
+      case 'LoadArrayItem':
         return recur(type.value);
-      case 'CompositeAccess':
+      case 'LoadCompositeAccess':
         const composite = recur(type.value);
         if (!isTypeCompositeConstant(composite)) {
           throw new LoadError(type.sourceTag, 'Composite type access can be performed only on composite types');
@@ -546,12 +544,12 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
       case 'LoadOperator':
         const left = recur(type.left);
         const right = recur(type.right);
-        const operatorResult = toContantBinaryOperatorVariant(type.available, left, right, type.index);
+        const operatorResult = toConstantBinaryOperatorVariant(type.available, left, right, type.part);
         return isTypeNullable(operatorResult) &&
           ((isTypeNullable(left) && left.nullable) || (isTypeNullable(right) && right.nullable))
           ? { ...operatorResult, nullable: true }
           : operatorResult;
-      case 'Coalesce':
+      case 'LoadCoalesce':
         const argTypes = type.items.map(recur);
         const nullable = argTypes.reduce<boolean>(
           (isNullable, type) => isNullable && isTypeNullable(type) && Boolean(type.nullable),

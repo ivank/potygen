@@ -1,10 +1,10 @@
 import {
   TypeConstant,
   Type,
+  TypeLoadArray,
   TypeArray,
-  TypeArrayConstant,
   TypeBoolean,
-  TypeCoalesce,
+  TypeLoadCoalesce,
   TypeDate,
   TypeJson,
   TypeLoadColumn,
@@ -18,18 +18,18 @@ import {
   TypeNull,
   TypeNumber,
   TypeString,
-  TypeUnion,
+  TypeLoadUnion,
   TypeUnknown,
   TypeAny,
-  TypeArrayItem,
+  TypeLoadArrayItem,
   TypeNullable,
   TypeUnionConstant,
   TypeObjectLiteralConstant,
   TypeObjectLiteral,
   TypeLiteral,
-  TypeToArray,
+  TypeLoadAsArray,
   TypeCompositeConstant,
-  TypeCompositeAccess,
+  TypeLoadCompositeAccess,
   TypeOptional,
   TypeOptionalConstant,
   TypeLoadColumnCast,
@@ -88,7 +88,7 @@ export const isTypeNull = (type: Type): type is TypeNull => type.type === 'Null'
 export const isTypeJson = (type: Type): type is TypeJson => type.type === 'Json';
 export const isTypeUnknown = (type: Type): type is TypeUnknown => type.type === 'Unknown';
 export const isTypeAny = (type: Type): type is TypeAny => type.type === 'Any';
-export const isTypeCoalesce = (type: Type): type is TypeCoalesce => type.type === 'Coalesce';
+export const isTypeCoalesce = (type: Type): type is TypeLoadCoalesce => type.type === 'LoadCoalesce';
 export const isTypeLoadRecord = (type: Type): type is TypeLoadRecord => type.type === 'LoadRecord';
 export const isTypeLoadFunction = (type: Type): type is TypeLoadFunction => type.type === 'LoadFunction';
 export const isTypeLoadColumn = (type: Type): type is TypeLoadColumn => type.type === 'LoadColumn';
@@ -97,17 +97,18 @@ export const isTypeLoadFunctionArgument = (type: Type): type is TypeLoadFunction
   type.type === 'LoadFunctionArgument';
 export const isTypeLoadOperator = (type: Type): type is TypeLoadOperator => type.type === 'LoadOperator';
 export const isTypeNamed = (type: Type): type is TypeNamed => type.type === 'Named';
-export const isTypeArray = (type: Type): type is TypeArray => type.type === 'Array';
-export const isTypeToArray = (type: Type): type is TypeToArray => type.type === 'ToArray';
+export const isTypeLoadArray = (type: Type): type is TypeLoadArray => type.type === 'LoadArray';
+export const isTypeLoadAsArray = (type: Type): type is TypeLoadAsArray => type.type === 'LoadAsArray';
 export const isTypeObjectLiteral = (type: Type): type is TypeObjectLiteral => type.type === 'ObjectLiteral';
-export const isTypeUnion = (type: Type): type is TypeUnion => type.type === 'Union';
-export const isTypeArrayConstant = (type: Type): type is TypeArrayConstant => type.type === 'ArrayConstant';
+export const isTypeLoadUnion = (type: Type): type is TypeLoadUnion => type.type === 'LoadUnion';
+export const isTypeArray = (type: Type): type is TypeArray => type.type === 'Array';
 export const isTypeUnionConstant = (type: Type): type is TypeUnionConstant => type.type === 'UnionConstant';
 export const isTypeObjectLiteralConstant = (type: Type): type is TypeObjectLiteralConstant =>
   type.type === 'ObjectLiteralConstant';
-export const isTypeArrayItem = (type: Type): type is TypeArrayItem => type.type === 'ArrayItem';
+export const isTypeLoadArrayItem = (type: Type): type is TypeLoadArrayItem => type.type === 'LoadArrayItem';
 export const isTypeCompositeConstant = (type: Type): type is TypeCompositeConstant => type.type === 'CompositeConstant';
-export const isTypeCompositeAccess = (type: Type): type is TypeCompositeAccess => type.type === 'CompositeAccess';
+export const isTypeLoadCompositeAccess = (type: Type): type is TypeLoadCompositeAccess =>
+  type.type === 'LoadCompositeAccess';
 export const isTypeOptional = (type: Type): type is TypeOptional => type.type === 'Optional';
 export const isTypeOptionalConstant = (type: Type): type is TypeOptionalConstant => type.type === 'OptionalConstant';
 export const isTypeLoadColumnCast = (type: Type): type is TypeLoadColumnCast => type.type === 'LoadColumnCast';
@@ -117,9 +118,12 @@ export const isTypeEqual = (a: Type, b: Type): boolean => {
     return true;
   } else if (a.type === 'Unknown' || b.type === 'Unknown') {
     return false;
-  } else if ((a.type === 'Array' && b.type === 'Array') || (a.type === 'ArrayConstant' && b.type === 'ArrayConstant')) {
+  } else if ((a.type === 'LoadArray' && b.type === 'LoadArray') || (a.type === 'Array' && b.type === 'Array')) {
     return isTypeEqual(a.items, b.items);
-  } else if ((a.type === 'Union' && b.type === 'Union') || (a.type === 'UnionConstant' && b.type === 'UnionConstant')) {
+  } else if (
+    (a.type === 'LoadUnion' && b.type === 'LoadUnion') ||
+    (a.type === 'UnionConstant' && b.type === 'UnionConstant')
+  ) {
     return a.items.every((aItem) => b.items.some((bItem) => isTypeEqual(aItem, bItem)));
   } else if (
     (a.type === 'ObjectLiteral' && b.type === 'ObjectLiteral') ||
