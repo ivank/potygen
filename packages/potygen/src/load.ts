@@ -413,7 +413,7 @@ const formatTableName = ({ table, name, schema }: { table?: string; name: string
   return [schema, tableName].filter(isNil).join('.');
 };
 
-const formatArgumentType = ({ type }: Type): string => type;
+const formatArgumentType = ({ type }: Type): string => `type: ${type}`;
 
 const formatLoadColumn = ({ schema, table, column }: TypeLoadColumn): string =>
   [schema, table, column].filter(isNil).join('.');

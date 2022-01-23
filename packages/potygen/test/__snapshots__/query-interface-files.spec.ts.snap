@@ -20,7 +20,7 @@ Object {
           "value": "is_accepted",
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -53,7 +53,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -77,7 +77,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -99,7 +99,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -970,7 +970,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -1003,7 +1003,7 @@ Object {
           ],
         },
         "table": "accounts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -1027,7 +1027,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -1157,7 +1157,7 @@ Object {
       "type": Object {
         "literal": "",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1190,7 +1190,7 @@ Object {
           ],
         },
         "table": "contracts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -1203,7 +1203,7 @@ Object {
       "type": Object {
         "literal": "",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1235,10 +1235,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "bool",
-          "type": "Boolean",
+          "type": 5,
         },
       },
     },
@@ -1272,7 +1272,7 @@ Object {
             },
           ],
         },
-        "type": "LoadRecord",
+        "type": 17,
       },
     },
     Object {
@@ -1305,7 +1305,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -1337,10 +1337,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -1374,7 +1374,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -1407,10 +1407,10 @@ Object {
               },
             ],
           },
-          "type": "LoadNamed",
+          "type": 23,
           "value": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
         },
         "sourceTag": Object {
@@ -1445,7 +1445,7 @@ Object {
             },
           ],
         },
-        "type": "LoadArray",
+        "type": 24,
       },
     },
     Object {
@@ -1478,10 +1478,10 @@ Object {
               },
             ],
           },
-          "type": "LoadNamed",
+          "type": 23,
           "value": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
         },
         "sourceTag": Object {
@@ -1516,7 +1516,7 @@ Object {
             },
           ],
         },
-        "type": "LoadArray",
+        "type": 24,
       },
     },
     Object {
@@ -1529,7 +1529,7 @@ Object {
       "type": Object {
         "literal": "totalPayment",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1542,7 +1542,7 @@ Object {
       "type": Object {
         "literal": "DESC",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1555,7 +1555,7 @@ Object {
       "type": Object {
         "literal": "ASC",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1568,7 +1568,7 @@ Object {
       "type": Object {
         "literal": "vatPayment",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1581,7 +1581,7 @@ Object {
       "type": Object {
         "literal": "generationPayment",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1594,7 +1594,7 @@ Object {
       "type": Object {
         "literal": "exportPayment",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1607,7 +1607,7 @@ Object {
       "type": Object {
         "literal": "generationEnergy",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1620,7 +1620,7 @@ Object {
       "type": Object {
         "literal": "exportEnergy",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1633,7 +1633,7 @@ Object {
       "type": Object {
         "literal": "cfrFitId",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1646,7 +1646,7 @@ Object {
       "type": Object {
         "literal": "state",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1659,7 +1659,7 @@ Object {
       "type": Object {
         "literal": "isAccepted",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1672,7 +1672,7 @@ Object {
       "type": Object {
         "literal": "error",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1685,7 +1685,7 @@ Object {
       "type": Object {
         "literal": "exportType",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -1717,10 +1717,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -1753,10 +1753,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -1787,7 +1787,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -1815,7 +1815,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -1843,7 +1843,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -1871,7 +1871,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -1899,7 +1899,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -1927,7 +1927,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -1955,7 +1955,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -1983,7 +1983,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2011,7 +2011,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2039,7 +2039,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2067,7 +2067,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2095,7 +2095,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2123,7 +2123,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2151,7 +2151,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2179,7 +2179,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2207,7 +2207,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2235,7 +2235,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2263,7 +2263,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2291,7 +2291,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2319,7 +2319,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2347,7 +2347,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2375,7 +2375,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2403,7 +2403,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2431,7 +2431,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2459,7 +2459,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2487,7 +2487,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2497,29 +2497,29 @@ Object {
           Array [
             Object {
               "postgresType": "json",
-              "type": "Json",
+              "type": 8,
             },
             Object {
               "postgresType": "float4",
-              "type": "Number",
+              "type": 3,
             },
             Object {
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           ],
           Array [
             Object {
               "postgresType": "json",
-              "type": "Json",
+              "type": 8,
             },
             Object {
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
             Object {
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
           ],
         ],
@@ -2546,13 +2546,13 @@ Object {
             ],
           },
           "table": "issues",
-          "type": "LoadColumn",
+          "type": 19,
         },
         "part": 2,
         "right": Object {
           "literal": "code",
           "postgresType": "text",
-          "type": "String",
+          "type": 2,
         },
         "sourceTag": Object {
           "end": 1687,
@@ -2592,7 +2592,7 @@ Object {
             },
           ],
         },
-        "type": "LoadOperator",
+        "type": 22,
       },
     },
     Object {
@@ -2602,29 +2602,29 @@ Object {
           Array [
             Object {
               "postgresType": "json",
-              "type": "Json",
+              "type": 8,
             },
             Object {
               "postgresType": "float4",
-              "type": "Number",
+              "type": 3,
             },
             Object {
               "postgresType": "json",
-              "type": "Json",
+              "type": 8,
             },
           ],
           Array [
             Object {
               "postgresType": "json",
-              "type": "Json",
+              "type": 8,
             },
             Object {
               "postgresType": "text",
-              "type": "String",
+              "type": 2,
             },
             Object {
               "postgresType": "json",
-              "type": "Json",
+              "type": 8,
             },
           ],
         ],
@@ -2651,13 +2651,13 @@ Object {
             ],
           },
           "table": "issues",
-          "type": "LoadColumn",
+          "type": 19,
         },
         "part": 2,
         "right": Object {
           "literal": "params",
           "postgresType": "text",
-          "type": "String",
+          "type": 2,
         },
         "sourceTag": Object {
           "end": 1732,
@@ -2697,7 +2697,7 @@ Object {
             },
           ],
         },
-        "type": "LoadOperator",
+        "type": 22,
       },
     },
     Object {
@@ -2725,7 +2725,7 @@ Object {
           ],
         },
         "table": "contracts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2753,7 +2753,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2781,7 +2781,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -2809,7 +2809,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -2932,10 +2932,10 @@ Object {
               },
             ],
           },
-          "type": "LoadNamed",
+          "type": 23,
           "value": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
         },
         "sourceTag": Object {
@@ -2970,7 +2970,7 @@ Object {
             },
           ],
         },
-        "type": "LoadArray",
+        "type": 24,
       },
     },
   ],
@@ -3000,7 +3000,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -3096,10 +3096,10 @@ Object {
               },
             ],
           },
-          "type": "LoadNamed",
+          "type": 23,
           "value": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
         },
         "sourceTag": Object {
@@ -3134,7 +3134,7 @@ Object {
             },
           ],
         },
-        "type": "LoadArray",
+        "type": 24,
       },
     },
   ],
@@ -3158,7 +3158,7 @@ Object {
           ],
         },
         "table": "account_levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -3261,7 +3261,7 @@ Object {
       "type": Object {
         "literal": "",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -3276,11 +3276,11 @@ Object {
           Object {
             "literal": "english",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "postgresType": "any",
-            "type": "Any",
+            "type": 1,
           },
         ],
         "index": 1,
@@ -3294,7 +3294,7 @@ Object {
           "type": "single",
           "value": "q",
         },
-        "type": "LoadFunctionArgument",
+        "type": 21,
       },
     },
     Object {
@@ -3309,11 +3309,11 @@ Object {
           Object {
             "literal": "english",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "postgresType": "any",
-            "type": "Any",
+            "type": 1,
           },
         ],
         "index": 1,
@@ -3327,7 +3327,7 @@ Object {
           "type": "single",
           "value": "q",
         },
-        "type": "LoadFunctionArgument",
+        "type": 21,
       },
     },
     Object {
@@ -3342,11 +3342,11 @@ Object {
           Object {
             "literal": "english",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "postgresType": "any",
-            "type": "Any",
+            "type": 1,
           },
         ],
         "index": 1,
@@ -3360,7 +3360,7 @@ Object {
           "type": "single",
           "value": "q",
         },
-        "type": "LoadFunctionArgument",
+        "type": 21,
       },
     },
     Object {
@@ -3375,11 +3375,11 @@ Object {
           Object {
             "literal": "english",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "postgresType": "any",
-            "type": "Any",
+            "type": 1,
           },
         ],
         "index": 1,
@@ -3393,7 +3393,7 @@ Object {
           "type": "single",
           "value": "q",
         },
-        "type": "LoadFunctionArgument",
+        "type": 21,
       },
     },
     Object {
@@ -3408,11 +3408,11 @@ Object {
           Object {
             "literal": "english",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "postgresType": "any",
-            "type": "Any",
+            "type": 1,
           },
         ],
         "index": 1,
@@ -3426,7 +3426,7 @@ Object {
           "type": "single",
           "value": "q",
         },
-        "type": "LoadFunctionArgument",
+        "type": 21,
       },
     },
     Object {
@@ -3460,7 +3460,7 @@ Object {
             ],
           },
           "table": "accounts",
-          "type": "LoadColumn",
+          "type": 19,
         },
         "sourceTag": Object {
           "end": 1768,
@@ -3508,7 +3508,7 @@ Object {
             },
           ],
         },
-        "type": "LoadColumnCast",
+        "type": 16,
         "value": Object {
           "name": "varchar",
           "sourceTag": Object {
@@ -3531,10 +3531,10 @@ Object {
               },
             ],
           },
-          "type": "LoadNamed",
+          "type": 23,
           "value": Object {
             "postgresType": "varchar",
-            "type": "String",
+            "type": 2,
           },
         },
       },
@@ -3569,7 +3569,7 @@ Object {
           ],
         },
         "table": "installations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -3602,7 +3602,7 @@ Object {
           ],
         },
         "table": "installations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -3635,7 +3635,7 @@ Object {
           ],
         },
         "table": "customers",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -3668,7 +3668,7 @@ Object {
           ],
         },
         "table": "accounts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -3701,7 +3701,7 @@ Object {
           ],
         },
         "table": "contracts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -3734,10 +3734,10 @@ Object {
               },
             ],
           },
-          "type": "LoadNamed",
+          "type": 23,
           "value": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
         },
         "sourceTag": Object {
@@ -3772,7 +3772,7 @@ Object {
             },
           ],
         },
-        "type": "LoadArray",
+        "type": 24,
       },
     },
     Object {
@@ -3805,10 +3805,10 @@ Object {
               },
             ],
           },
-          "type": "LoadNamed",
+          "type": 23,
           "value": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
         },
         "sourceTag": Object {
@@ -3843,7 +3843,7 @@ Object {
             },
           ],
         },
-        "type": "LoadArray",
+        "type": 24,
       },
     },
   ],
@@ -3872,10 +3872,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -4100,7 +4100,7 @@ Object {
       "type": Object {
         "literal": "",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -4115,11 +4115,11 @@ Object {
           Object {
             "literal": "english",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "postgresType": "any",
-            "type": "Any",
+            "type": 1,
           },
         ],
         "index": 1,
@@ -4133,7 +4133,7 @@ Object {
           "type": "single",
           "value": "q",
         },
-        "type": "LoadFunctionArgument",
+        "type": 21,
       },
     },
     Object {
@@ -4148,11 +4148,11 @@ Object {
           Object {
             "literal": "english",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "postgresType": "any",
-            "type": "Any",
+            "type": 1,
           },
         ],
         "index": 1,
@@ -4166,7 +4166,7 @@ Object {
           "type": "single",
           "value": "q",
         },
-        "type": "LoadFunctionArgument",
+        "type": 21,
       },
     },
     Object {
@@ -4181,11 +4181,11 @@ Object {
           Object {
             "literal": "english",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "postgresType": "any",
-            "type": "Any",
+            "type": 1,
           },
         ],
         "index": 1,
@@ -4199,7 +4199,7 @@ Object {
           "type": "single",
           "value": "q",
         },
-        "type": "LoadFunctionArgument",
+        "type": 21,
       },
     },
     Object {
@@ -4214,11 +4214,11 @@ Object {
           Object {
             "literal": "english",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "postgresType": "any",
-            "type": "Any",
+            "type": 1,
           },
         ],
         "index": 1,
@@ -4232,7 +4232,7 @@ Object {
           "type": "single",
           "value": "q",
         },
-        "type": "LoadFunctionArgument",
+        "type": 21,
       },
     },
     Object {
@@ -4266,7 +4266,7 @@ Object {
             ],
           },
           "table": "accounts",
-          "type": "LoadColumn",
+          "type": 19,
         },
         "sourceTag": Object {
           "end": 2074,
@@ -4314,7 +4314,7 @@ Object {
             },
           ],
         },
-        "type": "LoadColumnCast",
+        "type": 16,
         "value": Object {
           "name": "varchar",
           "sourceTag": Object {
@@ -4337,10 +4337,10 @@ Object {
               },
             ],
           },
-          "type": "LoadNamed",
+          "type": 23,
           "value": Object {
             "postgresType": "varchar",
-            "type": "String",
+            "type": 2,
           },
         },
       },
@@ -4375,7 +4375,7 @@ Object {
           ],
         },
         "table": "installations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4408,7 +4408,7 @@ Object {
           ],
         },
         "table": "installations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4441,7 +4441,7 @@ Object {
           ],
         },
         "table": "accounts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4474,7 +4474,7 @@ Object {
           ],
         },
         "table": "contracts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4507,10 +4507,10 @@ Object {
               },
             ],
           },
-          "type": "LoadNamed",
+          "type": 23,
           "value": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
         },
         "sourceTag": Object {
@@ -4545,7 +4545,7 @@ Object {
             },
           ],
         },
-        "type": "LoadArray",
+        "type": 24,
       },
     },
     Object {
@@ -4578,10 +4578,10 @@ Object {
               },
             ],
           },
-          "type": "LoadNamed",
+          "type": 23,
           "value": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
         },
         "sourceTag": Object {
@@ -4616,7 +4616,7 @@ Object {
             },
           ],
         },
-        "type": "LoadArray",
+        "type": 24,
       },
     },
     Object {
@@ -4648,10 +4648,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -4684,10 +4684,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -4718,7 +4718,7 @@ Object {
           ],
         },
         "table": "accounts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4746,7 +4746,7 @@ Object {
           ],
         },
         "table": "accounts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4774,7 +4774,7 @@ Object {
           ],
         },
         "table": "accounts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4802,7 +4802,7 @@ Object {
           ],
         },
         "table": "contacts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4830,7 +4830,7 @@ Object {
           ],
         },
         "table": "contacts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4858,7 +4858,7 @@ Object {
           ],
         },
         "table": "contacts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -4868,7 +4868,7 @@ Object {
           Object {
             "literal": " ",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "column": "address_line_1",
@@ -4893,7 +4893,7 @@ Object {
               ],
             },
             "table": "installation_addresses",
-            "type": "LoadColumn",
+            "type": 19,
           },
           Object {
             "column": "address_line_2",
@@ -4918,7 +4918,7 @@ Object {
               ],
             },
             "table": "installation_addresses",
-            "type": "LoadColumn",
+            "type": 19,
           },
           Object {
             "column": "city",
@@ -4943,7 +4943,7 @@ Object {
               ],
             },
             "table": "installation_addresses",
-            "type": "LoadColumn",
+            "type": 19,
           },
           Object {
             "column": "postcode",
@@ -4968,7 +4968,7 @@ Object {
               ],
             },
             "table": "installation_addresses",
-            "type": "LoadColumn",
+            "type": 19,
           },
         ],
         "name": "concat_ws",
@@ -5075,7 +5075,7 @@ Object {
             },
           ],
         },
-        "type": "LoadFunction",
+        "type": 18,
       },
     },
     Object {
@@ -5104,7 +5104,7 @@ Object {
             ],
           },
           "table": "contracts",
-          "type": "LoadColumn",
+          "type": 19,
         },
         "sourceTag": Object {
           "end": 433,
@@ -5145,7 +5145,7 @@ Object {
             },
           ],
         },
-        "type": "LoadAsArray",
+        "type": 25,
       },
     },
   ],
@@ -5958,7 +5958,7 @@ Object {
           ],
         },
         "table": "current_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -5991,7 +5991,7 @@ Object {
           ],
         },
         "table": "current_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -6024,7 +6024,7 @@ Object {
           ],
         },
         "table": "previous_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -6057,7 +6057,7 @@ Object {
           ],
         },
         "table": "contracts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -6089,10 +6089,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -6126,7 +6126,7 @@ Object {
           ],
         },
         "table": "meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -6156,7 +6156,7 @@ Object {
           ],
         },
         "table": "meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -6184,7 +6184,7 @@ Object {
           ],
         },
         "table": "meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -6212,7 +6212,7 @@ Object {
           ],
         },
         "table": "meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -6240,7 +6240,7 @@ Object {
           ],
         },
         "table": "meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -6268,7 +6268,7 @@ Object {
           ],
         },
         "table": "meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -6296,7 +6296,7 @@ Object {
           ],
         },
         "table": "installation_meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -6791,7 +6791,7 @@ Object {
             },
           ],
         },
-        "type": "LoadOptional",
+        "type": 30,
         "value": Object {
           "items": Array [
             Object {
@@ -6819,7 +6819,7 @@ Object {
                   ],
                 },
                 "table": "current_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -6847,7 +6847,7 @@ Object {
                   ],
                 },
                 "table": "current_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -6875,7 +6875,7 @@ Object {
                   ],
                 },
                 "table": "current_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -6903,7 +6903,7 @@ Object {
                   ],
                 },
                 "table": "current_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -6931,7 +6931,7 @@ Object {
                   ],
                 },
                 "table": "current_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -6959,7 +6959,7 @@ Object {
                   ],
                 },
                 "table": "current_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
           ],
@@ -7133,7 +7133,7 @@ Object {
               },
             ],
           },
-          "type": "LoadObjectLiteral",
+          "type": 29,
         },
       },
     },
@@ -7614,7 +7614,7 @@ Object {
             },
           ],
         },
-        "type": "LoadOptional",
+        "type": 30,
         "value": Object {
           "items": Array [
             Object {
@@ -7642,7 +7642,7 @@ Object {
                   ],
                 },
                 "table": "previous_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -7670,7 +7670,7 @@ Object {
                   ],
                 },
                 "table": "previous_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -7698,7 +7698,7 @@ Object {
                   ],
                 },
                 "table": "previous_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -7726,7 +7726,7 @@ Object {
                   ],
                 },
                 "table": "previous_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -7754,7 +7754,7 @@ Object {
                   ],
                 },
                 "table": "previous_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -7782,7 +7782,7 @@ Object {
                   ],
                 },
                 "table": "previous_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
           ],
@@ -7956,7 +7956,7 @@ Object {
               },
             ],
           },
-          "type": "LoadObjectLiteral",
+          "type": 29,
         },
       },
     },
@@ -8160,7 +8160,7 @@ Object {
           ],
         },
         "table": "current_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -8193,7 +8193,7 @@ Object {
           ],
         },
         "table": "current_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -8226,7 +8226,7 @@ Object {
           ],
         },
         "table": "previous_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -8259,7 +8259,7 @@ Object {
           ],
         },
         "table": "contracts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -8291,10 +8291,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -8328,7 +8328,7 @@ Object {
           ],
         },
         "table": "meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -8358,7 +8358,7 @@ Object {
           ],
         },
         "table": "meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -8386,7 +8386,7 @@ Object {
           ],
         },
         "table": "meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -8414,7 +8414,7 @@ Object {
           ],
         },
         "table": "meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -8442,7 +8442,7 @@ Object {
           ],
         },
         "table": "meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -8470,7 +8470,7 @@ Object {
           ],
         },
         "table": "meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -8498,7 +8498,7 @@ Object {
           ],
         },
         "table": "installation_meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -8993,7 +8993,7 @@ Object {
             },
           ],
         },
-        "type": "LoadOptional",
+        "type": 30,
         "value": Object {
           "items": Array [
             Object {
@@ -9021,7 +9021,7 @@ Object {
                   ],
                 },
                 "table": "current_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -9049,7 +9049,7 @@ Object {
                   ],
                 },
                 "table": "current_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -9077,7 +9077,7 @@ Object {
                   ],
                 },
                 "table": "current_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -9105,7 +9105,7 @@ Object {
                   ],
                 },
                 "table": "current_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -9133,7 +9133,7 @@ Object {
                   ],
                 },
                 "table": "current_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -9161,7 +9161,7 @@ Object {
                   ],
                 },
                 "table": "current_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
           ],
@@ -9335,7 +9335,7 @@ Object {
               },
             ],
           },
-          "type": "LoadObjectLiteral",
+          "type": 29,
         },
       },
     },
@@ -9816,7 +9816,7 @@ Object {
             },
           ],
         },
-        "type": "LoadOptional",
+        "type": 30,
         "value": Object {
           "items": Array [
             Object {
@@ -9844,7 +9844,7 @@ Object {
                   ],
                 },
                 "table": "previous_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -9872,7 +9872,7 @@ Object {
                   ],
                 },
                 "table": "previous_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -9900,7 +9900,7 @@ Object {
                   ],
                 },
                 "table": "previous_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -9928,7 +9928,7 @@ Object {
                   ],
                 },
                 "table": "previous_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -9956,7 +9956,7 @@ Object {
                   ],
                 },
                 "table": "previous_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
             Object {
@@ -9984,7 +9984,7 @@ Object {
                   ],
                 },
                 "table": "previous_reads",
-                "type": "LoadColumn",
+                "type": 19,
               },
             },
           ],
@@ -10158,7 +10158,7 @@ Object {
               },
             ],
           },
-          "type": "LoadObjectLiteral",
+          "type": 29,
         },
       },
     },
@@ -10358,7 +10358,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10386,7 +10386,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10414,7 +10414,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10442,7 +10442,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10470,7 +10470,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10498,7 +10498,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10526,7 +10526,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10554,7 +10554,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10582,7 +10582,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10610,7 +10610,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10638,7 +10638,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10666,7 +10666,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10694,7 +10694,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10722,7 +10722,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -10818,7 +10818,7 @@ Object {
           ],
         },
         "table": "p",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10830,7 +10830,7 @@ Object {
       "start": 691,
       "type": Object {
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -10842,7 +10842,7 @@ Object {
       "start": 707,
       "type": Object {
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
   ],
@@ -10872,7 +10872,7 @@ Object {
           ],
         },
         "table": "p",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10900,7 +10900,7 @@ Object {
           ],
         },
         "table": "a",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10928,7 +10928,7 @@ Object {
           ],
         },
         "table": "p",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10956,7 +10956,7 @@ Object {
           ],
         },
         "table": "p",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -10986,7 +10986,7 @@ Object {
               ],
             },
             "table": "a",
-            "type": "LoadColumn",
+            "type": 19,
           },
           Object {
             "column": "beneficiary_account_number",
@@ -11011,7 +11011,7 @@ Object {
               ],
             },
             "table": "a",
-            "type": "LoadColumn",
+            "type": 19,
           },
         ],
         "name": "concat",
@@ -11074,7 +11074,7 @@ Object {
             },
           ],
         },
-        "type": "LoadFunction",
+        "type": 18,
       },
     },
     Object {
@@ -11102,7 +11102,7 @@ Object {
           ],
         },
         "table": "a2",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -11130,7 +11130,7 @@ Object {
           ],
         },
         "table": "a2",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -11158,7 +11158,7 @@ Object {
           ],
         },
         "table": "a2",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -11186,7 +11186,7 @@ Object {
           ],
         },
         "table": "a2",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -12193,7 +12193,7 @@ Object {
           ],
         },
         "table": "orders",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -12221,7 +12221,7 @@ Object {
           ],
         },
         "table": "orders",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -12245,7 +12245,7 @@ Object {
               ],
             },
             "table": undefined,
-            "type": "LoadColumn",
+            "type": 19,
           },
         ],
         "name": "sum",
@@ -12283,7 +12283,7 @@ Object {
             },
           ],
         },
-        "type": "LoadFunction",
+        "type": 18,
       },
     },
     Object {
@@ -12307,7 +12307,7 @@ Object {
               ],
             },
             "table": undefined,
-            "type": "LoadColumn",
+            "type": 19,
           },
         ],
         "name": "sum",
@@ -12345,7 +12345,7 @@ Object {
             },
           ],
         },
-        "type": "LoadFunction",
+        "type": 18,
       },
     },
   ],
@@ -12536,7 +12536,7 @@ Object {
                 ],
               },
               "table": undefined,
-              "type": "LoadColumn",
+              "type": 19,
             },
           },
           Object {
@@ -12560,7 +12560,7 @@ Object {
                     ],
                   },
                   "table": undefined,
-                  "type": "LoadColumn",
+                  "type": 19,
                 },
               ],
               "name": "sum",
@@ -12598,7 +12598,7 @@ Object {
                   },
                 ],
               },
-              "type": "LoadFunction",
+              "type": 18,
             },
           },
         ],
@@ -12886,7 +12886,7 @@ Object {
                 ],
               },
               "table": undefined,
-              "type": "LoadColumn",
+              "type": 19,
             },
           },
         ],
@@ -13077,7 +13077,7 @@ Object {
                       ],
                     },
                     "table": undefined,
-                    "type": "LoadColumn",
+                    "type": 19,
                   },
                 },
                 Object {
@@ -13101,7 +13101,7 @@ Object {
                           ],
                         },
                         "table": undefined,
-                        "type": "LoadColumn",
+                        "type": 19,
                       },
                     ],
                     "name": "sum",
@@ -13139,7 +13139,7 @@ Object {
                         },
                       ],
                     },
-                    "type": "LoadFunction",
+                    "type": 18,
                   },
                 },
               ],
@@ -13241,7 +13241,7 @@ Object {
           ],
         },
         "table": "contracts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -13274,7 +13274,7 @@ Object {
           ],
         },
         "table": "accounts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -13298,7 +13298,7 @@ Object {
           ],
         },
         "table": "accounts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -13320,7 +13320,7 @@ Object {
           ],
         },
         "table": "accounts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -13342,7 +13342,7 @@ Object {
           ],
         },
         "table": "accounts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -13465,7 +13465,7 @@ Object {
           ],
         },
         "table": "installation_meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -13497,10 +13497,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "date",
-          "type": "Date",
+          "type": 6,
         },
       },
     },
@@ -13531,7 +13531,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -13559,7 +13559,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -13871,7 +13871,7 @@ Object {
               ],
             },
             "table": "process_items",
-            "type": "LoadColumn",
+            "type": 19,
           },
         },
         Object {
@@ -14116,7 +14116,7 @@ Object {
               ],
             },
             "table": "process_items",
-            "type": "LoadColumn",
+            "type": 19,
           },
         },
         Object {
@@ -14361,7 +14361,7 @@ Object {
               ],
             },
             "table": "process_items",
-            "type": "LoadColumn",
+            "type": 19,
           },
         },
         Object {
@@ -14606,7 +14606,7 @@ Object {
               ],
             },
             "table": "process_items",
-            "type": "LoadColumn",
+            "type": 19,
           },
         },
       ],
@@ -14615,7 +14615,7 @@ Object {
       "start": 93,
       "type": Object {
         "postgresType": "any",
-        "type": "Unknown",
+        "type": 9,
       },
     },
   ],
@@ -14639,7 +14639,7 @@ Object {
           ],
         },
         "table": "process_items",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -14661,7 +14661,7 @@ Object {
           ],
         },
         "table": "process_items",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -14717,7 +14717,7 @@ Object {
           "value": "end_on",
         },
         "table": "installation_meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -14744,7 +14744,7 @@ Object {
           ],
         },
         "table": "installation_meters",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -15593,7 +15593,7 @@ Object {
       "type": Object {
         "literal": "",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -15626,7 +15626,7 @@ Object {
           ],
         },
         "table": "levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -15659,10 +15659,10 @@ Object {
               },
             ],
           },
-          "type": "LoadNamed",
+          "type": 23,
           "value": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
         },
         "sourceTag": Object {
@@ -15697,7 +15697,7 @@ Object {
             },
           ],
         },
-        "type": "LoadArray",
+        "type": 24,
       },
     },
     Object {
@@ -15730,10 +15730,10 @@ Object {
               },
             ],
           },
-          "type": "LoadNamed",
+          "type": 23,
           "value": Object {
             "postgresType": "int4",
-            "type": "Number",
+            "type": 3,
           },
         },
         "sourceTag": Object {
@@ -15768,7 +15768,7 @@ Object {
             },
           ],
         },
-        "type": "LoadArray",
+        "type": 24,
       },
     },
     Object {
@@ -15781,7 +15781,7 @@ Object {
       "type": Object {
         "literal": "quarter",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -15794,7 +15794,7 @@ Object {
       "type": Object {
         "literal": "DESC",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -15807,7 +15807,7 @@ Object {
       "type": Object {
         "literal": "ASC",
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -15839,10 +15839,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -15875,10 +15875,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -15909,7 +15909,7 @@ Object {
           ],
         },
         "table": "levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -15937,7 +15937,7 @@ Object {
           ],
         },
         "table": "levelisations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -15959,7 +15959,7 @@ Object {
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -15981,7 +15981,7 @@ Object {
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -16206,7 +16206,7 @@ Object {
             ],
           },
           "table": "installations",
-          "type": "LoadColumn",
+          "type": 19,
         },
         "sourceTag": Object {
           "end": 832,
@@ -16255,7 +16255,7 @@ Object {
             },
           ],
         },
-        "type": "LoadArray",
+        "type": 24,
       },
     },
   ],
@@ -16285,7 +16285,7 @@ Object {
           ],
         },
         "table": "installations",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -16313,7 +16313,7 @@ Object {
           ],
         },
         "table": "contacts",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -16343,12 +16343,12 @@ Object {
               ],
             },
             "table": "contacts",
-            "type": "LoadColumn",
+            "type": 19,
           },
           Object {
             "literal": " ",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "column": "last_name",
@@ -16373,7 +16373,7 @@ Object {
               ],
             },
             "table": "contacts",
-            "type": "LoadColumn",
+            "type": 19,
           },
         ],
         "name": "concat",
@@ -16442,7 +16442,7 @@ Object {
             },
           ],
         },
-        "type": "LoadFunction",
+        "type": 18,
       },
     },
     Object {
@@ -16470,7 +16470,7 @@ Object {
           ],
         },
         "table": "customers",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -16498,7 +16498,7 @@ Object {
           ],
         },
         "table": "addresses",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -16528,12 +16528,12 @@ Object {
               ],
             },
             "table": "addresses",
-            "type": "LoadColumn",
+            "type": 19,
           },
           Object {
             "literal": " ",
             "postgresType": "text",
-            "type": "String",
+            "type": 2,
           },
           Object {
             "column": "address_line_3",
@@ -16558,7 +16558,7 @@ Object {
               ],
             },
             "table": "addresses",
-            "type": "LoadColumn",
+            "type": 19,
           },
         ],
         "name": "concat",
@@ -16627,7 +16627,7 @@ Object {
             },
           ],
         },
-        "type": "LoadFunction",
+        "type": 18,
       },
     },
     Object {
@@ -16655,7 +16655,7 @@ Object {
           ],
         },
         "table": "addresses",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -16683,7 +16683,7 @@ Object {
           ],
         },
         "table": "addresses",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -16711,7 +16711,7 @@ Object {
           ],
         },
         "table": "addresses",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -16739,7 +16739,7 @@ Object {
           ],
         },
         "table": "addresses",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -16944,7 +16944,7 @@ Object {
             ],
           },
           "table": "t",
-          "type": "LoadColumn",
+          "type": 19,
         },
         "sourceTag": Object {
           "end": 326,
@@ -16987,7 +16987,7 @@ Object {
             },
           ],
         },
-        "type": "LoadArray",
+        "type": 24,
       },
     },
   ],
@@ -17017,7 +17017,7 @@ Object {
           ],
         },
         "table": "r",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -17045,7 +17045,7 @@ Object {
           ],
         },
         "table": "r",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -17073,7 +17073,7 @@ Object {
           ],
         },
         "table": "r",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -17101,7 +17101,7 @@ Object {
           ],
         },
         "table": "t",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -17129,7 +17129,7 @@ Object {
           ],
         },
         "table": "t",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -17157,7 +17157,7 @@ Object {
           ],
         },
         "table": "r",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -17644,7 +17644,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -18042,7 +18042,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -18440,7 +18440,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -18838,7 +18838,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19236,7 +19236,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19268,10 +19268,10 @@ Object {
             },
           ],
         },
-        "type": "LoadNamed",
+        "type": 23,
         "value": Object {
           "postgresType": "int4",
-          "type": "Number",
+          "type": 3,
         },
       },
     },
@@ -19296,7 +19296,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19318,7 +19318,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19340,7 +19340,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19362,7 +19362,7 @@ Object {
           ],
         },
         "table": "meter_reads",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],
@@ -19431,7 +19431,7 @@ Object {
           ],
         },
         "table": "c",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19443,7 +19443,7 @@ Object {
       "start": 573,
       "type": Object {
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
     Object {
@@ -19455,7 +19455,7 @@ Object {
       "start": 587,
       "type": Object {
         "postgresType": "text",
-        "type": "String",
+        "type": 2,
       },
     },
   ],
@@ -19485,7 +19485,7 @@ Object {
           ],
         },
         "table": "mr",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19513,7 +19513,7 @@ Object {
           ],
         },
         "table": "m",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19541,7 +19541,7 @@ Object {
           ],
         },
         "table": "mr",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19563,7 +19563,7 @@ Object {
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19585,7 +19585,7 @@ Object {
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19613,7 +19613,7 @@ Object {
           ],
         },
         "table": "mr",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19635,7 +19635,7 @@ Object {
           ],
         },
         "table": undefined,
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19663,7 +19663,7 @@ Object {
           ],
         },
         "table": "mr",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19691,7 +19691,7 @@ Object {
           ],
         },
         "table": "mr",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19719,7 +19719,7 @@ Object {
           ],
         },
         "table": "mr",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
     Object {
@@ -19747,7 +19747,7 @@ Object {
           ],
         },
         "table": "m",
-        "type": "LoadColumn",
+        "type": 19,
       },
     },
   ],

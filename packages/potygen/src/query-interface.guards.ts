@@ -40,38 +40,38 @@ import {
   TypeName,
 } from './query-interface.types';
 
-const typeConstant = [
-  'String',
-  'Number',
-  'BigInt',
-  'Boolean',
-  'Date',
-  'Null',
-  'Json',
-  'Unknown',
-  'Any',
-  'Array',
-  'Union',
-  'Composite',
-  'Optional',
-];
-const typeNullable = [
-  'String',
-  'Number',
-  'BigInt',
-  'Boolean',
-  'Date',
-  'Json',
-  'Array',
-  'Union',
-  'Composite',
-  'Optional',
-];
-const typeLiteral = ['String', 'Number', 'Boolean', 'BigInt'];
+export const isTypeConstant = (item: Type): item is TypeConstant =>
+  item.type === TypeName.String ||
+  item.type === TypeName.Number ||
+  item.type === TypeName.BigInt ||
+  item.type === TypeName.Boolean ||
+  item.type === TypeName.Date ||
+  item.type === TypeName.Null ||
+  item.type === TypeName.Json ||
+  item.type === TypeName.Unknown ||
+  item.type === TypeName.Any ||
+  item.type === TypeName.Array ||
+  item.type === TypeName.Union ||
+  item.type === TypeName.Composite ||
+  item.type === TypeName.Optional;
 
-export const isTypeConstant = (item: Type): item is TypeConstant => typeConstant.includes(item.type);
-export const isTypeNullable = (item: Type): item is TypeNullable => typeNullable.includes(item.type);
-export const isTypeLiteral = (item: Type): item is TypeLiteral => typeLiteral.includes(item.type);
+export const isTypeNullable = (item: Type): item is TypeNullable =>
+  item.type === TypeName.String ||
+  item.type === TypeName.Number ||
+  item.type === TypeName.BigInt ||
+  item.type === TypeName.Boolean ||
+  item.type === TypeName.Date ||
+  item.type === TypeName.Json ||
+  item.type === TypeName.Array ||
+  item.type === TypeName.Union ||
+  item.type === TypeName.Composite ||
+  item.type === TypeName.Optional;
+
+export const isTypeLiteral = (item: Type): item is TypeLiteral =>
+  item.type === TypeName.String ||
+  item.type === TypeName.Number ||
+  item.type === TypeName.Boolean ||
+  item.type === TypeName.BigInt;
 
 export const isSourceTable = (item: Source): item is SourceTable => item.type === 'Table';
 export const isSourceQuery = (item: Source): item is SourceQuery => item.type === 'Query';

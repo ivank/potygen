@@ -66,7 +66,7 @@ export const pgTypes = {
   uuid: { ...typeString, postgresType: 'uuid' },
   xid: { ...typeString, postgresType: 'xid' },
   interval: {
-    type: String(TypeName.ObjectLiteral),
+    type: TypeName.ObjectLiteral,
     postgresType: 'interval',
     items: [
       { name: 'years', type: typeNumber },
