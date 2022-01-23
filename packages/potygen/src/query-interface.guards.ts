@@ -23,7 +23,7 @@ import {
   TypeAny,
   TypeLoadArrayItem,
   TypeNullable,
-  TypeUnionConstant,
+  TypeUnion,
   TypeObjectLiteralConstant,
   TypeObjectLiteral,
   TypeLiteral,
@@ -49,8 +49,8 @@ const typeConstant = [
   'Json',
   'Unknown',
   'Any',
-  'ArrayConstant',
-  'UnionConstant',
+  'Array',
+  'Union',
   'LiteralNumber',
   'LiteralString',
   'LiteralBoolean',
@@ -64,8 +64,8 @@ const typeNullable = [
   'Boolean',
   'Date',
   'Json',
-  'ArrayConstant',
-  'UnionConstant',
+  'Array',
+  'Union',
   'CompositeConstant',
   'OptionalConstant',
 ];
@@ -102,7 +102,7 @@ export const isTypeLoadAsArray = (type: Type): type is TypeLoadAsArray => type.t
 export const isTypeObjectLiteral = (type: Type): type is TypeObjectLiteral => type.type === 'ObjectLiteral';
 export const isTypeLoadUnion = (type: Type): type is TypeLoadUnion => type.type === 'LoadUnion';
 export const isTypeArray = (type: Type): type is TypeArray => type.type === 'Array';
-export const isTypeUnionConstant = (type: Type): type is TypeUnionConstant => type.type === 'UnionConstant';
+export const isTypeUnion = (type: Type): type is TypeUnion => type.type === 'Union';
 export const isTypeObjectLiteralConstant = (type: Type): type is TypeObjectLiteralConstant =>
   type.type === 'ObjectLiteralConstant';
 export const isTypeLoadArrayItem = (type: Type): type is TypeLoadArrayItem => type.type === 'LoadArrayItem';
@@ -120,10 +120,7 @@ export const isTypeEqual = (a: Type, b: Type): boolean => {
     return false;
   } else if ((a.type === 'LoadArray' && b.type === 'LoadArray') || (a.type === 'Array' && b.type === 'Array')) {
     return isTypeEqual(a.items, b.items);
-  } else if (
-    (a.type === 'LoadUnion' && b.type === 'LoadUnion') ||
-    (a.type === 'UnionConstant' && b.type === 'UnionConstant')
-  ) {
+  } else if ((a.type === 'LoadUnion' && b.type === 'LoadUnion') || (a.type === 'Union' && b.type === 'Union')) {
     return a.items.every((aItem) => b.items.some((bItem) => isTypeEqual(aItem, bItem)));
   } else if (
     (a.type === 'ObjectLiteral' && b.type === 'ObjectLiteral') ||

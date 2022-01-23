@@ -1,5 +1,5 @@
 import { AstTag, Tag } from './grammar.types';
-import { QueryInterface, Source, TypeConstant, TypeUnionConstant } from './query-interface.types';
+import { QueryInterface, Source, TypeConstant, TypeUnion } from './query-interface.types';
 import { SourceFile } from 'typescript';
 import { SqlDatabase } from './sql.types';
 
@@ -128,7 +128,7 @@ export interface LoadedContext extends LoadedContextWithUnknown {
 export interface LoadedContextWithUnknown {
   sources: LoadedSourceWithUnknown[];
   funcs: LoadedFunction[];
-  enums: Record<string, TypeUnionConstant>;
+  enums: Record<string, TypeUnion>;
   composites: LoadedComposite[];
 }
 

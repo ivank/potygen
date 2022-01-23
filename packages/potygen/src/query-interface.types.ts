@@ -158,8 +158,8 @@ export interface TypeArray extends BaseTypeLoaded {
   type: 'Array';
   items: TypeConstant;
 }
-export interface TypeUnionConstant extends BaseTypeLoaded {
-  type: 'UnionConstant';
+export interface TypeUnion extends BaseTypeLoaded {
+  type: 'Union';
   items: TypeConstant[];
 }
 export interface TypeObjectLiteral {
@@ -192,7 +192,7 @@ export type TypeNullable =
   | TypeDate
   | TypeJson
   | TypeArray
-  | TypeUnionConstant
+  | TypeUnion
   | TypeOptional;
 
 export type TypeConstant =
@@ -208,7 +208,7 @@ export type TypeConstant =
   | TypeUnknown
   | TypeCompositeConstant
   | TypeArray
-  | TypeUnionConstant
+  | TypeUnion
   | TypeObjectLiteralConstant
   | TypeOptionalConstant;
 
