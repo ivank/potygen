@@ -118,8 +118,8 @@ export interface TypeLoadOperator extends BaseTypeLoad {
   right: Type;
   available: OperatorVariant[];
 }
-export interface TypeNamed {
-  type: 'Named';
+export interface TypeLoadNamed extends BaseTypeLoad {
+  type: 'LoadNamed';
   name: string;
   value: Type;
 }
@@ -221,7 +221,7 @@ export type Type =
   | TypeLoadRecord
   | TypeLoadStar
   | TypeLoadOperator
-  | TypeNamed
+  | TypeLoadNamed
   | TypeLoadCoalesce
   | TypeLoadArray
   | TypeLoadAsArray
@@ -300,7 +300,7 @@ export interface SourceTable {
 export interface SourceValues {
   type: 'Values';
   sourceTag: Tag;
-  types?: TypeNamed[];
+  types?: TypeLoadNamed[];
   name: string;
 }
 

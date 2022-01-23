@@ -8,7 +8,7 @@ import {
   TypeDate,
   TypeJson,
   TypeLoadColumn,
-  TypeNamed,
+  TypeLoadNamed,
   TypeBigInt,
   TypeLoadFunction,
   TypeLoadFunctionArgument,
@@ -96,7 +96,7 @@ export const isTypeLoadStar = (type: Type): type is TypeLoadStar => type.type ==
 export const isTypeLoadFunctionArgument = (type: Type): type is TypeLoadFunctionArgument =>
   type.type === 'LoadFunctionArgument';
 export const isTypeLoadOperator = (type: Type): type is TypeLoadOperator => type.type === 'LoadOperator';
-export const isTypeNamed = (type: Type): type is TypeNamed => type.type === 'Named';
+export const isTypeLoadNamed = (type: Type): type is TypeLoadNamed => type.type === 'LoadNamed';
 export const isTypeLoadArray = (type: Type): type is TypeLoadArray => type.type === 'LoadArray';
 export const isTypeLoadAsArray = (type: Type): type is TypeLoadAsArray => type.type === 'LoadAsArray';
 export const isTypeObjectLiteral = (type: Type): type is TypeObjectLiteral => type.type === 'ObjectLiteral';

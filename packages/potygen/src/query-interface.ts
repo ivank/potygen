@@ -138,9 +138,10 @@ const toSourcesIterator =
             sourceTag: sql,
             name: first(first(sql.values).values).value,
             types: cteValuesItem?.values.map((item, index) => ({
-              type: 'Named' as const,
+              type: 'LoadNamed' as const,
               name: columnNames?.[index] ?? `column${index}`,
               value: valuesType(item),
+              sourceTag: item,
             })),
           });
         } else {
@@ -324,7 +325,12 @@ const toType =
             return { type: 'LoadCoalesce', items: args, sourceTag: sql };
           case 'greatest':
           case 'least':
-            return { type: 'Named', name: functionName, value: args.find(isTypeConstant) ?? args[0] };
+            return {
+              type: 'LoadNamed',
+              name: functionName,
+              value: args.find(isTypeConstant) ?? args[0],
+              sourceTag: sql,
+            };
           case 'nullif':
             return { type: 'LoadUnion', items: [typeNull, args[0]], sourceTag: sql };
           case 'array_agg':
@@ -357,7 +363,7 @@ const toType =
         return typeAny;
       case 'Row':
       case 'RowKeyward':
-        return { type: 'Named', value: { ...typeString, postgresType: 'row' }, name: 'row' };
+        return { type: 'LoadNamed', value: { ...typeString, postgresType: 'row' }, name: 'row', sourceTag: sql };
       case 'Select':
         return {
           type: 'Optional',
@@ -390,7 +396,7 @@ const toType =
         const typeSchema = typeParts.length === 2 ? typeParts[0].value : undefined;
         const pgType = toPgTypeConstant(typeName);
         return pgType
-          ? { type: 'Named', name: pgTypeAliases[typeName] ?? typeName, value: pgType }
+          ? { type: 'LoadNamed', name: pgTypeAliases[typeName] ?? typeName, value: pgType, sourceTag: sql }
           : { type: 'LoadRecord', name: typeName, schema: typeSchema, sourceTag: sql };
       case 'ArrayType':
         return Array.from({ length: tail(sql.values).length }).reduce<Type>(
@@ -400,12 +406,13 @@ const toType =
       case 'TypedConstant':
         const typeConstantName = first(sql.values).value.toLowerCase();
         return {
-          type: 'Named',
+          type: 'LoadNamed',
           name: pgTypeAliases[typeConstantName] ?? typeConstantName,
           value: toPgTypeConstant(typeConstantName) ?? typeUnknown,
+          sourceTag: sql,
         };
       case 'Extract':
-        return { type: 'Named', name: 'date_part', value: typeNumber };
+        return { type: 'LoadNamed', name: 'date_part', value: typeNumber, sourceTag: sql };
       case 'UnaryExpression':
         return unaryOperatorTypes[sql.values[0].value] ?? recur(sql.values[1]);
     }
@@ -415,7 +422,7 @@ const toResultName = (type: Type): string => {
   switch (type.type) {
     case 'LoadCoalesce':
       return 'coalesce';
-    case 'Named':
+    case 'LoadNamed':
       return type.name;
     case 'LoadArrayItem':
     case 'Optional':

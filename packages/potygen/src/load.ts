@@ -152,7 +152,7 @@ const extractDataFromType = (type: Type): Data[] => {
         { type: 'Function', name: { name: type.name, schema: type.schema ?? '_' } },
         ...type.args.flatMap(extractDataFromType),
       ];
-    case 'Named':
+    case 'LoadNamed':
       return extractDataFromType(type.value);
     case 'LoadArray':
       return extractDataFromType(type.items);
@@ -560,7 +560,7 @@ const toTypeConstant = (context: LoadedContext, isResult: boolean) => {
             ? { ...argTypes[0], nullable }
             : argTypes[0]
           : { type: 'Union', items: argTypes, nullable, postgresType: 'any' };
-      case 'Named':
+      case 'LoadNamed':
         return recur(type.value);
       default:
         return type;
