@@ -6,14 +6,14 @@ import {
   toInfoContext,
   quickInfoAtOffset,
   inspectError,
+  Logger,
 } from '@potygen/potygen';
 import { Client } from 'pg';
 import { TemplateContext, TemplateLanguageService } from 'typescript-template-language-service-decorator';
 import * as tss from 'typescript/lib/tsserverlibrary';
 import { correctEmptyIdentifierAfterDot } from './helpers';
-import { LanguageServiceLogger } from './logger';
 
-export const loadData = async (logger: LanguageServiceLogger, connection?: string): Promise<LoadedData[]> => {
+export const loadData = async (logger: Logger, connection?: string): Promise<LoadedData[]> => {
   const db = new Client(connection);
   try {
     await db.connect();
@@ -26,13 +26,21 @@ export const loadData = async (logger: LanguageServiceLogger, connection?: strin
 export class PotygenTemplateLanguageService implements TemplateLanguageService {
   public data: LoadedData[] = [];
   public ctx: InfoContext;
+  public loaded = false;
 
-  constructor(private readonly ts: typeof tss, readonly connection: string, readonly logger: LanguageServiceLogger) {
+  constructor(private readonly ts: typeof tss, readonly connection: string, readonly logger: Logger) {
     this.ctx = toInfoContext([], logger);
-    loadData(logger, connection).then((data) => (this.ctx.data = data));
+    loadData(logger, connection).then((data) => {
+      this.ctx.data = data;
+      this.loaded = true;
+    });
   }
 
   getCompletionsAtPosition(context: TemplateContext, position: tss.LineAndCharacter): tss.CompletionInfo {
+    if (!this.loaded) {
+      return { isGlobalCompletion: false, isMemberCompletion: false, isNewIdentifierLocation: false, entries: [] };
+    }
+
     const offset = context.toOffset(position);
     this.ctx.logger.debug(`CompletionsAtPosition in ${context.text}:${offset}`);
     const sql = correctEmptyIdentifierAfterDot(context.text, offset);
@@ -52,6 +60,10 @@ export class PotygenTemplateLanguageService implements TemplateLanguageService {
   }
 
   public getQuickInfoAtPosition(context: TemplateContext, position: tss.LineAndCharacter): ts.QuickInfo | undefined {
+    if (!this.loaded) {
+      return undefined;
+    }
+
     const offset = context.toOffset(position);
     this.ctx.logger.debug(`QuickInfoAtPosition in ${context.text}:${offset}`);
     const info = quickInfoAtOffset(this.ctx, context.text, context.toOffset(position));
@@ -67,6 +79,9 @@ export class PotygenTemplateLanguageService implements TemplateLanguageService {
   }
 
   public getSemanticDiagnostics(context: TemplateContext): ts.Diagnostic[] {
+    if (!this.loaded) {
+      return [];
+    }
     this.ctx.logger.debug(`SemanticDiagnostics in ${context.text}`);
     const error = inspectError(this.ctx, context.text);
     if (error) {
