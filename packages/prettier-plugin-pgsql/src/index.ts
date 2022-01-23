@@ -18,6 +18,7 @@ import {
   isParameter,
   isConflictTargetIndex,
   SqlName,
+  isComment,
 } from '@potygen/potygen';
 
 const { line, softline, indent, join, group, hardline } = doc.builders;
@@ -446,9 +447,9 @@ const pgsqlAst: Printer<Node> = {
   },
   printComment: (path) => {
     const node = path.getValue();
-    return node.tag === 'Comment' ? `--${node.value}` : '';
+    return isComment(node) ? `--${node.value}` : '';
   },
-  canAttachComment: (node) => node.tag && node.tag !== 'Comment',
+  canAttachComment: (node) => Boolean(node.tag && !isComment(node)),
 };
 
 const pgsqlParse: Parser<Node> = {
