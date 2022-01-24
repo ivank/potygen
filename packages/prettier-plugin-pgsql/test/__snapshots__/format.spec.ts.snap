@@ -531,35 +531,54 @@ exports[`Format Should parse simple sql insert (INSERT INTO table1 (id, col1) VA
   col1
 )
 VALUES
-  (10, 20),
-  (30, 40)
+  (
+    10,
+    20
+  ),
+  (
+    30,
+    40
+  )
 "
 `;
 
 exports[`Format Should parse simple sql insert conflict (INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL DO UPDATE SET id = EXCLUDED.id WHERE id > 10): insert conflict 1`] = `
-"INSERT INTO table1 VALUES (10, 20)
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+"INSERT INTO table1 VALUES
+  (
+    10,
+    20
+  )
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE SET id = EXCLUDED.id WHERE id > 10
 "
 `;
 
 exports[`Format Should parse simple sql insert conflict list (INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id, type) DO UPDATE SET id = EXCLUDED.id WHERE id > 10): insert conflict list 1`] = `
-"INSERT INTO table1 VALUES (10, 20)
-ON CONFLICT
-  (source_system_id, type)
+"INSERT INTO table1 VALUES
+  (
+    10,
+    20
+  )
+ON CONFLICT (source_system_id, type)
   DO UPDATE SET id = EXCLUDED.id WHERE id > 10
 "
 `;
 
 exports[`Format Should parse simple sql insert do nothing (INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO NOTHING): insert do nothing 1`] = `
-"INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO NOTHING
+"INSERT INTO table1 VALUES
+  (
+    10,
+    20
+  ) ON CONFLICT DO NOTHING
 "
 `;
 
 exports[`Format Should parse simple sql insert do set (INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO UPDATE SET id = EXCLUDED.id WHERE id > 10): insert do set 1`] = `
-"INSERT INTO table1 VALUES (10, 20)
-ON CONFLICT DO UPDATE SET id = EXCLUDED.id WHERE id > 10
+"INSERT INTO table1 VALUES
+  (
+    10,
+    20
+  ) ON CONFLICT DO UPDATE SET id = EXCLUDED.id WHERE id > 10
 "
 `;
 
@@ -578,8 +597,14 @@ exports[`Format Should parse simple sql insert returning (INSERT INTO table1 (id
   col1
 )
 VALUES
-  (10, 20),
-  (30, 40)
+  (
+    10,
+    20
+  ),
+  (
+    30,
+    40
+  )
 RETURNING
   id,
   col1

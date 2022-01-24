@@ -40,8 +40,7 @@ WHERE
 GROUP BY
   accounts.id,
   installations.id
-ON CONFLICT
-  (account_id, installation_id, levelisation_id)
+ON CONFLICT (account_id, installation_id, levelisation_id)
   DO UPDATE SET state = EXCLUDED.state
 RETURNING
   id
@@ -602,8 +601,7 @@ GROUP BY
   c.\\"PaymentType\\",
   ca.\\"DateInserted\\",
   ca.\\"DateUpdated\\"
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       customer_id = EXCLUDED.customer_id,
@@ -937,8 +935,7 @@ FROM
   JOIN fit.CustomerAccount AS ca
     ON ca.\\"FitAccountId\\" = ga.\\"FitAccountId\\"
     AND ((ca.\\"CustomerRoleValue\\" & 1) > 0 OR ca.\\"FitAccountId\\" = 422)
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       account_id = EXCLUDED.account_id,
@@ -1039,8 +1036,7 @@ VALUES
     data,
     accountId
   )
-ON CONFLICT
-  (idempotency_key) WHERE idempotency_key IS NOT NULL
+ON CONFLICT (idempotency_key) WHERE idempotency_key IS NOT NULL
   DO NOTHING
 RETURNING
   id,
@@ -1222,8 +1218,7 @@ FROM
     AND ((ca.\\"CustomerRoleValue\\" & 1) > 0 OR ca.\\"FitAccountId\\" = 422)
   LEFT JOIN fit.Customer AS c
     ON c.\\"CustomerId\\" = ca.\\"CustomerId\\"
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       address_id = EXCLUDED.address_id,
@@ -1286,6 +1281,43 @@ OFFSET $offset::int
 "
 `;
 
+exports[`Sql Files Should parse complex sql meter-create.query.sql: meter-create.query.sql 1`] = `
+"-- meter-create.query
+INSERT INTO meters (
+  id,
+  serial_number,
+  make,
+  model,
+  mpan,
+  shared,
+  hh_metered,
+  created_at
+)
+VALUES
+  (
+    COALESCE($id::int, nextval('meters_id_seq')),
+    $msn,
+    $make,
+    $model,
+    COALESCE($mpan, 'fake'),
+    FALSE,
+    FALSE,
+    $createdAt
+  )
+ON CONFLICT (id)
+  DO UPDATE
+    SET
+      serial_number = EXCLUDED.serial_number,
+      make = EXCLUDED.make,
+      model = EXCLUDED.model,
+      mpan = EXCLUDED.mpan,
+      shared = EXCLUDED.shared,
+      hh_metered = EXCLUDED.hh_metered
+RETURNING
+  id
+"
+`;
+
 exports[`Sql Files Should parse complex sql meter-reads.sql: meter-reads.sql 1`] = `
 "INSERT INTO meter_reads (
   source_system_id,
@@ -1333,8 +1365,7 @@ FROM fit.MeterReading AS mr JOIN fit.Meter AS m ON m.\\"MeterId\\" = mr.\\"Meter
 -- TODO: Figure out where to migrate deemed meter reads to.
 WHERE
   m.\\"MPAN\\" IS NOT NULL
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       meter_id = EXCLUDED.meter_id,
@@ -1466,10 +1497,17 @@ exports[`Sql Files Should parse complex sql tariff-rates.sql: tariff-rates.sql 1
   type
 )
 VALUES
-  (100001, 'ALL/EXPORT/01', 'Export'::tariff_types),
-  (100002, 'ALL/EXPORT/02', 'Export'::tariff_types)
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+  (
+    100001,
+    'ALL/EXPORT/01',
+    'Export'::tariff_types
+  ),
+  (
+    100002,
+    'ALL/EXPORT/02',
+    'Export'::tariff_types
+  )
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       code = EXCLUDED.code,

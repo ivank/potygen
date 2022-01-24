@@ -420,7 +420,10 @@ const pgsqlAst: Printer<Node> = {
       case SqlName.DoUpdate:
         return group(['DO UPDATE', group(indent([line, join(line, vals(path, recur))]))]);
       case SqlName.Conflict:
-        return [group(['ON CONFLICT', indent([line, nthVal(0, path, recur)])]), indent([line, nthVal(1, path, recur)])];
+        return [
+          group(['ON CONFLICT', indent([line, nthVal(0, path, recur)])]),
+          node.values.length === 2 ? indent([line, nthVal(1, path, recur)]) : '',
+        ];
       case SqlName.Insert:
         return wrapSubquery(path, [
           [group(['INSERT INTO', line, nthVal(0, path, recur)]), ' ', nthVal(1, path, recur)],
