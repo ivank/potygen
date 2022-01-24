@@ -36,7 +36,10 @@ SELECT
   CASE WHEN mr."DateOfReading" <= '2021-03-31' THEN '{"success":true}'::jsonb ELSE NULL END,
   mr."DateInserted",
   mr."DateUpdated"
-FROM fit.MeterReading AS mr JOIN fit.Meter AS m ON m."MeterId" = mr."MeterId"
+FROM
+  fit.MeterReading AS mr
+  JOIN fit.Meter AS m
+    ON m."MeterId" = mr."MeterId"
 -- Exclude "Deemed" Export meters, since they don't have an MPAN and are not actual meters
 -- TODO: Figure out where to migrate deemed meter reads to.
 WHERE

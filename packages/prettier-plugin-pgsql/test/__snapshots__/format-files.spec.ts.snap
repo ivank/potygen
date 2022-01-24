@@ -77,8 +77,8 @@ exports[`Sql Files Should parse complex sql account-levelisations.query.sql: acc
   account_levelisations.vat_payment AS \\"vatPayment\\",
   account_levelisations.generation_periods AS \\"generationPeriods\\",
   account_levelisations.export_periods AS \\"exportPeriods\\",
-  issues.payload ->> 'code' AS \\"errorCode\\",
-  issues.payload -> 'params' AS \\"errorParams\\",
+  issues.payload->>'code' AS \\"errorCode\\",
+  issues.payload->'params' AS \\"errorParams\\",
   contracts.scheme_account_reference AS \\"cfrFitId\\",
   account_levelisations.resolved_postlev_id AS \\"resolvedPostlevId\\",
   account_levelisations.is_bacs_payments_sent AS \\"isBacsPaymentsSent\\",
@@ -213,12 +213,12 @@ ORDER BY
   ASC,
   CASE
     WHEN $sortField = 'error' AND $sortOrder = 'DESC'
-      THEN issues.payload ->> 'code'
+      THEN issues.payload->>'code'
   END
   DESC,
   CASE
     WHEN $sortField = 'error' AND $sortOrder = 'ASC'
-      THEN issues.payload ->> 'code'
+      THEN issues.payload->>'code'
   END
   ASC,
   CASE
@@ -989,7 +989,10 @@ exports[`Sql Files Should parse complex sql delete-accounts.query.sql: delete-ac
 WHERE
   EXISTS (
     SELECT tariffs.id
-    FROM contracts JOIN tariffs ON contracts.generation_tariff_id = tariffs.id
+    FROM
+      contracts
+      JOIN tariffs
+        ON contracts.generation_tariff_id = tariffs.id
     WHERE
       contracts.account_id = accounts.id AND tariffs.type = 'Generation'
       AND contracts.scheme_type = $type
@@ -1360,7 +1363,10 @@ SELECT
   END,
   mr.\\"DateInserted\\",
   mr.\\"DateUpdated\\"
-FROM fit.MeterReading AS mr JOIN fit.Meter AS m ON m.\\"MeterId\\" = mr.\\"MeterId\\"
+FROM
+  fit.MeterReading AS mr
+  JOIN fit.Meter AS m
+    ON m.\\"MeterId\\" = mr.\\"MeterId\\"
 -- Exclude \\"Deemed\\" Export meters, since they don't have an MPAN and are not actual meters
 -- TODO: Figure out where to migrate deemed meter reads to.
 WHERE
@@ -1425,7 +1431,10 @@ exports[`Sql Files Should parse complex sql rates-by-tarrif-ids.query.sql: rates
   t.code AS \\"tariffCode\\",
   t.type AS \\"tariffType\\",
   r.end_date_on AS \\"endOn\\"
-FROM tariff_rates AS r LEFT JOIN tariffs AS t ON r.tariff_id = t.id
+FROM
+  tariff_rates AS r
+  LEFT JOIN tariffs AS t
+    ON r.tariff_id = t.id
 WHERE
   start_date_on < NOW() AND (end_date_on::date IS NULL OR end_date_on > NOW())
   AND t.id IN $$ids

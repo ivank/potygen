@@ -20,7 +20,8 @@ VALUES
     FALSE,
     $createdAt
   )
-ON CONFLICT (id) DO UPDATE
+ON CONFLICT (id)
+  DO UPDATE
     SET
       serial_number = EXCLUDED.serial_number,
       make = EXCLUDED.make,
