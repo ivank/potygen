@@ -1241,9 +1241,7 @@ exports[`Format Should parse simple sql select count distinct (SELECT COUNT(DIST
 exports[`Format Should parse simple sql select count filter (SELECT (COUNT(account_levelisations.id) FILTER (WHERE account_levelisations.state = 'Pending'))::int AS "pendingCount" FROM account_levelisations): select count filter 1`] = `
 "SELECT
   (
-    COUNT(
-      account_levelisations.id
-    )
+    COUNT(account_levelisations.id)
     FILTER (WHERE account_levelisations.state = 'Pending')
   )::int AS \\"pendingCount\\"
 FROM account_levelisations

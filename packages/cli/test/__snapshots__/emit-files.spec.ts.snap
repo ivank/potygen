@@ -402,6 +402,37 @@ export interface Query {
 "
 `;
 
+exports[`Load Files Should convert complex sql levelisation-details.query.sql: levelisation-details.query.sql 1`] = `
+"export interface Params {
+    id?: number;
+}
+export interface Result {
+    id: number;
+    quarter: string;
+    startOn: Date;
+    endOn: Date;
+    totalCount: number;
+    pendingCount: number;
+    errorCount: number;
+    successCount: number;
+    backsSent: number;
+    chequeSent: number;
+    totalGenerationPayment: number;
+    totalExportPayment: number;
+    totalGenerationEnergy: number;
+    totalExportEnergy: number;
+    totalMeteredExportEnergy: number;
+    totalMeteredExportPayment: number;
+    totalDeemedExportEnergy: number;
+    totalDeemedExportPayment: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Load Files Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
 "export interface Params {
     q?: string;

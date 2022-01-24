@@ -402,6 +402,37 @@ export interface Query {
 "
 `;
 
+exports[`Traverse Should work: __generated__/levelisation-details.query.queries.ts 1`] = `
+"export interface Params {
+    id?: number;
+}
+export interface Result {
+    id: number;
+    quarter: string;
+    startOn: Date;
+    endOn: Date;
+    totalCount: number;
+    pendingCount: number;
+    errorCount: number;
+    successCount: number;
+    backsSent: number;
+    chequeSent: number;
+    totalGenerationPayment: number;
+    totalExportPayment: number;
+    totalGenerationEnergy: number;
+    totalExportEnergy: number;
+    totalMeteredExportEnergy: number;
+    totalMeteredExportPayment: number;
+    totalDeemedExportEnergy: number;
+    totalDeemedExportPayment: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Traverse Should work: __generated__/levelisations.list.query.queries.ts 1`] = `
 "export interface Params {
     q?: string;
