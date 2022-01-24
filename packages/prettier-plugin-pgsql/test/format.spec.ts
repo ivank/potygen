@@ -247,7 +247,7 @@ describe('Format', () => {
     ${'with comment'}                 | ${'SELECT * \n-- test comment\nFROM table1'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) =>
     withParserErrors(() => {
-      const formatted = format(sql, { parser: 'pgsql-parse', plugins: [prettierPluginPgSql] });
+      const formatted = format(sql, { parser: 'sql', plugins: [prettierPluginPgSql] });
       expect(formatted).toMatchSnapshot(name);
       expect(withoutPos(parser(sql))).toEqual(withoutPos(parser(formatted)));
     }),
