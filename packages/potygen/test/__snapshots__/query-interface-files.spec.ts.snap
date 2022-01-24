@@ -15580,6 +15580,2022 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql levelisation-details.query.sql: levelisation-details.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "end": 2786,
+      "name": "id",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 2784,
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 2780,
+          "start": 2765,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 2777,
+              "start": 2765,
+              "tag": 8,
+              "value": "levelisations",
+            },
+            Object {
+              "end": 2780,
+              "start": 2779,
+              "tag": 8,
+              "value": "id",
+            },
+          ],
+        },
+        "table": "levelisations",
+        "type": 19,
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 24,
+          "start": 9,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 21,
+              "start": 9,
+              "tag": 8,
+              "value": "levelisations",
+            },
+            Object {
+              "end": 24,
+              "start": 23,
+              "tag": 8,
+              "value": "id",
+            },
+          ],
+        },
+        "table": "levelisations",
+        "type": 19,
+      },
+    },
+    Object {
+      "name": "quarter",
+      "type": Object {
+        "column": "quarter",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 57,
+          "start": 37,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 49,
+              "start": 37,
+              "tag": 8,
+              "value": "levelisations",
+            },
+            Object {
+              "end": 57,
+              "start": 51,
+              "tag": 8,
+              "value": "quarter",
+            },
+          ],
+        },
+        "table": "levelisations",
+        "type": 19,
+      },
+    },
+    Object {
+      "name": "startOn",
+      "type": Object {
+        "column": "start_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 96,
+          "start": 75,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 87,
+              "start": 75,
+              "tag": 8,
+              "value": "levelisations",
+            },
+            Object {
+              "end": 96,
+              "start": 89,
+              "tag": 8,
+              "value": "start_on",
+            },
+          ],
+        },
+        "table": "levelisations",
+        "type": 19,
+      },
+    },
+    Object {
+      "name": "endOn",
+      "type": Object {
+        "column": "end_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 133,
+          "start": 114,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 126,
+              "start": 114,
+              "tag": 8,
+              "value": "levelisations",
+            },
+            Object {
+              "end": 133,
+              "start": 128,
+              "tag": 8,
+              "value": "end_on",
+            },
+          ],
+        },
+        "table": "levelisations",
+        "type": 19,
+      },
+    },
+    Object {
+      "name": "totalCount",
+      "type": Object {
+        "name": "int4",
+        "sourceTag": Object {
+          "end": 186,
+          "start": 184,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 186,
+              "start": 184,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 186,
+                  "start": 184,
+                  "tag": 8,
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "pendingCount",
+      "type": Object {
+        "name": "int4",
+        "sourceTag": Object {
+          "end": 299,
+          "start": 297,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 299,
+              "start": 297,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 299,
+                  "start": 297,
+                  "tag": 8,
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "errorCount",
+      "type": Object {
+        "name": "int4",
+        "sourceTag": Object {
+          "end": 412,
+          "start": 410,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 412,
+              "start": 410,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 412,
+                  "start": 410,
+                  "tag": 8,
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "successCount",
+      "type": Object {
+        "name": "int4",
+        "sourceTag": Object {
+          "end": 525,
+          "start": 523,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 525,
+              "start": 523,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 525,
+                  "start": 523,
+                  "tag": 8,
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "backsSent",
+      "type": Object {
+        "name": "int4",
+        "sourceTag": Object {
+          "end": 660,
+          "start": 658,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 660,
+              "start": 658,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 660,
+                  "start": 658,
+                  "tag": 8,
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "chequeSent",
+      "type": Object {
+        "name": "int4",
+        "sourceTag": Object {
+          "end": 796,
+          "start": 794,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 796,
+              "start": 794,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 796,
+                  "start": 794,
+                  "tag": 8,
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "totalGenerationPayment",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "generation_payment",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 868,
+              "start": 829,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 849,
+                  "start": 829,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 868,
+                  "start": 851,
+                  "tag": 8,
+                  "value": "generation_payment",
+                },
+              ],
+            },
+            "table": "account_levelisations",
+            "type": 19,
+          },
+        ],
+        "name": "sum",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 973,
+          "start": 825,
+          "tag": 54,
+          "values": Array [
+            Object {
+              "end": 827,
+              "start": 825,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 827,
+                  "start": 825,
+                  "tag": 8,
+                  "value": "SUM",
+                },
+              ],
+            },
+            Object {
+              "end": 868,
+              "start": 829,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 849,
+                  "start": 829,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 868,
+                  "start": 851,
+                  "tag": 8,
+                  "value": "generation_payment",
+                },
+              ],
+            },
+            Object {
+              "end": 973,
+              "start": 875,
+              "tag": 35,
+              "values": Array [
+                Object {
+                  "end": 972,
+                  "start": 883,
+                  "tag": 70,
+                  "values": Array [
+                    Object {
+                      "end": 972,
+                      "start": 889,
+                      "tag": 46,
+                      "values": Array [
+                        Object {
+                          "end": 927,
+                          "start": 889,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 915,
+                              "start": 889,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 909,
+                                  "start": 889,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 915,
+                                  "start": 911,
+                                  "tag": 8,
+                                  "value": "state",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 917,
+                              "start": 917,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 927,
+                              "start": 919,
+                              "tag": 13,
+                              "value": "Success",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 931,
+                          "start": 929,
+                          "tag": 44,
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 972,
+                          "start": 933,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 965,
+                              "start": 933,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 953,
+                                  "start": 933,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 965,
+                                  "start": 955,
+                                  "tag": 8,
+                                  "value": "is_accepted",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 967,
+                              "start": 967,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 972,
+                              "start": 969,
+                              "tag": 21,
+                              "value": "TRUE",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 18,
+      },
+    },
+    Object {
+      "name": "totalExportPayment",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "export_payment",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 1055,
+              "start": 1020,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 1040,
+                  "start": 1020,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 1055,
+                  "start": 1042,
+                  "tag": 8,
+                  "value": "export_payment",
+                },
+              ],
+            },
+            "table": "account_levelisations",
+            "type": 19,
+          },
+        ],
+        "name": "sum",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 1160,
+          "start": 1016,
+          "tag": 54,
+          "values": Array [
+            Object {
+              "end": 1018,
+              "start": 1016,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 1018,
+                  "start": 1016,
+                  "tag": 8,
+                  "value": "SUM",
+                },
+              ],
+            },
+            Object {
+              "end": 1055,
+              "start": 1020,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 1040,
+                  "start": 1020,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 1055,
+                  "start": 1042,
+                  "tag": 8,
+                  "value": "export_payment",
+                },
+              ],
+            },
+            Object {
+              "end": 1160,
+              "start": 1062,
+              "tag": 35,
+              "values": Array [
+                Object {
+                  "end": 1159,
+                  "start": 1070,
+                  "tag": 70,
+                  "values": Array [
+                    Object {
+                      "end": 1159,
+                      "start": 1076,
+                      "tag": 46,
+                      "values": Array [
+                        Object {
+                          "end": 1114,
+                          "start": 1076,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 1102,
+                              "start": 1076,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 1096,
+                                  "start": 1076,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 1102,
+                                  "start": 1098,
+                                  "tag": 8,
+                                  "value": "state",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1104,
+                              "start": 1104,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 1114,
+                              "start": 1106,
+                              "tag": 13,
+                              "value": "Success",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 1118,
+                          "start": 1116,
+                          "tag": 44,
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 1159,
+                          "start": 1120,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 1152,
+                              "start": 1120,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 1140,
+                                  "start": 1120,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 1152,
+                                  "start": 1142,
+                                  "tag": 8,
+                                  "value": "is_accepted",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1154,
+                              "start": 1154,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 1159,
+                              "start": 1156,
+                              "tag": 21,
+                              "value": "TRUE",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 18,
+      },
+    },
+    Object {
+      "name": "totalGenerationEnergy",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "generation_energy",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 1241,
+              "start": 1203,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 1223,
+                  "start": 1203,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 1241,
+                  "start": 1225,
+                  "tag": 8,
+                  "value": "generation_energy",
+                },
+              ],
+            },
+            "table": "account_levelisations",
+            "type": 19,
+          },
+        ],
+        "name": "sum",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 1346,
+          "start": 1199,
+          "tag": 54,
+          "values": Array [
+            Object {
+              "end": 1201,
+              "start": 1199,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 1201,
+                  "start": 1199,
+                  "tag": 8,
+                  "value": "SUM",
+                },
+              ],
+            },
+            Object {
+              "end": 1241,
+              "start": 1203,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 1223,
+                  "start": 1203,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 1241,
+                  "start": 1225,
+                  "tag": 8,
+                  "value": "generation_energy",
+                },
+              ],
+            },
+            Object {
+              "end": 1346,
+              "start": 1248,
+              "tag": 35,
+              "values": Array [
+                Object {
+                  "end": 1345,
+                  "start": 1256,
+                  "tag": 70,
+                  "values": Array [
+                    Object {
+                      "end": 1345,
+                      "start": 1262,
+                      "tag": 46,
+                      "values": Array [
+                        Object {
+                          "end": 1300,
+                          "start": 1262,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 1288,
+                              "start": 1262,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 1282,
+                                  "start": 1262,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 1288,
+                                  "start": 1284,
+                                  "tag": 8,
+                                  "value": "state",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1290,
+                              "start": 1290,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 1300,
+                              "start": 1292,
+                              "tag": 13,
+                              "value": "Success",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 1304,
+                          "start": 1302,
+                          "tag": 44,
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 1345,
+                          "start": 1306,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 1338,
+                              "start": 1306,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 1326,
+                                  "start": 1306,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 1338,
+                                  "start": 1328,
+                                  "tag": 8,
+                                  "value": "is_accepted",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1340,
+                              "start": 1340,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 1345,
+                              "start": 1342,
+                              "tag": 21,
+                              "value": "TRUE",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 18,
+      },
+    },
+    Object {
+      "name": "totalExportEnergy",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "export_energy",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 1426,
+              "start": 1392,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 1412,
+                  "start": 1392,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 1426,
+                  "start": 1414,
+                  "tag": 8,
+                  "value": "export_energy",
+                },
+              ],
+            },
+            "table": "account_levelisations",
+            "type": 19,
+          },
+        ],
+        "name": "sum",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 1531,
+          "start": 1388,
+          "tag": 54,
+          "values": Array [
+            Object {
+              "end": 1390,
+              "start": 1388,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 1390,
+                  "start": 1388,
+                  "tag": 8,
+                  "value": "SUM",
+                },
+              ],
+            },
+            Object {
+              "end": 1426,
+              "start": 1392,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 1412,
+                  "start": 1392,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 1426,
+                  "start": 1414,
+                  "tag": 8,
+                  "value": "export_energy",
+                },
+              ],
+            },
+            Object {
+              "end": 1531,
+              "start": 1433,
+              "tag": 35,
+              "values": Array [
+                Object {
+                  "end": 1530,
+                  "start": 1441,
+                  "tag": 70,
+                  "values": Array [
+                    Object {
+                      "end": 1530,
+                      "start": 1447,
+                      "tag": 46,
+                      "values": Array [
+                        Object {
+                          "end": 1485,
+                          "start": 1447,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 1473,
+                              "start": 1447,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 1467,
+                                  "start": 1447,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 1473,
+                                  "start": 1469,
+                                  "tag": 8,
+                                  "value": "state",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1475,
+                              "start": 1475,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 1485,
+                              "start": 1477,
+                              "tag": 13,
+                              "value": "Success",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 1489,
+                          "start": 1487,
+                          "tag": 44,
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 1530,
+                          "start": 1491,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 1523,
+                              "start": 1491,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 1511,
+                                  "start": 1491,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 1523,
+                                  "start": 1513,
+                                  "tag": 8,
+                                  "value": "is_accepted",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1525,
+                              "start": 1525,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 1530,
+                              "start": 1527,
+                              "tag": 21,
+                              "value": "TRUE",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 18,
+      },
+    },
+    Object {
+      "name": "totalMeteredExportEnergy",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "export_energy",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 1607,
+              "start": 1573,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 1593,
+                  "start": 1573,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 1607,
+                  "start": 1595,
+                  "tag": 8,
+                  "value": "export_energy",
+                },
+              ],
+            },
+            "table": "account_levelisations",
+            "type": 19,
+          },
+        ],
+        "name": "sum",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 1797,
+          "start": 1569,
+          "tag": 54,
+          "values": Array [
+            Object {
+              "end": 1571,
+              "start": 1569,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 1571,
+                  "start": 1569,
+                  "tag": 8,
+                  "value": "SUM",
+                },
+              ],
+            },
+            Object {
+              "end": 1607,
+              "start": 1573,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 1593,
+                  "start": 1573,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 1607,
+                  "start": 1595,
+                  "tag": 8,
+                  "value": "export_energy",
+                },
+              ],
+            },
+            Object {
+              "end": 1797,
+              "start": 1614,
+              "tag": 35,
+              "values": Array [
+                Object {
+                  "end": 1791,
+                  "start": 1629,
+                  "tag": 70,
+                  "values": Array [
+                    Object {
+                      "end": 1791,
+                      "start": 1643,
+                      "tag": 46,
+                      "values": Array [
+                        Object {
+                          "end": 1791,
+                          "start": 1643,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 1681,
+                              "start": 1643,
+                              "tag": 46,
+                              "values": Array [
+                                Object {
+                                  "end": 1669,
+                                  "start": 1643,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 1663,
+                                      "start": 1643,
+                                      "tag": 8,
+                                      "value": "account_levelisations",
+                                    },
+                                    Object {
+                                      "end": 1669,
+                                      "start": 1665,
+                                      "tag": 8,
+                                      "value": "state",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 1671,
+                                  "start": 1671,
+                                  "tag": 44,
+                                  "value": "=",
+                                },
+                                Object {
+                                  "end": 1681,
+                                  "start": 1673,
+                                  "tag": 13,
+                                  "value": "Success",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1685,
+                              "start": 1683,
+                              "tag": 44,
+                              "value": "AND",
+                            },
+                            Object {
+                              "end": 1726,
+                              "start": 1687,
+                              "tag": 46,
+                              "values": Array [
+                                Object {
+                                  "end": 1719,
+                                  "start": 1687,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 1707,
+                                      "start": 1687,
+                                      "tag": 8,
+                                      "value": "account_levelisations",
+                                    },
+                                    Object {
+                                      "end": 1719,
+                                      "start": 1709,
+                                      "tag": 8,
+                                      "value": "is_accepted",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 1721,
+                                  "start": 1721,
+                                  "tag": 44,
+                                  "value": "=",
+                                },
+                                Object {
+                                  "end": 1726,
+                                  "start": 1723,
+                                  "tag": 21,
+                                  "value": "TRUE",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 1738,
+                          "start": 1736,
+                          "tag": 44,
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 1791,
+                          "start": 1740,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 1772,
+                              "start": 1740,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 1760,
+                                  "start": 1740,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 1772,
+                                  "start": 1762,
+                                  "tag": 8,
+                                  "value": "export_type",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1774,
+                              "start": 1774,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 1791,
+                              "start": 1776,
+                              "tag": 13,
+                              "value": "Metered Export",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 18,
+      },
+    },
+    Object {
+      "name": "totalMeteredExportPayment",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "export_payment",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 1881,
+              "start": 1846,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 1866,
+                  "start": 1846,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 1881,
+                  "start": 1868,
+                  "tag": 8,
+                  "value": "export_payment",
+                },
+              ],
+            },
+            "table": "account_levelisations",
+            "type": 19,
+          },
+        ],
+        "name": "sum",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 2071,
+          "start": 1842,
+          "tag": 54,
+          "values": Array [
+            Object {
+              "end": 1844,
+              "start": 1842,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 1844,
+                  "start": 1842,
+                  "tag": 8,
+                  "value": "SUM",
+                },
+              ],
+            },
+            Object {
+              "end": 1881,
+              "start": 1846,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 1866,
+                  "start": 1846,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 1881,
+                  "start": 1868,
+                  "tag": 8,
+                  "value": "export_payment",
+                },
+              ],
+            },
+            Object {
+              "end": 2071,
+              "start": 1888,
+              "tag": 35,
+              "values": Array [
+                Object {
+                  "end": 2065,
+                  "start": 1903,
+                  "tag": 70,
+                  "values": Array [
+                    Object {
+                      "end": 2065,
+                      "start": 1917,
+                      "tag": 46,
+                      "values": Array [
+                        Object {
+                          "end": 2065,
+                          "start": 1917,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 1955,
+                              "start": 1917,
+                              "tag": 46,
+                              "values": Array [
+                                Object {
+                                  "end": 1943,
+                                  "start": 1917,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 1937,
+                                      "start": 1917,
+                                      "tag": 8,
+                                      "value": "account_levelisations",
+                                    },
+                                    Object {
+                                      "end": 1943,
+                                      "start": 1939,
+                                      "tag": 8,
+                                      "value": "state",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 1945,
+                                  "start": 1945,
+                                  "tag": 44,
+                                  "value": "=",
+                                },
+                                Object {
+                                  "end": 1955,
+                                  "start": 1947,
+                                  "tag": 13,
+                                  "value": "Success",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 1959,
+                              "start": 1957,
+                              "tag": 44,
+                              "value": "AND",
+                            },
+                            Object {
+                              "end": 2000,
+                              "start": 1961,
+                              "tag": 46,
+                              "values": Array [
+                                Object {
+                                  "end": 1993,
+                                  "start": 1961,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 1981,
+                                      "start": 1961,
+                                      "tag": 8,
+                                      "value": "account_levelisations",
+                                    },
+                                    Object {
+                                      "end": 1993,
+                                      "start": 1983,
+                                      "tag": 8,
+                                      "value": "is_accepted",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 1995,
+                                  "start": 1995,
+                                  "tag": 44,
+                                  "value": "=",
+                                },
+                                Object {
+                                  "end": 2000,
+                                  "start": 1997,
+                                  "tag": 21,
+                                  "value": "TRUE",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 2012,
+                          "start": 2010,
+                          "tag": 44,
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 2065,
+                          "start": 2014,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 2046,
+                              "start": 2014,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 2034,
+                                  "start": 2014,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 2046,
+                                  "start": 2036,
+                                  "tag": 8,
+                                  "value": "export_type",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 2048,
+                              "start": 2048,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 2065,
+                              "start": 2050,
+                              "tag": 13,
+                              "value": "Metered Export",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 18,
+      },
+    },
+    Object {
+      "name": "totalDeemedExportEnergy",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "export_energy",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 2155,
+              "start": 2121,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 2141,
+                  "start": 2121,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 2155,
+                  "start": 2143,
+                  "tag": 8,
+                  "value": "export_energy",
+                },
+              ],
+            },
+            "table": "account_levelisations",
+            "type": 19,
+          },
+        ],
+        "name": "sum",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 2337,
+          "start": 2117,
+          "tag": 54,
+          "values": Array [
+            Object {
+              "end": 2119,
+              "start": 2117,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 2119,
+                  "start": 2117,
+                  "tag": 8,
+                  "value": "SUM",
+                },
+              ],
+            },
+            Object {
+              "end": 2155,
+              "start": 2121,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 2141,
+                  "start": 2121,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 2155,
+                  "start": 2143,
+                  "tag": 8,
+                  "value": "export_energy",
+                },
+              ],
+            },
+            Object {
+              "end": 2337,
+              "start": 2162,
+              "tag": 35,
+              "values": Array [
+                Object {
+                  "end": 2331,
+                  "start": 2177,
+                  "tag": 70,
+                  "values": Array [
+                    Object {
+                      "end": 2331,
+                      "start": 2191,
+                      "tag": 46,
+                      "values": Array [
+                        Object {
+                          "end": 2331,
+                          "start": 2191,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 2229,
+                              "start": 2191,
+                              "tag": 46,
+                              "values": Array [
+                                Object {
+                                  "end": 2217,
+                                  "start": 2191,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 2211,
+                                      "start": 2191,
+                                      "tag": 8,
+                                      "value": "account_levelisations",
+                                    },
+                                    Object {
+                                      "end": 2217,
+                                      "start": 2213,
+                                      "tag": 8,
+                                      "value": "state",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 2219,
+                                  "start": 2219,
+                                  "tag": 44,
+                                  "value": "=",
+                                },
+                                Object {
+                                  "end": 2229,
+                                  "start": 2221,
+                                  "tag": 13,
+                                  "value": "Success",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 2233,
+                              "start": 2231,
+                              "tag": 44,
+                              "value": "AND",
+                            },
+                            Object {
+                              "end": 2274,
+                              "start": 2235,
+                              "tag": 46,
+                              "values": Array [
+                                Object {
+                                  "end": 2267,
+                                  "start": 2235,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 2255,
+                                      "start": 2235,
+                                      "tag": 8,
+                                      "value": "account_levelisations",
+                                    },
+                                    Object {
+                                      "end": 2267,
+                                      "start": 2257,
+                                      "tag": 8,
+                                      "value": "is_accepted",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 2269,
+                                  "start": 2269,
+                                  "tag": 44,
+                                  "value": "=",
+                                },
+                                Object {
+                                  "end": 2274,
+                                  "start": 2271,
+                                  "tag": 21,
+                                  "value": "TRUE",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 2286,
+                          "start": 2284,
+                          "tag": 44,
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 2331,
+                          "start": 2288,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 2320,
+                              "start": 2288,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 2308,
+                                  "start": 2288,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 2320,
+                                  "start": 2310,
+                                  "tag": 8,
+                                  "value": "export_type",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 2322,
+                              "start": 2322,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 2331,
+                              "start": 2324,
+                              "tag": 13,
+                              "value": "Deemed",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 18,
+      },
+    },
+    Object {
+      "name": "totalDeemedExportPayment",
+      "type": Object {
+        "args": Array [
+          Object {
+            "column": "export_payment",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 2420,
+              "start": 2385,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 2405,
+                  "start": 2385,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 2420,
+                  "start": 2407,
+                  "tag": 8,
+                  "value": "export_payment",
+                },
+              ],
+            },
+            "table": "account_levelisations",
+            "type": 19,
+          },
+        ],
+        "name": "sum",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 2602,
+          "start": 2381,
+          "tag": 54,
+          "values": Array [
+            Object {
+              "end": 2383,
+              "start": 2381,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 2383,
+                  "start": 2381,
+                  "tag": 8,
+                  "value": "SUM",
+                },
+              ],
+            },
+            Object {
+              "end": 2420,
+              "start": 2385,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 2405,
+                  "start": 2385,
+                  "tag": 8,
+                  "value": "account_levelisations",
+                },
+                Object {
+                  "end": 2420,
+                  "start": 2407,
+                  "tag": 8,
+                  "value": "export_payment",
+                },
+              ],
+            },
+            Object {
+              "end": 2602,
+              "start": 2427,
+              "tag": 35,
+              "values": Array [
+                Object {
+                  "end": 2596,
+                  "start": 2442,
+                  "tag": 70,
+                  "values": Array [
+                    Object {
+                      "end": 2596,
+                      "start": 2456,
+                      "tag": 46,
+                      "values": Array [
+                        Object {
+                          "end": 2596,
+                          "start": 2456,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 2494,
+                              "start": 2456,
+                              "tag": 46,
+                              "values": Array [
+                                Object {
+                                  "end": 2482,
+                                  "start": 2456,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 2476,
+                                      "start": 2456,
+                                      "tag": 8,
+                                      "value": "account_levelisations",
+                                    },
+                                    Object {
+                                      "end": 2482,
+                                      "start": 2478,
+                                      "tag": 8,
+                                      "value": "state",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 2484,
+                                  "start": 2484,
+                                  "tag": 44,
+                                  "value": "=",
+                                },
+                                Object {
+                                  "end": 2494,
+                                  "start": 2486,
+                                  "tag": 13,
+                                  "value": "Success",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 2498,
+                              "start": 2496,
+                              "tag": 44,
+                              "value": "AND",
+                            },
+                            Object {
+                              "end": 2539,
+                              "start": 2500,
+                              "tag": 46,
+                              "values": Array [
+                                Object {
+                                  "end": 2532,
+                                  "start": 2500,
+                                  "tag": 11,
+                                  "values": Array [
+                                    Object {
+                                      "end": 2520,
+                                      "start": 2500,
+                                      "tag": 8,
+                                      "value": "account_levelisations",
+                                    },
+                                    Object {
+                                      "end": 2532,
+                                      "start": 2522,
+                                      "tag": 8,
+                                      "value": "is_accepted",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 2534,
+                                  "start": 2534,
+                                  "tag": 44,
+                                  "value": "=",
+                                },
+                                Object {
+                                  "end": 2539,
+                                  "start": 2536,
+                                  "tag": 21,
+                                  "value": "TRUE",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 2551,
+                          "start": 2549,
+                          "tag": 44,
+                          "value": "AND",
+                        },
+                        Object {
+                          "end": 2596,
+                          "start": 2553,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 2585,
+                              "start": 2553,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 2573,
+                                  "start": 2553,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 2585,
+                                  "start": 2575,
+                                  "tag": 8,
+                                  "value": "export_type",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 2587,
+                              "start": 2587,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 2596,
+                              "start": 2589,
+                              "tag": 13,
+                              "value": "Deemed",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 18,
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "levelisations",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 2657,
+        "start": 2645,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 2657,
+            "start": 2645,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 2657,
+                "start": 2645,
+                "tag": 8,
+                "value": "levelisations",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "levelisations",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "account_levelisations",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 2691,
+        "start": 2671,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 2691,
+            "start": 2671,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 2691,
+                "start": 2671,
+                "tag": 8,
+                "value": "account_levelisations",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "account_levelisations",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
 Object {
   "params": Array [

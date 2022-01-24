@@ -2587,6 +2587,166 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql levelisation-details.query.sql: levelisation-details.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": null,
+          "postgresType": "integer",
+          "type": 3,
+        },
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "comment": null,
+        "postgresType": "integer",
+        "type": 3,
+      },
+    },
+    Object {
+      "name": "quarter",
+      "type": Object {
+        "comment": null,
+        "postgresType": "character varying",
+        "type": 2,
+      },
+    },
+    Object {
+      "name": "startOn",
+      "type": Object {
+        "comment": null,
+        "postgresType": "date",
+        "type": 6,
+      },
+    },
+    Object {
+      "name": "endOn",
+      "type": Object {
+        "comment": null,
+        "postgresType": "date",
+        "type": 6,
+      },
+    },
+    Object {
+      "name": "totalCount",
+      "type": Object {
+        "postgresType": "int4",
+        "type": 3,
+      },
+    },
+    Object {
+      "name": "pendingCount",
+      "type": Object {
+        "postgresType": "int4",
+        "type": 3,
+      },
+    },
+    Object {
+      "name": "errorCount",
+      "type": Object {
+        "postgresType": "int4",
+        "type": 3,
+      },
+    },
+    Object {
+      "name": "successCount",
+      "type": Object {
+        "postgresType": "int4",
+        "type": 3,
+      },
+    },
+    Object {
+      "name": "backsSent",
+      "type": Object {
+        "postgresType": "int4",
+        "type": 3,
+      },
+    },
+    Object {
+      "name": "chequeSent",
+      "type": Object {
+        "postgresType": "int4",
+        "type": 3,
+      },
+    },
+    Object {
+      "name": "totalGenerationPayment",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "bigint",
+        "type": 4,
+      },
+    },
+    Object {
+      "name": "totalExportPayment",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "bigint",
+        "type": 4,
+      },
+    },
+    Object {
+      "name": "totalGenerationEnergy",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "bigint",
+        "type": 4,
+      },
+    },
+    Object {
+      "name": "totalExportEnergy",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "bigint",
+        "type": 4,
+      },
+    },
+    Object {
+      "name": "totalMeteredExportEnergy",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "bigint",
+        "type": 4,
+      },
+    },
+    Object {
+      "name": "totalMeteredExportPayment",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "bigint",
+        "type": 4,
+      },
+    },
+    Object {
+      "name": "totalDeemedExportEnergy",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "bigint",
+        "type": 4,
+      },
+    },
+    Object {
+      "name": "totalDeemedExportPayment",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "bigint",
+        "type": 4,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
 Object {
   "params": Array [

@@ -164,7 +164,7 @@ const pgsqlAst: Printer<Node> = {
           ? ['DISTINCT ON (', group([indent([softline, join([',', line], vals(path, recur))]), softline]), ')']
           : ['DISTINCT'];
       case SqlName.Filter:
-        return [group(['FILTER', line]), group(['(', indent([softline, nthVal(0, path, recur)]), ')'])];
+        return [group(['FILTER', line]), group(['(', indent([softline, nthVal(0, path, recur)]), softline, ')'])];
       case SqlName.Star:
         return '*';
       case SqlName.StarIdentifier:
@@ -254,27 +254,29 @@ const pgsqlAst: Printer<Node> = {
         const groupArgsByTwo = ['JSON_BUILD_OBJECT', 'JSONB_BUILD_OBJECT'].includes(name);
 
         return group([
-          group([nthVal(0, path, recur), softline, isNoBrackets ? '' : '(']),
-          indent([
-            softline,
-            distinct !== -1 ? [nthVal(distinct, path, recur), line] : [],
-            join(
-              [',', line],
-              groupArgsByTwo
-                ? chunk(2, args).map((chunk) =>
-                    group(
-                      join(
-                        [',', line],
-                        chunk.map((index) => nthVal(index, path, recur)),
+          group([
+            group([nthVal(0, path, recur), softline, isNoBrackets ? '' : '(']),
+            indent([
+              softline,
+              distinct !== -1 ? [nthVal(distinct, path, recur), line] : [],
+              join(
+                [',', line],
+                groupArgsByTwo
+                  ? chunk(2, args).map((chunk) =>
+                      group(
+                        join(
+                          [',', line],
+                          chunk.map((index) => nthVal(index, path, recur)),
+                        ),
                       ),
-                    ),
-                  )
-                : args.map((index) => nthVal(index, path, recur)),
-            ),
-            order !== -1 ? [line, nthVal(order, path, recur)] : [],
+                    )
+                  : args.map((index) => nthVal(index, path, recur)),
+              ),
+              order !== -1 ? [line, nthVal(order, path, recur)] : [],
+            ]),
+            softline,
+            isNoBrackets ? '' : ')',
           ]),
-          softline,
-          isNoBrackets ? '' : ')',
           filter !== -1 ? [line, nthVal(filter, path, recur)] : [],
         ]);
       case SqlName.ComparationArray:
