@@ -358,11 +358,13 @@ const pgsqlAst: Printer<Node> = {
       case SqlName.SetList:
         return group(join([',', hardline], vals(path, recur)));
       case SqlName.Columns:
-        const parent = path.getParentNode();
-        const columnsSeparator = parent && isInsert(parent) ? hardline : line;
+        const columnsParent = path.getParentNode();
+        const columnsSeparator = columnsParent && isInsert(columnsParent) ? hardline : line;
         return group(['(', indent([softline, join([',', columnsSeparator], vals(path, recur))]), softline, ')']);
       case SqlName.Values:
-        return group(['(', indent([softline, join([',', line], vals(path, recur))]), softline, ')']);
+        const valuesParent = path.getParentNode(1);
+        const valuesSeparator = valuesParent && isInsert(valuesParent) ? hardline : line;
+        return group(['(', indent([softline, join([',', valuesSeparator], vals(path, recur))]), softline, ')']);
       case SqlName.SetMap:
         return group([
           nthVal(0, path, recur),
@@ -407,6 +409,7 @@ const pgsqlAst: Printer<Node> = {
                 )
               : [],
           ]),
+          softline,
           ')',
           where !== -1 ? [line, nthVal(where, path, recur)] : [],
         ]);
@@ -417,7 +420,7 @@ const pgsqlAst: Printer<Node> = {
       case SqlName.DoUpdate:
         return group(['DO UPDATE', group(indent([line, join(line, vals(path, recur))]))]);
       case SqlName.Conflict:
-        return ['ON CONFLICT', group(indent([line, join(hardline, vals(path, recur))]))];
+        return [group(['ON CONFLICT', indent([line, nthVal(0, path, recur)])]), indent([line, nthVal(1, path, recur)])];
       case SqlName.Insert:
         return wrapSubquery(path, [
           [group(['INSERT INTO', line, nthVal(0, path, recur)]), ' ', nthVal(1, path, recur)],

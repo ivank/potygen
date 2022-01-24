@@ -91,8 +91,7 @@ FROM
   -- Special exception for fit account 422, as it does not have a primary account
   JOIN fit.CustomerAccount AS ca
     ON ca."FitAccountId" = ga."FitAccountId" AND ((ca."CustomerRoleValue" & 1) > 0 OR ca."FitAccountId" = 422)
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       account_id = EXCLUDED.account_id,

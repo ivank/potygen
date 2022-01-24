@@ -4,10 +4,17 @@ INSERT INTO tariffs (
   type
 )
 VALUES
-  (100001, 'ALL/EXPORT/01', 'Export'::tariff_types),
-  (100002, 'ALL/EXPORT/02', 'Export'::tariff_types)
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+  (
+    100001,
+    'ALL/EXPORT/01',
+    'Export'::tariff_types
+  ),
+  (
+    100002,
+    'ALL/EXPORT/02',
+    'Export'::tariff_types
+  )
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       code = EXCLUDED.code,

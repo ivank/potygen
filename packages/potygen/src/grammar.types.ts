@@ -2271,7 +2271,9 @@ export interface DoUpdateTag extends NodeSqlTag {
  */
 export interface ConflictTag extends NodeSqlTag {
   tag: SqlName.Conflict;
-  values: (ConflictTargetTag | ConflictConstraintTag | DoNothingTag | DoUpdateTag)[];
+  values:
+    | [action: DoNothingTag | DoUpdateTag]
+    | [criteria: ConflictTargetTag | ConflictConstraintTag, action: DoNothingTag | DoUpdateTag];
 }
 
 /**

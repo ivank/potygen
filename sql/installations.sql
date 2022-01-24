@@ -155,8 +155,7 @@ FROM
     ON ca."FitAccountId" = ga."FitAccountId" AND ((ca."CustomerRoleValue" & 1) > 0 OR ca."FitAccountId" = 422)
   LEFT JOIN fit.Customer AS c
     ON c."CustomerId" = ca."CustomerId"
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       address_id = EXCLUDED.address_id,

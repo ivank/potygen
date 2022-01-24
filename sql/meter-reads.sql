@@ -41,8 +41,7 @@ FROM fit.MeterReading AS mr JOIN fit.Meter AS m ON m."MeterId" = mr."MeterId"
 -- TODO: Figure out where to migrate deemed meter reads to.
 WHERE
   m."MPAN" IS NOT NULL
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       meter_id = EXCLUDED.meter_id,

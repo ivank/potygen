@@ -33456,6 +33456,554 @@ Object {
 }
 `;
 
+exports[`Sql Files Should parse complex sql meter-create.query.sql: meter-create.query.sql 1`] = `
+Object {
+  "ast": Object {
+    "end": 549,
+    "start": 22,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 39,
+        "start": 34,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 39,
+            "start": 34,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 39,
+                "start": 34,
+                "tag": 8,
+                "value": "meters",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 128,
+        "start": 41,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 46,
+            "start": 45,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 63,
+            "start": 51,
+            "tag": 8,
+            "value": "serial_number",
+          },
+          Object {
+            "end": 71,
+            "start": 68,
+            "tag": 8,
+            "value": "make",
+          },
+          Object {
+            "end": 80,
+            "start": 76,
+            "tag": 8,
+            "value": "model",
+          },
+          Object {
+            "end": 88,
+            "start": 85,
+            "tag": 8,
+            "value": "mpan",
+          },
+          Object {
+            "end": 98,
+            "start": 93,
+            "tag": 8,
+            "value": "shared",
+          },
+          Object {
+            "end": 112,
+            "start": 103,
+            "tag": 8,
+            "value": "hh_metered",
+          },
+          Object {
+            "end": 126,
+            "start": 117,
+            "tag": 8,
+            "value": "created_at",
+          },
+        ],
+      },
+      Object {
+        "end": 292,
+        "start": 130,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 292,
+            "start": 139,
+            "tag": 86,
+            "values": Array [
+              Object {
+                "end": 188,
+                "start": 145,
+                "tag": 54,
+                "values": Array [
+                  Object {
+                    "end": 152,
+                    "start": 145,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 152,
+                        "start": 145,
+                        "tag": 8,
+                        "value": "COALESCE",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 162,
+                    "start": 154,
+                    "tag": 52,
+                    "values": Array [
+                      Object {
+                        "end": 156,
+                        "pick": Array [],
+                        "required": false,
+                        "start": 154,
+                        "tag": 10,
+                        "type": "single",
+                        "value": "id",
+                      },
+                      Object {
+                        "end": 161,
+                        "start": 159,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 161,
+                            "start": 159,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 161,
+                                "start": 159,
+                                "tag": 8,
+                                "value": "int",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 187,
+                    "start": 164,
+                    "tag": 54,
+                    "values": Array [
+                      Object {
+                        "end": 170,
+                        "start": 164,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 170,
+                            "start": 164,
+                            "tag": 8,
+                            "value": "nextval",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 186,
+                        "start": 172,
+                        "tag": 13,
+                        "value": "meters_id_seq",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 198,
+                "pick": Array [],
+                "required": false,
+                "start": 195,
+                "tag": 10,
+                "type": "single",
+                "value": "msn",
+              },
+              Object {
+                "end": 209,
+                "pick": Array [],
+                "required": false,
+                "start": 205,
+                "tag": 10,
+                "type": "single",
+                "value": "make",
+              },
+              Object {
+                "end": 221,
+                "pick": Array [],
+                "required": false,
+                "start": 216,
+                "tag": 10,
+                "type": "single",
+                "value": "model",
+              },
+              Object {
+                "end": 250,
+                "start": 228,
+                "tag": 54,
+                "values": Array [
+                  Object {
+                    "end": 235,
+                    "start": 228,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 235,
+                        "start": 228,
+                        "tag": 8,
+                        "value": "COALESCE",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 241,
+                    "pick": Array [],
+                    "required": false,
+                    "start": 237,
+                    "tag": 10,
+                    "type": "single",
+                    "value": "mpan",
+                  },
+                  Object {
+                    "end": 249,
+                    "start": 244,
+                    "tag": 13,
+                    "value": "fake",
+                  },
+                ],
+              },
+              Object {
+                "end": 261,
+                "start": 257,
+                "tag": 21,
+                "value": "FALSE",
+              },
+              Object {
+                "end": 272,
+                "start": 268,
+                "tag": 21,
+                "value": "FALSE",
+              },
+              Object {
+                "end": 288,
+                "pick": Array [],
+                "required": false,
+                "start": 279,
+                "tag": 10,
+                "type": "single",
+                "value": "createdAt",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 534,
+        "start": 294,
+        "tag": 104,
+        "values": Array [
+          Object {
+            "end": 311,
+            "start": 308,
+            "tag": 100,
+            "values": Array [
+              Object {
+                "end": 310,
+                "start": 309,
+                "tag": 99,
+                "values": Array [
+                  Object {
+                    "end": 310,
+                    "start": 309,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 310,
+                        "start": 309,
+                        "tag": 8,
+                        "value": "id",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 534,
+            "start": 315,
+            "tag": 103,
+            "values": Array [
+              Object {
+                "end": 534,
+                "start": 329,
+                "tag": 88,
+                "values": Array [
+                  Object {
+                    "end": 534,
+                    "start": 339,
+                    "tag": 84,
+                    "values": Array [
+                      Object {
+                        "end": 376,
+                        "start": 339,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 351,
+                            "start": 339,
+                            "tag": 8,
+                            "value": "serial_number",
+                          },
+                          Object {
+                            "end": 376,
+                            "start": 355,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 362,
+                                "start": 355,
+                                "tag": 8,
+                                "value": "EXCLUDED",
+                              },
+                              Object {
+                                "end": 376,
+                                "start": 364,
+                                "tag": 8,
+                                "value": "serial_number",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 404,
+                        "start": 385,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 388,
+                            "start": 385,
+                            "tag": 8,
+                            "value": "make",
+                          },
+                          Object {
+                            "end": 404,
+                            "start": 392,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 399,
+                                "start": 392,
+                                "tag": 8,
+                                "value": "EXCLUDED",
+                              },
+                              Object {
+                                "end": 404,
+                                "start": 401,
+                                "tag": 8,
+                                "value": "make",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 434,
+                        "start": 413,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 417,
+                            "start": 413,
+                            "tag": 8,
+                            "value": "model",
+                          },
+                          Object {
+                            "end": 434,
+                            "start": 421,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 428,
+                                "start": 421,
+                                "tag": 8,
+                                "value": "EXCLUDED",
+                              },
+                              Object {
+                                "end": 434,
+                                "start": 430,
+                                "tag": 8,
+                                "value": "model",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 462,
+                        "start": 443,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 446,
+                            "start": 443,
+                            "tag": 8,
+                            "value": "mpan",
+                          },
+                          Object {
+                            "end": 462,
+                            "start": 450,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 457,
+                                "start": 450,
+                                "tag": 8,
+                                "value": "EXCLUDED",
+                              },
+                              Object {
+                                "end": 462,
+                                "start": 459,
+                                "tag": 8,
+                                "value": "mpan",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 494,
+                        "start": 471,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 476,
+                            "start": 471,
+                            "tag": 8,
+                            "value": "shared",
+                          },
+                          Object {
+                            "end": 494,
+                            "start": 480,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 487,
+                                "start": 480,
+                                "tag": 8,
+                                "value": "EXCLUDED",
+                              },
+                              Object {
+                                "end": 494,
+                                "start": 489,
+                                "tag": 8,
+                                "value": "shared",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 534,
+                        "start": 503,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 512,
+                            "start": 503,
+                            "tag": 8,
+                            "value": "hh_metered",
+                          },
+                          Object {
+                            "end": 534,
+                            "start": 516,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 523,
+                                "start": 516,
+                                "tag": 8,
+                                "value": "EXCLUDED",
+                              },
+                              Object {
+                                "end": 534,
+                                "start": 525,
+                                "tag": 8,
+                                "value": "hh_metered",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 549,
+        "start": 536,
+        "tag": 93,
+        "values": Array [
+          Object {
+            "end": 549,
+            "start": 548,
+            "tag": 92,
+            "values": Array [
+              Object {
+                "end": 549,
+                "start": 548,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 549,
+                    "start": 548,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [
+    Object {
+      "end": 21,
+      "start": 0,
+      "tag": 1,
+      "value": " meter-create.query",
+    },
+  ],
+}
+`;
+
 exports[`Sql Files Should parse complex sql meter-reads.sql: meter-reads.sql 1`] = `
 Object {
   "ast": Object {
@@ -38194,7 +38742,7 @@ Object {
 exports[`Sql Files Should parse complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
 Object {
   "ast": Object {
-    "end": 392,
+    "end": 424,
     "start": 0,
     "tag": 105,
     "values": Array [
@@ -38244,51 +38792,51 @@ Object {
         ],
       },
       Object {
-        "end": 169,
+        "end": 201,
         "start": 59,
         "tag": 97,
         "values": Array [
           Object {
-            "end": 116,
+            "end": 132,
             "start": 68,
             "tag": 86,
             "values": Array [
               Object {
-                "end": 74,
-                "start": 69,
+                "end": 79,
+                "start": 74,
                 "tag": 19,
                 "value": "100001",
               },
               Object {
-                "end": 91,
-                "start": 77,
+                "end": 100,
+                "start": 86,
                 "tag": 13,
                 "value": "ALL/EXPORT/01",
               },
               Object {
-                "end": 116,
-                "start": 94,
+                "end": 129,
+                "start": 107,
                 "tag": 52,
                 "values": Array [
                   Object {
-                    "end": 101,
-                    "start": 94,
+                    "end": 114,
+                    "start": 107,
                     "tag": 13,
                     "value": "Export",
                   },
                   Object {
-                    "end": 115,
-                    "start": 104,
+                    "end": 128,
+                    "start": 117,
                     "tag": 32,
                     "values": Array [
                       Object {
-                        "end": 115,
-                        "start": 104,
+                        "end": 128,
+                        "start": 117,
                         "tag": 89,
                         "values": Array [
                           Object {
-                            "end": 115,
-                            "start": 104,
+                            "end": 128,
+                            "start": 117,
                             "tag": 8,
                             "value": "tariff_types",
                           },
@@ -38301,46 +38849,46 @@ Object {
             ],
           },
           Object {
-            "end": 169,
-            "start": 121,
+            "end": 201,
+            "start": 137,
             "tag": 86,
             "values": Array [
               Object {
-                "end": 127,
-                "start": 122,
+                "end": 148,
+                "start": 143,
                 "tag": 19,
                 "value": "100002",
               },
               Object {
-                "end": 144,
-                "start": 130,
+                "end": 169,
+                "start": 155,
                 "tag": 13,
                 "value": "ALL/EXPORT/02",
               },
               Object {
-                "end": 169,
-                "start": 147,
+                "end": 198,
+                "start": 176,
                 "tag": 52,
                 "values": Array [
                   Object {
-                    "end": 154,
-                    "start": 147,
+                    "end": 183,
+                    "start": 176,
                     "tag": 13,
                     "value": "Export",
                   },
                   Object {
-                    "end": 168,
-                    "start": 157,
+                    "end": 197,
+                    "start": 186,
                     "tag": 32,
                     "values": Array [
                       Object {
-                        "end": 168,
-                        "start": 157,
+                        "end": 197,
+                        "start": 186,
                         "tag": 89,
                         "values": Array [
                           Object {
-                            "end": 168,
-                            "start": 157,
+                            "end": 197,
+                            "start": 186,
                             "tag": 8,
                             "value": "tariff_types",
                           },
@@ -38355,28 +38903,28 @@ Object {
         ],
       },
       Object {
-        "end": 392,
-        "start": 171,
+        "end": 424,
+        "start": 203,
         "tag": 104,
         "values": Array [
           Object {
-            "end": 237,
-            "start": 185,
+            "end": 269,
+            "start": 217,
             "tag": 100,
             "values": Array [
               Object {
-                "end": 201,
-                "start": 186,
+                "end": 233,
+                "start": 218,
                 "tag": 99,
                 "values": Array [
                   Object {
-                    "end": 201,
-                    "start": 186,
+                    "end": 233,
+                    "start": 218,
                     "tag": 11,
                     "values": Array [
                       Object {
-                        "end": 201,
-                        "start": 186,
+                        "end": 233,
+                        "start": 218,
                         "tag": 8,
                         "value": "source_system_id",
                       },
@@ -38385,48 +38933,48 @@ Object {
                 ],
               },
               Object {
-                "end": 237,
-                "start": 204,
+                "end": 269,
+                "start": 236,
                 "tag": 70,
                 "values": Array [
                   Object {
-                    "end": 237,
-                    "start": 210,
+                    "end": 269,
+                    "start": 242,
                     "tag": 46,
                     "values": Array [
                       Object {
-                        "end": 225,
-                        "start": 210,
+                        "end": 257,
+                        "start": 242,
                         "tag": 11,
                         "values": Array [
                           Object {
-                            "end": 225,
-                            "start": 210,
+                            "end": 257,
+                            "start": 242,
                             "tag": 8,
                             "value": "source_system_id",
                           },
                         ],
                       },
                       Object {
-                        "end": 228,
-                        "start": 227,
+                        "end": 260,
+                        "start": 259,
                         "tag": 44,
                         "value": "IS",
                       },
                       Object {
-                        "end": 238,
-                        "start": 230,
+                        "end": 270,
+                        "start": 262,
                         "tag": 47,
                         "values": Array [
                           Object {
-                            "end": 232,
-                            "start": 230,
+                            "end": 264,
+                            "start": 262,
                             "tag": 45,
                             "value": "NOT",
                           },
                           Object {
-                            "end": 237,
-                            "start": 234,
+                            "end": 269,
+                            "start": 266,
                             "tag": 7,
                           },
                         ],
@@ -38438,45 +38986,45 @@ Object {
             ],
           },
           Object {
-            "end": 392,
-            "start": 241,
+            "end": 424,
+            "start": 273,
             "tag": 103,
             "values": Array [
               Object {
-                "end": 392,
-                "start": 255,
+                "end": 424,
+                "start": 287,
                 "tag": 88,
                 "values": Array [
                   Object {
-                    "end": 392,
-                    "start": 265,
+                    "end": 424,
+                    "start": 297,
                     "tag": 84,
                     "values": Array [
                       Object {
-                        "end": 284,
-                        "start": 265,
+                        "end": 316,
+                        "start": 297,
                         "tag": 83,
                         "values": Array [
                           Object {
-                            "end": 268,
-                            "start": 265,
+                            "end": 300,
+                            "start": 297,
                             "tag": 8,
                             "value": "code",
                           },
                           Object {
-                            "end": 284,
-                            "start": 272,
+                            "end": 316,
+                            "start": 304,
                             "tag": 11,
                             "values": Array [
                               Object {
-                                "end": 279,
-                                "start": 272,
+                                "end": 311,
+                                "start": 304,
                                 "tag": 8,
                                 "value": "EXCLUDED",
                               },
                               Object {
-                                "end": 284,
-                                "start": 281,
+                                "end": 316,
+                                "start": 313,
                                 "tag": 8,
                                 "value": "code",
                               },
@@ -38485,30 +39033,30 @@ Object {
                         ],
                       },
                       Object {
-                        "end": 312,
-                        "start": 293,
+                        "end": 344,
+                        "start": 325,
                         "tag": 83,
                         "values": Array [
                           Object {
-                            "end": 296,
-                            "start": 293,
+                            "end": 328,
+                            "start": 325,
                             "tag": 8,
                             "value": "type",
                           },
                           Object {
-                            "end": 312,
-                            "start": 300,
+                            "end": 344,
+                            "start": 332,
                             "tag": 11,
                             "values": Array [
                               Object {
-                                "end": 307,
-                                "start": 300,
+                                "end": 339,
+                                "start": 332,
                                 "tag": 8,
                                 "value": "EXCLUDED",
                               },
                               Object {
-                                "end": 312,
-                                "start": 309,
+                                "end": 344,
+                                "start": 341,
                                 "tag": 8,
                                 "value": "type",
                               },
@@ -38517,30 +39065,30 @@ Object {
                         ],
                       },
                       Object {
-                        "end": 352,
-                        "start": 321,
+                        "end": 384,
+                        "start": 353,
                         "tag": 83,
                         "values": Array [
                           Object {
-                            "end": 330,
-                            "start": 321,
+                            "end": 362,
+                            "start": 353,
                             "tag": 8,
                             "value": "created_at",
                           },
                           Object {
-                            "end": 352,
-                            "start": 334,
+                            "end": 384,
+                            "start": 366,
                             "tag": 11,
                             "values": Array [
                               Object {
-                                "end": 341,
-                                "start": 334,
+                                "end": 373,
+                                "start": 366,
                                 "tag": 8,
                                 "value": "EXCLUDED",
                               },
                               Object {
-                                "end": 352,
-                                "start": 343,
+                                "end": 384,
+                                "start": 375,
                                 "tag": 8,
                                 "value": "created_at",
                               },
@@ -38549,30 +39097,30 @@ Object {
                         ],
                       },
                       Object {
-                        "end": 392,
-                        "start": 361,
+                        "end": 424,
+                        "start": 393,
                         "tag": 83,
                         "values": Array [
                           Object {
-                            "end": 370,
-                            "start": 361,
+                            "end": 402,
+                            "start": 393,
                             "tag": 8,
                             "value": "updated_at",
                           },
                           Object {
-                            "end": 392,
-                            "start": 374,
+                            "end": 424,
+                            "start": 406,
                             "tag": 11,
                             "values": Array [
                               Object {
-                                "end": 381,
-                                "start": 374,
+                                "end": 413,
+                                "start": 406,
                                 "tag": 8,
                                 "value": "EXCLUDED",
                               },
                               Object {
-                                "end": 392,
-                                "start": 383,
+                                "end": 424,
+                                "start": 415,
                                 "tag": 8,
                                 "value": "updated_at",
                               },

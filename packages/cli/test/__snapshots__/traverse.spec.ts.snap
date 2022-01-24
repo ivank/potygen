@@ -424,6 +424,25 @@ export interface Query {
 "
 `;
 
+exports[`Traverse Should work: __generated__/meter-create.query.queries.ts 1`] = `
+"export interface Params {
+    id?: number;
+    msn?: string;
+    make?: string;
+    model?: string;
+    mpan?: string;
+    createdAt?: Date;
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Traverse Should work: __generated__/meter-reads.queries.ts 1`] = `
 "export interface Params {
 }

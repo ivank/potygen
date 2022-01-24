@@ -2761,6 +2761,100 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql meter-create.query.sql: meter-create.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "msn",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": null,
+          "postgresType": "character varying",
+          "type": 2,
+        },
+      },
+    },
+    Object {
+      "name": "make",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": null,
+          "postgresType": "character varying",
+          "type": 2,
+        },
+      },
+    },
+    Object {
+      "name": "model",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": null,
+          "postgresType": "character varying",
+          "type": 2,
+        },
+      },
+    },
+    Object {
+      "name": "mpan",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": null,
+          "postgresType": "character varying",
+          "type": 2,
+        },
+      },
+    },
+    Object {
+      "name": "createdAt",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": null,
+          "postgresType": "timestamp without time zone",
+          "type": 6,
+        },
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "comment": null,
+        "postgresType": "integer",
+        "type": 3,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql meter-reads.sql: meter-reads.sql 1`] = `
 Object {
   "params": Array [],

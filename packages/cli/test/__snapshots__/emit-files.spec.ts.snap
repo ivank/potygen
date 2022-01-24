@@ -424,6 +424,25 @@ export interface Query {
 "
 `;
 
+exports[`Load Files Should convert complex sql meter-create.query.sql: meter-create.query.sql 1`] = `
+"export interface Params {
+    id?: number;
+    msn?: string;
+    make?: string;
+    model?: string;
+    mpan?: string;
+    createdAt?: Date;
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Load Files Should convert complex sql meter-reads.sql: meter-reads.sql 1`] = `
 "export interface Params {
 }

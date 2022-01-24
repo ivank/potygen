@@ -116,8 +116,7 @@ GROUP BY
   c."PaymentType",
   ca."DateInserted",
   ca."DateUpdated"
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       customer_id = EXCLUDED.customer_id,
