@@ -457,15 +457,15 @@ const pgsqlParse: Parser<Node> = {
     const { ast, comments } = parser(text);
     return { value: ast, tag: SqlName.Root, comments, start: 0, end: text.length };
   },
-  astFormat: 'pgsql-ast',
+  astFormat: 'sql',
   locStart: (node) => node?.start,
   locEnd: (node) => node?.end,
 };
 
 const plugin: Plugin<Node> = {
-  printers: { 'pgsql-ast': pgsqlAst },
-  languages: [{ extensions: ['.sql'], name: 'SQL', parsers: ['pgsql-parse'], vscodeLanguageIds: ['sql'] }],
-  parsers: { 'pgsql-parse': pgsqlParse },
+  printers: { sql: pgsqlAst },
+  languages: [{ extensions: ['.sql'], name: 'SQL', parsers: ['sql'], vscodeLanguageIds: ['sql'] }],
+  parsers: { sql: pgsqlParse },
 };
 
 export const printers = plugin.printers;
