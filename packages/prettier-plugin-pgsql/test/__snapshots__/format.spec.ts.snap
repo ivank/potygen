@@ -243,7 +243,11 @@ exports[`Format Should parse simple sql const select (SELECT '2018-01-01'): cons
 `;
 
 exports[`Format Should parse simple sql cross join (SELECT * FROM jobs CROSS JOIN test1): cross join 1`] = `
-"SELECT * FROM jobs CROSS JOIN test1
+"SELECT *
+FROM
+  jobs
+  CROSS JOIN
+    test1
 "
 `;
 
@@ -450,12 +454,20 @@ exports[`Format Should parse simple sql from with schema (SELECT * FROM public.j
 `;
 
 exports[`Format Should parse simple sql full join (SELECT * FROM jobs FULL JOIN test1): full join 1`] = `
-"SELECT * FROM jobs FULL JOIN test1
+"SELECT *
+FROM
+  jobs
+  FULL JOIN
+    test1
 "
 `;
 
 exports[`Format Should parse simple sql full outer join (SELECT * FROM jobs FULL OUTER JOIN test1): full outer join 1`] = `
-"SELECT * FROM jobs FULL OUTER JOIN test1
+"SELECT *
+FROM
+  jobs
+  FULL OUTER JOIN
+    test1
 "
 `;
 
@@ -521,7 +533,11 @@ exports[`Format Should parse simple sql hexademical string (SELECT X'FFFFFF'): h
 `;
 
 exports[`Format Should parse simple sql inner join (SELECT * FROM jobs INNER JOIN test1): inner join 1`] = `
-"SELECT * FROM jobs INNER JOIN test1
+"SELECT *
+FROM
+  jobs
+  INNER JOIN
+    test1
 "
 `;
 
@@ -692,17 +708,29 @@ FROM table2
 `;
 
 exports[`Format Should parse simple sql join (SELECT * FROM jobs JOIN test1): join 1`] = `
-"SELECT * FROM jobs JOIN test1
+"SELECT *
+FROM
+  jobs
+  JOIN
+    test1
 "
 `;
 
 exports[`Format Should parse simple sql join as (SELECT * FROM jobs JOIN test1 AS my_test): join as 1`] = `
-"SELECT * FROM jobs JOIN test1 AS my_test
+"SELECT *
+FROM
+  jobs
+  JOIN
+    test1 AS my_test
 "
 `;
 
 exports[`Format Should parse simple sql join as quoted (SELECT * FROM jobs JOIN test1 AS "myTest"): join as quoted 1`] = `
-"SELECT * FROM jobs JOIN test1 AS \\"myTest\\"
+"SELECT *
+FROM
+  jobs
+  JOIN
+    test1 AS \\"myTest\\"
 "
 `;
 
@@ -716,27 +744,47 @@ FROM
 `;
 
 exports[`Format Should parse simple sql join on (SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id): join on 1`] = `
-"SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id
+"SELECT *
+FROM
+  jobs
+  JOIN test1
+    ON jobs.id = test1.id
 "
 `;
 
 exports[`Format Should parse simple sql join on (SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id): join on 2`] = `
-"SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id
+"SELECT *
+FROM
+  jobs
+  JOIN test1
+    ON jobs.id = test1.id
 "
 `;
 
 exports[`Format Should parse simple sql join on as (SELECT * FROM jobs JOIN test1 AS my_test ON jobs.id = test1.id): join on as 1`] = `
-"SELECT * FROM jobs JOIN test1 AS my_test ON jobs.id = test1.id
+"SELECT *
+FROM
+  jobs
+  JOIN test1 AS my_test
+    ON jobs.id = test1.id
 "
 `;
 
 exports[`Format Should parse simple sql join on as quoted (SELECT * FROM jobs JOIN test1 AS "myTest" ON jobs.id = test1.id): join on as quoted 1`] = `
-"SELECT * FROM jobs JOIN test1 AS \\"myTest\\" ON jobs.id = test1.id
+"SELECT *
+FROM
+  jobs
+  JOIN test1 AS \\"myTest\\"
+    ON jobs.id = test1.id
 "
 `;
 
 exports[`Format Should parse simple sql join with schema (SELECT * FROM public.jobs JOIN public.test1): join with schema 1`] = `
-"SELECT * FROM public.jobs JOIN public.test1
+"SELECT *
+FROM
+  public.jobs
+  JOIN
+    public.test1
 "
 `;
 
@@ -756,22 +804,22 @@ exports[`Format Should parse simple sql json delete key (SELECT * FROM table1 WH
 `;
 
 exports[`Format Should parse simple sql json field int (SELECT col1->1 FROM table1): json field int 1`] = `
-"SELECT col1 -> 1 FROM table1
+"SELECT col1->1 FROM table1
 "
 `;
 
 exports[`Format Should parse simple sql json field string (SELECT col1->'col' FROM table1): json field string 1`] = `
-"SELECT col1 -> 'col' FROM table1
+"SELECT col1->'col' FROM table1
 "
 `;
 
 exports[`Format Should parse simple sql json field text int (SELECT col1->>2 FROM table1): json field text int 1`] = `
-"SELECT col1 ->> 2 FROM table1
+"SELECT col1->>2 FROM table1
 "
 `;
 
 exports[`Format Should parse simple sql json field text string (SELECT col1->>'col' FROM table1): json field text string 1`] = `
-"SELECT col1 ->> 'col' FROM table1
+"SELECT col1->>'col' FROM table1
 "
 `;
 
@@ -796,12 +844,20 @@ exports[`Format Should parse simple sql json path text (SELECT col1#>>'{a,b}' FR
 `;
 
 exports[`Format Should parse simple sql left join (SELECT * FROM jobs LEFT JOIN test1): left join 1`] = `
-"SELECT * FROM jobs LEFT JOIN test1
+"SELECT *
+FROM
+  jobs
+  LEFT JOIN
+    test1
 "
 `;
 
 exports[`Format Should parse simple sql left outer join (SELECT * FROM jobs LEFT OUTER JOIN test1): left outer join 1`] = `
-"SELECT * FROM jobs LEFT OUTER JOIN test1
+"SELECT *
+FROM
+  jobs
+  LEFT OUTER JOIN
+    test1
 "
 `;
 
@@ -864,7 +920,13 @@ exports[`Format Should parse simple sql multiple from as (SELECT * FROM jobs1 AS
 `;
 
 exports[`Format Should parse simple sql multiple joins (SELECT * FROM jobs JOIN test1 JOIN test2): multiple joins 1`] = `
-"SELECT * FROM jobs JOIN test1 JOIN test2
+"SELECT *
+FROM
+  jobs
+  JOIN
+    test1
+  JOIN
+    test2
 "
 `;
 
@@ -966,7 +1028,10 @@ exports[`Format Should parse simple sql parameter in having (SELECT * HAVING tab
 
 exports[`Format Should parse simple sql parameter in join with 2 (SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = $test1! WHERE table2.col = $test2): parameter in join with 2 1`] = `
 "SELECT *
-FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = $test1!
+FROM
+  table1
+  JOIN table2
+    ON table1.id = table2.id AND table1.col = $test1!
 WHERE
   table2.col = $test2
 "
@@ -974,7 +1039,10 @@ WHERE
 
 exports[`Format Should parse simple sql parameter in join with 2 (SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1 WHERE table2.col = :test2): parameter in join with 2 1`] = `
 "SELECT *
-FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = $test1
+FROM
+  table1
+  JOIN table2
+    ON table1.id = table2.id AND table1.col = $test1
 WHERE
   table2.col = $test2
 "
@@ -982,7 +1050,10 @@ WHERE
 
 exports[`Format Should parse simple sql parameter in join with 2 (SELECT * FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = :test1! WHERE table2.col = :test2): parameter in join with 2 1`] = `
 "SELECT *
-FROM table1 JOIN table2 ON table1.id = table2.id AND table1.col = $test1!
+FROM
+  table1
+  JOIN table2
+    ON table1.id = table2.id AND table1.col = $test1!
 WHERE
   table2.col = $test2
 "
@@ -1097,12 +1168,20 @@ exports[`Format Should parse simple sql restricted (SELECT all_types.id FROM all
 `;
 
 exports[`Format Should parse simple sql right join (SELECT * FROM jobs RIGHT JOIN test1): right join 1`] = `
-"SELECT * FROM jobs RIGHT JOIN test1
+"SELECT *
+FROM
+  jobs
+  RIGHT JOIN
+    test1
 "
 `;
 
 exports[`Format Should parse simple sql right outer join (SELECT * FROM jobs RIGHT OUTER JOIN test1): right outer join 1`] = `
-"SELECT * FROM jobs RIGHT OUTER JOIN test1
+"SELECT *
+FROM
+  jobs
+  RIGHT OUTER JOIN
+    test1
 "
 `;
 

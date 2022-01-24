@@ -19,6 +19,7 @@ import {
   isConflictTargetIndex,
   SqlName,
   isComment,
+  BinaryOperatorTag,
 } from '@potygen/potygen';
 
 const { line, softline, indent, join, group, hardline } = doc.builders;
@@ -55,6 +56,8 @@ const tailVals = (num: number, path: AstPath<any>, print: (path: AstPath<any>) =
 
 const filterIndexes = <T>(items: T[], predicate: (item: T) => boolean): number[] =>
   items.reduce<number[]>((acc, item, index) => (predicate(item) ? [...acc, index] : acc), []);
+
+const compactBinaryOperators: Array<BinaryOperatorTag['value']> = ['->>', '->'];
 
 const pgsqlAst: Printer<Node> = {
   print: (path, options, recur) => {
@@ -204,10 +207,11 @@ const pgsqlAst: Printer<Node> = {
       case SqlName.UnaryExpression:
         return join(['+', '-'].includes(node.values[0].value) ? '' : ' ', vals(path, recur));
       case SqlName.BinaryExpression:
+        const operatorMargin = compactBinaryOperators.includes(node.values[1].value) ? softline : line;
         return group([
           nthVal(0, path, recur),
-          line,
-          group([nthVal(1, path, recur), indent([line, nthVal(2, path, recur)])]),
+          operatorMargin,
+          group([nthVal(1, path, recur), indent([operatorMargin, nthVal(2, path, recur)])]),
         ]);
       case SqlName.TernaryOperator:
         return node.value;
@@ -313,7 +317,7 @@ const pgsqlAst: Printer<Node> = {
       case SqlName.FromList:
         return group(join([',', line], vals(path, recur)));
       case SqlName.From:
-        return ['FROM', group(indent([line, join(line, vals(path, recur))]))];
+        return ['FROM', group(indent([line, join(hardline, vals(path, recur))]))];
       case SqlName.Where:
         return ['WHERE', indent([line, join(line, vals(path, recur))])];
       case SqlName.GroupBy:

@@ -25,8 +25,8 @@ SELECT
   account_levelisations.vat_payment AS "vatPayment",
   account_levelisations.generation_periods AS "generationPeriods",
   account_levelisations.export_periods AS "exportPeriods",
-  issues.payload ->> 'code' AS "errorCode",
-  issues.payload -> 'params' AS "errorParams",
+  issues.payload->>'code' AS "errorCode",
+  issues.payload->'params' AS "errorParams",
   contracts.scheme_account_reference AS "cfrFitId",
   account_levelisations.resolved_postlev_id AS "resolvedPostlevId",
   account_levelisations.is_bacs_payments_sent AS "isBacsPaymentsSent",
@@ -74,8 +74,8 @@ ORDER BY
   CASE WHEN $sortField = 'state' AND $sortOrder = 'ASC' THEN account_levelisations.state END ASC,
   CASE WHEN $sortField = 'isAccepted' AND $sortOrder = 'DESC' THEN account_levelisations.is_accepted END DESC,
   CASE WHEN $sortField = 'isAccepted' AND $sortOrder = 'ASC' THEN account_levelisations.is_accepted END ASC,
-  CASE WHEN $sortField = 'error' AND $sortOrder = 'DESC' THEN issues.payload ->> 'code' END DESC,
-  CASE WHEN $sortField = 'error' AND $sortOrder = 'ASC' THEN issues.payload ->> 'code' END ASC,
+  CASE WHEN $sortField = 'error' AND $sortOrder = 'DESC' THEN issues.payload->>'code' END DESC,
+  CASE WHEN $sortField = 'error' AND $sortOrder = 'ASC' THEN issues.payload->>'code' END ASC,
   CASE WHEN $sortField = 'exportType' AND $sortOrder = 'DESC' THEN account_levelisations.export_type::text END DESC,
   CASE WHEN $sortField = 'exportType' AND $sortOrder = 'ASC' THEN account_levelisations.export_type::text END ASC
 -- Pagination

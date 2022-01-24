@@ -29,8 +29,8 @@ Object {
   account_levelisations.vat_payment AS \\"vatPayment\\",
   account_levelisations.generation_periods AS \\"generationPeriods\\",
   account_levelisations.export_periods AS \\"exportPeriods\\",
-  issues.payload ->> 'code' AS \\"errorCode\\",
-  issues.payload -> 'params' AS \\"errorParams\\",
+  issues.payload->>'code' AS \\"errorCode\\",
+  issues.payload->'params' AS \\"errorParams\\",
   contracts.scheme_account_reference AS \\"cfrFitId\\",
   account_levelisations.resolved_postlev_id AS \\"resolvedPostlevId\\",
   account_levelisations.is_bacs_payments_sent AS \\"isBacsPaymentsSent\\",
@@ -78,8 +78,8 @@ ORDER BY
   CASE WHEN $6 = 'state' AND $7 = 'ASC' THEN account_levelisations.state END ASC,
   CASE WHEN $6 = 'isAccepted' AND $7 = 'DESC' THEN account_levelisations.is_accepted END DESC,
   CASE WHEN $6 = 'isAccepted' AND $7 = 'ASC' THEN account_levelisations.is_accepted END ASC,
-  CASE WHEN $6 = 'error' AND $7 = 'DESC' THEN issues.payload ->> 'code' END DESC,
-  CASE WHEN $6 = 'error' AND $7 = 'ASC' THEN issues.payload ->> 'code' END ASC,
+  CASE WHEN $6 = 'error' AND $7 = 'DESC' THEN issues.payload->>'code' END DESC,
+  CASE WHEN $6 = 'error' AND $7 = 'ASC' THEN issues.payload->>'code' END ASC,
   CASE WHEN $6 = 'exportType' AND $7 = 'DESC' THEN account_levelisations.export_type::text END DESC,
   CASE WHEN $6 = 'exportType' AND $7 = 'ASC' THEN account_levelisations.export_type::text END ASC
 -- Pagination
@@ -429,8 +429,7 @@ FROM
   -- Special exception for fit account 422, as it does not have a primary account
   JOIN fit.CustomerAccount AS ca
     ON ca.\\"FitAccountId\\" = ga.\\"FitAccountId\\" AND ((ca.\\"CustomerRoleValue\\" & 1) > 0 OR ca.\\"FitAccountId\\" = 422)
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       account_id = EXCLUDED.account_id,
@@ -455,7 +454,10 @@ Object {
 WHERE
   EXISTS (
     SELECT tariffs.id
-    FROM contracts JOIN tariffs ON contracts.generation_tariff_id = tariffs.id
+    FROM
+      contracts
+      JOIN tariffs
+        ON contracts.generation_tariff_id = tariffs.id
     WHERE
       contracts.account_id = accounts.id AND tariffs.type = 'Generation' AND contracts.scheme_type = $1
   )
@@ -477,7 +479,10 @@ Object {
   "text": "SELECT
   meter_reads.date_on AS \\"dateOn\\",
   meter_reads.value
-FROM meter_reads JOIN installation_meters ON meter_reads.meter_id = installation_meters.meter_id
+FROM
+  meter_reads
+  JOIN installation_meters
+    ON meter_reads.meter_id = installation_meters.meter_id
 WHERE
   installation_meters.installation_id = $1 AND installation_meters.meter_type = 'Generation'
   AND meter_reads.deleted_at IS NULL
@@ -664,8 +669,7 @@ FROM
     ON ca.\\"FitAccountId\\" = ga.\\"FitAccountId\\" AND ((ca.\\"CustomerRoleValue\\" & 1) > 0 OR ca.\\"FitAccountId\\" = 422)
   LEFT JOIN fit.Customer AS c
     ON c.\\"CustomerId\\" = ca.\\"CustomerId\\"
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       address_id = EXCLUDED.address_id,
@@ -747,13 +751,15 @@ SELECT
   CASE WHEN mr.\\"DateOfReading\\" <= '2021-03-31' THEN '{\\"success\\":true}'::jsonb ELSE NULL END,
   mr.\\"DateInserted\\",
   mr.\\"DateUpdated\\"
-FROM fit.MeterReading AS mr JOIN fit.Meter AS m ON m.\\"MeterId\\" = mr.\\"MeterId\\"
+FROM
+  fit.MeterReading AS mr
+  JOIN fit.Meter AS m
+    ON m.\\"MeterId\\" = mr.\\"MeterId\\"
 -- Exclude \\"Deemed\\" Export meters, since they don't have an MPAN and are not actual meters
 -- TODO: Figure out where to migrate deemed meter reads to.
 WHERE
   m.\\"MPAN\\" IS NOT NULL
-ON CONFLICT
-  (source_system_id) WHERE source_system_id IS NOT NULL
+ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
       meter_id = EXCLUDED.meter_id,
@@ -781,7 +787,10 @@ Object {
   t.code AS \\"tariffCode\\",
   t.type AS \\"tariffType\\",
   r.end_date_on AS \\"endOn\\"
-FROM tariff_rates AS r LEFT JOIN tariffs AS t ON r.tariff_id = t.id
+FROM
+  tariff_rates AS r
+  LEFT JOIN tariffs AS t
+    ON r.tariff_id = t.id
 WHERE
   start_date_on < NOW() AND (end_date_on::date IS NULL OR end_date_on > NOW()) AND t.id IN ($1,$2,$3)
 ",
