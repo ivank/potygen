@@ -26,6 +26,21 @@ describe('Template Tag', () => {
     expect(await query(db, { ids: [1, 2] })).toEqual([{ not_null: 1 }, { not_null: 2 }]);
   });
 
+  it('Should insert inside transaction with spread pick', async () => {
+    await sql`BEGIN`(db, {});
+
+    await sql`INSERT INTO all_types (not_null, jsonb_col) VALUES $$items(val, data)`(db, {
+      items: [
+        { val: 10, data: JSON.stringify({ test: 10 }) },
+        { val: 20, data: JSON.stringify({ test: 20 }) },
+      ],
+    });
+    const data = await sql`SELECT jsonb_col FROM all_types WHERE not_null IN $$notNull`(db, { notNull: [10, 20] });
+    await sql`ROLLBACK`(db, {});
+
+    expect(data).toEqual([{ jsonb_col: { test: 10 } }, { jsonb_col: { test: 20 } }]);
+  });
+
   it('Should select all', async () => {
     expect(await allSql(db, {})).toEqual([{ id: 1 }, { id: 2 }]);
   });
