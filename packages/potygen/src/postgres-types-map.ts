@@ -93,7 +93,7 @@ export const pgTypes = {
   decimal: { ...typeNumber, postgresType: 'decimal' },
   name: { ...typeString, postgresType: 'name' },
   any: { ...typeAny, postgresType: 'any' },
-  anyelement: arr({ ...typeString, postgresType: 'anyelement' }),
+  anyelement: { ...typeAny, postgresType: 'anyelement' },
   anyenum: arr({ ...typeString, postgresType: 'anyenum' }),
   anynonarray: { ...typeAny, postgresType: 'anynonarray' },
   anyarray: arr({ ...typeAny, postgresType: 'anyarray' }),

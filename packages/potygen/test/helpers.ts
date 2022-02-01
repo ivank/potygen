@@ -1,12 +1,13 @@
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { Client } from 'pg';
+import { LoadError } from '../src';
 
 export const withParserErrors = async (cb: () => void | Promise<void>) => {
   try {
     await cb();
   } catch (e) {
-    console.error(String(e));
+    console.error(String(e), e instanceof LoadError ? e.tag : undefined);
     throw e;
   }
 };

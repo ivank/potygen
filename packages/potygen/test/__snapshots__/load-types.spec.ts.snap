@@ -8,7 +8,7 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -16,10 +16,30 @@ Object {
     Object {
       "name": "num",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "numeric",
         "type": 3,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert Array remove sql (SELECT ARRAY_REMOVE(ARRAY_AGG(id), NULL) FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "array_remove",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "postgresType": "anyarray",
+          "type": 1,
+        },
+        "postgresType": "anyarray",
+        "type": 11,
       },
     },
   ],
@@ -50,12 +70,12 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "comment": null,
+            "comment": undefined,
             "postgresType": "integer",
             "type": 3,
           },
           Object {
-            "comment": null,
+            "comment": undefined,
             "nullable": true,
             "postgresType": "character",
             "type": 2,
@@ -79,13 +99,13 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "comment": null,
+            "comment": undefined,
             "nullable": true,
             "postgresType": "character",
             "type": 2,
           },
           Object {
-            "comment": null,
+            "comment": undefined,
             "postgresType": "integer",
             "type": 3,
           },
@@ -113,13 +133,13 @@ Object {
             "type": 3,
           },
           Object {
-            "comment": null,
+            "comment": undefined,
             "nullable": true,
             "postgresType": "character",
             "type": 2,
           },
           Object {
-            "comment": null,
+            "comment": undefined,
             "postgresType": "integer",
             "type": 3,
           },
@@ -142,13 +162,13 @@ Object {
       "type": Object {
         "items": Array [
           Object {
-            "comment": null,
+            "comment": undefined,
             "nullable": true,
             "postgresType": "integer",
             "type": 3,
           },
           Object {
-            "comment": null,
+            "comment": undefined,
             "nullable": true,
             "postgresType": "character",
             "type": 2,
@@ -204,7 +224,7 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -220,7 +240,7 @@ Object {
     Object {
       "name": "default_not_null",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -228,7 +248,7 @@ Object {
     Object {
       "name": "bigint_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "bigint",
         "type": 4,
@@ -237,7 +257,7 @@ Object {
     Object {
       "name": "bigserial_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "bigint",
         "type": 4,
       },
@@ -245,7 +265,7 @@ Object {
     Object {
       "name": "bit_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "bit",
         "type": 2,
@@ -254,7 +274,7 @@ Object {
     Object {
       "name": "bit_varying_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "bit varying",
         "type": 2,
@@ -263,7 +283,7 @@ Object {
     Object {
       "name": "boolean_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "boolean",
         "type": 5,
@@ -272,7 +292,7 @@ Object {
     Object {
       "name": "box_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "box",
         "type": 2,
@@ -281,7 +301,7 @@ Object {
     Object {
       "name": "bytea_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "bytea",
         "type": 0,
       },
@@ -289,7 +309,7 @@ Object {
     Object {
       "name": "character_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "character",
         "type": 2,
@@ -298,7 +318,7 @@ Object {
     Object {
       "name": "character_varying_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "character varying",
         "type": 2,
@@ -307,7 +327,7 @@ Object {
     Object {
       "name": "cidr_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "cidr",
         "type": 2,
@@ -316,7 +336,7 @@ Object {
     Object {
       "name": "circle_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "items": Array [
           Object {
             "name": "x",
@@ -347,7 +367,7 @@ Object {
     Object {
       "name": "date_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "date",
         "type": 6,
@@ -356,7 +376,7 @@ Object {
     Object {
       "name": "double_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "double precision",
         "type": 3,
@@ -365,7 +385,7 @@ Object {
     Object {
       "name": "inet_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "inet",
         "type": 2,
@@ -374,7 +394,7 @@ Object {
     Object {
       "name": "integer_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "integer",
         "type": 3,
@@ -383,7 +403,7 @@ Object {
     Object {
       "name": "interval_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "items": Array [
           Object {
             "name": "years",
@@ -442,7 +462,7 @@ Object {
     Object {
       "name": "json_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "json",
         "type": 8,
@@ -451,7 +471,7 @@ Object {
     Object {
       "name": "jsonb_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "jsonb",
         "type": 8,
@@ -460,7 +480,7 @@ Object {
     Object {
       "name": "line_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "line",
         "type": 2,
@@ -469,7 +489,7 @@ Object {
     Object {
       "name": "lseg_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "lseg",
         "type": 2,
@@ -478,7 +498,7 @@ Object {
     Object {
       "name": "macaddr_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "macaddr",
         "type": 2,
@@ -487,7 +507,7 @@ Object {
     Object {
       "name": "money_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "money",
         "type": 2,
@@ -496,7 +516,7 @@ Object {
     Object {
       "name": "numeric_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "numeric",
         "type": 3,
@@ -505,7 +525,7 @@ Object {
     Object {
       "name": "path_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "path",
         "type": 2,
@@ -514,7 +534,7 @@ Object {
     Object {
       "name": "pg_lsn_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "pg_lsn",
         "type": 2,
@@ -523,7 +543,7 @@ Object {
     Object {
       "name": "point_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "items": Array [
           Object {
             "name": "x",
@@ -547,7 +567,7 @@ Object {
     Object {
       "name": "polygon_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "polygon",
         "type": 2,
@@ -556,7 +576,7 @@ Object {
     Object {
       "name": "real_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "real",
         "type": 3,
@@ -565,7 +585,7 @@ Object {
     Object {
       "name": "smallint_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "smallint",
         "type": 3,
@@ -574,7 +594,7 @@ Object {
     Object {
       "name": "smallserial_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "smallint",
         "type": 3,
       },
@@ -582,7 +602,7 @@ Object {
     Object {
       "name": "serial_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -590,7 +610,7 @@ Object {
     Object {
       "name": "text_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "text",
         "type": 2,
@@ -599,7 +619,7 @@ Object {
     Object {
       "name": "time_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "time without time zone",
         "type": 2,
@@ -608,7 +628,7 @@ Object {
     Object {
       "name": "time_with_time_zone_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "time with time zone",
         "type": 6,
@@ -617,7 +637,7 @@ Object {
     Object {
       "name": "timestamp_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "timestamp without time zone",
         "type": 6,
@@ -626,7 +646,7 @@ Object {
     Object {
       "name": "timestamp_with_time_zone_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "timestamp with time zone",
         "type": 6,
@@ -635,7 +655,7 @@ Object {
     Object {
       "name": "tsquery_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "tsquery",
         "type": 2,
@@ -644,7 +664,7 @@ Object {
     Object {
       "name": "tsvector_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "tsvector",
         "type": 2,
@@ -653,7 +673,7 @@ Object {
     Object {
       "name": "txid_snapshot_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "txid_snapshot",
         "type": 2,
@@ -662,7 +682,7 @@ Object {
     Object {
       "name": "uuid_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "uuid",
         "type": 2,
@@ -671,7 +691,7 @@ Object {
     Object {
       "name": "xml_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "xml",
         "type": 2,
@@ -753,7 +773,7 @@ Object {
     Object {
       "name": "state",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "items": Array [
           Object {
             "literal": "Pending",
@@ -879,7 +899,7 @@ Object {
         "postgresType": "any",
         "type": 14,
         "value": Object {
-          "comment": null,
+          "comment": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -909,7 +929,7 @@ Object {
         "postgresType": "any",
         "type": 14,
         "value": Object {
-          "comment": null,
+          "comment": undefined,
           "nullable": true,
           "postgresType": "character",
           "type": 2,
@@ -940,7 +960,7 @@ Object {
         "postgresType": "any",
         "type": 14,
         "value": Object {
-          "comment": null,
+          "comment": undefined,
           "nullable": true,
           "postgresType": "integer",
           "type": 3,
@@ -952,7 +972,7 @@ Object {
     Object {
       "name": "character_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "character",
         "type": 2,
@@ -972,7 +992,7 @@ Object {
         "postgresType": "any",
         "type": 14,
         "value": Object {
-          "comment": null,
+          "comment": undefined,
           "nullable": true,
           "postgresType": "integer",
           "type": 3,
@@ -984,7 +1004,7 @@ Object {
     Object {
       "name": "character_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "character",
         "type": 2,
@@ -1004,7 +1024,7 @@ Object {
         "postgresType": "any",
         "type": 14,
         "value": Object {
-          "comment": null,
+          "comment": undefined,
           "nullable": true,
           "postgresType": "integer",
           "type": 3,
@@ -1016,7 +1036,7 @@ Object {
     Object {
       "name": "character_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "character",
         "type": 2,
@@ -1036,7 +1056,7 @@ Object {
         "postgresType": "any",
         "type": 14,
         "value": Object {
-          "comment": null,
+          "comment": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -1047,7 +1067,7 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -1055,7 +1075,7 @@ Object {
     Object {
       "name": "character_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "character",
         "type": 2,
@@ -1088,7 +1108,7 @@ Object {
     Object {
       "name": "id",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -1104,7 +1124,7 @@ Object {
     Object {
       "name": "default_not_null",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -1112,7 +1132,7 @@ Object {
     Object {
       "name": "bigint_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "bigint",
         "type": 4,
@@ -1121,7 +1141,7 @@ Object {
     Object {
       "name": "bigserial_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "bigint",
         "type": 4,
       },
@@ -1129,7 +1149,7 @@ Object {
     Object {
       "name": "bit_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "bit",
         "type": 2,
@@ -1138,7 +1158,7 @@ Object {
     Object {
       "name": "bit_varying_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "bit varying",
         "type": 2,
@@ -1147,7 +1167,7 @@ Object {
     Object {
       "name": "boolean_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "boolean",
         "type": 5,
@@ -1156,7 +1176,7 @@ Object {
     Object {
       "name": "box_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "box",
         "type": 2,
@@ -1165,7 +1185,7 @@ Object {
     Object {
       "name": "bytea_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "bytea",
         "type": 0,
       },
@@ -1173,7 +1193,7 @@ Object {
     Object {
       "name": "character_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "character",
         "type": 2,
@@ -1182,7 +1202,7 @@ Object {
     Object {
       "name": "character_varying_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "character varying",
         "type": 2,
@@ -1191,7 +1211,7 @@ Object {
     Object {
       "name": "cidr_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "cidr",
         "type": 2,
@@ -1200,7 +1220,7 @@ Object {
     Object {
       "name": "circle_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "items": Array [
           Object {
             "name": "x",
@@ -1231,7 +1251,7 @@ Object {
     Object {
       "name": "date_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "date",
         "type": 6,
@@ -1240,7 +1260,7 @@ Object {
     Object {
       "name": "double_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "double precision",
         "type": 3,
@@ -1249,7 +1269,7 @@ Object {
     Object {
       "name": "inet_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "inet",
         "type": 2,
@@ -1258,7 +1278,7 @@ Object {
     Object {
       "name": "integer_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "integer",
         "type": 3,
@@ -1267,7 +1287,7 @@ Object {
     Object {
       "name": "interval_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "items": Array [
           Object {
             "name": "years",
@@ -1326,7 +1346,7 @@ Object {
     Object {
       "name": "json_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "json",
         "type": 8,
@@ -1335,7 +1355,7 @@ Object {
     Object {
       "name": "jsonb_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "jsonb",
         "type": 8,
@@ -1344,7 +1364,7 @@ Object {
     Object {
       "name": "line_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "line",
         "type": 2,
@@ -1353,7 +1373,7 @@ Object {
     Object {
       "name": "lseg_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "lseg",
         "type": 2,
@@ -1362,7 +1382,7 @@ Object {
     Object {
       "name": "macaddr_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "macaddr",
         "type": 2,
@@ -1371,7 +1391,7 @@ Object {
     Object {
       "name": "money_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "money",
         "type": 2,
@@ -1380,7 +1400,7 @@ Object {
     Object {
       "name": "numeric_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "numeric",
         "type": 3,
@@ -1389,7 +1409,7 @@ Object {
     Object {
       "name": "path_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "path",
         "type": 2,
@@ -1398,7 +1418,7 @@ Object {
     Object {
       "name": "pg_lsn_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "pg_lsn",
         "type": 2,
@@ -1407,7 +1427,7 @@ Object {
     Object {
       "name": "point_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "items": Array [
           Object {
             "name": "x",
@@ -1431,7 +1451,7 @@ Object {
     Object {
       "name": "polygon_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "polygon",
         "type": 2,
@@ -1440,7 +1460,7 @@ Object {
     Object {
       "name": "real_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "real",
         "type": 3,
@@ -1449,7 +1469,7 @@ Object {
     Object {
       "name": "smallint_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "smallint",
         "type": 3,
@@ -1458,7 +1478,7 @@ Object {
     Object {
       "name": "smallserial_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "smallint",
         "type": 3,
       },
@@ -1466,7 +1486,7 @@ Object {
     Object {
       "name": "serial_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -1474,7 +1494,7 @@ Object {
     Object {
       "name": "text_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "text",
         "type": 2,
@@ -1483,7 +1503,7 @@ Object {
     Object {
       "name": "time_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "time without time zone",
         "type": 2,
@@ -1492,7 +1512,7 @@ Object {
     Object {
       "name": "time_with_time_zone_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "time with time zone",
         "type": 6,
@@ -1501,7 +1521,7 @@ Object {
     Object {
       "name": "timestamp_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "timestamp without time zone",
         "type": 6,
@@ -1510,7 +1530,7 @@ Object {
     Object {
       "name": "timestamp_with_time_zone_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "timestamp with time zone",
         "type": 6,
@@ -1519,7 +1539,7 @@ Object {
     Object {
       "name": "tsquery_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "tsquery",
         "type": 2,
@@ -1528,7 +1548,7 @@ Object {
     Object {
       "name": "tsvector_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "tsvector",
         "type": 2,
@@ -1537,7 +1557,7 @@ Object {
     Object {
       "name": "txid_snapshot_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "txid_snapshot",
         "type": 2,
@@ -1546,7 +1566,7 @@ Object {
     Object {
       "name": "uuid_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "uuid",
         "type": 2,
@@ -1555,7 +1575,7 @@ Object {
     Object {
       "name": "xml_col",
       "type": Object {
-        "comment": null,
+        "comment": undefined,
         "nullable": true,
         "postgresType": "xml",
         "type": 2,

@@ -46,6 +46,7 @@ describe('Query Interface', () => {
       `WITH nums AS (SELECT id, numeric_col AS "num" FROM all_types)
       SELECT all_types.id, n.num FROM all_types JOIN nums AS n ON n.id = all_types.id`,
     ],
+    ['Array remove', `SELECT ARRAY_REMOVE(ARRAY_AGG(id), NULL) FROM all_types`],
   ])('Should convert %s sql (%s)', async (_, sql) => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     const queryInterface = toQueryInterface(parser(sql).ast);
