@@ -114,8 +114,11 @@ const convertValues = (params: Param[], values: Record<string, unknown>): unknow
  */
 const nullToUndefinedInPlace = (row: Record<string, unknown>): Record<string, unknown> => {
   for (const key in row) {
-    if (row[key] === null) {
+    const val = row[key];
+    if (val === null) {
       row[key] = undefined;
+    } else if (isObject(val) && row.hasOwnProperty(key)) {
+      row[key] = nullToUndefinedInPlace(val);
     }
   }
   return row;

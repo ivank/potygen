@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "outDir": "dist",
+    "plugins": [
+      {
+        "name": "@potygen/typescript-pgsql-plugin",
+        "connection": "postgres://potygen:dev-pass@localhost:5432/potygen"
+      }
+    ]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

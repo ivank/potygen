@@ -220,15 +220,15 @@ export const toConstantBinaryOperatorVariant = (
     : { ...typeUnknown, postgresType: `any` };
 };
 
-export const toAliasedPgType = (type: string): keyof typeof pgTypes => {
-  const trimmedType = type.replace(/^_/, '').replace(/\"/g, '').toLowerCase();
+export const toAliasedPgType = (type?: string): keyof typeof pgTypes => {
+  const trimmedType = type?.replace(/^_/, '').replace(/\"/g, '').toLowerCase() ?? 'any';
   return pgTypeAliases[trimmedType] ?? trimmedType;
 };
 
 /**
  * Convert postgres type into a potygen {@link TypeConstant}
  */
-export const toPgTypeConstant = (type: string): Type | undefined => pgTypes[toAliasedPgType(type)];
+export const toPgTypeConstant = (type?: string): Type | undefined => pgTypes[toAliasedPgType(type)];
 
 /**
  * Get the type from a part of a binary operator expression {@link BinaryExpressionTag}

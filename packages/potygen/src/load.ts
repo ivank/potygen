@@ -451,7 +451,42 @@ const formatTableName = ({ table, name, schema }: { table?: string; name: string
   return [schema, tableName].filter(isNil).join('.');
 };
 
-const formatArgumentType = ({ type }: TypeOrLoad): string => `type: ${type}`;
+const typeNames: { [key in TypeName]: string } = {
+  [TypeName.Buffer]: 'Buffer',
+  [TypeName.Any]: 'Any',
+  [TypeName.String]: 'String',
+  [TypeName.Number]: 'Number',
+  [TypeName.BigInt]: 'BigInt',
+  [TypeName.Boolean]: 'Boolean',
+  [TypeName.Date]: 'Date',
+  [TypeName.Null]: 'Null',
+  [TypeName.Json]: 'Json',
+  [TypeName.Unknown]: 'Unknown',
+  [TypeName.Composite]: 'Composite',
+  [TypeName.Array]: 'Array',
+  [TypeName.Union]: 'Union',
+  [TypeName.ObjectLiteral]: 'ObjectLiteral',
+  [TypeName.Optional]: 'Optional',
+  [TypeName.LoadCoalesce]: 'LoadCoalesce',
+  [TypeName.LoadColumnCast]: 'LoadColumnCast',
+  [TypeName.LoadRecord]: 'LoadRecord',
+  [TypeName.LoadFunction]: 'LoadFunction',
+  [TypeName.LoadColumn]: 'LoadColumn',
+  [TypeName.LoadStar]: 'LoadStar',
+  [TypeName.LoadFunctionArgument]: 'LoadFunctionArgument',
+  [TypeName.LoadOperator]: 'LoadOperator',
+  [TypeName.LoadNamed]: 'LoadNamed',
+  [TypeName.LoadArray]: 'LoadArray',
+  [TypeName.LoadAsArray]: 'LoadAsArray',
+  [TypeName.LoadArrayItem]: 'LoadArrayItem',
+  [TypeName.LoadCompositeAccess]: 'LoadCompositeAccess',
+  [TypeName.LoadUnion]: 'LoadUnion',
+  [TypeName.LoadObjectLiteral]: 'LoadObjectLiteral',
+  [TypeName.LoadOptional]: 'LoadOptional',
+};
+
+const formatArgumentType = (val: TypeOrLoad): string =>
+  `type: ${typeNames[val.type]}${'postgresType' in val ? `(${val.postgresType})` : ''}`;
 
 const formatLoadColumn = ({ schema, table, column }: TypeLoadColumn): string =>
   [schema, table, column].filter(isNil).join('.');
