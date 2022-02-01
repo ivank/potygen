@@ -1,5 +1,5 @@
 import { sql } from '@potygen/potygen';
-import { BooksQueryQuery } from './index.queries';
+import { BooksQueryQuery } from './__generated__/index.queries';
 import * as express from 'express';
 import * as pgp from 'pg-promise';
 const app = express();
