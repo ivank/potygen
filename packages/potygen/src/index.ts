@@ -227,7 +227,6 @@ export {
   isTable,
   isTableWithJoin,
   isTernaryExpression,
-  isType,
   isArrayType,
   isUnaryExpression,
   isUnaryOperator,
@@ -295,8 +294,8 @@ export {
   TypeBuffer,
   TypeUnion,
   TypeArray,
-  Type as TypeConstant,
-  TypeOrLoad as Type,
+  Type,
+  TypeOrLoad,
   Result,
   Param,
   Source,
@@ -316,7 +315,7 @@ export {
 } from './query-interface.types';
 
 export {
-  isType as isTypeConstant,
+  isType,
   isTypeString,
   isTypeNumber,
   isTypeBoolean,
@@ -352,6 +351,7 @@ export {
   isSourceQuery,
   isSourceValues,
   isTypeEqual,
+  isTypeLoad,
 } from './query-interface.guards';
 
 export { SqlInterface, QueryConfig, QuerySource, SqlResult, SqlDatabase, Query, MapQuery, Json } from './sql.types';

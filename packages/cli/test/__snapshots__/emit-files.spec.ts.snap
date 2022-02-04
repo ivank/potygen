@@ -306,6 +306,44 @@ export interface Query {
 "
 `;
 
+exports[`Load Files Should convert complex sql csa-account-by-id.query.sql: csa-account-by-id.query.sql 1`] = `
+"export interface Params {
+    id?: number;
+}
+export interface Result {
+    id: number;
+    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    contacts: {
+        id: number;
+        name: string;
+        email?: string;
+        phone?: string;
+        address: {
+            id: number;
+            addressLine1?: string;
+            addressLine2?: string;
+            addressLine3?: string;
+            city?: string;
+            country: string;
+            county?: string;
+            postCode: string;
+        };
+        isPrimaryContact: boolean;
+        isNominatedRecipient: boolean;
+    }[];
+    paymentDetails: {
+        beneficiaryAccountNumber: string;
+        beneficiaryName?: string;
+        beneficiarySortCode?: string;
+    };
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Load Files Should convert complex sql cte.query.sql: cte.query.sql 1`] = `
 "export interface Params {
 }

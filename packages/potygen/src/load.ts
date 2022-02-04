@@ -18,6 +18,7 @@ import {
   isTypeComposite,
   isSourceQuery,
   isTypeEqual,
+  isType,
 } from './query-interface.guards';
 import {
   isDataTable,
@@ -161,27 +162,38 @@ const toSourceTables = (source: Source): DataTable[] => {
  * Find which additional data needs to be loaded for {@link TypeOrLoad} to be converted to {@link Type}
  */
 const extractDataFromType = (type: TypeOrLoad): Data[] => {
-  switch (type.type) {
-    case TypeName.LoadRecord:
-      return [{ type: 'Enum', name: { name: type.name, schema: type.schema ?? '_' } }];
-    case TypeName.LoadFunction:
-    case TypeName.LoadFunctionArgument:
-      return [
-        { type: 'Function', name: { name: type.name, schema: type.schema ?? '_' } },
-        ...type.args.flatMap(extractDataFromType),
-      ];
-    case TypeName.LoadNamed:
-      return extractDataFromType(type.value);
-    case TypeName.LoadArray:
-      return extractDataFromType(type.items);
-    case TypeName.LoadCoalesce:
-      return type.items.flatMap(extractDataFromType);
-    case TypeName.LoadFunction:
-      return type.args.flatMap(extractDataFromType);
-    case TypeName.LoadOperator:
-      return extractDataFromType(type.left).concat(extractDataFromType(type.right));
-    default:
-      return [];
+  if (isType(type)) {
+    return [];
+  } else {
+    switch (type.type) {
+      case TypeName.LoadColumn:
+      case TypeName.LoadStar:
+        return [];
+      case TypeName.LoadRecord:
+        return [{ type: 'Enum', name: { name: type.name, schema: type.schema ?? '_' } }];
+      case TypeName.LoadFunction:
+      case TypeName.LoadFunctionArgument:
+        return [
+          { type: 'Function', name: { name: type.name, schema: type.schema ?? '_' } },
+          ...type.args.flatMap(extractDataFromType),
+        ];
+      case TypeName.LoadOptional:
+      case TypeName.LoadNamed:
+      case TypeName.LoadCompositeAccess:
+      case TypeName.LoadColumnCast:
+      case TypeName.LoadArrayItem:
+        return extractDataFromType(type.value);
+      case TypeName.LoadArray:
+      case TypeName.LoadAsArray:
+        return extractDataFromType(type.items);
+      case TypeName.LoadCoalesce:
+      case TypeName.LoadUnion:
+        return type.items.flatMap(extractDataFromType);
+      case TypeName.LoadObjectLiteral:
+        return type.items.flatMap((item) => extractDataFromType(item.type));
+      case TypeName.LoadOperator:
+        return extractDataFromType(type.left).concat(extractDataFromType(type.right));
+    }
   }
 };
 
@@ -564,7 +576,7 @@ const toType = (context: LoadedContext, isResult: boolean) => {
 
           throw new LoadError(
             type.sourceTag,
-            `No variant of ${type.name} with arguments: (${formattedArgs}). Available variants were: ${availableVariants}`,
+            `No variant of function "${type.name}" with arguments: (${formattedArgs}). Available variants were: ${availableVariants}`,
           );
         } else {
           switch (type.type) {

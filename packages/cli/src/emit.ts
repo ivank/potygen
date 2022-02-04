@@ -22,7 +22,7 @@ import {
   LoadedQueryInterface,
   isTypeArray,
   isTypeUnion,
-  TypeConstant,
+  Type,
   isTypeObjectLiteral,
   isTypeLiteral,
   isTypeEqual,
@@ -58,7 +58,7 @@ const jsDoc = (doc: string): string =>
 const withJSDoc = <T extends Node>(doc: string | undefined, node: T): T =>
   doc === undefined ? node : addSyntheticLeadingComment(node, SyntaxKind.MultiLineCommentTrivia, jsDoc(doc), true);
 
-export const compactTypes = (types: TypeConstant[]): TypeConstant[] =>
+export const compactTypes = (types: Type[]): Type[] =>
   types
     .map((type) => (isTypeOptional(type) ? { ...type.value, nullable: type.nullable } : type))
     .filter((item, index, all) =>
@@ -72,7 +72,7 @@ export const compactTypes = (types: TypeConstant[]): TypeConstant[] =>
 
 const toPropertyType =
   (context: TypeContext) =>
-  (type: TypeConstant): TypeContext & { type: TypeNode } => {
+  (type: Type): TypeContext & { type: TypeNode } => {
     if (isTypeComposite(type)) {
       return { ...context, type: factory.createToken(SyntaxKind.StringKeyword) };
     } else if (isTypeObjectLiteral(type)) {

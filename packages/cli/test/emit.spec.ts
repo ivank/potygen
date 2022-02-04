@@ -4,7 +4,7 @@ import {
   toQueryInterface,
   loadQueryInterfacesData,
   toLoadedQueryInterface,
-  TypeConstant,
+  Type,
   TypeName,
 } from '@potygen/potygen';
 import { createPrinter, NewLineKind } from 'typescript';
@@ -54,7 +54,7 @@ describe('Query Interface', () => {
     expect(printer.printFile(source)).toMatchSnapshot();
   });
 
-  it.each<[string, TypeConstant[], TypeConstant[]]>([
+  it.each<[string, Type[], Type[]]>([
     [
       'single value literal',
       [

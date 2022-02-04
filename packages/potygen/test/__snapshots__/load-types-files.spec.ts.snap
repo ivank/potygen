@@ -2287,6 +2287,241 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql csa-account-by-id.query.sql: csa-account-by-id.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "postgresType": "integer",
+          "type": 3,
+        },
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "integer",
+        "type": 3,
+      },
+    },
+    Object {
+      "name": "state",
+      "type": Object {
+        "comment": undefined,
+        "items": Array [
+          Object {
+            "literal": "Active",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Pending",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Dispute",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Closed",
+            "postgresType": "text",
+            "type": 2,
+          },
+        ],
+        "nullable": false,
+        "postgresType": "account_state",
+        "type": 12,
+      },
+    },
+    Object {
+      "name": "contacts",
+      "type": Object {
+        "items": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "comment": undefined,
+                "postgresType": "integer",
+                "type": 3,
+              },
+            },
+            Object {
+              "name": "name",
+              "type": Object {
+                "comment": undefined,
+                "postgresType": "text",
+                "type": 2,
+              },
+            },
+            Object {
+              "name": "email",
+              "type": Object {
+                "comment": undefined,
+                "nullable": true,
+                "postgresType": "character varying",
+                "type": 2,
+              },
+            },
+            Object {
+              "name": "phone",
+              "type": Object {
+                "comment": undefined,
+                "nullable": true,
+                "postgresType": "character varying",
+                "type": 2,
+              },
+            },
+            Object {
+              "name": "address",
+              "type": Object {
+                "items": Array [
+                  Object {
+                    "name": "id",
+                    "type": Object {
+                      "comment": undefined,
+                      "postgresType": "integer",
+                      "type": 3,
+                    },
+                  },
+                  Object {
+                    "name": "addressLine1",
+                    "type": Object {
+                      "comment": undefined,
+                      "nullable": true,
+                      "postgresType": "character varying",
+                      "type": 2,
+                    },
+                  },
+                  Object {
+                    "name": "addressLine2",
+                    "type": Object {
+                      "comment": undefined,
+                      "nullable": true,
+                      "postgresType": "character varying",
+                      "type": 2,
+                    },
+                  },
+                  Object {
+                    "name": "addressLine3",
+                    "type": Object {
+                      "comment": undefined,
+                      "nullable": true,
+                      "postgresType": "character varying",
+                      "type": 2,
+                    },
+                  },
+                  Object {
+                    "name": "city",
+                    "type": Object {
+                      "comment": undefined,
+                      "nullable": true,
+                      "postgresType": "character varying",
+                      "type": 2,
+                    },
+                  },
+                  Object {
+                    "name": "country",
+                    "type": Object {
+                      "comment": undefined,
+                      "postgresType": "character varying",
+                      "type": 2,
+                    },
+                  },
+                  Object {
+                    "name": "county",
+                    "type": Object {
+                      "comment": undefined,
+                      "nullable": true,
+                      "postgresType": "character varying",
+                      "type": 2,
+                    },
+                  },
+                  Object {
+                    "name": "postCode",
+                    "type": Object {
+                      "comment": undefined,
+                      "postgresType": "character varying",
+                      "type": 2,
+                    },
+                  },
+                ],
+                "postgresType": "json",
+                "type": 13,
+              },
+            },
+            Object {
+              "name": "isPrimaryContact",
+              "type": Object {
+                "postgresType": "bool",
+                "type": 5,
+              },
+            },
+            Object {
+              "name": "isNominatedRecipient",
+              "type": Object {
+                "postgresType": "bool",
+                "type": 5,
+              },
+            },
+          ],
+          "postgresType": "json",
+          "type": 13,
+        },
+        "postgresType": "json[]",
+        "type": 11,
+      },
+    },
+    Object {
+      "name": "paymentDetails",
+      "type": Object {
+        "items": Array [
+          Object {
+            "name": "beneficiaryAccountNumber",
+            "type": Object {
+              "comment": undefined,
+              "postgresType": "text",
+              "type": 2,
+            },
+          },
+          Object {
+            "name": "beneficiaryName",
+            "type": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "character varying",
+              "type": 2,
+            },
+          },
+          Object {
+            "name": "beneficiarySortCode",
+            "type": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "character varying",
+              "type": 2,
+            },
+          },
+        ],
+        "postgresType": "json",
+        "type": 13,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql cte.query.sql: cte.query.sql 1`] = `
 Object {
   "params": Array [],

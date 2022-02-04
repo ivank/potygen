@@ -12164,6 +12164,2443 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql csa-account-by-id.query.sql: csa-account-by-id.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "end": 1237,
+      "name": "id",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 1235,
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 1231,
+          "start": 1221,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 1228,
+              "start": 1221,
+              "tag": 8,
+              "value": "accounts",
+            },
+            Object {
+              "end": 1231,
+              "start": 1230,
+              "tag": 8,
+              "value": "id",
+            },
+          ],
+        },
+        "table": "accounts",
+        "type": 19,
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 42,
+          "start": 32,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 39,
+              "start": 32,
+              "tag": 8,
+              "value": "accounts",
+            },
+            Object {
+              "end": 42,
+              "start": 41,
+              "tag": 8,
+              "value": "id",
+            },
+          ],
+        },
+        "table": "accounts",
+        "type": 19,
+      },
+    },
+    Object {
+      "name": "state",
+      "type": Object {
+        "column": "state",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 60,
+          "start": 47,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 54,
+              "start": 47,
+              "tag": 8,
+              "value": "accounts",
+            },
+            Object {
+              "end": 60,
+              "start": 56,
+              "tag": 8,
+              "value": "state",
+            },
+          ],
+        },
+        "table": "accounts",
+        "type": 19,
+      },
+    },
+    Object {
+      "name": "contacts",
+      "type": Object {
+        "items": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "column": "id",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 121,
+                  "start": 111,
+                  "tag": 11,
+                  "values": Array [
+                    Object {
+                      "end": 118,
+                      "start": 111,
+                      "tag": 8,
+                      "value": "contacts",
+                    },
+                    Object {
+                      "end": 121,
+                      "start": 120,
+                      "tag": 8,
+                      "value": "id",
+                    },
+                  ],
+                },
+                "table": "contacts",
+                "type": 19,
+              },
+            },
+            Object {
+              "name": "name",
+              "type": Object {
+                "args": Array [
+                  Object {
+                    "literal": " ",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "column": "title",
+                    "schema": undefined,
+                    "sourceTag": Object {
+                      "end": 166,
+                      "start": 153,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 160,
+                          "start": 153,
+                          "tag": 8,
+                          "value": "contacts",
+                        },
+                        Object {
+                          "end": 166,
+                          "start": 162,
+                          "tag": 8,
+                          "value": "title",
+                        },
+                      ],
+                    },
+                    "table": "contacts",
+                    "type": 19,
+                  },
+                  Object {
+                    "column": "first_name",
+                    "schema": undefined,
+                    "sourceTag": Object {
+                      "end": 187,
+                      "start": 169,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 176,
+                          "start": 169,
+                          "tag": 8,
+                          "value": "contacts",
+                        },
+                        Object {
+                          "end": 187,
+                          "start": 178,
+                          "tag": 8,
+                          "value": "first_name",
+                        },
+                      ],
+                    },
+                    "table": "contacts",
+                    "type": 19,
+                  },
+                  Object {
+                    "column": "last_name",
+                    "schema": undefined,
+                    "sourceTag": Object {
+                      "end": 207,
+                      "start": 190,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 197,
+                          "start": 190,
+                          "tag": 8,
+                          "value": "contacts",
+                        },
+                        Object {
+                          "end": 207,
+                          "start": 199,
+                          "tag": 8,
+                          "value": "last_name",
+                        },
+                      ],
+                    },
+                    "table": "contacts",
+                    "type": 19,
+                  },
+                ],
+                "name": "concat_ws",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 208,
+                  "start": 138,
+                  "tag": 54,
+                  "values": Array [
+                    Object {
+                      "end": 146,
+                      "start": 138,
+                      "tag": 89,
+                      "values": Array [
+                        Object {
+                          "end": 146,
+                          "start": 138,
+                          "tag": 8,
+                          "value": "concat_ws",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 150,
+                      "start": 148,
+                      "tag": 13,
+                      "value": " ",
+                    },
+                    Object {
+                      "end": 166,
+                      "start": 153,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 160,
+                          "start": 153,
+                          "tag": 8,
+                          "value": "contacts",
+                        },
+                        Object {
+                          "end": 166,
+                          "start": 162,
+                          "tag": 8,
+                          "value": "title",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 187,
+                      "start": 169,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 176,
+                          "start": 169,
+                          "tag": 8,
+                          "value": "contacts",
+                        },
+                        Object {
+                          "end": 187,
+                          "start": 178,
+                          "tag": 8,
+                          "value": "first_name",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 207,
+                      "start": 190,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 197,
+                          "start": 190,
+                          "tag": 8,
+                          "value": "contacts",
+                        },
+                        Object {
+                          "end": 207,
+                          "start": 199,
+                          "tag": 8,
+                          "value": "last_name",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "type": 18,
+              },
+            },
+            Object {
+              "name": "email",
+              "type": Object {
+                "column": "email",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 239,
+                  "start": 226,
+                  "tag": 11,
+                  "values": Array [
+                    Object {
+                      "end": 233,
+                      "start": 226,
+                      "tag": 8,
+                      "value": "contacts",
+                    },
+                    Object {
+                      "end": 239,
+                      "start": 235,
+                      "tag": 8,
+                      "value": "email",
+                    },
+                  ],
+                },
+                "table": "contacts",
+                "type": 19,
+              },
+            },
+            Object {
+              "name": "phone",
+              "type": Object {
+                "column": "phone",
+                "schema": undefined,
+                "sourceTag": Object {
+                  "end": 270,
+                  "start": 257,
+                  "tag": 11,
+                  "values": Array [
+                    Object {
+                      "end": 264,
+                      "start": 257,
+                      "tag": 8,
+                      "value": "contacts",
+                    },
+                    Object {
+                      "end": 270,
+                      "start": 266,
+                      "tag": 8,
+                      "value": "phone",
+                    },
+                  ],
+                },
+                "table": "contacts",
+                "type": 19,
+              },
+            },
+            Object {
+              "name": "address",
+              "type": Object {
+                "items": Array [
+                  Object {
+                    "name": "id",
+                    "type": Object {
+                      "column": "id",
+                      "schema": undefined,
+                      "sourceTag": Object {
+                        "end": 340,
+                        "start": 329,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 337,
+                            "start": 329,
+                            "tag": 8,
+                            "value": "addresses",
+                          },
+                          Object {
+                            "end": 340,
+                            "start": 339,
+                            "tag": 8,
+                            "value": "id",
+                          },
+                        ],
+                      },
+                      "table": "addresses",
+                      "type": 19,
+                    },
+                  },
+                  Object {
+                    "name": "addressLine1",
+                    "type": Object {
+                      "column": "address_line_1",
+                      "schema": undefined,
+                      "sourceTag": Object {
+                        "end": 390,
+                        "start": 367,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 375,
+                            "start": 367,
+                            "tag": 8,
+                            "value": "addresses",
+                          },
+                          Object {
+                            "end": 390,
+                            "start": 377,
+                            "tag": 8,
+                            "value": "address_line_1",
+                          },
+                        ],
+                      },
+                      "table": "addresses",
+                      "type": 19,
+                    },
+                  },
+                  Object {
+                    "name": "addressLine2",
+                    "type": Object {
+                      "column": "address_line_2",
+                      "schema": undefined,
+                      "sourceTag": Object {
+                        "end": 440,
+                        "start": 417,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 425,
+                            "start": 417,
+                            "tag": 8,
+                            "value": "addresses",
+                          },
+                          Object {
+                            "end": 440,
+                            "start": 427,
+                            "tag": 8,
+                            "value": "address_line_2",
+                          },
+                        ],
+                      },
+                      "table": "addresses",
+                      "type": 19,
+                    },
+                  },
+                  Object {
+                    "name": "addressLine3",
+                    "type": Object {
+                      "column": "address_line_3",
+                      "schema": undefined,
+                      "sourceTag": Object {
+                        "end": 490,
+                        "start": 467,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 475,
+                            "start": 467,
+                            "tag": 8,
+                            "value": "addresses",
+                          },
+                          Object {
+                            "end": 490,
+                            "start": 477,
+                            "tag": 8,
+                            "value": "address_line_3",
+                          },
+                        ],
+                      },
+                      "table": "addresses",
+                      "type": 19,
+                    },
+                  },
+                  Object {
+                    "name": "city",
+                    "type": Object {
+                      "column": "city",
+                      "schema": undefined,
+                      "sourceTag": Object {
+                        "end": 522,
+                        "start": 509,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 517,
+                            "start": 509,
+                            "tag": 8,
+                            "value": "addresses",
+                          },
+                          Object {
+                            "end": 522,
+                            "start": 519,
+                            "tag": 8,
+                            "value": "city",
+                          },
+                        ],
+                      },
+                      "table": "addresses",
+                      "type": 19,
+                    },
+                  },
+                  Object {
+                    "name": "country",
+                    "type": Object {
+                      "column": "country",
+                      "schema": undefined,
+                      "sourceTag": Object {
+                        "end": 560,
+                        "start": 544,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 552,
+                            "start": 544,
+                            "tag": 8,
+                            "value": "addresses",
+                          },
+                          Object {
+                            "end": 560,
+                            "start": 554,
+                            "tag": 8,
+                            "value": "country",
+                          },
+                        ],
+                      },
+                      "table": "addresses",
+                      "type": 19,
+                    },
+                  },
+                  Object {
+                    "name": "county",
+                    "type": Object {
+                      "column": "county",
+                      "schema": undefined,
+                      "sourceTag": Object {
+                        "end": 596,
+                        "start": 581,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 589,
+                            "start": 581,
+                            "tag": 8,
+                            "value": "addresses",
+                          },
+                          Object {
+                            "end": 596,
+                            "start": 591,
+                            "tag": 8,
+                            "value": "county",
+                          },
+                        ],
+                      },
+                      "table": "addresses",
+                      "type": 19,
+                    },
+                  },
+                  Object {
+                    "name": "postCode",
+                    "type": Object {
+                      "column": "postCode",
+                      "schema": undefined,
+                      "sourceTag": Object {
+                        "end": 636,
+                        "start": 619,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 627,
+                            "start": 619,
+                            "tag": 8,
+                            "value": "addresses",
+                          },
+                          Object {
+                            "end": 636,
+                            "start": 629,
+                            "tag": 8,
+                            "value": "postCode",
+                          },
+                        ],
+                      },
+                      "table": "addresses",
+                      "type": 19,
+                    },
+                  },
+                ],
+                "sourceTag": Object {
+                  "end": 644,
+                  "start": 296,
+                  "tag": 54,
+                  "values": Array [
+                    Object {
+                      "end": 312,
+                      "start": 296,
+                      "tag": 89,
+                      "values": Array [
+                        Object {
+                          "end": 312,
+                          "start": 296,
+                          "tag": 8,
+                          "value": "json_build_object",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 326,
+                      "start": 323,
+                      "tag": 13,
+                      "value": "id",
+                    },
+                    Object {
+                      "end": 340,
+                      "start": 329,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 337,
+                          "start": 329,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 340,
+                          "start": 339,
+                          "tag": 8,
+                          "value": "id",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 364,
+                      "start": 351,
+                      "tag": 13,
+                      "value": "addressLine1",
+                    },
+                    Object {
+                      "end": 390,
+                      "start": 367,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 375,
+                          "start": 367,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 390,
+                          "start": 377,
+                          "tag": 8,
+                          "value": "address_line_1",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 414,
+                      "start": 401,
+                      "tag": 13,
+                      "value": "addressLine2",
+                    },
+                    Object {
+                      "end": 440,
+                      "start": 417,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 425,
+                          "start": 417,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 440,
+                          "start": 427,
+                          "tag": 8,
+                          "value": "address_line_2",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 464,
+                      "start": 451,
+                      "tag": 13,
+                      "value": "addressLine3",
+                    },
+                    Object {
+                      "end": 490,
+                      "start": 467,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 475,
+                          "start": 467,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 490,
+                          "start": 477,
+                          "tag": 8,
+                          "value": "address_line_3",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 506,
+                      "start": 501,
+                      "tag": 13,
+                      "value": "city",
+                    },
+                    Object {
+                      "end": 522,
+                      "start": 509,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 517,
+                          "start": 509,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 522,
+                          "start": 519,
+                          "tag": 8,
+                          "value": "city",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 541,
+                      "start": 533,
+                      "tag": 13,
+                      "value": "country",
+                    },
+                    Object {
+                      "end": 560,
+                      "start": 544,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 552,
+                          "start": 544,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 560,
+                          "start": 554,
+                          "tag": 8,
+                          "value": "country",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 578,
+                      "start": 571,
+                      "tag": 13,
+                      "value": "county",
+                    },
+                    Object {
+                      "end": 596,
+                      "start": 581,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 589,
+                          "start": 581,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 596,
+                          "start": 591,
+                          "tag": 8,
+                          "value": "county",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 616,
+                      "start": 607,
+                      "tag": 13,
+                      "value": "postCode",
+                    },
+                    Object {
+                      "end": 636,
+                      "start": 619,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 627,
+                          "start": 619,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 636,
+                          "start": 629,
+                          "tag": 8,
+                          "value": "postCode",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "type": 29,
+              },
+            },
+            Object {
+              "name": "isPrimaryContact",
+              "type": Object {
+                "name": "bool",
+                "sourceTag": Object {
+                  "end": 724,
+                  "start": 718,
+                  "tag": 32,
+                  "values": Array [
+                    Object {
+                      "end": 724,
+                      "start": 718,
+                      "tag": 89,
+                      "values": Array [
+                        Object {
+                          "end": 724,
+                          "start": 718,
+                          "tag": 8,
+                          "value": "boolean",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "postgresType": "bool",
+                  "type": 5,
+                },
+              },
+            },
+            Object {
+              "name": "isNominatedRecipient",
+              "type": Object {
+                "name": "bool",
+                "sourceTag": Object {
+                  "end": 812,
+                  "start": 806,
+                  "tag": 32,
+                  "values": Array [
+                    Object {
+                      "end": 812,
+                      "start": 806,
+                      "tag": 89,
+                      "values": Array [
+                        Object {
+                          "end": 812,
+                          "start": 806,
+                          "tag": 8,
+                          "value": "boolean",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "postgresType": "bool",
+                  "type": 5,
+                },
+              },
+            },
+          ],
+          "sourceTag": Object {
+            "end": 818,
+            "start": 80,
+            "tag": 54,
+            "values": Array [
+              Object {
+                "end": 96,
+                "start": 80,
+                "tag": 89,
+                "values": Array [
+                  Object {
+                    "end": 96,
+                    "start": 80,
+                    "tag": 8,
+                    "value": "json_build_object",
+                  },
+                ],
+              },
+              Object {
+                "end": 108,
+                "start": 105,
+                "tag": 13,
+                "value": "id",
+              },
+              Object {
+                "end": 121,
+                "start": 111,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 118,
+                    "start": 111,
+                    "tag": 8,
+                    "value": "contacts",
+                  },
+                  Object {
+                    "end": 121,
+                    "start": 120,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
+              },
+              Object {
+                "end": 135,
+                "start": 130,
+                "tag": 13,
+                "value": "name",
+              },
+              Object {
+                "end": 208,
+                "start": 138,
+                "tag": 54,
+                "values": Array [
+                  Object {
+                    "end": 146,
+                    "start": 138,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 146,
+                        "start": 138,
+                        "tag": 8,
+                        "value": "concat_ws",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 150,
+                    "start": 148,
+                    "tag": 13,
+                    "value": " ",
+                  },
+                  Object {
+                    "end": 166,
+                    "start": 153,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 160,
+                        "start": 153,
+                        "tag": 8,
+                        "value": "contacts",
+                      },
+                      Object {
+                        "end": 166,
+                        "start": 162,
+                        "tag": 8,
+                        "value": "title",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 187,
+                    "start": 169,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 176,
+                        "start": 169,
+                        "tag": 8,
+                        "value": "contacts",
+                      },
+                      Object {
+                        "end": 187,
+                        "start": 178,
+                        "tag": 8,
+                        "value": "first_name",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 207,
+                    "start": 190,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 197,
+                        "start": 190,
+                        "tag": 8,
+                        "value": "contacts",
+                      },
+                      Object {
+                        "end": 207,
+                        "start": 199,
+                        "tag": 8,
+                        "value": "last_name",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 223,
+                "start": 217,
+                "tag": 13,
+                "value": "email",
+              },
+              Object {
+                "end": 239,
+                "start": 226,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 233,
+                    "start": 226,
+                    "tag": 8,
+                    "value": "contacts",
+                  },
+                  Object {
+                    "end": 239,
+                    "start": 235,
+                    "tag": 8,
+                    "value": "email",
+                  },
+                ],
+              },
+              Object {
+                "end": 254,
+                "start": 248,
+                "tag": 13,
+                "value": "phone",
+              },
+              Object {
+                "end": 270,
+                "start": 257,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 264,
+                    "start": 257,
+                    "tag": 8,
+                    "value": "contacts",
+                  },
+                  Object {
+                    "end": 270,
+                    "start": 266,
+                    "tag": 8,
+                    "value": "phone",
+                  },
+                ],
+              },
+              Object {
+                "end": 287,
+                "start": 279,
+                "tag": 13,
+                "value": "address",
+              },
+              Object {
+                "end": 644,
+                "start": 296,
+                "tag": 54,
+                "values": Array [
+                  Object {
+                    "end": 312,
+                    "start": 296,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 312,
+                        "start": 296,
+                        "tag": 8,
+                        "value": "json_build_object",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 326,
+                    "start": 323,
+                    "tag": 13,
+                    "value": "id",
+                  },
+                  Object {
+                    "end": 340,
+                    "start": 329,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 337,
+                        "start": 329,
+                        "tag": 8,
+                        "value": "addresses",
+                      },
+                      Object {
+                        "end": 340,
+                        "start": 339,
+                        "tag": 8,
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 364,
+                    "start": 351,
+                    "tag": 13,
+                    "value": "addressLine1",
+                  },
+                  Object {
+                    "end": 390,
+                    "start": 367,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 375,
+                        "start": 367,
+                        "tag": 8,
+                        "value": "addresses",
+                      },
+                      Object {
+                        "end": 390,
+                        "start": 377,
+                        "tag": 8,
+                        "value": "address_line_1",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 414,
+                    "start": 401,
+                    "tag": 13,
+                    "value": "addressLine2",
+                  },
+                  Object {
+                    "end": 440,
+                    "start": 417,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 425,
+                        "start": 417,
+                        "tag": 8,
+                        "value": "addresses",
+                      },
+                      Object {
+                        "end": 440,
+                        "start": 427,
+                        "tag": 8,
+                        "value": "address_line_2",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 464,
+                    "start": 451,
+                    "tag": 13,
+                    "value": "addressLine3",
+                  },
+                  Object {
+                    "end": 490,
+                    "start": 467,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 475,
+                        "start": 467,
+                        "tag": 8,
+                        "value": "addresses",
+                      },
+                      Object {
+                        "end": 490,
+                        "start": 477,
+                        "tag": 8,
+                        "value": "address_line_3",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 506,
+                    "start": 501,
+                    "tag": 13,
+                    "value": "city",
+                  },
+                  Object {
+                    "end": 522,
+                    "start": 509,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 517,
+                        "start": 509,
+                        "tag": 8,
+                        "value": "addresses",
+                      },
+                      Object {
+                        "end": 522,
+                        "start": 519,
+                        "tag": 8,
+                        "value": "city",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 541,
+                    "start": 533,
+                    "tag": 13,
+                    "value": "country",
+                  },
+                  Object {
+                    "end": 560,
+                    "start": 544,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 552,
+                        "start": 544,
+                        "tag": 8,
+                        "value": "addresses",
+                      },
+                      Object {
+                        "end": 560,
+                        "start": 554,
+                        "tag": 8,
+                        "value": "country",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 578,
+                    "start": 571,
+                    "tag": 13,
+                    "value": "county",
+                  },
+                  Object {
+                    "end": 596,
+                    "start": 581,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 589,
+                        "start": 581,
+                        "tag": 8,
+                        "value": "addresses",
+                      },
+                      Object {
+                        "end": 596,
+                        "start": 591,
+                        "tag": 8,
+                        "value": "county",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 616,
+                    "start": 607,
+                    "tag": 13,
+                    "value": "postCode",
+                  },
+                  Object {
+                    "end": 636,
+                    "start": 619,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 627,
+                        "start": 619,
+                        "tag": 8,
+                        "value": "addresses",
+                      },
+                      Object {
+                        "end": 636,
+                        "start": 629,
+                        "tag": 8,
+                        "value": "postCode",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 670,
+                "start": 653,
+                "tag": 13,
+                "value": "isPrimaryContact",
+              },
+              Object {
+                "end": 725,
+                "start": 673,
+                "tag": 52,
+                "values": Array [
+                  Object {
+                    "end": 715,
+                    "start": 673,
+                    "tag": 106,
+                    "values": Array [
+                      Object {
+                        "end": 714,
+                        "start": 674,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 684,
+                            "start": 674,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 681,
+                                "start": 674,
+                                "tag": 8,
+                                "value": "contacts",
+                              },
+                              Object {
+                                "end": 684,
+                                "start": 683,
+                                "tag": 8,
+                                "value": "id",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 686,
+                            "start": 686,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 714,
+                            "start": 688,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 695,
+                                "start": 688,
+                                "tag": 8,
+                                "value": "accounts",
+                              },
+                              Object {
+                                "end": 714,
+                                "start": 697,
+                                "tag": 8,
+                                "value": "primary_contact_id",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 724,
+                    "start": 718,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 724,
+                        "start": 718,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 724,
+                            "start": 718,
+                            "tag": 8,
+                            "value": "boolean",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 754,
+                "start": 733,
+                "tag": 13,
+                "value": "isNominatedRecipient",
+              },
+              Object {
+                "end": 813,
+                "start": 757,
+                "tag": 52,
+                "values": Array [
+                  Object {
+                    "end": 803,
+                    "start": 757,
+                    "tag": 106,
+                    "values": Array [
+                      Object {
+                        "end": 802,
+                        "start": 758,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 768,
+                            "start": 758,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 765,
+                                "start": 758,
+                                "tag": 8,
+                                "value": "contacts",
+                              },
+                              Object {
+                                "end": 768,
+                                "start": 767,
+                                "tag": 8,
+                                "value": "id",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 770,
+                            "start": 770,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 802,
+                            "start": 772,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 779,
+                                "start": 772,
+                                "tag": 8,
+                                "value": "accounts",
+                              },
+                              Object {
+                                "end": 802,
+                                "start": 781,
+                                "tag": 8,
+                                "value": "nominated_recipient_id",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 812,
+                    "start": 806,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 812,
+                        "start": 806,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 812,
+                            "start": 806,
+                            "tag": 8,
+                            "value": "boolean",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 29,
+        },
+        "sourceTag": Object {
+          "end": 822,
+          "start": 65,
+          "tag": 54,
+          "values": Array [
+            Object {
+              "end": 73,
+              "start": 65,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 73,
+                  "start": 65,
+                  "tag": 8,
+                  "value": "array_agg",
+                },
+              ],
+            },
+            Object {
+              "end": 818,
+              "start": 80,
+              "tag": 54,
+              "values": Array [
+                Object {
+                  "end": 96,
+                  "start": 80,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 96,
+                      "start": 80,
+                      "tag": 8,
+                      "value": "json_build_object",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 108,
+                  "start": 105,
+                  "tag": 13,
+                  "value": "id",
+                },
+                Object {
+                  "end": 121,
+                  "start": 111,
+                  "tag": 11,
+                  "values": Array [
+                    Object {
+                      "end": 118,
+                      "start": 111,
+                      "tag": 8,
+                      "value": "contacts",
+                    },
+                    Object {
+                      "end": 121,
+                      "start": 120,
+                      "tag": 8,
+                      "value": "id",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 135,
+                  "start": 130,
+                  "tag": 13,
+                  "value": "name",
+                },
+                Object {
+                  "end": 208,
+                  "start": 138,
+                  "tag": 54,
+                  "values": Array [
+                    Object {
+                      "end": 146,
+                      "start": 138,
+                      "tag": 89,
+                      "values": Array [
+                        Object {
+                          "end": 146,
+                          "start": 138,
+                          "tag": 8,
+                          "value": "concat_ws",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 150,
+                      "start": 148,
+                      "tag": 13,
+                      "value": " ",
+                    },
+                    Object {
+                      "end": 166,
+                      "start": 153,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 160,
+                          "start": 153,
+                          "tag": 8,
+                          "value": "contacts",
+                        },
+                        Object {
+                          "end": 166,
+                          "start": 162,
+                          "tag": 8,
+                          "value": "title",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 187,
+                      "start": 169,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 176,
+                          "start": 169,
+                          "tag": 8,
+                          "value": "contacts",
+                        },
+                        Object {
+                          "end": 187,
+                          "start": 178,
+                          "tag": 8,
+                          "value": "first_name",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 207,
+                      "start": 190,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 197,
+                          "start": 190,
+                          "tag": 8,
+                          "value": "contacts",
+                        },
+                        Object {
+                          "end": 207,
+                          "start": 199,
+                          "tag": 8,
+                          "value": "last_name",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "end": 223,
+                  "start": 217,
+                  "tag": 13,
+                  "value": "email",
+                },
+                Object {
+                  "end": 239,
+                  "start": 226,
+                  "tag": 11,
+                  "values": Array [
+                    Object {
+                      "end": 233,
+                      "start": 226,
+                      "tag": 8,
+                      "value": "contacts",
+                    },
+                    Object {
+                      "end": 239,
+                      "start": 235,
+                      "tag": 8,
+                      "value": "email",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 254,
+                  "start": 248,
+                  "tag": 13,
+                  "value": "phone",
+                },
+                Object {
+                  "end": 270,
+                  "start": 257,
+                  "tag": 11,
+                  "values": Array [
+                    Object {
+                      "end": 264,
+                      "start": 257,
+                      "tag": 8,
+                      "value": "contacts",
+                    },
+                    Object {
+                      "end": 270,
+                      "start": 266,
+                      "tag": 8,
+                      "value": "phone",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 287,
+                  "start": 279,
+                  "tag": 13,
+                  "value": "address",
+                },
+                Object {
+                  "end": 644,
+                  "start": 296,
+                  "tag": 54,
+                  "values": Array [
+                    Object {
+                      "end": 312,
+                      "start": 296,
+                      "tag": 89,
+                      "values": Array [
+                        Object {
+                          "end": 312,
+                          "start": 296,
+                          "tag": 8,
+                          "value": "json_build_object",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 326,
+                      "start": 323,
+                      "tag": 13,
+                      "value": "id",
+                    },
+                    Object {
+                      "end": 340,
+                      "start": 329,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 337,
+                          "start": 329,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 340,
+                          "start": 339,
+                          "tag": 8,
+                          "value": "id",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 364,
+                      "start": 351,
+                      "tag": 13,
+                      "value": "addressLine1",
+                    },
+                    Object {
+                      "end": 390,
+                      "start": 367,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 375,
+                          "start": 367,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 390,
+                          "start": 377,
+                          "tag": 8,
+                          "value": "address_line_1",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 414,
+                      "start": 401,
+                      "tag": 13,
+                      "value": "addressLine2",
+                    },
+                    Object {
+                      "end": 440,
+                      "start": 417,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 425,
+                          "start": 417,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 440,
+                          "start": 427,
+                          "tag": 8,
+                          "value": "address_line_2",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 464,
+                      "start": 451,
+                      "tag": 13,
+                      "value": "addressLine3",
+                    },
+                    Object {
+                      "end": 490,
+                      "start": 467,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 475,
+                          "start": 467,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 490,
+                          "start": 477,
+                          "tag": 8,
+                          "value": "address_line_3",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 506,
+                      "start": 501,
+                      "tag": 13,
+                      "value": "city",
+                    },
+                    Object {
+                      "end": 522,
+                      "start": 509,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 517,
+                          "start": 509,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 522,
+                          "start": 519,
+                          "tag": 8,
+                          "value": "city",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 541,
+                      "start": 533,
+                      "tag": 13,
+                      "value": "country",
+                    },
+                    Object {
+                      "end": 560,
+                      "start": 544,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 552,
+                          "start": 544,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 560,
+                          "start": 554,
+                          "tag": 8,
+                          "value": "country",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 578,
+                      "start": 571,
+                      "tag": 13,
+                      "value": "county",
+                    },
+                    Object {
+                      "end": 596,
+                      "start": 581,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 589,
+                          "start": 581,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 596,
+                          "start": 591,
+                          "tag": 8,
+                          "value": "county",
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 616,
+                      "start": 607,
+                      "tag": 13,
+                      "value": "postCode",
+                    },
+                    Object {
+                      "end": 636,
+                      "start": 619,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 627,
+                          "start": 619,
+                          "tag": 8,
+                          "value": "addresses",
+                        },
+                        Object {
+                          "end": 636,
+                          "start": 629,
+                          "tag": 8,
+                          "value": "postCode",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "end": 670,
+                  "start": 653,
+                  "tag": 13,
+                  "value": "isPrimaryContact",
+                },
+                Object {
+                  "end": 725,
+                  "start": 673,
+                  "tag": 52,
+                  "values": Array [
+                    Object {
+                      "end": 715,
+                      "start": 673,
+                      "tag": 106,
+                      "values": Array [
+                        Object {
+                          "end": 714,
+                          "start": 674,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 684,
+                              "start": 674,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 681,
+                                  "start": 674,
+                                  "tag": 8,
+                                  "value": "contacts",
+                                },
+                                Object {
+                                  "end": 684,
+                                  "start": 683,
+                                  "tag": 8,
+                                  "value": "id",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 686,
+                              "start": 686,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 714,
+                              "start": 688,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 695,
+                                  "start": 688,
+                                  "tag": 8,
+                                  "value": "accounts",
+                                },
+                                Object {
+                                  "end": 714,
+                                  "start": 697,
+                                  "tag": 8,
+                                  "value": "primary_contact_id",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 724,
+                      "start": 718,
+                      "tag": 32,
+                      "values": Array [
+                        Object {
+                          "end": 724,
+                          "start": 718,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 724,
+                              "start": 718,
+                              "tag": 8,
+                              "value": "boolean",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "end": 754,
+                  "start": 733,
+                  "tag": 13,
+                  "value": "isNominatedRecipient",
+                },
+                Object {
+                  "end": 813,
+                  "start": 757,
+                  "tag": 52,
+                  "values": Array [
+                    Object {
+                      "end": 803,
+                      "start": 757,
+                      "tag": 106,
+                      "values": Array [
+                        Object {
+                          "end": 802,
+                          "start": 758,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 768,
+                              "start": 758,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 765,
+                                  "start": 758,
+                                  "tag": 8,
+                                  "value": "contacts",
+                                },
+                                Object {
+                                  "end": 768,
+                                  "start": 767,
+                                  "tag": 8,
+                                  "value": "id",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 770,
+                              "start": 770,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 802,
+                              "start": 772,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 779,
+                                  "start": 772,
+                                  "tag": 8,
+                                  "value": "accounts",
+                                },
+                                Object {
+                                  "end": 802,
+                                  "start": 781,
+                                  "tag": 8,
+                                  "value": "nominated_recipient_id",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 812,
+                      "start": 806,
+                      "tag": 32,
+                      "values": Array [
+                        Object {
+                          "end": 812,
+                          "start": 806,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 812,
+                              "start": 806,
+                              "tag": 8,
+                              "value": "boolean",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 25,
+      },
+    },
+    Object {
+      "name": "paymentDetails",
+      "type": Object {
+        "items": Array [
+          Object {
+            "name": "beneficiaryAccountNumber",
+            "type": Object {
+              "args": Array [
+                Object {
+                  "column": "beneficiary_account_number",
+                  "schema": undefined,
+                  "sourceTag": Object {
+                    "end": 932,
+                    "start": 898,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 905,
+                        "start": 898,
+                        "tag": 8,
+                        "value": "accounts",
+                      },
+                      Object {
+                        "end": 932,
+                        "start": 907,
+                        "tag": 8,
+                        "value": "beneficiary_account_number",
+                      },
+                    ],
+                  },
+                  "table": "accounts",
+                  "type": 19,
+                },
+                Object {
+                  "literal": 3,
+                  "postgresType": "float4",
+                  "type": 3,
+                },
+              ],
+              "name": "right",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 936,
+                "start": 892,
+                "tag": 54,
+                "values": Array [
+                  Object {
+                    "end": 896,
+                    "start": 892,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 896,
+                        "start": 892,
+                        "tag": 8,
+                        "value": "right",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 932,
+                    "start": 898,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 905,
+                        "start": 898,
+                        "tag": 8,
+                        "value": "accounts",
+                      },
+                      Object {
+                        "end": 932,
+                        "start": 907,
+                        "tag": 8,
+                        "value": "beneficiary_account_number",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 935,
+                    "start": 935,
+                    "tag": 19,
+                    "value": "3",
+                  },
+                ],
+              },
+              "type": 18,
+            },
+          },
+          Object {
+            "name": "beneficiaryName",
+            "type": Object {
+              "column": "beneficiary_name",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 986,
+                "start": 962,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 969,
+                    "start": 962,
+                    "tag": 8,
+                    "value": "accounts",
+                  },
+                  Object {
+                    "end": 986,
+                    "start": 971,
+                    "tag": 8,
+                    "value": "beneficiary_name",
+                  },
+                ],
+              },
+              "table": "accounts",
+              "type": 19,
+            },
+          },
+          Object {
+            "name": "beneficiarySortCode",
+            "type": Object {
+              "column": "beneficiary_sort_code",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 1045,
+                "start": 1016,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 1023,
+                    "start": 1016,
+                    "tag": 8,
+                    "value": "accounts",
+                  },
+                  Object {
+                    "end": 1045,
+                    "start": 1025,
+                    "tag": 8,
+                    "value": "beneficiary_sort_code",
+                  },
+                ],
+              },
+              "table": "accounts",
+              "type": 19,
+            },
+          },
+        ],
+        "sourceTag": Object {
+          "end": 1049,
+          "start": 841,
+          "tag": 54,
+          "values": Array [
+            Object {
+              "end": 857,
+              "start": 841,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 857,
+                  "start": 841,
+                  "tag": 8,
+                  "value": "json_build_object",
+                },
+              ],
+            },
+            Object {
+              "end": 889,
+              "start": 864,
+              "tag": 13,
+              "value": "beneficiaryAccountNumber",
+            },
+            Object {
+              "end": 936,
+              "start": 892,
+              "tag": 54,
+              "values": Array [
+                Object {
+                  "end": 896,
+                  "start": 892,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 896,
+                      "start": 892,
+                      "tag": 8,
+                      "value": "right",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 932,
+                  "start": 898,
+                  "tag": 11,
+                  "values": Array [
+                    Object {
+                      "end": 905,
+                      "start": 898,
+                      "tag": 8,
+                      "value": "accounts",
+                    },
+                    Object {
+                      "end": 932,
+                      "start": 907,
+                      "tag": 8,
+                      "value": "beneficiary_account_number",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 935,
+                  "start": 935,
+                  "tag": 19,
+                  "value": "3",
+                },
+              ],
+            },
+            Object {
+              "end": 959,
+              "start": 943,
+              "tag": 13,
+              "value": "beneficiaryName",
+            },
+            Object {
+              "end": 986,
+              "start": 962,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 969,
+                  "start": 962,
+                  "tag": 8,
+                  "value": "accounts",
+                },
+                Object {
+                  "end": 986,
+                  "start": 971,
+                  "tag": 8,
+                  "value": "beneficiary_name",
+                },
+              ],
+            },
+            Object {
+              "end": 1013,
+              "start": 993,
+              "tag": 13,
+              "value": "beneficiarySortCode",
+            },
+            Object {
+              "end": 1045,
+              "start": 1016,
+              "tag": 11,
+              "values": Array [
+                Object {
+                  "end": 1023,
+                  "start": 1016,
+                  "tag": 8,
+                  "value": "accounts",
+                },
+                Object {
+                  "end": 1045,
+                  "start": 1025,
+                  "tag": 8,
+                  "value": "beneficiary_sort_code",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 29,
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "accounts",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 1085,
+        "start": 1078,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 1085,
+            "start": 1078,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 1085,
+                "start": 1078,
+                "tag": 8,
+                "value": "accounts",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "accounts",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "contacts",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 1106,
+        "start": 1099,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 1106,
+            "start": 1099,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 1106,
+                "start": 1099,
+                "tag": 8,
+                "value": "contacts",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "contacts",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "addresses",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 1169,
+        "start": 1161,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 1169,
+            "start": 1161,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 1169,
+                "start": 1161,
+                "tag": 8,
+                "value": "addresses",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "addresses",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql cte.query.sql: cte.query.sql 1`] = `
 Object {
   "params": Array [],
