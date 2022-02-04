@@ -61,6 +61,22 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert Right function sql (SELECT RIGHT('123', 2)) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "right",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "text",
+        "type": 2,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert coalesce 1 sql (SELECT COALESCE(id, character_col) FROM all_types) 1`] = `
 Object {
   "params": Array [],

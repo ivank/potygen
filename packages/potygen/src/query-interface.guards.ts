@@ -38,6 +38,7 @@ import {
   SourceQuery,
   SourceTable,
   TypeName,
+  TypeLoad,
 } from './query-interface.types';
 
 export const isType = (item: TypeOrLoad): item is Type =>
@@ -54,6 +55,24 @@ export const isType = (item: TypeOrLoad): item is Type =>
   item.type === TypeName.Union ||
   item.type === TypeName.Composite ||
   item.type === TypeName.Optional;
+
+export const isTypeLoad = (item: TypeOrLoad): item is TypeLoad =>
+  item.type === TypeName.LoadOptional ||
+  item.type === TypeName.LoadColumn ||
+  item.type === TypeName.LoadFunction ||
+  item.type === TypeName.LoadFunctionArgument ||
+  item.type === TypeName.LoadRecord ||
+  item.type === TypeName.LoadStar ||
+  item.type === TypeName.LoadOperator ||
+  item.type === TypeName.LoadNamed ||
+  item.type === TypeName.LoadCoalesce ||
+  item.type === TypeName.LoadArray ||
+  item.type === TypeName.LoadAsArray ||
+  item.type === TypeName.LoadArrayItem ||
+  item.type === TypeName.LoadCompositeAccess ||
+  item.type === TypeName.LoadUnion ||
+  item.type === TypeName.LoadColumnCast ||
+  item.type === TypeName.LoadObjectLiteral;
 
 export const isTypeNullable = (item: TypeOrLoad): item is TypeNullable =>
   item.type === TypeName.String ||
