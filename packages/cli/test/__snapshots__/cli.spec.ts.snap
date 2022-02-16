@@ -657,6 +657,8 @@ exports[`CLI Should use cli to run pipeline on sql files: recordsets.query.queri
 }
 export interface Result {
     id: number;
+    exportType: string;
+    energy: number;
 }
 export interface Query {
     params: Params;

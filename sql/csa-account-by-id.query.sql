@@ -17,7 +17,7 @@ SELECT
         'city', addresses.city,
         'country', addresses.country,
         'county', addresses.county,
-        'postCode', addresses.postCode
+        'postCode', addresses.postcode
       ),
       'isPrimaryContact', (contacts.id = accounts.primary_contact_id)::boolean,
       'isNominatedRecipient', (contacts.id = accounts.nominated_recipient_id)::boolean

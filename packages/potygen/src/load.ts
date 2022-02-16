@@ -154,6 +154,7 @@ const toSourceTables = (source: Source): DataTable[] => {
     case 'Query':
       return source.value.sources.flatMap(toSourceTables);
     case 'Values':
+    case 'Recordset':
       return [];
   }
 };
@@ -347,6 +348,7 @@ const toLoadedSource = ({
   const querySources = sources.filter(isSourceQuery);
 
   return (source: Source): LoadedSourceWithUnknown => {
+    const toColumnType = toType(throwOnUnknownLoadedContext(toLoadedContext({ data, sources: [] })), true);
     switch (source.type) {
       case 'Table':
         const view = views.find((item) => isEqual(item.name, toTableName(source.schema, source.table)));
@@ -390,13 +392,13 @@ const toLoadedSource = ({
           ),
         };
       case 'Values':
-        const toValuesType = toType(throwOnUnknownLoadedContext(toLoadedContext({ data, sources: [] })), true);
+        // const toValuesType = toType(throwOnUnknownLoadedContext(toLoadedContext({ data, sources: [] })), true);
         return {
           type: 'Values',
           name: source.name,
           items:
             source.types?.reduce<Record<string, Type>>(
-              (acc, column) => ({ ...acc, [column.name]: toValuesType(column) }),
+              (acc, column) => ({ ...acc, [column.name]: toColumnType(column) }),
               {},
             ) ?? {},
         };
@@ -408,6 +410,17 @@ const toLoadedSource = ({
             (acc, result) => ({ ...acc, [result.name]: result.type }),
             {},
           ),
+        };
+      case 'Recordset':
+        return {
+          type: 'Recordset',
+          name: source.name,
+          isResult: source.isResult,
+          items:
+            source.columns?.reduce<Record<string, Type>>(
+              (acc, column) => ({ ...acc, [column.name]: toColumnType(column) }),
+              {},
+            ) ?? {},
         };
     }
   };
@@ -509,7 +522,7 @@ const toType = (context: LoadedContext, isResult: boolean) => {
     switch (type.type) {
       case TypeName.LoadColumn:
         const relevantSources = context.sources.filter(matchTypeSource(type)).filter(isResultSource(isResult));
-        const columns = relevantSources.flatMap((source) => source.items[type.column.toLowerCase()] ?? []);
+        const columns = relevantSources.flatMap((source) => source.items[type.column] ?? []);
 
         if (relevantSources.length === 0) {
           throw new LoadError(
@@ -524,6 +537,7 @@ const toType = (context: LoadedContext, isResult: boolean) => {
               .join(', ')}).`,
           );
         } else if (columns.length === 0) {
+          console.log(relevantSources);
           throw new LoadError(
             type.sourceTag,
             `Column ${formatLoadColumn(type)} not found in ${relevantSources.map(formatLoadedSource).join(', ')}`,

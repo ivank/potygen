@@ -25554,7 +25554,7 @@ Object {
                                 "end": 636,
                                 "start": 629,
                                 "tag": 8,
-                                "value": "postCode",
+                                "value": "postcode",
                               },
                             ],
                           },
@@ -42707,12 +42707,12 @@ Object {
 exports[`Sql Files Should parse complex sql recordsets.query.sql: recordsets.query.sql 1`] = `
 Object {
   "ast": Object {
-    "end": 295,
+    "end": 326,
     "start": 0,
     "tag": 81,
     "values": Array [
       Object {
-        "end": 45,
+        "end": 76,
         "start": 9,
         "tag": 62,
         "values": Array [
@@ -42743,14 +42743,14 @@ Object {
             ],
           },
           Object {
-            "end": 45,
+            "end": 56,
             "start": 37,
             "tag": 61,
             "values": Array [
               Object {
-                "end": 45,
+                "end": 56,
                 "start": 37,
-                "tag": 37,
+                "tag": 11,
                 "values": Array [
                   Object {
                     "end": 43,
@@ -42759,9 +42759,36 @@ Object {
                     "value": "periods",
                   },
                   Object {
-                    "end": 45,
+                    "end": 56,
                     "start": 45,
-                    "tag": 36,
+                    "tag": 9,
+                    "value": "exportType",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 76,
+            "start": 61,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 76,
+                "start": 61,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 67,
+                    "start": 61,
+                    "tag": 8,
+                    "value": "periods",
+                  },
+                  Object {
+                    "end": 76,
+                    "start": 69,
+                    "tag": 9,
+                    "value": "energy",
                   },
                 ],
               },
@@ -42770,28 +42797,28 @@ Object {
         ],
       },
       Object {
-        "end": 295,
-        "start": 47,
+        "end": 326,
+        "start": 78,
         "tag": 69,
         "values": Array [
           Object {
-            "end": 295,
-            "start": 54,
+            "end": 326,
+            "start": 85,
             "tag": 68,
             "values": Array [
               Object {
-                "end": 74,
-                "start": 54,
+                "end": 105,
+                "start": 85,
                 "tag": 90,
                 "values": Array [
                   Object {
-                    "end": 74,
-                    "start": 54,
+                    "end": 105,
+                    "start": 85,
                     "tag": 89,
                     "values": Array [
                       Object {
-                        "end": 74,
-                        "start": 54,
+                        "end": 105,
+                        "start": 85,
                         "tag": 8,
                         "value": "account_levelisations",
                       },
@@ -42800,36 +42827,36 @@ Object {
                 ],
               },
               Object {
-                "end": 295,
-                "start": 79,
+                "end": 326,
+                "start": 110,
                 "tag": 116,
                 "values": Array [
                   Object {
-                    "end": 116,
-                    "start": 79,
+                    "end": 147,
+                    "start": 110,
                     "tag": 54,
                     "values": Array [
                       Object {
-                        "end": 96,
-                        "start": 79,
+                        "end": 127,
+                        "start": 110,
                         "tag": 89,
                         "values": Array [
                           Object {
-                            "end": 96,
-                            "start": 79,
+                            "end": 127,
+                            "start": 110,
                             "tag": 8,
                             "value": "jsonb_to_recordset",
                           },
                         ],
                       },
                       Object {
-                        "end": 115,
-                        "start": 98,
+                        "end": 146,
+                        "start": 129,
                         "tag": 11,
                         "values": Array [
                           Object {
-                            "end": 115,
-                            "start": 98,
+                            "end": 146,
+                            "start": 129,
                             "tag": 8,
                             "value": "generation_periods",
                           },
@@ -42838,45 +42865,45 @@ Object {
                     ],
                   },
                   Object {
-                    "end": 295,
-                    "start": 120,
+                    "end": 326,
+                    "start": 151,
                     "tag": 115,
                     "values": Array [
                       Object {
-                        "end": 129,
-                        "start": 123,
+                        "end": 160,
+                        "start": 154,
                         "tag": 8,
                         "value": "periods",
                       },
                       Object {
-                        "end": 291,
-                        "start": 136,
+                        "end": 322,
+                        "start": 167,
                         "tag": 114,
                         "values": Array [
                           Object {
-                            "end": 151,
-                            "start": 136,
+                            "end": 182,
+                            "start": 167,
                             "tag": 113,
                             "values": Array [
                               Object {
-                                "end": 143,
-                                "start": 136,
+                                "end": 174,
+                                "start": 167,
                                 "tag": 9,
                                 "value": "amount",
                               },
                               Object {
-                                "end": 151,
-                                "start": 145,
+                                "end": 182,
+                                "start": 176,
                                 "tag": 32,
                                 "values": Array [
                                   Object {
-                                    "end": 151,
-                                    "start": 145,
+                                    "end": 182,
+                                    "start": 176,
                                     "tag": 89,
                                     "values": Array [
                                       Object {
-                                        "end": 151,
-                                        "start": 145,
+                                        "end": 182,
+                                        "start": 176,
                                         "tag": 8,
                                         "value": "varchar",
                                       },
@@ -42887,29 +42914,29 @@ Object {
                             ],
                           },
                           Object {
-                            "end": 171,
-                            "start": 158,
+                            "end": 202,
+                            "start": 189,
                             "tag": 113,
                             "values": Array [
                               Object {
-                                "end": 165,
-                                "start": 158,
+                                "end": 196,
+                                "start": 189,
                                 "tag": 9,
                                 "value": "energy",
                               },
                               Object {
-                                "end": 171,
-                                "start": 167,
+                                "end": 202,
+                                "start": 198,
                                 "tag": 32,
                                 "values": Array [
                                   Object {
-                                    "end": 171,
-                                    "start": 167,
+                                    "end": 202,
+                                    "start": 198,
                                     "tag": 89,
                                     "values": Array [
                                       Object {
-                                        "end": 171,
-                                        "start": 167,
+                                        "end": 202,
+                                        "start": 198,
                                         "tag": 8,
                                         "value": "float",
                                       },
@@ -42920,29 +42947,29 @@ Object {
                             ],
                           },
                           Object {
-                            "end": 191,
-                            "start": 178,
+                            "end": 222,
+                            "start": 209,
                             "tag": 113,
                             "values": Array [
                               Object {
-                                "end": 185,
-                                "start": 178,
+                                "end": 216,
+                                "start": 209,
                                 "tag": 9,
                                 "value": "amount",
                               },
                               Object {
-                                "end": 191,
-                                "start": 187,
+                                "end": 222,
+                                "start": 218,
                                 "tag": 32,
                                 "values": Array [
                                   Object {
-                                    "end": 191,
-                                    "start": 187,
+                                    "end": 222,
+                                    "start": 218,
                                     "tag": 89,
                                     "values": Array [
                                       Object {
-                                        "end": 191,
-                                        "start": 187,
+                                        "end": 222,
+                                        "start": 218,
                                         "tag": 8,
                                         "value": "float",
                                       },
@@ -42953,29 +42980,29 @@ Object {
                             ],
                           },
                           Object {
-                            "end": 214,
-                            "start": 198,
+                            "end": 245,
+                            "start": 229,
                             "tag": 113,
                             "values": Array [
                               Object {
-                                "end": 206,
-                                "start": 198,
+                                "end": 237,
+                                "start": 229,
                                 "tag": 9,
                                 "value": "startOn",
                               },
                               Object {
-                                "end": 214,
-                                "start": 208,
+                                "end": 245,
+                                "start": 239,
                                 "tag": 32,
                                 "values": Array [
                                   Object {
-                                    "end": 214,
-                                    "start": 208,
+                                    "end": 245,
+                                    "start": 239,
                                     "tag": 89,
                                     "values": Array [
                                       Object {
-                                        "end": 214,
-                                        "start": 208,
+                                        "end": 245,
+                                        "start": 239,
                                         "tag": 8,
                                         "value": "varchar",
                                       },
@@ -42986,29 +43013,29 @@ Object {
                             ],
                           },
                           Object {
-                            "end": 235,
-                            "start": 221,
+                            "end": 266,
+                            "start": 252,
                             "tag": 113,
                             "values": Array [
                               Object {
-                                "end": 227,
-                                "start": 221,
+                                "end": 258,
+                                "start": 252,
                                 "tag": 9,
                                 "value": "endOn",
                               },
                               Object {
-                                "end": 235,
-                                "start": 229,
+                                "end": 266,
+                                "start": 260,
                                 "tag": 32,
                                 "values": Array [
                                   Object {
-                                    "end": 235,
-                                    "start": 229,
+                                    "end": 266,
+                                    "start": 260,
                                     "tag": 89,
                                     "values": Array [
                                       Object {
-                                        "end": 235,
-                                        "start": 229,
+                                        "end": 266,
+                                        "start": 260,
                                         "tag": 8,
                                         "value": "varchar",
                                       },
@@ -43019,29 +43046,29 @@ Object {
                             ],
                           },
                           Object {
-                            "end": 261,
-                            "start": 242,
+                            "end": 292,
+                            "start": 273,
                             "tag": 113,
                             "values": Array [
                               Object {
-                                "end": 253,
-                                "start": 242,
+                                "end": 284,
+                                "start": 273,
                                 "tag": 9,
                                 "value": "exportType",
                               },
                               Object {
-                                "end": 261,
-                                "start": 255,
+                                "end": 292,
+                                "start": 286,
                                 "tag": 32,
                                 "values": Array [
                                   Object {
-                                    "end": 261,
-                                    "start": 255,
+                                    "end": 292,
+                                    "start": 286,
                                     "tag": 89,
                                     "values": Array [
                                       Object {
-                                        "end": 261,
-                                        "start": 255,
+                                        "end": 292,
+                                        "start": 286,
                                         "tag": 8,
                                         "value": "varchar",
                                       },
@@ -43052,29 +43079,29 @@ Object {
                             ],
                           },
                           Object {
-                            "end": 291,
-                            "start": 268,
+                            "end": 322,
+                            "start": 299,
                             "tag": 113,
                             "values": Array [
                               Object {
-                                "end": 283,
-                                "start": 268,
+                                "end": 314,
+                                "start": 299,
                                 "tag": 9,
                                 "value": "technologyType",
                               },
                               Object {
-                                "end": 291,
-                                "start": 285,
+                                "end": 322,
+                                "start": 316,
                                 "tag": 32,
                                 "values": Array [
                                   Object {
-                                    "end": 291,
-                                    "start": 285,
+                                    "end": 322,
+                                    "start": 316,
                                     "tag": 89,
                                     "values": Array [
                                       Object {
-                                        "end": 291,
-                                        "start": 285,
+                                        "end": 322,
+                                        "start": 316,
                                         "tag": 8,
                                         "value": "varchar",
                                       },

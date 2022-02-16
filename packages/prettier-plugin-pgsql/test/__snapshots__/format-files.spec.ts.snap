@@ -973,7 +973,7 @@ SELECT
         'city', addresses.city,
         'country', addresses.country,
         'county', addresses.county,
-        'postCode', addresses.postCode
+        'postCode', addresses.postcode
       ),
       'isPrimaryContact', (contacts.id = accounts.primary_contact_id)::boolean,
       'isNominatedRecipient',
@@ -1655,7 +1655,8 @@ LIMIT $perPage
 exports[`Sql Files Should parse complex sql recordsets.query.sql: recordsets.query.sql 1`] = `
 "SELECT
   account_levelisations.id,
-  periods.*
+  periods.\\"exportType\\",
+  periods.\\"energy\\"
 FROM
   account_levelisations,
   jsonb_to_recordset(generation_periods)

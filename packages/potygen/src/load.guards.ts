@@ -17,6 +17,7 @@ import {
   LoadedSourceUnknown,
   LoadedSourceTable,
   LoadedSourceValues,
+  LoadedSourceRecordset,
   LoadedSourceView,
 } from './load.types';
 
@@ -36,6 +37,7 @@ export const isNotDataViewRaw = (item: LoadedDataRaw): item is LoadedDataSimple 
 export const isLoadedSourceView = (item: LoadedSource): item is LoadedSourceView => item.type === 'View';
 export const isLoadedSourceTable = (item: LoadedSource): item is LoadedSourceTable => item.type === 'Table';
 export const isLoadedSourceValues = (item: LoadedSource): item is LoadedSourceValues => item.type === 'Values';
+export const isLoadedSourceRecordset = (item: LoadedSource): item is LoadedSourceRecordset => item.type === 'Recordset';
 export const isLoadedSource = (item: LoadedSourceWithUnknown): item is LoadedSource => item.type !== 'Unknown';
 export const isLoadedSourceUnknown = (item: LoadedSourceWithUnknown): item is LoadedSourceUnknown =>
   item.type === 'Unknown';
