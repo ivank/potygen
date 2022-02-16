@@ -172,6 +172,20 @@ const toSourcesIterator =
           ),
           recur(last(sql.values)),
         );
+      case SqlName.RecordsetFunction:
+        const recordsetType = toType({ type: typeUnknown, columns: [] });
+        return sources.concat({
+          type: 'Recordset',
+          isResult,
+          sourceTag: sql,
+          name: first(last(sql.values).values).value,
+          columns: last(last(sql.values).values).values.map<TypeLoadNamed>((item) => ({
+            type: TypeName.LoadNamed,
+            name: first(item.values).value,
+            value: recordsetType(last(item.values)),
+            sourceTag: item,
+          })),
+        });
       default:
         return 'values' in sql ? sources.concat(sql.values.flatMap(recur)) : sources;
     }

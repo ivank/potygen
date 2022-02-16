@@ -695,7 +695,7 @@ export interface AsColumnListTag extends NodeSqlTag {
 
 export interface AsRecordsetTag extends NodeSqlTag {
   tag: SqlName.AsRecordset;
-  values: [IdentifierTag, ...AsColumnTag[]];
+  values: [IdentifierTag, AsColumnListTag];
 }
 
 /**

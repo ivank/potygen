@@ -427,7 +427,7 @@ export interface Param {
 /**
  * Source of data inside the query. Can be tables, other queries / subqueries or value lists.
  */
-export type Source = SourceTable | SourceQuery | SourceValues;
+export type Source = SourceTable | SourceQuery | SourceValues | SourceRecordset;
 
 export interface SourceTable {
   type: 'Table';
@@ -435,6 +435,13 @@ export interface SourceTable {
   isResult?: boolean;
   schema?: string;
   table: string;
+  name: string;
+}
+export interface SourceRecordset {
+  type: 'Recordset';
+  isResult?: boolean;
+  sourceTag: Tag;
+  columns: TypeLoadNamed[];
   name: string;
 }
 

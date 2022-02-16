@@ -1,6 +1,7 @@
 SELECT
   account_levelisations.id,
-  periods.*
+  periods."exportType",
+  periods."energy"
 FROM
   account_levelisations,
   jsonb_to_recordset(generation_periods)

@@ -21,6 +21,7 @@ const formatSourceName = (source: LoadedSource): string => {
   switch (source.type) {
     case 'Query':
     case 'Values':
+    case 'Recordset':
       return `${source.name} ${code(source.type)}`;
     case 'Table':
     case 'View':

@@ -214,6 +214,16 @@ export interface LoadedSourceValues {
 }
 
 /**
+ * A source of recordset with column list
+ */
+export interface LoadedSourceRecordset {
+  type: 'Recordset';
+  isResult?: boolean;
+  name: string;
+  items: Record<string, Type>;
+}
+
+/**
  * A source that couldn't be found as subquery or in the database.
  * This would result in an error, but inspection pipeline needs it to be just a type.
  */
@@ -223,7 +233,13 @@ export interface LoadedSourceUnknown {
   source: Source;
 }
 
-export type LoadedSource = LoadedSourceTable | LoadedSourceQuery | LoadedSourceView | LoadedSourceValues;
+export type LoadedSource =
+  | LoadedSourceTable
+  | LoadedSourceQuery
+  | LoadedSourceView
+  | LoadedSourceValues
+  | LoadedSourceRecordset;
+
 export type LoadedSourceWithUnknown = LoadedSource | LoadedSourceUnknown;
 
 export interface LoadedContext extends LoadedContextWithUnknown {

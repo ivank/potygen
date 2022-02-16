@@ -622,6 +622,8 @@ exports[`Load Files Should convert complex sql recordsets.query.sql: recordsets.
 }
 export interface Result {
     id: number;
+    exportType: string;
+    energy: number;
 }
 export interface Query {
     params: Params;

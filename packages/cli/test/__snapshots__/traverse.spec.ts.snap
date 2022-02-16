@@ -622,6 +622,8 @@ exports[`Traverse Should work: __generated__/recordsets.query.queries.ts 1`] = `
 }
 export interface Result {
     id: number;
+    exportType: string;
+    energy: number;
 }
 export interface Query {
     params: Params;
