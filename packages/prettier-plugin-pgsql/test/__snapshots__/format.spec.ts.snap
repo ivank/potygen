@@ -1162,6 +1162,14 @@ exports[`Format Should parse simple sql quoted star select (SELECT "table 2".*):
 "
 `;
 
+exports[`Format Should parse simple sql recordset function (SELECT periods.* FROM account_levelisations, jsonb_to_recordset(generation_periods) as periods("amount" varchar)): recordset function 1`] = `
+"SELECT periods.*
+FROM
+  account_levelisations,
+  jsonb_to_recordset(generation_periods) AS periods(\\"amount\\" varchar)
+"
+`;
+
 exports[`Format Should parse simple sql restricted (SELECT all_types.id FROM all_types): restricted 1`] = `
 "SELECT all_types.id FROM all_types
 "

@@ -30,6 +30,7 @@ Array [
   "rates-by-tarrif-ids.query.queries.ts",
   "read-create.query.queries.ts",
   "reads-by-account-id.query.queries.ts",
+  "recordsets.query.queries.ts",
   "tariff-rates.queries.ts",
 ]
 `;
@@ -643,6 +644,19 @@ export interface Result {
      */
     sourceSystemId?: number;
     mpan: string;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: recordsets.query.queries.ts 1`] = `
+"export interface Params {
+}
+export interface Result {
+    id: number;
 }
 export interface Query {
     params: Params;

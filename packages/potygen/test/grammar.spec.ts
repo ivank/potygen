@@ -136,6 +136,7 @@ describe('Sql', () => {
     ${'extract field century'}        | ${"SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')"}
     ${'extract field day'}            | ${"SELECT EXTRACT(DAY FROM INTERVAL '40 days 1 minute')"}
     ${'wrapped where'}                | ${'SELECT * FROM table1 WHERE (((table1.c1 = table1.c2) OR table1.c3))'}
+    ${'recordset function'}           | ${'SELECT periods.* FROM account_levelisations, jsonb_to_recordset(generation_periods) as periods("amount" varchar)'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) =>
     withParserErrors(() => {
       expect(parser(sql)).toMatchSnapshot(name);

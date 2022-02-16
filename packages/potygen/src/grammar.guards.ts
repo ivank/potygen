@@ -115,6 +115,10 @@ import {
   WithTag,
   WrappedExpressionTag,
   SqlName,
+  AsColumnTag,
+  AsColumnListTag,
+  AsRecordsetTag,
+  RecordsetFunctionTag,
 } from './grammar.types';
 
 export const isCTE = (value: SqlTag): value is CTETag => value.tag === SqlName.CTE;
@@ -287,6 +291,11 @@ export const isComparationArrayInclusion = (value: SqlTag): value is Comparation
 export const isComparationArray = (value: SqlTag): value is ComparationArrayTag =>
   value.tag === SqlName.ComparationArray;
 export const isExists = (value: SqlTag): value is ExistsTag => value.tag === SqlName.Exists;
+export const isAsColumn = (value: SqlTag): value is AsColumnTag => value.tag === SqlName.AsColumn;
+export const isAsColumnList = (value: SqlTag): value is AsColumnListTag => value.tag === SqlName.AsColumnList;
+export const isAsRecordset = (value: SqlTag): value is AsRecordsetTag => value.tag === SqlName.AsRecordset;
+export const isRecordsetFunction = (value: SqlTag): value is RecordsetFunctionTag =>
+  value.tag === SqlName.RecordsetFunction;
 
 export const isEmptyLeaf = (value: Tag): value is EmptyLeafTag => !('values' in value || 'value' in value);
 export const isLeaf = (value: Tag): value is LeafTag => 'value' in value;

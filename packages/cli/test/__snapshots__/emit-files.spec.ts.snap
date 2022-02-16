@@ -617,6 +617,19 @@ export interface Query {
 "
 `;
 
+exports[`Load Files Should convert complex sql recordsets.query.sql: recordsets.query.sql 1`] = `
+"export interface Params {
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Load Files Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
 "export interface Params {
 }
