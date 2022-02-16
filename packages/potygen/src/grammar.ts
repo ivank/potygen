@@ -317,50 +317,52 @@ const OrderRule = (Expression: Rule): Rule => {
   return astNode<Tag.OrderByTag>(Tag.SqlName.OrderBy, All(/^ORDER BY/i, List(OrderByItem)));
 };
 
+const Function = (ChildExpression: Rule): Rule => {
+  /**
+   * Function
+   * ----------------------------------------------------------------------------------------
+   */
+  const FunctionDistinct = astNode<Tag.DistinctTag>(Tag.SqlName.Distinct, /^DISTINCT/i);
+  const FunctionFilter = astNode<Tag.FilterTag>(
+    Tag.SqlName.Filter,
+    All(/^FILTER/i, Brackets(WhereRule(ChildExpression))),
+  );
+  const FunctionIdentifier = astNode<Tag.QualifiedIdentifierTag>(
+    Tag.SqlName.QualifiedIdentifier,
+    Any(All(Identifier, '.', Identifier), IdentifierRestricted),
+  );
+  return astNode<Tag.FunctionTag>(
+    Tag.SqlName.Function,
+    Any(
+      astNode<Tag.QualifiedIdentifierTag>(
+        Tag.SqlName.QualifiedIdentifier,
+        SpecificIdentifier(/^(CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP)/i),
+      ),
+      All(
+        FunctionIdentifier,
+        Any(
+          Brackets(),
+          Brackets(
+            List(
+              All(
+                Optional(FunctionDistinct),
+                Any(StarIdentifier, ChildExpression),
+                Optional(OrderRule(ChildExpression)),
+              ),
+            ),
+          ),
+        ),
+        Optional(FunctionFilter),
+      ),
+    ),
+  );
+};
+
 const ExpressionRule = (SelectExpression: Rule): Rule =>
   Y((ChildExpression) => {
     const ArrayConstructor = astNode<Tag.ArrayConstructorTag>(
       Tag.SqlName.ArrayConstructor,
       All(/^ARRAY/i, SquareBrackets(List(ChildExpression))),
-    );
-
-    /**
-     * Function
-     * ----------------------------------------------------------------------------------------
-     */
-    const FunctionDistinct = astNode<Tag.DistinctTag>(Tag.SqlName.Distinct, /^DISTINCT/i);
-    const FunctionFilter = astNode<Tag.FilterTag>(
-      Tag.SqlName.Filter,
-      All(/^FILTER/i, Brackets(WhereRule(ChildExpression))),
-    );
-    const FunctionIdentifier = astNode<Tag.QualifiedIdentifierTag>(
-      Tag.SqlName.QualifiedIdentifier,
-      Any(All(Identifier, '.', Identifier), IdentifierRestricted),
-    );
-    const Function = astNode<Tag.FunctionTag>(
-      Tag.SqlName.Function,
-      Any(
-        astNode<Tag.QualifiedIdentifierTag>(
-          Tag.SqlName.QualifiedIdentifier,
-          SpecificIdentifier(/^(CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP)/i),
-        ),
-        All(
-          FunctionIdentifier,
-          Any(
-            Brackets(),
-            Brackets(
-              List(
-                All(
-                  Optional(FunctionDistinct),
-                  Any(StarIdentifier, ChildExpression),
-                  Optional(OrderRule(ChildExpression)),
-                ),
-              ),
-            ),
-          ),
-          Optional(FunctionFilter),
-        ),
-      ),
     );
 
     const ArrayIndexRange = astNode<Tag.ArrayIndexRangeTag>(
@@ -414,7 +416,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       RowKeyward,
       Exists,
       Extract,
-      Function,
+      Function(ChildExpression),
       ColumnQualified,
       Null,
       ColumnUnqualified,
@@ -518,9 +520,21 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     return Any(Cast, BinaryExpression);
   });
 
-const FromListRule = (Select: Rule): Rule => {
+const FromListRule = (Select: Rule, ChildExpression: Rule): Rule => {
   const NamedSelect = astNode<Tag.NamedSelectTag>(Tag.SqlName.NamedSelect, All(Brackets(Select), As));
-  return astNode<Tag.FromListTag>(Tag.SqlName.FromList, List(Any(Table, NamedSelect)));
+
+  const AsColumn = astNode<Tag.AsColumnTag>(Tag.SqlName.AsColumn, All(Identifier, Type));
+  const AsColumnList = astNode<Tag.AsColumnListTag>(Tag.SqlName.AsColumnList, List(AsColumn));
+  const AsRecordset = astNode<Tag.AsRecordsetTag>(
+    Tag.SqlName.AsRecordset,
+    All(/^AS/i, Identifier, Brackets(AsColumnList)),
+  );
+  const RecordsetFunction = astNode<Tag.RecordsetFunctionTag>(
+    Tag.SqlName.RecordsetFunction,
+    All(Function(ChildExpression), AsRecordset),
+  );
+
+  return astNode<Tag.FromListTag>(Tag.SqlName.FromList, List(Any(RecordsetFunction, Table, NamedSelect)));
 };
 
 const WhereRule = (Expression: Rule): Rule => astNode<Tag.WhereTag>(Tag.SqlName.Where, All(/^WHERE/i, Expression));
@@ -538,7 +552,7 @@ const Select = Y((SelectExpression) => {
    * From
    * ----------------------------------------------------------------------------------------
    */
-  const FromList = FromListRule(SelectExpression);
+  const FromList = FromListRule(SelectExpression, Expression);
 
   const JoinType = astUpperLeaf(
     Tag.SqlName.JoinType,
@@ -639,7 +653,7 @@ const Select = Y((SelectExpression) => {
  * ----------------------------------------------------------------------------------------
  */
 const Expression = ExpressionRule(Select);
-const FromList = FromListRule(Select);
+const FromList = FromListRule(Select, Expression);
 const Where = WhereRule(Expression);
 const Columns = astNode<Tag.ColumnsTag>(Tag.SqlName.Columns, Brackets(List(IdentifierRestricted)));
 const Default = astEmptyLeaf<Tag.DefaultTag>(Tag.SqlName.Default, /^DEFAULT/i);

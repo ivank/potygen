@@ -27250,6 +27250,97 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql recordsets.query.sql: recordsets.query.sql 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 32,
+          "start": 9,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 29,
+              "start": 9,
+              "tag": 8,
+              "value": "account_levelisations",
+            },
+            Object {
+              "end": 32,
+              "start": 31,
+              "tag": 8,
+              "value": "id",
+            },
+          ],
+        },
+        "table": "account_levelisations",
+        "type": 19,
+      },
+    },
+    Object {
+      "name": "?column?",
+      "type": Object {
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 45,
+          "start": 37,
+          "tag": 37,
+          "values": Array [
+            Object {
+              "end": 43,
+              "start": 37,
+              "tag": 8,
+              "value": "periods",
+            },
+            Object {
+              "end": 45,
+              "start": 45,
+              "tag": 36,
+            },
+          ],
+        },
+        "table": "periods",
+        "type": 20,
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "account_levelisations",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 74,
+        "start": 54,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 74,
+            "start": 54,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 74,
+                "start": 54,
+                "tag": 8,
+                "value": "account_levelisations",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "account_levelisations",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
 Object {
   "params": Array [],

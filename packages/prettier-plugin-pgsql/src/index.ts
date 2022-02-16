@@ -455,6 +455,19 @@ const pgsqlAst: Printer<Node> = {
         return group(['SAVEPOINT', line, nthVal(0, path, recur)]);
       case SqlName.Rollback:
         return node.values.length ? group(['ROLLBACK TO', line, nthVal(0, path, recur)]) : 'ROLLBACK';
+      case SqlName.AsColumn:
+        return group(join(' ', vals(path, recur)));
+      case SqlName.AsColumnList:
+        return group(join([',', line], vals(path, recur)));
+      case SqlName.AsRecordset:
+        return group([
+          group(['AS', line, nthVal(0, path, recur), '(']),
+          indent([softline, nthVal(1, path, recur)]),
+          softline,
+          ')',
+        ]);
+      case SqlName.RecordsetFunction:
+        return group(join(line, vals(path, recur)));
     }
   },
   printComment: (path) => {

@@ -245,6 +245,7 @@ describe('Format', () => {
     ${'rollback to'}                  | ${'ROLLBACK TO my_savepoint'}
     ${'commit'}                       | ${'COMMIT'}
     ${'with comment'}                 | ${'SELECT * \n-- test comment\nFROM table1'}
+    ${'recordset function'}           | ${'SELECT periods.* FROM account_levelisations, jsonb_to_recordset(generation_periods) as periods("amount" varchar)'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) =>
     withParserErrors(() => {
       const formatted = format(sql, { parser: 'sql', plugins: [prettierPluginPgSql] });

@@ -22594,6 +22594,178 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql recordset function (SELECT periods.* FROM account_levelisations, jsonb_to_recordset(generation_periods) as periods("amount" varchar)): recordset function 1`] = `
+Object {
+  "ast": Object {
+    "end": 111,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 15,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 15,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 15,
+                "start": 7,
+                "tag": 37,
+                "values": Array [
+                  Object {
+                    "end": 13,
+                    "start": 7,
+                    "tag": 8,
+                    "value": "periods",
+                  },
+                  Object {
+                    "end": 15,
+                    "start": 15,
+                    "tag": 36,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 111,
+        "start": 17,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 111,
+            "start": 22,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 42,
+                "start": 22,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 42,
+                    "start": 22,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 42,
+                        "start": 22,
+                        "tag": 8,
+                        "value": "account_levelisations",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 111,
+                "start": 45,
+                "tag": 116,
+                "values": Array [
+                  Object {
+                    "end": 82,
+                    "start": 45,
+                    "tag": 54,
+                    "values": Array [
+                      Object {
+                        "end": 62,
+                        "start": 45,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 62,
+                            "start": 45,
+                            "tag": 8,
+                            "value": "jsonb_to_recordset",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 81,
+                        "start": 64,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 81,
+                            "start": 64,
+                            "tag": 8,
+                            "value": "generation_periods",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 111,
+                    "start": 84,
+                    "tag": 115,
+                    "values": Array [
+                      Object {
+                        "end": 93,
+                        "start": 87,
+                        "tag": 8,
+                        "value": "periods",
+                      },
+                      Object {
+                        "end": 110,
+                        "start": 95,
+                        "tag": 114,
+                        "values": Array [
+                          Object {
+                            "end": 110,
+                            "start": 95,
+                            "tag": 113,
+                            "values": Array [
+                              Object {
+                                "end": 102,
+                                "start": 95,
+                                "tag": 9,
+                                "value": "amount",
+                              },
+                              Object {
+                                "end": 110,
+                                "start": 104,
+                                "tag": 32,
+                                "values": Array [
+                                  Object {
+                                    "end": 110,
+                                    "start": 104,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 110,
+                                        "start": 104,
+                                        "tag": 8,
+                                        "value": "varchar",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse simple sql restricted (SELECT all_types.id FROM all_types): restricted 1`] = `
 Object {
   "ast": Object {

@@ -451,6 +451,22 @@ export const enum SqlName {
    * {@link RollbackTag}
    */
   Rollback,
+  /**
+   * {@link AsColumnTag}
+   */
+  AsColumn,
+  /**
+   * {@link AsColumnListTag}
+   */
+  AsColumnList,
+  /**
+   * {@link AsRecordsetTag}
+   */
+  AsRecordset,
+  /**
+   * {@link RecordsetFunctionTag}
+   */
+  RecordsetFunction,
 }
 
 /**
@@ -662,6 +678,24 @@ export interface ColumnTag extends NodeSqlTag {
 export interface AsTag extends NodeSqlTag {
   tag: SqlName.As;
   values: [IdentifierTag];
+}
+
+/**
+ * A column definition for an ad-hoc column list
+ */
+export interface AsColumnTag extends NodeSqlTag {
+  tag: SqlName.AsColumn;
+  values: [IdentifierTag, TypeTag];
+}
+
+export interface AsColumnListTag extends NodeSqlTag {
+  tag: SqlName.AsColumnList;
+  values: AsColumnTag[];
+}
+
+export interface AsRecordsetTag extends NodeSqlTag {
+  tag: SqlName.AsRecordset;
+  values: [IdentifierTag, ...AsColumnTag[]];
 }
 
 /**
@@ -2027,6 +2061,23 @@ export interface TableTag extends NodeSqlTag {
 }
 
 /**
+ * Tableset record with an "as" clause
+ * ```
+ *                   func─┐                      ┌─as
+ *                        ▼                      ▼
+ *              ┌─────────────────────┬ ─┌─────────────┐
+ * SELECT * FROM│jsonb_to_recordset(r)│AS│tmp1(col int)│
+ *              └─────────────────────┴ ─└─────────────┘
+ *             └────────────────────────────────────────┘
+ *                                  └───────▶TableTag
+ * ```
+ */
+export interface RecordsetFunctionTag extends NodeSqlTag {
+  tag: SqlName.RecordsetFunction;
+  values: [func: FunctionTag, as: AsRecordsetTag];
+}
+
+/**
  * Form clause of an update query.
  * https://www.postgresql.org/docs/current/sql-update.html
  * ```
@@ -2356,7 +2407,7 @@ export interface RollbackTag extends NodeSqlTag {
 }
 
 export type IdentifierTag = QuotedIdentifierTag | UnquotedIdentifierTag;
-export type FromListItemTag = NamedSelectTag | TableTag;
+export type FromListItemTag = NamedSelectTag | TableTag | RecordsetFunctionTag;
 export type ConstantTag =
   | StringTag
   | BitStringTag
@@ -2466,6 +2517,10 @@ export type NodeTag =
   | WithTag
   | ColumnTag
   | AsTag
+  | AsColumnTag
+  | AsColumnListTag
+  | AsRecordsetTag
+  | RecordsetFunctionTag
   | ArrayIndexRangeTag
   | ArrayIndexTag
   | ArrayColumnIndexTag

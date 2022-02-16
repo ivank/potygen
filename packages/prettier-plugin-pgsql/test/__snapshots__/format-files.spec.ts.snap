@@ -1652,6 +1652,25 @@ LIMIT $perPage
 "
 `;
 
+exports[`Sql Files Should parse complex sql recordsets.query.sql: recordsets.query.sql 1`] = `
+"SELECT
+  account_levelisations.id,
+  periods.*
+FROM
+  account_levelisations,
+  jsonb_to_recordset(generation_periods)
+  AS periods(
+    \\"amount\\" varchar,
+    \\"energy\\" float,
+    \\"amount\\" float,
+    \\"startOn\\" varchar,
+    \\"endOn\\" varchar,
+    \\"exportType\\" varchar,
+    \\"technologyType\\" varchar
+  )
+"
+`;
+
 exports[`Sql Files Should parse complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
 "INSERT INTO tariffs (
   source_system_id,
