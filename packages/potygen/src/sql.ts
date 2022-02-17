@@ -8,7 +8,7 @@ import { Param } from './query-interface.types';
 import { Query, QuerySource, SqlDatabase, SqlInterface, QueryConfig } from './sql.types';
 
 const toParamsFromAst = (ast: AstTag): Param[] =>
-  toParams({ type: typeUnknown, columns: [] })(ast).sort(orderBy((p) => p.start));
+  toParams({ type: typeUnknown, columns: [], cteParams: true })(ast).sort(orderBy((p) => p.start));
 
 /**
  * Convert a "spread" {@link Param} into params that pg node package will accept

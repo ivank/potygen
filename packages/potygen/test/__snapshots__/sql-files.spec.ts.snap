@@ -448,6 +448,25 @@ ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
 }
 `;
 
+exports[`Sql Files Should convert complex sql template tags cte-levelisation-details.query.sql: cte-levelisation-details.query.sql 1`] = `
+Object {
+  "text": "WITH
+  items AS (SELECT * FROM account_levelisations WHERE account_levelisations.levelisation_id = $1),
+  active_items AS (SELECT * FROM items WHERE state = 'Success' AND is_accepted = TRUE)
+SELECT
+  levelisations.id AS \\"id\\",
+  (SELECT COUNT(items.id)::int FROM items) AS \\"totalCount\\",
+  (SELECT SUM(active_items.export_payment) FROM active_items) AS \\"fitTotalExportPayment\\"
+FROM levelisations
+WHERE
+  levelisations.id = $1
+",
+  "values": Array [
+    1,
+  ],
+}
+`;
+
 exports[`Sql Files Should convert complex sql template tags delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 Object {
   "text": "DELETE FROM accounts

@@ -481,5 +481,6 @@ export interface TypeContext {
   type: TypeOrLoad;
   columns: TypeLoadColumn[];
   inComparationInclusion?: boolean;
+  cteParams?: boolean;
   from?: TableTag;
 }
