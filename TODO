@@ -1,0 +1,35 @@
+- allow table names to be used inside of a cte query
+
+```sql
+  WITH
+    items AS (SELECT * FROM account_levelisations AS a WHERE a.levelisation_id = $id),
+    active_items AS
+    (SELECT * FROM items WHERE state = 'Success' AND is_accepted = TRUE)
+  SELECT
+    levelisations.id AS "id",
+    levelisations.quarter AS "quarter",
+    levelisations.totals_sent AS "totalsSent",
+    levelisations.start_on AS "startOn",
+    levelisations.end_on AS "endOn",
+    (SELECT COUNT(id)::int FROM items) AS "totalCount",
+    (SELECT COUNT(id)::int FROM items WHERE state = 'Pending') AS "pendingCount",
+    (SELECT COUNT(id)::int FROM items WHERE state = 'Error') AS "errorCount",
+    (SELECT COUNT(id)::int FROM items WHERE state = 'Success') AS "successCount",
+    (SELECT COUNT(id)::int FROM items WHERE is_bacs_payments_sent = TRUE) AS "backsSent",
+    (SELECT COUNT(id)::int FROM items WHERE is_cheque_payments_sent = TRUE) AS "chequeSent",
+    (SELECT SUM(fit_generation_payment) FROM active_items) AS "fitTotalGenerationPayment",
+    (SELECT SUM(fit_export_payment) FROM active_items) AS "fitTotalExportPayment",
+    (SELECT SUM(fit_generation_energy) FROM active_items) AS "fitTotalGenerationEnergy",
+    (SELECT SUM(fit_export_energy) FROM active_items) AS "fitTotalExportEnergy",
+    (SELECT SUM(fit_export_energy) FROM active_items WHERE export_type = 'Metered Export') AS
+    "fitTotalMeteredExportEnergy",
+    (SELECT SUM(fit_export_payment) FROM active_items WHERE export_type = 'Metered Export') AS
+    "fitTotalMeteredExportPayment",
+    (SELECT SUM(fit_export_energy) FROM active_items WHERE export_type = 'Deemed') AS "fitTotalDeemedExportEnergy",
+    (SELECT SUM(fit_export_payment) FROM active_items WHERE export_type = 'Deemed') AS "fitTotalDeemedExportPayment",
+    (SELECT SUM(seg_export_payment) FROM active_items) AS "segTotalExportPayment",
+    (SELECT SUM(seg_export_energy) FROM active_items) AS "segTotalExportEnergy"
+  FROM levelisations
+  WHERE
+    levelisations.id = $id
+```
