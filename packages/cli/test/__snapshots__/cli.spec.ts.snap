@@ -16,6 +16,7 @@ Array [
   "bacs.query.queries.ts",
   "contracts.queries.ts",
   "csa-account-by-id.query.queries.ts",
+  "cte-levelisation-details.query.queries.ts",
   "cte.query.queries.ts",
   "delete-accounts.query.queries.ts",
   "generation-read-data.query.queries.ts",
@@ -387,6 +388,22 @@ export interface Result {
     product: string;
     product_units: number;
     product_sales: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: cte-levelisation-details.query.queries.ts 1`] = `
+"export interface Params {
+    id?: number;
+}
+export interface Result {
+    id: number;
+    totalCount?: number;
+    fitTotalExportPayment?: number;
 }
 export interface Query {
     params: Params;

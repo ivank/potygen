@@ -26973,6 +26973,715 @@ Object {
 }
 `;
 
+exports[`Sql Files Should parse complex sql cte-levelisation-details.query.sql: cte-levelisation-details.query.sql 1`] = `
+Object {
+  "ast": Object {
+    "end": 424,
+    "start": 0,
+    "tag": 6,
+    "values": Array [
+      Object {
+        "end": 102,
+        "start": 7,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 11,
+            "start": 7,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 11,
+                "start": 7,
+                "tag": 8,
+                "value": "items",
+              },
+            ],
+          },
+          Object {
+            "end": 101,
+            "start": 17,
+            "tag": 81,
+            "values": Array [
+              Object {
+                "end": 24,
+                "start": 24,
+                "tag": 62,
+                "values": Array [
+                  Object {
+                    "end": 24,
+                    "start": 24,
+                    "tag": 61,
+                    "values": Array [
+                      Object {
+                        "end": 24,
+                        "start": 24,
+                        "tag": 37,
+                        "values": Array [
+                          Object {
+                            "end": 24,
+                            "start": 24,
+                            "tag": 36,
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 51,
+                "start": 26,
+                "tag": 69,
+                "values": Array [
+                  Object {
+                    "end": 51,
+                    "start": 31,
+                    "tag": 68,
+                    "values": Array [
+                      Object {
+                        "end": 51,
+                        "start": 31,
+                        "tag": 90,
+                        "values": Array [
+                          Object {
+                            "end": 51,
+                            "start": 31,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 51,
+                                "start": 31,
+                                "tag": 8,
+                                "value": "account_levelisations",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 101,
+                "start": 53,
+                "tag": 70,
+                "values": Array [
+                  Object {
+                    "end": 101,
+                    "start": 59,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 95,
+                        "start": 59,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 79,
+                            "start": 59,
+                            "tag": 8,
+                            "value": "account_levelisations",
+                          },
+                          Object {
+                            "end": 95,
+                            "start": 81,
+                            "tag": 8,
+                            "value": "levelisation_id",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 97,
+                        "start": 97,
+                        "tag": 44,
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 101,
+                        "pick": Array [],
+                        "required": false,
+                        "start": 99,
+                        "tag": 10,
+                        "type": "single",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 190,
+        "start": 107,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 118,
+            "start": 107,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 118,
+                "start": 107,
+                "tag": 8,
+                "value": "active_items",
+              },
+            ],
+          },
+          Object {
+            "end": 189,
+            "start": 124,
+            "tag": 81,
+            "values": Array [
+              Object {
+                "end": 131,
+                "start": 131,
+                "tag": 62,
+                "values": Array [
+                  Object {
+                    "end": 131,
+                    "start": 131,
+                    "tag": 61,
+                    "values": Array [
+                      Object {
+                        "end": 131,
+                        "start": 131,
+                        "tag": 37,
+                        "values": Array [
+                          Object {
+                            "end": 131,
+                            "start": 131,
+                            "tag": 36,
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 142,
+                "start": 133,
+                "tag": 69,
+                "values": Array [
+                  Object {
+                    "end": 142,
+                    "start": 138,
+                    "tag": 68,
+                    "values": Array [
+                      Object {
+                        "end": 142,
+                        "start": 138,
+                        "tag": 90,
+                        "values": Array [
+                          Object {
+                            "end": 142,
+                            "start": 138,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 142,
+                                "start": 138,
+                                "tag": 8,
+                                "value": "items",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 189,
+                "start": 144,
+                "tag": 70,
+                "values": Array [
+                  Object {
+                    "end": 189,
+                    "start": 150,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 166,
+                        "start": 150,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 154,
+                            "start": 150,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 154,
+                                "start": 150,
+                                "tag": 8,
+                                "value": "state",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 156,
+                            "start": 156,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 166,
+                            "start": 158,
+                            "tag": 13,
+                            "value": "Success",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 170,
+                        "start": 168,
+                        "tag": 44,
+                        "value": "AND",
+                      },
+                      Object {
+                        "end": 189,
+                        "start": 172,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 182,
+                            "start": 172,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 182,
+                                "start": 172,
+                                "tag": 8,
+                                "value": "is_accepted",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 184,
+                            "start": 184,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 189,
+                            "start": 186,
+                            "tag": 21,
+                            "value": "TRUE",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 424,
+        "start": 192,
+        "tag": 81,
+        "values": Array [
+          Object {
+            "end": 374,
+            "start": 201,
+            "tag": 62,
+            "values": Array [
+              Object {
+                "end": 224,
+                "start": 201,
+                "tag": 61,
+                "values": Array [
+                  Object {
+                    "end": 216,
+                    "start": 201,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 213,
+                        "start": 201,
+                        "tag": 8,
+                        "value": "levelisations",
+                      },
+                      Object {
+                        "end": 216,
+                        "start": 215,
+                        "tag": 8,
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 224,
+                    "start": 218,
+                    "tag": 12,
+                    "values": Array [
+                      Object {
+                        "end": 224,
+                        "start": 221,
+                        "tag": 9,
+                        "value": "id",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 284,
+                "start": 229,
+                "tag": 61,
+                "values": Array [
+                  Object {
+                    "end": 267,
+                    "start": 230,
+                    "tag": 81,
+                    "values": Array [
+                      Object {
+                        "end": 256,
+                        "start": 237,
+                        "tag": 62,
+                        "values": Array [
+                          Object {
+                            "end": 256,
+                            "start": 237,
+                            "tag": 61,
+                            "values": Array [
+                              Object {
+                                "end": 257,
+                                "start": 237,
+                                "tag": 52,
+                                "values": Array [
+                                  Object {
+                                    "end": 251,
+                                    "start": 237,
+                                    "tag": 54,
+                                    "values": Array [
+                                      Object {
+                                        "end": 241,
+                                        "start": 237,
+                                        "tag": 89,
+                                        "values": Array [
+                                          Object {
+                                            "end": 241,
+                                            "start": 237,
+                                            "tag": 8,
+                                            "value": "COUNT",
+                                          },
+                                        ],
+                                      },
+                                      Object {
+                                        "end": 250,
+                                        "start": 243,
+                                        "tag": 11,
+                                        "values": Array [
+                                          Object {
+                                            "end": 247,
+                                            "start": 243,
+                                            "tag": 8,
+                                            "value": "items",
+                                          },
+                                          Object {
+                                            "end": 250,
+                                            "start": 249,
+                                            "tag": 8,
+                                            "value": "id",
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 256,
+                                    "start": 254,
+                                    "tag": 32,
+                                    "values": Array [
+                                      Object {
+                                        "end": 256,
+                                        "start": 254,
+                                        "tag": 89,
+                                        "values": Array [
+                                          Object {
+                                            "end": 256,
+                                            "start": 254,
+                                            "tag": 8,
+                                            "value": "int",
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 267,
+                        "start": 258,
+                        "tag": 69,
+                        "values": Array [
+                          Object {
+                            "end": 267,
+                            "start": 263,
+                            "tag": 68,
+                            "values": Array [
+                              Object {
+                                "end": 267,
+                                "start": 263,
+                                "tag": 90,
+                                "values": Array [
+                                  Object {
+                                    "end": 267,
+                                    "start": 263,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 267,
+                                        "start": 263,
+                                        "tag": 8,
+                                        "value": "items",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 284,
+                    "start": 270,
+                    "tag": 12,
+                    "values": Array [
+                      Object {
+                        "end": 284,
+                        "start": 273,
+                        "tag": 9,
+                        "value": "totalCount",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 374,
+                "start": 289,
+                "tag": 61,
+                "values": Array [
+                  Object {
+                    "end": 346,
+                    "start": 290,
+                    "tag": 81,
+                    "values": Array [
+                      Object {
+                        "end": 328,
+                        "start": 297,
+                        "tag": 62,
+                        "values": Array [
+                          Object {
+                            "end": 328,
+                            "start": 297,
+                            "tag": 61,
+                            "values": Array [
+                              Object {
+                                "end": 328,
+                                "start": 297,
+                                "tag": 54,
+                                "values": Array [
+                                  Object {
+                                    "end": 299,
+                                    "start": 297,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 299,
+                                        "start": 297,
+                                        "tag": 8,
+                                        "value": "SUM",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 327,
+                                    "start": 301,
+                                    "tag": 11,
+                                    "values": Array [
+                                      Object {
+                                        "end": 312,
+                                        "start": 301,
+                                        "tag": 8,
+                                        "value": "active_items",
+                                      },
+                                      Object {
+                                        "end": 327,
+                                        "start": 314,
+                                        "tag": 8,
+                                        "value": "export_payment",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 346,
+                        "start": 330,
+                        "tag": 69,
+                        "values": Array [
+                          Object {
+                            "end": 346,
+                            "start": 335,
+                            "tag": 68,
+                            "values": Array [
+                              Object {
+                                "end": 346,
+                                "start": 335,
+                                "tag": 90,
+                                "values": Array [
+                                  Object {
+                                    "end": 346,
+                                    "start": 335,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 346,
+                                        "start": 335,
+                                        "tag": 8,
+                                        "value": "active_items",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 374,
+                    "start": 349,
+                    "tag": 12,
+                    "values": Array [
+                      Object {
+                        "end": 374,
+                        "start": 352,
+                        "tag": 9,
+                        "value": "fitTotalExportPayment",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 393,
+            "start": 376,
+            "tag": 69,
+            "values": Array [
+              Object {
+                "end": 393,
+                "start": 381,
+                "tag": 68,
+                "values": Array [
+                  Object {
+                    "end": 393,
+                    "start": 381,
+                    "tag": 90,
+                    "values": Array [
+                      Object {
+                        "end": 393,
+                        "start": 381,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 393,
+                            "start": 381,
+                            "tag": 8,
+                            "value": "levelisations",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 424,
+            "start": 395,
+            "tag": 70,
+            "values": Array [
+              Object {
+                "end": 424,
+                "start": 403,
+                "tag": 46,
+                "values": Array [
+                  Object {
+                    "end": 418,
+                    "start": 403,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 415,
+                        "start": 403,
+                        "tag": 8,
+                        "value": "levelisations",
+                      },
+                      Object {
+                        "end": 418,
+                        "start": 417,
+                        "tag": 8,
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 420,
+                    "start": 420,
+                    "tag": 44,
+                    "value": "=",
+                  },
+                  Object {
+                    "end": 424,
+                    "pick": Array [],
+                    "required": false,
+                    "start": 422,
+                    "tag": 10,
+                    "type": "single",
+                    "value": "id",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Files Should parse complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 Object {
   "ast": Object {

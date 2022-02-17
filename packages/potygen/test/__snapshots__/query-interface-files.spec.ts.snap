@@ -15645,6 +15645,1089 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql cte-levelisation-details.query.sql: cte-levelisation-details.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "end": 424,
+      "name": "id",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 422,
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 418,
+          "start": 403,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 415,
+              "start": 403,
+              "tag": 8,
+              "value": "levelisations",
+            },
+            Object {
+              "end": 418,
+              "start": 417,
+              "tag": 8,
+              "value": "id",
+            },
+          ],
+        },
+        "table": "levelisations",
+        "type": 19,
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 216,
+          "start": 201,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 213,
+              "start": 201,
+              "tag": 8,
+              "value": "levelisations",
+            },
+            Object {
+              "end": 216,
+              "start": 215,
+              "tag": 8,
+              "value": "id",
+            },
+          ],
+        },
+        "table": "levelisations",
+        "type": 19,
+      },
+    },
+    Object {
+      "name": "totalCount",
+      "type": Object {
+        "nullable": true,
+        "sourceTag": Object {
+          "end": 267,
+          "start": 230,
+          "tag": 81,
+          "values": Array [
+            Object {
+              "end": 256,
+              "start": 237,
+              "tag": 62,
+              "values": Array [
+                Object {
+                  "end": 256,
+                  "start": 237,
+                  "tag": 61,
+                  "values": Array [
+                    Object {
+                      "end": 257,
+                      "start": 237,
+                      "tag": 52,
+                      "values": Array [
+                        Object {
+                          "end": 251,
+                          "start": 237,
+                          "tag": 54,
+                          "values": Array [
+                            Object {
+                              "end": 241,
+                              "start": 237,
+                              "tag": 89,
+                              "values": Array [
+                                Object {
+                                  "end": 241,
+                                  "start": 237,
+                                  "tag": 8,
+                                  "value": "COUNT",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 250,
+                              "start": 243,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 247,
+                                  "start": 243,
+                                  "tag": 8,
+                                  "value": "items",
+                                },
+                                Object {
+                                  "end": 250,
+                                  "start": 249,
+                                  "tag": 8,
+                                  "value": "id",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 256,
+                          "start": 254,
+                          "tag": 32,
+                          "values": Array [
+                            Object {
+                              "end": 256,
+                              "start": 254,
+                              "tag": 89,
+                              "values": Array [
+                                Object {
+                                  "end": 256,
+                                  "start": 254,
+                                  "tag": 8,
+                                  "value": "int",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 267,
+              "start": 258,
+              "tag": 69,
+              "values": Array [
+                Object {
+                  "end": 267,
+                  "start": 263,
+                  "tag": 68,
+                  "values": Array [
+                    Object {
+                      "end": 267,
+                      "start": 263,
+                      "tag": 90,
+                      "values": Array [
+                        Object {
+                          "end": 267,
+                          "start": 263,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 267,
+                              "start": 263,
+                              "tag": 8,
+                              "value": "items",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 30,
+        "value": Object {
+          "name": "int4",
+          "sourceTag": Object {
+            "end": 256,
+            "start": 254,
+            "tag": 32,
+            "values": Array [
+              Object {
+                "end": 256,
+                "start": 254,
+                "tag": 89,
+                "values": Array [
+                  Object {
+                    "end": 256,
+                    "start": 254,
+                    "tag": 8,
+                    "value": "int",
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "int4",
+            "type": 3,
+          },
+        },
+      },
+    },
+    Object {
+      "name": "fitTotalExportPayment",
+      "type": Object {
+        "nullable": true,
+        "sourceTag": Object {
+          "end": 346,
+          "start": 290,
+          "tag": 81,
+          "values": Array [
+            Object {
+              "end": 328,
+              "start": 297,
+              "tag": 62,
+              "values": Array [
+                Object {
+                  "end": 328,
+                  "start": 297,
+                  "tag": 61,
+                  "values": Array [
+                    Object {
+                      "end": 328,
+                      "start": 297,
+                      "tag": 54,
+                      "values": Array [
+                        Object {
+                          "end": 299,
+                          "start": 297,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 299,
+                              "start": 297,
+                              "tag": 8,
+                              "value": "SUM",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 327,
+                          "start": 301,
+                          "tag": 11,
+                          "values": Array [
+                            Object {
+                              "end": 312,
+                              "start": 301,
+                              "tag": 8,
+                              "value": "active_items",
+                            },
+                            Object {
+                              "end": 327,
+                              "start": 314,
+                              "tag": 8,
+                              "value": "export_payment",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "end": 346,
+              "start": 330,
+              "tag": 69,
+              "values": Array [
+                Object {
+                  "end": 346,
+                  "start": 335,
+                  "tag": 68,
+                  "values": Array [
+                    Object {
+                      "end": 346,
+                      "start": 335,
+                      "tag": 90,
+                      "values": Array [
+                        Object {
+                          "end": 346,
+                          "start": 335,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 346,
+                              "start": 335,
+                              "tag": 8,
+                              "value": "active_items",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        "type": 30,
+        "value": Object {
+          "args": Array [
+            Object {
+              "column": "export_payment",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 327,
+                "start": 301,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 312,
+                    "start": 301,
+                    "tag": 8,
+                    "value": "active_items",
+                  },
+                  Object {
+                    "end": 327,
+                    "start": 314,
+                    "tag": 8,
+                    "value": "export_payment",
+                  },
+                ],
+              },
+              "table": "active_items",
+              "type": 19,
+            },
+          ],
+          "name": "sum",
+          "schema": undefined,
+          "sourceTag": Object {
+            "end": 328,
+            "start": 297,
+            "tag": 54,
+            "values": Array [
+              Object {
+                "end": 299,
+                "start": 297,
+                "tag": 89,
+                "values": Array [
+                  Object {
+                    "end": 299,
+                    "start": 297,
+                    "tag": 8,
+                    "value": "SUM",
+                  },
+                ],
+              },
+              Object {
+                "end": 327,
+                "start": 301,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 312,
+                    "start": 301,
+                    "tag": 8,
+                    "value": "active_items",
+                  },
+                  Object {
+                    "end": 327,
+                    "start": 314,
+                    "tag": 8,
+                    "value": "export_payment",
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 18,
+        },
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "name": "items",
+      "sourceTag": Object {
+        "end": 102,
+        "start": 7,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 11,
+            "start": 7,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 11,
+                "start": 7,
+                "tag": 8,
+                "value": "items",
+              },
+            ],
+          },
+          Object {
+            "end": 101,
+            "start": 17,
+            "tag": 81,
+            "values": Array [
+              Object {
+                "end": 24,
+                "start": 24,
+                "tag": 62,
+                "values": Array [
+                  Object {
+                    "end": 24,
+                    "start": 24,
+                    "tag": 61,
+                    "values": Array [
+                      Object {
+                        "end": 24,
+                        "start": 24,
+                        "tag": 37,
+                        "values": Array [
+                          Object {
+                            "end": 24,
+                            "start": 24,
+                            "tag": 36,
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 51,
+                "start": 26,
+                "tag": 69,
+                "values": Array [
+                  Object {
+                    "end": 51,
+                    "start": 31,
+                    "tag": 68,
+                    "values": Array [
+                      Object {
+                        "end": 51,
+                        "start": 31,
+                        "tag": 90,
+                        "values": Array [
+                          Object {
+                            "end": 51,
+                            "start": 31,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 51,
+                                "start": 31,
+                                "tag": 8,
+                                "value": "account_levelisations",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 101,
+                "start": 53,
+                "tag": 70,
+                "values": Array [
+                  Object {
+                    "end": 101,
+                    "start": 59,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 95,
+                        "start": 59,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 79,
+                            "start": 59,
+                            "tag": 8,
+                            "value": "account_levelisations",
+                          },
+                          Object {
+                            "end": 95,
+                            "start": 81,
+                            "tag": 8,
+                            "value": "levelisation_id",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 97,
+                        "start": 97,
+                        "tag": 44,
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 101,
+                        "pick": Array [],
+                        "required": false,
+                        "start": 99,
+                        "tag": 10,
+                        "type": "single",
+                        "value": "id",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "type": "Query",
+      "value": Object {
+        "params": Array [
+          Object {
+            "end": 101,
+            "name": "id",
+            "pick": Array [],
+            "required": false,
+            "spread": false,
+            "start": 99,
+            "type": Object {
+              "column": "levelisation_id",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 95,
+                "start": 59,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 79,
+                    "start": 59,
+                    "tag": 8,
+                    "value": "account_levelisations",
+                  },
+                  Object {
+                    "end": 95,
+                    "start": 81,
+                    "tag": 8,
+                    "value": "levelisation_id",
+                  },
+                ],
+              },
+              "table": "account_levelisations",
+              "type": 19,
+            },
+          },
+        ],
+        "results": Array [
+          Object {
+            "name": "?column?",
+            "type": Object {
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 24,
+                "start": 24,
+                "tag": 37,
+                "values": Array [
+                  Object {
+                    "end": 24,
+                    "start": 24,
+                    "tag": 36,
+                  },
+                ],
+              },
+              "table": undefined,
+              "type": 20,
+            },
+          },
+        ],
+        "sources": Array [
+          Object {
+            "isResult": true,
+            "name": "account_levelisations",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 51,
+              "start": 31,
+              "tag": 90,
+              "values": Array [
+                Object {
+                  "end": 51,
+                  "start": 31,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 51,
+                      "start": 31,
+                      "tag": 8,
+                      "value": "account_levelisations",
+                    },
+                  ],
+                },
+              ],
+            },
+            "table": "account_levelisations",
+            "type": "Table",
+          },
+        ],
+      },
+    },
+    Object {
+      "name": "active_items",
+      "sourceTag": Object {
+        "end": 190,
+        "start": 107,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 118,
+            "start": 107,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 118,
+                "start": 107,
+                "tag": 8,
+                "value": "active_items",
+              },
+            ],
+          },
+          Object {
+            "end": 189,
+            "start": 124,
+            "tag": 81,
+            "values": Array [
+              Object {
+                "end": 131,
+                "start": 131,
+                "tag": 62,
+                "values": Array [
+                  Object {
+                    "end": 131,
+                    "start": 131,
+                    "tag": 61,
+                    "values": Array [
+                      Object {
+                        "end": 131,
+                        "start": 131,
+                        "tag": 37,
+                        "values": Array [
+                          Object {
+                            "end": 131,
+                            "start": 131,
+                            "tag": 36,
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 142,
+                "start": 133,
+                "tag": 69,
+                "values": Array [
+                  Object {
+                    "end": 142,
+                    "start": 138,
+                    "tag": 68,
+                    "values": Array [
+                      Object {
+                        "end": 142,
+                        "start": 138,
+                        "tag": 90,
+                        "values": Array [
+                          Object {
+                            "end": 142,
+                            "start": 138,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 142,
+                                "start": 138,
+                                "tag": 8,
+                                "value": "items",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 189,
+                "start": 144,
+                "tag": 70,
+                "values": Array [
+                  Object {
+                    "end": 189,
+                    "start": 150,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 166,
+                        "start": 150,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 154,
+                            "start": 150,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 154,
+                                "start": 150,
+                                "tag": 8,
+                                "value": "state",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 156,
+                            "start": 156,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 166,
+                            "start": 158,
+                            "tag": 13,
+                            "value": "Success",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 170,
+                        "start": 168,
+                        "tag": 44,
+                        "value": "AND",
+                      },
+                      Object {
+                        "end": 189,
+                        "start": 172,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 182,
+                            "start": 172,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 182,
+                                "start": 172,
+                                "tag": 8,
+                                "value": "is_accepted",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 184,
+                            "start": 184,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 189,
+                            "start": 186,
+                            "tag": 21,
+                            "value": "TRUE",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "type": "Query",
+      "value": Object {
+        "params": Array [],
+        "results": Array [
+          Object {
+            "name": "?column?",
+            "type": Object {
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 131,
+                "start": 131,
+                "tag": 37,
+                "values": Array [
+                  Object {
+                    "end": 131,
+                    "start": 131,
+                    "tag": 36,
+                  },
+                ],
+              },
+              "table": undefined,
+              "type": 20,
+            },
+          },
+        ],
+        "sources": Array [
+          Object {
+            "name": "items",
+            "sourceTag": Object {
+              "end": 102,
+              "start": 7,
+              "tag": 5,
+              "values": Array [
+                Object {
+                  "end": 11,
+                  "start": 7,
+                  "tag": 2,
+                  "values": Array [
+                    Object {
+                      "end": 11,
+                      "start": 7,
+                      "tag": 8,
+                      "value": "items",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 101,
+                  "start": 17,
+                  "tag": 81,
+                  "values": Array [
+                    Object {
+                      "end": 24,
+                      "start": 24,
+                      "tag": 62,
+                      "values": Array [
+                        Object {
+                          "end": 24,
+                          "start": 24,
+                          "tag": 61,
+                          "values": Array [
+                            Object {
+                              "end": 24,
+                              "start": 24,
+                              "tag": 37,
+                              "values": Array [
+                                Object {
+                                  "end": 24,
+                                  "start": 24,
+                                  "tag": 36,
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 51,
+                      "start": 26,
+                      "tag": 69,
+                      "values": Array [
+                        Object {
+                          "end": 51,
+                          "start": 31,
+                          "tag": 68,
+                          "values": Array [
+                            Object {
+                              "end": 51,
+                              "start": 31,
+                              "tag": 90,
+                              "values": Array [
+                                Object {
+                                  "end": 51,
+                                  "start": 31,
+                                  "tag": 89,
+                                  "values": Array [
+                                    Object {
+                                      "end": 51,
+                                      "start": 31,
+                                      "tag": 8,
+                                      "value": "account_levelisations",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    Object {
+                      "end": 101,
+                      "start": 53,
+                      "tag": 70,
+                      "values": Array [
+                        Object {
+                          "end": 101,
+                          "start": 59,
+                          "tag": 46,
+                          "values": Array [
+                            Object {
+                              "end": 95,
+                              "start": 59,
+                              "tag": 11,
+                              "values": Array [
+                                Object {
+                                  "end": 79,
+                                  "start": 59,
+                                  "tag": 8,
+                                  "value": "account_levelisations",
+                                },
+                                Object {
+                                  "end": 95,
+                                  "start": 81,
+                                  "tag": 8,
+                                  "value": "levelisation_id",
+                                },
+                              ],
+                            },
+                            Object {
+                              "end": 97,
+                              "start": 97,
+                              "tag": 44,
+                              "value": "=",
+                            },
+                            Object {
+                              "end": 101,
+                              "pick": Array [],
+                              "required": false,
+                              "start": 99,
+                              "tag": 10,
+                              "type": "single",
+                              "value": "id",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": "Query",
+            "value": Object {
+              "params": Array [
+                Object {
+                  "end": 101,
+                  "name": "id",
+                  "pick": Array [],
+                  "required": false,
+                  "spread": false,
+                  "start": 99,
+                  "type": Object {
+                    "column": "levelisation_id",
+                    "schema": undefined,
+                    "sourceTag": Object {
+                      "end": 95,
+                      "start": 59,
+                      "tag": 11,
+                      "values": Array [
+                        Object {
+                          "end": 79,
+                          "start": 59,
+                          "tag": 8,
+                          "value": "account_levelisations",
+                        },
+                        Object {
+                          "end": 95,
+                          "start": 81,
+                          "tag": 8,
+                          "value": "levelisation_id",
+                        },
+                      ],
+                    },
+                    "table": "account_levelisations",
+                    "type": 19,
+                  },
+                },
+              ],
+              "results": Array [
+                Object {
+                  "name": "?column?",
+                  "type": Object {
+                    "schema": undefined,
+                    "sourceTag": Object {
+                      "end": 24,
+                      "start": 24,
+                      "tag": 37,
+                      "values": Array [
+                        Object {
+                          "end": 24,
+                          "start": 24,
+                          "tag": 36,
+                        },
+                      ],
+                    },
+                    "table": undefined,
+                    "type": 20,
+                  },
+                },
+              ],
+              "sources": Array [
+                Object {
+                  "isResult": true,
+                  "name": "account_levelisations",
+                  "schema": undefined,
+                  "sourceTag": Object {
+                    "end": 51,
+                    "start": 31,
+                    "tag": 90,
+                    "values": Array [
+                      Object {
+                        "end": 51,
+                        "start": 31,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 51,
+                            "start": 31,
+                            "tag": 8,
+                            "value": "account_levelisations",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  "table": "account_levelisations",
+                  "type": "Table",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    Object {
+      "isResult": true,
+      "name": "levelisations",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 393,
+        "start": 381,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 393,
+            "start": 381,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 393,
+                "start": 381,
+                "tag": 8,
+                "value": "levelisations",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "levelisations",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 Object {
   "params": Array [

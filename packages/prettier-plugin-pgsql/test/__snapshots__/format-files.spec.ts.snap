@@ -1030,6 +1030,28 @@ GROUP BY
 "
 `;
 
+exports[`Sql Files Should parse complex sql cte-levelisation-details.query.sql: cte-levelisation-details.query.sql 1`] = `
+"WITH
+  items AS
+  (
+    SELECT *
+    FROM account_levelisations
+    WHERE
+      account_levelisations.levelisation_id = $id
+  ),
+  active_items AS
+  (SELECT * FROM items WHERE state = 'Success' AND is_accepted = TRUE)
+SELECT
+  levelisations.id AS \\"id\\",
+  (SELECT COUNT(items.id)::int FROM items) AS \\"totalCount\\",
+  (SELECT SUM(active_items.export_payment) FROM active_items) AS
+  \\"fitTotalExportPayment\\"
+FROM levelisations
+WHERE
+  levelisations.id = $id
+"
+`;
+
 exports[`Sql Files Should parse complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 "DELETE FROM accounts
 WHERE

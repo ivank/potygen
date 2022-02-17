@@ -2562,6 +2562,61 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql cte-levelisation-details.query.sql: cte-levelisation-details.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "postgresType": "integer",
+          "type": 3,
+        },
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "integer",
+        "type": 3,
+      },
+    },
+    Object {
+      "name": "totalCount",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "int4",
+        "type": 14,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "fitTotalExportPayment",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "bigint",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "postgresType": "bigint",
+          "type": 4,
+        },
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 Object {
   "params": Array [

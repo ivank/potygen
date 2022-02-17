@@ -360,6 +360,22 @@ export interface Query {
 "
 `;
 
+exports[`Load Files Should convert complex sql cte-levelisation-details.query.sql: cte-levelisation-details.query.sql 1`] = `
+"export interface Params {
+    id?: number;
+}
+export interface Result {
+    id: number;
+    totalCount?: number;
+    fitTotalExportPayment?: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Load Files Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
 "export interface Params {
     type?: \\"FIT\\" | \\"SEG\\";

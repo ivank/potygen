@@ -673,6 +673,8 @@ export const toParams =
       case SqlName.Limit:
       case SqlName.Offset:
         return toParams({ ...context, type: typeString })(first(sql.values));
+      case SqlName.CTE:
+        return isCTEValuesList(last(sql.values)) ? sql.values.flatMap(recur) : [];
       default:
         return 'values' in sql ? sql.values.flatMap(recur) : [];
     }
