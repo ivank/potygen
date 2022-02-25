@@ -457,7 +457,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     );
     const ComparationArrayOperator = astUpperLeaf<Tag.ComparationArrayOperatorTag>(
       Tag.SqlName.ComparationArrayOperator,
-      /^(<=|>=|<|>|<>|!=|=|AND|OR)/,
+      /^(<=|>=|<|>|<>|!=|=|AND|OR)/i,
     );
     const ComparationArraySubject = Brackets(Any(DataExpression, SelectExpression));
     const ExpressionList = astNode<Tag.ExpressionListTag>(Tag.SqlName.ExpressionList, List(ChildExpression));
@@ -758,7 +758,7 @@ const CTEValuesList = astNode<Tag.CTEValuesListTag>(
   Tag.SqlName.CTEValuesList,
   All(/^VALUES/i, Any(List(CTEValues), Parameter)),
 );
-const CTE = astNode<Tag.CTETag>(Tag.SqlName.CTE, All(CTEName, /^AS/, Brackets(Any(Query, CTEValuesList))));
+const CTE = astNode<Tag.CTETag>(Tag.SqlName.CTE, All(CTEName, /^AS/i, Brackets(Any(Query, CTEValuesList))));
 const With = astNode<Tag.WithTag>(Tag.SqlName.With, All(/^WITH/i, List(CTE), Query));
 
 /**
