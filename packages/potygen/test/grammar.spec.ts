@@ -145,6 +145,7 @@ describe('Sql', () => {
 
   it.each`
     name                    | sql
+    ${'lowercase tokens'}   | ${'with mv as (delete from table1 returning *) insert into table2 select * from mv'}
     ${'without columns'}    | ${'WITH mv AS (DELETE FROM table1 RETURNING *) INSERT INTO table2 SELECT * FROM mv'}
     ${'with columns'}       | ${'WITH ins(id, val) AS (VALUES (1::int, 2::int),(3::int, 4::int)) INSERT INTO table2 SELECT * FROM ins'}
     ${'multiple'}           | ${'WITH ins AS (VALUES (1::int, 2::int),(3::int, 4::int)), mv AS (DELETE FROM table1 RETURNING *) SELECT * FROM mv UNION ALL SELECT * FROM ins'}

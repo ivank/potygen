@@ -1690,6 +1690,186 @@ Object {
 }
 `;
 
+exports[`Sql Should parse cte query lowercase tokens (with mv as (delete from table1 returning *) insert into table2 select * from mv): lowercase tokens 1`] = `
+Object {
+  "ast": Object {
+    "end": 78,
+    "start": 0,
+    "tag": 6,
+    "values": Array [
+      Object {
+        "end": 42,
+        "start": 5,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 6,
+            "start": 5,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 6,
+                "start": 5,
+                "tag": 8,
+                "value": "mv",
+              },
+            ],
+          },
+          Object {
+            "end": 41,
+            "start": 12,
+            "tag": 96,
+            "values": Array [
+              Object {
+                "end": 29,
+                "start": 24,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 29,
+                    "start": 24,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 29,
+                        "start": 24,
+                        "tag": 8,
+                        "value": "table1",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 41,
+                "start": 31,
+                "tag": 93,
+                "values": Array [
+                  Object {
+                    "end": 41,
+                    "start": 41,
+                    "tag": 92,
+                    "values": Array [
+                      Object {
+                        "end": 41,
+                        "start": 41,
+                        "tag": 37,
+                        "values": Array [
+                          Object {
+                            "end": 41,
+                            "start": 41,
+                            "tag": 36,
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 78,
+        "start": 44,
+        "tag": 105,
+        "values": Array [
+          Object {
+            "end": 61,
+            "start": 56,
+            "tag": 90,
+            "values": Array [
+              Object {
+                "end": 61,
+                "start": 56,
+                "tag": 89,
+                "values": Array [
+                  Object {
+                    "end": 61,
+                    "start": 56,
+                    "tag": 8,
+                    "value": "table2",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 78,
+            "start": 63,
+            "tag": 81,
+            "values": Array [
+              Object {
+                "end": 70,
+                "start": 70,
+                "tag": 62,
+                "values": Array [
+                  Object {
+                    "end": 70,
+                    "start": 70,
+                    "tag": 61,
+                    "values": Array [
+                      Object {
+                        "end": 70,
+                        "start": 70,
+                        "tag": 37,
+                        "values": Array [
+                          Object {
+                            "end": 70,
+                            "start": 70,
+                            "tag": 36,
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 78,
+                "start": 72,
+                "tag": 69,
+                "values": Array [
+                  Object {
+                    "end": 78,
+                    "start": 77,
+                    "tag": 68,
+                    "values": Array [
+                      Object {
+                        "end": 78,
+                        "start": 77,
+                        "tag": 90,
+                        "values": Array [
+                          Object {
+                            "end": 78,
+                            "start": 77,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 78,
+                                "start": 77,
+                                "tag": 8,
+                                "value": "mv",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse cte query multiple (WITH ins AS (VALUES (1::int, 2::int),(3::int, 4::int)), mv AS (DELETE FROM table1 RETURNING *) SELECT * FROM mv UNION ALL SELECT * FROM ins): multiple 1`] = `
 Object {
   "ast": Object {
