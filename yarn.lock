@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 4
+  version: 6
   cacheKey: 8
 
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.16.0":
@@ -21,7 +21,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.16.0, @babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.7.5":
+"@babel/core@npm:^7.1.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.7.5":
   version: 7.16.0
   resolution: "@babel/core@npm:7.16.0"
   dependencies:
@@ -446,7 +446,7 @@ __metadata:
     prettier: "npm:@ikerin/prettier@^2.5.1"
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
-    typescript: ^4.4.3
+    typescript: ^4.5.5
   languageName: unknown
   linkType: soft
 
@@ -714,7 +714,7 @@ __metadata:
     runtypes: ^6.5.0
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
-    typescript: ^4.4.3
+    typescript: ^4.5.5
   bin:
     potygen: ./scripts/potygen
   languageName: unknown
@@ -733,7 +733,7 @@ __metadata:
     prettier: ^2.5.1
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
-    typescript: ^4.4.3
+    typescript: ^4.5.5
   languageName: unknown
   linkType: soft
 
@@ -750,7 +750,7 @@ __metadata:
     prettier: ^2.5.1
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
-    typescript: ^4.4.3
+    typescript: ^4.5.5
   peerDependencies:
     prettier: "*"
   languageName: unknown
@@ -769,10 +769,10 @@ __metadata:
     pg: ^8.6.0
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
-    typescript: ^4.4.3
+    typescript: ^4.5.5
     typescript-template-language-service-decorator: ^2.2.0
   peerDependencies:
-    typescript: ^4.4.3
+    typescript: ^4.5.5
   languageName: unknown
   linkType: soft
 
@@ -2486,15 +2486,16 @@ fsevents@^2.1.2:
   dependencies:
     node-gyp: latest
   checksum: 97ade64e75091afee5265e6956cb72ba34db7819b4c3e94c431d4be2b19b8bb7a2d4116da417950c3425f17c8fe693d25e20212cac583ac1521ad066b77ae31f
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
 "fsevents@patch:fsevents@^2.1.2#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=1cc4b2"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"
   dependencies:
     node-gyp: latest
-  checksum: 78db9daf1f6526a49cefee3917cc988f62dc7f25b5dd80ad6de4ffc4af7f0cab7491ac737626ff53e482a111bc53aac9e411fe3602458eca36f6a003ecf69c16
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
@@ -3408,7 +3409,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"jest-resolve@npm:26.6.2, jest-resolve@npm:^26.6.2":
+"jest-resolve@npm:^26.6.2":
   version: 26.6.2
   resolution: "jest-resolve@npm:26.6.2"
   dependencies:
@@ -4612,7 +4613,7 @@ fsevents@^2.1.2:
   resolution: "potygen@workspace:."
   dependencies:
     prettier: ^2.5.1
-    typescript: ^4.4.3
+    typescript: ^4.5.5
   languageName: unknown
   linkType: soft
 
@@ -4883,11 +4884,11 @@ fsevents@^2.1.2:
 
 "resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.18.1#~builtin<compat/resolve>":
   version: 1.20.0
-  resolution: "resolve@patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=00b1ff"
+  resolution: "resolve@patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=07638b"
   dependencies:
     is-core-module: ^2.2.0
     path-parse: ^1.0.6
-  checksum: bed00be983cd20a8af0e7840664f655c4b269786dbd9595c5f156cd9d8a0050e65cdbbbdafc30ee9b6245b230c78a2c8ab6447a52545b582f476c29adb188cc5
+  checksum: a0dd7d16a8e47af23afa9386df2dff10e3e0debb2c7299a42e581d9d9b04d7ad5d2c53f24f1e043f7b3c250cbdc71150063e53d0b6559683d37f790b7c8c3cd5
   languageName: node
   linkType: hard
 
@@ -5721,23 +5722,23 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-typescript@^4.4.3:
-  version: 4.4.4
-  resolution: "typescript@npm:4.4.4"
+typescript@^4.5.5:
+  version: 4.6.2
+  resolution: "typescript@npm:4.6.2"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 89ecb8436bb48ef5594d49289f5f89103071716b6e4844278f4fb3362856e31203e187a9c76d205c3f0b674d221a058fd28310dbcbcf5d95e9a57229bb5203f1
+  checksum: 8a44ed7e6f6c4cb1ebe8cf236ecda2fb119d84dcf0fbd77e707b2dfea1bbcfc4e366493a143513ce7f57203c75da9d4e20af6fe46de89749366351046be7577c
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.4.3#~builtin<compat/typescript>":
-  version: 4.4.4
-  resolution: "typescript@patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=32657b"
+"typescript@patch:typescript@^4.5.5#~builtin<compat/typescript>":
+  version: 4.6.2
+  resolution: "typescript@patch:typescript@npm%3A4.6.2#~builtin<compat/typescript>::version=4.6.2&hash=bda367"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: c97c33903f1eb4f9e178649befdfc859d93157db1eccd1e521e84976ec6861db53412d8018e5e4c5d09268771c65498d42caa64bd881878346c3644f6b7cd202
+  checksum: 40b493a71747fb89fa70df104e2c4a5e284b43750af5bea024090a5261cefa387f7a9372411b13030f7bf5555cee4275443d08805642ae5c74ef76740854a4c7
   languageName: node
   linkType: hard
 

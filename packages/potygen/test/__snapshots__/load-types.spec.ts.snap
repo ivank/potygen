@@ -233,6 +233,22 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert count distinct sql (SELECT COUNT(DISTINCT id) FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "count",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "bigint",
+        "type": 4,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
 Object {
   "params": Array [],
