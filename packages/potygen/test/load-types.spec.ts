@@ -15,6 +15,7 @@ describe('Query Interface', () => {
   it.each<[string, string]>([
     ['select where', `SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)`],
     ['function result single', `SELECT ABS(integer_col) FROM all_types`],
+    ['count distinct', `SELECT COUNT(DISTINCT id) FROM all_types`],
     ['function result double', `SELECT ABS(ABS(integer_col)) FROM all_types`],
     ['nested function guess type', `SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id`],
     [

@@ -1,6 +1,6 @@
 {
   "name": "@potygen/cli",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "homepage": "https://github.com/ivank/potygen/tree/main/packages/cli",
   "description": "Command line interface for potygen (Postgres Typescript Generator)",
   "main": "dist/index.js",
@@ -23,7 +23,7 @@
     "@types/pg": "^8.6.0",
     "commander": "^8.3.0",
     "pg": "^8.6.0",
-    "typescript": "^4.4.3"
+    "typescript": "^4.5.5"
   },
   "scripts": {
     "build:queries": "yarn potygen --files 'src/**/*.ts' --template 'src/__generated__/{{name}}.queries.ts' --connection 'postgres://potygen:dev-pass@localhost:5432/potygen'",
