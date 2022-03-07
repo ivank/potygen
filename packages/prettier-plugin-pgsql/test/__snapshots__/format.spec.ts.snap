@@ -20,6 +20,18 @@ exports[`Format Should parse simple sql array (SELECT ARRAY[1, 2]): array 1`] = 
 "
 `;
 
+exports[`Format Should parse simple sql array constructor (SELECT ARRAY(SELECT json_build_object('test', other.integer_col) FROM all_types AS other WHERE all_types.id = other.id) as "arr" FROM all_types): array constructor 1`] = `
+"SELECT
+  ARRAY(
+    SELECT json_build_object('test', other.integer_col)
+    FROM all_types AS other
+    WHERE
+      all_types.id = other.id
+  ) AS \\"arr\\"
+FROM all_types
+"
+`;
+
 exports[`Format Should parse simple sql array index (SELECT arr[12]): array index 1`] = `
 "SELECT arr[12]
 "

@@ -232,6 +232,7 @@ describe('Format', () => {
     ${'insert with insert'}           | ${'WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp'}
     ${'overlaps with typed constant'} | ${"SELECT (DATE '2001-02-16', DATE '2001-12-21') OVERLAPS (DATE '2001-10-30', DATE '2002-10-30')"}
     ${'typed constant'}               | ${"SELECT double precision '3.5' * interval '1 hour'"}
+    ${'array constructor'}            | ${`SELECT ARRAY(SELECT json_build_object('test', other.integer_col) FROM all_types AS other WHERE all_types.id = other.id) as "arr" FROM all_types`}
     ${'extract field century'}        | ${"SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')"}
     ${'extract field day'}            | ${"SELECT EXTRACT(DAY FROM INTERVAL '40 days 1 minute')"}
     ${'begin semicolon'}              | ${'BEGIN;'}

@@ -364,7 +364,10 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       Tag.SqlName.ArrayConstructor,
       All(/^ARRAY/i, SquareBrackets(List(ChildExpression))),
     );
-
+    const ArraySelectConstructor = astNode<Tag.ArraySelectConstructorTag>(
+      Tag.SqlName.ArraySelectConstructor,
+      All(/^ARRAY/i, Brackets(SelectExpression)),
+    );
     const ArrayIndexRange = astNode<Tag.ArrayIndexRangeTag>(
       Tag.SqlName.ArrayIndexRange,
       All(ChildExpression, ':', ChildExpression),
@@ -420,6 +423,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       ColumnQualified,
       Null,
       ColumnUnqualified,
+      ArraySelectConstructor,
       Brackets(SelectExpression),
     );
     /**

@@ -467,6 +467,10 @@ export const enum SqlName {
    * {@link RecordsetFunctionTag}
    */
   RecordsetFunction,
+  /**
+   * {@link ArraySelectConstructorTag}
+   */
+  ArraySelectConstructor,
 }
 
 /**
@@ -1461,6 +1465,24 @@ export interface ArrayConstructorTag extends NodeSqlTag {
 }
 
 /**
+ * Create a an array from the rows returned by a subquery
+ * https://www.postgresql.org/docs/8.1/sql-expressions.html#SQL-SYNTAX-ARRAY-CONSTRUCTORS
+ * ```
+ *                     ┌─inner select
+ *                     ▼
+ *       ┌ ─ ─ ┬ ┬───────────┬ ┐
+ * SELECT ARRAY (│SELECT ... │)
+ *       └ ─ ─ ┴ ┴───────────┴ ┘
+ *      └────────────────────────┘
+ *                  └─▶ArraySelectConstructorTag
+ * ```
+ */
+export interface ArraySelectConstructorTag extends NodeSqlTag {
+  tag: SqlName.ArraySelectConstructor;
+  values: [SelectTag];
+}
+
+/**
  * A generic function. Matches any user-create or built in function,
  * As well as function-like expressions like "GREATEST" and "LEAST"
  * https://www.postgresql.org/docs/14/sql-expressions.html#SQL-EXPRESSIONS-FUNCTION-CALLS
@@ -2448,6 +2470,7 @@ export type ExpressionTag =
   | OperatorExpressionTag
   | RowTag
   | RowKeywardTag
+  | ArraySelectConstructorTag
   | WrappedExpressionTag;
 
 export type FunctionArgTag = ExpressionTag | StarIdentifierTag;
@@ -2542,6 +2565,7 @@ export type NodeTag =
   | CastTag
   | PgCastTag
   | ArrayConstructorTag
+  | ArraySelectConstructorTag
   | FunctionTag
   | ComparationArrayTag
   | ComparationArrayInclusionTag
