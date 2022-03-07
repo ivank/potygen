@@ -28,6 +28,7 @@ describe('Sql', () => {
     ${'json contain right'}           | ${'SELECT * FROM table1 WHERE col1 <@ \'{"a":2}\''}
     ${'json key exists'}              | ${"SELECT * FROM table1 WHERE col1 ? 'a'"}
     ${'json keys any include'}        | ${"SELECT * FROM table1 WHERE col1 ?| array['b', 'c']"}
+    ${'array constructor'}            | ${'SELECT id, ARRAY(SELECT n1 FROM t2 WHERE t2.id = t1.id) FROM t1'}
     ${'json delete key'}              | ${"SELECT * FROM table1 WHERE col1 #- '{1,b}'"}
     ${'star select'}                  | ${'SELECT *'}
     ${'qualified star select'}        | ${'SELECT table1.*'}

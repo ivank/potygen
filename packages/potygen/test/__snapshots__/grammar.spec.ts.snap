@@ -11657,6 +11657,220 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql array constructor (SELECT id, ARRAY(SELECT n1 FROM t2 WHERE t2.id = t1.id) FROM t1): array constructor 1`] = `
+Object {
+  "ast": Object {
+    "end": 62,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 54,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 8,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 8,
+                "start": 7,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 8,
+                    "start": 7,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 54,
+            "start": 11,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 54,
+                "start": 11,
+                "tag": 117,
+                "values": Array [
+                  Object {
+                    "end": 53,
+                    "start": 17,
+                    "tag": 81,
+                    "values": Array [
+                      Object {
+                        "end": 25,
+                        "start": 24,
+                        "tag": 62,
+                        "values": Array [
+                          Object {
+                            "end": 25,
+                            "start": 24,
+                            "tag": 61,
+                            "values": Array [
+                              Object {
+                                "end": 25,
+                                "start": 24,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 25,
+                                    "start": 24,
+                                    "tag": 8,
+                                    "value": "n1",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 33,
+                        "start": 27,
+                        "tag": 69,
+                        "values": Array [
+                          Object {
+                            "end": 33,
+                            "start": 32,
+                            "tag": 68,
+                            "values": Array [
+                              Object {
+                                "end": 33,
+                                "start": 32,
+                                "tag": 90,
+                                "values": Array [
+                                  Object {
+                                    "end": 33,
+                                    "start": 32,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 33,
+                                        "start": 32,
+                                        "tag": 8,
+                                        "value": "t2",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 53,
+                        "start": 35,
+                        "tag": 70,
+                        "values": Array [
+                          Object {
+                            "end": 53,
+                            "start": 41,
+                            "tag": 46,
+                            "values": Array [
+                              Object {
+                                "end": 45,
+                                "start": 41,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 42,
+                                    "start": 41,
+                                    "tag": 8,
+                                    "value": "t2",
+                                  },
+                                  Object {
+                                    "end": 45,
+                                    "start": 44,
+                                    "tag": 8,
+                                    "value": "id",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 47,
+                                "start": 47,
+                                "tag": 44,
+                                "value": "=",
+                              },
+                              Object {
+                                "end": 53,
+                                "start": 49,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 50,
+                                    "start": 49,
+                                    "tag": 8,
+                                    "value": "t1",
+                                  },
+                                  Object {
+                                    "end": 53,
+                                    "start": 52,
+                                    "tag": 8,
+                                    "value": "id",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 62,
+        "start": 56,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 62,
+            "start": 61,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 62,
+                "start": 61,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 62,
+                    "start": 61,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 62,
+                        "start": 61,
+                        "tag": 8,
+                        "value": "t1",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse simple sql array nested (SELECT ARRAY[ARRAY[1,2], ARRAY['test','other']]): array nested 1`] = `
 Object {
   "ast": Object {

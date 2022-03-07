@@ -269,6 +269,12 @@ const toType =
   (sql: QueryInterfaceSqlTag): TypeOrLoad => {
     const recur = toType(context);
     switch (sql.tag) {
+      case SqlName.ArraySelectConstructor:
+        return {
+          type: TypeName.LoadArray,
+          items: recur(first(sql.values)),
+          sourceTag: sql,
+        };
       case SqlName.ArrayConstructor:
       case SqlName.ExpressionList:
         return {

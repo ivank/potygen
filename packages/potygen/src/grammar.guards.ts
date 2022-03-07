@@ -3,6 +3,7 @@ import {
   AnyTypeTag,
   ArrayColumnIndexTag,
   ArrayConstructorTag,
+  ArraySelectConstructorTag,
   ArrayIndexRangeTag,
   ArrayIndexTag,
   AsTag,
@@ -273,6 +274,8 @@ export const isDoUpdate = (value: SqlTag): value is DoUpdateTag => value.tag ===
 export const isConflict = (value: SqlTag): value is ConflictTag => value.tag === SqlName.Conflict;
 export const isArrayConstructor = (value: SqlTag): value is ArrayConstructorTag =>
   value.tag === SqlName.ArrayConstructor;
+export const isArraySelectConstructor = (value: SqlTag): value is ArraySelectConstructorTag =>
+  value.tag === SqlName.ArraySelectConstructor;
 export const isRow = (value: SqlTag): value is RowTag => value.tag === SqlName.Row;
 export const isRowKeyward = (value: SqlTag): value is RowKeywardTag => value.tag === SqlName.RowKeyward;
 export const isFilter = (value: SqlTag): value is FilterTag => value.tag === SqlName.Filter;

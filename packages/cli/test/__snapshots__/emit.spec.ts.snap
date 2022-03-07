@@ -1,5 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Query Interface Should convert array constructor sql (SELECT ARRAY(SELECT json_build_object('test', other.integer_col) FROM all_types AS other WHERE all_types.id = other.id) as "arr" FROM all_types) 1`] = `
+"export interface Params {
+}
+export interface Result {
+    arr: {
+        test?: number;
+    }[];
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
 "import { Json } from \\"@potygen/potygen\\";
 export interface Params {

@@ -244,6 +244,8 @@ const pgsqlAst: Printer<Node> = {
           softline,
           ']',
         ]);
+      case SqlName.ArraySelectConstructor:
+        return group(['ARRAY', vals(path, recur)]);
       case SqlName.Function:
         const args = filterIndexes(node.values, isFunctionArg);
         const distinct = node.values.findIndex(isDistinct);

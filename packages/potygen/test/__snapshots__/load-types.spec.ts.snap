@@ -77,6 +77,41 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert array constructor sql (SELECT ARRAY(SELECT json_build_object('test', other.integer_col) FROM all_types AS other WHERE all_types.id = other.id) as "arr" FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "arr",
+      "type": Object {
+        "items": Object {
+          "nullable": true,
+          "postgresType": "json",
+          "type": 14,
+          "value": Object {
+            "items": Array [
+              Object {
+                "name": "test",
+                "type": Object {
+                  "comment": undefined,
+                  "nullable": true,
+                  "postgresType": "integer",
+                  "type": 3,
+                },
+              },
+            ],
+            "postgresType": "json",
+            "type": 13,
+          },
+        },
+        "postgresType": "json[]",
+        "type": 11,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert coalesce 1 sql (SELECT COALESCE(id, character_col) FROM all_types) 1`] = `
 Object {
   "params": Array [],

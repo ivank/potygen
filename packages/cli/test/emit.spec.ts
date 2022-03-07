@@ -25,6 +25,10 @@ describe('Query Interface', () => {
     ['function result single', `SELECT ABS(integer_col) FROM all_types`],
     ['function result double', `SELECT ABS(ABS(integer_col)) FROM all_types`],
     ['load nullable column', `SELECT integer_col FROM all_types`],
+    [
+      'array constructor',
+      `SELECT ARRAY(SELECT json_build_object('test', other.integer_col) FROM all_types AS other WHERE all_types.id = other.id) as "arr" FROM all_types`,
+    ],
     ['load non nullable column', `SELECT not_null FROM all_types`],
     ['load nullable column', `SELECT integer_col::text FROM all_types`],
     ['load non nullable column', `SELECT not_null::text FROM all_types`],
