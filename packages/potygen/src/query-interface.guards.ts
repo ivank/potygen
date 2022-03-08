@@ -39,6 +39,7 @@ import {
   SourceTable,
   TypeName,
   TypeLoad,
+  TypeBuffer,
 } from './query-interface.types';
 
 export const isType = (item: TypeOrLoad): item is Type =>
@@ -101,6 +102,7 @@ export const isTypeNumber = (type: TypeOrLoad): type is TypeNumber => type.type 
 export const isTypeBigInt = (type: TypeOrLoad): type is TypeBigInt => type.type === TypeName.BigInt;
 export const isTypeBoolean = (type: TypeOrLoad): type is TypeBoolean => type.type === TypeName.Boolean;
 export const isTypeDate = (type: TypeOrLoad): type is TypeDate => type.type === TypeName.Date;
+export const isTypeBuffer = (type: TypeOrLoad): type is TypeBuffer => type.type === TypeName.Buffer;
 export const isTypeNull = (type: TypeOrLoad): type is TypeNull => type.type === TypeName.Null;
 export const isTypeJson = (type: TypeOrLoad): type is TypeJson => type.type === TypeName.Json;
 export const isTypeUnknown = (type: TypeOrLoad): type is TypeUnknown => type.type === TypeName.Unknown;

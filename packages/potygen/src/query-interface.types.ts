@@ -147,6 +147,14 @@ export interface BaseTypeLoad {
 }
 
 /**
+ * Can possibly be a json object.
+ * Some types would be serialized, like Buffer or Date
+ */
+export interface JsonTypeLoad {
+  isJsonObject?: boolean;
+}
+
+/**
  * A "COALESCE conditional" to be loaded.
  * https://www.postgresql.org/docs/8.1/functions-conditional.html#AEN12663
  */
@@ -242,7 +250,7 @@ export interface TypeLoadNamed extends BaseTypeLoad {
 /**
  * Load the type of an array
  */
-export interface TypeLoadArray extends BaseTypeLoad {
+export interface TypeLoadArray extends BaseTypeLoad, JsonTypeLoad {
   type: TypeName.LoadArray;
   items: TypeOrLoad;
 }
@@ -285,7 +293,7 @@ export interface TypeLoadUnion extends BaseTypeLoad {
 /**
  * A type that will be returned as an object literal
  */
-export interface TypeLoadObjectLiteral extends BaseTypeLoad {
+export interface TypeLoadObjectLiteral extends BaseTypeLoad, JsonTypeLoad {
   type: TypeName.LoadObjectLiteral;
   items: Array<{ name: string; type: TypeOrLoad }>;
   nullable?: boolean;
@@ -480,6 +488,7 @@ export interface QueryInterface {
 export interface TypeContext {
   type: TypeOrLoad;
   columns: TypeLoadColumn[];
+  isJsonObject?: boolean;
   inComparationInclusion?: boolean;
   cteParams?: boolean;
   from?: TableTag;

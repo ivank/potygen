@@ -374,7 +374,7 @@ const toType =
             return { type: TypeName.LoadAsArray, items: args[0] ?? typeUnknown, sourceTag: sql };
           case 'json_agg':
           case 'jsonb_agg':
-            return { type: TypeName.LoadArray, items: args[0] ?? typeUnknown, sourceTag: sql };
+            return { type: TypeName.LoadArray, items: args[0] ?? typeUnknown, sourceTag: sql, isJsonObject: true };
           case 'current_date':
             return { ...typeDate, postgresType: 'date' };
           case 'current_timestamp':
@@ -388,6 +388,7 @@ const toType =
               items: chunk(2, args).flatMap(([name, type]) =>
                 isTypeString(name) && name.literal ? { name: name.literal, type } : [],
               ),
+              isJsonObject: true,
               sourceTag: sql,
             };
           default:

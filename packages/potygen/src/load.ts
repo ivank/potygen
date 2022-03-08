@@ -19,6 +19,8 @@ import {
   isSourceQuery,
   isTypeEqual,
   isType,
+  isTypeDate,
+  isTypeBuffer,
 } from './query-interface.guards';
 import {
   isDataTable,
@@ -516,9 +518,13 @@ const formatArgumentType = (val: TypeOrLoad): string =>
 const formatLoadColumn = ({ schema, table, column }: TypeLoadColumn): string =>
   [schema, table, column].filter(isNil).join('.');
 
-const toType = (context: LoadedContext, isResult: boolean) => {
+const serializeJsonObjectType = (type: Type, isJsonObject?: boolean): Type =>
+  isJsonObject && (isTypeDate(type) || isTypeBuffer(type)) ? { ...type, type: TypeName.String } : type;
+
+const toType = (context: LoadedContext, isResult: boolean, isJsonObject?: boolean) => {
   return (type: TypeOrLoad): Type => {
-    const recur = toType(context, isResult);
+    const recur = toType(context, isResult, isJsonObject);
+
     switch (type.type) {
       case TypeName.LoadColumn:
         const relevantSources = context.sources.filter(matchTypeSource(type)).filter(isResultSource(isResult));
@@ -537,13 +543,12 @@ const toType = (context: LoadedContext, isResult: boolean) => {
               .join(', ')}).`,
           );
         } else if (columns.length === 0) {
-          console.log(relevantSources);
           throw new LoadError(
             type.sourceTag,
             `Column ${formatLoadColumn(type)} not found in ${relevantSources.map(formatLoadedSource).join(', ')}`,
           );
         } else {
-          return columns[0];
+          return serializeJsonObjectType(columns[0], isJsonObject);
         }
       case TypeName.LoadRecord:
         if (context.enums[type.name]) {
@@ -616,7 +621,7 @@ const toType = (context: LoadedContext, isResult: boolean) => {
         const items = recur(type.items);
         return isTypeArray(items) ? items : { type: TypeName.Array, items, postgresType: `${items.postgresType}[]` };
       case TypeName.LoadArray:
-        const itemsType = recur(type.items);
+        const itemsType = toType(context, isResult, type.isJsonObject)(type.items);
         return { type: TypeName.Array, items: itemsType, postgresType: `${itemsType.postgresType}[]` };
       case TypeName.LoadUnion:
         return { type: TypeName.Union, items: type.items.map(recur), postgresType: 'any' };
@@ -638,7 +643,7 @@ const toType = (context: LoadedContext, isResult: boolean) => {
       case TypeName.LoadObjectLiteral:
         return {
           type: TypeName.ObjectLiteral,
-          items: type.items.map((item) => ({ ...item, type: recur(item.type) })),
+          items: type.items.map((item) => ({ ...item, type: toType(context, isResult, type.isJsonObject)(item.type) })),
           postgresType: 'json',
         };
       case TypeName.LoadOperator:
@@ -662,6 +667,9 @@ const toType = (context: LoadedContext, isResult: boolean) => {
           : { type: TypeName.Union, items: argTypes, nullable, postgresType: 'any' };
       case TypeName.LoadNamed:
         return recur(type.value);
+      case TypeName.Date:
+      case TypeName.Buffer:
+        return serializeJsonObjectType(type, isJsonObject);
       default:
         return type;
     }

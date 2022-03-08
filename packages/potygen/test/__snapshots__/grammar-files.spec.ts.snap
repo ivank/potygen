@@ -34443,6 +34443,2793 @@ Object {
 }
 `;
 
+exports[`Sql Files Should parse complex sql levelisation-customer-data.query.sql: levelisation-customer-data.query.sql 1`] = `
+Object {
+  "ast": Object {
+    "end": 4646,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 4403,
+        "start": 9,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 101,
+            "start": 9,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 87,
+                "start": 9,
+                "tag": 54,
+                "values": Array [
+                  Object {
+                    "end": 25,
+                    "start": 9,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 25,
+                        "start": 9,
+                        "tag": 8,
+                        "value": "json_build_object",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 33,
+                    "start": 27,
+                    "tag": 13,
+                    "value": "start",
+                  },
+                  Object {
+                    "end": 57,
+                    "start": 36,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 48,
+                        "start": 36,
+                        "tag": 8,
+                        "value": "levelisations",
+                      },
+                      Object {
+                        "end": 57,
+                        "start": 50,
+                        "tag": 8,
+                        "value": "start_on",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 64,
+                    "start": 60,
+                    "tag": 13,
+                    "value": "end",
+                  },
+                  Object {
+                    "end": 86,
+                    "start": 67,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 79,
+                        "start": 67,
+                        "tag": 8,
+                        "value": "levelisations",
+                      },
+                      Object {
+                        "end": 86,
+                        "start": 81,
+                        "tag": 8,
+                        "value": "end_on",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 101,
+                "start": 89,
+                "tag": 12,
+                "values": Array [
+                  Object {
+                    "end": 101,
+                    "start": 92,
+                    "tag": 9,
+                    "value": "interval",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 151,
+            "start": 106,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 126,
+                "start": 106,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 118,
+                    "start": 106,
+                    "tag": 8,
+                    "value": "levelisations",
+                  },
+                  Object {
+                    "end": 126,
+                    "start": 120,
+                    "tag": 8,
+                    "value": "quarter",
+                  },
+                ],
+              },
+              Object {
+                "end": 151,
+                "start": 128,
+                "tag": 12,
+                "values": Array [
+                  Object {
+                    "end": 151,
+                    "start": 131,
+                    "tag": 9,
+                    "value": "levelisationQuarter",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 181,
+            "start": 156,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 166,
+                "start": 156,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 163,
+                    "start": 156,
+                    "tag": 8,
+                    "value": "accounts",
+                  },
+                  Object {
+                    "end": 166,
+                    "start": 165,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
+              },
+              Object {
+                "end": 181,
+                "start": 168,
+                "tag": 12,
+                "values": Array [
+                  Object {
+                    "end": 181,
+                    "start": 171,
+                    "tag": 9,
+                    "value": "accountId",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 810,
+            "start": 186,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 793,
+                "start": 192,
+                "tag": 81,
+                "values": Array [
+                  Object {
+                    "end": 644,
+                    "start": 205,
+                    "tag": 62,
+                    "values": Array [
+                      Object {
+                        "end": 644,
+                        "start": 205,
+                        "tag": 61,
+                        "values": Array [
+                          Object {
+                            "end": 644,
+                            "start": 205,
+                            "tag": 54,
+                            "values": Array [
+                              Object {
+                                "end": 221,
+                                "start": 205,
+                                "tag": 89,
+                                "values": Array [
+                                  Object {
+                                    "end": 221,
+                                    "start": 205,
+                                    "tag": 8,
+                                    "value": "json_build_object",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 238,
+                                "start": 232,
+                                "tag": 13,
+                                "value": "title",
+                              },
+                              Object {
+                                "end": 254,
+                                "start": 241,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 248,
+                                    "start": 241,
+                                    "tag": 8,
+                                    "value": "contacts",
+                                  },
+                                  Object {
+                                    "end": 254,
+                                    "start": 250,
+                                    "tag": 8,
+                                    "value": "title",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 275,
+                                "start": 265,
+                                "tag": 13,
+                                "value": "firstName",
+                              },
+                              Object {
+                                "end": 296,
+                                "start": 278,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 285,
+                                    "start": 278,
+                                    "tag": 8,
+                                    "value": "contacts",
+                                  },
+                                  Object {
+                                    "end": 296,
+                                    "start": 287,
+                                    "tag": 8,
+                                    "value": "first_name",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 316,
+                                "start": 307,
+                                "tag": 13,
+                                "value": "lastName",
+                              },
+                              Object {
+                                "end": 336,
+                                "start": 319,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 326,
+                                    "start": 319,
+                                    "tag": 8,
+                                    "value": "contacts",
+                                  },
+                                  Object {
+                                    "end": 336,
+                                    "start": 328,
+                                    "tag": 8,
+                                    "value": "last_name",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 353,
+                                "start": 347,
+                                "tag": 13,
+                                "value": "email",
+                              },
+                              Object {
+                                "end": 369,
+                                "start": 356,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 363,
+                                    "start": 356,
+                                    "tag": 8,
+                                    "value": "contacts",
+                                  },
+                                  Object {
+                                    "end": 369,
+                                    "start": 365,
+                                    "tag": 8,
+                                    "value": "email",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 388,
+                                "start": 380,
+                                "tag": 13,
+                                "value": "address",
+                              },
+                              Object {
+                                "end": 636,
+                                "start": 399,
+                                "tag": 54,
+                                "values": Array [
+                                  Object {
+                                    "end": 415,
+                                    "start": 399,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 415,
+                                        "start": 399,
+                                        "tag": 8,
+                                        "value": "json_build_object",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 433,
+                                    "start": 428,
+                                    "tag": 13,
+                                    "value": "city",
+                                  },
+                                  Object {
+                                    "end": 449,
+                                    "start": 436,
+                                    "tag": 11,
+                                    "values": Array [
+                                      Object {
+                                        "end": 444,
+                                        "start": 436,
+                                        "tag": 8,
+                                        "value": "addresses",
+                                      },
+                                      Object {
+                                        "end": 449,
+                                        "start": 446,
+                                        "tag": 8,
+                                        "value": "city",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 471,
+                                    "start": 462,
+                                    "tag": 13,
+                                    "value": "postcode",
+                                  },
+                                  Object {
+                                    "end": 491,
+                                    "start": 474,
+                                    "tag": 11,
+                                    "values": Array [
+                                      Object {
+                                        "end": 482,
+                                        "start": 474,
+                                        "tag": 8,
+                                        "value": "addresses",
+                                      },
+                                      Object {
+                                        "end": 491,
+                                        "start": 484,
+                                        "tag": 8,
+                                        "value": "postcode",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 510,
+                                    "start": 504,
+                                    "tag": 13,
+                                    "value": "line1",
+                                  },
+                                  Object {
+                                    "end": 536,
+                                    "start": 513,
+                                    "tag": 11,
+                                    "values": Array [
+                                      Object {
+                                        "end": 521,
+                                        "start": 513,
+                                        "tag": 8,
+                                        "value": "addresses",
+                                      },
+                                      Object {
+                                        "end": 536,
+                                        "start": 523,
+                                        "tag": 8,
+                                        "value": "address_line_1",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 555,
+                                    "start": 549,
+                                    "tag": 13,
+                                    "value": "line2",
+                                  },
+                                  Object {
+                                    "end": 581,
+                                    "start": 558,
+                                    "tag": 11,
+                                    "values": Array [
+                                      Object {
+                                        "end": 566,
+                                        "start": 558,
+                                        "tag": 8,
+                                        "value": "addresses",
+                                      },
+                                      Object {
+                                        "end": 581,
+                                        "start": 568,
+                                        "tag": 8,
+                                        "value": "address_line_2",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 600,
+                                    "start": 594,
+                                    "tag": 13,
+                                    "value": "line3",
+                                  },
+                                  Object {
+                                    "end": 626,
+                                    "start": 603,
+                                    "tag": 11,
+                                    "values": Array [
+                                      Object {
+                                        "end": 611,
+                                        "start": 603,
+                                        "tag": 8,
+                                        "value": "addresses",
+                                      },
+                                      Object {
+                                        "end": 626,
+                                        "start": 613,
+                                        "tag": 8,
+                                        "value": "address_line_3",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 735,
+                    "start": 650,
+                    "tag": 69,
+                    "values": Array [
+                      Object {
+                        "end": 668,
+                        "start": 661,
+                        "tag": 68,
+                        "values": Array [
+                          Object {
+                            "end": 668,
+                            "start": 661,
+                            "tag": 90,
+                            "values": Array [
+                              Object {
+                                "end": 668,
+                                "start": 661,
+                                "tag": 89,
+                                "values": Array [
+                                  Object {
+                                    "end": 668,
+                                    "start": 661,
+                                    "tag": 8,
+                                    "value": "contacts",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 735,
+                        "start": 676,
+                        "tag": 67,
+                        "values": Array [
+                          Object {
+                            "end": 679,
+                            "start": 676,
+                            "tag": 64,
+                            "value": "JOIN",
+                          },
+                          Object {
+                            "end": 689,
+                            "start": 681,
+                            "tag": 90,
+                            "values": Array [
+                              Object {
+                                "end": 689,
+                                "start": 681,
+                                "tag": 89,
+                                "values": Array [
+                                  Object {
+                                    "end": 689,
+                                    "start": 681,
+                                    "tag": 8,
+                                    "value": "addresses",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 735,
+                            "start": 699,
+                            "tag": 65,
+                            "values": Array [
+                              Object {
+                                "end": 735,
+                                "start": 702,
+                                "tag": 46,
+                                "values": Array [
+                                  Object {
+                                    "end": 713,
+                                    "start": 702,
+                                    "tag": 11,
+                                    "values": Array [
+                                      Object {
+                                        "end": 710,
+                                        "start": 702,
+                                        "tag": 8,
+                                        "value": "addresses",
+                                      },
+                                      Object {
+                                        "end": 713,
+                                        "start": 712,
+                                        "tag": 8,
+                                        "value": "id",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 715,
+                                    "start": 715,
+                                    "tag": 44,
+                                    "value": "=",
+                                  },
+                                  Object {
+                                    "end": 735,
+                                    "start": 717,
+                                    "tag": 11,
+                                    "values": Array [
+                                      Object {
+                                        "end": 724,
+                                        "start": 717,
+                                        "tag": 8,
+                                        "value": "contacts",
+                                      },
+                                      Object {
+                                        "end": 735,
+                                        "start": 726,
+                                        "tag": 8,
+                                        "value": "address_id",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 793,
+                    "start": 741,
+                    "tag": 70,
+                    "values": Array [
+                      Object {
+                        "end": 793,
+                        "start": 753,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 763,
+                            "start": 753,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 760,
+                                "start": 753,
+                                "tag": 8,
+                                "value": "contacts",
+                              },
+                              Object {
+                                "end": 763,
+                                "start": 762,
+                                "tag": 8,
+                                "value": "id",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 765,
+                            "start": 765,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 793,
+                            "start": 767,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 774,
+                                "start": 767,
+                                "tag": 8,
+                                "value": "accounts",
+                              },
+                              Object {
+                                "end": 793,
+                                "start": 776,
+                                "tag": 8,
+                                "value": "primary_contact_id",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 810,
+                "start": 799,
+                "tag": 12,
+                "values": Array [
+                  Object {
+                    "end": 810,
+                    "start": 802,
+                    "tag": 9,
+                    "value": "contact",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 4403,
+            "start": 815,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 4381,
+                "start": 821,
+                "tag": 81,
+                "values": Array [
+                  Object {
+                    "end": 4285,
+                    "start": 834,
+                    "tag": 62,
+                    "values": Array [
+                      Object {
+                        "end": 4285,
+                        "start": 834,
+                        "tag": 61,
+                        "values": Array [
+                          Object {
+                            "end": 4285,
+                            "start": 834,
+                            "tag": 54,
+                            "values": Array [
+                              Object {
+                                "end": 850,
+                                "start": 834,
+                                "tag": 89,
+                                "values": Array [
+                                  Object {
+                                    "end": 850,
+                                    "start": 834,
+                                    "tag": 8,
+                                    "value": "json_build_object",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 876,
+                                "start": 861,
+                                "tag": 13,
+                                "value": "installationId",
+                              },
+                              Object {
+                                "end": 894,
+                                "start": 879,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 891,
+                                    "start": 879,
+                                    "tag": 8,
+                                    "value": "installations",
+                                  },
+                                  Object {
+                                    "end": 894,
+                                    "start": 893,
+                                    "tag": 8,
+                                    "value": "id",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 920,
+                                "start": 905,
+                                "tag": 13,
+                                "value": "technologyType",
+                              },
+                              Object {
+                                "end": 951,
+                                "start": 923,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 935,
+                                    "start": 923,
+                                    "tag": 8,
+                                    "value": "installations",
+                                  },
+                                  Object {
+                                    "end": 951,
+                                    "start": 937,
+                                    "tag": 8,
+                                    "value": "technology_type",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 969,
+                                "start": 962,
+                                "tag": 13,
+                                "value": "meters",
+                              },
+                              Object {
+                                "end": 2089,
+                                "start": 980,
+                                "tag": 106,
+                                "values": Array [
+                                  Object {
+                                    "end": 2079,
+                                    "start": 992,
+                                    "tag": 117,
+                                    "values": Array [
+                                      Object {
+                                        "end": 2067,
+                                        "start": 1011,
+                                        "tag": 81,
+                                        "values": Array [
+                                          Object {
+                                            "end": 1943,
+                                            "start": 1032,
+                                            "tag": 62,
+                                            "values": Array [
+                                              Object {
+                                                "end": 1943,
+                                                "start": 1032,
+                                                "tag": 61,
+                                                "values": Array [
+                                                  Object {
+                                                    "end": 1943,
+                                                    "start": 1032,
+                                                    "tag": 54,
+                                                    "values": Array [
+                                                      Object {
+                                                        "end": 1048,
+                                                        "start": 1032,
+                                                        "tag": 89,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 1048,
+                                                            "start": 1032,
+                                                            "tag": 8,
+                                                            "value": "json_build_object",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 1070,
+                                                        "start": 1067,
+                                                        "tag": 13,
+                                                        "value": "id",
+                                                      },
+                                                      Object {
+                                                        "end": 1094,
+                                                        "start": 1073,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 1091,
+                                                            "start": 1073,
+                                                            "tag": 8,
+                                                            "value": "installation_meters",
+                                                          },
+                                                          Object {
+                                                            "end": 1094,
+                                                            "start": 1093,
+                                                            "tag": 8,
+                                                            "value": "id",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 1121,
+                                                        "start": 1113,
+                                                        "tag": 13,
+                                                        "value": "startOn",
+                                                      },
+                                                      Object {
+                                                        "end": 1151,
+                                                        "start": 1124,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 1142,
+                                                            "start": 1124,
+                                                            "tag": 8,
+                                                            "value": "installation_meters",
+                                                          },
+                                                          Object {
+                                                            "end": 1151,
+                                                            "start": 1144,
+                                                            "tag": 8,
+                                                            "value": "start_on",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 1176,
+                                                        "start": 1170,
+                                                        "tag": 13,
+                                                        "value": "endOn",
+                                                      },
+                                                      Object {
+                                                        "end": 1204,
+                                                        "start": 1179,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 1197,
+                                                            "start": 1179,
+                                                            "tag": 8,
+                                                            "value": "installation_meters",
+                                                          },
+                                                          Object {
+                                                            "end": 1204,
+                                                            "start": 1199,
+                                                            "tag": 8,
+                                                            "value": "end_on",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 1228,
+                                                        "start": 1223,
+                                                        "tag": 13,
+                                                        "value": "type",
+                                                      },
+                                                      Object {
+                                                        "end": 1260,
+                                                        "start": 1231,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 1249,
+                                                            "start": 1231,
+                                                            "tag": 8,
+                                                            "value": "installation_meters",
+                                                          },
+                                                          Object {
+                                                            "end": 1260,
+                                                            "start": 1251,
+                                                            "tag": 8,
+                                                            "value": "meter_type",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 1285,
+                                                        "start": 1279,
+                                                        "tag": 13,
+                                                        "value": "reads",
+                                                      },
+                                                      Object {
+                                                        "end": 1927,
+                                                        "start": 1304,
+                                                        "tag": 106,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 1909,
+                                                            "start": 1324,
+                                                            "tag": 117,
+                                                            "values": Array [
+                                                              Object {
+                                                                "end": 1889,
+                                                                "start": 1351,
+                                                                "tag": 81,
+                                                                "values": Array [
+                                                                  Object {
+                                                                    "end": 1627,
+                                                                    "start": 1380,
+                                                                    "tag": 62,
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 1627,
+                                                                        "start": 1380,
+                                                                        "tag": 61,
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 1627,
+                                                                            "start": 1380,
+                                                                            "tag": 54,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 1396,
+                                                                                "start": 1380,
+                                                                                "tag": 89,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 1396,
+                                                                                    "start": 1380,
+                                                                                    "tag": 8,
+                                                                                    "value": "json_build_object",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1429,
+                                                                                "start": 1423,
+                                                                                "tag": 13,
+                                                                                "value": "value",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1449,
+                                                                                "start": 1432,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 1443,
+                                                                                    "start": 1432,
+                                                                                    "tag": 8,
+                                                                                    "value": "active_reads",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 1449,
+                                                                                    "start": 1445,
+                                                                                    "tag": 8,
+                                                                                    "value": "value",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1483,
+                                                                                "start": 1476,
+                                                                                "tag": 13,
+                                                                                "value": "dateOn",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1505,
+                                                                                "start": 1486,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 1497,
+                                                                                    "start": 1486,
+                                                                                    "tag": 8,
+                                                                                    "value": "active_reads",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 1505,
+                                                                                    "start": 1499,
+                                                                                    "tag": 8,
+                                                                                    "value": "date_on",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1537,
+                                                                                "start": 1532,
+                                                                                "tag": 13,
+                                                                                "value": "type",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1556,
+                                                                                "start": 1540,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 1551,
+                                                                                    "start": 1540,
+                                                                                    "tag": 8,
+                                                                                    "value": "active_reads",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 1556,
+                                                                                    "start": 1553,
+                                                                                    "tag": 8,
+                                                                                    "value": "type",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1586,
+                                                                                "start": 1583,
+                                                                                "tag": 13,
+                                                                                "value": "id",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1603,
+                                                                                "start": 1589,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 1600,
+                                                                                    "start": 1589,
+                                                                                    "tag": 8,
+                                                                                    "value": "active_reads",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 1603,
+                                                                                    "start": 1602,
+                                                                                    "tag": 8,
+                                                                                    "value": "id",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                  Object {
+                                                                    "end": 1665,
+                                                                    "start": 1649,
+                                                                    "tag": 69,
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 1665,
+                                                                        "start": 1654,
+                                                                        "tag": 68,
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 1665,
+                                                                            "start": 1654,
+                                                                            "tag": 90,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 1665,
+                                                                                "start": 1654,
+                                                                                "tag": 89,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 1665,
+                                                                                    "start": 1654,
+                                                                                    "tag": 8,
+                                                                                    "value": "active_reads",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                  Object {
+                                                                    "end": 1812,
+                                                                    "start": 1687,
+                                                                    "tag": 70,
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 1812,
+                                                                        "start": 1715,
+                                                                        "tag": 46,
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 1755,
+                                                                            "start": 1715,
+                                                                            "tag": 46,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 1731,
+                                                                                "start": 1715,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 1726,
+                                                                                    "start": 1715,
+                                                                                    "tag": 8,
+                                                                                    "value": "active_reads",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 1731,
+                                                                                    "start": 1728,
+                                                                                    "tag": 8,
+                                                                                    "value": "type",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1734,
+                                                                                "start": 1733,
+                                                                                "tag": 44,
+                                                                                "value": "<>",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1755,
+                                                                                "start": 1736,
+                                                                                "tag": 13,
+                                                                                "value": "Meter Verification",
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                          Object {
+                                                                            "end": 1759,
+                                                                            "start": 1757,
+                                                                            "tag": 44,
+                                                                            "value": "AND",
+                                                                          },
+                                                                          Object {
+                                                                            "end": 1812,
+                                                                            "start": 1761,
+                                                                            "tag": 46,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 1781,
+                                                                                "start": 1761,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 1772,
+                                                                                    "start": 1761,
+                                                                                    "tag": 8,
+                                                                                    "value": "active_reads",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 1781,
+                                                                                    "start": 1774,
+                                                                                    "tag": 8,
+                                                                                    "value": "meter_id",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1783,
+                                                                                "start": 1783,
+                                                                                "tag": 44,
+                                                                                "value": "=",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1812,
+                                                                                "start": 1785,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 1803,
+                                                                                    "start": 1785,
+                                                                                    "tag": 8,
+                                                                                    "value": "installation_meters",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 1812,
+                                                                                    "start": 1805,
+                                                                                    "tag": 8,
+                                                                                    "value": "meter_id",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                  Object {
+                                                                    "end": 1889,
+                                                                    "start": 1834,
+                                                                    "tag": 77,
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 1889,
+                                                                        "start": 1865,
+                                                                        "tag": 76,
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 1884,
+                                                                            "start": 1865,
+                                                                            "tag": 11,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 1876,
+                                                                                "start": 1865,
+                                                                                "tag": 8,
+                                                                                "value": "active_reads",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 1884,
+                                                                                "start": 1878,
+                                                                                "tag": 8,
+                                                                                "value": "date_on",
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                          Object {
+                                                                            "end": 1889,
+                                                                            "start": 1886,
+                                                                            "tag": 75,
+                                                                            "value": "DESC",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                        ],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                          Object {
+                                            "end": 1980,
+                                            "start": 1957,
+                                            "tag": 69,
+                                            "values": Array [
+                                              Object {
+                                                "end": 1980,
+                                                "start": 1962,
+                                                "tag": 68,
+                                                "values": Array [
+                                                  Object {
+                                                    "end": 1980,
+                                                    "start": 1962,
+                                                    "tag": 90,
+                                                    "values": Array [
+                                                      Object {
+                                                        "end": 1980,
+                                                        "start": 1962,
+                                                        "tag": 89,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 1980,
+                                                            "start": 1962,
+                                                            "tag": 8,
+                                                            "value": "installation_meters",
+                                                          },
+                                                        ],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                          Object {
+                                            "end": 2067,
+                                            "start": 1994,
+                                            "tag": 70,
+                                            "values": Array [
+                                              Object {
+                                                "end": 2067,
+                                                "start": 2014,
+                                                "tag": 46,
+                                                "values": Array [
+                                                  Object {
+                                                    "end": 2048,
+                                                    "start": 2014,
+                                                    "tag": 11,
+                                                    "values": Array [
+                                                      Object {
+                                                        "end": 2032,
+                                                        "start": 2014,
+                                                        "tag": 8,
+                                                        "value": "installation_meters",
+                                                      },
+                                                      Object {
+                                                        "end": 2048,
+                                                        "start": 2034,
+                                                        "tag": 8,
+                                                        "value": "installation_id",
+                                                      },
+                                                    ],
+                                                  },
+                                                  Object {
+                                                    "end": 2050,
+                                                    "start": 2050,
+                                                    "tag": 44,
+                                                    "value": "=",
+                                                  },
+                                                  Object {
+                                                    "end": 2067,
+                                                    "start": 2052,
+                                                    "tag": 11,
+                                                    "values": Array [
+                                                      Object {
+                                                        "end": 2064,
+                                                        "start": 2052,
+                                                        "tag": 8,
+                                                        "value": "installations",
+                                                      },
+                                                      Object {
+                                                        "end": 2067,
+                                                        "start": 2066,
+                                                        "tag": 8,
+                                                        "value": "id",
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 2110,
+                                "start": 2100,
+                                "tag": 13,
+                                "value": "contracts",
+                              },
+                              Object {
+                                "end": 4277,
+                                "start": 2121,
+                                "tag": 106,
+                                "values": Array [
+                                  Object {
+                                    "end": 4267,
+                                    "start": 2133,
+                                    "tag": 117,
+                                    "values": Array [
+                                      Object {
+                                        "end": 4255,
+                                        "start": 2152,
+                                        "tag": 81,
+                                        "values": Array [
+                                          Object {
+                                            "end": 4151,
+                                            "start": 2173,
+                                            "tag": 62,
+                                            "values": Array [
+                                              Object {
+                                                "end": 4151,
+                                                "start": 2173,
+                                                "tag": 61,
+                                                "values": Array [
+                                                  Object {
+                                                    "end": 4151,
+                                                    "start": 2173,
+                                                    "tag": 54,
+                                                    "values": Array [
+                                                      Object {
+                                                        "end": 2189,
+                                                        "start": 2173,
+                                                        "tag": 89,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 2189,
+                                                            "start": 2173,
+                                                            "tag": 8,
+                                                            "value": "json_build_object",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 2219,
+                                                        "start": 2208,
+                                                        "tag": 13,
+                                                        "value": "schemeType",
+                                                      },
+                                                      Object {
+                                                        "end": 2242,
+                                                        "start": 2222,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 2230,
+                                                            "start": 2222,
+                                                            "tag": 8,
+                                                            "value": "contracts",
+                                                          },
+                                                          Object {
+                                                            "end": 2242,
+                                                            "start": 2232,
+                                                            "tag": 8,
+                                                            "value": "scheme_type",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 2284,
+                                                        "start": 2261,
+                                                        "tag": 13,
+                                                        "value": "schemeAccountReference",
+                                                      },
+                                                      Object {
+                                                        "end": 2320,
+                                                        "start": 2287,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 2295,
+                                                            "start": 2287,
+                                                            "tag": 8,
+                                                            "value": "contracts",
+                                                          },
+                                                          Object {
+                                                            "end": 2320,
+                                                            "start": 2297,
+                                                            "tag": 8,
+                                                            "value": "scheme_account_reference",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 2348,
+                                                        "start": 2339,
+                                                        "tag": 13,
+                                                        "value": "capacity",
+                                                      },
+                                                      Object {
+                                                        "end": 2368,
+                                                        "start": 2351,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 2359,
+                                                            "start": 2351,
+                                                            "tag": 8,
+                                                            "value": "contracts",
+                                                          },
+                                                          Object {
+                                                            "end": 2368,
+                                                            "start": 2361,
+                                                            "tag": 8,
+                                                            "value": "capacity",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 2406,
+                                                        "start": 2387,
+                                                        "tag": 13,
+                                                        "value": "generationTariffId",
+                                                      },
+                                                      Object {
+                                                        "end": 2438,
+                                                        "start": 2409,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 2417,
+                                                            "start": 2409,
+                                                            "tag": 8,
+                                                            "value": "contracts",
+                                                          },
+                                                          Object {
+                                                            "end": 2438,
+                                                            "start": 2419,
+                                                            "tag": 8,
+                                                            "value": "generation_tariff_id",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 2472,
+                                                        "start": 2457,
+                                                        "tag": 13,
+                                                        "value": "exportTariffId",
+                                                      },
+                                                      Object {
+                                                        "end": 2500,
+                                                        "start": 2475,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 2483,
+                                                            "start": 2475,
+                                                            "tag": 8,
+                                                            "value": "contracts",
+                                                          },
+                                                          Object {
+                                                            "end": 2500,
+                                                            "start": 2485,
+                                                            "tag": 8,
+                                                            "value": "export_tariff_id",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 2527,
+                                                        "start": 2519,
+                                                        "tag": 13,
+                                                        "value": "startOn",
+                                                      },
+                                                      Object {
+                                                        "end": 2547,
+                                                        "start": 2530,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 2538,
+                                                            "start": 2530,
+                                                            "tag": 8,
+                                                            "value": "contracts",
+                                                          },
+                                                          Object {
+                                                            "end": 2547,
+                                                            "start": 2540,
+                                                            "tag": 8,
+                                                            "value": "start_on",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 2572,
+                                                        "start": 2566,
+                                                        "tag": 13,
+                                                        "value": "endOn",
+                                                      },
+                                                      Object {
+                                                        "end": 2590,
+                                                        "start": 2575,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 2583,
+                                                            "start": 2575,
+                                                            "tag": 8,
+                                                            "value": "contracts",
+                                                          },
+                                                          Object {
+                                                            "end": 2590,
+                                                            "start": 2585,
+                                                            "tag": 8,
+                                                            "value": "end_on",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 2620,
+                                                        "start": 2609,
+                                                        "tag": 13,
+                                                        "value": "exportType",
+                                                      },
+                                                      Object {
+                                                        "end": 2643,
+                                                        "start": 2623,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 2631,
+                                                            "start": 2623,
+                                                            "tag": 8,
+                                                            "value": "contracts",
+                                                          },
+                                                          Object {
+                                                            "end": 2643,
+                                                            "start": 2633,
+                                                            "tag": 8,
+                                                            "value": "export_type",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 2684,
+                                                        "start": 2662,
+                                                        "tag": 13,
+                                                        "value": "exportPercentageSplit",
+                                                      },
+                                                      Object {
+                                                        "end": 2719,
+                                                        "start": 2687,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 2695,
+                                                            "start": 2687,
+                                                            "tag": 8,
+                                                            "value": "contracts",
+                                                          },
+                                                          Object {
+                                                            "end": 2719,
+                                                            "start": 2697,
+                                                            "tag": 8,
+                                                            "value": "export_percentage_split",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 2764,
+                                                        "start": 2738,
+                                                        "tag": 13,
+                                                        "value": "generationPercentageSplit",
+                                                      },
+                                                      Object {
+                                                        "end": 2803,
+                                                        "start": 2767,
+                                                        "tag": 11,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 2775,
+                                                            "start": 2767,
+                                                            "tag": 8,
+                                                            "value": "contracts",
+                                                          },
+                                                          Object {
+                                                            "end": 2803,
+                                                            "start": 2777,
+                                                            "tag": 8,
+                                                            "value": "generation_percentage_split",
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 2838,
+                                                        "start": 2822,
+                                                        "tag": 13,
+                                                        "value": "generationRates",
+                                                      },
+                                                      Object {
+                                                        "end": 3485,
+                                                        "start": 2857,
+                                                        "tag": 106,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 3467,
+                                                            "start": 2877,
+                                                            "tag": 117,
+                                                            "values": Array [
+                                                              Object {
+                                                                "end": 3447,
+                                                                "start": 2904,
+                                                                "tag": 81,
+                                                                "values": Array [
+                                                                  Object {
+                                                                    "end": 3267,
+                                                                    "start": 2933,
+                                                                    "tag": 62,
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 3267,
+                                                                        "start": 2933,
+                                                                        "tag": 61,
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 3267,
+                                                                            "start": 2933,
+                                                                            "tag": 54,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 2949,
+                                                                                "start": 2933,
+                                                                                "tag": 89,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 2949,
+                                                                                    "start": 2933,
+                                                                                    "tag": 8,
+                                                                                    "value": "json_build_object",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 2979,
+                                                                                "start": 2976,
+                                                                                "tag": 13,
+                                                                                "value": "id",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3007,
+                                                                                "start": 2982,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3004,
+                                                                                    "start": 2982,
+                                                                                    "tag": 8,
+                                                                                    "value": "generation_tariff_rates",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 3007,
+                                                                                    "start": 3006,
+                                                                                    "tag": 8,
+                                                                                    "value": "id",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3042,
+                                                                                "start": 3034,
+                                                                                "tag": 13,
+                                                                                "value": "startOn",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3081,
+                                                                                "start": 3045,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3067,
+                                                                                    "start": 3045,
+                                                                                    "tag": 8,
+                                                                                    "value": "generation_tariff_rates",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 3081,
+                                                                                    "start": 3069,
+                                                                                    "tag": 8,
+                                                                                    "value": "start_date_on",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3114,
+                                                                                "start": 3108,
+                                                                                "tag": 13,
+                                                                                "value": "endOn",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3181,
+                                                                                "start": 3117,
+                                                                                "tag": 54,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3124,
+                                                                                    "start": 3117,
+                                                                                    "tag": 89,
+                                                                                    "values": Array [
+                                                                                      Object {
+                                                                                        "end": 3124,
+                                                                                        "start": 3117,
+                                                                                        "tag": 8,
+                                                                                        "value": "COALESCE",
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 3160,
+                                                                                    "start": 3126,
+                                                                                    "tag": 11,
+                                                                                    "values": Array [
+                                                                                      Object {
+                                                                                        "end": 3148,
+                                                                                        "start": 3126,
+                                                                                        "tag": 8,
+                                                                                        "value": "generation_tariff_rates",
+                                                                                      },
+                                                                                      Object {
+                                                                                        "end": 3160,
+                                                                                        "start": 3150,
+                                                                                        "tag": 8,
+                                                                                        "value": "end_date_on",
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 3181,
+                                                                                    "start": 3163,
+                                                                                    "tag": 52,
+                                                                                    "values": Array [
+                                                                                      Object {
+                                                                                        "end": 3174,
+                                                                                        "start": 3163,
+                                                                                        "tag": 13,
+                                                                                        "value": "9998-12-31",
+                                                                                      },
+                                                                                      Object {
+                                                                                        "end": 3180,
+                                                                                        "start": 3177,
+                                                                                        "tag": 32,
+                                                                                        "values": Array [
+                                                                                          Object {
+                                                                                            "end": 3180,
+                                                                                            "start": 3177,
+                                                                                            "tag": 89,
+                                                                                            "values": Array [
+                                                                                              Object {
+                                                                                                "end": 3180,
+                                                                                                "start": 3177,
+                                                                                                "tag": 8,
+                                                                                                "value": "date",
+                                                                                              },
+                                                                                            ],
+                                                                                          },
+                                                                                        ],
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3213,
+                                                                                "start": 3208,
+                                                                                "tag": 13,
+                                                                                "value": "rate",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3243,
+                                                                                "start": 3216,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3238,
+                                                                                    "start": 3216,
+                                                                                    "tag": 8,
+                                                                                    "value": "generation_tariff_rates",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 3243,
+                                                                                    "start": 3240,
+                                                                                    "tag": 8,
+                                                                                    "value": "rate",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                  Object {
+                                                                    "end": 3332,
+                                                                    "start": 3289,
+                                                                    "tag": 69,
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 3332,
+                                                                        "start": 3294,
+                                                                        "tag": 68,
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 3332,
+                                                                            "start": 3294,
+                                                                            "tag": 90,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 3305,
+                                                                                "start": 3294,
+                                                                                "tag": 89,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3305,
+                                                                                    "start": 3294,
+                                                                                    "tag": 8,
+                                                                                    "value": "tariff_rates",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3332,
+                                                                                "start": 3307,
+                                                                                "tag": 12,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3332,
+                                                                                    "start": 3310,
+                                                                                    "tag": 8,
+                                                                                    "value": "generation_tariff_rates",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                  Object {
+                                                                    "end": 3447,
+                                                                    "start": 3354,
+                                                                    "tag": 70,
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 3447,
+                                                                        "start": 3382,
+                                                                        "tag": 46,
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 3414,
+                                                                            "start": 3382,
+                                                                            "tag": 11,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 3404,
+                                                                                "start": 3382,
+                                                                                "tag": 8,
+                                                                                "value": "generation_tariff_rates",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3414,
+                                                                                "start": 3406,
+                                                                                "tag": 8,
+                                                                                "value": "tariff_id",
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                          Object {
+                                                                            "end": 3416,
+                                                                            "start": 3416,
+                                                                            "tag": 44,
+                                                                            "value": "=",
+                                                                          },
+                                                                          Object {
+                                                                            "end": 3447,
+                                                                            "start": 3418,
+                                                                            "tag": 11,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 3426,
+                                                                                "start": 3418,
+                                                                                "tag": 8,
+                                                                                "value": "contracts",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3447,
+                                                                                "start": 3428,
+                                                                                "tag": 8,
+                                                                                "value": "generation_tariff_id",
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                        ],
+                                                      },
+                                                      Object {
+                                                        "end": 3516,
+                                                        "start": 3504,
+                                                        "tag": 13,
+                                                        "value": "exportRates",
+                                                      },
+                                                      Object {
+                                                        "end": 4135,
+                                                        "start": 3535,
+                                                        "tag": 106,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 4117,
+                                                            "start": 3555,
+                                                            "tag": 117,
+                                                            "values": Array [
+                                                              Object {
+                                                                "end": 4097,
+                                                                "start": 3582,
+                                                                "tag": 81,
+                                                                "values": Array [
+                                                                  Object {
+                                                                    "end": 3929,
+                                                                    "start": 3611,
+                                                                    "tag": 62,
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 3929,
+                                                                        "start": 3611,
+                                                                        "tag": 61,
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 3929,
+                                                                            "start": 3611,
+                                                                            "tag": 54,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 3627,
+                                                                                "start": 3611,
+                                                                                "tag": 89,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3627,
+                                                                                    "start": 3611,
+                                                                                    "tag": 8,
+                                                                                    "value": "json_build_object",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3657,
+                                                                                "start": 3654,
+                                                                                "tag": 13,
+                                                                                "value": "id",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3681,
+                                                                                "start": 3660,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3678,
+                                                                                    "start": 3660,
+                                                                                    "tag": 8,
+                                                                                    "value": "export_tariff_rates",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 3681,
+                                                                                    "start": 3680,
+                                                                                    "tag": 8,
+                                                                                    "value": "id",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3716,
+                                                                                "start": 3708,
+                                                                                "tag": 13,
+                                                                                "value": "startOn",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3751,
+                                                                                "start": 3719,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3737,
+                                                                                    "start": 3719,
+                                                                                    "tag": 8,
+                                                                                    "value": "export_tariff_rates",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 3751,
+                                                                                    "start": 3739,
+                                                                                    "tag": 8,
+                                                                                    "value": "start_date_on",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3784,
+                                                                                "start": 3778,
+                                                                                "tag": 13,
+                                                                                "value": "endOn",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3847,
+                                                                                "start": 3787,
+                                                                                "tag": 54,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3794,
+                                                                                    "start": 3787,
+                                                                                    "tag": 89,
+                                                                                    "values": Array [
+                                                                                      Object {
+                                                                                        "end": 3794,
+                                                                                        "start": 3787,
+                                                                                        "tag": 8,
+                                                                                        "value": "COALESCE",
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 3826,
+                                                                                    "start": 3796,
+                                                                                    "tag": 11,
+                                                                                    "values": Array [
+                                                                                      Object {
+                                                                                        "end": 3814,
+                                                                                        "start": 3796,
+                                                                                        "tag": 8,
+                                                                                        "value": "export_tariff_rates",
+                                                                                      },
+                                                                                      Object {
+                                                                                        "end": 3826,
+                                                                                        "start": 3816,
+                                                                                        "tag": 8,
+                                                                                        "value": "end_date_on",
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 3847,
+                                                                                    "start": 3829,
+                                                                                    "tag": 52,
+                                                                                    "values": Array [
+                                                                                      Object {
+                                                                                        "end": 3840,
+                                                                                        "start": 3829,
+                                                                                        "tag": 13,
+                                                                                        "value": "9998-12-31",
+                                                                                      },
+                                                                                      Object {
+                                                                                        "end": 3846,
+                                                                                        "start": 3843,
+                                                                                        "tag": 32,
+                                                                                        "values": Array [
+                                                                                          Object {
+                                                                                            "end": 3846,
+                                                                                            "start": 3843,
+                                                                                            "tag": 89,
+                                                                                            "values": Array [
+                                                                                              Object {
+                                                                                                "end": 3846,
+                                                                                                "start": 3843,
+                                                                                                "tag": 8,
+                                                                                                "value": "date",
+                                                                                              },
+                                                                                            ],
+                                                                                          },
+                                                                                        ],
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3879,
+                                                                                "start": 3874,
+                                                                                "tag": 13,
+                                                                                "value": "rate",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3905,
+                                                                                "start": 3882,
+                                                                                "tag": 11,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3900,
+                                                                                    "start": 3882,
+                                                                                    "tag": 8,
+                                                                                    "value": "export_tariff_rates",
+                                                                                  },
+                                                                                  Object {
+                                                                                    "end": 3905,
+                                                                                    "start": 3902,
+                                                                                    "tag": 8,
+                                                                                    "value": "rate",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                  Object {
+                                                                    "end": 3990,
+                                                                    "start": 3951,
+                                                                    "tag": 69,
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 3990,
+                                                                        "start": 3956,
+                                                                        "tag": 68,
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 3990,
+                                                                            "start": 3956,
+                                                                            "tag": 90,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 3967,
+                                                                                "start": 3956,
+                                                                                "tag": 89,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3967,
+                                                                                    "start": 3956,
+                                                                                    "tag": 8,
+                                                                                    "value": "tariff_rates",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              Object {
+                                                                                "end": 3990,
+                                                                                "start": 3969,
+                                                                                "tag": 12,
+                                                                                "values": Array [
+                                                                                  Object {
+                                                                                    "end": 3990,
+                                                                                    "start": 3972,
+                                                                                    "tag": 8,
+                                                                                    "value": "export_tariff_rates",
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                  Object {
+                                                                    "end": 4097,
+                                                                    "start": 4012,
+                                                                    "tag": 70,
+                                                                    "values": Array [
+                                                                      Object {
+                                                                        "end": 4097,
+                                                                        "start": 4040,
+                                                                        "tag": 46,
+                                                                        "values": Array [
+                                                                          Object {
+                                                                            "end": 4068,
+                                                                            "start": 4040,
+                                                                            "tag": 11,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 4058,
+                                                                                "start": 4040,
+                                                                                "tag": 8,
+                                                                                "value": "export_tariff_rates",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 4068,
+                                                                                "start": 4060,
+                                                                                "tag": 8,
+                                                                                "value": "tariff_id",
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                          Object {
+                                                                            "end": 4070,
+                                                                            "start": 4070,
+                                                                            "tag": 44,
+                                                                            "value": "=",
+                                                                          },
+                                                                          Object {
+                                                                            "end": 4097,
+                                                                            "start": 4072,
+                                                                            "tag": 11,
+                                                                            "values": Array [
+                                                                              Object {
+                                                                                "end": 4080,
+                                                                                "start": 4072,
+                                                                                "tag": 8,
+                                                                                "value": "contracts",
+                                                                              },
+                                                                              Object {
+                                                                                "end": 4097,
+                                                                                "start": 4082,
+                                                                                "tag": 8,
+                                                                                "value": "export_tariff_id",
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                        ],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                          Object {
+                                            "end": 4178,
+                                            "start": 4165,
+                                            "tag": 69,
+                                            "values": Array [
+                                              Object {
+                                                "end": 4178,
+                                                "start": 4170,
+                                                "tag": 68,
+                                                "values": Array [
+                                                  Object {
+                                                    "end": 4178,
+                                                    "start": 4170,
+                                                    "tag": 90,
+                                                    "values": Array [
+                                                      Object {
+                                                        "end": 4178,
+                                                        "start": 4170,
+                                                        "tag": 89,
+                                                        "values": Array [
+                                                          Object {
+                                                            "end": 4178,
+                                                            "start": 4170,
+                                                            "tag": 8,
+                                                            "value": "contracts",
+                                                          },
+                                                        ],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                          Object {
+                                            "end": 4255,
+                                            "start": 4192,
+                                            "tag": 70,
+                                            "values": Array [
+                                              Object {
+                                                "end": 4255,
+                                                "start": 4212,
+                                                "tag": 46,
+                                                "values": Array [
+                                                  Object {
+                                                    "end": 4236,
+                                                    "start": 4212,
+                                                    "tag": 11,
+                                                    "values": Array [
+                                                      Object {
+                                                        "end": 4220,
+                                                        "start": 4212,
+                                                        "tag": 8,
+                                                        "value": "contracts",
+                                                      },
+                                                      Object {
+                                                        "end": 4236,
+                                                        "start": 4222,
+                                                        "tag": 8,
+                                                        "value": "installation_id",
+                                                      },
+                                                    ],
+                                                  },
+                                                  Object {
+                                                    "end": 4238,
+                                                    "start": 4238,
+                                                    "tag": 44,
+                                                    "value": "=",
+                                                  },
+                                                  Object {
+                                                    "end": 4255,
+                                                    "start": 4240,
+                                                    "tag": 11,
+                                                    "values": Array [
+                                                      Object {
+                                                        "end": 4252,
+                                                        "start": 4240,
+                                                        "tag": 8,
+                                                        "value": "installations",
+                                                      },
+                                                      Object {
+                                                        "end": 4255,
+                                                        "start": 4254,
+                                                        "tag": 8,
+                                                        "value": "id",
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 4308,
+                    "start": 4291,
+                    "tag": 69,
+                    "values": Array [
+                      Object {
+                        "end": 4308,
+                        "start": 4296,
+                        "tag": 68,
+                        "values": Array [
+                          Object {
+                            "end": 4308,
+                            "start": 4296,
+                            "tag": 90,
+                            "values": Array [
+                              Object {
+                                "end": 4308,
+                                "start": 4296,
+                                "tag": 89,
+                                "values": Array [
+                                  Object {
+                                    "end": 4308,
+                                    "start": 4296,
+                                    "tag": 8,
+                                    "value": "installations",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 4381,
+                    "start": 4314,
+                    "tag": 70,
+                    "values": Array [
+                      Object {
+                        "end": 4381,
+                        "start": 4326,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 4362,
+                            "start": 4326,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 4346,
+                                "start": 4326,
+                                "tag": 8,
+                                "value": "account_levelisations",
+                              },
+                              Object {
+                                "end": 4362,
+                                "start": 4348,
+                                "tag": 8,
+                                "value": "installation_id",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 4364,
+                            "start": 4364,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 4381,
+                            "start": 4366,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 4378,
+                                "start": 4366,
+                                "tag": 8,
+                                "value": "installations",
+                              },
+                              Object {
+                                "end": 4381,
+                                "start": 4380,
+                                "tag": 8,
+                                "value": "id",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 4403,
+                "start": 4387,
+                "tag": 12,
+                "values": Array [
+                  Object {
+                    "end": 4403,
+                    "start": 4390,
+                    "tag": 9,
+                    "value": "installation",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 4587,
+        "start": 4405,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 4432,
+            "start": 4412,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 4432,
+                "start": 4412,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 4432,
+                    "start": 4412,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 4432,
+                        "start": 4412,
+                        "tag": 8,
+                        "value": "account_levelisations",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 4517,
+            "start": 4436,
+            "tag": 67,
+            "values": Array [
+              Object {
+                "end": 4439,
+                "start": 4436,
+                "tag": 64,
+                "value": "JOIN",
+              },
+              Object {
+                "end": 4453,
+                "start": 4441,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 4453,
+                    "start": 4441,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 4453,
+                        "start": 4441,
+                        "tag": 8,
+                        "value": "levelisations",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 4517,
+                "start": 4459,
+                "tag": 65,
+                "values": Array [
+                  Object {
+                    "end": 4517,
+                    "start": 4462,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 4477,
+                        "start": 4462,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 4474,
+                            "start": 4462,
+                            "tag": 8,
+                            "value": "levelisations",
+                          },
+                          Object {
+                            "end": 4477,
+                            "start": 4476,
+                            "tag": 8,
+                            "value": "id",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 4479,
+                        "start": 4479,
+                        "tag": 44,
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 4517,
+                        "start": 4481,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 4501,
+                            "start": 4481,
+                            "tag": 8,
+                            "value": "account_levelisations",
+                          },
+                          Object {
+                            "end": 4517,
+                            "start": 4503,
+                            "tag": 8,
+                            "value": "levelisation_id",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 4587,
+            "start": 4521,
+            "tag": 67,
+            "values": Array [
+              Object {
+                "end": 4524,
+                "start": 4521,
+                "tag": 64,
+                "value": "JOIN",
+              },
+              Object {
+                "end": 4533,
+                "start": 4526,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 4533,
+                    "start": 4526,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 4533,
+                        "start": 4526,
+                        "tag": 8,
+                        "value": "accounts",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 4587,
+                "start": 4539,
+                "tag": 65,
+                "values": Array [
+                  Object {
+                    "end": 4587,
+                    "start": 4542,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 4552,
+                        "start": 4542,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 4549,
+                            "start": 4542,
+                            "tag": 8,
+                            "value": "accounts",
+                          },
+                          Object {
+                            "end": 4552,
+                            "start": 4551,
+                            "tag": 8,
+                            "value": "id",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 4554,
+                        "start": 4554,
+                        "tag": 44,
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 4587,
+                        "start": 4556,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 4576,
+                            "start": 4556,
+                            "tag": 8,
+                            "value": "account_levelisations",
+                          },
+                          Object {
+                            "end": 4587,
+                            "start": 4578,
+                            "tag": 8,
+                            "value": "account_id",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 4646,
+        "start": 4589,
+        "tag": 70,
+        "values": Array [
+          Object {
+            "end": 4646,
+            "start": 4597,
+            "tag": 46,
+            "values": Array [
+              Object {
+                "end": 4620,
+                "start": 4597,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 4617,
+                    "start": 4597,
+                    "tag": 8,
+                    "value": "account_levelisations",
+                  },
+                  Object {
+                    "end": 4620,
+                    "start": 4619,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
+              },
+              Object {
+                "end": 4622,
+                "start": 4622,
+                "tag": 44,
+                "value": "=",
+              },
+              Object {
+                "end": 4646,
+                "pick": Array [],
+                "required": true,
+                "start": 4624,
+                "tag": 10,
+                "type": "single",
+                "value": "accountLevelisationId",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Files Should parse complex sql levelisation-details.query.sql: levelisation-details.query.sql 1`] = `
 Object {
   "ast": Object {
