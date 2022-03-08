@@ -1529,7 +1529,7 @@ Object {
               "type": Object {
                 "comment": undefined,
                 "postgresType": "date",
-                "type": 6,
+                "type": 2,
               },
             },
             Object {
@@ -1538,7 +1538,7 @@ Object {
                 "comment": undefined,
                 "nullable": true,
                 "postgresType": "date",
-                "type": 6,
+                "type": 2,
               },
             },
             Object {
@@ -1616,7 +1616,7 @@ Object {
               "type": Object {
                 "comment": undefined,
                 "postgresType": "date",
-                "type": 6,
+                "type": 2,
               },
             },
             Object {
@@ -1625,7 +1625,7 @@ Object {
                 "comment": undefined,
                 "nullable": true,
                 "postgresType": "date",
-                "type": 6,
+                "type": 2,
               },
             },
             Object {
@@ -1858,7 +1858,7 @@ Object {
               "type": Object {
                 "comment": undefined,
                 "postgresType": "date",
-                "type": 6,
+                "type": 2,
               },
             },
             Object {
@@ -1867,7 +1867,7 @@ Object {
                 "comment": undefined,
                 "nullable": true,
                 "postgresType": "date",
-                "type": 6,
+                "type": 2,
               },
             },
             Object {
@@ -1945,7 +1945,7 @@ Object {
               "type": Object {
                 "comment": undefined,
                 "postgresType": "date",
-                "type": 6,
+                "type": 2,
               },
             },
             Object {
@@ -1954,7 +1954,7 @@ Object {
                 "comment": undefined,
                 "nullable": true,
                 "postgresType": "date",
-                "type": 6,
+                "type": 2,
               },
             },
             Object {
@@ -2874,6 +2874,699 @@ exports[`Load Files Should convert complex sql installations.sql: installations.
 Object {
   "params": Array [],
   "results": Array [],
+}
+`;
+
+exports[`Load Files Should convert complex sql levelisation-customer-data.query.sql: levelisation-customer-data.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "accountLevelisationId",
+      "type": Object {
+        "nullable": false,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "postgresType": "integer",
+          "type": 3,
+        },
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "interval",
+      "type": Object {
+        "items": Array [
+          Object {
+            "name": "start",
+            "type": Object {
+              "comment": undefined,
+              "postgresType": "date",
+              "type": 2,
+            },
+          },
+          Object {
+            "name": "end",
+            "type": Object {
+              "comment": undefined,
+              "postgresType": "date",
+              "type": 2,
+            },
+          },
+        ],
+        "postgresType": "json",
+        "type": 13,
+      },
+    },
+    Object {
+      "name": "levelisationQuarter",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "character varying",
+        "type": 2,
+      },
+    },
+    Object {
+      "name": "accountId",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "integer",
+        "type": 3,
+      },
+    },
+    Object {
+      "name": "contact",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "json",
+        "type": 14,
+        "value": Object {
+          "items": Array [
+            Object {
+              "name": "title",
+              "type": Object {
+                "comment": undefined,
+                "items": Array [
+                  Object {
+                    "literal": "Mrs",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "Miss",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "Dr",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "Ms",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "Mr",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                ],
+                "nullable": true,
+                "postgresType": "contact_titles",
+                "type": 12,
+              },
+            },
+            Object {
+              "name": "firstName",
+              "type": Object {
+                "comment": undefined,
+                "postgresType": "character varying",
+                "type": 2,
+              },
+            },
+            Object {
+              "name": "lastName",
+              "type": Object {
+                "comment": undefined,
+                "postgresType": "character varying",
+                "type": 2,
+              },
+            },
+            Object {
+              "name": "email",
+              "type": Object {
+                "comment": undefined,
+                "nullable": true,
+                "postgresType": "character varying",
+                "type": 2,
+              },
+            },
+            Object {
+              "name": "address",
+              "type": Object {
+                "items": Array [
+                  Object {
+                    "name": "city",
+                    "type": Object {
+                      "comment": undefined,
+                      "nullable": true,
+                      "postgresType": "character varying",
+                      "type": 2,
+                    },
+                  },
+                  Object {
+                    "name": "postcode",
+                    "type": Object {
+                      "comment": undefined,
+                      "postgresType": "character varying",
+                      "type": 2,
+                    },
+                  },
+                  Object {
+                    "name": "line1",
+                    "type": Object {
+                      "comment": undefined,
+                      "nullable": true,
+                      "postgresType": "character varying",
+                      "type": 2,
+                    },
+                  },
+                  Object {
+                    "name": "line2",
+                    "type": Object {
+                      "comment": undefined,
+                      "nullable": true,
+                      "postgresType": "character varying",
+                      "type": 2,
+                    },
+                  },
+                  Object {
+                    "name": "line3",
+                    "type": Object {
+                      "comment": undefined,
+                      "nullable": true,
+                      "postgresType": "character varying",
+                      "type": 2,
+                    },
+                  },
+                ],
+                "postgresType": "json",
+                "type": 13,
+              },
+            },
+          ],
+          "postgresType": "json",
+          "type": 13,
+        },
+      },
+    },
+    Object {
+      "name": "installation",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "json",
+        "type": 14,
+        "value": Object {
+          "items": Array [
+            Object {
+              "name": "installationId",
+              "type": Object {
+                "comment": undefined,
+                "postgresType": "integer",
+                "type": 3,
+              },
+            },
+            Object {
+              "name": "technologyType",
+              "type": Object {
+                "comment": undefined,
+                "items": Array [
+                  Object {
+                    "literal": "PV",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "PV",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "H",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "H",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "W",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "W",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "AD",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "AD",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "CHP",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                  Object {
+                    "literal": "CHP",
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                ],
+                "nullable": false,
+                "postgresType": "installation_technology_types",
+                "type": 12,
+              },
+            },
+            Object {
+              "name": "meters",
+              "type": Object {
+                "items": Object {
+                  "nullable": true,
+                  "postgresType": "json",
+                  "type": 14,
+                  "value": Object {
+                    "items": Array [
+                      Object {
+                        "name": "id",
+                        "type": Object {
+                          "comment": undefined,
+                          "postgresType": "integer",
+                          "type": 3,
+                        },
+                      },
+                      Object {
+                        "name": "startOn",
+                        "type": Object {
+                          "comment": undefined,
+                          "nullable": true,
+                          "postgresType": "date",
+                          "type": 2,
+                        },
+                      },
+                      Object {
+                        "name": "endOn",
+                        "type": Object {
+                          "comment": undefined,
+                          "nullable": true,
+                          "postgresType": "date",
+                          "type": 2,
+                        },
+                      },
+                      Object {
+                        "name": "type",
+                        "type": Object {
+                          "comment": undefined,
+                          "items": Array [
+                            Object {
+                              "literal": "Export",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "Generation",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                          ],
+                          "nullable": false,
+                          "postgresType": "meter_types",
+                          "type": 12,
+                        },
+                      },
+                      Object {
+                        "name": "reads",
+                        "type": Object {
+                          "items": Object {
+                            "nullable": true,
+                            "postgresType": "json",
+                            "type": 14,
+                            "value": Object {
+                              "items": Array [
+                                Object {
+                                  "name": "value",
+                                  "type": Object {
+                                    "comment": undefined,
+                                    "postgresType": "integer",
+                                    "type": 3,
+                                  },
+                                },
+                                Object {
+                                  "name": "dateOn",
+                                  "type": Object {
+                                    "comment": undefined,
+                                    "postgresType": "date",
+                                    "type": 2,
+                                  },
+                                },
+                                Object {
+                                  "name": "type",
+                                  "type": Object {
+                                    "comment": undefined,
+                                    "items": Array [
+                                      Object {
+                                        "literal": "Opening",
+                                        "postgresType": "text",
+                                        "type": 2,
+                                      },
+                                      Object {
+                                        "literal": "Closing",
+                                        "postgresType": "text",
+                                        "type": 2,
+                                      },
+                                      Object {
+                                        "literal": "Quarterly",
+                                        "postgresType": "text",
+                                        "type": 2,
+                                      },
+                                      Object {
+                                        "literal": "Meter Verification",
+                                        "postgresType": "text",
+                                        "type": 2,
+                                      },
+                                    ],
+                                    "nullable": false,
+                                    "postgresType": "meter_reads_types",
+                                    "type": 12,
+                                  },
+                                },
+                                Object {
+                                  "name": "id",
+                                  "type": Object {
+                                    "comment": undefined,
+                                    "postgresType": "integer",
+                                    "type": 3,
+                                  },
+                                },
+                              ],
+                              "postgresType": "json",
+                              "type": 13,
+                            },
+                          },
+                          "postgresType": "json[]",
+                          "type": 11,
+                        },
+                      },
+                    ],
+                    "postgresType": "json",
+                    "type": 13,
+                  },
+                },
+                "postgresType": "json[]",
+                "type": 11,
+              },
+            },
+            Object {
+              "name": "contracts",
+              "type": Object {
+                "items": Object {
+                  "nullable": true,
+                  "postgresType": "json",
+                  "type": 14,
+                  "value": Object {
+                    "items": Array [
+                      Object {
+                        "name": "schemeType",
+                        "type": Object {
+                          "comment": undefined,
+                          "items": Array [
+                            Object {
+                              "literal": "FIT",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "SEG",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                          ],
+                          "nullable": false,
+                          "postgresType": "contract_scheme_types",
+                          "type": 12,
+                        },
+                      },
+                      Object {
+                        "name": "schemeAccountReference",
+                        "type": Object {
+                          "comment": undefined,
+                          "postgresType": "character varying",
+                          "type": 2,
+                        },
+                      },
+                      Object {
+                        "name": "capacity",
+                        "type": Object {
+                          "comment": undefined,
+                          "postgresType": "numeric",
+                          "type": 3,
+                        },
+                      },
+                      Object {
+                        "name": "generationTariffId",
+                        "type": Object {
+                          "comment": undefined,
+                          "nullable": true,
+                          "postgresType": "integer",
+                          "type": 3,
+                        },
+                      },
+                      Object {
+                        "name": "exportTariffId",
+                        "type": Object {
+                          "comment": undefined,
+                          "nullable": true,
+                          "postgresType": "integer",
+                          "type": 3,
+                        },
+                      },
+                      Object {
+                        "name": "startOn",
+                        "type": Object {
+                          "comment": undefined,
+                          "postgresType": "date",
+                          "type": 2,
+                        },
+                      },
+                      Object {
+                        "name": "endOn",
+                        "type": Object {
+                          "comment": undefined,
+                          "nullable": true,
+                          "postgresType": "date",
+                          "type": 2,
+                        },
+                      },
+                      Object {
+                        "name": "exportType",
+                        "type": Object {
+                          "comment": undefined,
+                          "items": Array [
+                            Object {
+                              "literal": "Deemed",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "Deemed",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "Deemed",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "Metered Export",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "Metered Export",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "Metered Export",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "Off Grid",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "Off Grid",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "Off Grid",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "PPA",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "PPA",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                            Object {
+                              "literal": "PPA",
+                              "postgresType": "text",
+                              "type": 2,
+                            },
+                          ],
+                          "nullable": true,
+                          "postgresType": "installation_export_type",
+                          "type": 12,
+                        },
+                      },
+                      Object {
+                        "name": "exportPercentageSplit",
+                        "type": Object {
+                          "comment": undefined,
+                          "nullable": true,
+                          "postgresType": "numeric",
+                          "type": 3,
+                        },
+                      },
+                      Object {
+                        "name": "generationPercentageSplit",
+                        "type": Object {
+                          "comment": undefined,
+                          "nullable": true,
+                          "postgresType": "numeric",
+                          "type": 3,
+                        },
+                      },
+                      Object {
+                        "name": "generationRates",
+                        "type": Object {
+                          "items": Object {
+                            "nullable": true,
+                            "postgresType": "json",
+                            "type": 14,
+                            "value": Object {
+                              "items": Array [
+                                Object {
+                                  "name": "id",
+                                  "type": Object {
+                                    "comment": undefined,
+                                    "postgresType": "integer",
+                                    "type": 3,
+                                  },
+                                },
+                                Object {
+                                  "name": "startOn",
+                                  "type": Object {
+                                    "comment": undefined,
+                                    "postgresType": "date",
+                                    "type": 2,
+                                  },
+                                },
+                                Object {
+                                  "name": "endOn",
+                                  "type": Object {
+                                    "comment": undefined,
+                                    "nullable": false,
+                                    "postgresType": "date",
+                                    "type": 2,
+                                  },
+                                },
+                                Object {
+                                  "name": "rate",
+                                  "type": Object {
+                                    "comment": undefined,
+                                    "postgresType": "numeric",
+                                    "type": 3,
+                                  },
+                                },
+                              ],
+                              "postgresType": "json",
+                              "type": 13,
+                            },
+                          },
+                          "postgresType": "json[]",
+                          "type": 11,
+                        },
+                      },
+                      Object {
+                        "name": "exportRates",
+                        "type": Object {
+                          "items": Object {
+                            "nullable": true,
+                            "postgresType": "json",
+                            "type": 14,
+                            "value": Object {
+                              "items": Array [
+                                Object {
+                                  "name": "id",
+                                  "type": Object {
+                                    "comment": undefined,
+                                    "postgresType": "integer",
+                                    "type": 3,
+                                  },
+                                },
+                                Object {
+                                  "name": "startOn",
+                                  "type": Object {
+                                    "comment": undefined,
+                                    "postgresType": "date",
+                                    "type": 2,
+                                  },
+                                },
+                                Object {
+                                  "name": "endOn",
+                                  "type": Object {
+                                    "comment": undefined,
+                                    "nullable": false,
+                                    "postgresType": "date",
+                                    "type": 2,
+                                  },
+                                },
+                                Object {
+                                  "name": "rate",
+                                  "type": Object {
+                                    "comment": undefined,
+                                    "postgresType": "numeric",
+                                    "type": 3,
+                                  },
+                                },
+                              ],
+                              "postgresType": "json",
+                              "type": 13,
+                            },
+                          },
+                          "postgresType": "json[]",
+                          "type": 11,
+                        },
+                      },
+                    ],
+                    "postgresType": "json",
+                    "type": 13,
+                  },
+                },
+                "postgresType": "json[]",
+                "type": 11,
+              },
+            },
+          ],
+          "postgresType": "json",
+          "type": 13,
+        },
+      },
+    },
+  ],
 }
 `;
 

@@ -181,16 +181,16 @@ export interface Result {
     currentPeriodRead?: {
         id: number;
         value: number;
-        dateOn: Date;
-        submittedAt?: Date;
+        dateOn: string;
+        submittedAt?: string;
         reason?: string;
         type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
     };
     previousPeriodRead?: {
         id: number;
         value: number;
-        dateOn: Date;
-        submittedAt?: Date;
+        dateOn: string;
+        submittedAt?: string;
         reason?: string;
         type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
     };
@@ -219,16 +219,16 @@ export interface Result {
     currentPeriodRead?: {
         id: number;
         value: number;
-        dateOn: Date;
-        submittedAt?: Date;
+        dateOn: string;
+        submittedAt?: string;
         reason?: string;
         type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
     };
     previousPeriodRead?: {
         id: number;
         value: number;
-        dateOn: Date;
-        submittedAt?: Date;
+        dateOn: string;
+        submittedAt?: string;
         reason?: string;
         type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
     };
@@ -448,6 +448,78 @@ exports[`Traverse Should work: __generated__/installations.queries.ts 1`] = `
 "export interface Params {
 }
 export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/levelisation-customer-data.query.queries.ts 1`] = `
+"export interface Params {
+    accountLevelisationId: number;
+}
+export interface Result {
+    interval: {
+        start: string;
+        end: string;
+    };
+    levelisationQuarter: string;
+    accountId: number;
+    contact?: {
+        title?: \\"Mrs\\" | \\"Miss\\" | \\"Dr\\" | \\"Ms\\" | \\"Mr\\";
+        firstName: string;
+        lastName: string;
+        email?: string;
+        address: {
+            city?: string;
+            postcode: string;
+            line1?: string;
+            line2?: string;
+            line3?: string;
+        };
+    };
+    installation?: {
+        installationId: number;
+        technologyType: \\"PV\\" | \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\";
+        meters: {
+            id: number;
+            startOn?: string;
+            endOn?: string;
+            type: \\"Export\\" | \\"Generation\\";
+            reads: {
+                value: number;
+                dateOn: string;
+                type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+                id: number;
+            }[];
+        }[];
+        contracts: {
+            schemeType: \\"FIT\\" | \\"SEG\\";
+            schemeAccountReference: string;
+            capacity: number;
+            generationTariffId?: number;
+            exportTariffId?: number;
+            startOn: string;
+            endOn?: string;
+            exportType?: \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\";
+            exportPercentageSplit?: number;
+            generationPercentageSplit?: number;
+            generationRates: {
+                id: number;
+                startOn: string;
+                endOn: string;
+                rate: number;
+            }[];
+            exportRates: {
+                id: number;
+                startOn: string;
+                endOn: string;
+                rate: number;
+            }[];
+        }[];
+    };
 }
 export interface Query {
     params: Params;

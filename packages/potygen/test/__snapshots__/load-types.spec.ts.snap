@@ -284,6 +284,63 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert date column inside json_build_object sql (SELECT json_build_object('dateOn', date_col) FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "?column?",
+      "type": Object {
+        "items": Array [
+          Object {
+            "name": "dateOn",
+            "type": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "date",
+              "type": 2,
+            },
+          },
+        ],
+        "postgresType": "json",
+        "type": 13,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert date literal inside json_build_object sql (SELECT json_build_object('dateOn', '2022-01-01'::date, 'timestamp', '2022-01-01'::timestamp)) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "?column?",
+      "type": Object {
+        "items": Array [
+          Object {
+            "name": "dateOn",
+            "type": Object {
+              "postgresType": "date",
+              "type": 2,
+            },
+          },
+          Object {
+            "name": "timestamp",
+            "type": Object {
+              "postgresType": "timestamp",
+              "type": 2,
+            },
+          },
+        ],
+        "postgresType": "json",
+        "type": 13,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
 Object {
   "params": Array [],
