@@ -58,7 +58,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["prettier", "npm:2.5.1"],\
+            ["prettier", "npm:2.6.0"],\
             ["typescript", "patch:typescript@npm%3A4.6.2#~builtin<compat/typescript>::version=4.6.2&hash=bda367"]\
           ],\
           "linkType": "SOFT"\
@@ -691,8 +691,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "npm:26.6.3"],\
             ["pg-promise", "npm:10.11.1"],\
             ["prettier", [\
-              "@ikerin/prettier",\
-              "npm:2.5.1"\
+              "@potygen/prettier",\
+              "npm:2.6.0"\
             ]],\
             ["ts-jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:26.5.6"],\
             ["ts-node", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:10.4.0"],\
@@ -706,15 +706,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@gar-promisify-npm-1.1.2-2343f94380-d05081e088.zip/node_modules/@gar/promisify/",\
           "packageDependencies": [\
             ["@gar/promisify", "npm:1.1.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@ikerin/prettier", [\
-        ["npm:2.5.1", {\
-          "packageLocation": "./.yarn/cache/@ikerin-prettier-npm-2.5.1-18c30cb480-69161325c7.zip/node_modules/@ikerin/prettier/",\
-          "packageDependencies": [\
-            ["@ikerin/prettier", "npm:2.5.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1016,6 +1007,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
+      ["@potygen/prettier", [\
+        ["npm:2.6.0", {\
+          "packageLocation": "./.yarn/cache/@potygen-prettier-npm-2.6.0-34b07451e0-51198e7234.zip/node_modules/@potygen/prettier/",\
+          "packageDependencies": [\
+            ["@potygen/prettier", "npm:2.6.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@potygen/prettier-plugin-pgsql", [\
         ["virtual:7fe823fa77e180ba2d7149d126a89aa25531a1eb01203e760eb7920da4c2777d583fb5f66b59c31c5865b063bb5ae62e30e60f029277f9d72a352166e3f69762#workspace:packages/prettier-plugin-pgsql", {\
           "packageLocation": "./.yarn/__virtual__/@potygen-prettier-plugin-pgsql-virtual-19bd7a5140/1/packages/prettier-plugin-pgsql/",\
@@ -1028,8 +1028,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prettier", "npm:2.4.2"],\
             ["jest", "npm:26.6.3"],\
             ["prettier", [\
-              "@ikerin/prettier",\
-              "npm:2.5.1"\
+              "@potygen/prettier",\
+              "npm:2.6.0"\
             ]],\
             ["ts-jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:26.5.6"],\
             ["ts-node", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:10.4.0"],\
@@ -5487,7 +5487,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["potygen", "workspace:."],\
-            ["prettier", "npm:2.5.1"],\
+            ["prettier", "npm:2.6.0"],\
             ["typescript", "patch:typescript@npm%3A4.6.2#~builtin<compat/typescript>::version=4.6.2&hash=bda367"]\
           ],\
           "linkType": "SOFT"\
@@ -5507,6 +5507,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/prettier-npm-2.5.1-58b195b509-21b9408476.zip/node_modules/prettier/",\
           "packageDependencies": [\
             ["prettier", "npm:2.5.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:2.6.0", {\
+          "packageLocation": "./.yarn/cache/prettier-npm-2.6.0-fb29989f51-3e527ad622.zip/node_modules/prettier/",\
+          "packageDependencies": [\
+            ["prettier", "npm:2.6.0"]\
           ],\
           "linkType": "HARD"\
         }]\

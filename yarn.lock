@@ -443,7 +443,7 @@ __metadata:
     express: ^4.17.2
     jest: ^26.4.2
     pg-promise: ^10.11.1
-    prettier: "npm:@ikerin/prettier@^2.5.1"
+    prettier: "npm:@potygen/prettier@^2.6.0"
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
     typescript: ^4.5.5
@@ -4612,7 +4612,7 @@ fsevents@^2.1.2:
   version: 0.0.0-use.local
   resolution: "potygen@workspace:."
   dependencies:
-    prettier: ^2.5.1
+    prettier: ^2.6.0
     typescript: ^4.5.5
   languageName: unknown
   linkType: soft
@@ -4624,12 +4624,12 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"prettier@npm:@ikerin/prettier@^2.5.1":
-  version: 2.5.1
-  resolution: "@ikerin/prettier@npm:2.5.1"
+"prettier@npm:@potygen/prettier@^2.6.0":
+  version: 2.6.0
+  resolution: "@potygen/prettier@npm:2.6.0"
   bin:
     prettier: bin-prettier.js
-  checksum: 69161325c7a6de047d6bb11744d22e89f1d415ad189c6b756b12530b50d633e4649b500e523fb898b90d979b68c2d68aa405582eb25414cfd0f68b371296ac85
+  checksum: 51198e7234de8ed820279793a373e09902b7ec240b950cfb97eadca36c95cfdb8c82b87e990167155662432b4334847988b20641b4041c91164dcb8027743e5d
   languageName: node
   linkType: hard
 
@@ -4639,6 +4639,15 @@ fsevents@^2.1.2:
   bin:
     prettier: bin-prettier.js
   checksum: 21b9408476ea1c544b0e45d51ceb94a84789ff92095abb710942d780c862d0daebdb29972d47f6b4d0f7ebbfb0ffbf56cc2cfa3e3e9d1cca54864af185b15b66
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "prettier@npm:2.6.0"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 3e527ad62279676778a8404d18174d7ca2365ada4caba6eebbcdd9907d1187afd3bc6ade5b4e5f5d4549bb9fb71e45ca8930d71500017635524f8fc05bc52e93
   languageName: node
   linkType: hard
 
