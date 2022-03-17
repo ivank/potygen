@@ -614,6 +614,10 @@ export interface Query {
 
 exports[`Load Files Should convert complex sql overwritten.query.sql: overwritten.query.sql 1`] = `
 "export interface Params {
+    currentDate?: Date;
+    meterId?: number;
+    intervalStart?: Date;
+    intervalEnd?: Date;
 }
 export interface Result {
 }

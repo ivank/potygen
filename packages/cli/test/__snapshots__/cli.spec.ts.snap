@@ -652,6 +652,10 @@ export interface Query {
 
 exports[`CLI Should use cli to run pipeline on sql files: overwritten.query.queries.ts 1`] = `
 "export interface Params {
+    currentDate?: Date;
+    meterId?: number;
+    intervalStart?: Date;
+    intervalEnd?: Date;
 }
 export interface Result {
 }
