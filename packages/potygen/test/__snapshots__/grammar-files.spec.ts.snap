@@ -43119,6 +43119,409 @@ Object {
 }
 `;
 
+exports[`Sql Files Should parse complex sql overwritten.query.sql: overwritten.query.sql 1`] = `
+Object {
+  "ast": Object {
+    "end": 322,
+    "start": 0,
+    "tag": 6,
+    "values": Array [
+      Object {
+        "end": 194,
+        "start": 7,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 23,
+            "start": 7,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 23,
+                "start": 7,
+                "tag": 8,
+                "value": "overwritten_reads",
+              },
+            ],
+          },
+          Object {
+            "end": 190,
+            "start": 36,
+            "tag": 94,
+            "values": Array [
+              Object {
+                "end": 53,
+                "start": 43,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 53,
+                    "start": 43,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 53,
+                        "start": 43,
+                        "tag": 8,
+                        "value": "meter_reads",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 97,
+                "start": 59,
+                "tag": 88,
+                "values": Array [
+                  Object {
+                    "end": 97,
+                    "start": 69,
+                    "tag": 84,
+                    "values": Array [
+                      Object {
+                        "end": 97,
+                        "start": 69,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 82,
+                            "start": 69,
+                            "tag": 8,
+                            "value": "overwritten_at",
+                          },
+                          Object {
+                            "end": 97,
+                            "pick": Array [],
+                            "required": false,
+                            "start": 86,
+                            "tag": 10,
+                            "type": "single",
+                            "value": "currentDate",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 190,
+                "start": 103,
+                "tag": 70,
+                "values": Array [
+                  Object {
+                    "end": 190,
+                    "start": 115,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 133,
+                        "start": 115,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 122,
+                            "start": 115,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 122,
+                                "start": 115,
+                                "tag": 8,
+                                "value": "meter_id",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 124,
+                            "start": 124,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 133,
+                            "pick": Array [],
+                            "required": false,
+                            "start": 126,
+                            "tag": 10,
+                            "type": "single",
+                            "value": "meterId",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 137,
+                        "start": 135,
+                        "tag": 44,
+                        "value": "AND",
+                      },
+                      Object {
+                        "end": 190,
+                        "start": 139,
+                        "tag": 50,
+                        "values": Array [
+                          Object {
+                            "end": 150,
+                            "start": 139,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 150,
+                                "start": 139,
+                                "tag": 8,
+                                "value": "submitted_at",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 158,
+                            "start": 152,
+                            "tag": 48,
+                            "value": "BETWEEN",
+                          },
+                          Object {
+                            "end": 173,
+                            "pick": Array [],
+                            "required": false,
+                            "start": 160,
+                            "tag": 10,
+                            "type": "single",
+                            "value": "intervalStart",
+                          },
+                          Object {
+                            "end": 177,
+                            "start": 175,
+                            "tag": 49,
+                            "value": "AND",
+                          },
+                          Object {
+                            "end": 190,
+                            "pick": Array [],
+                            "required": false,
+                            "start": 179,
+                            "tag": 10,
+                            "type": "single",
+                            "value": "intervalEnd",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 322,
+        "start": 196,
+        "tag": 94,
+        "values": Array [
+          Object {
+            "end": 208,
+            "start": 203,
+            "tag": 90,
+            "values": Array [
+              Object {
+                "end": 208,
+                "start": 203,
+                "tag": 89,
+                "values": Array [
+                  Object {
+                    "end": 208,
+                    "start": 203,
+                    "tag": 8,
+                    "value": "issues",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 231,
+            "start": 210,
+            "tag": 88,
+            "values": Array [
+              Object {
+                "end": 231,
+                "start": 216,
+                "tag": 84,
+                "values": Array [
+                  Object {
+                    "end": 231,
+                    "start": 216,
+                    "tag": 83,
+                    "values": Array [
+                      Object {
+                        "end": 220,
+                        "start": 216,
+                        "tag": 8,
+                        "value": "state",
+                      },
+                      Object {
+                        "end": 231,
+                        "start": 224,
+                        "tag": 13,
+                        "value": "Closed",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 322,
+            "start": 233,
+            "tag": 70,
+            "values": Array [
+              Object {
+                "end": 322,
+                "start": 241,
+                "tag": 46,
+                "values": Array [
+                  Object {
+                    "end": 322,
+                    "start": 241,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 275,
+                        "start": 241,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 252,
+                            "start": 241,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 252,
+                                "start": 241,
+                                "tag": 8,
+                                "value": "reference_id",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 254,
+                            "start": 254,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 275,
+                            "start": 256,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 272,
+                                "start": 256,
+                                "tag": 8,
+                                "value": "overwritten_reads",
+                              },
+                              Object {
+                                "end": 275,
+                                "start": 274,
+                                "tag": 8,
+                                "value": "id",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 279,
+                        "start": 277,
+                        "tag": 44,
+                        "value": "AND",
+                      },
+                      Object {
+                        "end": 303,
+                        "start": 281,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 294,
+                            "start": 281,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 294,
+                                "start": 281,
+                                "tag": 8,
+                                "value": "reference_type",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 296,
+                            "start": 296,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 303,
+                            "start": 298,
+                            "tag": 13,
+                            "value": "Read",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 307,
+                    "start": 305,
+                    "tag": 44,
+                    "value": "AND",
+                  },
+                  Object {
+                    "end": 322,
+                    "start": 309,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 313,
+                        "start": 309,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 313,
+                            "start": 309,
+                            "tag": 8,
+                            "value": "state",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 315,
+                        "start": 315,
+                        "tag": 44,
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 322,
+                        "start": 317,
+                        "tag": 13,
+                        "value": "Open",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Files Should parse complex sql process-batch.query.sql: process-batch.query.sql 1`] = `
 Object {
   "ast": Object {

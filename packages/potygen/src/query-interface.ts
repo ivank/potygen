@@ -599,6 +599,7 @@ export const toParams =
           })(sql.values[2]),
         ];
       }
+
       case SqlName.Insert:
         const table = sql.values.filter(isTable)[0];
         const tableName = first(table.values);
@@ -616,6 +617,7 @@ export const toParams =
             ),
           }),
         );
+
       case SqlName.Function:
         const functionName = last(first(sql.values).values).value.toLowerCase();
         switch (functionName) {
@@ -636,6 +638,7 @@ export const toParams =
               )
               .concat(sql.values.filter(isOrderBy).flatMap(recur), sql.values.filter(isFilter).flatMap(recur));
         }
+
       case SqlName.Parameter:
         return [
           {
@@ -648,6 +651,7 @@ export const toParams =
             pick: sql.pick.map((name, index) => ({ name: name.value, type: context.columns[index] ?? typeUnknown })),
           },
         ];
+
       case SqlName.ComparationArrayInclusion:
       case SqlName.ComparationArray:
         const column = first(sql.values);
@@ -663,8 +667,10 @@ export const toParams =
               })(last(sql.values)),
             ]
           : sql.values.flatMap(recur);
+
       case SqlName.UnaryExpression:
         return toParams({ ...context, type: unaryOperatorTypes[sql.values[0].value] })(sql.values[1]);
+
       case SqlName.ValuesList:
         return sql.values
           .filter(isValues)
@@ -674,14 +680,18 @@ export const toParams =
             ),
           )
           .concat(sql.values.filter(isParameter).flatMap(recur));
+
       case SqlName.PgCast:
       case SqlName.Cast:
         return toParams({ ...context, type: toTypeRecur(last(sql.values)) })(first(sql.values));
+
       case SqlName.Limit:
       case SqlName.Offset:
         return toParams({ ...context, type: typeString })(first(sql.values));
+
       case SqlName.CTE:
         return isCTEValuesList(last(sql.values)) || context.cteParams ? sql.values.flatMap(recur) : [];
+
       default:
         return 'values' in sql ? sql.values.flatMap(recur) : [];
     }
