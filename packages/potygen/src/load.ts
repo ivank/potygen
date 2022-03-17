@@ -688,9 +688,12 @@ export const toLoadedQueryInterface =
     const context = throwOnUnknownLoadedContext(toLoadedContext({ data, sources }));
     const toTypeParam = toType(context, false);
     const toTypeResult = toType(context, true);
+    const sourceParams = sources
+      .filter(isSourceQuery)
+      .flatMap((source) => toLoadedQueryInterface(data)(source.value).params);
 
     return {
-      params: groupLoadedParams(params.map(toLoadedParam(toTypeParam))),
+      params: groupLoadedParams(params.map(toLoadedParam(toTypeParam)).concat(sourceParams)),
       results: results.flatMap(({ name, type }) =>
         isTypeLoadStar(type)
           ? context.sources

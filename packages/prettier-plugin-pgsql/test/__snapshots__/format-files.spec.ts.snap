@@ -1715,6 +1715,26 @@ ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
 "
 `;
 
+exports[`Sql Files Should parse complex sql overwritten.query.sql: overwritten.query.sql 1`] = `
+"WITH
+  overwritten_reads AS
+  (
+    UPDATE meter_reads
+    SET
+      overwritten_at = $currentDate
+    WHERE
+      meter_id = $meterId
+      AND submitted_at BETWEEN $intervalStart AND $intervalEnd
+  )
+UPDATE issues
+SET
+  state = 'Closed'
+WHERE
+  reference_id = overwritten_reads.id AND reference_type = 'Read'
+  AND state = 'Open'
+"
+`;
+
 exports[`Sql Files Should parse complex sql process-batch.query.sql: process-batch.query.sql 1`] = `
 "SELECT
   installations.legacy_fit_db_id AS \\"cfrFiTId\\",

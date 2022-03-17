@@ -2568,14 +2568,41 @@ Object {
     Object {
       "name": "id",
       "type": Object {
+        "items": Array [
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "comment": undefined,
+              "postgresType": "integer",
+              "type": 3,
+            },
+          },
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "comment": undefined,
+              "postgresType": "integer",
+              "type": 3,
+            },
+          },
+          Object {
+            "nullable": true,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "comment": undefined,
+              "postgresType": "integer",
+              "type": 3,
+            },
+          },
+        ],
         "nullable": true,
         "postgresType": "any",
-        "type": 14,
-        "value": Object {
-          "comment": undefined,
-          "postgresType": "integer",
-          "type": 3,
-        },
+        "type": 12,
       },
     },
   ],
@@ -4001,6 +4028,69 @@ Object {
 exports[`Load Files Should convert complex sql meter-reads.sql: meter-reads.sql 1`] = `
 Object {
   "params": Array [],
+  "results": Array [],
+}
+`;
+
+exports[`Load Files Should convert complex sql overwritten.query.sql: overwritten.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "currentDate",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "nullable": true,
+          "postgresType": "timestamp without time zone",
+          "type": 6,
+        },
+      },
+    },
+    Object {
+      "name": "meterId",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "postgresType": "integer",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "intervalStart",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "nullable": true,
+          "postgresType": "date",
+          "type": 6,
+        },
+      },
+    },
+    Object {
+      "name": "intervalEnd",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "nullable": true,
+          "postgresType": "date",
+          "type": 6,
+        },
+      },
+    },
+  ],
   "results": Array [],
 }
 `;

@@ -37801,6 +37801,369 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql overwritten.query.sql: overwritten.query.sql 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [],
+  "sources": Array [
+    Object {
+      "name": "overwritten_reads",
+      "sourceTag": Object {
+        "end": 194,
+        "start": 7,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 23,
+            "start": 7,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 23,
+                "start": 7,
+                "tag": 8,
+                "value": "overwritten_reads",
+              },
+            ],
+          },
+          Object {
+            "end": 190,
+            "start": 36,
+            "tag": 94,
+            "values": Array [
+              Object {
+                "end": 53,
+                "start": 43,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 53,
+                    "start": 43,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 53,
+                        "start": 43,
+                        "tag": 8,
+                        "value": "meter_reads",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 97,
+                "start": 59,
+                "tag": 88,
+                "values": Array [
+                  Object {
+                    "end": 97,
+                    "start": 69,
+                    "tag": 84,
+                    "values": Array [
+                      Object {
+                        "end": 97,
+                        "start": 69,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 82,
+                            "start": 69,
+                            "tag": 8,
+                            "value": "overwritten_at",
+                          },
+                          Object {
+                            "end": 97,
+                            "pick": Array [],
+                            "required": false,
+                            "start": 86,
+                            "tag": 10,
+                            "type": "single",
+                            "value": "currentDate",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 190,
+                "start": 103,
+                "tag": 70,
+                "values": Array [
+                  Object {
+                    "end": 190,
+                    "start": 115,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 133,
+                        "start": 115,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 122,
+                            "start": 115,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 122,
+                                "start": 115,
+                                "tag": 8,
+                                "value": "meter_id",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 124,
+                            "start": 124,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 133,
+                            "pick": Array [],
+                            "required": false,
+                            "start": 126,
+                            "tag": 10,
+                            "type": "single",
+                            "value": "meterId",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 137,
+                        "start": 135,
+                        "tag": 44,
+                        "value": "AND",
+                      },
+                      Object {
+                        "end": 190,
+                        "start": 139,
+                        "tag": 50,
+                        "values": Array [
+                          Object {
+                            "end": 150,
+                            "start": 139,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 150,
+                                "start": 139,
+                                "tag": 8,
+                                "value": "submitted_at",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 158,
+                            "start": 152,
+                            "tag": 48,
+                            "value": "BETWEEN",
+                          },
+                          Object {
+                            "end": 173,
+                            "pick": Array [],
+                            "required": false,
+                            "start": 160,
+                            "tag": 10,
+                            "type": "single",
+                            "value": "intervalStart",
+                          },
+                          Object {
+                            "end": 177,
+                            "start": 175,
+                            "tag": 49,
+                            "value": "AND",
+                          },
+                          Object {
+                            "end": 190,
+                            "pick": Array [],
+                            "required": false,
+                            "start": 179,
+                            "tag": 10,
+                            "type": "single",
+                            "value": "intervalEnd",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "type": "Query",
+      "value": Object {
+        "params": Array [
+          Object {
+            "end": 97,
+            "name": "currentDate",
+            "pick": Array [],
+            "required": false,
+            "spread": false,
+            "start": 86,
+            "type": Object {
+              "column": "overwritten_at",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 82,
+                "start": 69,
+                "tag": 8,
+                "value": "overwritten_at",
+              },
+              "table": "meter_reads",
+              "type": 19,
+            },
+          },
+          Object {
+            "end": 133,
+            "name": "meterId",
+            "pick": Array [],
+            "required": false,
+            "spread": false,
+            "start": 126,
+            "type": Object {
+              "column": "meter_id",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 122,
+                "start": 115,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 122,
+                    "start": 115,
+                    "tag": 8,
+                    "value": "meter_id",
+                  },
+                ],
+              },
+              "table": "meter_reads",
+              "type": 19,
+            },
+          },
+          Object {
+            "end": 173,
+            "name": "intervalStart",
+            "pick": Array [],
+            "required": false,
+            "spread": false,
+            "start": 160,
+            "type": Object {
+              "column": "submitted_at",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 150,
+                "start": 139,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 150,
+                    "start": 139,
+                    "tag": 8,
+                    "value": "submitted_at",
+                  },
+                ],
+              },
+              "table": "meter_reads",
+              "type": 19,
+            },
+          },
+          Object {
+            "end": 190,
+            "name": "intervalEnd",
+            "pick": Array [],
+            "required": false,
+            "spread": false,
+            "start": 179,
+            "type": Object {
+              "column": "submitted_at",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 150,
+                "start": 139,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 150,
+                    "start": 139,
+                    "tag": 8,
+                    "value": "submitted_at",
+                  },
+                ],
+              },
+              "table": "meter_reads",
+              "type": 19,
+            },
+          },
+        ],
+        "results": Array [],
+        "sources": Array [
+          Object {
+            "isResult": true,
+            "name": "meter_reads",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 53,
+              "start": 43,
+              "tag": 90,
+              "values": Array [
+                Object {
+                  "end": 53,
+                  "start": 43,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 53,
+                      "start": 43,
+                      "tag": 8,
+                      "value": "meter_reads",
+                    },
+                  ],
+                },
+              ],
+            },
+            "table": "meter_reads",
+            "type": "Table",
+          },
+        ],
+      },
+    },
+    Object {
+      "isResult": true,
+      "name": "issues",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 208,
+        "start": 203,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 208,
+            "start": 203,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 208,
+                "start": 203,
+                "tag": 8,
+                "value": "issues",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "issues",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql process-batch.query.sql: process-batch.query.sql 1`] = `
 Object {
   "params": Array [

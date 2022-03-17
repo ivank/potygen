@@ -28,6 +28,7 @@ Array [
   "levelisations.list.query.queries.ts",
   "meter-create.query.queries.ts",
   "meter-reads.queries.ts",
+  "overwritten.query.queries.ts",
   "process-batch.query.queries.ts",
   "rates-by-tarrif-ids.query.queries.ts",
   "read-create.query.queries.ts",
@@ -639,6 +640,22 @@ export interface Query {
 
 exports[`CLI Should use cli to run pipeline on sql files: meter-reads.queries.ts 1`] = `
 "export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: overwritten.query.queries.ts 1`] = `
+"export interface Params {
+    currentDate?: Date;
+    meterId?: number;
+    intervalStart?: Date;
+    intervalEnd?: Date;
 }
 export interface Result {
 }

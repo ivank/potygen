@@ -612,6 +612,22 @@ export interface Query {
 "
 `;
 
+exports[`Traverse Should work: __generated__/overwritten.query.queries.ts 1`] = `
+"export interface Params {
+    currentDate?: Date;
+    meterId?: number;
+    intervalStart?: Date;
+    intervalEnd?: Date;
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Traverse Should work: __generated__/process-batch.query.queries.ts 1`] = `
 "export interface Params {
     fitIds?: string[];
