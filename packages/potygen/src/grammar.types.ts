@@ -1,3 +1,10 @@
+/**
+ * grammar.types.ts
+ *
+ * Contains all the types describing the postgres SQL grammar ast.
+ * The actual implementation is in [grammar.ts](./grammar.ts)
+ */
+
 export const enum SqlName {
   /**
    * Reserved for other integrations
@@ -685,18 +692,56 @@ export interface AsTag extends NodeSqlTag {
 }
 
 /**
- * A column definition for an ad-hoc column list
+ * A column for an ad hoc table alias definition
+ *
+ * ```
+ *                                                                      ┌──── column identifer
+ *                                                                      │      ┌──── column type
+ *                                                                      ▼      ▼
+ *                                                                 ┌────────┬─────┐
+ * SELECT periods.energy FROM jsonb_to_recordset(col1) AS periods (│"energy"│float│,"id" int)
+ *                                                                 └────────┴─────┘
+ *                                                                └─────────────────┘
+ *                                                                             └─▶AsColumnListTag
+ * ```
  */
 export interface AsColumnTag extends NodeSqlTag {
   tag: SqlName.AsColumn;
   values: [IdentifierTag, TypeTag];
 }
 
+/**
+ * A list of columns for an ad hoc table alias definition
+ *
+ * ```
+ *                                                                             ┌──── columns
+ *                                                                             ▼
+ *                                                               ┌ ┌────────────────────────┐─┐
+ * SELECT periods.energy FROM jsonb_to_recordset(col1) AS periods (│"energy" float, "id" int│)
+ *                                                               └ └────────────────────────┘─┘
+ *                                                              └──────────────────────────────┘
+ *                                                                             └─▶AsColumnListTag
+ * ```
+ */
 export interface AsColumnListTag extends NodeSqlTag {
   tag: SqlName.AsColumnList;
   values: AsColumnTag[];
 }
 
+/**
+ * A an ad hoc table alias definition
+ *
+ * ```
+ *                                                           ┌──── recordset identifer
+ *                                                           │               ┌──── columns definitions
+ *                                                           ▼               ▼
+ *                                                    ┌ ─┌───────┬──────────────────────────┐
+ * SELECT periods.energy FROM jsonb_to_recordset(col1) AS periods│("energy" float, "id" int)│
+ *                                                    └ ─└───────┴──────────────────────────┘
+ *                                                   └───────────────────────────────────────┘
+ *                                                                    └─▶AsRecordsetTag
+ * ```
+ */
 export interface AsRecordsetTag extends NodeSqlTag {
   tag: SqlName.AsRecordset;
   values: [IdentifierTag, AsColumnListTag];

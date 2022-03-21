@@ -1,4 +1,10 @@
 /**
+ * util.ts
+ *
+ * A minimalistic implementation of [lodash/fp](https://github.com/lodash/lodash/wiki/FP-Guide)
+ */
+
+/**
  * This method returns the first argument it receives.
  */
 export const identity = <T>(item: T): T => item;

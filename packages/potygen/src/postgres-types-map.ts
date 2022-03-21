@@ -1,3 +1,9 @@
+/**
+ * postgres-types-map.ts
+ *
+ * The maps for converting postgres types into typescript definitions
+ */
+
 import { UnaryOperatorTag, BinaryOperatorTag } from './grammar.types';
 import {
   TypeJson,

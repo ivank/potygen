@@ -1,3 +1,10 @@
+/**
+ * load.types.ts
+ *
+ * The types for the "last stage" for converting from an SQL ast to what the actual typescript types are.
+ * The actual implementation is in [load.ts](./load.ts)
+ */
+
 import { AstTag, Tag } from './grammar.types';
 import { QueryInterface, Source, Type, TypeUnion } from './query-interface.types';
 import { SourceFile } from 'typescript';

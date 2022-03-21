@@ -710,6 +710,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@ikerin/build-readme", [\
+        ["npm:1.1.1", {\
+          "packageLocation": "./.yarn/cache/@ikerin-build-readme-npm-1.1.1-7624bb81d5-f2c88834fc.zip/node_modules/@ikerin/build-readme/",\
+          "packageDependencies": [\
+            ["@ikerin/build-readme", "npm:1.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@ikerin/rd-parse", [\
         ["npm:4.0.1", {\
           "packageLocation": "./.yarn/cache/@ikerin-rd-parse-npm-4.0.1-a7eb775516-68c1c041f2.zip/node_modules/@ikerin/rd-parse/",\
@@ -993,6 +1002,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/potygen/",\
           "packageDependencies": [\
             ["@potygen/potygen", "workspace:packages/potygen"],\
+            ["@ikerin/build-readme", "npm:1.1.1"],\
             ["@ikerin/rd-parse", "npm:4.0.1"],\
             ["@types/jest", "npm:26.0.24"],\
             ["@types/node", "npm:14.17.32"],\

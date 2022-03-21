@@ -1,3 +1,9 @@
+/**
+ * sql.types.ts
+ *
+ * The actual implementation is in [sql.ts](./sql.ts)
+ */
+
 import { AstTag } from './grammar.types';
 import { Param } from './query-interface.types';
 

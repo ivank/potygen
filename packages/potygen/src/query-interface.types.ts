@@ -1,3 +1,13 @@
+/**
+ * query-interface.types.ts
+ *
+ * The types here are used as a "midium stage" for converting from an SQL ast to what the actual typescript types are.
+ * Everything that can be processed, that does **not** require access to the database is done.
+ * Also a plan of what to load exactly from the database is generated, so that the loading can be done efficiently later by [load.ts](./load.ts)
+ *
+ * The actual implementation is in [query-interface.ts](./query-interface.ts)
+ */
+
 import { TableTag, Tag } from './grammar.types';
 
 export const enum TypeName {

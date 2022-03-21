@@ -457,6 +457,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ikerin/build-readme@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@ikerin/build-readme@npm:1.1.1"
+  bin:
+    build-readme: bin/build-readme
+  checksum: f2c88834fc621c0b994301a729098e67aa0c67dd441108c372a848c650e4ee30b6e6086fa57136d8756386af668dfd706c7338b418d4019e305b148d88aad7fe
+  languageName: node
+  linkType: hard
+
 "@ikerin/rd-parse@npm:^4.0.1":
   version: 4.0.1
   resolution: "@ikerin/rd-parse@npm:4.0.1"
@@ -724,6 +733,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@potygen/potygen@workspace:packages/potygen"
   dependencies:
+    "@ikerin/build-readme": ^1.1.1
     "@ikerin/rd-parse": ^4.0.1
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15

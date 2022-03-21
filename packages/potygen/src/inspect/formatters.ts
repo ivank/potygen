@@ -1,3 +1,9 @@
+/**
+ * formatters.ts
+ *
+ * Formatters to display introspection data.
+ */
+
 import { isNil, isUnique } from '../util';
 import { isTypeNullable } from '../query-interface.guards';
 import { Type } from '../query-interface.types';

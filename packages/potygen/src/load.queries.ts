@@ -1,3 +1,10 @@
+/**
+ * load.query.ts
+ *
+ * All the actual sql queries used to load type data from postgres
+ * Used by [load.ts](./load.ts).
+ */
+
 import { sql } from './sql';
 import { LoadedDataRaw, QualifiedName } from './load.types';
 

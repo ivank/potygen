@@ -1,3 +1,11 @@
+/**
+ * query-interface.ts
+ *
+ * The "midium stage" for converting from an SQL ast to what the actual typescript types are.
+ * Everything that can be processed, that does **not** require access to the database is done.
+ * Also a plan of what to load exactly from the database is generated, so that the loading can be done efficiently later by [load.ts](./load.ts)
+ */
+
 import {
   ArrayConstructorTag,
   AstTag,
@@ -94,6 +102,10 @@ type QueryInterfaceSqlTag =
  */
 type ResultTag = SelectListItemTag | ReturningListItemTag;
 
+/**
+ * Extract all the {@link Source}-s from a sql {@link Tag}. Designed to be be used in recursion
+ * Used through the {@link toSources} function.
+ */
 const toSourcesIterator =
   ({ sources = [], isResult = true }: SourcesIteratorContext = {}) =>
   (sql: Tag): Source[] => {
@@ -234,6 +246,10 @@ export const toConstantBinaryOperatorVariant = (
     : { ...typeUnknown, postgresType: `any` };
 };
 
+/**
+ * Convert a string of a postgres native type into a predefined type of {@link pgTypes}
+ * The type in postgres is defined with various underscore prefixes or quoted, with various cases.
+ */
 export const toAliasedPgType = (type?: string): keyof typeof pgTypes => {
   const trimmedType = type?.replace(/^_/, '').replace(/\"/g, '').toLowerCase() ?? 'any';
   return pgTypeAliases[trimmedType] ?? trimmedType;
@@ -491,9 +507,7 @@ const toResultName = (type: TypeOrLoad): string => {
 };
 
 /**
- * Convert an {@link }
- * @param context
- * @returns
+ * Convert an sql {@link ResultTag} into a {@link Result} object.
  */
 const toResult =
   (context: TypeContext) =>

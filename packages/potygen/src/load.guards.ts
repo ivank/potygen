@@ -1,3 +1,11 @@
+/**
+ * load.guards.ts
+ *
+ * Contains all [typeguards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html) for the grammer ast types
+ * The actual implementation is in [load.ts](./load.ts)
+ * Types in [load.types.ts](./load.types.ts)
+ */
+
 import {
   Data,
   DataEnum,

@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Example files Should process examples/inspect.ts: examples/inspect.ts 1`] = `
+"Load all data
+Loaded additional data: 3047.
+Load views: public.active_reads,public.all_types_view.
+No additional data found, skipping
+Completion Info found in: 
+SELECT product FROM orders WHERE region = $region
+       ^
+       | Column: 7...13
+
+[
+  {
+    \\"name\\": \\"region\\"
+  },
+  {
+    \\"name\\": \\"product\\"
+  },
+  {
+    \\"name\\": \\"quantity\\"
+  },
+  {
+    \\"name\\": \\"amount\\"
+  },
+  {
+    \\"name\\": \\"orders\\",
+    \\"source\\": \\"Table\\"
+  }
+]
+Quick Info found: { type: 'Column', name: 'product', start: 7, end: 13 }:
+Quick Info Column: {
+  column: { type: 2, postgresType: 'character varying', comment: undefined },
+  additionalEnum: undefined,
+  additionalComposite: undefined
+}:
+{
+  \\"display\\": \\"product character varying NOT NULL\\",
+  \\"description\\": \\"From: orders Table\\",
+  \\"start\\": 7,
+  \\"end\\": 13
+}
+"
+`;
+
+exports[`Example files Should process examples/load.ts: examples/load.ts 1`] = `
+"Load additional data: 1. {
+  tableNames: [ 'public.orders' ],
+  functionNames: [],
+  enumNames: [],
+  compositeNames: []
+}
+Loaded additional data: 1.
+{
+  \\"params\\": [
+    {
+      \\"name\\": \\"region\\",
+      \\"type\\": {
+        \\"type\\": 14,
+        \\"nullable\\": true,
+        \\"value\\": {
+          \\"type\\": 2,
+          \\"postgresType\\": \\"character varying\\"
+        },
+        \\"postgresType\\": \\"any\\"
+      }
+    }
+  ],
+  \\"results\\": [
+    {
+      \\"name\\": \\"product\\",
+      \\"type\\": {
+        \\"type\\": 2,
+        \\"postgresType\\": \\"character varying\\"
+      }
+    }
+  ]
+}
+"
+`;
+
+exports[`Example files Should process examples/load-all.ts: examples/load-all.ts 1`] = `
+"Load all data
+Loaded additional data: 3047.
+Load views: public.active_reads,public.all_types_view.
+No additional data found, skipping
+{
+  \\"params\\": [
+    {
+      \\"name\\": \\"region\\",
+      \\"type\\": {
+        \\"type\\": 14,
+        \\"nullable\\": true,
+        \\"value\\": {
+          \\"type\\": 2,
+          \\"postgresType\\": \\"character varying\\"
+        },
+        \\"postgresType\\": \\"any\\"
+      }
+    }
+  ],
+  \\"results\\": [
+    {
+      \\"name\\": \\"product\\",
+      \\"type\\": {
+        \\"type\\": 2,
+        \\"postgresType\\": \\"character varying\\"
+      }
+    }
+  ]
+}
+"
+`;
+
+exports[`Example files Should process examples/load-query-interface.ts: examples/load-query-interface.ts 1`] = `
+"{
+  \\"sources\\": [
+    {
+      \\"type\\": \\"Table\\",
+      \\"isResult\\": true,
+      \\"sourceTag\\": {
+        \\"tag\\": 90,
+        \\"values\\": [
+          {
+            \\"tag\\": 89,
+            \\"values\\": [
+              {
+                \\"tag\\": 8,
+                \\"value\\": \\"users\\",
+                \\"start\\": 17,
+                \\"end\\": 21
+              }
+            ],
+            \\"start\\": 17,
+            \\"end\\": 21
+          }
+        ],
+        \\"start\\": 17,
+        \\"end\\": 21
+      },
+      \\"name\\": \\"users\\",
+      \\"table\\": \\"users\\"
+    }
+  ],
+  \\"results\\": [
+    {
+      \\"name\\": \\"name\\",
+      \\"type\\": {
+        \\"type\\": 19,
+        \\"column\\": \\"name\\",
+        \\"sourceTag\\": {
+          \\"tag\\": 11,
+          \\"values\\": [
+            {
+              \\"tag\\": 8,
+              \\"value\\": \\"name\\",
+              \\"start\\": 7,
+              \\"end\\": 10
+            }
+          ],
+          \\"start\\": 7,
+          \\"end\\": 10
+        }
+      }
+    }
+  ],
+  \\"params\\": [
+    {
+      \\"name\\": \\"email\\",
+      \\"start\\": 37,
+      \\"end\\": 42,
+      \\"spread\\": false,
+      \\"required\\": false,
+      \\"type\\": {
+        \\"type\\": 19,
+        \\"column\\": \\"email\\",
+        \\"sourceTag\\": {
+          \\"tag\\": 11,
+          \\"values\\": [
+            {
+              \\"tag\\": 8,
+              \\"value\\": \\"email\\",
+              \\"start\\": 29,
+              \\"end\\": 33
+            }
+          ],
+          \\"start\\": 29,
+          \\"end\\": 33
+        }
+      },
+      \\"pick\\": []
+    }
+  ]
+}
+"
+`;
+
+exports[`Example files Should process examples/parser.ts: examples/parser.ts 1`] = `
+"{
+  tag: 81,
+  values: [
+    { tag: 62, values: [Array], start: 7, end: 7 },
+    { tag: 69, values: [Array], start: 9, end: 18 }
+  ],
+  start: 0,
+  end: 18
+}
+"
+`;
+
+exports[`Example files Should process examples/sql.ts: examples/sql.ts 1`] = `
+"[ { product: 'Sofa' }, { product: 'Chair' }, { product: 'Table' } ]
+"
+`;
+
+exports[`Example files Should process examples/sql-query.ts: examples/sql-query.ts 1`] = `
+"{
+  text: 'SELECT product FROM orders WHERE region = $1',
+  values: [ 'Sofia' ]
+}
+"
+`;
+
+exports[`Example files Should process examples/static-query-interface.ts: examples/static-query-interface.ts 1`] = `
+"[
+  {
+    name: 'col1',
+    type: { type: 3, literal: 123, postgresType: 'float4' }
+  }
+]
+"
+`;

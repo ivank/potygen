@@ -1,3 +1,10 @@
+/**
+ * grammar.ts
+ *
+ * Contains all the grammar definitions, to be used by [@ikerin/rd-parse](https://github.com/ivank/rd-parse) to build the parser.
+ * Types (and documentation about the grammar itself) would be located at [grammar.types.ts](./grammar.types.ts)
+ */
+
 import {
   All,
   Any,
@@ -780,11 +787,48 @@ const Rollback = astNode<Tag.RollbackTag>(
 
 const Comment = astLeaf<Tag.CommentTag>(Tag.SqlName.Comment, /^--([^\r\n]*)\n/);
 
+/**
+ * Grammar to be used by a {@link Parser} builder from [@ikerin/rd-parse](https://github.com/ivank/rd-parse)
+ */
 const Grammar = Ignore(
   // Ignore line comments and all whitespace
   Any(/^\s+/, Comment),
   Any(With, Select, Update, Delete, Insert, Begin, Savepoint, Commit, Rollback),
 );
 
+/**
+ * Postgres sql {@link Parser} ([@ikerin/rd-parse](https://github.com/ivank/rd-parse))
+ * Parses an sql string into {@link Tag.AstTag}
+ *
+ * @throws ParserError on parse error
+ *
+ * Example:
+ *
+ * ```ts
+ * import { parser } from '@potygen/potygen';
+ *
+ * const sql = `SELECT * FROM users`;
+ * const { ast } = parser(sql);
+ *
+ * console.log(ast);
+ * ```
+ */
 export const parser = Parser<Tag.AstTag, Tag.CommentTag>(Grammar);
+
+/**
+ * Postgres sql {@link Parser} ([@ikerin/rd-parse](https://github.com/ivank/rd-parse))
+ * Parses an sql string into {@link Tag.AstTag}
+ * Difference with {@link parser} is that it will not throw in an event of a parse error,
+ * but will return the partial result.
+ *
+ * Example:
+ *
+ * ```ts
+ * import { partialParser } from '@potygen/potygen';
+ *
+ * const sql = `SELECT * FROM users`;
+ * const { ast } = partialParser(sql);
+ *
+ * console.log(ast);
+ */
 export const partialParser = Parser<Tag.AstTag, Tag.CommentTag>(Grammar, undefined, true);

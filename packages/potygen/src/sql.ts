@@ -1,3 +1,10 @@
+/**
+ * sql.ts
+ *
+ * The `sql` template literal used to perform all the queries.
+ * This holds the user fasing interface
+ */
+
 import { parser } from './grammar';
 import { AstTag } from './grammar.types';
 import { isObject, orderBy } from './util';
@@ -7,6 +14,9 @@ import { typeUnknown } from './postgres-types-map';
 import { Param } from './query-interface.types';
 import { Query, QuerySource, SqlDatabase, SqlInterface, QueryConfig } from './sql.types';
 
+/**
+ * Extract the params from an sql {@link AstTag}.
+ */
 const toParamsFromAst = (ast: AstTag): Param[] =>
   toParams({ type: typeUnknown, columns: [], cteParams: true })(ast).sort(orderBy((p) => p.start));
 
