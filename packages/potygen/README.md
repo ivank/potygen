@@ -1,6 +1,12 @@
 # Potygen (Postgres typescript generator)
 
-Main readme at [Potygen]
+Main readme at [potygen](https://github.com/ivank/potygen)
+
+## Installation
+
+```shell
+yarn add @potygen/potygen
+```
 
 ## Usage
 
@@ -27,7 +33,7 @@ async function main() {
 main();
 ```
 
-This is paird with [@potygen/cli](../cli) to generate types for statically typed queries.
+This is paired with [@potygen/cli](../cli) to generate types for statically typed queries.
 
 You can also get the raw query config object that would be passed to [pg](https://github.com/brianc/node-postgres) query call.
 
@@ -45,19 +51,21 @@ console.log(queryConfig);
 ## Pipeline
 
 ```mermaid
-graph TD
-    SQL --> AST(Abstract Syntax Tree)
-    AST --> QI(Query Interface)
-    QI --> T(Type)
+graph LR
+    SQL --> | Parse | AST(Abstract Syntax Tree)
+    AST --> | Plan | QI(Query Interface)
+    QI --> | Load | T(Type)
 ```
 
 SQL is processed through several stages.
 
-### SQL -> AST
+### Parse (SQL -> AST)
 
-With the `parse` function we process a raw sql into an abstract syntax tree (AST) that is used throughout the various components.
+With the `parse` function we process the raw sql into an abstract syntax tree (AST) that is used throughout the various components.
 
-All of the tokens are numbers, to make sence of them you'll need to reference [SqlName](src/grammar.types.ts#L)
+> **Note** All of the tokens are numbers, to make sence of them you'll need to reference [SqlName](src/grammar.types.ts#L8-L481)
+
+The ast is also heavily typed with a lot of docs and diagrams of what they represent, for example the [SelectTag](src/grammar.types.ts#L1971-L1987). To help with working with the ast, every tag's type also has a type guard for it in [grammar.guards.ts](src/grammar.guards.ts)
 
 > [examples/parser.ts](https://github.com/ivank/potygen/tree/main/packages/potygen/examples/parser.ts)
 
@@ -72,9 +80,9 @@ console.log(ast);
 
 The AST is later used by [@potygen/prettier-plugin-pgsql](../prettier-plugin-pgsql), [@potygen/typescript-pgsql-plugin](../typescript-pgsql-plugin) as well as the typescript generation from [@potygen/cli](../cli)
 
-### AST -> Query Interface
+### Plan (AST -> Query Interface)
 
-Using the AST we can create an "interface" for a specific SQL, mainly what parameters are required by it an the type of its response. If the types can be determined statically, they will.
+Using the AST we can create an "interface" for a specific SQL - what parameters are required by it an the type of its response. If no information from the database is needed (no tables / views / functions etc. were used in the query), the parsing can end here and we could use the result to generate typescrint types.
 
 > [examples/static-query-interface.ts](https://github.com/ivank/potygen/tree/main/packages/potygen/examples/static-query-interface.ts)
 
@@ -102,7 +110,7 @@ const queryInterface = toQueryInterface(ast);
 console.log(JSON.stringify(queryInterface, null, 2));
 ```
 
-### Query Interface -> Type
+### Load (Query Interface -> Type)
 
 With `loadQueryInterfacesData` you can load the data, required to generate the types for a given query. Since this could be done in bulk, or incrementally, by keeping an reusing loaded data, its a separate function.
 
@@ -151,9 +159,9 @@ async function main() {
 main();
 ```
 
-The `loadedQueryInterface` will hold only statically defined type, that can be then used for various typescript generation purposes, or anything else.
+The `loadedQueryInterface` will now have all the data needed for various typescript generation purposes or similar.
 
-Since the type data required for most database is not that big, we can actually load all of it once, and then be able to resolve the types of any query, as long as the tables / other resources of that table have not been altered.
+Since the type data required for most databases is not that big, we can actually load all of it once, and then be able to resolve the types of any query, as long as the tables / views / enums / functions of that database have not been altered.
 
 > [examples/load-all.ts](https://github.com/ivank/potygen/tree/main/packages/potygen/examples/load-all.ts)
 

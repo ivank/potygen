@@ -2,6 +2,7 @@ import { readdirSync, readFileSync, unlinkSync } from 'fs';
 import { join } from 'path';
 import { potygen } from '../src/potygen';
 import { connectionString, rootDir } from './helpers';
+import * as packageJson from '../package.json';
 
 describe('CLI', () => {
   beforeEach(() =>
@@ -97,5 +98,14 @@ describe('CLI', () => {
     for (const name of resultQueries) {
       expect(readFileSync(join(__dirname, '__generated__', name), 'utf-8')).toMatchSnapshot(name);
     }
+  });
+
+  it('Should have the correct version', async () => {
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+
+    await expect(potygen(logger).exitOverride().parseAsync(['node', 'potygen', '--version'])).rejects.toMatchObject({
+      name: 'CommanderError',
+      message: packageJson.version,
+    });
   });
 });

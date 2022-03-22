@@ -981,6 +981,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/cli/",\
           "packageDependencies": [\
             ["@potygen/cli", "workspace:packages/cli"],\
+            ["@ikerin/build-readme", "npm:1.1.1"],\
             ["@potygen/potygen", "workspace:packages/potygen"],\
             ["@types/jest", "npm:26.0.24"],\
             ["@types/node", "npm:14.17.32"],\
