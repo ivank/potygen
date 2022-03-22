@@ -8,7 +8,7 @@
 
 ## Prettier & Typescript showcase
 
-![Video showcasing potygen autocomplete, type generation, prettier and typescript integration](./docs/potygen.mov)
+https://user-images.githubusercontent.com/4976/159504807-0a92f810-e8c7-464c-bfa6-6bbe4bd110e3.mov
 
 List of features
 
