@@ -12,7 +12,7 @@ CREATE TABLE books (
   "author_id" INT REFERENCES authors (id)
 );
 
-CREATE TABLE orders (
+CREATE TABLE book_orders (
   "id" SERIAL PRIMARY KEY,
   "state" order_state NOT NULL DEFAULT 'Pending'::order_state,
   "book_id" INT REFERENCES books (id),

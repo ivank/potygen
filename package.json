@@ -9,10 +9,12 @@
     "test": "yarn workspaces foreach --verbose run test",
     "lint": "yarn workspaces foreach --parallel --verbose run lint",
     "build": "yarn workspaces foreach --parallel --topological-dev --verbose run build",
-    "publish": "yarn workspaces foreach --no-private --verbose npm publish --tolerate-republish --access public"
+    "publish": "yarn workspaces foreach --no-private --verbose npm publish --tolerate-republish --access public",
+    "build:readme": "build-readme README.md https://github.com/ivank/potygen/tree/main"
   },
   "devDependencies": {
-    "prettier": "^2.6.0",
+    "@ikerin/build-readme": "^1.1.1",
+    "prettier": "npm:@potygen/prettier@^2.6.1",
     "typescript": "^4.5.5"
   },
   "workspaces": [

@@ -1,3 +1,10 @@
+/**
+ * inspect.ts
+ *
+ * Introspect details about a given sql string and position.
+ * Used by autocomplete / quickinfo code.
+ */
+
 import { parser, partialParser } from '../grammar';
 import { first, groupBy, isUnique } from '../util';
 import { toQueryInterface } from '../query-interface';

@@ -1,3 +1,10 @@
+/**
+ * path.ts
+ *
+ * The ast "path" is a data structure to hold both an sql tag, as well as a "stack" of all of its parents,
+ * so we can quickly undestand where a tag comes from.
+ */
+
 import { findLastIndex } from '../util';
 import { isNode } from '../grammar.guards';
 import { Tag, SqlTag } from '../grammar.types';

@@ -1,3 +1,11 @@
+/**
+ * grammar.guards.ts
+ *
+ * Contains all [typeguards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html) for the grammer ast types
+ * The actual implementation is in [grammar.ts](./grammar.ts)
+ * Types in [grammar.types.ts](./grammar.types.ts)
+ */
+
 import {
   AnyCastTag,
   AnyTypeTag,

@@ -436,14 +436,17 @@ __metadata:
     "@potygen/potygen": "workspace:*"
     "@potygen/prettier-plugin-pgsql": "workspace:*"
     "@potygen/typescript-pgsql-plugin": "workspace:*"
+    "@types/body-parser": ^1.19.2
     "@types/express": ^4.17.13
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15
+    axios: ^0.26.1
+    body-parser: ^1.19.2
     dotenv: ^14.3.2
     express: ^4.17.2
     jest: ^26.4.2
     pg-promise: ^10.11.1
-    prettier: "npm:@potygen/prettier@^2.6.0"
+    prettier: "npm:@potygen/prettier@^2.6.1"
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
     typescript: ^4.5.5
@@ -454,6 +457,15 @@ __metadata:
   version: 1.1.2
   resolution: "@gar/promisify@npm:1.1.2"
   checksum: d05081e0887a49c178b75ee3067bd6ee086f73c154d121b854fb2e044e8a89cb1cbb6de3a0dd93a519b80f0531fda68b099dd7256205f7fbb3490324342f2217
+  languageName: node
+  linkType: hard
+
+"@ikerin/build-readme@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@ikerin/build-readme@npm:1.1.1"
+  bin:
+    build-readme: bin/build-readme
+  checksum: f2c88834fc621c0b994301a729098e67aa0c67dd441108c372a848c650e4ee30b6e6086fa57136d8756386af668dfd706c7338b418d4019e305b148d88aad7fe
   languageName: node
   linkType: hard
 
@@ -703,6 +715,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@potygen/cli@workspace:packages/cli"
   dependencies:
+    "@ikerin/build-readme": ^1.1.1
     "@potygen/potygen": "workspace:*"
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15
@@ -710,7 +723,7 @@ __metadata:
     commander: ^8.3.0
     jest: ^26.4.2
     pg: ^8.6.0
-    prettier: ^2.5.1
+    prettier: "npm:@potygen/prettier@^2.6.1"
     runtypes: ^6.5.0
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
@@ -724,13 +737,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@potygen/potygen@workspace:packages/potygen"
   dependencies:
+    "@ikerin/build-readme": ^1.1.1
     "@ikerin/rd-parse": ^4.0.1
     "@types/jest": ^26.0.14
     "@types/node": ^14.17.15
     "@types/pg": ^8.6.1
     jest: ^26.4.2
     pg: ^8.7.1
-    prettier: ^2.5.1
+    pg-promise: ^10.11.1
+    prettier: "npm:@potygen/prettier@^2.6.1"
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
     typescript: ^4.5.5
@@ -747,7 +762,7 @@ __metadata:
     "@types/pg": ^8.6.1
     "@types/prettier": ^2.4.2
     jest: ^26.4.2
-    prettier: ^2.5.1
+    prettier: "npm:@potygen/prettier@^2.6.1"
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
     typescript: ^4.5.5
@@ -870,7 +885,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/body-parser@npm:*":
+"@types/body-parser@npm:*, @types/body-parser@npm:^1.19.2":
   version: 1.19.2
   resolution: "@types/body-parser@npm:1.19.2"
   dependencies:
@@ -1311,6 +1326,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^0.26.1":
+  version: 0.26.1
+  resolution: "axios@npm:0.26.1"
+  dependencies:
+    follow-redirects: ^1.14.8
+  checksum: d9eb58ff4bc0b36a04783fc9ff760e9245c829a5a1052ee7ca6013410d427036b1d10d04e7380c02f3508c5eaf3485b1ae67bd2adbfec3683704745c8d7a6e1a
+  languageName: node
+  linkType: hard
+
 "babel-jest@npm:^26.6.3":
   version: 26.6.3
   resolution: "babel-jest@npm:26.6.3"
@@ -1428,6 +1452,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"body-parser@npm:^1.19.2":
+  version: 1.19.2
+  resolution: "body-parser@npm:1.19.2"
+  dependencies:
+    bytes: 3.1.2
+    content-type: ~1.0.4
+    debug: 2.6.9
+    depd: ~1.1.2
+    http-errors: 1.8.1
+    iconv-lite: 0.4.24
+    on-finished: ~2.3.0
+    qs: 6.9.7
+    raw-body: 2.4.3
+    type-is: ~1.6.18
+  checksum: 7f777ea65670e2622ca4a785b5dcb2a68451b3bb8d4d0f41091d307d56b640dba588a9ae04d85dda2cdd5e42788266a783528d5417e5643720fd611fd52522e7
+  languageName: node
+  linkType: hard
+
 "brace-expansion@npm:^1.1.7":
   version: 1.1.11
   resolution: "brace-expansion@npm:1.1.11"
@@ -1523,6 +1565,13 @@ __metadata:
   version: 3.1.1
   resolution: "bytes@npm:3.1.1"
   checksum: 949ab99a385d6acf4d2c69f1afc618615dc905936e0b0b9aa94a9e94d722baaba44d6a0851536585a0892ae4d462b5a270ccb1b04c774640742cbde5538ca328
+  languageName: node
+  linkType: hard
+
+"bytes@npm:3.1.2":
+  version: 3.1.2
+  resolution: "bytes@npm:3.1.2"
+  checksum: e4bcd3948d289c5127591fbedf10c0b639ccbf00243504e4e127374a15c3bc8eed0d28d4aaab08ff6f1cf2abc0cce6ba3085ed32f4f90e82a5683ce0014e1b6e
   languageName: node
   linkType: hard
 
@@ -2420,6 +2469,16 @@ __metadata:
     locate-path: ^5.0.0
     path-exists: ^4.0.0
   checksum: 4c172680e8f8c1f78839486e14a43ef82e9decd0e74145f40707cc42e7420506d5ec92d9a11c22bd2c48fb0c384ea05dd30e10dd152fefeec6f2f75282a8b844
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.14.8":
+  version: 1.14.9
+  resolution: "follow-redirects@npm:1.14.9"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: f5982e0eb481818642492d3ca35a86989c98af1128b8e1a62911a3410621bc15d2b079e8170b35b19d3bdee770b73ed431a257ed86195af773771145baa57845
   languageName: node
   linkType: hard
 
@@ -4612,7 +4671,8 @@ fsevents@^2.1.2:
   version: 0.0.0-use.local
   resolution: "potygen@workspace:."
   dependencies:
-    prettier: ^2.6.0
+    "@ikerin/build-readme": ^1.1.1
+    prettier: "npm:@potygen/prettier@^2.6.1"
     typescript: ^4.5.5
   languageName: unknown
   linkType: soft
@@ -4624,30 +4684,12 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"prettier@npm:@potygen/prettier@^2.6.0":
-  version: 2.6.0
-  resolution: "@potygen/prettier@npm:2.6.0"
+"prettier@npm:@potygen/prettier@^2.6.1":
+  version: 2.6.1
+  resolution: "@potygen/prettier@npm:2.6.1"
   bin:
     prettier: bin-prettier.js
-  checksum: 51198e7234de8ed820279793a373e09902b7ec240b950cfb97eadca36c95cfdb8c82b87e990167155662432b4334847988b20641b4041c91164dcb8027743e5d
-  languageName: node
-  linkType: hard
-
-"prettier@npm:^2.5.1":
-  version: 2.5.1
-  resolution: "prettier@npm:2.5.1"
-  bin:
-    prettier: bin-prettier.js
-  checksum: 21b9408476ea1c544b0e45d51ceb94a84789ff92095abb710942d780c862d0daebdb29972d47f6b4d0f7ebbfb0ffbf56cc2cfa3e3e9d1cca54864af185b15b66
-  languageName: node
-  linkType: hard
-
-"prettier@npm:^2.6.0":
-  version: 2.6.0
-  resolution: "prettier@npm:2.6.0"
-  bin:
-    prettier: bin-prettier.js
-  checksum: 3e527ad62279676778a8404d18174d7ca2365ada4caba6eebbcdd9907d1187afd3bc6ade5b4e5f5d4549bb9fb71e45ca8930d71500017635524f8fc05bc52e93
+  checksum: bf20440065017d80bbad2858c4672d445d5421f4e41aa691211072e9bba35ad71fea0ba1ba8364209ba63eda0aef739cb7ade1bfaeb9c338e8126189e0c584f2
   languageName: node
   linkType: hard
 
@@ -4738,6 +4780,13 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
+"qs@npm:6.9.7":
+  version: 6.9.7
+  resolution: "qs@npm:6.9.7"
+  checksum: 5bbd263332ccf320a1f36d04a2019a5834dc20bcb736431eaccde2a39dcba03fb26d2fd00174f5d7bc26aaad1cad86124b18440883ac042ea2a0fca6170c1bf1
+  languageName: node
+  linkType: hard
+
 "range-parser@npm:~1.2.1":
   version: 1.2.1
   resolution: "range-parser@npm:1.2.1"
@@ -4754,6 +4803,18 @@ fsevents@^2.1.2:
     iconv-lite: 0.4.24
     unpipe: 1.0.0
   checksum: c6f8d6a75c65c0a047f888cb29efc97f60fb36e950ba2cb31fefce694f98186e844a03367920faa7dc5bffaf33df08aee0b9dd935280e366439fa6492a5b163e
+  languageName: node
+  linkType: hard
+
+"raw-body@npm:2.4.3":
+  version: 2.4.3
+  resolution: "raw-body@npm:2.4.3"
+  dependencies:
+    bytes: 3.1.2
+    http-errors: 1.8.1
+    iconv-lite: 0.4.24
+    unpipe: 1.0.0
+  checksum: d2961fa3c71c9c22dc2c3fd60ff377bf36dfed7d7a748f2b25d585934a3e9df565bb9aa5bc2e3a716ea941f4bc2a6ddc795c8b0cf7219fb071029b59b1985394
   languageName: node
   linkType: hard
 

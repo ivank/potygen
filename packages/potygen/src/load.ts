@@ -1,3 +1,11 @@
+/**
+ * load.ts
+ *
+ * The "last stage" for converting from an SQL ast to what the actual typescript types are.
+ * Converting the plan generated from [query-interface.ts](./query-interface.ts) into actual types.
+ * Loads the needed data from the database.
+ */
+
 import { isEqual, groupBy, isNil, isEmpty, isUniqueBy, first } from './util';
 import { parser } from './grammar';
 import {
@@ -676,6 +684,12 @@ const toType = (context: LoadedContext, isResult: boolean, isJsonObject?: boolea
   };
 };
 
+/**
+ * Extract the data needed to generate the types for all the queryInterfaces, and load them.
+ *
+ * If the data is already present in data, it will not be loaded again.
+ * This way the function can safely be called on a persistant data store taht is can be kept between executions.
+ */
 export const loadQueryInterfacesData = async (
   ctx: LoadContext,
   queryInterfaces: QueryInterface[],

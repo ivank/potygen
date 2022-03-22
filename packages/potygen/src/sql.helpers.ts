@@ -1,3 +1,9 @@
+/**
+ * sql.helpers.ts
+ *
+ * Helpers that wrap common use cases for the `sql` template literal from [sql.ts](./sql.ts)
+ */
+
 import { PotygenNotFoundError } from './errors';
 import { toQueryConfig } from './sql';
 import { MapQuery, Query, SqlDatabase, SqlInterface } from './sql.types';

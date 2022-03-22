@@ -1,3 +1,11 @@
+/**
+ * query-interface.guards.ts
+ *
+ * Contains all [typeguards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html) for the query interface
+ * The actual implementation is in [query-interface.ts](./query-interface.ts)
+ * Types in [query-interface.types.ts](./query-interface.types.ts)
+ */
+
 import {
   Type,
   TypeOrLoad,

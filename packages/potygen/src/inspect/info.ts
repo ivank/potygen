@@ -1,3 +1,9 @@
+/**
+ * info.ts
+ *
+ * Convert [path.ts](./path.ts) data into actual viewable introspaction details
+ */
+
 import {
   isColumn,
   isIdentifier,

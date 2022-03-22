@@ -1,3 +1,9 @@
+/**
+ * sql.types.ts
+ *
+ * The actual implementation is in [sql.ts](./sql.ts)
+ */
+
 import { AstTag } from './grammar.types';
 import { Param } from './query-interface.types';
 
@@ -13,7 +19,7 @@ export interface SqlInterface {
  * External database instance. Like [pg package](https://node-postgres.com)'s [Client](https://node-postgres.com/api/client) or [Pool](https://node-postgres.com/api/pool)
  */
 export interface SqlDatabase {
-  query: <T extends Record<string, unknown>>(value: QueryConfig) => Promise<SqlResult<T>>;
+  query: <T extends Record<string, unknown>>(value: QueryConfig) => Promise<SqlResult<T> | T[]>;
 }
 
 /**

@@ -1,3 +1,10 @@
+/**
+ * grammar.ts
+ *
+ * Contains all the grammar definitions, to be used by [@ikerin/rd-parse](https://github.com/ivank/rd-parse) to build the parser.
+ * Types (and documentation about the grammar itself) would be located at [grammar.types.ts](./grammar.types.ts)
+ */
+
 import {
   All,
   Any,
@@ -196,7 +203,7 @@ const Number = astLeaf<Tag.NumberTag>(Tag.SqlName.Number, NumberRule);
 const Boolean = astUpperLeaf<Tag.BooleanTag>(Tag.SqlName.Boolean, /^(TRUE|FALSE)/i);
 
 const AllTypesRule =
-  /^(xml|xid|void|varchar|varbit|uuid|unknown|txid_snapshot|tsvector|tstzrange|tsrange|tsm_handler|trigger|tinterval|timetz|timestamptz|timestamp without time zone|timestamp with time zone|timestamp|time without time zone|time with time zone|time|tid|text|smgr|smallserial|smallint|serial|reltime|regtype|regrole|regprocedure|regproc|regoperator|regoper|regnamespace|regdictionary|regconfig|regclass|refcursor|record|real|query|polygon|point|pg_lsn|pg_ddl_command|path|opaque|oid|numeric|name|mrange|money|macaddr8|macaddr|lseg|line|language_handler|jsonb|json|interval|internal|integer|int8range|int8|int4range|int4|int2vector|int2|int|inet|index_am_handler|float8|float4|fdw_handler|event_trigger|double precision|daterange|date|cstring|circle|cidr|cid|character varying|character|char|bytea|bpchar|box|boolean|bool|bit varying|bit|bigserial|bigint|aclitem|abstime)/i;
+  /^(xml|xid|void|varchar|varbit|uuid|unknown|txid_snapshot|tsvector|tstzrange|tsrange|tsm_handler|trigger|tinterval|timetz|timestamptz|timestamp without time zone|timestamp with time zone|timestamp|time without time zone|time with time zone|time|tid|text|smgr|smallserial|smallint|serial|reltime|regtype|regrole|regprocedure|regproc|regoperator|regoper|regnamespace|regdictionary|regconfig|regclass|refcursor|record|real|query|polygon|point|pg_lsn|pg_ddl_command|path|opaque|numeric|name|mrange|money|macaddr8|macaddr|lseg|line|language_handler|jsonb|json|interval|internal|integer|int8range|int8|int4range|int4|int2vector|int2|int|inet|index_am_handler|float8|float4|fdw_handler|event_trigger|double precision|daterange|date|cstring|circle|cidr|cid|character varying|character|char|bytea|bpchar|box|boolean|bool|bit varying|bit|bigserial|bigint|aclitem|abstime|oidvector|oid)/i;
 
 const ConstantType = astUpperLeaf<Tag.ConstantTypeTag>(Tag.SqlName.ConstantType, AllTypesRule);
 
@@ -780,11 +787,48 @@ const Rollback = astNode<Tag.RollbackTag>(
 
 const Comment = astLeaf<Tag.CommentTag>(Tag.SqlName.Comment, /^--([^\r\n]*)\n/);
 
+/**
+ * Grammar to be used by a {@link Parser} builder from [@ikerin/rd-parse](https://github.com/ivank/rd-parse)
+ */
 const Grammar = Ignore(
   // Ignore line comments and all whitespace
   Any(/^\s+/, Comment),
   Any(With, Select, Update, Delete, Insert, Begin, Savepoint, Commit, Rollback),
 );
 
+/**
+ * Postgres sql {@link Parser} ([@ikerin/rd-parse](https://github.com/ivank/rd-parse))
+ * Parses an sql string into {@link Tag.AstTag}
+ *
+ * @throws ParserError on parse error
+ *
+ * Example:
+ *
+ * ```ts
+ * import { parser } from '@potygen/potygen';
+ *
+ * const sql = `SELECT * FROM users`;
+ * const { ast } = parser(sql);
+ *
+ * console.log(ast);
+ * ```
+ */
 export const parser = Parser<Tag.AstTag, Tag.CommentTag>(Grammar);
+
+/**
+ * Postgres sql {@link Parser} ([@ikerin/rd-parse](https://github.com/ivank/rd-parse))
+ * Parses an sql string into {@link Tag.AstTag}
+ * Difference with {@link parser} is that it will not throw in an event of a parse error,
+ * but will return the partial result.
+ *
+ * Example:
+ *
+ * ```ts
+ * import { partialParser } from '@potygen/potygen';
+ *
+ * const sql = `SELECT * FROM users`;
+ * const { ast } = partialParser(sql);
+ *
+ * console.log(ast);
+ */
 export const partialParser = Parser<Tag.AstTag, Tag.CommentTag>(Grammar, undefined, true);
