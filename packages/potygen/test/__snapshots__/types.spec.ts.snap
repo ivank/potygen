@@ -569,27 +569,6 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for oidvector sql 1`] = `
-Object {
-  "oidvector": "1",
-}
-`;
-
-exports[`Query Interface Should load type for oidvector sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
-      "name": "vector",
-      "type": Object {
-        "postgresType": "oid",
-        "type": 3,
-      },
-    },
-  ],
-}
-`;
-
 exports[`Query Interface Should load type for path sql 1`] = `
 Object {
   "path": "[(1,2),(2,3),(3,4)]",

@@ -12,7 +12,7 @@ interface Query {
 
 const allSql = sql<Query>`SELECT id FROM all_types`;
 const oneSql = sql<Query>`SELECT id FROM all_types WHERE id = $id`;
-const otherSql = sql<Query>`SELECT 'TEST' || NOT _null AS t FROM all_types WHERE id = $id`;
+const otherSql = sql<Query>`SELECT 'TEST' || "not_null" AS t FROM all_types WHERE id = $id`;
 
 describe('Template Tag', () => {
   beforeAll(async () => {
@@ -23,7 +23,7 @@ describe('Template Tag', () => {
   afterAll(() => db.end());
 
   it('Should use parameter with spread without pick', async () => {
-    const query = sql`SELECT NOT _null FROM all_types WHERE id IN $$ids`;
+    const query = sql`SELECT "not_null" FROM all_types WHERE id IN $$ids`;
     expect(await query(db, { ids: [1, 2] })).toEqual([{ not_null: 1 }, { not_null: 2 }]);
   });
 
@@ -46,7 +46,7 @@ describe('Template Tag', () => {
         { val: 20, data: JSON.stringify({ test: 20 }) },
       ],
     });
-    const data = await sql`SELECT jsonb_col FROM all_types WHERE NOT _null IN $$notNull`(db, { notNull: [10, 20] });
+    const data = await sql`SELECT jsonb_col FROM all_types WHERE "not_null" IN $$notNull`(db, { notNull: [10, 20] });
     await sql`ROLLBACK`(db, {});
 
     expect(data).toEqual([{ jsonb_col: { test: 10 } }, { jsonb_col: { test: 20 } }]);
