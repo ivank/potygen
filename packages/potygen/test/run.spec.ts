@@ -1,6 +1,7 @@
 import { Client } from 'pg';
+import * as pgp from 'pg-promise';
 import { maybeOneResult, oneResult, sql, mapResult } from '../src';
-import { testDb } from './helpers';
+import { testDb, connectionString } from './helpers';
 
 let db: Client;
 
@@ -11,7 +12,7 @@ interface Query {
 
 const allSql = sql<Query>`SELECT id FROM all_types`;
 const oneSql = sql<Query>`SELECT id FROM all_types WHERE id = $id`;
-const otherSql = sql<Query>`SELECT 'TEST' || not_null AS t FROM all_types WHERE id = $id`;
+const otherSql = sql<Query>`SELECT 'TEST' || NOT _null AS t FROM all_types WHERE id = $id`;
 
 describe('Template Tag', () => {
   beforeAll(async () => {
@@ -22,20 +23,30 @@ describe('Template Tag', () => {
   afterAll(() => db.end());
 
   it('Should use parameter with spread without pick', async () => {
-    const query = sql`SELECT not_null FROM all_types WHERE id IN $$ids`;
+    const query = sql`SELECT NOT _null FROM all_types WHERE id IN $$ids`;
     expect(await query(db, { ids: [1, 2] })).toEqual([{ not_null: 1 }, { not_null: 2 }]);
   });
 
   it('Should insert inside transaction with spread pick', async () => {
     await sql`BEGIN`(db, {});
 
-    await sql`INSERT INTO all_types (not_null, jsonb_col) VALUES $$items(val, data)`(db, {
+    await sql`
+      INSERT INTO all_types (
+        not_null,
+        jsonb_col
+      )
+      VALUES
+        $$items(
+          val,
+          data
+        )
+      `(db, {
       items: [
         { val: 10, data: JSON.stringify({ test: 10 }) },
         { val: 20, data: JSON.stringify({ test: 20 }) },
       ],
     });
-    const data = await sql`SELECT jsonb_col FROM all_types WHERE not_null IN $$notNull`(db, { notNull: [10, 20] });
+    const data = await sql`SELECT jsonb_col FROM all_types WHERE NOT _null IN $$notNull`(db, { notNull: [10, 20] });
     await sql`ROLLBACK`(db, {});
 
     expect(data).toEqual([{ jsonb_col: { test: 10 } }, { jsonb_col: { test: 20 } }]);
@@ -43,6 +54,14 @@ describe('Template Tag', () => {
 
   it('Should select all', async () => {
     expect(await allSql(db, {})).toEqual([{ id: 1 }, { id: 2 }]);
+  });
+
+  it('Should select all using pgp', async () => {
+    const db = pgp()(connectionString);
+
+    expect(await allSql(db, {})).toEqual([{ id: 1 }, { id: 2 }]);
+
+    await db.$pool.end();
   });
 
   it('Should select with params', async () => {

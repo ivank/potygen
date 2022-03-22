@@ -58,7 +58,6 @@ describe('Query Interface', () => {
     ['int2vector', sql`SELECT '1'::int2vector`],
     ['cstring', sql`SELECT '1'::cstring`],
     ['numeric', sql`SELECT '1.2'::numeric`],
-    ['oidvector', sql`SELECT '1'::oidvector`],
     ['path', sql`SELECT '[(1,2),(2,3),(3,4)]'::path`],
     ['polygon', sql`SELECT '((1,2),(2,3),(1,2))'::polygon`],
   ])('Should load type for %s sql', async (_, sql) => {

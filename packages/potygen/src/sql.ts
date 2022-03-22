@@ -166,15 +166,12 @@ export const toQuery = <TSqlInterface extends SqlInterface = SqlInterface>(sql: 
 
     const query = toQueryConfigFromSource<TSqlInterface>(source, args[1]);
 
-    try {
-      return args[0].query(query).then(({ rows }) => rows.map(nullToUndefinedInPlace));
-    } catch (error) {
-      if (error instanceof Error && isDatabaseError(error)) {
-        throw new PotygenDatabaseError(error, query);
-      } else {
-        throw error;
-      }
-    }
+    return args[0]
+      .query(query)
+      .then((result) => ('rows' in result ? result.rows : result).map(nullToUndefinedInPlace))
+      .catch((error) => {
+        throw error instanceof Error && isDatabaseError(error) ? new PotygenDatabaseError(error, query) : error;
+      });
   };
 };
 

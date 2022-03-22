@@ -941,7 +941,8 @@ export interface ConstantTypeTag extends LeafSqlTag {
     | 'BOOLEAN'
     | 'BIT VARYING'
     | 'BIGSERIAL'
-    | 'BIGINT';
+    | 'BIGINT'
+    | 'OIDVECTOR';
 }
 /**
  * An explicitly specified type of constant tag.

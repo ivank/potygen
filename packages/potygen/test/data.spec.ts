@@ -7,7 +7,21 @@ describe('Data', () => {
     const db = testDb();
 
     const start = sql<StartQuery>`BEGIN`;
-    const init = sql<InitQuery>`INSERT INTO all_types (id,not_null) VALUES (10,10),(11,11)`;
+    const init = sql<InitQuery>`
+      INSERT INTO all_types (
+        id,
+        not_null
+      )
+      VALUES
+        (
+          10,
+          10
+        ),
+        (
+          11,
+          11
+        )
+      `;
     const retrieve = sql<RetrieveQuery>`SELECT * FROM all_types WHERE id >= 10`;
     const end = sql<EndQuery>`ROLLBACK`;
 
