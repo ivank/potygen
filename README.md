@@ -135,7 +135,7 @@ As the comment [comment from Hacker News regarding "The Art of PostgreSQL" state
 
 ## Installation
 
-For basic functionality you'll need a runtime dependency of '@potygen/potygen'
+For basic functionality you'll need a runtime dependency of `@potygen/potygen`
 
 ```shell
 yarn add @potygen/potygen
@@ -223,6 +223,6 @@ export const createApp = (db: SqlDatabase) => {
 
 ## State
 
-Project state: Beta. It is used in production, but might not be able to parse some complex queries. In the [sql](./sql) folder you'll find the kinds of queries potygen was designed to deal with, and can decide whether it can handle the complexity that you need.
+Project state: `Beta`. It is used in production, but might not be able to parse some complex queries. In the [sql](./sql) folder you'll find the kinds of queries potygen was designed to deal with, and can decide whether it can handle the complexity that you need.
 
 This project is being actively developed and its APIs might change. All issue reports, feature requests and PRs appreciated.
