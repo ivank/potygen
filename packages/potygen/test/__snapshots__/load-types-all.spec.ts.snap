@@ -756,6 +756,129 @@ Object {
         "type": 12,
       },
     },
+    Object {
+      "name": "state_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "items": Array [
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+          ],
+          "postgresType": "account_state",
+          "type": 12,
+        },
+        "nullable": true,
+        "postgresType": "account_state[]",
+        "type": 11,
+      },
+    },
+    Object {
+      "name": "item_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "attributes": Object {
+            "name": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "text",
+              "type": 2,
+            },
+            "price": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "numeric",
+              "type": 3,
+            },
+            "supplier_id": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "integer",
+              "type": 3,
+            },
+          },
+          "name": "inventory_item",
+          "postgresType": "inventory_item",
+          "schema": "public",
+          "type": 10,
+        },
+        "nullable": true,
+        "postgresType": "inventory_item[]",
+        "type": 11,
+      },
+    },
+    Object {
+      "name": "static_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "postgresType": "int8",
+          "type": 4,
+        },
+        "nullable": true,
+        "postgresType": "int8[]",
+        "type": 11,
+      },
+    },
   ],
 }
 `;
@@ -1678,6 +1801,129 @@ Object {
         "nullable": true,
         "postgresType": "account_state",
         "type": 12,
+      },
+    },
+    Object {
+      "name": "state_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "items": Array [
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+          ],
+          "postgresType": "account_state",
+          "type": 12,
+        },
+        "nullable": true,
+        "postgresType": "account_state[]",
+        "type": 11,
+      },
+    },
+    Object {
+      "name": "item_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "attributes": Object {
+            "name": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "text",
+              "type": 2,
+            },
+            "price": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "numeric",
+              "type": 3,
+            },
+            "supplier_id": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "integer",
+              "type": 3,
+            },
+          },
+          "name": "inventory_item",
+          "postgresType": "inventory_item",
+          "schema": "public",
+          "type": 10,
+        },
+        "nullable": true,
+        "postgresType": "inventory_item[]",
+        "type": 11,
+      },
+    },
+    Object {
+      "name": "static_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "postgresType": "int8",
+          "type": 4,
+        },
+        "nullable": true,
+        "postgresType": "int8[]",
+        "type": 11,
       },
     },
   ],

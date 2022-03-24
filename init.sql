@@ -54,7 +54,10 @@ CREATE TABLE all_types (
   uuid_col uuid,
   xml_col xml,
   item inventory_item,
-  state account_state
+  state account_state,
+  state_arr account_state[],
+  item_arr inventory_item[],
+  static_arr bigint[]
 );
 
 COMMENT ON TABLE all_types IS 'All the postgres types';

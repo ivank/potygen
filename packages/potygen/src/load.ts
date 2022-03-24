@@ -289,17 +289,33 @@ const dataColumnToType = (
   composites: TypeComposite[],
   enums: Record<string, TypeUnion>,
   column: LoadedDataTable['data'][0],
-): Type =>
-  column.type === 'USER-DEFINED'
-    ? enums[column.record]
-      ? {
-          ...enums[column.record],
-          nullable: column.isNullable === 'YES',
-          comment: column.comment,
-          postgresType: column.record,
-        }
-      : composites.find((item) => column.record === item.name) ?? { type: TypeName.Unknown, postgresType: 'any' }
-    : loadPgType(column.type, column.isNullable === 'YES', column.comment);
+): Type => {
+  if (column.type === 'ARRAY' && column.record.startsWith('_')) {
+    const type = column.record.substring(1);
+
+    return {
+      type: TypeName.Array,
+      items: enums[type]
+        ? enums[type]
+        : composites.find((item) => type === item.name) ??
+          toPgTypeConstant(type) ?? { type: TypeName.Unknown, postgresType: 'any' },
+      nullable: column.isNullable === 'YES',
+      comment: column.comment,
+      postgresType: type + '[]',
+    };
+  } else {
+    return column.type === 'USER-DEFINED'
+      ? enums[column.record]
+        ? {
+            ...enums[column.record],
+            nullable: column.isNullable === 'YES',
+            comment: column.comment,
+            postgresType: column.record,
+          }
+        : composites.find((item) => column.record === item.name) ?? { type: TypeName.Unknown, postgresType: 'any' }
+      : loadPgType(column.type, column.isNullable === 'YES', column.comment);
+  }
+};
 
 const toLoadedFunction = ({ data, name }: LoadedDataFunction): LoadedFunction => ({
   name: name.name,

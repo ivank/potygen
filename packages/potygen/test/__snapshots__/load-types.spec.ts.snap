@@ -234,6 +234,90 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert composite array column sql (SELECT item_arr FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "item_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "attributes": Object {
+            "name": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "text",
+              "type": 2,
+            },
+            "price": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "numeric",
+              "type": 3,
+            },
+            "supplier_id": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "integer",
+              "type": 3,
+            },
+          },
+          "name": "inventory_item",
+          "postgresType": "inventory_item",
+          "schema": "public",
+          "type": 10,
+        },
+        "nullable": true,
+        "postgresType": "inventory_item[]",
+        "type": 11,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert composite array const sql (SELECT '{}'::inventory_item[]) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "array",
+      "type": Object {
+        "items": Object {
+          "attributes": Object {
+            "name": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "text",
+              "type": 2,
+            },
+            "price": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "numeric",
+              "type": 3,
+            },
+            "supplier_id": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "integer",
+              "type": 3,
+            },
+          },
+          "name": "inventory_item",
+          "postgresType": "inventory_item",
+          "schema": undefined,
+          "type": 10,
+        },
+        "postgresType": "inventory_item[]",
+        "type": 11,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert composite type from table sql (SELECT (item).supplier_id FROM all_types) 1`] = `
 Object {
   "params": Array [],
@@ -886,6 +970,163 @@ Object {
         "type": 12,
       },
     },
+    Object {
+      "name": "state_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "items": Array [
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+          ],
+          "postgresType": "account_state",
+          "type": 12,
+        },
+        "nullable": true,
+        "postgresType": "account_state[]",
+        "type": 11,
+      },
+    },
+    Object {
+      "name": "item_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "attributes": Object {
+            "name": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "text",
+              "type": 2,
+            },
+            "price": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "numeric",
+              "type": 3,
+            },
+            "supplier_id": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "integer",
+              "type": 3,
+            },
+          },
+          "name": "inventory_item",
+          "postgresType": "inventory_item",
+          "schema": "public",
+          "type": 10,
+        },
+        "nullable": true,
+        "postgresType": "inventory_item[]",
+        "type": 11,
+      },
+    },
+    Object {
+      "name": "static_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "postgresType": "int8",
+          "type": 4,
+        },
+        "nullable": true,
+        "postgresType": "int8[]",
+        "type": 11,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert enum array column sql (SELECT state_arr FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "state_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "items": Array [
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+          ],
+          "postgresType": "account_state",
+          "type": 12,
+        },
+        "nullable": true,
+        "postgresType": "account_state[]",
+        "type": 11,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert enum array const sql (SELECT '{}'::account_levelisation_state[]) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "array",
+      "type": Object {
+        "items": Object {
+          "items": Array [
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Done",
+              "postgresType": "text",
+              "type": 2,
+            },
+          ],
+          "postgresType": "account_levelisation_state",
+          "type": 12,
+        },
+        "postgresType": "account_levelisation_state[]",
+        "type": 11,
+      },
+    },
   ],
 }
 `;
@@ -1203,6 +1444,46 @@ Object {
         "nullable": true,
         "postgresType": "character",
         "type": 2,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert static array column sql (SELECT static_arr FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "static_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "postgresType": "int8",
+          "type": 4,
+        },
+        "nullable": true,
+        "postgresType": "int8[]",
+        "type": 11,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert static array const sql (SELECT '{}'::bigint[]) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "array",
+      "type": Object {
+        "items": Object {
+          "postgresType": "int8",
+          "type": 4,
+        },
+        "postgresType": "int8[]",
+        "type": 11,
       },
     },
   ],
@@ -1768,6 +2049,89 @@ Object {
         "nullable": true,
         "postgresType": "account_state",
         "type": 12,
+      },
+    },
+    Object {
+      "name": "state_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "items": Array [
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+          ],
+          "postgresType": "account_state",
+          "type": 12,
+        },
+        "nullable": true,
+        "postgresType": "account_state[]",
+        "type": 11,
+      },
+    },
+    Object {
+      "name": "item_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "attributes": Object {
+            "name": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "text",
+              "type": 2,
+            },
+            "price": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "numeric",
+              "type": 3,
+            },
+            "supplier_id": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "integer",
+              "type": 3,
+            },
+          },
+          "name": "inventory_item",
+          "postgresType": "inventory_item",
+          "schema": "public",
+          "type": 10,
+        },
+        "nullable": true,
+        "postgresType": "inventory_item[]",
+        "type": 11,
+      },
+    },
+    Object {
+      "name": "static_arr",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "postgresType": "int8",
+          "type": 4,
+        },
+        "nullable": true,
+        "postgresType": "int8[]",
+        "type": 11,
       },
     },
   ],
