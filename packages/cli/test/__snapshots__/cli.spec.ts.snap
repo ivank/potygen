@@ -869,6 +869,9 @@ export interface Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
      *
      */
     state?: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    state_arr?: (\\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\")[];
+    item_arr?: string[];
+    static_arr?: number[];
 }
 export interface Sql1Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: Sql1Params;
@@ -996,6 +999,9 @@ export interface TMP2Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
      *
      */
     state?: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    state_arr?: (\\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\")[];
+    item_arr?: string[];
+    static_arr?: number[];
 }
 export interface TMP2Sql1Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: TMP2Sql1Params;

@@ -92,6 +92,9 @@ export interface Result<TJson_col = unknown, TJsonb_col = unknown> {
      *
      */
     state?: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    state_arr?: (\\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\")[];
+    item_arr?: string[];
+    static_arr?: number[];
 }
 export interface Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: Params;
