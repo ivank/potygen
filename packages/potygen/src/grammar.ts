@@ -369,7 +369,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
   Y((ChildExpression) => {
     const ArrayConstructor = astNode<Tag.ArrayConstructorTag>(
       Tag.SqlName.ArrayConstructor,
-      All(/^ARRAY/i, SquareBrackets(List(ChildExpression))),
+      All(/^ARRAY/i, Any(SquareBrackets(List(ChildExpression)), SquareBrackets())),
     );
     const ArraySelectConstructor = astNode<Tag.ArraySelectConstructorTag>(
       Tag.SqlName.ArraySelectConstructor,

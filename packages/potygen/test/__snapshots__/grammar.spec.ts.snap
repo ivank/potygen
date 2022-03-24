@@ -10044,6 +10044,39 @@ Object {
 }
 `;
 
+exports[`Sql Should parse query for type array empty (SELECT ARRAY[]): array empty 1`] = `
+Object {
+  "ast": Object {
+    "end": 13,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 13,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 13,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 13,
+                "start": 7,
+                "tag": 53,
+                "values": Array [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse query for type array index (SELECT arr[12]): array index 1`] = `
 Object {
   "ast": Object {
