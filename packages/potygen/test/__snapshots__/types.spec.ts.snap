@@ -46,46 +46,6 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for array numbers sql 1`] = `
-Object {
-  "array": Array [
-    1,
-    2,
-  ],
-}
-`;
-
-exports[`Query Interface Should load type for array numbers sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
-      "name": "array",
-      "type": Object {
-        "items": Object {
-          "items": Array [
-            Object {
-              "literal": 1,
-              "postgresType": "float4",
-              "type": 3,
-            },
-            Object {
-              "literal": 2,
-              "postgresType": "float4",
-              "type": 3,
-            },
-          ],
-          "postgresType": "any",
-          "type": 12,
-        },
-        "postgresType": "any[]",
-        "type": 11,
-      },
-    },
-  ],
-}
-`;
-
 exports[`Query Interface Should load type for array strings sql 1`] = `
 Object {
   "array": Array [
