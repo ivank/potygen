@@ -16,6 +16,8 @@ describe('Query Interface', () => {
   it.each<[string, Query]>([
     ['aclitem', sql`SELECT 'pg_monitor=r*/pg_read_all_stats'::aclitem`],
     ['cid', sql`SELECT '1'::cid`],
+    ['array strings', sql`SELECT ARRAY['one', 'two']`],
+    ['array enums', sql`SELECT ARRAY['Pending', 'Done']::account_levelisation_state[]`],
     ['macaddr', sql`SELECT '08:00:2b:01:02:03'::macaddr`],
     ['macaddr8', sql`SELECT '08:00:2b:01:02:03:04:05'::macaddr8`],
     ['pg_lsn', sql`SELECT '16/B374D848'::pg_lsn`],

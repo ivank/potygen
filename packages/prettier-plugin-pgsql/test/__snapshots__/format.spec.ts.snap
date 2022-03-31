@@ -385,6 +385,11 @@ exports[`Format Should parse simple sql dollar quoted string (SELECT $Dianne's h
 "
 `;
 
+exports[`Format Should parse simple sql empty array (SELECT ARRAY[]): empty array 1`] = `
+"SELECT ARRAY[]
+"
+`;
+
 exports[`Format Should parse simple sql escape constant (SELECT E'111'::varbit): escape constant 1`] = `
 "SELECT E'111'::varbit
 "

@@ -30,6 +30,7 @@ import {
   isUniqueBy,
   isTypeOptional,
   TypeName,
+  isEmpty,
 } from '@potygen/potygen';
 
 const mkdirAsync = promisify(mkdir);
@@ -93,13 +94,16 @@ const toPropertyType =
       const itemsType = toPropertyType(context)(type.items);
       return { ...itemsType, type: factory.createArrayTypeNode(itemsType.type) };
     } else if (isTypeUnion(type)) {
-      return compactTypes(type.items).reduce<TypeContext & { type: UnionTypeNode }>(
-        (acc, item, index) => {
-          const itemType = toPropertyType({ ...acc, name: context.name + index })(item);
-          return { ...itemType, type: factory.createUnionTypeNode(acc.type.types.concat(itemType.type)) };
-        },
-        { ...context, type: factory.createUnionTypeNode([]) },
-      );
+      const unionTypes = compactTypes(type.items);
+      return isEmpty(unionTypes)
+        ? { ...context, type: factory.createToken(SyntaxKind.UnknownKeyword) }
+        : unionTypes.reduce<TypeContext & { type: UnionTypeNode }>(
+            (acc, item, index) => {
+              const itemType = toPropertyType({ ...acc, name: context.name + index })(item);
+              return { ...itemType, type: factory.createUnionTypeNode(acc.type.types.concat(itemType.type)) };
+            },
+            { ...context, type: factory.createUnionTypeNode([]) },
+          );
     } else if (isTypeOptional(type)) {
       return toPropertyType(context)(type.value);
     } else {

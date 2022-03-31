@@ -307,6 +307,7 @@ describe('Sql', () => {
     ${'customdollar quoted string'} | ${"SELECT $SomeTag$Dianne's horse$SomeTag$"}
     ${'const select'}               | ${"SELECT '2018-01-01'"}
     ${'array'}                      | ${'SELECT ARRAY[1, 2]'}
+    ${'array empty'}                | ${'SELECT ARRAY[]'}
     ${'array index'}                | ${'SELECT arr[12]'}
     ${'array index expression'}     | ${'SELECT arr[12+3]'}
     ${'array index expression col'} | ${'SELECT arr[table1.id+3] FROM table1'}

@@ -103,6 +103,19 @@ export interface Query<TJson_col = unknown, TJsonb_col = unknown> {
 "
 `;
 
+exports[`Query Interface Should convert empty array sql (SELECT ARRAY[]) 1`] = `
+"export interface Params {
+}
+export interface Result {
+    array: unknown[];
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Query Interface Should convert enum column sql (SELECT state FROM account_levelisations) 1`] = `
 "export interface Params {
 }

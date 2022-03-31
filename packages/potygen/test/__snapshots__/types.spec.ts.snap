@@ -21,6 +21,71 @@ Object {
 }
 `;
 
+exports[`Query Interface Should load type for array enums sql 1`] = `
+Object {
+  "array": "{Pending,Done}",
+}
+`;
+
+exports[`Query Interface Should load type for array enums sql 2`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "array",
+      "type": Object {
+        "items": Object {
+          "postgresType": "any",
+          "type": 9,
+        },
+        "postgresType": "any[]",
+        "type": 11,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should load type for array strings sql 1`] = `
+Object {
+  "array": Array [
+    "one",
+    "two",
+  ],
+}
+`;
+
+exports[`Query Interface Should load type for array strings sql 2`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "array",
+      "type": Object {
+        "items": Object {
+          "items": Array [
+            Object {
+              "literal": "one",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "two",
+              "postgresType": "text",
+              "type": 2,
+            },
+          ],
+          "postgresType": "any",
+          "type": 12,
+        },
+        "postgresType": "any[]",
+        "type": 11,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should load type for bit sql 1`] = `
 Object {
   "bit": "1",

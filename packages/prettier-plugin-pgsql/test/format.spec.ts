@@ -17,6 +17,7 @@ describe('Format', () => {
     ${'unary'}                        | ${'SELECT NOT TRUE'}
     ${'unary where'}                  | ${'SELECT col1 FROM table1 WHERE name IS NOT NULL'}
     ${'string'}                       | ${"SELECT 'test'"}
+    ${'empty array'}                  | ${'SELECT ARRAY[]'}
     ${'dollar quoted string'}         | ${"SELECT $$Dianne's horse$$"}
     ${'customdollar quoted string'}   | ${"SELECT $SomeTag$Dianne's horse$SomeTag$"}
     ${'parameter in select'}          | ${'SELECT :test1'}
