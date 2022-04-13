@@ -47,6 +47,8 @@ describe('Query Interface', () => {
     ],
     ['parameter group collapse', `SELECT id FROM all_types WHERE $q = '' OR character_varying_col = $q`],
     ['empty array', `SELECT ARRAY[]`],
+    ['descriptive property names', `SELECT 'test' AS "some column", 'test2' AS "test"`],
+    ['invalid identifiers as property names', `SELECT 'test' AS "12"`],
   ])('Should convert %s sql (%s)', async (path, content) => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     const printer = createPrinter({ newLine: NewLineKind.LineFeed });

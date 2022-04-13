@@ -36,6 +36,8 @@ import {
 const mkdirAsync = promisify(mkdir);
 const writeFileAsync = promisify(writeFile);
 
+const isIdentifierRegExp = /^[$A-Z_][0-9A-Z_$]*$/i;
+
 const parseTemplate = (root: string, template: string, path: string): string =>
   Object.entries({ ...parse(relative(root, path)), root }).reduce(
     (acc, [name, value]) => acc.replace(`{{${name}}}`, value),
@@ -199,7 +201,7 @@ const toLoadedQueryTypeNodes = (
         item.type.comment ?? undefined,
         factory.createPropertySignature(
           undefined,
-          item.name,
+          isIdentifierRegExp.test(item.name) ? item.name : factory.createStringLiteral(item.name),
           'nullable' in item.type && item.type.nullable ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
           itemType.type,
         ),

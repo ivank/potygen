@@ -15,6 +15,20 @@ export interface Query {
 "
 `;
 
+exports[`Query Interface Should convert descriptive property names sql (SELECT 'test' AS "some column", 'test2' AS "test") 1`] = `
+"export interface Params {
+}
+export interface Result {
+    \\"some column\\": \\"test\\";
+    test: \\"test2\\";
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
 "import { Json } from \\"@potygen/potygen\\";
 export interface Params {
@@ -177,6 +191,19 @@ exports[`Query Interface Should convert insert sql (INSERT INTO all_types(not_nu
     }[];
 }
 export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Query Interface Should convert invalid identifiers as property names sql (SELECT 'test' AS "12") 1`] = `
+"export interface Params {
+}
+export interface Result {
+    \\"12\\": \\"test\\";
 }
 export interface Query {
     params: Params;
