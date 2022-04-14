@@ -60,6 +60,7 @@ describe('Inspect', () => {
     ${`insert column`}            | ${`INSERT INTO all_types(id, sta‸te) VALUES (1, 'Active')`}
     ${`binary expression column`} | ${`SELECT * FROM all_types WHERE id = 1 AND stat‸e = 'Active'`}
     ${`select cast type`}         | ${`SELECT 'Active'::ac‸count_state`}
+    ${`function info`}            | ${`SELECT date_to_seg_q‸uarter('2022-01-01')`}
   `(
     'Should load quick info for $name: $sqlWithCaret',
     ({ name, sqlWithCaret }: { name: string; sqlWithCaret: string }) => {

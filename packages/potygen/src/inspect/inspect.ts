@@ -33,7 +33,14 @@ import {
   isLoadedSourceView,
 } from '../load.guards';
 import { inspect } from 'util';
-import { quickInfoColumn, quickInfoEnum, quickInfoSource, quickInfoTable, quickInfoView } from './formatters';
+import {
+  quickInfoColumn,
+  quickInfoEnum,
+  quickInfoFunction,
+  quickInfoSource,
+  quickInfoTable,
+  quickInfoView,
+} from './formatters';
 import { LoadError } from '../errors';
 import { AstTag } from '../grammar.types';
 import { Info, pathToInfo } from './info';
@@ -169,6 +176,8 @@ export const completionAtOffset = (ctx: InfoContext, sql: string, offset: number
       ];
     case 'Schema':
       return [];
+    case 'Function':
+      return [];
   }
 };
 
@@ -254,5 +263,10 @@ export const quickInfoAtOffset = (ctx: InfoContext, sql: string, offset: number)
       return castType ? { ...quickInfoEnum(castType), start: info.start, end: info.end } : undefined;
     case 'Schema':
       return undefined;
+    case 'Function':
+      const func = query.funcs.find(
+        (func) => func.name === info.name && (info.schema ? func.schema === info.schema : true),
+      );
+      return func ? { ...quickInfoFunction(func), start: info.start, end: info.end } : undefined;
   }
 };

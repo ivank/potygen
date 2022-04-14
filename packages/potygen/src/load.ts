@@ -317,12 +317,13 @@ const dataColumnToType = (
   }
 };
 
-const toLoadedFunction = ({ data, name }: LoadedDataFunction): LoadedFunction => ({
+const toLoadedFunction = ({ data, name, comment }: LoadedDataFunction): LoadedFunction => ({
   name: name.name,
   schema: name.schema,
   isAggregate: data.isAggregate,
   returnType: loadPgType(data.returnType),
   argTypes: data.argTypes.map((arg) => loadPgType(arg)),
+  comment,
 });
 
 const toLoadedComposite = ({ data, name }: LoadedDataComposite): TypeComposite => ({

@@ -15,6 +15,7 @@ import {
   isColumns,
   isInsert,
   isPgCast,
+  isFunction,
 } from '../grammar.guards';
 import { Tag } from '../grammar.types';
 import { Path } from '../load.types';
@@ -55,14 +56,20 @@ interface InfoCast extends InfoBase {
   name: string;
   type: 'Cast';
 }
+interface InfoFunction extends InfoBase {
+  name: string;
+  type: 'Function';
+  schema?: string;
+}
 
 /**
  * The closest point of interest at a given position
  */
-export type Info = InfoColumn | InfoSource | InfoSchema | InfoTable | InfoEnumVariant | InfoCast;
+export type Info = InfoColumn | InfoSource | InfoSchema | InfoTable | InfoEnumVariant | InfoCast | InfoFunction;
 
 const closestIdentifier = closestParent(isIdentifier);
 const closestColumnPath = closestParentPath(isColumn);
+const closestFunctionPath = closestParentPath(isFunction);
 const closestTablePath = closestParentPath(isTable);
 const closestSetItem = closestParent(isSetItem);
 const closestQualifiedIdentifierPath = closestParentPath(isQualifiedIdentifier);
@@ -151,6 +158,16 @@ export const pathToInfo = (path: Path): Info | undefined => {
     const pgCastPath = closestPgCastPath(path);
     if (pgCastPath && pgCastPath.index === 1) {
       return { type: 'Cast', name: identifier.value, ...toPos(identifier) };
+    }
+
+    const fun = closestFunctionPath(path);
+    if (fun) {
+      const parts = fun.tag.values[0].values;
+      if (parts.length === 1) {
+        return { type: 'Function', name: parts[0].value, ...toPos(fun.tag) };
+      } else {
+        return { type: 'Function', schema: parts[0].value, name: parts[1].value, ...toPos(fun.tag) };
+      }
     }
   }
 

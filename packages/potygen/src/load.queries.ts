@@ -120,7 +120,10 @@ export const allSql = sql<LoadAllSql>`
   SELECT
     'Function' AS "type",
     json_build_object('schema', routines.routine_schema, 'name', routines.routine_name) AS "name",
-    NULL AS "comment",
+    obj_description(
+      (SELECT pg_proc.oid FROM pg_catalog.pg_proc WHERE pg_proc.proname = routines.routine_name LIMIT 1),
+      'pg_proc'
+    ) AS "comment",
     json_build_object(
       'returnType', routines.data_type,
       'isAggregate', routines.routine_definition = 'aggregate_dummy',
@@ -320,7 +323,10 @@ export const selectedSql = sql<LoadSql>`
   SELECT
     'Function' AS "type",
     json_build_object('schema', routines.routine_schema, 'name', routines.routine_name) AS "name",
-    NULL AS "comment",
+    obj_description(
+      (SELECT pg_proc.oid FROM pg_catalog.pg_proc WHERE pg_proc.proname = routines.routine_name LIMIT 1),
+      'pg_proc'
+    ) AS "comment",
     json_build_object(
       'returnType', routines.data_type,
       'isAggregate', routines.routine_definition = 'aggregate_dummy',
