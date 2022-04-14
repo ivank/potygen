@@ -120,7 +120,7 @@ export const allSql = sql<LoadAllSql>`
   SELECT
     'Function' AS "type",
     json_build_object('schema', routines.routine_schema, 'name', routines.routine_name) AS "name",
-    NULL AS "comment",
+    obj_description(pg_proc.oid, 'pg_proc') AS "comment",
     json_build_object(
       'returnType', routines.data_type,
       'isAggregate', routines.routine_definition = 'aggregate_dummy',
@@ -130,7 +130,10 @@ export const allSql = sql<LoadAllSql>`
     information_schema.routines
     LEFT JOIN information_schema.parameters
       ON parameters.specific_name = routines.specific_name
+    JOIN pg_catalog.pg_proc
+      ON pg_proc.proname = routines.routine_name
   GROUP BY
+    pg_proc.oid,
     routines.routine_schema,
     routines.routine_name,
     routines.data_type,
@@ -320,7 +323,7 @@ export const selectedSql = sql<LoadSql>`
   SELECT
     'Function' AS "type",
     json_build_object('schema', routines.routine_schema, 'name', routines.routine_name) AS "name",
-    NULL AS "comment",
+    obj_description(pg_proc.oid, 'pg_proc') AS "comment",
     json_build_object(
       'returnType', routines.data_type,
       'isAggregate', routines.routine_definition = 'aggregate_dummy',
@@ -333,7 +336,10 @@ export const selectedSql = sql<LoadSql>`
     JOIN function_names
       ON CASE function_names."schema" WHEN '_' THEN TRUE ELSE function_names."schema" = routine_schema END
       AND function_names."name" = routine_name
+    JOIN pg_catalog.pg_proc
+      ON pg_proc.proname = routines.routine_name
   GROUP BY
+    pg_proc.oid,
     routines.routine_schema,
     routines.routine_name,
     routines.data_type,

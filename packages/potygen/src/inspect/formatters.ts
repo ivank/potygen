@@ -7,7 +7,14 @@
 import { isNil, isUnique } from '../util';
 import { isTypeNullable } from '../query-interface.guards';
 import { Type } from '../query-interface.types';
-import { LoadedDataTable, LoadedDataView, LoadedSource, LoadedDataEnum, LoadedDataComposite } from '../load.types';
+import {
+  LoadedDataTable,
+  LoadedDataView,
+  LoadedSource,
+  LoadedDataEnum,
+  LoadedDataComposite,
+  LoadedFunction,
+} from '../load.types';
 
 const join = (separator: string, parts: (string | undefined)[]) => parts.filter(isNil).join(separator);
 
@@ -111,6 +118,13 @@ export const quickInfoColumn = (
 export const quickInfoEnum = (dataEnum: LoadedDataEnum): { display: string; description: string } => ({
   display: 'Enum',
   description: formatEnum(dataEnum),
+});
+
+export const quickInfoFunction = (dataFunc: LoadedFunction): { display: string; description: string } => ({
+  display: `${dataFunc.name} (${dataFunc.argTypes
+    .map((type) => formatPostgresType(type.postgresType))
+    .join(', ')}): ${formatPostgresType(dataFunc.returnType.postgresType)}`,
+  description: dataFunc.comment ?? '',
 });
 
 export const quickInfoSource = (source: LoadedSource): { display: string; description: string } => ({

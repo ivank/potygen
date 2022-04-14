@@ -10,7 +10,8 @@ export const myQuery = sql`
     a2.address_line_1 AS "addressLine1",
     a2.address_line_2 AS "addressLine2",
     a2.address_line_3 AS "addressLine3",
-    a2.postcode AS "postcode"
+    a2.postcode AS "postcode",
+    date_to_seg_quarter('2020-01-01')
   FROM
     payments AS p
     LEFT JOIN accounts AS a

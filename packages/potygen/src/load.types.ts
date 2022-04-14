@@ -168,6 +168,7 @@ export interface LoadedFunction {
   returnType: Type;
   argTypes: Type[];
   isAggregate: boolean;
+  comment?: string;
 }
 
 /**

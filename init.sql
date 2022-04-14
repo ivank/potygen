@@ -1058,3 +1058,15 @@ INSERT INTO orders VALUES
   ('Sofia', 'Table', 1, 30),
   ('Plovdiv', 'Table', 2, 30),
   ('Plovdiv', 'Chair', 5, 20);
+
+CREATE OR REPLACE FUNCTION date_to_seg_quarter (quarter_start_on date) RETURNS text AS $$
+  SELECT CONCAT(
+    'S',
+    DATE_PART('YEAR', AGE(quarter_start_on, '2019-01-01')),
+    'Q',
+    DATE_PART('QUARTER', quarter_start_on)
+  )
+$$
+LANGUAGE sql;
+
+COMMENT ON FUNCTION date_to_seg_quarter IS 'SEG(Smart Export Guarantee) quarter identifier from the start of the program - 2019-01-01';
