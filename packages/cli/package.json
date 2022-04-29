@@ -1,6 +1,6 @@
 {
   "name": "@potygen/cli",
-  "version": "0.5.12",
+  "version": "0.5.13",
   "homepage": "https://github.com/ivank/potygen/tree/main/packages/cli",
   "description": "Command line interface for potygen (Postgres Typescript Generator)",
   "main": "dist/index.js",
@@ -12,7 +12,6 @@
     "@types/node": "^14.17.15",
     "jest": "^26.4.2",
     "prettier": "npm:@potygen/prettier@^2.6.1",
-    "runtypes": "^6.5.0",
     "ts-jest": "^26.4.0",
     "ts-node": "^10.1.0"
   },
@@ -21,6 +20,7 @@
   },
   "dependencies": {
     "@potygen/potygen": "workspace:*",
+    "runtypes": "^6.5.0",
     "@types/pg": "^8.6.0",
     "commander": "^8.3.0",
     "pg": "^8.6.0",
