@@ -141,17 +141,26 @@ export const loadData = async (ctx: LoadContext, currentData: LoadedData[], newD
       compositeNames: compositeNames.map(formatTableName),
     })}`,
   );
+  try {
+    const loaded = await selectedSql(ctx.db, {
+      tableNames: orEmptyNameList(tableNames),
+      functionNames: orEmptyNameList(functionNames),
+      enumNames: orEmptyNameList(enumNames),
+      compositeNames: orEmptyNameList(compositeNames),
+    });
+    ctx.logger.debug(`Loaded additional data: ${loaded.length}.`);
 
-  const loaded = await selectedSql(ctx.db, {
-    tableNames: orEmptyNameList(tableNames),
-    functionNames: orEmptyNameList(functionNames),
-    enumNames: orEmptyNameList(enumNames),
-    compositeNames: orEmptyNameList(compositeNames),
-  });
-
-  ctx.logger.debug(`Loaded additional data: ${loaded.length}.`);
-
-  return await toLoadedData(ctx, currentData, loaded);
+    return await toLoadedData(ctx, currentData, loaded);
+  } catch (error) {
+    console.log({
+      tableNames: orEmptyNameList(tableNames),
+      functionNames: orEmptyNameList(functionNames),
+      enumNames: orEmptyNameList(enumNames),
+      compositeNames: orEmptyNameList(compositeNames),
+    });
+    ctx.logger.error(`Error loading data: ${String(error)}`, { sql: selectedSql().sql });
+    throw error;
+  }
 };
 
 /**

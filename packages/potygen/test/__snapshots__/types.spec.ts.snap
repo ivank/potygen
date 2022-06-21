@@ -968,48 +968,6 @@ Object {
 }
 `;
 
-exports[`Query Interface Should load type for reltime sql 1`] = `
-Object {
-  "reltime": "1 day",
-}
-`;
-
-exports[`Query Interface Should load type for reltime sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
-      "name": "reltime",
-      "type": Object {
-        "postgresType": "reltime",
-        "type": 2,
-      },
-    },
-  ],
-}
-`;
-
-exports[`Query Interface Should load type for smgr sql 1`] = `
-Object {
-  "smgr": "magnetic disk",
-}
-`;
-
-exports[`Query Interface Should load type for smgr sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
-      "name": "smgr",
-      "type": Object {
-        "postgresType": "smgr",
-        "type": 2,
-      },
-    },
-  ],
-}
-`;
-
 exports[`Query Interface Should load type for tid sql 1`] = `
 Object {
   "tid": "(42,9)",

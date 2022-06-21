@@ -1,17 +1,7 @@
-import { Client } from 'pg';
 import { parser, toQueryInterface, LoadedData, loadQueryInterfacesData, toLoadedQueryInterface } from '../src';
 import { testDb } from './helpers';
 
-let db: Client;
-
 describe('Query Interface', () => {
-  beforeAll(async () => {
-    db = testDb();
-    await db.connect();
-  });
-
-  afterAll(() => db.end());
-
   it.each<[string, string]>([
     ['select where', `SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)`],
     ['function result single', `SELECT ABS(integer_col) FROM all_types`],
@@ -25,6 +15,7 @@ describe('Query Interface', () => {
     ['operators integer', `SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id`],
     ['operators string', `SELECT character_col + integer_col AS "test1" FROM all_types WHERE character_col = $text`],
     ['different result types', `SELECT * FROM all_types`],
+    ['different result types for returning', `UPDATE all_types SET id = 1 RETURNING *`],
     ['views types', `SELECT * FROM all_types_view`],
     ['enum', `SELECT 'Pending'::account_levelisation_state`],
     ['enum column', `SELECT state FROM account_levelisations`],
@@ -67,15 +58,21 @@ describe('Query Interface', () => {
     ['Array remove', `SELECT ARRAY_REMOVE(ARRAY_AGG(id), NULL) FROM all_types`],
     ['Right function', `SELECT RIGHT('123', 2)`],
   ])('Should convert %s sql (%s)', async (_, sql) => {
+    const db = testDb();
+    await db.connect();
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     const queryInterface = toQueryInterface(parser(sql).ast);
     const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
     const loadedQueryInterface = toLoadedQueryInterface(data)(queryInterface);
 
     expect(loadedQueryInterface).toMatchSnapshot();
+    await db.end();
   });
 
   it('Should load multple queries', async () => {
+    const db = testDb();
+    await db.connect();
+
     const queryInterfaces = [
       `SELECT ABS(integer_col) FROM all_types`,
       `SELECT ABS(ABS(integer_col)) FROM all_types`,
@@ -99,5 +96,6 @@ describe('Query Interface', () => {
     }
 
     expect(data).toEqual(expect.arrayContaining(individuallyLoaded));
-  });
+    await db.end();
+  }, 10000);
 });

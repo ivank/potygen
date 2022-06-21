@@ -25,6 +25,7 @@ Array [
   "installations.queries.ts",
   "levelisation-customer-data.query.queries.ts",
   "levelisation-details.query.queries.ts",
+  "levelisation-individual-reads.list.query.queries.ts",
   "levelisations.list.query.queries.ts",
   "meter-create.query.queries.ts",
   "meter-reads.queries.ts",
@@ -589,6 +590,24 @@ export interface Result {
     totalMeteredExportPayment: number;
     totalDeemedExportEnergy: number;
     totalDeemedExportPayment: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: levelisation-individual-reads.list.query.queries.ts 1`] = `
+"export interface Params {
+    id?: number;
+    limit: number;
+    offset: number;
+}
+export interface Result {
+    id: number;
+    dateOn: Date;
+    value: number;
 }
 export interface Query {
     params: Params;

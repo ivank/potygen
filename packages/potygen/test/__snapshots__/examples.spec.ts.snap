@@ -2,8 +2,8 @@
 
 exports[`Example files Should process examples/inspect.ts: examples/inspect.ts 1`] = `
 "Load all data
-Loaded additional data: 3049.
-Load views: public.active_reads,public.all_types_view.
+Loaded additional data: 3124.
+Load views: public.active_reads,public.all_types_view,public.unlevelised_active_reads.
 No additional data found, skipping
 Completion Info found in: 
 SELECT product FROM orders WHERE region = $region
@@ -81,8 +81,8 @@ Loaded additional data: 1.
 
 exports[`Example files Should process examples/load-all.ts: examples/load-all.ts 1`] = `
 "Load all data
-Loaded additional data: 3049.
-Load views: public.active_reads,public.all_types_view.
+Loaded additional data: 3124.
+Load views: public.active_reads,public.all_types_view,public.unlevelised_active_reads.
 No additional data found, skipping
 {
   \\"params\\": [

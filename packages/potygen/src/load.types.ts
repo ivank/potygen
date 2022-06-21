@@ -302,9 +302,9 @@ export type LoadedFile = LoadedSqlFile | LoadedTypescriptFile;
  * So we can use console by default but have an abstraction for testing
  */
 export interface Logger {
-  info(args: unknown): void;
-  debug(args: unknown): void;
-  error(args: unknown): void;
+  info(...args: unknown[]): void;
+  debug(...args: unknown[]): void;
+  error(...args: unknown[]): void;
 }
 
 export interface LoadContext {
