@@ -51,17 +51,21 @@ describe('Query Interface', () => {
     ['empty array', `SELECT ARRAY[]`],
     ['descriptive property names', `SELECT 'test' AS "some column", 'test2' AS "test"`],
     ['invalid identifiers as property names', `SELECT 'test' AS "12"`],
-  ])('Should convert %s sql (%s)', async (path, content) => {
-    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
-    const printer = createPrinter({ newLine: NewLineKind.LineFeed });
-    const { ast } = parser(content);
-    const queryInterface = toQueryInterface(ast);
+  ])(
+    'Should convert %s sql (%s)',
+    async (path, content) => {
+      const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+      const printer = createPrinter({ newLine: NewLineKind.LineFeed });
+      const { ast } = parser(content);
+      const queryInterface = toQueryInterface(ast);
 
-    const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
-    const loadedQuery = toLoadedQueryInterface(data)(queryInterface);
-    const source = toTypeSource({ type: 'sql', path, content, queryInterface, loadedQuery });
-    expect(printer.printFile(source)).toMatchSnapshot();
-  });
+      const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
+      const loadedQuery = toLoadedQueryInterface(data)(queryInterface);
+      const source = toTypeSource({ type: 'sql', path, content, queryInterface, loadedQuery });
+      expect(printer.printFile(source)).toMatchSnapshot();
+    },
+    10000,
+  );
 
   it.each<[string, Type[], Type[]]>([
     [
