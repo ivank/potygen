@@ -7,11 +7,14 @@ on:
 
 jobs:
   test:
+    strategy:
+      matrix:
+        pg: [11, 13]
     runs-on: ubuntu-latest
 
     services:
       postgres:
-        image: postgres:11
+        image: postgres:${{ matrix.pg }}
         env:
           POSTGRES_DATABASE: potygen
           POSTGRES_USER: potygen

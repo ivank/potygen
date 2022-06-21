@@ -3757,6 +3757,76 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql levelisation-individual-reads.list.query.sql: levelisation-individual-reads.list.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "postgresType": "integer",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "limit",
+      "type": Object {
+        "nullable": false,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "offset",
+      "type": Object {
+        "nullable": false,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "integer",
+        "type": 3,
+      },
+    },
+    Object {
+      "name": "dateOn",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "date",
+        "type": 6,
+      },
+    },
+    Object {
+      "name": "value",
+      "type": Object {
+        "comment": undefined,
+        "postgresType": "integer",
+        "type": 3,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
 Object {
   "params": Array [

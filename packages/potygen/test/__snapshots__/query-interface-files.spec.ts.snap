@@ -34368,6 +34368,287 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql levelisation-individual-reads.list.query.sql: levelisation-individual-reads.list.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "end": 371,
+      "name": "id",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 369,
+      "type": Object {
+        "column": "account_id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 365,
+          "start": 346,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 354,
+              "start": 346,
+              "tag": 8,
+              "value": "contracts",
+            },
+            Object {
+              "end": 365,
+              "start": 356,
+              "tag": 8,
+              "value": "account_id",
+            },
+          ],
+        },
+        "table": "contracts",
+        "type": 19,
+      },
+    },
+    Object {
+      "end": 385,
+      "name": "limit",
+      "pick": Array [],
+      "required": true,
+      "spread": false,
+      "start": 379,
+      "type": Object {
+        "name": "int4",
+        "sourceTag": Object {
+          "end": 390,
+          "start": 388,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 390,
+              "start": 388,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 390,
+                  "start": 388,
+                  "tag": 8,
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "end": 406,
+      "name": "offset",
+      "pick": Array [],
+      "required": true,
+      "spread": false,
+      "start": 399,
+      "type": Object {
+        "name": "int4",
+        "sourceTag": Object {
+          "end": 411,
+          "start": 409,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 411,
+              "start": 409,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 411,
+                  "start": 409,
+                  "tag": 8,
+                  "value": "int",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 35,
+          "start": 9,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 32,
+              "start": 9,
+              "tag": 8,
+              "value": "unlevelised_active_reads",
+            },
+            Object {
+              "end": 35,
+              "start": 34,
+              "tag": 8,
+              "value": "id",
+            },
+          ],
+        },
+        "table": "unlevelised_active_reads",
+        "type": 19,
+      },
+    },
+    Object {
+      "name": "dateOn",
+      "type": Object {
+        "column": "date_on",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 71,
+          "start": 40,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 63,
+              "start": 40,
+              "tag": 8,
+              "value": "unlevelised_active_reads",
+            },
+            Object {
+              "end": 71,
+              "start": 65,
+              "tag": 8,
+              "value": "date_on",
+            },
+          ],
+        },
+        "table": "unlevelised_active_reads",
+        "type": 19,
+      },
+    },
+    Object {
+      "name": "value",
+      "type": Object {
+        "column": "value",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 117,
+          "start": 88,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 111,
+              "start": 88,
+              "tag": 8,
+              "value": "unlevelised_active_reads",
+            },
+            Object {
+              "end": 117,
+              "start": 113,
+              "tag": 8,
+              "value": "value",
+            },
+          ],
+        },
+        "table": "unlevelised_active_reads",
+        "type": 19,
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "unlevelised_active_reads",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 149,
+        "start": 126,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 149,
+            "start": 126,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 149,
+                "start": 126,
+                "tag": 8,
+                "value": "unlevelised_active_reads",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "unlevelised_active_reads",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "installation_meters",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 176,
+        "start": 158,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 176,
+            "start": 158,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 176,
+                "start": 158,
+                "tag": 8,
+                "value": "installation_meters",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "installation_meters",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "contracts",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 265,
+        "start": 257,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 265,
+            "start": 257,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 265,
+                "start": 257,
+                "tag": 8,
+                "value": "contracts",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "contracts",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
 Object {
   "params": Array [

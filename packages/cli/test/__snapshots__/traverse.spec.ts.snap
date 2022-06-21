@@ -559,6 +559,24 @@ export interface Query {
 "
 `;
 
+exports[`Traverse Should work: __generated__/levelisation-individual-reads.list.query.queries.ts 1`] = `
+"export interface Params {
+    id?: number;
+    limit: number;
+    offset: number;
+}
+export interface Result {
+    id: number;
+    dateOn: Date;
+    value: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Traverse Should work: __generated__/levelisations.list.query.queries.ts 1`] = `
 "export interface Params {
     q?: string;
