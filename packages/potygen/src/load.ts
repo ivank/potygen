@@ -113,7 +113,7 @@ const toLoadedData = async (
 export const loadAllData = async (ctx: LoadContext, currentData: LoadedData[]): Promise<LoadedData[]> => {
   ctx.logger.debug(`Load all data`);
   const loaded = await allSql(ctx.db, {});
-  ctx.logger.debug(`Loaded additional data: ${loaded.length}.`);
+  ctx.logger.debug(`Loaded all data`);
   return await toLoadedData(ctx, currentData, loaded);
 };
 
