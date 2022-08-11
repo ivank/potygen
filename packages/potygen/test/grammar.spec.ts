@@ -236,6 +236,8 @@ describe('Sql', () => {
     name                      | sql
     ${'default'}              | ${'UPDATE table1 SET col1 = DEFAULT'}
     ${'value'}                | ${'UPDATE table1 SET col1 = 10'}
+    ${'array index'}          | ${'UPDATE table1 SET col1[2] = 10'}
+    ${'list array index'}     | ${'UPDATE table1 SET col1[2] = 10, col1[3] = 10, col1 = 10'}
     ${'list'}                 | ${'UPDATE table1 SET col1 = 10, col2 = "other"'}
     ${'params'}               | ${'UPDATE table1 SET col1 = :param1, col2 = :param2'}
     ${'multiple tables'}      | ${'UPDATE table1 SET col1 = table2.id FROM table2'}

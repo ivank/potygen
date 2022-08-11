@@ -588,6 +588,7 @@ export const toParams =
           : sql.values.flatMap(recur);
 
       case SqlName.SetItem:
+      case SqlName.SetArrayItem:
         const from = first(context.from?.values);
         const setType: TypeLoadColumn | TypeUnknown = from
           ? {

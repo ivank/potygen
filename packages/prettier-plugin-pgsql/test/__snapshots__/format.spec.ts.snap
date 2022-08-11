@@ -1384,6 +1384,19 @@ FROM table2
 "
 `;
 
+exports[`Format Should parse simple sql update array input (UPDATE table1 SET col1[2] = 10): update array input 1`] = `
+"UPDATE table1 SET col1[2] = 10
+"
+`;
+
+exports[`Format Should parse simple sql update array input list (UPDATE table1 SET col1[2] = 10, col1[3] = 2): update array input list 1`] = `
+"UPDATE table1
+SET
+  col1[2] = 10,
+  col1[3] = 2
+"
+`;
+
 exports[`Format Should parse simple sql update as (UPDATE table1 AS "my1" SET col1 = my2.col2): update as 1`] = `
 "UPDATE table1 AS \\"my1\\" SET col1 = my2.col2
 "
