@@ -363,6 +363,8 @@ const pgsqlAst: Printer<Node> = {
         return 'DEFAULT';
       case SqlName.SetItem:
         return [nthVal(0, path, recur), ' ', '=', ' ', nthVal(1, path, recur)];
+      case SqlName.SetArrayItem:
+        return [nthVal(0, path, recur), '[', nthVal(1, path, recur), ']', ' ', '=', ' ', nthVal(2, path, recur)];
       case SqlName.SetList:
         return group(join([',', hardline], vals(path, recur)));
       case SqlName.Columns:

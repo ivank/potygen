@@ -98,6 +98,7 @@ import {
   SelectListTag,
   SelectTag,
   SetItemTag,
+  SetArrayItemTag,
   SetListTag,
   SetMapTag,
   SetTag,
@@ -258,6 +259,7 @@ export const isOffset = (value: SqlTag): value is OffsetTag => value.tag === Sql
 export const isSelect = (value: SqlTag): value is SelectTag => value.tag === SqlName.Select;
 export const isDefault = (value: SqlTag): value is DefaultTag => value.tag === SqlName.Default;
 export const isSetItem = (value: SqlTag): value is SetItemTag => value.tag === SqlName.SetItem;
+export const isSetArrayItem = (value: SqlTag): value is SetArrayItemTag => value.tag === SqlName.SetArrayItem;
 export const isSetList = (value: SqlTag): value is SetListTag => value.tag === SqlName.SetList;
 export const isColumns = (value: SqlTag): value is ColumnsTag => value.tag === SqlName.Columns;
 export const isValues = (value: SqlTag): value is ValuesTag => value.tag === SqlName.Values;

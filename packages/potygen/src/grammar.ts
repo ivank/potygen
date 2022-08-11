@@ -675,8 +675,12 @@ const Default = astEmptyLeaf<Tag.DefaultTag>(Tag.SqlName.Default, /^DEFAULT/i);
  */
 
 const SetItem = astNode<Tag.SetItemTag>(Tag.SqlName.SetItem, All(Identifier, '=', Any(Default, Expression)));
+const SetArrayItem = astNode<Tag.SetArrayItemTag>(
+  Tag.SqlName.SetArrayItem,
+  All(Identifier, '[', Integer, ']', '=', Any(Default, Expression)),
+);
 const Values = astNode<Tag.ValuesTag>(Tag.SqlName.Values, Brackets(List(Any(Default, Expression))));
-const SetList = astNode<Tag.SetListTag>(Tag.SqlName.SetList, List(SetItem));
+const SetList = astNode<Tag.SetListTag>(Tag.SqlName.SetList, List(Any(SetArrayItem, SetItem)));
 const SetMap = astNode<Tag.SetMapTag>(
   Tag.SqlName.SetMap,
   All(Columns, '=', Any(All(Optional(/^ROW/i), Values), Brackets(Select))),
