@@ -42,6 +42,22 @@ describe('Template Tag', () => {
       },
     ],
     [
+      'Spread objects with excess items',
+      sql`WITH items (col1) AS (VALUES $$rows(name)) SELECT * FROM items WHERE items.col1 > $maxCol`,
+      {
+        rows: [
+          { name: 1, test2: 'b', test3: 'c' },
+          { name: 2, test2: 'a', test3: 'z' },
+          { name: 3, test2: 'd', test3: 'f' },
+        ],
+        maxCol: 123,
+      },
+      {
+        text: `WITH items (col1) AS (VALUES ($1),($2),($3)) SELECT * FROM items WHERE items.col1 > $4`,
+        values: [1, 2, 3, 123],
+      },
+    ],
+    [
       'Multiple insert values with two columns and spread',
       sql`
         INSERT INTO table1 (
