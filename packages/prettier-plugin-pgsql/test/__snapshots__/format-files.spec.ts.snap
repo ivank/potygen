@@ -998,6 +998,17 @@ GROUP BY
 "
 `;
 
+exports[`Sql Files Should parse complex sql csa-account-contracts-update.query.sql: csa-account-contracts-update.query.sql 1`] = `
+"UPDATE contacts
+SET
+  phones[1] = COALESCE($phone::text, phones[1]),
+  emails[1] = COALESCE($email::text, emails[1]),
+  updated_at = $currentDate!
+WHERE
+  id = $id!
+"
+`;
+
 exports[`Sql Files Should parse complex sql cte.query.sql: cte.query.sql 1`] = `
 "WITH
   regional_sales AS

@@ -2522,6 +2522,65 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql csa-account-contracts-update.query.sql: csa-account-contracts-update.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "phone",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "postgresType": "text",
+          "type": 2,
+        },
+      },
+    },
+    Object {
+      "name": "email",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "postgresType": "text",
+          "type": 2,
+        },
+      },
+    },
+    Object {
+      "name": "currentDate",
+      "type": Object {
+        "nullable": false,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "nullable": true,
+          "postgresType": "timestamp without time zone",
+          "type": 6,
+        },
+      },
+    },
+    Object {
+      "name": "id",
+      "type": Object {
+        "nullable": false,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "postgresType": "integer",
+          "type": 3,
+        },
+      },
+    },
+  ],
+  "results": Array [],
+}
+`;
+
 exports[`Load Files Should convert complex sql cte.query.sql: cte.query.sql 1`] = `
 Object {
   "params": Array [],

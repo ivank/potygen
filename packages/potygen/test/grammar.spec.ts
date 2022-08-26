@@ -260,6 +260,9 @@ describe('Sql', () => {
   it.each`
     name                       | sql
     ${'values'}                | ${'INSERT INTO table1 (id, col1) VALUES (10,20),(30,40)'}
+    ${'values param'}          | ${'INSERT INTO table1 (id, col1) VALUES $$items'}
+    ${'values param spread'}   | ${'INSERT INTO table1 (id, col1) VALUES $$items(val1, val2)'}
+    ${'values param quoted'}   | ${'INSERT INTO table1 (id, col1) VALUES $$items(val1, "val 2")'}
     ${'returning'}             | ${'INSERT INTO table1 (id, col1) VALUES (10,20),(30,40) RETURNING id, col1'}
     ${'select'}                | ${'INSERT INTO table1 SELECT id, col FROM table2'}
     ${'do nothing'}            | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO NOTHING'}

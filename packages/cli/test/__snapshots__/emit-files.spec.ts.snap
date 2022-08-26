@@ -344,6 +344,22 @@ export interface Query {
 "
 `;
 
+exports[`Load Files Should convert complex sql csa-account-contracts-update.query.sql: csa-account-contracts-update.query.sql 1`] = `
+"export interface Params {
+    phone?: string;
+    email?: string;
+    currentDate: Date;
+    id: number;
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Load Files Should convert complex sql cte.query.sql: cte.query.sql 1`] = `
 "export interface Params {
 }

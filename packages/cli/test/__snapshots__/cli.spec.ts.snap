@@ -16,6 +16,7 @@ Array [
   "bacs.query.queries.ts",
   "contracts.queries.ts",
   "csa-account-by-id.query.queries.ts",
+  "csa-account-contracts-update.query.queries.ts",
   "cte-levelisation-details.query.queries.ts",
   "cte.query.queries.ts",
   "delete-accounts.query.queries.ts",
@@ -374,6 +375,22 @@ export interface Result {
         beneficiaryName?: string;
         beneficiarySortCode?: string;
     };
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: csa-account-contracts-update.query.queries.ts 1`] = `
+"export interface Params {
+    phone?: string;
+    email?: string;
+    currentDate: Date;
+    id: number;
+}
+export interface Result {
 }
 export interface Query {
     params: Params;

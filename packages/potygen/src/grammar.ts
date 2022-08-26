@@ -154,7 +154,7 @@ const Column = Any(ColumnFullyQualified, ColumnQualified, ColumnUnqualified);
  * Parameteer
  */
 const Parameter = Node<Tag.ParameterTag>(
-  All(/^(\$\$|\$|\:)/, IdentifierRule, Optional(Any(/^(\!)/, Brackets(List(UnquotedIdentifier))))),
+  All(/^(\$\$|\$|\:)/, IdentifierRule, Optional(Any(/^(\!)/, Brackets(List(Identifier))))),
   ([type, value, ...rest], $, $next) => ({
     tag: Tag.SqlName.Parameter,
     value,
