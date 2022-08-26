@@ -648,13 +648,14 @@ export interface QuotedIdentifierTag extends LeafSqlTag {
  * Spread:       $$my_parameter
  * Single Pick:  $my_parameter(val1, val2)
  * Spread Pick   $$my_values(val1, val2)
+ * Spread Pick   $$my_values(val1, "val 2")
  */
 export interface ParameterTag extends LeafSqlTag {
   tag: SqlName.Parameter;
   type: 'spread' | 'single';
   value: string;
   required: boolean;
-  pick: UnquotedIdentifierTag[];
+  pick: IdentifierTag[];
 }
 
 /**

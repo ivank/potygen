@@ -344,6 +344,22 @@ export interface Query {
 "
 `;
 
+exports[`Traverse Should work: __generated__/csa-account-contracts-update.query.queries.ts 1`] = `
+"export interface Params {
+    phone?: string;
+    email?: string;
+    currentDate: Date;
+    id: number;
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Traverse Should work: __generated__/cte.query.queries.ts 1`] = `
 "export interface Params {
 }

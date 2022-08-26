@@ -26207,6 +26207,319 @@ Object {
 }
 `;
 
+exports[`Sql Files Should parse complex sql csa-account-contracts-update.query.sql: csa-account-contracts-update.query.sql 1`] = `
+Object {
+  "ast": Object {
+    "end": 163,
+    "start": 0,
+    "tag": 94,
+    "values": Array [
+      Object {
+        "end": 14,
+        "start": 7,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 14,
+            "start": 7,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 14,
+                "start": 7,
+                "tag": 8,
+                "value": "contacts",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 145,
+        "start": 16,
+        "tag": 88,
+        "values": Array [
+          Object {
+            "end": 145,
+            "start": 22,
+            "tag": 84,
+            "values": Array [
+              Object {
+                "end": 66,
+                "start": 22,
+                "tag": 118,
+                "values": Array [
+                  Object {
+                    "end": 27,
+                    "start": 22,
+                    "tag": 8,
+                    "value": "phones",
+                  },
+                  Object {
+                    "end": 29,
+                    "start": 29,
+                    "tag": 20,
+                    "value": "1",
+                  },
+                  Object {
+                    "end": 66,
+                    "start": 34,
+                    "tag": 54,
+                    "values": Array [
+                      Object {
+                        "end": 41,
+                        "start": 34,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 41,
+                            "start": 34,
+                            "tag": 8,
+                            "value": "COALESCE",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 55,
+                        "start": 43,
+                        "tag": 52,
+                        "values": Array [
+                          Object {
+                            "end": 48,
+                            "pick": Array [],
+                            "required": false,
+                            "start": 43,
+                            "tag": 10,
+                            "type": "single",
+                            "value": "phone",
+                          },
+                          Object {
+                            "end": 54,
+                            "start": 51,
+                            "tag": 32,
+                            "values": Array [
+                              Object {
+                                "end": 54,
+                                "start": 51,
+                                "tag": 89,
+                                "values": Array [
+                                  Object {
+                                    "end": 54,
+                                    "start": 51,
+                                    "tag": 8,
+                                    "value": "text",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 65,
+                        "start": 57,
+                        "tag": 27,
+                        "values": Array [
+                          Object {
+                            "end": 62,
+                            "start": 57,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 62,
+                                "start": 57,
+                                "tag": 8,
+                                "value": "phones",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 64,
+                            "start": 64,
+                            "tag": 19,
+                            "value": "1",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 115,
+                "start": 71,
+                "tag": 118,
+                "values": Array [
+                  Object {
+                    "end": 76,
+                    "start": 71,
+                    "tag": 8,
+                    "value": "emails",
+                  },
+                  Object {
+                    "end": 78,
+                    "start": 78,
+                    "tag": 20,
+                    "value": "1",
+                  },
+                  Object {
+                    "end": 115,
+                    "start": 83,
+                    "tag": 54,
+                    "values": Array [
+                      Object {
+                        "end": 90,
+                        "start": 83,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 90,
+                            "start": 83,
+                            "tag": 8,
+                            "value": "COALESCE",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 104,
+                        "start": 92,
+                        "tag": 52,
+                        "values": Array [
+                          Object {
+                            "end": 97,
+                            "pick": Array [],
+                            "required": false,
+                            "start": 92,
+                            "tag": 10,
+                            "type": "single",
+                            "value": "email",
+                          },
+                          Object {
+                            "end": 103,
+                            "start": 100,
+                            "tag": 32,
+                            "values": Array [
+                              Object {
+                                "end": 103,
+                                "start": 100,
+                                "tag": 89,
+                                "values": Array [
+                                  Object {
+                                    "end": 103,
+                                    "start": 100,
+                                    "tag": 8,
+                                    "value": "text",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 114,
+                        "start": 106,
+                        "tag": 27,
+                        "values": Array [
+                          Object {
+                            "end": 111,
+                            "start": 106,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 111,
+                                "start": 106,
+                                "tag": 8,
+                                "value": "emails",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 113,
+                            "start": 113,
+                            "tag": 19,
+                            "value": "1",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 145,
+                "start": 120,
+                "tag": 83,
+                "values": Array [
+                  Object {
+                    "end": 129,
+                    "start": 120,
+                    "tag": 8,
+                    "value": "updated_at",
+                  },
+                  Object {
+                    "end": 145,
+                    "pick": Array [],
+                    "required": true,
+                    "start": 133,
+                    "tag": 10,
+                    "type": "single",
+                    "value": "currentDate",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 163,
+        "start": 147,
+        "tag": 70,
+        "values": Array [
+          Object {
+            "end": 163,
+            "start": 155,
+            "tag": 46,
+            "values": Array [
+              Object {
+                "end": 156,
+                "start": 155,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 156,
+                    "start": 155,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
+              },
+              Object {
+                "end": 158,
+                "start": 158,
+                "tag": 44,
+                "value": "=",
+              },
+              Object {
+                "end": 163,
+                "pick": Array [],
+                "required": true,
+                "start": 160,
+                "tag": 10,
+                "type": "single",
+                "value": "id",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Files Should parse complex sql cte.query.sql: cte.query.sql 1`] = `
 Object {
   "ast": Object {

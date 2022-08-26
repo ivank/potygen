@@ -14608,6 +14608,162 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql csa-account-contracts-update.query.sql: csa-account-contracts-update.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "end": 48,
+      "name": "phone",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 43,
+      "type": Object {
+        "name": "text",
+        "sourceTag": Object {
+          "end": 54,
+          "start": 51,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 54,
+              "start": 51,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 54,
+                  "start": 51,
+                  "tag": 8,
+                  "value": "text",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
+        "value": Object {
+          "postgresType": "text",
+          "type": 2,
+        },
+      },
+    },
+    Object {
+      "end": 97,
+      "name": "email",
+      "pick": Array [],
+      "required": false,
+      "spread": false,
+      "start": 92,
+      "type": Object {
+        "name": "text",
+        "sourceTag": Object {
+          "end": 103,
+          "start": 100,
+          "tag": 32,
+          "values": Array [
+            Object {
+              "end": 103,
+              "start": 100,
+              "tag": 89,
+              "values": Array [
+                Object {
+                  "end": 103,
+                  "start": 100,
+                  "tag": 8,
+                  "value": "text",
+                },
+              ],
+            },
+          ],
+        },
+        "type": 23,
+        "value": Object {
+          "postgresType": "text",
+          "type": 2,
+        },
+      },
+    },
+    Object {
+      "end": 145,
+      "name": "currentDate",
+      "pick": Array [],
+      "required": true,
+      "spread": false,
+      "start": 133,
+      "type": Object {
+        "column": "updated_at",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 129,
+          "start": 120,
+          "tag": 8,
+          "value": "updated_at",
+        },
+        "table": "contacts",
+        "type": 19,
+      },
+    },
+    Object {
+      "end": 163,
+      "name": "id",
+      "pick": Array [],
+      "required": true,
+      "spread": false,
+      "start": 160,
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 156,
+          "start": 155,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 156,
+              "start": 155,
+              "tag": 8,
+              "value": "id",
+            },
+          ],
+        },
+        "table": "contacts",
+        "type": 19,
+      },
+    },
+  ],
+  "results": Array [],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "contacts",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 14,
+        "start": 7,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 14,
+            "start": 7,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 14,
+                "start": 7,
+                "tag": 8,
+                "value": "contacts",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "contacts",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql cte.query.sql: cte.query.sql 1`] = `
 Object {
   "params": Array [],
