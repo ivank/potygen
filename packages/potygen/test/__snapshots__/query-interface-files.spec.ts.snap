@@ -3248,6 +3248,605 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert complex sql account-verification.update.query.sql: account-verification.update.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "end": 138,
+      "name": "items",
+      "pick": Array [
+        Object {
+          "name": "GH_account_id",
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "MV date",
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+      ],
+      "required": true,
+      "spread": true,
+      "start": 76,
+      "type": Object {
+        "postgresType": "any",
+        "type": 9,
+      },
+    },
+    Object {
+      "end": 512,
+      "name": "currentDate",
+      "pick": Array [],
+      "required": true,
+      "spread": false,
+      "start": 500,
+      "type": Object {
+        "column": "updated_at",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 496,
+          "start": 487,
+          "tag": 8,
+          "value": "updated_at",
+        },
+        "table": "meters",
+        "type": 19,
+      },
+    },
+  ],
+  "results": Array [],
+  "sources": Array [
+    Object {
+      "name": "items",
+      "sourceTag": Object {
+        "end": 144,
+        "start": 10,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 44,
+            "start": 10,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 14,
+                "start": 10,
+                "tag": 8,
+                "value": "items",
+              },
+              Object {
+                "end": 44,
+                "start": 16,
+                "tag": 85,
+                "values": Array [
+                  Object {
+                    "end": 30,
+                    "start": 17,
+                    "tag": 8,
+                    "value": "account_number",
+                  },
+                  Object {
+                    "end": 43,
+                    "start": 33,
+                    "tag": 8,
+                    "value": "verified_on",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 138,
+            "start": 61,
+            "tag": 3,
+            "values": Array [
+              Object {
+                "end": 138,
+                "pick": Array [
+                  Object {
+                    "end": 107,
+                    "start": 95,
+                    "tag": 8,
+                    "value": "GH_account_id",
+                  },
+                  Object {
+                    "end": 128,
+                    "start": 120,
+                    "tag": 9,
+                    "value": "MV date",
+                  },
+                ],
+                "required": false,
+                "start": 76,
+                "tag": 10,
+                "type": "spread",
+                "value": "items",
+              },
+            ],
+          },
+        ],
+      },
+      "type": "Values",
+      "types": undefined,
+    },
+    Object {
+      "name": "accounts_back_to_live",
+      "sourceTag": Object {
+        "end": 416,
+        "start": 151,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 171,
+            "start": 151,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 171,
+                "start": 151,
+                "tag": 8,
+                "value": "accounts_back_to_live",
+              },
+            ],
+          },
+          Object {
+            "end": 410,
+            "start": 188,
+            "tag": 94,
+            "values": Array [
+              Object {
+                "end": 202,
+                "start": 195,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 202,
+                    "start": 195,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 202,
+                        "start": 195,
+                        "tag": 8,
+                        "value": "accounts",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 326,
+                "start": 210,
+                "tag": 88,
+                "values": Array [
+                  Object {
+                    "end": 326,
+                    "start": 222,
+                    "tag": 84,
+                    "values": Array [
+                      Object {
+                        "end": 235,
+                        "start": 222,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 226,
+                            "start": 222,
+                            "tag": 8,
+                            "value": "state",
+                          },
+                          Object {
+                            "end": 235,
+                            "start": 230,
+                            "tag": 13,
+                            "value": "Live",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 267,
+                        "start": 246,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 260,
+                            "start": 246,
+                            "tag": 8,
+                            "value": "on_hold_reasons",
+                          },
+                          Object {
+                            "end": 267,
+                            "start": 264,
+                            "tag": 7,
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 290,
+                        "start": 278,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 283,
+                            "start": 278,
+                            "tag": 8,
+                            "value": "end_on",
+                          },
+                          Object {
+                            "end": 290,
+                            "start": 287,
+                            "tag": 7,
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 326,
+                        "start": 301,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 310,
+                            "start": 301,
+                            "tag": 8,
+                            "value": "updated_at",
+                          },
+                          Object {
+                            "end": 326,
+                            "pick": Array [],
+                            "required": true,
+                            "start": 314,
+                            "tag": 10,
+                            "type": "single",
+                            "value": "currentDate",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 343,
+                "start": 334,
+                "tag": 91,
+                "values": Array [
+                  Object {
+                    "end": 343,
+                    "start": 339,
+                    "tag": 68,
+                    "values": Array [
+                      Object {
+                        "end": 343,
+                        "start": 339,
+                        "tag": 90,
+                        "values": Array [
+                          Object {
+                            "end": 343,
+                            "start": 339,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 343,
+                                "start": 339,
+                                "tag": 8,
+                                "value": "items",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 410,
+                "start": 351,
+                "tag": 70,
+                "values": Array [
+                  Object {
+                    "end": 410,
+                    "start": 365,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 384,
+                        "start": 365,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 369,
+                            "start": 365,
+                            "tag": 8,
+                            "value": "items",
+                          },
+                          Object {
+                            "end": 384,
+                            "start": 371,
+                            "tag": 8,
+                            "value": "account_number",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 386,
+                        "start": 386,
+                        "tag": 44,
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 410,
+                        "start": 388,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 395,
+                            "start": 388,
+                            "tag": 8,
+                            "value": "accounts",
+                          },
+                          Object {
+                            "end": 410,
+                            "start": 397,
+                            "tag": 8,
+                            "value": "account_number",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "type": "Query",
+      "value": Object {
+        "params": Array [
+          Object {
+            "end": 326,
+            "name": "currentDate",
+            "pick": Array [],
+            "required": true,
+            "spread": false,
+            "start": 314,
+            "type": Object {
+              "column": "updated_at",
+              "schema": undefined,
+              "sourceTag": Object {
+                "end": 310,
+                "start": 301,
+                "tag": 8,
+                "value": "updated_at",
+              },
+              "table": "accounts",
+              "type": 19,
+            },
+          },
+        ],
+        "results": Array [],
+        "sources": Array [
+          Object {
+            "isResult": true,
+            "name": "accounts",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 202,
+              "start": 195,
+              "tag": 90,
+              "values": Array [
+                Object {
+                  "end": 202,
+                  "start": 195,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 202,
+                      "start": 195,
+                      "tag": 8,
+                      "value": "accounts",
+                    },
+                  ],
+                },
+              ],
+            },
+            "table": "accounts",
+            "type": "Table",
+          },
+          Object {
+            "name": "items",
+            "sourceTag": Object {
+              "end": 144,
+              "start": 10,
+              "tag": 5,
+              "values": Array [
+                Object {
+                  "end": 44,
+                  "start": 10,
+                  "tag": 2,
+                  "values": Array [
+                    Object {
+                      "end": 14,
+                      "start": 10,
+                      "tag": 8,
+                      "value": "items",
+                    },
+                    Object {
+                      "end": 44,
+                      "start": 16,
+                      "tag": 85,
+                      "values": Array [
+                        Object {
+                          "end": 30,
+                          "start": 17,
+                          "tag": 8,
+                          "value": "account_number",
+                        },
+                        Object {
+                          "end": 43,
+                          "start": 33,
+                          "tag": 8,
+                          "value": "verified_on",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "end": 138,
+                  "start": 61,
+                  "tag": 3,
+                  "values": Array [
+                    Object {
+                      "end": 138,
+                      "pick": Array [
+                        Object {
+                          "end": 107,
+                          "start": 95,
+                          "tag": 8,
+                          "value": "GH_account_id",
+                        },
+                        Object {
+                          "end": 128,
+                          "start": 120,
+                          "tag": 9,
+                          "value": "MV date",
+                        },
+                      ],
+                      "required": false,
+                      "start": 76,
+                      "tag": 10,
+                      "type": "spread",
+                      "value": "items",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": "Values",
+            "types": undefined,
+          },
+        ],
+      },
+    },
+    Object {
+      "isResult": true,
+      "name": "meters",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 432,
+        "start": 427,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 432,
+            "start": 427,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 432,
+                "start": 427,
+                "tag": 8,
+                "value": "meters",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "meters",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "installation_meters",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 539,
+        "start": 521,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 539,
+            "start": 521,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 539,
+                "start": 521,
+                "tag": 8,
+                "value": "installation_meters",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "installation_meters",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "contracts",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 550,
+        "start": 542,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 550,
+            "start": 542,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 550,
+                "start": 542,
+                "tag": 8,
+                "value": "contracts",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "contracts",
+      "type": "Table",
+    },
+    Object {
+      "isResult": true,
+      "name": "accounts",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 560,
+        "start": 553,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 560,
+            "start": 553,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 560,
+                "start": 553,
+                "tag": 8,
+                "value": "accounts",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "accounts",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
 Object {
   "params": Array [

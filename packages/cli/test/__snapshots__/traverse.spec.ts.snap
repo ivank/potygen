@@ -113,6 +113,23 @@ export interface Query {
 "
 `;
 
+exports[`Traverse Should work: __generated__/account-verification.update.query.queries.ts 1`] = `
+"export interface Params {
+    items: {
+        GH_account_id: unknown;
+        [\\"MV date\\"]: unknown;
+    }[];
+    currentDate: Date;
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Traverse Should work: __generated__/accounts.list.query.queries.ts 1`] = `
 "export interface Params {
     q?: string;

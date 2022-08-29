@@ -113,6 +113,23 @@ export interface Query {
 "
 `;
 
+exports[`Load Files Should convert complex sql account-verification.update.query.sql: account-verification.update.query.sql 1`] = `
+"export interface Params {
+    items: {
+        GH_account_id: unknown;
+        [\\"MV date\\"]: unknown;
+    }[];
+    currentDate: Date;
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Load Files Should convert complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
 "export interface Params {
     q?: string;

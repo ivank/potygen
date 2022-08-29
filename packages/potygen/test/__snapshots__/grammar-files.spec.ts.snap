@@ -7306,6 +7306,783 @@ Object {
 }
 `;
 
+exports[`Sql Files Should parse complex sql account-verification.update.query.sql: account-verification.update.query.sql 1`] = `
+Object {
+  "ast": Object {
+    "end": 786,
+    "start": 1,
+    "tag": 6,
+    "values": Array [
+      Object {
+        "end": 144,
+        "start": 10,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 44,
+            "start": 10,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 14,
+                "start": 10,
+                "tag": 8,
+                "value": "items",
+              },
+              Object {
+                "end": 44,
+                "start": 16,
+                "tag": 85,
+                "values": Array [
+                  Object {
+                    "end": 30,
+                    "start": 17,
+                    "tag": 8,
+                    "value": "account_number",
+                  },
+                  Object {
+                    "end": 43,
+                    "start": 33,
+                    "tag": 8,
+                    "value": "verified_on",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 138,
+            "start": 61,
+            "tag": 3,
+            "values": Array [
+              Object {
+                "end": 138,
+                "pick": Array [
+                  Object {
+                    "end": 107,
+                    "start": 95,
+                    "tag": 8,
+                    "value": "GH_account_id",
+                  },
+                  Object {
+                    "end": 128,
+                    "start": 120,
+                    "tag": 9,
+                    "value": "MV date",
+                  },
+                ],
+                "required": false,
+                "start": 76,
+                "tag": 10,
+                "type": "spread",
+                "value": "items",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 416,
+        "start": 151,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 171,
+            "start": 151,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 171,
+                "start": 151,
+                "tag": 8,
+                "value": "accounts_back_to_live",
+              },
+            ],
+          },
+          Object {
+            "end": 410,
+            "start": 188,
+            "tag": 94,
+            "values": Array [
+              Object {
+                "end": 202,
+                "start": 195,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 202,
+                    "start": 195,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 202,
+                        "start": 195,
+                        "tag": 8,
+                        "value": "accounts",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 326,
+                "start": 210,
+                "tag": 88,
+                "values": Array [
+                  Object {
+                    "end": 326,
+                    "start": 222,
+                    "tag": 84,
+                    "values": Array [
+                      Object {
+                        "end": 235,
+                        "start": 222,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 226,
+                            "start": 222,
+                            "tag": 8,
+                            "value": "state",
+                          },
+                          Object {
+                            "end": 235,
+                            "start": 230,
+                            "tag": 13,
+                            "value": "Live",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 267,
+                        "start": 246,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 260,
+                            "start": 246,
+                            "tag": 8,
+                            "value": "on_hold_reasons",
+                          },
+                          Object {
+                            "end": 267,
+                            "start": 264,
+                            "tag": 7,
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 290,
+                        "start": 278,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 283,
+                            "start": 278,
+                            "tag": 8,
+                            "value": "end_on",
+                          },
+                          Object {
+                            "end": 290,
+                            "start": 287,
+                            "tag": 7,
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 326,
+                        "start": 301,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 310,
+                            "start": 301,
+                            "tag": 8,
+                            "value": "updated_at",
+                          },
+                          Object {
+                            "end": 326,
+                            "pick": Array [],
+                            "required": true,
+                            "start": 314,
+                            "tag": 10,
+                            "type": "single",
+                            "value": "currentDate",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 343,
+                "start": 334,
+                "tag": 91,
+                "values": Array [
+                  Object {
+                    "end": 343,
+                    "start": 339,
+                    "tag": 68,
+                    "values": Array [
+                      Object {
+                        "end": 343,
+                        "start": 339,
+                        "tag": 90,
+                        "values": Array [
+                          Object {
+                            "end": 343,
+                            "start": 339,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 343,
+                                "start": 339,
+                                "tag": 8,
+                                "value": "items",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 410,
+                "start": 351,
+                "tag": 70,
+                "values": Array [
+                  Object {
+                    "end": 410,
+                    "start": 365,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 384,
+                        "start": 365,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 369,
+                            "start": 365,
+                            "tag": 8,
+                            "value": "items",
+                          },
+                          Object {
+                            "end": 384,
+                            "start": 371,
+                            "tag": 8,
+                            "value": "account_number",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 386,
+                        "start": 386,
+                        "tag": 44,
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 410,
+                        "start": 388,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 395,
+                            "start": 388,
+                            "tag": 8,
+                            "value": "accounts",
+                          },
+                          Object {
+                            "end": 410,
+                            "start": 397,
+                            "tag": 8,
+                            "value": "account_number",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 786,
+        "start": 420,
+        "tag": 94,
+        "values": Array [
+          Object {
+            "end": 432,
+            "start": 427,
+            "tag": 90,
+            "values": Array [
+              Object {
+                "end": 432,
+                "start": 427,
+                "tag": 89,
+                "values": Array [
+                  Object {
+                    "end": 432,
+                    "start": 427,
+                    "tag": 8,
+                    "value": "meters",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 512,
+            "start": 436,
+            "tag": 88,
+            "values": Array [
+              Object {
+                "end": 512,
+                "start": 444,
+                "tag": 84,
+                "values": Array [
+                  Object {
+                    "end": 480,
+                    "start": 444,
+                    "tag": 83,
+                    "values": Array [
+                      Object {
+                        "end": 454,
+                        "start": 444,
+                        "tag": 8,
+                        "value": "verified_on",
+                      },
+                      Object {
+                        "end": 481,
+                        "start": 458,
+                        "tag": 52,
+                        "values": Array [
+                          Object {
+                            "end": 474,
+                            "start": 458,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 462,
+                                "start": 458,
+                                "tag": 8,
+                                "value": "items",
+                              },
+                              Object {
+                                "end": 474,
+                                "start": 464,
+                                "tag": 8,
+                                "value": "verified_on",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 480,
+                            "start": 477,
+                            "tag": 32,
+                            "values": Array [
+                              Object {
+                                "end": 480,
+                                "start": 477,
+                                "tag": 89,
+                                "values": Array [
+                                  Object {
+                                    "end": 480,
+                                    "start": 477,
+                                    "tag": 8,
+                                    "value": "date",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 512,
+                    "start": 487,
+                    "tag": 83,
+                    "values": Array [
+                      Object {
+                        "end": 496,
+                        "start": 487,
+                        "tag": 8,
+                        "value": "updated_at",
+                      },
+                      Object {
+                        "end": 512,
+                        "pick": Array [],
+                        "required": true,
+                        "start": 500,
+                        "tag": 10,
+                        "type": "single",
+                        "value": "currentDate",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 567,
+            "start": 516,
+            "tag": 91,
+            "values": Array [
+              Object {
+                "end": 567,
+                "start": 521,
+                "tag": 68,
+                "values": Array [
+                  Object {
+                    "end": 539,
+                    "start": 521,
+                    "tag": 90,
+                    "values": Array [
+                      Object {
+                        "end": 539,
+                        "start": 521,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 539,
+                            "start": 521,
+                            "tag": 8,
+                            "value": "installation_meters",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 550,
+                    "start": 542,
+                    "tag": 90,
+                    "values": Array [
+                      Object {
+                        "end": 550,
+                        "start": 542,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 550,
+                            "start": 542,
+                            "tag": 8,
+                            "value": "contracts",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 560,
+                    "start": 553,
+                    "tag": 90,
+                    "values": Array [
+                      Object {
+                        "end": 560,
+                        "start": 553,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 560,
+                            "start": 553,
+                            "tag": 8,
+                            "value": "accounts",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 567,
+                    "start": 563,
+                    "tag": 90,
+                    "values": Array [
+                      Object {
+                        "end": 567,
+                        "start": 563,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 567,
+                            "start": 563,
+                            "tag": 8,
+                            "value": "items",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 786,
+            "start": 571,
+            "tag": 70,
+            "values": Array [
+              Object {
+                "end": 786,
+                "start": 581,
+                "tag": 46,
+                "values": Array [
+                  Object {
+                    "end": 786,
+                    "start": 581,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 786,
+                        "start": 581,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 620,
+                            "start": 581,
+                            "tag": 46,
+                            "values": Array [
+                              Object {
+                                "end": 608,
+                                "start": 581,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 599,
+                                    "start": 581,
+                                    "tag": 8,
+                                    "value": "installation_meters",
+                                  },
+                                  Object {
+                                    "end": 608,
+                                    "start": 601,
+                                    "tag": 8,
+                                    "value": "meter_id",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 610,
+                                "start": 610,
+                                "tag": 44,
+                                "value": "=",
+                              },
+                              Object {
+                                "end": 620,
+                                "start": 612,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 617,
+                                    "start": 612,
+                                    "tag": 8,
+                                    "value": "meters",
+                                  },
+                                  Object {
+                                    "end": 620,
+                                    "start": 619,
+                                    "tag": 8,
+                                    "value": "id",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 624,
+                            "start": 622,
+                            "tag": 44,
+                            "value": "AND",
+                          },
+                          Object {
+                            "end": 688,
+                            "start": 626,
+                            "tag": 46,
+                            "values": Array [
+                              Object {
+                                "end": 650,
+                                "start": 626,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 634,
+                                    "start": 626,
+                                    "tag": 8,
+                                    "value": "contracts",
+                                  },
+                                  Object {
+                                    "end": 650,
+                                    "start": 636,
+                                    "tag": 8,
+                                    "value": "installation_id",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 652,
+                                "start": 652,
+                                "tag": 44,
+                                "value": "=",
+                              },
+                              Object {
+                                "end": 688,
+                                "start": 654,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 672,
+                                    "start": 654,
+                                    "tag": 8,
+                                    "value": "installation_meters",
+                                  },
+                                  Object {
+                                    "end": 688,
+                                    "start": 674,
+                                    "tag": 8,
+                                    "value": "installation_id",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 696,
+                        "start": 694,
+                        "tag": 44,
+                        "value": "AND",
+                      },
+                      Object {
+                        "end": 731,
+                        "start": 698,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 708,
+                            "start": 698,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 705,
+                                "start": 698,
+                                "tag": 8,
+                                "value": "accounts",
+                              },
+                              Object {
+                                "end": 708,
+                                "start": 707,
+                                "tag": 8,
+                                "value": "id",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 710,
+                            "start": 710,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 731,
+                            "start": 712,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 720,
+                                "start": 712,
+                                "tag": 8,
+                                "value": "contracts",
+                              },
+                              Object {
+                                "end": 731,
+                                "start": 722,
+                                "tag": 8,
+                                "value": "account_id",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 739,
+                    "start": 737,
+                    "tag": 44,
+                    "value": "AND",
+                  },
+                  Object {
+                    "end": 786,
+                    "start": 741,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 763,
+                        "start": 741,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 748,
+                            "start": 741,
+                            "tag": 8,
+                            "value": "accounts",
+                          },
+                          Object {
+                            "end": 763,
+                            "start": 750,
+                            "tag": 8,
+                            "value": "account_number",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 765,
+                        "start": 765,
+                        "tag": 44,
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 786,
+                        "start": 767,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 771,
+                            "start": 767,
+                            "tag": 8,
+                            "value": "items",
+                          },
+                          Object {
+                            "end": 786,
+                            "start": 773,
+                            "tag": 8,
+                            "value": "account_number",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Files Should parse complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
 Object {
   "ast": Object {

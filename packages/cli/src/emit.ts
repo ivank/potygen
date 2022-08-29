@@ -84,7 +84,9 @@ const toPropertyType =
           const itemType = toPropertyType({ ...acc, name: context.name + toClassCase(item.name) })(item.type);
           const memeber = factory.createPropertySignature(
             undefined,
-            item.name,
+            item.name.includes(' ')
+              ? factory.createComputedPropertyName(factory.createStringLiteral(item.name))
+              : item.name,
             'nullable' in item.type && item.type.nullable ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
             itemType.type,
           );
