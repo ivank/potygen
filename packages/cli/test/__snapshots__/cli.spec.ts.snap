@@ -7,6 +7,7 @@ Array [
   "account-levelisations-bulk-close-accounts.query.queries.ts",
   "account-levelisations-set-bulk-update.query.queries.ts",
   "account-levelisations.query.queries.ts",
+  "account-verification.update.query.queries.ts",
   "accounts.list.query.queries.ts",
   "accounts.queries.ts",
   "accounts.query.queries.ts",
@@ -16,6 +17,7 @@ Array [
   "bacs.query.queries.ts",
   "contracts.queries.ts",
   "csa-account-by-id.query.queries.ts",
+  "csa-account-contracts-update.query.queries.ts",
   "cte-levelisation-details.query.queries.ts",
   "cte.query.queries.ts",
   "delete-accounts.query.queries.ts",
@@ -144,6 +146,23 @@ exports[`CLI Should use cli to run pipeline on sql files: account-levelisations-
 }
 export interface Result {
     id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: account-verification.update.query.queries.ts 1`] = `
+"export interface Params {
+    items: {
+        GH_account_id: unknown;
+        [\\"MV date\\"]: unknown;
+    }[];
+    currentDate: Date;
+}
+export interface Result {
 }
 export interface Query {
     params: Params;
@@ -375,6 +394,22 @@ export interface Result {
         beneficiaryName?: string;
         beneficiarySortCode?: string;
     };
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: csa-account-contracts-update.query.queries.ts 1`] = `
+"export interface Params {
+    phone?: string;
+    email?: string;
+    currentDate: Date;
+    id: number;
+}
+export interface Result {
 }
 export interface Query {
     params: Params;

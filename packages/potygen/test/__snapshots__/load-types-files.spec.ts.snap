@@ -883,6 +883,74 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql account-verification.update.query.sql: account-verification.update.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "items",
+      "type": Object {
+        "items": Object {
+          "items": Array [
+            Object {
+              "name": "GH_account_id",
+              "type": Object {
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "MV date",
+              "type": Object {
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+          ],
+          "nullable": false,
+          "postgresType": "json",
+          "type": 13,
+        },
+        "postgresType": "anyarray",
+        "type": 11,
+      },
+    },
+    Object {
+      "name": "currentDate",
+      "type": Object {
+        "items": Array [
+          Object {
+            "nullable": false,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "timestamp without time zone",
+              "type": 6,
+            },
+          },
+          Object {
+            "nullable": false,
+            "postgresType": "any",
+            "type": 14,
+            "value": Object {
+              "comment": undefined,
+              "nullable": true,
+              "postgresType": "timestamp without time zone",
+              "type": 6,
+            },
+          },
+        ],
+        "nullable": false,
+        "postgresType": "any",
+        "type": 12,
+      },
+    },
+  ],
+  "results": Array [],
+}
+`;
+
 exports[`Load Files Should convert complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
 Object {
   "params": Array [
@@ -2519,6 +2587,65 @@ Object {
       },
     },
   ],
+}
+`;
+
+exports[`Load Files Should convert complex sql csa-account-contracts-update.query.sql: csa-account-contracts-update.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "phone",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "postgresType": "text",
+          "type": 2,
+        },
+      },
+    },
+    Object {
+      "name": "email",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "postgresType": "text",
+          "type": 2,
+        },
+      },
+    },
+    Object {
+      "name": "currentDate",
+      "type": Object {
+        "nullable": false,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "nullable": true,
+          "postgresType": "timestamp without time zone",
+          "type": 6,
+        },
+      },
+    },
+    Object {
+      "name": "id",
+      "type": Object {
+        "nullable": false,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "postgresType": "integer",
+          "type": 3,
+        },
+      },
+    },
+  ],
+  "results": Array [],
 }
 `;
 

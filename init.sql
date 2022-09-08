@@ -93,6 +93,8 @@ CREATE TABLE contacts (
     last_name character varying(35) NOT NULL,
     email character varying(100),
     phone character varying(12),
+    emails character varying(100)[],
+    phones character varying(12)[],
     created_at timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp without time zone,
     source_system_id integer,

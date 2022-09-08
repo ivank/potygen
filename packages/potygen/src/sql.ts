@@ -47,10 +47,10 @@ const toSpreadIndexParam = (param: Param, index: number, values: unknown): strin
 /**
  * Figure out what the index will be after a spread
  */
-const toSpreadIndex = (values: unknown): number =>
+const toSpreadIndex = (param: Param, values: unknown): number =>
   Array.isArray(values)
     ? values.reduce(
-        (sum, value) => sum + (Array.isArray(value) ? value.length : isObject(value) ? Object.keys(value).length : 1),
+        (sum, value) => sum + (Array.isArray(value) ? value.length : isObject(value) ? param.pick.length : 1),
         0,
       )
     : 0;
@@ -78,7 +78,7 @@ const convertSql = (params: Param[], sql: string, values: Record<string, unknown
     (current, param) => {
       const nameLength = param.end - param.start + 1;
       const reusedIndex = current.indexes[param.name];
-      const newIndex = param.spread ? current.index + toSpreadIndex(values[param.name]) : current.index + 1;
+      const newIndex = param.spread ? current.index + toSpreadIndex(param, values[param.name]) : current.index + 1;
       const index = reusedIndex ?? newIndex;
       const nextIndex = reusedIndex ? current.index : newIndex;
 

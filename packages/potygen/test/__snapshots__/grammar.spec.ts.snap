@@ -6214,6 +6214,236 @@ Object {
 }
 `;
 
+exports[`Sql Should parse insert query with values param (INSERT INTO table1 (id, col1) VALUES $items): values param 1`] = `
+Object {
+  "ast": Object {
+    "end": 43,
+    "start": 0,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 17,
+        "start": 12,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 12,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 12,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 28,
+        "start": 19,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 20,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 27,
+            "start": 24,
+            "tag": 8,
+            "value": "col1",
+          },
+        ],
+      },
+      Object {
+        "end": 43,
+        "start": 30,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 43,
+            "pick": Array [],
+            "required": false,
+            "start": 37,
+            "tag": 10,
+            "type": "spread",
+            "value": "items",
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse insert query with values param quoted (INSERT INTO table1 (id, col1) VALUES $items(val1, "val 2")): values param quoted 1`] = `
+Object {
+  "ast": Object {
+    "end": 58,
+    "start": 0,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 17,
+        "start": 12,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 12,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 12,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 28,
+        "start": 19,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 20,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 27,
+            "start": 24,
+            "tag": 8,
+            "value": "col1",
+          },
+        ],
+      },
+      Object {
+        "end": 58,
+        "start": 30,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 58,
+            "pick": Array [
+              Object {
+                "end": 48,
+                "start": 45,
+                "tag": 8,
+                "value": "val1",
+              },
+              Object {
+                "end": 57,
+                "start": 51,
+                "tag": 9,
+                "value": "val 2",
+              },
+            ],
+            "required": false,
+            "start": 37,
+            "tag": 10,
+            "type": "spread",
+            "value": "items",
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse insert query with values param spread (INSERT INTO table1 (id, col1) VALUES $items(val1, val2)): values param spread 1`] = `
+Object {
+  "ast": Object {
+    "end": 55,
+    "start": 0,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 17,
+        "start": 12,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 12,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 12,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 28,
+        "start": 19,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 20,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 27,
+            "start": 24,
+            "tag": 8,
+            "value": "col1",
+          },
+        ],
+      },
+      Object {
+        "end": 55,
+        "start": 30,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 55,
+            "pick": Array [
+              Object {
+                "end": 48,
+                "start": 45,
+                "tag": 8,
+                "value": "val1",
+              },
+              Object {
+                "end": 54,
+                "start": 51,
+                "tag": 8,
+                "value": "val2",
+              },
+            ],
+            "required": false,
+            "start": 37,
+            "tag": 10,
+            "type": "spread",
+            "value": "items",
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse queries with cast for column schema type (SELECT test::information_schema.sql_identifier FROM table1): column schema type 1`] = `
 Object {
   "ast": Object {
@@ -26248,6 +26478,78 @@ Object {
 }
 `;
 
+exports[`Sql Should parse update query with array index (UPDATE table1 SET col1[2] = 10): array index 1`] = `
+Object {
+  "ast": Object {
+    "end": 29,
+    "start": 0,
+    "tag": 94,
+    "values": Array [
+      Object {
+        "end": 12,
+        "start": 7,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 12,
+            "start": 7,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 12,
+                "start": 7,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 29,
+        "start": 14,
+        "tag": 88,
+        "values": Array [
+          Object {
+            "end": 29,
+            "start": 18,
+            "tag": 84,
+            "values": Array [
+              Object {
+                "end": 29,
+                "start": 18,
+                "tag": 118,
+                "values": Array [
+                  Object {
+                    "end": 21,
+                    "start": 18,
+                    "tag": 8,
+                    "value": "col1",
+                  },
+                  Object {
+                    "end": 23,
+                    "start": 23,
+                    "tag": 20,
+                    "value": "2",
+                  },
+                  Object {
+                    "end": 29,
+                    "start": 28,
+                    "tag": 19,
+                    "value": "10",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse update query with as (UPDATE table1 AS "my1" SET col1 = my2.col2): as 1`] = `
 Object {
   "ast": Object {
@@ -26619,6 +26921,122 @@ Object {
                         "value": "other",
                       },
                     ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse update query with list array index (UPDATE table1 SET col1[2] = 10, col1[3] = 10, col1 = 10): list array index 1`] = `
+Object {
+  "ast": Object {
+    "end": 54,
+    "start": 0,
+    "tag": 94,
+    "values": Array [
+      Object {
+        "end": 12,
+        "start": 7,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 12,
+            "start": 7,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 12,
+                "start": 7,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 54,
+        "start": 14,
+        "tag": 88,
+        "values": Array [
+          Object {
+            "end": 54,
+            "start": 18,
+            "tag": 84,
+            "values": Array [
+              Object {
+                "end": 29,
+                "start": 18,
+                "tag": 118,
+                "values": Array [
+                  Object {
+                    "end": 21,
+                    "start": 18,
+                    "tag": 8,
+                    "value": "col1",
+                  },
+                  Object {
+                    "end": 23,
+                    "start": 23,
+                    "tag": 20,
+                    "value": "2",
+                  },
+                  Object {
+                    "end": 29,
+                    "start": 28,
+                    "tag": 19,
+                    "value": "10",
+                  },
+                ],
+              },
+              Object {
+                "end": 43,
+                "start": 32,
+                "tag": 118,
+                "values": Array [
+                  Object {
+                    "end": 35,
+                    "start": 32,
+                    "tag": 8,
+                    "value": "col1",
+                  },
+                  Object {
+                    "end": 37,
+                    "start": 37,
+                    "tag": 20,
+                    "value": "3",
+                  },
+                  Object {
+                    "end": 43,
+                    "start": 42,
+                    "tag": 19,
+                    "value": "10",
+                  },
+                ],
+              },
+              Object {
+                "end": 54,
+                "start": 46,
+                "tag": 83,
+                "values": Array [
+                  Object {
+                    "end": 49,
+                    "start": 46,
+                    "tag": 8,
+                    "value": "col1",
+                  },
+                  Object {
+                    "end": 54,
+                    "start": 53,
+                    "tag": 19,
+                    "value": "10",
                   },
                 ],
               },

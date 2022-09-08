@@ -478,6 +478,10 @@ export const enum SqlName {
    * {@link ArraySelectConstructorTag}
    */
   ArraySelectConstructor,
+  /**
+   * {@link SetArrayItemTag}
+   */
+  SetArrayItem,
 }
 
 /**
@@ -644,13 +648,14 @@ export interface QuotedIdentifierTag extends LeafSqlTag {
  * Spread:       $$my_parameter
  * Single Pick:  $my_parameter(val1, val2)
  * Spread Pick   $$my_values(val1, val2)
+ * Spread Pick   $$my_values(val1, "val 2")
  */
 export interface ParameterTag extends LeafSqlTag {
   tag: SqlName.Parameter;
   type: 'spread' | 'single';
   value: string;
   required: boolean;
-  pick: UnquotedIdentifierTag[];
+  pick: IdentifierTag[];
 }
 
 /**
@@ -2014,6 +2019,25 @@ export interface SetItemTag extends NodeSqlTag {
 }
 
 /**
+ * Setting of a specific index in a specific array column in an UPDATE query
+ * https://www.postgresql.org/docs/current/sql-update.html
+ * ```
+ *                     value─┐
+ *                  index─┐  │
+ *                        ▼  ▼
+ *                  ┌ ─ ─ ─ ─┌───┐
+ * UPDATE table1 SET col1[2]=│100│
+ *                  └ ─ ─ ─ ─└───┘
+ *                 └────────────┘
+ *                       └─▶SetArrayItemTag
+ * ```
+ */
+export interface SetArrayItemTag extends NodeSqlTag {
+  tag: SqlName.SetArrayItem;
+  values: [column: IdentifierTag, index: IntegerTag, value: ExpressionTag | DefaultTag];
+}
+
+/**
  * Setting of a columns in an UPDATE tag
  * https://www.postgresql.org/docs/current/sql-update.html
  * ```
@@ -2028,7 +2052,7 @@ export interface SetItemTag extends NodeSqlTag {
  */
 export interface SetListTag extends NodeSqlTag {
   tag: SqlName.SetList;
-  values: SetItemTag[];
+  values: (SetItemTag | SetArrayItemTag)[];
 }
 
 /**
@@ -2633,6 +2657,7 @@ export type NodeTag =
   | OffsetTag
   | SelectTag
   | SetItemTag
+  | SetArrayItemTag
   | SetListTag
   | ColumnsTag
   | ValuesTag

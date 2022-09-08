@@ -158,6 +158,8 @@ describe('Format', () => {
     ${'except select'}                | ${'SELECT col1, col2 FROM table1 EXCEPT SELECT col1, col2 FROM table2'}
     ${'update default'}               | ${'UPDATE table1 SET col1 = DEFAULT'}
     ${'update value'}                 | ${'UPDATE table1 SET col1 = 10'}
+    ${'update array input'}           | ${'UPDATE table1 SET col1[2] = 10'}
+    ${'update array input list'}      | ${'UPDATE table1 SET col1[2] = 10, col1[3] = 2'}
     ${'update list'}                  | ${'UPDATE table1 SET col1 = 10, col2 = "other"'}
     ${'update params'}                | ${'UPDATE table1 SET col1 = :param1, col2 = :param2'}
     ${'update multiple tables'}       | ${'UPDATE table1 SET col1 = table2.id FROM table2'}
