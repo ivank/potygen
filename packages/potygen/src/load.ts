@@ -129,12 +129,12 @@ export const loadData = async (ctx: LoadContext, currentData: LoadedData[], newD
   const compositeNames = data.filter(isDataEnum).map(({ name }) => name);
 
   if (isEmpty(tableNames) && isEmpty(enumNames) && isEmpty(compositeNames) && isEmpty(functionNames)) {
-    ctx.logger.debug(`Current data ${currentData.length}. No additional data found, skipping.`);
+    ctx.logger.debug(`No additional data found, skipping.`);
     return currentData;
   }
 
   ctx.logger.debug(
-    `Current data ${currentData.length}. Load additional data: ${data.length}. ${inspect(
+    `Load additional data: ${data.length}. ${inspect(
       Object.fromEntries(
         [
           ['tableNames', tableNames.map(formatTableName)],
