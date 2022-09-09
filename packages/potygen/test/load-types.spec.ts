@@ -85,7 +85,7 @@ describe('Query Interface', () => {
       `SELECT state FROM account_levelisations`,
       `SELECT id, character_col FROM all_types WHERE id = :id`,
     ].map((sql) => toQueryInterface(parser(sql).ast));
-    const logger = console; // { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     const data = await loadQueryInterfacesData({ db, logger }, queryInterfaces, []);
 
     let individuallyLoaded: LoadedData[] = [];
@@ -95,5 +95,5 @@ describe('Query Interface', () => {
 
     expect(data).toEqual(expect.arrayContaining(individuallyLoaded));
     await db.end();
-  }, 10000);
+  }, 20000);
 });
