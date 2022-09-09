@@ -67,6 +67,14 @@ export interface BaseType {
    * If the type originated from a column / field in the database that could be null.
    */
   nullable?: boolean;
+  /**
+   * If the type originated from a column / field in the database is generated.
+   */
+  generated?: boolean;
+  /**
+   * In postgres columns can have special descriptions, like the expression of a generated column
+   */
+  postgresDescription?: string;
 }
 
 export interface TypeString extends BaseType {

@@ -65,7 +65,23 @@ const formatSourceColumns = (source: LoadedSource): string =>
     ...Object.entries(source.items).flatMap(([name, type]) => {
       const isNotNull = type && isTypeNullable(type) && !type.nullable;
       return [
-        [name, join(' ', [bold(formatPostgresType(type.postgresType)), code(isNotNull ? 'NOT_NULL' : 'NULL')])],
+        [
+          name,
+          join(
+            ' ',
+            [
+              bold(formatPostgresType(type.postgresType)),
+              code(isNotNull ? 'NOT_NULL' : 'NULL'),
+              type.generated ? code('GENERATED') : undefined,
+            ].filter(isNil),
+          ),
+        ],
+        ...(type.postgresDescription
+          ? type.postgresDescription
+              .trim()
+              .split('\n')
+              .map((line) => ['', line])
+          : []),
         ...(type.comment
           ? type.comment
               .trim()
@@ -102,10 +118,16 @@ export const quickInfoColumn = (
 ): { display: string; description: string } => {
   const isNotNull = type && isTypeNullable(type) && !type.nullable;
   return {
-    display: join(' ', [name, formatPostgresType(type?.postgresType), isNotNull ? 'NOT NULL' : undefined]),
+    display: join(' ', [
+      name,
+      formatPostgresType(type?.postgresType),
+      type.generated ? 'GENERATED' : undefined,
+      isNotNull ? 'NOT NULL' : undefined,
+    ]),
     description: join('\n\n---\n\n', [
       `From: ${formatSourceName(source)}`,
       type?.comment,
+      type?.postgresDescription,
       details?.type === 'Enum'
         ? formatEnum(details)
         : details?.type === 'Composite'

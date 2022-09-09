@@ -10,7 +10,7 @@ describe('Inspect', () => {
     await db.connect();
     ctx = toInfoContext(await loadAllData({ db, logger }, []), logger);
     await db.end();
-  });
+  }, 20000);
 
   it.each`
     name                    | sqlWithCaret

@@ -30,7 +30,13 @@ SELECT product FROM orders WHERE region = $region
 ]
 Quick Info found: { type: 'Column', name: 'product', start: 7, end: 13 }:
 Quick Info Column: {
-  column: { type: 2, postgresType: 'character varying', comment: undefined },
+  column: {
+    type: 2,
+    postgresType: 'character varying',
+    comment: undefined,
+    generated: false,
+    postgresDescription: undefined
+  },
   additionalEnum: undefined,
   additionalComposite: undefined
 }:
@@ -55,7 +61,8 @@ Loaded additional data: 1. [ \\"{Table 'public.orders'}\\" ]
         \\"nullable\\": true,
         \\"value\\": {
           \\"type\\": 2,
-          \\"postgresType\\": \\"character varying\\"
+          \\"postgresType\\": \\"character varying\\",
+          \\"generated\\": false
         },
         \\"postgresType\\": \\"any\\"
       }
@@ -66,7 +73,8 @@ Loaded additional data: 1. [ \\"{Table 'public.orders'}\\" ]
       \\"name\\": \\"product\\",
       \\"type\\": {
         \\"type\\": 2,
-        \\"postgresType\\": \\"character varying\\"
+        \\"postgresType\\": \\"character varying\\",
+        \\"generated\\": false
       }
     }
   ]
@@ -88,7 +96,8 @@ No additional data found, skipping.
         \\"nullable\\": true,
         \\"value\\": {
           \\"type\\": 2,
-          \\"postgresType\\": \\"character varying\\"
+          \\"postgresType\\": \\"character varying\\",
+          \\"generated\\": false
         },
         \\"postgresType\\": \\"any\\"
       }
@@ -99,7 +108,8 @@ No additional data found, skipping.
       \\"name\\": \\"product\\",
       \\"type\\": {
         \\"type\\": 2,
-        \\"postgresType\\": \\"character varying\\"
+        \\"postgresType\\": \\"character varying\\",
+        \\"generated\\": false
       }
     }
   ]

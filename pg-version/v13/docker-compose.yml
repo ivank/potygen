@@ -11,5 +11,6 @@ services:
       POSTGRES_USER: potygen
       POSTGRES_PASSWORD: dev-pass
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./examples/bookstore/init.sql:/docker-entrypoint-initdb.d/bookstore.sql
+      - ../../init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init-version.sql:/docker-entrypoint-initdb.d/init-version.sql
+      - ../../examples/bookstore/init.sql:/docker-entrypoint-initdb.d/bookstore.sql

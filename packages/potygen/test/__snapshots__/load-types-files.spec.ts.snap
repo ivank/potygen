@@ -11,6 +11,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "boolean",
           "type": 5,
         },
@@ -24,6 +26,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -35,6 +39,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -43,6 +49,8 @@ Object {
       "name": "isAccepted",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "boolean",
         "type": 5,
       },
@@ -62,6 +70,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -75,7 +85,9 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
           "nullable": true,
+          "postgresDescription": undefined,
           "postgresType": "date",
           "type": 6,
         },
@@ -87,6 +99,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -118,6 +132,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -230,6 +246,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "integer",
               "type": 3,
             },
@@ -456,6 +474,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -464,6 +484,8 @@ Object {
       "name": "levelisationId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -472,6 +494,8 @@ Object {
       "name": "accountId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -480,6 +504,8 @@ Object {
       "name": "installationId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -509,6 +535,8 @@ Object {
       "name": "isAccepted",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "boolean",
         "type": 5,
       },
@@ -517,7 +545,9 @@ Object {
       "name": "generationStartReadOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -526,7 +556,9 @@ Object {
       "name": "generationStartReadValue",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -535,7 +567,9 @@ Object {
       "name": "generationEndReadOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -544,7 +578,9 @@ Object {
       "name": "generationEndReadValue",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -553,7 +589,9 @@ Object {
       "name": "generationPercentageSplit",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -562,7 +600,9 @@ Object {
       "name": "generationPayment",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -571,7 +611,9 @@ Object {
       "name": "generationEnergy",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -580,7 +622,9 @@ Object {
       "name": "exportStartReadOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -589,7 +633,9 @@ Object {
       "name": "exportStartReadValue",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -598,7 +644,9 @@ Object {
       "name": "exportEndReadOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -607,7 +655,9 @@ Object {
       "name": "exportEndReadValue",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -616,7 +666,9 @@ Object {
       "name": "exportPercentageSplit",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -625,7 +677,9 @@ Object {
       "name": "exportPayment",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -634,7 +688,9 @@ Object {
       "name": "exportEnergy",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -730,7 +786,9 @@ Object {
       "name": "totalPayment",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -739,7 +797,9 @@ Object {
       "name": "vatPayment",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -748,7 +808,9 @@ Object {
       "name": "generationPeriods",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "jsonb",
         "type": 8,
       },
@@ -757,7 +819,9 @@ Object {
       "name": "exportPeriods",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "jsonb",
         "type": 8,
       },
@@ -782,6 +846,8 @@ Object {
       "name": "cfrFitId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -790,7 +856,9 @@ Object {
       "name": "resolvedPostlevId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -799,7 +867,9 @@ Object {
       "name": "isBacsPaymentsSent",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "boolean",
         "type": 5,
       },
@@ -808,7 +878,9 @@ Object {
       "name": "isChequePaymentsSent",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "boolean",
         "type": 5,
       },
@@ -842,6 +914,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -875,6 +949,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -924,7 +1000,9 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
               "nullable": true,
+              "postgresDescription": undefined,
               "postgresType": "timestamp without time zone",
               "type": 6,
             },
@@ -935,7 +1013,9 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
               "nullable": true,
+              "postgresDescription": undefined,
               "postgresType": "timestamp without time zone",
               "type": 6,
             },
@@ -974,6 +1054,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": undefined,
+              "postgresDescription": undefined,
               "postgresType": "text",
               "type": 2,
             },
@@ -984,6 +1066,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": undefined,
+              "postgresDescription": undefined,
               "postgresType": "text",
               "type": 2,
             },
@@ -994,6 +1078,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": undefined,
+              "postgresDescription": undefined,
               "postgresType": "text",
               "type": 2,
             },
@@ -1004,6 +1090,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": undefined,
+              "postgresDescription": undefined,
               "postgresType": "text",
               "type": 2,
             },
@@ -1014,6 +1102,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": undefined,
+              "postgresDescription": undefined,
               "postgresType": "text",
               "type": 2,
             },
@@ -1033,7 +1123,9 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
               "nullable": true,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -1044,7 +1136,9 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
               "nullable": true,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -1055,7 +1149,9 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
               "nullable": true,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -1066,7 +1162,9 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
               "nullable": true,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -1077,6 +1175,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -1159,6 +1259,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": undefined,
+              "postgresDescription": undefined,
               "postgresType": "text",
               "type": 2,
             },
@@ -1169,6 +1271,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": undefined,
+              "postgresDescription": undefined,
               "postgresType": "text",
               "type": 2,
             },
@@ -1179,6 +1283,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": undefined,
+              "postgresDescription": undefined,
               "postgresType": "text",
               "type": 2,
             },
@@ -1189,6 +1295,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": undefined,
+              "postgresDescription": undefined,
               "postgresType": "text",
               "type": 2,
             },
@@ -1208,7 +1316,9 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
               "nullable": true,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -1219,7 +1329,9 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
               "nullable": true,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -1230,7 +1342,9 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
               "nullable": true,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -1241,6 +1355,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -1317,6 +1433,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -1356,7 +1474,9 @@ Object {
       "name": "startOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -1365,6 +1485,8 @@ Object {
       "name": "firstName",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -1373,6 +1495,8 @@ Object {
       "name": "lastName",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -1381,7 +1505,9 @@ Object {
       "name": "email",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -1390,6 +1516,8 @@ Object {
       "name": "address",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "text",
         "type": 2,
       },
@@ -1399,6 +1527,8 @@ Object {
       "type": Object {
         "items": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "character varying",
           "type": 2,
         },
@@ -1430,6 +1560,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "date",
               "type": 6,
             },
@@ -1440,6 +1572,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "date",
               "type": 6,
             },
@@ -1458,6 +1592,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "date",
           "type": 6,
         },
@@ -1471,6 +1607,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -1495,6 +1633,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "integer",
               "type": 3,
             },
@@ -1511,6 +1651,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -1519,6 +1661,8 @@ Object {
       "name": "msn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -1527,6 +1671,8 @@ Object {
       "name": "mpan",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -1535,6 +1681,8 @@ Object {
       "name": "make",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -1543,6 +1691,8 @@ Object {
       "name": "model",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -1580,6 +1730,8 @@ Object {
               "name": "id",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
               },
@@ -1588,6 +1740,8 @@ Object {
               "name": "value",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
               },
@@ -1596,6 +1750,8 @@ Object {
               "name": "dateOn",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "date",
                 "type": 2,
               },
@@ -1604,7 +1760,9 @@ Object {
               "name": "submittedAt",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
                 "nullable": true,
+                "postgresDescription": undefined,
                 "postgresType": "date",
                 "type": 2,
               },
@@ -1613,7 +1771,9 @@ Object {
               "name": "reason",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
                 "nullable": true,
+                "postgresDescription": undefined,
                 "postgresType": "character varying",
                 "type": 2,
               },
@@ -1667,6 +1827,8 @@ Object {
               "name": "id",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
               },
@@ -1675,6 +1837,8 @@ Object {
               "name": "value",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
               },
@@ -1683,6 +1847,8 @@ Object {
               "name": "dateOn",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "date",
                 "type": 2,
               },
@@ -1691,7 +1857,9 @@ Object {
               "name": "submittedAt",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
                 "nullable": true,
+                "postgresDescription": undefined,
                 "postgresType": "date",
                 "type": 2,
               },
@@ -1700,7 +1868,9 @@ Object {
               "name": "reason",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
                 "nullable": true,
+                "postgresDescription": undefined,
                 "postgresType": "character varying",
                 "type": 2,
               },
@@ -1759,6 +1929,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "date",
               "type": 6,
             },
@@ -1769,6 +1941,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "date",
               "type": 6,
             },
@@ -1787,6 +1961,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "date",
           "type": 6,
         },
@@ -1800,6 +1976,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -1824,6 +2002,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "integer",
               "type": 3,
             },
@@ -1840,6 +2020,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -1848,6 +2030,8 @@ Object {
       "name": "msn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -1856,6 +2040,8 @@ Object {
       "name": "mpan",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -1864,6 +2050,8 @@ Object {
       "name": "make",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -1872,6 +2060,8 @@ Object {
       "name": "model",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -1909,6 +2099,8 @@ Object {
               "name": "id",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
               },
@@ -1917,6 +2109,8 @@ Object {
               "name": "value",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
               },
@@ -1925,6 +2119,8 @@ Object {
               "name": "dateOn",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "date",
                 "type": 2,
               },
@@ -1933,7 +2129,9 @@ Object {
               "name": "submittedAt",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
                 "nullable": true,
+                "postgresDescription": undefined,
                 "postgresType": "date",
                 "type": 2,
               },
@@ -1942,7 +2140,9 @@ Object {
               "name": "reason",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
                 "nullable": true,
+                "postgresDescription": undefined,
                 "postgresType": "character varying",
                 "type": 2,
               },
@@ -1996,6 +2196,8 @@ Object {
               "name": "id",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
               },
@@ -2004,6 +2206,8 @@ Object {
               "name": "value",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
               },
@@ -2012,6 +2216,8 @@ Object {
               "name": "dateOn",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "date",
                 "type": 2,
               },
@@ -2020,7 +2226,9 @@ Object {
               "name": "submittedAt",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
                 "nullable": true,
+                "postgresDescription": undefined,
                 "postgresType": "date",
                 "type": 2,
               },
@@ -2029,7 +2237,9 @@ Object {
               "name": "reason",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
                 "nullable": true,
+                "postgresDescription": undefined,
                 "postgresType": "character varying",
                 "type": 2,
               },
@@ -2083,6 +2293,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -2091,6 +2303,8 @@ Object {
       "name": "meter_id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -2099,6 +2313,8 @@ Object {
       "name": "date_on",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -2107,6 +2323,8 @@ Object {
       "name": "value",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -2146,7 +2364,9 @@ Object {
       "name": "reason",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -2155,6 +2375,8 @@ Object {
       "name": "created_at",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "timestamp without time zone",
         "type": 6,
       },
@@ -2163,7 +2385,9 @@ Object {
       "name": "updated_at",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "timestamp without time zone",
         "type": 6,
       },
@@ -2172,7 +2396,9 @@ Object {
       "name": "source_system_id",
       "type": Object {
         "comment": "sql-fit: MeterReading.MeterReadingId",
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -2181,6 +2407,8 @@ Object {
       "name": "checked",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "boolean",
         "type": 5,
       },
@@ -2189,7 +2417,9 @@ Object {
       "name": "deleted_at",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -2198,7 +2428,9 @@ Object {
       "name": "submitted_at",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -2207,6 +2439,8 @@ Object {
       "name": "history",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "jsonb",
         "type": 8,
       },
@@ -2215,7 +2449,9 @@ Object {
       "name": "overwritten_at",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "timestamp without time zone",
         "type": 6,
       },
@@ -2235,7 +2471,9 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
           "nullable": true,
+          "postgresDescription": undefined,
           "postgresType": "character varying",
           "type": 2,
         },
@@ -2271,6 +2509,8 @@ Object {
       "name": "fitId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -2279,7 +2519,9 @@ Object {
       "name": "name",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -2288,6 +2530,8 @@ Object {
       "name": "amount",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -2296,7 +2540,9 @@ Object {
       "name": "quarter",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -2305,6 +2551,8 @@ Object {
       "name": "bankDetails",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "text",
         "type": 2,
       },
@@ -2313,7 +2561,9 @@ Object {
       "name": "addressLine1",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -2322,7 +2572,9 @@ Object {
       "name": "addressLine2",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -2331,7 +2583,9 @@ Object {
       "name": "addressLine3",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -2340,6 +2594,8 @@ Object {
       "name": "postcode",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -2366,6 +2622,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -2377,6 +2635,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -2421,6 +2681,8 @@ Object {
               "name": "id",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
               },
@@ -2429,6 +2691,8 @@ Object {
               "name": "name",
               "type": Object {
                 "comment": undefined,
+                "generated": undefined,
+                "postgresDescription": undefined,
                 "postgresType": "text",
                 "type": 2,
               },
@@ -2437,7 +2701,9 @@ Object {
               "name": "email",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
                 "nullable": true,
+                "postgresDescription": undefined,
                 "postgresType": "character varying",
                 "type": 2,
               },
@@ -2446,7 +2712,9 @@ Object {
               "name": "phone",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
                 "nullable": true,
+                "postgresDescription": undefined,
                 "postgresType": "character varying",
                 "type": 2,
               },
@@ -2459,6 +2727,8 @@ Object {
                     "name": "id",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
+                      "postgresDescription": undefined,
                       "postgresType": "integer",
                       "type": 3,
                     },
@@ -2467,7 +2737,9 @@ Object {
                     "name": "addressLine1",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
                       "nullable": true,
+                      "postgresDescription": undefined,
                       "postgresType": "character varying",
                       "type": 2,
                     },
@@ -2476,7 +2748,9 @@ Object {
                     "name": "addressLine2",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
                       "nullable": true,
+                      "postgresDescription": undefined,
                       "postgresType": "character varying",
                       "type": 2,
                     },
@@ -2485,7 +2759,9 @@ Object {
                     "name": "addressLine3",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
                       "nullable": true,
+                      "postgresDescription": undefined,
                       "postgresType": "character varying",
                       "type": 2,
                     },
@@ -2494,7 +2770,9 @@ Object {
                     "name": "city",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
                       "nullable": true,
+                      "postgresDescription": undefined,
                       "postgresType": "character varying",
                       "type": 2,
                     },
@@ -2503,6 +2781,8 @@ Object {
                     "name": "country",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
+                      "postgresDescription": undefined,
                       "postgresType": "character varying",
                       "type": 2,
                     },
@@ -2511,7 +2791,9 @@ Object {
                     "name": "county",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
                       "nullable": true,
+                      "postgresDescription": undefined,
                       "postgresType": "character varying",
                       "type": 2,
                     },
@@ -2520,6 +2802,8 @@ Object {
                     "name": "postCode",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
+                      "postgresDescription": undefined,
                       "postgresType": "character varying",
                       "type": 2,
                     },
@@ -2559,6 +2843,8 @@ Object {
             "name": "beneficiaryAccountNumber",
             "type": Object {
               "comment": undefined,
+              "generated": undefined,
+              "postgresDescription": undefined,
               "postgresType": "text",
               "type": 2,
             },
@@ -2567,7 +2853,9 @@ Object {
             "name": "beneficiaryName",
             "type": Object {
               "comment": undefined,
+              "generated": false,
               "nullable": true,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -2576,7 +2864,9 @@ Object {
             "name": "beneficiarySortCode",
             "type": Object {
               "comment": undefined,
+              "generated": false,
               "nullable": true,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -2625,7 +2915,9 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
           "nullable": true,
+          "postgresDescription": undefined,
           "postgresType": "timestamp without time zone",
           "type": 6,
         },
@@ -2639,6 +2931,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -2657,6 +2951,8 @@ Object {
       "name": "region",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -2665,6 +2961,8 @@ Object {
       "name": "product",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -2673,6 +2971,8 @@ Object {
       "name": "product_units",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "bigint",
         "type": 4,
       },
@@ -2681,6 +2981,8 @@ Object {
       "name": "product_sales",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "bigint",
         "type": 4,
       },
@@ -2702,6 +3004,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "integer",
               "type": 3,
             },
@@ -2712,6 +3016,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "integer",
               "type": 3,
             },
@@ -2722,6 +3028,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "integer",
               "type": 3,
             },
@@ -2738,6 +3046,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -2762,6 +3072,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": undefined,
+          "postgresDescription": undefined,
           "postgresType": "bigint",
           "type": 4,
         },
@@ -2842,6 +3154,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -2850,7 +3164,9 @@ Object {
       "name": "sourceSystemId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -2859,6 +3175,8 @@ Object {
       "name": "customerId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -2878,6 +3196,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -2901,6 +3221,8 @@ Object {
       "name": "dateOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -2909,6 +3231,8 @@ Object {
       "name": "value",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -2929,6 +3253,8 @@ Object {
               "name": "processId",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
               },
@@ -2937,7 +3263,9 @@ Object {
               "name": "idempotencyKey",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
                 "nullable": true,
+                "postgresDescription": undefined,
                 "postgresType": "character varying",
                 "type": 2,
               },
@@ -2946,6 +3274,8 @@ Object {
               "name": "data",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "jsonb",
                 "type": 8,
               },
@@ -2954,6 +3284,8 @@ Object {
               "name": "accountId",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
               },
@@ -2973,6 +3305,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -2981,6 +3315,8 @@ Object {
       "name": "data",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "jsonb",
         "type": 8,
       },
@@ -3000,7 +3336,9 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
           "nullable": true,
+          "postgresDescription": undefined,
           "postgresType": "date",
           "type": 6,
         },
@@ -3014,6 +3352,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -3042,6 +3382,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -3057,6 +3399,8 @@ Object {
             "name": "start",
             "type": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "date",
               "type": 2,
             },
@@ -3065,6 +3409,8 @@ Object {
             "name": "end",
             "type": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "date",
               "type": 2,
             },
@@ -3078,6 +3424,8 @@ Object {
       "name": "levelisationQuarter",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -3086,6 +3434,8 @@ Object {
       "name": "accountId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -3138,6 +3488,8 @@ Object {
               "name": "firstName",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "character varying",
                 "type": 2,
               },
@@ -3146,6 +3498,8 @@ Object {
               "name": "lastName",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "character varying",
                 "type": 2,
               },
@@ -3154,7 +3508,9 @@ Object {
               "name": "email",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
                 "nullable": true,
+                "postgresDescription": undefined,
                 "postgresType": "character varying",
                 "type": 2,
               },
@@ -3167,7 +3523,9 @@ Object {
                     "name": "city",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
                       "nullable": true,
+                      "postgresDescription": undefined,
                       "postgresType": "character varying",
                       "type": 2,
                     },
@@ -3176,6 +3534,8 @@ Object {
                     "name": "postcode",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
+                      "postgresDescription": undefined,
                       "postgresType": "character varying",
                       "type": 2,
                     },
@@ -3184,7 +3544,9 @@ Object {
                     "name": "line1",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
                       "nullable": true,
+                      "postgresDescription": undefined,
                       "postgresType": "character varying",
                       "type": 2,
                     },
@@ -3193,7 +3555,9 @@ Object {
                     "name": "line2",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
                       "nullable": true,
+                      "postgresDescription": undefined,
                       "postgresType": "character varying",
                       "type": 2,
                     },
@@ -3202,7 +3566,9 @@ Object {
                     "name": "line3",
                     "type": Object {
                       "comment": undefined,
+                      "generated": false,
                       "nullable": true,
+                      "postgresDescription": undefined,
                       "postgresType": "character varying",
                       "type": 2,
                     },
@@ -3230,6 +3596,8 @@ Object {
               "name": "installationId",
               "type": Object {
                 "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
               },
@@ -3308,6 +3676,8 @@ Object {
                         "name": "id",
                         "type": Object {
                           "comment": undefined,
+                          "generated": false,
+                          "postgresDescription": undefined,
                           "postgresType": "integer",
                           "type": 3,
                         },
@@ -3316,7 +3686,9 @@ Object {
                         "name": "startOn",
                         "type": Object {
                           "comment": undefined,
+                          "generated": false,
                           "nullable": true,
+                          "postgresDescription": undefined,
                           "postgresType": "date",
                           "type": 2,
                         },
@@ -3325,7 +3697,9 @@ Object {
                         "name": "endOn",
                         "type": Object {
                           "comment": undefined,
+                          "generated": false,
                           "nullable": true,
+                          "postgresDescription": undefined,
                           "postgresType": "date",
                           "type": 2,
                         },
@@ -3364,6 +3738,8 @@ Object {
                                   "name": "value",
                                   "type": Object {
                                     "comment": undefined,
+                                    "generated": false,
+                                    "postgresDescription": undefined,
                                     "postgresType": "integer",
                                     "type": 3,
                                   },
@@ -3372,6 +3748,8 @@ Object {
                                   "name": "dateOn",
                                   "type": Object {
                                     "comment": undefined,
+                                    "generated": false,
+                                    "postgresDescription": undefined,
                                     "postgresType": "date",
                                     "type": 2,
                                   },
@@ -3411,6 +3789,8 @@ Object {
                                   "name": "id",
                                   "type": Object {
                                     "comment": undefined,
+                                    "generated": false,
+                                    "postgresDescription": undefined,
                                     "postgresType": "integer",
                                     "type": 3,
                                   },
@@ -3467,6 +3847,8 @@ Object {
                         "name": "schemeAccountReference",
                         "type": Object {
                           "comment": undefined,
+                          "generated": false,
+                          "postgresDescription": undefined,
                           "postgresType": "character varying",
                           "type": 2,
                         },
@@ -3475,6 +3857,8 @@ Object {
                         "name": "capacity",
                         "type": Object {
                           "comment": undefined,
+                          "generated": false,
+                          "postgresDescription": undefined,
                           "postgresType": "numeric",
                           "type": 3,
                         },
@@ -3483,7 +3867,9 @@ Object {
                         "name": "generationTariffId",
                         "type": Object {
                           "comment": undefined,
+                          "generated": false,
                           "nullable": true,
+                          "postgresDescription": undefined,
                           "postgresType": "integer",
                           "type": 3,
                         },
@@ -3492,7 +3878,9 @@ Object {
                         "name": "exportTariffId",
                         "type": Object {
                           "comment": undefined,
+                          "generated": false,
                           "nullable": true,
+                          "postgresDescription": undefined,
                           "postgresType": "integer",
                           "type": 3,
                         },
@@ -3501,6 +3889,8 @@ Object {
                         "name": "startOn",
                         "type": Object {
                           "comment": undefined,
+                          "generated": false,
+                          "postgresDescription": undefined,
                           "postgresType": "date",
                           "type": 2,
                         },
@@ -3509,7 +3899,9 @@ Object {
                         "name": "endOn",
                         "type": Object {
                           "comment": undefined,
+                          "generated": false,
                           "nullable": true,
+                          "postgresDescription": undefined,
                           "postgresType": "date",
                           "type": 2,
                         },
@@ -3589,7 +3981,9 @@ Object {
                         "name": "exportPercentageSplit",
                         "type": Object {
                           "comment": undefined,
+                          "generated": false,
                           "nullable": true,
+                          "postgresDescription": undefined,
                           "postgresType": "numeric",
                           "type": 3,
                         },
@@ -3598,7 +3992,9 @@ Object {
                         "name": "generationPercentageSplit",
                         "type": Object {
                           "comment": undefined,
+                          "generated": false,
                           "nullable": true,
+                          "postgresDescription": undefined,
                           "postgresType": "numeric",
                           "type": 3,
                         },
@@ -3616,6 +4012,8 @@ Object {
                                   "name": "id",
                                   "type": Object {
                                     "comment": undefined,
+                                    "generated": false,
+                                    "postgresDescription": undefined,
                                     "postgresType": "integer",
                                     "type": 3,
                                   },
@@ -3624,6 +4022,8 @@ Object {
                                   "name": "startOn",
                                   "type": Object {
                                     "comment": undefined,
+                                    "generated": false,
+                                    "postgresDescription": undefined,
                                     "postgresType": "date",
                                     "type": 2,
                                   },
@@ -3632,7 +4032,9 @@ Object {
                                   "name": "endOn",
                                   "type": Object {
                                     "comment": undefined,
+                                    "generated": false,
                                     "nullable": false,
+                                    "postgresDescription": undefined,
                                     "postgresType": "date",
                                     "type": 2,
                                   },
@@ -3641,6 +4043,8 @@ Object {
                                   "name": "rate",
                                   "type": Object {
                                     "comment": undefined,
+                                    "generated": false,
+                                    "postgresDescription": undefined,
                                     "postgresType": "numeric",
                                     "type": 3,
                                   },
@@ -3667,6 +4071,8 @@ Object {
                                   "name": "id",
                                   "type": Object {
                                     "comment": undefined,
+                                    "generated": false,
+                                    "postgresDescription": undefined,
                                     "postgresType": "integer",
                                     "type": 3,
                                   },
@@ -3675,6 +4081,8 @@ Object {
                                   "name": "startOn",
                                   "type": Object {
                                     "comment": undefined,
+                                    "generated": false,
+                                    "postgresDescription": undefined,
                                     "postgresType": "date",
                                     "type": 2,
                                   },
@@ -3683,7 +4091,9 @@ Object {
                                   "name": "endOn",
                                   "type": Object {
                                     "comment": undefined,
+                                    "generated": false,
                                     "nullable": false,
+                                    "postgresDescription": undefined,
                                     "postgresType": "date",
                                     "type": 2,
                                   },
@@ -3692,6 +4102,8 @@ Object {
                                   "name": "rate",
                                   "type": Object {
                                     "comment": undefined,
+                                    "generated": false,
+                                    "postgresDescription": undefined,
                                     "postgresType": "numeric",
                                     "type": 3,
                                   },
@@ -3735,6 +4147,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -3746,6 +4160,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -3754,6 +4170,8 @@ Object {
       "name": "quarter",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -3762,6 +4180,8 @@ Object {
       "name": "startOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -3770,6 +4190,8 @@ Object {
       "name": "endOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -3820,6 +4242,8 @@ Object {
       "name": "totalGenerationPayment",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "bigint",
         "type": 4,
       },
@@ -3828,6 +4252,8 @@ Object {
       "name": "totalExportPayment",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "bigint",
         "type": 4,
       },
@@ -3836,6 +4262,8 @@ Object {
       "name": "totalGenerationEnergy",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "bigint",
         "type": 4,
       },
@@ -3844,6 +4272,8 @@ Object {
       "name": "totalExportEnergy",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "bigint",
         "type": 4,
       },
@@ -3852,6 +4282,8 @@ Object {
       "name": "totalMeteredExportEnergy",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "bigint",
         "type": 4,
       },
@@ -3860,6 +4292,8 @@ Object {
       "name": "totalMeteredExportPayment",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "bigint",
         "type": 4,
       },
@@ -3868,6 +4302,8 @@ Object {
       "name": "totalDeemedExportEnergy",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "bigint",
         "type": 4,
       },
@@ -3876,6 +4312,8 @@ Object {
       "name": "totalDeemedExportPayment",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "bigint",
         "type": 4,
       },
@@ -3895,6 +4333,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -3930,6 +4370,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -3938,6 +4380,8 @@ Object {
       "name": "dateOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -3946,6 +4390,8 @@ Object {
       "name": "value",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -3977,6 +4423,8 @@ Object {
             "type": 14,
             "value": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "character varying",
               "type": 2,
             },
@@ -4096,6 +4544,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -4104,6 +4554,8 @@ Object {
       "name": "quarter",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4112,6 +4564,8 @@ Object {
       "name": "startOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -4120,6 +4574,8 @@ Object {
       "name": "endOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -4151,6 +4607,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "character varying",
           "type": 2,
         },
@@ -4164,6 +4622,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "character varying",
           "type": 2,
         },
@@ -4177,6 +4637,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "character varying",
           "type": 2,
         },
@@ -4190,6 +4652,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "character varying",
           "type": 2,
         },
@@ -4203,6 +4667,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "timestamp without time zone",
           "type": 6,
         },
@@ -4214,6 +4680,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -4240,7 +4708,9 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
           "nullable": true,
+          "postgresDescription": undefined,
           "postgresType": "timestamp without time zone",
           "type": 6,
         },
@@ -4254,6 +4724,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -4267,7 +4739,9 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
           "nullable": true,
+          "postgresDescription": undefined,
           "postgresType": "date",
           "type": 6,
         },
@@ -4281,7 +4755,9 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
           "nullable": true,
+          "postgresDescription": undefined,
           "postgresType": "date",
           "type": 6,
         },
@@ -4304,7 +4780,9 @@ Object {
         "value": Object {
           "items": Object {
             "comment": undefined,
+            "generated": false,
             "nullable": true,
+            "postgresDescription": undefined,
             "postgresType": "character varying",
             "type": 2,
           },
@@ -4319,7 +4797,9 @@ Object {
       "name": "cfrFiTId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4328,7 +4808,9 @@ Object {
       "name": "email",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4337,6 +4819,8 @@ Object {
       "name": "contactName",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "text",
         "type": 2,
       },
@@ -4345,7 +4829,9 @@ Object {
       "name": "company",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4354,7 +4840,9 @@ Object {
       "name": "line1",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4363,6 +4851,8 @@ Object {
       "name": "line2",
       "type": Object {
         "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
         "postgresType": "text",
         "type": 2,
       },
@@ -4371,7 +4861,9 @@ Object {
       "name": "town",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4380,6 +4872,8 @@ Object {
       "name": "postcode",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4388,7 +4882,9 @@ Object {
       "name": "county",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4397,6 +4893,8 @@ Object {
       "name": "country",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4418,6 +4916,8 @@ Object {
           "value": Object {
             "items": Object {
               "comment": undefined,
+              "generated": false,
+              "postgresDescription": undefined,
               "postgresType": "integer",
               "type": 3,
             },
@@ -4435,6 +4935,8 @@ Object {
       "name": "tariffId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -4443,6 +4945,8 @@ Object {
       "name": "rate",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "numeric",
         "type": 3,
       },
@@ -4451,6 +4955,8 @@ Object {
       "name": "startOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -4459,6 +4965,8 @@ Object {
       "name": "tariffCode",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4493,7 +5001,9 @@ Object {
       "name": "endOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -4513,6 +5023,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -4526,7 +5038,9 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
           "nullable": true,
+          "postgresDescription": undefined,
           "postgresType": "character varying",
           "type": 2,
         },
@@ -4576,6 +5090,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "date",
           "type": 6,
         },
@@ -4589,7 +5105,9 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
           "nullable": true,
+          "postgresDescription": undefined,
           "postgresType": "date",
           "type": 6,
         },
@@ -4613,6 +5131,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -4621,6 +5141,8 @@ Object {
       "name": "value",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -4629,6 +5151,8 @@ Object {
       "name": "meterId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -4637,7 +5161,9 @@ Object {
       "name": "submittedAt",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -4657,6 +5183,8 @@ Object {
         "type": 14,
         "value": Object {
           "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
           "postgresType": "integer",
           "type": 3,
         },
@@ -4692,6 +5220,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -4700,6 +5230,8 @@ Object {
       "name": "msn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4708,6 +5240,8 @@ Object {
       "name": "meterId",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -4716,6 +5250,8 @@ Object {
       "name": "dateOn",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "date",
         "type": 6,
       },
@@ -4724,6 +5260,8 @@ Object {
       "name": "value",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -4763,7 +5301,9 @@ Object {
       "name": "reason",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4772,6 +5312,8 @@ Object {
       "name": "createdAt",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "timestamp without time zone",
         "type": 6,
       },
@@ -4780,7 +5322,9 @@ Object {
       "name": "updatedAt",
       "type": Object {
         "comment": undefined,
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "timestamp without time zone",
         "type": 6,
       },
@@ -4789,7 +5333,9 @@ Object {
       "name": "sourceSystemId",
       "type": Object {
         "comment": "sql-fit: MeterReading.MeterReadingId",
+        "generated": false,
         "nullable": true,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },
@@ -4798,6 +5344,8 @@ Object {
       "name": "mpan",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "character varying",
         "type": 2,
       },
@@ -4814,6 +5362,8 @@ Object {
       "name": "id",
       "type": Object {
         "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
         "postgresType": "integer",
         "type": 3,
       },

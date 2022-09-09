@@ -57,17 +57,21 @@ describe('Query Interface', () => {
     ],
     ['Array remove', `SELECT ARRAY_REMOVE(ARRAY_AGG(id), NULL) FROM all_types`],
     ['Right function', `SELECT RIGHT('123', 2)`],
-  ])('Should convert %s sql (%s)', async (_, sql) => {
-    const db = testDb();
-    await db.connect();
-    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
-    const queryInterface = toQueryInterface(parser(sql).ast);
-    const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
-    const loadedQueryInterface = toLoadedQueryInterface(data)(queryInterface);
+  ])(
+    'Should convert %s sql (%s)',
+    async (_, sql) => {
+      const db = testDb();
+      await db.connect();
+      const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+      const queryInterface = toQueryInterface(parser(sql).ast);
+      const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
+      const loadedQueryInterface = toLoadedQueryInterface(data)(queryInterface);
 
-    expect(loadedQueryInterface).toMatchSnapshot();
-    await db.end();
-  });
+      expect(loadedQueryInterface).toMatchSnapshot();
+      await db.end();
+    },
+    20000,
+  );
 
   it('Should load multple queries', async () => {
     const db = testDb();
