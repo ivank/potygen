@@ -8,16 +8,19 @@ describe('Load Files', () => {
   beforeAll(async () => {
     db = testDb();
     await db.connect();
-  });
+  }, 10000);
 
-  afterAll(() => db.end());
+  afterAll(() => db.end(), 10000);
 
-  it.each(sqlFiles())('Should convert complex sql %s', (name, sql) =>
-    withParserErrors(async () => {
-      const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
-      const queryInterface = toQueryInterface(parser(sql).ast);
-      const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
-      expect(toLoadedQueryInterface(data)(queryInterface)).toMatchSnapshot(name);
-    }),
+  it.each(sqlFiles())(
+    'Should convert complex sql %s',
+    (name, sql) =>
+      withParserErrors(async () => {
+        const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+        const queryInterface = toQueryInterface(parser(sql).ast);
+        const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
+        expect(toLoadedQueryInterface(data)(queryInterface)).toMatchSnapshot(name);
+      }),
+    10000,
   );
 });
