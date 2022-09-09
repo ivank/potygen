@@ -64,7 +64,14 @@ export interface DataComposite {
  */
 export interface LoadedDataTable extends DataTable {
   comment?: string;
-  data: Array<{ name: string; isNullable: string; record: string; type: string; comment?: string }>;
+  data: Array<{
+    name: string;
+    isNullable: string;
+    record: string;
+    type: string;
+    comment?: string;
+    generation_expression?: string;
+  }>;
 }
 
 /**

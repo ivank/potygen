@@ -71,7 +71,19 @@ export const allSql = sql<LoadAllSql>`
         'isNullable', is_nullable,
         'record', udt_name,
         'type', data_type,
-        'comment', COL_DESCRIPTION(CONCAT_WS('.', table_schema, table_name)::regclass, columns.ordinal_position)
+        'comment', COL_DESCRIPTION(CONCAT_WS('.', table_schema, table_name)::regclass, columns.ordinal_position),
+        'generation_expression',
+        CASE
+        EXISTS (
+          SELECT TRUE
+          FROM information_schema.columns AS schema_columns
+          WHERE
+            schema_columns.table_schema = 'information_schema' AND schema_columns.column_name = 'generation_expression'
+            AND schema_columns.table_name = 'columns'
+        )
+          WHEN TRUE THEN columns.generation_expression
+          ELSE NULL
+        END
       )
       ORDER BY
         columns.ordinal_position ASC
@@ -219,7 +231,19 @@ export const selectedSql = sql<LoadSql>`
         'isNullable', is_nullable,
         'record', udt_name,
         'type', data_type,
-        'comment', COL_DESCRIPTION(CONCAT_WS('.', table_schema, table_name)::regclass, columns.ordinal_position)
+        'comment', COL_DESCRIPTION(CONCAT_WS('.', table_schema, table_name)::regclass, columns.ordinal_position),
+        'generation_expression',
+        CASE
+        EXISTS (
+          SELECT TRUE
+          FROM information_schema.columns AS schema_columns
+          WHERE
+            schema_columns.table_schema = 'information_schema' AND schema_columns.column_name = 'generation_expression'
+            AND schema_columns.table_name = 'columns'
+        )
+          WHEN TRUE THEN columns.generation_expression
+          ELSE NULL
+        END
       )
       ORDER BY
         columns.ordinal_position ASC

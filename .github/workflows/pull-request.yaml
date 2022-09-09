@@ -30,11 +30,14 @@ jobs:
           node-version: '16.13.0'
       - name: Initialze Database
         run: cat init.sql | docker exec --interactive postgres psql postgres://potygen:dev-pass@postgres:5432/potygen
+      - name: Initialze Version Specific Database
+        run: cat pg-version/v${{ matrix.pg }}/init-version.sql | docker exec --interactive postgres psql postgres://potygen:dev-pass@postgres:5432/potygen
       - name: Initialze Bookstore Example
         run: cat examples/bookstore/init.sql | docker exec --interactive postgres psql postgres://potygen:dev-pass@postgres:5432/potygen
       - uses: ./.github/actions/yarn-install
       - run: yarn build
       - run: yarn lint
-      - run: yarn test --runInBand --ci
+      - run: yarn test --runInBand --ci --testPathIgnorePatterns='test/version/*'
+      - run: yarn jest test/version/${{ matrix.pg }} --runInBand --ci
         env:
           POSTGRES_CONNECTION: postgres://potygen:dev-pass@localhost:5432/potygen

@@ -279,14 +279,26 @@ const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
 /**
  * Determine the {@link Type} for a postgres data type
  */
-const loadPgType = (type: string, nullable?: boolean, comment?: string): Type => {
+const loadPgType = ({
+  type,
+  nullable,
+  comment,
+  generated,
+  description,
+}: {
+  type: string;
+  nullable?: boolean;
+  comment?: string;
+  generated?: boolean;
+  description?: string;
+}): Type => {
   const sqlType = toPgTypeConstant(type);
   if (!sqlType) {
     throw Error(`'${type}' was not part of the known postgres types or aliases`);
   }
   return nullable && isTypeNullable(sqlType)
-    ? { ...sqlType, nullable, comment, postgresType: type }
-    : { ...sqlType, comment, postgresType: type };
+    ? { ...sqlType, nullable, comment, generated, postgresDescription: description, postgresType: type }
+    : { ...sqlType, comment, generated, postgresDescription: description, postgresType: type };
 };
 
 /**
@@ -320,7 +332,13 @@ const dataColumnToType = (
             postgresType: column.record,
           }
         : composites.find((item) => column.record === item.name) ?? { type: TypeName.Unknown, postgresType: 'any' }
-      : loadPgType(column.type, column.isNullable === 'YES', column.comment);
+      : loadPgType({
+          type: column.type,
+          nullable: column.isNullable === 'YES',
+          comment: column.comment,
+          generated: Boolean(column.generation_expression),
+          description: column.generation_expression,
+        });
   }
 };
 
@@ -328,8 +346,8 @@ const toLoadedFunction = ({ data, name, comment }: LoadedDataFunction): LoadedFu
   name: name.name,
   schema: name.schema,
   isAggregate: data.isAggregate,
-  returnType: loadPgType(data.returnType),
-  argTypes: data.argTypes.map((arg) => loadPgType(arg)),
+  returnType: loadPgType({ type: data.returnType }),
+  argTypes: data.argTypes.map((arg) => loadPgType({ type: arg })),
   comment,
 });
 
@@ -341,7 +359,7 @@ const toLoadedComposite = ({ data, name }: LoadedDataComposite): TypeComposite =
   attributes: data.reduce<Record<string, Type>>(
     (acc, attr) => ({
       ...acc,
-      [attr.name]: loadPgType(attr.type, attr.isNullable === 'YES'),
+      [attr.name]: loadPgType({ type: attr.type, nullable: attr.isNullable === 'YES' }),
     }),
     {},
   ),
