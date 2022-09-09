@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:13
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DATABASE: potygen
+      POSTGRES_USER: potygen
+      POSTGRES_PASSWORD: dev-pass
+    volumes:
+      - ../../init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init-version.sql:/docker-entrypoint-initdb.d/init-version.sql
+      - ../../examples/bookstore/init.sql:/docker-entrypoint-initdb.d/bookstore.sql
