@@ -122,24 +122,28 @@ export const loadAllData = async (ctx: LoadContext, currentData: LoadedData[]): 
  * If any of them already exist in the `currentData` array, skip.
  */
 export const loadData = async (ctx: LoadContext, currentData: LoadedData[], newData: Data[]): Promise<LoadedData[]> => {
-  const data = newData.filter(notLoaded(currentData)).filter(isUniqueBy());
+  const data = newData.filter(notLoaded(currentData)).filter(isUniqueBy(isEqual));
   const tableNames = data.filter(isDataTable).map(({ name }) => name);
   const functionNames = data.filter(isDataFunction).map(({ name }) => name);
   const enumNames = data.filter(isDataEnum).map(({ name }) => name);
   const compositeNames = data.filter(isDataEnum).map(({ name }) => name);
 
   if (isEmpty(tableNames) && isEmpty(enumNames) && isEmpty(compositeNames) && isEmpty(functionNames)) {
-    ctx.logger.debug('No additional data found, skipping');
+    ctx.logger.debug(`Current data ${currentData.length}. No additional data found, skipping.`);
     return currentData;
   }
 
   ctx.logger.debug(
-    `Load additional data: ${data.length}. ${inspect({
-      tableNames: tableNames.map(formatTableName),
-      functionNames: functionNames.map(formatTableName),
-      enumNames: enumNames.map(formatTableName),
-      compositeNames: compositeNames.map(formatTableName),
-    })}`,
+    `Current data ${currentData.length}. Load additional data: ${data.length}. ${inspect(
+      Object.fromEntries(
+        [
+          ['tableNames', tableNames.map(formatTableName)],
+          ['functionNames', functionNames.map(formatTableName)],
+          ['enumNames', enumNames.map(formatTableName)],
+          ['compositeNames', compositeNames.map(formatTableName)],
+        ].filter(([, value]) => value.length),
+      ),
+    )}`,
   );
   try {
     const loaded = await selectedSql(ctx.db, {
@@ -148,7 +152,7 @@ export const loadData = async (ctx: LoadContext, currentData: LoadedData[], newD
       enumNames: orEmptyNameList(enumNames),
       compositeNames: orEmptyNameList(compositeNames),
     });
-    ctx.logger.debug(`Loaded additional data: ${loaded.length}.`);
+    ctx.logger.debug(`Loaded additional data: ${loaded.length}. ${inspect(loaded.map(formatLoadedDataRaw))}`);
 
     return await toLoadedData(ctx, currentData, loaded);
   } catch (error) {
@@ -510,6 +514,25 @@ const formatLoadedSource = (source: LoadedSource): string =>
 const formatTableName = ({ table, name, schema }: { table?: string; name: string; schema?: string }): string => {
   const tableName = table ? `${name} (${table})` : name;
   return [schema, tableName].filter(isNil).join('.');
+};
+
+const formatLoadedDataRaw = (item: LoadedDataRaw): string => {
+  const comment = item.comment ? ` "${item.comment}"` : '';
+  switch (item.type) {
+    case 'Function':
+      return `{${item.type} ${formatTableName(item.name)} (${item.data.argTypes.join(', ')}): ${
+        item.data.returnType
+      }${comment}}`;
+    case 'Composite':
+      return `{${item.type} ${formatTableName(item.name)} (${item.data
+        .map((part) => `${part.name}${part.isNullable ? '?' : ''}: ${part.type}`)
+        .join(', ')})${comment}}`;
+    case 'Enum':
+      return `{${item.type} ${formatTableName(item.name)} (${item.data.join(', ')})${comment}}`;
+    case 'Table':
+    case 'View':
+      return `{${item.type} '${formatTableName(item.name)}'${comment}}`;
+  }
 };
 
 const typeNames: { [key in TypeName]: string } = {

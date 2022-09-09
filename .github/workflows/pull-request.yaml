@@ -9,7 +9,7 @@ jobs:
   test:
     strategy:
       matrix:
-        pg: [13]
+        pg: [11, 13]
     runs-on: ubuntu-latest
 
     services:

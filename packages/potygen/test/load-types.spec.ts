@@ -84,10 +84,8 @@ describe('Query Interface', () => {
       `SELECT 'Pending'::account_levelisation_state`,
       `SELECT state FROM account_levelisations`,
       `SELECT id, character_col FROM all_types WHERE id = :id`,
-    ].map((sql) => {
-      return toQueryInterface(parser(sql).ast);
-    });
-    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+    ].map((sql) => toQueryInterface(parser(sql).ast));
+    const logger = console; // { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     const data = await loadQueryInterfacesData({ db, logger }, queryInterfaces, []);
 
     let individuallyLoaded: LoadedData[] = [];
