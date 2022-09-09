@@ -38,6 +38,6 @@ jobs:
       - run: yarn build
       - run: yarn lint
       - run: yarn test --runInBand --ci --testPathIgnorePatterns='test/version/*'
-      - run: yarn jest test/version/${{ matrix.pg }} --runInBand --ci
+      - run: yarn test:${{ matrix.pg }} --runInBand --ci
         env:
           POSTGRES_CONNECTION: postgres://potygen:dev-pass@localhost:5432/potygen

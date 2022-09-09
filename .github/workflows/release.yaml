@@ -11,7 +11,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:11
+        image: postgres:13
         env:
           POSTGRES_DATABASE: potygen
           POSTGRES_USER: potygen
@@ -27,6 +27,8 @@ jobs:
           node-version: '16.13.0'
       - name: Initialze Database
         run: cat init.sql | docker exec --interactive postgres psql postgres://potygen:dev-pass@postgres:5432/potygen
+      - name: Initialze Version Specific Database
+        run: cat pg-version/v13/init-version.sql | docker exec --interactive postgres psql postgres://potygen:dev-pass@postgres:5432/potygen
       - name: Initialze Bookstore Example
         run: cat examples/bookstore/init.sql | docker exec --interactive postgres psql postgres://potygen:dev-pass@postgres:5432/potygen
       - uses: ./.github/actions/yarn-install
