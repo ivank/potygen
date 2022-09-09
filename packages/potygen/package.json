@@ -23,6 +23,7 @@
     "build": "tsc --declaration",
     "build:readme": "build-readme README.md https://github.com/ivank/potygen/tree/main/packages/potygen",
     "test": "jest test --runInBand",
+    "jest": "jest --runInBand",
     "lint": "prettier --list-different '{src,test}/**/*.ts'"
   },
   "jest": {
