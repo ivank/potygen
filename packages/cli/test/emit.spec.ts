@@ -38,6 +38,8 @@ describe('Query Interface', () => {
     ['operators integer', `SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id`],
     ['operators string', `SELECT character_col + integer_col AS "test1" FROM all_types WHERE character_col = $text`],
     ['different result types', `SELECT * FROM all_types`],
+    ['different result types for returning', `UPDATE all_types SET id = 1 RETURNING *`],
+    ['json returning', `UPDATE all_types SET id = 1 RETURNING json_col`],
     ['enum', `SELECT 'Pending'::account_levelisation_state`],
     ['enum column', `SELECT state FROM account_levelisations`],
     ['simple', `SELECT id, character_col FROM all_types WHERE id = :id`],
@@ -49,17 +51,21 @@ describe('Query Interface', () => {
     ['empty array', `SELECT ARRAY[]`],
     ['descriptive property names', `SELECT 'test' AS "some column", 'test2' AS "test"`],
     ['invalid identifiers as property names', `SELECT 'test' AS "12"`],
-  ])('Should convert %s sql (%s)', async (path, content) => {
-    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
-    const printer = createPrinter({ newLine: NewLineKind.LineFeed });
-    const { ast } = parser(content);
-    const queryInterface = toQueryInterface(ast);
+  ])(
+    'Should convert %s sql (%s)',
+    async (path, content) => {
+      const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+      const printer = createPrinter({ newLine: NewLineKind.LineFeed });
+      const { ast } = parser(content);
+      const queryInterface = toQueryInterface(ast);
 
-    const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
-    const loadedQuery = toLoadedQueryInterface(data)(queryInterface);
-    const source = toTypeSource({ type: 'sql', path, content, queryInterface, loadedQuery });
-    expect(printer.printFile(source)).toMatchSnapshot();
-  });
+      const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
+      const loadedQuery = toLoadedQueryInterface(data)(queryInterface);
+      const source = toTypeSource({ type: 'sql', path, content, queryInterface, loadedQuery });
+      expect(printer.printFile(source)).toMatchSnapshot();
+    },
+    10000,
+  );
 
   it.each<[string, Type[], Type[]]>([
     [

@@ -36,5 +36,5 @@ describe('Traverse', () => {
     } finally {
       await db.end();
     }
-  });
+  }, 20000);
 });

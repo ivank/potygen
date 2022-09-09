@@ -592,6 +592,24 @@ export interface Query {
 "
 `;
 
+exports[`Load Files Should convert complex sql levelisation-individual-reads.list.query.sql: levelisation-individual-reads.list.query.sql 1`] = `
+"export interface Params {
+    id?: number;
+    limit: number;
+    offset: number;
+}
+export interface Result {
+    id: number;
+    dateOn: Date;
+    value: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Load Files Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
 "export interface Params {
     q?: string;

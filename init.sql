@@ -1072,3 +1072,17 @@ $$
 LANGUAGE sql;
 
 COMMENT ON FUNCTION date_to_seg_quarter IS 'SEG(Smart Export Guarantee) quarter identifier from the start of the program - 2019-01-01';
+
+CREATE OR REPLACE VIEW unlevelised_active_reads AS
+  SELECT
+    active_reads.*
+  FROM
+    active_reads
+    JOIN installation_meters
+      ON active_reads.meter_id = installation_meters.meter_id
+    LEFT JOIN account_levelisations
+      ON installation_meters.installation_id = account_levelisations.installation_id
+    WHERE
+      account_levelisations.id IS NULL
+      OR active_reads.date_on > account_levelisations.generation_start_read_on;
+

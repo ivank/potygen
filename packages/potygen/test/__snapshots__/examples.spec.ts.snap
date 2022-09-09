@@ -2,9 +2,9 @@
 
 exports[`Example files Should process examples/inspect.ts: examples/inspect.ts 1`] = `
 "Load all data
-Loaded additional data: 3049.
-Load views: public.active_reads,public.all_types_view.
-No additional data found, skipping
+Loaded all data
+Load views: public.active_reads,public.all_types_view,public.unlevelised_active_reads.
+No additional data found, skipping.
 Completion Info found in: 
 SELECT product FROM orders WHERE region = $region
        ^
@@ -44,13 +44,8 @@ Quick Info Column: {
 `;
 
 exports[`Example files Should process examples/load.ts: examples/load.ts 1`] = `
-"Load additional data: 1. {
-  tableNames: [ 'public.orders' ],
-  functionNames: [],
-  enumNames: [],
-  compositeNames: []
-}
-Loaded additional data: 1.
+"Load additional data: 1. { tableNames: [ 'public.orders' ] }
+Loaded additional data: 1. [ \\"{Table 'public.orders'}\\" ]
 {
   \\"params\\": [
     {
@@ -81,9 +76,9 @@ Loaded additional data: 1.
 
 exports[`Example files Should process examples/load-all.ts: examples/load-all.ts 1`] = `
 "Load all data
-Loaded additional data: 3049.
-Load views: public.active_reads,public.all_types_view.
-No additional data found, skipping
+Loaded all data
+Load views: public.active_reads,public.all_types_view,public.unlevelised_active_reads.
+No additional data found, skipping.
 {
   \\"params\\": [
     {
