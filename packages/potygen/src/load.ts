@@ -156,12 +156,6 @@ export const loadData = async (ctx: LoadContext, currentData: LoadedData[], newD
 
     return await toLoadedData(ctx, currentData, loaded);
   } catch (error) {
-    console.log({
-      tableNames: orEmptyNameList(tableNames),
-      functionNames: orEmptyNameList(functionNames),
-      enumNames: orEmptyNameList(enumNames),
-      compositeNames: orEmptyNameList(compositeNames),
-    });
     ctx.logger.error(`Error loading data: ${String(error)}`, { sql: selectedSql().sql });
     throw error;
   }
