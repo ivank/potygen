@@ -369,6 +369,7 @@ exports[`Load Files Should convert complex sql csa-account-contracts-update.quer
     id: number;
 }
 export interface Result {
+    email?: string;
 }
 export interface Query {
     params: Params;

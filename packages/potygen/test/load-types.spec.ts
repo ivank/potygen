@@ -27,6 +27,7 @@ describe('Query Interface', () => {
     ['enum array insert', `INSERT INTO all_types (not_null, state_arr) VALUES (1, $state) RETURNING state_arr`],
     ['composite array column', `SELECT item_arr FROM all_types`],
     ['static array column', `SELECT static_arr FROM all_types`],
+    ['array column item', `SELECT static_arr[1] AS one_item FROM all_types`],
     ['simple', `SELECT id, character_col FROM all_types WHERE id = :id`],
     ['coalesce 1', `SELECT COALESCE(id, character_col) FROM all_types`],
     ['coalesce 2', `SELECT COALESCE(character_col, id) FROM all_types`],
