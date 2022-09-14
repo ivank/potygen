@@ -695,7 +695,10 @@ const toType = (context: LoadedContext, isResult: boolean, isJsonObject?: boolea
       case TypeName.LoadUnion:
         return { type: TypeName.Union, items: type.items.map(recur), postgresType: 'any' };
       case TypeName.LoadArrayItem:
-        return recur(type.value);
+        const loadedArrayType = recur(type.value);
+        return isTypeArray(loadedArrayType)
+          ? { ...loadedArrayType.items, nullable: loadedArrayType.nullable, comment: loadedArrayType.comment }
+          : loadedArrayType;
       case TypeName.LoadCompositeAccess:
         const composite = recur(type.value);
         if (!isTypeComposite(composite)) {

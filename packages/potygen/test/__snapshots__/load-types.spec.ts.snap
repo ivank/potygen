@@ -85,6 +85,23 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert array column item sql (SELECT static_arr[1] AS one_item FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "one_item",
+      "type": Object {
+        "comment": undefined,
+        "nullable": true,
+        "postgresType": "int8",
+        "type": 4,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert array constructor sql (SELECT ARRAY(SELECT json_build_object('test', other.integer_col) FROM all_types AS other WHERE all_types.id = other.id) as "arr" FROM all_types) 1`] = `
 Object {
   "params": Array [],

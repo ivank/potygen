@@ -5,3 +5,5 @@ SET
   updated_at = $currentDate!
 WHERE
   id = $id!
+RETURNING
+  emails[1] as "email"
