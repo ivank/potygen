@@ -113,6 +113,28 @@ export interface Query {
 "
 `;
 
+exports[`Load Files Should convert complex sql account-meter-registers-create.query.sql: account-meter-registers-create.query.sql 1`] = `
+"export interface Params {
+    id?: number;
+    customerLabel?: string;
+    industryLabel?: string;
+    smtRuleStart?: any;
+    smtRuleEnd?: unknown;
+    smtRuleStartOn?: Date;
+    multiplier?: number;
+    meterId: number;
+    indexPosition: number;
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Load Files Should convert complex sql account-verification.update.query.sql: account-verification.update.query.sql 1`] = `
 "export interface Params {
     items: {

@@ -959,6 +959,158 @@ Object {
 }
 `;
 
+exports[`Load Files Should convert complex sql account-meter-registers-create.query.sql: account-meter-registers-create.query.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
+          "postgresType": "integer",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "customerLabel",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "generated": false,
+          "nullable": true,
+          "postgresDescription": undefined,
+          "postgresType": "character varying",
+          "type": 2,
+        },
+      },
+    },
+    Object {
+      "name": "industryLabel",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "generated": false,
+          "nullable": true,
+          "postgresDescription": undefined,
+          "postgresType": "character varying",
+          "type": 2,
+        },
+      },
+    },
+    Object {
+      "name": "smtRuleStart",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "generated": undefined,
+          "postgresDescription": undefined,
+          "postgresType": "\\"any\\"",
+          "type": 1,
+        },
+      },
+    },
+    Object {
+      "name": "smtRuleEnd",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": undefined,
+      },
+    },
+    Object {
+      "name": "smtRuleStartOn",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "generated": false,
+          "nullable": true,
+          "postgresDescription": undefined,
+          "postgresType": "timestamp without time zone",
+          "type": 6,
+        },
+      },
+    },
+    Object {
+      "name": "multiplier",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "generated": false,
+          "nullable": true,
+          "postgresDescription": undefined,
+          "postgresType": "integer",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "meterId",
+      "type": Object {
+        "nullable": false,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
+          "postgresType": "integer",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "name": "indexPosition",
+      "type": Object {
+        "nullable": false,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "comment": undefined,
+          "generated": false,
+          "postgresDescription": undefined,
+          "postgresType": "integer",
+          "type": 3,
+        },
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
+        "postgresType": "integer",
+        "type": 3,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Load Files Should convert complex sql account-verification.update.query.sql: account-verification.update.query.sql 1`] = `
 Object {
   "params": Array [

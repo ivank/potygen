@@ -1086,3 +1086,18 @@ CREATE OR REPLACE VIEW unlevelised_active_reads AS
       account_levelisations.id IS NULL
       OR active_reads.date_on > account_levelisations.generation_start_read_on;
 
+
+CREATE TABLE meter_registers (
+    id serial primary key,
+    smt_rule_set character varying(11) DEFAULT '00:00-24:00',
+    smt_rule_start_on timestamp without time zone,
+    register_multiplier integer,
+    customer_label character varying(10),
+    industry_label character varying(2),
+    meter_id integer  NOT NULL,
+    index_position integer NOT NULL
+);
+
+CREATE INDEX meter_registers_meter_id ON meter_registers (meter_id);
+ALTER TABLE meter_registers
+  ADD CONSTRAINT fk_meter_registers_meter_id FOREIGN KEY (meter_id) REFERENCES meters(id);
