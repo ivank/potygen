@@ -109,7 +109,9 @@ const toPropertyType =
             { ...context, type: factory.createUnionTypeNode([]) },
           );
     } else if (isTypeOptional(type)) {
-      return toPropertyType(context)(type.value);
+      return type.value
+        ? toPropertyType(context)(type.value)
+        : { ...context, type: factory.createToken(SyntaxKind.UnknownKeyword) };
     } else {
       switch (type.type) {
         case TypeName.Date:

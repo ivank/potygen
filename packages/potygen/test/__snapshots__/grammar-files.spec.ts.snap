@@ -7306,6 +7306,522 @@ Object {
 }
 `;
 
+exports[`Sql Files Should parse complex sql account-meter-registers-create.query.sql: account-meter-registers-create.query.sql 1`] = `
+Object {
+  "ast": Object {
+    "end": 824,
+    "start": 1,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 27,
+        "start": 13,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 27,
+            "start": 13,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 27,
+                "start": 13,
+                "tag": 8,
+                "value": "meter_registers",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 180,
+        "start": 29,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 36,
+            "start": 35,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 56,
+            "start": 43,
+            "tag": 8,
+            "value": "customer_label",
+          },
+          Object {
+            "end": 76,
+            "start": 63,
+            "tag": 8,
+            "value": "industry_label",
+          },
+          Object {
+            "end": 94,
+            "start": 83,
+            "tag": 8,
+            "value": "smt_rule_set",
+          },
+          Object {
+            "end": 117,
+            "start": 101,
+            "tag": 8,
+            "value": "smt_rule_start_on",
+          },
+          Object {
+            "end": 142,
+            "start": 124,
+            "tag": 8,
+            "value": "register_multiplier",
+          },
+          Object {
+            "end": 156,
+            "start": 149,
+            "tag": 8,
+            "value": "meter_id",
+          },
+          Object {
+            "end": 176,
+            "start": 163,
+            "tag": 8,
+            "value": "index_position",
+          },
+        ],
+      },
+      Object {
+        "end": 419,
+        "start": 184,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 419,
+            "start": 195,
+            "tag": 86,
+            "values": Array [
+              Object {
+                "end": 205,
+                "pick": Array [],
+                "required": false,
+                "start": 203,
+                "tag": 10,
+                "type": "single",
+                "value": "id",
+              },
+              Object {
+                "end": 227,
+                "pick": Array [],
+                "required": false,
+                "start": 214,
+                "tag": 10,
+                "type": "single",
+                "value": "customerLabel",
+              },
+              Object {
+                "end": 249,
+                "pick": Array [],
+                "required": false,
+                "start": 236,
+                "tag": 10,
+                "type": "single",
+                "value": "industryLabel",
+              },
+              Object {
+                "end": 331,
+                "start": 258,
+                "tag": 54,
+                "values": Array [
+                  Object {
+                    "end": 266,
+                    "start": 258,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 266,
+                        "start": 258,
+                        "tag": 8,
+                        "value": "CONCAT_WS",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 270,
+                    "start": 268,
+                    "tag": 13,
+                    "value": "-",
+                  },
+                  Object {
+                    "end": 301,
+                    "start": 273,
+                    "tag": 54,
+                    "values": Array [
+                      Object {
+                        "end": 280,
+                        "start": 273,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 280,
+                            "start": 273,
+                            "tag": 8,
+                            "value": "COALESCE",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 294,
+                        "pick": Array [],
+                        "required": false,
+                        "start": 282,
+                        "tag": 10,
+                        "type": "single",
+                        "value": "smtRuleStart",
+                      },
+                      Object {
+                        "end": 300,
+                        "start": 297,
+                        "tag": 13,
+                        "value": "00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 330,
+                    "start": 304,
+                    "tag": 54,
+                    "values": Array [
+                      Object {
+                        "end": 311,
+                        "start": 304,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 311,
+                            "start": 304,
+                            "tag": 8,
+                            "value": "COALESCE",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 323,
+                        "pick": Array [],
+                        "required": false,
+                        "start": 313,
+                        "tag": 10,
+                        "type": "single",
+                        "value": "smtRuleEnd",
+                      },
+                      Object {
+                        "end": 329,
+                        "start": 326,
+                        "tag": 13,
+                        "value": "24",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 354,
+                "pick": Array [],
+                "required": false,
+                "start": 340,
+                "tag": 10,
+                "type": "single",
+                "value": "smtRuleStartOn",
+              },
+              Object {
+                "end": 373,
+                "pick": Array [],
+                "required": false,
+                "start": 363,
+                "tag": 10,
+                "type": "single",
+                "value": "multiplier",
+              },
+              Object {
+                "end": 390,
+                "pick": Array [],
+                "required": true,
+                "start": 382,
+                "tag": 10,
+                "type": "single",
+                "value": "meterId",
+              },
+              Object {
+                "end": 413,
+                "pick": Array [],
+                "required": true,
+                "start": 399,
+                "tag": 10,
+                "type": "single",
+                "value": "indexPosition",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 723,
+        "start": 423,
+        "tag": 104,
+        "values": Array [
+          Object {
+            "end": 438,
+            "start": 435,
+            "tag": 100,
+            "values": Array [
+              Object {
+                "end": 437,
+                "start": 436,
+                "tag": 99,
+                "values": Array [
+                  Object {
+                    "end": 437,
+                    "start": 436,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 437,
+                        "start": 436,
+                        "tag": 8,
+                        "value": "id",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 723,
+            "start": 444,
+            "tag": 103,
+            "values": Array [
+              Object {
+                "end": 723,
+                "start": 460,
+                "tag": 88,
+                "values": Array [
+                  Object {
+                    "end": 723,
+                    "start": 472,
+                    "tag": 84,
+                    "values": Array [
+                      Object {
+                        "end": 511,
+                        "start": 472,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 485,
+                            "start": 472,
+                            "tag": 8,
+                            "value": "customer_label",
+                          },
+                          Object {
+                            "end": 511,
+                            "start": 489,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 496,
+                                "start": 489,
+                                "tag": 8,
+                                "value": "EXCLUDED",
+                              },
+                              Object {
+                                "end": 511,
+                                "start": 498,
+                                "tag": 8,
+                                "value": "customer_label",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 561,
+                        "start": 522,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 535,
+                            "start": 522,
+                            "tag": 8,
+                            "value": "industry_label",
+                          },
+                          Object {
+                            "end": 561,
+                            "start": 539,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 546,
+                                "start": 539,
+                                "tag": 8,
+                                "value": "EXCLUDED",
+                              },
+                              Object {
+                                "end": 561,
+                                "start": 548,
+                                "tag": 8,
+                                "value": "industry_label",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 607,
+                        "start": 572,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 583,
+                            "start": 572,
+                            "tag": 8,
+                            "value": "smt_rule_set",
+                          },
+                          Object {
+                            "end": 607,
+                            "start": 587,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 594,
+                                "start": 587,
+                                "tag": 8,
+                                "value": "EXCLUDED",
+                              },
+                              Object {
+                                "end": 607,
+                                "start": 596,
+                                "tag": 8,
+                                "value": "smt_rule_set",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 663,
+                        "start": 618,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 634,
+                            "start": 618,
+                            "tag": 8,
+                            "value": "smt_rule_start_on",
+                          },
+                          Object {
+                            "end": 663,
+                            "start": 638,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 645,
+                                "start": 638,
+                                "tag": 8,
+                                "value": "EXCLUDED",
+                              },
+                              Object {
+                                "end": 663,
+                                "start": 647,
+                                "tag": 8,
+                                "value": "smt_rule_start_on",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 723,
+                        "start": 674,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 692,
+                            "start": 674,
+                            "tag": 8,
+                            "value": "register_multiplier",
+                          },
+                          Object {
+                            "end": 723,
+                            "start": 696,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 703,
+                                "start": 696,
+                                "tag": 8,
+                                "value": "EXCLUDED",
+                              },
+                              Object {
+                                "end": 723,
+                                "start": 705,
+                                "tag": 8,
+                                "value": "register_multiplier",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 824,
+        "start": 809,
+        "tag": 93,
+        "values": Array [
+          Object {
+            "end": 824,
+            "start": 823,
+            "tag": 92,
+            "values": Array [
+              Object {
+                "end": 824,
+                "start": 823,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 824,
+                    "start": 823,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [
+    Object {
+      "end": 759,
+      "start": 727,
+      "tag": 1,
+      "value": " meter_id = EXCLUDED.meter_id,",
+    },
+    Object {
+      "end": 806,
+      "start": 762,
+      "tag": 1,
+      "value": " index_position = EXCLUDED.index_position,",
+    },
+  ],
+}
+`;
+
 exports[`Sql Files Should parse complex sql account-verification.update.query.sql: account-verification.update.query.sql 1`] = `
 Object {
   "ast": Object {

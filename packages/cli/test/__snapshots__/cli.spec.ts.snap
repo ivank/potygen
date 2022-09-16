@@ -7,6 +7,7 @@ Array [
   "account-levelisations-bulk-close-accounts.query.queries.ts",
   "account-levelisations-set-bulk-update.query.queries.ts",
   "account-levelisations.query.queries.ts",
+  "account-meter-registers-create.query.queries.ts",
   "account-verification.update.query.queries.ts",
   "accounts.list.query.queries.ts",
   "accounts.queries.ts",
@@ -143,6 +144,28 @@ export interface Query {
 exports[`CLI Should use cli to run pipeline on sql files: account-levelisations-set-bulk-update.query.queries.ts 1`] = `
 "export interface Params {
     ids?: number[];
+}
+export interface Result {
+    id: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: account-meter-registers-create.query.queries.ts 1`] = `
+"export interface Params {
+    id?: number;
+    customerLabel?: string;
+    industryLabel?: string;
+    smtRuleStart?: any;
+    smtRuleEnd?: unknown;
+    smtRuleStartOn?: Date;
+    multiplier?: number;
+    meterId: number;
+    indexPosition: number;
 }
 export interface Result {
     id: number;
