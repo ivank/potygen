@@ -339,6 +339,7 @@ export const binaryOperatorTypes: {
   '||': [
     [typeString, typeString, typeString],
     [typeJson, typeJson, typeJson],
+    [arr(typeAny), arr(typeAny), typeBoolean],
   ],
   '>=': [
     [typeBoolean, typeBoolean, typeBoolean],
@@ -409,17 +410,20 @@ export const binaryOperatorTypes: {
   '?&': [[typeJson, arr(typeString), typeBoolean]],
   '@>': [
     [typeString, typeString, typeBoolean],
+    [arr(typeAny), arr(typeAny), typeBoolean],
     [typeJson, typeJson, typeBoolean],
   ],
   '<->': [[typeString, typeString, typeString]],
   '<@': [
     [typeString, typeString, typeBoolean],
     [typeJson, typeJson, typeBoolean],
+    [arr(typeAny), arr(typeAny), typeBoolean],
   ],
   '|': [
     [typeJson, typeJson, typeBoolean],
     [typeString, typeString, typeString],
   ],
+  '&&': [[arr(typeAny), arr(typeAny), typeBoolean]],
   '&': [[typeString, typeString, typeString]],
   '#': [[typeString, typeString, typeString]],
   '~': [[typeString, typeString, typeString]],

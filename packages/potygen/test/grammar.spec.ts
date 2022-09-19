@@ -17,6 +17,7 @@ describe('Sql', () => {
     ${'binary mul'}                   | ${'SELECT 1 * 2'}
     ${'binary sum, sub'}              | ${'SELECT 1 - 2 + 2'}
     ${'binary sum, div, mul'}         | ${'SELECT (1 + 2) / (20 * 32)'}
+    ${'array intersect '}             | ${'SELECT ARRAY[1,4,3] && ARRAY[2,1]'}
     ${'string concat'}                | ${"SELECT 'test' || 'other'"}
     ${'json field int'}               | ${'SELECT col1->1 FROM table1'}
     ${'json field string'}            | ${"SELECT col1->'col' FROM table1"}
