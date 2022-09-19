@@ -1339,6 +1339,7 @@ export interface BinaryOperatorTag extends LeafSqlTag {
     | '#-'
     | '||'
     | '|'
+    | '&&'
     | '&'
     | '#'
     | '~'

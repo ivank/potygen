@@ -12134,6 +12134,90 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql array intersect  (SELECT ARRAY[1,4,3] && ARRAY[2,1]): array intersect  1`] = `
+Object {
+  "ast": Object {
+    "end": 32,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 32,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 32,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 32,
+                "start": 7,
+                "tag": 46,
+                "values": Array [
+                  Object {
+                    "end": 18,
+                    "start": 7,
+                    "tag": 53,
+                    "values": Array [
+                      Object {
+                        "end": 13,
+                        "start": 13,
+                        "tag": 19,
+                        "value": "1",
+                      },
+                      Object {
+                        "end": 15,
+                        "start": 15,
+                        "tag": 19,
+                        "value": "4",
+                      },
+                      Object {
+                        "end": 17,
+                        "start": 17,
+                        "tag": 19,
+                        "value": "3",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 21,
+                    "start": 20,
+                    "tag": 44,
+                    "value": "&&",
+                  },
+                  Object {
+                    "end": 32,
+                    "start": 23,
+                    "tag": 53,
+                    "values": Array [
+                      Object {
+                        "end": 29,
+                        "start": 29,
+                        "tag": 19,
+                        "value": "2",
+                      },
+                      Object {
+                        "end": 31,
+                        "start": 31,
+                        "tag": 19,
+                        "value": "1",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse simple sql array nested (SELECT ARRAY[ARRAY[1,2], ARRAY['test','other']]): array nested 1`] = `
 Object {
   "ast": Object {
