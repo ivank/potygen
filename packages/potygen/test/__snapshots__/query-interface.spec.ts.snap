@@ -2915,6 +2915,7 @@ Object {
       "name": "rows",
       "pick": Array [
         Object {
+          "castType": undefined,
           "name": "name",
           "type": Object {
             "postgresType": "any",
@@ -2922,6 +2923,7 @@ Object {
           },
         },
         Object {
+          "castType": undefined,
           "name": "test",
           "type": Object {
             "postgresType": "any",
@@ -6083,6 +6085,7 @@ Object {
       "name": "ids",
       "pick": Array [
         Object {
+          "castType": undefined,
           "name": "id",
           "type": Object {
             "postgresType": "any",
@@ -6143,8 +6146,15 @@ Object {
                 Object {
                   "end": 43,
                   "start": 42,
-                  "tag": 8,
-                  "value": "id",
+                  "tag": 119,
+                  "values": Array [
+                    Object {
+                      "end": 43,
+                      "start": 42,
+                      "tag": 8,
+                      "value": "id",
+                    },
+                  ],
                 },
               ],
               "required": false,

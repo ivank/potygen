@@ -11,14 +11,30 @@ import { isObject, orderBy } from './util';
 import { isDatabaseError, PotygenDatabaseError } from './errors';
 import { toParams } from './query-interface';
 import { typeUnknown } from './postgres-types-map';
-import { Param } from './query-interface.types';
+import { Param, TypeOrLoad } from './query-interface.types';
 import { Query, QuerySource, SqlDatabase, SqlInterface, QueryConfig } from './sql.types';
+import { isType, isTypeLoadNamed, isTypeLoadRecord } from './query-interface.guards';
 
 /**
  * Extract the params from an sql {@link AstTag}.
  */
 const toParamsFromAst = (ast: AstTag): Param[] =>
   toParams({ type: typeUnknown, columns: [], cteParams: true })(ast).sort(orderBy((p) => p.start));
+
+const toParamPickType = (type: TypeOrLoad | undefined): string =>
+  type
+    ? isTypeLoadRecord(type)
+      ? type.schema
+        ? `::${type.schema}.${type.name}`
+        : `::${type.name}`
+      : type
+      ? isTypeLoadNamed(type)
+        ? toParamPickType(type.value)
+        : isType(type)
+        ? `::${type.postgresType}`
+        : ''
+      : ''
+    : '';
 
 /**
  * Convert a "spread" {@link Param} into params that pg node package will accept
@@ -38,7 +54,12 @@ const toSpreadIndexParam = (param: Param, index: number, values: unknown): strin
       ? values
           .map(
             (_, groupIndex) =>
-              '(' + param.pick.map((_, itemIndex) => '$' + (index + groupIndex * param.pick.length + itemIndex)) + ')',
+              '(' +
+              param.pick.map(
+                (pick, itemIndex) =>
+                  '$' + (index + groupIndex * param.pick.length + itemIndex) + toParamPickType(pick.castType),
+              ) +
+              ')',
           )
           .join(',')
       : '(' + values.map((_, itemIndex) => '$' + (index + itemIndex)).join(',') + ')'

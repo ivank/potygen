@@ -151,22 +151,6 @@ const ColumnUnqualified = astNode<Tag.ColumnTag>(Tag.SqlName.Column, IdentifierR
 const Column = Any(ColumnFullyQualified, ColumnQualified, ColumnUnqualified);
 
 /**
- * Parameteer
- */
-const Parameter = Node<Tag.ParameterTag>(
-  All(/^(\$\$|\$|\:)/, IdentifierRule, Optional(Any(/^(\!)/, Brackets(List(Identifier))))),
-  ([type, value, ...rest], $, $next) => ({
-    tag: Tag.SqlName.Parameter,
-    value,
-    type: type === '$$' ? 'spread' : 'single',
-    required: rest.includes('!'),
-    pick: rest.filter((item) => item !== '!'),
-    start: $.pos,
-    end: $next.pos - 1,
-  }),
-);
-
-/**
  * AS Clause
  */
 const As = astNode<Tag.AsTag>(Tag.SqlName.As, Any(All(/^AS/i, Identifier), IdentifierLessRestricted));
@@ -253,6 +237,27 @@ const Type = astNode<Tag.TypeTag>(
 const Dimension = astEmptyLeaf<Tag.DimensionTag>(Tag.SqlName.Dimension, SquareBrackets());
 const TypeArray = astNode<Tag.ArrayTypeTag>(Tag.SqlName.ArrayType, All(Type, Plus(Dimension)));
 const AnyType = Any(TypeArray, Type);
+
+const ParameterPick = astNode<Tag.ParameterPickTag>(
+  Tag.SqlName.ParameterPick,
+  All(Identifier, Optional(All('::', AnyType))),
+);
+
+/**
+ * Parameteer
+ */
+const Parameter = Node<Tag.ParameterTag>(
+  All(/^(\$\$|\$|\:)/, IdentifierRule, Optional(Any(/^(\!)/, Brackets(List(ParameterPick))))),
+  ([type, value, ...rest], $, $next) => ({
+    tag: Tag.SqlName.Parameter,
+    value,
+    type: type === '$$' ? 'spread' : 'single',
+    required: rest.includes('!'),
+    pick: rest.filter((item) => item !== '!'),
+    start: $.pos,
+    end: $next.pos - 1,
+  }),
+);
 
 /**
  * Count
