@@ -446,8 +446,14 @@ export interface Param {
   start: number;
   end: number;
   required: boolean;
-  pick: Array<{ name: string; type: TypeOrLoad }>;
+  pick: Array<ParamPick>;
   spread: boolean;
+}
+
+export interface ParamPick {
+  name: string;
+  type: TypeOrLoad;
+  castType?: TypeOrLoad;
 }
 
 /**

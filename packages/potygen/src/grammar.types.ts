@@ -482,6 +482,10 @@ export const enum SqlName {
    * {@link SetArrayItemTag}
    */
   SetArrayItem,
+  /**
+   * {@link ParameterPickTag}
+   */
+  ParameterPick,
 }
 
 /**
@@ -655,7 +659,12 @@ export interface ParameterTag extends LeafSqlTag {
   type: 'spread' | 'single';
   value: string;
   required: boolean;
-  pick: IdentifierTag[];
+  pick: ParameterPickTag[];
+}
+
+export interface ParameterPickTag extends NodeSqlTag {
+  tag: SqlName.ParameterPick;
+  values: [IdentifierTag] | [IdentifierTag, TypeTag];
 }
 
 /**
@@ -2679,7 +2688,8 @@ export type NodeTag =
   | ConflictTag
   | InsertTag
   | WrappedExpressionTag
-  | ExpressionListTag;
+  | ExpressionListTag
+  | ParameterPickTag;
 
 /**
  * All the SQL Tags

@@ -129,6 +129,7 @@ import {
   AsColumnListTag,
   AsRecordsetTag,
   RecordsetFunctionTag,
+  ParameterPickTag,
 } from './grammar.types';
 
 export const isCTE = (value: SqlTag): value is CTETag => value.tag === SqlName.CTE;
@@ -145,6 +146,7 @@ export const isQuotedIdentifier = (value: SqlTag): value is QuotedIdentifierTag 
 export const isUnquotedIdentifier = (value: SqlTag): value is UnquotedIdentifierTag =>
   value.tag === SqlName.UnquotedIdentifier;
 export const isParameter = (value: SqlTag): value is ParameterTag => value.tag === SqlName.Parameter;
+export const isParameterPick = (value: SqlTag): value is ParameterPickTag => value.tag === SqlName.ParameterPick;
 export const isColumn = (value: SqlTag): value is ColumnTag => value.tag === SqlName.Column;
 export const isAs = (value: SqlTag): value is AsTag => value.tag === SqlName.As;
 export const isString = (value: SqlTag): value is StringTag => value.tag === SqlName.String;

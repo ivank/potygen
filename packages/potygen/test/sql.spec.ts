@@ -42,6 +42,43 @@ describe('Template Tag', () => {
       },
     ],
     [
+      'Multiple insert values with parameter picks and type casts',
+      sql`
+        INSERT INTO table1 (
+          col1,
+          col2,
+          col3,
+          col4
+        )
+        VALUES
+          $$rows(
+            name::int,
+            "test name"::text,
+            state::account_state,
+            lastCol
+          )
+        `,
+      {
+        rows: [
+          { name: 1, ['test name']: 'c', state: 'Live', lastCol: new Date('2020-01-01') },
+          { name: 2, ['test name']: 'a', state: 'Closed', lastCol: new Date('2020-01-01') },
+        ],
+      },
+      {
+        text: `
+        INSERT INTO table1 (
+          col1,
+          col2,
+          col3,
+          col4
+        )
+        VALUES
+          ($1::int4,$2::text,$3::account_state,$4),($5::int4,$6::text,$7::account_state,$8)
+        `,
+        values: [1, 'c', 'Live', new Date('2020-01-01'), 2, 'a', 'Closed', new Date('2020-01-01')],
+      },
+    ],
+    [
       'Spread objects with excess items',
       sql`WITH items (col1) AS (VALUES $$rows(name)) SELECT * FROM items WHERE items.col1 > $maxCol`,
       {

@@ -216,6 +216,7 @@ describe('Format', () => {
     ${'select exists'}                | ${'SELECT EXISTS(SELECT col2 FROM table2)'}
     ${'update exists'}                | ${'UPDATE table1 SET col1 = EXISTS(SELECT col2 FROM table2)'}
     ${'insert multiple param values'} | ${'INSERT INTO table1 VALUES $$rows(name, test)'}
+    ${'multiple params spread types'} | ${'INSERT INTO table1 VALUES $$rows(name::int, test::text)'}
     ${'spread param in clause'}       | ${'SELECT table_schema FROM information_schema.columns WHERE ((table_schema, table_name)) IN (($$tables(schema, table)))'}
     ${'select with select'}           | ${'WITH tmp AS (SELECT * FROM table1) SELECT id FROM table2 WHERE table2.id = tmp.col2'}
     ${'select with delete'}           | ${'WITH tmp AS (DELETE FROM table1 RETURNING id) SELECT id FROM table2 WHERE table2.id = tmp.col2'}

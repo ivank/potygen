@@ -663,7 +663,14 @@ export const toParams =
             spread: sql.type === 'spread',
             required: sql.required || sql.pick.length > 0,
             type: context.type,
-            pick: sql.pick.map((name, index) => ({ name: name.value, type: context.columns[index] ?? typeUnknown })),
+            pick: sql.pick.map((pick, index) => {
+              const castType = pick.values[1] ? toTypeRecur(pick.values[1]) : undefined;
+              return {
+                name: first(pick.values).value,
+                castType,
+                type: castType ?? context.columns[index] ?? typeUnknown,
+              };
+            }),
           },
         ];
 
