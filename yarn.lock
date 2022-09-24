@@ -449,7 +449,7 @@ __metadata:
     prettier: "npm:@potygen/prettier@^2.6.1"
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
-    typescript: ^4.5.5
+    typescript: ^4.8.3
   languageName: unknown
   linkType: soft
 
@@ -727,7 +727,7 @@ __metadata:
     runtypes: ^6.5.0
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
-    typescript: ^4.5.5
+    typescript: ^4.8.3
   bin:
     potygen: ./scripts/potygen
   languageName: unknown
@@ -748,7 +748,7 @@ __metadata:
     prettier: "npm:@potygen/prettier@^2.6.1"
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
-    typescript: ^4.5.5
+    typescript: ^4.8.3
   languageName: unknown
   linkType: soft
 
@@ -765,7 +765,7 @@ __metadata:
     prettier: "npm:@potygen/prettier@^2.6.1"
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
-    typescript: ^4.5.5
+    typescript: ^4.8.3
   peerDependencies:
     prettier: "*"
   languageName: unknown
@@ -784,10 +784,10 @@ __metadata:
     pg: ^8.6.0
     ts-jest: ^26.4.0
     ts-node: ^10.1.0
-    typescript: ^4.5.5
+    typescript: ^4.8.3
     typescript-template-language-service-decorator: ^2.2.0
   peerDependencies:
-    typescript: ^4.5.5
+    typescript: ^4.8.3
   languageName: unknown
   linkType: soft
 
@@ -4673,7 +4673,7 @@ fsevents@^2.1.2:
   dependencies:
     "@ikerin/build-readme": ^1.1.1
     prettier: "npm:@potygen/prettier@^2.6.1"
-    typescript: ^4.5.5
+    typescript: ^4.8.3
   languageName: unknown
   linkType: soft
 
@@ -5792,23 +5792,23 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-typescript@^4.5.5:
-  version: 4.6.2
-  resolution: "typescript@npm:4.6.2"
+"typescript@npm:^4.8.3":
+  version: 4.8.3
+  resolution: "typescript@npm:4.8.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 8a44ed7e6f6c4cb1ebe8cf236ecda2fb119d84dcf0fbd77e707b2dfea1bbcfc4e366493a143513ce7f57203c75da9d4e20af6fe46de89749366351046be7577c
+  checksum: 8286a5edcaf3d68e65c451aa1e7150ad1cf53ee0813c07ec35b7abdfdb10f355ecaa13c6a226a694ae7a67785fd7eeebf89f845da0b4f7e4a35561ddc459aba0
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.5.5#~builtin<compat/typescript>":
-  version: 4.6.2
-  resolution: "typescript@patch:typescript@npm%3A4.6.2#~builtin<compat/typescript>::version=4.6.2&hash=bda367"
+"typescript@patch:typescript@^4.8.3#~builtin<compat/typescript>":
+  version: 4.8.3
+  resolution: "typescript@patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 40b493a71747fb89fa70df104e2c4a5e284b43750af5bea024090a5261cefa387f7a9372411b13030f7bf5555cee4275443d08805642ae5c74ef76740854a4c7
+  checksum: 2222d2382fb3146089b1d27ce2b55e9d1f99cc64118f1aba75809b693b856c5d3c324f052f60c75b577947fc538bc1c27bad0eb76cbdba9a63a253489504ba7e
   languageName: node
   linkType: hard
 
