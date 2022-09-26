@@ -2189,10 +2189,10 @@ export interface RecordsetFunctionTag extends NodeSqlTag {
  *                                            ┌─IdentifierTag
  *          ValuesListTag─┐                   │       ┌─ColumnsTag
  *                        ▼                   ▼       ▼
- *              ┌───────────────────────┬ ─┌────┬─────────┐
- * SELECT * FROM│(VALUES (10,2), (10,2))│AS│tmp1│(col int)│
- *              └───────────────────────┴ ─└────┴─────────┘
- *             └───────────────────────────────────────────┘
+ *              ┌───────────────────────┬ ─┌────┬───────────┐
+ * SELECT * FROM│(VALUES (10,2), (10,2))│AS│tmp1│(col1,col2)│
+ *              └───────────────────────┴ ─└────┴───────────┘
+ *             └─────────────────────────────────────────────┘
  *                                  └─▶RecordsetValuesListTag
  * ```
  */
