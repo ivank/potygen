@@ -2184,15 +2184,16 @@ export interface RecordsetFunctionTag extends NodeSqlTag {
 }
 
 /**
- * Tableset record with an "as" clause
+ * Values recordset with an "as" clause defining column names
  * ```
- *                   func─┐                      ┌─as
- *                        ▼                      ▼
- *              ┌────────────────────────┬ ─┌─────────────┐
- * SELECT * FROM│(VALUES (10,2), (10,2)) │AS│tmp1(col int)│
- *              └────────────────────────┴ ─└─────────────┘
- *             └────────────────────────────────────────┘
- *                                  └───────▶TableTag
+ *                                            ┌─IdentifierTag
+ *          ValuesListTag─┐                   │       ┌─ColumnsTag
+ *                        ▼                   ▼       ▼
+ *              ┌───────────────────────┬ ─┌────┬─────────┐
+ * SELECT * FROM│(VALUES (10,2), (10,2))│AS│tmp1│(col int)│
+ *              └───────────────────────┴ ─└────┴─────────┘
+ *             └───────────────────────────────────────────┘
+ *                                  └─▶RecordsetValuesListTag
  * ```
  */
 export interface RecordsetValuesListTag extends NodeSqlTag {
