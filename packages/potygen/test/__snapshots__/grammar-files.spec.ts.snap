@@ -49604,3 +49604,1625 @@ Object {
   "comments": Array [],
 }
 `;
+
+exports[`Sql Files Should parse complex sql update-registers.sql: update-registers.sql 1`] = `
+Object {
+  "ast": Object {
+    "end": 1166,
+    "start": 1,
+    "tag": 6,
+    "values": Array [
+      Object {
+        "end": 484,
+        "start": 6,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 197,
+            "start": 6,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 22,
+                "start": 6,
+                "tag": 8,
+                "value": "registers_payload",
+              },
+              Object {
+                "end": 197,
+                "start": 26,
+                "tag": 85,
+                "values": Array [
+                  Object {
+                    "end": 33,
+                    "start": 32,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                  Object {
+                    "end": 53,
+                    "start": 40,
+                    "tag": 8,
+                    "value": "customer_label",
+                  },
+                  Object {
+                    "end": 73,
+                    "start": 60,
+                    "tag": 8,
+                    "value": "industry_label",
+                  },
+                  Object {
+                    "end": 93,
+                    "start": 80,
+                    "tag": 8,
+                    "value": "smt_rule_start",
+                  },
+                  Object {
+                    "end": 111,
+                    "start": 100,
+                    "tag": 8,
+                    "value": "smt_rule_end",
+                  },
+                  Object {
+                    "end": 134,
+                    "start": 118,
+                    "tag": 8,
+                    "value": "smt_rule_start_on",
+                  },
+                  Object {
+                    "end": 159,
+                    "start": 141,
+                    "tag": 8,
+                    "value": "register_multiplier",
+                  },
+                  Object {
+                    "end": 173,
+                    "start": 166,
+                    "tag": 8,
+                    "value": "meter_id",
+                  },
+                  Object {
+                    "end": 193,
+                    "start": 180,
+                    "tag": 8,
+                    "value": "index_position",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 480,
+            "start": 212,
+            "tag": 3,
+            "values": Array [
+              Object {
+                "end": 480,
+                "pick": Array [
+                  Object {
+                    "end": 254,
+                    "start": 246,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 249,
+                        "start": 246,
+                        "tag": 9,
+                        "value": "id",
+                      },
+                      Object {
+                        "end": 254,
+                        "start": 252,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 254,
+                            "start": 252,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 254,
+                                "start": 252,
+                                "tag": 8,
+                                "value": "int",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 279,
+                    "start": 265,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 279,
+                        "start": 265,
+                        "tag": 9,
+                        "value": "customerLabel",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 304,
+                    "start": 290,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 304,
+                        "start": 290,
+                        "tag": 9,
+                        "value": "industryLabel",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 341,
+                    "start": 315,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 328,
+                        "start": 315,
+                        "tag": 9,
+                        "value": "smtRuleStart",
+                      },
+                      Object {
+                        "end": 341,
+                        "start": 331,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 337,
+                            "start": 331,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 337,
+                                "start": 331,
+                                "tag": 8,
+                                "value": "varchar",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 340,
+                            "start": 339,
+                            "tag": 20,
+                            "value": "10",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 369,
+                    "start": 352,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 363,
+                        "start": 352,
+                        "tag": 9,
+                        "value": "smtRuleEnd",
+                      },
+                      Object {
+                        "end": 369,
+                        "start": 366,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 369,
+                            "start": 366,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 369,
+                                "start": 366,
+                                "tag": 8,
+                                "value": "text",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 401,
+                    "start": 380,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 395,
+                        "start": 380,
+                        "tag": 9,
+                        "value": "smtRuleStartOn",
+                      },
+                      Object {
+                        "end": 401,
+                        "start": 398,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 401,
+                            "start": 398,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 401,
+                                "start": 398,
+                                "tag": 8,
+                                "value": "date",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 423,
+                    "start": 412,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 423,
+                        "start": 412,
+                        "tag": 9,
+                        "value": "multiplier",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 442,
+                    "start": 434,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 442,
+                        "start": 434,
+                        "tag": 9,
+                        "value": "meterId",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 472,
+                    "start": 453,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 467,
+                        "start": 453,
+                        "tag": 9,
+                        "value": "indexPosition",
+                      },
+                      Object {
+                        "end": 472,
+                        "start": 470,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 472,
+                            "start": 470,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 472,
+                                "start": 470,
+                                "tag": 8,
+                                "value": "int",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+                "required": false,
+                "start": 225,
+                "tag": 10,
+                "type": "spread",
+                "value": "registers",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 1110,
+        "start": 489,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 510,
+            "start": 489,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 510,
+                "start": 489,
+                "tag": 8,
+                "value": "update_meter_registers",
+              },
+            ],
+          },
+          Object {
+            "end": 1106,
+            "start": 523,
+            "tag": 94,
+            "values": Array [
+              Object {
+                "end": 549,
+                "start": 530,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 544,
+                    "start": 530,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 544,
+                        "start": 530,
+                        "tag": 8,
+                        "value": "meter_registers",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 549,
+                    "start": 546,
+                    "tag": 12,
+                    "values": Array [
+                      Object {
+                        "end": 549,
+                        "start": 549,
+                        "tag": 8,
+                        "value": "r",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 829,
+                "start": 555,
+                "tag": 88,
+                "values": Array [
+                  Object {
+                    "end": 829,
+                    "start": 565,
+                    "tag": 84,
+                    "values": Array [
+                      Object {
+                        "end": 598,
+                        "start": 565,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 578,
+                            "start": 565,
+                            "tag": 8,
+                            "value": "customer_label",
+                          },
+                          Object {
+                            "end": 598,
+                            "start": 582,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 583,
+                                "start": 582,
+                                "tag": 8,
+                                "value": "r2",
+                              },
+                              Object {
+                                "end": 598,
+                                "start": 585,
+                                "tag": 8,
+                                "value": "customer_label",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 640,
+                        "start": 607,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 620,
+                            "start": 607,
+                            "tag": 8,
+                            "value": "industry_label",
+                          },
+                          Object {
+                            "end": 640,
+                            "start": 624,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 625,
+                                "start": 624,
+                                "tag": 8,
+                                "value": "r2",
+                              },
+                              Object {
+                                "end": 640,
+                                "start": 627,
+                                "tag": 8,
+                                "value": "industry_label",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 713,
+                        "start": 649,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 660,
+                            "start": 649,
+                            "tag": 8,
+                            "value": "smt_rule_set",
+                          },
+                          Object {
+                            "end": 713,
+                            "start": 664,
+                            "tag": 54,
+                            "values": Array [
+                              Object {
+                                "end": 672,
+                                "start": 664,
+                                "tag": 89,
+                                "values": Array [
+                                  Object {
+                                    "end": 672,
+                                    "start": 664,
+                                    "tag": 8,
+                                    "value": "CONCAT_WS",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 676,
+                                "start": 674,
+                                "tag": 13,
+                                "value": "-",
+                              },
+                              Object {
+                                "end": 695,
+                                "start": 679,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 680,
+                                    "start": 679,
+                                    "tag": 8,
+                                    "value": "r2",
+                                  },
+                                  Object {
+                                    "end": 695,
+                                    "start": 682,
+                                    "tag": 8,
+                                    "value": "smt_rule_start",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 712,
+                                "start": 698,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 699,
+                                    "start": 698,
+                                    "tag": 8,
+                                    "value": "r2",
+                                  },
+                                  Object {
+                                    "end": 712,
+                                    "start": 701,
+                                    "tag": 8,
+                                    "value": "smt_rule_end",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 772,
+                        "start": 722,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 738,
+                            "start": 722,
+                            "tag": 8,
+                            "value": "smt_rule_start_on",
+                          },
+                          Object {
+                            "end": 773,
+                            "start": 742,
+                            "tag": 52,
+                            "values": Array [
+                              Object {
+                                "end": 761,
+                                "start": 742,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 743,
+                                    "start": 742,
+                                    "tag": 8,
+                                    "value": "r2",
+                                  },
+                                  Object {
+                                    "end": 761,
+                                    "start": 745,
+                                    "tag": 8,
+                                    "value": "smt_rule_start_on",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 772,
+                                "start": 764,
+                                "tag": 32,
+                                "values": Array [
+                                  Object {
+                                    "end": 772,
+                                    "start": 764,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 772,
+                                        "start": 764,
+                                        "tag": 8,
+                                        "value": "timestamp",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 829,
+                        "start": 781,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 799,
+                            "start": 781,
+                            "tag": 8,
+                            "value": "register_multiplier",
+                          },
+                          Object {
+                            "end": 830,
+                            "start": 803,
+                            "tag": 52,
+                            "values": Array [
+                              Object {
+                                "end": 824,
+                                "start": 803,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 804,
+                                    "start": 803,
+                                    "tag": 8,
+                                    "value": "r2",
+                                  },
+                                  Object {
+                                    "end": 824,
+                                    "start": 806,
+                                    "tag": 8,
+                                    "value": "register_multiplier",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 829,
+                                "start": 827,
+                                "tag": 32,
+                                "values": Array [
+                                  Object {
+                                    "end": 829,
+                                    "start": 827,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 829,
+                                        "start": 827,
+                                        "tag": 8,
+                                        "value": "int",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 862,
+                "start": 835,
+                "tag": 91,
+                "values": Array [
+                  Object {
+                    "end": 862,
+                    "start": 840,
+                    "tag": 68,
+                    "values": Array [
+                      Object {
+                        "end": 862,
+                        "start": 840,
+                        "tag": 90,
+                        "values": Array [
+                          Object {
+                            "end": 856,
+                            "start": 840,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 856,
+                                "start": 840,
+                                "tag": 8,
+                                "value": "registers_payload",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 862,
+                            "start": 858,
+                            "tag": 12,
+                            "values": Array [
+                              Object {
+                                "end": 862,
+                                "start": 861,
+                                "tag": 8,
+                                "value": "r2",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 1106,
+                "start": 998,
+                "tag": 70,
+                "values": Array [
+                  Object {
+                    "end": 1106,
+                    "start": 1010,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 1106,
+                        "start": 1010,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 1026,
+                            "start": 1010,
+                            "tag": 46,
+                            "values": Array [
+                              Object {
+                                "end": 1020,
+                                "start": 1010,
+                                "tag": 52,
+                                "values": Array [
+                                  Object {
+                                    "end": 1014,
+                                    "start": 1010,
+                                    "tag": 11,
+                                    "values": Array [
+                                      Object {
+                                        "end": 1011,
+                                        "start": 1010,
+                                        "tag": 8,
+                                        "value": "r2",
+                                      },
+                                      Object {
+                                        "end": 1014,
+                                        "start": 1013,
+                                        "tag": 8,
+                                        "value": "id",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 1019,
+                                    "start": 1017,
+                                    "tag": 32,
+                                    "values": Array [
+                                      Object {
+                                        "end": 1019,
+                                        "start": 1017,
+                                        "tag": 89,
+                                        "values": Array [
+                                          Object {
+                                            "end": 1019,
+                                            "start": 1017,
+                                            "tag": 8,
+                                            "value": "int",
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 1021,
+                                "start": 1021,
+                                "tag": 44,
+                                "value": "=",
+                              },
+                              Object {
+                                "end": 1026,
+                                "start": 1023,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 1023,
+                                    "start": 1023,
+                                    "tag": 8,
+                                    "value": "r",
+                                  },
+                                  Object {
+                                    "end": 1026,
+                                    "start": 1025,
+                                    "tag": 8,
+                                    "value": "id",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 1030,
+                            "start": 1028,
+                            "tag": 44,
+                            "value": "AND",
+                          },
+                          Object {
+                            "end": 1060,
+                            "start": 1032,
+                            "tag": 46,
+                            "values": Array [
+                              Object {
+                                "end": 1048,
+                                "start": 1032,
+                                "tag": 52,
+                                "values": Array [
+                                  Object {
+                                    "end": 1042,
+                                    "start": 1032,
+                                    "tag": 11,
+                                    "values": Array [
+                                      Object {
+                                        "end": 1033,
+                                        "start": 1032,
+                                        "tag": 8,
+                                        "value": "r2",
+                                      },
+                                      Object {
+                                        "end": 1042,
+                                        "start": 1035,
+                                        "tag": 8,
+                                        "value": "meter_id",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 1047,
+                                    "start": 1045,
+                                    "tag": 32,
+                                    "values": Array [
+                                      Object {
+                                        "end": 1047,
+                                        "start": 1045,
+                                        "tag": 89,
+                                        "values": Array [
+                                          Object {
+                                            "end": 1047,
+                                            "start": 1045,
+                                            "tag": 8,
+                                            "value": "int",
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 1049,
+                                "start": 1049,
+                                "tag": 44,
+                                "value": "=",
+                              },
+                              Object {
+                                "end": 1060,
+                                "start": 1051,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 1051,
+                                    "start": 1051,
+                                    "tag": 8,
+                                    "value": "r",
+                                  },
+                                  Object {
+                                    "end": 1060,
+                                    "start": 1053,
+                                    "tag": 8,
+                                    "value": "meter_id",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 1064,
+                        "start": 1062,
+                        "tag": 44,
+                        "value": "AND",
+                      },
+                      Object {
+                        "end": 1106,
+                        "start": 1066,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 1088,
+                            "start": 1066,
+                            "tag": 52,
+                            "values": Array [
+                              Object {
+                                "end": 1082,
+                                "start": 1066,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 1067,
+                                    "start": 1066,
+                                    "tag": 8,
+                                    "value": "r2",
+                                  },
+                                  Object {
+                                    "end": 1082,
+                                    "start": 1069,
+                                    "tag": 8,
+                                    "value": "index_position",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 1087,
+                                "start": 1085,
+                                "tag": 32,
+                                "values": Array [
+                                  Object {
+                                    "end": 1087,
+                                    "start": 1085,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 1087,
+                                        "start": 1085,
+                                        "tag": 8,
+                                        "value": "int",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 1089,
+                            "start": 1089,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 1106,
+                            "start": 1091,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 1091,
+                                "start": 1091,
+                                "tag": 8,
+                                "value": "r",
+                              },
+                              Object {
+                                "end": 1106,
+                                "start": 1093,
+                                "tag": 8,
+                                "value": "index_position",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 1166,
+        "start": 1114,
+        "tag": 81,
+        "values": Array [
+          Object {
+            "end": 1137,
+            "start": 1121,
+            "tag": 62,
+            "values": Array [
+              Object {
+                "end": 1137,
+                "start": 1121,
+                "tag": 61,
+                "values": Array [
+                  Object {
+                    "end": 1137,
+                    "start": 1121,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 1122,
+                        "start": 1121,
+                        "tag": 8,
+                        "value": "r2",
+                      },
+                      Object {
+                        "end": 1137,
+                        "start": 1124,
+                        "tag": 8,
+                        "value": "index_position",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 1166,
+            "start": 1139,
+            "tag": 69,
+            "values": Array [
+              Object {
+                "end": 1166,
+                "start": 1144,
+                "tag": 68,
+                "values": Array [
+                  Object {
+                    "end": 1166,
+                    "start": 1144,
+                    "tag": 90,
+                    "values": Array [
+                      Object {
+                        "end": 1160,
+                        "start": 1144,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 1160,
+                            "start": 1144,
+                            "tag": 8,
+                            "value": "registers_payload",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 1166,
+                        "start": 1162,
+                        "tag": 12,
+                        "values": Array [
+                          Object {
+                            "end": 1166,
+                            "start": 1165,
+                            "tag": 8,
+                            "value": "r2",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [
+    Object {
+      "end": 927,
+      "start": 868,
+      "tag": 1,
+      "value": " Potygen doesn't allow to input the values directly using",
+    },
+    Object {
+      "end": 993,
+      "start": 932,
+      "tag": 1,
+      "value": " FROM (VALUES $$registers(id, meterId)) AS r2(id, meter_id)",
+    },
+  ],
+}
+`;
+
+exports[`Sql Files Should parse complex sql update-with-cte-from-values.sql: update-with-cte-from-values.sql 1`] = `
+Object {
+  "ast": Object {
+    "end": 734,
+    "start": 0,
+    "tag": 94,
+    "values": Array [
+      Object {
+        "end": 26,
+        "start": 7,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 7,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 21,
+                "start": 7,
+                "tag": 8,
+                "value": "meter_registers",
+              },
+            ],
+          },
+          Object {
+            "end": 26,
+            "start": 23,
+            "tag": 12,
+            "values": Array [
+              Object {
+                "end": 26,
+                "start": 26,
+                "tag": 8,
+                "value": "r",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 292,
+        "start": 28,
+        "tag": 88,
+        "values": Array [
+          Object {
+            "end": 292,
+            "start": 36,
+            "tag": 84,
+            "values": Array [
+              Object {
+                "end": 69,
+                "start": 36,
+                "tag": 83,
+                "values": Array [
+                  Object {
+                    "end": 49,
+                    "start": 36,
+                    "tag": 8,
+                    "value": "customer_label",
+                  },
+                  Object {
+                    "end": 69,
+                    "start": 53,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 54,
+                        "start": 53,
+                        "tag": 8,
+                        "value": "r2",
+                      },
+                      Object {
+                        "end": 69,
+                        "start": 56,
+                        "tag": 8,
+                        "value": "customer_label",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 109,
+                "start": 76,
+                "tag": 83,
+                "values": Array [
+                  Object {
+                    "end": 89,
+                    "start": 76,
+                    "tag": 8,
+                    "value": "industry_label",
+                  },
+                  Object {
+                    "end": 109,
+                    "start": 93,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 94,
+                        "start": 93,
+                        "tag": 8,
+                        "value": "r2",
+                      },
+                      Object {
+                        "end": 109,
+                        "start": 96,
+                        "tag": 8,
+                        "value": "industry_label",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 180,
+                "start": 116,
+                "tag": 83,
+                "values": Array [
+                  Object {
+                    "end": 127,
+                    "start": 116,
+                    "tag": 8,
+                    "value": "smt_rule_set",
+                  },
+                  Object {
+                    "end": 180,
+                    "start": 131,
+                    "tag": 54,
+                    "values": Array [
+                      Object {
+                        "end": 139,
+                        "start": 131,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 139,
+                            "start": 131,
+                            "tag": 8,
+                            "value": "CONCAT_WS",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 143,
+                        "start": 141,
+                        "tag": 13,
+                        "value": "-",
+                      },
+                      Object {
+                        "end": 162,
+                        "start": 146,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 147,
+                            "start": 146,
+                            "tag": 8,
+                            "value": "r2",
+                          },
+                          Object {
+                            "end": 162,
+                            "start": 149,
+                            "tag": 8,
+                            "value": "smt_rule_start",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 179,
+                        "start": 165,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 166,
+                            "start": 165,
+                            "tag": 8,
+                            "value": "r2",
+                          },
+                          Object {
+                            "end": 179,
+                            "start": 168,
+                            "tag": 8,
+                            "value": "smt_rule_end",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 237,
+                "start": 187,
+                "tag": 83,
+                "values": Array [
+                  Object {
+                    "end": 203,
+                    "start": 187,
+                    "tag": 8,
+                    "value": "smt_rule_start_on",
+                  },
+                  Object {
+                    "end": 238,
+                    "start": 207,
+                    "tag": 52,
+                    "values": Array [
+                      Object {
+                        "end": 226,
+                        "start": 207,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 208,
+                            "start": 207,
+                            "tag": 8,
+                            "value": "r2",
+                          },
+                          Object {
+                            "end": 226,
+                            "start": 210,
+                            "tag": 8,
+                            "value": "smt_rule_start_on",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 237,
+                        "start": 229,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 237,
+                            "start": 229,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 237,
+                                "start": 229,
+                                "tag": 8,
+                                "value": "timestamp",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 292,
+                "start": 244,
+                "tag": 83,
+                "values": Array [
+                  Object {
+                    "end": 262,
+                    "start": 244,
+                    "tag": 8,
+                    "value": "register_multiplier",
+                  },
+                  Object {
+                    "end": 293,
+                    "start": 266,
+                    "tag": 52,
+                    "values": Array [
+                      Object {
+                        "end": 287,
+                        "start": 266,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 267,
+                            "start": 266,
+                            "tag": 8,
+                            "value": "r2",
+                          },
+                          Object {
+                            "end": 287,
+                            "start": 269,
+                            "tag": 8,
+                            "value": "register_multiplier",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 292,
+                        "start": 290,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 292,
+                            "start": 290,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 292,
+                                "start": 290,
+                                "tag": 8,
+                                "value": "int",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 734,
+        "start": 294,
+        "tag": 91,
+        "values": Array [
+          Object {
+            "end": 734,
+            "start": 299,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 734,
+                "start": 299,
+                "tag": 120,
+                "values": Array [
+                  Object {
+                    "end": 558,
+                    "start": 299,
+                    "tag": 97,
+                    "values": Array [
+                      Object {
+                        "end": 556,
+                        "pick": Array [
+                          Object {
+                            "end": 344,
+                            "start": 341,
+                            "tag": 119,
+                            "values": Array [
+                              Object {
+                                "end": 344,
+                                "start": 341,
+                                "tag": 9,
+                                "value": "id",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 371,
+                            "start": 357,
+                            "tag": 119,
+                            "values": Array [
+                              Object {
+                                "end": 371,
+                                "start": 357,
+                                "tag": 9,
+                                "value": "customerLabel",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 398,
+                            "start": 384,
+                            "tag": 119,
+                            "values": Array [
+                              Object {
+                                "end": 398,
+                                "start": 384,
+                                "tag": 9,
+                                "value": "industryLabel",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 424,
+                            "start": 411,
+                            "tag": 119,
+                            "values": Array [
+                              Object {
+                                "end": 424,
+                                "start": 411,
+                                "tag": 9,
+                                "value": "smtRuleStart",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 448,
+                            "start": 437,
+                            "tag": 119,
+                            "values": Array [
+                              Object {
+                                "end": 448,
+                                "start": 437,
+                                "tag": 9,
+                                "value": "smtRuleEnd",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 476,
+                            "start": 461,
+                            "tag": 119,
+                            "values": Array [
+                              Object {
+                                "end": 476,
+                                "start": 461,
+                                "tag": 9,
+                                "value": "smtRuleStartOn",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 500,
+                            "start": 489,
+                            "tag": 119,
+                            "values": Array [
+                              Object {
+                                "end": 500,
+                                "start": 489,
+                                "tag": 9,
+                                "value": "multiplier",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 521,
+                            "start": 513,
+                            "tag": 119,
+                            "values": Array [
+                              Object {
+                                "end": 521,
+                                "start": 513,
+                                "tag": 9,
+                                "value": "meterId",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 548,
+                            "start": 534,
+                            "tag": 119,
+                            "values": Array [
+                              Object {
+                                "end": 548,
+                                "start": 534,
+                                "tag": 9,
+                                "value": "indexPosition",
+                              },
+                            ],
+                          },
+                        ],
+                        "required": false,
+                        "start": 318,
+                        "tag": 10,
+                        "type": "spread",
+                        "value": "registers",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 564,
+                    "start": 563,
+                    "tag": 8,
+                    "value": "r2",
+                  },
+                  Object {
+                    "end": 734,
+                    "start": 565,
+                    "tag": 85,
+                    "values": Array [
+                      Object {
+                        "end": 572,
+                        "start": 571,
+                        "tag": 8,
+                        "value": "id",
+                      },
+                      Object {
+                        "end": 592,
+                        "start": 579,
+                        "tag": 8,
+                        "value": "customer_label",
+                      },
+                      Object {
+                        "end": 612,
+                        "start": 599,
+                        "tag": 8,
+                        "value": "industry_label",
+                      },
+                      Object {
+                        "end": 632,
+                        "start": 619,
+                        "tag": 8,
+                        "value": "smt_rule_start",
+                      },
+                      Object {
+                        "end": 650,
+                        "start": 639,
+                        "tag": 8,
+                        "value": "smt_rule_end",
+                      },
+                      Object {
+                        "end": 673,
+                        "start": 657,
+                        "tag": 8,
+                        "value": "smt_rule_start_on",
+                      },
+                      Object {
+                        "end": 698,
+                        "start": 680,
+                        "tag": 8,
+                        "value": "register_multiplier",
+                      },
+                      Object {
+                        "end": 712,
+                        "start": 705,
+                        "tag": 8,
+                        "value": "meter_id",
+                      },
+                      Object {
+                        "end": 732,
+                        "start": 719,
+                        "tag": 8,
+                        "value": "index_position",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;

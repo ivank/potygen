@@ -486,6 +486,10 @@ export const enum SqlName {
    * {@link ParameterPickTag}
    */
   ParameterPick,
+  /**
+   * {@link RecordsetValuesListTag}
+   */
+  RecordsetValuesList,
 }
 
 /**
@@ -2180,6 +2184,26 @@ export interface RecordsetFunctionTag extends NodeSqlTag {
 }
 
 /**
+ * Values recordset with an "as" clause defining column names
+ * ```
+ *                                            ┌─IdentifierTag
+ *          ValuesListTag─┐                   │       ┌─ColumnsTag
+ *                        ▼                   ▼       ▼
+ *              ┌───────────────────────┬ ─┌────┬───────────┐
+ * SELECT * FROM│(VALUES (10,2), (10,2))│AS│tmp1│(col1,col2)│
+ *              └───────────────────────┴ ─└────┴───────────┘
+ *             └─────────────────────────────────────────────┘
+ *                                  └─▶RecordsetValuesListTag
+ * ```
+ */
+export interface RecordsetValuesListTag extends NodeSqlTag {
+  tag: SqlName.RecordsetValuesList;
+  values:
+    | [values: ValuesListTag, name: IdentifierTag]
+    | [values: ValuesListTag, name: IdentifierTag, columns: ColumnsTag];
+}
+
+/**
  * Form clause of an update query.
  * https://www.postgresql.org/docs/current/sql-update.html
  * ```
@@ -2509,7 +2533,7 @@ export interface RollbackTag extends NodeSqlTag {
 }
 
 export type IdentifierTag = QuotedIdentifierTag | UnquotedIdentifierTag;
-export type FromListItemTag = NamedSelectTag | TableTag | RecordsetFunctionTag;
+export type FromListItemTag = NamedSelectTag | TableTag | RecordsetFunctionTag | RecordsetValuesListTag;
 export type ConstantTag =
   | StringTag
   | BitStringTag
@@ -2689,7 +2713,8 @@ export type NodeTag =
   | InsertTag
   | WrappedExpressionTag
   | ExpressionListTag
-  | ParameterPickTag;
+  | ParameterPickTag
+  | RecordsetValuesListTag;
 
 /**
  * All the SQL Tags

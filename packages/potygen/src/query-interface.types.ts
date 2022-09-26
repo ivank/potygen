@@ -454,6 +454,7 @@ export interface ParamPick {
   name: string;
   type: TypeOrLoad;
   castType?: TypeOrLoad;
+  sourceTag: Tag;
 }
 
 /**

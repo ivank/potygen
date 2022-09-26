@@ -129,6 +129,10 @@ describe('Query Interface', () => {
     ['numeric', "SELECT '123'::numeric"],
     ['double percision', "SELECT '123'::double precision"],
     ['big int', "SELECT '123'::int8"],
+    [
+      'CTE with parameters spread',
+      'WITH registers_payload (id) AS (VALUES $$registers(id::int)) SELECT r2.id FROM registers_payload AS r2',
+    ],
   ])('Should convert %s sql (%s)', (_, sql) =>
     withParserErrors(() => {
       expect(toQueryInterface(parser(sql).ast)).toMatchSnapshot();

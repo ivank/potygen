@@ -15555,6 +15555,209 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql from values with columns (SELECT * FROM (VALUES (10, 20)) AS test(id, value)): from values with columns 1`] = `
+Object {
+  "ast": Object {
+    "end": 49,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 7,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 7,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 7,
+                "start": 7,
+                "tag": 37,
+                "values": Array [
+                  Object {
+                    "end": 7,
+                    "start": 7,
+                    "tag": 36,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 49,
+        "start": 9,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 49,
+            "start": 14,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 49,
+                "start": 14,
+                "tag": 120,
+                "values": Array [
+                  Object {
+                    "end": 30,
+                    "start": 14,
+                    "tag": 97,
+                    "values": Array [
+                      Object {
+                        "end": 29,
+                        "start": 22,
+                        "tag": 86,
+                        "values": Array [
+                          Object {
+                            "end": 24,
+                            "start": 23,
+                            "tag": 19,
+                            "value": "10",
+                          },
+                          Object {
+                            "end": 28,
+                            "start": 27,
+                            "tag": 19,
+                            "value": "20",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 38,
+                    "start": 35,
+                    "tag": 8,
+                    "value": "test",
+                  },
+                  Object {
+                    "end": 49,
+                    "start": 39,
+                    "tag": 85,
+                    "values": Array [
+                      Object {
+                        "end": 41,
+                        "start": 40,
+                        "tag": 8,
+                        "value": "id",
+                      },
+                      Object {
+                        "end": 48,
+                        "start": 44,
+                        "tag": 8,
+                        "value": "value",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse simple sql from values without columns (SELECT * FROM (VALUES (10, 20)) AS test): from values without columns 1`] = `
+Object {
+  "ast": Object {
+    "end": 38,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 7,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 7,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 7,
+                "start": 7,
+                "tag": 37,
+                "values": Array [
+                  Object {
+                    "end": 7,
+                    "start": 7,
+                    "tag": 36,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 38,
+        "start": 9,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 38,
+            "start": 14,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 38,
+                "start": 14,
+                "tag": 120,
+                "values": Array [
+                  Object {
+                    "end": 30,
+                    "start": 14,
+                    "tag": 97,
+                    "values": Array [
+                      Object {
+                        "end": 29,
+                        "start": 22,
+                        "tag": 86,
+                        "values": Array [
+                          Object {
+                            "end": 24,
+                            "start": 23,
+                            "tag": 19,
+                            "value": "10",
+                          },
+                          Object {
+                            "end": 28,
+                            "start": 27,
+                            "tag": 19,
+                            "value": "20",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 38,
+                    "start": 35,
+                    "tag": 8,
+                    "value": "test",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse simple sql from with as (SELECT * FROM jobs AS test): from with as 1`] = `
 Object {
   "ast": Object {

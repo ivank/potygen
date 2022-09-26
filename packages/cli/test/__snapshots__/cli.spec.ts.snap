@@ -39,6 +39,8 @@ Array [
   "reads-by-account-id.query.queries.ts",
   "recordsets.query.queries.ts",
   "tariff-rates.queries.ts",
+  "update-registers.queries.ts",
+  "update-with-cte-from-values.queries.ts",
 ]
 `;
 
@@ -854,6 +856,53 @@ export interface Query {
 
 exports[`CLI Should use cli to run pipeline on sql files: tariff-rates.queries.ts 1`] = `
 "export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: update-registers.queries.ts 1`] = `
+"export interface Params {
+    registers: {
+        id: number;
+        customerLabel: unknown;
+        industryLabel: unknown;
+        smtRuleStart: string;
+        smtRuleEnd: string;
+        smtRuleStartOn: Date;
+        multiplier: unknown;
+        meterId: unknown;
+        indexPosition: number;
+    }[];
+}
+export interface Result {
+    index_position: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: update-with-cte-from-values.queries.ts 1`] = `
+"export interface Params {
+    registers: {
+        id: unknown;
+        customerLabel: unknown;
+        industryLabel: unknown;
+        smtRuleStart: unknown;
+        smtRuleEnd: unknown;
+        smtRuleStartOn: unknown;
+        multiplier: unknown;
+        meterId: unknown;
+        indexPosition: unknown;
+    }[];
 }
 export interface Result {
 }
