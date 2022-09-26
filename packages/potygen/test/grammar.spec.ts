@@ -52,6 +52,8 @@ describe('Sql', () => {
     ${'offset'}                       | ${'SELECT * OFFSET 10'}
     ${'limit offset'}                 | ${'SELECT * LIMIT 10 OFFSET 10'}
     ${'from'}                         | ${'SELECT * FROM jobs'}
+    ${'from values without columns'}  | ${'SELECT * FROM (VALUES (10, 20)) AS test'}
+    ${'from values with columns'}     | ${'SELECT * FROM (VALUES (10, 20)) AS test(id, value)'}
     ${'from with schema'}             | ${'SELECT * FROM public.jobs'}
     ${'from select'}                  | ${'SELECT * FROM (SELECT * FROM jobs2) as jobs1'}
     ${'from select as'}               | ${'SELECT * FROM jobs1, (SELECT * FROM jobs2) as tmp2'}

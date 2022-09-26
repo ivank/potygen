@@ -150,6 +150,8 @@ const ColumnUnqualified = astNode<Tag.ColumnTag>(Tag.SqlName.Column, IdentifierR
  */
 const Column = Any(ColumnFullyQualified, ColumnQualified, ColumnUnqualified);
 
+const Columns = astNode<Tag.ColumnsTag>(Tag.SqlName.Columns, Brackets(List(IdentifierRestricted)));
+
 /**
  * AS Clause
  */
@@ -237,6 +239,7 @@ const Type = astNode<Tag.TypeTag>(
 const Dimension = astEmptyLeaf<Tag.DimensionTag>(Tag.SqlName.Dimension, SquareBrackets());
 const TypeArray = astNode<Tag.ArrayTypeTag>(Tag.SqlName.ArrayType, All(Type, Plus(Dimension)));
 const AnyType = Any(TypeArray, Type);
+const Default = astEmptyLeaf<Tag.DefaultTag>(Tag.SqlName.Default, /^DEFAULT/i);
 
 const ParameterPick = astNode<Tag.ParameterPickTag>(
   Tag.SqlName.ParameterPick,
@@ -550,8 +553,19 @@ const FromListRule = (Select: Rule, ChildExpression: Rule): Rule => {
     Tag.SqlName.RecordsetFunction,
     All(Function(ChildExpression), AsRecordset),
   );
-
-  return astNode<Tag.FromListTag>(Tag.SqlName.FromList, List(Any(RecordsetFunction, Table, NamedSelect)));
+  const FormValues = astNode<Tag.ValuesTag>(Tag.SqlName.Values, Brackets(List(Any(Default, ChildExpression))));
+  const FromValuesList = astNode<Tag.ValuesListTag>(
+    Tag.SqlName.ValuesList,
+    Brackets(All(/^VALUES/i, Any(List(FormValues), Parameter))),
+  );
+  const RecordsetValuesList = astNode<Tag.RecordsetValuesListTag>(
+    Tag.SqlName.RecordsetValuesList,
+    All(FromValuesList, /^AS/i, Identifier, Optional(Columns)),
+  );
+  return astNode<Tag.FromListTag>(
+    Tag.SqlName.FromList,
+    List(Any(RecordsetValuesList, RecordsetFunction, Table, NamedSelect)),
+  );
 };
 
 const WhereRule = (Expression: Rule): Rule => astNode<Tag.WhereTag>(Tag.SqlName.Where, All(/^WHERE/i, Expression));
@@ -672,8 +686,6 @@ const Select = Y((SelectExpression) => {
 const Expression = ExpressionRule(Select);
 const FromList = FromListRule(Select, Expression);
 const Where = WhereRule(Expression);
-const Columns = astNode<Tag.ColumnsTag>(Tag.SqlName.Columns, Brackets(List(IdentifierRestricted)));
-const Default = astEmptyLeaf<Tag.DefaultTag>(Tag.SqlName.Default, /^DEFAULT/i);
 
 /**
  * Update

@@ -7201,6 +7201,19 @@ Object {
         Object {
           "castType": undefined,
           "name": "GH_account_id",
+          "sourceTag": Object {
+            "end": 107,
+            "start": 95,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 107,
+                "start": 95,
+                "tag": 8,
+                "value": "GH_account_id",
+              },
+            ],
+          },
           "type": Object {
             "postgresType": "any",
             "type": 9,
@@ -7209,6 +7222,19 @@ Object {
         Object {
           "castType": undefined,
           "name": "MV date",
+          "sourceTag": Object {
+            "end": 128,
+            "start": 120,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 128,
+                "start": 120,
+                "tag": 9,
+                "value": "MV date",
+              },
+            ],
+          },
           "type": Object {
             "postgresType": "any",
             "type": 9,
@@ -7331,7 +7357,50 @@ Object {
         ],
       },
       "type": "Values",
-      "types": undefined,
+      "types": Array [
+        Object {
+          "name": "account_number",
+          "sourceTag": Object {
+            "end": 107,
+            "start": 95,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 107,
+                "start": 95,
+                "tag": 8,
+                "value": "GH_account_id",
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "verified_on",
+          "sourceTag": Object {
+            "end": 128,
+            "start": 120,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 128,
+                "start": 120,
+                "tag": 9,
+                "value": "MV date",
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+      ],
     },
     Object {
       "name": "accounts_back_to_live",
@@ -7703,7 +7772,50 @@ Object {
               ],
             },
             "type": "Values",
-            "types": undefined,
+            "types": Array [
+              Object {
+                "name": "account_number",
+                "sourceTag": Object {
+                  "end": 107,
+                  "start": 95,
+                  "tag": 119,
+                  "values": Array [
+                    Object {
+                      "end": 107,
+                      "start": 95,
+                      "tag": 8,
+                      "value": "GH_account_id",
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "postgresType": "any",
+                  "type": 9,
+                },
+              },
+              Object {
+                "name": "verified_on",
+                "sourceTag": Object {
+                  "end": 128,
+                  "start": 120,
+                  "tag": 119,
+                  "values": Array [
+                    Object {
+                      "end": 128,
+                      "start": 120,
+                      "tag": 9,
+                      "value": "MV date",
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "postgresType": "any",
+                  "type": 9,
+                },
+              },
+            ],
           },
         ],
       },
@@ -21939,6 +22051,19 @@ Object {
         Object {
           "castType": undefined,
           "name": "processId",
+          "sourceTag": Object {
+            "end": 114,
+            "start": 106,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 114,
+                "start": 106,
+                "tag": 8,
+                "value": "processId",
+              },
+            ],
+          },
           "type": Object {
             "column": "process_id",
             "schema": undefined,
@@ -22213,6 +22338,19 @@ Object {
         Object {
           "castType": undefined,
           "name": "idempotencyKey",
+          "sourceTag": Object {
+            "end": 134,
+            "start": 121,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 134,
+                "start": 121,
+                "tag": 8,
+                "value": "idempotencyKey",
+              },
+            ],
+          },
           "type": Object {
             "column": "idempotency_key",
             "schema": undefined,
@@ -22487,6 +22625,19 @@ Object {
         Object {
           "castType": undefined,
           "name": "data",
+          "sourceTag": Object {
+            "end": 144,
+            "start": 141,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 144,
+                "start": 141,
+                "tag": 8,
+                "value": "data",
+              },
+            ],
+          },
           "type": Object {
             "column": "data",
             "schema": undefined,
@@ -22761,6 +22912,19 @@ Object {
         Object {
           "castType": undefined,
           "name": "accountId",
+          "sourceTag": Object {
+            "end": 159,
+            "start": 151,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 159,
+                "start": 151,
+                "tag": 8,
+                "value": "accountId",
+              },
+            ],
+          },
           "type": Object {
             "column": "account_id",
             "schema": undefined,
@@ -48030,6 +48194,3485 @@ Object {
       },
       "table": "tariffs",
       "type": "Table",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql update-registers.sql: update-registers.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "end": 480,
+      "name": "registers",
+      "pick": Array [
+        Object {
+          "castType": Object {
+            "name": "int4",
+            "sourceTag": Object {
+              "end": 254,
+              "start": 252,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 254,
+                  "start": 252,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 254,
+                      "start": 252,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "int4",
+              "type": 3,
+            },
+          },
+          "name": "id",
+          "sourceTag": Object {
+            "end": 254,
+            "start": 246,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 249,
+                "start": 246,
+                "tag": 9,
+                "value": "id",
+              },
+              Object {
+                "end": 254,
+                "start": 252,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 254,
+                    "start": 252,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 254,
+                        "start": 252,
+                        "tag": 8,
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": Object {
+            "name": "int4",
+            "sourceTag": Object {
+              "end": 254,
+              "start": 252,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 254,
+                  "start": 252,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 254,
+                      "start": 252,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "int4",
+              "type": 3,
+            },
+          },
+        },
+        Object {
+          "castType": undefined,
+          "name": "customerLabel",
+          "sourceTag": Object {
+            "end": 279,
+            "start": 265,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 279,
+                "start": 265,
+                "tag": 9,
+                "value": "customerLabel",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "castType": undefined,
+          "name": "industryLabel",
+          "sourceTag": Object {
+            "end": 304,
+            "start": 290,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 304,
+                "start": 290,
+                "tag": 9,
+                "value": "industryLabel",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "castType": Object {
+            "name": "varchar",
+            "sourceTag": Object {
+              "end": 341,
+              "start": 331,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 337,
+                  "start": 331,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 337,
+                      "start": 331,
+                      "tag": 8,
+                      "value": "varchar",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 340,
+                  "start": 339,
+                  "tag": 20,
+                  "value": "10",
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "varchar",
+              "type": 2,
+            },
+          },
+          "name": "smtRuleStart",
+          "sourceTag": Object {
+            "end": 341,
+            "start": 315,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 328,
+                "start": 315,
+                "tag": 9,
+                "value": "smtRuleStart",
+              },
+              Object {
+                "end": 341,
+                "start": 331,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 337,
+                    "start": 331,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 337,
+                        "start": 331,
+                        "tag": 8,
+                        "value": "varchar",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 340,
+                    "start": 339,
+                    "tag": 20,
+                    "value": "10",
+                  },
+                ],
+              },
+            ],
+          },
+          "type": Object {
+            "name": "varchar",
+            "sourceTag": Object {
+              "end": 341,
+              "start": 331,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 337,
+                  "start": 331,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 337,
+                      "start": 331,
+                      "tag": 8,
+                      "value": "varchar",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 340,
+                  "start": 339,
+                  "tag": 20,
+                  "value": "10",
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "varchar",
+              "type": 2,
+            },
+          },
+        },
+        Object {
+          "castType": Object {
+            "name": "text",
+            "sourceTag": Object {
+              "end": 369,
+              "start": 366,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 369,
+                  "start": 366,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 369,
+                      "start": 366,
+                      "tag": 8,
+                      "value": "text",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "text",
+              "type": 2,
+            },
+          },
+          "name": "smtRuleEnd",
+          "sourceTag": Object {
+            "end": 369,
+            "start": 352,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 363,
+                "start": 352,
+                "tag": 9,
+                "value": "smtRuleEnd",
+              },
+              Object {
+                "end": 369,
+                "start": 366,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 369,
+                    "start": 366,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 369,
+                        "start": 366,
+                        "tag": 8,
+                        "value": "text",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": Object {
+            "name": "text",
+            "sourceTag": Object {
+              "end": 369,
+              "start": 366,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 369,
+                  "start": 366,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 369,
+                      "start": 366,
+                      "tag": 8,
+                      "value": "text",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "text",
+              "type": 2,
+            },
+          },
+        },
+        Object {
+          "castType": Object {
+            "name": "date",
+            "sourceTag": Object {
+              "end": 401,
+              "start": 398,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 401,
+                  "start": 398,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 401,
+                      "start": 398,
+                      "tag": 8,
+                      "value": "date",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "date",
+              "type": 6,
+            },
+          },
+          "name": "smtRuleStartOn",
+          "sourceTag": Object {
+            "end": 401,
+            "start": 380,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 395,
+                "start": 380,
+                "tag": 9,
+                "value": "smtRuleStartOn",
+              },
+              Object {
+                "end": 401,
+                "start": 398,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 401,
+                    "start": 398,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 401,
+                        "start": 398,
+                        "tag": 8,
+                        "value": "date",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": Object {
+            "name": "date",
+            "sourceTag": Object {
+              "end": 401,
+              "start": 398,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 401,
+                  "start": 398,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 401,
+                      "start": 398,
+                      "tag": 8,
+                      "value": "date",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "date",
+              "type": 6,
+            },
+          },
+        },
+        Object {
+          "castType": undefined,
+          "name": "multiplier",
+          "sourceTag": Object {
+            "end": 423,
+            "start": 412,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 423,
+                "start": 412,
+                "tag": 9,
+                "value": "multiplier",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "castType": undefined,
+          "name": "meterId",
+          "sourceTag": Object {
+            "end": 442,
+            "start": 434,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 442,
+                "start": 434,
+                "tag": 9,
+                "value": "meterId",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "castType": Object {
+            "name": "int4",
+            "sourceTag": Object {
+              "end": 472,
+              "start": 470,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 472,
+                  "start": 470,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 472,
+                      "start": 470,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "int4",
+              "type": 3,
+            },
+          },
+          "name": "indexPosition",
+          "sourceTag": Object {
+            "end": 472,
+            "start": 453,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 467,
+                "start": 453,
+                "tag": 9,
+                "value": "indexPosition",
+              },
+              Object {
+                "end": 472,
+                "start": 470,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 472,
+                    "start": 470,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 472,
+                        "start": 470,
+                        "tag": 8,
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": Object {
+            "name": "int4",
+            "sourceTag": Object {
+              "end": 472,
+              "start": 470,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 472,
+                  "start": 470,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 472,
+                      "start": 470,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "int4",
+              "type": 3,
+            },
+          },
+        },
+      ],
+      "required": true,
+      "spread": true,
+      "start": 225,
+      "type": Object {
+        "postgresType": "any",
+        "type": 9,
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "index_position",
+      "type": Object {
+        "column": "index_position",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 1137,
+          "start": 1121,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 1122,
+              "start": 1121,
+              "tag": 8,
+              "value": "r2",
+            },
+            Object {
+              "end": 1137,
+              "start": 1124,
+              "tag": 8,
+              "value": "index_position",
+            },
+          ],
+        },
+        "table": "r2",
+        "type": 19,
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "name": "registers_payload",
+      "sourceTag": Object {
+        "end": 484,
+        "start": 6,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 197,
+            "start": 6,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 22,
+                "start": 6,
+                "tag": 8,
+                "value": "registers_payload",
+              },
+              Object {
+                "end": 197,
+                "start": 26,
+                "tag": 85,
+                "values": Array [
+                  Object {
+                    "end": 33,
+                    "start": 32,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                  Object {
+                    "end": 53,
+                    "start": 40,
+                    "tag": 8,
+                    "value": "customer_label",
+                  },
+                  Object {
+                    "end": 73,
+                    "start": 60,
+                    "tag": 8,
+                    "value": "industry_label",
+                  },
+                  Object {
+                    "end": 93,
+                    "start": 80,
+                    "tag": 8,
+                    "value": "smt_rule_start",
+                  },
+                  Object {
+                    "end": 111,
+                    "start": 100,
+                    "tag": 8,
+                    "value": "smt_rule_end",
+                  },
+                  Object {
+                    "end": 134,
+                    "start": 118,
+                    "tag": 8,
+                    "value": "smt_rule_start_on",
+                  },
+                  Object {
+                    "end": 159,
+                    "start": 141,
+                    "tag": 8,
+                    "value": "register_multiplier",
+                  },
+                  Object {
+                    "end": 173,
+                    "start": 166,
+                    "tag": 8,
+                    "value": "meter_id",
+                  },
+                  Object {
+                    "end": 193,
+                    "start": 180,
+                    "tag": 8,
+                    "value": "index_position",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 480,
+            "start": 212,
+            "tag": 3,
+            "values": Array [
+              Object {
+                "end": 480,
+                "pick": Array [
+                  Object {
+                    "end": 254,
+                    "start": 246,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 249,
+                        "start": 246,
+                        "tag": 9,
+                        "value": "id",
+                      },
+                      Object {
+                        "end": 254,
+                        "start": 252,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 254,
+                            "start": 252,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 254,
+                                "start": 252,
+                                "tag": 8,
+                                "value": "int",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 279,
+                    "start": 265,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 279,
+                        "start": 265,
+                        "tag": 9,
+                        "value": "customerLabel",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 304,
+                    "start": 290,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 304,
+                        "start": 290,
+                        "tag": 9,
+                        "value": "industryLabel",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 341,
+                    "start": 315,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 328,
+                        "start": 315,
+                        "tag": 9,
+                        "value": "smtRuleStart",
+                      },
+                      Object {
+                        "end": 341,
+                        "start": 331,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 337,
+                            "start": 331,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 337,
+                                "start": 331,
+                                "tag": 8,
+                                "value": "varchar",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 340,
+                            "start": 339,
+                            "tag": 20,
+                            "value": "10",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 369,
+                    "start": 352,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 363,
+                        "start": 352,
+                        "tag": 9,
+                        "value": "smtRuleEnd",
+                      },
+                      Object {
+                        "end": 369,
+                        "start": 366,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 369,
+                            "start": 366,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 369,
+                                "start": 366,
+                                "tag": 8,
+                                "value": "text",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 401,
+                    "start": 380,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 395,
+                        "start": 380,
+                        "tag": 9,
+                        "value": "smtRuleStartOn",
+                      },
+                      Object {
+                        "end": 401,
+                        "start": 398,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 401,
+                            "start": 398,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 401,
+                                "start": 398,
+                                "tag": 8,
+                                "value": "date",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 423,
+                    "start": 412,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 423,
+                        "start": 412,
+                        "tag": 9,
+                        "value": "multiplier",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 442,
+                    "start": 434,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 442,
+                        "start": 434,
+                        "tag": 9,
+                        "value": "meterId",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 472,
+                    "start": 453,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 467,
+                        "start": 453,
+                        "tag": 9,
+                        "value": "indexPosition",
+                      },
+                      Object {
+                        "end": 472,
+                        "start": 470,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 472,
+                            "start": 470,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 472,
+                                "start": 470,
+                                "tag": 8,
+                                "value": "int",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+                "required": false,
+                "start": 225,
+                "tag": 10,
+                "type": "spread",
+                "value": "registers",
+              },
+            ],
+          },
+        ],
+      },
+      "type": "Values",
+      "types": Array [
+        Object {
+          "name": "id",
+          "sourceTag": Object {
+            "end": 254,
+            "start": 246,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 249,
+                "start": 246,
+                "tag": 9,
+                "value": "id",
+              },
+              Object {
+                "end": 254,
+                "start": 252,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 254,
+                    "start": 252,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 254,
+                        "start": 252,
+                        "tag": 8,
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "name": "int4",
+            "sourceTag": Object {
+              "end": 254,
+              "start": 252,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 254,
+                  "start": 252,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 254,
+                      "start": 252,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "int4",
+              "type": 3,
+            },
+          },
+        },
+        Object {
+          "name": "customer_label",
+          "sourceTag": Object {
+            "end": 279,
+            "start": 265,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 279,
+                "start": 265,
+                "tag": 9,
+                "value": "customerLabel",
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "industry_label",
+          "sourceTag": Object {
+            "end": 304,
+            "start": 290,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 304,
+                "start": 290,
+                "tag": 9,
+                "value": "industryLabel",
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "smt_rule_start",
+          "sourceTag": Object {
+            "end": 341,
+            "start": 315,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 328,
+                "start": 315,
+                "tag": 9,
+                "value": "smtRuleStart",
+              },
+              Object {
+                "end": 341,
+                "start": 331,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 337,
+                    "start": 331,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 337,
+                        "start": 331,
+                        "tag": 8,
+                        "value": "varchar",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 340,
+                    "start": 339,
+                    "tag": 20,
+                    "value": "10",
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "name": "varchar",
+            "sourceTag": Object {
+              "end": 341,
+              "start": 331,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 337,
+                  "start": 331,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 337,
+                      "start": 331,
+                      "tag": 8,
+                      "value": "varchar",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 340,
+                  "start": 339,
+                  "tag": 20,
+                  "value": "10",
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "varchar",
+              "type": 2,
+            },
+          },
+        },
+        Object {
+          "name": "smt_rule_end",
+          "sourceTag": Object {
+            "end": 369,
+            "start": 352,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 363,
+                "start": 352,
+                "tag": 9,
+                "value": "smtRuleEnd",
+              },
+              Object {
+                "end": 369,
+                "start": 366,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 369,
+                    "start": 366,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 369,
+                        "start": 366,
+                        "tag": 8,
+                        "value": "text",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "name": "text",
+            "sourceTag": Object {
+              "end": 369,
+              "start": 366,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 369,
+                  "start": 366,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 369,
+                      "start": 366,
+                      "tag": 8,
+                      "value": "text",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "text",
+              "type": 2,
+            },
+          },
+        },
+        Object {
+          "name": "smt_rule_start_on",
+          "sourceTag": Object {
+            "end": 401,
+            "start": 380,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 395,
+                "start": 380,
+                "tag": 9,
+                "value": "smtRuleStartOn",
+              },
+              Object {
+                "end": 401,
+                "start": 398,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 401,
+                    "start": 398,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 401,
+                        "start": 398,
+                        "tag": 8,
+                        "value": "date",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "name": "date",
+            "sourceTag": Object {
+              "end": 401,
+              "start": 398,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 401,
+                  "start": 398,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 401,
+                      "start": 398,
+                      "tag": 8,
+                      "value": "date",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "date",
+              "type": 6,
+            },
+          },
+        },
+        Object {
+          "name": "register_multiplier",
+          "sourceTag": Object {
+            "end": 423,
+            "start": 412,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 423,
+                "start": 412,
+                "tag": 9,
+                "value": "multiplier",
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "meter_id",
+          "sourceTag": Object {
+            "end": 442,
+            "start": 434,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 442,
+                "start": 434,
+                "tag": 9,
+                "value": "meterId",
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "index_position",
+          "sourceTag": Object {
+            "end": 472,
+            "start": 453,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 467,
+                "start": 453,
+                "tag": 9,
+                "value": "indexPosition",
+              },
+              Object {
+                "end": 472,
+                "start": 470,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 472,
+                    "start": 470,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 472,
+                        "start": 470,
+                        "tag": 8,
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "name": "int4",
+            "sourceTag": Object {
+              "end": 472,
+              "start": 470,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 472,
+                  "start": 470,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 472,
+                      "start": 470,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "int4",
+              "type": 3,
+            },
+          },
+        },
+      ],
+    },
+    Object {
+      "name": "update_meter_registers",
+      "sourceTag": Object {
+        "end": 1110,
+        "start": 489,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 510,
+            "start": 489,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 510,
+                "start": 489,
+                "tag": 8,
+                "value": "update_meter_registers",
+              },
+            ],
+          },
+          Object {
+            "end": 1106,
+            "start": 523,
+            "tag": 94,
+            "values": Array [
+              Object {
+                "end": 549,
+                "start": 530,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 544,
+                    "start": 530,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 544,
+                        "start": 530,
+                        "tag": 8,
+                        "value": "meter_registers",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 549,
+                    "start": 546,
+                    "tag": 12,
+                    "values": Array [
+                      Object {
+                        "end": 549,
+                        "start": 549,
+                        "tag": 8,
+                        "value": "r",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 829,
+                "start": 555,
+                "tag": 88,
+                "values": Array [
+                  Object {
+                    "end": 829,
+                    "start": 565,
+                    "tag": 84,
+                    "values": Array [
+                      Object {
+                        "end": 598,
+                        "start": 565,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 578,
+                            "start": 565,
+                            "tag": 8,
+                            "value": "customer_label",
+                          },
+                          Object {
+                            "end": 598,
+                            "start": 582,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 583,
+                                "start": 582,
+                                "tag": 8,
+                                "value": "r2",
+                              },
+                              Object {
+                                "end": 598,
+                                "start": 585,
+                                "tag": 8,
+                                "value": "customer_label",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 640,
+                        "start": 607,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 620,
+                            "start": 607,
+                            "tag": 8,
+                            "value": "industry_label",
+                          },
+                          Object {
+                            "end": 640,
+                            "start": 624,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 625,
+                                "start": 624,
+                                "tag": 8,
+                                "value": "r2",
+                              },
+                              Object {
+                                "end": 640,
+                                "start": 627,
+                                "tag": 8,
+                                "value": "industry_label",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 713,
+                        "start": 649,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 660,
+                            "start": 649,
+                            "tag": 8,
+                            "value": "smt_rule_set",
+                          },
+                          Object {
+                            "end": 713,
+                            "start": 664,
+                            "tag": 54,
+                            "values": Array [
+                              Object {
+                                "end": 672,
+                                "start": 664,
+                                "tag": 89,
+                                "values": Array [
+                                  Object {
+                                    "end": 672,
+                                    "start": 664,
+                                    "tag": 8,
+                                    "value": "CONCAT_WS",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 676,
+                                "start": 674,
+                                "tag": 13,
+                                "value": "-",
+                              },
+                              Object {
+                                "end": 695,
+                                "start": 679,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 680,
+                                    "start": 679,
+                                    "tag": 8,
+                                    "value": "r2",
+                                  },
+                                  Object {
+                                    "end": 695,
+                                    "start": 682,
+                                    "tag": 8,
+                                    "value": "smt_rule_start",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 712,
+                                "start": 698,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 699,
+                                    "start": 698,
+                                    "tag": 8,
+                                    "value": "r2",
+                                  },
+                                  Object {
+                                    "end": 712,
+                                    "start": 701,
+                                    "tag": 8,
+                                    "value": "smt_rule_end",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 772,
+                        "start": 722,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 738,
+                            "start": 722,
+                            "tag": 8,
+                            "value": "smt_rule_start_on",
+                          },
+                          Object {
+                            "end": 773,
+                            "start": 742,
+                            "tag": 52,
+                            "values": Array [
+                              Object {
+                                "end": 761,
+                                "start": 742,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 743,
+                                    "start": 742,
+                                    "tag": 8,
+                                    "value": "r2",
+                                  },
+                                  Object {
+                                    "end": 761,
+                                    "start": 745,
+                                    "tag": 8,
+                                    "value": "smt_rule_start_on",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 772,
+                                "start": 764,
+                                "tag": 32,
+                                "values": Array [
+                                  Object {
+                                    "end": 772,
+                                    "start": 764,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 772,
+                                        "start": 764,
+                                        "tag": 8,
+                                        "value": "timestamp",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 829,
+                        "start": 781,
+                        "tag": 83,
+                        "values": Array [
+                          Object {
+                            "end": 799,
+                            "start": 781,
+                            "tag": 8,
+                            "value": "register_multiplier",
+                          },
+                          Object {
+                            "end": 830,
+                            "start": 803,
+                            "tag": 52,
+                            "values": Array [
+                              Object {
+                                "end": 824,
+                                "start": 803,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 804,
+                                    "start": 803,
+                                    "tag": 8,
+                                    "value": "r2",
+                                  },
+                                  Object {
+                                    "end": 824,
+                                    "start": 806,
+                                    "tag": 8,
+                                    "value": "register_multiplier",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 829,
+                                "start": 827,
+                                "tag": 32,
+                                "values": Array [
+                                  Object {
+                                    "end": 829,
+                                    "start": 827,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 829,
+                                        "start": 827,
+                                        "tag": 8,
+                                        "value": "int",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 862,
+                "start": 835,
+                "tag": 91,
+                "values": Array [
+                  Object {
+                    "end": 862,
+                    "start": 840,
+                    "tag": 68,
+                    "values": Array [
+                      Object {
+                        "end": 862,
+                        "start": 840,
+                        "tag": 90,
+                        "values": Array [
+                          Object {
+                            "end": 856,
+                            "start": 840,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 856,
+                                "start": 840,
+                                "tag": 8,
+                                "value": "registers_payload",
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 862,
+                            "start": 858,
+                            "tag": 12,
+                            "values": Array [
+                              Object {
+                                "end": 862,
+                                "start": 861,
+                                "tag": 8,
+                                "value": "r2",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 1106,
+                "start": 998,
+                "tag": 70,
+                "values": Array [
+                  Object {
+                    "end": 1106,
+                    "start": 1010,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 1106,
+                        "start": 1010,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 1026,
+                            "start": 1010,
+                            "tag": 46,
+                            "values": Array [
+                              Object {
+                                "end": 1020,
+                                "start": 1010,
+                                "tag": 52,
+                                "values": Array [
+                                  Object {
+                                    "end": 1014,
+                                    "start": 1010,
+                                    "tag": 11,
+                                    "values": Array [
+                                      Object {
+                                        "end": 1011,
+                                        "start": 1010,
+                                        "tag": 8,
+                                        "value": "r2",
+                                      },
+                                      Object {
+                                        "end": 1014,
+                                        "start": 1013,
+                                        "tag": 8,
+                                        "value": "id",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 1019,
+                                    "start": 1017,
+                                    "tag": 32,
+                                    "values": Array [
+                                      Object {
+                                        "end": 1019,
+                                        "start": 1017,
+                                        "tag": 89,
+                                        "values": Array [
+                                          Object {
+                                            "end": 1019,
+                                            "start": 1017,
+                                            "tag": 8,
+                                            "value": "int",
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 1021,
+                                "start": 1021,
+                                "tag": 44,
+                                "value": "=",
+                              },
+                              Object {
+                                "end": 1026,
+                                "start": 1023,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 1023,
+                                    "start": 1023,
+                                    "tag": 8,
+                                    "value": "r",
+                                  },
+                                  Object {
+                                    "end": 1026,
+                                    "start": 1025,
+                                    "tag": 8,
+                                    "value": "id",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 1030,
+                            "start": 1028,
+                            "tag": 44,
+                            "value": "AND",
+                          },
+                          Object {
+                            "end": 1060,
+                            "start": 1032,
+                            "tag": 46,
+                            "values": Array [
+                              Object {
+                                "end": 1048,
+                                "start": 1032,
+                                "tag": 52,
+                                "values": Array [
+                                  Object {
+                                    "end": 1042,
+                                    "start": 1032,
+                                    "tag": 11,
+                                    "values": Array [
+                                      Object {
+                                        "end": 1033,
+                                        "start": 1032,
+                                        "tag": 8,
+                                        "value": "r2",
+                                      },
+                                      Object {
+                                        "end": 1042,
+                                        "start": 1035,
+                                        "tag": 8,
+                                        "value": "meter_id",
+                                      },
+                                    ],
+                                  },
+                                  Object {
+                                    "end": 1047,
+                                    "start": 1045,
+                                    "tag": 32,
+                                    "values": Array [
+                                      Object {
+                                        "end": 1047,
+                                        "start": 1045,
+                                        "tag": 89,
+                                        "values": Array [
+                                          Object {
+                                            "end": 1047,
+                                            "start": 1045,
+                                            "tag": 8,
+                                            "value": "int",
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 1049,
+                                "start": 1049,
+                                "tag": 44,
+                                "value": "=",
+                              },
+                              Object {
+                                "end": 1060,
+                                "start": 1051,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 1051,
+                                    "start": 1051,
+                                    "tag": 8,
+                                    "value": "r",
+                                  },
+                                  Object {
+                                    "end": 1060,
+                                    "start": 1053,
+                                    "tag": 8,
+                                    "value": "meter_id",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 1064,
+                        "start": 1062,
+                        "tag": 44,
+                        "value": "AND",
+                      },
+                      Object {
+                        "end": 1106,
+                        "start": 1066,
+                        "tag": 46,
+                        "values": Array [
+                          Object {
+                            "end": 1088,
+                            "start": 1066,
+                            "tag": 52,
+                            "values": Array [
+                              Object {
+                                "end": 1082,
+                                "start": 1066,
+                                "tag": 11,
+                                "values": Array [
+                                  Object {
+                                    "end": 1067,
+                                    "start": 1066,
+                                    "tag": 8,
+                                    "value": "r2",
+                                  },
+                                  Object {
+                                    "end": 1082,
+                                    "start": 1069,
+                                    "tag": 8,
+                                    "value": "index_position",
+                                  },
+                                ],
+                              },
+                              Object {
+                                "end": 1087,
+                                "start": 1085,
+                                "tag": 32,
+                                "values": Array [
+                                  Object {
+                                    "end": 1087,
+                                    "start": 1085,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 1087,
+                                        "start": 1085,
+                                        "tag": 8,
+                                        "value": "int",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                          Object {
+                            "end": 1089,
+                            "start": 1089,
+                            "tag": 44,
+                            "value": "=",
+                          },
+                          Object {
+                            "end": 1106,
+                            "start": 1091,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 1091,
+                                "start": 1091,
+                                "tag": 8,
+                                "value": "r",
+                              },
+                              Object {
+                                "end": 1106,
+                                "start": 1093,
+                                "tag": 8,
+                                "value": "index_position",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "type": "Query",
+      "value": Object {
+        "params": Array [],
+        "results": Array [],
+        "sources": Array [
+          Object {
+            "isResult": true,
+            "name": "r",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 549,
+              "start": 530,
+              "tag": 90,
+              "values": Array [
+                Object {
+                  "end": 544,
+                  "start": 530,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 544,
+                      "start": 530,
+                      "tag": 8,
+                      "value": "meter_registers",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 549,
+                  "start": 546,
+                  "tag": 12,
+                  "values": Array [
+                    Object {
+                      "end": 549,
+                      "start": 549,
+                      "tag": 8,
+                      "value": "r",
+                    },
+                  ],
+                },
+              ],
+            },
+            "table": "meter_registers",
+            "type": "Table",
+          },
+          Object {
+            "isResult": true,
+            "name": "r2",
+            "schema": undefined,
+            "sourceTag": Object {
+              "end": 862,
+              "start": 840,
+              "tag": 90,
+              "values": Array [
+                Object {
+                  "end": 856,
+                  "start": 840,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 856,
+                      "start": 840,
+                      "tag": 8,
+                      "value": "registers_payload",
+                    },
+                  ],
+                },
+                Object {
+                  "end": 862,
+                  "start": 858,
+                  "tag": 12,
+                  "values": Array [
+                    Object {
+                      "end": 862,
+                      "start": 861,
+                      "tag": 8,
+                      "value": "r2",
+                    },
+                  ],
+                },
+              ],
+            },
+            "table": "registers_payload",
+            "type": "Table",
+          },
+          Object {
+            "name": "registers_payload",
+            "sourceTag": Object {
+              "end": 484,
+              "start": 6,
+              "tag": 5,
+              "values": Array [
+                Object {
+                  "end": 197,
+                  "start": 6,
+                  "tag": 2,
+                  "values": Array [
+                    Object {
+                      "end": 22,
+                      "start": 6,
+                      "tag": 8,
+                      "value": "registers_payload",
+                    },
+                    Object {
+                      "end": 197,
+                      "start": 26,
+                      "tag": 85,
+                      "values": Array [
+                        Object {
+                          "end": 33,
+                          "start": 32,
+                          "tag": 8,
+                          "value": "id",
+                        },
+                        Object {
+                          "end": 53,
+                          "start": 40,
+                          "tag": 8,
+                          "value": "customer_label",
+                        },
+                        Object {
+                          "end": 73,
+                          "start": 60,
+                          "tag": 8,
+                          "value": "industry_label",
+                        },
+                        Object {
+                          "end": 93,
+                          "start": 80,
+                          "tag": 8,
+                          "value": "smt_rule_start",
+                        },
+                        Object {
+                          "end": 111,
+                          "start": 100,
+                          "tag": 8,
+                          "value": "smt_rule_end",
+                        },
+                        Object {
+                          "end": 134,
+                          "start": 118,
+                          "tag": 8,
+                          "value": "smt_rule_start_on",
+                        },
+                        Object {
+                          "end": 159,
+                          "start": 141,
+                          "tag": 8,
+                          "value": "register_multiplier",
+                        },
+                        Object {
+                          "end": 173,
+                          "start": 166,
+                          "tag": 8,
+                          "value": "meter_id",
+                        },
+                        Object {
+                          "end": 193,
+                          "start": 180,
+                          "tag": 8,
+                          "value": "index_position",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "end": 480,
+                  "start": 212,
+                  "tag": 3,
+                  "values": Array [
+                    Object {
+                      "end": 480,
+                      "pick": Array [
+                        Object {
+                          "end": 254,
+                          "start": 246,
+                          "tag": 119,
+                          "values": Array [
+                            Object {
+                              "end": 249,
+                              "start": 246,
+                              "tag": 9,
+                              "value": "id",
+                            },
+                            Object {
+                              "end": 254,
+                              "start": 252,
+                              "tag": 32,
+                              "values": Array [
+                                Object {
+                                  "end": 254,
+                                  "start": 252,
+                                  "tag": 89,
+                                  "values": Array [
+                                    Object {
+                                      "end": 254,
+                                      "start": 252,
+                                      "tag": 8,
+                                      "value": "int",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 279,
+                          "start": 265,
+                          "tag": 119,
+                          "values": Array [
+                            Object {
+                              "end": 279,
+                              "start": 265,
+                              "tag": 9,
+                              "value": "customerLabel",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 304,
+                          "start": 290,
+                          "tag": 119,
+                          "values": Array [
+                            Object {
+                              "end": 304,
+                              "start": 290,
+                              "tag": 9,
+                              "value": "industryLabel",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 341,
+                          "start": 315,
+                          "tag": 119,
+                          "values": Array [
+                            Object {
+                              "end": 328,
+                              "start": 315,
+                              "tag": 9,
+                              "value": "smtRuleStart",
+                            },
+                            Object {
+                              "end": 341,
+                              "start": 331,
+                              "tag": 32,
+                              "values": Array [
+                                Object {
+                                  "end": 337,
+                                  "start": 331,
+                                  "tag": 89,
+                                  "values": Array [
+                                    Object {
+                                      "end": 337,
+                                      "start": 331,
+                                      "tag": 8,
+                                      "value": "varchar",
+                                    },
+                                  ],
+                                },
+                                Object {
+                                  "end": 340,
+                                  "start": 339,
+                                  "tag": 20,
+                                  "value": "10",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 369,
+                          "start": 352,
+                          "tag": 119,
+                          "values": Array [
+                            Object {
+                              "end": 363,
+                              "start": 352,
+                              "tag": 9,
+                              "value": "smtRuleEnd",
+                            },
+                            Object {
+                              "end": 369,
+                              "start": 366,
+                              "tag": 32,
+                              "values": Array [
+                                Object {
+                                  "end": 369,
+                                  "start": 366,
+                                  "tag": 89,
+                                  "values": Array [
+                                    Object {
+                                      "end": 369,
+                                      "start": 366,
+                                      "tag": 8,
+                                      "value": "text",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 401,
+                          "start": 380,
+                          "tag": 119,
+                          "values": Array [
+                            Object {
+                              "end": 395,
+                              "start": 380,
+                              "tag": 9,
+                              "value": "smtRuleStartOn",
+                            },
+                            Object {
+                              "end": 401,
+                              "start": 398,
+                              "tag": 32,
+                              "values": Array [
+                                Object {
+                                  "end": 401,
+                                  "start": 398,
+                                  "tag": 89,
+                                  "values": Array [
+                                    Object {
+                                      "end": 401,
+                                      "start": 398,
+                                      "tag": 8,
+                                      "value": "date",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 423,
+                          "start": 412,
+                          "tag": 119,
+                          "values": Array [
+                            Object {
+                              "end": 423,
+                              "start": 412,
+                              "tag": 9,
+                              "value": "multiplier",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 442,
+                          "start": 434,
+                          "tag": 119,
+                          "values": Array [
+                            Object {
+                              "end": 442,
+                              "start": 434,
+                              "tag": 9,
+                              "value": "meterId",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 472,
+                          "start": 453,
+                          "tag": 119,
+                          "values": Array [
+                            Object {
+                              "end": 467,
+                              "start": 453,
+                              "tag": 9,
+                              "value": "indexPosition",
+                            },
+                            Object {
+                              "end": 472,
+                              "start": 470,
+                              "tag": 32,
+                              "values": Array [
+                                Object {
+                                  "end": 472,
+                                  "start": 470,
+                                  "tag": 89,
+                                  "values": Array [
+                                    Object {
+                                      "end": 472,
+                                      "start": 470,
+                                      "tag": 8,
+                                      "value": "int",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                      "required": false,
+                      "start": 225,
+                      "tag": 10,
+                      "type": "spread",
+                      "value": "registers",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": "Values",
+            "types": Array [
+              Object {
+                "name": "id",
+                "sourceTag": Object {
+                  "end": 254,
+                  "start": 246,
+                  "tag": 119,
+                  "values": Array [
+                    Object {
+                      "end": 249,
+                      "start": 246,
+                      "tag": 9,
+                      "value": "id",
+                    },
+                    Object {
+                      "end": 254,
+                      "start": 252,
+                      "tag": 32,
+                      "values": Array [
+                        Object {
+                          "end": 254,
+                          "start": 252,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 254,
+                              "start": 252,
+                              "tag": 8,
+                              "value": "int",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "name": "int4",
+                  "sourceTag": Object {
+                    "end": 254,
+                    "start": 252,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 254,
+                        "start": 252,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 254,
+                            "start": 252,
+                            "tag": 8,
+                            "value": "int",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  "type": 23,
+                  "value": Object {
+                    "postgresType": "int4",
+                    "type": 3,
+                  },
+                },
+              },
+              Object {
+                "name": "customer_label",
+                "sourceTag": Object {
+                  "end": 279,
+                  "start": 265,
+                  "tag": 119,
+                  "values": Array [
+                    Object {
+                      "end": 279,
+                      "start": 265,
+                      "tag": 9,
+                      "value": "customerLabel",
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "postgresType": "any",
+                  "type": 9,
+                },
+              },
+              Object {
+                "name": "industry_label",
+                "sourceTag": Object {
+                  "end": 304,
+                  "start": 290,
+                  "tag": 119,
+                  "values": Array [
+                    Object {
+                      "end": 304,
+                      "start": 290,
+                      "tag": 9,
+                      "value": "industryLabel",
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "postgresType": "any",
+                  "type": 9,
+                },
+              },
+              Object {
+                "name": "smt_rule_start",
+                "sourceTag": Object {
+                  "end": 341,
+                  "start": 315,
+                  "tag": 119,
+                  "values": Array [
+                    Object {
+                      "end": 328,
+                      "start": 315,
+                      "tag": 9,
+                      "value": "smtRuleStart",
+                    },
+                    Object {
+                      "end": 341,
+                      "start": 331,
+                      "tag": 32,
+                      "values": Array [
+                        Object {
+                          "end": 337,
+                          "start": 331,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 337,
+                              "start": 331,
+                              "tag": 8,
+                              "value": "varchar",
+                            },
+                          ],
+                        },
+                        Object {
+                          "end": 340,
+                          "start": 339,
+                          "tag": 20,
+                          "value": "10",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "name": "varchar",
+                  "sourceTag": Object {
+                    "end": 341,
+                    "start": 331,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 337,
+                        "start": 331,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 337,
+                            "start": 331,
+                            "tag": 8,
+                            "value": "varchar",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 340,
+                        "start": 339,
+                        "tag": 20,
+                        "value": "10",
+                      },
+                    ],
+                  },
+                  "type": 23,
+                  "value": Object {
+                    "postgresType": "varchar",
+                    "type": 2,
+                  },
+                },
+              },
+              Object {
+                "name": "smt_rule_end",
+                "sourceTag": Object {
+                  "end": 369,
+                  "start": 352,
+                  "tag": 119,
+                  "values": Array [
+                    Object {
+                      "end": 363,
+                      "start": 352,
+                      "tag": 9,
+                      "value": "smtRuleEnd",
+                    },
+                    Object {
+                      "end": 369,
+                      "start": 366,
+                      "tag": 32,
+                      "values": Array [
+                        Object {
+                          "end": 369,
+                          "start": 366,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 369,
+                              "start": 366,
+                              "tag": 8,
+                              "value": "text",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "name": "text",
+                  "sourceTag": Object {
+                    "end": 369,
+                    "start": 366,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 369,
+                        "start": 366,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 369,
+                            "start": 366,
+                            "tag": 8,
+                            "value": "text",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  "type": 23,
+                  "value": Object {
+                    "postgresType": "text",
+                    "type": 2,
+                  },
+                },
+              },
+              Object {
+                "name": "smt_rule_start_on",
+                "sourceTag": Object {
+                  "end": 401,
+                  "start": 380,
+                  "tag": 119,
+                  "values": Array [
+                    Object {
+                      "end": 395,
+                      "start": 380,
+                      "tag": 9,
+                      "value": "smtRuleStartOn",
+                    },
+                    Object {
+                      "end": 401,
+                      "start": 398,
+                      "tag": 32,
+                      "values": Array [
+                        Object {
+                          "end": 401,
+                          "start": 398,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 401,
+                              "start": 398,
+                              "tag": 8,
+                              "value": "date",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "name": "date",
+                  "sourceTag": Object {
+                    "end": 401,
+                    "start": 398,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 401,
+                        "start": 398,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 401,
+                            "start": 398,
+                            "tag": 8,
+                            "value": "date",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  "type": 23,
+                  "value": Object {
+                    "postgresType": "date",
+                    "type": 6,
+                  },
+                },
+              },
+              Object {
+                "name": "register_multiplier",
+                "sourceTag": Object {
+                  "end": 423,
+                  "start": 412,
+                  "tag": 119,
+                  "values": Array [
+                    Object {
+                      "end": 423,
+                      "start": 412,
+                      "tag": 9,
+                      "value": "multiplier",
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "postgresType": "any",
+                  "type": 9,
+                },
+              },
+              Object {
+                "name": "meter_id",
+                "sourceTag": Object {
+                  "end": 442,
+                  "start": 434,
+                  "tag": 119,
+                  "values": Array [
+                    Object {
+                      "end": 442,
+                      "start": 434,
+                      "tag": 9,
+                      "value": "meterId",
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "postgresType": "any",
+                  "type": 9,
+                },
+              },
+              Object {
+                "name": "index_position",
+                "sourceTag": Object {
+                  "end": 472,
+                  "start": 453,
+                  "tag": 119,
+                  "values": Array [
+                    Object {
+                      "end": 467,
+                      "start": 453,
+                      "tag": 9,
+                      "value": "indexPosition",
+                    },
+                    Object {
+                      "end": 472,
+                      "start": 470,
+                      "tag": 32,
+                      "values": Array [
+                        Object {
+                          "end": 472,
+                          "start": 470,
+                          "tag": 89,
+                          "values": Array [
+                            Object {
+                              "end": 472,
+                              "start": 470,
+                              "tag": 8,
+                              "value": "int",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "type": 23,
+                "value": Object {
+                  "name": "int4",
+                  "sourceTag": Object {
+                    "end": 472,
+                    "start": 470,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 472,
+                        "start": 470,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 472,
+                            "start": 470,
+                            "tag": 8,
+                            "value": "int",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  "type": 23,
+                  "value": Object {
+                    "postgresType": "int4",
+                    "type": 3,
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    Object {
+      "isResult": true,
+      "name": "r2",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 1166,
+        "start": 1144,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 1160,
+            "start": 1144,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 1160,
+                "start": 1144,
+                "tag": 8,
+                "value": "registers_payload",
+              },
+            ],
+          },
+          Object {
+            "end": 1166,
+            "start": 1162,
+            "tag": 12,
+            "values": Array [
+              Object {
+                "end": 1166,
+                "start": 1165,
+                "tag": 8,
+                "value": "r2",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "registers_payload",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert complex sql update-with-cte-from-values.sql: update-with-cte-from-values.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "end": 556,
+      "name": "registers",
+      "pick": Array [
+        Object {
+          "castType": undefined,
+          "name": "id",
+          "sourceTag": Object {
+            "end": 344,
+            "start": 341,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 344,
+                "start": 341,
+                "tag": 9,
+                "value": "id",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "castType": undefined,
+          "name": "customerLabel",
+          "sourceTag": Object {
+            "end": 371,
+            "start": 357,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 371,
+                "start": 357,
+                "tag": 9,
+                "value": "customerLabel",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "castType": undefined,
+          "name": "industryLabel",
+          "sourceTag": Object {
+            "end": 398,
+            "start": 384,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 398,
+                "start": 384,
+                "tag": 9,
+                "value": "industryLabel",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "castType": undefined,
+          "name": "smtRuleStart",
+          "sourceTag": Object {
+            "end": 424,
+            "start": 411,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 424,
+                "start": 411,
+                "tag": 9,
+                "value": "smtRuleStart",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "castType": undefined,
+          "name": "smtRuleEnd",
+          "sourceTag": Object {
+            "end": 448,
+            "start": 437,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 448,
+                "start": 437,
+                "tag": 9,
+                "value": "smtRuleEnd",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "castType": undefined,
+          "name": "smtRuleStartOn",
+          "sourceTag": Object {
+            "end": 476,
+            "start": 461,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 476,
+                "start": 461,
+                "tag": 9,
+                "value": "smtRuleStartOn",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "castType": undefined,
+          "name": "multiplier",
+          "sourceTag": Object {
+            "end": 500,
+            "start": 489,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 500,
+                "start": 489,
+                "tag": 9,
+                "value": "multiplier",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "castType": undefined,
+          "name": "meterId",
+          "sourceTag": Object {
+            "end": 521,
+            "start": 513,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 521,
+                "start": 513,
+                "tag": 9,
+                "value": "meterId",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "castType": undefined,
+          "name": "indexPosition",
+          "sourceTag": Object {
+            "end": 548,
+            "start": 534,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 548,
+                "start": 534,
+                "tag": 9,
+                "value": "indexPosition",
+              },
+            ],
+          },
+          "type": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+      ],
+      "required": true,
+      "spread": true,
+      "start": 318,
+      "type": Object {
+        "postgresType": "any",
+        "type": 9,
+      },
+    },
+  ],
+  "results": Array [],
+  "sources": Array [
+    Object {
+      "isResult": true,
+      "name": "r",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 26,
+        "start": 7,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 7,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 21,
+                "start": 7,
+                "tag": 8,
+                "value": "meter_registers",
+              },
+            ],
+          },
+          Object {
+            "end": 26,
+            "start": 23,
+            "tag": 12,
+            "values": Array [
+              Object {
+                "end": 26,
+                "start": 26,
+                "tag": 8,
+                "value": "r",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "meter_registers",
+      "type": "Table",
+    },
+    Object {
+      "name": "r2",
+      "sourceTag": Object {
+        "end": 734,
+        "start": 299,
+        "tag": 120,
+        "values": Array [
+          Object {
+            "end": 558,
+            "start": 299,
+            "tag": 97,
+            "values": Array [
+              Object {
+                "end": 556,
+                "pick": Array [
+                  Object {
+                    "end": 344,
+                    "start": 341,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 344,
+                        "start": 341,
+                        "tag": 9,
+                        "value": "id",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 371,
+                    "start": 357,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 371,
+                        "start": 357,
+                        "tag": 9,
+                        "value": "customerLabel",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 398,
+                    "start": 384,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 398,
+                        "start": 384,
+                        "tag": 9,
+                        "value": "industryLabel",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 424,
+                    "start": 411,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 424,
+                        "start": 411,
+                        "tag": 9,
+                        "value": "smtRuleStart",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 448,
+                    "start": 437,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 448,
+                        "start": 437,
+                        "tag": 9,
+                        "value": "smtRuleEnd",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 476,
+                    "start": 461,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 476,
+                        "start": 461,
+                        "tag": 9,
+                        "value": "smtRuleStartOn",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 500,
+                    "start": 489,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 500,
+                        "start": 489,
+                        "tag": 9,
+                        "value": "multiplier",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 521,
+                    "start": 513,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 521,
+                        "start": 513,
+                        "tag": 9,
+                        "value": "meterId",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 548,
+                    "start": 534,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 548,
+                        "start": 534,
+                        "tag": 9,
+                        "value": "indexPosition",
+                      },
+                    ],
+                  },
+                ],
+                "required": false,
+                "start": 318,
+                "tag": 10,
+                "type": "spread",
+                "value": "registers",
+              },
+            ],
+          },
+          Object {
+            "end": 564,
+            "start": 563,
+            "tag": 8,
+            "value": "r2",
+          },
+          Object {
+            "end": 734,
+            "start": 565,
+            "tag": 85,
+            "values": Array [
+              Object {
+                "end": 572,
+                "start": 571,
+                "tag": 8,
+                "value": "id",
+              },
+              Object {
+                "end": 592,
+                "start": 579,
+                "tag": 8,
+                "value": "customer_label",
+              },
+              Object {
+                "end": 612,
+                "start": 599,
+                "tag": 8,
+                "value": "industry_label",
+              },
+              Object {
+                "end": 632,
+                "start": 619,
+                "tag": 8,
+                "value": "smt_rule_start",
+              },
+              Object {
+                "end": 650,
+                "start": 639,
+                "tag": 8,
+                "value": "smt_rule_end",
+              },
+              Object {
+                "end": 673,
+                "start": 657,
+                "tag": 8,
+                "value": "smt_rule_start_on",
+              },
+              Object {
+                "end": 698,
+                "start": 680,
+                "tag": 8,
+                "value": "register_multiplier",
+              },
+              Object {
+                "end": 712,
+                "start": 705,
+                "tag": 8,
+                "value": "meter_id",
+              },
+              Object {
+                "end": 732,
+                "start": 719,
+                "tag": 8,
+                "value": "index_position",
+              },
+            ],
+          },
+        ],
+      },
+      "type": "Values",
+      "types": Array [
+        Object {
+          "name": "id",
+          "sourceTag": Object {
+            "end": 572,
+            "start": 571,
+            "tag": 8,
+            "value": "id",
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "customer_label",
+          "sourceTag": Object {
+            "end": 592,
+            "start": 579,
+            "tag": 8,
+            "value": "customer_label",
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "industry_label",
+          "sourceTag": Object {
+            "end": 612,
+            "start": 599,
+            "tag": 8,
+            "value": "industry_label",
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "smt_rule_start",
+          "sourceTag": Object {
+            "end": 632,
+            "start": 619,
+            "tag": 8,
+            "value": "smt_rule_start",
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "smt_rule_end",
+          "sourceTag": Object {
+            "end": 650,
+            "start": 639,
+            "tag": 8,
+            "value": "smt_rule_end",
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "smt_rule_start_on",
+          "sourceTag": Object {
+            "end": 673,
+            "start": 657,
+            "tag": 8,
+            "value": "smt_rule_start_on",
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "register_multiplier",
+          "sourceTag": Object {
+            "end": 698,
+            "start": 680,
+            "tag": 8,
+            "value": "register_multiplier",
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "meter_id",
+          "sourceTag": Object {
+            "end": 712,
+            "start": 705,
+            "tag": 8,
+            "value": "meter_id",
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+        Object {
+          "name": "index_position",
+          "sourceTag": Object {
+            "end": 732,
+            "start": 719,
+            "tag": 8,
+            "value": "index_position",
+          },
+          "type": 23,
+          "value": Object {
+            "postgresType": "any",
+            "type": 9,
+          },
+        },
+      ],
     },
   ],
 }

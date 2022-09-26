@@ -29,6 +29,7 @@ import {
   isType,
   isTypeDate,
   isTypeBuffer,
+  isSourceValues,
 } from './query-interface.guards';
 import {
   isDataTable,
@@ -397,7 +398,7 @@ const toLoadedSource = ({
   const tables = data.filter(isLoadedDataTable);
   const views = data.filter(isLoadedDataView);
   const loadedQueryInterface = toLoadedQueryInterface(data);
-  const querySources = sources.filter(isSourceQuery);
+  const querySources = sources.filter((item) => isSourceQuery(item) || isSourceValues(item));
 
   return (source: Source): LoadedSourceWithUnknown => {
     const toColumnType = toType(throwOnUnknownLoadedContext(toLoadedContext({ data, sources: [] })), true);
@@ -444,7 +445,6 @@ const toLoadedSource = ({
           ),
         };
       case 'Values':
-        // const toValuesType = toType(throwOnUnknownLoadedContext(toLoadedContext({ data, sources: [] })), true);
         return {
           type: 'Values',
           name: source.name,

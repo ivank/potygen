@@ -149,20 +149,38 @@ const toSourcesIterator =
         if (isCTEValuesList(cteQuery)) {
           const cteNameParts = first(sql.values).values;
           const cteValuesItem = first(cteQuery.values.filter(isCTEValues));
+          const cteParameter = first(cteQuery.values.filter(isParameter));
           const valuesType = toType({ type: typeUnknown, columns: [] });
           const columnNames =
             cteNameParts.length === 2 ? last(cteNameParts).values.map((column) => column.value) : undefined;
+
+          const parameterTypes = cteParameter ? toParams({ type: typeUnknown, columns: [] })(cteParameter) : undefined;
+
+          const types =
+            cteValuesItem?.values.map<TypeLoadNamed>((item, index) => ({
+              type: TypeName.LoadNamed,
+              name: columnNames?.[index] ?? `column${index}`,
+              value: valuesType(item),
+              sourceTag: item,
+            })) ??
+            parameterTypes?.[0].pick.map<TypeLoadNamed>((item, index) => ({
+              type: TypeName.LoadNamed,
+              name: columnNames?.[index] ?? `column${index}`,
+              value: item.type,
+              sourceTag: item.sourceTag,
+            }));
 
           return sources.concat({
             type: 'Values',
             sourceTag: sql,
             name: first(first(sql.values).values).value,
-            types: cteValuesItem?.values.map<TypeLoadNamed>((item, index) => ({
-              type: TypeName.LoadNamed,
-              name: columnNames?.[index] ?? `column${index}`,
-              value: valuesType(item),
-              sourceTag: item,
-            })),
+            types:
+              cteValuesItem?.values.map<TypeLoadNamed>((item, index) => ({
+                type: TypeName.LoadNamed,
+                name: columnNames?.[index] ?? `column${index}`,
+                value: valuesType(item),
+                sourceTag: item,
+              })) ?? types,
           });
         } else {
           const queryValue = toQueryInterface(cteQuery, sources);
@@ -195,6 +213,18 @@ const toSourcesIterator =
             type: TypeName.LoadNamed,
             name: first(item.values).value,
             value: recordsetType(last(item.values)),
+            sourceTag: item,
+          })),
+        });
+      case SqlName.RecordsetValuesList:
+        return sources.concat({
+          type: 'Values',
+          sourceTag: sql,
+          name: sql.values[1].value,
+          types: sql.values[2]?.values.map<TypeLoadNamed>((item) => ({
+            type: TypeName.LoadNamed,
+            name: item.value,
+            value: typeUnknown,
             sourceTag: item,
           })),
         });
@@ -669,6 +699,7 @@ export const toParams =
                 name: first(pick.values).value,
                 castType,
                 type: castType ?? context.columns[index] ?? typeUnknown,
+                sourceTag: pick,
               };
             }),
           },

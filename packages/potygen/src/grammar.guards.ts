@@ -130,6 +130,7 @@ import {
   AsRecordsetTag,
   RecordsetFunctionTag,
   ParameterPickTag,
+  RecordsetValuesListTag,
 } from './grammar.types';
 
 export const isCTE = (value: SqlTag): value is CTETag => value.tag === SqlName.CTE;
@@ -239,7 +240,8 @@ export const isSelectListItem = (value: SqlTag): value is SelectListItemTag => v
 export const isReturningListItem = (value: SqlTag): value is ReturningListItemTag =>
   value.tag === SqlName.ReturningListItem;
 export const isSelectList = (value: SqlTag): value is SelectListTag => value.tag === SqlName.SelectList;
-export const isFromListItem = (value: SqlTag): value is FromListItemTag => isTable(value) || isNamedSelect(value);
+export const isFromListItem = (value: SqlTag): value is FromListItemTag =>
+  isTable(value) || isNamedSelect(value) || isRecordsetFunction(value) || isRecordsetValuesList(value);
 export const isNamedSelect = (value: SqlTag): value is NamedSelectTag => value.tag === SqlName.NamedSelect;
 export const isFrom = (value: SqlTag): value is FromTag => value.tag === SqlName.From;
 export const isFromList = (value: SqlTag): value is FromListTag => value.tag === SqlName.FromList;
@@ -311,6 +313,8 @@ export const isAsColumnList = (value: SqlTag): value is AsColumnListTag => value
 export const isAsRecordset = (value: SqlTag): value is AsRecordsetTag => value.tag === SqlName.AsRecordset;
 export const isRecordsetFunction = (value: SqlTag): value is RecordsetFunctionTag =>
   value.tag === SqlName.RecordsetFunction;
+export const isRecordsetValuesList = (value: SqlTag): value is RecordsetValuesListTag =>
+  value.tag === SqlName.RecordsetValuesList;
 
 export const isEmptyLeaf = (value: Tag): value is EmptyLeafTag => !('values' in value || 'value' in value);
 export const isLeaf = (value: Tag): value is LeafTag => 'value' in value;

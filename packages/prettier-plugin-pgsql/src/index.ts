@@ -474,6 +474,16 @@ const pgsqlAst: Printer<Node> = {
         ]);
       case SqlName.RecordsetFunction:
         return group(join(line, vals(path, recur)));
+      case SqlName.RecordsetValuesList:
+        return group([
+          '(',
+          indent([softline, nthVal(0, path, recur)]),
+          softline,
+          ')',
+          line,
+          group(['AS', line, nthVal(1, path, recur), line]),
+          nthVal(2, path, recur),
+        ]);
     }
   },
   printComment: (path) => {
