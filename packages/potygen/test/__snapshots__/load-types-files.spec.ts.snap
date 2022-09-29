@@ -1122,6 +1122,7 @@ Object {
             Object {
               "name": "GH_account_id",
               "type": Object {
+                "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -1129,6 +1130,7 @@ Object {
             Object {
               "name": "MV date",
               "type": Object {
+                "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -3416,6 +3418,7 @@ Object {
               "type": Object {
                 "comment": undefined,
                 "generated": false,
+                "nullable": true,
                 "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
@@ -3437,6 +3440,7 @@ Object {
               "type": Object {
                 "comment": undefined,
                 "generated": false,
+                "nullable": true,
                 "postgresDescription": undefined,
                 "postgresType": "jsonb",
                 "type": 8,
@@ -3447,6 +3451,7 @@ Object {
               "type": Object {
                 "comment": undefined,
                 "generated": false,
+                "nullable": true,
                 "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
@@ -5566,6 +5571,7 @@ Object {
             Object {
               "name": "id",
               "type": Object {
+                "nullable": true,
                 "postgresType": "int4",
                 "type": 3,
               },
@@ -5573,6 +5579,7 @@ Object {
             Object {
               "name": "customerLabel",
               "type": Object {
+                "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -5580,6 +5587,7 @@ Object {
             Object {
               "name": "industryLabel",
               "type": Object {
+                "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -5587,6 +5595,7 @@ Object {
             Object {
               "name": "smtRuleStart",
               "type": Object {
+                "nullable": true,
                 "postgresType": "varchar",
                 "type": 2,
               },
@@ -5594,6 +5603,7 @@ Object {
             Object {
               "name": "smtRuleEnd",
               "type": Object {
+                "nullable": true,
                 "postgresType": "text",
                 "type": 2,
               },
@@ -5601,6 +5611,7 @@ Object {
             Object {
               "name": "smtRuleStartOn",
               "type": Object {
+                "nullable": true,
                 "postgresType": "date",
                 "type": 6,
               },
@@ -5608,6 +5619,7 @@ Object {
             Object {
               "name": "multiplier",
               "type": Object {
+                "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -5615,6 +5627,7 @@ Object {
             Object {
               "name": "meterId",
               "type": Object {
+                "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -5622,6 +5635,7 @@ Object {
             Object {
               "name": "indexPosition",
               "type": Object {
+                "nullable": true,
                 "postgresType": "int4",
                 "type": 3,
               },
@@ -5659,6 +5673,7 @@ Object {
             Object {
               "name": "id",
               "type": Object {
+                "nullable": false,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -5666,6 +5681,7 @@ Object {
             Object {
               "name": "customerLabel",
               "type": Object {
+                "nullable": false,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -5673,6 +5689,7 @@ Object {
             Object {
               "name": "industryLabel",
               "type": Object {
+                "nullable": false,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -5680,6 +5697,7 @@ Object {
             Object {
               "name": "smtRuleStart",
               "type": Object {
+                "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -5687,6 +5705,7 @@ Object {
             Object {
               "name": "smtRuleEnd",
               "type": Object {
+                "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -5694,6 +5713,7 @@ Object {
             Object {
               "name": "smtRuleStartOn",
               "type": Object {
+                "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -5701,6 +5721,7 @@ Object {
             Object {
               "name": "multiplier",
               "type": Object {
+                "nullable": false,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -5708,6 +5729,7 @@ Object {
             Object {
               "name": "meterId",
               "type": Object {
+                "nullable": false,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -5715,6 +5737,7 @@ Object {
             Object {
               "name": "indexPosition",
               "type": Object {
+                "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },

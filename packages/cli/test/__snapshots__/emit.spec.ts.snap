@@ -273,7 +273,7 @@ export interface Query {
 exports[`Query Interface Should convert insert sql (INSERT INTO all_types(not_null, integer_col, character_col) VALUES $$vals(notNull, integerCol, characterCol)) 1`] = `
 "export interface Params {
     vals: {
-        notNull: number;
+        notNull?: number;
         integerCol?: number;
         characterCol?: string;
     }[];

@@ -241,9 +241,15 @@ const TypeArray = astNode<Tag.ArrayTypeTag>(Tag.SqlName.ArrayType, All(Type, Plu
 const AnyType = Any(TypeArray, Type);
 const Default = astEmptyLeaf<Tag.DefaultTag>(Tag.SqlName.Default, /^DEFAULT/i);
 
-const ParameterPick = astNode<Tag.ParameterPickTag>(
-  Tag.SqlName.ParameterPick,
-  All(Identifier, Optional(All('::', AnyType))),
+const ParameterPick = Node<Tag.ParameterPickTag>(
+  All(Identifier, Optional(/^(\!)/), Optional(All('::', AnyType))),
+  (values, $, $next) => ({
+    tag: Tag.SqlName.ParameterPick,
+    values: values.filter((value) => value !== '!') as any,
+    required: values.includes('!'),
+    start: $.pos,
+    end: $next.pos - 1,
+  }),
 );
 
 /**

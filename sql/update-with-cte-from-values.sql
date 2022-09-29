@@ -8,14 +8,14 @@ SET
 FROM (
     VALUES
       $$registers(
-          "id",
-          "customerLabel",
-          "industryLabel",
+          "id"!,
+          "customerLabel"!,
+          "industryLabel"!,
           "smtRuleStart",
           "smtRuleEnd",
           "smtRuleStartOn",
-          "multiplier",
-          "meterId",
+          "multiplier"!,
+          "meterId"!,
           "indexPosition"
       )
 ) AS r2(

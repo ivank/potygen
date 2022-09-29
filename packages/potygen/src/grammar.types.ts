@@ -668,6 +668,7 @@ export interface ParameterTag extends LeafSqlTag {
 
 export interface ParameterPickTag extends NodeSqlTag {
   tag: SqlName.ParameterPick;
+  required: boolean;
   values: [IdentifierTag] | [IdentifierTag, TypeTag];
 }
 
