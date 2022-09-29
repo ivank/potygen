@@ -7876,6 +7876,7 @@ Object {
                 "pick": Array [
                   Object {
                     "end": 107,
+                    "required": false,
                     "start": 95,
                     "tag": 119,
                     "values": Array [
@@ -7889,6 +7890,7 @@ Object {
                   },
                   Object {
                     "end": 128,
+                    "required": false,
                     "start": 120,
                     "tag": 119,
                     "values": Array [
@@ -30534,6 +30536,7 @@ Object {
             "pick": Array [
               Object {
                 "end": 114,
+                "required": false,
                 "start": 106,
                 "tag": 119,
                 "values": Array [
@@ -30547,6 +30550,7 @@ Object {
               },
               Object {
                 "end": 134,
+                "required": false,
                 "start": 121,
                 "tag": 119,
                 "values": Array [
@@ -30560,6 +30564,7 @@ Object {
               },
               Object {
                 "end": 144,
+                "required": false,
                 "start": 141,
                 "tag": 119,
                 "values": Array [
@@ -30573,6 +30578,7 @@ Object {
               },
               Object {
                 "end": 159,
+                "required": false,
                 "start": 151,
                 "tag": 119,
                 "values": Array [
@@ -49701,6 +49707,7 @@ Object {
                 "pick": Array [
                   Object {
                     "end": 254,
+                    "required": false,
                     "start": 246,
                     "tag": 119,
                     "values": Array [
@@ -49734,6 +49741,7 @@ Object {
                   },
                   Object {
                     "end": 279,
+                    "required": false,
                     "start": 265,
                     "tag": 119,
                     "values": Array [
@@ -49747,6 +49755,7 @@ Object {
                   },
                   Object {
                     "end": 304,
+                    "required": false,
                     "start": 290,
                     "tag": 119,
                     "values": Array [
@@ -49760,6 +49769,7 @@ Object {
                   },
                   Object {
                     "end": 341,
+                    "required": false,
                     "start": 315,
                     "tag": 119,
                     "values": Array [
@@ -49799,6 +49809,7 @@ Object {
                   },
                   Object {
                     "end": 369,
+                    "required": false,
                     "start": 352,
                     "tag": 119,
                     "values": Array [
@@ -49832,6 +49843,7 @@ Object {
                   },
                   Object {
                     "end": 401,
+                    "required": false,
                     "start": 380,
                     "tag": 119,
                     "values": Array [
@@ -49865,6 +49877,7 @@ Object {
                   },
                   Object {
                     "end": 423,
+                    "required": false,
                     "start": 412,
                     "tag": 119,
                     "values": Array [
@@ -49878,6 +49891,7 @@ Object {
                   },
                   Object {
                     "end": 442,
+                    "required": false,
                     "start": 434,
                     "tag": 119,
                     "values": Array [
@@ -49891,6 +49905,7 @@ Object {
                   },
                   Object {
                     "end": 472,
+                    "required": false,
                     "start": 453,
                     "tag": 119,
                     "values": Array [
@@ -50689,7 +50704,7 @@ Object {
 exports[`Sql Files Should parse complex sql update-with-cte-from-values.sql: update-with-cte-from-values.sql 1`] = `
 Object {
   "ast": Object {
-    "end": 734,
+    "end": 739,
     "start": 0,
     "tag": 94,
     "values": Array [
@@ -51000,30 +51015,31 @@ Object {
         ],
       },
       Object {
-        "end": 734,
+        "end": 739,
         "start": 294,
         "tag": 91,
         "values": Array [
           Object {
-            "end": 734,
+            "end": 739,
             "start": 299,
             "tag": 68,
             "values": Array [
               Object {
-                "end": 734,
+                "end": 739,
                 "start": 299,
                 "tag": 120,
                 "values": Array [
                   Object {
-                    "end": 558,
+                    "end": 563,
                     "start": 299,
                     "tag": 97,
                     "values": Array [
                       Object {
-                        "end": 556,
+                        "end": 561,
                         "pick": Array [
                           Object {
-                            "end": 344,
+                            "end": 345,
+                            "required": true,
                             "start": 341,
                             "tag": 119,
                             "values": Array [
@@ -51036,104 +51052,112 @@ Object {
                             ],
                           },
                           Object {
-                            "end": 371,
-                            "start": 357,
+                            "end": 373,
+                            "required": true,
+                            "start": 358,
                             "tag": 119,
                             "values": Array [
                               Object {
-                                "end": 371,
-                                "start": 357,
+                                "end": 372,
+                                "start": 358,
                                 "tag": 9,
                                 "value": "customerLabel",
                               },
                             ],
                           },
                           Object {
-                            "end": 398,
-                            "start": 384,
+                            "end": 401,
+                            "required": true,
+                            "start": 386,
                             "tag": 119,
                             "values": Array [
                               Object {
-                                "end": 398,
-                                "start": 384,
+                                "end": 400,
+                                "start": 386,
                                 "tag": 9,
                                 "value": "industryLabel",
                               },
                             ],
                           },
                           Object {
-                            "end": 424,
-                            "start": 411,
+                            "end": 427,
+                            "required": false,
+                            "start": 414,
                             "tag": 119,
                             "values": Array [
                               Object {
-                                "end": 424,
-                                "start": 411,
+                                "end": 427,
+                                "start": 414,
                                 "tag": 9,
                                 "value": "smtRuleStart",
                               },
                             ],
                           },
                           Object {
-                            "end": 448,
-                            "start": 437,
+                            "end": 451,
+                            "required": false,
+                            "start": 440,
                             "tag": 119,
                             "values": Array [
                               Object {
-                                "end": 448,
-                                "start": 437,
+                                "end": 451,
+                                "start": 440,
                                 "tag": 9,
                                 "value": "smtRuleEnd",
                               },
                             ],
                           },
                           Object {
-                            "end": 476,
-                            "start": 461,
+                            "end": 479,
+                            "required": false,
+                            "start": 464,
                             "tag": 119,
                             "values": Array [
                               Object {
-                                "end": 476,
-                                "start": 461,
+                                "end": 479,
+                                "start": 464,
                                 "tag": 9,
                                 "value": "smtRuleStartOn",
                               },
                             ],
                           },
                           Object {
-                            "end": 500,
-                            "start": 489,
+                            "end": 504,
+                            "required": true,
+                            "start": 492,
                             "tag": 119,
                             "values": Array [
                               Object {
-                                "end": 500,
-                                "start": 489,
+                                "end": 503,
+                                "start": 492,
                                 "tag": 9,
                                 "value": "multiplier",
                               },
                             ],
                           },
                           Object {
-                            "end": 521,
-                            "start": 513,
+                            "end": 526,
+                            "required": true,
+                            "start": 517,
                             "tag": 119,
                             "values": Array [
                               Object {
-                                "end": 521,
-                                "start": 513,
+                                "end": 525,
+                                "start": 517,
                                 "tag": 9,
                                 "value": "meterId",
                               },
                             ],
                           },
                           Object {
-                            "end": 548,
-                            "start": 534,
+                            "end": 553,
+                            "required": false,
+                            "start": 539,
                             "tag": 119,
                             "values": Array [
                               Object {
-                                "end": 548,
-                                "start": 534,
+                                "end": 553,
+                                "start": 539,
                                 "tag": 9,
                                 "value": "indexPosition",
                               },
@@ -51149,67 +51173,67 @@ Object {
                     ],
                   },
                   Object {
-                    "end": 564,
-                    "start": 563,
+                    "end": 569,
+                    "start": 568,
                     "tag": 8,
                     "value": "r2",
                   },
                   Object {
-                    "end": 734,
-                    "start": 565,
+                    "end": 739,
+                    "start": 570,
                     "tag": 85,
                     "values": Array [
                       Object {
-                        "end": 572,
-                        "start": 571,
+                        "end": 577,
+                        "start": 576,
                         "tag": 8,
                         "value": "id",
                       },
                       Object {
-                        "end": 592,
-                        "start": 579,
+                        "end": 597,
+                        "start": 584,
                         "tag": 8,
                         "value": "customer_label",
                       },
                       Object {
-                        "end": 612,
-                        "start": 599,
+                        "end": 617,
+                        "start": 604,
                         "tag": 8,
                         "value": "industry_label",
                       },
                       Object {
-                        "end": 632,
-                        "start": 619,
+                        "end": 637,
+                        "start": 624,
                         "tag": 8,
                         "value": "smt_rule_start",
                       },
                       Object {
-                        "end": 650,
-                        "start": 639,
+                        "end": 655,
+                        "start": 644,
                         "tag": 8,
                         "value": "smt_rule_end",
                       },
                       Object {
-                        "end": 673,
-                        "start": 657,
+                        "end": 678,
+                        "start": 662,
                         "tag": 8,
                         "value": "smt_rule_start_on",
                       },
                       Object {
-                        "end": 698,
-                        "start": 680,
+                        "end": 703,
+                        "start": 685,
                         "tag": 8,
                         "value": "register_multiplier",
                       },
                       Object {
-                        "end": 712,
-                        "start": 705,
+                        "end": 717,
+                        "start": 710,
                         "tag": 8,
                         "value": "meter_id",
                       },
                       Object {
-                        "end": 732,
-                        "start": 719,
+                        "end": 737,
+                        "start": 724,
                         "tag": 8,
                         "value": "index_position",
                       },

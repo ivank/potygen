@@ -97,7 +97,11 @@ const pgsqlAst: Printer<Node> = {
       case SqlName.QuotedIdentifier:
         return `"${node.value}"`;
       case SqlName.ParameterPick:
-        return join('::', vals(path, recur));
+        return [
+          nthVal(0, path, recur),
+          node.required ? '!' : [],
+          node.values.length > 1 ? ['::', nthVal(1, path, recur)] : [],
+        ];
       case SqlName.Parameter:
         return [
           node.type === 'spread' ? '$$' : '$',

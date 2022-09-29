@@ -252,7 +252,7 @@ const toLoadedParam =
         ? {
             type: TypeName.ObjectLiteral,
             nullable: !required,
-            items: pick.map((item) => ({ name: item.name, type: toType(item.type) })),
+            items: pick.map((item) => ({ name: item.name, type: { ...toType(item.type), nullable: !item.required } })),
             postgresType: 'json',
           }
         : { type: TypeName.Optional, nullable: !required, value: toType(type), postgresType: 'any' };

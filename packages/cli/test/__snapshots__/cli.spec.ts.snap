@@ -182,8 +182,8 @@ export interface Query {
 exports[`CLI Should use cli to run pipeline on sql files: account-verification.update.query.queries.ts 1`] = `
 "export interface Params {
     items: {
-        GH_account_id: unknown;
-        [\\"MV date\\"]: unknown;
+        GH_account_id?: unknown;
+        [\\"MV date\\"]?: unknown;
     }[];
     currentDate: Date;
 }
@@ -513,10 +513,10 @@ exports[`CLI Should use cli to run pipeline on sql files: insert.process.query.q
 "import { Json } from \\"@potygen/potygen\\";
 export interface Params<TParamItemsData = unknown> {
     items: {
-        processId: number;
+        processId?: number;
         idempotencyKey?: string;
-        data: TParamItemsData;
-        accountId: number;
+        data?: TParamItemsData;
+        accountId?: number;
     }[];
 }
 export interface Result<TData = unknown> {
@@ -869,15 +869,15 @@ export interface Query {
 exports[`CLI Should use cli to run pipeline on sql files: update-registers.queries.ts 1`] = `
 "export interface Params {
     registers: {
-        id: number;
-        customerLabel: unknown;
-        industryLabel: unknown;
-        smtRuleStart: string;
-        smtRuleEnd: string;
-        smtRuleStartOn: Date;
-        multiplier: unknown;
-        meterId: unknown;
-        indexPosition: number;
+        id?: number;
+        customerLabel?: unknown;
+        industryLabel?: unknown;
+        smtRuleStart?: string;
+        smtRuleEnd?: string;
+        smtRuleStartOn?: Date;
+        multiplier?: unknown;
+        meterId?: unknown;
+        indexPosition?: number;
     }[];
 }
 export interface Result {
@@ -896,12 +896,12 @@ exports[`CLI Should use cli to run pipeline on sql files: update-with-cte-from-v
         id: unknown;
         customerLabel: unknown;
         industryLabel: unknown;
-        smtRuleStart: unknown;
-        smtRuleEnd: unknown;
-        smtRuleStartOn: unknown;
+        smtRuleStart?: unknown;
+        smtRuleEnd?: unknown;
+        smtRuleStartOn?: unknown;
         multiplier: unknown;
         meterId: unknown;
-        indexPosition: unknown;
+        indexPosition?: unknown;
     }[];
 }
 export interface Result {

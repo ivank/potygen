@@ -138,8 +138,8 @@ export interface Query {
 exports[`Load Files Should convert complex sql account-verification.update.query.sql: account-verification.update.query.sql 1`] = `
 "export interface Params {
     items: {
-        GH_account_id: unknown;
-        [\\"MV date\\"]: unknown;
+        GH_account_id?: unknown;
+        [\\"MV date\\"]?: unknown;
     }[];
     currentDate: Date;
 }
@@ -469,10 +469,10 @@ exports[`Load Files Should convert complex sql insert.process.query.sql: insert.
 "import { Json } from \\"@potygen/potygen\\";
 export interface Params<TParamItemsData = unknown> {
     items: {
-        processId: number;
+        processId?: number;
         idempotencyKey?: string;
-        data: TParamItemsData;
-        accountId: number;
+        data?: TParamItemsData;
+        accountId?: number;
     }[];
 }
 export interface Result<TData = unknown> {
@@ -825,15 +825,15 @@ export interface Query {
 exports[`Load Files Should convert complex sql update-registers.sql: update-registers.sql 1`] = `
 "export interface Params {
     registers: {
-        id: number;
-        customerLabel: unknown;
-        industryLabel: unknown;
-        smtRuleStart: string;
-        smtRuleEnd: string;
-        smtRuleStartOn: Date;
-        multiplier: unknown;
-        meterId: unknown;
-        indexPosition: number;
+        id?: number;
+        customerLabel?: unknown;
+        industryLabel?: unknown;
+        smtRuleStart?: string;
+        smtRuleEnd?: string;
+        smtRuleStartOn?: Date;
+        multiplier?: unknown;
+        meterId?: unknown;
+        indexPosition?: number;
     }[];
 }
 export interface Result {
@@ -852,12 +852,12 @@ exports[`Load Files Should convert complex sql update-with-cte-from-values.sql: 
         id: unknown;
         customerLabel: unknown;
         industryLabel: unknown;
-        smtRuleStart: unknown;
-        smtRuleEnd: unknown;
-        smtRuleStartOn: unknown;
+        smtRuleStart?: unknown;
+        smtRuleEnd?: unknown;
+        smtRuleStartOn?: unknown;
         multiplier: unknown;
         meterId: unknown;
-        indexPosition: unknown;
+        indexPosition?: unknown;
     }[];
 }
 export interface Result {

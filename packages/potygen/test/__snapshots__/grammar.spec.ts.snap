@@ -5827,6 +5827,7 @@ Object {
             "pick": Array [
               Object {
                 "end": 36,
+                "required": false,
                 "start": 33,
                 "tag": 119,
                 "values": Array [
@@ -5840,6 +5841,7 @@ Object {
               },
               Object {
                 "end": 42,
+                "required": false,
                 "start": 39,
                 "tag": 119,
                 "values": Array [
@@ -5857,6 +5859,454 @@ Object {
             "tag": 10,
             "type": "spread",
             "value": "rows",
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse insert query with param quoted required (INSERT INTO table1 (id, col1) VALUES $items(val1, "val 2"!)): param quoted required 1`] = `
+Object {
+  "ast": Object {
+    "end": 59,
+    "start": 0,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 17,
+        "start": 12,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 12,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 12,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 28,
+        "start": 19,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 20,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 27,
+            "start": 24,
+            "tag": 8,
+            "value": "col1",
+          },
+        ],
+      },
+      Object {
+        "end": 59,
+        "start": 30,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 59,
+            "pick": Array [
+              Object {
+                "end": 48,
+                "required": false,
+                "start": 45,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 48,
+                    "start": 45,
+                    "tag": 8,
+                    "value": "val1",
+                  },
+                ],
+              },
+              Object {
+                "end": 58,
+                "required": true,
+                "start": 51,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 57,
+                    "start": 51,
+                    "tag": 9,
+                    "value": "val 2",
+                  },
+                ],
+              },
+            ],
+            "required": false,
+            "start": 37,
+            "tag": 10,
+            "type": "spread",
+            "value": "items",
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse insert query with param quoted types (INSERT INTO table1 (id, col1) VALUES $items(val1, "val 2"!::int)): param quoted types 1`] = `
+Object {
+  "ast": Object {
+    "end": 64,
+    "start": 0,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 17,
+        "start": 12,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 12,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 12,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 28,
+        "start": 19,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 20,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 27,
+            "start": 24,
+            "tag": 8,
+            "value": "col1",
+          },
+        ],
+      },
+      Object {
+        "end": 64,
+        "start": 30,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 64,
+            "pick": Array [
+              Object {
+                "end": 48,
+                "required": false,
+                "start": 45,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 48,
+                    "start": 45,
+                    "tag": 8,
+                    "value": "val1",
+                  },
+                ],
+              },
+              Object {
+                "end": 63,
+                "required": true,
+                "start": 51,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 57,
+                    "start": 51,
+                    "tag": 9,
+                    "value": "val 2",
+                  },
+                  Object {
+                    "end": 63,
+                    "start": 61,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 63,
+                        "start": 61,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 63,
+                            "start": 61,
+                            "tag": 8,
+                            "value": "int",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+            "required": false,
+            "start": 37,
+            "tag": 10,
+            "type": "spread",
+            "value": "items",
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse insert query with param spread required (INSERT INTO table1 (id, col1) VALUES $items(val1!, val2)): param spread required 1`] = `
+Object {
+  "ast": Object {
+    "end": 56,
+    "start": 0,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 17,
+        "start": 12,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 12,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 12,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 28,
+        "start": 19,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 20,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 27,
+            "start": 24,
+            "tag": 8,
+            "value": "col1",
+          },
+        ],
+      },
+      Object {
+        "end": 56,
+        "start": 30,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 56,
+            "pick": Array [
+              Object {
+                "end": 49,
+                "required": true,
+                "start": 45,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 48,
+                    "start": 45,
+                    "tag": 8,
+                    "value": "val1",
+                  },
+                ],
+              },
+              Object {
+                "end": 55,
+                "required": false,
+                "start": 52,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 55,
+                    "start": 52,
+                    "tag": 8,
+                    "value": "val2",
+                  },
+                ],
+              },
+            ],
+            "required": false,
+            "start": 37,
+            "tag": 10,
+            "type": "spread",
+            "value": "items",
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse insert query with param spread types (INSERT INTO table1 (id, col1) VALUES $items(val1!::int, val2::int)): param spread types 1`] = `
+Object {
+  "ast": Object {
+    "end": 66,
+    "start": 0,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 17,
+        "start": 12,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 12,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 12,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 28,
+        "start": 19,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 20,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 27,
+            "start": 24,
+            "tag": 8,
+            "value": "col1",
+          },
+        ],
+      },
+      Object {
+        "end": 66,
+        "start": 30,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 66,
+            "pick": Array [
+              Object {
+                "end": 54,
+                "required": true,
+                "start": 45,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 48,
+                    "start": 45,
+                    "tag": 8,
+                    "value": "val1",
+                  },
+                  Object {
+                    "end": 54,
+                    "start": 52,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 54,
+                        "start": 52,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 54,
+                            "start": 52,
+                            "tag": 8,
+                            "value": "int",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 65,
+                "required": false,
+                "start": 57,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 60,
+                    "start": 57,
+                    "tag": 8,
+                    "value": "val2",
+                  },
+                  Object {
+                    "end": 65,
+                    "start": 63,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 65,
+                        "start": 63,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 65,
+                            "start": 63,
+                            "tag": 8,
+                            "value": "int",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+            "required": false,
+            "start": 37,
+            "tag": 10,
+            "type": "spread",
+            "value": "items",
           },
         ],
       },
@@ -6352,6 +6802,7 @@ Object {
             "pick": Array [
               Object {
                 "end": 48,
+                "required": false,
                 "start": 45,
                 "tag": 119,
                 "values": Array [
@@ -6365,6 +6816,7 @@ Object {
               },
               Object {
                 "end": 57,
+                "required": false,
                 "start": 51,
                 "tag": 119,
                 "values": Array [
@@ -6447,6 +6899,7 @@ Object {
             "pick": Array [
               Object {
                 "end": 48,
+                "required": false,
                 "start": 45,
                 "tag": 119,
                 "values": Array [
@@ -6460,6 +6913,7 @@ Object {
               },
               Object {
                 "end": 54,
+                "required": false,
                 "start": 51,
                 "tag": 119,
                 "values": Array [
@@ -10239,6 +10693,7 @@ Object {
                         "pick": Array [
                           Object {
                             "end": 106,
+                            "required": false,
                             "start": 101,
                             "tag": 119,
                             "values": Array [
@@ -10252,6 +10707,7 @@ Object {
                           },
                           Object {
                             "end": 113,
+                            "required": false,
                             "start": 109,
                             "tag": 119,
                             "values": Array [

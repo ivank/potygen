@@ -166,7 +166,7 @@ const toSourcesIterator =
             parameterTypes?.[0].pick.map<TypeLoadNamed>((item, index) => ({
               type: TypeName.LoadNamed,
               name: columnNames?.[index] ?? `column${index}`,
-              value: item.type,
+              value: { ...item.type, nullable: !item.required },
               sourceTag: item.sourceTag,
             }));
 
@@ -698,6 +698,7 @@ export const toParams =
               return {
                 name: first(pick.values).value,
                 castType,
+                required: pick.required,
                 type: castType ?? context.columns[index] ?? typeUnknown,
                 sourceTag: pick,
               };
