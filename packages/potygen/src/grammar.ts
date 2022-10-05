@@ -241,31 +241,25 @@ const TypeArray = astNode<Tag.ArrayTypeTag>(Tag.SqlName.ArrayType, All(Type, Plu
 const AnyType = Any(TypeArray, Type);
 const Default = astEmptyLeaf<Tag.DefaultTag>(Tag.SqlName.Default, /^DEFAULT/i);
 
-const ParameterPick = Node<Tag.ParameterPickTag>(
-  All(Identifier, Optional(/^(\!)/), Optional(All('::', AnyType))),
-  (values, $, $next) => ({
-    tag: Tag.SqlName.ParameterPick,
-    values: values.filter((value) => value !== '!') as any,
-    required: values.includes('!'),
-    start: $.pos,
-    end: $next.pos - 1,
-  }),
-);
-
 /**
- * Parameteer
+ * Parameter
  */
-const Parameter = Node<Tag.ParameterTag>(
-  All(/^(\$\$|\$|\:)/, IdentifierRule, Optional(Any(/^(\!)/, Brackets(List(ParameterPick))))),
-  ([type, value, ...rest], $, $next) => ({
-    tag: Tag.SqlName.Parameter,
-    value,
-    type: type === '$$' ? 'spread' : 'single',
-    required: rest.includes('!'),
-    pick: rest.filter((item) => item !== '!'),
-    start: $.pos,
-    end: $next.pos - 1,
-  }),
+const ParameterRequired = astEmptyLeaf<Tag.ParameterRequiredTag>(Tag.SqlName.ParameterRequired, '!');
+const ParameterIdentifier = astNode<Tag.ParameterIdentifierTag>(
+  Tag.SqlName.ParameterIdentifier,
+  All(Identifier, Optional(ParameterRequired)),
+);
+const ParameterPick = astNode<Tag.ParameterPickTag>(
+  Tag.SqlName.ParameterPick,
+  All(ParameterIdentifier, Optional(All('::', AnyType))),
+);
+const Parameter = astNode<Tag.ParameterTag>(
+  Tag.SqlName.Parameter,
+  All(Any('$', ':'), ParameterIdentifier, Optional(Brackets(List(ParameterPick)))),
+);
+const SpreadParameter = astNode<Tag.SpreadParameterTag>(
+  Tag.SqlName.SpreadParameter,
+  All('$$', ParameterIdentifier, Optional(Brackets(List(ParameterPick)))),
 );
 
 /**
@@ -435,6 +429,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       WrappedExpression,
       ColumnFullyQualified,
       Constant,
+      SpreadParameter,
       Parameter,
       ArrayConstructor,
       Row,
@@ -489,7 +484,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const ExpressionList = astNode<Tag.ExpressionListTag>(Tag.SqlName.ExpressionList, List(ChildExpression));
     const ComparationArrayInclusion = astNode<Tag.ComparationArrayInclusionTag>(
       Tag.SqlName.ComparationArrayInclusion,
-      All(ComparationArrayInclusionType, Any(Brackets(ExpressionList), Parameter)),
+      All(ComparationArrayInclusionType, Any(Brackets(ExpressionList), SpreadParameter, Parameter)),
     );
     const ComparationArray = astNode<Tag.ComparationArrayTag>(
       Tag.SqlName.ComparationArray,
@@ -562,7 +557,7 @@ const FromListRule = (Select: Rule, ChildExpression: Rule): Rule => {
   const FormValues = astNode<Tag.ValuesTag>(Tag.SqlName.Values, Brackets(List(Any(Default, ChildExpression))));
   const FromValuesList = astNode<Tag.ValuesListTag>(
     Tag.SqlName.ValuesList,
-    Brackets(All(/^VALUES/i, Any(List(FormValues), Parameter))),
+    Brackets(All(/^VALUES/i, Any(List(FormValues), SpreadParameter))),
   );
   const RecordsetValuesList = astNode<Tag.RecordsetValuesListTag>(
     Tag.SqlName.RecordsetValuesList,
@@ -771,7 +766,10 @@ const Conflict = astNode<Tag.ConflictTag>(
   ),
 );
 
-const ValuesList = astNode<Tag.ValuesListTag>(Tag.SqlName.ValuesList, All(/^VALUES/i, Any(List(Values), Parameter)));
+const ValuesList = astNode<Tag.ValuesListTag>(
+  Tag.SqlName.ValuesList,
+  All(/^VALUES/i, Any(List(Values), SpreadParameter)),
+);
 const Insert = astNode<Tag.InsertTag>(
   Tag.SqlName.Insert,
   All(
@@ -795,7 +793,7 @@ const CTEName = astNode<Tag.CTENameTag>(Tag.SqlName.CTEName, All(Identifier, Opt
 const CTEValues = astNode<Tag.CTEValuesTag>(Tag.SqlName.CTEValues, Brackets(List(Expression)));
 const CTEValuesList = astNode<Tag.CTEValuesListTag>(
   Tag.SqlName.CTEValuesList,
-  All(/^VALUES/i, Any(List(CTEValues), Parameter)),
+  All(/^VALUES/i, Any(List(CTEValues), SpreadParameter)),
 );
 const CTE = astNode<Tag.CTETag>(Tag.SqlName.CTE, All(CTEName, /^AS/i, Brackets(Any(Query, CTEValuesList))));
 const With = astNode<Tag.WithTag>(Tag.SqlName.With, All(/^WITH/i, List(CTE), Query));
