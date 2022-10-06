@@ -661,27 +661,80 @@ export interface QuotedIdentifierTag extends LeafSqlTag {
 }
 
 /**
- * Parameter Tag
+ * Parameter Tag, representing a parameter value to be converted to a positional "?" parameter that postgres accepts
+ * Can be "$" or ":" based
+ * ```
+ *                                 ┌─ParameterIdentifierTag
+ *                                 │              ┌─ParameterTag (':' based, required)
+ *                                 ▼              ▼
+ *                              ┌────┐         ┌──────┐
+ * SELECT * FROM t1 WHERE col1 =│$val│OR col2 =│:val2!│
+ *                              └────┘         └──────┘
+ *                             └──────┘
+ *                                └─▶ParameterTag
+ * ```
  */
 export interface ParameterTag extends NodeSqlTag {
   tag: SqlName.Parameter;
   values: [ParameterIdentifierTag] | [ParameterIdentifierTag, ...ParameterPickTag[]];
 }
 
+/**
+ * SpreadParameter Tag, representing a parameter array that should be "spread" into comma separated bracketed value lists like (?, ?), (?, ?)
+ * ```
+ *                        ┌─ParameterIdentifierTag
+ *                        │          ┌─ParameterPickTag
+ *                        │          │       ┌─ParameterPickTag (with specific type)
+ *                        ▼          ▼       ▼
+ *                      ┌────────┬ ─ ─ ─ ─ ─ ─ ─ - ─
+ * INSERT INTO t1 VALUES│$$items( col1│,│col2::int│)│
+ *                      └────────┴ ─ ─ ─ ─ ─ ─ ─ ─ ─
+ *                    └──────────────────────────────┘
+ *                                  └─▶SpreadParameterTag
+ * ```
+ */
 export interface SpreadParameterTag extends NodeSqlTag {
   tag: SqlName.SpreadParameter;
   values: [ParameterIdentifierTag] | [ParameterIdentifierTag, ...ParameterPickTag[]];
 }
 
+/**
+ * Should the parameter be required (with "!") or not
+ */
 export interface ParameterRequiredTag extends LeafSqlTag {
   tag: SqlName.ParameterRequired;
 }
 
+/**
+ * ParameterIdentifier Tag, part of ParameterTag (or SpreadParameterTag)
+ * Can be quoted with double quotes
+ * ```
+ *                                                ┌─ParameterIdentifierTag (quoted, required)
+ *                                                ▼
+ *                              ┌───┐          ┌────────────┐
+ * SELECT * FROM t1 WHERE col1 =$val│OR col2 = :"val other"!│
+ *                              └───┘          └────────────┘
+ *                             └─────┘
+ *                                └─▶ParameterIdentifierTag
+ * ```
+ */
 export interface ParameterIdentifierTag extends NodeSqlTag {
   tag: SqlName.ParameterIdentifier;
   values: [IdentifierTag] | [IdentifierTag, ParameterRequiredTag];
 }
 
+/**
+ * ParameterPick Tag, representing a column "pick" from an object, can have optional custom type
+ * ```
+ *                                          ┌─ParameterPickTag (with specific type)
+ *                                          ▼
+ *                               ┌────┐ ┌────────-┐
+ * INSERT INTO t1 VALUES $$items(│col1│,│col2::int│)
+ *                               └────┘ └─────────┘
+ *                              └──────────────────┘
+ *                                     └─▶ParameterPickTag
+ * ```
+ */
 export interface ParameterPickTag extends NodeSqlTag {
   tag: SqlName.ParameterPick;
   values: [ParameterIdentifierTag] | [ParameterIdentifierTag, TypeTag];
