@@ -131,6 +131,9 @@ import {
   RecordsetFunctionTag,
   ParameterPickTag,
   RecordsetValuesListTag,
+  SpreadParameterTag,
+  ParameterRequiredTag,
+  ParameterIdentifierTag,
 } from './grammar.types';
 
 export const isCTE = (value: SqlTag): value is CTETag => value.tag === SqlName.CTE;
@@ -147,7 +150,12 @@ export const isQuotedIdentifier = (value: SqlTag): value is QuotedIdentifierTag 
 export const isUnquotedIdentifier = (value: SqlTag): value is UnquotedIdentifierTag =>
   value.tag === SqlName.UnquotedIdentifier;
 export const isParameter = (value: SqlTag): value is ParameterTag => value.tag === SqlName.Parameter;
+export const isSpreadParameter = (value: SqlTag): value is SpreadParameterTag => value.tag === SqlName.SpreadParameter;
 export const isParameterPick = (value: SqlTag): value is ParameterPickTag => value.tag === SqlName.ParameterPick;
+export const isParameterRequired = (value: SqlTag): value is ParameterRequiredTag =>
+  value.tag === SqlName.ParameterRequired;
+export const isParameterIdentifier = (value: SqlTag): value is ParameterIdentifierTag =>
+  value.tag === SqlName.ParameterIdentifier;
 export const isColumn = (value: SqlTag): value is ColumnTag => value.tag === SqlName.Column;
 export const isAs = (value: SqlTag): value is AsTag => value.tag === SqlName.As;
 export const isString = (value: SqlTag): value is StringTag => value.tag === SqlName.String;
@@ -188,6 +196,7 @@ export const isCastableDataType = (value: SqlTag): value is CastableDataTypeTag 
   isConstant(value) ||
   isFunction(value) ||
   isParameter(value) ||
+  isSpreadParameter(value) ||
   isPgCast(value) ||
   isSelect(value);
 export const isWhen = (value: SqlTag): value is WhenTag => value.tag === SqlName.When;
@@ -219,6 +228,7 @@ export const isExpression = (value: SqlTag): value is ExpressionTag =>
   isColumn(value) ||
   isSelect(value) ||
   isParameter(value) ||
+  isSpreadParameter(value) ||
   isCast(value) ||
   isCase(value) ||
   isCaseSimple(value) ||

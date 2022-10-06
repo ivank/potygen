@@ -490,6 +490,18 @@ export const enum SqlName {
    * {@link RecordsetValuesListTag}
    */
   RecordsetValuesList,
+  /**
+   * {@link SpreadParameterTag}
+   */
+  SpreadParameter,
+  /**
+   * {@link ParameterRequiredTag}
+   */
+  ParameterRequired,
+  /**
+   * {@link ParameterIdentifierTag}
+   */
+  ParameterIdentifier,
 }
 
 /**
@@ -560,7 +572,7 @@ export interface CTENameTag extends NodeSqlTag {
  */
 export interface CTEValuesListTag extends NodeSqlTag {
   tag: SqlName.CTEValuesList;
-  values: (ParameterTag | CTEValuesTag)[];
+  values: (SpreadParameterTag | CTEValuesTag)[];
 }
 
 /**
@@ -649,27 +661,83 @@ export interface QuotedIdentifierTag extends LeafSqlTag {
 }
 
 /**
- * Parameter Tag
- *
- * Single:       $my_parameter
- * Colon Single: :my_parameter
- * Spread:       $$my_parameter
- * Single Pick:  $my_parameter(val1, val2)
- * Spread Pick   $$my_values(val1, val2)
- * Spread Pick   $$my_values(val1, "val 2")
+ * Parameter Tag, representing a parameter value to be converted to a positional "?" parameter that postgres accepts
+ * Can be "$" or ":" based
+ * ```
+ *                                 ┌─ParameterIdentifierTag
+ *                                 │              ┌─ParameterTag (':' based, required)
+ *                                 ▼              ▼
+ *                              ┌────┐         ┌──────┐
+ * SELECT * FROM t1 WHERE col1 =│$val│OR col2 =│:val2!│
+ *                              └────┘         └──────┘
+ *                             └──────┘
+ *                                └─▶ParameterTag
+ * ```
  */
-export interface ParameterTag extends LeafSqlTag {
+export interface ParameterTag extends NodeSqlTag {
   tag: SqlName.Parameter;
-  type: 'spread' | 'single';
-  value: string;
-  required: boolean;
-  pick: ParameterPickTag[];
+  values: [ParameterIdentifierTag] | [ParameterIdentifierTag, ...ParameterPickTag[]];
 }
 
+/**
+ * SpreadParameter Tag, representing a parameter array that should be "spread" into comma separated bracketed value lists like (?, ?), (?, ?)
+ * ```
+ *                        ┌─ParameterIdentifierTag
+ *                        │          ┌─ParameterPickTag
+ *                        │          │       ┌─ParameterPickTag (with specific type)
+ *                        ▼          ▼       ▼
+ *                      ┌────────┬ ─ ─ ─ ─ ─ ─ ─ - ─
+ * INSERT INTO t1 VALUES│$$items( col1│,│col2::int│)│
+ *                      └────────┴ ─ ─ ─ ─ ─ ─ ─ ─ ─
+ *                    └──────────────────────────────┘
+ *                                  └─▶SpreadParameterTag
+ * ```
+ */
+export interface SpreadParameterTag extends NodeSqlTag {
+  tag: SqlName.SpreadParameter;
+  values: [ParameterIdentifierTag] | [ParameterIdentifierTag, ...ParameterPickTag[]];
+}
+
+/**
+ * Should the parameter be required (with "!") or not
+ */
+export interface ParameterRequiredTag extends LeafSqlTag {
+  tag: SqlName.ParameterRequired;
+}
+
+/**
+ * ParameterIdentifier Tag, part of ParameterTag (or SpreadParameterTag)
+ * Can be quoted with double quotes
+ * ```
+ *                                                ┌─ParameterIdentifierTag (quoted, required)
+ *                                                ▼
+ *                              ┌───┐          ┌────────────┐
+ * SELECT * FROM t1 WHERE col1 =$val│OR col2 = :"val other"!│
+ *                              └───┘          └────────────┘
+ *                             └─────┘
+ *                                └─▶ParameterIdentifierTag
+ * ```
+ */
+export interface ParameterIdentifierTag extends NodeSqlTag {
+  tag: SqlName.ParameterIdentifier;
+  values: [IdentifierTag] | [IdentifierTag, ParameterRequiredTag];
+}
+
+/**
+ * ParameterPick Tag, representing a column "pick" from an object, can have optional custom type
+ * ```
+ *                                          ┌─ParameterPickTag (with specific type)
+ *                                          ▼
+ *                               ┌────┐ ┌────────-┐
+ * INSERT INTO t1 VALUES $$items(│col1│,│col2::int│)
+ *                               └────┘ └─────────┘
+ *                              └──────────────────┘
+ *                                     └─▶ParameterPickTag
+ * ```
+ */
 export interface ParameterPickTag extends NodeSqlTag {
   tag: SqlName.ParameterPick;
-  required: boolean;
-  values: [IdentifierTag] | [IdentifierTag, TypeTag];
+  values: [ParameterIdentifierTag] | [ParameterIdentifierTag, TypeTag];
 }
 
 /**
@@ -1110,7 +1178,7 @@ export interface CompositeAccessTag extends NodeSqlTag {
  */
 export interface CountTag extends NodeSqlTag {
   tag: SqlName.Count;
-  values: [ParameterTag | IntegerTag];
+  values: [ParameterTag | SpreadParameterTag | IntegerTag];
 }
 
 /**
@@ -2326,7 +2394,7 @@ export interface DeleteTag extends NodeSqlTag {
  */
 export interface ValuesListTag extends NodeSqlTag {
   tag: SqlName.ValuesList;
-  values: (ParameterTag | ValuesTag)[];
+  values: (SpreadParameterTag | ValuesTag)[];
 }
 
 /**
@@ -2559,6 +2627,7 @@ export type CastableDataTypeTag =
   | ConstantTag
   | FunctionTag
   | ParameterTag
+  | SpreadParameterTag
   | PgCastTag
   | SelectTag;
 
@@ -2589,6 +2658,7 @@ export type EmptyLeafTag =
   | StarTag
   | DefaultTag
   | DoNothingTag
+  | ParameterRequiredTag
   | LimitAllTag
   | DimensionTag
   | BeginTag
@@ -2608,7 +2678,6 @@ export type LeafTag =
   | TernarySeparatorTag
   | QuotedIdentifierTag
   | UnquotedIdentifierTag
-  | ParameterTag
   | StringTag
   | DollarQuotedStringTag
   | CustomQuotedStringTag
@@ -2714,7 +2783,10 @@ export type NodeTag =
   | InsertTag
   | WrappedExpressionTag
   | ExpressionListTag
+  | ParameterTag
   | ParameterPickTag
+  | ParameterIdentifierTag
+  | SpreadParameterTag
   | RecordsetValuesListTag;
 
 /**

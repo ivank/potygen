@@ -40,15 +40,21 @@ Object {
           "required": false,
           "sourceTag": Object {
             "end": 57,
-            "required": false,
             "start": 51,
             "tag": 119,
             "values": Array [
               Object {
                 "end": 52,
                 "start": 51,
-                "tag": 8,
-                "value": "id",
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 52,
+                    "start": 51,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
               },
               Object {
                 "end": 57,
@@ -182,18 +188,39 @@ Object {
             "values": Array [
               Object {
                 "end": 58,
-                "pick": Array [
+                "start": 39,
+                "tag": 121,
+                "values": Array [
+                  Object {
+                    "end": 49,
+                    "start": 41,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 49,
+                        "start": 41,
+                        "tag": 8,
+                        "value": "registers",
+                      },
+                    ],
+                  },
                   Object {
                     "end": 57,
-                    "required": false,
                     "start": 51,
                     "tag": 119,
                     "values": Array [
                       Object {
                         "end": 52,
                         "start": 51,
-                        "tag": 8,
-                        "value": "id",
+                        "tag": 123,
+                        "values": Array [
+                          Object {
+                            "end": 52,
+                            "start": 51,
+                            "tag": 8,
+                            "value": "id",
+                          },
+                        ],
                       },
                       Object {
                         "end": 57,
@@ -218,11 +245,6 @@ Object {
                     ],
                   },
                 ],
-                "required": false,
-                "start": 39,
-                "tag": 10,
-                "type": "spread",
-                "value": "registers",
               },
             ],
           },
@@ -234,15 +256,21 @@ Object {
           "name": "id",
           "sourceTag": Object {
             "end": 57,
-            "required": false,
             "start": 51,
             "tag": 119,
             "values": Array [
               Object {
                 "end": 52,
                 "start": 51,
-                "tag": 8,
-                "value": "id",
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 52,
+                    "start": 51,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
               },
               Object {
                 "end": 57,
@@ -1684,12 +1712,23 @@ Object {
                                 },
                                 Object {
                                   "end": 136,
-                                  "pick": Array [],
-                                  "required": false,
                                   "start": 129,
                                   "tag": 10,
-                                  "type": "single",
-                                  "value": "joinVal",
+                                  "values": Array [
+                                    Object {
+                                      "end": 136,
+                                      "start": 130,
+                                      "tag": 123,
+                                      "values": Array [
+                                        Object {
+                                          "end": 136,
+                                          "start": 130,
+                                          "tag": 8,
+                                          "value": "joinVal",
+                                        },
+                                      ],
+                                    },
+                                  ],
                                 },
                               ],
                             },
@@ -1918,12 +1957,23 @@ Object {
             },
             Object {
               "end": 22,
-              "pick": Array [],
-              "required": false,
               "start": 16,
               "tag": 10,
-              "type": "single",
-              "value": "param1",
+              "values": Array [
+                Object {
+                  "end": 22,
+                  "start": 17,
+                  "tag": 123,
+                  "values": Array [
+                    Object {
+                      "end": 22,
+                      "start": 17,
+                      "tag": 8,
+                      "value": "param1",
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
@@ -2852,12 +2902,23 @@ Object {
         "name": "abs",
         "sourceTag": Object {
           "end": 13,
-          "pick": Array [],
-          "required": false,
           "start": 11,
           "tag": 10,
-          "type": "single",
-          "value": "id",
+          "values": Array [
+            Object {
+              "end": 13,
+              "start": 12,
+              "tag": 123,
+              "values": Array [
+                Object {
+                  "end": 13,
+                  "start": 12,
+                  "tag": 8,
+                  "value": "id",
+                },
+              ],
+            },
+          ],
         },
         "type": 21,
       },
@@ -2895,12 +2956,23 @@ Object {
             },
             Object {
               "end": 13,
-              "pick": Array [],
-              "required": false,
               "start": 11,
               "tag": 10,
-              "type": "single",
-              "value": "id",
+              "values": Array [
+                Object {
+                  "end": 13,
+                  "start": 12,
+                  "tag": 123,
+                  "values": Array [
+                    Object {
+                      "end": 13,
+                      "start": 12,
+                      "tag": 8,
+                      "value": "id",
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
@@ -3263,15 +3335,21 @@ Object {
           "required": false,
           "sourceTag": Object {
             "end": 36,
-            "required": false,
             "start": 33,
             "tag": 119,
             "values": Array [
               Object {
                 "end": 36,
                 "start": 33,
-                "tag": 8,
-                "value": "name",
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 36,
+                    "start": 33,
+                    "tag": 8,
+                    "value": "name",
+                  },
+                ],
               },
             ],
           },
@@ -3286,15 +3364,21 @@ Object {
           "required": false,
           "sourceTag": Object {
             "end": 42,
-            "required": false,
             "start": 39,
             "tag": 119,
             "values": Array [
               Object {
                 "end": 42,
                 "start": 39,
-                "tag": 8,
-                "value": "test",
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 42,
+                    "start": 39,
+                    "tag": 8,
+                    "value": "test",
+                  },
+                ],
               },
             ],
           },
@@ -4749,12 +4833,23 @@ Object {
                                 },
                                 Object {
                                   "end": 136,
-                                  "pick": Array [],
-                                  "required": false,
                                   "start": 129,
                                   "tag": 10,
-                                  "type": "single",
-                                  "value": "joinVal",
+                                  "values": Array [
+                                    Object {
+                                      "end": 136,
+                                      "start": 130,
+                                      "tag": 123,
+                                      "values": Array [
+                                        Object {
+                                          "end": 136,
+                                          "start": 130,
+                                          "tag": 8,
+                                          "value": "joinVal",
+                                        },
+                                      ],
+                                    },
+                                  ],
                                 },
                               ],
                             },
@@ -5436,12 +5531,23 @@ Object {
                   "values": Array [
                     Object {
                       "end": 28,
-                      "pick": Array [],
-                      "required": false,
                       "start": 24,
                       "tag": 10,
-                      "type": "single",
-                      "value": "from",
+                      "values": Array [
+                        Object {
+                          "end": 28,
+                          "start": 25,
+                          "tag": 123,
+                          "values": Array [
+                            Object {
+                              "end": 28,
+                              "start": 25,
+                              "tag": 8,
+                              "value": "from",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "end": 30,
@@ -6463,15 +6569,21 @@ Object {
           "required": false,
           "sourceTag": Object {
             "end": 43,
-            "required": false,
             "start": 42,
             "tag": 119,
             "values": Array [
               Object {
                 "end": 43,
                 "start": 42,
-                "tag": 8,
-                "value": "id",
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 43,
+                    "start": 42,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
               },
             ],
           },
@@ -6530,27 +6642,43 @@ Object {
             },
             Object {
               "end": 44,
-              "pick": Array [
+              "start": 36,
+              "tag": 121,
+              "values": Array [
+                Object {
+                  "end": 40,
+                  "start": 38,
+                  "tag": 123,
+                  "values": Array [
+                    Object {
+                      "end": 40,
+                      "start": 38,
+                      "tag": 8,
+                      "value": "ids",
+                    },
+                  ],
+                },
                 Object {
                   "end": 43,
-                  "required": false,
                   "start": 42,
                   "tag": 119,
                   "values": Array [
                     Object {
                       "end": 43,
                       "start": 42,
-                      "tag": 8,
-                      "value": "id",
+                      "tag": 123,
+                      "values": Array [
+                        Object {
+                          "end": 43,
+                          "start": 42,
+                          "tag": 8,
+                          "value": "id",
+                        },
+                      ],
                     },
                   ],
                 },
               ],
-              "required": false,
-              "start": 36,
-              "tag": 10,
-              "type": "spread",
-              "value": "ids",
             },
           ],
         },

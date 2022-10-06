@@ -7,7 +7,8 @@ export const withParserErrors = async (cb: () => void | Promise<void>) => {
   try {
     await cb();
   } catch (e) {
-    console.error(String(e), e instanceof LoadError ? e.tag : undefined);
+    console.log('!!!');
+    console.error(String(e), e instanceof LoadError ? e.tag : e);
     throw e;
   }
 };

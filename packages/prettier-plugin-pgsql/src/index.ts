@@ -20,6 +20,7 @@ import {
   SqlName,
   isComment,
   BinaryOperatorTag,
+  isSpreadParameter,
 } from '@potygen/potygen';
 
 const { line, softline, indent, join, group, hardline } = doc.builders;
@@ -97,19 +98,19 @@ const pgsqlAst: Printer<Node> = {
       case SqlName.QuotedIdentifier:
         return `"${node.value}"`;
       case SqlName.ParameterPick:
-        return [
-          nthVal(0, path, recur),
-          node.required ? '!' : [],
-          node.values.length > 1 ? ['::', nthVal(1, path, recur)] : [],
-        ];
+        return join('::', vals(path, recur));
+      case SqlName.ParameterRequired:
+        return '!';
+      case SqlName.ParameterIdentifier:
+        return join('', vals(path, recur));
+      case SqlName.SpreadParameter:
       case SqlName.Parameter:
         return [
-          node.type === 'spread' ? '$$' : '$',
-          node.value,
-          node.pick.length
-            ? group(['(', indent([softline, join([',', hardline], path.map(recur, 'pick'))]), softline, ')'])
+          node.tag === SqlName.SpreadParameter ? '$$' : '$',
+          nthVal(0, path, recur),
+          node.values[1]
+            ? group(['(', indent([softline, join([',', hardline], tailVals(1, path, recur))]), softline, ')'])
             : '',
-          node.required ? '!' : '',
         ];
       case SqlName.Column:
         return group(join('.', vals(path, recur)));
@@ -304,7 +305,9 @@ const pgsqlAst: Printer<Node> = {
           ' ',
           nthVal(1, path, recur),
           ' ',
-          isParameter(last(node.values)) ? nthVal(2, path, recur) : group(['(', nthVal(2, path, recur), ')']),
+          isParameter(last(node.values)) || isSpreadParameter(last(node.values))
+            ? nthVal(2, path, recur)
+            : group(['(', nthVal(2, path, recur), ')']),
         ];
       case SqlName.Exists:
         return group(['EXISTS', ' ', join(' ', vals(path, recur))]);
