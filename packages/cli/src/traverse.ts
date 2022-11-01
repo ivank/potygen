@@ -33,6 +33,7 @@ import {
   ParsedSqlFile,
   ParsedTypescriptFile,
   TemplateTagQuery,
+  loadAllData,
 } from '@potygen/potygen';
 import { ClientBase } from 'pg';
 import { emitLoadedFile } from './emit';
@@ -188,7 +189,16 @@ export class SqlRead extends Readable {
 export class QueryLoader extends Writable {
   public ctx: LoadContext;
   public data: LoadedData[] = [];
-  constructor(public options: { db: ClientBase; root: string; template: string; logger: Logger; typePrefix?: string }) {
+  constructor(
+    public options: {
+      db: ClientBase;
+      root: string;
+      template: string;
+      logger: Logger;
+      typePrefix?: string;
+      preload?: boolean;
+    },
+  ) {
     super({ objectMode: true });
     this.ctx = { db: options.db, logger: options.logger ?? console };
   }
@@ -204,7 +214,10 @@ export class QueryLoader extends Writable {
           parsedFiles.map((file) => `${relative(this.options.root, file.path)} (${file.type})`),
         )}`,
       );
-      this.data = await loadDataFromParsedFiles(this.ctx, this.data, parsedFiles);
+      this.data =
+        this.data.length === 0 && this.options.preload
+          ? await loadAllData(this.ctx, this.data)
+          : await loadDataFromParsedFiles(this.ctx, this.data, parsedFiles);
       await Promise.all(
         parsedFiles
           .map(loadFile(this.data))
@@ -223,7 +236,10 @@ export class QueryLoader extends Writable {
   ): Promise<void> {
     try {
       this.ctx.logger.debug(`Parse file: ${relative(this.options.root, file.path)} (${file.type})`);
-      this.data = await loadDataFromParsedFiles(this.ctx, this.data, [file]);
+      this.data =
+        this.data.length === 0 && this.options.preload
+          ? await loadAllData(this.ctx, this.data)
+          : await loadDataFromParsedFiles(this.ctx, this.data, [file]);
       await emitLoadedFile(
         this.options.root,
         this.options.template,

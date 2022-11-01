@@ -40,13 +40,14 @@ class LogLevelConsole implements Logger {
 export const potygen = (overwriteLogger?: Logger): Command =>
   createCommand('potygen')
     .description('Convert postgres query files inty typescript types')
-    .version('0.6.9')
+    .version('0.6.10')
     .option('-c, --config <config>', 'A configuration file to load', 'potygen.config.json')
     .option('-f, --files <files>', 'A glob pattern to search files by (default: "**/*.sql")')
     .option('-w, --watch', 'Watch for file changes and update live')
     .option('-v, --verbose', 'Show verbose logs')
     .option('-s, --silent', 'Only show error logs')
     .option('-p, --typePrefix <typePrefix>', 'Prefix generated types')
+    .option('-l, --preload', 'Load all data at once. Slower start but faster for a lot of files')
     .option('-r, --root <root>', `Set the root directory (default: ${process.cwd()})`)
     .option(
       '-n, --connection <connection>',
@@ -58,7 +59,7 @@ export const potygen = (overwriteLogger?: Logger): Command =>
     )
     .action(async (options: ConfigType & { config: string }) => {
       const { config, ...rest } = options;
-      const { root, connection, watch, files, template, verbose, silent, typePrefix } = toConfig({
+      const { root, connection, watch, files, template, verbose, silent, typePrefix, preload } = toConfig({
         ...(existsSync(config) ? JSON.parse(readFileSync(config, 'utf-8')) : {}),
         ...rest,
       });
@@ -72,7 +73,7 @@ export const potygen = (overwriteLogger?: Logger): Command =>
       await db.connect();
       try {
         const sqls = new SqlRead({ path: files, root, watch, logger });
-        const sink = new QueryLoader({ db, root, template, logger, typePrefix });
+        const sink = new QueryLoader({ db, root, template, logger, typePrefix, preload });
 
         logger.info(`Potygen started processing ("${files}", watch: ${watch})`);
 

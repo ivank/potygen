@@ -100,6 +100,36 @@ describe('CLI', () => {
     }
   }, 20000);
 
+  it('Should use cli to run pipeline on sql files with preloading', async () => {
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+
+    await potygen(logger).parseAsync([
+      'node',
+      'potygen',
+      '--root',
+      rootDir,
+      '--files',
+      'sql/*.sql',
+      '--template',
+      '{{root}}/packages/cli/test/__generated__/{{name}}.queries.ts',
+      '--connection',
+      connectionString,
+      '--preload',
+    ]);
+
+    expect(logger.error).not.toHaveBeenCalled();
+
+    const resultQueries = readdirSync(join(__dirname, '__generated__'))
+      .filter((item) => item.endsWith('.ts'))
+      .sort();
+
+    expect(resultQueries).toMatchSnapshot();
+
+    for (const name of resultQueries) {
+      expect(readFileSync(join(__dirname, '__generated__', name), 'utf-8')).toMatchSnapshot(name);
+    }
+  }, 10000);
+
   it('Should have the correct version', async () => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
 
