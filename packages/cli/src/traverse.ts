@@ -214,10 +214,11 @@ export class QueryLoader extends Writable {
           parsedFiles.map((file) => `${relative(this.options.root, file.path)} (${file.type})`),
         )}`,
       );
-      this.data =
-        this.data.length === 0 && this.options.preload
+      this.data = this.options.preload
+        ? this.data.length === 0
           ? await loadAllData(this.ctx, this.data)
-          : await loadDataFromParsedFiles(this.ctx, this.data, parsedFiles);
+          : this.data
+        : await loadDataFromParsedFiles(this.ctx, this.data, parsedFiles);
       await Promise.all(
         parsedFiles
           .map(loadFile(this.data))
@@ -236,10 +237,11 @@ export class QueryLoader extends Writable {
   ): Promise<void> {
     try {
       this.ctx.logger.debug(`Parse file: ${relative(this.options.root, file.path)} (${file.type})`);
-      this.data =
-        this.data.length === 0 && this.options.preload
+      this.data = this.options.preload
+        ? this.data.length === 0
           ? await loadAllData(this.ctx, this.data)
-          : await loadDataFromParsedFiles(this.ctx, this.data, [file]);
+          : this.data
+        : await loadDataFromParsedFiles(this.ctx, this.data, [file]);
       await emitLoadedFile(
         this.options.root,
         this.options.template,
