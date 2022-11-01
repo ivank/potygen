@@ -128,7 +128,7 @@ describe('CLI', () => {
     for (const name of resultQueries) {
       expect(readFileSync(join(__dirname, '__generated__', name), 'utf-8')).toMatchSnapshot(name);
     }
-  }, 10000);
+  }, 20000);
 
   it('Should have the correct version', async () => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
