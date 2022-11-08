@@ -219,31 +219,28 @@ const toLoadedQueryTypeNodes = (
     resultRefs: results.refs,
     statements: [
       factory.createInterfaceDeclaration(
-        undefined,
         [factory.createModifier(SyntaxKind.ExportKeyword)],
         `${name}Params`,
         params.refs.map((ref) =>
-          factory.createTypeParameterDeclaration(ref, undefined, factory.createToken(SyntaxKind.UnknownKeyword)),
+          factory.createTypeParameterDeclaration([], ref, undefined, factory.createToken(SyntaxKind.UnknownKeyword)),
         ),
         undefined,
         params.props,
       ),
       factory.createInterfaceDeclaration(
-        undefined,
         [factory.createModifier(SyntaxKind.ExportKeyword)],
         `${name}Result`,
         results.refs.map((ref) =>
-          factory.createTypeParameterDeclaration(ref, undefined, factory.createToken(SyntaxKind.UnknownKeyword)),
+          factory.createTypeParameterDeclaration([], ref, undefined, factory.createToken(SyntaxKind.UnknownKeyword)),
         ),
         undefined,
         results.props,
       ),
       factory.createInterfaceDeclaration(
-        undefined,
         [factory.createModifier(SyntaxKind.ExportKeyword)],
         `${name}Query`,
         [...params.refs, ...results.refs].map((ref) =>
-          factory.createTypeParameterDeclaration(ref, undefined, factory.createToken(SyntaxKind.UnknownKeyword)),
+          factory.createTypeParameterDeclaration([], ref, undefined, factory.createToken(SyntaxKind.UnknownKeyword)),
         ),
         undefined,
         [
