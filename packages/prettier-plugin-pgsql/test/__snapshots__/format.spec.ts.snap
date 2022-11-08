@@ -947,12 +947,33 @@ FROM
 "
 `;
 
+exports[`Format Should parse simple sql multiple joins (SELECT 1 FROM table1 INNER JOIN foo ON table1.foo_id = foo.id INNER JOIN bar ON table1.bar_id = bar.id): multiple joins 1`] = `
+"SELECT 1
+FROM
+  table1
+  INNER JOIN foo
+    ON table1.foo_id = foo.id
+  INNER JOIN bar
+    ON table1.bar_id = bar.id
+"
+`;
+
 exports[`Format Should parse simple sql multiple params spread types (INSERT INTO table1 VALUES $rows(name::int, test::text)): multiple params spread types 1`] = `
 "INSERT INTO table1 VALUES
   $$rows(
     name::int,
     test::text
   )
+"
+`;
+
+exports[`Format Should parse simple sql nested CTE (WITH counting AS (WITH tmp AS (SELECT * FROM table1) SELECT 1 FROM "tmp") SELECT COUNT(*) FROM counting): nested CTE 1`] = `
+"WITH counting AS (WITH tmp AS (SELECT * FROM table1) SELECT 1 FROM \\"tmp\\") SELECT 1 FROM "tmp"
+"
+`;
+
+exports[`Format Should parse simple sql nested CTE (WITH tmp AS (SELECT * FROM table1) SELECT 1 FROM "tmp"): nested CTE 1`] = `
+"WITH tmp AS (SELECT * FROM table1) SELECT 1 FROM \\"tmp\\"
 "
 `;
 
@@ -1638,6 +1659,15 @@ exports[`Format Should parse simple sql where not equal to (SELECT * WHERE table
 
 exports[`Format Should parse simple sql where select (SELECT * WHERE (SELECT id FROM test LIMIT 1) = 5): where select 1`] = `
 "SELECT * WHERE (SELECT id FROM test LIMIT 1) = 5
+"
+`;
+
+exports[`Format Should parse simple sql with comment (SELECT *
+-- test comment
+FROM table1): with comment 1`] = `
+"SELECT *
+-- test comment
+FROM table1
 "
 `;
 
