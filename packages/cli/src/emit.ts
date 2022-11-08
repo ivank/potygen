@@ -135,7 +135,7 @@ const toPropertyType =
               : factory.createTypeReferenceNode(context.name),
           };
         case TypeName.Null:
-          return { ...context, type: factory.createLiteralTypeNode(factory.createToken(SyntaxKind.NullKeyword)) };
+          return { ...context, type: factory.createToken(SyntaxKind.UndefinedKeyword) };
         case TypeName.Number:
         case TypeName.BigInt:
           return {

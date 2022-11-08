@@ -1,5 +1,376 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Query Interface Should convert CTE with parameters spread sql (WITH registers_payload (id) AS (VALUES $$registers(id::int)) SELECT r2.id FROM registers_payload AS r2) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "end": 58,
+      "name": "registers",
+      "pick": Array [
+        Object {
+          "castType": Object {
+            "name": "int4",
+            "sourceTag": Object {
+              "end": 57,
+              "start": 55,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 57,
+                  "start": 55,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 57,
+                      "start": 55,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "int4",
+              "type": 3,
+            },
+          },
+          "name": "id",
+          "required": false,
+          "sourceTag": Object {
+            "end": 57,
+            "start": 51,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 52,
+                "start": 51,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 52,
+                    "start": 51,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
+              },
+              Object {
+                "end": 57,
+                "start": 55,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 57,
+                    "start": 55,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 57,
+                        "start": 55,
+                        "tag": 8,
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": Object {
+            "name": "int4",
+            "sourceTag": Object {
+              "end": 57,
+              "start": 55,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 57,
+                  "start": 55,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 57,
+                      "start": 55,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "int4",
+              "type": 3,
+            },
+          },
+        },
+      ],
+      "required": true,
+      "spread": true,
+      "start": 39,
+      "type": Object {
+        "postgresType": "any",
+        "type": 9,
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "column": "id",
+        "schema": undefined,
+        "sourceTag": Object {
+          "end": 72,
+          "start": 68,
+          "tag": 11,
+          "values": Array [
+            Object {
+              "end": 69,
+              "start": 68,
+              "tag": 8,
+              "value": "r2",
+            },
+            Object {
+              "end": 72,
+              "start": 71,
+              "tag": 8,
+              "value": "id",
+            },
+          ],
+        },
+        "table": "r2",
+        "type": 19,
+      },
+    },
+  ],
+  "sources": Array [
+    Object {
+      "name": "registers_payload",
+      "sourceTag": Object {
+        "end": 59,
+        "start": 5,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 26,
+            "start": 5,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 21,
+                "start": 5,
+                "tag": 8,
+                "value": "registers_payload",
+              },
+              Object {
+                "end": 26,
+                "start": 23,
+                "tag": 85,
+                "values": Array [
+                  Object {
+                    "end": 25,
+                    "start": 24,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 58,
+            "start": 32,
+            "tag": 3,
+            "values": Array [
+              Object {
+                "end": 58,
+                "start": 39,
+                "tag": 121,
+                "values": Array [
+                  Object {
+                    "end": 49,
+                    "start": 41,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 49,
+                        "start": 41,
+                        "tag": 8,
+                        "value": "registers",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 57,
+                    "start": 51,
+                    "tag": 119,
+                    "values": Array [
+                      Object {
+                        "end": 52,
+                        "start": 51,
+                        "tag": 123,
+                        "values": Array [
+                          Object {
+                            "end": 52,
+                            "start": 51,
+                            "tag": 8,
+                            "value": "id",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 57,
+                        "start": 55,
+                        "tag": 32,
+                        "values": Array [
+                          Object {
+                            "end": 57,
+                            "start": 55,
+                            "tag": 89,
+                            "values": Array [
+                              Object {
+                                "end": 57,
+                                "start": 55,
+                                "tag": 8,
+                                "value": "int",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "type": "Values",
+      "types": Array [
+        Object {
+          "name": "id",
+          "sourceTag": Object {
+            "end": 57,
+            "start": 51,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 52,
+                "start": 51,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 52,
+                    "start": 51,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
+              },
+              Object {
+                "end": 57,
+                "start": 55,
+                "tag": 32,
+                "values": Array [
+                  Object {
+                    "end": 57,
+                    "start": 55,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 57,
+                        "start": 55,
+                        "tag": 8,
+                        "value": "int",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          "type": 23,
+          "value": Object {
+            "name": "int4",
+            "nullable": true,
+            "sourceTag": Object {
+              "end": 57,
+              "start": 55,
+              "tag": 32,
+              "values": Array [
+                Object {
+                  "end": 57,
+                  "start": 55,
+                  "tag": 89,
+                  "values": Array [
+                    Object {
+                      "end": 57,
+                      "start": 55,
+                      "tag": 8,
+                      "value": "int",
+                    },
+                  ],
+                },
+              ],
+            },
+            "type": 23,
+            "value": Object {
+              "postgresType": "int4",
+              "type": 3,
+            },
+          },
+        },
+      ],
+    },
+    Object {
+      "isResult": true,
+      "name": "r2",
+      "schema": undefined,
+      "sourceTag": Object {
+        "end": 101,
+        "start": 79,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 95,
+            "start": 79,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 95,
+                "start": 79,
+                "tag": 8,
+                "value": "registers_payload",
+              },
+            ],
+          },
+          Object {
+            "end": 101,
+            "start": 97,
+            "tag": 12,
+            "values": Array [
+              Object {
+                "end": 101,
+                "start": 100,
+                "tag": 8,
+                "value": "r2",
+              },
+            ],
+          },
+        ],
+      },
+      "table": "registers_payload",
+      "type": "Table",
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert Coalesce binary expression sql (SELECT COALESCE(numeric_col,0) + COALESCE(numeric_col,0) as "totalPaymentWithVat" FROM all_types) 1`] = `
 Object {
   "params": Array [],
@@ -1341,12 +1712,23 @@ Object {
                                 },
                                 Object {
                                   "end": 136,
-                                  "pick": Array [],
-                                  "required": false,
                                   "start": 129,
                                   "tag": 10,
-                                  "type": "single",
-                                  "value": "joinVal",
+                                  "values": Array [
+                                    Object {
+                                      "end": 136,
+                                      "start": 130,
+                                      "tag": 123,
+                                      "values": Array [
+                                        Object {
+                                          "end": 136,
+                                          "start": 130,
+                                          "tag": 8,
+                                          "value": "joinVal",
+                                        },
+                                      ],
+                                    },
+                                  ],
                                 },
                               ],
                             },
@@ -1575,12 +1957,23 @@ Object {
             },
             Object {
               "end": 22,
-              "pick": Array [],
-              "required": false,
               "start": 16,
               "tag": 10,
-              "type": "single",
-              "value": "param1",
+              "values": Array [
+                Object {
+                  "end": 22,
+                  "start": 17,
+                  "tag": 123,
+                  "values": Array [
+                    Object {
+                      "end": 22,
+                      "start": 17,
+                      "tag": 8,
+                      "value": "param1",
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
@@ -2509,12 +2902,23 @@ Object {
         "name": "abs",
         "sourceTag": Object {
           "end": 13,
-          "pick": Array [],
-          "required": false,
           "start": 11,
           "tag": 10,
-          "type": "single",
-          "value": "id",
+          "values": Array [
+            Object {
+              "end": 13,
+              "start": 12,
+              "tag": 123,
+              "values": Array [
+                Object {
+                  "end": 13,
+                  "start": 12,
+                  "tag": 8,
+                  "value": "id",
+                },
+              ],
+            },
+          ],
         },
         "type": 21,
       },
@@ -2552,12 +2956,23 @@ Object {
             },
             Object {
               "end": 13,
-              "pick": Array [],
-              "required": false,
               "start": 11,
               "tag": 10,
-              "type": "single",
-              "value": "id",
+              "values": Array [
+                Object {
+                  "end": 13,
+                  "start": 12,
+                  "tag": 123,
+                  "values": Array [
+                    Object {
+                      "end": 13,
+                      "start": 12,
+                      "tag": 8,
+                      "value": "id",
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
@@ -2917,6 +3332,27 @@ Object {
         Object {
           "castType": undefined,
           "name": "name",
+          "required": false,
+          "sourceTag": Object {
+            "end": 36,
+            "start": 33,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 36,
+                "start": 33,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 36,
+                    "start": 33,
+                    "tag": 8,
+                    "value": "name",
+                  },
+                ],
+              },
+            ],
+          },
           "type": Object {
             "postgresType": "any",
             "type": 9,
@@ -2925,6 +3361,27 @@ Object {
         Object {
           "castType": undefined,
           "name": "test",
+          "required": false,
+          "sourceTag": Object {
+            "end": 42,
+            "start": 39,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 42,
+                "start": 39,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 42,
+                    "start": 39,
+                    "tag": 8,
+                    "value": "test",
+                  },
+                ],
+              },
+            ],
+          },
           "type": Object {
             "postgresType": "any",
             "type": 9,
@@ -4376,12 +4833,23 @@ Object {
                                 },
                                 Object {
                                   "end": 136,
-                                  "pick": Array [],
-                                  "required": false,
                                   "start": 129,
                                   "tag": 10,
-                                  "type": "single",
-                                  "value": "joinVal",
+                                  "values": Array [
+                                    Object {
+                                      "end": 136,
+                                      "start": 130,
+                                      "tag": 123,
+                                      "values": Array [
+                                        Object {
+                                          "end": 136,
+                                          "start": 130,
+                                          "tag": 8,
+                                          "value": "joinVal",
+                                        },
+                                      ],
+                                    },
+                                  ],
                                 },
                               ],
                             },
@@ -5063,12 +5531,23 @@ Object {
                   "values": Array [
                     Object {
                       "end": 28,
-                      "pick": Array [],
-                      "required": false,
                       "start": 24,
                       "tag": 10,
-                      "type": "single",
-                      "value": "from",
+                      "values": Array [
+                        Object {
+                          "end": 28,
+                          "start": 25,
+                          "tag": 123,
+                          "values": Array [
+                            Object {
+                              "end": 28,
+                              "start": 25,
+                              "tag": 8,
+                              "value": "from",
+                            },
+                          ],
+                        },
+                      ],
                     },
                     Object {
                       "end": 30,
@@ -6087,6 +6566,27 @@ Object {
         Object {
           "castType": undefined,
           "name": "id",
+          "required": false,
+          "sourceTag": Object {
+            "end": 43,
+            "start": 42,
+            "tag": 119,
+            "values": Array [
+              Object {
+                "end": 43,
+                "start": 42,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 43,
+                    "start": 42,
+                    "tag": 8,
+                    "value": "id",
+                  },
+                ],
+              },
+            ],
+          },
           "type": Object {
             "postgresType": "any",
             "type": 9,
@@ -6142,7 +6642,22 @@ Object {
             },
             Object {
               "end": 44,
-              "pick": Array [
+              "start": 36,
+              "tag": 121,
+              "values": Array [
+                Object {
+                  "end": 40,
+                  "start": 38,
+                  "tag": 123,
+                  "values": Array [
+                    Object {
+                      "end": 40,
+                      "start": 38,
+                      "tag": 8,
+                      "value": "ids",
+                    },
+                  ],
+                },
                 Object {
                   "end": 43,
                   "start": 42,
@@ -6151,17 +6666,19 @@ Object {
                     Object {
                       "end": 43,
                       "start": 42,
-                      "tag": 8,
-                      "value": "id",
+                      "tag": 123,
+                      "values": Array [
+                        Object {
+                          "end": 43,
+                          "start": 42,
+                          "tag": 8,
+                          "value": "id",
+                        },
+                      ],
                     },
                   ],
                 },
               ],
-              "required": false,
-              "start": 36,
-              "tag": 10,
-              "type": "spread",
-              "value": "ids",
             },
           ],
         },

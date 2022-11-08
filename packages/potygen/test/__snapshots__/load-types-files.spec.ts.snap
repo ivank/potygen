@@ -1122,6 +1122,7 @@ Object {
             Object {
               "name": "GH_account_id",
               "type": Object {
+                "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -1129,6 +1130,7 @@ Object {
             Object {
               "name": "MV date",
               "type": Object {
+                "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
@@ -3416,6 +3418,7 @@ Object {
               "type": Object {
                 "comment": undefined,
                 "generated": false,
+                "nullable": true,
                 "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
@@ -3437,6 +3440,7 @@ Object {
               "type": Object {
                 "comment": undefined,
                 "generated": false,
+                "nullable": true,
                 "postgresDescription": undefined,
                 "postgresType": "jsonb",
                 "type": 8,
@@ -3447,6 +3451,7 @@ Object {
               "type": Object {
                 "comment": undefined,
                 "generated": false,
+                "nullable": true,
                 "postgresDescription": undefined,
                 "postgresType": "integer",
                 "type": 3,
@@ -5551,6 +5556,202 @@ Object {
 exports[`Load Files Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
 Object {
   "params": Array [],
+  "results": Array [],
+}
+`;
+
+exports[`Load Files Should convert complex sql update-registers.sql: update-registers.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "registers",
+      "type": Object {
+        "items": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "int4",
+                "type": 3,
+              },
+            },
+            Object {
+              "name": "customerLabel",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "industryLabel",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "smtRuleStart",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "varchar",
+                "type": 2,
+              },
+            },
+            Object {
+              "name": "smtRuleEnd",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "text",
+                "type": 2,
+              },
+            },
+            Object {
+              "name": "smtRuleStartOn",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "date",
+                "type": 6,
+              },
+            },
+            Object {
+              "name": "multiplier",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "meterId",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "indexPosition",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "int4",
+                "type": 3,
+              },
+            },
+          ],
+          "nullable": false,
+          "postgresType": "json",
+          "type": 13,
+        },
+        "postgresType": "anyarray",
+        "type": 11,
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "index_position",
+      "type": Object {
+        "postgresType": "int4",
+        "type": 3,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Load Files Should convert complex sql update-with-cte-from-values.sql: update-with-cte-from-values.sql 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "name": "registers",
+      "type": Object {
+        "items": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "nullable": false,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "customerLabel",
+              "type": Object {
+                "nullable": false,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "industryLabel",
+              "type": Object {
+                "nullable": false,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "smtRuleStart",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "smtRuleEnd",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "smtRuleStartOn",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "multiplier",
+              "type": Object {
+                "nullable": false,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "meterId",
+              "type": Object {
+                "nullable": false,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+            Object {
+              "name": "indexPosition",
+              "type": Object {
+                "nullable": true,
+                "postgresType": "any",
+                "type": 9,
+              },
+            },
+          ],
+          "nullable": false,
+          "postgresType": "json",
+          "type": 13,
+        },
+        "postgresType": "anyarray",
+        "type": 11,
+      },
+    },
+  ],
   "results": Array [],
 }
 `;

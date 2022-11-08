@@ -4748,12 +4748,23 @@ Object {
               },
               Object {
                 "end": 32,
-                "pick": Array [],
-                "required": false,
                 "start": 30,
                 "tag": 10,
-                "type": "single",
-                "value": "id",
+                "values": Array [
+                  Object {
+                    "end": 32,
+                    "start": 31,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 32,
+                        "start": 31,
+                        "tag": 8,
+                        "value": "id",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -5824,7 +5835,22 @@ Object {
         "values": Array [
           Object {
             "end": 43,
-            "pick": Array [
+            "start": 26,
+            "tag": 121,
+            "values": Array [
+              Object {
+                "end": 31,
+                "start": 28,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 31,
+                    "start": 28,
+                    "tag": 8,
+                    "value": "rows",
+                  },
+                ],
+              },
               Object {
                 "end": 36,
                 "start": 33,
@@ -5833,8 +5859,15 @@ Object {
                   Object {
                     "end": 36,
                     "start": 33,
-                    "tag": 8,
-                    "value": "name",
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 36,
+                        "start": 33,
+                        "tag": 8,
+                        "value": "name",
+                      },
+                    ],
                   },
                 ],
               },
@@ -5846,17 +5879,575 @@ Object {
                   Object {
                     "end": 42,
                     "start": 39,
-                    "tag": 8,
-                    "value": "test",
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 42,
+                        "start": 39,
+                        "tag": 8,
+                        "value": "test",
+                      },
+                    ],
                   },
                 ],
               },
             ],
-            "required": false,
-            "start": 26,
-            "tag": 10,
-            "type": "spread",
-            "value": "rows",
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse insert query with param quoted required (INSERT INTO table1 (id, col1) VALUES $items(val1, "val 2"!)): param quoted required 1`] = `
+Object {
+  "ast": Object {
+    "end": 59,
+    "start": 0,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 17,
+        "start": 12,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 12,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 12,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 28,
+        "start": 19,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 20,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 27,
+            "start": 24,
+            "tag": 8,
+            "value": "col1",
+          },
+        ],
+      },
+      Object {
+        "end": 59,
+        "start": 30,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 59,
+            "start": 37,
+            "tag": 121,
+            "values": Array [
+              Object {
+                "end": 43,
+                "start": 39,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 43,
+                    "start": 39,
+                    "tag": 8,
+                    "value": "items",
+                  },
+                ],
+              },
+              Object {
+                "end": 48,
+                "start": 45,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 48,
+                    "start": 45,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 48,
+                        "start": 45,
+                        "tag": 8,
+                        "value": "val1",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 58,
+                "start": 51,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 58,
+                    "start": 51,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 57,
+                        "start": 51,
+                        "tag": 9,
+                        "value": "val 2",
+                      },
+                      Object {
+                        "end": 58,
+                        "start": 58,
+                        "tag": 122,
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse insert query with param quoted types (INSERT INTO table1 (id, col1) VALUES $items(val1, "val 2"!::int)): param quoted types 1`] = `
+Object {
+  "ast": Object {
+    "end": 64,
+    "start": 0,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 17,
+        "start": 12,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 12,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 12,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 28,
+        "start": 19,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 20,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 27,
+            "start": 24,
+            "tag": 8,
+            "value": "col1",
+          },
+        ],
+      },
+      Object {
+        "end": 64,
+        "start": 30,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 64,
+            "start": 37,
+            "tag": 121,
+            "values": Array [
+              Object {
+                "end": 43,
+                "start": 39,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 43,
+                    "start": 39,
+                    "tag": 8,
+                    "value": "items",
+                  },
+                ],
+              },
+              Object {
+                "end": 48,
+                "start": 45,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 48,
+                    "start": 45,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 48,
+                        "start": 45,
+                        "tag": 8,
+                        "value": "val1",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 63,
+                "start": 51,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 58,
+                    "start": 51,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 57,
+                        "start": 51,
+                        "tag": 9,
+                        "value": "val 2",
+                      },
+                      Object {
+                        "end": 58,
+                        "start": 58,
+                        "tag": 122,
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 63,
+                    "start": 61,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 63,
+                        "start": 61,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 63,
+                            "start": 61,
+                            "tag": 8,
+                            "value": "int",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse insert query with param spread required (INSERT INTO table1 (id, col1) VALUES $items(val1!, val2)): param spread required 1`] = `
+Object {
+  "ast": Object {
+    "end": 56,
+    "start": 0,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 17,
+        "start": 12,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 12,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 12,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 28,
+        "start": 19,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 20,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 27,
+            "start": 24,
+            "tag": 8,
+            "value": "col1",
+          },
+        ],
+      },
+      Object {
+        "end": 56,
+        "start": 30,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 56,
+            "start": 37,
+            "tag": 121,
+            "values": Array [
+              Object {
+                "end": 43,
+                "start": 39,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 43,
+                    "start": 39,
+                    "tag": 8,
+                    "value": "items",
+                  },
+                ],
+              },
+              Object {
+                "end": 49,
+                "start": 45,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 49,
+                    "start": 45,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 48,
+                        "start": 45,
+                        "tag": 8,
+                        "value": "val1",
+                      },
+                      Object {
+                        "end": 49,
+                        "start": 49,
+                        "tag": 122,
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 55,
+                "start": 52,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 55,
+                    "start": 52,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 55,
+                        "start": 52,
+                        "tag": 8,
+                        "value": "val2",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse insert query with param spread types (INSERT INTO table1 (id, col1) VALUES $items(val1!::int, val2::int)): param spread types 1`] = `
+Object {
+  "ast": Object {
+    "end": 66,
+    "start": 0,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 17,
+        "start": 12,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 12,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 12,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 28,
+        "start": 19,
+        "tag": 85,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 20,
+            "tag": 8,
+            "value": "id",
+          },
+          Object {
+            "end": 27,
+            "start": 24,
+            "tag": 8,
+            "value": "col1",
+          },
+        ],
+      },
+      Object {
+        "end": 66,
+        "start": 30,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 66,
+            "start": 37,
+            "tag": 121,
+            "values": Array [
+              Object {
+                "end": 43,
+                "start": 39,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 43,
+                    "start": 39,
+                    "tag": 8,
+                    "value": "items",
+                  },
+                ],
+              },
+              Object {
+                "end": 54,
+                "start": 45,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 49,
+                    "start": 45,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 48,
+                        "start": 45,
+                        "tag": 8,
+                        "value": "val1",
+                      },
+                      Object {
+                        "end": 49,
+                        "start": 49,
+                        "tag": 122,
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 54,
+                    "start": 52,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 54,
+                        "start": 52,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 54,
+                            "start": 52,
+                            "tag": 8,
+                            "value": "int",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 65,
+                "start": 57,
+                "tag": 119,
+                "values": Array [
+                  Object {
+                    "end": 60,
+                    "start": 57,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 60,
+                        "start": 57,
+                        "tag": 8,
+                        "value": "val2",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 65,
+                    "start": 63,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 65,
+                        "start": 63,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 65,
+                            "start": 63,
+                            "tag": 8,
+                            "value": "int",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
           },
         ],
       },
@@ -6281,12 +6872,23 @@ Object {
         "values": Array [
           Object {
             "end": 43,
-            "pick": Array [],
-            "required": false,
             "start": 37,
-            "tag": 10,
-            "type": "spread",
-            "value": "items",
+            "tag": 121,
+            "values": Array [
+              Object {
+                "end": 43,
+                "start": 39,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 43,
+                    "start": 39,
+                    "tag": 8,
+                    "value": "items",
+                  },
+                ],
+              },
+            ],
           },
         ],
       },
@@ -6349,7 +6951,22 @@ Object {
         "values": Array [
           Object {
             "end": 58,
-            "pick": Array [
+            "start": 37,
+            "tag": 121,
+            "values": Array [
+              Object {
+                "end": 43,
+                "start": 39,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 43,
+                    "start": 39,
+                    "tag": 8,
+                    "value": "items",
+                  },
+                ],
+              },
               Object {
                 "end": 48,
                 "start": 45,
@@ -6358,8 +6975,15 @@ Object {
                   Object {
                     "end": 48,
                     "start": 45,
-                    "tag": 8,
-                    "value": "val1",
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 48,
+                        "start": 45,
+                        "tag": 8,
+                        "value": "val1",
+                      },
+                    ],
                   },
                 ],
               },
@@ -6371,17 +6995,19 @@ Object {
                   Object {
                     "end": 57,
                     "start": 51,
-                    "tag": 9,
-                    "value": "val 2",
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 57,
+                        "start": 51,
+                        "tag": 9,
+                        "value": "val 2",
+                      },
+                    ],
                   },
                 ],
               },
             ],
-            "required": false,
-            "start": 37,
-            "tag": 10,
-            "type": "spread",
-            "value": "items",
           },
         ],
       },
@@ -6444,7 +7070,22 @@ Object {
         "values": Array [
           Object {
             "end": 55,
-            "pick": Array [
+            "start": 37,
+            "tag": 121,
+            "values": Array [
+              Object {
+                "end": 43,
+                "start": 39,
+                "tag": 123,
+                "values": Array [
+                  Object {
+                    "end": 43,
+                    "start": 39,
+                    "tag": 8,
+                    "value": "items",
+                  },
+                ],
+              },
               Object {
                 "end": 48,
                 "start": 45,
@@ -6453,8 +7094,15 @@ Object {
                   Object {
                     "end": 48,
                     "start": 45,
-                    "tag": 8,
-                    "value": "val1",
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 48,
+                        "start": 45,
+                        "tag": 8,
+                        "value": "val1",
+                      },
+                    ],
                   },
                 ],
               },
@@ -6466,17 +7114,19 @@ Object {
                   Object {
                     "end": 54,
                     "start": 51,
-                    "tag": 8,
-                    "value": "val2",
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 54,
+                        "start": 51,
+                        "tag": 8,
+                        "value": "val2",
+                      },
+                    ],
                   },
                 ],
               },
             ],
-            "required": false,
-            "start": 37,
-            "tag": 10,
-            "type": "spread",
-            "value": "items",
           },
         ],
       },
@@ -8071,12 +8721,23 @@ Object {
               },
               Object {
                 "end": 34,
-                "pick": Array [],
-                "required": false,
                 "start": 29,
                 "tag": 10,
-                "type": "single",
-                "value": "test1",
+                "values": Array [
+                  Object {
+                    "end": 34,
+                    "start": 30,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 34,
+                        "start": 30,
+                        "tag": 8,
+                        "value": "test1",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -8158,12 +8819,23 @@ Object {
               },
               Object {
                 "end": 34,
-                "pick": Array [],
-                "required": false,
                 "start": 29,
                 "tag": 10,
-                "type": "single",
-                "value": "test1",
+                "values": Array [
+                  Object {
+                    "end": 34,
+                    "start": 30,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 34,
+                        "start": 30,
+                        "tag": 8,
+                        "value": "test1",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -8245,12 +8917,23 @@ Object {
               },
               Object {
                 "end": 34,
-                "pick": Array [],
-                "required": false,
                 "start": 29,
                 "tag": 10,
-                "type": "single",
-                "value": "test1",
+                "values": Array [
+                  Object {
+                    "end": 34,
+                    "start": 30,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 34,
+                        "start": 30,
+                        "tag": 8,
+                        "value": "test1",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -8457,12 +9140,28 @@ Object {
                           },
                           Object {
                             "end": 81,
-                            "pick": Array [],
-                            "required": true,
                             "start": 75,
                             "tag": 10,
-                            "type": "single",
-                            "value": "test1",
+                            "values": Array [
+                              Object {
+                                "end": 81,
+                                "start": 76,
+                                "tag": 123,
+                                "values": Array [
+                                  Object {
+                                    "end": 80,
+                                    "start": 76,
+                                    "tag": 8,
+                                    "value": "test1",
+                                  },
+                                  Object {
+                                    "end": 81,
+                                    "start": 81,
+                                    "tag": 122,
+                                  },
+                                ],
+                              },
+                            ],
                           },
                         ],
                       },
@@ -8511,12 +9210,23 @@ Object {
               },
               Object {
                 "end": 107,
-                "pick": Array [],
-                "required": false,
                 "start": 102,
                 "tag": 10,
-                "type": "single",
-                "value": "test2",
+                "values": Array [
+                  Object {
+                    "end": 107,
+                    "start": 103,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 107,
+                        "start": 103,
+                        "tag": 8,
+                        "value": "test2",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -8723,12 +9433,23 @@ Object {
                           },
                           Object {
                             "end": 80,
-                            "pick": Array [],
-                            "required": false,
                             "start": 75,
                             "tag": 10,
-                            "type": "single",
-                            "value": "test1",
+                            "values": Array [
+                              Object {
+                                "end": 80,
+                                "start": 76,
+                                "tag": 123,
+                                "values": Array [
+                                  Object {
+                                    "end": 80,
+                                    "start": 76,
+                                    "tag": 8,
+                                    "value": "test1",
+                                  },
+                                ],
+                              },
+                            ],
                           },
                         ],
                       },
@@ -8777,12 +9498,23 @@ Object {
               },
               Object {
                 "end": 106,
-                "pick": Array [],
-                "required": false,
                 "start": 101,
                 "tag": 10,
-                "type": "single",
-                "value": "test2",
+                "values": Array [
+                  Object {
+                    "end": 106,
+                    "start": 102,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 106,
+                        "start": 102,
+                        "tag": 8,
+                        "value": "test2",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -8989,12 +9721,28 @@ Object {
                           },
                           Object {
                             "end": 81,
-                            "pick": Array [],
-                            "required": true,
                             "start": 75,
                             "tag": 10,
-                            "type": "single",
-                            "value": "test1",
+                            "values": Array [
+                              Object {
+                                "end": 81,
+                                "start": 76,
+                                "tag": 123,
+                                "values": Array [
+                                  Object {
+                                    "end": 80,
+                                    "start": 76,
+                                    "tag": 8,
+                                    "value": "test1",
+                                  },
+                                  Object {
+                                    "end": 81,
+                                    "start": 81,
+                                    "tag": 122,
+                                  },
+                                ],
+                              },
+                            ],
                           },
                         ],
                       },
@@ -9043,12 +9791,23 @@ Object {
               },
               Object {
                 "end": 107,
-                "pick": Array [],
-                "required": false,
                 "start": 102,
                 "tag": 10,
-                "type": "single",
-                "value": "test2",
+                "values": Array [
+                  Object {
+                    "end": 107,
+                    "start": 103,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 107,
+                        "start": 103,
+                        "tag": 8,
+                        "value": "test2",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -9079,12 +9838,28 @@ Object {
             "values": Array [
               Object {
                 "end": 13,
-                "pick": Array [],
-                "required": true,
                 "start": 7,
                 "tag": 10,
-                "type": "single",
-                "value": "test1",
+                "values": Array [
+                  Object {
+                    "end": 13,
+                    "start": 8,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 12,
+                        "start": 8,
+                        "tag": 8,
+                        "value": "test1",
+                      },
+                      Object {
+                        "end": 13,
+                        "start": 13,
+                        "tag": 122,
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -9115,12 +9890,28 @@ Object {
             "values": Array [
               Object {
                 "end": 13,
-                "pick": Array [],
-                "required": true,
                 "start": 7,
                 "tag": 10,
-                "type": "single",
-                "value": "test1",
+                "values": Array [
+                  Object {
+                    "end": 13,
+                    "start": 8,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 12,
+                        "start": 8,
+                        "tag": 8,
+                        "value": "test1",
+                      },
+                      Object {
+                        "end": 13,
+                        "start": 13,
+                        "tag": 122,
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -9151,12 +9942,23 @@ Object {
             "values": Array [
               Object {
                 "end": 12,
-                "pick": Array [],
-                "required": false,
                 "start": 7,
                 "tag": 10,
-                "type": "single",
-                "value": "test1",
+                "values": Array [
+                  Object {
+                    "end": 12,
+                    "start": 8,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 12,
+                        "start": 8,
+                        "tag": 8,
+                        "value": "test1",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -9272,12 +10074,28 @@ Object {
               },
               Object {
                 "end": 46,
-                "pick": Array [],
-                "required": true,
                 "start": 40,
                 "tag": 10,
-                "type": "single",
-                "value": "test1",
+                "values": Array [
+                  Object {
+                    "end": 46,
+                    "start": 41,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 45,
+                        "start": 41,
+                        "tag": 8,
+                        "value": "test1",
+                      },
+                      Object {
+                        "end": 46,
+                        "start": 46,
+                        "tag": 122,
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -9393,12 +10211,28 @@ Object {
               },
               Object {
                 "end": 46,
-                "pick": Array [],
-                "required": true,
                 "start": 40,
                 "tag": 10,
-                "type": "single",
-                "value": "test1",
+                "values": Array [
+                  Object {
+                    "end": 46,
+                    "start": 41,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 45,
+                        "start": 41,
+                        "tag": 8,
+                        "value": "test1",
+                      },
+                      Object {
+                        "end": 46,
+                        "start": 46,
+                        "tag": 122,
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -9514,12 +10348,23 @@ Object {
               },
               Object {
                 "end": 45,
-                "pick": Array [],
-                "required": false,
                 "start": 40,
                 "tag": 10,
-                "type": "single",
-                "value": "test1",
+                "values": Array [
+                  Object {
+                    "end": 45,
+                    "start": 41,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 45,
+                        "start": 41,
+                        "tag": 8,
+                        "value": "test1",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -9629,12 +10474,23 @@ Object {
               },
               Object {
                 "end": 40,
-                "pick": Array [],
-                "required": false,
                 "start": 36,
-                "tag": 10,
-                "type": "spread",
-                "value": "ids",
+                "tag": 121,
+                "values": Array [
+                  Object {
+                    "end": 40,
+                    "start": 38,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 40,
+                        "start": 38,
+                        "tag": 8,
+                        "value": "ids",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -9670,12 +10526,23 @@ Object {
                 "values": Array [
                   Object {
                     "end": 11,
-                    "pick": Array [],
-                    "required": false,
                     "start": 7,
                     "tag": 10,
-                    "type": "single",
-                    "value": "test",
+                    "values": Array [
+                      Object {
+                        "end": 11,
+                        "start": 8,
+                        "tag": 123,
+                        "values": Array [
+                          Object {
+                            "end": 11,
+                            "start": 8,
+                            "tag": 8,
+                            "value": "test",
+                          },
+                        ],
+                      },
+                    ],
                   },
                   Object {
                     "end": 18,
@@ -9745,12 +10612,23 @@ Object {
                 "values": Array [
                   Object {
                     "end": 11,
-                    "pick": Array [],
-                    "required": false,
                     "start": 7,
                     "tag": 10,
-                    "type": "single",
-                    "value": "test",
+                    "values": Array [
+                      Object {
+                        "end": 11,
+                        "start": 8,
+                        "tag": 123,
+                        "values": Array [
+                          Object {
+                            "end": 11,
+                            "start": 8,
+                            "tag": 8,
+                            "value": "test",
+                          },
+                        ],
+                      },
+                    ],
                   },
                   Object {
                     "end": 20,
@@ -9895,12 +10773,23 @@ Object {
                         "values": Array [
                           Object {
                             "end": 34,
-                            "pick": Array [],
-                            "required": false,
                             "start": 28,
                             "tag": 10,
-                            "type": "single",
-                            "value": "active",
+                            "values": Array [
+                              Object {
+                                "end": 34,
+                                "start": 29,
+                                "tag": 123,
+                                "values": Array [
+                                  Object {
+                                    "end": 34,
+                                    "start": 29,
+                                    "tag": 8,
+                                    "value": "active",
+                                  },
+                                ],
+                              },
+                            ],
                           },
                           Object {
                             "end": 43,
@@ -9955,12 +10844,23 @@ Object {
                         "values": Array [
                           Object {
                             "end": 62,
-                            "pick": Array [],
-                            "required": false,
                             "start": 56,
                             "tag": 10,
-                            "type": "single",
-                            "value": "active",
+                            "values": Array [
+                              Object {
+                                "end": 62,
+                                "start": 57,
+                                "tag": 123,
+                                "values": Array [
+                                  Object {
+                                    "end": 62,
+                                    "start": 57,
+                                    "tag": 8,
+                                    "value": "active",
+                                  },
+                                ],
+                              },
+                            ],
                           },
                           Object {
                             "end": 71,
@@ -10236,7 +11136,22 @@ Object {
                     "values": Array [
                       Object {
                         "end": 114,
-                        "pick": Array [
+                        "start": 92,
+                        "tag": 121,
+                        "values": Array [
+                          Object {
+                            "end": 99,
+                            "start": 94,
+                            "tag": 123,
+                            "values": Array [
+                              Object {
+                                "end": 99,
+                                "start": 94,
+                                "tag": 8,
+                                "value": "tables",
+                              },
+                            ],
+                          },
                           Object {
                             "end": 106,
                             "start": 101,
@@ -10245,8 +11160,15 @@ Object {
                               Object {
                                 "end": 106,
                                 "start": 101,
-                                "tag": 8,
-                                "value": "schema",
+                                "tag": 123,
+                                "values": Array [
+                                  Object {
+                                    "end": 106,
+                                    "start": 101,
+                                    "tag": 8,
+                                    "value": "schema",
+                                  },
+                                ],
                               },
                             ],
                           },
@@ -10258,17 +11180,19 @@ Object {
                               Object {
                                 "end": 113,
                                 "start": 109,
-                                "tag": 8,
-                                "value": "table",
+                                "tag": 123,
+                                "values": Array [
+                                  Object {
+                                    "end": 113,
+                                    "start": 109,
+                                    "tag": 8,
+                                    "value": "table",
+                                  },
+                                ],
                               },
                             ],
                           },
                         ],
-                        "required": false,
-                        "start": 92,
-                        "tag": 10,
-                        "type": "spread",
-                        "value": "tables",
                       },
                     ],
                   },
@@ -12599,12 +13523,23 @@ Object {
               },
               Object {
                 "end": 51,
-                "pick": Array [],
-                "required": false,
                 "start": 46,
                 "tag": 10,
-                "type": "single",
-                "value": "start",
+                "values": Array [
+                  Object {
+                    "end": 51,
+                    "start": 47,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 51,
+                        "start": 47,
+                        "tag": 8,
+                        "value": "start",
+                      },
+                    ],
+                  },
+                ],
               },
               Object {
                 "end": 55,
@@ -12614,12 +13549,23 @@ Object {
               },
               Object {
                 "end": 60,
-                "pick": Array [],
-                "required": false,
                 "start": 57,
                 "tag": 10,
-                "type": "single",
-                "value": "end",
+                "values": Array [
+                  Object {
+                    "end": 60,
+                    "start": 58,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 60,
+                        "start": 58,
+                        "tag": 8,
+                        "value": "end",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -12797,12 +13743,23 @@ Object {
                   },
                   Object {
                     "end": 99,
-                    "pick": Array [],
-                    "required": false,
                     "start": 94,
                     "tag": 10,
-                    "type": "single",
-                    "value": "start",
+                    "values": Array [
+                      Object {
+                        "end": 99,
+                        "start": 95,
+                        "tag": 123,
+                        "values": Array [
+                          Object {
+                            "end": 99,
+                            "start": 95,
+                            "tag": 8,
+                            "value": "start",
+                          },
+                        ],
+                      },
+                    ],
                   },
                   Object {
                     "end": 103,
@@ -12812,12 +13769,23 @@ Object {
                   },
                   Object {
                     "end": 108,
-                    "pick": Array [],
-                    "required": false,
                     "start": 105,
                     "tag": 10,
-                    "type": "single",
-                    "value": "end",
+                    "values": Array [
+                      Object {
+                        "end": 108,
+                        "start": 106,
+                        "tag": 123,
+                        "values": Array [
+                          Object {
+                            "end": 108,
+                            "start": 106,
+                            "tag": 8,
+                            "value": "end",
+                          },
+                        ],
+                      },
+                    ],
                   },
                 ],
               },
@@ -15542,6 +16510,209 @@ Object {
                         "value": "tmp2",
                       },
                     ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse simple sql from values with columns (SELECT * FROM (VALUES (10, 20)) AS test(id, value)): from values with columns 1`] = `
+Object {
+  "ast": Object {
+    "end": 49,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 7,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 7,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 7,
+                "start": 7,
+                "tag": 37,
+                "values": Array [
+                  Object {
+                    "end": 7,
+                    "start": 7,
+                    "tag": 36,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 49,
+        "start": 9,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 49,
+            "start": 14,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 49,
+                "start": 14,
+                "tag": 120,
+                "values": Array [
+                  Object {
+                    "end": 30,
+                    "start": 14,
+                    "tag": 97,
+                    "values": Array [
+                      Object {
+                        "end": 29,
+                        "start": 22,
+                        "tag": 86,
+                        "values": Array [
+                          Object {
+                            "end": 24,
+                            "start": 23,
+                            "tag": 19,
+                            "value": "10",
+                          },
+                          Object {
+                            "end": 28,
+                            "start": 27,
+                            "tag": 19,
+                            "value": "20",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 38,
+                    "start": 35,
+                    "tag": 8,
+                    "value": "test",
+                  },
+                  Object {
+                    "end": 49,
+                    "start": 39,
+                    "tag": 85,
+                    "values": Array [
+                      Object {
+                        "end": 41,
+                        "start": 40,
+                        "tag": 8,
+                        "value": "id",
+                      },
+                      Object {
+                        "end": 48,
+                        "start": 44,
+                        "tag": 8,
+                        "value": "value",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse simple sql from values without columns (SELECT * FROM (VALUES (10, 20)) AS test): from values without columns 1`] = `
+Object {
+  "ast": Object {
+    "end": 38,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 7,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 7,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 7,
+                "start": 7,
+                "tag": 37,
+                "values": Array [
+                  Object {
+                    "end": 7,
+                    "start": 7,
+                    "tag": 36,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 38,
+        "start": 9,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 38,
+            "start": 14,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 38,
+                "start": 14,
+                "tag": 120,
+                "values": Array [
+                  Object {
+                    "end": 30,
+                    "start": 14,
+                    "tag": 97,
+                    "values": Array [
+                      Object {
+                        "end": 29,
+                        "start": 22,
+                        "tag": 86,
+                        "values": Array [
+                          Object {
+                            "end": 24,
+                            "start": 23,
+                            "tag": 19,
+                            "value": "10",
+                          },
+                          Object {
+                            "end": 28,
+                            "start": 27,
+                            "tag": 19,
+                            "value": "20",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 38,
+                    "start": 35,
+                    "tag": 8,
+                    "value": "test",
                   },
                 ],
               },
@@ -20922,12 +22093,23 @@ Object {
                 "values": Array [
                   Object {
                     "end": 33,
-                    "pick": Array [],
-                    "required": false,
                     "start": 27,
                     "tag": 10,
-                    "type": "single",
-                    "value": "param1",
+                    "values": Array [
+                      Object {
+                        "end": 33,
+                        "start": 28,
+                        "tag": 123,
+                        "values": Array [
+                          Object {
+                            "end": 33,
+                            "start": 28,
+                            "tag": 8,
+                            "value": "param1",
+                          },
+                        ],
+                      },
+                    ],
                   },
                   Object {
                     "end": 38,
@@ -20972,12 +22154,23 @@ Object {
                 "values": Array [
                   Object {
                     "end": 53,
-                    "pick": Array [],
-                    "required": false,
                     "start": 47,
                     "tag": 10,
-                    "type": "single",
-                    "value": "param2",
+                    "values": Array [
+                      Object {
+                        "end": 53,
+                        "start": 48,
+                        "tag": 123,
+                        "values": Array [
+                          Object {
+                            "end": 53,
+                            "start": 48,
+                            "tag": 8,
+                            "value": "param2",
+                          },
+                        ],
+                      },
+                    ],
                   },
                   Object {
                     "end": 58,
@@ -21090,12 +22283,23 @@ Object {
             "values": Array [
               Object {
                 "end": 33,
-                "pick": Array [],
-                "required": false,
                 "start": 27,
                 "tag": 10,
-                "type": "single",
-                "value": "param1",
+                "values": Array [
+                  Object {
+                    "end": 33,
+                    "start": 28,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 33,
+                        "start": 28,
+                        "tag": 8,
+                        "value": "param1",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -21113,12 +22317,23 @@ Object {
             "values": Array [
               Object {
                 "end": 48,
-                "pick": Array [],
-                "required": false,
                 "start": 42,
                 "tag": 10,
-                "type": "single",
-                "value": "param2",
+                "values": Array [
+                  Object {
+                    "end": 48,
+                    "start": 43,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 48,
+                        "start": 43,
+                        "tag": 8,
+                        "value": "param2",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -22772,12 +23987,23 @@ Object {
                             "values": Array [
                               Object {
                                 "end": 46,
-                                "pick": Array [],
-                                "required": false,
                                 "start": 40,
                                 "tag": 10,
-                                "type": "single",
-                                "value": "param1",
+                                "values": Array [
+                                  Object {
+                                    "end": 46,
+                                    "start": 41,
+                                    "tag": 123,
+                                    "values": Array [
+                                      Object {
+                                        "end": 46,
+                                        "start": 41,
+                                        "tag": 8,
+                                        "value": "param1",
+                                      },
+                                    ],
+                                  },
+                                ],
                               },
                               Object {
                                 "end": 48,
@@ -22806,12 +24032,23 @@ Object {
                             "values": Array [
                               Object {
                                 "end": 67,
-                                "pick": Array [],
-                                "required": false,
                                 "start": 61,
                                 "tag": 10,
-                                "type": "single",
-                                "value": "param2",
+                                "values": Array [
+                                  Object {
+                                    "end": 67,
+                                    "start": 62,
+                                    "tag": 123,
+                                    "values": Array [
+                                      Object {
+                                        "end": 67,
+                                        "start": 62,
+                                        "tag": 8,
+                                        "value": "param2",
+                                      },
+                                    ],
+                                  },
+                                ],
                               },
                               Object {
                                 "end": 69,
@@ -27932,12 +29169,23 @@ Object {
                   },
                   Object {
                     "end": 31,
-                    "pick": Array [],
-                    "required": false,
                     "start": 25,
                     "tag": 10,
-                    "type": "single",
-                    "value": "param1",
+                    "values": Array [
+                      Object {
+                        "end": 31,
+                        "start": 26,
+                        "tag": 123,
+                        "values": Array [
+                          Object {
+                            "end": 31,
+                            "start": 26,
+                            "tag": 8,
+                            "value": "param1",
+                          },
+                        ],
+                      },
+                    ],
                   },
                 ],
               },
@@ -27954,12 +29202,23 @@ Object {
                   },
                   Object {
                     "end": 47,
-                    "pick": Array [],
-                    "required": false,
                     "start": 41,
                     "tag": 10,
-                    "type": "single",
-                    "value": "param2",
+                    "values": Array [
+                      Object {
+                        "end": 47,
+                        "start": 42,
+                        "tag": 123,
+                        "values": Array [
+                          Object {
+                            "end": 47,
+                            "start": 42,
+                            "tag": 8,
+                            "value": "param2",
+                          },
+                        ],
+                      },
+                    ],
                   },
                 ],
               },
@@ -28387,12 +29646,23 @@ Object {
               },
               Object {
                 "end": 41,
-                "pick": Array [],
-                "required": false,
                 "start": 39,
                 "tag": 10,
-                "type": "single",
-                "value": "id",
+                "values": Array [
+                  Object {
+                    "end": 41,
+                    "start": 40,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 41,
+                        "start": 40,
+                        "tag": 8,
+                        "value": "id",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -28587,12 +29857,23 @@ Object {
               },
               Object {
                 "end": 49,
-                "pick": Array [],
-                "required": false,
                 "start": 47,
                 "tag": 10,
-                "type": "single",
-                "value": "id",
+                "values": Array [
+                  Object {
+                    "end": 49,
+                    "start": 48,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 49,
+                        "start": 48,
+                        "tag": 8,
+                        "value": "id",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },

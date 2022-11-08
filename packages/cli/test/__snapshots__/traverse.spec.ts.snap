@@ -138,8 +138,8 @@ export interface Query {
 exports[`Traverse Should work: __generated__/account-verification.update.query.queries.ts 1`] = `
 "export interface Params {
     items: {
-        GH_account_id: unknown;
-        [\\"MV date\\"]: unknown;
+        GH_account_id?: unknown;
+        [\\"MV date\\"]?: unknown;
     }[];
     currentDate: Date;
 }
@@ -469,10 +469,10 @@ exports[`Traverse Should work: __generated__/insert.process.query.queries.ts 1`]
 "import { Json } from \\"@potygen/potygen\\";
 export interface Params<TParamItemsData = unknown> {
     items: {
-        processId: number;
+        processId?: number;
         idempotencyKey?: string;
-        data: TParamItemsData;
-        accountId: number;
+        data?: TParamItemsData;
+        accountId?: number;
     }[];
 }
 export interface Result<TData = unknown> {
@@ -812,6 +812,53 @@ export interface Query {
 
 exports[`Traverse Should work: __generated__/tariff-rates.queries.ts 1`] = `
 "export interface Params {
+}
+export interface Result {
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/update-registers.queries.ts 1`] = `
+"export interface Params {
+    registers: {
+        id?: number;
+        customerLabel?: unknown;
+        industryLabel?: unknown;
+        smtRuleStart?: string;
+        smtRuleEnd?: string;
+        smtRuleStartOn?: Date;
+        multiplier?: unknown;
+        meterId?: unknown;
+        indexPosition?: number;
+    }[];
+}
+export interface Result {
+    index_position: number;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
+exports[`Traverse Should work: __generated__/update-with-cte-from-values.queries.ts 1`] = `
+"export interface Params {
+    registers: {
+        id: unknown;
+        customerLabel: unknown;
+        industryLabel: unknown;
+        smtRuleStart?: unknown;
+        smtRuleEnd?: unknown;
+        smtRuleStartOn?: unknown;
+        multiplier: unknown;
+        meterId: unknown;
+        indexPosition?: unknown;
+    }[];
 }
 export interface Result {
 }

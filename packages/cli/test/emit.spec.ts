@@ -41,6 +41,10 @@ describe('Query Interface', () => {
     ['different result types for returning', `UPDATE all_types SET id = 1 RETURNING *`],
     ['json returning', `UPDATE all_types SET id = 1 RETURNING json_col`],
     ['enum', `SELECT 'Pending'::account_levelisation_state`],
+    [
+      'case to string literal union',
+      `SELECT CASE accounts.source_system WHEN 'SSE' THEN 'SSE' WHEN 'FITDB' THEN 'FITDB' ELSE NULL END AS "sourceSystem" FROM accounts`,
+    ],
     ['enum column', `SELECT state FROM account_levelisations`],
     ['simple', `SELECT id, character_col FROM all_types WHERE id = :id`],
     [

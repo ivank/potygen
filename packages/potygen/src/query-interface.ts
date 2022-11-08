@@ -31,9 +31,9 @@ import {
   isFilter,
   isFunctionArg,
   isOrderBy,
-  isParameter,
   isReturning,
   isSelectList,
+  isSpreadParameter,
   isTable,
   isValues,
 } from './grammar.guards';
@@ -149,20 +149,38 @@ const toSourcesIterator =
         if (isCTEValuesList(cteQuery)) {
           const cteNameParts = first(sql.values).values;
           const cteValuesItem = first(cteQuery.values.filter(isCTEValues));
+          const cteParameter = first(cteQuery.values.filter(isSpreadParameter));
           const valuesType = toType({ type: typeUnknown, columns: [] });
           const columnNames =
             cteNameParts.length === 2 ? last(cteNameParts).values.map((column) => column.value) : undefined;
+
+          const parameterTypes = cteParameter ? toParams({ type: typeUnknown, columns: [] })(cteParameter) : undefined;
+
+          const types =
+            cteValuesItem?.values.map<TypeLoadNamed>((item, index) => ({
+              type: TypeName.LoadNamed,
+              name: columnNames?.[index] ?? `column${index}`,
+              value: valuesType(item),
+              sourceTag: item,
+            })) ??
+            parameterTypes?.[0].pick.map<TypeLoadNamed>((item, index) => ({
+              type: TypeName.LoadNamed,
+              name: columnNames?.[index] ?? `column${index}`,
+              value: { ...item.type, nullable: !item.required },
+              sourceTag: item.sourceTag,
+            }));
 
           return sources.concat({
             type: 'Values',
             sourceTag: sql,
             name: first(first(sql.values).values).value,
-            types: cteValuesItem?.values.map<TypeLoadNamed>((item, index) => ({
-              type: TypeName.LoadNamed,
-              name: columnNames?.[index] ?? `column${index}`,
-              value: valuesType(item),
-              sourceTag: item,
-            })),
+            types:
+              cteValuesItem?.values.map<TypeLoadNamed>((item, index) => ({
+                type: TypeName.LoadNamed,
+                name: columnNames?.[index] ?? `column${index}`,
+                value: valuesType(item),
+                sourceTag: item,
+              })) ?? types,
           });
         } else {
           const queryValue = toQueryInterface(cteQuery, sources);
@@ -195,6 +213,18 @@ const toSourcesIterator =
             type: TypeName.LoadNamed,
             name: first(item.values).value,
             value: recordsetType(last(item.values)),
+            sourceTag: item,
+          })),
+        });
+      case SqlName.RecordsetValuesList:
+        return sources.concat({
+          type: 'Values',
+          sourceTag: sql,
+          name: sql.values[1].value,
+          types: sql.values[2]?.values.map<TypeLoadNamed>((item) => ({
+            type: TypeName.LoadNamed,
+            name: item.value,
+            value: typeUnknown,
             sourceTag: item,
           })),
         });
@@ -415,6 +445,7 @@ const toType =
       case SqlName.Number:
         return { type: TypeName.Number, literal: Number(sql.value), postgresType: 'float4' };
       case SqlName.Parameter:
+      case SqlName.SpreadParameter:
         return typeAny;
       case SqlName.Row:
       case SqlName.RowKeyward:
@@ -655,20 +686,25 @@ export const toParams =
         }
 
       case SqlName.Parameter:
+      case SqlName.SpreadParameter:
+        const parameterName = first(sql.values);
+        const parameterPicks = tail(sql.values);
         return [
           {
-            name: sql.value,
+            name: first(parameterName.values).value,
             start: sql.start,
             end: sql.end,
-            spread: sql.type === 'spread',
-            required: sql.required || sql.pick.length > 0,
+            spread: isSpreadParameter(sql),
+            required: Boolean(parameterName.values[1]) || parameterPicks.length > 0,
             type: context.type,
-            pick: sql.pick.map((pick, index) => {
+            pick: parameterPicks.map((pick, index) => {
               const castType = pick.values[1] ? toTypeRecur(pick.values[1]) : undefined;
               return {
-                name: first(pick.values).value,
+                name: first(first(pick.values).values).value,
                 castType,
+                required: Boolean(first(pick.values).values[1]),
                 type: castType ?? context.columns[index] ?? typeUnknown,
+                sourceTag: pick,
               };
             }),
           },
@@ -701,7 +737,7 @@ export const toParams =
               isDefault(column) ? [] : toParams({ ...context, type: context.columns[index] })(column),
             ),
           )
-          .concat(sql.values.filter(isParameter).flatMap(recur));
+          .concat(sql.values.filter(isSpreadParameter).flatMap(recur));
 
       case SqlName.PgCast:
       case SqlName.Cast:

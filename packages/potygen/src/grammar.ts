@@ -150,6 +150,8 @@ const ColumnUnqualified = astNode<Tag.ColumnTag>(Tag.SqlName.Column, IdentifierR
  */
 const Column = Any(ColumnFullyQualified, ColumnQualified, ColumnUnqualified);
 
+const Columns = astNode<Tag.ColumnsTag>(Tag.SqlName.Columns, Brackets(List(IdentifierRestricted)));
+
 /**
  * AS Clause
  */
@@ -237,26 +239,27 @@ const Type = astNode<Tag.TypeTag>(
 const Dimension = astEmptyLeaf<Tag.DimensionTag>(Tag.SqlName.Dimension, SquareBrackets());
 const TypeArray = astNode<Tag.ArrayTypeTag>(Tag.SqlName.ArrayType, All(Type, Plus(Dimension)));
 const AnyType = Any(TypeArray, Type);
-
-const ParameterPick = astNode<Tag.ParameterPickTag>(
-  Tag.SqlName.ParameterPick,
-  All(Identifier, Optional(All('::', AnyType))),
-);
+const Default = astEmptyLeaf<Tag.DefaultTag>(Tag.SqlName.Default, /^DEFAULT/i);
 
 /**
- * Parameteer
+ * Parameter
  */
-const Parameter = Node<Tag.ParameterTag>(
-  All(/^(\$\$|\$|\:)/, IdentifierRule, Optional(Any(/^(\!)/, Brackets(List(ParameterPick))))),
-  ([type, value, ...rest], $, $next) => ({
-    tag: Tag.SqlName.Parameter,
-    value,
-    type: type === '$$' ? 'spread' : 'single',
-    required: rest.includes('!'),
-    pick: rest.filter((item) => item !== '!'),
-    start: $.pos,
-    end: $next.pos - 1,
-  }),
+const ParameterRequired = astEmptyLeaf<Tag.ParameterRequiredTag>(Tag.SqlName.ParameterRequired, '!');
+const ParameterIdentifier = astNode<Tag.ParameterIdentifierTag>(
+  Tag.SqlName.ParameterIdentifier,
+  All(Identifier, Optional(ParameterRequired)),
+);
+const ParameterPick = astNode<Tag.ParameterPickTag>(
+  Tag.SqlName.ParameterPick,
+  All(ParameterIdentifier, Optional(All('::', AnyType))),
+);
+const Parameter = astNode<Tag.ParameterTag>(
+  Tag.SqlName.Parameter,
+  All(Any('$', ':'), ParameterIdentifier, Optional(Brackets(List(ParameterPick)))),
+);
+const SpreadParameter = astNode<Tag.SpreadParameterTag>(
+  Tag.SqlName.SpreadParameter,
+  All('$$', ParameterIdentifier, Optional(Brackets(List(ParameterPick)))),
 );
 
 /**
@@ -426,6 +429,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       WrappedExpression,
       ColumnFullyQualified,
       Constant,
+      SpreadParameter,
       Parameter,
       ArrayConstructor,
       Row,
@@ -480,7 +484,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const ExpressionList = astNode<Tag.ExpressionListTag>(Tag.SqlName.ExpressionList, List(ChildExpression));
     const ComparationArrayInclusion = astNode<Tag.ComparationArrayInclusionTag>(
       Tag.SqlName.ComparationArrayInclusion,
-      All(ComparationArrayInclusionType, Any(Brackets(ExpressionList), Parameter)),
+      All(ComparationArrayInclusionType, Any(Brackets(ExpressionList), SpreadParameter, Parameter)),
     );
     const ComparationArray = astNode<Tag.ComparationArrayTag>(
       Tag.SqlName.ComparationArray,
@@ -550,8 +554,19 @@ const FromListRule = (Select: Rule, ChildExpression: Rule): Rule => {
     Tag.SqlName.RecordsetFunction,
     All(Function(ChildExpression), AsRecordset),
   );
-
-  return astNode<Tag.FromListTag>(Tag.SqlName.FromList, List(Any(RecordsetFunction, Table, NamedSelect)));
+  const FormValues = astNode<Tag.ValuesTag>(Tag.SqlName.Values, Brackets(List(Any(Default, ChildExpression))));
+  const FromValuesList = astNode<Tag.ValuesListTag>(
+    Tag.SqlName.ValuesList,
+    Brackets(All(/^VALUES/i, Any(List(FormValues), SpreadParameter))),
+  );
+  const RecordsetValuesList = astNode<Tag.RecordsetValuesListTag>(
+    Tag.SqlName.RecordsetValuesList,
+    All(FromValuesList, /^AS/i, Identifier, Optional(Columns)),
+  );
+  return astNode<Tag.FromListTag>(
+    Tag.SqlName.FromList,
+    List(Any(RecordsetValuesList, RecordsetFunction, Table, NamedSelect)),
+  );
 };
 
 const WhereRule = (Expression: Rule): Rule => astNode<Tag.WhereTag>(Tag.SqlName.Where, All(/^WHERE/i, Expression));
@@ -672,8 +687,6 @@ const Select = Y((SelectExpression) => {
 const Expression = ExpressionRule(Select);
 const FromList = FromListRule(Select, Expression);
 const Where = WhereRule(Expression);
-const Columns = astNode<Tag.ColumnsTag>(Tag.SqlName.Columns, Brackets(List(IdentifierRestricted)));
-const Default = astEmptyLeaf<Tag.DefaultTag>(Tag.SqlName.Default, /^DEFAULT/i);
 
 /**
  * Update
@@ -753,7 +766,10 @@ const Conflict = astNode<Tag.ConflictTag>(
   ),
 );
 
-const ValuesList = astNode<Tag.ValuesListTag>(Tag.SqlName.ValuesList, All(/^VALUES/i, Any(List(Values), Parameter)));
+const ValuesList = astNode<Tag.ValuesListTag>(
+  Tag.SqlName.ValuesList,
+  All(/^VALUES/i, Any(List(Values), SpreadParameter)),
+);
 const Insert = astNode<Tag.InsertTag>(
   Tag.SqlName.Insert,
   All(
@@ -777,7 +793,7 @@ const CTEName = astNode<Tag.CTENameTag>(Tag.SqlName.CTEName, All(Identifier, Opt
 const CTEValues = astNode<Tag.CTEValuesTag>(Tag.SqlName.CTEValues, Brackets(List(Expression)));
 const CTEValuesList = astNode<Tag.CTEValuesListTag>(
   Tag.SqlName.CTEValuesList,
-  All(/^VALUES/i, Any(List(CTEValues), Parameter)),
+  All(/^VALUES/i, Any(List(CTEValues), SpreadParameter)),
 );
 const CTE = astNode<Tag.CTETag>(Tag.SqlName.CTE, All(CTEName, /^AS/i, Brackets(Any(Query, CTEValuesList))));
 const With = astNode<Tag.WithTag>(Tag.SqlName.With, All(/^WITH/i, List(CTE), Query));

@@ -15,6 +15,19 @@ export interface Query {
 "
 `;
 
+exports[`Query Interface Should convert case to string literal union sql (SELECT CASE accounts.source_system WHEN 'SSE' THEN 'SSE' WHEN 'FITDB' THEN 'FITDB' ELSE NULL END AS "sourceSystem" FROM accounts) 1`] = `
+"export interface Params {
+}
+export interface Result {
+    sourceSystem: \\"SSE\\" | \\"FITDB\\" | undefined;
+}
+export interface Query {
+    params: Params;
+    result: Result;
+}
+"
+`;
+
 exports[`Query Interface Should convert descriptive property names sql (SELECT 'test' AS "some column", 'test2' AS "test") 1`] = `
 "export interface Params {
 }
@@ -273,7 +286,7 @@ export interface Query {
 exports[`Query Interface Should convert insert sql (INSERT INTO all_types(not_null, integer_col, character_col) VALUES $$vals(notNull, integerCol, characterCol)) 1`] = `
 "export interface Params {
     vals: {
-        notNull: number;
+        notNull?: number;
         integerCol?: number;
         characterCol?: string;
     }[];

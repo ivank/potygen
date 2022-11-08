@@ -176,24 +176,29 @@ export const toQueryConfig = <TSqlInterface extends SqlInterface = SqlInterface>
 ): QueryConfig => toQueryConfigFromSource(query(), params);
 
 export const toQuery = <TSqlInterface extends SqlInterface = SqlInterface>(sql: string): Query<TSqlInterface> => {
-  const { ast } = parser(sql);
-  const params = toParamsFromAst(ast);
+  try {
+    const { ast } = parser(sql);
+    const params = toParamsFromAst(ast);
 
-  return (...args: [db: SqlDatabase, params: TSqlInterface['params']] | []): any => {
-    const source = { sql, ast, params };
-    if (args.length === 0) {
-      return source;
-    }
+    return (...args: [db: SqlDatabase, params: TSqlInterface['params']] | []): any => {
+      const source = { sql, ast, params };
+      if (args.length === 0) {
+        return source;
+      }
 
-    const query = toQueryConfigFromSource<TSqlInterface>(source, args[1]);
+      const query = toQueryConfigFromSource<TSqlInterface>(source, args[1]);
 
-    return args[0]
-      .query(query)
-      .then((result) => ('rows' in result ? result.rows : result).map(nullToUndefinedInPlace))
-      .catch((error) => {
-        throw error instanceof Error && isDatabaseError(error) ? new PotygenDatabaseError(error, query) : error;
-      });
-  };
+      return args[0]
+        .query(query)
+        .then((result) => ('rows' in result ? result.rows : result).map(nullToUndefinedInPlace))
+        .catch((error) => {
+          throw error instanceof Error && isDatabaseError(error) ? new PotygenDatabaseError(error, query) : error;
+        });
+    };
+  } catch (e) {
+    console.log(String(e));
+    throw e;
+  }
 };
 
 /**

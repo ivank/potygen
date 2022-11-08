@@ -52,6 +52,8 @@ describe('Sql', () => {
     ${'offset'}                       | ${'SELECT * OFFSET 10'}
     ${'limit offset'}                 | ${'SELECT * LIMIT 10 OFFSET 10'}
     ${'from'}                         | ${'SELECT * FROM jobs'}
+    ${'from values without columns'}  | ${'SELECT * FROM (VALUES (10, 20)) AS test'}
+    ${'from values with columns'}     | ${'SELECT * FROM (VALUES (10, 20)) AS test(id, value)'}
     ${'from with schema'}             | ${'SELECT * FROM public.jobs'}
     ${'from select'}                  | ${'SELECT * FROM (SELECT * FROM jobs2) as jobs1'}
     ${'from select as'}               | ${'SELECT * FROM jobs1, (SELECT * FROM jobs2) as tmp2'}
@@ -263,7 +265,11 @@ describe('Sql', () => {
     ${'values'}                | ${'INSERT INTO table1 (id, col1) VALUES (10,20),(30,40)'}
     ${'values param'}          | ${'INSERT INTO table1 (id, col1) VALUES $$items'}
     ${'values param spread'}   | ${'INSERT INTO table1 (id, col1) VALUES $$items(val1, val2)'}
+    ${'param spread required'} | ${'INSERT INTO table1 (id, col1) VALUES $$items(val1!, val2)'}
+    ${'param spread types'}    | ${'INSERT INTO table1 (id, col1) VALUES $$items(val1!::int, val2::int)'}
     ${'values param quoted'}   | ${'INSERT INTO table1 (id, col1) VALUES $$items(val1, "val 2")'}
+    ${'param quoted required'} | ${'INSERT INTO table1 (id, col1) VALUES $$items(val1, "val 2"!)'}
+    ${'param quoted types'}    | ${'INSERT INTO table1 (id, col1) VALUES $$items(val1, "val 2"!::int)'}
     ${'returning'}             | ${'INSERT INTO table1 (id, col1) VALUES (10,20),(30,40) RETURNING id, col1'}
     ${'select'}                | ${'INSERT INTO table1 SELECT id, col FROM table2'}
     ${'do nothing'}            | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO NOTHING'}

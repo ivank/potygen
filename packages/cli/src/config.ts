@@ -9,6 +9,7 @@ export const Config = Record({
   verbose: Optional(Boolean),
   silent: Optional(Boolean),
   typePrefix: Optional(String),
+  preload: Optional(Boolean),
 });
 
 export type ConfigType = Static<typeof Config>;
@@ -17,6 +18,7 @@ export type FullConfigType = Required<ConfigType>;
 export const toConfig = (config: unknown): FullConfigType => ({
   files: '**/*.sql',
   root: process.cwd(),
+  preload: false,
   template: '{{dir}}/{{name}}.queries.ts',
   connection: 'postgres://localhost:5432/db',
   watch: false,
