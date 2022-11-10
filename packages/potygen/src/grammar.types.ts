@@ -1432,7 +1432,6 @@ export interface BinaryOperatorTag extends LeafSqlTag {
     | '>>'
     | '@@'
     | 'IS'
-    | 'IN'
     | 'LIKE'
     | 'ILIKE'
     | '<='
@@ -2618,7 +2617,7 @@ export type SelectParts = DistinctTag | SelectListTag | FromTag | WhereTag | Gro
 export type OperatorExpressionTag = BinaryExpressionTag | UnaryExpressionTag;
 export type AnyCastTag = CastTag | PgCastTag;
 export type DataTypeTag = NullTag | CaseTag | CaseSimpleTag | CastableDataTypeTag;
-export type QueryTag = SelectTag | UpdateTag | InsertTag | DeleteTag;
+export type QueryTag = SelectTag | UpdateTag | InsertTag | DeleteTag | WithTag;
 export type TransactionTag = BeginTag | CommitTag | SavepointTag | RollbackTag;
 
 export type CastableDataTypeTag =
@@ -2797,4 +2796,4 @@ export type Tag = EmptyLeafTag | LeafTag | NodeTag;
 /**
  * The SQL tags that represent full queries - SELECT, UPDATE, WITH, etc.
  */
-export type AstTag = QueryTag | WithTag | TransactionTag;
+export type AstTag = QueryTag | TransactionTag;

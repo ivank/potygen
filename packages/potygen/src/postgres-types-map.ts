@@ -389,7 +389,6 @@ export const binaryOperatorTypes: {
     [typeBoolean, typeBoolean, typeBoolean],
     [typeJson, typeJson, typeBoolean],
   ],
-  IN: [[typeAny, typeAny, typeBoolean]],
   '@@': [[typeString, typeString, typeBoolean]],
   LIKE: [[typeString, typeString, typeBoolean]],
   ILIKE: [[typeString, typeString, typeBoolean]],

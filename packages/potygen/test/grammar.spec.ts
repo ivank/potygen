@@ -72,6 +72,7 @@ describe('Sql', () => {
     ${'join on'}                      | ${'SELECT * FROM jobs JOIN test1 ON jobs.id = test1.id'}
     ${'join nested'}                  | ${'SELECT * FROM table1 AS t1 LEFT JOIN (table2 AS t2 INNER JOIN table3 AS t3 ON t3.col1 = t2.col1) ON t2.col1 = t1.col1'}
     ${'inner join'}                   | ${'SELECT * FROM jobs INNER JOIN test1'}
+    ${'multiple inner joins'}         | ${'SELECT 1 FROM table1 INNER JOIN foo ON table1.foo_id = foo.id INNER JOIN bar ON table1.bar_id = bar.id'}
     ${'left join'}                    | ${'SELECT * FROM jobs LEFT JOIN test1'}
     ${'left outer join'}              | ${'SELECT * FROM jobs LEFT OUTER JOIN test1'}
     ${'right join'}                   | ${'SELECT * FROM jobs RIGHT JOIN test1'}
@@ -135,6 +136,8 @@ describe('Sql', () => {
     ${'limit offset params'}          | ${'SELECT * FROM table1 LIMIT :param1 OFFSET :param2'}
     ${'limit offset param type'}      | ${'SELECT * FROM table1 LIMIT :param1::int OFFSET :param2::int'}
     ${'where in tuples'}              | ${'SELECT col1, col2 WHERE (col1,col2) IN ((1,2),(3,4))'}
+    ${'where in value'}               | ${'SELECT col1, col2 WHERE col1 = 1 AND col2 IN ((1,2),(3,4))'}
+    ${'where in select'}              | ${'SELECT col1, col2 WHERE col2 IN (SELECT test2 FROM test3)'}
     ${'select exists'}                | ${'SELECT EXISTS(SELECT col2 FROM table2)'}
     ${'overlaps with typed constant'} | ${"SELECT (DATE '2001-02-16', DATE '2001-12-21') OVERLAPS (DATE '2001-10-30', DATE '2002-10-30')"}
     ${'extract field century'}        | ${"SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')"}
@@ -169,6 +172,7 @@ describe('Sql', () => {
     ${'insert with delete'} | ${'WITH tmp AS (DELETE FROM table1 RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp'}
     ${'insert with update'} | ${'WITH tmp AS (UPDATE table1 SET col = 2 RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp'}
     ${'insert with insert'} | ${'WITH tmp AS (INSERT INTO table1(id) VALUES(2) RETURNING id, col2) INSERT INTO table2 SELECT * FROM tmp'}
+    ${'nested CTE'}         | ${'WITH counting AS (WITH tmp AS (SELECT * FROM table1) SELECT 1 FROM "tmp") SELECT count(*) FROM "counting"'}
   `('Should parse cte query $name ($sql)', ({ sql, name }) =>
     withParserErrors(() => {
       expect(parser(sql)).toMatchSnapshot(name);
