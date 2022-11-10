@@ -21,6 +21,7 @@ import {
   isComment,
   BinaryOperatorTag,
   isSpreadParameter,
+  isSelect,
 } from '@potygen/potygen';
 
 const { line, softline, indent, join, group, hardline } = doc.builders;
@@ -85,12 +86,15 @@ const pgsqlAst: Printer<Node> = {
       case SqlName.CTE:
         return group([group([nthVal(0, path, recur), line, 'AS']), line, nthVal(1, path, recur)]);
       case SqlName.With:
-        return group([
-          'WITH',
-          indent([line, join([',', line], initialVals(1, path, recur))]),
-          line,
-          nthVal(-1, path, recur),
-        ]);
+        return wrapSubquery(
+          path,
+          group([
+            'WITH',
+            indent([line, join([',', line], initialVals(1, path, recur))]),
+            line,
+            nthVal(-1, path, recur),
+          ]),
+        );
       case SqlName.Null:
         return 'NULL';
       case SqlName.UnquotedIdentifier:
@@ -305,7 +309,7 @@ const pgsqlAst: Printer<Node> = {
           ' ',
           nthVal(1, path, recur),
           ' ',
-          isParameter(last(node.values)) || isSpreadParameter(last(node.values))
+          isParameter(last(node.values)) || isSpreadParameter(last(node.values)) || isSelect(last(node.values))
             ? nthVal(2, path, recur)
             : group(['(', nthVal(2, path, recur), ')']),
         ];

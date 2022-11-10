@@ -313,7 +313,7 @@ const BinaryOperator = [
   /^(<<)/,
   /^(>>)/,
   /^(@@)/,
-  /^(OVERLAPS|IN)/i,
+  /^(OVERLAPS)/i,
   /^(NOT LIKE|NOT ILIKE|LIKE|ILIKE)/i,
   /^(<=|>=|<|>)/,
   /^(<>|!=|=)/,
@@ -484,7 +484,10 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const ExpressionList = astNode<Tag.ExpressionListTag>(Tag.SqlName.ExpressionList, List(ChildExpression));
     const ComparationArrayInclusion = astNode<Tag.ComparationArrayInclusionTag>(
       Tag.SqlName.ComparationArrayInclusion,
-      All(ComparationArrayInclusionType, Any(Brackets(ExpressionList), SpreadParameter, Parameter)),
+      All(
+        ComparationArrayInclusionType,
+        Any(SpreadParameter, Parameter, Brackets(ExpressionList), Brackets(SelectExpression)),
+      ),
     );
     const ComparationArray = astNode<Tag.ComparationArrayTag>(
       Tag.SqlName.ComparationArray,
@@ -788,15 +791,18 @@ const Insert = astNode<Tag.InsertTag>(
  * ----------------------------------------------------------------------------------------
  */
 
-const Query = Any(Select, Update, Delete, Insert);
-const CTEName = astNode<Tag.CTENameTag>(Tag.SqlName.CTEName, All(Identifier, Optional(Columns)));
-const CTEValues = astNode<Tag.CTEValuesTag>(Tag.SqlName.CTEValues, Brackets(List(Expression)));
-const CTEValuesList = astNode<Tag.CTEValuesListTag>(
-  Tag.SqlName.CTEValuesList,
-  All(/^VALUES/i, Any(List(CTEValues), SpreadParameter)),
-);
-const CTE = astNode<Tag.CTETag>(Tag.SqlName.CTE, All(CTEName, /^AS/i, Brackets(Any(Query, CTEValuesList))));
-const With = astNode<Tag.WithTag>(Tag.SqlName.With, All(/^WITH/i, List(CTE), Query));
+const With = Y((ChildWith) => {
+  const Query = Any(Select, Update, Delete, Insert, ChildWith);
+  const CTEName = astNode<Tag.CTENameTag>(Tag.SqlName.CTEName, All(Identifier, Optional(Columns)));
+  const CTEValues = astNode<Tag.CTEValuesTag>(Tag.SqlName.CTEValues, Brackets(List(Expression)));
+  const CTEValuesList = astNode<Tag.CTEValuesListTag>(
+    Tag.SqlName.CTEValuesList,
+    All(/^VALUES/i, Any(List(CTEValues), SpreadParameter)),
+  );
+
+  const CTE = astNode<Tag.CTETag>(Tag.SqlName.CTE, All(CTEName, /^AS/i, Brackets(Any(Query, CTEValuesList))));
+  return astNode<Tag.WithTag>(Tag.SqlName.With, All(/^WITH/i, List(CTE), Any(Query)));
+});
 
 /**
  * Transaction

@@ -2269,6 +2269,281 @@ Object {
 }
 `;
 
+exports[`Sql Should parse cte query nested CTE (WITH counting AS (WITH tmp AS (SELECT * FROM table1) SELECT 1 FROM "tmp") SELECT count(*) FROM "counting"): nested CTE 1`] = `
+Object {
+  "ast": Object {
+    "end": 104,
+    "start": 0,
+    "tag": 6,
+    "values": Array [
+      Object {
+        "end": 72,
+        "start": 5,
+        "tag": 5,
+        "values": Array [
+          Object {
+            "end": 12,
+            "start": 5,
+            "tag": 2,
+            "values": Array [
+              Object {
+                "end": 12,
+                "start": 5,
+                "tag": 8,
+                "value": "counting",
+              },
+            ],
+          },
+          Object {
+            "end": 71,
+            "start": 18,
+            "tag": 6,
+            "values": Array [
+              Object {
+                "end": 51,
+                "start": 23,
+                "tag": 5,
+                "values": Array [
+                  Object {
+                    "end": 25,
+                    "start": 23,
+                    "tag": 2,
+                    "values": Array [
+                      Object {
+                        "end": 25,
+                        "start": 23,
+                        "tag": 8,
+                        "value": "tmp",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 50,
+                    "start": 31,
+                    "tag": 81,
+                    "values": Array [
+                      Object {
+                        "end": 38,
+                        "start": 38,
+                        "tag": 62,
+                        "values": Array [
+                          Object {
+                            "end": 38,
+                            "start": 38,
+                            "tag": 61,
+                            "values": Array [
+                              Object {
+                                "end": 38,
+                                "start": 38,
+                                "tag": 37,
+                                "values": Array [
+                                  Object {
+                                    "end": 38,
+                                    "start": 38,
+                                    "tag": 36,
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 50,
+                        "start": 40,
+                        "tag": 69,
+                        "values": Array [
+                          Object {
+                            "end": 50,
+                            "start": 45,
+                            "tag": 68,
+                            "values": Array [
+                              Object {
+                                "end": 50,
+                                "start": 45,
+                                "tag": 90,
+                                "values": Array [
+                                  Object {
+                                    "end": 50,
+                                    "start": 45,
+                                    "tag": 89,
+                                    "values": Array [
+                                      Object {
+                                        "end": 50,
+                                        "start": 45,
+                                        "tag": 8,
+                                        "value": "table1",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 71,
+                "start": 53,
+                "tag": 81,
+                "values": Array [
+                  Object {
+                    "end": 60,
+                    "start": 60,
+                    "tag": 62,
+                    "values": Array [
+                      Object {
+                        "end": 60,
+                        "start": 60,
+                        "tag": 61,
+                        "values": Array [
+                          Object {
+                            "end": 60,
+                            "start": 60,
+                            "tag": 19,
+                            "value": "1",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 71,
+                    "start": 62,
+                    "tag": 69,
+                    "values": Array [
+                      Object {
+                        "end": 71,
+                        "start": 67,
+                        "tag": 68,
+                        "values": Array [
+                          Object {
+                            "end": 71,
+                            "start": 67,
+                            "tag": 90,
+                            "values": Array [
+                              Object {
+                                "end": 71,
+                                "start": 67,
+                                "tag": 89,
+                                "values": Array [
+                                  Object {
+                                    "end": 71,
+                                    "start": 67,
+                                    "tag": 9,
+                                    "value": "tmp",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 104,
+        "start": 74,
+        "tag": 81,
+        "values": Array [
+          Object {
+            "end": 88,
+            "start": 81,
+            "tag": 62,
+            "values": Array [
+              Object {
+                "end": 88,
+                "start": 81,
+                "tag": 61,
+                "values": Array [
+                  Object {
+                    "end": 88,
+                    "start": 81,
+                    "tag": 54,
+                    "values": Array [
+                      Object {
+                        "end": 85,
+                        "start": 81,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 85,
+                            "start": 81,
+                            "tag": 8,
+                            "value": "count",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 87,
+                        "start": 87,
+                        "tag": 37,
+                        "values": Array [
+                          Object {
+                            "end": 87,
+                            "start": 87,
+                            "tag": 36,
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 104,
+            "start": 90,
+            "tag": 69,
+            "values": Array [
+              Object {
+                "end": 104,
+                "start": 95,
+                "tag": 68,
+                "values": Array [
+                  Object {
+                    "end": 104,
+                    "start": 95,
+                    "tag": 90,
+                    "values": Array [
+                      Object {
+                        "end": 104,
+                        "start": 95,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 104,
+                            "start": 95,
+                            "tag": 9,
+                            "value": "counting",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse cte query select with delete (WITH tmp AS (DELETE FROM table1 RETURNING id) SELECT id FROM table2 WHERE table2.id = tmp.col2): select with delete 1`] = `
 Object {
   "ast": Object {
@@ -22768,6 +23043,255 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql multiple inner joins (SELECT 1 FROM table1 INNER JOIN foo ON table1.foo_id = foo.id INNER JOIN bar ON table1.bar_id = bar.id): multiple inner joins 1`] = `
+Object {
+  "ast": Object {
+    "end": 101,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 7,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 7,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 7,
+                "start": 7,
+                "tag": 19,
+                "value": "1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 101,
+        "start": 9,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 19,
+            "start": 14,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 19,
+                "start": 14,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 19,
+                    "start": 14,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 19,
+                        "start": 14,
+                        "tag": 8,
+                        "value": "table1",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 60,
+            "start": 21,
+            "tag": 67,
+            "values": Array [
+              Object {
+                "end": 30,
+                "start": 21,
+                "tag": 64,
+                "value": "INNER JOIN",
+              },
+              Object {
+                "end": 34,
+                "start": 32,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 34,
+                    "start": 32,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 34,
+                        "start": 32,
+                        "tag": 8,
+                        "value": "foo",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 60,
+                "start": 36,
+                "tag": 65,
+                "values": Array [
+                  Object {
+                    "end": 60,
+                    "start": 39,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 51,
+                        "start": 39,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 44,
+                            "start": 39,
+                            "tag": 8,
+                            "value": "table1",
+                          },
+                          Object {
+                            "end": 51,
+                            "start": 46,
+                            "tag": 8,
+                            "value": "foo_id",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 53,
+                        "start": 53,
+                        "tag": 44,
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 60,
+                        "start": 55,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 57,
+                            "start": 55,
+                            "tag": 8,
+                            "value": "foo",
+                          },
+                          Object {
+                            "end": 60,
+                            "start": 59,
+                            "tag": 8,
+                            "value": "id",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 101,
+            "start": 62,
+            "tag": 67,
+            "values": Array [
+              Object {
+                "end": 71,
+                "start": 62,
+                "tag": 64,
+                "value": "INNER JOIN",
+              },
+              Object {
+                "end": 75,
+                "start": 73,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 75,
+                    "start": 73,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 75,
+                        "start": 73,
+                        "tag": 8,
+                        "value": "bar",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "end": 101,
+                "start": 77,
+                "tag": 65,
+                "values": Array [
+                  Object {
+                    "end": 101,
+                    "start": 80,
+                    "tag": 46,
+                    "values": Array [
+                      Object {
+                        "end": 92,
+                        "start": 80,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 85,
+                            "start": 80,
+                            "tag": 8,
+                            "value": "table1",
+                          },
+                          Object {
+                            "end": 92,
+                            "start": 87,
+                            "tag": 8,
+                            "value": "bar_id",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 94,
+                        "start": 94,
+                        "tag": 44,
+                        "value": "=",
+                      },
+                      Object {
+                        "end": 101,
+                        "start": 96,
+                        "tag": 11,
+                        "values": Array [
+                          Object {
+                            "end": 98,
+                            "start": 96,
+                            "tag": 8,
+                            "value": "bar",
+                          },
+                          Object {
+                            "end": 101,
+                            "start": 100,
+                            "tag": 8,
+                            "value": "id",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse simple sql multiple joins (SELECT * FROM jobs JOIN test1 JOIN test2): multiple joins 1`] = `
 Object {
   "ast": Object {
@@ -27024,6 +27548,167 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql where in select (SELECT col1, col2 WHERE col2 IN (SELECT test2 FROM test3)): where in select 1`] = `
+Object {
+  "ast": Object {
+    "end": 56,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 16,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 10,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 10,
+                "start": 7,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 10,
+                    "start": 7,
+                    "tag": 8,
+                    "value": "col1",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 16,
+            "start": 13,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 16,
+                "start": 13,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 16,
+                    "start": 13,
+                    "tag": 8,
+                    "value": "col2",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 56,
+        "start": 18,
+        "tag": 70,
+        "values": Array [
+          Object {
+            "end": 56,
+            "start": 24,
+            "tag": 58,
+            "values": Array [
+              Object {
+                "end": 27,
+                "start": 24,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 27,
+                    "start": 24,
+                    "tag": 8,
+                    "value": "col2",
+                  },
+                ],
+              },
+              Object {
+                "end": 30,
+                "start": 29,
+                "tag": 55,
+                "value": "IN",
+              },
+              Object {
+                "end": 55,
+                "start": 33,
+                "tag": 81,
+                "values": Array [
+                  Object {
+                    "end": 44,
+                    "start": 40,
+                    "tag": 62,
+                    "values": Array [
+                      Object {
+                        "end": 44,
+                        "start": 40,
+                        "tag": 61,
+                        "values": Array [
+                          Object {
+                            "end": 44,
+                            "start": 40,
+                            "tag": 11,
+                            "values": Array [
+                              Object {
+                                "end": 44,
+                                "start": 40,
+                                "tag": 8,
+                                "value": "test2",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 55,
+                    "start": 46,
+                    "tag": 69,
+                    "values": Array [
+                      Object {
+                        "end": 55,
+                        "start": 51,
+                        "tag": 68,
+                        "values": Array [
+                          Object {
+                            "end": 55,
+                            "start": 51,
+                            "tag": 90,
+                            "values": Array [
+                              Object {
+                                "end": 55,
+                                "start": 51,
+                                "tag": 89,
+                                "values": Array [
+                                  Object {
+                                    "end": 55,
+                                    "start": 51,
+                                    "tag": 8,
+                                    "value": "test3",
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse simple sql where in tuples (SELECT col1, col2 WHERE (col1,col2) IN ((1,2),(3,4))): where in tuples 1`] = `
 Object {
   "ast": Object {
@@ -27167,6 +27852,189 @@ Object {
                         "start": 49,
                         "tag": 19,
                         "value": "4",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse simple sql where in value (SELECT col1, col2 WHERE col1 = 1 AND col2 IN ((1,2),(3,4))): where in value 1`] = `
+Object {
+  "ast": Object {
+    "end": 57,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 16,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 10,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 10,
+                "start": 7,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 10,
+                    "start": 7,
+                    "tag": 8,
+                    "value": "col1",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": 16,
+            "start": 13,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 16,
+                "start": 13,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 16,
+                    "start": 13,
+                    "tag": 8,
+                    "value": "col2",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 57,
+        "start": 18,
+        "tag": 70,
+        "values": Array [
+          Object {
+            "end": 57,
+            "start": 24,
+            "tag": 46,
+            "values": Array [
+              Object {
+                "end": 31,
+                "start": 24,
+                "tag": 46,
+                "values": Array [
+                  Object {
+                    "end": 27,
+                    "start": 24,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 27,
+                        "start": 24,
+                        "tag": 8,
+                        "value": "col1",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 29,
+                    "start": 29,
+                    "tag": 44,
+                    "value": "=",
+                  },
+                  Object {
+                    "end": 31,
+                    "start": 31,
+                    "tag": 19,
+                    "value": "1",
+                  },
+                ],
+              },
+              Object {
+                "end": 35,
+                "start": 33,
+                "tag": 44,
+                "value": "AND",
+              },
+              Object {
+                "end": 57,
+                "start": 37,
+                "tag": 58,
+                "values": Array [
+                  Object {
+                    "end": 40,
+                    "start": 37,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 40,
+                        "start": 37,
+                        "tag": 8,
+                        "value": "col2",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 43,
+                    "start": 42,
+                    "tag": 55,
+                    "value": "IN",
+                  },
+                  Object {
+                    "end": 56,
+                    "start": 46,
+                    "tag": 108,
+                    "values": Array [
+                      Object {
+                        "end": 50,
+                        "start": 46,
+                        "tag": 38,
+                        "values": Array [
+                          Object {
+                            "end": 47,
+                            "start": 47,
+                            "tag": 19,
+                            "value": "1",
+                          },
+                          Object {
+                            "end": 49,
+                            "start": 49,
+                            "tag": 19,
+                            "value": "2",
+                          },
+                        ],
+                      },
+                      Object {
+                        "end": 56,
+                        "start": 52,
+                        "tag": 38,
+                        "values": Array [
+                          Object {
+                            "end": 53,
+                            "start": 53,
+                            "tag": 19,
+                            "value": "3",
+                          },
+                          Object {
+                            "end": 55,
+                            "start": 55,
+                            "tag": 19,
+                            "value": "4",
+                          },
+                        ],
                       },
                     ],
                   },

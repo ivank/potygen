@@ -251,6 +251,8 @@ describe('Format', () => {
     ${'commit'}                       | ${'COMMIT'}
     ${'with comment'}                 | ${'SELECT * \n-- test comment\nFROM table1'}
     ${'recordset function'}           | ${'SELECT periods.* FROM account_levelisations, jsonb_to_recordset(generation_periods) as periods("amount" varchar)'}
+    ${'multiple joins'}               | ${'SELECT 1 FROM table1 INNER JOIN foo ON table1.foo_id = foo.id INNER JOIN bar ON table1.bar_id = bar.id'}
+    ${'nested CTE'}                   | ${'WITH counting AS (WITH tmp AS (SELECT * FROM table1) SELECT 1 FROM "tmp") SELECT count(*) FROM "counting"'}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) =>
     withParserErrors(() => {
       const formatted = format(sql, { parser: 'sql', plugins: [prettierPluginPgSql] });
