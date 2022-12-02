@@ -392,7 +392,7 @@ export {
   toQueryFrom,
   toQueryResults,
 } from './query-interface';
-export { sql, toQuery, toQueryConfig } from './sql';
+export { sql, toQuery, toQueryConfig, toQueryConfigFromSource, nullToUndefinedInPlace } from './sql';
 export {
   DatabaseError,
   isDatabaseError,

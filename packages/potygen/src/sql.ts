@@ -143,7 +143,7 @@ const convertValues = (params: Param[], values: Record<string, unknown>): unknow
 /**
  * PG package returns "null" values, this efficiently converts all `null`s into `undefined`s
  */
-const nullToUndefinedInPlace = (row: Record<string, unknown>): Record<string, unknown> => {
+export const nullToUndefinedInPlace = (row: Record<string, unknown>): Record<string, unknown> => {
   for (const key in row) {
     const val = row[key];
     if (val === null) {
@@ -159,7 +159,7 @@ const nullToUndefinedInPlace = (row: Record<string, unknown>): Record<string, un
  * Use the intermediary parsing result {@link QuerySource} to compute a {@link QueryConfig}
  * that can be passed to {@link SqlDatabase}'s query function
  */
-const toQueryConfigFromSource = <TSqlInterface extends SqlInterface = SqlInterface>(
+export const toQueryConfigFromSource = <TSqlInterface extends SqlInterface = SqlInterface>(
   querySource: QuerySource,
   params: TSqlInterface['params'],
 ): QueryConfig => ({
