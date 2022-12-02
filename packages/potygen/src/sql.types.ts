@@ -16,7 +16,7 @@ export interface SqlInterface {
 }
 
 /**
- * External database instance. Like [pg package](https://node-postgres.com)'s [Client](https://node-postgres.com/api/client) or [Pool](https://node-postgres.com/api/pool)
+ * External database instance. Like [pg package](https://node-postgres.com)'s [Client](https://node-postgres.com/apis/client) or [Pool](https://node-postgres.com/apis/pool)
  */
 export interface SqlDatabase {
   query: <T extends Record<string, unknown>>(value: QueryConfig) => Promise<SqlResult<T> | T[]>;

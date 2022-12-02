@@ -733,6 +733,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@potygen/pg-stream@workspace:packages/pg-stream":
+  version: 0.0.0-use.local
+  resolution: "@potygen/pg-stream@workspace:packages/pg-stream"
+  dependencies:
+    "@ikerin/build-readme": ^1.1.1
+    "@potygen/potygen": "workspace:*"
+    "@types/jest": ^26.0.14
+    "@types/node": ^14.17.15
+    "@types/pg": ^8.6.1
+    "@types/pg-cursor": ^2.7.0
+    jest: ^26.4.2
+    pg: ^8.7.1
+    pg-cursor: ^2.7.4
+    prettier: "npm:@potygen/prettier@^2.6.1"
+    ts-jest: ^26.4.0
+    ts-node: ^10.1.0
+    typescript: ^4.8.3
+  languageName: unknown
+  linkType: soft
+
 "@potygen/potygen@workspace:*, @potygen/potygen@workspace:packages/potygen":
   version: 0.0.0-use.local
   resolution: "@potygen/potygen@workspace:packages/potygen"
@@ -996,6 +1016,27 @@ __metadata:
   version: 2.4.1
   resolution: "@types/normalize-package-data@npm:2.4.1"
   checksum: e87bccbf11f95035c89a132b52b79ce69a1e3652fe55962363063c9c0dae0fe2477ebc585e03a9652adc6f381d24ba5589cc5e51849df4ced3d3e004a7d40ed5
+  languageName: node
+  linkType: hard
+
+"@types/pg-cursor@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "@types/pg-cursor@npm:2.7.0"
+  dependencies:
+    "@types/node": "*"
+    "@types/pg": "*"
+  checksum: 8d22a3aa22ab553097781842d8340c9ac19ddc02e99a14744883f95b7392871e3e16f4571259a87c3e90c8a89e8bc1537c4eff47d9caff173dbd506df28a5281
+  languageName: node
+  linkType: hard
+
+"@types/pg@npm:*":
+  version: 8.6.5
+  resolution: "@types/pg@npm:8.6.5"
+  dependencies:
+    "@types/node": "*"
+    pg-protocol: "*"
+    pg-types: ^2.2.0
+  checksum: 49ef858d95e84a6c1be193d367996581c991cf383d8628449507cc4ce67ef43b75acb18a0f9f49f870594cdec3501ddf4d2ac3fbe0dcdaab35c295c038d47199
   languageName: node
   linkType: hard
 
@@ -4511,6 +4552,15 @@ fsevents@^2.1.2:
   version: 2.5.0
   resolution: "pg-connection-string@npm:2.5.0"
   checksum: a6f3a068f7c9416a5b33a326811caf0dfaaee045c225b7c628b4c9b4e9a2b25bdd12a21e4c48940e1000ea223a4e608ca122d2ff3dd08c8b1db0fc9f5705133a
+  languageName: node
+  linkType: hard
+
+"pg-cursor@npm:^2.7.4":
+  version: 2.7.4
+  resolution: "pg-cursor@npm:2.7.4"
+  peerDependencies:
+    pg: ^8
+  checksum: f150287f887ebe6aa5aa552791cd315c71ef7cc9352ddd1cebbd92f6fa49bdb939988039597ada7072b91888e2606ca6f82e638925971aca3b02053599077bb1
   languageName: node
   linkType: hard
 
