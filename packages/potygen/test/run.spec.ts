@@ -1,13 +1,13 @@
 import { Client } from 'pg';
 import * as pgp from 'pg-promise';
-import { maybeOneResult, oneResult, sql, mapResult } from '../src';
+import { maybeOneResult, oneResult, sql, mapResult, atLeastOneResult } from '../src';
 import { testDb, connectionString } from './helpers';
 
 let db: Client;
 
 interface Query {
   params: {};
-  result: { id: number };
+  result: { id: number }[];
 }
 
 const allSql = sql<Query>`SELECT id FROM all_types`;
@@ -80,6 +80,10 @@ describe('Template Tag', () => {
     expect(await oneResult(oneSql)(db, { id: 1 })).toEqual({ id: 1 });
   });
 
+  it('Should select at least oneonly one', async () => {
+    expect(await atLeastOneResult(oneSql)(db, { id: 1 })).toEqual([{ id: 1 }]);
+  });
+
   it('Should select map', async () => {
     expect(await mapResult((rows) => rows.map((item) => `!${item.id}`), allSql)(db, {})).toEqual(['!1', '!2']);
   });
@@ -96,6 +100,12 @@ describe('Template Tag', () => {
   it('Should select error if one empty', async () => {
     await expect(async () => {
       await oneResult(oneSql)(db, { id: 1000 });
+    }).rejects.toMatchObject({ message: 'Must return at least one' });
+  });
+
+  it('Should select error if not at least one', async () => {
+    await expect(async () => {
+      await atLeastOneResult(oneSql)(db, { id: 1000 });
     }).rejects.toMatchObject({ message: 'Must return at least one' });
   });
 });

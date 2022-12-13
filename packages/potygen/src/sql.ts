@@ -160,7 +160,7 @@ export const nullToUndefinedInPlace = (row: Record<string, unknown>): Record<str
  * that can be passed to {@link SqlDatabase}'s query function
  */
 export const toQueryConfigFromSource = <TSqlInterface extends SqlInterface = SqlInterface>(
-  querySource: QuerySource,
+  querySource: QuerySource<TSqlInterface>,
   params: TSqlInterface['params'],
 ): QueryConfig => ({
   text: convertSql(querySource.params, querySource.sql, params as Record<string, unknown>),
@@ -181,7 +181,7 @@ export const toQuery = <TSqlInterface extends SqlInterface = SqlInterface>(sql: 
     const params = toParamsFromAst(ast);
 
     return (...args: [db: SqlDatabase, params: TSqlInterface['params']] | []): any => {
-      const source = { sql, ast, params };
+      const source = { sql, ast, params, mapper: <T>(items: T): T => items };
       if (args.length === 0) {
         return source;
       }
@@ -204,6 +204,6 @@ export const toQuery = <TSqlInterface extends SqlInterface = SqlInterface>(sql: 
 /**
  * Sql Query. Pass it the {@link SqlInterface} generated with [@potygen/cli](https://github.com/ivank/potygen/tree/main/packages/cli)
  */
-export const sql = <TSqlInterface extends SqlInterface = SqlInterface>([
+export const sql = <TSqlInterface extends SqlInterface = SqlInterface<unknown[]>>([
   text,
 ]: TemplateStringsArray): Query<TSqlInterface> => toQuery(text);

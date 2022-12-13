@@ -380,8 +380,8 @@ export {
   isTypeLoad,
 } from './query-interface.guards';
 
-export { SqlInterface, QueryConfig, QuerySource, SqlResult, SqlDatabase, Query, MapQuery, Json } from './sql.types';
-export { oneResult, maybeOneResult, mapResult } from './sql.helpers';
+export { SqlInterface, QueryConfig, QuerySource, SqlResult, SqlDatabase, Query, Json } from './sql.types';
+export { oneResult, maybeOneResult, mapResult, atLeastOneResult } from './sql.helpers';
 export {
   toParams,
   toQueryInterface,
