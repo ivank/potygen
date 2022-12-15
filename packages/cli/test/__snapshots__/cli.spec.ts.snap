@@ -99,7 +99,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -114,7 +114,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -168,7 +168,7 @@ export interface Result<TGenerationPeriods = unknown, TExportPeriods = unknown, 
 }
 export interface Query<TGenerationPeriods = unknown, TExportPeriods = unknown, TErrorParams = unknown> {
     params: Params;
-    result: Result<TGenerationPeriods, TExportPeriods, TErrorParams>;
+    result: Result<TGenerationPeriods, TExportPeriods, TErrorParams>[];
 }
 "
 `;
@@ -182,7 +182,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -196,7 +196,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -218,7 +218,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -235,7 +235,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -250,7 +250,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -262,7 +262,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -286,7 +286,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -324,7 +324,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -362,7 +362,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -392,7 +392,7 @@ export interface Result<THistory = unknown> {
 }
 export interface Query<THistory = unknown> {
     params: Params;
-    result: Result<THistory>;
+    result: Result<THistory>[];
 }
 "
 `;
@@ -416,7 +416,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -428,7 +428,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -466,7 +466,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -483,7 +483,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -499,7 +499,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -515,7 +515,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -532,7 +532,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -548,7 +548,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -569,7 +569,7 @@ export interface Result<TData = unknown> {
 }
 export interface Query<TParamItemsData = unknown, TData = unknown> {
     params: Params<TParamItemsData>;
-    result: Result<TData>;
+    result: Result<TData>[];
 }
 "
 `;
@@ -583,7 +583,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -595,7 +595,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -667,7 +667,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -698,7 +698,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -716,7 +716,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -738,7 +738,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -757,7 +757,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -769,7 +769,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -785,7 +785,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -808,7 +808,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -827,7 +827,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -849,7 +849,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -878,7 +878,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -893,7 +893,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -905,7 +905,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -929,7 +929,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -952,7 +952,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -968,7 +968,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -983,7 +983,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1037,7 +1037,7 @@ export interface Result<TGenerationPeriods = unknown, TExportPeriods = unknown, 
 }
 export interface Query<TGenerationPeriods = unknown, TExportPeriods = unknown, TErrorParams = unknown> {
     params: Params;
-    result: Result<TGenerationPeriods, TExportPeriods, TErrorParams>;
+    result: Result<TGenerationPeriods, TExportPeriods, TErrorParams>[];
 }
 "
 `;
@@ -1051,7 +1051,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1065,7 +1065,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1087,7 +1087,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1104,7 +1104,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1119,7 +1119,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1131,7 +1131,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1155,7 +1155,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1193,7 +1193,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1231,7 +1231,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1261,7 +1261,7 @@ export interface Result<THistory = unknown> {
 }
 export interface Query<THistory = unknown> {
     params: Params;
-    result: Result<THistory>;
+    result: Result<THistory>[];
 }
 "
 `;
@@ -1285,7 +1285,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1297,7 +1297,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1335,7 +1335,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1352,7 +1352,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1368,7 +1368,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1384,7 +1384,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1401,7 +1401,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1417,7 +1417,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1438,7 +1438,7 @@ export interface Result<TData = unknown> {
 }
 export interface Query<TParamItemsData = unknown, TData = unknown> {
     params: Params<TParamItemsData>;
-    result: Result<TData>;
+    result: Result<TData>[];
 }
 "
 `;
@@ -1452,7 +1452,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1464,7 +1464,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1536,7 +1536,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1567,7 +1567,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1585,7 +1585,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1607,7 +1607,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1626,7 +1626,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1638,7 +1638,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1654,7 +1654,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1677,7 +1677,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1696,7 +1696,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1718,7 +1718,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1747,7 +1747,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1762,7 +1762,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1774,7 +1774,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1798,7 +1798,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1821,7 +1821,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -1915,7 +1915,7 @@ export interface Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
 }
 export interface Sql1Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: Sql1Params;
-    result: Sql1Result<TJson_col, TJsonb_col>;
+    result: Sql1Result<TJson_col, TJsonb_col>[];
 }
 export interface Sql2Params<TJson_col = unknown, TJsonb_col = unknown> {
     id?: number;
@@ -1926,7 +1926,7 @@ export interface Sql2Result {
 }
 export interface Sql2Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: Sql2Params<TJson_col, TJsonb_col>;
-    result: Sql2Result;
+    result: Sql2Result[];
 }
 export interface Sql3Params {
     id?: number;
@@ -1937,7 +1937,7 @@ export interface Sql3Result {
 }
 export interface Sql3Query {
     params: Sql3Params;
-    result: Sql3Result;
+    result: Sql3Result[];
 }
 "
 `;
@@ -1951,7 +1951,7 @@ export interface Sql2Result {
 }
 export interface Sql2Query {
     params: Sql2Params;
-    result: Sql2Result;
+    result: Sql2Result[];
 }
 "
 `;
@@ -2045,7 +2045,7 @@ export interface TMP2Sql1Result<TJson_col = unknown, TJsonb_col = unknown> {
 }
 export interface TMP2Sql1Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: TMP2Sql1Params;
-    result: TMP2Sql1Result<TJson_col, TJsonb_col>;
+    result: TMP2Sql1Result<TJson_col, TJsonb_col>[];
 }
 export interface TMP2Sql2Params<TJson_col = unknown, TJsonb_col = unknown> {
     id?: number;
@@ -2056,7 +2056,7 @@ export interface TMP2Sql2Result {
 }
 export interface TMP2Sql2Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: TMP2Sql2Params<TJson_col, TJsonb_col>;
-    result: TMP2Sql2Result;
+    result: TMP2Sql2Result[];
 }
 export interface TMP2Sql3Params {
     id?: number;
@@ -2067,7 +2067,7 @@ export interface TMP2Sql3Result {
 }
 export interface TMP2Sql3Query {
     params: TMP2Sql3Params;
-    result: TMP2Sql3Result;
+    result: TMP2Sql3Result[];
 }
 "
 `;
@@ -2081,7 +2081,7 @@ export interface TMP2Sql2Result {
 }
 export interface TMP2Sql2Query {
     params: TMP2Sql2Params;
-    result: TMP2Sql2Result;
+    result: TMP2Sql2Result[];
 }
 "
 `;

@@ -200,6 +200,21 @@ exports[`Example files Should process examples/load-query-interface.ts: examples
 "
 `;
 
+exports[`Example files Should process examples/mapping.ts: examples/mapping.ts 1`] = `
+"[ { product: 'Sofa' }, { product: 'Chair' }, { product: 'Table' } ]
+[
+  { product: 'Sofa', productLength: 4 },
+  { product: 'Chair', productLength: 5 },
+  { product: 'Table', productLength: 5 }
+]
+[
+  { product: 'Sofa', productLength: 4, productLengthSquare: 16 },
+  { product: 'Chair', productLength: 5, productLengthSquare: 25 },
+  { product: 'Table', productLength: 5, productLengthSquare: 25 }
+]
+"
+`;
+
 exports[`Example files Should process examples/parser.ts: examples/parser.ts 1`] = `
 "{
   tag: 81,

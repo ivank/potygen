@@ -2,13 +2,13 @@ export interface StartParams {}
 export interface StartResult {}
 export interface StartQuery {
   params: StartParams;
-  result: StartResult;
+  result: StartResult[];
 }
 export interface InitParams {}
 export interface InitResult {}
 export interface InitQuery {
   params: InitParams;
-  result: InitResult;
+  result: InitResult[];
 }
 export interface RetrieveParams {}
 export interface RetrieveResult {
@@ -74,11 +74,11 @@ export interface RetrieveResult {
 }
 export interface RetrieveQuery {
   params: RetrieveParams;
-  result: RetrieveResult;
+  result: RetrieveResult[];
 }
 export interface EndParams {}
 export interface EndResult {}
 export interface EndQuery {
   params: EndParams;
-  result: EndResult;
+  result: EndResult[];
 }

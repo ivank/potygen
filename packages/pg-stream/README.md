@@ -73,3 +73,29 @@ const source = productsQuery(db, { region: 'Sofia' });
 await asyncPipeline(source, sink);
 console.log('Done');
 ```
+
+## Mapped queries
+
+All of the streaming helpers support mapped queries, and the map will be executed on each batch after its retrieval.
+
+> [examples/async-iterator-mapped.ts:(query)](https://github.com/ivank/potygen/tree/main/packages/pg-stream/examples/async-iterator-mapped.ts#L15-L33)
+
+```ts
+const productsQuery = sql<MyQuery>`SELECT product FROM orders WHERE region = $region`;
+
+const mappedProductsQuery = mapResult(
+  (rows) => rows.map((row) => ({ ...row, productLength: row.product.length })),
+  productsQuery,
+);
+
+const secondMappedProductsQuery = mapResult(
+  (rows) => rows.map((row) => ({ ...row, productLengthSquare: Math.pow(row.productLength, 2) })),
+  mappedProductsQuery,
+);
+
+const productsIterator = toAsyncIterator(secondMappedProductsQuery, { batchSize: 2 });
+
+for await (const item of productsIterator(db, { region: 'Sofia' })) {
+  console.log(item);
+}
+```

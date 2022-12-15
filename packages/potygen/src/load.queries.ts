@@ -13,7 +13,7 @@ import { LoadedDataRaw, QualifiedName } from './load.types';
  */
 interface LoadAllSql {
   params: {};
-  result: LoadedDataRaw;
+  result: LoadedDataRaw[];
 }
 
 /**
@@ -26,7 +26,7 @@ interface LoadSql {
     enumNames: QualifiedName[];
     functionNames: QualifiedName[];
   };
-  result: LoadedDataRaw;
+  result: LoadedDataRaw[];
 }
 
 /**

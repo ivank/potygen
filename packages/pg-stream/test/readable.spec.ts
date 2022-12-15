@@ -9,7 +9,7 @@ let db: Client;
 
 interface Query {
   params: {};
-  result: { id: number };
+  result: { id: number }[];
 }
 
 const allSql = sql<Query>`SELECT id FROM all_types`;

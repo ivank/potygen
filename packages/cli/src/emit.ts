@@ -257,9 +257,11 @@ const toLoadedQueryTypeNodes = (
             undefined,
             'result',
             undefined,
-            factory.createTypeReferenceNode(
-              `${name}Result`,
-              results.refs.map((ref) => factory.createTypeReferenceNode(ref)),
+            factory.createArrayTypeNode(
+              factory.createTypeReferenceNode(
+                `${name}Result`,
+                results.refs.map((ref) => factory.createTypeReferenceNode(ref)),
+              ),
             ),
           ),
         ],

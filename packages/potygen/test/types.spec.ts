@@ -1,5 +1,5 @@
 import { Client } from 'pg';
-import { toLoadedQueryInterface, Query, sql, toQueryInterface } from '../src';
+import { toLoadedQueryInterface, Query, SqlInterface, sql, toQueryInterface } from '../src';
 import { testDb } from './helpers';
 let db: Client;
 
@@ -13,7 +13,7 @@ describe('Query Interface', () => {
     await db.end();
   });
 
-  it.each<[string, Query]>([
+  it.each<[string, Query<SqlInterface<unknown[]>>]>([
     ['aclitem', sql`SELECT 'pg_monitor=r*/pg_read_all_stats'::aclitem`],
     ['cid', sql`SELECT '1'::cid`],
     ['array strings', sql`SELECT ARRAY['one', 'two']`],

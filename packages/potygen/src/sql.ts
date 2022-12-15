@@ -159,8 +159,11 @@ export const nullToUndefinedInPlace = (row: Record<string, unknown>): Record<str
  * Use the intermediary parsing result {@link QuerySource} to compute a {@link QueryConfig}
  * that can be passed to {@link SqlDatabase}'s query function
  */
-export const toQueryConfigFromSource = <TSqlInterface extends SqlInterface = SqlInterface>(
-  querySource: QuerySource,
+export const toQueryConfigFromSource = <
+  TSqlInterface extends SqlInterface = SqlInterface,
+  TOriginalResult = TSqlInterface['result'],
+>(
+  querySource: QuerySource<TSqlInterface, TOriginalResult>,
   params: TSqlInterface['params'],
 ): QueryConfig => ({
   text: convertSql(querySource.params, querySource.sql, params as Record<string, unknown>),
@@ -170,18 +173,23 @@ export const toQueryConfigFromSource = <TSqlInterface extends SqlInterface = Sql
 /**
  * Compute a {@link QueryConfig} from an sql template that can be passed to {@link SqlDatabase}'s query function
  */
-export const toQueryConfig = <TSqlInterface extends SqlInterface = SqlInterface>(
-  query: Query<TSqlInterface>,
+export const toQueryConfig = <
+  TSqlInterface extends SqlInterface = SqlInterface,
+  TOriginalResult = TSqlInterface['result'],
+>(
+  query: Query<TSqlInterface, TOriginalResult>,
   params: TSqlInterface['params'],
 ): QueryConfig => toQueryConfigFromSource(query(), params);
 
-export const toQuery = <TSqlInterface extends SqlInterface = SqlInterface>(sql: string): Query<TSqlInterface> => {
+export const toQuery = <TSqlInterface extends SqlInterface = SqlInterface, TOriginalResult = TSqlInterface['result']>(
+  sql: string,
+): Query<TSqlInterface, TOriginalResult> => {
   try {
     const { ast } = parser(sql);
     const params = toParamsFromAst(ast);
 
     return (...args: [db: SqlDatabase, params: TSqlInterface['params']] | []): any => {
-      const source = { sql, ast, params };
+      const source = { sql, ast, params, mapper: <T>(items: T): T => items };
       if (args.length === 0) {
         return source;
       }
@@ -204,6 +212,7 @@ export const toQuery = <TSqlInterface extends SqlInterface = SqlInterface>(sql: 
 /**
  * Sql Query. Pass it the {@link SqlInterface} generated with [@potygen/cli](https://github.com/ivank/potygen/tree/main/packages/cli)
  */
-export const sql = <TSqlInterface extends SqlInterface = SqlInterface>([
-  text,
-]: TemplateStringsArray): Query<TSqlInterface> => toQuery(text);
+export const sql = <
+  TSqlInterface extends SqlInterface = SqlInterface<unknown[]>,
+  TOriginalResult = TSqlInterface['result'],
+>([text]: TemplateStringsArray): Query<TSqlInterface, TOriginalResult> => toQuery(text);

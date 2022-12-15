@@ -10,9 +10,9 @@ import { Param } from './query-interface.types';
 /**
  * Inputs and outputs of an sql query ({@link sql})
  */
-export interface SqlInterface {
+export interface SqlInterface<TResult = unknown> {
   params: object;
-  result: unknown;
+  result: TResult;
 }
 
 /**
@@ -40,26 +40,22 @@ export interface SqlResult<T extends Record<string, unknown>> {
 /**
  * Intermediate sql query conversion, where the query is parsed (with {@link parser})
  */
-export interface QuerySource {
+export interface QuerySource<
+  TSqlInterface extends SqlInterface = SqlInterface,
+  TOriginalResult = TSqlInterface['result'],
+> {
   sql: string;
   ast: AstTag;
   params: Param[];
+  mapper: (rows: TOriginalResult, db: SqlDatabase, params: TSqlInterface['params']) => TSqlInterface['result'];
 }
 
 /**
  * SQL Query call.
  */
-export type Query<TSqlInterface extends SqlInterface = SqlInterface> = {
-  (db: SqlDatabase, params: TSqlInterface['params']): Promise<TSqlInterface['result'][]>;
-  (): QuerySource;
-};
-
-/**
- * SQL Query call, which result is then mapped to a different result type
- */
-export type MapQuery<TSqlInterface extends SqlInterface = SqlInterface, TResult = unknown> = {
-  (db: SqlDatabase, params: TSqlInterface['params']): Promise<TResult>;
-  (): QuerySource;
+export type Query<TSqlInterface extends SqlInterface = SqlInterface, TOriginalResult = TSqlInterface['result']> = {
+  (db: SqlDatabase, params: TSqlInterface['params']): Promise<TSqlInterface['result']>;
+  (): QuerySource<TSqlInterface, TOriginalResult>;
 };
 
 /**

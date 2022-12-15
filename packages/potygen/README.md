@@ -48,6 +48,37 @@ const queryConfig = toQueryConfig(productsQuery, { region: 'Sofia' });
 console.log(queryConfig);
 ```
 
+## Result Mapping
+
+You can map the result of the query, and keep the mapping as part of the query itself, using `mapResult` helper.
+The resulting mapped query is still a query and can be also mapped with the `mapResult`.
+
+> [examples/mapping.ts:(query)](https://github.com/ivank/potygen/tree/main/packages/potygen/examples/mapping.ts#L14-L31)
+
+```ts
+const productsQuery = sql<MyQuery>`SELECT product FROM orders WHERE region = $region`;
+
+const mappedProductsQuery = mapResult(
+  (rows) => rows.map((row) => ({ ...row, productLength: row.product.length })),
+  productsQuery,
+);
+
+const secondMappedProductsQuery = mapResult(
+  (rows) => rows.map((row) => ({ ...row, productLengthSquare: Math.pow(row.productLength, 2) })),
+  mappedProductsQuery,
+);
+
+console.log(await productsQuery(db, { region: 'Sofia' }));
+console.log(await mappedProductsQuery(db, { region: 'Sofia' }));
+console.log(await secondMappedProductsQuery(db, { region: 'Sofia' }));
+```
+
+## Built in mapper helpers
+
+- `maybeOneResult()` - Return the first element, after the query is run, returns undefined if result is empty
+- `oneResult()` - Return the first element, useful for queries where we always expect at least one result
+- `atLeastOneResult` - Return the rows but throw an error if no rows have been returned
+
 ## Pipeline
 
 ```mermaid
@@ -239,3 +270,7 @@ async function main() {
 
 main();
 ```
+
+## Performing SQL queries
+
+With the `sql` query you can wrap
