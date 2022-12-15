@@ -14,7 +14,7 @@ export type ToReadable<TSqlInterface extends SqlInterface = SqlInterface> = (
   params: TSqlInterface['params'],
 ) => Readable;
 
-export const toReadable = <TSqlInterface extends SqlInterface = SqlInterface>(
+export const toReadable = <TSqlInterface extends SqlInterface<unknown[]> = SqlInterface<unknown[]>>(
   query: Query<TSqlInterface>,
   { batchSize = 1000, highWaterMark, inBatches }: ToReadableOptions = {},
 ): ToReadable<TSqlInterface> => {
@@ -23,7 +23,13 @@ export const toReadable = <TSqlInterface extends SqlInterface = SqlInterface>(
     const queryConfig = toQueryConfigFromSource(source, params);
     async function read(this: Readable) {
       try {
-        for await (const batch of toInternalCursorGenerator<TSqlInterface>(db, queryConfig, batchSize)) {
+        for await (const batch of toInternalCursorGenerator<TSqlInterface>(
+          db,
+          queryConfig,
+          batchSize,
+          params,
+          source.mapper,
+        )) {
           if (inBatches) {
             this.push(batch);
           } else {

@@ -10,12 +10,13 @@ import Cursor from 'pg-cursor';
 
 export async function* toInternalCursorGenerator<
   TSqlInterface extends SqlInterface<unknown[]> = SqlInterface<unknown[]>,
+  TOriginalResult = TSqlInterface['result'],
 >(
   db: ClientBase,
   queryConfig: QueryConfig,
   batchSize: number,
   params: TSqlInterface['params'],
-  mapper: (items: unknown, db: ClientBase, params: SqlInterface['params']) => TSqlInterface['result'],
+  mapper: (items: TOriginalResult, db: ClientBase, params: SqlInterface['params']) => TSqlInterface['result'],
 ): AsyncGenerator<TSqlInterface['result']> {
   const cursor = new Cursor(queryConfig.text, queryConfig.values);
   try {
@@ -23,7 +24,7 @@ export async function* toInternalCursorGenerator<
     do {
       const items = await cursor.read(batchSize);
       if (items.length) {
-        yield mapper(items.map(nullToUndefinedInPlace), db, params);
+        yield mapper(items.map(nullToUndefinedInPlace) as TOriginalResult, db, params);
       } else {
         break;
       }

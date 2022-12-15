@@ -6,13 +6,20 @@ export interface ToIteratorOptions {
   batchSize?: number;
 }
 
+type ArrayElement<ArrayType extends readonly unknown[]> = ArrayType extends readonly (infer ElementType)[]
+  ? ElementType
+  : never;
+
 export type ToAsyncIterator<TSqlInterface extends SqlInterface<unknown[]> = SqlInterface<unknown[]>> = (
   db: ClientBase,
   params: TSqlInterface['params'],
-) => AsyncGenerator<TSqlInterface['result']>;
+) => AsyncGenerator<ArrayElement<TSqlInterface['result']>>;
 
-export const toAsyncIterator = <TSqlInterface extends SqlInterface = SqlInterface>(
-  query: Query<TSqlInterface>,
+export const toAsyncIterator = <
+  TSqlInterface extends SqlInterface<unknown[]> = SqlInterface<unknown[]>,
+  TOriginalResult = TSqlInterface['result'],
+>(
+  query: Query<TSqlInterface, TOriginalResult>,
   { batchSize = 1000 }: ToIteratorOptions = {},
 ): ToAsyncIterator<TSqlInterface> => {
   const source = query();
@@ -20,7 +27,7 @@ export const toAsyncIterator = <TSqlInterface extends SqlInterface = SqlInterfac
     const queryConfig = toQueryConfigFromSource(source, params);
     for await (const batch of toInternalCursorGenerator(db, queryConfig, batchSize, params, source.mapper)) {
       for (const item of batch) {
-        yield item;
+        yield item as ArrayElement<TSqlInterface['result']>;
       }
     }
   };

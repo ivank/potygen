@@ -96,13 +96,19 @@ export const atLeastOneResult = <TQueryInterface extends SqlInterface<unknown[]>
  * ```
  */
 export const mapResult =
-  <TOriginalSqlInterface extends SqlInterface, TResultSqlInterface extends SqlInterface>(
-    mapper: (
-      rows: TOriginalSqlInterface['result'],
-      db: SqlDatabase,
-      params: TOriginalSqlInterface['params'],
-    ) => TResultSqlInterface['result'],
-    query: Query<TOriginalSqlInterface>,
-  ): Query<TResultSqlInterface, TOriginalSqlInterface> =>
-  (...args: [db: SqlDatabase, params: TOriginalSqlInterface['params']] | []): any =>
-    args.length === 0 ? { ...query, mapper } : query(...args).then((rows) => mapper(rows, ...args));
+  <TMappedResult, TSqlInterface extends SqlInterface = SqlInterface, TOriginalResult = TSqlInterface['result']>(
+    mapper: (rows: TSqlInterface['result'], db: SqlDatabase, params: TSqlInterface['params']) => TMappedResult,
+    query: Query<TSqlInterface, TOriginalResult>,
+  ): Query<SqlInterface<TMappedResult>, TSqlInterface['result']> =>
+  (...args: [db: SqlDatabase, params: TSqlInterface['params']] | []): any => {
+    if (args.length === 0) {
+      const source = query();
+      return {
+        ...source,
+        mapper: (rows: TOriginalResult, db: SqlDatabase, params: TSqlInterface['params']) =>
+          mapper(source.mapper(rows, db, params), db, params),
+      };
+    } else {
+      return query(...args).then((rows) => mapper(rows, ...args));
+    }
+  };

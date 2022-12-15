@@ -42,27 +42,20 @@ export interface SqlResult<T extends Record<string, unknown>> {
  */
 export interface QuerySource<
   TSqlInterface extends SqlInterface = SqlInterface,
-  TOriginalSqlInterface extends SqlInterface = SqlInterface,
+  TOriginalResult = TSqlInterface['result'],
 > {
   sql: string;
   ast: AstTag;
   params: Param[];
-  mapper: (
-    rows: TOriginalSqlInterface['result'],
-    db: SqlDatabase,
-    params: TSqlInterface['params'],
-  ) => TSqlInterface['result'];
+  mapper: (rows: TOriginalResult, db: SqlDatabase, params: TSqlInterface['params']) => TSqlInterface['result'];
 }
 
 /**
  * SQL Query call.
  */
-export type Query<
-  TSqlInterface extends SqlInterface = SqlInterface,
-  TOriginalSqlInterface extends SqlInterface = SqlInterface,
-> = {
+export type Query<TSqlInterface extends SqlInterface = SqlInterface, TOriginalResult = TSqlInterface['result']> = {
   (db: SqlDatabase, params: TSqlInterface['params']): Promise<TSqlInterface['result']>;
-  (): QuerySource<TSqlInterface, TOriginalSqlInterface>;
+  (): QuerySource<TSqlInterface, TOriginalResult>;
 };
 
 /**
