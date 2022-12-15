@@ -1,28 +1,28 @@
 export interface BooksSqlParams {
-    authorId: number;
+  authorId: number;
 }
 export interface BooksSqlResult {
-    id: number;
-    isbn: string;
-    authorName: string;
-    copiesSold: number;
+  id: number;
+  isbn: string;
+  authorName: string;
+  copiesSold: number;
 }
 export interface BooksSqlQuery {
-    params: BooksSqlParams;
-    result: BooksSqlResult;
+  params: BooksSqlParams;
+  result: BooksSqlResult[];
 }
 export interface InsertBookSqlParams {
-    isbn: string;
-    title?: string;
-    authorId?: number;
+  isbn: string;
+  title?: string;
+  authorId?: number;
 }
 export interface InsertBookSqlResult {
-    id: number;
-    isbn: string;
-    title?: string;
-    authorId?: number;
+  id: number;
+  isbn: string;
+  title?: string;
+  authorId?: number;
 }
 export interface InsertBookSqlQuery {
-    params: InsertBookSqlParams;
-    result: InsertBookSqlResult;
+  params: InsertBookSqlParams;
+  result: InsertBookSqlResult[];
 }
