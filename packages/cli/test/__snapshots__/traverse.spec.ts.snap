@@ -11,7 +11,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -26,7 +26,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -80,7 +80,7 @@ export interface Result<TGenerationPeriods = unknown, TExportPeriods = unknown, 
 }
 export interface Query<TGenerationPeriods = unknown, TExportPeriods = unknown, TErrorParams = unknown> {
     params: Params;
-    result: Result<TGenerationPeriods, TExportPeriods, TErrorParams>;
+    result: Result<TGenerationPeriods, TExportPeriods, TErrorParams>[];
 }
 "
 `;
@@ -94,7 +94,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -108,7 +108,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -130,7 +130,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -147,7 +147,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -162,7 +162,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -174,7 +174,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -198,7 +198,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -236,7 +236,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -274,7 +274,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -304,7 +304,7 @@ export interface Result<THistory = unknown> {
 }
 export interface Query<THistory = unknown> {
     params: Params;
-    result: Result<THistory>;
+    result: Result<THistory>[];
 }
 "
 `;
@@ -328,7 +328,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -340,7 +340,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -378,7 +378,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -395,7 +395,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -411,7 +411,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -427,7 +427,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -444,7 +444,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -460,7 +460,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -481,7 +481,7 @@ export interface Result<TData = unknown> {
 }
 export interface Query<TParamItemsData = unknown, TData = unknown> {
     params: Params<TParamItemsData>;
-    result: Result<TData>;
+    result: Result<TData>[];
 }
 "
 `;
@@ -495,7 +495,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -507,7 +507,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -579,7 +579,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -610,7 +610,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -628,7 +628,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -650,7 +650,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -669,7 +669,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -681,7 +681,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -697,7 +697,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -720,7 +720,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -739,7 +739,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -761,7 +761,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -790,7 +790,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -805,7 +805,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -817,7 +817,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -841,7 +841,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
@@ -864,7 +864,7 @@ export interface Result {
 }
 export interface Query {
     params: Params;
-    result: Result;
+    result: Result[];
 }
 "
 `;
