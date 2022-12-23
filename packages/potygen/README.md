@@ -75,7 +75,15 @@ console.log(await secondMappedProductsQuery(db, { region: 'Sofia' }));
 
 ## Built in mapper helpers
 
-- `maybeOneResult()` - Return the first element, after the query is run, returns undefined if result is empty
+> [examples/one-result.ts:(query)](https://github.com/ivank/potygen/tree/main/packages/potygen/examples/one-result.ts#L14-L17)
+
+```ts
+const oneProductQuery = oneResult(sql<MyQuery>`SELECT product FROM orders WHERE region = $region LIMIT 1`);
+console.log(await oneProductQuery(db, { region: 'Sofia' }));
+```
+
+## `maybeOneResult()` - Return the first element, after the query is run, returns undefined if result is empty
+
 - `oneResult()` - Return the first element, useful for queries where we always expect at least one result
 - `atLeastOneResult` - Return the rows but throw an error if no rows have been returned
 

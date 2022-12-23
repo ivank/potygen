@@ -27,7 +27,6 @@ async function main() {
   console.log(await productsQuery(db, { region: 'Sofia' }));
   console.log(await mappedProductsQuery(db, { region: 'Sofia' }));
   console.log(await secondMappedProductsQuery(db, { region: 'Sofia' }));
-
   // query
 
   await db.end();

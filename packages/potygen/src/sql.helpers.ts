@@ -6,7 +6,7 @@
 
 import { PotygenNotFoundError } from './errors';
 import { toQueryConfig } from './sql';
-import { Query, SqlDatabase, SqlInterface } from './sql.types';
+import { ArrayElement, Query, SqlDatabase, SqlInterface } from './sql.types';
 
 /**
  * Return the first element, after the query is run, returns undefined if result is empty
@@ -23,7 +23,7 @@ import { Query, SqlDatabase, SqlInterface } from './sql.types';
  * ```
  */
 export const maybeOneResult = <TQueryInterface extends SqlInterface<unknown[]>>(query: Query<TQueryInterface>) =>
-  mapResult((rows) => (rows.length ? rows[0] : undefined), query);
+  mapResult((rows) => (rows.length ? (rows[0] as ArrayElement<TQueryInterface['result']>) : undefined), query);
 
 /**
  * Return the first element, useful for queries where we always expect at least one result
@@ -44,12 +44,12 @@ export const maybeOneResult = <TQueryInterface extends SqlInterface<unknown[]>>(
  * ```
  */
 export const oneResult = <TQueryInterface extends SqlInterface<unknown[]>>(query: Query<TQueryInterface>) =>
-  mapResult((rows, params) => {
+  mapResult((rows, params): ArrayElement<TQueryInterface['result']> => {
     const result = rows[0];
     if (!result) {
       throw new PotygenNotFoundError(`Must return at least one`, toQueryConfig(query, params));
     }
-    return result;
+    return result as ArrayElement<TQueryInterface['result']>;
   }, query);
 
 /**
@@ -71,7 +71,7 @@ export const oneResult = <TQueryInterface extends SqlInterface<unknown[]>>(query
  * ```
  */
 export const atLeastOneResult = <TQueryInterface extends SqlInterface<unknown[]>>(query: Query<TQueryInterface>) =>
-  mapResult((rows, params) => {
+  mapResult((rows, params): TQueryInterface['result'] => {
     if (rows.length < 1) {
       throw new PotygenNotFoundError(`Must return at least one`, toQueryConfig(query, params));
     }
