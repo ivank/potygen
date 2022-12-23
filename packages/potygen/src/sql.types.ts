@@ -80,3 +80,7 @@ export type Json<T> = T extends Date
   : {
       [K in keyof T]: T[K] extends (infer U)[] ? Json<U>[] : Json<T[K]>;
     };
+
+export type ArrayElement<ArrayType extends readonly unknown[]> = ArrayType extends readonly (infer ElementType)[]
+  ? ElementType
+  : never;

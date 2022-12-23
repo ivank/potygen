@@ -380,7 +380,7 @@ export {
   isTypeLoad,
 } from './query-interface.guards';
 
-export { SqlInterface, QueryConfig, QuerySource, SqlResult, SqlDatabase, Query, Json } from './sql.types';
+export { SqlInterface, QueryConfig, QuerySource, SqlResult, SqlDatabase, Query, Json, ArrayElement } from './sql.types';
 export { oneResult, maybeOneResult, mapResult, atLeastOneResult } from './sql.helpers';
 export {
   toParams,

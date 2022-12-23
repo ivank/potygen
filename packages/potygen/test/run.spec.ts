@@ -5,9 +5,13 @@ import { testDb, connectionString } from './helpers';
 
 let db: Client;
 
+interface Result {
+  id: number;
+}
+
 interface Query {
   params: {};
-  result: { id: number }[];
+  result: Result[];
 }
 
 const allSql = sql<Query>`SELECT id FROM all_types`;
@@ -69,7 +73,8 @@ describe('Template Tag', () => {
   });
 
   it('Should select maybe one', async () => {
-    expect(await maybeOneResult(oneSql)(db, { id: 1 })).toEqual({ id: 1 });
+    const result = maybeOneResult(oneSql)(db, { id: 1 });
+    expect(await result).toEqual({ id: 1 });
   });
 
   it('Should select maybe one empty', async () => {
