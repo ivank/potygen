@@ -66,7 +66,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@ikerin/build-readme", "npm:1.1.1"],\
             ["prettier", [\
               "@potygen/prettier",\
-              "npm:2.6.1"\
+              "npm:2.8.1"\
             ]],\
             ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"]\
           ],\
@@ -704,7 +704,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pg-promise", "npm:10.11.1"],\
             ["prettier", [\
               "@potygen/prettier",\
-              "npm:2.6.1"\
+              "npm:2.8.1"\
             ]],\
             ["ts-jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:26.5.6"],\
             ["ts-node", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:10.4.0"],\
@@ -1003,7 +1003,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pg", "virtual:daa03143f735bdcd132c00c78d907cd55cd1ca52a999cc5341bd706c4bb2bbd672b041e9e5892384170090f31d13af58eaed7accdc10fde2bfdad1b6b9a04a4e#npm:8.7.1"],\
             ["prettier", [\
               "@potygen/prettier",\
-              "npm:2.6.1"\
+              "npm:2.8.1"\
             ]],\
             ["runtypes", "npm:6.5.0"],\
             ["ts-jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:26.5.6"],\
@@ -1029,7 +1029,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pg-cursor", "virtual:89d361d390b4cfcf5dfcf3a71a9d9880ea06f74fbb724b359bab481ccc496669eda185856c87c83c54a936f1fb9abb5a31aa14715b4078248e26d3d554543ff5#npm:2.7.4"],\
             ["prettier", [\
               "@potygen/prettier",\
-              "npm:2.6.1"\
+              "npm:2.8.1"\
             ]],\
             ["ts-jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:26.5.6"],\
             ["ts-node", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:10.4.0"],\
@@ -1053,7 +1053,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pg-promise", "npm:10.11.1"],\
             ["prettier", [\
               "@potygen/prettier",\
-              "npm:2.6.1"\
+              "npm:2.8.1"\
             ]],\
             ["ts-jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:26.5.6"],\
             ["ts-node", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:10.4.0"],\
@@ -1063,10 +1063,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@potygen/prettier", [\
-        ["npm:2.6.1", {\
-          "packageLocation": "./.yarn/cache/@potygen-prettier-npm-2.6.1-7f8851333d-bf20440065.zip/node_modules/@potygen/prettier/",\
+        ["npm:2.8.1", {\
+          "packageLocation": "./.yarn/cache/@potygen-prettier-npm-2.8.1-b5f63c8803-615503b1c3.zip/node_modules/@potygen/prettier/",\
           "packageDependencies": [\
-            ["@potygen/prettier", "npm:2.6.1"]\
+            ["@potygen/prettier", "npm:2.8.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1084,7 +1084,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "npm:26.6.3"],\
             ["prettier", [\
               "@potygen/prettier",\
-              "npm:2.6.1"\
+              "npm:2.8.1"\
             ]],\
             ["ts-jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:26.5.6"],\
             ["ts-node", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:10.4.0"],\
@@ -1107,7 +1107,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "npm:26.6.3"],\
             ["prettier", [\
               "@potygen/prettier",\
-              "npm:2.6.1"\
+              "npm:2.8.1"\
             ]],\
             ["ts-jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:26.5.6"],\
             ["ts-node", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:10.4.0"],\
@@ -5647,7 +5647,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@ikerin/build-readme", "npm:1.1.1"],\
             ["prettier", [\
               "@potygen/prettier",\
-              "npm:2.6.1"\
+              "npm:2.8.1"\
             ]],\
             ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"]\
           ],\

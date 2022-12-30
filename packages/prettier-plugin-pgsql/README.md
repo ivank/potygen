@@ -25,7 +25,7 @@ To set it up you need to force yarn (or npm) to load "prettier" from another rep
 ```json
 {
   "devDependencies": {
-    "prettier": "npm:@potygen/prettier@^2.6.1"
+    "prettier": "npm:@potygen/prettier@^2.8.1"
   }
 }
 ```
