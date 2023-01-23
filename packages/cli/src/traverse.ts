@@ -38,6 +38,7 @@ import {
 import { ClientBase } from 'pg';
 import { emitLoadedFile } from './emit';
 import { inspect } from 'util';
+import { CacheStore } from './cache';
 
 const toTemplateParent = (node: Node): Node =>
   isCallExpression(node.parent) ? toTemplateParent(node.parent) : node.parent;
@@ -144,7 +145,7 @@ export class SqlRead extends Readable {
   public source: Generator<string, void, unknown>;
   public watchedFiles = new Set<string>();
 
-  constructor(public options: { path: string; root: string; watch: boolean; logger: Logger }) {
+  constructor(public options: { path: string; root: string; watch: boolean; logger: Logger, cacheStore: CacheStore }) {
     super({ objectMode: true });
     this.source = glob(options.path, options.root);
   }
@@ -152,9 +153,12 @@ export class SqlRead extends Readable {
   next() {
     let path: IteratorResult<string>;
     while (!(path = this.source.next()).done) {
-      const file = parseFile(path.value);
-      if (file) {
-        return file;
+      if (this.options.cacheStore.shouldParseFile(path.value)) {
+        const file = parseFile(path.value);
+
+        if (file) {
+          return file;
+        }
       }
     }
     return undefined;
@@ -197,6 +201,7 @@ export class QueryLoader extends Writable {
       logger: Logger;
       typePrefix?: string;
       preload?: boolean;
+      cacheStore: CacheStore;
     },
   ) {
     super({ objectMode: true });
@@ -222,7 +227,7 @@ export class QueryLoader extends Writable {
       await Promise.all(
         parsedFiles
           .map(loadFile(this.data))
-          .map(emitLoadedFile(this.options.root, this.options.template, this.options.typePrefix)),
+          .map(emitLoadedFile(this.options.root, this.options.template, this.options.cacheStore, this.options.typePrefix)),
       );
     } catch (error) {
       this.options.logger.error(error instanceof Error ? String(error) : new Error(String(error)));
@@ -245,6 +250,7 @@ export class QueryLoader extends Writable {
       await emitLoadedFile(
         this.options.root,
         this.options.template,
+        this.options.cacheStore,
         this.options.typePrefix,
       )(loadFile(this.data)(file));
     } catch (error) {

@@ -32,6 +32,7 @@ import {
   TypeName,
   isEmpty,
 } from '@potygen/potygen';
+import { CacheStore } from './cache';
 
 const mkdirAsync = promisify(mkdir);
 const writeFileAsync = promisify(writeFile);
@@ -292,7 +293,7 @@ export const toTypeSource = (file: LoadedFile, typePrefix: string = ''): SourceF
   );
 };
 
-export const emitLoadedFile = (root: string, template: string, typePrefix?: string) => {
+export const emitLoadedFile = (root: string, template: string, cacheStore: CacheStore, typePrefix?: string) => {
   const printer = createPrinter({ newLine: NewLineKind.LineFeed });
   return async (file: LoadedFile): Promise<void> => {
     const outputFile = parseTemplate(root, template, file.path);
@@ -300,5 +301,6 @@ export const emitLoadedFile = (root: string, template: string, typePrefix?: stri
 
     await mkdirAsync(directory, { recursive: true });
     await writeFileAsync(outputFile, printer.printFile(toTypeSource(file, typePrefix)));
+    cacheStore.cacheFile(file.path);
   };
 };
