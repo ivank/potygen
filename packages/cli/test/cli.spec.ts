@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync, unlinkSync } from 'fs';
+import { existsSync, readdirSync, readFileSync, realpathSync, unlinkSync, utimesSync } from 'fs';
 import { join } from 'path';
 import { potygen } from '../src/potygen';
 import { connectionString, rootDir } from './helpers';
@@ -49,7 +49,7 @@ describe('CLI', () => {
   }, 20000);
 
   it('Should use cache', async () => {
-    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+    const cacheFile = join(__dirname, '.cache/test.cache');
     const args = [
       'node',
       'potygen',
@@ -61,31 +61,52 @@ describe('CLI', () => {
       'test/__generated__/{{name}}.queries.ts',
       '--connection',
       connectionString,
+      '--cache',
+      '--cache-file',
+      cacheFile,
     ];
 
-    await potygen(logger).parseAsync([...args, '--cache', '--cache-file', join(__dirname, '.cache/test.cache')]);
+    /**
+     * Run with cache enabled
+     */
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+    await potygen(logger).parseAsync(args);
+
+    const cache = JSON.parse(readFileSync(cacheFile, 'utf-8'));
+    expect(Object.keys(cache)).toContain(realpathSync(join(__dirname, 'dir/dir1/dir2/ts-file1.ts')));
+    expect(Object.keys(cache)).toContain(realpathSync(join(__dirname, 'dir/dir1/dir2/ts-file2.ts')));
 
     expect(logger.error).not.toHaveBeenCalled();
     expect(logger.info).toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file1.ts');
     expect(logger.info).toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file2.ts');
 
+    /**
+     * Run a second time to validate that cache is being used
+     */
     const cachedLogger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
-
-    await potygen(cachedLogger).parseAsync([...args, '--cache', '--cache-file', join(__dirname, '.cache/test.cache')]);
+    await potygen(cachedLogger).parseAsync(args);
 
     expect(cachedLogger.error).not.toHaveBeenCalled();
     expect(cachedLogger.info).not.toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file1.ts');
     expect(cachedLogger.info).not.toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file2.ts');
 
-    const clearedLogger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+    /**
+     * Modify one file and run again to make sure it is being picked up
+     */
+    utimesSync(join(__dirname, 'dir/dir1/dir2/ts-file1.ts'), new Date(), new Date());
 
-    await potygen(clearedLogger).parseAsync([
-      ...args,
-      '--cache',
-      '--cache-file',
-      join(__dirname, '.cache/test.cache'),
-      '--cache-clear',
-    ]);
+    const updatedLogger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+    await potygen(updatedLogger).parseAsync(args);
+
+    expect(updatedLogger.error).not.toHaveBeenCalled();
+    expect(updatedLogger.info).toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file1.ts');
+    expect(updatedLogger.info).not.toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file2.ts');
+
+    /**
+     * Clear the cache to see if all the files are picked up again
+     */
+    const clearedLogger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+    await potygen(clearedLogger).parseAsync([...args, '--cache-clear']);
     expect(clearedLogger.error).not.toHaveBeenCalled();
     expect(clearedLogger.info).toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file1.ts');
     expect(clearedLogger.info).toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file2.ts');
