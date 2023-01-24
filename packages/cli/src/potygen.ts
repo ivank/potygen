@@ -46,7 +46,7 @@ export const potygen = (overwriteLogger?: Logger): Command =>
     .option('-f, --files <files>', 'A glob pattern to search files by (default: "**/*.sql")')
     .option('-w, --watch', 'Watch for file changes and update live')
     .option('-v, --verbose', 'Show verbose logs')
-    .option('-a, --cache-file <cacheFile>', 'Cache file to be used by --incremental', '.cache/potygen.cache')
+    .option('-a, --cache-file <cacheFile>', 'Cache file to be used by --cache', '.cache/potygen.cache')
     .option('-r, --cache-clear', 'Clear the cache')
     .option('-e, --cache', 'Cache which files have been processed, defaults .cache/potygen.cache')
     .option('-s, --silent', 'Only show error logs')
@@ -63,7 +63,20 @@ export const potygen = (overwriteLogger?: Logger): Command =>
     )
     .action(async (options: ConfigType & { config: string }) => {
       const { config, ...rest } = options;
-      const { root, connection, watch, files, template, verbose, silent, typePrefix, preload, cache, cacheFile, cacheClear } = toConfig({
+      const {
+        root,
+        connection,
+        watch,
+        files,
+        template,
+        verbose,
+        silent,
+        typePrefix,
+        preload,
+        cache,
+        cacheFile,
+        cacheClear,
+      } = toConfig({
         ...(existsSync(config) ? JSON.parse(readFileSync(config, 'utf-8')) : {}),
         ...rest,
       });

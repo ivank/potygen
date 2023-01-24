@@ -3,6 +3,7 @@ import { join, relative } from 'path';
 import { pipeline } from 'stream';
 import { promisify } from 'util';
 import { glob } from '../src';
+import { CacheStore } from '../src/cache';
 import { SqlRead, QueryLoader } from '../src/traverse';
 import { sqlDir, testDb } from './helpers';
 
@@ -15,17 +16,20 @@ describe('Traverse', () => {
       await db.connect();
 
       const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+      const cacheStore = new CacheStore('');
       const sqls = new SqlRead({
         path: '*.sql',
         root: sqlDir,
         logger,
         watch: false,
+        cacheStore,
       });
       const sink = new QueryLoader({
         db,
         root: __dirname,
         template: join(__dirname, '__generated__/{{name}}.queries.ts'),
         logger,
+        cacheStore,
       });
 
       await asyncPipeline(sqls, sink);

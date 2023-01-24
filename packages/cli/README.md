@@ -70,7 +70,7 @@ You can define potygen.config.json or provide a json file to the --config proper
 ```
 Usage: potygen [options]
 
-Convert postgres query files inty typescript types
+Convert postgres query files into typescript types
 
 Options:
   -V, --version                  output the version number
@@ -78,9 +78,13 @@ Options:
   -f, --files <files>            A glob pattern to search files by (default: "**/*.sql")
   -w, --watch                    Watch for file changes and update live
   -v, --verbose                  Show verbose logs
+  -a, --cache-file <cacheFile>   Cache file to be used by --incremental (default: ".cache/potygen.cache")
+  -r, --cache-clear              Clear the cache
+  -e, --cache                    Cache which files have been processed, defaults .cache/potygen.cache
   -s, --silent                   Only show error logs
   -p, --typePrefix <typePrefix>  Prefix generated types
-  -r, --root <root>              Set the root directory (default: /Users/ivank/Projects/potygen/packages/cli)
+  -l, --preload                  Load all data at once. Slower start but faster for a lot of files
+  -r, --root <root>              Set the root directory (default: ~/Projects/potygen/packages/cli)
   -n, --connection <connection>  Connection to the postgres database. URI (default: "postgres://localhost:5432/db")
   -t, --template <template>      A template of the path, where to generate the typescript type files. The parameters are the response from node's path.parse function (default:
                                  "{{dir}}/{{name}}.queries.ts")
