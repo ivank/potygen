@@ -145,7 +145,7 @@ export class SqlRead extends Readable {
   public source: Generator<string, void, unknown>;
   public watchedFiles = new Set<string>();
 
-  constructor(public options: { path: string; root: string; watch: boolean; logger: Logger, cacheStore: CacheStore }) {
+  constructor(public options: { path: string; root: string; watch: boolean; logger: Logger; cacheStore: CacheStore }) {
     super({ objectMode: true });
     this.source = glob(options.path, options.root);
   }
@@ -227,7 +227,9 @@ export class QueryLoader extends Writable {
       await Promise.all(
         parsedFiles
           .map(loadFile(this.data))
-          .map(emitLoadedFile(this.options.root, this.options.template, this.options.cacheStore, this.options.typePrefix)),
+          .map(
+            emitLoadedFile(this.options.root, this.options.template, this.options.cacheStore, this.options.typePrefix),
+          ),
       );
     } catch (error) {
       this.options.logger.error(error instanceof Error ? String(error) : new Error(String(error)));
