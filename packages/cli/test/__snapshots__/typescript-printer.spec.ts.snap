@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Query Interface Should convert array constructor sql (SELECT ARRAY(SELECT json_build_object('test', other.integer_col) FROM all_types AS other WHERE all_types.id = other.id) as "arr" FROM all_types) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     arr: {
@@ -12,11 +13,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/array constructor.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert case to string literal union sql (SELECT CASE accounts.source_system WHEN 'SSE' THEN 'SSE' WHEN 'FITDB' THEN 'FITDB' ELSE NULL END AS "sourceSystem" FROM accounts) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     sourceSystem: \\"SSE\\" | \\"FITDB\\" | undefined;
@@ -25,11 +29,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/case to string literal union.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert descriptive property names sql (SELECT 'test' AS "some column", 'test2' AS "test") 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     \\"some column\\": \\"test\\";
@@ -39,11 +46,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/descriptive property names.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert different result types for returning sql (UPDATE all_types SET id = 1 RETURNING *) 1`] = `
-"import { Json } from \\"@potygen/potygen\\";
+Object {
+  "content": "import { Json } from \\"@potygen/potygen\\";
 export interface Params {
 }
 export interface Result<TJson_col = unknown, TJsonb_col = unknown> {
@@ -127,11 +137,14 @@ export interface Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: Params;
     result: Result<TJson_col, TJsonb_col>[];
 }
-"
+",
+  "path": "test/__generated__/different result types for returning.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
-"import { Json } from \\"@potygen/potygen\\";
+Object {
+  "content": "import { Json } from \\"@potygen/potygen\\";
 export interface Params {
 }
 export interface Result<TJson_col = unknown, TJsonb_col = unknown> {
@@ -215,11 +228,14 @@ export interface Query<TJson_col = unknown, TJsonb_col = unknown> {
     params: Params;
     result: Result<TJson_col, TJsonb_col>[];
 }
-"
+",
+  "path": "test/__generated__/different result types.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert empty array sql (SELECT ARRAY[]) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     array: unknown[];
@@ -228,11 +244,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/empty array.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert enum column sql (SELECT state FROM account_levelisations) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     state: \\"Pending\\" | \\"Done\\";
@@ -241,11 +260,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/enum column.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert enum sql (SELECT 'Pending'::account_levelisation_state) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     row: \\"Pending\\" | \\"Done\\";
@@ -254,11 +276,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/enum.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert function result double sql (SELECT ABS(ABS(integer_col)) FROM all_types) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     abs: number;
@@ -267,11 +292,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/function result double.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert function result single sql (SELECT ABS(integer_col) FROM all_types) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     abs: number;
@@ -280,11 +308,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/function result single.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert insert sql (INSERT INTO all_types(not_null, integer_col, character_col) VALUES $$vals(notNull, integerCol, characterCol)) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     vals: {
         notNull?: number;
         integerCol?: number;
@@ -297,11 +328,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/insert.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert invalid identifiers as property names sql (SELECT 'test' AS "12") 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     \\"12\\": \\"test\\";
@@ -310,11 +344,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/invalid identifiers as property names.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert json returning sql (UPDATE all_types SET id = 1 RETURNING json_col) 1`] = `
-"import { Json } from \\"@potygen/potygen\\";
+Object {
+  "content": "import { Json } from \\"@potygen/potygen\\";
 export interface Params {
 }
 export interface Result<TJson_col = unknown> {
@@ -324,11 +361,14 @@ export interface Query<TJson_col = unknown> {
     params: Params;
     result: Result<TJson_col>[];
 }
-"
+",
+  "path": "test/__generated__/json returning.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert load non nullable column sql (SELECT not_null FROM all_types) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     bool: boolean;
@@ -337,11 +377,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/load non nullable column.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert load non nullable column sql (SELECT not_null::text FROM all_types) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     bool: boolean;
@@ -350,11 +393,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/load non nullable column.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert load nullable column sql (SELECT integer_col FROM all_types) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     integer_col?: number;
@@ -363,11 +409,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/load nullable column.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert load nullable column sql (SELECT integer_col::text FROM all_types) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     integer_col?: string;
@@ -376,11 +425,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/load nullable column.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert nested function explicit type sql (SELECT (ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     array: number[];
@@ -389,11 +441,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/nested function explicit type.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert nested function guess type sql (SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     abs: number;
@@ -402,11 +457,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/nested function guess type.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert nullability sql (SELECT not_null FROM all_types) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     bool: boolean;
@@ -415,11 +473,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/nullability.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert operators integer sql (SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     id?: number;
 }
 export interface Result {
@@ -429,11 +490,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/operators integer.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert operators string sql (SELECT character_col + integer_col AS "test1" FROM all_types WHERE character_col = $text) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     text?: string;
 }
 export interface Result {
@@ -443,11 +507,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/operators string.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert parameter group collapse sql (SELECT id FROM all_types WHERE $q = '' OR character_varying_col = $q) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     q?: string;
 }
 export interface Result {
@@ -457,11 +524,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/parameter group collapse.queries.ts",
+}
 `;
 
 exports[`Query Interface Should convert simple sql (SELECT id, character_col FROM all_types WHERE id = :id) 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     id?: number;
 }
 export interface Result {
@@ -472,5 +542,7 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/simple.queries.ts",
+}
 `;

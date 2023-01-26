@@ -7,11 +7,13 @@ import {
   Type,
   TypeName,
 } from '@potygen/potygen';
-import { createPrinter, NewLineKind } from 'typescript';
-import { toTypeSource, compactTypes } from '../src';
+import { toTypeScriptPrinter, compactTypes } from '../src';
 import { testDb } from './helpers';
+import { join } from 'path';
 
 let db: Client;
+
+const typeScriptPrinter = toTypeScriptPrinter(join(__dirname, '../'), 'test/__generated__/{{name}}.queries.ts');
 
 describe('Query Interface', () => {
   beforeAll(async () => {
@@ -59,14 +61,13 @@ describe('Query Interface', () => {
     'Should convert %s sql (%s)',
     async (path, content) => {
       const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
-      const printer = createPrinter({ newLine: NewLineKind.LineFeed });
       const { ast } = parser(content);
       const queryInterface = toQueryInterface(ast);
 
       const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
       const loadedQuery = toLoadedQueryInterface(data)(queryInterface);
-      const source = toTypeSource({ type: 'sql', path, content, queryInterface, loadedQuery });
-      expect(printer.printFile(source)).toMatchSnapshot();
+      const output = await typeScriptPrinter({ type: 'sql', path, content, queryInterface, loadedQuery });
+      expect(output).toMatchSnapshot();
     },
     10000,
   );

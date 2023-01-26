@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Load Files Should convert complex sql account-levelisation.update.query.sql: account-levelisation.update.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     isAccepted?: boolean;
     id?: number;
 }
@@ -13,11 +14,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/account-levelisation.update.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql account-levelisation.upsert.query.sql: account-levelisation.upsert.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     levelisationId?: number;
     start?: Date;
 }
@@ -28,11 +32,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/account-levelisation.upsert.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
-"import { Json } from \\"@potygen/potygen\\";
+Object {
+  "content": "import { Json } from \\"@potygen/potygen\\";
 export interface Params {
     q?: string;
     resolvedPostlev?: \\"\\" | boolean;
@@ -82,11 +89,14 @@ export interface Query<TGenerationPeriods = unknown, TExportPeriods = unknown, T
     params: Params;
     result: Result<TGenerationPeriods, TExportPeriods, TErrorParams>[];
 }
-"
+",
+  "path": "test/__generated__/account-levelisations.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql account-levelisations-bulk-close-accounts.query.sql: account-levelisations-bulk-close-accounts.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     ids?: number[];
 }
 export interface Result {
@@ -96,11 +106,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/account-levelisations-bulk-close-accounts.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql account-levelisations-set-bulk-update.query.sql: account-levelisations-set-bulk-update.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     ids?: number[];
 }
 export interface Result {
@@ -110,11 +123,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/account-levelisations-set-bulk-update.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql account-meter-registers-create.query.sql: account-meter-registers-create.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     id?: number;
     customerLabel?: string;
     industryLabel?: string;
@@ -132,11 +148,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/account-meter-registers-create.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql account-verification.update.query.sql: account-verification.update.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     items: {
         GH_account_id?: unknown;
         [\\"MV date\\"]?: unknown;
@@ -149,11 +168,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/account-verification.update.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     q?: string;
     ids?: number[];
 }
@@ -164,11 +186,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/accounts.list.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     q?: string;
     ids?: number[];
     limit?: number;
@@ -188,11 +213,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/accounts.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql accounts.sql: accounts.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
 }
@@ -200,11 +228,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/accounts.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql active-meters-with-last-read.query.sql: active-meters-with-last-read.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     intervalStart?: Date;
     intervalEnd?: Date;
     accountId?: number;
@@ -238,11 +269,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/active-meters-with-last-read.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql active-meters-wth-reads.query.sql: active-meters-wth-reads.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     intervalStart: Date;
     intervalEnd: Date;
     accountId: number;
@@ -276,11 +310,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/active-meters-wth-reads.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql active-reads.view.sql: active-reads.view.sql 1`] = `
-"import { Json } from \\"@potygen/potygen\\";
+Object {
+  "content": "import { Json } from \\"@potygen/potygen\\";
 export interface Params {
 }
 export interface Result<THistory = unknown> {
@@ -306,11 +343,14 @@ export interface Query<THistory = unknown> {
     params: Params;
     result: Result<THistory>[];
 }
-"
+",
+  "path": "test/__generated__/active-reads.view.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql bacs.query.sql: bacs.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     quarter?: string;
     perPage?: string;
     offset?: string;
@@ -330,11 +370,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/bacs.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql contracts.sql: contracts.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
 }
@@ -342,11 +385,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/contracts.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql csa-account-by-id.query.sql: csa-account-by-id.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     id?: number;
 }
 export interface Result {
@@ -380,11 +426,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/csa-account-by-id.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql csa-account-contracts-update.query.sql: csa-account-contracts-update.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     phone?: string;
     email?: string;
     currentDate: Date;
@@ -397,11 +446,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/csa-account-contracts-update.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql cte.query.sql: cte.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     region: string;
@@ -413,11 +465,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/cte.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql cte-levelisation-details.query.sql: cte-levelisation-details.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     id?: number;
 }
 export interface Result {
@@ -429,11 +484,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/cte-levelisation-details.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     type?: \\"FIT\\" | \\"SEG\\";
     state?: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
 }
@@ -446,11 +504,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/delete-accounts.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     installationId?: number;
     exportDateOn?: Date;
 }
@@ -462,11 +523,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/generation-read-data.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql insert.process.query.sql: insert.process.query.sql 1`] = `
-"import { Json } from \\"@potygen/potygen\\";
+Object {
+  "content": "import { Json } from \\"@potygen/potygen\\";
 export interface Params<TParamItemsData = unknown> {
     items: {
         processId?: number;
@@ -483,11 +547,14 @@ export interface Query<TParamItemsData = unknown, TData = unknown> {
     params: Params<TParamItemsData>;
     result: Result<TData>[];
 }
-"
+",
+  "path": "test/__generated__/insert.process.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     removalDate?: Date;
     meterId?: number;
 }
@@ -497,11 +564,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/installation-meter-update.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql installations.sql: installations.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
 }
@@ -509,11 +579,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/installations.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql levelisation-customer-data.query.sql: levelisation-customer-data.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     accountLevelisationId: number;
 }
 export interface Result {
@@ -581,11 +654,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/levelisation-customer-data.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql levelisation-details.query.sql: levelisation-details.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     id?: number;
 }
 export interface Result {
@@ -612,11 +688,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/levelisation-details.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql levelisation-individual-reads.list.query.sql: levelisation-individual-reads.list.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     id?: number;
     limit: number;
     offset: number;
@@ -630,11 +709,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/levelisation-individual-reads.list.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     q?: string;
     ids?: number[];
     sortField?: \\"quarter\\";
@@ -652,11 +734,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/levelisations.list.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql meter-create.query.sql: meter-create.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     id?: number;
     msn?: string;
     make?: string;
@@ -671,11 +756,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/meter-create.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql meter-reads.sql: meter-reads.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
 }
@@ -683,11 +771,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/meter-reads.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql overwritten.query.sql: overwritten.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     currentDate?: Date;
     meterId?: number;
     intervalStart?: Date;
@@ -699,11 +790,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/overwritten.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql process-batch.query.sql: process-batch.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     fitIds?: string[];
 }
 export interface Result {
@@ -722,11 +816,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/process-batch.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql rates-by-tarrif-ids.query.sql: rates-by-tarrif-ids.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     ids: number[][];
 }
 export interface Result {
@@ -741,11 +838,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/rates-by-tarrif-ids.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql read-create.query.sql: read-create.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     meterId?: number;
     reason?: string;
     type?: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
@@ -763,11 +863,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/read-create.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql reads-by-account-id.query.sql: reads-by-account-id.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     id?: number;
     offset?: string;
     perPage?: string;
@@ -792,11 +895,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/reads-by-account-id.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql recordsets.query.sql: recordsets.query.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
     id: number;
@@ -807,11 +913,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/recordsets.query.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
 }
 export interface Result {
 }
@@ -819,11 +928,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/tariff-rates.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql update-registers.sql: update-registers.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     registers: {
         id?: number;
         customerLabel?: unknown;
@@ -843,11 +955,14 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/update-registers.queries.ts",
+}
 `;
 
 exports[`Load Files Should convert complex sql update-with-cte-from-values.sql: update-with-cte-from-values.sql 1`] = `
-"export interface Params {
+Object {
+  "content": "export interface Params {
     registers: {
         id: unknown;
         customerLabel: unknown;
@@ -866,5 +981,7 @@ export interface Query {
     params: Params;
     result: Result[];
 }
-"
+",
+  "path": "test/__generated__/update-with-cte-from-values.queries.ts",
+}
 `;

@@ -1,4 +1,4 @@
-import { dirname, parse, relative } from 'path';
+import { parse, relative } from 'path';
 import {
   factory,
   createSourceFile,
@@ -30,7 +30,6 @@ import {
   TypeName,
   isEmpty,
 } from '@potygen/potygen';
-import { mkdir } from 'fs/promises';
 
 const isIdentifierRegExp = /^[$A-Z_][0-9A-Z_$]*$/i;
 
@@ -161,7 +160,6 @@ const toClassCase = (identifier: string) => identifier[0].toUpperCase() + identi
 
 const toAstImports = (names: string[]): Statement =>
   factory.createImportDeclaration(
-    undefined,
     undefined,
     factory.createImportClause(
       false,
@@ -295,13 +293,10 @@ export const toTypeSource = (file: LoadedFile, typePrefix: string = ''): SourceF
   );
 };
 
-export const toEmitFile = (root: string, template: string, typePrefix?: string) => {
+export const toTypeScriptPrinter = (root: string, template: string, typePrefix?: string) => {
   const printer = createPrinter({ newLine: NewLineKind.LineFeed });
   return async (file: LoadedFile): Promise<{ path: string; content: string }> => {
     const path = parseTemplate(root, template, file.path);
-    const directory = dirname(path);
-
-    await mkdir(directory, { recursive: true });
     return { path, content: printer.printFile(toTypeSource(file, typePrefix)) };
   };
 };

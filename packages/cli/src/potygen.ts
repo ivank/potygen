@@ -4,7 +4,7 @@ import { existsSync, readFileSync, watchFile } from 'fs';
 import { inspect } from 'util';
 import { Client } from 'pg';
 import { Command, createCommand } from 'commander';
-import { toProcess, CacheStore } from './traverse';
+import { toEmitter, CacheStore } from './emitter';
 import { ConfigType, toConfig } from './config';
 import { glob } from './glob';
 
@@ -76,10 +76,10 @@ export const potygen = (overwriteLogger?: Logger): Command =>
       try {
         const cacheStore = new CacheStore(cacheFile, cache, cacheClear);
         await cacheStore.load();
-        const processFile = await toProcess({ db, logger }, cacheStore, { root, template, typePrefix });
+        const emit = await toEmitter({ db, logger }, cacheStore, { root, template, typePrefix });
         const { results, errors } = await PromisePool.withConcurrency(20)
           .for(Array.from(glob(files, root)))
-          .process(processFile);
+          .process(emit);
 
         if (errors.length) {
           logger.error('Errors:');
@@ -92,7 +92,7 @@ export const potygen = (overwriteLogger?: Logger): Command =>
         }
         if (watch) {
           for (const { path } of results.filter(isNil)) {
-            watchFile(path, () => processFile(path));
+            watchFile(path, () => emit(path));
           }
         }
         await cacheStore.save();

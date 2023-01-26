@@ -29,18 +29,40 @@ import {
   loadAllData,
   toMilliseconds,
 } from '@potygen/potygen';
-import { toEmitFile } from './emit';
+import { toTypeScriptPrinter } from './typescript-printer';
 import { mkdir, readFile, stat, writeFile } from 'fs/promises';
 import { createHash } from 'crypto';
 
-const cacheVersion = '1.0';
-
+/**
+ * Handle both "last updated" checks on files as well as actually checking file contents.
+ */
 export class CacheStore {
   public contents = new Map<string, { path: string; content: string } | undefined>();
   public updates = new Map<string, number>();
 
-  constructor(public fileName: string, public enabled: boolean = false, public cacheClear: boolean = false) {}
+  constructor(
+    /**
+     * Path to the cache file
+     */
+    public fileName: string,
+    /**
+     * If enabled is false, do not perform any caching
+     */
+    public enabled: boolean = false,
+    /**
+     * If true, initialize the cache with empty values so that after save everything is overwritten
+     */
+    public cacheClear: boolean = false,
+    /**
+     * Current version of the cache, if version mismatch, clear the cache
+     */
+    public cacheVersion = '1.0',
+  ) {}
 
+  /**
+   * Check the file's last modified time (mtime).
+   * If its after the time stored in cache, consider the file stale.
+   */
   public async isStale(path: string): Promise<boolean> {
     if (!this.enabled) {
       return true;
@@ -50,6 +72,11 @@ export class CacheStore {
     return !(currentMtime && mtime === currentMtime);
   }
 
+  /**
+   * For a given path and file content, check if content is present in the cache.
+   * If it is not, run the process function and store the results in the cache,
+   * keyed by md5 of the initial content
+   */
   public async cachedOrProcessed(
     path: string,
     content: string,
@@ -71,16 +98,22 @@ export class CacheStore {
     }
   }
 
+  /**
+   * Load the cache from file
+   */
   public async load(): Promise<void> {
     if (!this.cacheClear && existsSync(this.fileName)) {
       const cache = JSON.parse(await readFile(this.fileName, 'utf-8'));
-      if (typeof cache === 'object' && cache !== null && 'version' in cache && cache.version === cacheVersion) {
+      if (typeof cache === 'object' && cache !== null && 'version' in cache && cache.version === this.cacheVersion) {
         this.updates = new Map(Object.entries(cache.updates));
         this.contents = new Map(Object.entries(cache.contents));
       }
     }
   }
 
+  /**
+   * Save current state in the cache file
+   */
   public async save() {
     await mkdir(dirname(this.fileName), { recursive: true });
     await writeFile(
@@ -88,7 +121,7 @@ export class CacheStore {
       JSON.stringify({
         updates: Object.fromEntries(this.updates),
         contents: Object.fromEntries(this.contents),
-        version: cacheVersion,
+        version: this.cacheVersion,
       }),
       'utf-8',
     );
@@ -178,14 +211,14 @@ const toLoadFile =
     }
   };
 
-export const toProcess = async (
+export const toEmitter = async (
   ctx: LoadContext,
   cacheStore: CacheStore,
   options: { root: string; template: string; typePrefix?: string },
 ) => {
   const data = await loadAllData(ctx, []);
   const loadFile = toLoadFile(data);
-  const emit = toEmitFile(options.root, options.template, options.typePrefix);
+  const typeScriptPrinter = toTypeScriptPrinter(options.root, options.template, options.typePrefix);
 
   return async (path: string): Promise<{ path: string } | undefined> => {
     const start = process.hrtime();
@@ -195,9 +228,10 @@ export const toProcess = async (
         const content = await readFile(path, 'utf-8');
         const output = await cacheStore.cachedOrProcessed(path, content, async (path, content) => {
           const file = parseFile(path, content);
-          return file ? await emit(loadFile(file)) : undefined;
+          return file ? await typeScriptPrinter(loadFile(file)) : undefined;
         });
         if (output) {
+          await mkdir(dirname(output.path), { recursive: true });
           await writeFile(output.path, output.content, 'utf-8');
           const elapsed = toMilliseconds(process.hrtime(start));
           ctx.logger.info(`[${output.isCached ? 'Cached' : 'Generated'}]: ${relPath} (${elapsed}ms)`);
@@ -211,6 +245,5 @@ export const toProcess = async (
       ctx.logger.error(`[Error]: ${relPath} (${elapsed})ms`);
       throw error;
     }
-    return undefined;
   };
 };

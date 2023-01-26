@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { join, relative } from 'path';
 import { glob } from '../src';
-import { CacheStore, toProcess } from '../src/traverse';
+import { CacheStore, toEmitter } from '../src/emitter';
 
 import { sqlDir, testDb } from './helpers';
 
@@ -15,7 +15,7 @@ describe('Traverse', () => {
 
       await Promise.all(
         Array.from(glob('*.sql', sqlDir)).map(
-          await toProcess({ db, logger }, cacheStore, {
+          await toEmitter({ db, logger }, cacheStore, {
             root: sqlDir,
             template: join(__dirname, '__generated__/{{name}}.queries.ts'),
           }),

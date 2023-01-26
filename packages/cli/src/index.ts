@@ -1,3 +1,3 @@
 export { Config, ConfigType, FullConfigType, toConfig } from './config';
-export { toEmitFile, toTypeSource, compactTypes } from './emit';
+export { toTypeScriptPrinter, toTypeSource, compactTypes } from './typescript-printer';
 export { glob } from './glob';
