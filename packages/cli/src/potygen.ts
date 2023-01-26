@@ -1,6 +1,6 @@
-import { Logger } from '@potygen/potygen';
+import { Logger, isNil } from '@potygen/potygen';
 import { PromisePool } from '@supercharge/promise-pool';
-import { existsSync, readFileSync } from 'fs';
+import { existsSync, readFileSync, watchFile } from 'fs';
 import { inspect } from 'util';
 import { Client } from 'pg';
 import { Command, createCommand } from 'commander';
@@ -76,9 +76,10 @@ export const potygen = (overwriteLogger?: Logger): Command =>
       try {
         const cacheStore = new CacheStore(cacheFile, cache, cacheClear);
         await cacheStore.load();
-        const { errors } = await PromisePool.withConcurrency(20)
+        const processFile = await toProcess({ db, logger }, cacheStore, { root, template, typePrefix });
+        const { results, errors } = await PromisePool.withConcurrency(20)
           .for(Array.from(glob(files, root)))
-          .process(await toProcess({ db, logger }, cacheStore, { root, template, typePrefix }));
+          .process(processFile);
 
         if (errors.length) {
           logger.error('Errors:');
@@ -89,8 +90,15 @@ export const potygen = (overwriteLogger?: Logger): Command =>
             logger.error('\n');
           }
         }
+        if (watch) {
+          for (const { path } of results.filter(isNil)) {
+            watchFile(path, () => processFile(path));
+          }
+        }
         await cacheStore.save();
       } finally {
-        await db.end();
+        if (!watch) {
+          await db.end();
+        }
       }
     });

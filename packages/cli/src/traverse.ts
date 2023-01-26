@@ -187,9 +187,9 @@ export const toProcess = async (
   const loadFile = toLoadFile(data);
   const emit = toEmitFile(options.root, options.template, options.typePrefix);
 
-  return async (path: string) => {
+  return async (path: string): Promise<{ path: string } | undefined> => {
     const start = process.hrtime();
-    const absolutePath = relative(options.root ?? '.', path);
+    const relPath = relative(options.root ?? '.', path);
     try {
       if (await cacheStore.isStale(path)) {
         const content = await readFile(path, 'utf-8');
@@ -200,15 +200,17 @@ export const toProcess = async (
         if (output) {
           await writeFile(output.path, output.content, 'utf-8');
           const elapsed = toMilliseconds(process.hrtime(start));
-          ctx.logger.info(`[${output.isCached ? 'Cached' : 'Generated'}]: ${absolutePath} (${elapsed}ms)`);
+          ctx.logger.info(`[${output.isCached ? 'Cached' : 'Generated'}]: ${relPath} (${elapsed}ms)`);
         }
       } else {
-        ctx.logger.info(`[Not modified]: ${absolutePath}`);
+        ctx.logger.info(`[Not modified]: ${relPath}`);
       }
+      return { path };
     } catch (error) {
       const elapsed = toMilliseconds(process.hrtime(start));
-      ctx.logger.error(`[Error]: ${absolutePath} (${elapsed})ms`);
+      ctx.logger.error(`[Error]: ${relPath} (${elapsed})ms`);
       throw error;
     }
+    return undefined;
   };
 };
