@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync, realpathSync, unlinkSync, utimesSync } from 'fs';
+import { existsSync, readdirSync, readFileSync, unlinkSync, utimesSync } from 'fs';
 import { join } from 'path';
 import { potygen } from '../src/potygen';
 import { connectionString, rootDir } from './helpers';
@@ -72,13 +72,9 @@ describe('CLI', () => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     await potygen(logger).parseAsync(args);
 
-    const cache = JSON.parse(readFileSync(cacheFile, 'utf-8'));
-    expect(Object.keys(cache)).toContain(realpathSync(join(__dirname, 'dir/dir1/dir2/ts-file1.ts')));
-    expect(Object.keys(cache)).toContain(realpathSync(join(__dirname, 'dir/dir1/dir2/ts-file2.ts')));
-
     expect(logger.error).not.toHaveBeenCalled();
-    expect(logger.info).toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file1.ts');
-    expect(logger.info).toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file2.ts');
+    expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('[test/dir/dir1/dir2/ts-file1.ts]: Generated'));
+    expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('[test/dir/dir1/dir2/ts-file2.ts]: Generated'));
 
     /**
      * Run a second time to validate that cache is being used
@@ -87,8 +83,8 @@ describe('CLI', () => {
     await potygen(cachedLogger).parseAsync(args);
 
     expect(cachedLogger.error).not.toHaveBeenCalled();
-    expect(cachedLogger.info).not.toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file1.ts');
-    expect(cachedLogger.info).not.toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file2.ts');
+    expect(cachedLogger.info).toHaveBeenCalledWith('[test/dir/dir1/dir2/ts-file1.ts]: Not modified');
+    expect(cachedLogger.info).toHaveBeenCalledWith('[test/dir/dir1/dir2/ts-file2.ts]: Not modified');
 
     /**
      * Modify one file and run again to make sure it is being picked up
@@ -99,8 +95,10 @@ describe('CLI', () => {
     await potygen(updatedLogger).parseAsync(args);
 
     expect(updatedLogger.error).not.toHaveBeenCalled();
-    expect(updatedLogger.info).toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file1.ts');
-    expect(updatedLogger.info).not.toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file2.ts');
+    expect(updatedLogger.info).toHaveBeenCalledWith(
+      expect.stringContaining('[test/dir/dir1/dir2/ts-file1.ts]: Cached'),
+    );
+    expect(updatedLogger.info).toHaveBeenCalledWith('[test/dir/dir1/dir2/ts-file2.ts]: Not modified');
 
     /**
      * Clear the cache to see if all the files are picked up again
@@ -108,8 +106,12 @@ describe('CLI', () => {
     const clearedLogger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     await potygen(clearedLogger).parseAsync([...args, '--cache-clear']);
     expect(clearedLogger.error).not.toHaveBeenCalled();
-    expect(clearedLogger.info).toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file1.ts');
-    expect(clearedLogger.info).toHaveBeenCalledWith('Processing test/dir/dir1/dir2/ts-file2.ts');
+    expect(clearedLogger.info).toHaveBeenCalledWith(
+      expect.stringContaining('[test/dir/dir1/dir2/ts-file1.ts]: Generated'),
+    );
+    expect(clearedLogger.info).toHaveBeenCalledWith(
+      expect.stringContaining('[test/dir/dir1/dir2/ts-file2.ts]: Generated'),
+    );
   }, 20000);
 
   it('Should use type prefix when generating files', async () => {
@@ -157,36 +159,6 @@ describe('CLI', () => {
       '{{root}}/packages/cli/test/__generated__/{{name}}.queries.ts',
       '--connection',
       connectionString,
-    ]);
-
-    expect(logger.error).not.toHaveBeenCalled();
-
-    const resultQueries = readdirSync(join(__dirname, '__generated__'))
-      .filter((item) => item.endsWith('.ts'))
-      .sort();
-
-    expect(resultQueries).toMatchSnapshot();
-
-    for (const name of resultQueries) {
-      expect(readFileSync(join(__dirname, '__generated__', name), 'utf-8')).toMatchSnapshot(name);
-    }
-  }, 20000);
-
-  it('Should use cli to run pipeline on sql files with preloading', async () => {
-    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
-
-    await potygen(logger).parseAsync([
-      'node',
-      'potygen',
-      '--root',
-      rootDir,
-      '--files',
-      'sql/*.sql',
-      '--template',
-      '{{root}}/packages/cli/test/__generated__/{{name}}.queries.ts',
-      '--connection',
-      connectionString,
-      '--preload',
     ]);
 
     expect(logger.error).not.toHaveBeenCalled();

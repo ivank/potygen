@@ -1,6 +1,4 @@
-import { readFileSync, watchFile } from 'fs';
-import { Readable, Writable } from 'stream';
-import { glob } from './glob';
+import { existsSync } from 'fs';
 import {
   createSourceFile,
   ScriptTarget,
@@ -14,12 +12,10 @@ import {
   isIdentifier,
   isCallExpression,
 } from 'typescript';
-import { basename, relative } from 'path';
+import { basename, dirname, relative } from 'path';
 import {
   parser,
-  QueryInterface,
   toQueryInterface,
-  loadQueryInterfacesData,
   toLoadedQueryInterface,
   LoadError,
   ParsedSqlFileLoadError,
@@ -28,21 +24,83 @@ import {
   LoadContext,
   LoadedData,
   LoadedFile,
-  Logger,
   ParsedFile,
-  ParsedSqlFile,
-  ParsedTypescriptFile,
   TemplateTagQuery,
   loadAllData,
+  toMilliseconds,
 } from '@potygen/potygen';
-import { ClientBase } from 'pg';
-import { emitLoadedFile } from './emit';
-import { inspect } from 'util';
-import { CacheStore } from './cache';
+import { toEmitFile } from './emit';
+import { mkdir, readFile, stat, writeFile } from 'fs/promises';
+import { createHash } from 'crypto';
+
+const cacheVersion = '1.0';
+
+export class CacheStore {
+  public contents = new Map<string, { path: string; content: string } | undefined>();
+  public updates = new Map<string, number>();
+
+  constructor(public fileName: string, public enabled: boolean = false, public cacheClear: boolean = false) {}
+
+  public async isStale(path: string): Promise<boolean> {
+    if (!this.enabled) {
+      return true;
+    }
+    const mtime = (await stat(path)).mtime.getTime();
+    const currentMtime = this.updates.get(path);
+    return !(currentMtime && mtime === currentMtime);
+  }
+
+  public async cachedOrProcessed(
+    path: string,
+    content: string,
+    process: (path: string, content: string) => Promise<{ path: string; content: string } | undefined>,
+  ): Promise<{ path: string; content: string; isCached?: boolean } | undefined> {
+    if (!this.enabled) {
+      return await process(path, content);
+    }
+    const key = createHash('md5').update(content).digest('hex');
+    const cached = this.contents.get(key);
+    if (cached) {
+      return { ...cached, isCached: true };
+    } else {
+      const processed = await process(path, content);
+      const mtime = (await stat(path)).mtime.getTime();
+      this.contents.set(key, processed);
+      this.updates.set(path, mtime);
+      return processed;
+    }
+  }
+
+  public async load(): Promise<void> {
+    if (!this.cacheClear && existsSync(this.fileName)) {
+      const cache = JSON.parse(await readFile(this.fileName, 'utf-8'));
+      if (typeof cache === 'object' && cache !== null && 'version' in cache && cache.version === cacheVersion) {
+        this.updates = new Map(Object.entries(cache.updates));
+        this.contents = new Map(Object.entries(cache.contents));
+      }
+    }
+  }
+
+  public async save() {
+    await mkdir(dirname(this.fileName), { recursive: true });
+    await writeFile(
+      this.fileName,
+      JSON.stringify({
+        updates: Object.fromEntries(this.updates),
+        contents: Object.fromEntries(this.contents),
+        version: cacheVersion,
+      }),
+      'utf-8',
+    );
+  }
+}
 
 const toTemplateParent = (node: Node): Node =>
   isCallExpression(node.parent) ? toTemplateParent(node.parent) : node.parent;
 
+/**
+ * Extract the sql tagged template literals from a typescript ast
+ */
 const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
   const queries: TemplateTagQuery[] = [];
   let tagPropertyName = 'sql';
@@ -84,32 +142,20 @@ const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
   return queries;
 };
 
-const toParsedTypescriptFile = (path: string): ParsedTypescriptFile => {
-  const sourceText = readFileSync(path, 'utf-8');
-  const source = createSourceFile(basename(path), sourceText, ScriptTarget.ES2021, true);
-  return { type: 'ts', source, path, queries: getTemplateTagQueries(source) };
+const parseFile = (path: string, content: string): ParsedFile | undefined => {
+  if (path.endsWith('.ts')) {
+    const source = createSourceFile(basename(path), content, ScriptTarget.ES2021, true);
+    const file: ParsedFile = { type: 'ts', source, path, queries: getTemplateTagQueries(source) };
+    return file.queries.length > 0 ? file : undefined;
+  } else {
+    return { type: 'sql', path, content, queryInterface: toQueryInterface(parser(content).ast) };
+  }
 };
-
-const toParsedSqlFile = (path: string): ParsedSqlFile | undefined => {
-  const content = readFileSync(path, 'utf-8');
-  return { type: 'sql', path, content, queryInterface: toQueryInterface(parser(content).ast) };
-};
-
-const toQueryInterfaces = (files: ParsedFile[]): QueryInterface[] =>
-  files.flatMap((file) =>
-    file.type === 'ts' ? file.queries.map((query) => query.queryInterface) : file.queryInterface,
-  );
-
-const loadDataFromParsedFiles = async (
-  ctx: LoadContext,
-  data: LoadedData[],
-  files: ParsedFile[],
-): Promise<LoadedData[]> => loadQueryInterfacesData(ctx, toQueryInterfaces(files), data);
 
 const isError = (error: unknown): error is LoadError | ParseError =>
   error instanceof LoadError || error instanceof ParseError;
 
-const loadFile =
+const toLoadFile =
   (data: LoadedData[]) =>
   (file: ParsedFile): LoadedFile => {
     if (file.type === 'sql') {
@@ -132,132 +178,38 @@ const loadFile =
     }
   };
 
-const parseFile = (path: string): ParsedFile | undefined => {
-  if (path.endsWith('.ts')) {
-    const file = toParsedTypescriptFile(path);
-    return file.queries.length > 0 ? file : undefined;
-  } else {
-    return toParsedSqlFile(path);
-  }
-};
+export const toProcess = async (
+  ctx: LoadContext,
+  cacheStore: CacheStore,
+  options: { root: string; template: string; typePrefix?: string },
+) => {
+  const data = await loadAllData(ctx, []);
+  const loadFile = toLoadFile(data);
+  const emit = toEmitFile(options.root, options.template, options.typePrefix);
 
-export class SqlRead extends Readable {
-  public source: Generator<string, void, unknown>;
-  public watchedFiles = new Set<string>();
-
-  constructor(public options: { path: string; root: string; watch: boolean; logger: Logger; cacheStore: CacheStore }) {
-    super({ objectMode: true });
-    this.source = glob(options.path, options.root);
-  }
-
-  next() {
-    let path: IteratorResult<string>;
-    while (!(path = this.source.next()).done) {
-      if (this.options.cacheStore.shouldParseFile(path.value)) {
-        const file = parseFile(path.value);
-
-        if (file) {
-          return file;
+  return async (path: string) => {
+    const start = process.hrtime();
+    try {
+      if (await cacheStore.isStale(path)) {
+        const content = await readFile(path, 'utf-8');
+        const output = await cacheStore.cachedOrProcessed(path, content, async (path, content) => {
+          const file = parseFile(path, content);
+          return file ? await emit(loadFile(file)) : undefined;
+        });
+        if (output) {
+          await writeFile(output.path, output.content, 'utf-8');
+          const elapsed = toMilliseconds(process.hrtime(start));
+          ctx.logger.info(
+            `[${relative(options.root ?? '.', path)}]: ${output.isCached ? 'Cached' : 'Generated'} (${elapsed}ms)`,
+          );
         }
+      } else {
+        ctx.logger.info(`[${relative(options.root ?? '.', path)}]: Not modified`);
       }
-    }
-    return undefined;
-  }
-
-  watchFile(path: string): () => void {
-    return () => {
-      const file = parseFile(path);
-      if (file) {
-        this.options.logger.info(`Processing ${relative(this.options.root ?? '.', path)}`);
-        this.push(file);
-      }
-    };
-  }
-
-  _read() {
-    const next = this.next();
-    if (next) {
-      if (this.options.watch && !this.watchedFiles.has(next.path)) {
-        this.watchedFiles.add(next.path);
-        watchFile(next.path, this.watchFile(next.path));
-      }
-      this.options.logger.info(`Processing ${relative(this.options.root ?? '.', next.path)}`);
-      this.push(next);
-    } else if (!this.options.watch) {
-      this.options.logger.info(`Done`);
-      this.push(null);
-    }
-  }
-}
-
-export class QueryLoader extends Writable {
-  public ctx: LoadContext;
-  public data: LoadedData[] = [];
-  constructor(
-    public options: {
-      db: ClientBase;
-      root: string;
-      template: string;
-      logger: Logger;
-      typePrefix?: string;
-      preload?: boolean;
-      cacheStore: CacheStore;
-    },
-  ) {
-    super({ objectMode: true });
-    this.ctx = { db: options.db, logger: options.logger ?? console };
-  }
-
-  async _writev(
-    chunks: Array<{ chunk: ParsedFile; encoding: BufferEncoding }>,
-    callback: (error?: Error | null) => void,
-  ): Promise<void> {
-    try {
-      const parsedFiles = chunks.map((file) => file.chunk);
-      this.ctx.logger.debug(
-        `Parse files: ${inspect(
-          parsedFiles.map((file) => `${relative(this.options.root, file.path)} (${file.type})`),
-        )}`,
-      );
-      this.data = this.options.preload
-        ? this.data.length === 0
-          ? await loadAllData(this.ctx, this.data)
-          : this.data
-        : await loadDataFromParsedFiles(this.ctx, this.data, parsedFiles);
-      await Promise.all(
-        parsedFiles
-          .map(loadFile(this.data))
-          .map(
-            emitLoadedFile(this.options.root, this.options.template, this.options.cacheStore, this.options.typePrefix),
-          ),
-      );
     } catch (error) {
-      this.options.logger.error(error instanceof Error ? String(error) : new Error(String(error)));
+      const elapsed = toMilliseconds(process.hrtime(start));
+      ctx.logger.error(`[${relative(options.root ?? '.', path)}]: Error (${elapsed})ms`);
+      throw error;
     }
-    callback();
-  }
-
-  async _write(
-    file: ParsedTypescriptFile,
-    encoding: BufferEncoding,
-    callback: (error?: Error | null) => void,
-  ): Promise<void> {
-    try {
-      this.ctx.logger.debug(`Parse file: ${relative(this.options.root, file.path)} (${file.type})`);
-      this.data = this.options.preload
-        ? this.data.length === 0
-          ? await loadAllData(this.ctx, this.data)
-          : this.data
-        : await loadDataFromParsedFiles(this.ctx, this.data, [file]);
-      await emitLoadedFile(
-        this.options.root,
-        this.options.template,
-        this.options.cacheStore,
-        this.options.typePrefix,
-      )(loadFile(this.data)(file));
-    } catch (error) {
-      this.options.logger.error(error instanceof Error ? String(error) : new Error(String(error)));
-    }
-    callback();
-  }
-}
+  };
+};

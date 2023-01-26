@@ -995,6 +995,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@potygen/cli", "workspace:packages/cli"],\
             ["@ikerin/build-readme", "npm:1.1.1"],\
             ["@potygen/potygen", "workspace:packages/potygen"],\
+            ["@supercharge/promise-pool", "npm:2.3.2"],\
             ["@types/jest", "npm:26.0.24"],\
             ["@types/node", "npm:14.17.32"],\
             ["@types/pg", "npm:8.6.1"],\
@@ -1175,6 +1176,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@sinonjs/fake-timers", "npm:6.0.1"],\
             ["@sinonjs/commons", "npm:1.8.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@supercharge/promise-pool", [\
+        ["npm:2.3.2", {\
+          "packageLocation": "./.yarn/cache/@supercharge-promise-pool-npm-2.3.2-cd41516a25-a6fa277386.zip/node_modules/@supercharge/promise-pool/",\
+          "packageDependencies": [\
+            ["@supercharge/promise-pool", "npm:2.3.2"]\
           ],\
           "linkType": "HARD"\
         }]\

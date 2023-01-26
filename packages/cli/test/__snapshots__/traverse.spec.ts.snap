@@ -622,9 +622,9 @@ exports[`Traverse Should work: __generated__/levelisation-individual-reads.list.
     offset: number;
 }
 export interface Result {
-    id: number;
-    dateOn: Date;
-    value: number;
+    id?: number;
+    dateOn?: Date;
+    value?: number;
 }
 export interface Query {
     params: Params;

@@ -1,5 +1,40 @@
 import { existsSync, readFileSync, writeFileSync, statSync, mkdirSync } from 'fs';
 import { dirname } from 'path';
+import { createHash } from 'crypto';
+
+export class CachedFileParser<TResult> {
+  constructor(public store = new Map<string, TResult>(), public process: (content: string, path: string) => TResult) {}
+
+  public get(path: string): TResult {
+    const content = readFileSync(path, 'utf-8');
+    const key = createHash('md5').update(content).digest('hex');
+    const cachedResult = this.store.get(key);
+    if (cachedResult) {
+      return cachedResult;
+    } else {
+      const result = this.process(content, path);
+      this.store.set(key, result);
+      return result;
+    }
+  }
+}
+
+export class CachedProcessParser<TResult> {
+  constructor(public store = new Map<string, TResult>(), public process: (content: string, path: string) => TResult) {}
+
+  public get(path: string): TResult {
+    const content = readFileSync(path, 'utf-8');
+    const key = createHash('md5').update(content).digest('hex');
+    const cachedResult = this.store.get(key);
+    if (cachedResult) {
+      return cachedResult;
+    } else {
+      const result = this.process(content, path);
+      this.store.set(key, result);
+      return result;
+    }
+  }
+}
 
 export class CacheStore {
   public store = new Map<string, number>();

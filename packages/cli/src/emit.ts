@@ -1,5 +1,3 @@
-import { mkdir, writeFile } from 'fs';
-import { promisify } from 'util';
 import { dirname, parse, relative } from 'path';
 import {
   factory,
@@ -32,10 +30,7 @@ import {
   TypeName,
   isEmpty,
 } from '@potygen/potygen';
-import { CacheStore } from './cache';
-
-const mkdirAsync = promisify(mkdir);
-const writeFileAsync = promisify(writeFile);
+import { mkdir } from 'fs/promises';
 
 const isIdentifierRegExp = /^[$A-Z_][0-9A-Z_$]*$/i;
 
@@ -271,6 +266,13 @@ const toLoadedQueryTypeNodes = (
   };
 };
 
+/**
+ * Convert a potygen {@link LoadedFile} into a typescript {@link SourceFile}.
+ *
+ * @param file
+ * @param typePrefix prefix all class names with this string
+ * @returns
+ */
 export const toTypeSource = (file: LoadedFile, typePrefix: string = ''): SourceFile => {
   const content =
     file.type === 'ts'
@@ -293,14 +295,13 @@ export const toTypeSource = (file: LoadedFile, typePrefix: string = ''): SourceF
   );
 };
 
-export const emitLoadedFile = (root: string, template: string, cacheStore: CacheStore, typePrefix?: string) => {
+export const toEmitFile = (root: string, template: string, typePrefix?: string) => {
   const printer = createPrinter({ newLine: NewLineKind.LineFeed });
-  return async (file: LoadedFile): Promise<void> => {
-    const outputFile = parseTemplate(root, template, file.path);
-    const directory = dirname(outputFile);
+  return async (file: LoadedFile): Promise<{ path: string; content: string }> => {
+    const path = parseTemplate(root, template, file.path);
+    const directory = dirname(path);
 
-    await mkdirAsync(directory, { recursive: true });
-    await writeFileAsync(outputFile, printer.printFile(toTypeSource(file, typePrefix)));
-    cacheStore.cacheFile(file.path);
+    await mkdir(directory, { recursive: true });
+    return { path, content: printer.printFile(toTypeSource(file, typePrefix)) };
   };
 };
