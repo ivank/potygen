@@ -128,7 +128,7 @@ describe('CLI', () => {
       'test/__generated__/{{name}}.queries.ts',
       '--connection',
       connectionString,
-      '--typePrefix',
+      '--type-prefix',
       'TMP2',
     ]);
 
