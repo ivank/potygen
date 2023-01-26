@@ -131,7 +131,7 @@ const getTemplateTagQueries = (ast: SourceFile): TemplateTagQuery[] => {
       try {
         queries.push({ ...tag, queryInterface: toQueryInterface(parser(node.template.text).ast) });
       } catch (error) {
-        throw new ParseError(tag, `Error parsing sql: ${error instanceof Error ? error.message : String(error)}`);
+        throw new ParseError(tag, `Error parsing sql: ${String(error)}`);
       }
     } else {
       node.forEachChild(visitor);
@@ -189,6 +189,7 @@ export const toProcess = async (
 
   return async (path: string) => {
     const start = process.hrtime();
+    const absolutePath = relative(options.root ?? '.', path);
     try {
       if (await cacheStore.isStale(path)) {
         const content = await readFile(path, 'utf-8');
@@ -199,16 +200,14 @@ export const toProcess = async (
         if (output) {
           await writeFile(output.path, output.content, 'utf-8');
           const elapsed = toMilliseconds(process.hrtime(start));
-          ctx.logger.info(
-            `[${relative(options.root ?? '.', path)}]: ${output.isCached ? 'Cached' : 'Generated'} (${elapsed}ms)`,
-          );
+          ctx.logger.info(`[${output.isCached ? 'Cached' : 'Generated'}]: ${absolutePath} (${elapsed}ms)`);
         }
       } else {
-        ctx.logger.info(`[${relative(options.root ?? '.', path)}]: Not modified`);
+        ctx.logger.info(`[Not modified]: ${absolutePath}`);
       }
     } catch (error) {
       const elapsed = toMilliseconds(process.hrtime(start));
-      ctx.logger.error(`[${relative(options.root ?? '.', path)}]: Error (${elapsed})ms`);
+      ctx.logger.error(`[Error]: ${absolutePath} (${elapsed})ms`);
       throw error;
     }
   };

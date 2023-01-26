@@ -73,8 +73,8 @@ describe('CLI', () => {
     await potygen(logger).parseAsync(args);
 
     expect(logger.error).not.toHaveBeenCalled();
-    expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('[test/dir/dir1/dir2/ts-file1.ts]: Generated'));
-    expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('[test/dir/dir1/dir2/ts-file2.ts]: Generated'));
+    expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('[Generated]: test/dir/dir1/dir2/ts-file1.ts'));
+    expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('[Generated]: test/dir/dir1/dir2/ts-file2.ts'));
 
     /**
      * Run a second time to validate that cache is being used
@@ -83,8 +83,8 @@ describe('CLI', () => {
     await potygen(cachedLogger).parseAsync(args);
 
     expect(cachedLogger.error).not.toHaveBeenCalled();
-    expect(cachedLogger.info).toHaveBeenCalledWith('[test/dir/dir1/dir2/ts-file1.ts]: Not modified');
-    expect(cachedLogger.info).toHaveBeenCalledWith('[test/dir/dir1/dir2/ts-file2.ts]: Not modified');
+    expect(cachedLogger.info).toHaveBeenCalledWith('[Not modified]: test/dir/dir1/dir2/ts-file1.ts');
+    expect(cachedLogger.info).toHaveBeenCalledWith('[Not modified]: test/dir/dir1/dir2/ts-file2.ts');
 
     /**
      * Modify one file and run again to make sure it is being picked up
@@ -96,9 +96,9 @@ describe('CLI', () => {
 
     expect(updatedLogger.error).not.toHaveBeenCalled();
     expect(updatedLogger.info).toHaveBeenCalledWith(
-      expect.stringContaining('[test/dir/dir1/dir2/ts-file1.ts]: Cached'),
+      expect.stringContaining('[Cached]: test/dir/dir1/dir2/ts-file1.ts'),
     );
-    expect(updatedLogger.info).toHaveBeenCalledWith('[test/dir/dir1/dir2/ts-file2.ts]: Not modified');
+    expect(updatedLogger.info).toHaveBeenCalledWith('[Not modified]: test/dir/dir1/dir2/ts-file2.ts');
 
     /**
      * Clear the cache to see if all the files are picked up again
@@ -107,10 +107,10 @@ describe('CLI', () => {
     await potygen(clearedLogger).parseAsync([...args, '--cache-clear']);
     expect(clearedLogger.error).not.toHaveBeenCalled();
     expect(clearedLogger.info).toHaveBeenCalledWith(
-      expect.stringContaining('[test/dir/dir1/dir2/ts-file1.ts]: Generated'),
+      expect.stringContaining('[Generated]: test/dir/dir1/dir2/ts-file1.ts'),
     );
     expect(clearedLogger.info).toHaveBeenCalledWith(
-      expect.stringContaining('[test/dir/dir1/dir2/ts-file2.ts]: Generated'),
+      expect.stringContaining('[Generated]: test/dir/dir1/dir2/ts-file2.ts'),
     );
   }, 20000);
 

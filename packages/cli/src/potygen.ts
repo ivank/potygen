@@ -19,7 +19,7 @@ class LogLevelConsole implements Logger {
 
   error(...args: any[]): void {
     if (this.level >= LogLevel.error) {
-      console.info(...args);
+      console.error(...args);
     }
   }
 
@@ -48,7 +48,7 @@ export const potygen = (overwriteLogger?: Logger): Command =>
     .option('-r, --cache-clear', 'Clear the cache')
     .option('-e, --cache', 'Cache which files have been processed, defaults .cache/potygen.cache')
     .option('-s, --silent', 'Only show error logs')
-    .option('-p, --typePrefix <typePrefix>', 'Prefix generated types')
+    .option('-p, --type-prefix <typePrefix>', 'Prefix generated types')
     .option('-r, --root <root>', `Set the root directory (default: ${process.cwd()})`)
     .option(
       '-n, --connection <connection>',
@@ -76,7 +76,7 @@ export const potygen = (overwriteLogger?: Logger): Command =>
       try {
         const cacheStore = new CacheStore(cacheFile, cache, cacheClear);
         await cacheStore.load();
-        const { errors } = await PromisePool.withConcurrency(100)
+        const { errors } = await PromisePool.withConcurrency(20)
           .for(Array.from(glob(files, root)))
           .process(await toProcess({ db, logger }, cacheStore, { root, template, typePrefix }));
 
@@ -85,7 +85,7 @@ export const potygen = (overwriteLogger?: Logger): Command =>
           logger.error('------------------------------');
           for (const error of errors) {
             logger.error(`[${error.item}]`);
-            logger.error(process.env.POTYGEN_DEBUG ? error.stack : String(error));
+            logger.error(process.env.POTYGEN_DEBUG ? error.stack : String(error.raw));
             logger.error('\n');
           }
         }
