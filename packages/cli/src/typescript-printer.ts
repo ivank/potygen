@@ -1,6 +1,4 @@
-import { mkdir, writeFile } from 'fs';
-import { promisify } from 'util';
-import { dirname, parse, relative } from 'path';
+import { parse, relative } from 'path';
 import {
   factory,
   createSourceFile,
@@ -32,10 +30,6 @@ import {
   TypeName,
   isEmpty,
 } from '@potygen/potygen';
-import { CacheStore } from './cache';
-
-const mkdirAsync = promisify(mkdir);
-const writeFileAsync = promisify(writeFile);
 
 const isIdentifierRegExp = /^[$A-Z_][0-9A-Z_$]*$/i;
 
@@ -167,7 +161,6 @@ const toClassCase = (identifier: string) => identifier[0].toUpperCase() + identi
 const toAstImports = (names: string[]): Statement =>
   factory.createImportDeclaration(
     undefined,
-    undefined,
     factory.createImportClause(
       false,
       undefined,
@@ -271,6 +264,13 @@ const toLoadedQueryTypeNodes = (
   };
 };
 
+/**
+ * Convert a potygen {@link LoadedFile} into a typescript {@link SourceFile}.
+ *
+ * @param file
+ * @param typePrefix prefix all class names with this string
+ * @returns
+ */
 export const toTypeSource = (file: LoadedFile, typePrefix: string = ''): SourceFile => {
   const content =
     file.type === 'ts'
@@ -293,14 +293,10 @@ export const toTypeSource = (file: LoadedFile, typePrefix: string = ''): SourceF
   );
 };
 
-export const emitLoadedFile = (root: string, template: string, cacheStore: CacheStore, typePrefix?: string) => {
+export const toTypeScriptPrinter = (root: string, template: string, typePrefix?: string) => {
   const printer = createPrinter({ newLine: NewLineKind.LineFeed });
-  return async (file: LoadedFile): Promise<void> => {
-    const outputFile = parseTemplate(root, template, file.path);
-    const directory = dirname(outputFile);
-
-    await mkdirAsync(directory, { recursive: true });
-    await writeFileAsync(outputFile, printer.printFile(toTypeSource(file, typePrefix)));
-    cacheStore.cacheFile(file.path);
+  return async (file: LoadedFile): Promise<{ path: string; content: string }> => {
+    const path = parseTemplate(root, template, file.path);
+    return { path, content: printer.printFile(toTypeSource(file, typePrefix)) };
   };
 };
