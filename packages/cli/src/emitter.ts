@@ -87,7 +87,9 @@ export class CacheStore {
     }
     const key = createHash('md5').update(content).digest('hex');
     const cached = this.contents.get(key);
+    const mtime = (await stat(path)).mtime.getTime();
     if (cached) {
+      this.updates.set(path, mtime);
       return { ...cached, isCached: true };
     } else {
       const processed = await process(path, content);
