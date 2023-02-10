@@ -1,7 +1,7 @@
 /**
  * util.ts
  *
- * A minimalistic implementation of [lodash/fp](https://github.com/lodash/lodash/wiki/FP-Guide)
+ * A minimalist implementation of [lodash/fp](https://github.com/lodash/lodash/wiki/FP-Guide)
  */
 
 /**
@@ -128,7 +128,7 @@ export const chunk = <T>(size: number, items: T[]): T[][] =>
   [...Array(Math.ceil(items.length / size))].map((_, index) => items.slice(index * size, (index + 1) * size));
 
 /**
- * Checks if value is the language type of Object. (e.g. arrays, functions, objects, regexes, new Number(0), and new String(''))
+ * Checks if value is the language type of Object. (e.g. arrays, functions, objects, new RegExp(''), new Number(0), and new String(''))
  */
 export const isObject = (item: unknown): item is Record<string, unknown> => typeof item === 'object' && item !== null;
 

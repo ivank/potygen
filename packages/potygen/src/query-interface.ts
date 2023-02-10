@@ -1,7 +1,7 @@
 /**
  * query-interface.ts
  *
- * The "midium stage" for converting from an SQL ast to what the actual typescript types are.
+ * The "medium stage" for converting from an SQL ast to what the actual typescript types are.
  * Everything that can be processed, that does **not** require access to the database is done.
  * Also a plan of what to load exactly from the database is generated, so that the loading can be done efficiently later by [load.ts](./load.ts)
  */
@@ -71,7 +71,7 @@ import {
 
 /**
  * Initial context for the toSourcesIterator.
- * Used to allow nesting and recusion
+ * Used to allow nesting and recursion
  */
 interface SourcesIteratorContext {
   /**
@@ -141,8 +141,8 @@ const toSourcesIterator =
           },
         ]);
       case SqlName.Exists:
-      case SqlName.ComparationArray:
-      case SqlName.ComparationArrayInclusion:
+      case SqlName.ComparisonArray:
+      case SqlName.ComparisonArrayInclusion:
         return sources.concat(nestedRecur(last(sql.values)));
       case SqlName.CTE:
         const cteQuery = last(sql.values);
@@ -425,7 +425,7 @@ const toType =
             return { ...typeDate, postgresType: 'date' };
           case 'current_timestamp':
             return { ...typeDate, postgresType: 'timestamp' };
-          case 'curtent_time':
+          case 'current_time':
             return { ...typeString, postgresType: 'time' };
           case 'json_build_object':
           case 'jsonb_build_object':
@@ -448,7 +448,7 @@ const toType =
       case SqlName.SpreadParameter:
         return typeAny;
       case SqlName.Row:
-      case SqlName.RowKeyward:
+      case SqlName.RowKeyword:
         return { type: TypeName.LoadNamed, value: { ...typeString, postgresType: 'row' }, name: 'row', sourceTag: sql };
       case SqlName.Select:
         return {
@@ -470,12 +470,12 @@ const toType =
       case SqlName.CustomQuotedString:
       case SqlName.BitString:
       case SqlName.EscapeString:
-      case SqlName.HexademicalString:
+      case SqlName.HexadecimalString:
       case SqlName.CustomQuotedString:
         return { type: TypeName.String, literal: sql.value, postgresType: 'text' };
       case SqlName.Exists:
-      case SqlName.ComparationArray:
-      case SqlName.ComparationArrayInclusion:
+      case SqlName.ComparisonArray:
+      case SqlName.ComparisonArrayInclusion:
         return typeBoolean;
       case SqlName.Type:
         const typeParts = first(sql.values).values;
@@ -710,8 +710,8 @@ export const toParams =
           },
         ];
 
-      case SqlName.ComparationArrayInclusion:
-      case SqlName.ComparationArray:
+      case SqlName.ComparisonArrayInclusion:
+      case SqlName.ComparisonArray:
         const column = first(sql.values);
         return column && isColumn(column)
           ? [

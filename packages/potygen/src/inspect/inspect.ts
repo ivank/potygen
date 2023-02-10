@@ -46,7 +46,7 @@ import { AstTag } from '../grammar.types';
 import { Info, pathToInfo } from './info';
 
 /**
- * A point of interest ({@link Info}) alongiside its context - AST, path and the query context
+ * A point of interest ({@link Info}) alongside its context - AST, path and the query context
  */
 interface LoadedInfo {
   info: Info;

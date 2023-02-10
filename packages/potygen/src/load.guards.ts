@@ -1,7 +1,7 @@
 /**
  * load.guards.ts
  *
- * Contains all [typeguards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html) for the grammer ast types
+ * Contains all [typeguards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html) for the grammar ast types
  * The actual implementation is in [load.ts](./load.ts)
  * Types in [load.types.ts](./load.types.ts)
  */

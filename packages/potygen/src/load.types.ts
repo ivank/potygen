@@ -17,7 +17,7 @@ export interface QualifiedName {
 
 /**
  * A table that must be loaded from the database.
- * Resulsts in {@link LoadedDataTable}
+ * Results in {@link LoadedDataTable}
  */
 export interface DataTable {
   type: 'Table';
@@ -26,7 +26,7 @@ export interface DataTable {
 
 /**
  * An sql function that must be loaded from the database.
- * Resulsts in {@link LoadedDataFunction}
+ * Results in {@link LoadedDataFunction}
  */
 export interface DataFunction {
   type: 'Function';
@@ -35,7 +35,7 @@ export interface DataFunction {
 
 /**
  * A [postgres enum](https://www.postgresql.org/docs/current/datatype-enum.html) that must be loaded from the database.
- * Resulsts in {@link LoadedDataEnum}
+ * Results in {@link LoadedDataEnum}
  */
 export interface DataEnum {
   type: 'Enum';
@@ -44,7 +44,7 @@ export interface DataEnum {
 
 /**
  * An [sql view](https://www.postgresql.org/docs/14/sql-createview.html) that must be loaded from the database.
- * Resulsts in {@link LoadedDataView}
+ * Results in {@link LoadedDataView}
  */
 export interface DataView {
   type: 'View';
@@ -84,7 +84,7 @@ export interface LoadedDataComposite extends DataComposite {
 
 /**
  * An intermediary [sql view](https://www.postgresql.org/docs/14/sql-createview.html) representation.
- * Contains the raw SQL of the view, to be parsed and loded
+ * Contains the raw SQL of the view, to be parsed and loaded
  */
 export interface DataViewRaw extends DataView {
   comment?: string;
@@ -108,7 +108,7 @@ export interface LoadedDataView extends DataViewParsed {
 }
 
 /**
- * An sql function with the loaded and argment types
+ * An sql function with the loaded and argument types
  */
 export interface LoadedDataFunction extends DataFunction {
   comment?: string;
@@ -129,16 +129,16 @@ export interface LoadedDataEnum extends DataEnum {
 export type Data = DataTable | DataFunction | DataEnum;
 
 /**
- * First pass on loded data, without views
+ * First pass on loaded data, without views
  */
 export type LoadedDataSimple = LoadedDataTable | LoadedDataFunction | LoadedDataEnum | LoadedDataComposite;
 /**
- * First pass on loded data
+ * First pass on loaded data
  */
 export type LoadedDataRaw = LoadedDataSimple | DataViewRaw;
 
 /**
- * All the loded data, specified by {@link Data}
+ * All the loaded data, specified by {@link Data}
  */
 export type LoadedData = LoadedDataSimple | LoadedDataView;
 

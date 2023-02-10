@@ -75,9 +75,9 @@ export const enum SqlName {
    */
   BitString,
   /**
-   * {@link HexademicalStringTag}
+   * {@link HexadecimalStringTag}
    */
-  HexademicalString,
+  HexadecimalString,
   /**
    * {@link EscapeStringTag}
    */
@@ -163,9 +163,9 @@ export const enum SqlName {
    */
   Row,
   /**
-   * {@link RowKeywardTag}
+   * {@link RowKeywordTag}
    */
-  RowKeyward,
+  RowKeyword,
   /**
    * {@link WhenTag}
    */
@@ -227,25 +227,25 @@ export const enum SqlName {
    */
   Function,
   /**
-   * {@link ComparationArrayInclusionTypeTag}
+   * {@link ComparisonArrayInclusionTypeTag}
    */
-  ComparationArrayInclusionType,
+  ComparisonArrayInclusionType,
   /**
-   * {@link ComparationArrayOperatorTag}
+   * {@link ComparisonArrayOperatorTag}
    */
-  ComparationArrayOperator,
+  ComparisonArrayOperator,
   /**
-   * {@link ComparationArrayTypeTag}
+   * {@link ComparisonArrayTypeTag}
    */
-  ComparationArrayType,
+  ComparisonArrayType,
   /**
-   * {@link ComparationArrayInclusionTag}
+   * {@link ComparisonArrayInclusionTag}
    */
-  ComparationArrayInclusion,
+  ComparisonArrayInclusion,
   /**
-   * {@link ComparationArrayTag}
+   * {@link ComparisonArrayTag}
    */
-  ComparationArray,
+  ComparisonArray,
   /**
    * {@link ExistsTag}
    */
@@ -505,7 +505,7 @@ export const enum SqlName {
 }
 
 /**
- * Base Sql tag, holding state of the tag poistion in the text
+ * Base Sql tag, holding state of the tag position in the text
  */
 export interface SqlTag {
   start: number;
@@ -526,7 +526,7 @@ export interface LeafSqlTag extends SqlTag {
 }
 
 /**
- * Tags that conly contain leaf tags or other nodes
+ * Tags that only contain leaf tags or other nodes
  */
 export interface NodeSqlTag extends SqlTag {
   values: Tag[];
@@ -741,7 +741,7 @@ export interface ParameterPickTag extends NodeSqlTag {
 }
 
 /**
- * Column Tag, representing qualified or unqulified names
+ * Column Tag, representing qualified or unqualified names
  * https://www.postgresql.org/docs/current/sql-expressions.html#FIELD-SELECTION
  * ```
  *            ┌─schema ┌─table   ┌─ name
@@ -762,7 +762,7 @@ export interface ColumnTag extends NodeSqlTag {
 }
 
 /**
- * "As" tag desginating an alias for tables or columns
+ * "As" tag designating an alias for tables or columns
  * ```
  *                        ┌──── name
  *                        ▼
@@ -782,7 +782,7 @@ export interface AsTag extends NodeSqlTag {
  * A column for an ad hoc table alias definition
  *
  * ```
- *                                                                      ┌──── column identifer
+ *                                                                      ┌──── column identifier
  *                                                                      │      ┌──── column type
  *                                                                      ▼      ▼
  *                                                                 ┌────────┬─────┐
@@ -819,7 +819,7 @@ export interface AsColumnListTag extends NodeSqlTag {
  * A an ad hoc table alias definition
  *
  * ```
- *                                                           ┌──── recordset identifer
+ *                                                           ┌──── recordset identifier
  *                                                           │               ┌──── columns definitions
  *                                                           ▼               ▼
  *                                                    ┌ ─┌───────┬──────────────────────────┐
@@ -872,11 +872,11 @@ export interface BitStringTag extends LeafSqlTag {
 }
 
 /**
- * A string representing a hexademical value, prefixed with a X', e.g. X'AF21'
+ * A string representing a hexadecimal value, prefixed with a X', e.g. X'AF21'
  * https://www.postgresql.org/docs/14/sql-syntax-lexical.html
  */
-export interface HexademicalStringTag extends LeafSqlTag {
-  tag: SqlName.HexademicalString;
+export interface HexadecimalStringTag extends LeafSqlTag {
+  tag: SqlName.HexadecimalString;
   value: string;
 }
 
@@ -923,7 +923,7 @@ export interface BooleanTag extends LeafSqlTag {
 }
 
 /**
- * A tag represinting the type of typed constant
+ * A tag representing the type of typed constant
  *
  * https://www.postgresql.org/docs/14/sql-syntax-lexical.html
  */
@@ -1272,7 +1272,7 @@ export interface StarTag extends EmptyLeafSqlTag {
 }
 
 /**
- * A tag reprsenting a qualified "*", e.g. `public.table1.*`
+ * A tag representing a qualified "*", e.g. `public.table1.*`
  * https://www.postgresql.org/docs/current/sql-expressions.html#FIELD-SELECTION
  * ```
  *          ┌─schema ┌─table ┌─ star
@@ -1323,8 +1323,8 @@ export interface RowTag extends NodeSqlTag {
  *                     └─▶RowTag
  * ```
  */
-export interface RowKeywardTag extends NodeSqlTag {
-  tag: SqlName.RowKeyward;
+export interface RowKeywordTag extends NodeSqlTag {
+  tag: SqlName.RowKeyword;
   values: ExpressionTag[];
 }
 
@@ -1518,7 +1518,7 @@ export interface TernarySeparatorTag extends LeafSqlTag {
 }
 
 /**
- * Ternary expression (with 2 operatrs and 3 arguments).
+ * Ternary expression (with 2 operators and 3 arguments).
  * https://www.postgresql.org/docs/current/functions-comparison.html
  * ```
  *                     ┌──arg1
@@ -1635,34 +1635,34 @@ export interface FunctionTag extends NodeSqlTag {
 }
 
 /**
- * The type of a row and array comparation
+ * The type of a row and array comparison
  * https://www.postgresql.org/docs/current/functions-comparisons.html
  */
-export interface ComparationArrayInclusionTypeTag extends LeafSqlTag {
-  tag: SqlName.ComparationArrayInclusionType;
+export interface ComparisonArrayInclusionTypeTag extends LeafSqlTag {
+  tag: SqlName.ComparisonArrayInclusionType;
   value: 'IN' | 'NOT IN';
 }
 
 /**
- * THe operator of a row and array comparations
+ * THe operator of a row and array comparisons
  * https://www.postgresql.org/docs/current/functions-comparisons.html
  */
-export interface ComparationArrayOperatorTag extends LeafSqlTag {
-  tag: SqlName.ComparationArrayOperator;
+export interface ComparisonArrayOperatorTag extends LeafSqlTag {
+  tag: SqlName.ComparisonArrayOperator;
   value: '<=' | '>=' | '<' | '>' | '<>' | '!=' | '=' | 'AND' | 'OR';
 }
 
 /**
- * The type of a row and array comparation
+ * The type of a row and array comparison
  * https://www.postgresql.org/docs/current/functions-comparisons.html
  */
-export interface ComparationArrayTypeTag extends LeafSqlTag {
-  tag: SqlName.ComparationArrayType;
+export interface ComparisonArrayTypeTag extends LeafSqlTag {
+  tag: SqlName.ComparisonArrayType;
   value: 'ANY' | 'SOME' | 'ALL';
 }
 
 /**
- * Comparation with array expresison
+ * Comparison with array expression
  * https://www.postgresql.org/docs/current/functions-comparisons.html
  * ```
  *   value─┐  ┌─type
@@ -1672,16 +1672,16 @@ export interface ComparationArrayTypeTag extends LeafSqlTag {
  * SELECT│113│IN│(1, 2, 3)│
  *       └───┴──┴─────────┘
  *      └─────────────────┘
- *             └▶ComparationArrayInclusionTag
+ *             └▶ComparisonArrayInclusionTag
  * ```
  */
-export interface ComparationArrayInclusionTag extends NodeSqlTag {
-  tag: SqlName.ComparationArrayInclusion;
-  values: [value: ExpressionTag, type: ComparationArrayInclusionTypeTag, subject: CastableDataTypeTag];
+export interface ComparisonArrayInclusionTag extends NodeSqlTag {
+  tag: SqlName.ComparisonArrayInclusion;
+  values: [value: ExpressionTag, type: ComparisonArrayInclusionTypeTag, subject: CastableDataTypeTag];
 }
 
 /**
- * Comparation with array expresison
+ * Comparison with array expression
  * https://www.postgresql.org/docs/current/functions-comparisons.html
  * ```
  *   value─┐  ┌─operator
@@ -1691,15 +1691,15 @@ export interface ComparationArrayInclusionTag extends NodeSqlTag {
  * SELECT│113│=│ANY│(ARRAY[1,2])│
  *       └───┴─┴───┴────────────┘
  *      └────────────────────────┘
- *                  └▶ComparationArrayInclusionTag
+ *                  └▶ComparisonArrayInclusionTag
  * ```
  */
-export interface ComparationArrayTag extends NodeSqlTag {
-  tag: SqlName.ComparationArray;
+export interface ComparisonArrayTag extends NodeSqlTag {
+  tag: SqlName.ComparisonArray;
   values: [
     value: ExpressionTag,
-    operator: ComparationArrayOperatorTag,
-    type: ComparationArrayTypeTag,
+    operator: ComparisonArrayOperatorTag,
+    type: ComparisonArrayTypeTag,
     subject: CastableDataTypeTag,
   ];
 }
@@ -1714,7 +1714,7 @@ export interface ComparationArrayTag extends NodeSqlTag {
  * SELECT col1 FROM table1 WHERE EXISTS│(SELECT TRUE)│
  *                              └ ─ ─ ─└─────────────┘
  *                             └──────────────────────┘
- *                                       └▶ComparationArrayInclusionTag
+ *                                       └▶ComparisonArrayInclusionTag
  * ```
  */
 export interface ExistsTag extends NodeSqlTag {
@@ -1939,7 +1939,7 @@ export interface GroupByTag extends NodeSqlTag {
  */
 export interface HavingTag extends NodeSqlTag {
   tag: SqlName.Having;
-  values: [condtion: ExpressionTag];
+  values: [condition: ExpressionTag];
 }
 
 /**
@@ -1975,7 +1975,7 @@ export interface CombinationTag extends NodeSqlTag {
  */
 export interface OrderDirectionTag extends LeafSqlTag {
   tag: SqlName.OrderDirection;
-  value: 'ASC' | 'DESC' | 'USNIG >' | 'USING <';
+  value: 'ASC' | 'DESC' | 'USING >' | 'USING <';
 }
 
 /**
@@ -2397,7 +2397,7 @@ export interface ValuesListTag extends NodeSqlTag {
 }
 
 /**
- * Collate in on conflict issert
+ * Collate in on conflict insert
  * https://www.postgresql.org/docs/current/sql-insert.html
  */
 export interface CollateTag extends LeafSqlTag {
@@ -2605,7 +2605,7 @@ export type FromListItemTag = NamedSelectTag | TableTag | RecordsetFunctionTag |
 export type ConstantTag =
   | StringTag
   | BitStringTag
-  | HexademicalStringTag
+  | HexadecimalStringTag
   | EscapeStringTag
   | DollarQuotedStringTag
   | CustomQuotedStringTag
@@ -2634,15 +2634,15 @@ export type ExpressionTag =
   | AnyCastTag
   | ExtractTag
   | TernaryExpressionTag
-  | ComparationArrayTag
-  | ComparationArrayInclusionTag
+  | ComparisonArrayTag
+  | ComparisonArrayInclusionTag
   | ExistsTag
   | CaseTag
   | CaseSimpleTag
   | DataTypeTag
   | OperatorExpressionTag
   | RowTag
-  | RowKeywardTag
+  | RowKeywordTag
   | ArraySelectConstructorTag
   | WrappedExpressionTag;
 
@@ -2670,7 +2670,7 @@ export type EmptyLeafTag =
 export type LeafTag =
   | ExtractFieldTag
   | BitStringTag
-  | HexademicalStringTag
+  | HexadecimalStringTag
   | EscapeStringTag
   | ConstantTypeTag
   | TernaryOperatorTag
@@ -2685,9 +2685,9 @@ export type LeafTag =
   | BooleanTag
   | BinaryOperatorTag
   | UnaryOperatorTag
-  | ComparationArrayInclusionTypeTag
-  | ComparationArrayOperatorTag
-  | ComparationArrayTypeTag
+  | ComparisonArrayInclusionTypeTag
+  | ComparisonArrayOperatorTag
+  | ComparisonArrayTypeTag
   | JoinTypeTag
   | OrderDirectionTag
   | CollateTag
@@ -2727,7 +2727,7 @@ export type NodeTag =
   | FilterTag
   | StarIdentifierTag
   | RowTag
-  | RowKeywardTag
+  | RowKeywordTag
   | WhenTag
   | ElseTag
   | CaseSimpleTag
@@ -2740,8 +2740,8 @@ export type NodeTag =
   | ArrayConstructorTag
   | ArraySelectConstructorTag
   | FunctionTag
-  | ComparationArrayTag
-  | ComparationArrayInclusionTag
+  | ComparisonArrayTag
+  | ComparisonArrayInclusionTag
   | ExistsTag
   | SelectListItemTag
   | SelectListTag

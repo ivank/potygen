@@ -34,7 +34,7 @@ Array [
   "meter-reads.queries.ts",
   "overwritten.query.queries.ts",
   "process-batch.query.queries.ts",
-  "rates-by-tarrif-ids.query.queries.ts",
+  "rates-by-tariff-ids.query.queries.ts",
   "read-create.query.queries.ts",
   "reads-by-account-id.query.queries.ts",
   "recordsets.query.queries.ts",
@@ -769,7 +769,7 @@ export interface Query {
 "
 `;
 
-exports[`CLI Should use cli to run pipeline on sql files: rates-by-tarrif-ids.query.queries.ts 1`] = `
+exports[`CLI Should use cli to run pipeline on sql files: rates-by-tariff-ids.query.queries.ts 1`] = `
 "export interface Params {
     ids: number[][];
 }

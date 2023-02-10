@@ -127,7 +127,7 @@ describe('Query Interface', () => {
       `SELECT COALESCE(numeric_col,0) + COALESCE(numeric_col,0) as "totalPaymentWithVat" FROM all_types`,
     ],
     ['numeric', "SELECT '123'::numeric"],
-    ['double percision', "SELECT '123'::double precision"],
+    ['double precision', "SELECT '123'::double precision"],
     ['big int', "SELECT '123'::int8"],
     [
       'CTE with parameters spread',
