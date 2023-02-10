@@ -28,11 +28,11 @@ import {
   ColumnTag,
   CombinationTag,
   CommentTag,
-  ComparationArrayInclusionTypeTag,
-  ComparationArrayOperatorTag,
-  ComparationArrayTypeTag,
-  ComparationArrayInclusionTag,
-  ComparationArrayTag,
+  ComparisonArrayInclusionTypeTag,
+  ComparisonArrayOperatorTag,
+  ComparisonArrayTypeTag,
+  ComparisonArrayInclusionTag,
+  ComparisonArrayTag,
   ExistsTag,
   CompositeAccessTag,
   ConflictConstraintTag,
@@ -66,7 +66,7 @@ import {
   FunctionTag,
   GroupByTag,
   HavingTag,
-  HexademicalStringTag,
+  HexadecimalStringTag,
   IdentifierTag,
   InsertTag,
   IntegerTag,
@@ -93,7 +93,7 @@ import {
   ReturningListItemTag,
   ReturningTag,
   RowTag,
-  RowKeywardTag,
+  RowKeywordTag,
   SelectListItemTag,
   SelectListTag,
   SelectTag,
@@ -160,8 +160,8 @@ export const isColumn = (value: SqlTag): value is ColumnTag => value.tag === Sql
 export const isAs = (value: SqlTag): value is AsTag => value.tag === SqlName.As;
 export const isString = (value: SqlTag): value is StringTag => value.tag === SqlName.String;
 export const isBitString = (value: SqlTag): value is BitStringTag => value.tag === SqlName.BitString;
-export const isHexademicalString = (value: SqlTag): value is HexademicalStringTag =>
-  value.tag === SqlName.HexademicalString;
+export const isHexadecimalString = (value: SqlTag): value is HexadecimalStringTag =>
+  value.tag === SqlName.HexadecimalString;
 export const isEscapeString = (value: SqlTag): value is EscapeStringTag => value.tag === SqlName.EscapeString;
 export const isDollarQuotedString = (value: SqlTag): value is DollarQuotedStringTag =>
   value.tag === SqlName.DollarQuotedString;
@@ -177,7 +177,7 @@ export const isConstant = (value: SqlTag): value is ConstantTag =>
   isBoolean(value) ||
   isEscapeString(value) ||
   isBitString(value) ||
-  isHexademicalString(value) ||
+  isHexadecimalString(value) ||
   isDollarQuotedString(value) ||
   isCustomQuotedString(value);
 export const isCount = (value: SqlTag): value is CountTag => value.tag === SqlName.Count;
@@ -239,9 +239,9 @@ export const isExpression = (value: SqlTag): value is ExpressionTag =>
   isFunction(value) ||
   isArrayIndex(value) ||
   isRow(value) ||
-  isRowKeyward(value) ||
-  isComparationArray(value) ||
-  isComparationArrayInclusion(value) ||
+  isRowKeyword(value) ||
+  isComparisonArray(value) ||
+  isComparisonArrayInclusion(value) ||
   isExists(value) ||
   isWrappedExpression(value);
 export const isFunctionArg = (value: SqlTag): value is FunctionArgTag => isExpression(value) || isStarIdentifier(value);
@@ -301,22 +301,21 @@ export const isArrayConstructor = (value: SqlTag): value is ArrayConstructorTag 
 export const isArraySelectConstructor = (value: SqlTag): value is ArraySelectConstructorTag =>
   value.tag === SqlName.ArraySelectConstructor;
 export const isRow = (value: SqlTag): value is RowTag => value.tag === SqlName.Row;
-export const isRowKeyward = (value: SqlTag): value is RowKeywardTag => value.tag === SqlName.RowKeyward;
+export const isRowKeyword = (value: SqlTag): value is RowKeywordTag => value.tag === SqlName.RowKeyword;
 export const isFilter = (value: SqlTag): value is FilterTag => value.tag === SqlName.Filter;
 export const isWrappedExpression = (value: SqlTag): value is WrappedExpressionTag =>
   value.tag === SqlName.WrappedExpression;
 export const isExpressionList = (value: SqlTag): value is ExpressionListTag => value.tag === SqlName.ExpressionList;
 export const isComment = (value: SqlTag): value is CommentTag => value.tag === SqlName.Comment;
-export const isComparationArrayInclusionType = (value: SqlTag): value is ComparationArrayInclusionTypeTag =>
-  value.tag === SqlName.ComparationArrayInclusionType;
-export const isComparationArrayOperator = (value: SqlTag): value is ComparationArrayOperatorTag =>
-  value.tag === SqlName.ComparationArrayOperator;
-export const isComparationArrayType = (value: SqlTag): value is ComparationArrayTypeTag =>
-  value.tag === SqlName.ComparationArrayType;
-export const isComparationArrayInclusion = (value: SqlTag): value is ComparationArrayInclusionTag =>
-  value.tag === SqlName.ComparationArrayInclusion;
-export const isComparationArray = (value: SqlTag): value is ComparationArrayTag =>
-  value.tag === SqlName.ComparationArray;
+export const isComparisonArrayInclusionType = (value: SqlTag): value is ComparisonArrayInclusionTypeTag =>
+  value.tag === SqlName.ComparisonArrayInclusionType;
+export const isComparisonArrayOperator = (value: SqlTag): value is ComparisonArrayOperatorTag =>
+  value.tag === SqlName.ComparisonArrayOperator;
+export const isComparisonArrayType = (value: SqlTag): value is ComparisonArrayTypeTag =>
+  value.tag === SqlName.ComparisonArrayType;
+export const isComparisonArrayInclusion = (value: SqlTag): value is ComparisonArrayInclusionTag =>
+  value.tag === SqlName.ComparisonArrayInclusion;
+export const isComparisonArray = (value: SqlTag): value is ComparisonArrayTag => value.tag === SqlName.ComparisonArray;
 export const isExists = (value: SqlTag): value is ExistsTag => value.tag === SqlName.Exists;
 export const isAsColumn = (value: SqlTag): value is AsColumnTag => value.tag === SqlName.AsColumn;
 export const isAsColumnList = (value: SqlTag): value is AsColumnListTag => value.tag === SqlName.AsColumnList;

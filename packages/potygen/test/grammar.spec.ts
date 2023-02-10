@@ -290,7 +290,7 @@ describe('Sql', () => {
   it.each`
     name          | sql
     ${'multiple'} | ${'-- test\nSELECT "test"\n-- other\n'}
-    ${'insede'}   | ${'SELECT * \n-- test comment\nFROM table1'}
+    ${'inside'}   | ${'SELECT * \n-- test comment\nFROM table1'}
   `('Should parse query with  $name comments ($sql)', ({ sql, name }) =>
     withParserErrors(() => {
       expect(parser(sql)).toMatchSnapshot(name);
@@ -334,7 +334,7 @@ describe('Sql', () => {
     ${'escape constant'}            | ${"SELECT E'111'::varbit"}
     ${'escape string'}              | ${"SELECT E'\\o'"}
     ${'bit string'}                 | ${"SELECT B'111'"}
-    ${'hexademical string'}         | ${"SELECT X'FFFFFF'"}
+    ${'hexadecimal string'}         | ${"SELECT X'FFFFFF'"}
     ${'binary constant'}            | ${"SELECT E'111'::varbit"}
     ${'typed constant'}             | ${"SELECT double precision '3.5' * interval '1 hour'"}
   `('Should parse query for type $name ($sql)', ({ sql, name }) =>

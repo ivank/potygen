@@ -2,7 +2,7 @@
  * sql.ts
  *
  * The `sql` template literal used to perform all the queries.
- * This holds the user fasing interface
+ * This holds the user facing interface
  */
 
 import { parser } from './grammar';
@@ -78,7 +78,7 @@ const toSpreadIndex = (param: Param, values: unknown): number =>
 
 /**
  * Convert sql string by "spreading" the parameters into a flat list that pg package can interpret.
- * Requies the query to be parsed first and to get params from {@link QueryInterface}
+ * Requires the query to be parsed first and to get params from {@link QueryInterface}
  *
  * ```sql
  * SELECT * FROM id = $param AND age > $age
@@ -116,7 +116,7 @@ const convertSql = (params: Param[], sql: string, values: Record<string, unknown
   ).sql;
 
 /**
- * Convert recieved params objects into the flat array of values that pg package requires
+ * Convert received params objects into the flat array of values that pg package requires
  */
 const convertValues = (params: Param[], values: Record<string, unknown>): unknown[] =>
   params.reduce<{ values: unknown[]; indexes: Record<string, boolean> }>(

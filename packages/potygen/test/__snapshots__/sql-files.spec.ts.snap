@@ -797,7 +797,7 @@ ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
 }
 `;
 
-exports[`Sql Files Should convert complex sql template tags rates-by-tarrif-ids.query.sql: rates-by-tarrif-ids.query.sql 1`] = `
+exports[`Sql Files Should convert complex sql template tags rates-by-tariff-ids.query.sql: rates-by-tariff-ids.query.sql 1`] = `
 Object {
   "text": "SELECT
   r.tariff_id AS \\"tariffId\\",

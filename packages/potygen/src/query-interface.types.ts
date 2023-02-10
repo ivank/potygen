@@ -1,7 +1,7 @@
 /**
  * query-interface.types.ts
  *
- * The types here are used as a "midium stage" for converting from an SQL ast to what the actual typescript types are.
+ * The types here are used as a "medium stage" for converting from an SQL ast to what the actual typescript types are.
  * Everything that can be processed, that does **not** require access to the database is done.
  * Also a plan of what to load exactly from the database is generated, so that the loading can be done efficiently later by [load.ts](./load.ts)
  *
@@ -400,7 +400,7 @@ export const enum OperatorVariantPart {
 
 /**
  * Tuple describing a variant of a binary operator expression.
- * Exmaples of variants of "+":
+ * Examples of variants of "+":
  *
  * ```sql
  * SELECT count + 321
@@ -494,7 +494,7 @@ export interface SourceQuery {
 }
 
 /**
- * The "intput and output" of a query.
+ * The "input and output" of a query.
  */
 export interface QueryInterface {
   /**
@@ -506,7 +506,7 @@ export interface QueryInterface {
    */
   results: Result[];
   /**
-   * The data sources that would be needed to fullfill the request.
+   * The data sources that would be needed to fullfil the request.
    */
   sources: Source[];
 }
@@ -515,7 +515,7 @@ export interface TypeContext {
   type: TypeOrLoad;
   columns: TypeLoadColumn[];
   isJsonObject?: boolean;
-  inComparationInclusion?: boolean;
+  inComparisonInclusion?: boolean;
   cteParams?: boolean;
   from?: TableTag;
 }

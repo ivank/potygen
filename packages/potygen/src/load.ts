@@ -70,7 +70,7 @@ import { allSql, selectedSql } from './load.queries';
 import { toConstantBinaryOperatorVariant, toPgTypeConstant, toQueryInterface } from './query-interface';
 
 /**
- * If a list of names is empty construct a list that delibertly wouldn't match anything.
+ * If a list of names is empty construct a list that deliberately wouldn't match anything.
  * This is because sql cannot search for empty lists.
  */
 const orEmptyNameList = (names: QualifiedName[]): QualifiedName[] =>
@@ -419,7 +419,7 @@ const toLoadedSource = ({
         }
 
         /**
-         * If we've joined a CTE and renmaed it, we need to add another query source with that name
+         * If we've joined a CTE and renamed it, we need to add another query source with that name
          */
         const querySource = querySources.find((item) => item.name === source.table);
         if (querySource) {
@@ -752,7 +752,7 @@ const toType = (context: LoadedContext, isResult: boolean, isJsonObject?: boolea
  * Extract the data needed to generate the types for all the queryInterfaces, and load them.
  *
  * If the data is already present in data, it will not be loaded again.
- * This way the function can safely be called on a persistant data store taht is can be kept between executions.
+ * This way the function can safely be called on a persistent data store that is can be kept between executions.
  */
 export const loadQueryInterfacesData = async (
   ctx: LoadContext,

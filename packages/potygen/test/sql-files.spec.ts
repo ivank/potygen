@@ -41,7 +41,7 @@ const values: Record<string, Record<string, unknown>> = {
   'installations.sql': {},
   'cte-levelisation-details.query.sql': { id: 1 },
   'meter-reads.sql': {},
-  'rates-by-tarrif-ids.query.sql': {
+  'rates-by-tariff-ids.query.sql': {
     ids: [1, 2, 3],
   },
   'all.sql': {

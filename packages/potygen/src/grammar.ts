@@ -41,7 +41,7 @@ const astEmptyLeaf = <T extends Tag.EmptyLeafTag>(tag: T['tag'], rule: Rule) =>
 
 /**
  * A helper function that creates a {@link LeafTag} and transforms the value to uppercase.
- * Used for various SQL releated tasks that are all uppercased like "DEFAULT", "LEFT JOIN" etc.
+ * Used for various SQL related tasks that are all uppercase like "DEFAULT", "LEFT JOIN" etc.
  */
 const astUpperLeaf = <T extends Tag.LeafTag>(tag: T['tag'], rule: Rule) =>
   Node(rule, ([value], $, $next) => ({ tag, value: value.toUpperCase(), start: $.pos, end: $next.pos - 1 }));
@@ -171,10 +171,10 @@ const NumberRule = Any(
 const StringRule = /^'((?:''|[^'])*)'/;
 const String = astLeaf<Tag.StringTag>(Tag.SqlName.String, /^'((?:''|[^'])*)'/);
 const EscapeString = astLeaf<Tag.EscapeStringTag>(Tag.SqlName.EscapeString, All(/^E/i, StringRule));
-const HexademicalString = astLeaf<Tag.HexademicalStringTag>(Tag.SqlName.HexademicalString, All(/^X/i, StringRule));
+const HexadecimalString = astLeaf<Tag.HexadecimalStringTag>(Tag.SqlName.HexadecimalString, All(/^X/i, StringRule));
 const BitString = astLeaf<Tag.BitStringTag>(Tag.SqlName.BitString, All(/^B/i, StringRule));
-const DollarQuatedString = astLeaf<Tag.DollarQuotedStringTag>(Tag.SqlName.DollarQuotedString, /^\$\$((?:\$\$|.)*)\$\$/);
-const CustomDollarQuatedString = Node<Tag.CustomQuotedStringTag>(
+const DollarQuotedString = astLeaf<Tag.DollarQuotedStringTag>(Tag.SqlName.DollarQuotedString, /^\$\$((?:\$\$|.)*)\$\$/);
+const CustomDollarQuotedString = Node<Tag.CustomQuotedStringTag>(
   /^\$(?<delimiter>[A-Z_][A-Z0-9_]*)\$((?:\$\$|.)*)\$\k<delimiter>\$/i,
   ([delimiter, value], $, $next) => ({
     tag: Tag.SqlName.CustomQuotedString,
@@ -195,16 +195,16 @@ const ConstantType = astUpperLeaf<Tag.ConstantTypeTag>(Tag.SqlName.ConstantType,
 
 const TypedConstant = astNode<Tag.TypedConstantTag>(
   Tag.SqlName.TypedConstant,
-  All(ConstantType, Any(String, EscapeString, HexademicalString, BitString)),
+  All(ConstantType, Any(String, EscapeString, HexadecimalString, BitString)),
 );
 const Constant = Any(
   String,
-  DollarQuatedString,
-  CustomDollarQuatedString,
+  DollarQuotedString,
+  CustomDollarQuotedString,
   Number,
   Boolean,
   EscapeString,
-  HexademicalString,
+  HexadecimalString,
   BitString,
   TypedConstant,
 );
@@ -398,8 +398,8 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     );
     const CompositeAccess = astNode<Tag.CompositeAccessTag>(Tag.SqlName.CompositeAccess, All('.', Identifier));
 
-    const RowKeyward = astNode<Tag.RowKeywardTag>(
-      Tag.SqlName.RowKeyward,
+    const RowKeyword = astNode<Tag.RowKeywordTag>(
+      Tag.SqlName.RowKeyword,
       All(/^ROW/i, Brackets(List(ChildExpression))),
     );
     const Row = astNode<Tag.RowTag>(Tag.SqlName.Row, Brackets(MultiList(ChildExpression)));
@@ -433,7 +433,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       Parameter,
       ArrayConstructor,
       Row,
-      RowKeyward,
+      RowKeyword,
       Exists,
       Extract,
       Function(ChildExpression),
@@ -465,36 +465,36 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     const DataExpression = CastableRule(Any(CaseNormal, CaseSimple, CastableDataType));
 
     /**
-     * Comparation Expression
+     * Comparison Expression
      * ----------------------------------------------------------------------------------------
      */
-    const ComparationArrayInclusionType = astUpperLeaf<Tag.ComparationArrayInclusionTypeTag>(
-      Tag.SqlName.ComparationArrayInclusionType,
+    const ComparisonArrayInclusionType = astUpperLeaf<Tag.ComparisonArrayInclusionTypeTag>(
+      Tag.SqlName.ComparisonArrayInclusionType,
       /^(IN|NOT IN)/i,
     );
-    const ComparationArrayType = astUpperLeaf<Tag.ComparationArrayTypeTag>(
-      Tag.SqlName.ComparationArrayType,
+    const ComparisonArrayType = astUpperLeaf<Tag.ComparisonArrayTypeTag>(
+      Tag.SqlName.ComparisonArrayType,
       /^(ANY|SOME|ALL)/i,
     );
-    const ComparationArrayOperator = astUpperLeaf<Tag.ComparationArrayOperatorTag>(
-      Tag.SqlName.ComparationArrayOperator,
+    const ComparisonArrayOperator = astUpperLeaf<Tag.ComparisonArrayOperatorTag>(
+      Tag.SqlName.ComparisonArrayOperator,
       /^(<=|>=|<|>|<>|!=|=|AND|OR)/i,
     );
-    const ComparationArraySubject = Brackets(Any(DataExpression, SelectExpression));
+    const ComparisonArraySubject = Brackets(Any(DataExpression, SelectExpression));
     const ExpressionList = astNode<Tag.ExpressionListTag>(Tag.SqlName.ExpressionList, List(ChildExpression));
-    const ComparationArrayInclusion = astNode<Tag.ComparationArrayInclusionTag>(
-      Tag.SqlName.ComparationArrayInclusion,
+    const ComparisonArrayInclusion = astNode<Tag.ComparisonArrayInclusionTag>(
+      Tag.SqlName.ComparisonArrayInclusion,
       All(
-        ComparationArrayInclusionType,
+        ComparisonArrayInclusionType,
         Any(SpreadParameter, Parameter, Brackets(ExpressionList), Brackets(SelectExpression)),
       ),
     );
-    const ComparationArray = astNode<Tag.ComparationArrayTag>(
-      Tag.SqlName.ComparationArray,
-      All(ComparationArrayOperator, ComparationArrayType, ComparationArraySubject),
+    const ComparisonArray = astNode<Tag.ComparisonArrayTag>(
+      Tag.SqlName.ComparisonArray,
+      All(ComparisonArrayOperator, ComparisonArrayType, ComparisonArraySubject),
     );
 
-    const CombinedExpession = astNodeOrSwitch(DataExpression, [ComparationArrayInclusion, ComparationArray]);
+    const CombinedExpression = astNodeOrSwitch(DataExpression, [ComparisonArrayInclusion, ComparisonArray]);
 
     /**
      * Ternary Operator
@@ -507,9 +507,9 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
         Tag.SqlName.TernaryExpression,
         All(Current, OperatorNode, Current, SeparatorNode, Current),
       );
-    }, CombinedExpession);
+    }, CombinedExpression);
 
-    const DataOrTernaryExpression = Any(TernaryExpression, CombinedExpession);
+    const DataOrTernaryExpression = Any(TernaryExpression, CombinedExpression);
 
     /**
      * Unary Operator

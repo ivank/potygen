@@ -128,7 +128,7 @@ const pgsqlAst: Printer<Node> = {
         return `\$${node.delimiter}\$${node.value}\$${node.delimiter}\$`;
       case SqlName.BitString:
         return `B'${node.value}'`;
-      case SqlName.HexademicalString:
+      case SqlName.HexadecimalString:
         return `X'${node.value}'`;
       case SqlName.EscapeString:
         return `E'${node.value}'`;
@@ -180,7 +180,7 @@ const pgsqlAst: Printer<Node> = {
         return '*';
       case SqlName.StarIdentifier:
         return group(join('.', vals(path, recur)));
-      case SqlName.RowKeyward:
+      case SqlName.RowKeyword:
         return [
           group(['ROW', line]),
           group(['(', indent([softline, join([',', line], vals(path, recur))]), softline, ')']),
@@ -209,11 +209,11 @@ const pgsqlAst: Printer<Node> = {
         return node.value;
       case SqlName.UnaryOperator:
         return node.value;
-      case SqlName.ComparationArrayOperator:
+      case SqlName.ComparisonArrayOperator:
         return node.value;
-      case SqlName.ComparationArrayType:
+      case SqlName.ComparisonArrayType:
         return node.value;
-      case SqlName.ComparationArrayInclusionType:
+      case SqlName.ComparisonArrayInclusionType:
         return node.value;
       case SqlName.UnaryExpression:
         return join(['+', '-'].includes(node.values[0].value) ? '' : ' ', vals(path, recur));
@@ -292,7 +292,7 @@ const pgsqlAst: Printer<Node> = {
           ]),
           filter !== -1 ? [line, nthVal(filter, path, recur)] : [],
         ]);
-      case SqlName.ComparationArray:
+      case SqlName.ComparisonArray:
         return [
           nthVal(0, path, recur),
           ' ',
@@ -303,7 +303,7 @@ const pgsqlAst: Printer<Node> = {
           nthVal(3, path, recur),
           ')',
         ];
-      case SqlName.ComparationArrayInclusion:
+      case SqlName.ComparisonArrayInclusion:
         return [
           nthVal(0, path, recur),
           ' ',

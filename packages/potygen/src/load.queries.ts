@@ -9,7 +9,7 @@ import { sql } from './sql';
 import { LoadedDataRaw, QualifiedName } from './load.types';
 
 /**
- * We construct the data by hand as potygen can't effecitvly load types from information_schema views
+ * We construct the data by hand as potygen can't effectively load types from information_schema views
  */
 interface LoadAllSql {
   params: {};
@@ -17,7 +17,7 @@ interface LoadAllSql {
 }
 
 /**
- * We construct the data by hand as potygen can't effecitvly load types from information_schema views
+ * We construct the data by hand as potygen can't effectively load types from information_schema views
  */
 interface LoadSql {
   params: {
@@ -154,7 +154,7 @@ export const allSql = sql<LoadAllSql>`
   `;
 
 /**
- * A query to load {@link LoadedDataRaw} data onlfy for specifc {@link Data}
+ * A query to load {@link LoadedDataRaw} data only for specific {@link Data}
  *
  * - Functions
  * - Enums

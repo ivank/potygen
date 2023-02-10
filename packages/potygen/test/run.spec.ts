@@ -85,7 +85,7 @@ describe('Template Tag', () => {
     expect(await oneResult(oneSql)(db, { id: 1 })).toEqual({ id: 1 });
   });
 
-  it('Should select at least oneonly one', async () => {
+  it('Should select at least one', async () => {
     expect(await atLeastOneResult(oneSql)(db, { id: 1 })).toEqual([{ id: 1 }]);
   });
 

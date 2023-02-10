@@ -1,7 +1,7 @@
 /**
  * info.ts
  *
- * Convert [path.ts](./path.ts) data into actual viewable introspaction details
+ * Convert [path.ts](./path.ts) data into actual viewable introspection details
  */
 
 import {
