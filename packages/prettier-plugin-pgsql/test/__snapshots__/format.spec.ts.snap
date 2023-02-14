@@ -615,6 +615,20 @@ exports[`Format Should parse simple sql insert do set (INSERT INTO table1 VALUES
 "
 `;
 
+exports[`Format Should parse simple sql insert lines (INSERT
+INTO table1 (id, col1) VALUES (30,40)): insert lines 1`] = `
+"INSERT INTO table1 (
+  id,
+  col1
+)
+VALUES
+  (
+    30,
+    40
+  )
+"
+`;
+
 exports[`Format Should parse simple sql insert multiple param values (INSERT INTO table1 VALUES $rows(name, test)): insert multiple param values 1`] = `
 "INSERT INTO table1 VALUES
   $$rows(
