@@ -797,11 +797,56 @@ const With = Y((ChildWith) => {
 });
 
 /**
+ * Set Transaction
+ * ----------------------------------------------------------------------------------------
+ */
+const TransactionSessionCharacteristics = astEmptyLeaf<Tag.TransactionSessionCharacteristicsTag>(
+  Tag.SqlName.TransactionSessionCharacteristics,
+  All(/^SESSION/i, /^CHARACTERISTICS/i, /^AS/i),
+);
+
+const TransactionIsolationLevel = astLeaf<Tag.TransactionIsolationLevelTag>(
+  Tag.SqlName.TransactionIsolationLevel,
+  All(/^ISOLATION/i, /^LEVEL/i, /^(SERIALIZABLE|REPEATABLE READ|READ COMMITTED|READ UNCOMMITTED)/i),
+);
+
+const TransactionReadWrite = astLeaf<Tag.TransactionReadWriteTag>(
+  Tag.SqlName.TransactionReadWrite,
+  All(/^READ/i, /^(WRITE|ONLY)/i),
+);
+
+const TransactionDeferrable = astLeaf<Tag.TransactionDeferrableTag>(
+  Tag.SqlName.TransactionDeferrable,
+  All(Optional(/^(NOT)/i), /^DEFERRABLE/i),
+);
+
+const TransactionSnapshot = astNode<Tag.TransactionSnapshotTag>(
+  Tag.SqlName.TransactionSnapshot,
+  All(/^SNAPSHOT/i, String),
+);
+
+const TransactionOptions = Plus(Any(TransactionIsolationLevel, TransactionReadWrite, TransactionDeferrable));
+
+const SetTransaction = astNode<Tag.SetTransactionTag>(
+  Tag.SqlName.SetTransaction,
+  All(
+    /^SET/i,
+    Optional(TransactionSessionCharacteristics),
+    /^TRANSACTION/i,
+    Any(TransactionSnapshot, TransactionOptions),
+    Optional(';'),
+  ),
+);
+
+/**
  * Transaction
  * ----------------------------------------------------------------------------------------
  */
 
-const Begin = astEmptyLeaf<Tag.BeginTag>(Tag.SqlName.Begin, All(/^BEGIN/i, Optional(';')));
+const Begin = astNode<Tag.BeginTag>(
+  Tag.SqlName.Begin,
+  All(/^BEGIN/i, Optional(All(/^TRANSACTION/i, TransactionOptions)), Optional(';')),
+);
 const Savepoint = astNode<Tag.SavepointTag>(Tag.SqlName.Savepoint, All(/^SAVEPOINT/i, Identifier, Optional(';')));
 const Commit = astEmptyLeaf<Tag.CommitTag>(Tag.SqlName.Commit, All(/^COMMIT/i, Optional(';')));
 const Rollback = astNode<Tag.RollbackTag>(
@@ -809,6 +854,12 @@ const Rollback = astNode<Tag.RollbackTag>(
   All(/^ROLLBACK/i, Optional(All(/^TO/i, Identifier)), Optional(';')),
 );
 
+const Transaction = Any(Begin, Savepoint, Commit, Rollback);
+
+/**
+ * Comment
+ * ----------------------------------------------------------------------------------------
+ */
 const Comment = astLeaf<Tag.CommentTag>(Tag.SqlName.Comment, /^--([^\r\n]*)\n/);
 
 /**
@@ -817,7 +868,7 @@ const Comment = astLeaf<Tag.CommentTag>(Tag.SqlName.Comment, /^--([^\r\n]*)\n/);
 const Grammar = Ignore(
   // Ignore line comments and all whitespace
   Any(/^\s+/, Comment),
-  Any(With, Select, Update, Delete, Insert, Begin, Savepoint, Commit, Rollback),
+  Any(With, Select, Update, Delete, Insert, Transaction, SetTransaction),
 );
 
 /**

@@ -72,6 +72,16 @@ exports[`Format Should parse simple sql begin semicolon (BEGIN;): begin semicolo
 "
 `;
 
+exports[`Format Should parse simple sql begin transaction (BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ): begin transaction 1`] = `
+"BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ
+"
+`;
+
+exports[`Format Should parse simple sql begin transaction serialize (BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE): begin transaction serialize 1`] = `
+"BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE
+"
+`;
+
 exports[`Format Should parse simple sql between (SELECT * WHERE table1.col BETWEEN '2006-01-01' AND '2007-01-01'): between 1`] = `
 "SELECT * WHERE table1.col BETWEEN '2006-01-01' AND '2007-01-01'
 "
@@ -1344,6 +1354,36 @@ exports[`Format Should parse simple sql select with update (WITH tmp AS (UPDATE 
 "WITH
   tmp AS (UPDATE table1 SET col = 2 RETURNING id)
 SELECT id FROM table2 WHERE table2.id = tmp.col2
+"
+`;
+
+exports[`Format Should parse simple sql set transaction (SET TRANSACTION ISOLATION LEVEL REPEATABLE READ): set transaction 1`] = `
+"SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
+"
+`;
+
+exports[`Format Should parse simple sql set transaction all (BEGIN TRANSACTION ISOLATION LEVEL READ UNCOMMITTED NOT DEFERRABLE READ WRITE): set transaction all 1`] = `
+"BEGIN TRANSACTION ISOLATION LEVEL READ UNCOMMITTED NOT DEFERRABLE READ WRITE
+"
+`;
+
+exports[`Format Should parse simple sql set transaction ser (SET TRANSACTION ISOLATION LEVEL SERIALIZABLE): set transaction ser 1`] = `
+"SET TRANSACTION ISOLATION LEVEL SERIALIZABLE
+"
+`;
+
+exports[`Format Should parse simple sql set transaction snap (SET TRANSACTION SNAPSHOT '00000003-0000001B-1'): set transaction snap 1`] = `
+"SET TRANSACTION SNAPSHOT '00000003-0000001B-1'
+"
+`;
+
+exports[`Format Should parse simple sql set transaction write (SET TRANSACTION ISOLATION LEVEL REPEATABLE READ): set transaction write 1`] = `
+"SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
+"
+`;
+
+exports[`Format Should parse simple sql set transaction write (SET TRANSACTION READ WRITE): set transaction write 1`] = `
+"SET TRANSACTION READ WRITE
 "
 `;
 

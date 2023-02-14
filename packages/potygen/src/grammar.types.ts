@@ -502,6 +502,34 @@ export const enum SqlName {
    * {@link ParameterIdentifierTag}
    */
   ParameterIdentifier,
+  /**
+   * {@link SelectLockTag}
+   */
+  SelectLock,
+  /**
+   * {@link SetTransactionTag}
+   */
+  SetTransaction,
+  /**
+   * {@link TransactionSessionCharacteristicsTag}
+   */
+  TransactionSessionCharacteristics,
+  /**
+   * {@link TransactionIsolationLevelTag}
+   */
+  TransactionIsolationLevel,
+  /**
+   * {@link TransactionSnapshotTag}
+   */
+  TransactionSnapshot,
+  /**
+   * {@link TransactionDeferrableTag}
+   */
+  TransactionDeferrable,
+  /**
+   * {@link TransactionReadWriteTag}
+   */
+  TransactionReadWrite,
 }
 
 /**
@@ -2057,6 +2085,24 @@ export interface OffsetTag extends NodeSqlTag {
 }
 
 /**
+ * Select Lock
+ * https://www.postgresql.org/docs/current/sql-select.html#id-1.9.3.172.7
+ * ```
+ *         value──┐
+ *                ▼
+ *       ┌ ─ ┬──────┐
+ * SELECT FOR UPDATE * FROM table1 LIMIT 10 OFFSET│100│
+ *       └ ─ ┴──────┘
+ *      └────────────┘
+ *            └─▶SelectLockTag
+ * ```
+ */
+export interface SelectLockTag extends LeafSqlTag {
+  tag: SqlName.SelectLock;
+  value: 'UPDATE' | 'NO KEY UPDATE' | 'SHARE' | 'KEY SHARE';
+}
+
+/**
  * Select Tag
  * https://www.postgresql.org/docs/current/sql-select.html
  * ```
@@ -2071,7 +2117,7 @@ export interface OffsetTag extends NodeSqlTag {
  */
 export interface SelectTag extends NodeSqlTag {
   tag: SqlName.Select;
-  values: (SelectParts | OrderByTag | CombinationTag | LimitTag | OffsetTag)[];
+  values: (SelectParts | SelectLockTag | OrderByTag | CombinationTag | LimitTag | OffsetTag)[];
 }
 
 /**
@@ -2569,9 +2615,19 @@ export interface ExpressionListTag extends NodeSqlTag {
 /**
  * BEGIN query
  * https://www.postgresql.org/docs/current/tutorial-transactions.html
+ * ```
+ *      TransactionModeTag──┐
+ *                          ▼
+ * ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┬────────────────────────────┐
+ *  BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE
+ * └ ─ ─ ─ ─ ─ ─ ─ ─ ┴────────────────────────────┘
+ *└────────────────────────────────────────────────┘
+ *                    └─▶BeginTag
+ * ```
  */
-export interface BeginTag extends EmptyLeafSqlTag {
+export interface BeginTag extends NodeSqlTag {
   tag: SqlName.Begin;
+  values: TransactionModeTag[];
 }
 
 /**
@@ -2600,6 +2656,119 @@ export interface RollbackTag extends NodeSqlTag {
   values: [] | [IdentifierTag];
 }
 
+/**
+ * Transaction snapshot
+ * https://www.postgresql.org/docs/current/sql-set-transaction.html
+ * ```
+ *                    StringTag──┐
+ *                               ▼
+ *                ┌ ─ ─ ─ ─┌───────────┐
+ * SET TRANSACTION SNAPSHOT '123123123'
+ *                └ ─ ─ ─ ─└───────────┘
+ *               └──────────────────────┘
+ *                         └─▶TransactionSnapshotTag
+ * ```
+ */
+export interface TransactionSnapshotTag extends NodeSqlTag {
+  tag: SqlName.TransactionSnapshot;
+  values: [StringTag];
+}
+
+/**
+ * Transaction Isolation level
+ * https://www.postgresql.org/docs/current/sql-set-transaction.html
+ *
+ * ```
+ *                                value──┐
+ *                                       ▼
+ *                ┌ ─ ─ ─ ─ ─ ─ ─ ┬────────────┐
+ * SET TRANSACTION ISOLATION LEVEL SERIALIZABLE
+ *                └ ─ ─ ─ ─ ─ ─ ─ ┴────────────┘
+ *               └──────────────────────────────┘
+ *                         └─▶TransactionIsolationLevelTag
+ * ```
+ */
+export interface TransactionIsolationLevelTag extends LeafSqlTag {
+  tag: SqlName.TransactionIsolationLevel;
+  value: 'SERIALIZABLE' | 'REPEATABLE READ' | 'READ COMMITTED' | 'READ UNCOMMITTED';
+}
+
+/**
+ * Transaction Read / write config
+ * https://www.postgresql.org/docs/current/sql-set-transaction.html
+ *
+ * ```
+ *                value──┐
+ *                       ▼
+ *                ┌ ─ ─┬────┐
+ * SET TRANSACTION READ ONLY
+ *                └ ─ ─┴────┘
+ *               └───────────┘
+ *                     └─▶TransactionReadWriteTag
+ * ```
+ */
+export interface TransactionReadWriteTag extends LeafSqlTag {
+  tag: SqlName.TransactionReadWrite;
+  value: 'WRITE' | 'ONLY';
+}
+
+/**
+ * Transaction Read / write config
+ * https://www.postgresql.org/docs/current/sql-set-transaction.html
+ *
+ * ```
+ *           value──┐
+ *                  ▼
+ *                ┌───┬ ─ ─ ─ ─ ─┐
+ * SET TRANSACTION NOT DEFERRABLE
+ *                └───┴ ─ ─ ─ ─ ─┘
+ *               └────────────────┘
+ *                     └─▶TransactionDeferrableTag
+ * ```
+ */
+export interface TransactionDeferrableTag extends LeafSqlTag {
+  tag: SqlName.TransactionDeferrable;
+  value: 'NOT' | '';
+}
+
+/**
+ * Modification on set transaction query
+ * https://www.postgresql.org/docs/current/sql-set-transaction.html
+ *
+ * ```
+ *    ┌──────────────────────────┐
+ * SET SESSION CHARACTERISTICS AS TRANSACTION READ ONLY
+ *    └──────────────────────────┘
+ *   └────────────────────────────┘
+ *                 └─▶TransactionSessionCharacteristicsTag
+ * ```
+ */
+export interface TransactionSessionCharacteristicsTag extends EmptyLeafSqlTag {
+  tag: SqlName.TransactionSessionCharacteristics;
+}
+
+/**
+ * Set Transaction
+ * https://www.postgresql.org/docs/current/sql-set-transaction.html
+ *
+ * ```
+ *             TransactionModeTag──┐
+ *                                 ▼
+ *  ┌ ─ ─ ─ ─ ─ ─ ─ ┬────────────────────────────┐
+ *   SET TRANSACTION ISOLATION LEVEL SERIALIZABLE
+ *  └ ─ ─ ─ ─ ─ ─ ─ ┴────────────────────────────┘
+ * └──────────────────────────────────────────────┘
+ *                         └─▶SetTransactionTag
+ * ```
+ */
+export interface SetTransactionTag extends NodeSqlTag {
+  tag: SqlName.SetTransaction;
+  values:
+    | TransactionModeTag[]
+    | [characteristics: TransactionSessionCharacteristicsTag, ...modes: TransactionModeTag[]];
+}
+
+export type TransactionModeTag = TransactionIsolationLevelTag | TransactionReadWriteTag | TransactionDeferrableTag;
 export type IdentifierTag = QuotedIdentifierTag | UnquotedIdentifierTag;
 export type FromListItemTag = NamedSelectTag | TableTag | RecordsetFunctionTag | RecordsetValuesListTag;
 export type ConstantTag =
@@ -2618,7 +2787,7 @@ export type OperatorExpressionTag = BinaryExpressionTag | UnaryExpressionTag;
 export type AnyCastTag = CastTag | PgCastTag;
 export type DataTypeTag = NullTag | CaseTag | CaseSimpleTag | CastableDataTypeTag;
 export type QueryTag = SelectTag | UpdateTag | InsertTag | DeleteTag | WithTag;
-export type TransactionTag = BeginTag | CommitTag | SavepointTag | RollbackTag;
+export type TransactionTag = BeginTag | CommitTag | SavepointTag | RollbackTag | SetTransactionTag;
 
 export type CastableDataTypeTag =
   | ArrayColumnIndexTag
@@ -2660,8 +2829,8 @@ export type EmptyLeafTag =
   | ParameterRequiredTag
   | LimitAllTag
   | DimensionTag
-  | BeginTag
-  | CommitTag;
+  | CommitTag
+  | TransactionSessionCharacteristicsTag;
 
 /**
  * All the types extending {@link LeafSqlTag}.
@@ -2692,7 +2861,12 @@ export type LeafTag =
   | OrderDirectionTag
   | CollateTag
   | ConflictConstraintTag
-  | CombinationTypeTag;
+  | CombinationTypeTag
+  | SelectLockTag
+  | TransactionIsolationLevelTag
+  | TransactionReadWriteTag
+  | TransactionDeferrableTag
+  | TransactionSessionCharacteristicsTag;
 
 /**
  * All the types extending {@link NodeSqlTag}.
@@ -2786,7 +2960,10 @@ export type NodeTag =
   | ParameterPickTag
   | ParameterIdentifierTag
   | SpreadParameterTag
-  | RecordsetValuesListTag;
+  | RecordsetValuesListTag
+  | TransactionSnapshotTag
+  | BeginTag
+  | SetTransactionTag;
 
 /**
  * All the SQL Tags

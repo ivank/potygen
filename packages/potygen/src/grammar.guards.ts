@@ -134,6 +134,13 @@ import {
   SpreadParameterTag,
   ParameterRequiredTag,
   ParameterIdentifierTag,
+  SetTransactionTag,
+  TransactionIsolationLevelTag,
+  TransactionDeferrableTag,
+  TransactionReadWriteTag,
+  TransactionModeTag,
+  TransactionSessionCharacteristicsTag,
+  SelectLockTag,
 } from './grammar.types';
 
 export const isCTE = (value: SqlTag): value is CTETag => value.tag === SqlName.CTE;
@@ -324,6 +331,18 @@ export const isRecordsetFunction = (value: SqlTag): value is RecordsetFunctionTa
   value.tag === SqlName.RecordsetFunction;
 export const isRecordsetValuesList = (value: SqlTag): value is RecordsetValuesListTag =>
   value.tag === SqlName.RecordsetValuesList;
+export const isSelectLock = (value: SqlTag): value is SelectLockTag => value.tag === SqlName.SelectLock;
+export const isSetTransaction = (value: SqlTag): value is SetTransactionTag => value.tag === SqlName.SetTransaction;
+export const isTransactionDeferrable = (value: SqlTag): value is TransactionDeferrableTag =>
+  value.tag === SqlName.TransactionDeferrable;
+export const isTransactionReadWrite = (value: SqlTag): value is TransactionReadWriteTag =>
+  value.tag === SqlName.TransactionReadWrite;
+export const isTransactionIsolationLevel = (value: SqlTag): value is TransactionIsolationLevelTag =>
+  value.tag === SqlName.TransactionIsolationLevel;
+export const isTransactionMode = (value: SqlTag): value is TransactionModeTag =>
+  isTransactionDeferrable(value) || isTransactionReadWrite(value) || isTransactionMode(value);
+export const isTransactionSessionCharacteristics = (value: SqlTag): value is TransactionSessionCharacteristicsTag =>
+  value.tag === SqlName.TransactionSessionCharacteristics;
 
 export const isEmptyLeaf = (value: Tag): value is EmptyLeafTag => !('values' in value || 'value' in value);
 export const isLeaf = (value: Tag): value is LeafTag => 'value' in value;

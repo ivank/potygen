@@ -254,6 +254,14 @@ describe('Format', () => {
     ${'recordset function'}           | ${'SELECT periods.* FROM account_levelisations, jsonb_to_recordset(generation_periods) as periods("amount" varchar)'}
     ${'multiple joins'}               | ${'SELECT 1 FROM table1 INNER JOIN foo ON table1.foo_id = foo.id INNER JOIN bar ON table1.bar_id = bar.id'}
     ${'nested CTE'}                   | ${'WITH counting AS (WITH tmp AS (SELECT * FROM table1) SELECT 1 FROM "tmp") SELECT count(*) FROM "counting"'}
+    ${'begin transaction'}            | ${'BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ'}
+    ${'begin transaction serialize'}  | ${'BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE'}
+    ${'set transaction all'}          | ${'BEGIN TRANSACTION ISOLATION LEVEL READ UNCOMMITTED NOT DEFERRABLE READ WRITE'}
+    ${'set transaction ser'}          | ${'SET TRANSACTION ISOLATION LEVEL SERIALIZABLE'}
+    ${'set transaction write'}        | ${'SET TRANSACTION READ WRITE'}
+    ${'set transaction write'}        | ${'SET TRANSACTION ISOLATION LEVEL REPEATABLE READ'}
+    ${'set transaction'}              | ${'SET TRANSACTION ISOLATION LEVEL REPEATABLE READ'}
+    ${'set transaction snap'}         | ${"SET TRANSACTION SNAPSHOT '00000003-0000001B-1'"}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) =>
     withParserErrors(() => {
       const formatted = format(sql, { parser: 'sql', plugins: [prettierPluginPgSql] });
