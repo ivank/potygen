@@ -177,6 +177,7 @@ describe('Format', () => {
     ${'delete returning'}             | ${'DELETE FROM table1 USING table2 AS "my2" WHERE table1.id = my2.id AND deleted_at IS NOT NULL RETURNING id, col1'}
     ${'delete returning'}             | ${'DELETE FROM table1 RETURNING id, col2'}
     ${'insert'}                       | ${'INSERT INTO table1 (id, col1) VALUES (10,20),(30,40)'}
+    ${'insert lines'}                 | ${'INSERT\nINTO table1 (id, col1) VALUES (30,40)'}
     ${'insert returning'}             | ${'INSERT INTO table1 (id, col1) VALUES (10,20),(30,40) RETURNING id, col1'}
     ${'insert select'}                | ${'INSERT INTO table1 SELECT id, col FROM table2'}
     ${'insert do nothing'}            | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO NOTHING'}

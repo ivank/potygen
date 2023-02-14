@@ -277,7 +277,8 @@ describe('Sql', () => {
     ${'returning'}             | ${'INSERT INTO table1 (id, col1) VALUES (10,20),(30,40) RETURNING id, col1'}
     ${'select'}                | ${'INSERT INTO table1 SELECT id, col FROM table2'}
     ${'do nothing'}            | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO NOTHING'}
-    ${'do set'}                | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO UPDATE SET id = EXCLUDED.id WHERE id > 10'}
+    ${'do nothing lines'}      | ${'INSERT INTO table1 VALUES (10, 20)\nON\nCONFLICT\nDO\nNOTHING'}
+    ${'do set lines'}          | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT\nDO\nUPDATE\nSET id = EXCLUDED.id WHERE id > 10'}
     ${'conflict'}              | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL DO UPDATE SET id = EXCLUDED.id WHERE id > 10'}
     ${'conflict list'}         | ${'INSERT INTO table1 VALUES (10, 20) ON CONFLICT (source_system_id, type) DO UPDATE SET id = EXCLUDED.id WHERE id > 10'}
     ${'multiple param values'} | ${'INSERT INTO table1 VALUES $$rows(name, test)'}

@@ -635,6 +635,7 @@ const Select = Y((SelectExpression) => {
    * ----------------------------------------------------------------------------------------
    */
   const SelectParts = [
+    /^SELECT/i,
     Optional(Any(/^ALL /i, Distinct)),
     SelectList,
     Optional(From),
@@ -651,10 +652,7 @@ const Select = Y((SelectExpression) => {
     Tag.SqlName.CombinationType,
     /^(UNION ALL|INTERSECT ALL|EXCEPT ALL|UNION|INTERSECT|EXCEPT)/i,
   );
-  const Combination = astNode<Tag.CombinationTag>(
-    Tag.SqlName.Combination,
-    All(CombinationType, /^SELECT/i, ...SelectParts),
-  );
+  const Combination = astNode<Tag.CombinationTag>(Tag.SqlName.Combination, All(CombinationType, ...SelectParts));
 
   /**
    * Order
@@ -670,16 +668,11 @@ const Select = Y((SelectExpression) => {
   const Limit = astNode<Tag.LimitTag>(Tag.SqlName.Limit, All(/^LIMIT/i, Any(Count, LimitAll)));
   const Offset = astNode<Tag.OffsetTag>(Tag.SqlName.Offset, All(/^OFFSET/i, Count));
 
+  const SelectEndParts = [Optional(OrderBy), Optional(Any(All(Limit, Offset), All(Offset, Limit), Limit, Offset))];
+
   return astNode<Tag.SelectTag>(
     Tag.SqlName.Select,
-    All(
-      /^SELECT/i,
-      ...SelectParts,
-      Star(Combination),
-      Optional(OrderBy),
-      Optional(Any(All(Limit, Offset), All(Offset, Limit), Limit, Offset)),
-      Optional(';'),
-    ),
+    All(...SelectParts, Star(Combination), ...SelectEndParts, Optional(';')),
   );
 });
 
@@ -736,7 +729,7 @@ const Update = astNode<Tag.UpdateTag>(
 const Using = astNode<Tag.UsingTag>(Tag.SqlName.Using, All(/^USING/i, List(FromList)));
 const Delete = astNode<Tag.DeleteTag>(
   Tag.SqlName.Delete,
-  All(/^DELETE FROM/i, Table, Optional(Using), Optional(Where), Optional(Returning), Optional(';')),
+  All(/^DELETE/i, /^FROM/i, Table, Optional(Using), Optional(Where), Optional(Returning), Optional(';')),
 );
 
 /**
@@ -756,17 +749,15 @@ const ConflictTarget = astNode<Tag.ConflictTargetTag>(
 );
 const ConflictConstraint = astLeaf<Tag.ConflictConstraintTag>(
   Tag.SqlName.ConflictConstraint,
-  All(/^ON CONSTRAINT/i, Identifier),
+  All(/^ON/i, /^CONSTRAINT/i, Identifier),
 );
 
-const DoNothing = astEmptyLeaf<Tag.DoNothingTag>(Tag.SqlName.DoNothing, /^DO NOTHING/i);
-const DoUpdate = astNode<Tag.DoUpdateTag>(Tag.SqlName.DoUpdate, All(/^DO UPDATE/i, Set, Optional(Where)));
+const DoNothing = astEmptyLeaf<Tag.DoNothingTag>(Tag.SqlName.DoNothing, All(/^DO/i, /^NOTHING/i));
+const DoUpdate = astNode<Tag.DoUpdateTag>(Tag.SqlName.DoUpdate, All(/^DO/i, /^UPDATE/i, Set, Optional(Where)));
+const ConflictAction = Any(DoNothing, DoUpdate);
 const Conflict = astNode<Tag.ConflictTag>(
   Tag.SqlName.Conflict,
-  All(
-    /^ON CONFLICT/i,
-    Any(Any(DoNothing, DoUpdate), All(Any(ConflictTarget, ConflictConstraint), Any(DoNothing, DoUpdate))),
-  ),
+  All(/^ON/i, /^CONFLICT/i, Any(ConflictAction, All(Any(ConflictTarget, ConflictConstraint), ConflictAction))),
 );
 
 const ValuesList = astNode<Tag.ValuesListTag>(
@@ -776,7 +767,8 @@ const ValuesList = astNode<Tag.ValuesListTag>(
 const Insert = astNode<Tag.InsertTag>(
   Tag.SqlName.Insert,
   All(
-    /^INSERT INTO/i,
+    /^INSERT/i,
+    /^INTO/i,
     Table,
     Optional(Columns),
     Any(ValuesList, Select),
