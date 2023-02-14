@@ -5918,7 +5918,85 @@ Object {
 }
 `;
 
-exports[`Sql Should parse insert query with do set (INSERT INTO table1 VALUES (10, 20) ON CONFLICT DO UPDATE SET id = EXCLUDED.id WHERE id > 10): do set 1`] = `
+exports[`Sql Should parse insert query with do nothing lines (INSERT INTO table1 VALUES (10, 20)
+ON
+CONFLICT
+DO
+NOTHING): do nothing lines 1`] = `
+Object {
+  "ast": Object {
+    "end": 56,
+    "start": 0,
+    "tag": 105,
+    "values": Array [
+      Object {
+        "end": 17,
+        "start": 12,
+        "tag": 90,
+        "values": Array [
+          Object {
+            "end": 17,
+            "start": 12,
+            "tag": 89,
+            "values": Array [
+              Object {
+                "end": 17,
+                "start": 12,
+                "tag": 8,
+                "value": "table1",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 33,
+        "start": 19,
+        "tag": 97,
+        "values": Array [
+          Object {
+            "end": 33,
+            "start": 26,
+            "tag": 86,
+            "values": Array [
+              Object {
+                "end": 28,
+                "start": 27,
+                "tag": 19,
+                "value": "10",
+              },
+              Object {
+                "end": 32,
+                "start": 31,
+                "tag": 19,
+                "value": "20",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 56,
+        "start": 35,
+        "tag": 104,
+        "values": Array [
+          Object {
+            "end": 56,
+            "start": 47,
+            "tag": 102,
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse insert query with do set lines (INSERT INTO table1 VALUES (10, 20) ON CONFLICT
+DO
+UPDATE
+SET id = EXCLUDED.id WHERE id > 10): do set lines 1`] = `
 Object {
   "ast": Object {
     "end": 90,
