@@ -306,6 +306,15 @@ describe('Sql', () => {
     ${'rollback to semicolon'} | ${'ROLLBACK TO my_savepoint;'}
     ${'commit semicolon'}      | ${'COMMIT;'}
     ${'begin'}                 | ${'BEGIN'}
+    ${'begin transaction'}     | ${'BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ'}
+    ${'begin transaction'}     | ${'BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;'}
+    ${'set transaction all'}   | ${'BEGIN TRANSACTION ISOLATION LEVEL READ UNCOMMITTED NOT DEFERRABLE READ WRITE'}
+    ${'set transaction semi'}  | ${'SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;'}
+    ${'set transaction ser'}   | ${'SET TRANSACTION ISOLATION LEVEL SERIALIZABLE'}
+    ${'set transaction write'} | ${'SET TRANSACTION READ WRITE'}
+    ${'set transaction write'} | ${'SET TRANSACTION ISOLATION LEVEL REPEATABLE READ'}
+    ${'set transaction'}       | ${'SET TRANSACTION ISOLATION LEVEL REPEATABLE READ'}
+    ${'set transaction snap'}  | ${"SET TRANSACTION SNAPSHOT '00000003-0000001B-1'"}
     ${'savepoint'}             | ${'SAVEPOINT my_savepoint'}
     ${'rollback'}              | ${'ROLLBACK'}
     ${'rollback to'}           | ${'ROLLBACK TO my_savepoint'}

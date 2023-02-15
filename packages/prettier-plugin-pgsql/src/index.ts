@@ -22,6 +22,7 @@ import {
   BinaryOperatorTag,
   isSpreadParameter,
   isSelect,
+  isTransactionSessionCharacteristics,
 } from '@potygen/potygen';
 
 const { line, softline, indent, join, group, hardline } = doc.builders;
@@ -333,6 +334,8 @@ const pgsqlAst: Printer<Node> = {
           : [nthVal(0, path, recur), indent([line, nthVal(1, path, recur)])];
       case SqlName.FromList:
         return group(join([',', line], vals(path, recur)));
+      case SqlName.SelectLock:
+        return ['FOR', node.value];
       case SqlName.From:
         return ['FROM', group(indent([line, join(hardline, vals(path, recur))]))];
       case SqlName.Where:
@@ -465,7 +468,21 @@ const pgsqlAst: Printer<Node> = {
       case SqlName.ExpressionList:
         return group(join([',', line], vals(path, recur)));
       case SqlName.Begin:
-        return 'BEGIN';
+        return node.values.length ? group(join(line, ['BEGIN', 'TRANSACTION', ...vals(path, recur)])) : 'BEGIN';
+      case SqlName.TransactionSessionCharacteristics:
+        return 'SESSION CHARACTERISTICS AS';
+      case SqlName.SetTransaction:
+        return isTransactionSessionCharacteristics(node.values[0])
+          ? group(['SET', line, nthVal(0, path, recur), line, 'TRANSACTION', join(line, tailVals(1, path, recur))])
+          : group(join(line, ['SET', 'TRANSACTION', ...vals(path, recur)]));
+      case SqlName.TransactionDeferrable:
+        return node.value === 'NOT' ? group(['NOT', line, 'DEFERRABLE']) : 'DEFERRABLE';
+      case SqlName.TransactionIsolationLevel:
+        return group(join(line, ['ISOLATION', 'LEVEL', node.value]));
+      case SqlName.TransactionSnapshot:
+        return group(['SNAPSHOT', line, vals(path, recur)]);
+      case SqlName.TransactionReadWrite:
+        return group(['READ', line, node.value]);
       case SqlName.Commit:
         return 'COMMIT';
       case SqlName.Savepoint:

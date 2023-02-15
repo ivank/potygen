@@ -577,6 +577,7 @@ export const toQueryResults = (sql: AstTag): Array<ResultTag> => {
     case SqlName.Savepoint:
     case SqlName.Rollback:
     case SqlName.Commit:
+    case SqlName.SetTransaction:
       return [];
     case SqlName.Select:
       return sql.values.filter(isSelectList).flatMap((list) => list.values);

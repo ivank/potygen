@@ -12677,6 +12677,7 @@ Object {
     "end": 4,
     "start": 0,
     "tag": 109,
+    "values": Array [],
   },
   "comments": Array [],
 }
@@ -12688,6 +12689,45 @@ Object {
     "end": 5,
     "start": 0,
     "tag": 109,
+    "values": Array [],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse query transaction begin transaction (BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ): begin transaction 1`] = `
+Object {
+  "ast": Object {
+    "end": 48,
+    "start": 0,
+    "tag": 109,
+    "values": Array [
+      Object {
+        "end": 48,
+        "start": 18,
+        "tag": 127,
+        "value": "REPEATABLE READ",
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse query transaction begin transaction (BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;): begin transaction 1`] = `
+Object {
+  "ast": Object {
+    "end": 46,
+    "start": 0,
+    "tag": 109,
+    "values": Array [
+      Object {
+        "end": 45,
+        "start": 18,
+        "tag": 127,
+        "value": "SERIALIZABLE",
+      },
+    ],
   },
   "comments": Array [],
 }
@@ -12808,6 +12848,158 @@ Object {
         "start": 10,
         "tag": 8,
         "value": "my_savepoint",
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse query transaction set transaction (SET TRANSACTION ISOLATION LEVEL REPEATABLE READ): set transaction 1`] = `
+Object {
+  "ast": Object {
+    "end": 46,
+    "start": 0,
+    "tag": 125,
+    "values": Array [
+      Object {
+        "end": 46,
+        "start": 16,
+        "tag": 127,
+        "value": "REPEATABLE READ",
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse query transaction set transaction all (BEGIN TRANSACTION ISOLATION LEVEL READ UNCOMMITTED NOT DEFERRABLE READ WRITE): set transaction all 1`] = `
+Object {
+  "ast": Object {
+    "end": 75,
+    "start": 0,
+    "tag": 109,
+    "values": Array [
+      Object {
+        "end": 49,
+        "start": 18,
+        "tag": 127,
+        "value": "READ UNCOMMITTED",
+      },
+      Object {
+        "end": 64,
+        "start": 51,
+        "tag": 129,
+        "value": "NOT",
+      },
+      Object {
+        "end": 75,
+        "start": 66,
+        "tag": 130,
+        "value": "WRITE",
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse query transaction set transaction semi (SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;): set transaction semi 1`] = `
+Object {
+  "ast": Object {
+    "end": 44,
+    "start": 0,
+    "tag": 125,
+    "values": Array [
+      Object {
+        "end": 43,
+        "start": 16,
+        "tag": 127,
+        "value": "SERIALIZABLE",
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse query transaction set transaction ser (SET TRANSACTION ISOLATION LEVEL SERIALIZABLE): set transaction ser 1`] = `
+Object {
+  "ast": Object {
+    "end": 43,
+    "start": 0,
+    "tag": 125,
+    "values": Array [
+      Object {
+        "end": 43,
+        "start": 16,
+        "tag": 127,
+        "value": "SERIALIZABLE",
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse query transaction set transaction snap (SET TRANSACTION SNAPSHOT '00000003-0000001B-1'): set transaction snap 1`] = `
+Object {
+  "ast": Object {
+    "end": 45,
+    "start": 0,
+    "tag": 125,
+    "values": Array [
+      Object {
+        "end": 45,
+        "start": 16,
+        "tag": 128,
+        "values": Array [
+          Object {
+            "end": 45,
+            "start": 25,
+            "tag": 13,
+            "value": "00000003-0000001B-1",
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse query transaction set transaction write (SET TRANSACTION ISOLATION LEVEL REPEATABLE READ): set transaction write 1`] = `
+Object {
+  "ast": Object {
+    "end": 46,
+    "start": 0,
+    "tag": 125,
+    "values": Array [
+      Object {
+        "end": 46,
+        "start": 16,
+        "tag": 127,
+        "value": "REPEATABLE READ",
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse query transaction set transaction write (SET TRANSACTION READ WRITE): set transaction write 1`] = `
+Object {
+  "ast": Object {
+    "end": 25,
+    "start": 0,
+    "tag": 125,
+    "values": Array [
+      Object {
+        "end": 25,
+        "start": 16,
+        "tag": 130,
+        "value": "WRITE",
       },
     ],
   },
