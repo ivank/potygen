@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Load Types Postgres 14 Should convert Array remove sql (SELECT ARRAY_REMOVE(ARRAY_AGG(id), NULL) FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "array_remove",
+      "type": Object {
+        "comment": undefined,
+        "generated": undefined,
+        "items": Object {
+          "postgresType": "anycompatiblearray",
+          "type": 1,
+        },
+        "postgresDescription": undefined,
+        "postgresType": "anycompatiblearray",
+        "type": 11,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Load Types Postgres 14 Should convert select json array index sql (SELECT jsonb_col['test']['other'] FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "jsonb_col",
+      "type": Object {
+        "comment": undefined,
+        "generated": false,
+        "nullable": true,
+        "postgresDescription": undefined,
+        "postgresType": "jsonb",
+        "type": 8,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Load Types Postgres 14 Should convert select jsonpath sql (SELECT jsonb_col @? '$.test' FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "?column?",
+      "type": Object {
+        "nullable": true,
+        "postgresType": "bool",
+        "type": 5,
+      },
+    },
+  ],
+}
+`;

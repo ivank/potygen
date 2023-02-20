@@ -27,6 +27,7 @@ describe('Sql', () => {
     ${'json path text'}               | ${"SELECT col1#>>'{a,b}' FROM table1"}
     ${'json contain left'}            | ${'SELECT * FROM table1 WHERE col1 @> \'{"a":2}\''}
     ${'json contain right'}           | ${'SELECT * FROM table1 WHERE col1 <@ \'{"a":2}\''}
+    ${'json jsonpath'}                | ${"SELECT * FROM table1 WHERE col1 @? '$.test'"}
     ${'json key exists'}              | ${"SELECT * FROM table1 WHERE col1 ? 'a'"}
     ${'json keys any include'}        | ${"SELECT * FROM table1 WHERE col1 ?| array['b', 'c']"}
     ${'array constructor'}            | ${'SELECT id, ARRAY(SELECT n1 FROM t2 WHERE t2.id = t1.id) FROM t1'}
@@ -335,6 +336,9 @@ describe('Sql', () => {
     ${'array'}                      | ${'SELECT ARRAY[1, 2]'}
     ${'array empty'}                | ${'SELECT ARRAY[]'}
     ${'array index'}                | ${'SELECT arr[12]'}
+    ${'array index nested'}         | ${'SELECT arr[12][2]'}
+    ${'json index'}                 | ${"SELECT jsonb_col['12'] FROM table1"}
+    ${'json index nested'}          | ${"SELECT jsonb_col['one']['two'] FROM table1"}
     ${'array index expression'}     | ${'SELECT arr[12+3]'}
     ${'array index expression col'} | ${'SELECT arr[table1.id+3] FROM table1'}
     ${'array index slice'}          | ${'SELECT (ARRAY[1,2,3,4])[2:3]'}

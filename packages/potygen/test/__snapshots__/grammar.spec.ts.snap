@@ -11884,6 +11884,65 @@ Object {
 }
 `;
 
+exports[`Sql Should parse query for type array index nested (SELECT arr[12][2]): array index nested 1`] = `
+Object {
+  "ast": Object {
+    "end": 16,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 16,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 16,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 16,
+                "start": 7,
+                "tag": 27,
+                "values": Array [
+                  Object {
+                    "end": 9,
+                    "start": 7,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 9,
+                        "start": 7,
+                        "tag": 8,
+                        "value": "arr",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 12,
+                    "start": 11,
+                    "tag": 19,
+                    "value": "12",
+                  },
+                  Object {
+                    "end": 15,
+                    "start": 15,
+                    "tag": 19,
+                    "value": "2",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse query for type array index slice (SELECT (ARRAY[1,2,3,4])[2:3]): array index slice 1`] = `
 Object {
   "ast": Object {
@@ -12283,6 +12342,186 @@ Object {
                 "start": 7,
                 "tag": 17,
                 "value": "FFFFFF",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse query for type json index (SELECT jsonb_col['12'] FROM table1): json index 1`] = `
+Object {
+  "ast": Object {
+    "end": 33,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 21,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 21,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 21,
+                "start": 7,
+                "tag": 27,
+                "values": Array [
+                  Object {
+                    "end": 15,
+                    "start": 7,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 15,
+                        "start": 7,
+                        "tag": 8,
+                        "value": "jsonb_col",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 20,
+                    "start": 17,
+                    "tag": 13,
+                    "value": "12",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 33,
+        "start": 23,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 33,
+            "start": 28,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 33,
+                "start": 28,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 33,
+                    "start": 28,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 33,
+                        "start": 28,
+                        "tag": 8,
+                        "value": "table1",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse query for type json index nested (SELECT jsonb_col['one']['two'] FROM table1): json index nested 1`] = `
+Object {
+  "ast": Object {
+    "end": 41,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 29,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 29,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 29,
+                "start": 7,
+                "tag": 27,
+                "values": Array [
+                  Object {
+                    "end": 15,
+                    "start": 7,
+                    "tag": 11,
+                    "values": Array [
+                      Object {
+                        "end": 15,
+                        "start": 7,
+                        "tag": 8,
+                        "value": "jsonb_col",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 21,
+                    "start": 17,
+                    "tag": 13,
+                    "value": "one",
+                  },
+                  Object {
+                    "end": 28,
+                    "start": 24,
+                    "tag": 13,
+                    "value": "two",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 41,
+        "start": 31,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 41,
+            "start": 36,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 41,
+                "start": 36,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 41,
+                    "start": 36,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 41,
+                        "start": 36,
+                        "tag": 8,
+                        "value": "table1",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
@@ -21719,6 +21958,118 @@ Object {
                     ],
                   },
                 ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse simple sql json jsonpath (SELECT * FROM table1 WHERE col1 @? '$.test'): json jsonpath 1`] = `
+Object {
+  "ast": Object {
+    "end": 42,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 7,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 7,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 7,
+                "start": 7,
+                "tag": 37,
+                "values": Array [
+                  Object {
+                    "end": 7,
+                    "start": 7,
+                    "tag": 36,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 19,
+        "start": 9,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 19,
+            "start": 14,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 19,
+                "start": 14,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 19,
+                    "start": 14,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 19,
+                        "start": 14,
+                        "tag": 8,
+                        "value": "table1",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 42,
+        "start": 21,
+        "tag": 70,
+        "values": Array [
+          Object {
+            "end": 42,
+            "start": 27,
+            "tag": 46,
+            "values": Array [
+              Object {
+                "end": 30,
+                "start": 27,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 30,
+                    "start": 27,
+                    "tag": 8,
+                    "value": "col1",
+                  },
+                ],
+              },
+              Object {
+                "end": 33,
+                "start": 32,
+                "tag": 44,
+                "value": "@?",
+              },
+              Object {
+                "end": 42,
+                "start": 35,
+                "tag": 13,
+                "value": "$.test",
               },
             ],
           },

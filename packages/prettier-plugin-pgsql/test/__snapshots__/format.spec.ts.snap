@@ -47,6 +47,11 @@ exports[`Format Should parse simple sql array index expression col (SELECT arr[t
 "
 `;
 
+exports[`Format Should parse simple sql array index nested (SELECT arr[12][2]): array index nested 1`] = `
+"SELECT arr[12][2]
+"
+`;
+
 exports[`Format Should parse simple sql array index slice (SELECT (ARRAY[1,2,3,4])[2:3]): array index slice 1`] = `
 "SELECT (ARRAY[1, 2, 3, 4])[2:3]
 "
@@ -861,6 +866,16 @@ exports[`Format Should parse simple sql json field text int (SELECT col1->>2 FRO
 
 exports[`Format Should parse simple sql json field text string (SELECT col1->>'col' FROM table1): json field text string 1`] = `
 "SELECT col1->>'col' FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql json index (SELECT json_col['one'] from table1): json index 1`] = `
+"SELECT json_col['one'] FROM table1
+"
+`;
+
+exports[`Format Should parse simple sql json index nested (SELECT json_col['three']['four'] from table1): json index nested 1`] = `
+"SELECT json_col['three']['four'] FROM table1
 "
 `;
 

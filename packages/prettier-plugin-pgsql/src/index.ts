@@ -154,9 +154,12 @@ const pgsqlAst: Printer<Node> = {
       case SqlName.ArrayIndexRange:
         return group(join(':', vals(path, recur)));
       case SqlName.ArrayColumnIndex:
-        return group([group([nthVal(0, path, recur), softline]), '[', indent([softline, nthVal(1, path, recur)]), ']']);
+        return group([
+          group([nthVal(0, path, recur), softline]),
+          ...tailVals(1, path, recur).map((item) => ['[', indent([softline, item]), ']']),
+        ]);
       case SqlName.ArrayIndex:
-        return group(['[', indent([softline, vals(path, recur)]), ']']);
+        return group(vals(path, recur).map((item) => ['[', indent([softline, item]), ']']));
       case SqlName.CompositeAccess:
         return group(['.', vals(path, recur)]);
       case SqlName.Count:

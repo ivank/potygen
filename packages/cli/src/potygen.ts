@@ -39,7 +39,7 @@ class LogLevelConsole implements Logger {
 export const potygen = (overwriteLogger?: Logger): Command =>
   createCommand('potygen')
     .description('Convert postgres query files into typescript types')
-    .version('0.9.4')
+    .version('0.9.5')
     .option('-c, --config <config>', 'A configuration file to load', 'potygen.config.json')
     .option('-f, --files <files>', 'A glob pattern to search files by (default: "**/*.sql")')
     .option('-w, --watch', 'Watch for file changes and update live')

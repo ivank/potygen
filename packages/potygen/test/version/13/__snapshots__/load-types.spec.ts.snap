@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Load Types Postgres 13 Should convert Array remove sql (SELECT ARRAY_REMOVE(ARRAY_AGG(id), NULL) FROM all_types) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "array_remove",
+      "type": Object {
+        "comment": undefined,
+        "generated": undefined,
+        "items": Object {
+          "postgresType": "anyarray",
+          "type": 1,
+        },
+        "postgresDescription": undefined,
+        "postgresType": "anyarray",
+        "type": 11,
+      },
+    },
+  ],
+}
+`;

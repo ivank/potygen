@@ -1160,7 +1160,11 @@ export interface ArrayIndexRangeTag extends NodeSqlTag {
  */
 export interface ArrayColumnIndexTag extends NodeSqlTag {
   tag: SqlName.ArrayColumnIndex;
-  values: [array: ColumnTag, index: ExpressionTag | ArrayIndexRangeTag];
+  values: [
+    array: ColumnTag,
+    index: ExpressionTag | ArrayIndexRangeTag,
+    ...dimensions: (ExpressionTag | ArrayIndexRangeTag)[],
+  ];
 }
 
 /**
@@ -1178,7 +1182,7 @@ export interface ArrayColumnIndexTag extends NodeSqlTag {
  */
 export interface ArrayIndexTag extends NodeSqlTag {
   tag: SqlName.ArrayIndex;
-  values: [index: ExpressionTag | ArrayIndexRangeTag];
+  values: [index: ExpressionTag | ArrayIndexRangeTag, ...dimensions: (ExpressionTag | ArrayIndexRangeTag)[]];
 }
 
 /**
@@ -1443,6 +1447,7 @@ export interface BinaryOperatorTag extends LeafSqlTag {
     | '<->'
     | '@>'
     | '<@'
+    | '@?'
     | '?|'
     | '?&'
     | '?'
