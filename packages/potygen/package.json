@@ -1,6 +1,6 @@
 {
   "name": "@potygen/potygen",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "homepage": "https://github.com/ivank/potygen/tree/main/packages/potygen",
   "description": "Postgres Typescript Generator",
   "main": "dist/index.js",
@@ -25,6 +25,7 @@
     "test": "jest test --runInBand",
     "test:11": "jest test/version/11 --runInBand",
     "test:13": "jest test/version/13 --runInBand",
+    "test:14": "jest test/version/14 --runInBand",
     "lint": "prettier --list-different '{src,test}/**/*.ts'"
   },
   "jest": {

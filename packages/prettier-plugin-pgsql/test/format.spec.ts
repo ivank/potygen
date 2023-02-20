@@ -194,9 +194,12 @@ describe('Format', () => {
     ${'nested function'}              | ${'SELECT id FROM table1 WHERE table1.col = ANY(ARRAY_AGG(table1.col2)) GROUP BY table1.col2'}
     ${'array'}                        | ${'SELECT ARRAY[1, 2]'}
     ${'array index'}                  | ${'SELECT arr[12]'}
+    ${'array index nested'}           | ${'SELECT arr[12][2]'}
     ${'array index expression'}       | ${'SELECT arr[12+3]'}
     ${'array index expression col'}   | ${'SELECT arr[table1.id+3] FROM table1'}
     ${'array index slice'}            | ${'SELECT (ARRAY[1,2,3,4])[2:3]'}
+    ${'json index'}                   | ${"SELECT json_col['one'] from table1"}
+    ${'json index nested'}            | ${"SELECT json_col['three']['four'] from table1"}
     ${'nullif'}                       | ${"SELECT NULLIF(col1, '(none)') FROM table1"}
     ${'function with array'}          | ${"SELECT id FROM table1 WHERE table1.col = ANY(ARRAY['opening','Opening']) ORDER BY col ASC LIMIT 1"}
     ${'function with type cast'}      | ${'SELECT TRIM(name)::text FROM table1'}

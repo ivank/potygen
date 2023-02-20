@@ -303,7 +303,7 @@ const BinaryOperator = [
   /^(\*|\/|%)/,
   /^(\+|-)/,
   /^(IS NOT DISTINCT FROM|IS DISTINCT FROM|IS|AT TIME ZONE)/i,
-  /^(->>|->|#>>|#>|@>|<@|\?\||\?\&|\?|#-|!!|<->)/,
+  /^(->>|->|#>>|#>|@>|<@|@\?|\?\||\?\&|\?|#-|!!|<->)/,
   /^(\|\|)/,
   /^(\|)/,
   /^(\&\&)/,
@@ -390,11 +390,11 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
     );
     const ArrayColumnIndex = astNode<Tag.ArrayColumnIndexTag>(
       Tag.SqlName.ArrayColumnIndex,
-      All(Column, SquareBrackets(Any(ArrayIndexRange, ChildExpression))),
+      All(Column, Plus(SquareBrackets(Any(ArrayIndexRange, ChildExpression)))),
     );
     const ArrayIndex = astNode<Tag.ArrayIndexTag>(
       Tag.SqlName.ArrayIndex,
-      SquareBrackets(Any(ArrayIndexRange, ChildExpression)),
+      Plus(SquareBrackets(Any(ArrayIndexRange, ChildExpression))),
     );
     const CompositeAccess = astNode<Tag.CompositeAccessTag>(Tag.SqlName.CompositeAccess, All('.', Identifier));
 
