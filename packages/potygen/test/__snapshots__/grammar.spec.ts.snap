@@ -21969,6 +21969,118 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql json jsonpath (SELECT * FROM table1 WHERE col1 @? '$.test'): json jsonpath 1`] = `
+Object {
+  "ast": Object {
+    "end": 42,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 7,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 7,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 7,
+                "start": 7,
+                "tag": 37,
+                "values": Array [
+                  Object {
+                    "end": 7,
+                    "start": 7,
+                    "tag": 36,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 19,
+        "start": 9,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 19,
+            "start": 14,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 19,
+                "start": 14,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 19,
+                    "start": 14,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 19,
+                        "start": 14,
+                        "tag": 8,
+                        "value": "table1",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 42,
+        "start": 21,
+        "tag": 70,
+        "values": Array [
+          Object {
+            "end": 42,
+            "start": 27,
+            "tag": 46,
+            "values": Array [
+              Object {
+                "end": 30,
+                "start": 27,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 30,
+                    "start": 27,
+                    "tag": 8,
+                    "value": "col1",
+                  },
+                ],
+              },
+              Object {
+                "end": 33,
+                "start": 32,
+                "tag": 44,
+                "value": "@?",
+              },
+              Object {
+                "end": 42,
+                "start": 35,
+                "tag": 13,
+                "value": "$.test",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse simple sql json key exists (SELECT * FROM table1 WHERE col1 ? 'a'): json key exists 1`] = `
 Object {
   "ast": Object {

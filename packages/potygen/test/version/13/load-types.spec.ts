@@ -1,12 +1,8 @@
 import { parser, toQueryInterface, loadQueryInterfacesData, toLoadedQueryInterface } from '../../../src';
 import { testDb } from '../../helpers';
 
-describe('Load Types Postgres 14', () => {
-  it.each<[string, string]>([
-    ['select json array index', `SELECT jsonb_col['test']['other'] FROM all_types`],
-    ['select jsonpath', `SELECT jsonb_col @? '$.test' FROM all_types`],
-    ['Array remove', `SELECT ARRAY_REMOVE(ARRAY_AGG(id), NULL) FROM all_types`],
-  ])(
+describe('Load Types Postgres 13', () => {
+  it.each<[string, string]>([['Array remove', `SELECT ARRAY_REMOVE(ARRAY_AGG(id), NULL) FROM all_types`]])(
     'Should convert %s sql (%s)',
     async (_, sql) => {
       const db = testDb();

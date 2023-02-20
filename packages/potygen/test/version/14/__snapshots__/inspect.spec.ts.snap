@@ -3,11 +3,7 @@
 exports[`Inspect Should load completions for select cast type: SELECT 'Active'::s‸t: select cast type 1`] = `
 Array [
   Object {
-    "name": "account_levelisation_state",
-    "source": undefined,
-  },
-  Object {
-    "name": "account_payment_plans",
+    "name": "order_state",
     "source": undefined,
   },
   Object {
@@ -19,19 +15,11 @@ Array [
     "source": undefined,
   },
   Object {
-    "name": "contract_scheme_types",
+    "name": "account_payment_plans",
     "source": undefined,
   },
   Object {
-    "name": "installation_export_type",
-    "source": undefined,
-  },
-  Object {
-    "name": "installation_property_type",
-    "source": undefined,
-  },
-  Object {
-    "name": "installation_technology_types",
+    "name": "tariff_types",
     "source": undefined,
   },
   Object {
@@ -39,15 +27,19 @@ Array [
     "source": undefined,
   },
   Object {
-    "name": "issue_reference_type",
+    "name": "installation_technology_types",
     "source": undefined,
   },
   Object {
-    "name": "issue_state",
+    "name": "installation_property_type",
     "source": undefined,
   },
   Object {
-    "name": "issue_type",
+    "name": "installation_export_type",
+    "source": undefined,
+  },
+  Object {
+    "name": "contract_scheme_types",
     "source": undefined,
   },
   Object {
@@ -59,7 +51,19 @@ Array [
     "source": undefined,
   },
   Object {
-    "name": "order_state",
+    "name": "account_levelisation_state",
+    "source": undefined,
+  },
+  Object {
+    "name": "issue_state",
+    "source": undefined,
+  },
+  Object {
+    "name": "issue_type",
+    "source": undefined,
+  },
+  Object {
+    "name": "issue_reference_type",
     "source": undefined,
   },
   Object {
@@ -68,10 +72,6 @@ Array [
   },
   Object {
     "name": "process_item_status",
-    "source": undefined,
-  },
-  Object {
-    "name": "tariff_types",
     "source": undefined,
   },
   Object {
@@ -119,32 +119,4 @@ Array [
     "source": "Native",
   },
 ]
-`;
-
-exports[`Inspect Should load quick info for generated column: SELECT contacts.ts_‸vector_search FROM specific_pg_version.contacts: generated column 1`] = `
-Object {
-  "description": "From: specific_pg_version.contacts Table
-
----
-
-to_tsvector('english'::regconfig, ((first_name)::text || (last_name)::text))",
-  "display": "ts_vector_search tsvector GENERATED",
-  "end": 31,
-  "start": 16,
-}
-`;
-
-exports[`Inspect Should load quick info for table with generated column: SELECT contacts FROM specific_pg_version.cont‸acts: table with generated column 1`] = `
-Object {
-  "description": "|Name|Type|
-|---|---|
-|id|**integer** \`NOT_NULL\`|
-|first_name|**character varying** \`NOT_NULL\`|
-|last_name|**character varying** \`NOT_NULL\`|
-|ts_vector_search|**tsvector** \`NULL\` \`GENERATED\`|
-||to_tsvector('english'::regconfig, ((first_name)::text || (last_name)::text))|",
-  "display": "specific_pg_version.contacts Table",
-  "end": 48,
-  "start": 41,
-}
 `;

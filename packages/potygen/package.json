@@ -23,6 +23,7 @@
     "build": "tsc --declaration",
     "build:readme": "build-readme README.md https://github.com/ivank/potygen/tree/main/packages/potygen",
     "test": "jest test --runInBand",
+    "test:general": "jest --runInBand test --testPathIgnorePatterns='test/version/*'",
     "test:11": "jest test/version/11 --runInBand",
     "test:13": "jest test/version/13 --runInBand",
     "test:14": "jest test/version/14 --runInBand",

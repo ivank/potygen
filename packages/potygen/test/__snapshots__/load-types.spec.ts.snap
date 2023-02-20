@@ -30,28 +30,6 @@ Object {
 }
 `;
 
-exports[`Query Interface Should convert Array remove sql (SELECT ARRAY_REMOVE(ARRAY_AGG(id), NULL) FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
-      "name": "array_remove",
-      "type": Object {
-        "comment": undefined,
-        "generated": undefined,
-        "items": Object {
-          "postgresType": "anycompatiblearray",
-          "type": 1,
-        },
-        "postgresDescription": undefined,
-        "postgresType": "anycompatiblearray",
-        "type": 11,
-      },
-    },
-  ],
-}
-`;
-
 exports[`Query Interface Should convert Coalesce binary expression sql (SELECT COALESCE(numeric_col,0) + COALESCE(numeric_col,0) as "totalPaymentWithVat" FROM all_types) 1`] = `
 Object {
   "params": Array [],

@@ -56,7 +56,6 @@ describe('Query Interface', () => {
       `WITH nums AS (SELECT id, numeric_col AS "num" FROM all_types)
       SELECT all_types.id, n.num FROM all_types JOIN nums AS n ON n.id = all_types.id`,
     ],
-    ['Array remove', `SELECT ARRAY_REMOVE(ARRAY_AGG(id), NULL) FROM all_types`],
     ['Right function', `SELECT RIGHT('123', 2)`],
   ])(
     'Should convert %s sql (%s)',
