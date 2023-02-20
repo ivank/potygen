@@ -1,4 +1,4 @@
-import { loadAllData, toInfoContext, InfoContext, quickInfoAtOffset, completionAtOffset } from '../../../src';
+import { loadAllData, toInfoContext, InfoContext, quickInfoAtOffset } from '../../../src';
 import { testDb } from '../../helpers';
 
 let ctx: InfoContext;
@@ -24,20 +24,6 @@ describe('Inspect', () => {
 
       const info = quickInfoAtOffset(ctx, sql, offset);
       expect(info).toMatchSnapshot(name);
-    },
-  );
-
-  it.each`
-    name                  | sqlWithCaret
-    ${`select cast type`} | ${`SELECT 'Active'::s‸t`}
-  `(
-    'Should load completions for $name: $sqlWithCaret',
-    ({ name, sqlWithCaret }: { name: string; sqlWithCaret: string }) => {
-      const offset = sqlWithCaret.indexOf('‸');
-      const sql = sqlWithCaret.replace('‸', '');
-
-      const completions = completionAtOffset(ctx, sql, offset);
-      expect(completions).toMatchSnapshot(name);
     },
   );
 });

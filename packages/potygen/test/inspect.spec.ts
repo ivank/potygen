@@ -26,6 +26,7 @@ describe('Inspect', () => {
     ${`enum right`}         | ${`SELECT * FROM all_types WHERE all_types.state = 'A‸ctive'`}
     ${`enum left`}          | ${`SELECT * FROM all_types WHERE 'A‸ctive' = all_types.state`}
     ${`insert column`}      | ${`INSERT INTO all_types(id, sta‸te) VALUES (1, 'Active')`}
+    ${`select cast type`}   | ${`SELECT 'Active'::s‸t`}
     ${`complex`} | ${`
       SELECT * FROM accounts
       JOIN contracts ON contracts.account_id = accounts.id

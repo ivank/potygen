@@ -6,7 +6,7 @@
  */
 
 import { parser, partialParser } from '../grammar';
-import { first, groupBy, isUnique } from '../util';
+import { first, groupBy, isUnique, orderBy } from '../util';
 import { toQueryInterface } from '../query-interface';
 import { markTextError, ParserError } from '@ikerin/rd-parse';
 import { toPath } from './path';
@@ -171,7 +171,9 @@ export const completionAtOffset = (ctx: InfoContext, sql: string, offset: number
     case 'Cast':
       const userDefinedTypes = [...ctx.data.filter(isLoadedDataEnum), ...ctx.data.filter(isLoadedDataComposite)];
       return [
-        ...userDefinedTypes.map((item) => ({ name: item.name.name, source: item.comment })),
+        ...userDefinedTypes
+          .map((item) => ({ name: item.name.name, source: item.comment }))
+          .sort(orderBy((item) => item.name)),
         ...commonTypes.map((name) => ({ name, source: 'Native' })),
       ];
     case 'Schema':
