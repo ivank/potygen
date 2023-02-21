@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 CREATE TYPE inventory_item AS (
     name            text,
     supplier_id     integer,
@@ -58,6 +60,29 @@ CREATE TABLE all_types (
   state_arr account_state[],
   item_arr inventory_item[],
   static_arr bigint[]
+);
+
+CREATE TYPE transaction_state AS ENUM (
+  'Pending',
+  'Approved',
+  'Rejected',
+  'Failed'
+);
+
+CREATE TYPE transaction_history AS (
+  state transaction_state,
+  user_id integer,
+  date_on timestamp,
+  description VARCHAR
+);
+
+CREATE TABLE transactions (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  amount integer NOT NULL,
+  sent_at timestamp without time zone NOT NULL,
+  history transaction_history[] DEFAULT ARRAY[]::transaction_history[],
+  data jsonb NOT NULL,
+  error jsonb
 );
 
 COMMENT ON TABLE all_types IS 'All the postgres types';

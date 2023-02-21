@@ -18,6 +18,70 @@ export interface Query {
 }
 `;
 
+exports[`Query Interface Should convert array of records index composite column enum sql (SELECT (transactions.history[1]).state FROM transactions) 1`] = `
+Object {
+  "content": "export interface Params {
+}
+export interface Result {
+    state?: \\"Pending\\" | \\"Approved\\" | \\"Rejected\\" | \\"Failed\\";
+}
+export interface Query {
+    params: Params;
+    result: Result[];
+}
+",
+  "path": "test/__generated__/array of records index composite column enum.queries.ts",
+}
+`;
+
+exports[`Query Interface Should convert array of records index composite column int sql (SELECT (transactions.history[1]).user_id FROM transactions) 1`] = `
+Object {
+  "content": "export interface Params {
+}
+export interface Result {
+    user_id?: number;
+}
+export interface Query {
+    params: Params;
+    result: Result[];
+}
+",
+  "path": "test/__generated__/array of records index composite column int.queries.ts",
+}
+`;
+
+exports[`Query Interface Should convert array of records index sql (SELECT transactions.history[1] FROM transactions) 1`] = `
+Object {
+  "content": "export interface Params {
+}
+export interface Result {
+    history?: string;
+}
+export interface Query {
+    params: Params;
+    result: Result[];
+}
+",
+  "path": "test/__generated__/array of records index.queries.ts",
+}
+`;
+
+exports[`Query Interface Should convert array of records sql (SELECT transactions.history FROM transactions) 1`] = `
+Object {
+  "content": "export interface Params {
+}
+export interface Result {
+    history?: string[];
+}
+export interface Query {
+    params: Params;
+    result: Result[];
+}
+",
+  "path": "test/__generated__/array of records.queries.ts",
+}
+`;
+
 exports[`Query Interface Should convert case to string literal union sql (SELECT CASE accounts.source_system WHEN 'SSE' THEN 'SSE' WHEN 'FITDB' THEN 'FITDB' ELSE NULL END AS "sourceSystem" FROM accounts) 1`] = `
 Object {
   "content": "export interface Params {

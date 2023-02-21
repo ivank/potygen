@@ -79,7 +79,7 @@ export interface LoadedDataTable extends DataTable {
  */
 export interface LoadedDataComposite extends DataComposite {
   comment?: string;
-  data: Array<{ name: string; isNullable: string; type: string }>;
+  data: Array<{ name: string; isNullable: string; type: string; record: string }>;
 }
 
 /**

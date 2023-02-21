@@ -2,26 +2,29 @@ import { Client } from 'pg';
 import {
   parser,
   toQueryInterface,
-  loadQueryInterfacesData,
   toLoadedQueryInterface,
   Type,
   TypeName,
+  LoadedData,
+  loadAllData,
 } from '@potygen/potygen';
 import { toTypeScriptPrinter, compactTypes } from '../src';
 import { testDb } from './helpers';
 import { join } from 'path';
 
 let db: Client;
+let data: LoadedData[] = [];
 
 const typeScriptPrinter = toTypeScriptPrinter(join(__dirname, '../'), 'test/__generated__/{{name}}.queries.ts');
 
 describe('Query Interface', () => {
   beforeAll(async () => {
     db = testDb();
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     await db.connect();
+    data = await loadAllData({ db, logger }, []);
+    await db.end();
   });
-
-  afterAll(() => db.end());
 
   it.each<[string, string]>([
     ['function result single', `SELECT ABS(integer_col) FROM all_types`],
@@ -57,14 +60,15 @@ describe('Query Interface', () => {
     ['empty array', `SELECT ARRAY[]`],
     ['descriptive property names', `SELECT 'test' AS "some column", 'test2' AS "test"`],
     ['invalid identifiers as property names', `SELECT 'test' AS "12"`],
+    ['array of records', `SELECT transactions.history FROM transactions`],
+    ['array of records index', `SELECT transactions.history[1] FROM transactions`],
+    ['array of records index composite column int', `SELECT (transactions.history[1]).user_id FROM transactions`],
+    ['array of records index composite column enum', `SELECT (transactions.history[1]).state FROM transactions`],
   ])(
     'Should convert %s sql (%s)',
     async (path, content) => {
-      const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
       const { ast } = parser(content);
       const queryInterface = toQueryInterface(ast);
-
-      const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
       const loadedQuery = toLoadedQueryInterface(data)(queryInterface);
       const output = await typeScriptPrinter({ type: 'sql', path, content, queryInterface, loadedQuery });
       expect(output).toMatchSnapshot();
