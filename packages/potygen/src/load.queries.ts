@@ -46,6 +46,7 @@ export const allSql = sql<LoadAllSql>`
       json_build_object(
         'name', attributes.attribute_name,
         'isNullable', attributes.is_nullable,
+        'record', attributes.attribute_udt_name,
         'type', attributes.data_type
       )
       ORDER BY

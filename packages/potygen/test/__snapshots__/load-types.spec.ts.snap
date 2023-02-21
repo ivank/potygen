@@ -117,6 +117,214 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert array of records index composite column enum sql (SELECT (transactions.history[1]).state FROM transactions) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "state",
+      "type": Object {
+        "comment": undefined,
+        "items": Array [
+          Object {
+            "literal": "Pending",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Approved",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Rejected",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Failed",
+            "postgresType": "text",
+            "type": 2,
+          },
+        ],
+        "nullable": true,
+        "postgresType": "transaction_state",
+        "type": 12,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert array of records index composite column int sql (SELECT (transactions.history[1]).user_id FROM transactions) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "user_id",
+      "type": Object {
+        "comment": undefined,
+        "generated": false,
+        "nullable": true,
+        "postgresDescription": undefined,
+        "postgresType": "integer",
+        "type": 3,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert array of records index sql (SELECT transactions.history[1] FROM transactions) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "history",
+      "type": Object {
+        "attributes": Object {
+          "date_on": Object {
+            "comment": undefined,
+            "generated": false,
+            "nullable": true,
+            "postgresDescription": undefined,
+            "postgresType": "timestamp without time zone",
+            "type": 6,
+          },
+          "description": Object {
+            "comment": undefined,
+            "generated": false,
+            "nullable": true,
+            "postgresDescription": undefined,
+            "postgresType": "character varying",
+            "type": 2,
+          },
+          "state": Object {
+            "comment": undefined,
+            "items": Array [
+              Object {
+                "literal": "Pending",
+                "postgresType": "text",
+                "type": 2,
+              },
+              Object {
+                "literal": "Approved",
+                "postgresType": "text",
+                "type": 2,
+              },
+              Object {
+                "literal": "Rejected",
+                "postgresType": "text",
+                "type": 2,
+              },
+              Object {
+                "literal": "Failed",
+                "postgresType": "text",
+                "type": 2,
+              },
+            ],
+            "nullable": true,
+            "postgresType": "transaction_state",
+            "type": 12,
+          },
+          "user_id": Object {
+            "comment": undefined,
+            "generated": false,
+            "nullable": true,
+            "postgresDescription": undefined,
+            "postgresType": "integer",
+            "type": 3,
+          },
+        },
+        "comment": undefined,
+        "name": "transaction_history",
+        "nullable": true,
+        "postgresType": "transaction_history",
+        "schema": "public",
+        "type": 10,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert array of records sql (SELECT transactions.history FROM transactions) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "history",
+      "type": Object {
+        "comment": undefined,
+        "items": Object {
+          "attributes": Object {
+            "date_on": Object {
+              "comment": undefined,
+              "generated": false,
+              "nullable": true,
+              "postgresDescription": undefined,
+              "postgresType": "timestamp without time zone",
+              "type": 6,
+            },
+            "description": Object {
+              "comment": undefined,
+              "generated": false,
+              "nullable": true,
+              "postgresDescription": undefined,
+              "postgresType": "character varying",
+              "type": 2,
+            },
+            "state": Object {
+              "comment": undefined,
+              "items": Array [
+                Object {
+                  "literal": "Pending",
+                  "postgresType": "text",
+                  "type": 2,
+                },
+                Object {
+                  "literal": "Approved",
+                  "postgresType": "text",
+                  "type": 2,
+                },
+                Object {
+                  "literal": "Rejected",
+                  "postgresType": "text",
+                  "type": 2,
+                },
+                Object {
+                  "literal": "Failed",
+                  "postgresType": "text",
+                  "type": 2,
+                },
+              ],
+              "nullable": true,
+              "postgresType": "transaction_state",
+              "type": 12,
+            },
+            "user_id": Object {
+              "comment": undefined,
+              "generated": false,
+              "nullable": true,
+              "postgresDescription": undefined,
+              "postgresType": "integer",
+              "type": 3,
+            },
+          },
+          "name": "transaction_history",
+          "postgresType": "transaction_history",
+          "schema": "public",
+          "type": 10,
+        },
+        "nullable": true,
+        "postgresType": "transaction_history[]",
+        "type": 11,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert coalesce 1 sql (SELECT COALESCE(id, character_col) FROM all_types) 1`] = `
 Object {
   "params": Array [],
@@ -267,7 +475,7 @@ Object {
           "attributes": Object {
             "name": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "text",
@@ -275,7 +483,7 @@ Object {
             },
             "price": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "numeric",
@@ -283,7 +491,7 @@ Object {
             },
             "supplier_id": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "integer",
@@ -315,7 +523,7 @@ Object {
           "attributes": Object {
             "name": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "text",
@@ -323,7 +531,7 @@ Object {
             },
             "price": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "numeric",
@@ -331,7 +539,7 @@ Object {
             },
             "supplier_id": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "integer",
@@ -359,7 +567,7 @@ Object {
       "name": "supplier_id",
       "type": Object {
         "comment": undefined,
-        "generated": undefined,
+        "generated": false,
         "nullable": true,
         "postgresDescription": undefined,
         "postgresType": "integer",
@@ -378,7 +586,7 @@ Object {
       "name": "supplier_id",
       "type": Object {
         "comment": undefined,
-        "generated": undefined,
+        "generated": false,
         "nullable": true,
         "postgresDescription": undefined,
         "postgresType": "integer",
@@ -1040,7 +1248,7 @@ Object {
         "attributes": Object {
           "name": Object {
             "comment": undefined,
-            "generated": undefined,
+            "generated": false,
             "nullable": true,
             "postgresDescription": undefined,
             "postgresType": "text",
@@ -1048,7 +1256,7 @@ Object {
           },
           "price": Object {
             "comment": undefined,
-            "generated": undefined,
+            "generated": false,
             "nullable": true,
             "postgresDescription": undefined,
             "postgresType": "numeric",
@@ -1056,7 +1264,7 @@ Object {
           },
           "supplier_id": Object {
             "comment": undefined,
-            "generated": undefined,
+            "generated": false,
             "nullable": true,
             "postgresDescription": undefined,
             "postgresType": "integer",
@@ -1085,12 +1293,52 @@ Object {
             "type": 2,
           },
           Object {
+            "literal": "Active",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Active",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Pending",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Pending",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
           Object {
             "literal": "Dispute",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Dispute",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Dispute",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Closed",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Closed",
             "postgresType": "text",
             "type": 2,
           },
@@ -1117,12 +1365,52 @@ Object {
               "type": 2,
             },
             Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
             Object {
               "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
@@ -1148,7 +1436,7 @@ Object {
           "attributes": Object {
             "name": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "text",
@@ -1156,7 +1444,7 @@ Object {
             },
             "price": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "numeric",
@@ -1164,7 +1452,7 @@ Object {
             },
             "supplier_id": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "integer",
@@ -1772,7 +2060,7 @@ Object {
         "attributes": Object {
           "name": Object {
             "comment": undefined,
-            "generated": undefined,
+            "generated": false,
             "nullable": true,
             "postgresDescription": undefined,
             "postgresType": "text",
@@ -1780,7 +2068,7 @@ Object {
           },
           "price": Object {
             "comment": undefined,
-            "generated": undefined,
+            "generated": false,
             "nullable": true,
             "postgresDescription": undefined,
             "postgresType": "numeric",
@@ -1788,7 +2076,7 @@ Object {
           },
           "supplier_id": Object {
             "comment": undefined,
-            "generated": undefined,
+            "generated": false,
             "nullable": true,
             "postgresDescription": undefined,
             "postgresType": "integer",
@@ -1817,12 +2105,52 @@ Object {
             "type": 2,
           },
           Object {
+            "literal": "Active",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Active",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Pending",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Pending",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
           Object {
             "literal": "Dispute",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Dispute",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Dispute",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Closed",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Closed",
             "postgresType": "text",
             "type": 2,
           },
@@ -1849,12 +2177,52 @@ Object {
               "type": 2,
             },
             Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
             Object {
               "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
@@ -1880,7 +2248,7 @@ Object {
           "attributes": Object {
             "name": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "text",
@@ -1888,7 +2256,7 @@ Object {
             },
             "price": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "numeric",
@@ -1896,7 +2264,7 @@ Object {
             },
             "supplier_id": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "integer",
@@ -1966,12 +2334,52 @@ Object {
               "type": 2,
             },
             Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
             Object {
               "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
@@ -2043,12 +2451,52 @@ Object {
                 "type": 2,
               },
               Object {
+                "literal": "Active",
+                "postgresType": "text",
+                "type": 2,
+              },
+              Object {
+                "literal": "Active",
+                "postgresType": "text",
+                "type": 2,
+              },
+              Object {
+                "literal": "Pending",
+                "postgresType": "text",
+                "type": 2,
+              },
+              Object {
+                "literal": "Pending",
+                "postgresType": "text",
+                "type": 2,
+              },
+              Object {
                 "literal": "Pending",
                 "postgresType": "text",
                 "type": 2,
               },
               Object {
                 "literal": "Dispute",
+                "postgresType": "text",
+                "type": 2,
+              },
+              Object {
+                "literal": "Dispute",
+                "postgresType": "text",
+                "type": 2,
+              },
+              Object {
+                "literal": "Dispute",
+                "postgresType": "text",
+                "type": 2,
+              },
+              Object {
+                "literal": "Closed",
+                "postgresType": "text",
+                "type": 2,
+              },
+              Object {
+                "literal": "Closed",
                 "postgresType": "text",
                 "type": 2,
               },
@@ -2081,12 +2529,52 @@ Object {
               "type": 2,
             },
             Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
             Object {
               "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
@@ -3087,7 +3575,7 @@ Object {
         "attributes": Object {
           "name": Object {
             "comment": undefined,
-            "generated": undefined,
+            "generated": false,
             "nullable": true,
             "postgresDescription": undefined,
             "postgresType": "text",
@@ -3095,7 +3583,7 @@ Object {
           },
           "price": Object {
             "comment": undefined,
-            "generated": undefined,
+            "generated": false,
             "nullable": true,
             "postgresDescription": undefined,
             "postgresType": "numeric",
@@ -3103,7 +3591,7 @@ Object {
           },
           "supplier_id": Object {
             "comment": undefined,
-            "generated": undefined,
+            "generated": false,
             "nullable": true,
             "postgresDescription": undefined,
             "postgresType": "integer",
@@ -3132,12 +3620,52 @@ Object {
             "type": 2,
           },
           Object {
+            "literal": "Active",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Active",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Pending",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Pending",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
           Object {
             "literal": "Dispute",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Dispute",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Dispute",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Closed",
+            "postgresType": "text",
+            "type": 2,
+          },
+          Object {
+            "literal": "Closed",
             "postgresType": "text",
             "type": 2,
           },
@@ -3164,12 +3692,52 @@ Object {
               "type": 2,
             },
             Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Active",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Pending",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
             Object {
               "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Dispute",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
+              "postgresType": "text",
+              "type": 2,
+            },
+            Object {
+              "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
@@ -3195,7 +3763,7 @@ Object {
           "attributes": Object {
             "name": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "text",
@@ -3203,7 +3771,7 @@ Object {
             },
             "price": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "numeric",
@@ -3211,7 +3779,7 @@ Object {
             },
             "supplier_id": Object {
               "comment": undefined,
-              "generated": undefined,
+              "generated": false,
               "nullable": true,
               "postgresDescription": undefined,
               "postgresType": "integer",

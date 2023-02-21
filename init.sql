@@ -60,6 +60,30 @@ CREATE TABLE all_types (
   static_arr bigint[]
 );
 
+CREATE TYPE transaction_state AS ENUM (
+  'Pending',
+  'Approved',
+  'Rejected',
+  'Failed'
+);
+
+CREATE TYPE transaction_history AS (
+  state transaction_state,
+  user_id integer,
+  date_on timestamp,
+  description VARCHAR
+);
+
+CREATE TABLE transactions (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  amount integer NOT NULL,
+  sent_at timestamp without time zone NOT NULL,
+  account_id integer NOT NULL REFERENCES accounts(id),
+  history transaction_history[] DEFAULT ARRAY[]::transaction_history[],
+  data jsonb NOT NULL,
+  error jsonb
+);
+
 COMMENT ON TABLE all_types IS 'All the postgres types';
 COMMENT ON COLUMN all_types.not_null IS 'This column should never be null';
 COMMENT ON COLUMN all_types.state IS '

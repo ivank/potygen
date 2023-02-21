@@ -352,19 +352,26 @@ const toLoadedFunction = ({ data, name, comment }: LoadedDataFunction): LoadedFu
   comment,
 });
 
-const toLoadedComposite = ({ data, name }: LoadedDataComposite): TypeComposite => ({
-  name: name.name,
-  type: TypeName.Composite,
-  schema: name.schema,
-  postgresType: name.name,
-  attributes: data.reduce<Record<string, Type>>(
-    (acc, attr) => ({
-      ...acc,
-      [attr.name]: loadPgType({ type: attr.type, nullable: attr.isNullable === 'YES' }),
-    }),
-    {},
-  ),
-});
+const toLoadedComposite =
+  (enums: Record<string, TypeUnion>) =>
+  ({ data, name }: LoadedDataComposite): TypeComposite => ({
+    name: name.name,
+    type: TypeName.Composite,
+    schema: name.schema,
+    postgresType: name.name,
+    attributes: data.reduce<Record<string, Type>>(
+      (acc, attr) => ({
+        ...acc,
+        [attr.name]: dataColumnToType([], enums, {
+          name: attr.name,
+          record: attr.record,
+          type: attr.type,
+          isNullable: attr.isNullable,
+        }),
+      }),
+      {},
+    ),
+  });
 
 const toLoadedEnum = (enums: LoadedDataEnum[]): Record<string, TypeUnion> =>
   enums.reduce<Record<string, TypeUnion>>(
@@ -486,7 +493,7 @@ export const toLoadedContext = ({
   sources: Source[];
 }): LoadedContextWithUnknown => {
   const enums = toLoadedEnum(data.filter(isLoadedDataEnum));
-  const composites = data.filter(isLoadedDataComposite).map(toLoadedComposite);
+  const composites = data.filter(isLoadedDataComposite).map(toLoadedComposite(enums));
   const loadedSources = sources.map(toLoadedSource({ data, enums, composites, sources }));
   const funcs = data.filter(isLoadedDataFunction).map(toLoadedFunction);
 

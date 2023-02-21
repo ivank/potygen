@@ -1,7 +1,25 @@
-import { parser, toQueryInterface, LoadedData, loadQueryInterfacesData, toLoadedQueryInterface } from '../src';
+import {
+  parser,
+  toQueryInterface,
+  LoadedData,
+  loadQueryInterfacesData,
+  toLoadedQueryInterface,
+  loadAllData,
+} from '../src';
 import { testDb } from './helpers';
 
+let data: LoadedData[] = [];
+
 describe('Query Interface', () => {
+  beforeAll(async () => {
+    const db = testDb();
+    await db.connect();
+    const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
+
+    data = await loadAllData({ db, logger }, []);
+    await db.end();
+  });
+
   it.each<[string, string]>([
     ['select where', `SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)`],
     ['function result single', `SELECT ABS(integer_col) FROM all_types`],
@@ -57,23 +75,23 @@ describe('Query Interface', () => {
       SELECT all_types.id, n.num FROM all_types JOIN nums AS n ON n.id = all_types.id`,
     ],
     ['Right function', `SELECT RIGHT('123', 2)`],
+    ['array of records', `SELECT transactions.history FROM transactions`],
+    ['array of records index', `SELECT transactions.history[1] FROM transactions`],
+    ['array of records index composite column int', `SELECT (transactions.history[1]).user_id FROM transactions`],
+    ['array of records index composite column enum', `SELECT (transactions.history[1]).state FROM transactions`],
   ])(
     'Should convert %s sql (%s)',
     async (_, sql) => {
-      const db = testDb();
-      await db.connect();
-      const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
       const queryInterface = toQueryInterface(parser(sql).ast);
-      const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
       const loadedQueryInterface = toLoadedQueryInterface(data)(queryInterface);
-
       expect(loadedQueryInterface).toMatchSnapshot();
-      await db.end();
     },
     20000,
   );
+});
 
-  it('Should load multple queries', async () => {
+describe('Individual Query Interface', () => {
+  it('Should load multiple queries', async () => {
     const db = testDb();
     await db.connect();
 
