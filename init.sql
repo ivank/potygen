@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 CREATE TYPE inventory_item AS (
     name            text,
     supplier_id     integer,
