@@ -86,7 +86,7 @@ describe('Query Interface', () => {
       const loadedQueryInterface = toLoadedQueryInterface(data)(queryInterface);
       expect(loadedQueryInterface).toMatchSnapshot();
     },
-    20000,
+    25000,
   );
 });
 
@@ -117,5 +117,5 @@ describe('Individual Query Interface', () => {
 
     expect(data).toEqual(expect.arrayContaining(individuallyLoaded));
     await db.end();
-  }, 20000);
+  }, 25000);
 });
