@@ -80,7 +80,6 @@ CREATE TABLE transactions (
   id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
   amount integer NOT NULL,
   sent_at timestamp without time zone NOT NULL,
-  account_id integer NOT NULL REFERENCES accounts(id),
   history transaction_history[] DEFAULT ARRAY[]::transaction_history[],
   data jsonb NOT NULL,
   error jsonb
