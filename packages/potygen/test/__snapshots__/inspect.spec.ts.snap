@@ -1978,6 +1978,18 @@ Array [
     "source": undefined,
   },
   Object {
+    "name": "company_reg_number",
+    "source": undefined,
+  },
+  Object {
+    "name": "company_name",
+    "source": undefined,
+  },
+  Object {
+    "name": "company_vat_number",
+    "source": undefined,
+  },
+  Object {
     "name": "all_types",
     "source": "Table",
   },
@@ -2168,7 +2180,10 @@ Object {
 |updated_at|**timestamp** \`NULL\`|
 |source_system_id|**integer** \`NULL\`|
 |start_on|**date** \`NULL\`|
-|end_on|**date** \`NULL\`|",
+|end_on|**date** \`NULL\`|
+|company_reg_number|**character varying** \`NULL\`|
+|company_name|**character varying** \`NULL\`|
+|company_vat_number|**character varying** \`NULL\`|",
   "display": "accounts AS acc Table",
   "end": 48,
   "start": 43,
@@ -2191,7 +2206,10 @@ Object {
 |updated_at|**timestamp** \`NULL\`|
 |source_system_id|**integer** \`NULL\`|
 |start_on|**date** \`NULL\`|
-|end_on|**date** \`NULL\`|",
+|end_on|**date** \`NULL\`|
+|company_reg_number|**character varying** \`NULL\`|
+|company_name|**character varying** \`NULL\`|
+|company_vat_number|**character varying** \`NULL\`|",
   "display": "accounts AS acc Table",
   "end": 36,
   "start": 29,

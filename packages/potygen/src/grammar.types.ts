@@ -530,6 +530,10 @@ export const enum SqlName {
    * {@link TransactionReadWriteTag}
    */
   TransactionReadWrite,
+  /**
+   * {@link ParameterAccessTag}
+   */
+  ParameterAccess,
 }
 
 /**
@@ -705,6 +709,27 @@ export interface QuotedIdentifierTag extends LeafSqlTag {
 export interface ParameterTag extends NodeSqlTag {
   tag: SqlName.Parameter;
   values: [ParameterIdentifierTag] | [ParameterIdentifierTag, ...ParameterPickTag[]];
+}
+
+/**
+ * Parameter Tag, representing a parameter value to be converted to a positional "?" parameter that postgres accepts
+ * Can be "$" or ":" based
+ * ```
+ *                                 ┌─ParameterIdentifierTag
+ *                                 │
+ *                                 ▼
+ *                              ┌───────────┐
+ * SELECT * FROM t1 WHERE col1 =│$val.param1│
+ *                              └───────────┘
+ *                             └─────────────┘
+ *                                    └─▶ParameterAccessTag
+ * ```
+ */
+export interface ParameterAccessTag extends NodeSqlTag {
+  tag: SqlName.ParameterAccess;
+  values:
+    | [name: ParameterIdentifierTag, accessor: ParameterIdentifierTag]
+    | [name: ParameterIdentifierTag, accessor: ParameterIdentifierTag, type: TypeTag];
 }
 
 /**
@@ -2800,6 +2825,7 @@ export type CastableDataTypeTag =
   | ConstantTag
   | FunctionTag
   | ParameterTag
+  | ParameterAccessTag
   | SpreadParameterTag
   | PgCastTag
   | SelectTag;
@@ -2968,7 +2994,8 @@ export type NodeTag =
   | RecordsetValuesListTag
   | TransactionSnapshotTag
   | BeginTag
-  | SetTransactionTag;
+  | SetTransactionTag
+  | ParameterAccessTag;
 
 /**
  * All the SQL Tags

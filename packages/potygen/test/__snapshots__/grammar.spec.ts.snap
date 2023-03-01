@@ -25374,6 +25374,316 @@ Object {
 }
 `;
 
+exports[`Sql Should parse simple sql param with access (SELECT * FROM table1 WHERE table1.col1 = $param.test1): param with access 1`] = `
+Object {
+  "ast": Object {
+    "end": 52,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 7,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 7,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 7,
+                "start": 7,
+                "tag": 37,
+                "values": Array [
+                  Object {
+                    "end": 7,
+                    "start": 7,
+                    "tag": 36,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 19,
+        "start": 9,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 19,
+            "start": 14,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 19,
+                "start": 14,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 19,
+                    "start": 14,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 19,
+                        "start": 14,
+                        "tag": 8,
+                        "value": "table1",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 52,
+        "start": 21,
+        "tag": 70,
+        "values": Array [
+          Object {
+            "end": 52,
+            "start": 27,
+            "tag": 46,
+            "values": Array [
+              Object {
+                "end": 37,
+                "start": 27,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 32,
+                    "start": 27,
+                    "tag": 8,
+                    "value": "table1",
+                  },
+                  Object {
+                    "end": 37,
+                    "start": 34,
+                    "tag": 8,
+                    "value": "col1",
+                  },
+                ],
+              },
+              Object {
+                "end": 39,
+                "start": 39,
+                "tag": 44,
+                "value": "=",
+              },
+              Object {
+                "end": 52,
+                "start": 41,
+                "tag": 131,
+                "values": Array [
+                  Object {
+                    "end": 46,
+                    "start": 42,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 46,
+                        "start": 42,
+                        "tag": 8,
+                        "value": "param",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 52,
+                    "start": 48,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 52,
+                        "start": 48,
+                        "tag": 8,
+                        "value": "test1",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
+exports[`Sql Should parse simple sql param with access with type (SELECT * FROM table1 WHERE table1.col1 = $param.test1::text): param with access with type 1`] = `
+Object {
+  "ast": Object {
+    "end": 58,
+    "start": 0,
+    "tag": 81,
+    "values": Array [
+      Object {
+        "end": 7,
+        "start": 7,
+        "tag": 62,
+        "values": Array [
+          Object {
+            "end": 7,
+            "start": 7,
+            "tag": 61,
+            "values": Array [
+              Object {
+                "end": 7,
+                "start": 7,
+                "tag": 37,
+                "values": Array [
+                  Object {
+                    "end": 7,
+                    "start": 7,
+                    "tag": 36,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 19,
+        "start": 9,
+        "tag": 69,
+        "values": Array [
+          Object {
+            "end": 19,
+            "start": 14,
+            "tag": 68,
+            "values": Array [
+              Object {
+                "end": 19,
+                "start": 14,
+                "tag": 90,
+                "values": Array [
+                  Object {
+                    "end": 19,
+                    "start": 14,
+                    "tag": 89,
+                    "values": Array [
+                      Object {
+                        "end": 19,
+                        "start": 14,
+                        "tag": 8,
+                        "value": "table1",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "end": 58,
+        "start": 21,
+        "tag": 70,
+        "values": Array [
+          Object {
+            "end": 58,
+            "start": 27,
+            "tag": 46,
+            "values": Array [
+              Object {
+                "end": 37,
+                "start": 27,
+                "tag": 11,
+                "values": Array [
+                  Object {
+                    "end": 32,
+                    "start": 27,
+                    "tag": 8,
+                    "value": "table1",
+                  },
+                  Object {
+                    "end": 37,
+                    "start": 34,
+                    "tag": 8,
+                    "value": "col1",
+                  },
+                ],
+              },
+              Object {
+                "end": 39,
+                "start": 39,
+                "tag": 44,
+                "value": "=",
+              },
+              Object {
+                "end": 58,
+                "start": 41,
+                "tag": 131,
+                "values": Array [
+                  Object {
+                    "end": 46,
+                    "start": 42,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 46,
+                        "start": 42,
+                        "tag": 8,
+                        "value": "param",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 52,
+                    "start": 48,
+                    "tag": 123,
+                    "values": Array [
+                      Object {
+                        "end": 52,
+                        "start": 48,
+                        "tag": 8,
+                        "value": "test1",
+                      },
+                    ],
+                  },
+                  Object {
+                    "end": 58,
+                    "start": 55,
+                    "tag": 32,
+                    "values": Array [
+                      Object {
+                        "end": 58,
+                        "start": 55,
+                        "tag": 89,
+                        "values": Array [
+                          Object {
+                            "end": 58,
+                            "start": 55,
+                            "tag": 8,
+                            "value": "text",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "comments": Array [],
+}
+`;
+
 exports[`Sql Should parse simple sql qualified column select (SELECT table1.column1): qualified column select 1`] = `
 Object {
   "ast": Object {

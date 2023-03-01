@@ -98,17 +98,23 @@ const convertSql = (params: Param[], sql: string, values: Record<string, unknown
   }>(
     (current, param) => {
       const nameLength = param.end - param.start + 1;
-      const reusedIndex = current.indexes[param.name];
-      const newIndex = param.spread ? current.index + toSpreadIndex(param, values[param.name]) : current.index + 1;
+      const indexName = param.access ? param.name + '.' + param.access : param.name;
+      const reusedIndex = current.indexes[indexName];
+      const base = values[param.name];
+      const value = param.access ? (isObject(base) ? base[param.access] : undefined) : base;
+
+      const newIndex = param.spread ? current.index + toSpreadIndex(param, value) : current.index + 1;
       const index = reusedIndex ?? newIndex;
       const nextIndex = reusedIndex ? current.index : newIndex;
 
-      const indexParam = param.spread ? toSpreadIndexParam(param, current.index + 1, values[param.name]) : '$' + index;
+      const indexParam = param.spread
+        ? toSpreadIndexParam(param, current.index + 1, value)
+        : '$' + index + toParamPickType(param.accessCastType);
       const pos = param.start + current.offset;
       return {
         sql: current.sql.slice(0, pos) + indexParam + current.sql.slice(pos + nameLength),
         index: nextIndex,
-        indexes: { ...current.indexes, [param.name]: index },
+        indexes: { ...current.indexes, [indexName]: index },
         offset: indexParam.length + current.offset - nameLength,
       };
     },
@@ -121,10 +127,13 @@ const convertSql = (params: Param[], sql: string, values: Record<string, unknown
 const convertValues = (params: Param[], values: Record<string, unknown>): unknown[] =>
   params.reduce<{ values: unknown[]; indexes: Record<string, boolean> }>(
     (current, param) => {
-      const value = values[param.name];
+      const base = values[param.name];
+      const value = param.access ? (isObject(base) ? base[param.access] : undefined) : base;
+      const indexName = param.access ? param.name + '.' + param.access : param.name;
+
       return {
         values:
-          param.name in current.indexes
+          indexName in current.indexes
             ? current.values
             : [
                 ...current.values,
@@ -134,7 +143,7 @@ const convertValues = (params: Param[], values: Record<string, unknown>): unknow
                     : value
                   : [value]),
               ],
-        indexes: { ...current.indexes, [param.name]: true },
+        indexes: { ...current.indexes, [indexName]: true },
       };
     },
     { values: [], indexes: {} },

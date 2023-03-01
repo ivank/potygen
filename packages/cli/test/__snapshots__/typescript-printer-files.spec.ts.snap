@@ -552,6 +552,38 @@ export interface Query<TParamItemsData = unknown, TData = unknown> {
 }
 `;
 
+exports[`Load Files Should convert complex sql insert-account.query.sql: insert-account.query.sql 1`] = `
+Object {
+  "content": "export interface Params {
+    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    paymentDetails?: {
+        paymentPlan: \\"BACs\\" | \\"Cheque\\" | \\"Internal Transfer\\";
+        beneficiaryName?: string;
+        beneficiarySortCode?: string;
+        beneficiaryAccountNumber?: string;
+    };
+    companyDetails: {
+        companyRegNumber: string;
+        companyVatNumber: string;
+        companyName: string;
+    };
+    startOn: Date;
+    endOn?: Date;
+    currentDate: Date;
+}
+export interface Result {
+    id: number;
+    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+}
+export interface Query {
+    params: Params;
+    result: Result[];
+}
+",
+  "path": "test/__generated__/insert-account.query.queries.ts",
+}
+`;
+
 exports[`Load Files Should convert complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
 Object {
   "content": "export interface Params {

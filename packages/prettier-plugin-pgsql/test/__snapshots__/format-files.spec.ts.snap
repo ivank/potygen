@@ -1200,6 +1200,40 @@ RETURNING
 "
 `;
 
+exports[`Sql Files Should parse complex sql insert-account.query.sql: insert-account.query.sql 1`] = `
+"INSERT INTO accounts (
+  state,
+  payment_plan,
+  beneficiary_name,
+  beneficiary_sort_code,
+  beneficiary_account_number,
+  company_reg_number,
+  company_vat_number,
+  company_name,
+  start_on,
+  end_on,
+  created_at
+)
+VALUES
+  (
+    $state!,
+    $paymentDetails.paymentPlan!::account_payment_plans,
+    $paymentDetails.beneficiaryName,
+    $paymentDetails.beneficiarySortCode,
+    $paymentDetails.beneficiaryAccountNumber,
+    $companyDetails!.companyRegNumber!,
+    $companyDetails!.companyVatNumber,
+    $companyDetails!.companyName,
+    $startOn!,
+    $endOn,
+    $currentDate!
+  )
+RETURNING
+  id,
+  state
+"
+`;
+
 exports[`Sql Files Should parse complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
 "UPDATE installation_meters
 SET

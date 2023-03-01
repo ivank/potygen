@@ -23,6 +23,7 @@ Array [
   "cte.query.queries.ts",
   "delete-accounts.query.queries.ts",
   "generation-read-data.query.queries.ts",
+  "insert-account.query.queries.ts",
   "insert.process.query.queries.ts",
   "installation-meter-update.query.queries.ts",
   "installations.queries.ts",
@@ -526,6 +527,35 @@ export interface Result<TData = unknown> {
 export interface Query<TParamItemsData = unknown, TData = unknown> {
     params: Params<TParamItemsData>;
     result: Result<TData>[];
+}
+"
+`;
+
+exports[`CLI Should use cli to run pipeline on sql files: insert-account.query.queries.ts 1`] = `
+"export interface Params {
+    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    paymentDetails?: {
+        paymentPlan: \\"BACs\\" | \\"Cheque\\" | \\"Internal Transfer\\";
+        beneficiaryName?: string;
+        beneficiarySortCode?: string;
+        beneficiaryAccountNumber?: string;
+    };
+    companyDetails: {
+        companyRegNumber: string;
+        companyVatNumber: string;
+        companyName: string;
+    };
+    startOn: Date;
+    endOn?: Date;
+    currentDate: Date;
+}
+export interface Result {
+    id: number;
+    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+}
+export interface Query {
+    params: Params;
+    result: Result[];
 }
 "
 `;

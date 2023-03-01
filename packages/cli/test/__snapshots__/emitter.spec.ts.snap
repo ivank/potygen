@@ -486,6 +486,35 @@ export interface Query<TParamItemsData = unknown, TData = unknown> {
 "
 `;
 
+exports[`Traverse Should work: __generated__/insert-account.query.queries.ts 1`] = `
+"export interface Params {
+    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    paymentDetails?: {
+        paymentPlan: \\"BACs\\" | \\"Cheque\\" | \\"Internal Transfer\\";
+        beneficiaryName?: string;
+        beneficiarySortCode?: string;
+        beneficiaryAccountNumber?: string;
+    };
+    companyDetails: {
+        companyRegNumber: string;
+        companyVatNumber: string;
+        companyName: string;
+    };
+    startOn: Date;
+    endOn?: Date;
+    currentDate: Date;
+}
+export interface Result {
+    id: number;
+    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+}
+export interface Query {
+    params: Params;
+    result: Result[];
+}
+"
+`;
+
 exports[`Traverse Should work: __generated__/installation-meter-update.query.queries.ts 1`] = `
 "export interface Params {
     removalDate?: Date;
