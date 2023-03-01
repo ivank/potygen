@@ -1958,6 +1958,18 @@ Array [
     "source": undefined,
   },
   Object {
+    "name": "company_reg_number",
+    "source": undefined,
+  },
+  Object {
+    "name": "company_name",
+    "source": undefined,
+  },
+  Object {
+    "name": "company_vat_number",
+    "source": undefined,
+  },
+  Object {
     "name": "created_at",
     "source": undefined,
   },
@@ -1975,18 +1987,6 @@ Array [
   },
   Object {
     "name": "end_on",
-    "source": undefined,
-  },
-  Object {
-    "name": "company_reg_number",
-    "source": undefined,
-  },
-  Object {
-    "name": "company_name",
-    "source": undefined,
-  },
-  Object {
-    "name": "company_vat_number",
     "source": undefined,
   },
   Object {
@@ -2176,14 +2176,14 @@ Object {
 |beneficiary_account_number|**character varying** \`NULL\`|
 |payment_plan|**account_payment_plans** \`NULL\`|
 |payment_suspended|**boolean** \`NULL\`|
+|company_reg_number|**character varying** \`NULL\`|
+|company_name|**character varying** \`NULL\`|
+|company_vat_number|**character varying** \`NULL\`|
 |created_at|**timestamp** \`NOT_NULL\`|
 |updated_at|**timestamp** \`NULL\`|
 |source_system_id|**integer** \`NULL\`|
 |start_on|**date** \`NULL\`|
-|end_on|**date** \`NULL\`|
-|company_reg_number|**character varying** \`NULL\`|
-|company_name|**character varying** \`NULL\`|
-|company_vat_number|**character varying** \`NULL\`|",
+|end_on|**date** \`NULL\`|",
   "display": "accounts AS acc Table",
   "end": 48,
   "start": 43,
@@ -2202,14 +2202,14 @@ Object {
 |beneficiary_account_number|**character varying** \`NULL\`|
 |payment_plan|**account_payment_plans** \`NULL\`|
 |payment_suspended|**boolean** \`NULL\`|
+|company_reg_number|**character varying** \`NULL\`|
+|company_name|**character varying** \`NULL\`|
+|company_vat_number|**character varying** \`NULL\`|
 |created_at|**timestamp** \`NOT_NULL\`|
 |updated_at|**timestamp** \`NULL\`|
 |source_system_id|**integer** \`NULL\`|
 |start_on|**date** \`NULL\`|
-|end_on|**date** \`NULL\`|
-|company_reg_number|**character varying** \`NULL\`|
-|company_name|**character varying** \`NULL\`|
-|company_vat_number|**character varying** \`NULL\`|",
+|end_on|**date** \`NULL\`|",
   "display": "accounts AS acc Table",
   "end": 36,
   "start": 29,
