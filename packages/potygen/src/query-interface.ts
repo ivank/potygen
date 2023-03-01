@@ -445,6 +445,7 @@ const toType =
       case SqlName.Number:
         return { type: TypeName.Number, literal: Number(sql.value), postgresType: 'float4' };
       case SqlName.Parameter:
+      case SqlName.ParameterAccess:
       case SqlName.SpreadParameter:
         return typeAny;
       case SqlName.Row:
@@ -687,7 +688,7 @@ export const toParams =
         }
 
       case SqlName.Parameter:
-      case SqlName.SpreadParameter:
+      case SqlName.SpreadParameter: {
         const parameterName = first(sql.values);
         const parameterPicks = tail(sql.values);
         return [
@@ -710,6 +711,27 @@ export const toParams =
             }),
           },
         ];
+      }
+
+      case SqlName.ParameterAccess: {
+        const parameterName = sql.values[0];
+        const parameterAccess = sql.values[1];
+        const parameterType = sql.values[2];
+        return [
+          {
+            name: first(parameterName.values).value,
+            start: sql.start,
+            end: sql.end,
+            spread: isSpreadParameter(sql),
+            required: Boolean(parameterName.values[1]),
+            access: first(parameterAccess.values).value,
+            accessRequired: Boolean(parameterAccess.values[1]),
+            accessCastType: parameterType ? toTypeRecur(parameterType) : undefined,
+            type: parameterType ? toTypeRecur(parameterType) : context.type,
+            pick: [],
+          },
+        ];
+      }
 
       case SqlName.ComparisonArrayInclusion:
       case SqlName.ComparisonArray:

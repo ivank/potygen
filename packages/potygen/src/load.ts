@@ -64,6 +64,7 @@ import {
   LoadedDataRaw,
   LoadedSourceWithUnknown,
   LoadedContextWithUnknown,
+  LoadedParamAccessor,
 } from './load.types';
 import { inspect } from 'util';
 import { allSql, selectedSql } from './load.queries';
@@ -246,7 +247,7 @@ const notLoaded =
  */
 const toLoadedParam =
   (toType: (type: TypeOrLoad) => Type) =>
-  ({ name, type, pick, spread, required }: Param): LoadedParam => {
+  ({ name, type, pick, spread, required, access, accessRequired }: Param): LoadedParam => {
     const paramType: Type =
       pick.length > 0
         ? {
@@ -255,9 +256,15 @@ const toLoadedParam =
             items: pick.map((item) => ({ name: item.name, type: { ...toType(item.type), nullable: !item.required } })),
             postgresType: 'json',
           }
-        : { type: TypeName.Optional, nullable: !required, value: toType(type), postgresType: 'any' };
-    return { name, type: spread ? { type: TypeName.Array, items: paramType, postgresType: 'anyarray' } : paramType };
+        : { type: TypeName.Optional, nullable: !required && !accessRequired, value: toType(type), postgresType: 'any' };
+    return {
+      name,
+      accessor: access,
+      type: spread ? { type: TypeName.Array, items: paramType, postgresType: 'anyarray' } : paramType,
+    };
   };
+
+const isLoadedParamAccessor = (item: LoadedParam): item is LoadedParamAccessor => Boolean(item.accessor);
 
 /**
  * Group {@link LoadedParam} with the same name into a union of their types.
@@ -266,6 +273,16 @@ const groupLoadedParams = (params: LoadedParam[]): LoadedParam[] =>
   Object.entries(groupBy((param) => param.name, params)).map(([name, params]) =>
     params.length === 1
       ? params[0]
+      : params.every(isLoadedParamAccessor)
+      ? {
+          name,
+          type: {
+            type: TypeName.ObjectLiteral,
+            nullable: params.some((param) => 'nullable' in param.type && param.type.nullable),
+            items: params.map(({ accessor, type }) => ({ name: accessor, type })),
+            postgresType: 'any',
+          },
+        }
       : {
           name,
           type: {

@@ -148,6 +148,11 @@ export type LoadedData = LoadedDataSimple | LoadedDataView;
 export interface LoadedParam {
   name: string;
   type: Type;
+  accessor?: string;
+}
+
+export interface LoadedParamAccessor extends LoadedParam {
+  accessor: string;
 }
 
 /**

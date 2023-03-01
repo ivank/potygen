@@ -257,6 +257,11 @@ const Parameter = astNode<Tag.ParameterTag>(
   Tag.SqlName.Parameter,
   All(Any('$', ':'), ParameterIdentifier, Optional(Brackets(List(ParameterPick)))),
 );
+const ParameterAccess = astNode<Tag.ParameterAccessTag>(
+  Tag.SqlName.ParameterAccess,
+  All(Any('$', ':'), ParameterIdentifier, '.', ParameterIdentifier, Optional(All('::', AnyType))),
+);
+
 const SpreadParameter = astNode<Tag.SpreadParameterTag>(
   Tag.SqlName.SpreadParameter,
   All('$$', ParameterIdentifier, Optional(Brackets(List(ParameterPick)))),
@@ -430,6 +435,7 @@ const ExpressionRule = (SelectExpression: Rule): Rule =>
       ColumnFullyQualified,
       Constant,
       SpreadParameter,
+      ParameterAccess,
       Parameter,
       ArrayConstructor,
       Row,

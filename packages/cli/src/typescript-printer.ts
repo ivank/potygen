@@ -77,7 +77,7 @@ const toPropertyType =
       return type.items.reduce<TypeContext & { type: TypeLiteralNode }>(
         (acc, item) => {
           const itemType = toPropertyType({ ...acc, name: context.name + toClassCase(item.name) })(item.type);
-          const memeber = factory.createPropertySignature(
+          const member = factory.createPropertySignature(
             undefined,
             item.name.includes(' ')
               ? factory.createComputedPropertyName(factory.createStringLiteral(item.name))
@@ -85,7 +85,7 @@ const toPropertyType =
             'nullable' in item.type && item.type.nullable ? factory.createToken(SyntaxKind.QuestionToken) : undefined,
             itemType.type,
           );
-          return { ...itemType, type: factory.createTypeLiteralNode(acc.type.members.concat(memeber)) };
+          return { ...itemType, type: factory.createTypeLiteralNode(acc.type.members.concat(member)) };
         },
         { ...context, type: factory.createTypeLiteralNode([]) },
       );

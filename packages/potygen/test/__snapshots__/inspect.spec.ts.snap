@@ -1958,6 +1958,18 @@ Array [
     "source": undefined,
   },
   Object {
+    "name": "company_reg_number",
+    "source": undefined,
+  },
+  Object {
+    "name": "company_name",
+    "source": undefined,
+  },
+  Object {
+    "name": "company_vat_number",
+    "source": undefined,
+  },
+  Object {
     "name": "created_at",
     "source": undefined,
   },
@@ -2164,6 +2176,9 @@ Object {
 |beneficiary_account_number|**character varying** \`NULL\`|
 |payment_plan|**account_payment_plans** \`NULL\`|
 |payment_suspended|**boolean** \`NULL\`|
+|company_reg_number|**character varying** \`NULL\`|
+|company_name|**character varying** \`NULL\`|
+|company_vat_number|**character varying** \`NULL\`|
 |created_at|**timestamp** \`NOT_NULL\`|
 |updated_at|**timestamp** \`NULL\`|
 |source_system_id|**integer** \`NULL\`|
@@ -2187,6 +2202,9 @@ Object {
 |beneficiary_account_number|**character varying** \`NULL\`|
 |payment_plan|**account_payment_plans** \`NULL\`|
 |payment_suspended|**boolean** \`NULL\`|
+|company_reg_number|**character varying** \`NULL\`|
+|company_name|**character varying** \`NULL\`|
+|company_vat_number|**character varying** \`NULL\`|
 |created_at|**timestamp** \`NOT_NULL\`|
 |updated_at|**timestamp** \`NULL\`|
 |source_system_id|**integer** \`NULL\`|

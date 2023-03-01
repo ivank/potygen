@@ -445,6 +445,9 @@ export interface Param {
   type: TypeOrLoad;
   start: number;
   end: number;
+  access?: string;
+  accessRequired?: boolean;
+  accessCastType?: TypeOrLoad;
   required: boolean;
   pick: Array<ParamPick>;
   spread: boolean;

@@ -141,6 +141,7 @@ import {
   TransactionModeTag,
   TransactionSessionCharacteristicsTag,
   SelectLockTag,
+  ParameterAccessTag,
 } from './grammar.types';
 
 export const isCTE = (value: SqlTag): value is CTETag => value.tag === SqlName.CTE;
@@ -159,6 +160,7 @@ export const isUnquotedIdentifier = (value: SqlTag): value is UnquotedIdentifier
 export const isParameter = (value: SqlTag): value is ParameterTag => value.tag === SqlName.Parameter;
 export const isSpreadParameter = (value: SqlTag): value is SpreadParameterTag => value.tag === SqlName.SpreadParameter;
 export const isParameterPick = (value: SqlTag): value is ParameterPickTag => value.tag === SqlName.ParameterPick;
+export const isParameterAccess = (value: SqlTag): value is ParameterAccessTag => value.tag === SqlName.ParameterAccess;
 export const isParameterRequired = (value: SqlTag): value is ParameterRequiredTag =>
   value.tag === SqlName.ParameterRequired;
 export const isParameterIdentifier = (value: SqlTag): value is ParameterIdentifierTag =>
@@ -203,6 +205,7 @@ export const isCastableDataType = (value: SqlTag): value is CastableDataTypeTag 
   isConstant(value) ||
   isFunction(value) ||
   isParameter(value) ||
+  isParameterAccess(value) ||
   isSpreadParameter(value) ||
   isPgCast(value) ||
   isSelect(value);

@@ -5,6 +5,18 @@ import { withParserErrors } from './helpers';
 describe('Template Tag', () => {
   it.each<[string, Query, Record<string, unknown>, { text: string; values: unknown[] }]>([
     [
+      'params with accessors',
+      sql`SELECT * FROM table1 WHERE id = $test.id`,
+      { test: { id: 2, param: 'other' } },
+      { text: 'SELECT * FROM table1 WHERE id = $1', values: [2] },
+    ],
+    [
+      'multiple params with and without accessors',
+      sql`SELECT * FROM table1 WHERE id = $test.id! AND col2 = $test.param AND other_id = $test.id!::int`,
+      { test: { id: 2, param: 'other' } },
+      { text: 'SELECT * FROM table1 WHERE id = $1 AND col2 = $2 AND other_id = $1::int4', values: [2, 'other'] },
+    ],
+    [
       'Multiple params',
       sql`SELECT * FROM table1 WHERE id IN $$ids`,
       { ids: [1, 2, 3] },

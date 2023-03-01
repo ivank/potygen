@@ -108,6 +108,14 @@ const pgsqlAst: Printer<Node> = {
         return '!';
       case SqlName.ParameterIdentifier:
         return join('', vals(path, recur));
+      case SqlName.ParameterAccess:
+        return [
+          '$',
+          nthVal(0, path, recur),
+          '.',
+          nthVal(1, path, recur),
+          ...(node.values[2] ? ['::', nthVal(2, path, recur)] : []),
+        ];
       case SqlName.SpreadParameter:
       case SqlName.Parameter:
         return [
