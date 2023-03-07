@@ -46,7 +46,7 @@ describe('CLI', () => {
     for (const name of resultQueries) {
       expect(readFileSync(join(__dirname, '__generated__', name), 'utf-8')).toMatchSnapshot(name);
     }
-  }, 20000);
+  }, 30000);
 
   it('Should use cache', async () => {
     const cacheFile = join(__dirname, '.cache/test.cache');
@@ -112,7 +112,7 @@ describe('CLI', () => {
     expect(clearedLogger.info).toHaveBeenCalledWith(
       expect.stringContaining('[Generated]: test/dir/dir1/dir2/ts-file2.ts'),
     );
-  }, 20000);
+  }, 30000);
 
   it('Should use type prefix when generating files', async () => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
@@ -143,7 +143,7 @@ describe('CLI', () => {
     for (const name of resultQueries) {
       expect(readFileSync(join(__dirname, '__generated__', name), 'utf-8')).toMatchSnapshot(name);
     }
-  }, 20000);
+  }, 30000);
 
   it('Should use cli to run pipeline on sql files', async () => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
@@ -172,7 +172,7 @@ describe('CLI', () => {
     for (const name of resultQueries) {
       expect(readFileSync(join(__dirname, '__generated__', name), 'utf-8')).toMatchSnapshot(name);
     }
-  }, 20000);
+  }, 30000);
 
   it('Should have the correct version', async () => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };

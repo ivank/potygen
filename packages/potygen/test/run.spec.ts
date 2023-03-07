@@ -51,9 +51,18 @@ describe('Template Tag', () => {
       ],
     });
     const data = await sql`SELECT jsonb_col FROM all_types WHERE "not_null" IN $$notNull`(db, { notNull: [10, 20] });
+
+    const deleted = await sql`DELETE FROM all_types WHERE "not_null" = $id RETURNING "not_null"`(db, { id: 10 });
+    const oneDeleted = await oneResult(sql`DELETE FROM all_types WHERE "not_null" = $id RETURNING "not_null" AS id`)(
+      db,
+      { id: 20 },
+    );
+
     await sql`ROLLBACK`(db, {});
 
     expect(data).toEqual([{ jsonb_col: { test: 10 } }, { jsonb_col: { test: 20 } }]);
+    expect(deleted).toEqual([{ not_null: 10 }]);
+    expect(oneDeleted).toEqual({ id: 20 });
   });
 
   it('Should select all', async () => {

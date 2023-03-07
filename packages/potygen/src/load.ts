@@ -611,12 +611,12 @@ const formatArgumentType = (val: TypeOrLoad): string =>
 const formatLoadColumn = ({ schema, table, column }: TypeLoadColumn): string =>
   [schema, table, column].filter(isNil).join('.');
 
-const serializeJsonObjectType = (type: Type, isJsonObject?: boolean): Type =>
-  isJsonObject && (isTypeDate(type) || isTypeBuffer(type)) ? { ...type, type: TypeName.String } : type;
+const serializeJsonObjectType = (type: Type, isJsonObject?: boolean, isArgument?: boolean): Type =>
+  isJsonObject && !isArgument && (isTypeDate(type) || isTypeBuffer(type)) ? { ...type, type: TypeName.String } : type;
 
-const toType = (context: LoadedContext, isResult: boolean, isJsonObject?: boolean) => {
+const toType = (context: LoadedContext, isResult: boolean, isJsonObject?: boolean, isArgument?: boolean) => {
   return (type: TypeOrLoad): Type => {
-    const recur = toType(context, isResult, isJsonObject);
+    const recur = toType(context, isResult, isJsonObject, isArgument);
 
     switch (type.type) {
       case TypeName.LoadColumn:
@@ -641,7 +641,7 @@ const toType = (context: LoadedContext, isResult: boolean, isJsonObject?: boolea
             `Column ${formatLoadColumn(type)} not found in ${relevantSources.map(formatLoadedSource).join(', ')}`,
           );
         } else {
-          return serializeJsonObjectType(columns[0], isJsonObject);
+          return serializeJsonObjectType(columns[0], isJsonObject, isArgument);
         }
       case TypeName.LoadRecord:
         if (context.enums[type.name]) {
@@ -676,7 +676,7 @@ const toType = (context: LoadedContext, isResult: boolean, isJsonObject?: boolea
 
       case TypeName.LoadFunction:
       case TypeName.LoadFunctionArgument:
-        const args = type.args.map(recur);
+        const args = type.args.map(toType(context, isResult, isJsonObject, true));
         const variants = context.funcs.filter((func) => func.name === type.name);
         const funcVariant = variants.find(matchFuncVariant(args));
 
@@ -688,7 +688,9 @@ const toType = (context: LoadedContext, isResult: boolean, isJsonObject?: boolea
 
           throw new LoadError(
             type.sourceTag,
-            `No variant of function "${type.name}" with arguments: (${formattedArgs}). Available variants were: ${availableVariants}`,
+            `No variant of function "${type.name}" with arguments: (${formattedArgs}).` + availableVariants.length
+              ? ` Available variants were: ${availableVariants}`
+              : 'No function found',
           );
         } else {
           switch (type.type) {
