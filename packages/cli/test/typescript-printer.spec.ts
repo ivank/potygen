@@ -61,6 +61,22 @@ describe('Query Interface', () => {
     ['descriptive property names', `SELECT 'test' AS "some column", 'test2' AS "test"`],
     ['invalid identifiers as property names', `SELECT 'test' AS "12"`],
     ['array of records', `SELECT transactions.history FROM transactions`],
+    ['Sql function', `SELECT calculate_account_balance($accountId!::int, $sentAt!::timestamp)`],
+    [
+      'Select with function',
+      `SELECT transactions.id, calculate_account_balance(transactions.account_id, transactions.sent_at) FROM transactions`,
+    ],
+    [
+      'Select with aggregate functions',
+      `SELECT
+        ARRAY_AGG(
+          jsonb_build_object(
+            'id', transactions.id,
+            'balance', calculate_account_balance(transactions.account_id, transactions.sent_at)
+          )
+        )
+      FROM transactions`,
+    ],
     ['array of records index', `SELECT transactions.history[1] FROM transactions`],
     ['array of records index composite column int', `SELECT (transactions.history[1]).user_id FROM transactions`],
     ['array of records index composite column enum', `SELECT (transactions.history[1]).state FROM transactions`],

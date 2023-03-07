@@ -75,6 +75,22 @@ describe('Query Interface', () => {
       SELECT all_types.id, n.num FROM all_types JOIN nums AS n ON n.id = all_types.id`,
     ],
     ['Right function', `SELECT RIGHT('123', 2)`],
+    ['Sql function', `SELECT calculate_account_balance($accountId!::int, $sentAt!::timestamp)`],
+    [
+      'Select with function',
+      `SELECT transactions.id, calculate_account_balance(transactions.account_id, transactions.sent_at) FROM transactions`,
+    ],
+    [
+      'Select with aggregate functions',
+      `SELECT
+        ARRAY_AGG(
+          jsonb_build_object(
+            'id', transactions.id,
+            'balance', calculate_account_balance(transactions.account_id, transactions.sent_at)
+          )
+        )
+      FROM transactions`,
+    ],
     ['array of records', `SELECT transactions.history FROM transactions`],
     ['array of records index', `SELECT transactions.history[1] FROM transactions`],
     ['array of records index composite column int', `SELECT (transactions.history[1]).user_id FROM transactions`],

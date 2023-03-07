@@ -1,5 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Query Interface Should convert Select with aggregate functions sql (SELECT
+        ARRAY_AGG(
+          jsonb_build_object(
+            'id', transactions.id,
+            'balance', calculate_account_balance(transactions.account_id, transactions.sent_at)
+          )
+        )
+      FROM transactions) 1`] = `
+Object {
+  "content": "export interface Params {
+}
+export interface Result {
+    \\"?column?\\": {
+        id: string;
+        balance: number;
+    }[];
+}
+export interface Query {
+    params: Params;
+    result: Result[];
+}
+",
+  "path": "test/__generated__/Select with aggregate functions.queries.ts",
+}
+`;
+
+exports[`Query Interface Should convert Select with function sql (SELECT transactions.id, calculate_account_balance(transactions.account_id, transactions.sent_at) FROM transactions) 1`] = `
+Object {
+  "content": "export interface Params {
+}
+export interface Result {
+    id: string;
+    calculate_account_balance: number;
+}
+export interface Query {
+    params: Params;
+    result: Result[];
+}
+",
+  "path": "test/__generated__/Select with function.queries.ts",
+}
+`;
+
+exports[`Query Interface Should convert Sql function sql (SELECT calculate_account_balance($accountId!::int, $sentAt!::timestamp)) 1`] = `
+Object {
+  "content": "export interface Params {
+    accountId: number;
+    sentAt: Date;
+}
+export interface Result {
+    calculate_account_balance: number;
+}
+export interface Query {
+    params: Params;
+    result: Result[];
+}
+",
+  "path": "test/__generated__/Sql function.queries.ts",
+}
+`;
+
 exports[`Query Interface Should convert array constructor sql (SELECT ARRAY(SELECT json_build_object('test', other.integer_col) FROM all_types AS other WHERE all_types.id = other.id) as "arr" FROM all_types) 1`] = `
 Object {
   "content": "export interface Params {

@@ -63,6 +63,127 @@ Object {
 }
 `;
 
+exports[`Query Interface Should convert Select with aggregate functions sql (SELECT
+        ARRAY_AGG(
+          jsonb_build_object(
+            'id', transactions.id,
+            'balance', calculate_account_balance(transactions.account_id, transactions.sent_at)
+          )
+        )
+      FROM transactions) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "?column?",
+      "type": Object {
+        "items": Object {
+          "items": Array [
+            Object {
+              "name": "id",
+              "type": Object {
+                "comment": undefined,
+                "generated": false,
+                "postgresDescription": undefined,
+                "postgresType": "uuid",
+                "type": 2,
+              },
+            },
+            Object {
+              "name": "balance",
+              "type": Object {
+                "comment": undefined,
+                "generated": undefined,
+                "postgresDescription": undefined,
+                "postgresType": "integer",
+                "type": 3,
+              },
+            },
+          ],
+          "postgresType": "json",
+          "type": 13,
+        },
+        "postgresType": "json[]",
+        "type": 11,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert Select with function sql (SELECT transactions.id, calculate_account_balance(transactions.account_id, transactions.sent_at) FROM transactions) 1`] = `
+Object {
+  "params": Array [],
+  "results": Array [
+    Object {
+      "name": "id",
+      "type": Object {
+        "comment": undefined,
+        "generated": false,
+        "postgresDescription": undefined,
+        "postgresType": "uuid",
+        "type": 2,
+      },
+    },
+    Object {
+      "name": "calculate_account_balance",
+      "type": Object {
+        "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
+        "postgresType": "integer",
+        "type": 3,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Query Interface Should convert Sql function sql (SELECT calculate_account_balance($accountId!::int, $sentAt!::timestamp)) 1`] = `
+Object {
+  "params": Array [
+    Object {
+      "accessor": undefined,
+      "name": "accountId",
+      "type": Object {
+        "nullable": false,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "postgresType": "int4",
+          "type": 3,
+        },
+      },
+    },
+    Object {
+      "accessor": undefined,
+      "name": "sentAt",
+      "type": Object {
+        "nullable": false,
+        "postgresType": "any",
+        "type": 14,
+        "value": Object {
+          "postgresType": "timestamp",
+          "type": 6,
+        },
+      },
+    },
+  ],
+  "results": Array [
+    Object {
+      "name": "calculate_account_balance",
+      "type": Object {
+        "comment": undefined,
+        "generated": undefined,
+        "postgresDescription": undefined,
+        "postgresType": "integer",
+        "type": 3,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Query Interface Should convert array column item sql (SELECT static_arr[1] AS one_item FROM all_types) 1`] = `
 Object {
   "params": Array [],

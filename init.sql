@@ -82,8 +82,20 @@ CREATE TABLE transactions (
   sent_at timestamp without time zone NOT NULL,
   history transaction_history[] DEFAULT ARRAY[]::transaction_history[],
   data jsonb NOT NULL,
-  error jsonb
+  error jsonb,
+  account_id integer NOT NULL
 );
+
+CREATE OR REPLACE FUNCTION calculate_account_balance (t_account_id integer, t_sent_at timestamp) RETURNS integer AS $$
+  SELECT
+    SUM(amount)
+  FROM
+    transactions
+  WHERE
+    account_id = t_account_id
+    AND sent_at <= t_sent_at
+$$
+LANGUAGE SQL;
 
 COMMENT ON TABLE all_types IS 'All the postgres types';
 COMMENT ON COLUMN all_types.not_null IS 'This column should never be null';
