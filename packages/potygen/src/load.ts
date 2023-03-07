@@ -688,7 +688,9 @@ const toType = (context: LoadedContext, isResult: boolean, isJsonObject?: boolea
 
           throw new LoadError(
             type.sourceTag,
-            `No variant of function "${type.name}" with arguments: (${formattedArgs}). Available variants were: ${availableVariants}`,
+            `No variant of function "${type.name}" with arguments: (${formattedArgs}).` + availableVariants.length
+              ? ` Available variants were: ${availableVariants}`
+              : 'No function found',
           );
         } else {
           switch (type.type) {

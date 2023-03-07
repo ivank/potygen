@@ -90,7 +90,7 @@ CREATE OR REPLACE FUNCTION calculate_account_balance (t_account_id integer, t_se
 RETURNS integer
 AS $$
   SELECT
-    SUM(amount)
+    SUM(amount)::int
   FROM
     transactions
   WHERE
