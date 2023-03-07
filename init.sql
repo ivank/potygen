@@ -86,7 +86,9 @@ CREATE TABLE transactions (
   account_id integer NOT NULL
 );
 
-CREATE OR REPLACE FUNCTION calculate_account_balance (t_account_id integer, t_sent_at timestamp) RETURNS integer AS $$
+CREATE OR REPLACE FUNCTION calculate_account_balance (t_account_id integer, t_sent_at timestamp)
+RETURNS integer
+AS $$
   SELECT
     SUM(amount)
   FROM
