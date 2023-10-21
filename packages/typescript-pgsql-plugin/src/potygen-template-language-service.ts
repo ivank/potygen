@@ -59,7 +59,7 @@ export class PotygenTemplateLanguageService implements TemplateLanguageService {
     };
   }
 
-  public getQuickInfoAtPosition(context: TemplateContext, position: tss.LineAndCharacter): ts.QuickInfo | undefined {
+  public getQuickInfoAtPosition(context: TemplateContext, position: tss.LineAndCharacter): tss.QuickInfo | undefined {
     if (!this.loaded) {
       return undefined;
     }
@@ -78,7 +78,7 @@ export class PotygenTemplateLanguageService implements TemplateLanguageService {
       : undefined;
   }
 
-  public getSemanticDiagnostics(context: TemplateContext): ts.Diagnostic[] {
+  public getSemanticDiagnostics(context: TemplateContext): tss.Diagnostic[] {
     if (!this.loaded) {
       return [];
     }

@@ -7,6 +7,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "test": "yarn workspaces foreach --verbose run test",
+    "test:general": "yarn workspaces foreach --verbose run test --testPathIgnorePatterns='test/version/*'",
     "lint": "yarn workspaces foreach --parallel --verbose run lint",
     "build": "yarn workspaces foreach --parallel --topological-dev --verbose run build",
     "publish": "yarn workspaces foreach --no-private --verbose npm publish --tolerate-republish --access public",
@@ -15,11 +16,11 @@
   "devDependencies": {
     "@ikerin/build-readme": "^1.1.1",
     "prettier": "npm:@potygen/prettier@^2.8.1",
-    "typescript": "^4.8.3"
+    "typescript": "^5.2.2"
   },
   "workspaces": [
     "packages/*",
     "examples/*"
   ],
-  "packageManager": "yarn@3.2.3"
+  "packageManager": "yarn@3.6.4"
 }

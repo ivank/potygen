@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Query Interface Should load type for aclitem sql 1`] = `
-Object {
+{
   "aclitem": "pg_monitor=r*/pg_read_all_stats",
 }
 `;
 
 exports[`Query Interface Should load type for aclitem sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "aclitem",
-      "type": Object {
+      "type": {
         "postgresType": "aclitem",
         "type": 2,
       },
@@ -22,19 +22,19 @@ Object {
 `;
 
 exports[`Query Interface Should load type for array enums sql 1`] = `
-Object {
+{
   "array": "{Pending,Done}",
 }
 `;
 
 exports[`Query Interface Should load type for array enums sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "array",
-      "type": Object {
-        "items": Object {
+      "type": {
+        "items": {
           "postgresType": "any",
           "type": 9,
         },
@@ -47,8 +47,8 @@ Object {
 `;
 
 exports[`Query Interface Should load type for array strings sql 1`] = `
-Object {
-  "array": Array [
+{
+  "array": [
     "one",
     "two",
   ],
@@ -56,20 +56,20 @@ Object {
 `;
 
 exports[`Query Interface Should load type for array strings sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "array",
-      "type": Object {
-        "items": Object {
-          "items": Array [
-            Object {
+      "type": {
+        "items": {
+          "items": [
+            {
               "literal": "one",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "two",
               "postgresType": "text",
               "type": 2,
@@ -87,18 +87,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for bit sql 1`] = `
-Object {
+{
   "bit": "1",
 }
 `;
 
 exports[`Query Interface Should load type for bit sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "bit",
-      "type": Object {
+      "type": {
         "postgresType": "bit",
         "type": 2,
       },
@@ -108,18 +108,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for box sql 1`] = `
-Object {
+{
   "box": "(3,4),(1,2)",
 }
 `;
 
 exports[`Query Interface Should load type for box sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "box",
-      "type": Object {
+      "type": {
         "postgresType": "box",
         "type": 2,
       },
@@ -129,18 +129,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for bpchar sql 1`] = `
-Object {
+{
   "bpchar": "A",
 }
 `;
 
 exports[`Query Interface Should load type for bpchar sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "bpchar",
-      "type": Object {
+      "type": {
         "postgresType": "bpchar",
         "type": 2,
       },
@@ -150,9 +150,9 @@ Object {
 `;
 
 exports[`Query Interface Should load type for bytea sql 1`] = `
-Object {
-  "bytea": Object {
-    "data": Array [
+{
+  "bytea": {
+    "data": [
       0,
     ],
     "type": "Buffer",
@@ -161,12 +161,12 @@ Object {
 `;
 
 exports[`Query Interface Should load type for bytea sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "bytea",
-      "type": Object {
+      "type": {
         "postgresType": "bytea",
         "type": 0,
       },
@@ -176,18 +176,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for cid sql 1`] = `
-Object {
+{
   "cid": "1",
 }
 `;
 
 exports[`Query Interface Should load type for cid sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "cid",
-      "type": Object {
+      "type": {
         "postgresType": "cid",
         "type": 2,
       },
@@ -197,18 +197,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for cidr sql 1`] = `
-Object {
+{
   "cidr": "1.1.1.1/32",
 }
 `;
 
 exports[`Query Interface Should load type for cidr sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "cidr",
-      "type": Object {
+      "type": {
         "postgresType": "cidr",
         "type": 2,
       },
@@ -218,8 +218,8 @@ Object {
 `;
 
 exports[`Query Interface Should load type for circle sql 1`] = `
-Object {
-  "circle": Object {
+{
+  "circle": {
     "radius": 3,
     "x": 1,
     "y": 2,
@@ -228,30 +228,30 @@ Object {
 `;
 
 exports[`Query Interface Should load type for circle sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "circle",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "name": "x",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "y",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "radius",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
@@ -266,18 +266,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for cstring sql 1`] = `
-Object {
+{
   "cstring": "1",
 }
 `;
 
 exports[`Query Interface Should load type for cstring sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "cstring",
-      "type": Object {
+      "type": {
         "postgresType": "cstring",
         "type": 2,
       },
@@ -287,18 +287,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for daterange sql 1`] = `
-Object {
+{
   "daterange": "[2010-01-01,2010-01-02)",
 }
 `;
 
 exports[`Query Interface Should load type for daterange sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "daterange",
-      "type": Object {
+      "type": {
         "postgresType": "daterange",
         "type": 2,
       },
@@ -308,18 +308,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for inet sql 1`] = `
-Object {
+{
   "inet": "::10.2.3.4",
 }
 `;
 
 exports[`Query Interface Should load type for inet sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "inet",
-      "type": Object {
+      "type": {
         "postgresType": "inet",
         "type": 2,
       },
@@ -329,18 +329,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for int2vector sql 1`] = `
-Object {
+{
   "int2vector": "1",
 }
 `;
 
 exports[`Query Interface Should load type for int2vector sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "int2vector",
-      "type": Object {
+      "type": {
         "postgresType": "int2vector",
         "type": 2,
       },
@@ -350,18 +350,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for int4range sql 1`] = `
-Object {
+{
   "int4range": "[1,2)",
 }
 `;
 
 exports[`Query Interface Should load type for int4range sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "int4range",
-      "type": Object {
+      "type": {
         "postgresType": "int4range",
         "type": 2,
       },
@@ -371,18 +371,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for int8range sql 1`] = `
-Object {
+{
   "int8range": "[1,2)",
 }
 `;
 
 exports[`Query Interface Should load type for int8range sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "int8range",
-      "type": Object {
+      "type": {
         "postgresType": "int8range",
         "type": 2,
       },
@@ -392,7 +392,7 @@ Object {
 `;
 
 exports[`Query Interface Should load type for interval sql 1`] = `
-Object {
+{
   "interval": PostgresInterval {
     "days": 1,
     "hours": 1,
@@ -401,58 +401,58 @@ Object {
 `;
 
 exports[`Query Interface Should load type for interval sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "interval",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "name": "years",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "months",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "days",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "hours",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "minutes",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "seconds",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "milliseconds",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
@@ -467,18 +467,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for line sql 1`] = `
-Object {
+{
   "line": "{1,-1,1}",
 }
 `;
 
 exports[`Query Interface Should load type for line sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "line",
-      "type": Object {
+      "type": {
         "postgresType": "line",
         "type": 2,
       },
@@ -488,18 +488,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for lseg sql 1`] = `
-Object {
+{
   "lseg": "[(1,2),(3,4)]",
 }
 `;
 
 exports[`Query Interface Should load type for lseg sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "lseg",
-      "type": Object {
+      "type": {
         "postgresType": "lseg",
         "type": 2,
       },
@@ -509,18 +509,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for macaddr sql 1`] = `
-Object {
+{
   "macaddr": "08:00:2b:01:02:03",
 }
 `;
 
 exports[`Query Interface Should load type for macaddr sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "macaddr",
-      "type": Object {
+      "type": {
         "postgresType": "macaddr",
         "type": 2,
       },
@@ -530,18 +530,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for macaddr8 sql 1`] = `
-Object {
+{
   "macaddr8": "08:00:2b:01:02:03:04:05",
 }
 `;
 
 exports[`Query Interface Should load type for macaddr8 sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "macaddr8",
-      "type": Object {
+      "type": {
         "postgresType": "macaddr8",
         "type": 2,
       },
@@ -551,18 +551,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for money sql 1`] = `
-Object {
+{
   "money": "$1.00",
 }
 `;
 
 exports[`Query Interface Should load type for money sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "money",
-      "type": Object {
+      "type": {
         "postgresType": "money",
         "type": 2,
       },
@@ -572,18 +572,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for name sql 1`] = `
-Object {
+{
   "name": "day",
 }
 `;
 
 exports[`Query Interface Should load type for name sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "name",
-      "type": Object {
+      "type": {
         "postgresType": "name",
         "type": 2,
       },
@@ -593,18 +593,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for numeric sql 1`] = `
-Object {
+{
   "numeric": "1.2",
 }
 `;
 
 exports[`Query Interface Should load type for numeric sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "decimal",
-      "type": Object {
+      "type": {
         "postgresType": "decimal",
         "type": 3,
       },
@@ -614,18 +614,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for numrange sql 1`] = `
-Object {
+{
   "numrange": "[1,2)",
 }
 `;
 
 exports[`Query Interface Should load type for numrange sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "numrange",
-      "type": Object {
+      "type": {
         "postgresType": "numrange",
         "type": 2,
       },
@@ -635,18 +635,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for path sql 1`] = `
-Object {
+{
   "path": "[(1,2),(2,3),(3,4)]",
 }
 `;
 
 exports[`Query Interface Should load type for path sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "path",
-      "type": Object {
+      "type": {
         "postgresType": "path",
         "type": 2,
       },
@@ -656,18 +656,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for pg_lsn sql 1`] = `
-Object {
+{
   "pg_lsn": "16/B374D848",
 }
 `;
 
 exports[`Query Interface Should load type for pg_lsn sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "pg_lsn",
-      "type": Object {
+      "type": {
         "postgresType": "pg_lsn",
         "type": 2,
       },
@@ -677,8 +677,8 @@ Object {
 `;
 
 exports[`Query Interface Should load type for point sql 1`] = `
-Object {
-  "point": Object {
+{
+  "point": {
     "x": 1,
     "y": 2,
   },
@@ -686,23 +686,23 @@ Object {
 `;
 
 exports[`Query Interface Should load type for point sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "point",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "name": "x",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "y",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
@@ -717,18 +717,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for polygon sql 1`] = `
-Object {
+{
   "polygon": "((1,2),(2,3),(1,2))",
 }
 `;
 
 exports[`Query Interface Should load type for polygon sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "polygon",
-      "type": Object {
+      "type": {
         "postgresType": "polygon",
         "type": 2,
       },
@@ -738,18 +738,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for regclass sql 1`] = `
-Object {
+{
   "regclass": "1",
 }
 `;
 
 exports[`Query Interface Should load type for regclass sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "regclass",
-      "type": Object {
+      "type": {
         "postgresType": "regclass",
         "type": 2,
       },
@@ -759,18 +759,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for regconfig sql 1`] = `
-Object {
+{
   "regconfig": "1",
 }
 `;
 
 exports[`Query Interface Should load type for regconfig sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "regconfig",
-      "type": Object {
+      "type": {
         "postgresType": "regconfig",
         "type": 2,
       },
@@ -780,18 +780,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for regdictionary sql 1`] = `
-Object {
+{
   "regdictionary": "1",
 }
 `;
 
 exports[`Query Interface Should load type for regdictionary sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "regdictionary",
-      "type": Object {
+      "type": {
         "postgresType": "regdictionary",
         "type": 2,
       },
@@ -801,18 +801,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for regnamespace sql 1`] = `
-Object {
+{
   "regnamespace": "1",
 }
 `;
 
 exports[`Query Interface Should load type for regnamespace sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "regnamespace",
-      "type": Object {
+      "type": {
         "postgresType": "regnamespace",
         "type": 2,
       },
@@ -822,18 +822,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for regoper sql 1`] = `
-Object {
+{
   "regoper": "1",
 }
 `;
 
 exports[`Query Interface Should load type for regoper sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "regoper",
-      "type": Object {
+      "type": {
         "postgresType": "regoper",
         "type": 2,
       },
@@ -843,18 +843,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for regoperator sql 1`] = `
-Object {
+{
   "regoperator": "1",
 }
 `;
 
 exports[`Query Interface Should load type for regoperator sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "regoperator",
-      "type": Object {
+      "type": {
         "postgresType": "regoperator",
         "type": 2,
       },
@@ -864,18 +864,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for regproc sql 1`] = `
-Object {
+{
   "regproc": "1",
 }
 `;
 
 exports[`Query Interface Should load type for regproc sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "regproc",
-      "type": Object {
+      "type": {
         "postgresType": "regproc",
         "type": 2,
       },
@@ -885,18 +885,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for regprocedure sql 1`] = `
-Object {
+{
   "regprocedure": "1",
 }
 `;
 
 exports[`Query Interface Should load type for regprocedure sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "regprocedure",
-      "type": Object {
+      "type": {
         "postgresType": "regprocedure",
         "type": 2,
       },
@@ -906,18 +906,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for regrole sql 1`] = `
-Object {
+{
   "regrole": "1",
 }
 `;
 
 exports[`Query Interface Should load type for regrole sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "regrole",
-      "type": Object {
+      "type": {
         "postgresType": "regrole",
         "type": 2,
       },
@@ -927,18 +927,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for regtype sql 1`] = `
-Object {
+{
   "regtype": "1",
 }
 `;
 
 exports[`Query Interface Should load type for regtype sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "regtype",
-      "type": Object {
+      "type": {
         "postgresType": "regtype",
         "type": 2,
       },
@@ -948,18 +948,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for regtype sql 3`] = `
-Object {
+{
   "regtype": "1",
 }
 `;
 
 exports[`Query Interface Should load type for regtype sql 4`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "regtype",
-      "type": Object {
+      "type": {
         "postgresType": "regtype",
         "type": 2,
       },
@@ -969,18 +969,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for tid sql 1`] = `
-Object {
+{
   "tid": "(42,9)",
 }
 `;
 
 exports[`Query Interface Should load type for tid sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "tid",
-      "type": Object {
+      "type": {
         "postgresType": "tid",
         "type": 2,
       },
@@ -990,18 +990,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for tsrange sql 1`] = `
-Object {
-  "tsrange": "[\\"2010-01-01 14:30:00\\",\\"2010-01-01 15:30:00\\")",
+{
+  "tsrange": "["2010-01-01 14:30:00","2010-01-01 15:30:00")",
 }
 `;
 
 exports[`Query Interface Should load type for tsrange sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "tsrange",
-      "type": Object {
+      "type": {
         "postgresType": "tsrange",
         "type": 2,
       },
@@ -1011,18 +1011,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for txid_snapshot sql 1`] = `
-Object {
+{
   "txid_snapshot": "10:20:10,14,15",
 }
 `;
 
 exports[`Query Interface Should load type for txid_snapshot sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "txid_snapshot",
-      "type": Object {
+      "type": {
         "postgresType": "txid_snapshot",
         "type": 2,
       },
@@ -1032,18 +1032,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for uuid sql 1`] = `
-Object {
+{
   "uuid": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
 }
 `;
 
 exports[`Query Interface Should load type for uuid sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "uuid",
-      "type": Object {
+      "type": {
         "postgresType": "uuid",
         "type": 2,
       },
@@ -1053,18 +1053,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for varbit sql 1`] = `
-Object {
+{
   "varbit": "111",
 }
 `;
 
 exports[`Query Interface Should load type for varbit sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "varbit",
-      "type": Object {
+      "type": {
         "postgresType": "varbit",
         "type": 2,
       },
@@ -1074,18 +1074,18 @@ Object {
 `;
 
 exports[`Query Interface Should load type for xid sql 1`] = `
-Object {
+{
   "xid": "1",
 }
 `;
 
 exports[`Query Interface Should load type for xid sql 2`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "xid",
-      "type": Object {
+      "type": {
         "postgresType": "xid",
         "type": 2,
       },

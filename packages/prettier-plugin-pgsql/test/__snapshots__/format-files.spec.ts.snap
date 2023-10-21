@@ -8,7 +8,7 @@ WHERE
   account_levelisations.id = $id
 RETURNING
   id,
-  is_accepted AS \\"isAccepted\\"
+  is_accepted AS "isAccepted"
 "
 `;
 
@@ -49,40 +49,40 @@ RETURNING
 
 exports[`Sql Files Should parse complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
 "SELECT
-  account_levelisations.id AS \\"id\\",
-  account_levelisations.levelisation_id AS \\"levelisationId\\",
-  account_levelisations.account_id AS \\"accountId\\",
-  account_levelisations.installation_id AS \\"installationId\\",
-  account_levelisations.state AS \\"state\\",
-  account_levelisations.is_accepted AS \\"isAccepted\\",
-  account_levelisations.generation_start_read_on AS \\"generationStartReadOn\\",
+  account_levelisations.id AS "id",
+  account_levelisations.levelisation_id AS "levelisationId",
+  account_levelisations.account_id AS "accountId",
+  account_levelisations.installation_id AS "installationId",
+  account_levelisations.state AS "state",
+  account_levelisations.is_accepted AS "isAccepted",
+  account_levelisations.generation_start_read_on AS "generationStartReadOn",
   account_levelisations.generation_start_read_value AS
-  \\"generationStartReadValue\\",
-  account_levelisations.generation_end_read_on AS \\"generationEndReadOn\\",
-  account_levelisations.generation_end_read_value AS \\"generationEndReadValue\\",
+  "generationStartReadValue",
+  account_levelisations.generation_end_read_on AS "generationEndReadOn",
+  account_levelisations.generation_end_read_value AS "generationEndReadValue",
   account_levelisations.generation_percentage_split AS
-  \\"generationPercentageSplit\\",
-  account_levelisations.generation_payment AS \\"generationPayment\\",
-  account_levelisations.generation_energy AS \\"generationEnergy\\",
-  account_levelisations.export_start_read_on AS \\"exportStartReadOn\\",
-  account_levelisations.export_start_read_value AS \\"exportStartReadValue\\",
-  account_levelisations.export_end_read_on AS \\"exportEndReadOn\\",
-  account_levelisations.export_end_read_value AS \\"exportEndReadValue\\",
-  account_levelisations.export_percentage_split AS \\"exportPercentageSplit\\",
-  account_levelisations.export_payment AS \\"exportPayment\\",
-  account_levelisations.export_energy AS \\"exportEnergy\\",
-  account_levelisations.export_type AS \\"exportType\\",
-  account_levelisations.technology_type AS \\"technologyType\\",
-  account_levelisations.total_payment AS \\"totalPayment\\",
-  account_levelisations.vat_payment AS \\"vatPayment\\",
-  account_levelisations.generation_periods AS \\"generationPeriods\\",
-  account_levelisations.export_periods AS \\"exportPeriods\\",
-  issues.payload->>'code' AS \\"errorCode\\",
-  issues.payload->'params' AS \\"errorParams\\",
-  contracts.scheme_account_reference AS \\"cfrFitId\\",
-  account_levelisations.resolved_postlev_id AS \\"resolvedPostlevId\\",
-  account_levelisations.is_bacs_payments_sent AS \\"isBacsPaymentsSent\\",
-  account_levelisations.is_cheque_payments_sent AS \\"isChequePaymentsSent\\"
+  "generationPercentageSplit",
+  account_levelisations.generation_payment AS "generationPayment",
+  account_levelisations.generation_energy AS "generationEnergy",
+  account_levelisations.export_start_read_on AS "exportStartReadOn",
+  account_levelisations.export_start_read_value AS "exportStartReadValue",
+  account_levelisations.export_end_read_on AS "exportEndReadOn",
+  account_levelisations.export_end_read_value AS "exportEndReadValue",
+  account_levelisations.export_percentage_split AS "exportPercentageSplit",
+  account_levelisations.export_payment AS "exportPayment",
+  account_levelisations.export_energy AS "exportEnergy",
+  account_levelisations.export_type AS "exportType",
+  account_levelisations.technology_type AS "technologyType",
+  account_levelisations.total_payment AS "totalPayment",
+  account_levelisations.vat_payment AS "vatPayment",
+  account_levelisations.generation_periods AS "generationPeriods",
+  account_levelisations.export_periods AS "exportPeriods",
+  issues.payload->>'code' AS "errorCode",
+  issues.payload->'params' AS "errorParams",
+  contracts.scheme_account_reference AS "cfrFitId",
+  account_levelisations.resolved_postlev_id AS "resolvedPostlevId",
+  account_levelisations.is_bacs_payments_sent AS "isBacsPaymentsSent",
+  account_levelisations.is_cheque_payments_sent AS "isChequePaymentsSent"
 FROM
   account_levelisations
   LEFT JOIN issues
@@ -335,7 +335,7 @@ exports[`Sql Files Should parse complex sql account-verification.update.query.sq
     VALUES
       $$items(
         GH_account_id,
-        \\"MV date\\"
+        "MV date"
       )
   ),
   accounts_back_to_live AS
@@ -448,9 +448,9 @@ exports[`Sql Files Should parse complex sql accounts.query.sql: accounts.query.s
 "SELECT DISTINCT ON (accounts.id)
   accounts.id,
   accounts.state,
-  accounts.start_on AS \\"startOn\\",
-  contacts.first_name AS \\"firstName\\",
-  contacts.last_name AS \\"lastName\\",
+  accounts.start_on AS "startOn",
+  contacts.first_name AS "firstName",
+  contacts.last_name AS "lastName",
   contacts.email,
   CONCAT_WS(
     ' ',
@@ -458,8 +458,8 @@ exports[`Sql Files Should parse complex sql accounts.query.sql: accounts.query.s
     installation_addresses.address_line_2,
     installation_addresses.city,
     installation_addresses.postcode
-  ) AS \\"address\\",
-  ARRAY_AGG(contracts.scheme_account_reference) AS \\"fitIds\\"
+  ) AS "address",
+  ARRAY_AGG(contracts.scheme_account_reference) AS "fitIds"
 FROM
   accounts
   -- Join all the related tables to do a combined search
@@ -563,27 +563,27 @@ exports[`Sql Files Should parse complex sql accounts.sql: accounts.sql 1`] = `
   updated_at
 )
 SELECT
-  ca.\\"CustomerAccountId\\" AS source_system_id,
+  ca."CustomerAccountId" AS source_system_id,
   (
-    SELECT id FROM customers WHERE ca.\\"CustomerId\\" = customers.source_system_id
+    SELECT id FROM customers WHERE ca."CustomerId" = customers.source_system_id
   ) AS customer_id,
-  -- State is spread between FitAccount's Dispute and CustomerAccount \\"Is Active\\".
+  -- State is spread between FitAccount's Dispute and CustomerAccount "Is Active".
   -- TODO: Do we have old accounts in 'Pending' state?
   (
     CASE
-      WHEN ca.\\"IsActive\\" = TRUE AND fa.\\"IsAccountInDispute\\" = TRUE
+      WHEN ca."IsActive" = TRUE AND fa."IsAccountInDispute" = TRUE
         THEN 'Dispute'
-      WHEN ca.\\"IsActive\\" = TRUE THEN 'Active'
+      WHEN ca."IsActive" = TRUE THEN 'Active'
       ELSE 'Closed'
     END
   )::account_state AS state,
-  ba.\\"BankAccountName\\" AS beneficiary_name,
-  ba.\\"BankSortCode\\" AS beneficiary_sort_code,
-  ba.\\"BankAccountNo\\" AS beneficiary_account_number,
+  ba."BankAccountName" AS beneficiary_name,
+  ba."BankSortCode" AS beneficiary_sort_code,
+  ba."BankAccountNo" AS beneficiary_account_number,
   (
     CASE
-      WHEN c.\\"PaymentType\\" IS NOT NULL AND c.\\"PaymentType\\" <> ''
-        THEN TRIM(c.\\"PaymentType\\")::account_payment_plans
+      WHEN c."PaymentType" IS NOT NULL AND c."PaymentType" <> ''
+        THEN TRIM(c."PaymentType")::account_payment_plans
       ELSE NULL
     END
   ) AS payment_plan,
@@ -591,22 +591,22 @@ SELECT
   -- if we don't find an opening read, use first read available as start date
   COALESCE(
     (
-      SELECT mr.\\"DateOfReading\\"
+      SELECT mr."DateOfReading"
       FROM fit.MeterReading AS mr
       WHERE
-        mr.\\"MeterId\\" = ANY(ARRAY_AGG(im.\\"MeterId\\"))
-        AND mr.\\"ReadType\\" = ANY(ARRAY['opening', 'Opening'])
+        mr."MeterId" = ANY(ARRAY_AGG(im."MeterId"))
+        AND mr."ReadType" = ANY(ARRAY['opening', 'Opening'])
       ORDER BY
-        mr.\\"DateOfReading\\" ASC
+        mr."DateOfReading" ASC
       LIMIT 1
     ),
     (
-      SELECT mr.\\"DateOfReading\\"
+      SELECT mr."DateOfReading"
       FROM fit.MeterReading AS mr
       WHERE
-        mr.\\"MeterId\\" = ANY(ARRAY_AGG(im.\\"MeterId\\"))
+        mr."MeterId" = ANY(ARRAY_AGG(im."MeterId"))
       ORDER BY
-        mr.\\"DateOfReading\\" ASC
+        mr."DateOfReading" ASC
       LIMIT 1
     )
   ) AS start_on,
@@ -615,64 +615,64 @@ SELECT
   -- only for closed accounts as still active accounts shouldn't have end date.
   COALESCE(
     (
-      SELECT mr.\\"DateOfReading\\"
+      SELECT mr."DateOfReading"
       FROM fit.MeterReading AS mr
       WHERE
-        mr.\\"MeterId\\" = ANY(ARRAY_AGG(im.\\"MeterId\\"))
-        AND mr.\\"ReadType\\" = ANY(ARRAY['Closure', 'Closing', 'Clsoing', 'Final'])
+        mr."MeterId" = ANY(ARRAY_AGG(im."MeterId"))
+        AND mr."ReadType" = ANY(ARRAY['Closure', 'Closing', 'Clsoing', 'Final'])
       ORDER BY
-        mr.\\"DateOfReading\\" DESC
+        mr."DateOfReading" DESC
       LIMIT 1
     ),
-    CASE ca.\\"IsActive\\"
+    CASE ca."IsActive"
       WHEN FALSE
         THEN
         (
-          SELECT mr.\\"DateOfReading\\"
+          SELECT mr."DateOfReading"
           FROM fit.MeterReading AS mr
           WHERE
-            mr.\\"MeterId\\" = ANY(ARRAY_AGG(im.\\"MeterId\\"))
+            mr."MeterId" = ANY(ARRAY_AGG(im."MeterId"))
           ORDER BY
-            mr.\\"DateOfReading\\" DESC
+            mr."DateOfReading" DESC
           LIMIT 1
         )
       ELSE NULL
     END
   ) AS end_on,
-  ca.\\"DateInserted\\" AS created_at,
-  ca.\\"DateUpdated\\" AS updated_at
+  ca."DateInserted" AS created_at,
+  ca."DateUpdated" AS updated_at
 FROM
   fit.CustomerAccount AS ca
   LEFT JOIN fit.Customer AS c
-    ON ca.\\"CustomerId\\" = c.\\"CustomerId\\"
+    ON ca."CustomerId" = c."CustomerId"
   LEFT JOIN fit.FiTAccount AS fa
-    ON fa.\\"FiTAccountId\\" = ca.\\"FitAccountId\\"
+    ON fa."FiTAccountId" = ca."FitAccountId"
   LEFT JOIN fit.GenerationAccount AS ga
-    ON ga.\\"FitAccountId\\" = ca.\\"FitAccountId\\"
+    ON ga."FitAccountId" = ca."FitAccountId"
   LEFT JOIN fit.GenerationAccountInstallation AS gai
-    ON gai.\\"GenerationAccountId\\" = ga.\\"GenerationAccountId\\"
+    ON gai."GenerationAccountId" = ga."GenerationAccountId"
   LEFT JOIN fit.InstallationMeter AS im
-    ON im.\\"InstallationId\\" = gai.\\"InstallationId\\"
+    ON im."InstallationId" = gai."InstallationId"
   LEFT JOIN fit.BankAccount AS ba
-    ON ba.\\"GenerationAccountId\\" = ga.\\"GenerationAccountId\\"
-    AND ba.\\"IsActive\\" = TRUE
--- Check if the is \\"primary account\\" bit flag is set.
+    ON ba."GenerationAccountId" = ga."GenerationAccountId"
+    AND ba."IsActive" = TRUE
+-- Check if the is "primary account" bit flag is set.
 -- Special exception for fit account 422, as it does not have a primary account
 WHERE
-  ((ca.\\"CustomerRoleValue\\" & 1) > 0 OR ca.\\"FitAccountId\\" = 422)
+  ((ca."CustomerRoleValue" & 1) > 0 OR ca."FitAccountId" = 422)
 -- Each customer account can have multiple installations,
 -- that's why we need to group by actual customer data
 -- and leave installation meters as an array for each row to select by
 GROUP BY
-  ca.\\"CustomerAccountId\\",
-  ca.\\"IsActive\\",
-  fa.\\"IsAccountInDispute\\",
-  ba.\\"BankAccountName\\",
-  ba.\\"BankSortCode\\",
-  ba.\\"BankAccountNo\\",
-  c.\\"PaymentType\\",
-  ca.\\"DateInserted\\",
-  ca.\\"DateUpdated\\"
+  ca."CustomerAccountId",
+  ca."IsActive",
+  fa."IsAccountInDispute",
+  ba."BankAccountName",
+  ba."BankSortCode",
+  ba."BankAccountNo",
+  c."PaymentType",
+  ca."DateInserted",
+  ca."DateUpdated"
 ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
@@ -692,11 +692,11 @@ ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
 exports[`Sql Files Should parse complex sql active-meters-with-last-read.query.sql: active-meters-with-last-read.query.sql 1`] = `
 "SELECT
   meters.id,
-  meters.serial_number AS \\"msn\\",
+  meters.serial_number AS "msn",
   meters.mpan,
   meters.make,
   meters.model,
-  installation_meters.meter_type AS \\"type\\",
+  installation_meters.meter_type AS "type",
   (
     SELECT
       json_build_object(
@@ -706,7 +706,7 @@ exports[`Sql Files Should parse complex sql active-meters-with-last-read.query.s
         'submittedAt', current_reads.submitted_at,
         'reason', current_reads.reason,
         'type', current_reads.type
-      ) AS \\"read\\"
+      ) AS "read"
     FROM active_reads AS current_reads
     WHERE
       current_reads.meter_id = meters.id
@@ -715,7 +715,7 @@ exports[`Sql Files Should parse complex sql active-meters-with-last-read.query.s
     ORDER BY
       current_reads.date_on DESC
     LIMIT 1
-  ) AS \\"currentPeriodRead\\",
+  ) AS "currentPeriodRead",
   (
     SELECT
       json_build_object(
@@ -725,7 +725,7 @@ exports[`Sql Files Should parse complex sql active-meters-with-last-read.query.s
         'submittedAt', previous_reads.submitted_at,
         'reason', previous_reads.reason,
         'type', previous_reads.type
-      ) AS \\"read\\"
+      ) AS "read"
     FROM active_reads AS previous_reads
     WHERE
       previous_reads.meter_id = meters.id
@@ -734,7 +734,7 @@ exports[`Sql Files Should parse complex sql active-meters-with-last-read.query.s
     ORDER BY
       previous_reads.date_on DESC
     LIMIT 1
-  ) AS \\"previousPeriodRead\\"
+  ) AS "previousPeriodRead"
 FROM
   meters
   JOIN installation_meters
@@ -753,11 +753,11 @@ exports[`Sql Files Should parse complex sql active-meters-wth-reads.query.sql: a
 "-- active-meters-with-reads.query
 SELECT
   meters.id,
-  meters.serial_number AS \\"msn\\",
+  meters.serial_number AS "msn",
   meters.mpan,
   meters.make,
   meters.model,
-  installation_meters.meter_type AS \\"type\\",
+  installation_meters.meter_type AS "type",
   (
     SELECT
       json_build_object(
@@ -767,7 +767,7 @@ SELECT
         'submittedAt', current_reads.submitted_at,
         'reason', current_reads.reason,
         'type', current_reads.type
-      ) AS \\"read\\"
+      ) AS "read"
     FROM active_reads AS current_reads
     WHERE
       current_reads.meter_id = meters.id
@@ -776,7 +776,7 @@ SELECT
     ORDER BY
       current_reads.date_on DESC
     LIMIT 1
-  ) AS \\"currentPeriodRead\\",
+  ) AS "currentPeriodRead",
   (
     SELECT
       json_build_object(
@@ -786,7 +786,7 @@ SELECT
         'submittedAt', previous_reads.submitted_at,
         'reason', previous_reads.reason,
         'type', previous_reads.type
-      ) AS \\"read\\"
+      ) AS "read"
     FROM active_reads AS previous_reads
     WHERE
       previous_reads.meter_id = meters.id
@@ -795,7 +795,7 @@ SELECT
     ORDER BY
       previous_reads.date_on DESC
     LIMIT 1
-  ) AS \\"previousPeriodRead\\"
+  ) AS "previousPeriodRead"
 FROM
   meters
   JOIN installation_meters
@@ -856,16 +856,16 @@ WHERE
 
 exports[`Sql Files Should parse complex sql bacs.query.sql: bacs.query.sql 1`] = `
 "SELECT
-  p.fit_reference AS \\"fitId\\",
-  a.beneficiary_name AS \\"name\\",
-  p.amount AS \\"amount\\",
-  p.levelisation_reference AS \\"quarter\\",
+  p.fit_reference AS "fitId",
+  a.beneficiary_name AS "name",
+  p.amount AS "amount",
+  p.levelisation_reference AS "quarter",
   CONCAT(a.beneficiary_sort_code, a.beneficiary_account_number) AS
-  \\"bankDetails\\",
-  a2.address_line_1 AS \\"addressLine1\\",
-  a2.address_line_2 AS \\"addressLine2\\",
-  a2.address_line_3 AS \\"addressLine3\\",
-  a2.postcode AS \\"postcode\\"
+  "bankDetails",
+  a2.address_line_1 AS "addressLine1",
+  a2.address_line_2 AS "addressLine2",
+  a2.address_line_3 AS "addressLine3",
+  a2.postcode AS "postcode"
 FROM
   payments AS p
   LEFT JOIN accounts AS a
@@ -901,39 +901,39 @@ exports[`Sql Files Should parse complex sql contracts.sql: contracts.sql 1`] = `
   updated_at
 )
 SELECT
-  gai.\\"GenerationAccountInstallationId\\",
+  gai."GenerationAccountInstallationId",
   (
     SELECT accounts.id
     FROM accounts
     WHERE
-      accounts.source_system_id = ca.\\"CustomerAccountId\\"
+      accounts.source_system_id = ca."CustomerAccountId"
   ),
   (
     SELECT contacts.id
     FROM contacts
     WHERE
-      contacts.source_system_id = ca.\\"CustomerId\\"
+      contacts.source_system_id = ca."CustomerId"
   ),
   (
     SELECT installations.id
     FROM installations
     WHERE
-      installations.source_system_id = gai.\\"InstallationId\\"
+      installations.source_system_id = gai."InstallationId"
   ),
-  -- Since tariff information is on the meter, we try to find a meter with type \\"Generation\\", and extract its tariff
+  -- Since tariff information is on the meter, we try to find a meter with type "Generation", and extract its tariff
   (
     SELECT tariffs.id
     FROM
       fit.InstallationMeter AS im
       JOIN fit.Meter AS m
-        ON im.\\"MeterId\\" = m.\\"MeterId\\"
+        ON im."MeterId" = m."MeterId"
       JOIN fit.MeterType AS mt
-        ON m.\\"MeterTypeId\\" = mt.\\"MeterTypeId\\"
+        ON m."MeterTypeId" = mt."MeterTypeId"
       JOIN tariffs
-        ON tariffs.source_system_id = m.\\"TariffId\\"
+        ON tariffs.source_system_id = m."TariffId"
     WHERE
-      i.\\"InstallationId\\" = im.\\"InstallationId\\"
-      AND mt.\\"MeterTypeTitle\\" = 'Generation'
+      i."InstallationId" = im."InstallationId"
+      AND mt."MeterTypeTitle" = 'Generation'
     LIMIT 1
   ),
   -- Link to the manually created tariffs for export meters in tariffs.sql.ts
@@ -943,70 +943,70 @@ SELECT
     FROM tariffs
     WHERE
       tariffs.source_system_id
-      = CASE WHEN i.\\"EligibilityDate\\" < '2012-08-01' THEN 100001 ELSE 100002 END
+      = CASE WHEN i."EligibilityDate" < '2012-08-01' THEN 100001 ELSE 100002 END
   ),
   -- Generation Percentage Split.
   -- Since this is a property of the contract, not the meter itself, we move it here from installation meters
   (
-    SELECT im.\\"PercentageSplit\\"
+    SELECT im."PercentageSplit"
     FROM
       fit.InstallationMeter AS im
       JOIN fit.Meter AS m
-        ON im.\\"MeterId\\" = m.\\"MeterId\\"
+        ON im."MeterId" = m."MeterId"
       JOIN fit.MeterType AS mt
-        ON m.\\"MeterTypeId\\" = mt.\\"MeterTypeId\\"
+        ON m."MeterTypeId" = mt."MeterTypeId"
     WHERE
-      i.\\"InstallationId\\" = im.\\"InstallationId\\"
-      AND mt.\\"MeterTypeTitle\\" = 'Generation'
-      AND im.\\"PercentageSplit\\" IS NOT NULL
-      AND im.\\"PercentageSplit\\" <> 100
+      i."InstallationId" = im."InstallationId"
+      AND mt."MeterTypeTitle" = 'Generation'
+      AND im."PercentageSplit" IS NOT NULL
+      AND im."PercentageSplit" <> 100
     LIMIT 1
   ),
   -- Export Percentage Split.
   -- Since this is a property of the contract, not the meter itself, we move it here from installation meters
   (
-    SELECT im.\\"PercentageSplit\\"
+    SELECT im."PercentageSplit"
     FROM
       fit.InstallationMeter AS im
       JOIN fit.Meter AS m
-        ON im.\\"MeterId\\" = m.\\"MeterId\\"
+        ON im."MeterId" = m."MeterId"
       JOIN fit.MeterType AS mt
-        ON m.\\"MeterTypeId\\" = mt.\\"MeterTypeId\\"
+        ON m."MeterTypeId" = mt."MeterTypeId"
     WHERE
-      i.\\"InstallationId\\" = im.\\"InstallationId\\"
-      AND mt.\\"MeterTypeTitle\\" = 'Export'
-      AND im.\\"PercentageSplit\\" IS NOT NULL
-      AND im.\\"PercentageSplit\\" <> 100
+      i."InstallationId" = im."InstallationId"
+      AND mt."MeterTypeTitle" = 'Export'
+      AND im."PercentageSplit" IS NOT NULL
+      AND im."PercentageSplit" <> 100
     LIMIT 1
   ),
   -- If it doesn't have a FIT id, and has a SEG id, it must be SEG
   (
     CASE
-      WHEN i.\\"SEGId\\" IS NOT NULL AND i.\\"CFRFiTId\\" IS NULL THEN 'SEG'
+      WHEN i."SEGId" IS NOT NULL AND i."CFRFiTId" IS NULL THEN 'SEG'
       ELSE 'FIT'
     END
   )::contract_scheme_types,
   -- Helper from installations.sql.ts
   COALESCE(
-    SUBSTRING(UPPER(i.\\"CFRFiTId\\"), '(FIT\\\\\\\\d+)'),
-    i.\\"SEGId\\",
-    i.\\"CFRFiTId\\"
+    SUBSTRING(UPPER(i."CFRFiTId"), '(FIT\\\\d+)'),
+    i."SEGId",
+    i."CFRFiTId"
   ),
-  i.\\"ConfirmationDate\\",
+  i."ConfirmationDate",
   TRUE,
-  gai.\\"DateInserted\\",
-  gai.\\"DateUpdated\\"
+  gai."DateInserted",
+  gai."DateUpdated"
 FROM
   fit.GenerationAccountInstallation AS gai
   JOIN fit.GenerationAccount AS ga
-    ON gai.\\"GenerationAccountId\\" = ga.\\"GenerationAccountId\\"
+    ON gai."GenerationAccountId" = ga."GenerationAccountId"
   JOIN fit.Installation AS i
-    ON gai.\\"InstallationId\\" = i.\\"InstallationId\\"
-  -- Check if the is \\"primary account\\" bit flag is set.
+    ON gai."InstallationId" = i."InstallationId"
+  -- Check if the is "primary account" bit flag is set.
   -- Special exception for fit account 422, as it does not have a primary account
   JOIN fit.CustomerAccount AS ca
-    ON ca.\\"FitAccountId\\" = ga.\\"FitAccountId\\"
-    AND ((ca.\\"CustomerRoleValue\\" & 1) > 0 OR ca.\\"FitAccountId\\" = 422)
+    ON ca."FitAccountId" = ga."FitAccountId"
+    AND ((ca."CustomerRoleValue" & 1) > 0 OR ca."FitAccountId" = 422)
 ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
@@ -1051,12 +1051,12 @@ SELECT
       'isNominatedRecipient',
       (contacts.id = accounts.nominated_recipient_id)::boolean
     )
-  ) AS \\"contacts\\",
+  ) AS "contacts",
   json_build_object(
     'beneficiaryAccountNumber', right(accounts.beneficiary_account_number, 3),
     'beneficiaryName', accounts.beneficiary_name,
     'beneficiarySortCode', accounts.beneficiary_sort_code
-  ) AS \\"paymentDetails\\"
+  ) AS "paymentDetails"
 FROM
   accounts
   LEFT JOIN contacts
@@ -1079,7 +1079,7 @@ SET
 WHERE
   id = $id!
 RETURNING
-  emails[1] AS \\"email\\"
+  emails[1] AS "email"
 "
 `;
 
@@ -1127,10 +1127,10 @@ exports[`Sql Files Should parse complex sql cte-levelisation-details.query.sql: 
   active_items AS
   (SELECT * FROM items WHERE state = 'Success' AND is_accepted = TRUE)
 SELECT
-  levelisations.id AS \\"id\\",
-  (SELECT COUNT(items.id)::int FROM items) AS \\"totalCount\\",
+  levelisations.id AS "id",
+  (SELECT COUNT(items.id)::int FROM items) AS "totalCount",
   (SELECT SUM(active_items.export_payment) FROM active_items) AS
-  \\"fitTotalExportPayment\\"
+  "fitTotalExportPayment"
 FROM levelisations
 WHERE
   levelisations.id = $id
@@ -1153,14 +1153,14 @@ WHERE
   AND accounts.state = $state
 RETURNING
   id,
-  source_system_id AS \\"sourceSystemId\\",
-  customer_id AS \\"customerId\\"
+  source_system_id AS "sourceSystemId",
+  customer_id AS "customerId"
 "
 `;
 
 exports[`Sql Files Should parse complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
 "SELECT
-  meter_reads.date_on AS \\"dateOn\\",
+  meter_reads.date_on AS "dateOn",
   meter_reads.value
 FROM
   meter_reads
@@ -1282,19 +1282,19 @@ exports[`Sql Files Should parse complex sql installations.sql: installations.sql
   updated_at
 )
 SELECT
-  i.\\"InstallationId\\",
+  i."InstallationId",
   (
     SELECT addresses.id
     FROM addresses
     WHERE
-      addresses.source_system_id = i.\\"AddressId\\"
+      addresses.source_system_id = i."AddressId"
   ),
-  i.\\"InstallationName\\",
-  it.\\"InstallationTypeTitle\\"::installation_types,
-  gtt.\\"GeneratorTechnologyTypeRef\\"::installation_technology_types,
-  pt.\\"PropertyTypeTitle\\"::installation_property_type,
+  i."InstallationName",
+  it."InstallationTypeTitle"::installation_types,
+  gtt."GeneratorTechnologyTypeRef"::installation_technology_types,
+  pt."PropertyTypeTitle"::installation_property_type,
   (
-    CASE i.\\"ExportType\\"
+    CASE i."ExportType"
       WHEN NULL THEN NULL
       WHEN 'SEG' THEN NULL
       WHEN 'Deemed' THEN 'Deemed'
@@ -1304,110 +1304,110 @@ SELECT
       WHEN 'PPA_Other' THEN 'PPA'
     END
   )::installation_export_type,
-  i.\\"TariffDate\\",
-  i.\\"DecommisionedDate\\",
-  i.\\"EligibilityDate\\",
-  i.\\"EligibilityEndDate\\",
-  i.\\"DateInstalled\\",
+  i."TariffDate",
+  i."DecommisionedDate",
+  i."EligibilityDate",
+  i."EligibilityEndDate",
+  i."DateInstalled",
   -- Get the first verification date
   (
-    SELECT ivi.\\"DateVerified\\"
+    SELECT ivi."DateVerified"
     FROM fit.InstallationVerificationInfo AS ivi
     WHERE
-      ivi.\\"InstallationId\\" = i.\\"InstallationId\\"
+      ivi."InstallationId" = i."InstallationId"
     ORDER BY
-      ivi.\\"DateVerified\\" ASC
+      ivi."DateVerified" ASC
     LIMIT 1
   ),
   -- Get the last verification date
   -- If there are more than 2 verification dates, get the latest one
   (
-    SELECT (ARRAY_AGG(\\"DateVerified\\" ORDER BY \\"DateVerified\\" DESC))[1]
+    SELECT (ARRAY_AGG("DateVerified" ORDER BY "DateVerified" DESC))[1]
     FROM fit.InstallationVerificationInfo AS ivi
     WHERE
-      ivi.\\"InstallationId\\" = i.\\"InstallationId\\"
+      ivi."InstallationId" = i."InstallationId"
     GROUP BY
-      \\"InstallationId\\"
+      "InstallationId"
     HAVING
-      COUNT(\\"InstallationId\\") > 1
+      COUNT("InstallationId") > 1
   ),
-  i.\\"ConfirmationDate\\",
-  i.\\"MCSInstallerCertificateNo\\",
-  i.\\"InstalledCapacity\\",
-  i.\\"InstalledCapacity\\",
-  i.\\"ROOFITNo\\",
-  i.\\"NameOfGrant\\",
-  i.\\"ValueOfGrant\\",
-  i.\\"DateGrantRepaid\\",
-  i.\\"EPCRate\\",
-  i.\\"DateInstalled\\",
+  i."ConfirmationDate",
+  i."MCSInstallerCertificateNo",
+  i."InstalledCapacity",
+  i."InstalledCapacity",
+  i."ROOFITNo",
+  i."NameOfGrant",
+  i."ValueOfGrant",
+  i."DateGrantRepaid",
+  i."EPCRate",
+  i."DateInstalled",
   NULL,
   NULL,
   NULL,
   (
-    SELECT m.\\"MPAN\\"
+    SELECT m."MPAN"
     FROM
       fit.InstallationMeter AS im
       JOIN fit.Meter AS m
-        ON m.\\"MeterId\\" = im.\\"MeterId\\"
+        ON m."MeterId" = im."MeterId"
       JOIN fit.MeterType AS mt
-        ON m.\\"MeterTypeId\\" = mt.\\"MeterTypeId\\"
+        ON m."MeterTypeId" = mt."MeterTypeId"
     WHERE
-      mt.\\"MeterTypeTitle\\" = 'Export'
-      AND im.\\"InstallationId\\" = i.\\"InstallationId\\"
+      mt."MeterTypeTitle" = 'Export'
+      AND im."InstallationId" = i."InstallationId"
     LIMIT 1
   ),
-  c.\\"SupplyMPAN\\",
+  c."SupplyMPAN",
   (
-    SELECT s.\\"Company\\"
+    SELECT s."Company"
     FROM fit.Switch AS s
     WHERE
-      s.\\"InstallationId\\" = i.\\"InstallationId\\" AND s.\\"IsSwitchIn\\" = TRUE
+      s."InstallationId" = i."InstallationId" AND s."IsSwitchIn" = TRUE
     ORDER BY
-      s.\\"DateInserted\\" DESC
-    LIMIT 1
-  ),
-  (
-    SELECT s.\\"Company\\"
-    FROM fit.Switch AS s
-    WHERE
-      s.\\"InstallationId\\" = i.\\"InstallationId\\" AND s.\\"IsSwitchIn\\" = FALSE
-    ORDER BY
-      s.\\"DateInserted\\" DESC
+      s."DateInserted" DESC
     LIMIT 1
   ),
   (
-    SELECT s.\\"ActualSwitchDate\\"
+    SELECT s."Company"
     FROM fit.Switch AS s
     WHERE
-      s.\\"InstallationId\\" = i.\\"InstallationId\\"
+      s."InstallationId" = i."InstallationId" AND s."IsSwitchIn" = FALSE
     ORDER BY
-      s.\\"DateInserted\\" DESC
+      s."DateInserted" DESC
+    LIMIT 1
+  ),
+  (
+    SELECT s."ActualSwitchDate"
+    FROM fit.Switch AS s
+    WHERE
+      s."InstallationId" = i."InstallationId"
+    ORDER BY
+      s."DateInserted" DESC
     LIMIT 1
   ),
   -- Preserve the original CFRFiTId
-  i.\\"CFRFiTId\\",
-  i.\\"DateInserted\\",
-  i.\\"DateUpdated\\"
+  i."CFRFiTId",
+  i."DateInserted",
+  i."DateUpdated"
 FROM
   fit.Installation AS i
   JOIN fit.InstallationType AS it
-    ON it.\\"InstallationTypeId\\" = i.\\"InstallationTypeId\\"
+    ON it."InstallationTypeId" = i."InstallationTypeId"
   JOIN fit.GeneratorTechnologyType AS gtt
-    ON gtt.\\"GeneratorTechnologyTypeId\\" = i.\\"GeneratorTechnologyTypeId\\"
+    ON gtt."GeneratorTechnologyTypeId" = i."GeneratorTechnologyTypeId"
   JOIN fit.PropertyType AS pt
-    ON pt.\\"PropertyTypeId\\" = i.\\"PropertyTypeId\\"
+    ON pt."PropertyTypeId" = i."PropertyTypeId"
   JOIN fit.GenerationAccountInstallation AS gai
-    ON gai.\\"InstallationId\\" = i.\\"InstallationId\\"
+    ON gai."InstallationId" = i."InstallationId"
   JOIN fit.GenerationAccount AS ga
-    ON ga.\\"GenerationAccountId\\" = gai.\\"GenerationAccountId\\"
-  -- Check if the is \\"primary account\\" bit flag is set.
+    ON ga."GenerationAccountId" = gai."GenerationAccountId"
+  -- Check if the is "primary account" bit flag is set.
   -- Special exception for fit account 422, as it does not have a primary account
   JOIN fit.CustomerAccount AS ca
-    ON ca.\\"FitAccountId\\" = ga.\\"FitAccountId\\"
-    AND ((ca.\\"CustomerRoleValue\\" & 1) > 0 OR ca.\\"FitAccountId\\" = 422)
+    ON ca."FitAccountId" = ga."FitAccountId"
+    AND ((ca."CustomerRoleValue" & 1) > 0 OR ca."FitAccountId" = 422)
   LEFT JOIN fit.Customer AS c
-    ON c.\\"CustomerId\\" = ca.\\"CustomerId\\"
+    ON c."CustomerId" = ca."CustomerId"
 ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
@@ -1453,9 +1453,9 @@ exports[`Sql Files Should parse complex sql levelisation-customer-data.query.sql
   json_build_object(
     'start', levelisations.start_on,
     'end', levelisations.end_on
-  ) AS \\"interval\\",
-  levelisations.quarter AS \\"levelisationQuarter\\",
-  accounts.id AS \\"accountId\\",
+  ) AS "interval",
+  levelisations.quarter AS "levelisationQuarter",
+  accounts.id AS "accountId",
   (
     SELECT
       json_build_object(
@@ -1478,7 +1478,7 @@ exports[`Sql Files Should parse complex sql levelisation-customer-data.query.sql
         ON addresses.id = contacts.address_id
     WHERE
       contacts.id = accounts.primary_contact_id
-  ) AS \\"contact\\",
+  ) AS "contact",
   (
     SELECT
       json_build_object(
@@ -1582,7 +1582,7 @@ exports[`Sql Files Should parse complex sql levelisation-customer-data.query.sql
     FROM installations
     WHERE
       account_levelisations.installation_id = installations.id
-  ) AS \\"installation\\"
+  ) AS "installation"
 FROM
   account_levelisations
   JOIN levelisations
@@ -1596,31 +1596,31 @@ WHERE
 
 exports[`Sql Files Should parse complex sql levelisation-details.query.sql: levelisation-details.query.sql 1`] = `
 "SELECT
-  levelisations.id AS \\"id\\",
-  levelisations.quarter AS \\"quarter\\",
-  levelisations.start_on AS \\"startOn\\",
-  levelisations.end_on AS \\"endOn\\",
-  (COUNT(account_levelisations.id))::int AS \\"totalCount\\",
+  levelisations.id AS "id",
+  levelisations.quarter AS "quarter",
+  levelisations.start_on AS "startOn",
+  levelisations.end_on AS "endOn",
+  (COUNT(account_levelisations.id))::int AS "totalCount",
   (
     COUNT(account_levelisations.id)
     FILTER (WHERE account_levelisations.state = 'Pending')
-  )::int AS \\"pendingCount\\",
+  )::int AS "pendingCount",
   (
     COUNT(account_levelisations.id)
     FILTER (WHERE account_levelisations.state = 'Error')
-  )::int AS \\"errorCount\\",
+  )::int AS "errorCount",
   (
     COUNT(account_levelisations.id)
     FILTER (WHERE account_levelisations.state = 'Success')
-  )::int AS \\"successCount\\",
+  )::int AS "successCount",
   (
     COUNT(account_levelisations.id)
     FILTER (WHERE account_levelisations.is_bacs_payments_sent::boolean = TRUE)
-  )::int AS \\"backsSent\\",
+  )::int AS "backsSent",
   (
     COUNT(account_levelisations.id)
     FILTER (WHERE account_levelisations.is_cheque_payments_sent::boolean = TRUE)
-  )::int AS \\"chequeSent\\",
+  )::int AS "chequeSent",
   (
     SUM(account_levelisations.generation_payment)
     FILTER (
@@ -1628,7 +1628,7 @@ exports[`Sql Files Should parse complex sql levelisation-details.query.sql: leve
         account_levelisations.state = 'Success'
         AND account_levelisations.is_accepted = TRUE
     )
-  ) AS \\"totalGenerationPayment\\",
+  ) AS "totalGenerationPayment",
   (
     SUM(account_levelisations.export_payment)
     FILTER (
@@ -1636,7 +1636,7 @@ exports[`Sql Files Should parse complex sql levelisation-details.query.sql: leve
         account_levelisations.state = 'Success'
         AND account_levelisations.is_accepted = TRUE
     )
-  ) AS \\"totalExportPayment\\",
+  ) AS "totalExportPayment",
   (
     SUM(account_levelisations.generation_energy)
     FILTER (
@@ -1644,7 +1644,7 @@ exports[`Sql Files Should parse complex sql levelisation-details.query.sql: leve
         account_levelisations.state = 'Success'
         AND account_levelisations.is_accepted = TRUE
     )
-  ) AS \\"totalGenerationEnergy\\",
+  ) AS "totalGenerationEnergy",
   (
     SUM(account_levelisations.export_energy)
     FILTER (
@@ -1652,7 +1652,7 @@ exports[`Sql Files Should parse complex sql levelisation-details.query.sql: leve
         account_levelisations.state = 'Success'
         AND account_levelisations.is_accepted = TRUE
     )
-  ) AS \\"totalExportEnergy\\",
+  ) AS "totalExportEnergy",
   (
     SUM(account_levelisations.export_energy)
     FILTER (
@@ -1661,7 +1661,7 @@ exports[`Sql Files Should parse complex sql levelisation-details.query.sql: leve
         AND account_levelisations.is_accepted = TRUE
         AND account_levelisations.export_type = 'Metered Export'
     )
-  ) AS \\"totalMeteredExportEnergy\\",
+  ) AS "totalMeteredExportEnergy",
   (
     SUM(account_levelisations.export_payment)
     FILTER (
@@ -1670,7 +1670,7 @@ exports[`Sql Files Should parse complex sql levelisation-details.query.sql: leve
         AND account_levelisations.is_accepted = TRUE
         AND account_levelisations.export_type = 'Metered Export'
     )
-  ) AS \\"totalMeteredExportPayment\\",
+  ) AS "totalMeteredExportPayment",
   (
     SUM(account_levelisations.export_energy)
     FILTER (
@@ -1679,7 +1679,7 @@ exports[`Sql Files Should parse complex sql levelisation-details.query.sql: leve
         AND account_levelisations.is_accepted = TRUE
         AND account_levelisations.export_type = 'Deemed'
     )
-  ) AS \\"totalDeemedExportEnergy\\",
+  ) AS "totalDeemedExportEnergy",
   (
     SUM(account_levelisations.export_payment)
     FILTER (
@@ -1688,7 +1688,7 @@ exports[`Sql Files Should parse complex sql levelisation-details.query.sql: leve
         AND account_levelisations.is_accepted = TRUE
         AND account_levelisations.export_type = 'Deemed'
     )
-  ) AS \\"totalDeemedExportPayment\\"
+  ) AS "totalDeemedExportPayment"
 FROM
   levelisations
   LEFT JOIN account_levelisations
@@ -1704,7 +1704,7 @@ LIMIT 1
 exports[`Sql Files Should parse complex sql levelisation-individual-reads.list.query.sql: levelisation-individual-reads.list.query.sql 1`] = `
 "SELECT
   unlevelised_active_reads.id,
-  unlevelised_active_reads.date_on AS \\"dateOn\\",
+  unlevelised_active_reads.date_on AS "dateOn",
   unlevelised_active_reads.value
 FROM
   unlevelised_active_reads
@@ -1721,10 +1721,10 @@ OFFSET $offset!::int
 
 exports[`Sql Files Should parse complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
 "SELECT
-  levelisations.id AS \\"id\\",
-  levelisations.quarter AS \\"quarter\\",
-  start_on AS \\"startOn\\",
-  end_on AS \\"endOn\\"
+  levelisations.id AS "id",
+  levelisations.quarter AS "quarter",
+  start_on AS "startOn",
+  end_on AS "endOn"
 FROM levelisations
 WHERE
   -- Filter
@@ -1793,13 +1793,13 @@ exports[`Sql Files Should parse complex sql meter-reads.sql: meter-reads.sql 1`]
   updated_at
 )
 SELECT
-  mr.\\"MeterReadingId\\",
-  (SELECT meters.id FROM meters WHERE meters.source_system_id = mr.\\"MeterId\\"),
-  mr.\\"DateOfReading\\",
-  mr.\\"MeterReadingValue\\",
+  mr."MeterReadingId",
+  (SELECT meters.id FROM meters WHERE meters.source_system_id = mr."MeterId"),
+  mr."DateOfReading",
+  mr."MeterReadingValue",
   -- TODO: Verify those are actually what we want from meter reading type
   (
-    CASE mr.\\"ReadType\\"
+    CASE mr."ReadType"
       WHEN 'Closure' THEN 'Closing'
       WHEN 'Closing' THEN 'Closing'
       WHEN 'Clsoing' THEN 'Closing'
@@ -1812,23 +1812,23 @@ SELECT
       WHEN '' THEN 'Quarterly'
     END
   )::meter_reads_types,
-  mr.\\"ReadReason\\",
-  -- Reads prior to 2021-03-31 are considered to have all been manually verified, so we can safely assign them to \\"accepted\\"
-  CASE WHEN mr.\\"DateOfReading\\" <= '2021-03-31' THEN TRUE ELSE FALSE END,
+  mr."ReadReason",
+  -- Reads prior to 2021-03-31 are considered to have all been manually verified, so we can safely assign them to "accepted"
+  CASE WHEN mr."DateOfReading" <= '2021-03-31' THEN TRUE ELSE FALSE END,
   CASE
-    WHEN mr.\\"DateOfReading\\" <= '2021-03-31' THEN '{\\"success\\":true}'::jsonb
+    WHEN mr."DateOfReading" <= '2021-03-31' THEN '{"success":true}'::jsonb
     ELSE NULL
   END,
-  mr.\\"DateInserted\\",
-  mr.\\"DateUpdated\\"
+  mr."DateInserted",
+  mr."DateUpdated"
 FROM
   fit.MeterReading AS mr
   JOIN fit.Meter AS m
-    ON m.\\"MeterId\\" = mr.\\"MeterId\\"
--- Exclude \\"Deemed\\" Export meters, since they don't have an MPAN and are not actual meters
+    ON m."MeterId" = mr."MeterId"
+-- Exclude "Deemed" Export meters, since they don't have an MPAN and are not actual meters
 -- TODO: Figure out where to migrate deemed meter reads to.
 WHERE
-  m.\\"MPAN\\" IS NOT NULL
+  m."MPAN" IS NOT NULL
 ON CONFLICT (source_system_id) WHERE source_system_id IS NOT NULL
   DO UPDATE
     SET
@@ -1874,16 +1874,16 @@ WHERE
 
 exports[`Sql Files Should parse complex sql process-batch.query.sql: process-batch.query.sql 1`] = `
 "SELECT
-  installations.legacy_fit_db_id AS \\"cfrFiTId\\",
-  contacts.email AS \\"email\\",
-  CONCAT(contacts.first_name, ' ', contacts.last_name) AS \\"contactName\\",
-  customers.company_name AS \\"company\\",
-  addresses.address_line_1 AS \\"line1\\",
-  CONCAT(addresses.address_line_2, ' ', addresses.address_line_3) AS \\"line2\\",
-  addresses.city AS \\"town\\",
-  addresses.postcode AS \\"postcode\\",
-  addresses.county AS \\"county\\",
-  addresses.country AS \\"country\\"
+  installations.legacy_fit_db_id AS "cfrFiTId",
+  contacts.email AS "email",
+  CONCAT(contacts.first_name, ' ', contacts.last_name) AS "contactName",
+  customers.company_name AS "company",
+  addresses.address_line_1 AS "line1",
+  CONCAT(addresses.address_line_2, ' ', addresses.address_line_3) AS "line2",
+  addresses.city AS "town",
+  addresses.postcode AS "postcode",
+  addresses.county AS "county",
+  addresses.country AS "country"
 FROM
   installations
   JOIN contracts
@@ -1903,12 +1903,12 @@ WHERE
 
 exports[`Sql Files Should parse complex sql rates-by-tariff-ids.query.sql: rates-by-tariff-ids.query.sql 1`] = `
 "SELECT
-  r.tariff_id AS \\"tariffId\\",
+  r.tariff_id AS "tariffId",
   r.rate,
-  r.start_date_on AS \\"startOn\\",
-  t.code AS \\"tariffCode\\",
-  t.type AS \\"tariffType\\",
-  r.end_date_on AS \\"endOn\\"
+  r.start_date_on AS "startOn",
+  t.code AS "tariffCode",
+  t.type AS "tariffType",
+  r.end_date_on AS "endOn"
 FROM
   tariff_rates AS r
   LEFT JOIN tariffs AS t
@@ -1923,10 +1923,10 @@ exports[`Sql Files Should parse complex sql read-create.query.sql: read-create.q
 "INSERT INTO meter_reads (
   meter_id,
   reason,
-  \\"type\\",
+  "type",
   date_on,
   submitted_at,
-  \\"value\\"
+  "value"
 )
 VALUES
   (
@@ -1939,24 +1939,24 @@ VALUES
   )
 RETURNING
   id,
-  \\"value\\",
-  meter_id AS \\"meterId\\",
-  submitted_at AS \\"submittedAt\\"
+  "value",
+  meter_id AS "meterId",
+  submitted_at AS "submittedAt"
 "
 `;
 
 exports[`Sql Files Should parse complex sql reads-by-account-id.query.sql: reads-by-account-id.query.sql 1`] = `
 "SELECT
   mr.id,
-  m.serial_number AS \\"msn\\",
-  mr.meter_id AS \\"meterId\\",
-  date_on AS \\"dateOn\\",
+  m.serial_number AS "msn",
+  mr.meter_id AS "meterId",
+  date_on AS "dateOn",
   value,
   mr.type,
   reason,
-  mr.created_at AS \\"createdAt\\",
-  mr.updated_at AS \\"updatedAt\\",
-  mr.source_system_id AS \\"sourceSystemId\\",
+  mr.created_at AS "createdAt",
+  mr.updated_at AS "updatedAt",
+  mr.source_system_id AS "sourceSystemId",
   m.mpan
 FROM
   meter_reads AS mr
@@ -1980,19 +1980,19 @@ LIMIT $perPage
 exports[`Sql Files Should parse complex sql recordsets.query.sql: recordsets.query.sql 1`] = `
 "SELECT
   account_levelisations.id,
-  periods.\\"exportType\\",
-  periods.\\"energy\\"
+  periods."exportType",
+  periods."energy"
 FROM
   account_levelisations,
   jsonb_to_recordset(generation_periods)
   AS periods(
-    \\"amount\\" varchar,
-    \\"energy\\" float,
-    \\"amount\\" float,
-    \\"startOn\\" varchar,
-    \\"endOn\\" varchar,
-    \\"exportType\\" varchar,
-    \\"technologyType\\" varchar
+    "amount" varchar,
+    "energy" float,
+    "amount" float,
+    "startOn" varchar,
+    "endOn" varchar,
+    "exportType" varchar,
+    "technologyType" varchar
   )
 "
 `;
@@ -2042,15 +2042,15 @@ exports[`Sql Files Should parse complex sql update-registers.sql: update-registe
   (
     VALUES
       $$registers(
-        \\"id\\"::int,
-        \\"customerLabel\\",
-        \\"industryLabel\\",
-        \\"smtRuleStart\\"::varchar(10),
-        \\"smtRuleEnd\\"::text,
-        \\"smtRuleStartOn\\"::date,
-        \\"multiplier\\",
-        \\"meterId\\",
-        \\"indexPosition\\"::int
+        "id"::int,
+        "customerLabel",
+        "industryLabel",
+        "smtRuleStart"::varchar(10),
+        "smtRuleEnd"::text,
+        "smtRuleStartOn"::date,
+        "multiplier",
+        "meterId",
+        "indexPosition"::int
       )
   ),
   update_meter_registers AS
@@ -2085,15 +2085,15 @@ FROM
   (
     VALUES
       $$registers(
-        \\"id\\"!,
-        \\"customerLabel\\"!,
-        \\"industryLabel\\"!,
-        \\"smtRuleStart\\",
-        \\"smtRuleEnd\\",
-        \\"smtRuleStartOn\\",
-        \\"multiplier\\"!,
-        \\"meterId\\"!,
-        \\"indexPosition\\"
+        "id"!,
+        "customerLabel"!,
+        "industryLabel"!,
+        "smtRuleStart",
+        "smtRuleEnd",
+        "smtRuleStartOn",
+        "multiplier"!,
+        "meterId"!,
+        "indexPosition"
       )
   )
   AS r2 (

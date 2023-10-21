@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Inspect Should inspect for errors for no select: SELECT  FROM all_types: no select 1`] = `
-Object {
+{
   "code": 1,
   "end": 15,
   "message": "Unexpected token at 1:14",
@@ -10,7 +10,7 @@ Object {
 `;
 
 exports[`Inspect Should inspect for errors for wrong order: SELECT * FORM all_types: wrong order 1`] = `
-Object {
+{
   "code": 1,
   "end": 11,
   "message": "Unexpected token at 1:10",
@@ -26,80 +26,80 @@ exports[`Inspect Should load completions for complex:
         (accounts.end_on IS NULL OR accounts.end_on >= $start)
         AND accounts.state = ANY(ARRAY['Active', 'Pending Loss']::account_state[])
         AND contracts.exp‸ort_type = ANY(ARRAY['Metered Export','Deemed']::installation_export_type): complex 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "scheme_type",
     "source": undefined,
   },
-  Object {
+  {
     "name": "scheme_account_reference",
     "source": undefined,
   },
-  Object {
+  {
     "name": "confirmation_on",
     "source": undefined,
   },
-  Object {
+  {
     "name": "terms_and_conditions_agreed",
     "source": undefined,
   },
-  Object {
+  {
     "name": "created_at",
     "source": undefined,
   },
-  Object {
+  {
     "name": "updated_at",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installation_id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "generation_tariff_id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "export_tariff_id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "source_system_id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "export_percentage_split",
     "source": undefined,
   },
-  Object {
+  {
     "name": "generation_percentage_split",
     "source": undefined,
   },
-  Object {
+  {
     "name": "contact_id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "account_id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "capacity",
     "source": undefined,
   },
-  Object {
+  {
     "name": "start_on",
     "source": undefined,
   },
-  Object {
+  {
     "name": "end_on",
     "source": undefined,
   },
-  Object {
+  {
     "name": "export_type",
     "source": undefined,
   },
@@ -107,188 +107,188 @@ Array [
 `;
 
 exports[`Inspect Should load completions for empty_column: SELECT all_types.‸empty_column FROM all_types: empty_column 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "not_null",
     "source": "This column should never be null",
   },
-  Object {
+  {
     "name": "default_not_null",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bigint_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bigserial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bit_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bit_varying_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "boolean_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "box_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bytea_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "character_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "character_varying_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "cidr_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "circle_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "date_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "double_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "inet_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "integer_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "interval_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "json_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "jsonb_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "line_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "lseg_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "macaddr_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "money_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "numeric_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "path_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "pg_lsn_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "point_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "polygon_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "real_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "smallint_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "smallserial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "serial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "text_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "time_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "time_with_time_zone_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "timestamp_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "timestamp_with_time_zone_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tsquery_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tsvector_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "txid_snapshot_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "uuid_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "xml_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "item",
     "source": undefined,
   },
-  Object {
+  {
     "name": "state",
     "source": "
   This column is an enum.
@@ -297,15 +297,15 @@ Array [
     - line2
 ",
   },
-  Object {
+  {
     "name": "state_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "item_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "static_arr",
     "source": undefined,
   },
@@ -313,188 +313,188 @@ Array [
 `;
 
 exports[`Inspect Should load completions for end of column: SELECT all_types.id‸ FROM all_types: end of column 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "not_null",
     "source": "This column should never be null",
   },
-  Object {
+  {
     "name": "default_not_null",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bigint_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bigserial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bit_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bit_varying_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "boolean_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "box_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bytea_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "character_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "character_varying_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "cidr_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "circle_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "date_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "double_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "inet_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "integer_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "interval_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "json_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "jsonb_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "line_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "lseg_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "macaddr_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "money_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "numeric_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "path_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "pg_lsn_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "point_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "polygon_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "real_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "smallint_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "smallserial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "serial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "text_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "time_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "time_with_time_zone_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "timestamp_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "timestamp_with_time_zone_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tsquery_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tsvector_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "txid_snapshot_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "uuid_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "xml_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "item",
     "source": undefined,
   },
-  Object {
+  {
     "name": "state",
     "source": "
   This column is an enum.
@@ -503,15 +503,15 @@ Array [
     - line2
 ",
   },
-  Object {
+  {
     "name": "state_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "item_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "static_arr",
     "source": undefined,
   },
@@ -519,222 +519,222 @@ Array [
 `;
 
 exports[`Inspect Should load completions for enum left: SELECT * FROM all_types WHERE 'A‸ctive' = all_types.state: enum left 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "Active",
   },
-  Object {
+  {
     "name": "Pending",
   },
-  Object {
+  {
     "name": "Dispute",
   },
-  Object {
+  {
     "name": "Closed",
   },
 ]
 `;
 
 exports[`Inspect Should load completions for enum right: SELECT * FROM all_types WHERE all_types.state = 'A‸ctive': enum right 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "Active",
   },
-  Object {
+  {
     "name": "Pending",
   },
-  Object {
+  {
     "name": "Dispute",
   },
-  Object {
+  {
     "name": "Closed",
   },
 ]
 `;
 
 exports[`Inspect Should load completions for insert column: INSERT INTO all_types(id, sta‸te) VALUES (1, 'Active'): insert column 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "not_null",
     "source": "This column should never be null",
   },
-  Object {
+  {
     "name": "default_not_null",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bigint_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bigserial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bit_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bit_varying_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "boolean_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "box_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bytea_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "character_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "character_varying_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "cidr_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "circle_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "date_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "double_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "inet_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "integer_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "interval_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "json_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "jsonb_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "line_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "lseg_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "macaddr_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "money_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "numeric_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "path_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "pg_lsn_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "point_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "polygon_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "real_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "smallint_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "smallserial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "serial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "text_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "time_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "time_with_time_zone_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "timestamp_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "timestamp_with_time_zone_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tsquery_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tsvector_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "txid_snapshot_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "uuid_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "xml_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "item",
     "source": undefined,
   },
-  Object {
+  {
     "name": "state",
     "source": "
   This column is an enum.
@@ -743,15 +743,15 @@ Array [
     - line2
 ",
   },
-  Object {
+  {
     "name": "state_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "item_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "static_arr",
     "source": undefined,
   },
@@ -759,108 +759,108 @@ Array [
 `;
 
 exports[`Inspect Should load completions for partial from: SELECT all_types.id FROM a‸: partial from 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "account_levelisations",
     "source": undefined,
   },
-  Object {
+  {
     "name": "accounts",
     "source": undefined,
   },
-  Object {
+  {
     "name": "active_reads",
     "source": undefined,
   },
-  Object {
+  {
     "name": "addresses",
     "source": undefined,
   },
-  Object {
+  {
     "name": "all_types",
     "source": "All the postgres types",
   },
-  Object {
+  {
     "name": "all_types_view",
     "source": "Summurized view",
   },
-  Object {
+  {
     "name": "authors",
     "source": undefined,
   },
-  Object {
+  {
     "name": "book_orders",
     "source": undefined,
   },
-  Object {
+  {
     "name": "books",
     "source": undefined,
   },
-  Object {
+  {
     "name": "contacts",
     "source": undefined,
   },
-  Object {
+  {
     "name": "contracts",
     "source": undefined,
   },
-  Object {
+  {
     "name": "customers",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installation_meters",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installations",
     "source": undefined,
   },
-  Object {
+  {
     "name": "issues",
     "source": undefined,
   },
-  Object {
+  {
     "name": "levelisations",
     "source": undefined,
   },
-  Object {
+  {
     "name": "meter_reads",
     "source": undefined,
   },
-  Object {
+  {
     "name": "meter_registers",
     "source": undefined,
   },
-  Object {
+  {
     "name": "meters",
     "source": undefined,
   },
-  Object {
+  {
     "name": "orders",
     "source": undefined,
   },
-  Object {
+  {
     "name": "payments",
     "source": undefined,
   },
-  Object {
+  {
     "name": "process_items",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tariff_rates",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tariffs",
     "source": undefined,
   },
-  Object {
+  {
     "name": "transactions",
     "source": undefined,
   },
-  Object {
+  {
     "name": "unlevelised_active_reads",
     "source": undefined,
   },
@@ -868,48 +868,48 @@ Array [
 `;
 
 exports[`Inspect Should load completions for schema column: SELECT fit‸ FROM fit.FiTAccount: schema column 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "FiTAccountId",
     "source": undefined,
   },
-  Object {
+  {
     "name": "FitAccountReference",
     "source": undefined,
   },
-  Object {
+  {
     "name": "IsAccountInDispute",
     "source": undefined,
   },
-  Object {
+  {
     "name": "IsActive",
     "source": undefined,
   },
-  Object {
+  {
     "name": "DateInserted",
     "source": undefined,
   },
-  Object {
+  {
     "name": "DateUpdated",
     "source": undefined,
   },
-  Object {
+  {
     "name": "WhoInserted",
     "source": undefined,
   },
-  Object {
+  {
     "name": "WhoUpdated",
     "source": undefined,
   },
-  Object {
+  {
     "name": "DateDisputeStart",
     "source": undefined,
   },
-  Object {
+  {
     "name": "DateDisputeEnd",
     "source": undefined,
   },
-  Object {
+  {
     "name": "FiTAccount",
     "source": "Table",
   },
@@ -917,176 +917,176 @@ Array [
 `;
 
 exports[`Inspect Should load completions for schema table: SELECT "FiTAccountId" FROM fit.‸FiTAccount: schema table 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "address",
     "source": undefined,
   },
-  Object {
+  {
     "name": "addresstype",
     "source": undefined,
   },
-  Object {
+  {
     "name": "auditcsa",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bankaccount",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bankaccountaudit",
     "source": undefined,
   },
-  Object {
+  {
     "name": "checklist",
     "source": undefined,
   },
-  Object {
+  {
     "name": "configuration",
     "source": undefined,
   },
-  Object {
+  {
     "name": "customer",
     "source": undefined,
   },
-  Object {
+  {
     "name": "customeraccount",
     "source": undefined,
   },
-  Object {
+  {
     "name": "customeraddress",
     "source": undefined,
   },
-  Object {
+  {
     "name": "customerrole",
     "source": undefined,
   },
-  Object {
+  {
     "name": "customersequence",
     "source": undefined,
   },
-  Object {
+  {
     "name": "document",
     "source": undefined,
   },
-  Object {
+  {
     "name": "documenttype",
     "source": undefined,
   },
-  Object {
+  {
     "name": "failedmeterreading",
     "source": undefined,
   },
-  Object {
+  {
     "name": "failedvalidationimport",
     "source": undefined,
   },
-  Object {
+  {
     "name": "fitaccount",
     "source": undefined,
   },
-  Object {
+  {
     "name": "fitaccountsequence",
     "source": undefined,
   },
-  Object {
+  {
     "name": "generationaccount",
     "source": undefined,
   },
-  Object {
+  {
     "name": "generationaccountinstallation",
     "source": undefined,
   },
-  Object {
+  {
     "name": "generatortechnologytype",
     "source": undefined,
   },
-  Object {
+  {
     "name": "gentrackaccount",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installation",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installationmeter",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installationsequence",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installationtype",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installationverificationinfo",
     "source": undefined,
   },
-  Object {
+  {
     "name": "loadfactor",
     "source": undefined,
   },
-  Object {
+  {
     "name": "memo",
     "source": undefined,
   },
-  Object {
+  {
     "name": "meter",
     "source": undefined,
   },
-  Object {
+  {
     "name": "metermodel",
     "source": undefined,
   },
-  Object {
+  {
     "name": "meterreading",
     "source": undefined,
   },
-  Object {
+  {
     "name": "meterreadinghistory",
     "source": undefined,
   },
-  Object {
+  {
     "name": "metertype",
     "source": undefined,
   },
-  Object {
+  {
     "name": "payment",
     "source": undefined,
   },
-  Object {
+  {
     "name": "propertytype",
     "source": undefined,
   },
-  Object {
+  {
     "name": "securityquestion",
     "source": undefined,
   },
-  Object {
+  {
     "name": "segaccountsequence",
     "source": undefined,
   },
-  Object {
+  {
     "name": "switch",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tariff",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tariffexportrate",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tariffrate",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tarifftype",
     "source": undefined,
   },
@@ -1094,128 +1094,128 @@ Array [
 `;
 
 exports[`Inspect Should load completions for select cast type: SELECT 'Active'::s‸t: select cast type 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "account_levelisation_state",
     "source": undefined,
   },
-  Object {
+  {
     "name": "account_payment_plans",
     "source": undefined,
   },
-  Object {
+  {
     "name": "account_state",
     "source": "Lifecycle of account",
   },
-  Object {
+  {
     "name": "contact_titles",
     "source": undefined,
   },
-  Object {
+  {
     "name": "contract_scheme_types",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installation_export_type",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installation_property_type",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installation_technology_types",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installation_types",
     "source": undefined,
   },
-  Object {
+  {
     "name": "inventory_item",
     "source": undefined,
   },
-  Object {
+  {
     "name": "issue_reference_type",
     "source": undefined,
   },
-  Object {
+  {
     "name": "issue_state",
     "source": undefined,
   },
-  Object {
+  {
     "name": "issue_type",
     "source": undefined,
   },
-  Object {
+  {
     "name": "meter_reads_types",
     "source": undefined,
   },
-  Object {
+  {
     "name": "meter_types",
     "source": undefined,
   },
-  Object {
+  {
     "name": "order_state",
     "source": undefined,
   },
-  Object {
+  {
     "name": "payments_type",
     "source": undefined,
   },
-  Object {
+  {
     "name": "process_item_status",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tariff_types",
     "source": undefined,
   },
-  Object {
+  {
     "name": "transaction_history",
     "source": undefined,
   },
-  Object {
+  {
     "name": "transaction_state",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bool",
     "source": "Native",
   },
-  Object {
+  {
     "name": "char",
     "source": "Native",
   },
-  Object {
+  {
     "name": "varchar",
     "source": "Native",
   },
-  Object {
+  {
     "name": "int",
     "source": "Native",
   },
-  Object {
+  {
     "name": "decimal",
     "source": "Native",
   },
-  Object {
+  {
     "name": "float",
     "source": "Native",
   },
-  Object {
+  {
     "name": "serial",
     "source": "Native",
   },
-  Object {
+  {
     "name": "date",
     "source": "Native",
   },
-  Object {
+  {
     "name": "timestamp",
     "source": "Native",
   },
-  Object {
+  {
     "name": "time",
     "source": "Native",
   },
@@ -1223,188 +1223,188 @@ Array [
 `;
 
 exports[`Inspect Should load completions for single column 1: SELECT all_types.i‸d FROM all_types: single column 1 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "not_null",
     "source": "This column should never be null",
   },
-  Object {
+  {
     "name": "default_not_null",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bigint_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bigserial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bit_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bit_varying_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "boolean_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "box_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bytea_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "character_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "character_varying_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "cidr_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "circle_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "date_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "double_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "inet_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "integer_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "interval_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "json_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "jsonb_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "line_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "lseg_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "macaddr_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "money_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "numeric_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "path_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "pg_lsn_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "point_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "polygon_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "real_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "smallint_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "smallserial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "serial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "text_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "time_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "time_with_time_zone_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "timestamp_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "timestamp_with_time_zone_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tsquery_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tsvector_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "txid_snapshot_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "uuid_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "xml_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "item",
     "source": undefined,
   },
-  Object {
+  {
     "name": "state",
     "source": "
   This column is an enum.
@@ -1413,15 +1413,15 @@ Array [
     - line2
 ",
   },
-  Object {
+  {
     "name": "state_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "item_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "static_arr",
     "source": undefined,
   },
@@ -1429,188 +1429,188 @@ Array [
 `;
 
 exports[`Inspect Should load completions for single column 2: SELECT all_types.‸id FROM all_types: single column 2 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "not_null",
     "source": "This column should never be null",
   },
-  Object {
+  {
     "name": "default_not_null",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bigint_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bigserial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bit_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bit_varying_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "boolean_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "box_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bytea_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "character_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "character_varying_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "cidr_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "circle_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "date_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "double_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "inet_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "integer_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "interval_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "json_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "jsonb_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "line_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "lseg_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "macaddr_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "money_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "numeric_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "path_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "pg_lsn_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "point_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "polygon_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "real_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "smallint_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "smallserial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "serial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "text_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "time_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "time_with_time_zone_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "timestamp_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "timestamp_with_time_zone_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tsquery_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tsvector_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "txid_snapshot_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "uuid_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "xml_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "item",
     "source": undefined,
   },
-  Object {
+  {
     "name": "state",
     "source": "
   This column is an enum.
@@ -1619,15 +1619,15 @@ Array [
     - line2
 ",
   },
-  Object {
+  {
     "name": "state_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "item_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "static_arr",
     "source": undefined,
   },
@@ -1635,108 +1635,108 @@ Array [
 `;
 
 exports[`Inspect Should load completions for single table: SELECT all_types.id FROM all_‸types: single table 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "account_levelisations",
     "source": undefined,
   },
-  Object {
+  {
     "name": "accounts",
     "source": undefined,
   },
-  Object {
+  {
     "name": "active_reads",
     "source": undefined,
   },
-  Object {
+  {
     "name": "addresses",
     "source": undefined,
   },
-  Object {
+  {
     "name": "all_types",
     "source": "All the postgres types",
   },
-  Object {
+  {
     "name": "all_types_view",
     "source": "Summurized view",
   },
-  Object {
+  {
     "name": "authors",
     "source": undefined,
   },
-  Object {
+  {
     "name": "book_orders",
     "source": undefined,
   },
-  Object {
+  {
     "name": "books",
     "source": undefined,
   },
-  Object {
+  {
     "name": "contacts",
     "source": undefined,
   },
-  Object {
+  {
     "name": "contracts",
     "source": undefined,
   },
-  Object {
+  {
     "name": "customers",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installation_meters",
     "source": undefined,
   },
-  Object {
+  {
     "name": "installations",
     "source": undefined,
   },
-  Object {
+  {
     "name": "issues",
     "source": undefined,
   },
-  Object {
+  {
     "name": "levelisations",
     "source": undefined,
   },
-  Object {
+  {
     "name": "meter_reads",
     "source": undefined,
   },
-  Object {
+  {
     "name": "meter_registers",
     "source": undefined,
   },
-  Object {
+  {
     "name": "meters",
     "source": undefined,
   },
-  Object {
+  {
     "name": "orders",
     "source": undefined,
   },
-  Object {
+  {
     "name": "payments",
     "source": undefined,
   },
-  Object {
+  {
     "name": "process_items",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tariff_rates",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tariffs",
     "source": undefined,
   },
-  Object {
+  {
     "name": "transactions",
     "source": undefined,
   },
-  Object {
+  {
     "name": "unlevelised_active_reads",
     "source": undefined,
   },
@@ -1744,256 +1744,256 @@ Array [
 `;
 
 exports[`Inspect Should load completions for tables and columns: SELECT i‸d FROM all_types JOIN accounts ON all_types.id = accounts.id: tables and columns 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "not_null",
     "source": "This column should never be null",
   },
-  Object {
+  {
     "name": "default_not_null",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bigint_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bigserial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bit_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bit_varying_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "boolean_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "box_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "bytea_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "character_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "character_varying_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "cidr_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "circle_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "date_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "double_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "inet_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "integer_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "interval_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "json_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "jsonb_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "line_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "lseg_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "macaddr_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "money_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "numeric_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "path_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "pg_lsn_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "point_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "polygon_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "real_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "smallint_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "smallserial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "serial_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "text_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "time_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "time_with_time_zone_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "timestamp_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "timestamp_with_time_zone_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tsquery_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "tsvector_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "txid_snapshot_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "uuid_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "xml_col",
     "source": undefined,
   },
-  Object {
+  {
     "name": "item",
     "source": undefined,
   },
-  Object {
+  {
     "name": "state_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "item_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "static_arr",
     "source": undefined,
   },
-  Object {
+  {
     "name": "customer_id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "beneficiary_name",
     "source": undefined,
   },
-  Object {
+  {
     "name": "beneficiary_sort_code",
     "source": undefined,
   },
-  Object {
+  {
     "name": "beneficiary_account_number",
     "source": undefined,
   },
-  Object {
+  {
     "name": "payment_plan",
     "source": undefined,
   },
-  Object {
+  {
     "name": "payment_suspended",
     "source": undefined,
   },
-  Object {
+  {
     "name": "company_reg_number",
     "source": undefined,
   },
-  Object {
+  {
     "name": "company_name",
     "source": undefined,
   },
-  Object {
+  {
     "name": "company_vat_number",
     "source": undefined,
   },
-  Object {
+  {
     "name": "created_at",
     "source": undefined,
   },
-  Object {
+  {
     "name": "updated_at",
     "source": undefined,
   },
-  Object {
+  {
     "name": "source_system_id",
     "source": undefined,
   },
-  Object {
+  {
     "name": "start_on",
     "source": undefined,
   },
-  Object {
+  {
     "name": "end_on",
     "source": undefined,
   },
-  Object {
+  {
     "name": "all_types",
     "source": "Table",
   },
-  Object {
+  {
     "name": "accounts",
     "source": "Table",
   },
@@ -2001,7 +2001,7 @@ Array [
 `;
 
 exports[`Inspect Should load quick info for binary expression column: SELECT * FROM all_types WHERE id = 1 AND stat‸e = 'Active': binary expression column 1`] = `
-Object {
+{
   "description": "From: all_types Table
 
 ---
@@ -2032,7 +2032,7 @@ Lifecycle of account
 `;
 
 exports[`Inspect Should load quick info for column: SELECT all_types.i‸d FROM all_types: column 1`] = `
-Object {
+{
   "description": "From: all_types Table",
   "display": "id integer NOT NULL",
   "end": 18,
@@ -2041,7 +2041,7 @@ Object {
 `;
 
 exports[`Inspect Should load quick info for composite: SELECT all_types.it‸em FROM all_types: composite 1`] = `
-Object {
+{
   "description": "From: all_types Table
 
 ---
@@ -2058,7 +2058,7 @@ Object {
 `;
 
 exports[`Inspect Should load quick info for enum left: SELECT * FROM all_types WHERE 'A‸ctive' = all_types.state: enum left 1`] = `
-Object {
+{
   "description": "Lifecycle of account
 
 ---
@@ -2076,7 +2076,7 @@ Object {
 `;
 
 exports[`Inspect Should load quick info for enum right: SELECT * FROM all_types WHERE all_types.state = 'A‸ctive': enum right 1`] = `
-Object {
+{
   "description": "Lifecycle of account
 
 ---
@@ -2094,7 +2094,7 @@ Object {
 `;
 
 exports[`Inspect Should load quick info for enum: SELECT all_types.sta‸te FROM all_types: enum 1`] = `
-Object {
+{
   "description": "From: all_types Table
 
 ---
@@ -2125,7 +2125,7 @@ Lifecycle of account
 `;
 
 exports[`Inspect Should load quick info for function info: SELECT date_to_seg_q‸uarter('2022-01-01'): function info 1`] = `
-Object {
+{
   "description": "SEG(Smart Export Guarantee) quarter identifier from the start of the program - 2019-01-01",
   "display": "date_to_seg_quarter (date): text",
   "end": 39,
@@ -2134,7 +2134,7 @@ Object {
 `;
 
 exports[`Inspect Should load quick info for insert column: INSERT INTO all_types(id, sta‸te) VALUES (1, 'Active'): insert column 1`] = `
-Object {
+{
   "description": "From: all_types Table
 
 ---
@@ -2165,7 +2165,7 @@ Lifecycle of account
 `;
 
 exports[`Inspect Should load quick info for join alias direct: SELECT * FROM all_types LEFT JOIN accounts AS a‸cc ON all_types.id = acc.id: join alias direct 1`] = `
-Object {
+{
   "description": "|Name|Type|
 |---|---|
 |id|**integer** \`NOT_NULL\`|
@@ -2191,7 +2191,7 @@ Object {
 `;
 
 exports[`Inspect Should load quick info for join alias table: SELECT * FROM all_types JOIN accou‸nts AS acc ON all_types.id = acc.id: join alias table 1`] = `
-Object {
+{
   "description": "|Name|Type|
 |---|---|
 |id|**integer** \`NOT_NULL\`|
@@ -2217,7 +2217,7 @@ Object {
 `;
 
 exports[`Inspect Should load quick info for select cast type: SELECT 'Active'::ac‸count_state: select cast type 1`] = `
-Object {
+{
   "description": "Lifecycle of account
 
 ---
@@ -2235,7 +2235,7 @@ Object {
 `;
 
 exports[`Inspect Should load quick info for source: SELECT all_ty‸pes.id FROM all_types: source 1`] = `
-Object {
+{
   "description": "|Name|Type|
 |---|---|
 |id|**integer** \`NOT_NULL\`|
@@ -2299,7 +2299,7 @@ Object {
 `;
 
 exports[`Inspect Should load quick info for table: SELECT all_types.id FROM all‸_types: table 1`] = `
-Object {
+{
   "description": "All the postgres types
 
 ---

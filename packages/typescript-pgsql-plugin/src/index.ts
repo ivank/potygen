@@ -4,7 +4,7 @@ import { PotygenTemplateLanguageService } from './potygen-template-language-serv
 import { LanguageServiceLogger } from './logger';
 
 export = ({ typescript }: { typescript: typeof tss }) => ({
-  create: (info: ts.server.PluginCreateInfo): ts.LanguageService => {
+  create: (info: tss.server.PluginCreateInfo): tss.LanguageService => {
     const service = new PotygenTemplateLanguageService(
       typescript,
       info.config.connection,

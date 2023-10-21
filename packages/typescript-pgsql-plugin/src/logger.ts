@@ -3,7 +3,7 @@ import { Logger as PotygenLogger } from '@potygen/potygen';
 import { server } from 'typescript/lib/tsserverlibrary';
 
 export class LanguageServiceLogger implements Logger, PotygenLogger {
-  constructor(private readonly projectInfo: ts.server.PluginCreateInfo) {}
+  constructor(private readonly projectInfo: server.PluginCreateInfo) {}
 
   public log(msg: string) {
     this.info(msg);

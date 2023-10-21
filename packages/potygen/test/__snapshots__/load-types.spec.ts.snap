@@ -2,12 +2,12 @@
 
 exports[`Query Interface Should convert Aliased CTE select sql (WITH nums AS (SELECT id, numeric_col AS "num" FROM all_types)
       SELECT all_types.id, n.num FROM all_types JOIN nums AS n ON n.id = all_types.id) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -15,9 +15,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "num",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -31,12 +31,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert Coalesce binary expression sql (SELECT COALESCE(numeric_col,0) + COALESCE(numeric_col,0) as "totalPaymentWithVat" FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "totalPaymentWithVat",
-      "type": Object {
+      "type": {
         "postgresType": "float4",
         "type": 3,
       },
@@ -46,12 +46,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert Right function sql (SELECT RIGHT('123', 2)) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "right",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -71,17 +71,17 @@ exports[`Query Interface Should convert Select with aggregate functions sql (SEL
           )
         )
       FROM transactions) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
-        "items": Object {
-          "items": Array [
-            Object {
+      "type": {
+        "items": {
+          "items": [
+            {
               "name": "id",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -89,9 +89,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "balance",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": undefined,
                 "postgresDescription": undefined,
@@ -112,12 +112,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert Select with function sql (SELECT transactions.id, calculate_account_balance(transactions.account_id, transactions.sent_at) FROM transactions) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -125,9 +125,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "calculate_account_balance",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -140,39 +140,39 @@ Object {
 `;
 
 exports[`Query Interface Should convert Sql function sql (SELECT calculate_account_balance($accountId!::int, $sentAt!::timestamp)) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "accountId",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "sentAt",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "timestamp",
           "type": 6,
         },
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "calculate_account_balance",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -185,12 +185,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert array column item sql (SELECT static_arr[1] AS one_item FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "one_item",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "nullable": true,
         "postgresType": "int8",
@@ -202,21 +202,21 @@ Object {
 `;
 
 exports[`Query Interface Should convert array constructor sql (SELECT ARRAY(SELECT json_build_object('test', other.integer_col) FROM all_types AS other WHERE all_types.id = other.id) as "arr" FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "arr",
-      "type": Object {
-        "items": Object {
+      "type": {
+        "items": {
           "nullable": true,
           "postgresType": "json",
           "type": 14,
-          "value": Object {
-            "items": Array [
-              Object {
+          "value": {
+            "items": [
+              {
                 "name": "test",
-                "type": Object {
+                "type": {
                   "comment": undefined,
                   "generated": false,
                   "nullable": true,
@@ -239,30 +239,30 @@ Object {
 `;
 
 exports[`Query Interface Should convert array of records index composite column enum sql (SELECT (transactions.history[1]).state FROM transactions) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "state",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Approved",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Rejected",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Failed",
             "postgresType": "text",
             "type": 2,
@@ -278,12 +278,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert array of records index composite column int sql (SELECT (transactions.history[1]).user_id FROM transactions) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "user_id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -297,14 +297,14 @@ Object {
 `;
 
 exports[`Query Interface Should convert array of records index sql (SELECT transactions.history[1] FROM transactions) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "history",
-      "type": Object {
-        "attributes": Object {
-          "date_on": Object {
+      "type": {
+        "attributes": {
+          "date_on": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -312,7 +312,7 @@ Object {
             "postgresType": "timestamp without time zone",
             "type": 6,
           },
-          "description": Object {
+          "description": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -320,25 +320,25 @@ Object {
             "postgresType": "character varying",
             "type": 2,
           },
-          "state": Object {
+          "state": {
             "comment": undefined,
-            "items": Array [
-              Object {
+            "items": [
+              {
                 "literal": "Pending",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Approved",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Rejected",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Failed",
                 "postgresType": "text",
                 "type": 2,
@@ -348,7 +348,7 @@ Object {
             "postgresType": "transaction_state",
             "type": 12,
           },
-          "user_id": Object {
+          "user_id": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -370,16 +370,16 @@ Object {
 `;
 
 exports[`Query Interface Should convert array of records sql (SELECT transactions.history FROM transactions) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "history",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
-          "attributes": Object {
-            "date_on": Object {
+        "items": {
+          "attributes": {
+            "date_on": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -387,7 +387,7 @@ Object {
               "postgresType": "timestamp without time zone",
               "type": 6,
             },
-            "description": Object {
+            "description": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -395,25 +395,25 @@ Object {
               "postgresType": "character varying",
               "type": 2,
             },
-            "state": Object {
+            "state": {
               "comment": undefined,
-              "items": Array [
-                Object {
+              "items": [
+                {
                   "literal": "Pending",
                   "postgresType": "text",
                   "type": 2,
                 },
-                Object {
+                {
                   "literal": "Approved",
                   "postgresType": "text",
                   "type": 2,
                 },
-                Object {
+                {
                   "literal": "Rejected",
                   "postgresType": "text",
                   "type": 2,
                 },
-                Object {
+                {
                   "literal": "Failed",
                   "postgresType": "text",
                   "type": 2,
@@ -423,7 +423,7 @@ Object {
               "postgresType": "transaction_state",
               "type": 12,
             },
-            "user_id": Object {
+            "user_id": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -447,21 +447,21 @@ Object {
 `;
 
 exports[`Query Interface Should convert coalesce 1 sql (SELECT COALESCE(id, character_col) FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "coalesce",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "comment": undefined,
             "generated": false,
             "postgresDescription": undefined,
             "postgresType": "integer",
             "type": 3,
           },
-          Object {
+          {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -480,14 +480,14 @@ Object {
 `;
 
 exports[`Query Interface Should convert coalesce 2 sql (SELECT COALESCE(character_col, id) FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "coalesce",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -495,7 +495,7 @@ Object {
             "postgresType": "character",
             "type": 2,
           },
-          Object {
+          {
             "comment": undefined,
             "generated": false,
             "postgresDescription": undefined,
@@ -513,19 +513,19 @@ Object {
 `;
 
 exports[`Query Interface Should convert coalesce 3 sql (SELECT COALESCE(12, character_col, id) FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "coalesce",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "literal": 12,
             "postgresType": "float4",
             "type": 3,
           },
-          Object {
+          {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -533,7 +533,7 @@ Object {
             "postgresType": "character",
             "type": 2,
           },
-          Object {
+          {
             "comment": undefined,
             "generated": false,
             "postgresDescription": undefined,
@@ -551,14 +551,14 @@ Object {
 `;
 
 exports[`Query Interface Should convert coalesce 4 sql (SELECT COALESCE(integer_col, character_col) FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "coalesce",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -566,7 +566,7 @@ Object {
             "postgresType": "integer",
             "type": 3,
           },
-          Object {
+          {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -585,16 +585,16 @@ Object {
 `;
 
 exports[`Query Interface Should convert composite array column sql (SELECT item_arr FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "item_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
-          "attributes": Object {
-            "name": Object {
+        "items": {
+          "attributes": {
+            "name": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -602,7 +602,7 @@ Object {
               "postgresType": "text",
               "type": 2,
             },
-            "price": Object {
+            "price": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -610,7 +610,7 @@ Object {
               "postgresType": "numeric",
               "type": 3,
             },
-            "supplier_id": Object {
+            "supplier_id": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -634,15 +634,15 @@ Object {
 `;
 
 exports[`Query Interface Should convert composite array const sql (SELECT '{}'::inventory_item[]) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "array",
-      "type": Object {
-        "items": Object {
-          "attributes": Object {
-            "name": Object {
+      "type": {
+        "items": {
+          "attributes": {
+            "name": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -650,7 +650,7 @@ Object {
               "postgresType": "text",
               "type": 2,
             },
-            "price": Object {
+            "price": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -658,7 +658,7 @@ Object {
               "postgresType": "numeric",
               "type": 3,
             },
-            "supplier_id": Object {
+            "supplier_id": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -681,12 +681,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert composite type from table sql (SELECT (item).supplier_id FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "supplier_id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -700,12 +700,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert composite type from view sql (SELECT (item).supplier_id FROM all_types_view) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "supplier_id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -719,12 +719,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert count distinct sql (SELECT COUNT(DISTINCT id) FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "count",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -737,16 +737,16 @@ Object {
 `;
 
 exports[`Query Interface Should convert date column inside json_build_object sql (SELECT json_build_object('dateOn', date_col) FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "name": "dateOn",
-            "type": Object {
+            "type": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -765,23 +765,23 @@ Object {
 `;
 
 exports[`Query Interface Should convert date literal inside json_build_object sql (SELECT json_build_object('dateOn', '2022-01-01'::date, 'timestamp', '2022-01-01'::timestamp)) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "name": "dateOn",
-            "type": Object {
+            "type": {
               "postgresType": "date",
               "type": 2,
             },
           },
-          Object {
+          {
             "name": "timestamp",
-            "type": Object {
+            "type": {
               "postgresType": "timestamp",
               "type": 2,
             },
@@ -796,12 +796,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert different result types for returning sql (UPDATE all_types SET id = 1 RETURNING *) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -809,9 +809,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "not_null",
-      "type": Object {
+      "type": {
         "comment": "This column should never be null",
         "generated": false,
         "postgresDescription": undefined,
@@ -819,9 +819,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "default_not_null",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -829,9 +829,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "bigint_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -840,9 +840,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "bigserial_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -850,9 +850,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "bit_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -861,9 +861,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "bit_varying_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -872,9 +872,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "boolean_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -883,9 +883,9 @@ Object {
         "type": 5,
       },
     },
-    Object {
+    {
       "name": "box_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -894,9 +894,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "bytea_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -904,9 +904,9 @@ Object {
         "type": 0,
       },
     },
-    Object {
+    {
       "name": "character_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -915,9 +915,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "character_varying_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -926,9 +926,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "cidr_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -937,29 +937,29 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "circle_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "name": "x",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "y",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "radius",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
@@ -970,9 +970,9 @@ Object {
         "type": 13,
       },
     },
-    Object {
+    {
       "name": "date_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -981,9 +981,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "double_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -992,9 +992,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "inet_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1003,9 +1003,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "integer_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1014,57 +1014,57 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "interval_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "name": "years",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "months",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "days",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "hours",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "minutes",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "seconds",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "milliseconds",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
@@ -1075,9 +1075,9 @@ Object {
         "type": 13,
       },
     },
-    Object {
+    {
       "name": "json_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1086,9 +1086,9 @@ Object {
         "type": 8,
       },
     },
-    Object {
+    {
       "name": "jsonb_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1097,9 +1097,9 @@ Object {
         "type": 8,
       },
     },
-    Object {
+    {
       "name": "line_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1108,9 +1108,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "lseg_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1119,9 +1119,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "macaddr_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1130,9 +1130,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "money_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1141,9 +1141,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "numeric_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1152,9 +1152,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "path_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1163,9 +1163,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "pg_lsn_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1174,22 +1174,22 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "point_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "name": "x",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "y",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
@@ -1200,9 +1200,9 @@ Object {
         "type": 13,
       },
     },
-    Object {
+    {
       "name": "polygon_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1211,9 +1211,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "real_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1222,9 +1222,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "smallint_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1233,9 +1233,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "smallserial_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1243,9 +1243,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "serial_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1253,9 +1253,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "text_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1264,9 +1264,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "time_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1275,9 +1275,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "time_with_time_zone_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1286,9 +1286,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "timestamp_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1297,9 +1297,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "timestamp_with_time_zone_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1308,9 +1308,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "tsquery_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1319,9 +1319,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "tsvector_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1330,9 +1330,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "txid_snapshot_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1341,9 +1341,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "uuid_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1352,9 +1352,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "xml_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1363,11 +1363,11 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "item",
-      "type": Object {
-        "attributes": Object {
-          "name": Object {
+      "type": {
+        "attributes": {
+          "name": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -1375,7 +1375,7 @@ Object {
             "postgresType": "text",
             "type": 2,
           },
-          "price": Object {
+          "price": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -1383,7 +1383,7 @@ Object {
             "postgresType": "numeric",
             "type": 3,
           },
-          "supplier_id": Object {
+          "supplier_id": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -1398,72 +1398,72 @@ Object {
         "type": 10,
       },
     },
-    Object {
+    {
       "name": "state",
-      "type": Object {
+      "type": {
         "comment": "
   This column is an enum.
   It also contains several lines:
     - line1
     - line2
 ",
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Active",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Active",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Active",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Dispute",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Dispute",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Dispute",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closed",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closed",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closed",
             "postgresType": "text",
             "type": 2,
@@ -1474,68 +1474,68 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "state_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
-          "items": Array [
-            Object {
+        "items": {
+          "items": [
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
@@ -1549,13 +1549,13 @@ Object {
         "type": 11,
       },
     },
-    Object {
+    {
       "name": "item_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
-          "attributes": Object {
-            "name": Object {
+        "items": {
+          "attributes": {
+            "name": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -1563,7 +1563,7 @@ Object {
               "postgresType": "text",
               "type": 2,
             },
-            "price": Object {
+            "price": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -1571,7 +1571,7 @@ Object {
               "postgresType": "numeric",
               "type": 3,
             },
-            "supplier_id": Object {
+            "supplier_id": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -1590,11 +1590,11 @@ Object {
         "type": 11,
       },
     },
-    Object {
+    {
       "name": "static_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
+        "items": {
           "postgresType": "int8",
           "type": 4,
         },
@@ -1608,12 +1608,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert different result types sql (SELECT * FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1621,9 +1621,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "not_null",
-      "type": Object {
+      "type": {
         "comment": "This column should never be null",
         "generated": false,
         "postgresDescription": undefined,
@@ -1631,9 +1631,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "default_not_null",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1641,9 +1641,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "bigint_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1652,9 +1652,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "bigserial_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1662,9 +1662,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "bit_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1673,9 +1673,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "bit_varying_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1684,9 +1684,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "boolean_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1695,9 +1695,9 @@ Object {
         "type": 5,
       },
     },
-    Object {
+    {
       "name": "box_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1706,9 +1706,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "bytea_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1716,9 +1716,9 @@ Object {
         "type": 0,
       },
     },
-    Object {
+    {
       "name": "character_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1727,9 +1727,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "character_varying_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1738,9 +1738,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "cidr_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1749,29 +1749,29 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "circle_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "name": "x",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "y",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "radius",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
@@ -1782,9 +1782,9 @@ Object {
         "type": 13,
       },
     },
-    Object {
+    {
       "name": "date_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1793,9 +1793,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "double_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1804,9 +1804,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "inet_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1815,9 +1815,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "integer_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1826,57 +1826,57 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "interval_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "name": "years",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "months",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "days",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "hours",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "minutes",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "seconds",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "milliseconds",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
@@ -1887,9 +1887,9 @@ Object {
         "type": 13,
       },
     },
-    Object {
+    {
       "name": "json_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1898,9 +1898,9 @@ Object {
         "type": 8,
       },
     },
-    Object {
+    {
       "name": "jsonb_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1909,9 +1909,9 @@ Object {
         "type": 8,
       },
     },
-    Object {
+    {
       "name": "line_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1920,9 +1920,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "lseg_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1931,9 +1931,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "macaddr_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1942,9 +1942,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "money_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1953,9 +1953,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "numeric_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1964,9 +1964,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "path_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1975,9 +1975,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "pg_lsn_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1986,22 +1986,22 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "point_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "name": "x",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "y",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
@@ -2012,9 +2012,9 @@ Object {
         "type": 13,
       },
     },
-    Object {
+    {
       "name": "polygon_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2023,9 +2023,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "real_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2034,9 +2034,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "smallint_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2045,9 +2045,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "smallserial_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2055,9 +2055,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "serial_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2065,9 +2065,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "text_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2076,9 +2076,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "time_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2087,9 +2087,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "time_with_time_zone_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2098,9 +2098,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "timestamp_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2109,9 +2109,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "timestamp_with_time_zone_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2120,9 +2120,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "tsquery_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2131,9 +2131,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "tsvector_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2142,9 +2142,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "txid_snapshot_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2153,9 +2153,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "uuid_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2164,9 +2164,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "xml_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2175,11 +2175,11 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "item",
-      "type": Object {
-        "attributes": Object {
-          "name": Object {
+      "type": {
+        "attributes": {
+          "name": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -2187,7 +2187,7 @@ Object {
             "postgresType": "text",
             "type": 2,
           },
-          "price": Object {
+          "price": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -2195,7 +2195,7 @@ Object {
             "postgresType": "numeric",
             "type": 3,
           },
-          "supplier_id": Object {
+          "supplier_id": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -2210,72 +2210,72 @@ Object {
         "type": 10,
       },
     },
-    Object {
+    {
       "name": "state",
-      "type": Object {
+      "type": {
         "comment": "
   This column is an enum.
   It also contains several lines:
     - line1
     - line2
 ",
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Active",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Active",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Active",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Dispute",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Dispute",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Dispute",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closed",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closed",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closed",
             "postgresType": "text",
             "type": 2,
@@ -2286,68 +2286,68 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "state_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
-          "items": Array [
-            Object {
+        "items": {
+          "items": [
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
@@ -2361,13 +2361,13 @@ Object {
         "type": 11,
       },
     },
-    Object {
+    {
       "name": "item_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
-          "attributes": Object {
-            "name": Object {
+        "items": {
+          "attributes": {
+            "name": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -2375,7 +2375,7 @@ Object {
               "postgresType": "text",
               "type": 2,
             },
-            "price": Object {
+            "price": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -2383,7 +2383,7 @@ Object {
               "postgresType": "numeric",
               "type": 3,
             },
-            "supplier_id": Object {
+            "supplier_id": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -2402,11 +2402,11 @@ Object {
         "type": 11,
       },
     },
-    Object {
+    {
       "name": "static_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
+        "items": {
           "postgresType": "int8",
           "type": 4,
         },
@@ -2420,14 +2420,14 @@ Object {
 `;
 
 exports[`Query Interface Should convert empty array const sql (SELECT ARRAY[]) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "array",
-      "type": Object {
-        "items": Object {
-          "items": Array [],
+      "type": {
+        "items": {
+          "items": [],
           "postgresType": "any",
           "type": 12,
         },
@@ -2440,71 +2440,71 @@ Object {
 `;
 
 exports[`Query Interface Should convert enum array column sql (SELECT state_arr FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "state_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
-          "items": Array [
-            Object {
+        "items": {
+          "items": [
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
@@ -2523,20 +2523,20 @@ Object {
 `;
 
 exports[`Query Interface Should convert enum array const sql (SELECT ARRAY[]::account_levelisation_state[]) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "array",
-      "type": Object {
-        "items": Object {
-          "items": Array [
-            Object {
+      "type": {
+        "items": {
+          "items": [
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Done",
               "postgresType": "text",
               "type": 2,
@@ -2554,75 +2554,75 @@ Object {
 `;
 
 exports[`Query Interface Should convert enum array insert sql (INSERT INTO all_types (not_null, state_arr) VALUES (1, $state) RETURNING state_arr) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "state",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
-          "items": Object {
-            "items": Array [
-              Object {
+          "items": {
+            "items": [
+              {
                 "literal": "Active",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Active",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Active",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Pending",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Pending",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Pending",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Dispute",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Dispute",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Dispute",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Closed",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Closed",
                 "postgresType": "text",
                 "type": 2,
               },
-              Object {
+              {
                 "literal": "Closed",
                 "postgresType": "text",
                 "type": 2,
@@ -2638,69 +2638,69 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "state_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
-          "items": Array [
-            Object {
+        "items": {
+          "items": [
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
@@ -2719,20 +2719,20 @@ Object {
 `;
 
 exports[`Query Interface Should convert enum column sql (SELECT state FROM account_levelisations) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "state",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Done",
             "postgresType": "text",
             "type": 2,
@@ -2748,19 +2748,19 @@ Object {
 `;
 
 exports[`Query Interface Should convert enum sql (SELECT 'Pending'::account_levelisation_state) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "row",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Done",
             "postgresType": "text",
             "type": 2,
@@ -2775,12 +2775,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert function result double sql (SELECT ABS(ABS(integer_col)) FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "abs",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -2793,12 +2793,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert function result single sql (SELECT ABS(integer_col) FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "abs",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -2811,13 +2811,13 @@ Object {
 `;
 
 exports[`Query Interface Should convert nested function explicit type sql (SELECT ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)::int[] FROM all_types GROUP BY id) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "array",
-      "type": Object {
-        "items": Object {
+      "type": {
+        "items": {
           "postgresType": "int4",
           "type": 3,
         },
@@ -2830,12 +2830,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert nested function guess type sql (SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "abs",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -2848,16 +2848,16 @@ Object {
 `;
 
 exports[`Query Interface Should convert operators integer sql (SELECT integer_col + integer_col AS "test1" FROM all_types WHERE id = $id) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -2867,10 +2867,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "test1",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "float4",
         "type": 3,
@@ -2881,16 +2881,16 @@ Object {
 `;
 
 exports[`Query Interface Should convert operators string sql (SELECT character_col + integer_col AS "test1" FROM all_types WHERE character_col = $text) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "text",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -2901,10 +2901,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "test1",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "float4",
         "type": 3,
@@ -2915,16 +2915,16 @@ Object {
 `;
 
 exports[`Query Interface Should convert parameter coalesce sql (SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -2935,10 +2935,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "character_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2952,16 +2952,16 @@ Object {
 `;
 
 exports[`Query Interface Should convert parameter required sql (SELECT character_col FROM all_types WHERE integer_col > $id!) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -2972,10 +2972,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "character_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2989,16 +2989,16 @@ Object {
 `;
 
 exports[`Query Interface Should convert select where sql (SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -3009,10 +3009,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "character_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3026,16 +3026,16 @@ Object {
 `;
 
 exports[`Query Interface Should convert simple sql (SELECT id, character_col FROM all_types WHERE id = :id) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -3045,10 +3045,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3056,9 +3056,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "character_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3072,14 +3072,14 @@ Object {
 `;
 
 exports[`Query Interface Should convert static array column sql (SELECT static_arr FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "static_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
+        "items": {
           "postgresType": "int8",
           "type": 4,
         },
@@ -3093,13 +3093,13 @@ Object {
 `;
 
 exports[`Query Interface Should convert static array const sql (SELECT '{}'::bigint[]) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "array",
-      "type": Object {
-        "items": Object {
+      "type": {
+        "items": {
           "postgresType": "int8",
           "type": 4,
         },
@@ -3112,12 +3112,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert sum sql (SELECT SUM(integer_col) FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "sum",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -3130,12 +3130,12 @@ Object {
 `;
 
 exports[`Query Interface Should convert views types sql (SELECT * FROM all_types_view) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3143,9 +3143,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "not_null",
-      "type": Object {
+      "type": {
         "comment": "This column should never be null",
         "generated": false,
         "postgresDescription": undefined,
@@ -3153,9 +3153,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "default_not_null",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3163,9 +3163,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "bigint_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3174,9 +3174,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "bigserial_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3184,9 +3184,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "bit_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3195,9 +3195,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "bit_varying_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3206,9 +3206,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "boolean_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3217,9 +3217,9 @@ Object {
         "type": 5,
       },
     },
-    Object {
+    {
       "name": "box_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3228,9 +3228,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "bytea_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3238,9 +3238,9 @@ Object {
         "type": 0,
       },
     },
-    Object {
+    {
       "name": "character_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3249,9 +3249,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "character_varying_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3260,9 +3260,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "cidr_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3271,29 +3271,29 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "circle_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "name": "x",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "y",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "radius",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
@@ -3304,9 +3304,9 @@ Object {
         "type": 13,
       },
     },
-    Object {
+    {
       "name": "date_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3315,9 +3315,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "double_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3326,9 +3326,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "inet_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3337,9 +3337,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "integer_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3348,57 +3348,57 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "interval_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "name": "years",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "months",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "days",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "hours",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "minutes",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "seconds",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "milliseconds",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
@@ -3409,9 +3409,9 @@ Object {
         "type": 13,
       },
     },
-    Object {
+    {
       "name": "json_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3420,9 +3420,9 @@ Object {
         "type": 8,
       },
     },
-    Object {
+    {
       "name": "jsonb_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3431,9 +3431,9 @@ Object {
         "type": 8,
       },
     },
-    Object {
+    {
       "name": "line_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3442,9 +3442,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "lseg_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3453,9 +3453,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "macaddr_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3464,9 +3464,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "money_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3475,9 +3475,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "numeric_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3486,9 +3486,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "path_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3497,9 +3497,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "pg_lsn_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3508,22 +3508,22 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "point_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "name": "x",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
           },
-          Object {
+          {
             "name": "y",
-            "type": Object {
+            "type": {
               "postgresType": "float4",
               "type": 3,
             },
@@ -3534,9 +3534,9 @@ Object {
         "type": 13,
       },
     },
-    Object {
+    {
       "name": "polygon_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3545,9 +3545,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "real_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3556,9 +3556,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "smallint_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3567,9 +3567,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "smallserial_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3577,9 +3577,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "serial_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3587,9 +3587,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "text_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3598,9 +3598,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "time_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3609,9 +3609,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "time_with_time_zone_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3620,9 +3620,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "timestamp_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3631,9 +3631,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "timestamp_with_time_zone_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3642,9 +3642,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "tsquery_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3653,9 +3653,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "tsvector_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3664,9 +3664,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "txid_snapshot_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3675,9 +3675,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "uuid_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3686,9 +3686,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "xml_col",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3697,11 +3697,11 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "item",
-      "type": Object {
-        "attributes": Object {
-          "name": Object {
+      "type": {
+        "attributes": {
+          "name": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -3709,7 +3709,7 @@ Object {
             "postgresType": "text",
             "type": 2,
           },
-          "price": Object {
+          "price": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -3717,7 +3717,7 @@ Object {
             "postgresType": "numeric",
             "type": 3,
           },
-          "supplier_id": Object {
+          "supplier_id": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -3732,72 +3732,72 @@ Object {
         "type": 10,
       },
     },
-    Object {
+    {
       "name": "state",
-      "type": Object {
+      "type": {
         "comment": "
   This column is an enum.
   It also contains several lines:
     - line1
     - line2
 ",
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Active",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Active",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Active",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Dispute",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Dispute",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Dispute",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closed",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closed",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closed",
             "postgresType": "text",
             "type": 2,
@@ -3808,68 +3808,68 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "state_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
-          "items": Array [
-            Object {
+        "items": {
+          "items": [
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
@@ -3883,13 +3883,13 @@ Object {
         "type": 11,
       },
     },
-    Object {
+    {
       "name": "item_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
-          "attributes": Object {
-            "name": Object {
+        "items": {
+          "attributes": {
+            "name": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -3897,7 +3897,7 @@ Object {
               "postgresType": "text",
               "type": 2,
             },
-            "price": Object {
+            "price": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -3905,7 +3905,7 @@ Object {
               "postgresType": "numeric",
               "type": 3,
             },
-            "supplier_id": Object {
+            "supplier_id": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -3924,11 +3924,11 @@ Object {
         "type": 11,
       },
     },
-    Object {
+    {
       "name": "static_arr",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Object {
+        "items": {
           "postgresType": "int8",
           "type": 4,
         },

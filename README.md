@@ -226,3 +226,45 @@ export const createApp = (db: SqlDatabase) => {
 Project state: `Beta`. It is used in production, but might not be able to parse some complex queries. In the [sql](./sql) folder you'll find the kinds of queries potygen was designed to deal with, and can decide whether it can handle the complexity that you need.
 
 This project is being actively developed and its APIs might change. All issue reports, feature requests and PRs appreciated.
+
+## Development
+
+To start up a local development you need Docker. Start it up.
+
+To install all dependencies
+
+```shell
+yarn install
+```
+
+And to setup local editor development run as [recommended by yarn](https://yarnpkg.com/getting-started/editor-sdks):
+
+```shell
+yarn dlx @yarnpkg/sdks
+```
+
+Since some packages depend on others in the same repo, to run the tests you'll need to build them first:
+
+```shell
+yarn build
+```
+
+To check with prettier:
+
+```shell
+yarn lint
+```
+
+Since potygen supports different versions of postgres, and the version affects tets, you'll need to start and seed a specific pg version by
+
+```shell
+cd pg-version/v14
+docker-compose up -d
+```
+
+Then to execute all non-version specific tests and then just the sepcific version ones run:
+
+```shell
+yarn test:general
+yarn test:14
+```
