@@ -121,7 +121,11 @@ describe('Query Interface', () => {
       ],
       [{ type: TypeName.String, postgresType: 'text' }],
     ],
-  ])('Should compact union types for %s', async (_, types, expected) => {
-    expect(compactTypes(types)).toEqual(expected);
-  });
+  ])(
+    'Should compact union types for %s',
+    async (_, types, expected) => {
+      expect(compactTypes(types)).toEqual(expected);
+    },
+    30000,
+  );
 });

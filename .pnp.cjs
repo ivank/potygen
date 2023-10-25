@@ -1126,7 +1126,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/body-parser", "npm:1.19.4"],\
             ["@types/express", "npm:4.17.20"],\
             ["@types/jest", "npm:29.5.6"],\
-            ["@types/node", "npm:14.17.32"],\
+            ["@types/node", "npm:20.8.8"],\
             ["axios", "npm:1.5.1"],\
             ["body-parser", "npm:1.20.2"],\
             ["dotenv", "npm:16.3.1"],\
@@ -1163,10 +1163,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@ikerin/rd-parse", [\
-        ["npm:4.0.1", {\
-          "packageLocation": "./.yarn/cache/@ikerin-rd-parse-npm-4.0.1-a7eb775516-68c1c041f2.zip/node_modules/@ikerin/rd-parse/",\
+        ["npm:4.1.0", {\
+          "packageLocation": "./.yarn/cache/@ikerin-rd-parse-npm-4.1.0-0ab0b753db-1da4c39446.zip/node_modules/@ikerin/rd-parse/",\
           "packageDependencies": [\
-            ["@ikerin/rd-parse", "npm:4.0.1"]\
+            ["@ikerin/rd-parse", "npm:4.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1544,16 +1544,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@potygen/potygen", "workspace:packages/potygen"],\
             ["@supercharge/promise-pool", "npm:3.1.0"],\
             ["@types/jest", "npm:29.5.6"],\
-            ["@types/node", "npm:14.17.32"],\
+            ["@types/node", "npm:20.8.8"],\
             ["@types/pg", "npm:8.10.7"],\
-            ["commander", "npm:8.3.0"],\
+            ["commander", "npm:11.1.0"],\
             ["jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:29.7.0"],\
             ["pg", "virtual:122fbadf713b443a132f596ab4a96c2fec068d1ffdffbda2a1b8aa2cbae9105a30b0546a2ce457204dddedfe934c43996dc05b1f784ae5305b013475ca9bbae7#npm:8.11.3"],\
             ["prettier", [\
               "@potygen/prettier",\
               "npm:2.8.1"\
             ]],\
-            ["runtypes", "npm:6.5.0"],\
+            ["runtypes", "npm:6.7.0"],\
             ["ts-jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:29.1.1"],\
             ["ts-node", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"]\
@@ -1569,7 +1569,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@ikerin/build-readme", "npm:1.1.1"],\
             ["@potygen/potygen", "workspace:packages/potygen"],\
             ["@types/jest", "npm:29.5.6"],\
-            ["@types/node", "npm:14.17.32"],\
+            ["@types/node", "npm:20.8.8"],\
             ["@types/pg", "npm:8.10.7"],\
             ["@types/pg-cursor", "npm:2.7.1"],\
             ["jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:29.7.0"],\
@@ -1592,9 +1592,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@potygen/potygen", "workspace:packages/potygen"],\
             ["@ikerin/build-readme", "npm:1.1.1"],\
-            ["@ikerin/rd-parse", "npm:4.0.1"],\
+            ["@ikerin/rd-parse", "npm:4.1.0"],\
             ["@types/jest", "npm:29.5.6"],\
-            ["@types/node", "npm:14.17.32"],\
+            ["@types/node", "npm:20.8.8"],\
             ["@types/pg", "npm:8.10.7"],\
             ["jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:29.7.0"],\
             ["pg", "virtual:122fbadf713b443a132f596ab4a96c2fec068d1ffdffbda2a1b8aa2cbae9105a30b0546a2ce457204dddedfe934c43996dc05b1f784ae5305b013475ca9bbae7#npm:8.11.3"],\
@@ -1626,7 +1626,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@potygen/prettier-plugin-pgsql", "virtual:7fe823fa77e180ba2d7149d126a89aa25531a1eb01203e760eb7920da4c2777d583fb5f66b59c31c5865b063bb5ae62e30e60f029277f9d72a352166e3f69762#workspace:packages/prettier-plugin-pgsql"],\
             ["@potygen/potygen", "workspace:packages/potygen"],\
             ["@types/jest", "npm:29.5.6"],\
-            ["@types/node", "npm:14.17.32"],\
+            ["@types/node", "npm:20.8.8"],\
             ["@types/pg", "npm:8.10.7"],\
             ["@types/prettier", "npm:2.4.2"],\
             ["jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:29.7.0"],\
@@ -1649,7 +1649,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@potygen/prettier-plugin-pgsql", "workspace:packages/prettier-plugin-pgsql"],\
             ["@potygen/potygen", "workspace:packages/potygen"],\
             ["@types/jest", "npm:29.5.6"],\
-            ["@types/node", "npm:14.17.32"],\
+            ["@types/node", "npm:20.8.8"],\
             ["@types/pg", "npm:8.10.7"],\
             ["@types/prettier", "npm:2.4.2"],\
             ["jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:29.7.0"],\
@@ -1671,7 +1671,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@potygen/typescript-pgsql-plugin", "virtual:7fe823fa77e180ba2d7149d126a89aa25531a1eb01203e760eb7920da4c2777d583fb5f66b59c31c5865b063bb5ae62e30e60f029277f9d72a352166e3f69762#workspace:packages/typescript-pgsql-plugin"],\
             ["@potygen/potygen", "workspace:packages/potygen"],\
             ["@types/jest", "npm:29.5.6"],\
-            ["@types/node", "npm:14.17.32"],\
+            ["@types/node", "npm:20.8.8"],\
             ["@types/pg", "npm:8.10.7"],\
             ["@types/prettier", "npm:2.4.2"],\
             ["@types/typescript", null],\
@@ -1694,7 +1694,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@potygen/typescript-pgsql-plugin", "workspace:packages/typescript-pgsql-plugin"],\
             ["@potygen/potygen", "workspace:packages/potygen"],\
             ["@types/jest", "npm:29.5.6"],\
-            ["@types/node", "npm:14.17.32"],\
+            ["@types/node", "npm:20.8.8"],\
             ["@types/pg", "npm:8.10.7"],\
             ["@types/prettier", "npm:2.4.2"],\
             ["jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:29.7.0"],\
@@ -1951,17 +1951,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/node", [\
-        ["npm:14.17.32", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-14.17.32-a7799c3ea0-c3ec45db5d.zip/node_modules/@types/node/",\
-          "packageDependencies": [\
-            ["@types/node", "npm:14.17.32"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:16.11.6", {\
           "packageLocation": "./.yarn/cache/@types-node-npm-16.11.6-3a38cc239a-6e19634766.zip/node_modules/@types/node/",\
           "packageDependencies": [\
             ["@types/node", "npm:16.11.6"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:20.8.8", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-20.8.8-8e65100064-028a9606e4.zip/node_modules/@types/node/",\
+          "packageDependencies": [\
+            ["@types/node", "npm:20.8.8"],\
+            ["undici-types", "npm:5.25.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2796,10 +2797,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["commander", [\
-        ["npm:8.3.0", {\
-          "packageLocation": "./.yarn/cache/commander-npm-8.3.0-c0d18c66d5-0f82321821.zip/node_modules/commander/",\
+        ["npm:11.1.0", {\
+          "packageLocation": "./.yarn/cache/commander-npm-11.1.0-56e979613c-fd1a8557c6.zip/node_modules/commander/",\
           "packageDependencies": [\
-            ["commander", "npm:8.3.0"]\
+            ["commander", "npm:11.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5758,10 +5759,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["runtypes", [\
-        ["npm:6.5.0", {\
-          "packageLocation": "./.yarn/cache/runtypes-npm-6.5.0-c1a3561250-72f9cbd392.zip/node_modules/runtypes/",\
+        ["npm:6.7.0", {\
+          "packageLocation": "./.yarn/cache/runtypes-npm-6.7.0-bd03918511-644389811b.zip/node_modules/runtypes/",\
           "packageDependencies": [\
-            ["runtypes", "npm:6.5.0"]\
+            ["runtypes", "npm:6.7.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6334,7 +6335,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/node12", "npm:1.0.9"],\
             ["@tsconfig/node14", "npm:1.0.1"],\
             ["@tsconfig/node16", "npm:1.0.2"],\
-            ["@types/node", "npm:14.17.32"],\
+            ["@types/node", "npm:20.8.8"],\
             ["@types/swc__core", null],\
             ["@types/swc__wasm", null],\
             ["@types/typescript", null],\
@@ -6403,6 +6404,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/typescript-template-language-service-decorator-npm-2.3.2-64958bf9b1-55bf21e7bd.zip/node_modules/typescript-template-language-service-decorator/",\
           "packageDependencies": [\
             ["typescript-template-language-service-decorator", "npm:2.3.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["undici-types", [\
+        ["npm:5.25.3", {\
+          "packageLocation": "./.yarn/cache/undici-types-npm-5.25.3-2ac9eafc9e-ec9d2cc365.zip/node_modules/undici-types/",\
+          "packageDependencies": [\
+            ["undici-types", "npm:5.25.3"]\
           ],\
           "linkType": "HARD"\
         }]\

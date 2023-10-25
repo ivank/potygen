@@ -684,7 +684,7 @@ __metadata:
     "@types/body-parser": ^1.19.4
     "@types/express": ^4.17.20
     "@types/jest": ^29.5.6
-    "@types/node": ^14.17.15
+    "@types/node": ^20.8.8
     axios: ^1.5.1
     body-parser: ^1.20.2
     dotenv: ^16.3.1
@@ -714,10 +714,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ikerin/rd-parse@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "@ikerin/rd-parse@npm:4.0.1"
-  checksum: 68c1c041f230f9b83b8df1f358b782088333a7d5679ab76a42bea94dfbff65ed130fc0c850a6b1eecde6aa6d7d9e0d998891a994bc7fc779f4bc795f567a9bad
+"@ikerin/rd-parse@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@ikerin/rd-parse@npm:4.1.0"
+  checksum: 1da4c394464b236afcab9691421ac57264070c9e97e5fc01940ef746f90f332f02def86399e27e8080ba0ea4fbbd44c7958683ece2a36ecd28f2015fe49a7f8d
   languageName: node
   linkType: hard
 
@@ -1051,13 +1051,13 @@ __metadata:
     "@potygen/potygen": "workspace:*"
     "@supercharge/promise-pool": ^3.1.0
     "@types/jest": ^29.5.6
-    "@types/node": ^14.17.15
+    "@types/node": ^20.8.8
     "@types/pg": ^8.10.7
-    commander: ^8.3.0
+    commander: ^11.1.0
     jest: ^29.7.0
     pg: ^8.11.3
     prettier: "npm:@potygen/prettier@^2.8.1"
-    runtypes: ^6.5.0
+    runtypes: ^6.7.0
     ts-jest: ^29.1.1
     ts-node: ^10.9.1
     typescript: ^5.2.2
@@ -1073,7 +1073,7 @@ __metadata:
     "@ikerin/build-readme": ^1.1.1
     "@potygen/potygen": "workspace:*"
     "@types/jest": ^29.5.6
-    "@types/node": ^14.17.15
+    "@types/node": ^20.8.8
     "@types/pg": ^8.10.7
     "@types/pg-cursor": ^2.7.1
     jest: ^29.7.0
@@ -1091,9 +1091,9 @@ __metadata:
   resolution: "@potygen/potygen@workspace:packages/potygen"
   dependencies:
     "@ikerin/build-readme": ^1.1.1
-    "@ikerin/rd-parse": ^4.0.1
+    "@ikerin/rd-parse": ^4.1.0
     "@types/jest": ^29.5.6
-    "@types/node": ^14.17.15
+    "@types/node": ^20.8.8
     "@types/pg": ^8.10.7
     jest: ^29.7.0
     pg: ^8.11.3
@@ -1111,7 +1111,7 @@ __metadata:
   dependencies:
     "@potygen/potygen": "workspace:*"
     "@types/jest": ^29.5.6
-    "@types/node": ^14.17.15
+    "@types/node": ^20.8.8
     "@types/pg": ^8.10.7
     "@types/prettier": ^2.4.2
     jest: ^29.7.0
@@ -1130,7 +1130,7 @@ __metadata:
   dependencies:
     "@potygen/potygen": "workspace:*"
     "@types/jest": ^29.5.6
-    "@types/node": ^14.17.15
+    "@types/node": ^20.8.8
     "@types/pg": ^8.10.7
     "@types/prettier": ^2.4.2
     jest: ^29.7.0
@@ -1363,10 +1363,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.17.15":
-  version: 14.17.32
-  resolution: "@types/node@npm:14.17.32"
-  checksum: c3ec45db5d8ca6ed80bcc2fe3cd9f15c1518d43cf048dd5444d1fcbe308d302a42721cb3f19548ac2e7b8b7db4f7f6cd4bf9ed58ab1d30a0bf61758350edd9d5
+"@types/node@npm:^20.8.8":
+  version: 20.8.8
+  resolution: "@types/node@npm:20.8.8"
+  dependencies:
+    undici-types: ~5.25.1
+  checksum: 028a9606e4ef594a4bc7b3310596499d7ce01b2e30f4d1d906ad8ec30c24cea7ec1b3dc181dd5df8d8d2bfe8de54bf3e28ae93be174b4c7d81c0db8326e4f35c
   languageName: node
   linkType: hard
 
@@ -2063,10 +2065,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^8.3.0":
-  version: 8.3.0
-  resolution: "commander@npm:8.3.0"
-  checksum: 0f82321821fc27b83bd409510bb9deeebcfa799ff0bf5d102128b500b7af22872c0c92cb6a0ebc5a4cf19c6b550fba9cedfa7329d18c6442a625f851377bacf0
+"commander@npm:^11.1.0":
+  version: 11.1.0
+  resolution: "commander@npm:11.1.0"
+  checksum: fd1a8557c6b5b622c89ecdfde703242ab7db3b628ea5d1755784c79b8e7cb0d74d65b4a262289b533359cd58e1bfc0bf50245dfbcd2954682a6f367c828b79ef
   languageName: node
   linkType: hard
 
@@ -4592,10 +4594,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"runtypes@npm:^6.5.0":
-  version: 6.5.0
-  resolution: "runtypes@npm:6.5.0"
-  checksum: 72f9cbd392b2c3ca3920b922990bdf59b51f0c5a96456c40da50e43f4d89106f4871cd981f1114f4095521fd6eeb6049d375d1c6818c5cbf8119c219d2c1a075
+"runtypes@npm:^6.7.0":
+  version: 6.7.0
+  resolution: "runtypes@npm:6.7.0"
+  checksum: 644389811b190488382d45c2cd56ef85a8d4cb200a249d107a803fadef872122b07a9e74a3086c0b9f9b17f5bb5c0a585e8abe50b166ed0bff63dbb218af80bc
   languageName: node
   linkType: hard
 
@@ -5171,6 +5173,13 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 0f4da2f15e6f1245e49db15801dbee52f2bbfb267e1c39225afdab5afee1a72839cd86000e65ee9d7e4dfaff12239d28beaf5ee431357fcced15fb08583d72ca
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~5.25.1":
+  version: 5.25.3
+  resolution: "undici-types@npm:5.25.3"
+  checksum: ec9d2cc36520cbd9fbe3b3b6c682a87fe5be214699e1f57d1e3d9a2cb5be422e62735f06e0067dc325fd3dd7404c697e4d479f9147dc8a804e049e29f357f2ff
   languageName: node
   linkType: hard
 

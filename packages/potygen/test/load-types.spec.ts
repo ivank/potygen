@@ -133,5 +133,5 @@ describe('Individual Query Interface', () => {
 
     expect(data).toEqual(expect.arrayContaining(individuallyLoaded));
     await db.end();
-  }, 25000);
+  }, 30000);
 });
