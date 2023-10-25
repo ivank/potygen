@@ -1542,7 +1542,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@potygen/cli", "workspace:packages/cli"],\
             ["@ikerin/build-readme", "npm:1.1.1"],\
             ["@potygen/potygen", "workspace:packages/potygen"],\
-            ["@supercharge/promise-pool", "npm:2.3.2"],\
+            ["@supercharge/promise-pool", "npm:3.1.0"],\
             ["@types/jest", "npm:29.5.6"],\
             ["@types/node", "npm:14.17.32"],\
             ["@types/pg", "npm:8.10.7"],\
@@ -1737,10 +1737,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@supercharge/promise-pool", [\
-        ["npm:2.3.2", {\
-          "packageLocation": "./.yarn/cache/@supercharge-promise-pool-npm-2.3.2-cd41516a25-a6fa277386.zip/node_modules/@supercharge/promise-pool/",\
+        ["npm:3.1.0", {\
+          "packageLocation": "./.yarn/cache/@supercharge-promise-pool-npm-3.1.0-71e2fe6f22-15c391bb59.zip/node_modules/@supercharge/promise-pool/",\
           "packageDependencies": [\
-            ["@supercharge/promise-pool", "npm:2.3.2"]\
+            ["@supercharge/promise-pool", "npm:3.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
