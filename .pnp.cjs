@@ -1129,7 +1129,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:14.17.32"],\
             ["axios", "npm:1.5.1"],\
             ["body-parser", "npm:1.19.2"],\
-            ["dotenv", "npm:14.3.2"],\
+            ["dotenv", "npm:16.3.1"],\
             ["express", "npm:4.17.2"],\
             ["jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:29.7.0"],\
             ["pg-promise", "npm:10.11.1"],\
@@ -3031,10 +3031,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["dotenv", [\
-        ["npm:14.3.2", {\
-          "packageLocation": "./.yarn/cache/dotenv-npm-14.3.2-08998c870b-86c0675891.zip/node_modules/dotenv/",\
+        ["npm:16.3.1", {\
+          "packageLocation": "./.yarn/cache/dotenv-npm-16.3.1-e6d380a398-15d75e7279.zip/node_modules/dotenv/",\
           "packageDependencies": [\
-            ["dotenv", "npm:14.3.2"]\
+            ["dotenv", "npm:16.3.1"]\
           ],\
           "linkType": "HARD"\
         }]\
