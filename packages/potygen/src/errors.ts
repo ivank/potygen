@@ -11,7 +11,10 @@ export class DatabaseError extends Error {
 export const isDatabaseError = (error: Error): error is DatabaseError => 'position' in error;
 
 export class PotygenError extends Error {
-  constructor(message: string, public query: QueryConfig) {
+  constructor(
+    message: string,
+    public query: QueryConfig,
+  ) {
     super(message);
   }
 
@@ -25,7 +28,10 @@ ${this.query.text}`;
 }
 
 export class PotygenDatabaseError extends PotygenError {
-  constructor(public databaseError: DatabaseError, query: QueryConfig) {
+  constructor(
+    public databaseError: DatabaseError,
+    query: QueryConfig,
+  ) {
     super(databaseError.message, query);
   }
 
@@ -44,13 +50,19 @@ ${template}`;
 export class PotygenNotFoundError extends PotygenError {}
 
 export class LoadError extends Error {
-  constructor(public tag: Tag, message: string) {
+  constructor(
+    public tag: Tag,
+    message: string,
+  ) {
     super(message);
   }
 }
 
 export class ParseError extends Error {
-  constructor(public tag: Omit<TemplateTagQuery, 'queryInterface'>, message: string) {
+  constructor(
+    public tag: Omit<TemplateTagQuery, 'queryInterface'>,
+    message: string,
+  ) {
     super(message);
   }
 }
@@ -77,7 +89,10 @@ ${template}`;
 }
 
 export class ParsedSqlFileLoadError extends Error {
-  constructor(public file: ParsedSqlFile, public error: LoadError | ParseError) {
+  constructor(
+    public file: ParsedSqlFile,
+    public error: LoadError | ParseError,
+  ) {
     super(error.message);
   }
 

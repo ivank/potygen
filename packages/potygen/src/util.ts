@@ -116,10 +116,13 @@ export const isDiffBy =
  * The corresponding value of each key is an array of elements responsible for generating the key. The iteratee is invoked with one argument: (value).
  */
 export const groupBy = <T, K extends string | number>(predicate: (item: T) => K, items: T[]): Record<K, T[]> =>
-  items.reduce((acc, item) => {
-    const key = predicate(item);
-    return { ...acc, [key]: (acc[key] ?? ([] as T[])).concat(item) };
-  }, {} as Record<K, T[]>);
+  items.reduce(
+    (acc, item) => {
+      const key = predicate(item);
+      return { ...acc, [key]: (acc[key] ?? ([] as T[])).concat(item) };
+    },
+    {} as Record<K, T[]>,
+  );
 
 /**
  * Creates an array of elements split into groups the length of size. If array can't be split evenly, the final chunk will be the remaining elements.

@@ -108,7 +108,7 @@ WHERE
       $state::account_levelisation_state IS NULL
       OR (account_levelisations.state = $state)
     )
-  -- Ids filter, for loading specific ids, skip if empty array
+    -- Ids filter, for loading specific ids, skip if empty array
   AND
     (
       $levelisationId::int IS NULL
@@ -431,10 +431,10 @@ WHERE
         OR accounts.id::varchar = $q
         OR installations.supply_mpan = $q
         OR installations.export_mpan = $q
-        OR customers.generator_id = $q
-        -- Search for direct matches for ids
         OR
-          accounts.beneficiary_account_number = $q
+          customers.generator_id = $q
+          -- Search for direct matches for ids
+        OR accounts.beneficiary_account_number = $q
         OR contracts.scheme_account_reference = $q
       )
   )
@@ -522,10 +522,10 @@ WHERE
           @@ plainto_tsquery('english', $q)
         OR accounts.id::varchar = $q
         OR installations.supply_mpan = $q
-        OR installations.export_mpan = $q
-        -- Search for direct matches for ids
         OR
-          accounts.beneficiary_account_number = $q
+          installations.export_mpan = $q
+          -- Search for direct matches for ids
+        OR accounts.beneficiary_account_number = $q
         OR contracts.scheme_account_reference = $q
       )
   )
