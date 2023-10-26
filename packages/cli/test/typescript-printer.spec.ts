@@ -24,7 +24,7 @@ describe('Query Interface', () => {
     await db.connect();
     data = await loadAllData({ db, logger }, []);
     await db.end();
-  });
+  }, 25000);
 
   it.each<[string, string]>([
     ['function result single', `SELECT ABS(integer_col) FROM all_types`],

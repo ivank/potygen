@@ -18,7 +18,7 @@ describe('Query Interface', () => {
 
     data = await loadAllData({ db, logger }, []);
     await db.end();
-  });
+  }, 25000);
 
   it.each<[string, string]>([
     ['select where', `SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)`],
