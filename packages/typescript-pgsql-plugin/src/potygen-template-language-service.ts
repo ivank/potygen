@@ -28,7 +28,11 @@ export class PotygenTemplateLanguageService implements TemplateLanguageService {
   public ctx: InfoContext;
   public loaded = false;
 
-  constructor(private readonly ts: typeof tss, readonly connection: string, readonly logger: Logger) {
+  constructor(
+    private readonly ts: typeof tss,
+    readonly connection: string,
+    readonly logger: Logger,
+  ) {
     this.ctx = toInfoContext([], logger);
     loadData(logger, connection).then((data) => {
       this.ctx.data = data;
