@@ -1677,6 +1677,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/typescript", null],\
             ["jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:29.7.0"],\
             ["pg", "virtual:122fbadf713b443a132f596ab4a96c2fec068d1ffdffbda2a1b8aa2cbae9105a30b0546a2ce457204dddedfe934c43996dc05b1f784ae5305b013475ca9bbae7#npm:8.11.3"],\
+            ["prettier", [\
+              "@potygen/prettier",\
+              "npm:3.0.3"\
+            ]],\
             ["ts-jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:29.1.1"],\
             ["ts-node", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
@@ -1699,6 +1703,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prettier", "npm:3.0.0"],\
             ["jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:29.7.0"],\
             ["pg", "virtual:122fbadf713b443a132f596ab4a96c2fec068d1ffdffbda2a1b8aa2cbae9105a30b0546a2ce457204dddedfe934c43996dc05b1f784ae5305b013475ca9bbae7#npm:8.11.3"],\
+            ["prettier", [\
+              "@potygen/prettier",\
+              "npm:3.0.3"\
+            ]],\
             ["ts-jest", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:29.1.1"],\
             ["ts-node", "virtual:93c113ef5fc803e3cefbad6311a581d25eb2aa596a0942e552c902a925f7d7770d4608a5eedfcf09b3e7b01b0b53e0d045e55fa53943c8a58cfcda9f60869c65#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
