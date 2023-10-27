@@ -1,26 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Query Interface Should convert CTE with parameters spread sql (WITH registers_payload (id) AS (VALUES $$registers(id::int)) SELECT r2.id FROM registers_payload AS r2) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 58,
       "name": "registers",
-      "pick": Array [
-        Object {
-          "castType": Object {
+      "pick": [
+        {
+          "castType": {
             "name": "int4",
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 57,
               "start": 55,
               "tag": 32,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 57,
                   "start": 55,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 57,
                       "start": 55,
                       "tag": 8,
@@ -31,24 +31,24 @@ Object {
               ],
             },
             "type": 23,
-            "value": Object {
+            "value": {
               "postgresType": "int4",
               "type": 3,
             },
           },
           "name": "id",
           "required": false,
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 57,
             "start": 51,
             "tag": 119,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 52,
                 "start": 51,
                 "tag": 123,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 52,
                     "start": 51,
                     "tag": 8,
@@ -56,17 +56,17 @@ Object {
                   },
                 ],
               },
-              Object {
+              {
                 "end": 57,
                 "start": 55,
                 "tag": 32,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 57,
                     "start": 55,
                     "tag": 89,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 57,
                         "start": 55,
                         "tag": 8,
@@ -78,19 +78,19 @@ Object {
               },
             ],
           },
-          "type": Object {
+          "type": {
             "name": "int4",
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 57,
               "start": 55,
               "tag": 32,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 57,
                   "start": 55,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 57,
                       "start": 55,
                       "tag": 8,
@@ -101,7 +101,7 @@ Object {
               ],
             },
             "type": 23,
-            "value": Object {
+            "value": {
               "postgresType": "int4",
               "type": 3,
             },
@@ -111,30 +111,30 @@ Object {
       "required": true,
       "spread": true,
       "start": 39,
-      "type": Object {
+      "type": {
         "postgresType": "any",
         "type": 9,
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 72,
           "start": 68,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 69,
               "start": 68,
               "tag": 8,
               "value": "r2",
             },
-            Object {
+            {
               "end": 72,
               "start": 71,
               "tag": 8,
@@ -147,31 +147,31 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "name": "registers_payload",
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 59,
         "start": 5,
         "tag": 5,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 26,
             "start": 5,
             "tag": 2,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 21,
                 "start": 5,
                 "tag": 8,
                 "value": "registers_payload",
               },
-              Object {
+              {
                 "end": 26,
                 "start": 23,
                 "tag": 85,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 25,
                     "start": 24,
                     "tag": 8,
@@ -181,22 +181,22 @@ Object {
               },
             ],
           },
-          Object {
+          {
             "end": 58,
             "start": 32,
             "tag": 3,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 58,
                 "start": 39,
                 "tag": 121,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 49,
                     "start": 41,
                     "tag": 123,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 49,
                         "start": 41,
                         "tag": 8,
@@ -204,17 +204,17 @@ Object {
                       },
                     ],
                   },
-                  Object {
+                  {
                     "end": 57,
                     "start": 51,
                     "tag": 119,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 52,
                         "start": 51,
                         "tag": 123,
-                        "values": Array [
-                          Object {
+                        "values": [
+                          {
                             "end": 52,
                             "start": 51,
                             "tag": 8,
@@ -222,17 +222,17 @@ Object {
                           },
                         ],
                       },
-                      Object {
+                      {
                         "end": 57,
                         "start": 55,
                         "tag": 32,
-                        "values": Array [
-                          Object {
+                        "values": [
+                          {
                             "end": 57,
                             "start": 55,
                             "tag": 89,
-                            "values": Array [
-                              Object {
+                            "values": [
+                              {
                                 "end": 57,
                                 "start": 55,
                                 "tag": 8,
@@ -251,20 +251,20 @@ Object {
         ],
       },
       "type": "Values",
-      "types": Array [
-        Object {
+      "types": [
+        {
           "name": "id",
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 57,
             "start": 51,
             "tag": 119,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 52,
                 "start": 51,
                 "tag": 123,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 52,
                     "start": 51,
                     "tag": 8,
@@ -272,17 +272,17 @@ Object {
                   },
                 ],
               },
-              Object {
+              {
                 "end": 57,
                 "start": 55,
                 "tag": 32,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 57,
                     "start": 55,
                     "tag": 89,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 57,
                         "start": 55,
                         "tag": 8,
@@ -295,20 +295,20 @@ Object {
             ],
           },
           "type": 23,
-          "value": Object {
+          "value": {
             "name": "int4",
             "nullable": true,
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 57,
               "start": 55,
               "tag": 32,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 57,
                   "start": 55,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 57,
                       "start": 55,
                       "tag": 8,
@@ -319,7 +319,7 @@ Object {
               ],
             },
             "type": 23,
-            "value": Object {
+            "value": {
               "postgresType": "int4",
               "type": 3,
             },
@@ -327,21 +327,21 @@ Object {
         },
       ],
     },
-    Object {
+    {
       "isResult": true,
       "name": "r2",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 101,
         "start": 79,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 95,
             "start": 79,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 95,
                 "start": 79,
                 "tag": 8,
@@ -349,12 +349,12 @@ Object {
               },
             ],
           },
-          Object {
+          {
             "end": 101,
             "start": 97,
             "tag": 12,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 101,
                 "start": 100,
                 "tag": 8,
@@ -372,67 +372,67 @@ Object {
 `;
 
 exports[`Query Interface Should convert Coalesce binary expression sql (SELECT COALESCE(numeric_col,0) + COALESCE(numeric_col,0) as "totalPaymentWithVat" FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "totalPaymentWithVat",
-      "type": Object {
-        "available": Array [
-          Array [
-            Object {
+      "type": {
+        "available": [
+          [
+            {
               "postgresType": "float4",
               "type": 3,
             },
-            Object {
+            {
               "postgresType": "float4",
               "type": 3,
             },
-            Object {
-              "postgresType": "float4",
-              "type": 3,
-            },
-          ],
-          Array [
-            Object {
-              "postgresType": "int8",
-              "type": 4,
-            },
-            Object {
-              "postgresType": "int8",
-              "type": 4,
-            },
-            Object {
+            {
               "postgresType": "float4",
               "type": 3,
             },
           ],
-          Array [
-            Object {
+          [
+            {
+              "postgresType": "int8",
+              "type": 4,
+            },
+            {
+              "postgresType": "int8",
+              "type": 4,
+            },
+            {
+              "postgresType": "float4",
+              "type": 3,
+            },
+          ],
+          [
+            {
               "postgresType": "date",
               "type": 6,
             },
-            Object {
+            {
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "postgresType": "date",
               "type": 6,
             },
           ],
         ],
-        "left": Object {
-          "items": Array [
-            Object {
+        "left": {
+          "items": [
+            {
               "column": "numeric_col",
               "schema": undefined,
-              "sourceTag": Object {
+              "sourceTag": {
                 "end": 26,
                 "start": 16,
                 "tag": 11,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 26,
                     "start": 16,
                     "tag": 8,
@@ -443,23 +443,23 @@ Object {
               "table": undefined,
               "type": 19,
             },
-            Object {
+            {
               "literal": 0,
               "postgresType": "float4",
               "type": 3,
             },
           ],
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 29,
             "start": 7,
             "tag": 54,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 14,
                 "start": 7,
                 "tag": 89,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 14,
                     "start": 7,
                     "tag": 8,
@@ -467,12 +467,12 @@ Object {
                   },
                 ],
               },
-              Object {
+              {
                 "end": 26,
                 "start": 16,
                 "tag": 11,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 26,
                     "start": 16,
                     "tag": 8,
@@ -480,7 +480,7 @@ Object {
                   },
                 ],
               },
-              Object {
+              {
                 "end": 28,
                 "start": 28,
                 "tag": 19,
@@ -491,17 +491,17 @@ Object {
           "type": 15,
         },
         "part": 2,
-        "right": Object {
-          "items": Array [
-            Object {
+        "right": {
+          "items": [
+            {
               "column": "numeric_col",
               "schema": undefined,
-              "sourceTag": Object {
+              "sourceTag": {
                 "end": 52,
                 "start": 42,
                 "tag": 11,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 52,
                     "start": 42,
                     "tag": 8,
@@ -512,23 +512,23 @@ Object {
               "table": undefined,
               "type": 19,
             },
-            Object {
+            {
               "literal": 0,
               "postgresType": "float4",
               "type": 3,
             },
           ],
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 55,
             "start": 33,
             "tag": 54,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 40,
                 "start": 33,
                 "tag": 89,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 40,
                     "start": 33,
                     "tag": 8,
@@ -536,12 +536,12 @@ Object {
                   },
                 ],
               },
-              Object {
+              {
                 "end": 52,
                 "start": 42,
                 "tag": 11,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 52,
                     "start": 42,
                     "tag": 8,
@@ -549,7 +549,7 @@ Object {
                   },
                 ],
               },
-              Object {
+              {
                 "end": 54,
                 "start": 54,
                 "tag": 19,
@@ -559,22 +559,22 @@ Object {
           },
           "type": 15,
         },
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 55,
           "start": 7,
           "tag": 46,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 29,
               "start": 7,
               "tag": 54,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 14,
                   "start": 7,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 14,
                       "start": 7,
                       "tag": 8,
@@ -582,12 +582,12 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 26,
                   "start": 16,
                   "tag": 11,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 26,
                       "start": 16,
                       "tag": 8,
@@ -595,7 +595,7 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 28,
                   "start": 28,
                   "tag": 19,
@@ -603,23 +603,23 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 31,
               "start": 31,
               "tag": 44,
               "value": "+",
             },
-            Object {
+            {
               "end": 55,
               "start": 33,
               "tag": 54,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 40,
                   "start": 33,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 40,
                       "start": 33,
                       "tag": 8,
@@ -627,12 +627,12 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 52,
                   "start": 42,
                   "tag": 11,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 52,
                       "start": 42,
                       "tag": 8,
@@ -640,7 +640,7 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 54,
                   "start": 54,
                   "tag": 19,
@@ -654,22 +654,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "all_types",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 95,
         "start": 87,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 95,
             "start": 87,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 95,
                 "start": 87,
                 "tag": 8,
@@ -687,36 +687,36 @@ Object {
 `;
 
 exports[`Query Interface Should convert Extract const sql (SELECT EXTRACT(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "date_part",
-      "type": Object {
+      "type": {
         "name": "date_part",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 59,
           "start": 7,
           "tag": 25,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 21,
               "start": 15,
               "tag": 24,
               "value": "CENTURY",
             },
-            Object {
+            {
               "end": 58,
               "start": 28,
               "tag": 23,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 36,
                   "start": 28,
                   "tag": 22,
                   "value": "TIMESTAMP",
                 },
-                Object {
+                {
                   "end": 58,
                   "start": 38,
                   "tag": 13,
@@ -727,61 +727,61 @@ Object {
           ],
         },
         "type": 23,
-        "value": Object {
+        "value": {
           "postgresType": "float4",
           "type": 3,
         },
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert between fields not named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "col1",
-      "type": Object {
+      "type": {
         "literal": false,
         "postgresType": "bool",
         "type": 5,
       },
     },
-    Object {
+    {
       "name": "col2",
-      "type": Object {
+      "type": {
         "literal": true,
         "postgresType": "bool",
         "type": 5,
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert big int sql (SELECT '123'::int8) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "int8",
-      "type": Object {
+      "type": {
         "name": "int8",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 17,
           "start": 14,
           "tag": 32,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 17,
               "start": 14,
               "tag": 89,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 17,
                   "start": 14,
                   "tag": 8,
@@ -792,77 +792,77 @@ Object {
           ],
         },
         "type": 23,
-        "value": Object {
+        "value": {
           "postgresType": "int8",
           "type": 4,
         },
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert binary expression column sql (SELECT (col1 + col2) AS "res1" FROM table1) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "res1",
-      "type": Object {
-        "available": Array [
-          Array [
-            Object {
+      "type": {
+        "available": [
+          [
+            {
               "postgresType": "float4",
               "type": 3,
             },
-            Object {
+            {
               "postgresType": "float4",
               "type": 3,
             },
-            Object {
-              "postgresType": "float4",
-              "type": 3,
-            },
-          ],
-          Array [
-            Object {
-              "postgresType": "int8",
-              "type": 4,
-            },
-            Object {
-              "postgresType": "int8",
-              "type": 4,
-            },
-            Object {
+            {
               "postgresType": "float4",
               "type": 3,
             },
           ],
-          Array [
-            Object {
+          [
+            {
+              "postgresType": "int8",
+              "type": 4,
+            },
+            {
+              "postgresType": "int8",
+              "type": 4,
+            },
+            {
+              "postgresType": "float4",
+              "type": 3,
+            },
+          ],
+          [
+            {
               "postgresType": "date",
               "type": 6,
             },
-            Object {
+            {
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "postgresType": "date",
               "type": 6,
             },
           ],
         ],
-        "left": Object {
+        "left": {
           "column": "col1",
           "schema": undefined,
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 11,
             "start": 8,
             "tag": 11,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 11,
                 "start": 8,
                 "tag": 8,
@@ -874,15 +874,15 @@ Object {
           "type": 19,
         },
         "part": 2,
-        "right": Object {
+        "right": {
           "column": "col2",
           "schema": undefined,
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 18,
             "start": 15,
             "tag": 11,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 18,
                 "start": 15,
                 "tag": 8,
@@ -893,17 +893,17 @@ Object {
           "table": undefined,
           "type": 19,
         },
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 18,
           "start": 8,
           "tag": 46,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 11,
               "start": 8,
               "tag": 11,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 11,
                   "start": 8,
                   "tag": 8,
@@ -911,18 +911,18 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 13,
               "start": 13,
               "tag": 44,
               "value": "+",
             },
-            Object {
+            {
               "end": 18,
               "start": 15,
               "tag": 11,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 18,
                   "start": 15,
                   "tag": 8,
@@ -936,22 +936,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 41,
         "start": 36,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 41,
             "start": 36,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 41,
                 "start": 36,
                 "tag": 8,
@@ -969,109 +969,109 @@ Object {
 `;
 
 exports[`Query Interface Should convert binary expression numbers sql (SELECT 1+2) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
+      "type": {
         "postgresType": "float4",
         "type": 3,
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert binary expression string sql (SELECT 'test' || 'other') 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
+      "type": {
         "postgresType": "text",
         "type": 2,
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert boolean fields mixed sql (SELECT FALSE, TRUE as "col2") 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "bool",
-      "type": Object {
+      "type": {
         "literal": false,
         "postgresType": "bool",
         "type": 5,
       },
     },
-    Object {
+    {
       "name": "col2",
-      "type": Object {
+      "type": {
         "literal": true,
         "postgresType": "bool",
         "type": 5,
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert boolean fields named sql (SELECT FALSE as "col1", TRUE as "col2") 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "col1",
-      "type": Object {
+      "type": {
         "literal": false,
         "postgresType": "bool",
         "type": 5,
       },
     },
-    Object {
+    {
       "name": "col2",
-      "type": Object {
+      "type": {
         "literal": true,
         "postgresType": "bool",
         "type": 5,
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert boolean fields not named sql (SELECT FALSE, TRUE) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "bool",
-      "type": Object {
+      "type": {
         "literal": false,
         "postgresType": "bool",
         "type": 5,
       },
     },
-    Object {
+    {
       "name": "bool",
-      "type": Object {
+      "type": {
         "literal": true,
         "postgresType": "bool",
         "type": 5,
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
@@ -1084,28 +1084,28 @@ exports[`Query Interface Should convert case columns sql (
           END AS "res1"
         FROM table1
       ) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "res1",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "column": "col1",
             "schema": undefined,
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 71,
               "start": 61,
               "tag": 11,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 66,
                   "start": 61,
                   "tag": 8,
                   "value": "table1",
                 },
-                Object {
+                {
                   "end": 71,
                   "start": 68,
                   "tag": 8,
@@ -1116,15 +1116,15 @@ Object {
             "table": "table1",
             "type": 19,
           },
-          Object {
+          {
             "column": "col2",
             "schema": undefined,
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 101,
               "start": 98,
               "tag": 11,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 101,
                   "start": 98,
                   "tag": 8,
@@ -1135,23 +1135,23 @@ Object {
             "table": undefined,
             "type": 19,
           },
-          Object {
+          {
             "literal": "other",
             "postgresType": "text",
             "type": 2,
           },
         ],
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 140,
           "start": 26,
           "tag": 42,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 34,
               "start": 31,
               "tag": 11,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 34,
                   "start": 31,
                   "tag": 8,
@@ -1159,29 +1159,29 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 71,
               "start": 48,
               "tag": 40,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 54,
                   "start": 53,
                   "tag": 19,
                   "value": "12",
                 },
-                Object {
+                {
                   "end": 71,
                   "start": 61,
                   "tag": 11,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 66,
                       "start": 61,
                       "tag": 8,
                       "value": "table1",
                     },
-                    Object {
+                    {
                       "end": 71,
                       "start": 68,
                       "tag": 8,
@@ -1191,23 +1191,23 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 101,
               "start": 85,
               "tag": 40,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 91,
                   "start": 90,
                   "tag": 19,
                   "value": "20",
                 },
-                Object {
+                {
                   "end": 101,
                   "start": 98,
                   "tag": 11,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 101,
                       "start": 98,
                       "tag": 8,
@@ -1217,12 +1217,12 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 126,
               "start": 115,
               "tag": 41,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 126,
                   "start": 120,
                   "tag": 13,
@@ -1236,22 +1236,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 170,
         "start": 165,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 170,
             "start": 165,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 170,
                 "start": 165,
                 "tag": 8,
@@ -1269,41 +1269,41 @@ Object {
 `;
 
 exports[`Query Interface Should convert case sql (SELECT CASE WHEN TRUE THEN TRUE ELSE 'other' END) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "literal": true,
             "postgresType": "bool",
             "type": 5,
           },
-          Object {
+          {
             "literal": "other",
             "postgresType": "text",
             "type": 2,
           },
         ],
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 47,
           "start": 7,
           "tag": 43,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 30,
               "start": 12,
               "tag": 40,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 20,
                   "start": 17,
                   "tag": 21,
                   "value": "TRUE",
                 },
-                Object {
+                {
                   "end": 30,
                   "start": 27,
                   "tag": 21,
@@ -1311,12 +1311,12 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 43,
               "start": 32,
               "tag": 41,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 43,
                   "start": 37,
                   "tag": 13,
@@ -1330,36 +1330,36 @@ Object {
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert cast with schema sql (SELECT 'text'::information_schema.sql_identifier) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "row",
-      "type": Object {
+      "type": {
         "name": "sql_identifier",
         "schema": "information_schema",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 47,
           "start": 15,
           "tag": 32,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 47,
               "start": 15,
               "tag": 89,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 32,
                   "start": 15,
                   "tag": 8,
                   "value": "information_schema",
                 },
-                Object {
+                {
                   "end": 47,
                   "start": 34,
                   "tag": 8,
@@ -1373,7 +1373,7 @@ Object {
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
@@ -1389,30 +1389,30 @@ exports[`Query Interface Should convert combination select sql (
         FROM table4
         WHERE :id = table1.id AND table4.id = :id
       ) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 136,
       "name": "joinVal",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 129,
-      "type": Object {
+      "type": {
         "column": "val",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 125,
           "start": 116,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 121,
               "start": 116,
               "tag": 8,
               "value": "table3",
             },
-            Object {
+            {
               "end": 125,
               "start": 123,
               "tag": 8,
@@ -1424,28 +1424,28 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "end": 280,
       "name": "id",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 278,
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 292,
           "start": 284,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 289,
               "start": 284,
               "tag": 8,
               "value": "table1",
             },
-            Object {
+            {
               "end": 292,
               "start": 291,
               "tag": 8,
@@ -1457,28 +1457,28 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "end": 312,
       "name": "id",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 310,
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 306,
           "start": 298,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 303,
               "start": 298,
               "tag": 8,
               "value": "table4",
             },
-            Object {
+            {
               "end": 306,
               "start": 305,
               "tag": 8,
@@ -1491,18 +1491,18 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "res1",
-      "type": Object {
+      "type": {
         "column": "col1",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 29,
           "start": 26,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 29,
               "start": 26,
               "tag": 8,
@@ -1514,31 +1514,31 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 144,
           "start": 53,
           "tag": 81,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 61,
               "start": 60,
               "tag": 62,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 61,
                   "start": 60,
                   "tag": 61,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 61,
                       "start": 60,
                       "tag": 11,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 61,
                           "start": 60,
                           "tag": 8,
@@ -1550,27 +1550,27 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 136,
               "start": 63,
               "tag": 69,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 73,
                   "start": 68,
                   "tag": 68,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 73,
                       "start": 68,
                       "tag": 90,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 73,
                           "start": 68,
                           "tag": 89,
-                          "values": Array [
-                            Object {
+                          "values": [
+                            {
                               "end": 73,
                               "start": 68,
                               "tag": 8,
@@ -1582,28 +1582,28 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 136,
                   "start": 75,
                   "tag": 67,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 78,
                       "start": 75,
                       "tag": 64,
                       "value": "JOIN",
                     },
-                    Object {
+                    {
                       "end": 85,
                       "start": 80,
                       "tag": 90,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 85,
                           "start": 80,
                           "tag": 89,
-                          "values": Array [
-                            Object {
+                          "values": [
+                            {
                               "end": 85,
                               "start": 80,
                               "tag": 8,
@@ -1613,33 +1613,33 @@ Object {
                         },
                       ],
                     },
-                    Object {
+                    {
                       "end": 136,
                       "start": 87,
                       "tag": 65,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 136,
                           "start": 90,
                           "tag": 46,
-                          "values": Array [
-                            Object {
+                          "values": [
+                            {
                               "end": 110,
                               "start": 90,
                               "tag": 46,
-                              "values": Array [
-                                Object {
+                              "values": [
+                                {
                                   "end": 98,
                                   "start": 90,
                                   "tag": 11,
-                                  "values": Array [
-                                    Object {
+                                  "values": [
+                                    {
                                       "end": 95,
                                       "start": 90,
                                       "tag": 8,
                                       "value": "table3",
                                     },
-                                    Object {
+                                    {
                                       "end": 98,
                                       "start": 97,
                                       "tag": 8,
@@ -1647,24 +1647,24 @@ Object {
                                     },
                                   ],
                                 },
-                                Object {
+                                {
                                   "end": 100,
                                   "start": 100,
                                   "tag": 44,
                                   "value": "=",
                                 },
-                                Object {
+                                {
                                   "end": 110,
                                   "start": 102,
                                   "tag": 11,
-                                  "values": Array [
-                                    Object {
+                                  "values": [
+                                    {
                                       "end": 107,
                                       "start": 102,
                                       "tag": 8,
                                       "value": "table2",
                                     },
-                                    Object {
+                                    {
                                       "end": 110,
                                       "start": 109,
                                       "tag": 8,
@@ -1674,29 +1674,29 @@ Object {
                                 },
                               ],
                             },
-                            Object {
+                            {
                               "end": 114,
                               "start": 112,
                               "tag": 44,
                               "value": "AND",
                             },
-                            Object {
+                            {
                               "end": 136,
                               "start": 116,
                               "tag": 46,
-                              "values": Array [
-                                Object {
+                              "values": [
+                                {
                                   "end": 125,
                                   "start": 116,
                                   "tag": 11,
-                                  "values": Array [
-                                    Object {
+                                  "values": [
+                                    {
                                       "end": 121,
                                       "start": 116,
                                       "tag": 8,
                                       "value": "table3",
                                     },
-                                    Object {
+                                    {
                                       "end": 125,
                                       "start": 123,
                                       "tag": 8,
@@ -1704,23 +1704,23 @@ Object {
                                     },
                                   ],
                                 },
-                                Object {
+                                {
                                   "end": 127,
                                   "start": 127,
                                   "tag": 44,
                                   "value": ">",
                                 },
-                                Object {
+                                {
                                   "end": 136,
                                   "start": 129,
                                   "tag": 10,
-                                  "values": Array [
-                                    Object {
+                                  "values": [
+                                    {
                                       "end": 136,
                                       "start": 130,
                                       "tag": 123,
-                                      "values": Array [
-                                        Object {
+                                      "values": [
+                                        {
                                           "end": 136,
                                           "start": 130,
                                           "tag": 8,
@@ -1740,17 +1740,17 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 144,
               "start": 138,
               "tag": 78,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 144,
                   "start": 144,
                   "tag": 30,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 144,
                       "start": 144,
                       "tag": 20,
@@ -1763,15 +1763,15 @@ Object {
           ],
         },
         "type": 30,
-        "value": Object {
+        "value": {
           "column": "id",
           "schema": undefined,
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 61,
             "start": 60,
             "tag": 11,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 61,
                 "start": 60,
                 "tag": 8,
@@ -1785,22 +1785,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table2",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 73,
         "start": 68,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 73,
             "start": 68,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 73,
                 "start": 68,
                 "tag": 8,
@@ -1813,21 +1813,21 @@ Object {
       "table": "table2",
       "type": "Table",
     },
-    Object {
+    {
       "isResult": true,
       "name": "table3",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 85,
         "start": 80,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 85,
             "start": 80,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 85,
                 "start": 80,
                 "tag": 8,
@@ -1840,21 +1840,21 @@ Object {
       "table": "table3",
       "type": "Table",
     },
-    Object {
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 165,
         "start": 160,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 165,
             "start": 160,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 165,
                 "start": 160,
                 "tag": 8,
@@ -1867,21 +1867,21 @@ Object {
       "table": "table1",
       "type": "Table",
     },
-    Object {
+    {
       "isResult": true,
       "name": "table4",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 262,
         "start": 257,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 262,
             "start": 257,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 262,
                 "start": 257,
                 "tag": 8,
@@ -1899,55 +1899,55 @@ Object {
 `;
 
 exports[`Query Interface Should convert complex row sql (SELECT (1, 2+2, :param1), ROW (123), (1,2,(3))) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 22,
       "name": "param1",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 16,
-      "type": Object {
+      "type": {
         "postgresType": "any",
         "type": 9,
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "row",
-      "type": Object {
+      "type": {
         "name": "row",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 23,
           "start": 7,
           "tag": 38,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 8,
               "start": 8,
               "tag": 19,
               "value": "1",
             },
-            Object {
+            {
               "end": 13,
               "start": 11,
               "tag": 46,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 11,
                   "start": 11,
                   "tag": 19,
                   "value": "2",
                 },
-                Object {
+                {
                   "end": 12,
                   "start": 12,
                   "tag": 44,
                   "value": "+",
                 },
-                Object {
+                {
                   "end": 13,
                   "start": 13,
                   "tag": 19,
@@ -1955,17 +1955,17 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 22,
               "start": 16,
               "tag": 10,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 22,
                   "start": 17,
                   "tag": 123,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 22,
                       "start": 17,
                       "tag": 8,
@@ -1978,22 +1978,22 @@ Object {
           ],
         },
         "type": 23,
-        "value": Object {
+        "value": {
           "postgresType": "row",
           "type": 2,
         },
       },
     },
-    Object {
+    {
       "name": "row",
-      "type": Object {
+      "type": {
         "name": "row",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 34,
           "start": 26,
           "tag": 39,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 33,
               "start": 31,
               "tag": 19,
@@ -2002,39 +2002,39 @@ Object {
           ],
         },
         "type": 23,
-        "value": Object {
+        "value": {
           "postgresType": "row",
           "type": 2,
         },
       },
     },
-    Object {
+    {
       "name": "row",
-      "type": Object {
+      "type": {
         "name": "row",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 45,
           "start": 37,
           "tag": 38,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 38,
               "start": 38,
               "tag": 19,
               "value": "1",
             },
-            Object {
+            {
               "end": 40,
               "start": 40,
               "tag": 19,
               "value": "2",
             },
-            Object {
+            {
               "end": 44,
               "start": 42,
               "tag": 106,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 43,
                   "start": 43,
                   "tag": 19,
@@ -2045,36 +2045,36 @@ Object {
           ],
         },
         "type": 23,
-        "value": Object {
+        "value": {
           "postgresType": "row",
           "type": 2,
         },
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert composite type from table sql (SELECT (item).supplier_id FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "supplier_id",
-      "type": Object {
+      "type": {
         "name": "supplier_id",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 24,
           "start": 7,
           "tag": 106,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 11,
               "start": 8,
               "tag": 11,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 11,
                   "start": 8,
                   "tag": 8,
@@ -2082,12 +2082,12 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 24,
               "start": 13,
               "tag": 29,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 24,
                   "start": 14,
                   "tag": 8,
@@ -2098,15 +2098,15 @@ Object {
           ],
         },
         "type": 27,
-        "value": Object {
+        "value": {
           "column": "item",
           "schema": undefined,
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 11,
             "start": 8,
             "tag": 11,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 11,
                 "start": 8,
                 "tag": 8,
@@ -2120,22 +2120,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "all_types",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 39,
         "start": 31,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 39,
             "start": 31,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 39,
                 "start": 31,
                 "tag": 8,
@@ -2153,19 +2153,19 @@ Object {
 `;
 
 exports[`Query Interface Should convert cte with values sql (WITH ins(id, val) AS (VALUES (1::int, 2::int),(3::int, 4::int)) SELECT * FROM ins) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
+      "type": {
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 71,
           "start": 71,
           "tag": 37,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 71,
               "start": 71,
               "tag": 36,
@@ -2177,37 +2177,37 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "name": "ins",
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 62,
         "start": 5,
         "tag": 5,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 16,
             "start": 5,
             "tag": 2,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 7,
                 "start": 5,
                 "tag": 8,
                 "value": "ins",
               },
-              Object {
+              {
                 "end": 16,
                 "start": 8,
                 "tag": 85,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 10,
                     "start": 9,
                     "tag": 8,
                     "value": "id",
                   },
-                  Object {
+                  {
                     "end": 15,
                     "start": 13,
                     "tag": 8,
@@ -2217,38 +2217,38 @@ Object {
               },
             ],
           },
-          Object {
+          {
             "end": 61,
             "start": 22,
             "tag": 3,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 44,
                 "start": 29,
                 "tag": 4,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 36,
                     "start": 30,
                     "tag": 52,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 30,
                         "start": 30,
                         "tag": 19,
                         "value": "1",
                       },
-                      Object {
+                      {
                         "end": 35,
                         "start": 33,
                         "tag": 32,
-                        "values": Array [
-                          Object {
+                        "values": [
+                          {
                             "end": 35,
                             "start": 33,
                             "tag": 89,
-                            "values": Array [
-                              Object {
+                            "values": [
+                              {
                                 "end": 35,
                                 "start": 33,
                                 "tag": 8,
@@ -2260,28 +2260,28 @@ Object {
                       },
                     ],
                   },
-                  Object {
+                  {
                     "end": 44,
                     "start": 38,
                     "tag": 52,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 38,
                         "start": 38,
                         "tag": 19,
                         "value": "2",
                       },
-                      Object {
+                      {
                         "end": 43,
                         "start": 41,
                         "tag": 32,
-                        "values": Array [
-                          Object {
+                        "values": [
+                          {
                             "end": 43,
                             "start": 41,
                             "tag": 89,
-                            "values": Array [
-                              Object {
+                            "values": [
+                              {
                                 "end": 43,
                                 "start": 41,
                                 "tag": 8,
@@ -2295,33 +2295,33 @@ Object {
                   },
                 ],
               },
-              Object {
+              {
                 "end": 61,
                 "start": 46,
                 "tag": 4,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 53,
                     "start": 47,
                     "tag": 52,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 47,
                         "start": 47,
                         "tag": 19,
                         "value": "3",
                       },
-                      Object {
+                      {
                         "end": 52,
                         "start": 50,
                         "tag": 32,
-                        "values": Array [
-                          Object {
+                        "values": [
+                          {
                             "end": 52,
                             "start": 50,
                             "tag": 89,
-                            "values": Array [
-                              Object {
+                            "values": [
+                              {
                                 "end": 52,
                                 "start": 50,
                                 "tag": 8,
@@ -2333,28 +2333,28 @@ Object {
                       },
                     ],
                   },
-                  Object {
+                  {
                     "end": 61,
                     "start": 55,
                     "tag": 52,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 55,
                         "start": 55,
                         "tag": 19,
                         "value": "4",
                       },
-                      Object {
+                      {
                         "end": 60,
                         "start": 58,
                         "tag": 32,
-                        "values": Array [
-                          Object {
+                        "values": [
+                          {
                             "end": 60,
                             "start": 58,
                             "tag": 89,
-                            "values": Array [
-                              Object {
+                            "values": [
+                              {
                                 "end": 60,
                                 "start": 58,
                                 "tag": 8,
@@ -2373,31 +2373,31 @@ Object {
         ],
       },
       "type": "Values",
-      "types": Array [
-        Object {
+      "types": [
+        {
           "name": "id",
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 36,
             "start": 30,
             "tag": 52,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 30,
                 "start": 30,
                 "tag": 19,
                 "value": "1",
               },
-              Object {
+              {
                 "end": 35,
                 "start": 33,
                 "tag": 32,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 35,
                     "start": 33,
                     "tag": 89,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 35,
                         "start": 33,
                         "tag": 8,
@@ -2410,19 +2410,19 @@ Object {
             ],
           },
           "type": 23,
-          "value": Object {
+          "value": {
             "name": "int4",
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 35,
               "start": 33,
               "tag": 32,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 35,
                   "start": 33,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 35,
                       "start": 33,
                       "tag": 8,
@@ -2433,36 +2433,36 @@ Object {
               ],
             },
             "type": 23,
-            "value": Object {
+            "value": {
               "postgresType": "int4",
               "type": 3,
             },
           },
         },
-        Object {
+        {
           "name": "val",
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 44,
             "start": 38,
             "tag": 52,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 38,
                 "start": 38,
                 "tag": 19,
                 "value": "2",
               },
-              Object {
+              {
                 "end": 43,
                 "start": 41,
                 "tag": 32,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 43,
                     "start": 41,
                     "tag": 89,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 43,
                         "start": 41,
                         "tag": 8,
@@ -2475,19 +2475,19 @@ Object {
             ],
           },
           "type": 23,
-          "value": Object {
+          "value": {
             "name": "int4",
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 43,
               "start": 41,
               "tag": 32,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 43,
                   "start": 41,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 43,
                       "start": 41,
                       "tag": 8,
@@ -2498,7 +2498,7 @@ Object {
               ],
             },
             "type": 23,
-            "value": Object {
+            "value": {
               "postgresType": "int4",
               "type": 3,
             },
@@ -2511,24 +2511,24 @@ Object {
 `;
 
 exports[`Query Interface Should convert delete with param sql (DELETE FROM table1 WHERE id = :id) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 32,
       "name": "id",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 30,
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 26,
           "start": 25,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 26,
               "start": 25,
               "tag": 8,
@@ -2541,23 +2541,23 @@ Object {
       },
     },
   ],
-  "results": Array [],
-  "sources": Array [
-    Object {
+  "results": [],
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 17,
         "start": 12,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 17,
             "start": 12,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 17,
                 "start": 12,
                 "tag": 8,
@@ -2575,20 +2575,20 @@ Object {
 `;
 
 exports[`Query Interface Should convert delete with returning sql (DELETE FROM table1 RETURNING id, col2) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 30,
           "start": 29,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 30,
               "start": 29,
               "tag": 8,
@@ -2600,17 +2600,17 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "col2",
-      "type": Object {
+      "type": {
         "column": "col2",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 36,
           "start": 33,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 36,
               "start": 33,
               "tag": 8,
@@ -2623,22 +2623,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 17,
         "start": 12,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 17,
             "start": 12,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 17,
                 "start": 12,
                 "tag": 8,
@@ -2656,24 +2656,24 @@ Object {
 `;
 
 exports[`Query Interface Should convert double precision sql (SELECT '123'::double precision) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "float8",
-      "type": Object {
+      "type": {
         "name": "float8",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 29,
           "start": 14,
           "tag": 32,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 29,
               "start": 14,
               "tag": 89,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 29,
                   "start": 14,
                   "tag": 8,
@@ -2684,33 +2684,33 @@ Object {
           ],
         },
         "type": 23,
-        "value": Object {
+        "value": {
           "postgresType": "float8",
           "type": 3,
         },
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert enum type sql (SELECT id::custom_type FROM table1) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "id",
-      "type": Object {
-        "column": Object {
+      "type": {
+        "column": {
           "column": "id",
           "schema": undefined,
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 8,
             "start": 7,
             "tag": 11,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 8,
                 "start": 7,
                 "tag": 8,
@@ -2721,17 +2721,17 @@ Object {
           "table": undefined,
           "type": 19,
         },
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 22,
           "start": 7,
           "tag": 52,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 8,
               "start": 7,
               "tag": 11,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 8,
                   "start": 7,
                   "tag": 8,
@@ -2739,17 +2739,17 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 21,
               "start": 11,
               "tag": 32,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 21,
                   "start": 11,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 21,
                       "start": 11,
                       "tag": 8,
@@ -2762,20 +2762,20 @@ Object {
           ],
         },
         "type": 16,
-        "value": Object {
+        "value": {
           "name": "custom_type",
           "schema": undefined,
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 21,
             "start": 11,
             "tag": 32,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 21,
                 "start": 11,
                 "tag": 89,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 21,
                     "start": 11,
                     "tag": 8,
@@ -2790,22 +2790,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 33,
         "start": 28,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 33,
             "start": 28,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 33,
                 "start": 28,
                 "tag": 8,
@@ -2823,20 +2823,20 @@ Object {
 `;
 
 exports[`Query Interface Should convert from select sql (SELECT id FROM all_types) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 8,
           "start": 7,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 8,
               "start": 7,
               "tag": 8,
@@ -2849,22 +2849,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "all_types",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 23,
         "start": 15,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 23,
             "start": 15,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 23,
                 "start": 15,
                 "tag": 8,
@@ -2882,35 +2882,35 @@ Object {
 `;
 
 exports[`Query Interface Should convert function param sql (SELECT ABS($id) FROM table1) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 13,
       "name": "id",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 11,
-      "type": Object {
-        "args": Array [
-          Object {
+      "type": {
+        "args": [
+          {
             "postgresType": "any",
             "type": 1,
           },
         ],
         "index": 0,
         "name": "abs",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 13,
           "start": 11,
           "tag": 10,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 13,
               "start": 12,
               "tag": 123,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 13,
                   "start": 12,
                   "tag": 8,
@@ -2924,29 +2924,29 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "abs",
-      "type": Object {
-        "args": Array [
-          Object {
+      "type": {
+        "args": [
+          {
             "postgresType": "any",
             "type": 1,
           },
         ],
         "name": "abs",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 14,
           "start": 7,
           "tag": 54,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 9,
               "start": 7,
               "tag": 89,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 9,
                   "start": 7,
                   "tag": 8,
@@ -2954,17 +2954,17 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 13,
               "start": 11,
               "tag": 10,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 13,
                   "start": 12,
                   "tag": 123,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 13,
                       "start": 12,
                       "tag": 8,
@@ -2980,22 +2980,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 26,
         "start": 21,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 26,
             "start": 21,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 26,
                 "start": 21,
                 "tag": 8,
@@ -3013,22 +3013,22 @@ Object {
 `;
 
 exports[`Query Interface Should convert function sql (SELECT ABS(id) FROM table1) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "abs",
-      "type": Object {
-        "args": Array [
-          Object {
+      "type": {
+        "args": [
+          {
             "column": "id",
             "schema": undefined,
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 12,
               "start": 11,
               "tag": 11,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 12,
                   "start": 11,
                   "tag": 8,
@@ -3042,17 +3042,17 @@ Object {
         ],
         "name": "abs",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 13,
           "start": 7,
           "tag": 54,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 9,
               "start": 7,
               "tag": 89,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 9,
                   "start": 7,
                   "tag": 8,
@@ -3060,12 +3060,12 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 12,
               "start": 11,
               "tag": 11,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 12,
                   "start": 11,
                   "tag": 8,
@@ -3079,22 +3079,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 25,
         "start": 20,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 25,
             "start": 20,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 25,
                 "start": 20,
                 "tag": 8,
@@ -3112,14 +3112,14 @@ Object {
 `;
 
 exports[`Query Interface Should convert function with schema sql (SELECT information_schema._pg_char_max_length('123')) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "_pg_char_max_length",
-      "type": Object {
-        "args": Array [
-          Object {
+      "type": {
+        "args": [
+          {
             "literal": "123",
             "postgresType": "text",
             "type": 2,
@@ -3127,23 +3127,23 @@ Object {
         ],
         "name": "_pg_char_max_length",
         "schema": "information_schema",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 51,
           "start": 7,
           "tag": 54,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 44,
               "start": 7,
               "tag": 89,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 24,
                   "start": 7,
                   "tag": 8,
                   "value": "information_schema",
                 },
-                Object {
+                {
                   "end": 44,
                   "start": 26,
                   "tag": 8,
@@ -3151,7 +3151,7 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 50,
               "start": 46,
               "tag": 13,
@@ -3163,32 +3163,32 @@ Object {
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert function with star sql (SELECT information_schema._pg_truetypmod(a.*, t.*) FROM table1) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "_pg_truetypmod",
-      "type": Object {
-        "args": Array [
-          Object {
+      "type": {
+        "args": [
+          {
             "schema": undefined,
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 43,
               "start": 41,
               "tag": 37,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 41,
                   "start": 41,
                   "tag": 8,
                   "value": "a",
                 },
-                Object {
+                {
                   "end": 43,
                   "start": 43,
                   "tag": 36,
@@ -3198,20 +3198,20 @@ Object {
             "table": "a",
             "type": 20,
           },
-          Object {
+          {
             "schema": undefined,
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 48,
               "start": 46,
               "tag": 37,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 46,
                   "start": 46,
                   "tag": 8,
                   "value": "t",
                 },
-                Object {
+                {
                   "end": 48,
                   "start": 48,
                   "tag": 36,
@@ -3224,23 +3224,23 @@ Object {
         ],
         "name": "_pg_truetypmod",
         "schema": "information_schema",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 49,
           "start": 7,
           "tag": 54,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 39,
               "start": 7,
               "tag": 89,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 24,
                   "start": 7,
                   "tag": 8,
                   "value": "information_schema",
                 },
-                Object {
+                {
                   "end": 39,
                   "start": 26,
                   "tag": 8,
@@ -3248,36 +3248,36 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 43,
               "start": 41,
               "tag": 37,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 41,
                   "start": 41,
                   "tag": 8,
                   "value": "a",
                 },
-                Object {
+                {
                   "end": 43,
                   "start": 43,
                   "tag": 36,
                 },
               ],
             },
-            Object {
+            {
               "end": 48,
               "start": 46,
               "tag": 37,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 46,
                   "start": 46,
                   "tag": 8,
                   "value": "t",
                 },
-                Object {
+                {
                   "end": 48,
                   "start": 48,
                   "tag": 36,
@@ -3290,22 +3290,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 61,
         "start": 56,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 61,
             "start": 56,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 61,
                 "start": 56,
                 "tag": 8,
@@ -3323,27 +3323,27 @@ Object {
 `;
 
 exports[`Query Interface Should convert insert multiple param values sql (INSERT INTO table1 VALUES $$rows(name, test)) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 43,
       "name": "rows",
-      "pick": Array [
-        Object {
+      "pick": [
+        {
           "castType": undefined,
           "name": "name",
           "required": false,
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 36,
             "start": 33,
             "tag": 119,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 36,
                 "start": 33,
                 "tag": 123,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 36,
                     "start": 33,
                     "tag": 8,
@@ -3353,26 +3353,26 @@ Object {
               },
             ],
           },
-          "type": Object {
+          "type": {
             "postgresType": "any",
             "type": 9,
           },
         },
-        Object {
+        {
           "castType": undefined,
           "name": "test",
           "required": false,
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 42,
             "start": 39,
             "tag": 119,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 42,
                 "start": 39,
                 "tag": 123,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 42,
                     "start": 39,
                     "tag": 8,
@@ -3382,7 +3382,7 @@ Object {
               },
             ],
           },
-          "type": Object {
+          "type": {
             "postgresType": "any",
             "type": 9,
           },
@@ -3391,29 +3391,29 @@ Object {
       "required": true,
       "spread": true,
       "start": 26,
-      "type": Object {
+      "type": {
         "postgresType": "any",
         "type": 9,
       },
     },
   ],
-  "results": Array [],
-  "sources": Array [
-    Object {
+  "results": [],
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 17,
         "start": 12,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 17,
             "start": 12,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 17,
                 "start": 12,
                 "tag": 8,
@@ -3431,19 +3431,19 @@ Object {
 `;
 
 exports[`Query Interface Should convert insert returning star sql (INSERT INTO table1 (id) VALUES (1),(2) RETURNING *) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
+      "type": {
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 49,
           "start": 49,
           "tag": 37,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 49,
               "start": 49,
               "tag": 36,
@@ -3455,22 +3455,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 17,
         "start": 12,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 17,
             "start": 12,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 17,
                 "start": 12,
                 "tag": 8,
@@ -3495,26 +3495,26 @@ exports[`Query Interface Should convert join fields sql (
         FROM table1 AS t1
         JOIN table2 ON table2.id = table1.id
       ) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "col1",
-      "type": Object {
+      "type": {
         "column": "col1",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 32,
           "start": 26,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 27,
               "start": 26,
               "tag": 8,
               "value": "t1",
             },
-            Object {
+            {
               "end": 32,
               "start": 29,
               "tag": 8,
@@ -3526,23 +3526,23 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "myCol2",
-      "type": Object {
+      "type": {
         "column": "col2",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 61,
           "start": 55,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 56,
               "start": 55,
               "tag": 8,
               "value": "t1",
             },
-            Object {
+            {
               "end": 61,
               "start": 58,
               "tag": 8,
@@ -3554,23 +3554,23 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "other",
-      "type": Object {
+      "type": {
         "column": "col2",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 96,
           "start": 86,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 91,
               "start": 86,
               "tag": 8,
               "value": "table2",
             },
-            Object {
+            {
               "end": 96,
               "start": 93,
               "tag": 8,
@@ -3583,22 +3583,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "t1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 133,
         "start": 122,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 127,
             "start": 122,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 127,
                 "start": 122,
                 "tag": 8,
@@ -3606,12 +3606,12 @@ Object {
               },
             ],
           },
-          Object {
+          {
             "end": 133,
             "start": 129,
             "tag": 12,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 133,
                 "start": 132,
                 "tag": 8,
@@ -3624,21 +3624,21 @@ Object {
       "table": "table1",
       "type": "Table",
     },
-    Object {
+    {
       "isResult": true,
       "name": "table2",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 153,
         "start": 148,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 153,
             "start": 148,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 153,
                 "start": 148,
                 "tag": 8,
@@ -3665,26 +3665,26 @@ exports[`Query Interface Should convert join with aliases fields sql (
         JOIN fit.table2 as "myT2" ON table2.id = table1.id
         JOIN table3 as "myT4" ON myT2.id = table1.id
       ) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "col1",
-      "type": Object {
+      "type": {
         "column": "col1",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 32,
           "start": 26,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 27,
               "start": 26,
               "tag": 8,
               "value": "t1",
             },
-            Object {
+            {
               "end": 32,
               "start": 29,
               "tag": 8,
@@ -3696,23 +3696,23 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "myCol2",
-      "type": Object {
+      "type": {
         "column": "col2",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 61,
           "start": 55,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 56,
               "start": 55,
               "tag": 8,
               "value": "t1",
             },
-            Object {
+            {
               "end": 61,
               "start": 58,
               "tag": 8,
@@ -3724,23 +3724,23 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "other",
-      "type": Object {
+      "type": {
         "column": "col2",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 94,
           "start": 86,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 89,
               "start": 86,
               "tag": 8,
               "value": "myT2",
             },
-            Object {
+            {
               "end": 94,
               "start": 91,
               "tag": 8,
@@ -3752,23 +3752,23 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "test",
-      "type": Object {
+      "type": {
         "column": "col_9",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 127,
           "start": 118,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 121,
               "start": 118,
               "tag": 8,
               "value": "myT4",
             },
-            Object {
+            {
               "end": 127,
               "start": 123,
               "tag": 8,
@@ -3781,28 +3781,28 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "t1",
       "schema": "fit",
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 167,
         "start": 152,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 161,
             "start": 152,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 154,
                 "start": 152,
                 "tag": 8,
                 "value": "fit",
               },
-              Object {
+              {
                 "end": 161,
                 "start": 156,
                 "tag": 8,
@@ -3810,12 +3810,12 @@ Object {
               },
             ],
           },
-          Object {
+          {
             "end": 167,
             "start": 163,
             "tag": 12,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 167,
                 "start": 166,
                 "tag": 8,
@@ -3828,27 +3828,27 @@ Object {
       "table": "table1",
       "type": "Table",
     },
-    Object {
+    {
       "isResult": true,
       "name": "myT2",
       "schema": "fit",
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 201,
         "start": 182,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 191,
             "start": 182,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 184,
                 "start": 182,
                 "tag": 8,
                 "value": "fit",
               },
-              Object {
+              {
                 "end": 191,
                 "start": 186,
                 "tag": 8,
@@ -3856,12 +3856,12 @@ Object {
               },
             ],
           },
-          Object {
+          {
             "end": 201,
             "start": 193,
             "tag": 12,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 201,
                 "start": 196,
                 "tag": 9,
@@ -3874,21 +3874,21 @@ Object {
       "table": "table2",
       "type": "Table",
     },
-    Object {
+    {
       "isResult": true,
       "name": "myT4",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 256,
         "start": 241,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 246,
             "start": 241,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 246,
                 "start": 241,
                 "tag": 8,
@@ -3896,12 +3896,12 @@ Object {
               },
             ],
           },
-          Object {
+          {
             "end": 256,
             "start": 248,
             "tag": 12,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 256,
                 "start": 251,
                 "tag": 9,
@@ -3919,40 +3919,40 @@ Object {
 `;
 
 exports[`Query Interface Should convert limit and offset params sql (SELECT id FROM table1 LIMIT :limit OFFSET :offset::int) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 33,
       "name": "limit",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 28,
-      "type": Object {
+      "type": {
         "postgresType": "text",
         "type": 2,
       },
     },
-    Object {
+    {
       "end": 48,
       "name": "offset",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 42,
-      "type": Object {
+      "type": {
         "name": "int4",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 53,
           "start": 51,
           "tag": 32,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 53,
               "start": 51,
               "tag": 89,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 53,
                   "start": 51,
                   "tag": 8,
@@ -3963,25 +3963,25 @@ Object {
           ],
         },
         "type": 23,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 8,
           "start": 7,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 8,
               "start": 7,
               "tag": 8,
@@ -3994,22 +3994,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 20,
         "start": 15,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 20,
             "start": 15,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 20,
                 "start": 15,
                 "tag": 8,
@@ -4027,30 +4027,30 @@ Object {
 `;
 
 exports[`Query Interface Should convert multiple params infer type from one 1 sql (SELECT col1 FROM table1 WHERE :id = table1.id AND :id) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 32,
       "name": "id",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 30,
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 44,
           "start": 36,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 41,
               "start": 36,
               "tag": 8,
               "value": "table1",
             },
-            Object {
+            {
               "end": 44,
               "start": 43,
               "tag": 8,
@@ -4062,31 +4062,31 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "end": 52,
       "name": "id",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 50,
-      "type": Object {
+      "type": {
         "postgresType": "any",
         "type": 1,
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "col1",
-      "type": Object {
+      "type": {
         "column": "col1",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 10,
           "start": 7,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 10,
               "start": 7,
               "tag": 8,
@@ -4099,22 +4099,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 22,
         "start": 17,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 22,
             "start": 17,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 22,
                 "start": 17,
                 "tag": 8,
@@ -4132,42 +4132,42 @@ Object {
 `;
 
 exports[`Query Interface Should convert multiple params infer type from one 2 sql (SELECT col1 FROM table1 WHERE :id IS NOT NULL OR :id = table1.id) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 32,
       "name": "id",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 30,
-      "type": Object {
+      "type": {
         "postgresType": "any",
         "type": 1,
       },
     },
-    Object {
+    {
       "end": 51,
       "name": "id",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 49,
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 63,
           "start": 55,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 60,
               "start": 55,
               "tag": 8,
               "value": "table1",
             },
-            Object {
+            {
               "end": 63,
               "start": 62,
               "tag": 8,
@@ -4180,18 +4180,18 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "col1",
-      "type": Object {
+      "type": {
         "column": "col1",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 10,
           "start": 7,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 10,
               "start": 7,
               "tag": 8,
@@ -4204,22 +4204,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 22,
         "start": 17,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 22,
             "start": 17,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 22,
                 "start": 17,
                 "tag": 8,
@@ -4237,73 +4237,73 @@ Object {
 `;
 
 exports[`Query Interface Should convert multiple params sql (SELECT :test1 AS "res1", :test2) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 12,
       "name": "test1",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 7,
-      "type": Object {
+      "type": {
         "postgresType": "any",
         "type": 9,
       },
     },
-    Object {
+    {
       "end": 30,
       "name": "test2",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 25,
-      "type": Object {
+      "type": {
         "postgresType": "any",
         "type": 9,
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "res1",
-      "type": Object {
+      "type": {
         "postgresType": "any",
         "type": 1,
       },
     },
-    Object {
+    {
       "name": "?column?",
-      "type": Object {
+      "type": {
         "postgresType": "any",
         "type": 1,
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert nested functions sql (SELECT ABS(ARRAY_LENGTH(ARRAY_AGG(integer_col), 1)) FROM all_types GROUP BY id) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "abs",
-      "type": Object {
-        "args": Array [
-          Object {
-            "args": Array [
-              Object {
-                "items": Object {
+      "type": {
+        "args": [
+          {
+            "args": [
+              {
+                "items": {
                   "column": "integer_col",
                   "schema": undefined,
-                  "sourceTag": Object {
+                  "sourceTag": {
                     "end": 44,
                     "start": 34,
                     "tag": 11,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 44,
                         "start": 34,
                         "tag": 8,
@@ -4314,17 +4314,17 @@ Object {
                   "table": undefined,
                   "type": 19,
                 },
-                "sourceTag": Object {
+                "sourceTag": {
                   "end": 45,
                   "start": 24,
                   "tag": 54,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 32,
                       "start": 24,
                       "tag": 89,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 32,
                           "start": 24,
                           "tag": 8,
@@ -4332,12 +4332,12 @@ Object {
                         },
                       ],
                     },
-                    Object {
+                    {
                       "end": 44,
                       "start": 34,
                       "tag": 11,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 44,
                           "start": 34,
                           "tag": 8,
@@ -4349,7 +4349,7 @@ Object {
                 },
                 "type": 25,
               },
-              Object {
+              {
                 "literal": 1,
                 "postgresType": "float4",
                 "type": 3,
@@ -4357,17 +4357,17 @@ Object {
             ],
             "name": "array_length",
             "schema": undefined,
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 49,
               "start": 11,
               "tag": 54,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 22,
                   "start": 11,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 22,
                       "start": 11,
                       "tag": 8,
@@ -4375,17 +4375,17 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 45,
                   "start": 24,
                   "tag": 54,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 32,
                       "start": 24,
                       "tag": 89,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 32,
                           "start": 24,
                           "tag": 8,
@@ -4393,12 +4393,12 @@ Object {
                         },
                       ],
                     },
-                    Object {
+                    {
                       "end": 44,
                       "start": 34,
                       "tag": 11,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 44,
                           "start": 34,
                           "tag": 8,
@@ -4408,7 +4408,7 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 48,
                   "start": 48,
                   "tag": 19,
@@ -4421,17 +4421,17 @@ Object {
         ],
         "name": "abs",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 50,
           "start": 7,
           "tag": 54,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 9,
               "start": 7,
               "tag": 89,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 9,
                   "start": 7,
                   "tag": 8,
@@ -4439,17 +4439,17 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 49,
               "start": 11,
               "tag": 54,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 22,
                   "start": 11,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 22,
                       "start": 11,
                       "tag": 8,
@@ -4457,17 +4457,17 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 45,
                   "start": 24,
                   "tag": 54,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 32,
                       "start": 24,
                       "tag": 89,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 32,
                           "start": 24,
                           "tag": 8,
@@ -4475,12 +4475,12 @@ Object {
                         },
                       ],
                     },
-                    Object {
+                    {
                       "end": 44,
                       "start": 34,
                       "tag": 11,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 44,
                           "start": 34,
                           "tag": 8,
@@ -4490,7 +4490,7 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 48,
                   "start": 48,
                   "tag": 19,
@@ -4504,22 +4504,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "all_types",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 65,
         "start": 57,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 65,
             "start": 57,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 65,
                 "start": 57,
                 "tag": 8,
@@ -4543,30 +4543,30 @@ exports[`Query Interface Should convert nested select sql (
         FROM table1
         WHERE :id = table1.id
       ) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 136,
       "name": "joinVal",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 129,
-      "type": Object {
+      "type": {
         "column": "val",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 125,
           "start": 116,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 121,
               "start": 116,
               "tag": 8,
               "value": "table3",
             },
-            Object {
+            {
               "end": 125,
               "start": 123,
               "tag": 8,
@@ -4578,28 +4578,28 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "end": 183,
       "name": "id",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 181,
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 195,
           "start": 187,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 192,
               "start": 187,
               "tag": 8,
               "value": "table1",
             },
-            Object {
+            {
               "end": 195,
               "start": 194,
               "tag": 8,
@@ -4612,18 +4612,18 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "res1",
-      "type": Object {
+      "type": {
         "column": "col1",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 29,
           "start": 26,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 29,
               "start": 26,
               "tag": 8,
@@ -4635,31 +4635,31 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 144,
           "start": 53,
           "tag": 81,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 61,
               "start": 60,
               "tag": 62,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 61,
                   "start": 60,
                   "tag": 61,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 61,
                       "start": 60,
                       "tag": 11,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 61,
                           "start": 60,
                           "tag": 8,
@@ -4671,27 +4671,27 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 136,
               "start": 63,
               "tag": 69,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 73,
                   "start": 68,
                   "tag": 68,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 73,
                       "start": 68,
                       "tag": 90,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 73,
                           "start": 68,
                           "tag": 89,
-                          "values": Array [
-                            Object {
+                          "values": [
+                            {
                               "end": 73,
                               "start": 68,
                               "tag": 8,
@@ -4703,28 +4703,28 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 136,
                   "start": 75,
                   "tag": 67,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 78,
                       "start": 75,
                       "tag": 64,
                       "value": "JOIN",
                     },
-                    Object {
+                    {
                       "end": 85,
                       "start": 80,
                       "tag": 90,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 85,
                           "start": 80,
                           "tag": 89,
-                          "values": Array [
-                            Object {
+                          "values": [
+                            {
                               "end": 85,
                               "start": 80,
                               "tag": 8,
@@ -4734,33 +4734,33 @@ Object {
                         },
                       ],
                     },
-                    Object {
+                    {
                       "end": 136,
                       "start": 87,
                       "tag": 65,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 136,
                           "start": 90,
                           "tag": 46,
-                          "values": Array [
-                            Object {
+                          "values": [
+                            {
                               "end": 110,
                               "start": 90,
                               "tag": 46,
-                              "values": Array [
-                                Object {
+                              "values": [
+                                {
                                   "end": 98,
                                   "start": 90,
                                   "tag": 11,
-                                  "values": Array [
-                                    Object {
+                                  "values": [
+                                    {
                                       "end": 95,
                                       "start": 90,
                                       "tag": 8,
                                       "value": "table3",
                                     },
-                                    Object {
+                                    {
                                       "end": 98,
                                       "start": 97,
                                       "tag": 8,
@@ -4768,24 +4768,24 @@ Object {
                                     },
                                   ],
                                 },
-                                Object {
+                                {
                                   "end": 100,
                                   "start": 100,
                                   "tag": 44,
                                   "value": "=",
                                 },
-                                Object {
+                                {
                                   "end": 110,
                                   "start": 102,
                                   "tag": 11,
-                                  "values": Array [
-                                    Object {
+                                  "values": [
+                                    {
                                       "end": 107,
                                       "start": 102,
                                       "tag": 8,
                                       "value": "table2",
                                     },
-                                    Object {
+                                    {
                                       "end": 110,
                                       "start": 109,
                                       "tag": 8,
@@ -4795,29 +4795,29 @@ Object {
                                 },
                               ],
                             },
-                            Object {
+                            {
                               "end": 114,
                               "start": 112,
                               "tag": 44,
                               "value": "AND",
                             },
-                            Object {
+                            {
                               "end": 136,
                               "start": 116,
                               "tag": 46,
-                              "values": Array [
-                                Object {
+                              "values": [
+                                {
                                   "end": 125,
                                   "start": 116,
                                   "tag": 11,
-                                  "values": Array [
-                                    Object {
+                                  "values": [
+                                    {
                                       "end": 121,
                                       "start": 116,
                                       "tag": 8,
                                       "value": "table3",
                                     },
-                                    Object {
+                                    {
                                       "end": 125,
                                       "start": 123,
                                       "tag": 8,
@@ -4825,23 +4825,23 @@ Object {
                                     },
                                   ],
                                 },
-                                Object {
+                                {
                                   "end": 127,
                                   "start": 127,
                                   "tag": 44,
                                   "value": ">",
                                 },
-                                Object {
+                                {
                                   "end": 136,
                                   "start": 129,
                                   "tag": 10,
-                                  "values": Array [
-                                    Object {
+                                  "values": [
+                                    {
                                       "end": 136,
                                       "start": 130,
                                       "tag": 123,
-                                      "values": Array [
-                                        Object {
+                                      "values": [
+                                        {
                                           "end": 136,
                                           "start": 130,
                                           "tag": 8,
@@ -4861,17 +4861,17 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 144,
               "start": 138,
               "tag": 78,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 144,
                   "start": 144,
                   "tag": 30,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 144,
                       "start": 144,
                       "tag": 20,
@@ -4884,15 +4884,15 @@ Object {
           ],
         },
         "type": 30,
-        "value": Object {
+        "value": {
           "column": "id",
           "schema": undefined,
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 61,
             "start": 60,
             "tag": 11,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 61,
                 "start": 60,
                 "tag": 8,
@@ -4906,22 +4906,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table2",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 73,
         "start": 68,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 73,
             "start": 68,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 73,
                 "start": 68,
                 "tag": 8,
@@ -4934,21 +4934,21 @@ Object {
       "table": "table2",
       "type": "Table",
     },
-    Object {
+    {
       "isResult": true,
       "name": "table3",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 85,
         "start": 80,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 85,
             "start": 80,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 85,
                 "start": 80,
                 "tag": 8,
@@ -4961,21 +4961,21 @@ Object {
       "table": "table3",
       "type": "Table",
     },
-    Object {
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 165,
         "start": 160,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 165,
             "start": 160,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 165,
                 "start": 160,
                 "tag": 8,
@@ -4993,31 +4993,31 @@ Object {
 `;
 
 exports[`Query Interface Should convert nested typed array param in select sql (SELECT :param::int[][][]) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 12,
       "name": "param",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 7,
-      "type": Object {
-        "items": Object {
-          "items": Object {
-            "items": Object {
+      "type": {
+        "items": {
+          "items": {
+            "items": {
               "name": "int4",
-              "sourceTag": Object {
+              "sourceTag": {
                 "end": 17,
                 "start": 15,
                 "tag": 32,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 17,
                     "start": 15,
                     "tag": 89,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 17,
                         "start": 15,
                         "tag": 8,
@@ -5028,27 +5028,27 @@ Object {
                 ],
               },
               "type": 23,
-              "value": Object {
+              "value": {
                 "postgresType": "int4",
                 "type": 3,
               },
             },
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 23,
               "start": 15,
               "tag": 33,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 17,
                   "start": 15,
                   "tag": 32,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 17,
                       "start": 15,
                       "tag": 89,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 17,
                           "start": 15,
                           "tag": 8,
@@ -5058,17 +5058,17 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 19,
                   "start": 18,
                   "tag": 31,
                 },
-                Object {
+                {
                   "end": 21,
                   "start": 20,
                   "tag": 31,
                 },
-                Object {
+                {
                   "end": 23,
                   "start": 22,
                   "tag": 31,
@@ -5077,22 +5077,22 @@ Object {
             },
             "type": 24,
           },
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 23,
             "start": 15,
             "tag": 33,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 17,
                 "start": 15,
                 "tag": 32,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 17,
                     "start": 15,
                     "tag": 89,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 17,
                         "start": 15,
                         "tag": 8,
@@ -5102,17 +5102,17 @@ Object {
                   },
                 ],
               },
-              Object {
+              {
                 "end": 19,
                 "start": 18,
                 "tag": 31,
               },
-              Object {
+              {
                 "end": 21,
                 "start": 20,
                 "tag": 31,
               },
-              Object {
+              {
                 "end": 23,
                 "start": 22,
                 "tag": 31,
@@ -5121,22 +5121,22 @@ Object {
           },
           "type": 24,
         },
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 23,
           "start": 15,
           "tag": 33,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 17,
               "start": 15,
               "tag": 32,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 17,
                   "start": 15,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 17,
                       "start": 15,
                       "tag": 8,
@@ -5146,17 +5146,17 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 19,
               "start": 18,
               "tag": 31,
             },
-            Object {
+            {
               "end": 21,
               "start": 20,
               "tag": 31,
             },
-            Object {
+            {
               "end": 23,
               "start": 22,
               "tag": 31,
@@ -5167,25 +5167,25 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "array",
-      "type": Object {
-        "items": Object {
-          "items": Object {
-            "items": Object {
+      "type": {
+        "items": {
+          "items": {
+            "items": {
               "name": "int4",
-              "sourceTag": Object {
+              "sourceTag": {
                 "end": 17,
                 "start": 15,
                 "tag": 32,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 17,
                     "start": 15,
                     "tag": 89,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 17,
                         "start": 15,
                         "tag": 8,
@@ -5196,27 +5196,27 @@ Object {
                 ],
               },
               "type": 23,
-              "value": Object {
+              "value": {
                 "postgresType": "int4",
                 "type": 3,
               },
             },
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 23,
               "start": 15,
               "tag": 33,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 17,
                   "start": 15,
                   "tag": 32,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 17,
                       "start": 15,
                       "tag": 89,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 17,
                           "start": 15,
                           "tag": 8,
@@ -5226,17 +5226,17 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 19,
                   "start": 18,
                   "tag": 31,
                 },
-                Object {
+                {
                   "end": 21,
                   "start": 20,
                   "tag": 31,
                 },
-                Object {
+                {
                   "end": 23,
                   "start": 22,
                   "tag": 31,
@@ -5245,22 +5245,22 @@ Object {
             },
             "type": 24,
           },
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 23,
             "start": 15,
             "tag": 33,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 17,
                 "start": 15,
                 "tag": 32,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 17,
                     "start": 15,
                     "tag": 89,
-                    "values": Array [
-                      Object {
+                    "values": [
+                      {
                         "end": 17,
                         "start": 15,
                         "tag": 8,
@@ -5270,17 +5270,17 @@ Object {
                   },
                 ],
               },
-              Object {
+              {
                 "end": 19,
                 "start": 18,
                 "tag": 31,
               },
-              Object {
+              {
                 "end": 21,
                 "start": 20,
                 "tag": 31,
               },
-              Object {
+              {
                 "end": 23,
                 "start": 22,
                 "tag": 31,
@@ -5289,22 +5289,22 @@ Object {
           },
           "type": 24,
         },
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 23,
           "start": 15,
           "tag": 33,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 17,
               "start": 15,
               "tag": 32,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 17,
                   "start": 15,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 17,
                       "start": 15,
                       "tag": 8,
@@ -5314,17 +5314,17 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 19,
               "start": 18,
               "tag": 31,
             },
-            Object {
+            {
               "end": 21,
               "start": 20,
               "tag": 31,
             },
-            Object {
+            {
               "end": 23,
               "start": 22,
               "tag": 31,
@@ -5335,29 +5335,29 @@ Object {
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert numeric sql (SELECT '123'::numeric) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "decimal",
-      "type": Object {
+      "type": {
         "name": "decimal",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 20,
           "start": 14,
           "tag": 32,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 20,
               "start": 14,
               "tag": 89,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 20,
                   "start": 14,
                   "tag": 8,
@@ -5368,58 +5368,58 @@ Object {
           ],
         },
         "type": 23,
-        "value": Object {
+        "value": {
           "postgresType": "decimal",
           "type": 3,
         },
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert order by with params sql (SELECT * FROM table1 ORDER BY CASE WHEN $param1 = 'val1' AND $param2 = 'DESC' THEN col2 END DESC) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 46,
       "name": "param1",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 40,
-      "type": Object {
+      "type": {
         "literal": "val1",
         "postgresType": "text",
         "type": 2,
       },
     },
-    Object {
+    {
       "end": 67,
       "name": "param2",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 61,
-      "type": Object {
+      "type": {
         "literal": "DESC",
         "postgresType": "text",
         "type": 2,
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
+      "type": {
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 7,
           "start": 7,
           "tag": 37,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 7,
               "start": 7,
               "tag": 36,
@@ -5431,22 +5431,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 19,
         "start": 14,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 19,
             "start": 14,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 19,
                 "start": 14,
                 "tag": 8,
@@ -5464,54 +5464,54 @@ Object {
 `;
 
 exports[`Query Interface Should convert params in array range sql (SELECT (ARRAY[1,2,3,4])[$from:3]) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 28,
       "name": "from",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 24,
-      "type": Object {
+      "type": {
         "postgresType": "any",
         "type": 9,
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "array",
-      "type": Object {
-        "sourceTag": Object {
+      "type": {
+        "sourceTag": {
           "end": 31,
           "start": 7,
           "tag": 106,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 21,
               "start": 8,
               "tag": 53,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 14,
                   "start": 14,
                   "tag": 19,
                   "value": "1",
                 },
-                Object {
+                {
                   "end": 16,
                   "start": 16,
                   "tag": 19,
                   "value": "2",
                 },
-                Object {
+                {
                   "end": 18,
                   "start": 18,
                   "tag": 19,
                   "value": "3",
                 },
-                Object {
+                {
                   "end": 20,
                   "start": 20,
                   "tag": 19,
@@ -5519,27 +5519,27 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 31,
               "start": 23,
               "tag": 28,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 30,
                   "start": 24,
                   "tag": 26,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 28,
                       "start": 24,
                       "tag": 10,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 28,
                           "start": 25,
                           "tag": 123,
-                          "values": Array [
-                            Object {
+                          "values": [
+                            {
                               "end": 28,
                               "start": 25,
                               "tag": 8,
@@ -5549,7 +5549,7 @@ Object {
                         },
                       ],
                     },
-                    Object {
+                    {
                       "end": 30,
                       "start": 30,
                       "tag": 19,
@@ -5562,54 +5562,54 @@ Object {
           ],
         },
         "type": 26,
-        "value": Object {
-          "items": Object {
-            "items": Array [
-              Object {
+        "value": {
+          "items": {
+            "items": [
+              {
                 "literal": 1,
                 "postgresType": "float4",
                 "type": 3,
               },
-              Object {
+              {
                 "literal": 2,
                 "postgresType": "float4",
                 "type": 3,
               },
-              Object {
+              {
                 "literal": 3,
                 "postgresType": "float4",
                 "type": 3,
               },
-              Object {
+              {
                 "literal": 4,
                 "postgresType": "float4",
                 "type": 3,
               },
             ],
-            "sourceTag": Object {
+            "sourceTag": {
               "end": 21,
               "start": 8,
               "tag": 53,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 14,
                   "start": 14,
                   "tag": 19,
                   "value": "1",
                 },
-                Object {
+                {
                   "end": 16,
                   "start": 16,
                   "tag": 19,
                   "value": "2",
                 },
-                Object {
+                {
                   "end": 18,
                   "start": 18,
                   "tag": 19,
                   "value": "3",
                 },
-                Object {
+                {
                   "end": 20,
                   "start": 20,
                   "tag": 19,
@@ -5619,30 +5619,30 @@ Object {
             },
             "type": 28,
           },
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 21,
             "start": 8,
             "tag": 53,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 14,
                 "start": 14,
                 "tag": 19,
                 "value": "1",
               },
-              Object {
+              {
                 "end": 16,
                 "start": 16,
                 "tag": 19,
                 "value": "2",
               },
-              Object {
+              {
                 "end": 18,
                 "start": 18,
                 "tag": 19,
                 "value": "3",
               },
-              Object {
+              {
                 "end": 20,
                 "start": 20,
                 "tag": 19,
@@ -5655,30 +5655,30 @@ Object {
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert simple delete sql (DELETE FROM table1) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [],
-  "sources": Array [
-    Object {
+{
+  "params": [],
+  "results": [],
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 17,
         "start": 12,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 17,
             "start": 12,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 17,
                 "start": 12,
                 "tag": 8,
@@ -5696,48 +5696,48 @@ Object {
 `;
 
 exports[`Query Interface Should convert single param sql (SELECT :test1 AS "res1") 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 12,
       "name": "test1",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 7,
-      "type": Object {
+      "type": {
         "postgresType": "any",
         "type": 9,
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "res1",
-      "type": Object {
+      "type": {
         "postgresType": "any",
         "type": 1,
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert star sql (SELECT * FROM table1) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
+      "type": {
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 7,
           "start": 7,
           "tag": 37,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 7,
               "start": 7,
               "tag": 36,
@@ -5749,22 +5749,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 19,
         "start": 14,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 19,
             "start": 14,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 19,
                 "start": 14,
                 "tag": 8,
@@ -5782,20 +5782,20 @@ Object {
 `;
 
 exports[`Query Interface Should convert static fields sql (SELECT col1 as "col1", col2 as "myCol2" FROM table1) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "col1",
-      "type": Object {
+      "type": {
         "column": "col1",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 10,
           "start": 7,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 10,
               "start": 7,
               "tag": 8,
@@ -5807,17 +5807,17 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "myCol2",
-      "type": Object {
+      "type": {
         "column": "col2",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 26,
           "start": 23,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 26,
               "start": 23,
               "tag": 8,
@@ -5830,22 +5830,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 50,
         "start": 45,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 50,
             "start": 45,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 50,
                 "start": 45,
                 "tag": 8,
@@ -5863,62 +5863,62 @@ Object {
 `;
 
 exports[`Query Interface Should convert string fields not named sql (SELECT 'test', $$Dianne's horse$$, $SomeTag$Dianne's horse$SomeTag$) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
+      "type": {
         "literal": "test",
         "postgresType": "text",
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "?column?",
-      "type": Object {
+      "type": {
         "literal": "Dianne's horse",
         "postgresType": "text",
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "?column?",
-      "type": Object {
+      "type": {
         "literal": "Dianne's horse",
         "postgresType": "text",
         "type": 2,
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert typed array param in select sql (SELECT :param::int[]) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 12,
       "name": "param",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 7,
-      "type": Object {
-        "items": Object {
+      "type": {
+        "items": {
           "name": "int4",
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 17,
             "start": 15,
             "tag": 32,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 17,
                 "start": 15,
                 "tag": 89,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 17,
                     "start": 15,
                     "tag": 8,
@@ -5929,27 +5929,27 @@ Object {
             ],
           },
           "type": 23,
-          "value": Object {
+          "value": {
             "postgresType": "int4",
             "type": 3,
           },
         },
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 19,
           "start": 15,
           "tag": 33,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 17,
               "start": 15,
               "tag": 32,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 17,
                   "start": 15,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 17,
                       "start": 15,
                       "tag": 8,
@@ -5959,7 +5959,7 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 19,
               "start": 18,
               "tag": 31,
@@ -5970,23 +5970,23 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "array",
-      "type": Object {
-        "items": Object {
+      "type": {
+        "items": {
           "name": "int4",
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 17,
             "start": 15,
             "tag": 32,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 17,
                 "start": 15,
                 "tag": 89,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 17,
                     "start": 15,
                     "tag": 8,
@@ -5997,27 +5997,27 @@ Object {
             ],
           },
           "type": 23,
-          "value": Object {
+          "value": {
             "postgresType": "int4",
             "type": 3,
           },
         },
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 19,
           "start": 15,
           "tag": 33,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 17,
               "start": 15,
               "tag": 32,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 17,
                   "start": 15,
                   "tag": 89,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 17,
                       "start": 15,
                       "tag": 8,
@@ -6027,7 +6027,7 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 19,
               "start": 18,
               "tag": 31,
@@ -6038,33 +6038,33 @@ Object {
       },
     },
   ],
-  "sources": Array [],
+  "sources": [],
 }
 `;
 
 exports[`Query Interface Should convert typed param in where sql (SELECT col1 FROM table1 WHERE :id::int IS NOT NULL) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 32,
       "name": "id",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 30,
-      "type": Object {
+      "type": {
         "name": "int4",
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 37,
           "start": 35,
           "tag": 32,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 37,
               "start": 35,
               "tag": 89,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 37,
                   "start": 35,
                   "tag": 8,
@@ -6075,25 +6075,25 @@ Object {
           ],
         },
         "type": 23,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "col1",
-      "type": Object {
+      "type": {
         "column": "col1",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 10,
           "start": 7,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 10,
               "start": 7,
               "tag": 8,
@@ -6106,22 +6106,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 22,
         "start": 17,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 22,
             "start": 17,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 22,
                 "start": 17,
                 "tag": 8,
@@ -6139,20 +6139,20 @@ Object {
 `;
 
 exports[`Query Interface Should convert update returning expression sql (UPDATE table1 SET col1 = 10 RETURNING id, col1, 123 as col2, '2' as col3, 3+4 as col4) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 39,
           "start": 38,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 39,
               "start": 38,
               "tag": 8,
@@ -6164,17 +6164,17 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "col1",
-      "type": Object {
+      "type": {
         "column": "col1",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 45,
           "start": 42,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 45,
               "start": 42,
               "tag": 8,
@@ -6186,46 +6186,46 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "col2",
-      "type": Object {
+      "type": {
         "literal": 123,
         "postgresType": "float4",
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "col3",
-      "type": Object {
+      "type": {
         "literal": "2",
         "postgresType": "text",
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "col4",
-      "type": Object {
+      "type": {
         "postgresType": "float4",
         "type": 3,
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 12,
         "start": 7,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 12,
             "start": 7,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 12,
                 "start": 7,
                 "tag": 8,
@@ -6243,20 +6243,20 @@ Object {
 `;
 
 exports[`Query Interface Should convert update returning sql (UPDATE table1 SET col1 = 10 RETURNING id, col1) 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 39,
           "start": 38,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 39,
               "start": 38,
               "tag": 8,
@@ -6268,17 +6268,17 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "col1",
-      "type": Object {
+      "type": {
         "column": "col1",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 45,
           "start": 42,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 45,
               "start": 42,
               "tag": 8,
@@ -6291,22 +6291,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 12,
         "start": 7,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 12,
             "start": 7,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 12,
                 "start": 7,
                 "tag": 8,
@@ -6324,24 +6324,24 @@ Object {
 `;
 
 exports[`Query Interface Should convert update returning star sql (UPDATE table1 SET col1 = 10 WHERE id = :id RETURNING *) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 41,
       "name": "id",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 39,
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 35,
           "start": 34,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 35,
               "start": 34,
               "tag": 8,
@@ -6354,17 +6354,17 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
+      "type": {
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 53,
           "start": 53,
           "tag": 37,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 53,
               "start": 53,
               "tag": 36,
@@ -6376,22 +6376,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 12,
         "start": 7,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 12,
             "start": 7,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 12,
                 "start": 7,
                 "tag": 8,
@@ -6415,30 +6415,30 @@ exports[`Query Interface Should convert where params sql (
           table1.id = :id
           AND col1 > :val1
       ) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 85,
       "name": "id",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 83,
-      "type": Object {
+      "type": {
         "column": "id",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 79,
           "start": 71,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 76,
               "start": 71,
               "tag": 8,
               "value": "table1",
             },
-            Object {
+            {
               "end": 79,
               "start": 78,
               "tag": 8,
@@ -6450,22 +6450,22 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "end": 112,
       "name": "val1",
-      "pick": Array [],
+      "pick": [],
       "required": false,
       "spread": false,
       "start": 108,
-      "type": Object {
+      "type": {
         "column": "col1",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 104,
           "start": 101,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 104,
               "start": 101,
               "tag": 8,
@@ -6478,18 +6478,18 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "col1",
-      "type": Object {
+      "type": {
         "column": "col1",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 19,
           "start": 16,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 19,
               "start": 16,
               "tag": 8,
@@ -6501,17 +6501,17 @@ Object {
         "type": 19,
       },
     },
-    Object {
+    {
       "name": "col2",
-      "type": Object {
+      "type": {
         "column": "col2",
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 25,
           "start": 22,
           "tag": 11,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 25,
               "start": 22,
               "tag": 8,
@@ -6524,22 +6524,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "table1",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 45,
         "start": 40,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 45,
             "start": 40,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 45,
                 "start": 40,
                 "tag": 8,
@@ -6557,27 +6557,27 @@ Object {
 `;
 
 exports[`Query Interface Should convert where pick spread sql (SELECT * FROM all_types WHERE id IN $$ids(id)) 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "end": 44,
       "name": "ids",
-      "pick": Array [
-        Object {
+      "pick": [
+        {
           "castType": undefined,
           "name": "id",
           "required": false,
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 43,
             "start": 42,
             "tag": 119,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 43,
                 "start": 42,
                 "tag": 123,
-                "values": Array [
-                  Object {
+                "values": [
+                  {
                     "end": 43,
                     "start": 42,
                     "tag": 8,
@@ -6587,7 +6587,7 @@ Object {
               },
             ],
           },
-          "type": Object {
+          "type": {
             "postgresType": "any",
             "type": 9,
           },
@@ -6596,16 +6596,16 @@ Object {
       "required": true,
       "spread": true,
       "start": 36,
-      "type": Object {
-        "items": Object {
+      "type": {
+        "items": {
           "column": "id",
           "schema": undefined,
-          "sourceTag": Object {
+          "sourceTag": {
             "end": 31,
             "start": 30,
             "tag": 11,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 31,
                 "start": 30,
                 "tag": 8,
@@ -6616,17 +6616,17 @@ Object {
           "table": undefined,
           "type": 19,
         },
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 44,
           "start": 30,
           "tag": 58,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 31,
               "start": 30,
               "tag": 11,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 31,
                   "start": 30,
                   "tag": 8,
@@ -6634,23 +6634,23 @@ Object {
                 },
               ],
             },
-            Object {
+            {
               "end": 34,
               "start": 33,
               "tag": 55,
               "value": "IN",
             },
-            Object {
+            {
               "end": 44,
               "start": 36,
               "tag": 121,
-              "values": Array [
-                Object {
+              "values": [
+                {
                   "end": 40,
                   "start": 38,
                   "tag": 123,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 40,
                       "start": 38,
                       "tag": 8,
@@ -6658,17 +6658,17 @@ Object {
                     },
                   ],
                 },
-                Object {
+                {
                   "end": 43,
                   "start": 42,
                   "tag": 119,
-                  "values": Array [
-                    Object {
+                  "values": [
+                    {
                       "end": 43,
                       "start": 42,
                       "tag": 123,
-                      "values": Array [
-                        Object {
+                      "values": [
+                        {
                           "end": 43,
                           "start": 42,
                           "tag": 8,
@@ -6686,17 +6686,17 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "?column?",
-      "type": Object {
+      "type": {
         "schema": undefined,
-        "sourceTag": Object {
+        "sourceTag": {
           "end": 7,
           "start": 7,
           "tag": 37,
-          "values": Array [
-            Object {
+          "values": [
+            {
               "end": 7,
               "start": 7,
               "tag": 36,
@@ -6708,22 +6708,22 @@ Object {
       },
     },
   ],
-  "sources": Array [
-    Object {
+  "sources": [
+    {
       "isResult": true,
       "name": "all_types",
       "schema": undefined,
-      "sourceTag": Object {
+      "sourceTag": {
         "end": 22,
         "start": 14,
         "tag": 90,
-        "values": Array [
-          Object {
+        "values": [
+          {
             "end": 22,
             "start": 14,
             "tag": 89,
-            "values": Array [
-              Object {
+            "values": [
+              {
                 "end": 22,
                 "start": 14,
                 "tag": 8,

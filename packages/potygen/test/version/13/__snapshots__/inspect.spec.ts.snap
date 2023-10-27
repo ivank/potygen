@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Inspect Should load quick info for generated column: SELECT contacts.ts_‸vector_search FROM specific_pg_version.contacts: generated column 1`] = `
-Object {
+{
   "description": "From: specific_pg_version.contacts Table
 
 ---
@@ -14,7 +14,7 @@ to_tsvector('english'::regconfig, ((first_name)::text || (last_name)::text))",
 `;
 
 exports[`Inspect Should load quick info for table with generated column: SELECT contacts FROM specific_pg_version.cont‸acts: table with generated column 1`] = `
-Object {
+{
   "description": "|Name|Type|
 |---|---|
 |id|**integer** \`NOT_NULL\`|

@@ -10,7 +10,7 @@ describe('Load all data at once', () => {
     const logger = { info: jest.fn(), error: jest.fn(), debug: jest.fn() };
     data = await loadAllData({ db, logger }, data);
     await db.end();
-  }, 20000);
+  }, 30000);
 
   it.each<[string, string]>([
     ['select where', `SELECT character_col FROM all_types WHERE integer_col > COALESCE($id, 2)`],

@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Load Files Should convert complex sql account-levelisation.update.query.sql: account-levelisation.update.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "isAccepted",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -19,14 +19,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -36,10 +36,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -47,9 +47,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "isAccepted",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -62,16 +62,16 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql account-levelisation.upsert.query.sql: account-levelisation.upsert.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "levelisationId",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -80,14 +80,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "start",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -98,10 +98,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -114,27 +114,27 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "name": "q",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -148,25 +148,25 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "resolvedPostlev",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "postgresType": "bool",
               "type": 5,
             },
@@ -177,22 +177,22 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "state",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
-              "items": Array [
-                Object {
+            "value": {
+              "items": [
+                {
                   "literal": "Pending",
                   "postgresType": "text",
                   "type": 2,
                 },
-                Object {
+                {
                   "literal": "Done",
                   "postgresType": "text",
                   "type": 2,
@@ -202,19 +202,19 @@ Object {
               "type": 12,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
-              "items": Array [
-                Object {
+              "items": [
+                {
                   "literal": "Pending",
                   "postgresType": "text",
                   "type": 2,
                 },
-                Object {
+                {
                   "literal": "Done",
                   "postgresType": "text",
                   "type": 2,
@@ -231,24 +231,24 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "levelisationId",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "postgresType": "int4",
               "type": 3,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -262,16 +262,16 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "ids",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
-              "items": Object {
+            "value": {
+              "items": {
                 "postgresType": "int4",
                 "type": 3,
               },
@@ -279,12 +279,12 @@ Object {
               "type": 11,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
-              "items": Object {
+            "value": {
+              "items": {
                 "postgresType": "int4",
                 "type": 3,
               },
@@ -298,115 +298,115 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "sortField",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "totalPayment",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "vatPayment",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "generationPayment",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "exportPayment",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "generationEnergy",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "exportEnergy",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "cfrFitId",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "state",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "isAccepted",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "error",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "exportType",
               "postgresType": "text",
               "type": 2,
@@ -418,25 +418,25 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "sortOrder",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "DESC",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "ASC",
               "postgresType": "text",
               "type": 2,
@@ -448,37 +448,37 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "limit",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "offset",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -486,9 +486,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "levelisationId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -496,9 +496,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "accountId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -506,9 +506,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "installationId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -516,17 +516,17 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "state",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Done",
             "postgresType": "text",
             "type": 2,
@@ -537,9 +537,9 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "isAccepted",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -547,9 +547,9 @@ Object {
         "type": 5,
       },
     },
-    Object {
+    {
       "name": "generationStartReadOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -558,9 +558,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "generationStartReadValue",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -569,9 +569,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "generationEndReadOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -580,9 +580,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "generationEndReadValue",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -591,9 +591,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "generationPercentageSplit",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -602,9 +602,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "generationPayment",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -613,9 +613,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "generationEnergy",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -624,9 +624,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "exportStartReadOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -635,9 +635,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "exportStartReadValue",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -646,9 +646,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "exportEndReadOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -657,9 +657,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "exportEndReadValue",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -668,9 +668,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "exportPercentageSplit",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -679,9 +679,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "exportPayment",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -690,9 +690,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "exportEnergy",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -701,47 +701,47 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "exportType",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Deemed",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Deemed",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Metered Export",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Metered Export",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Off Grid",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Off Grid",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "PPA",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "PPA",
             "postgresType": "text",
             "type": 2,
@@ -752,32 +752,32 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "technologyType",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "PV",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "H",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "W",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "AD",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "CHP",
             "postgresType": "text",
             "type": 2,
@@ -788,9 +788,9 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "totalPayment",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -799,9 +799,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "vatPayment",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -810,9 +810,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "generationPeriods",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -821,9 +821,9 @@ Object {
         "type": 8,
       },
     },
-    Object {
+    {
       "name": "exportPeriods",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -832,25 +832,25 @@ Object {
         "type": 8,
       },
     },
-    Object {
+    {
       "name": "errorCode",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "text",
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "errorParams",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "json",
         "type": 8,
       },
     },
-    Object {
+    {
       "name": "cfrFitId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -858,9 +858,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "resolvedPostlevId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -869,9 +869,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "isBacsPaymentsSent",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -880,9 +880,9 @@ Object {
         "type": 5,
       },
     },
-    Object {
+    {
       "name": "isChequePaymentsSent",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -896,17 +896,17 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql account-levelisations-bulk-close-accounts.query.sql: account-levelisations-bulk-close-accounts.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "ids",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
-          "items": Object {
+        "value": {
+          "items": {
             "postgresType": "int4",
             "type": 3,
           },
@@ -916,10 +916,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -932,17 +932,17 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql account-levelisations-set-bulk-update.query.sql: account-levelisations-set-bulk-update.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "ids",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
-          "items": Object {
+        "value": {
+          "items": {
             "postgresType": "int4",
             "type": 3,
           },
@@ -952,10 +952,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -968,16 +968,16 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql account-meter-registers-create.query.sql: account-meter-registers-create.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -986,14 +986,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "customerLabel",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -1003,14 +1003,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "industryLabel",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -1020,40 +1020,40 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "smtRuleStart",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": undefined,
           "postgresDescription": undefined,
-          "postgresType": "\\"any\\"",
+          "postgresType": ""any"",
           "type": 1,
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "smtRuleEnd",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
         "value": undefined,
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "smtRuleStartOn",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -1063,14 +1063,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "multiplier",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -1080,14 +1080,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "meterId",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -1096,14 +1096,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "indexPosition",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -1113,10 +1113,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1129,25 +1129,25 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql account-verification.update.query.sql: account-verification.update.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "items",
-      "type": Object {
-        "items": Object {
-          "items": Array [
-            Object {
+      "type": {
+        "items": {
+          "items": [
+            {
               "name": "GH_account_id",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "MV date",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "any",
                 "type": 9,
@@ -1162,15 +1162,15 @@ Object {
         "type": 11,
       },
     },
-    Object {
+    {
       "name": "currentDate",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": false,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -1179,11 +1179,11 @@ Object {
               "type": 6,
             },
           },
-          Object {
+          {
             "nullable": false,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -1199,32 +1199,32 @@ Object {
       },
     },
   ],
-  "results": Array [],
+  "results": [],
 }
 `;
 
 exports[`Load Files Should convert complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "name": "q",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": undefined,
               "postgresDescription": undefined,
@@ -1232,11 +1232,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": undefined,
               "postgresDescription": undefined,
@@ -1244,11 +1244,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": undefined,
               "postgresDescription": undefined,
@@ -1256,11 +1256,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": undefined,
               "postgresDescription": undefined,
@@ -1268,11 +1268,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": undefined,
               "postgresDescription": undefined,
@@ -1280,20 +1280,20 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "postgresType": "varchar",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -1302,11 +1302,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -1315,11 +1315,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -1328,11 +1328,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -1341,11 +1341,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -1359,16 +1359,16 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "ids",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
-              "items": Object {
+            "value": {
+              "items": {
                 "postgresType": "int4",
                 "type": 3,
               },
@@ -1376,12 +1376,12 @@ Object {
               "type": 11,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
-              "items": Object {
+            "value": {
+              "items": {
                 "postgresType": "int4",
                 "type": 3,
               },
@@ -1396,10 +1396,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "total",
-      "type": Object {
+      "type": {
         "postgresType": "int4",
         "type": 3,
       },
@@ -1409,27 +1409,27 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "name": "q",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": undefined,
               "postgresDescription": undefined,
@@ -1437,11 +1437,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": undefined,
               "postgresDescription": undefined,
@@ -1449,11 +1449,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": undefined,
               "postgresDescription": undefined,
@@ -1461,11 +1461,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": undefined,
               "postgresDescription": undefined,
@@ -1473,20 +1473,20 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "postgresType": "varchar",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -1495,11 +1495,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -1508,11 +1508,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -1521,11 +1521,11 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -1539,16 +1539,16 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "ids",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
-              "items": Object {
+            "value": {
+              "items": {
                 "postgresType": "int4",
                 "type": 3,
               },
@@ -1556,12 +1556,12 @@ Object {
               "type": 11,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
-              "items": Object {
+            "value": {
+              "items": {
                 "postgresType": "int4",
                 "type": 3,
               },
@@ -1575,37 +1575,37 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "limit",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "offset",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1613,27 +1613,27 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "state",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Active",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Dispute",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closed",
             "postgresType": "text",
             "type": 2,
@@ -1644,9 +1644,9 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "startOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1655,9 +1655,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "firstName",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1665,9 +1665,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "lastName",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1675,9 +1675,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "email",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -1686,9 +1686,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "address",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -1696,10 +1696,10 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "fitIds",
-      "type": Object {
-        "items": Object {
+      "type": {
+        "items": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -1715,24 +1715,24 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql accounts.sql: accounts.sql 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [],
+{
+  "params": [],
+  "results": [],
 }
 `;
 
 exports[`Load Files Should convert complex sql active-meters-with-last-read.query.sql: active-meters-with-last-read.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "name": "intervalStart",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -1740,11 +1740,11 @@ Object {
               "type": 6,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -1758,14 +1758,14 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "intervalEnd",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -1774,14 +1774,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "accountId",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -1790,24 +1790,24 @@ Object {
         },
       },
     },
-    Object {
+    {
       "name": "meterId",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "postgresType": "int4",
               "type": 3,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -1822,10 +1822,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1833,9 +1833,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "msn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1843,9 +1843,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "mpan",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1853,9 +1853,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "make",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1863,9 +1863,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "model",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -1873,17 +1873,17 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "type",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Export",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Generation",
             "postgresType": "text",
             "type": 2,
@@ -1894,17 +1894,17 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "currentPeriodRead",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "json",
         "type": 14,
-        "value": Object {
-          "items": Array [
-            Object {
+        "value": {
+          "items": [
+            {
               "name": "id",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -1912,9 +1912,9 @@ Object {
                 "type": 3,
               },
             },
-            Object {
+            {
               "name": "value",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -1922,9 +1922,9 @@ Object {
                 "type": 3,
               },
             },
-            Object {
+            {
               "name": "dateOn",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -1932,9 +1932,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "submittedAt",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -1943,9 +1943,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "reason",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -1954,27 +1954,27 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "type",
-              "type": Object {
+              "type": {
                 "comment": undefined,
-                "items": Array [
-                  Object {
+                "items": [
+                  {
                     "literal": "Opening",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Closing",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Quarterly",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Meter Verification",
                     "postgresType": "text",
                     "type": 2,
@@ -1991,17 +1991,17 @@ Object {
         },
       },
     },
-    Object {
+    {
       "name": "previousPeriodRead",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "json",
         "type": 14,
-        "value": Object {
-          "items": Array [
-            Object {
+        "value": {
+          "items": [
+            {
               "name": "id",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -2009,9 +2009,9 @@ Object {
                 "type": 3,
               },
             },
-            Object {
+            {
               "name": "value",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -2019,9 +2019,9 @@ Object {
                 "type": 3,
               },
             },
-            Object {
+            {
               "name": "dateOn",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -2029,9 +2029,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "submittedAt",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -2040,9 +2040,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "reason",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -2051,27 +2051,27 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "type",
-              "type": Object {
+              "type": {
                 "comment": undefined,
-                "items": Array [
-                  Object {
+                "items": [
+                  {
                     "literal": "Opening",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Closing",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Quarterly",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Meter Verification",
                     "postgresType": "text",
                     "type": 2,
@@ -2093,17 +2093,17 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql active-meters-wth-reads.query.sql: active-meters-wth-reads.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "name": "intervalStart",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": false,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -2111,11 +2111,11 @@ Object {
               "type": 6,
             },
           },
-          Object {
+          {
             "nullable": false,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -2129,14 +2129,14 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "intervalEnd",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -2145,14 +2145,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "accountId",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -2161,24 +2161,24 @@ Object {
         },
       },
     },
-    Object {
+    {
       "name": "meterId",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "postgresType": "int4",
               "type": 3,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -2193,10 +2193,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2204,9 +2204,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "msn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2214,9 +2214,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "mpan",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2224,9 +2224,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "make",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2234,9 +2234,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "model",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2244,17 +2244,17 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "type",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Export",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Generation",
             "postgresType": "text",
             "type": 2,
@@ -2265,17 +2265,17 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "currentPeriodRead",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "json",
         "type": 14,
-        "value": Object {
-          "items": Array [
-            Object {
+        "value": {
+          "items": [
+            {
               "name": "id",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -2283,9 +2283,9 @@ Object {
                 "type": 3,
               },
             },
-            Object {
+            {
               "name": "value",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -2293,9 +2293,9 @@ Object {
                 "type": 3,
               },
             },
-            Object {
+            {
               "name": "dateOn",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -2303,9 +2303,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "submittedAt",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -2314,9 +2314,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "reason",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -2325,27 +2325,27 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "type",
-              "type": Object {
+              "type": {
                 "comment": undefined,
-                "items": Array [
-                  Object {
+                "items": [
+                  {
                     "literal": "Opening",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Closing",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Quarterly",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Meter Verification",
                     "postgresType": "text",
                     "type": 2,
@@ -2362,17 +2362,17 @@ Object {
         },
       },
     },
-    Object {
+    {
       "name": "previousPeriodRead",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "json",
         "type": 14,
-        "value": Object {
-          "items": Array [
-            Object {
+        "value": {
+          "items": [
+            {
               "name": "id",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -2380,9 +2380,9 @@ Object {
                 "type": 3,
               },
             },
-            Object {
+            {
               "name": "value",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -2390,9 +2390,9 @@ Object {
                 "type": 3,
               },
             },
-            Object {
+            {
               "name": "dateOn",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -2400,9 +2400,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "submittedAt",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -2411,9 +2411,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "reason",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -2422,27 +2422,27 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "type",
-              "type": Object {
+              "type": {
                 "comment": undefined,
-                "items": Array [
-                  Object {
+                "items": [
+                  {
                     "literal": "Opening",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Closing",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Quarterly",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Meter Verification",
                     "postgresType": "text",
                     "type": 2,
@@ -2464,12 +2464,12 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql active-reads.view.sql: active-reads.view.sql 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2477,9 +2477,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "meter_id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2487,9 +2487,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "date_on",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2497,9 +2497,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "value",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2507,27 +2507,27 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "type",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Opening",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closing",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Quarterly",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Meter Verification",
             "postgresType": "text",
             "type": 2,
@@ -2538,9 +2538,9 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "reason",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2549,9 +2549,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "created_at",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2559,9 +2559,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "updated_at",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2570,9 +2570,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "source_system_id",
-      "type": Object {
+      "type": {
         "comment": "sql-fit: MeterReading.MeterReadingId",
         "generated": false,
         "nullable": true,
@@ -2581,9 +2581,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "checked",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2591,9 +2591,9 @@ Object {
         "type": 5,
       },
     },
-    Object {
+    {
       "name": "deleted_at",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2602,9 +2602,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "submitted_at",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2613,9 +2613,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "history",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2623,9 +2623,9 @@ Object {
         "type": 8,
       },
     },
-    Object {
+    {
       "name": "overwritten_at",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2639,16 +2639,16 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql bacs.query.sql: bacs.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "quarter",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -2658,37 +2658,37 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "perPage",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "text",
           "type": 2,
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "offset",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "text",
           "type": 2,
         },
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "fitId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2696,9 +2696,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "name",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2707,9 +2707,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "amount",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2717,9 +2717,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "quarter",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2728,9 +2728,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "bankDetails",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -2738,9 +2738,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "addressLine1",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2749,9 +2749,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "addressLine2",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2760,9 +2760,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "addressLine3",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -2771,9 +2771,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "postcode",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2786,23 +2786,23 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql contracts.sql: contracts.sql 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [],
+{
+  "params": [],
+  "results": [],
 }
 `;
 
 exports[`Load Files Should convert complex sql csa-account-by-id.query.sql: csa-account-by-id.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -2812,10 +2812,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -2823,27 +2823,27 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "state",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Active",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Dispute",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closed",
             "postgresType": "text",
             "type": 2,
@@ -2854,14 +2854,14 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "contacts",
-      "type": Object {
-        "items": Object {
-          "items": Array [
-            Object {
+      "type": {
+        "items": {
+          "items": [
+            {
               "name": "id",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -2869,9 +2869,9 @@ Object {
                 "type": 3,
               },
             },
-            Object {
+            {
               "name": "name",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": undefined,
                 "postgresDescription": undefined,
@@ -2879,9 +2879,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "email",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -2890,9 +2890,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "phone",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -2901,13 +2901,13 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "address",
-              "type": Object {
-                "items": Array [
-                  Object {
+              "type": {
+                "items": [
+                  {
                     "name": "id",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "postgresDescription": undefined,
@@ -2915,9 +2915,9 @@ Object {
                       "type": 3,
                     },
                   },
-                  Object {
+                  {
                     "name": "addressLine1",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "nullable": true,
@@ -2926,9 +2926,9 @@ Object {
                       "type": 2,
                     },
                   },
-                  Object {
+                  {
                     "name": "addressLine2",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "nullable": true,
@@ -2937,9 +2937,9 @@ Object {
                       "type": 2,
                     },
                   },
-                  Object {
+                  {
                     "name": "addressLine3",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "nullable": true,
@@ -2948,9 +2948,9 @@ Object {
                       "type": 2,
                     },
                   },
-                  Object {
+                  {
                     "name": "city",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "nullable": true,
@@ -2959,9 +2959,9 @@ Object {
                       "type": 2,
                     },
                   },
-                  Object {
+                  {
                     "name": "country",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "postgresDescription": undefined,
@@ -2969,9 +2969,9 @@ Object {
                       "type": 2,
                     },
                   },
-                  Object {
+                  {
                     "name": "county",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "nullable": true,
@@ -2980,9 +2980,9 @@ Object {
                       "type": 2,
                     },
                   },
-                  Object {
+                  {
                     "name": "postCode",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "postgresDescription": undefined,
@@ -2995,16 +2995,16 @@ Object {
                 "type": 13,
               },
             },
-            Object {
+            {
               "name": "isPrimaryContact",
-              "type": Object {
+              "type": {
                 "postgresType": "bool",
                 "type": 5,
               },
             },
-            Object {
+            {
               "name": "isNominatedRecipient",
-              "type": Object {
+              "type": {
                 "postgresType": "bool",
                 "type": 5,
               },
@@ -3017,13 +3017,13 @@ Object {
         "type": 11,
       },
     },
-    Object {
+    {
       "name": "paymentDetails",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "name": "beneficiaryAccountNumber",
-            "type": Object {
+            "type": {
               "comment": undefined,
               "generated": undefined,
               "postgresDescription": undefined,
@@ -3031,9 +3031,9 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "name": "beneficiaryName",
-            "type": Object {
+            "type": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -3042,9 +3042,9 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "name": "beneficiarySortCode",
-            "type": Object {
+            "type": {
               "comment": undefined,
               "generated": false,
               "nullable": true,
@@ -3063,42 +3063,42 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql csa-account-contracts-update.query.sql: csa-account-contracts-update.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "phone",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "text",
           "type": 2,
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "email",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "text",
           "type": 2,
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "currentDate",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -3108,14 +3108,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -3125,10 +3125,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "email",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "nullable": true,
         "postgresType": "varchar",
@@ -3140,12 +3140,12 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql cte.query.sql: cte.query.sql 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "region",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3153,9 +3153,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "product",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3163,9 +3163,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "product_units",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -3173,9 +3173,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "product_sales",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -3188,17 +3188,17 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql cte-levelisation-details.query.sql: cte-levelisation-details.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "name": "id",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -3206,11 +3206,11 @@ Object {
               "type": 3,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -3218,11 +3218,11 @@ Object {
               "type": 3,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -3237,10 +3237,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3248,25 +3248,25 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "totalCount",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "int4",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
-    Object {
+    {
       "name": "fitTotalExportPayment",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "bigint",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": undefined,
           "postgresDescription": undefined,
@@ -3280,24 +3280,24 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "type",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
-          "items": Array [
-            Object {
+          "items": [
+            {
               "literal": "FIT",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "SEG",
               "postgresType": "text",
               "type": 2,
@@ -3309,32 +3309,32 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "state",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
-          "items": Array [
-            Object {
+          "items": [
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
@@ -3347,10 +3347,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3358,9 +3358,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "sourceSystemId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -3369,9 +3369,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "customerId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3384,16 +3384,16 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "installationId",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -3402,24 +3402,24 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "exportDateOn",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "date",
           "type": 6,
         },
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "dateOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3427,9 +3427,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "value",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3442,17 +3442,17 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql insert.process.query.sql: insert.process.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "items",
-      "type": Object {
-        "items": Object {
-          "items": Array [
-            Object {
+      "type": {
+        "items": {
+          "items": [
+            {
               "name": "processId",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -3461,9 +3461,9 @@ Object {
                 "type": 3,
               },
             },
-            Object {
+            {
               "name": "idempotencyKey",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -3472,9 +3472,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "data",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -3483,9 +3483,9 @@ Object {
                 "type": 8,
               },
             },
-            Object {
+            {
               "name": "accountId",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -3504,10 +3504,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3515,9 +3515,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "data",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3530,34 +3530,34 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql insert-account.query.sql: insert-account.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "state",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
-          "items": Array [
-            Object {
+          "items": [
+            {
               "literal": "Active",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Pending",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Dispute",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closed",
               "postgresType": "text",
               "type": 2,
@@ -3569,29 +3569,29 @@ Object {
         },
       },
     },
-    Object {
+    {
       "name": "paymentDetails",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "name": "paymentPlan",
-            "type": Object {
+            "type": {
               "nullable": false,
               "postgresType": "any",
               "type": 14,
-              "value": Object {
-                "items": Array [
-                  Object {
+              "value": {
+                "items": [
+                  {
                     "literal": "BACs",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Cheque",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Internal Transfer",
                     "postgresType": "text",
                     "type": 2,
@@ -3602,13 +3602,13 @@ Object {
               },
             },
           },
-          Object {
+          {
             "name": "beneficiaryName",
-            "type": Object {
+            "type": {
               "nullable": true,
               "postgresType": "any",
               "type": 14,
-              "value": Object {
+              "value": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -3618,13 +3618,13 @@ Object {
               },
             },
           },
-          Object {
+          {
             "name": "beneficiarySortCode",
-            "type": Object {
+            "type": {
               "nullable": true,
               "postgresType": "any",
               "type": 14,
-              "value": Object {
+              "value": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -3634,13 +3634,13 @@ Object {
               },
             },
           },
-          Object {
+          {
             "name": "beneficiaryAccountNumber",
-            "type": Object {
+            "type": {
               "nullable": true,
               "postgresType": "any",
               "type": 14,
-              "value": Object {
+              "value": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -3656,17 +3656,17 @@ Object {
         "type": 13,
       },
     },
-    Object {
+    {
       "name": "companyDetails",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "name": "companyRegNumber",
-            "type": Object {
+            "type": {
               "nullable": false,
               "postgresType": "any",
               "type": 14,
-              "value": Object {
+              "value": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -3676,13 +3676,13 @@ Object {
               },
             },
           },
-          Object {
+          {
             "name": "companyVatNumber",
-            "type": Object {
+            "type": {
               "nullable": false,
               "postgresType": "any",
               "type": 14,
-              "value": Object {
+              "value": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -3692,13 +3692,13 @@ Object {
               },
             },
           },
-          Object {
+          {
             "name": "companyName",
-            "type": Object {
+            "type": {
               "nullable": false,
               "postgresType": "any",
               "type": 14,
-              "value": Object {
+              "value": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -3714,14 +3714,14 @@ Object {
         "type": 13,
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "startOn",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -3731,14 +3731,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "endOn",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -3748,14 +3748,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "currentDate",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -3765,10 +3765,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3776,27 +3776,27 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "state",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Active",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Pending",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Dispute",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closed",
             "postgresType": "text",
             "type": 2,
@@ -3812,16 +3812,16 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "removalDate",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -3831,14 +3831,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "meterId",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -3848,28 +3848,28 @@ Object {
       },
     },
   ],
-  "results": Array [],
+  "results": [],
 }
 `;
 
 exports[`Load Files Should convert complex sql installations.sql: installations.sql 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [],
+{
+  "params": [],
+  "results": [],
 }
 `;
 
 exports[`Load Files Should convert complex sql levelisation-customer-data.query.sql: levelisation-customer-data.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "accountLevelisationId",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -3879,14 +3879,14 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "interval",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "name": "start",
-            "type": Object {
+            "type": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -3894,9 +3894,9 @@ Object {
               "type": 2,
             },
           },
-          Object {
+          {
             "name": "end",
-            "type": Object {
+            "type": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -3909,9 +3909,9 @@ Object {
         "type": 13,
       },
     },
-    Object {
+    {
       "name": "levelisationQuarter",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3919,9 +3919,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "accountId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -3929,40 +3929,40 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "contact",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "json",
         "type": 14,
-        "value": Object {
-          "items": Array [
-            Object {
+        "value": {
+          "items": [
+            {
               "name": "title",
-              "type": Object {
+              "type": {
                 "comment": undefined,
-                "items": Array [
-                  Object {
+                "items": [
+                  {
                     "literal": "Mrs",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Miss",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Dr",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Ms",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "Mr",
                     "postgresType": "text",
                     "type": 2,
@@ -3973,9 +3973,9 @@ Object {
                 "type": 12,
               },
             },
-            Object {
+            {
               "name": "firstName",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -3983,9 +3983,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "lastName",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -3993,9 +3993,9 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "email",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "nullable": true,
@@ -4004,13 +4004,13 @@ Object {
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "address",
-              "type": Object {
-                "items": Array [
-                  Object {
+              "type": {
+                "items": [
+                  {
                     "name": "city",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "nullable": true,
@@ -4019,9 +4019,9 @@ Object {
                       "type": 2,
                     },
                   },
-                  Object {
+                  {
                     "name": "postcode",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "postgresDescription": undefined,
@@ -4029,9 +4029,9 @@ Object {
                       "type": 2,
                     },
                   },
-                  Object {
+                  {
                     "name": "line1",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "nullable": true,
@@ -4040,9 +4040,9 @@ Object {
                       "type": 2,
                     },
                   },
-                  Object {
+                  {
                     "name": "line2",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "nullable": true,
@@ -4051,9 +4051,9 @@ Object {
                       "type": 2,
                     },
                   },
-                  Object {
+                  {
                     "name": "line3",
-                    "type": Object {
+                    "type": {
                       "comment": undefined,
                       "generated": false,
                       "nullable": true,
@@ -4073,17 +4073,17 @@ Object {
         },
       },
     },
-    Object {
+    {
       "name": "installation",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "json",
         "type": 14,
-        "value": Object {
-          "items": Array [
-            Object {
+        "value": {
+          "items": [
+            {
               "name": "installationId",
-              "type": Object {
+              "type": {
                 "comment": undefined,
                 "generated": false,
                 "postgresDescription": undefined,
@@ -4091,57 +4091,57 @@ Object {
                 "type": 3,
               },
             },
-            Object {
+            {
               "name": "technologyType",
-              "type": Object {
+              "type": {
                 "comment": undefined,
-                "items": Array [
-                  Object {
+                "items": [
+                  {
                     "literal": "PV",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "PV",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "H",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "H",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "W",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "W",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "AD",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "AD",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "CHP",
                     "postgresType": "text",
                     "type": 2,
                   },
-                  Object {
+                  {
                     "literal": "CHP",
                     "postgresType": "text",
                     "type": 2,
@@ -4152,18 +4152,18 @@ Object {
                 "type": 12,
               },
             },
-            Object {
+            {
               "name": "meters",
-              "type": Object {
-                "items": Object {
+              "type": {
+                "items": {
                   "nullable": true,
                   "postgresType": "json",
                   "type": 14,
-                  "value": Object {
-                    "items": Array [
-                      Object {
+                  "value": {
+                    "items": [
+                      {
                         "name": "id",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
                           "generated": false,
                           "postgresDescription": undefined,
@@ -4171,9 +4171,9 @@ Object {
                           "type": 3,
                         },
                       },
-                      Object {
+                      {
                         "name": "startOn",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
                           "generated": false,
                           "nullable": true,
@@ -4182,9 +4182,9 @@ Object {
                           "type": 2,
                         },
                       },
-                      Object {
+                      {
                         "name": "endOn",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
                           "generated": false,
                           "nullable": true,
@@ -4193,17 +4193,17 @@ Object {
                           "type": 2,
                         },
                       },
-                      Object {
+                      {
                         "name": "type",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
-                          "items": Array [
-                            Object {
+                          "items": [
+                            {
                               "literal": "Export",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "Generation",
                               "postgresType": "text",
                               "type": 2,
@@ -4214,18 +4214,18 @@ Object {
                           "type": 12,
                         },
                       },
-                      Object {
+                      {
                         "name": "reads",
-                        "type": Object {
-                          "items": Object {
+                        "type": {
+                          "items": {
                             "nullable": true,
                             "postgresType": "json",
                             "type": 14,
-                            "value": Object {
-                              "items": Array [
-                                Object {
+                            "value": {
+                              "items": [
+                                {
                                   "name": "value",
-                                  "type": Object {
+                                  "type": {
                                     "comment": undefined,
                                     "generated": false,
                                     "postgresDescription": undefined,
@@ -4233,9 +4233,9 @@ Object {
                                     "type": 3,
                                   },
                                 },
-                                Object {
+                                {
                                   "name": "dateOn",
-                                  "type": Object {
+                                  "type": {
                                     "comment": undefined,
                                     "generated": false,
                                     "postgresDescription": undefined,
@@ -4243,27 +4243,27 @@ Object {
                                     "type": 2,
                                   },
                                 },
-                                Object {
+                                {
                                   "name": "type",
-                                  "type": Object {
+                                  "type": {
                                     "comment": undefined,
-                                    "items": Array [
-                                      Object {
+                                    "items": [
+                                      {
                                         "literal": "Opening",
                                         "postgresType": "text",
                                         "type": 2,
                                       },
-                                      Object {
+                                      {
                                         "literal": "Closing",
                                         "postgresType": "text",
                                         "type": 2,
                                       },
-                                      Object {
+                                      {
                                         "literal": "Quarterly",
                                         "postgresType": "text",
                                         "type": 2,
                                       },
-                                      Object {
+                                      {
                                         "literal": "Meter Verification",
                                         "postgresType": "text",
                                         "type": 2,
@@ -4274,9 +4274,9 @@ Object {
                                     "type": 12,
                                   },
                                 },
-                                Object {
+                                {
                                   "name": "id",
-                                  "type": Object {
+                                  "type": {
                                     "comment": undefined,
                                     "generated": false,
                                     "postgresDescription": undefined,
@@ -4302,26 +4302,26 @@ Object {
                 "type": 11,
               },
             },
-            Object {
+            {
               "name": "contracts",
-              "type": Object {
-                "items": Object {
+              "type": {
+                "items": {
                   "nullable": true,
                   "postgresType": "json",
                   "type": 14,
-                  "value": Object {
-                    "items": Array [
-                      Object {
+                  "value": {
+                    "items": [
+                      {
                         "name": "schemeType",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
-                          "items": Array [
-                            Object {
+                          "items": [
+                            {
                               "literal": "FIT",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "SEG",
                               "postgresType": "text",
                               "type": 2,
@@ -4332,9 +4332,9 @@ Object {
                           "type": 12,
                         },
                       },
-                      Object {
+                      {
                         "name": "schemeAccountReference",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
                           "generated": false,
                           "postgresDescription": undefined,
@@ -4342,9 +4342,9 @@ Object {
                           "type": 2,
                         },
                       },
-                      Object {
+                      {
                         "name": "capacity",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
                           "generated": false,
                           "postgresDescription": undefined,
@@ -4352,9 +4352,9 @@ Object {
                           "type": 3,
                         },
                       },
-                      Object {
+                      {
                         "name": "generationTariffId",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
                           "generated": false,
                           "nullable": true,
@@ -4363,9 +4363,9 @@ Object {
                           "type": 3,
                         },
                       },
-                      Object {
+                      {
                         "name": "exportTariffId",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
                           "generated": false,
                           "nullable": true,
@@ -4374,9 +4374,9 @@ Object {
                           "type": 3,
                         },
                       },
-                      Object {
+                      {
                         "name": "startOn",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
                           "generated": false,
                           "postgresDescription": undefined,
@@ -4384,9 +4384,9 @@ Object {
                           "type": 2,
                         },
                       },
-                      Object {
+                      {
                         "name": "endOn",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
                           "generated": false,
                           "nullable": true,
@@ -4395,67 +4395,67 @@ Object {
                           "type": 2,
                         },
                       },
-                      Object {
+                      {
                         "name": "exportType",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
-                          "items": Array [
-                            Object {
+                          "items": [
+                            {
                               "literal": "Deemed",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "Deemed",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "Deemed",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "Metered Export",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "Metered Export",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "Metered Export",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "Off Grid",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "Off Grid",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "Off Grid",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "PPA",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "PPA",
                               "postgresType": "text",
                               "type": 2,
                             },
-                            Object {
+                            {
                               "literal": "PPA",
                               "postgresType": "text",
                               "type": 2,
@@ -4466,9 +4466,9 @@ Object {
                           "type": 12,
                         },
                       },
-                      Object {
+                      {
                         "name": "exportPercentageSplit",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
                           "generated": false,
                           "nullable": true,
@@ -4477,9 +4477,9 @@ Object {
                           "type": 3,
                         },
                       },
-                      Object {
+                      {
                         "name": "generationPercentageSplit",
-                        "type": Object {
+                        "type": {
                           "comment": undefined,
                           "generated": false,
                           "nullable": true,
@@ -4488,18 +4488,18 @@ Object {
                           "type": 3,
                         },
                       },
-                      Object {
+                      {
                         "name": "generationRates",
-                        "type": Object {
-                          "items": Object {
+                        "type": {
+                          "items": {
                             "nullable": true,
                             "postgresType": "json",
                             "type": 14,
-                            "value": Object {
-                              "items": Array [
-                                Object {
+                            "value": {
+                              "items": [
+                                {
                                   "name": "id",
-                                  "type": Object {
+                                  "type": {
                                     "comment": undefined,
                                     "generated": false,
                                     "postgresDescription": undefined,
@@ -4507,9 +4507,9 @@ Object {
                                     "type": 3,
                                   },
                                 },
-                                Object {
+                                {
                                   "name": "startOn",
-                                  "type": Object {
+                                  "type": {
                                     "comment": undefined,
                                     "generated": false,
                                     "postgresDescription": undefined,
@@ -4517,9 +4517,9 @@ Object {
                                     "type": 2,
                                   },
                                 },
-                                Object {
+                                {
                                   "name": "endOn",
-                                  "type": Object {
+                                  "type": {
                                     "comment": undefined,
                                     "generated": false,
                                     "nullable": false,
@@ -4528,9 +4528,9 @@ Object {
                                     "type": 2,
                                   },
                                 },
-                                Object {
+                                {
                                   "name": "rate",
-                                  "type": Object {
+                                  "type": {
                                     "comment": undefined,
                                     "generated": false,
                                     "postgresDescription": undefined,
@@ -4547,18 +4547,18 @@ Object {
                           "type": 11,
                         },
                       },
-                      Object {
+                      {
                         "name": "exportRates",
-                        "type": Object {
-                          "items": Object {
+                        "type": {
+                          "items": {
                             "nullable": true,
                             "postgresType": "json",
                             "type": 14,
-                            "value": Object {
-                              "items": Array [
-                                Object {
+                            "value": {
+                              "items": [
+                                {
                                   "name": "id",
-                                  "type": Object {
+                                  "type": {
                                     "comment": undefined,
                                     "generated": false,
                                     "postgresDescription": undefined,
@@ -4566,9 +4566,9 @@ Object {
                                     "type": 3,
                                   },
                                 },
-                                Object {
+                                {
                                   "name": "startOn",
-                                  "type": Object {
+                                  "type": {
                                     "comment": undefined,
                                     "generated": false,
                                     "postgresDescription": undefined,
@@ -4576,9 +4576,9 @@ Object {
                                     "type": 2,
                                   },
                                 },
-                                Object {
+                                {
                                   "name": "endOn",
-                                  "type": Object {
+                                  "type": {
                                     "comment": undefined,
                                     "generated": false,
                                     "nullable": false,
@@ -4587,9 +4587,9 @@ Object {
                                     "type": 2,
                                   },
                                 },
-                                Object {
+                                {
                                   "name": "rate",
-                                  "type": Object {
+                                  "type": {
                                     "comment": undefined,
                                     "generated": false,
                                     "postgresDescription": undefined,
@@ -4626,16 +4626,16 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql levelisation-details.query.sql: levelisation-details.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -4645,10 +4645,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -4656,9 +4656,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "quarter",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -4666,9 +4666,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "startOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -4676,9 +4676,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "endOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -4686,51 +4686,51 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "totalCount",
-      "type": Object {
+      "type": {
         "postgresType": "int4",
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "pendingCount",
-      "type": Object {
+      "type": {
         "postgresType": "int4",
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "errorCount",
-      "type": Object {
+      "type": {
         "postgresType": "int4",
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "successCount",
-      "type": Object {
+      "type": {
         "postgresType": "int4",
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "backsSent",
-      "type": Object {
+      "type": {
         "postgresType": "int4",
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "chequeSent",
-      "type": Object {
+      "type": {
         "postgresType": "int4",
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "totalGenerationPayment",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -4738,9 +4738,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "totalExportPayment",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -4748,9 +4748,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "totalGenerationEnergy",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -4758,9 +4758,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "totalExportEnergy",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -4768,9 +4768,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "totalMeteredExportEnergy",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -4778,9 +4778,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "totalMeteredExportPayment",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -4788,9 +4788,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "totalDeemedExportEnergy",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -4798,9 +4798,9 @@ Object {
         "type": 4,
       },
     },
-    Object {
+    {
       "name": "totalDeemedExportPayment",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -4813,16 +4813,16 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql levelisation-individual-reads.list.query.sql: levelisation-individual-reads.list.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -4831,37 +4831,37 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "limit",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "offset",
-      "type": Object {
+      "type": {
         "nullable": false,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -4869,9 +4869,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "dateOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -4879,9 +4879,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "value",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -4894,27 +4894,27 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "name": "q",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -4928,16 +4928,16 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "ids",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
-              "items": Object {
+            "value": {
+              "items": {
                 "postgresType": "int4",
                 "type": 3,
               },
@@ -4945,12 +4945,12 @@ Object {
               "type": 11,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
-              "items": Object {
+            "value": {
+              "items": {
                 "postgresType": "int4",
                 "type": 3,
               },
@@ -4964,39 +4964,39 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "sortField",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "literal": "quarter",
           "postgresType": "text",
           "type": 2,
         },
       },
     },
-    Object {
+    {
       "name": "sortOrder",
-      "type": Object {
-        "items": Array [
-          Object {
+      "type": {
+        "items": [
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "DESC",
               "postgresType": "text",
               "type": 2,
             },
           },
-          Object {
+          {
             "nullable": true,
             "postgresType": "any",
             "type": 14,
-            "value": Object {
+            "value": {
               "literal": "ASC",
               "postgresType": "text",
               "type": 2,
@@ -5008,37 +5008,37 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "limit",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "offset",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5046,9 +5046,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "quarter",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5056,9 +5056,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "startOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5066,9 +5066,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "endOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5081,29 +5081,29 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql meter-create.query.sql: meter-create.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "msn",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -5112,14 +5112,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "make",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -5128,14 +5128,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "model",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -5144,14 +5144,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "mpan",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -5160,14 +5160,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "createdAt",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -5177,10 +5177,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5193,23 +5193,23 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql meter-reads.sql: meter-reads.sql 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [],
+{
+  "params": [],
+  "results": [],
 }
 `;
 
 exports[`Load Files Should convert complex sql overwritten.query.sql: overwritten.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "currentDate",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -5219,14 +5219,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "meterId",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -5235,14 +5235,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "intervalStart",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -5252,14 +5252,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "intervalEnd",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -5270,22 +5270,22 @@ Object {
       },
     },
   ],
-  "results": Array [],
+  "results": [],
 }
 `;
 
 exports[`Load Files Should convert complex sql process-batch.query.sql: process-batch.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "fitIds",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
-          "items": Object {
+        "value": {
+          "items": {
             "comment": undefined,
             "generated": false,
             "nullable": true,
@@ -5299,10 +5299,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "cfrFiTId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -5311,9 +5311,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "email",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -5322,9 +5322,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "contactName",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -5332,9 +5332,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "company",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -5343,9 +5343,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "line1",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -5354,9 +5354,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "line2",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": undefined,
         "postgresDescription": undefined,
@@ -5364,9 +5364,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "town",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -5375,9 +5375,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "postcode",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5385,9 +5385,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "county",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -5396,9 +5396,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "country",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5411,18 +5411,18 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql rates-by-tariff-ids.query.sql: rates-by-tariff-ids.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "ids",
-      "type": Object {
-        "items": Object {
+      "type": {
+        "items": {
           "nullable": true,
           "postgresType": "any",
           "type": 14,
-          "value": Object {
-            "items": Object {
+          "value": {
+            "items": {
               "comment": undefined,
               "generated": false,
               "postgresDescription": undefined,
@@ -5438,10 +5438,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "tariffId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5449,9 +5449,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "rate",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5459,9 +5459,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "startOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5469,9 +5469,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "tariffCode",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5479,22 +5479,22 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "tariffType",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Export",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Generation",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "SEG",
             "postgresType": "text",
             "type": 2,
@@ -5505,9 +5505,9 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "endOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -5521,16 +5521,16 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql read-create.query.sql: read-create.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "meterId",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -5539,14 +5539,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "reason",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -5556,32 +5556,32 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "type",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
-          "items": Array [
-            Object {
+          "items": [
+            {
               "literal": "Opening",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Closing",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Quarterly",
               "postgresType": "text",
               "type": 2,
             },
-            Object {
+            {
               "literal": "Meter Verification",
               "postgresType": "text",
               "type": 2,
@@ -5593,14 +5593,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "dateOn",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -5609,14 +5609,14 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "submittedAt",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "nullable": true,
@@ -5626,24 +5626,24 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "value",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "int4",
           "type": 3,
         },
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5651,9 +5651,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "value",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5661,9 +5661,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "meterId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5671,9 +5671,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "submittedAt",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -5687,16 +5687,16 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql reads-by-account-id.query.sql: reads-by-account-id.query.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "id",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "comment": undefined,
           "generated": false,
           "postgresDescription": undefined,
@@ -5705,37 +5705,37 @@ Object {
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "offset",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "text",
           "type": 2,
         },
       },
     },
-    Object {
+    {
       "accessor": undefined,
       "name": "perPage",
-      "type": Object {
+      "type": {
         "nullable": true,
         "postgresType": "any",
         "type": 14,
-        "value": Object {
+        "value": {
           "postgresType": "text",
           "type": 2,
         },
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5743,9 +5743,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "msn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5753,9 +5753,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "meterId",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5763,9 +5763,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "dateOn",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5773,9 +5773,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "value",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5783,27 +5783,27 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "type",
-      "type": Object {
+      "type": {
         "comment": undefined,
-        "items": Array [
-          Object {
+        "items": [
+          {
             "literal": "Opening",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Closing",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Quarterly",
             "postgresType": "text",
             "type": 2,
           },
-          Object {
+          {
             "literal": "Meter Verification",
             "postgresType": "text",
             "type": 2,
@@ -5814,9 +5814,9 @@ Object {
         "type": 12,
       },
     },
-    Object {
+    {
       "name": "reason",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -5825,9 +5825,9 @@ Object {
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "createdAt",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5835,9 +5835,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "updatedAt",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "nullable": true,
@@ -5846,9 +5846,9 @@ Object {
         "type": 6,
       },
     },
-    Object {
+    {
       "name": "sourceSystemId",
-      "type": Object {
+      "type": {
         "comment": "sql-fit: MeterReading.MeterReadingId",
         "generated": false,
         "nullable": true,
@@ -5857,9 +5857,9 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "mpan",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5872,12 +5872,12 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql recordsets.query.sql: recordsets.query.sql 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [
-    Object {
+{
+  "params": [],
+  "results": [
+    {
       "name": "id",
-      "type": Object {
+      "type": {
         "comment": undefined,
         "generated": false,
         "postgresDescription": undefined,
@@ -5885,16 +5885,16 @@ Object {
         "type": 3,
       },
     },
-    Object {
+    {
       "name": "exportType",
-      "type": Object {
+      "type": {
         "postgresType": "varchar",
         "type": 2,
       },
     },
-    Object {
+    {
       "name": "energy",
-      "type": Object {
+      "type": {
         "postgresType": "float4",
         "type": 3,
       },
@@ -5904,88 +5904,88 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
-Object {
-  "params": Array [],
-  "results": Array [],
+{
+  "params": [],
+  "results": [],
 }
 `;
 
 exports[`Load Files Should convert complex sql update-registers.sql: update-registers.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "registers",
-      "type": Object {
-        "items": Object {
-          "items": Array [
-            Object {
+      "type": {
+        "items": {
+          "items": [
+            {
               "name": "id",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "int4",
                 "type": 3,
               },
             },
-            Object {
+            {
               "name": "customerLabel",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "industryLabel",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "smtRuleStart",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "varchar",
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "smtRuleEnd",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "text",
                 "type": 2,
               },
             },
-            Object {
+            {
               "name": "smtRuleStartOn",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "date",
                 "type": 6,
               },
             },
-            Object {
+            {
               "name": "multiplier",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "meterId",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "indexPosition",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "int4",
                 "type": 3,
@@ -6001,10 +6001,10 @@ Object {
       },
     },
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "name": "index_position",
-      "type": Object {
+      "type": {
         "postgresType": "int4",
         "type": 3,
       },
@@ -6014,81 +6014,81 @@ Object {
 `;
 
 exports[`Load Files Should convert complex sql update-with-cte-from-values.sql: update-with-cte-from-values.sql 1`] = `
-Object {
-  "params": Array [
-    Object {
+{
+  "params": [
+    {
       "accessor": undefined,
       "name": "registers",
-      "type": Object {
-        "items": Object {
-          "items": Array [
-            Object {
+      "type": {
+        "items": {
+          "items": [
+            {
               "name": "id",
-              "type": Object {
+              "type": {
                 "nullable": false,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "customerLabel",
-              "type": Object {
+              "type": {
                 "nullable": false,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "industryLabel",
-              "type": Object {
+              "type": {
                 "nullable": false,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "smtRuleStart",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "smtRuleEnd",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "smtRuleStartOn",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "multiplier",
-              "type": Object {
+              "type": {
                 "nullable": false,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "meterId",
-              "type": Object {
+              "type": {
                 "nullable": false,
                 "postgresType": "any",
                 "type": 9,
               },
             },
-            Object {
+            {
               "name": "indexPosition",
-              "type": Object {
+              "type": {
                 "nullable": true,
                 "postgresType": "any",
                 "type": 9,
@@ -6104,6 +6104,6 @@ Object {
       },
     },
   ],
-  "results": Array [],
+  "results": [],
 }
 `;

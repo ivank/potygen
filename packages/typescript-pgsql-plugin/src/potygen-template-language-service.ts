@@ -28,7 +28,11 @@ export class PotygenTemplateLanguageService implements TemplateLanguageService {
   public ctx: InfoContext;
   public loaded = false;
 
-  constructor(private readonly ts: typeof tss, readonly connection: string, readonly logger: Logger) {
+  constructor(
+    private readonly ts: typeof tss,
+    readonly connection: string,
+    readonly logger: Logger,
+  ) {
     this.ctx = toInfoContext([], logger);
     loadData(logger, connection).then((data) => {
       this.ctx.data = data;
@@ -59,7 +63,7 @@ export class PotygenTemplateLanguageService implements TemplateLanguageService {
     };
   }
 
-  public getQuickInfoAtPosition(context: TemplateContext, position: tss.LineAndCharacter): ts.QuickInfo | undefined {
+  public getQuickInfoAtPosition(context: TemplateContext, position: tss.LineAndCharacter): tss.QuickInfo | undefined {
     if (!this.loaded) {
       return undefined;
     }
@@ -78,7 +82,7 @@ export class PotygenTemplateLanguageService implements TemplateLanguageService {
       : undefined;
   }
 
-  public getSemanticDiagnostics(context: TemplateContext): ts.Diagnostic[] {
+  public getSemanticDiagnostics(context: TemplateContext): tss.Diagnostic[] {
     if (!this.loaded) {
       return [];
     }

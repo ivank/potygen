@@ -266,8 +266,8 @@ describe('Format', () => {
     ${'set transaction'}              | ${'SET TRANSACTION ISOLATION LEVEL REPEATABLE READ'}
     ${'set transaction snap'}         | ${"SET TRANSACTION SNAPSHOT '00000003-0000001B-1'"}
   `('Should parse simple sql $name ($sql)', ({ sql, name }) =>
-    withParserErrors(() => {
-      const formatted = format(sql, { parser: 'sql', plugins: [prettierPluginPgSql] });
+    withParserErrors(async () => {
+      const formatted = await format(sql, { parser: 'sql', plugins: [prettierPluginPgSql] });
       expect(formatted).toMatchSnapshot(name);
       expect(withoutPos(parser(sql))).toEqual(withoutPos(parser(formatted)));
     }),

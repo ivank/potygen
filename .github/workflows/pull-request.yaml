@@ -37,7 +37,7 @@ jobs:
       - uses: ./.github/actions/yarn-install
       - run: yarn build
       - run: yarn lint
-      - run: yarn test --runInBand --ci --testPathIgnorePatterns='test/version/*'
+      - run: yarn test:general --runInBand --ci
       - run: yarn test:${{ matrix.pg }} --runInBand --ci
         env:
           POSTGRES_CONNECTION: postgres://potygen:dev-pass@localhost:5432/potygen

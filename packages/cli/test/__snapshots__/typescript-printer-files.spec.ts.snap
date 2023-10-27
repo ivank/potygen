@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Load Files Should convert complex sql account-levelisation.update.query.sql: account-levelisation.update.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     isAccepted?: boolean;
     id?: number;
@@ -20,7 +20,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql account-levelisation.upsert.query.sql: account-levelisation.upsert.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     levelisationId?: number;
     start?: Date;
@@ -38,16 +38,16 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql account-levelisations.query.sql: account-levelisations.query.sql 1`] = `
-Object {
-  "content": "import { Json } from \\"@potygen/potygen\\";
+{
+  "content": "import { Json } from "@potygen/potygen";
 export interface Params {
     q?: string;
-    resolvedPostlev?: \\"\\" | boolean;
-    state?: (\\"Pending\\" | \\"Done\\");
+    resolvedPostlev?: "" | boolean;
+    state?: ("Pending" | "Done");
     levelisationId?: number;
     ids?: number[];
-    sortField?: \\"totalPayment\\" | \\"vatPayment\\" | \\"generationPayment\\" | \\"exportPayment\\" | \\"generationEnergy\\" | \\"exportEnergy\\" | \\"cfrFitId\\" | \\"state\\" | \\"isAccepted\\" | \\"error\\" | \\"exportType\\";
-    sortOrder?: \\"DESC\\" | \\"ASC\\";
+    sortField?: "totalPayment" | "vatPayment" | "generationPayment" | "exportPayment" | "generationEnergy" | "exportEnergy" | "cfrFitId" | "state" | "isAccepted" | "error" | "exportType";
+    sortOrder?: "DESC" | "ASC";
     limit?: number;
     offset?: number;
 }
@@ -56,7 +56,7 @@ export interface Result<TGenerationPeriods = unknown, TExportPeriods = unknown, 
     levelisationId: number;
     accountId: number;
     installationId: number;
-    state: \\"Pending\\" | \\"Done\\";
+    state: "Pending" | "Done";
     isAccepted: boolean;
     generationStartReadOn?: Date;
     generationStartReadValue?: number;
@@ -72,8 +72,8 @@ export interface Result<TGenerationPeriods = unknown, TExportPeriods = unknown, 
     exportPercentageSplit?: number;
     exportPayment?: number;
     exportEnergy?: number;
-    exportType?: \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\";
-    technologyType?: \\"PV\\" | \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\";
+    exportType?: "Deemed" | "Metered Export" | "Off Grid" | "PPA";
+    technologyType?: "PV" | "H" | "W" | "AD" | "CHP";
     totalPayment?: number;
     vatPayment?: number;
     generationPeriods?: Json<TGenerationPeriods>;
@@ -95,7 +95,7 @@ export interface Query<TGenerationPeriods = unknown, TExportPeriods = unknown, T
 `;
 
 exports[`Load Files Should convert complex sql account-levelisations-bulk-close-accounts.query.sql: account-levelisations-bulk-close-accounts.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     ids?: number[];
 }
@@ -112,7 +112,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql account-levelisations-set-bulk-update.query.sql: account-levelisations-set-bulk-update.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     ids?: number[];
 }
@@ -129,7 +129,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql account-meter-registers-create.query.sql: account-meter-registers-create.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     id?: number;
     customerLabel?: string;
@@ -154,11 +154,11 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql account-verification.update.query.sql: account-verification.update.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     items: {
         GH_account_id?: unknown;
-        [\\"MV date\\"]?: unknown;
+        ["MV date"]?: unknown;
     }[];
     currentDate: Date;
 }
@@ -174,7 +174,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql accounts.list.query.sql: accounts.list.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     q?: string;
     ids?: number[];
@@ -192,7 +192,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql accounts.query.sql: accounts.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     q?: string;
     ids?: number[];
@@ -201,7 +201,7 @@ Object {
 }
 export interface Result {
     id: number;
-    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    state: "Active" | "Pending" | "Dispute" | "Closed";
     startOn?: Date;
     firstName: string;
     lastName: string;
@@ -219,7 +219,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql accounts.sql: accounts.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
 }
 export interface Result {
@@ -234,7 +234,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql active-meters-with-last-read.query.sql: active-meters-with-last-read.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     intervalStart?: Date;
     intervalEnd?: Date;
@@ -247,14 +247,14 @@ export interface Result {
     mpan: string;
     make: string;
     model: string;
-    type: \\"Export\\" | \\"Generation\\";
+    type: "Export" | "Generation";
     currentPeriodRead?: {
         id: number;
         value: number;
         dateOn: string;
         submittedAt?: string;
         reason?: string;
-        type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+        type: "Opening" | "Closing" | "Quarterly" | "Meter Verification";
     };
     previousPeriodRead?: {
         id: number;
@@ -262,7 +262,7 @@ export interface Result {
         dateOn: string;
         submittedAt?: string;
         reason?: string;
-        type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+        type: "Opening" | "Closing" | "Quarterly" | "Meter Verification";
     };
 }
 export interface Query {
@@ -275,7 +275,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql active-meters-wth-reads.query.sql: active-meters-wth-reads.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     intervalStart: Date;
     intervalEnd: Date;
@@ -288,14 +288,14 @@ export interface Result {
     mpan: string;
     make: string;
     model: string;
-    type: \\"Export\\" | \\"Generation\\";
+    type: "Export" | "Generation";
     currentPeriodRead?: {
         id: number;
         value: number;
         dateOn: string;
         submittedAt?: string;
         reason?: string;
-        type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+        type: "Opening" | "Closing" | "Quarterly" | "Meter Verification";
     };
     previousPeriodRead?: {
         id: number;
@@ -303,7 +303,7 @@ export interface Result {
         dateOn: string;
         submittedAt?: string;
         reason?: string;
-        type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+        type: "Opening" | "Closing" | "Quarterly" | "Meter Verification";
     };
 }
 export interface Query {
@@ -316,8 +316,8 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql active-reads.view.sql: active-reads.view.sql 1`] = `
-Object {
-  "content": "import { Json } from \\"@potygen/potygen\\";
+{
+  "content": "import { Json } from "@potygen/potygen";
 export interface Params {
 }
 export interface Result<THistory = unknown> {
@@ -325,7 +325,7 @@ export interface Result<THistory = unknown> {
     meter_id: number;
     date_on: Date;
     value: number;
-    type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    type: "Opening" | "Closing" | "Quarterly" | "Meter Verification";
     reason?: string;
     created_at: Date;
     updated_at?: Date;
@@ -349,7 +349,7 @@ export interface Query<THistory = unknown> {
 `;
 
 exports[`Load Files Should convert complex sql bacs.query.sql: bacs.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     quarter?: string;
     perPage?: string;
@@ -376,7 +376,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql contracts.sql: contracts.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
 }
 export interface Result {
@@ -391,13 +391,13 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql csa-account-by-id.query.sql: csa-account-by-id.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     id?: number;
 }
 export interface Result {
     id: number;
-    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    state: "Active" | "Pending" | "Dispute" | "Closed";
     contacts: {
         id: number;
         name: string;
@@ -432,7 +432,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql csa-account-contracts-update.query.sql: csa-account-contracts-update.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     phone?: string;
     email?: string;
@@ -452,7 +452,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql cte.query.sql: cte.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
 }
 export interface Result {
@@ -471,7 +471,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql cte-levelisation-details.query.sql: cte-levelisation-details.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     id?: number;
 }
@@ -490,10 +490,10 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql delete-accounts.query.sql: delete-accounts.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
-    type?: \\"FIT\\" | \\"SEG\\";
-    state?: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    type?: "FIT" | "SEG";
+    state?: "Active" | "Pending" | "Dispute" | "Closed";
 }
 export interface Result {
     id: number;
@@ -510,7 +510,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql generation-read-data.query.sql: generation-read-data.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     installationId?: number;
     exportDateOn?: Date;
@@ -529,8 +529,8 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql insert.process.query.sql: insert.process.query.sql 1`] = `
-Object {
-  "content": "import { Json } from \\"@potygen/potygen\\";
+{
+  "content": "import { Json } from "@potygen/potygen";
 export interface Params<TParamItemsData = unknown> {
     items: {
         processId?: number;
@@ -553,11 +553,11 @@ export interface Query<TParamItemsData = unknown, TData = unknown> {
 `;
 
 exports[`Load Files Should convert complex sql insert-account.query.sql: insert-account.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
-    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    state: "Active" | "Pending" | "Dispute" | "Closed";
     paymentDetails?: {
-        paymentPlan: \\"BACs\\" | \\"Cheque\\" | \\"Internal Transfer\\";
+        paymentPlan: "BACs" | "Cheque" | "Internal Transfer";
         beneficiaryName?: string;
         beneficiarySortCode?: string;
         beneficiaryAccountNumber?: string;
@@ -573,7 +573,7 @@ Object {
 }
 export interface Result {
     id: number;
-    state: \\"Active\\" | \\"Pending\\" | \\"Dispute\\" | \\"Closed\\";
+    state: "Active" | "Pending" | "Dispute" | "Closed";
 }
 export interface Query {
     params: Params;
@@ -585,7 +585,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql installation-meter-update.query.sql: installation-meter-update.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     removalDate?: Date;
     meterId?: number;
@@ -602,7 +602,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql installations.sql: installations.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
 }
 export interface Result {
@@ -617,7 +617,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql levelisation-customer-data.query.sql: levelisation-customer-data.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     accountLevelisationId: number;
 }
@@ -629,7 +629,7 @@ export interface Result {
     levelisationQuarter: string;
     accountId: number;
     contact?: {
-        title?: \\"Mrs\\" | \\"Miss\\" | \\"Dr\\" | \\"Ms\\" | \\"Mr\\";
+        title?: "Mrs" | "Miss" | "Dr" | "Ms" | "Mr";
         firstName: string;
         lastName: string;
         email?: string;
@@ -643,28 +643,28 @@ export interface Result {
     };
     installation?: {
         installationId: number;
-        technologyType: \\"PV\\" | \\"H\\" | \\"W\\" | \\"AD\\" | \\"CHP\\";
+        technologyType: "PV" | "H" | "W" | "AD" | "CHP";
         meters: {
             id: number;
             startOn?: string;
             endOn?: string;
-            type: \\"Export\\" | \\"Generation\\";
+            type: "Export" | "Generation";
             reads: {
                 value: number;
                 dateOn: string;
-                type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+                type: "Opening" | "Closing" | "Quarterly" | "Meter Verification";
                 id: number;
             }[];
         }[];
         contracts: {
-            schemeType: \\"FIT\\" | \\"SEG\\";
+            schemeType: "FIT" | "SEG";
             schemeAccountReference: string;
             capacity: number;
             generationTariffId?: number;
             exportTariffId?: number;
             startOn: string;
             endOn?: string;
-            exportType?: \\"Deemed\\" | \\"Metered Export\\" | \\"Off Grid\\" | \\"PPA\\";
+            exportType?: "Deemed" | "Metered Export" | "Off Grid" | "PPA";
             exportPercentageSplit?: number;
             generationPercentageSplit?: number;
             generationRates: {
@@ -692,7 +692,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql levelisation-details.query.sql: levelisation-details.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     id?: number;
 }
@@ -726,7 +726,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql levelisation-individual-reads.list.query.sql: levelisation-individual-reads.list.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     id?: number;
     limit: number;
@@ -747,12 +747,12 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql levelisations.list.query.sql: levelisations.list.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     q?: string;
     ids?: number[];
-    sortField?: \\"quarter\\";
-    sortOrder?: \\"DESC\\" | \\"ASC\\";
+    sortField?: "quarter";
+    sortOrder?: "DESC" | "ASC";
     limit?: number;
     offset?: number;
 }
@@ -772,7 +772,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql meter-create.query.sql: meter-create.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     id?: number;
     msn?: string;
@@ -794,7 +794,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql meter-reads.sql: meter-reads.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
 }
 export interface Result {
@@ -809,7 +809,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql overwritten.query.sql: overwritten.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     currentDate?: Date;
     meterId?: number;
@@ -828,7 +828,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql process-batch.query.sql: process-batch.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     fitIds?: string[];
 }
@@ -854,7 +854,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql rates-by-tariff-ids.query.sql: rates-by-tariff-ids.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     ids: number[][];
 }
@@ -863,7 +863,7 @@ export interface Result {
     rate: number;
     startOn: Date;
     tariffCode: string;
-    tariffType: \\"Export\\" | \\"Generation\\" | \\"SEG\\";
+    tariffType: "Export" | "Generation" | "SEG";
     endOn?: Date;
 }
 export interface Query {
@@ -876,11 +876,11 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql read-create.query.sql: read-create.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     meterId?: number;
     reason?: string;
-    type?: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    type?: "Opening" | "Closing" | "Quarterly" | "Meter Verification";
     dateOn?: Date;
     submittedAt?: Date;
     value?: number;
@@ -901,7 +901,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql reads-by-account-id.query.sql: reads-by-account-id.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     id?: number;
     offset?: string;
@@ -913,7 +913,7 @@ export interface Result {
     meterId: number;
     dateOn: Date;
     value: number;
-    type: \\"Opening\\" | \\"Closing\\" | \\"Quarterly\\" | \\"Meter Verification\\";
+    type: "Opening" | "Closing" | "Quarterly" | "Meter Verification";
     reason?: string;
     createdAt: Date;
     updatedAt?: Date;
@@ -933,7 +933,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql recordsets.query.sql: recordsets.query.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
 }
 export interface Result {
@@ -951,7 +951,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql tariff-rates.sql: tariff-rates.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
 }
 export interface Result {
@@ -966,7 +966,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql update-registers.sql: update-registers.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     registers: {
         id?: number;
@@ -993,7 +993,7 @@ export interface Query {
 `;
 
 exports[`Load Files Should convert complex sql update-with-cte-from-values.sql: update-with-cte-from-values.sql 1`] = `
-Object {
+{
   "content": "export interface Params {
     registers: {
         id: unknown;

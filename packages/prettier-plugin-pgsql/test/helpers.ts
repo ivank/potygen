@@ -2,9 +2,9 @@ import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { parser } from '@potygen/potygen';
 
-export const withParserErrors = (cb: () => void): void => {
+export const withParserErrors = async (cb: () => Promise<void>): Promise<void> => {
   try {
-    cb();
+    await cb();
   } catch (e) {
     console.error(String(e));
     throw e;

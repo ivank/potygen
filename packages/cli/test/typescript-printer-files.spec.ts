@@ -29,6 +29,6 @@ describe('Load Files', () => {
         const output = await typeScriptPrinter({ type: 'sql', path: path, content, queryInterface, loadedQuery });
         expect(output).toMatchSnapshot(path);
       }),
-    10000,
+    30000,
   );
 });

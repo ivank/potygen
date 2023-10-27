@@ -12,20 +12,20 @@ SELECT product FROM orders WHERE region = $region
 
 [
   {
-    \\"name\\": \\"region\\"
+    "name": "region"
   },
   {
-    \\"name\\": \\"product\\"
+    "name": "product"
   },
   {
-    \\"name\\": \\"quantity\\"
+    "name": "quantity"
   },
   {
-    \\"name\\": \\"amount\\"
+    "name": "amount"
   },
   {
-    \\"name\\": \\"orders\\",
-    \\"source\\": \\"Table\\"
+    "name": "orders",
+    "source": "Table"
   }
 ]
 Quick Info found: { type: 'Column', name: 'product', start: 7, end: 13 }:
@@ -41,40 +41,40 @@ Quick Info Column: {
   additionalComposite: undefined
 }:
 {
-  \\"display\\": \\"product character varying NOT NULL\\",
-  \\"description\\": \\"From: orders Table\\",
-  \\"start\\": 7,
-  \\"end\\": 13
+  "display": "product character varying NOT NULL",
+  "description": "From: orders Table",
+  "start": 7,
+  "end": 13
 }
 "
 `;
 
 exports[`Example files Should process examples/load.ts: examples/load.ts 1`] = `
 "Load additional data: 1. { tableNames: [ 'public.orders' ] }
-Loaded additional data: 1. [ \\"{Table 'public.orders'}\\" ]
+Loaded additional data: 1. [ "{Table 'public.orders'}" ]
 {
-  \\"params\\": [
+  "params": [
     {
-      \\"name\\": \\"region\\",
-      \\"type\\": {
-        \\"type\\": 14,
-        \\"nullable\\": true,
-        \\"value\\": {
-          \\"type\\": 2,
-          \\"postgresType\\": \\"character varying\\",
-          \\"generated\\": false
+      "name": "region",
+      "type": {
+        "type": 14,
+        "nullable": true,
+        "value": {
+          "type": 2,
+          "postgresType": "character varying",
+          "generated": false
         },
-        \\"postgresType\\": \\"any\\"
+        "postgresType": "any"
       }
     }
   ],
-  \\"results\\": [
+  "results": [
     {
-      \\"name\\": \\"product\\",
-      \\"type\\": {
-        \\"type\\": 2,
-        \\"postgresType\\": \\"character varying\\",
-        \\"generated\\": false
+      "name": "product",
+      "type": {
+        "type": 2,
+        "postgresType": "character varying",
+        "generated": false
       }
     }
   ]
@@ -88,28 +88,28 @@ Loaded all data
 Load views: public.active_reads,public.all_types_view,public.unlevelised_active_reads.
 No additional data found, skipping.
 {
-  \\"params\\": [
+  "params": [
     {
-      \\"name\\": \\"region\\",
-      \\"type\\": {
-        \\"type\\": 14,
-        \\"nullable\\": true,
-        \\"value\\": {
-          \\"type\\": 2,
-          \\"postgresType\\": \\"character varying\\",
-          \\"generated\\": false
+      "name": "region",
+      "type": {
+        "type": 14,
+        "nullable": true,
+        "value": {
+          "type": 2,
+          "postgresType": "character varying",
+          "generated": false
         },
-        \\"postgresType\\": \\"any\\"
+        "postgresType": "any"
       }
     }
   ],
-  \\"results\\": [
+  "results": [
     {
-      \\"name\\": \\"product\\",
-      \\"type\\": {
-        \\"type\\": 2,
-        \\"postgresType\\": \\"character varying\\",
-        \\"generated\\": false
+      "name": "product",
+      "type": {
+        "type": 2,
+        "postgresType": "character varying",
+        "generated": false
       }
     }
   ]
@@ -119,81 +119,81 @@ No additional data found, skipping.
 
 exports[`Example files Should process examples/load-query-interface.ts: examples/load-query-interface.ts 1`] = `
 "{
-  \\"sources\\": [
+  "sources": [
     {
-      \\"type\\": \\"Table\\",
-      \\"isResult\\": true,
-      \\"sourceTag\\": {
-        \\"tag\\": 90,
-        \\"values\\": [
+      "type": "Table",
+      "isResult": true,
+      "sourceTag": {
+        "tag": 90,
+        "values": [
           {
-            \\"tag\\": 89,
-            \\"values\\": [
+            "tag": 89,
+            "values": [
               {
-                \\"tag\\": 8,
-                \\"value\\": \\"users\\",
-                \\"start\\": 17,
-                \\"end\\": 21
+                "tag": 8,
+                "value": "users",
+                "start": 17,
+                "end": 21
               }
             ],
-            \\"start\\": 17,
-            \\"end\\": 21
+            "start": 17,
+            "end": 21
           }
         ],
-        \\"start\\": 17,
-        \\"end\\": 21
+        "start": 17,
+        "end": 21
       },
-      \\"name\\": \\"users\\",
-      \\"table\\": \\"users\\"
+      "name": "users",
+      "table": "users"
     }
   ],
-  \\"results\\": [
+  "results": [
     {
-      \\"name\\": \\"name\\",
-      \\"type\\": {
-        \\"type\\": 19,
-        \\"column\\": \\"name\\",
-        \\"sourceTag\\": {
-          \\"tag\\": 11,
-          \\"values\\": [
+      "name": "name",
+      "type": {
+        "type": 19,
+        "column": "name",
+        "sourceTag": {
+          "tag": 11,
+          "values": [
             {
-              \\"tag\\": 8,
-              \\"value\\": \\"name\\",
-              \\"start\\": 7,
-              \\"end\\": 10
+              "tag": 8,
+              "value": "name",
+              "start": 7,
+              "end": 10
             }
           ],
-          \\"start\\": 7,
-          \\"end\\": 10
+          "start": 7,
+          "end": 10
         }
       }
     }
   ],
-  \\"params\\": [
+  "params": [
     {
-      \\"name\\": \\"email\\",
-      \\"start\\": 37,
-      \\"end\\": 42,
-      \\"spread\\": false,
-      \\"required\\": false,
-      \\"type\\": {
-        \\"type\\": 19,
-        \\"column\\": \\"email\\",
-        \\"sourceTag\\": {
-          \\"tag\\": 11,
-          \\"values\\": [
+      "name": "email",
+      "start": 37,
+      "end": 42,
+      "spread": false,
+      "required": false,
+      "type": {
+        "type": 19,
+        "column": "email",
+        "sourceTag": {
+          "tag": 11,
+          "values": [
             {
-              \\"tag\\": 8,
-              \\"value\\": \\"email\\",
-              \\"start\\": 29,
-              \\"end\\": 33
+              "tag": 8,
+              "value": "email",
+              "start": 29,
+              "end": 33
             }
           ],
-          \\"start\\": 29,
-          \\"end\\": 33
+          "start": 29,
+          "end": 33
         }
       },
-      \\"pick\\": []
+      "pick": []
     }
   ]
 }

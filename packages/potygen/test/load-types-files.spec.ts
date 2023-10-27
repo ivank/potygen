@@ -8,7 +8,7 @@ describe('Load Files', () => {
   beforeAll(async () => {
     db = testDb();
     await db.connect();
-  }, 10000);
+  }, 30000);
 
   afterAll(() => db.end(), 10000);
 
@@ -21,6 +21,6 @@ describe('Load Files', () => {
         const data = await loadQueryInterfacesData({ db, logger }, [queryInterface], []);
         expect(toLoadedQueryInterface(data)(queryInterface)).toMatchSnapshot(name);
       }),
-    10000,
+    30000,
   );
 });

@@ -27,7 +27,7 @@ exports[`Format Should parse simple sql array constructor (SELECT ARRAY(SELECT j
     FROM all_types AS other
     WHERE
       all_types.id = other.id
-  ) AS \\"arr\\"
+  ) AS "arr"
 FROM all_types
 "
 `;
@@ -164,7 +164,7 @@ exports[`Format Should parse simple sql case with else (SELECT CASE test1 WHEN 1
 exports[`Format Should parse simple sql case with type (SELECT CASE p.prokind WHEN 'f'::"char" THEN 'FUNCTION'::text ELSE NULL::text END::information_schema.character_data FROM table1 p): case with type 1`] = `
 "SELECT
   CASE p.prokind
-    WHEN 'f'::\\"char\\" THEN 'FUNCTION'::text
+    WHEN 'f'::"char" THEN 'FUNCTION'::text
     ELSE NULL::text
   END::information_schema.character_data
 FROM table1 AS p
@@ -200,7 +200,7 @@ exports[`Format Should parse simple sql cast number (SELECT CAST(20 AS int4)): c
 `;
 
 exports[`Format Should parse simple sql cast quoted (SELECT 'd'::"char"): cast quoted 1`] = `
-"SELECT 'd'::\\"char\\"
+"SELECT 'd'::"char"
 "
 `;
 
@@ -239,7 +239,7 @@ SELECT "test"
 -- other
 ): comments 1`] = `
 "-- test
-SELECT \\"test\\"
+SELECT "test"
 -- other
 "
 `;
@@ -315,7 +315,7 @@ exports[`Format Should parse simple sql deep qualified star select (SELECT table
 `;
 
 exports[`Format Should parse simple sql deep quoted star select (SELECT "table 1"."table 2".*): deep quoted star select 1`] = `
-"SELECT \\"table 1\\".\\"table 2\\".*
+"SELECT "table 1"."table 2".*
 "
 `;
 
@@ -339,7 +339,7 @@ RETURNING
 
 exports[`Format Should parse simple sql delete returning (DELETE FROM table1 USING table2 AS "my2" WHERE table1.id = my2.id AND deleted_at IS NOT NULL RETURNING id, col1): delete returning 1`] = `
 "DELETE FROM table1
-USING table2 AS \\"my2\\"
+USING table2 AS "my2"
 WHERE
   table1.id = my2.id AND deleted_at IS NOT NULL
 RETURNING
@@ -395,7 +395,7 @@ DELETE FROM table2 WHERE tmp.col2 = table2.id
 "
 `;
 
-exports[`Format Should parse simple sql dollar quoted string (SELECT $Dianne's horse$): dollar quoted string 1`] = `
+exports[`Format Should parse simple sql dollar quoted string (SELECT $$Dianne's horse$$): dollar quoted string 1`] = `
 "SELECT $$Dianne's horse$$
 "
 `;
@@ -411,7 +411,7 @@ exports[`Format Should parse simple sql escape constant (SELECT E'111'::varbit):
 `;
 
 exports[`Format Should parse simple sql escape string (SELECT E'\\o'): escape string 1`] = `
-"SELECT E'\\\\o'
+"SELECT E'\\o'
 "
 `;
 
@@ -471,7 +471,7 @@ exports[`Format Should parse simple sql from with as (SELECT * FROM jobs AS test
 `;
 
 exports[`Format Should parse simple sql from with as quoted (SELECT * FROM jobs AS "test 2"): from with as quoted 1`] = `
-"SELECT * FROM jobs AS \\"test 2\\"
+"SELECT * FROM jobs AS "test 2"
 "
 `;
 
@@ -644,7 +644,7 @@ VALUES
 "
 `;
 
-exports[`Format Should parse simple sql insert multiple param values (INSERT INTO table1 VALUES $rows(name, test)): insert multiple param values 1`] = `
+exports[`Format Should parse simple sql insert multiple param values (INSERT INTO table1 VALUES $$rows(name, test)): insert multiple param values 1`] = `
 "INSERT INTO table1 VALUES
   $$rows(
     name,
@@ -776,7 +776,7 @@ exports[`Format Should parse simple sql join as quoted (SELECT * FROM jobs JOIN 
 FROM
   jobs
   JOIN
-    test1 AS \\"myTest\\"
+    test1 AS "myTest"
 "
 `;
 
@@ -820,7 +820,7 @@ exports[`Format Should parse simple sql join on as quoted (SELECT * FROM jobs JO
 "SELECT *
 FROM
   jobs
-  JOIN test1 AS \\"myTest\\"
+  JOIN test1 AS "myTest"
     ON jobs.id = test1.id
 "
 `;
@@ -835,12 +835,12 @@ FROM
 `;
 
 exports[`Format Should parse simple sql json contain left (SELECT * FROM table1 WHERE col1 @> '{"a":2}'): json contain left 1`] = `
-"SELECT * FROM table1 WHERE col1 @> '{\\"a\\":2}'
+"SELECT * FROM table1 WHERE col1 @> '{"a":2}'
 "
 `;
 
 exports[`Format Should parse simple sql json contain right (SELECT * FROM table1 WHERE col1 <@ '{"a":2}'): json contain right 1`] = `
-"SELECT * FROM table1 WHERE col1 <@ '{\\"a\\":2}'
+"SELECT * FROM table1 WHERE col1 <@ '{"a":2}'
 "
 `;
 
@@ -944,9 +944,9 @@ exports[`Format Should parse simple sql limit offset params (SELECT * FROM table
 
 exports[`Format Should parse simple sql multiple as columns select (SELECT column1 as "test", table1.column2, "test".column2 as col1): multiple as columns select 1`] = `
 "SELECT
-  column1 AS \\"test\\",
+  column1 AS "test",
   table1.column2,
-  \\"test\\".column2 AS col1
+  "test".column2 AS col1
 "
 `;
 
@@ -966,7 +966,7 @@ SELECT * FROM mv  UNION ALL SELECT * FROM ins
 `;
 
 exports[`Format Should parse simple sql multiple from (SELECT * FROM jobs1, jobs AS "test 2"): multiple from 1`] = `
-"SELECT * FROM jobs1, jobs AS \\"test 2\\"
+"SELECT * FROM jobs1, jobs AS "test 2"
 "
 `;
 
@@ -997,7 +997,7 @@ FROM
 "
 `;
 
-exports[`Format Should parse simple sql multiple params spread types (INSERT INTO table1 VALUES $rows(name::int, test::text)): multiple params spread types 1`] = `
+exports[`Format Should parse simple sql multiple params spread types (INSERT INTO table1 VALUES $$rows(name::int, test::text)): multiple params spread types 1`] = `
 "INSERT INTO table1 VALUES
   $$rows(
     name::int,
@@ -1008,8 +1008,8 @@ exports[`Format Should parse simple sql multiple params spread types (INSERT INT
 
 exports[`Format Should parse simple sql nested CTE (WITH counting AS (WITH tmp AS (SELECT * FROM table1) SELECT 1 FROM "tmp") SELECT count(*) FROM "counting"): nested CTE 1`] = `
 "WITH
-  counting AS (WITH tmp AS (SELECT * FROM table1) SELECT 1 FROM \\"tmp\\")
-SELECT count(*) FROM \\"counting\\"
+  counting AS (WITH tmp AS (SELECT * FROM table1) SELECT 1 FROM "tmp")
+SELECT count(*) FROM "counting"
 "
 `;
 
@@ -1062,7 +1062,7 @@ exports[`Format Should parse simple sql order by multiple (SELECT * FROM table1 
 `;
 
 exports[`Format Should parse simple sql order by qualified (SELECT * FROM table1 mr ORDER BY mr."DateOfReading" ASC): order by qualified 1`] = `
-"SELECT * FROM table1 AS mr ORDER BY mr.\\"DateOfReading\\" ASC
+"SELECT * FROM table1 AS mr ORDER BY mr."DateOfReading" ASC
 "
 `;
 
@@ -1221,27 +1221,27 @@ exports[`Format Should parse simple sql qualified star select (SELECT table1.*):
 `;
 
 exports[`Format Should parse simple sql quoted as select (SELECT table1.column1 as "col 1"): quoted as select 1`] = `
-"SELECT table1.column1 AS \\"col 1\\"
+"SELECT table1.column1 AS "col 1"
 "
 `;
 
 exports[`Format Should parse simple sql quoted escaped as select (SELECT schema1.table1.column1 as "col ""2"""): quoted escaped as select 1`] = `
-"SELECT schema1.table1.column1 AS \\"col \\"\\"2\\"\\"\\"
+"SELECT schema1.table1.column1 AS "col ""2"""
 "
 `;
 
 exports[`Format Should parse simple sql quoted identifier (SELECT "test"): quoted identifier 1`] = `
-"SELECT \\"test\\"
+"SELECT "test"
 "
 `;
 
 exports[`Format Should parse simple sql quoted identifier escaped (SELECT "test me ""o donald"" true"): quoted identifier escaped 1`] = `
-"SELECT \\"test me \\"\\"o donald\\"\\" true\\"
+"SELECT "test me ""o donald"" true"
 "
 `;
 
 exports[`Format Should parse simple sql quoted star select (SELECT "table 2".*): quoted star select 1`] = `
-"SELECT \\"table 2\\".*
+"SELECT "table 2".*
 "
 `;
 
@@ -1249,7 +1249,7 @@ exports[`Format Should parse simple sql recordset function (SELECT periods.* FRO
 "SELECT periods.*
 FROM
   account_levelisations,
-  jsonb_to_recordset(generation_periods) AS periods(\\"amount\\" varchar)
+  jsonb_to_recordset(generation_periods) AS periods("amount" varchar)
 "
 `;
 
@@ -1334,7 +1334,7 @@ exports[`Format Should parse simple sql select count filter (SELECT (COUNT(accou
   (
     COUNT(account_levelisations.id)
     FILTER (WHERE account_levelisations.state = 'Pending')
-  )::int AS \\"pendingCount\\"
+  )::int AS "pendingCount"
 FROM account_levelisations
 "
 `;
@@ -1402,7 +1402,7 @@ exports[`Format Should parse simple sql set transaction write (SET TRANSACTION R
 "
 `;
 
-exports[`Format Should parse simple sql spread param in clause (SELECT table_schema FROM information_schema.columns WHERE ((table_schema, table_name)) IN (($tables(schema, table)))): spread param in clause 1`] = `
+exports[`Format Should parse simple sql spread param in clause (SELECT table_schema FROM information_schema.columns WHERE ((table_schema, table_name)) IN (($$tables(schema, table)))): spread param in clause 1`] = `
 "SELECT table_schema
 FROM information_schema.columns
 WHERE
@@ -1494,7 +1494,7 @@ SET
 `;
 
 exports[`Format Should parse simple sql update as (UPDATE table1 AS "my1" SET col1 = my2.col2): update as 1`] = `
-"UPDATE table1 AS \\"my1\\" SET col1 = my2.col2
+"UPDATE table1 AS "my1" SET col1 = my2.col2
 "
 `;
 
@@ -1512,7 +1512,7 @@ exports[`Format Should parse simple sql update list (UPDATE table1 SET col1 = 10
 "UPDATE table1
 SET
   col1 = 10,
-  col2 = \\"other\\"
+  col2 = "other"
 "
 `;
 
@@ -1522,7 +1522,7 @@ exports[`Format Should parse simple sql update map (UPDATE table1 SET (col1, col
 `;
 
 exports[`Format Should parse simple sql update map row (UPDATE table1 SET (col1, col2) = ROW ("12", FALSE)): update map row 1`] = `
-"UPDATE table1 SET (col1, col2) = (\\"12\\", FALSE)
+"UPDATE table1 SET (col1, col2) = ("12", FALSE)
 "
 `;
 
@@ -1548,7 +1548,7 @@ exports[`Format Should parse simple sql update multiple as (UPDATE table1 SET co
 SET
   col1 = my1.id,
   col2 = my2.id
-FROM table2 AS \\"my1\\", table3 AS my2
+FROM table2 AS "my1", table3 AS my2
 "
 `;
 

@@ -24,7 +24,7 @@ describe('Query Interface', () => {
     await db.connect();
     data = await loadAllData({ db, logger }, []);
     await db.end();
-  });
+  }, 25000);
 
   it.each<[string, string]>([
     ['function result single', `SELECT ABS(integer_col) FROM all_types`],
@@ -121,7 +121,11 @@ describe('Query Interface', () => {
       ],
       [{ type: TypeName.String, postgresType: 'text' }],
     ],
-  ])('Should compact union types for %s', async (_, types, expected) => {
-    expect(compactTypes(types)).toEqual(expected);
-  });
+  ])(
+    'Should compact union types for %s',
+    async (_, types, expected) => {
+      expect(compactTypes(types)).toEqual(expected);
+    },
+    30000,
+  );
 });
